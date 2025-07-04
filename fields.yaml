@@ -18,6 +18,9 @@
   description: leave empty
 - name: TTW
   description: 'In pdf name (website: Dossier) (no or yes)'
+- name: jobgroup
+  description: 'pdf: 1st jobgroup - should be mentioned in wage table as column titles
+    (letter, number or text)'
 - name: salary_1
   description: 'pdf: 1st wage in first wage table (number)'
 - name: salary_1_startdate
@@ -25,7 +28,7 @@
 - name: salary_1_unit
   description: 'pdf: hourly, monthly or yearly (or something else)'
 - name: salary_increment_1
-  description: 'pdf: search for increase (number in percent)'
+  description: 'pdf: search for increase, increment, ... (number in percent)'
 - name: salary_2
   description: 'pdf: 1st wage in second table (number)'
 - name: salary_2_startdate
@@ -74,9 +77,6 @@
   description: 'pdf: hourly, monthly or yearly (or something else)'
 - name: salary_increment_7
   description: 'pdf: search for increase (number in percent)'
-- name: jobgroup
-  description: 'pdf: 1st jobgroup - should be mentioned in wage table as column titles
-    (letter, number or text)'
 - name: salary_note
   description: 'pdf: what type of worker and what type of age - usually but not always
     next to wage table - focus on normal / basic wage type(text) '

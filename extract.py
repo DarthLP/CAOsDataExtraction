@@ -6,6 +6,10 @@ from pdf2image import convert_from_path  # For converting PDF pages to images (u
 import pytesseract  # For image-based text extraction
 import pdfplumber  # For detecting image-based regions within PDFs
 
+# Debug log file path
+DEBUG_LOG_FILE = "extraction_debug.log"
+DEBUG = True  # Set to False to disable debug logging
+
 # Suppress pdfminer warnings (used by pdfplumber) to avoid cluttering ouput through color warnings
 import logging
 logging.getLogger("pdfminer").setLevel(logging.ERROR)
@@ -45,12 +49,16 @@ def extract_text_from_pdf(pdf_path):
             images[0].save(f"debug_images/{Path(pdf_path).stem}_page_{i + 1}.png")
             ocr_text = pytesseract.image_to_string(images[0]).strip()
 
-        # Step 4: Merge based on content
-        if normal_text and ocr_text and normal_text != ocr_text:
-            page_info["text"] = normal_text + "\n\n[OCR SUPPLEMENT]\n" + ocr_text
-            page_info["ocr_used"] = True
-        elif normal_text:
+        # # Step 4: Merge based on content
+        # if normal_text and ocr_text and normal_text != ocr_text:
+        #     page_info["text"] = normal_text + "\n\n[OCR SUPPLEMENT]\n" + ocr_text
+        #     page_info["ocr_used"] = True
+        # elif normal_text:
+
+        # Step 4: Prefer native text; fallback to OCR if native is empty
+        if normal_text:
             page_info["text"] = normal_text
+            page_info["ocr_used"] = False
         elif ocr_text:
             page_info["text"] = ocr_text
             page_info["ocr_used"] = True
@@ -70,12 +78,28 @@ def main():
     os.makedirs(OUTPUT_FOLDER, exist_ok=True)
     os.makedirs("debug_images", exist_ok=True)
 
+    # Write log file header
+    with open(DEBUG_LOG_FILE, "w", encoding="utf-8") as log_file:
+        log_file.write("PDF Extraction Debug Log\n\n")
+
     # Loop over each file
     for pdf_file in pdf_files:
         print(f"Processing {pdf_file.name}")
+        with open(DEBUG_LOG_FILE, "a", encoding="utf-8") as log_file:
+            log_file.write(f"===== {pdf_file.name} =====\n")
 
         # Extract page-wise text and OCR info
         pages_data = extract_text_from_pdf(str(pdf_file))
+
+        # Debug: log OCR usage per page if DEBUG is set
+        if DEBUG:
+            with open(DEBUG_LOG_FILE, "a", encoding="utf-8") as log_file:
+                for page in pages_data:
+                    if page["ocr_used"]:
+                        log_file.write(f"Page {page['page']}: OCR used\n")
+                    else:
+                        log_file.write(f"Page {page['page']}: Native text only\n")
+                log_file.write("\n")
 
         # Save results to JSON
         json_out_path = Path(OUTPUT_FOLDER) / (pdf_file.stem + ".json")

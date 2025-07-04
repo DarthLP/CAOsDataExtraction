@@ -1,7 +1,7 @@
 - name: CAO
   description: leave empty
 - name: id
-  description: leave empty
+  description: file name
 - name: infotype
   description: leave empty
 - name: start_date
@@ -9,9 +9,9 @@
 - name: expiry_date
   description: leave empty
 - name: start_date_contract
-  description: 'pdf: start date on front page (date)'
+  description: 'pdf: start date usually on front page (date)'
 - name: expiry_date_contract
-  description: 'pdf: end date on front page (date)'
+  description: 'pdf: end date usually on front page (date)'
 - name: date_of_formal_notification
   description: leave empty
 - name: temporary

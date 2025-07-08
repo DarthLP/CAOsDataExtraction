@@ -56,26 +56,41 @@ def clean_gemini_output(output):
 # Generate a prompt with the list of desired fields and extract structured data from text
 def extract_fields_from_text(text, prompt_fields_markdown, filename=""):
     prompt = (
-        f"You are an AI assistant that extracts structured JSON data from Dutch collective labor agreements (CAOs).\n\n"
+        f"You are an AI assistant that extracts structured JSON data from Dutch collective labor agreements (CAOs). These CAOs were originally provided as PDF files, and are now given to you as structured JSON files derived from them.\n\n"
         
+        f"=== Source Text ===\n"
+        f"From file: {filename}\n\n"
+        f"{text}\n\n"
+
         f"=== Context ===\n"
-        f"- The source text comes from: {filename}\n"
-        f"- The following table is a structured list of fields to extract. The first row contains the field names. The rows below provide a short description of each field and clarify the type of information that should be extracted.\n"
+        f"The following table is a structured list of fields to extract. The first row contains the field names. The rows below describe each field using the following format:\n"
+        f"Description (expected format). Help or further guidance. Ex: one or more examples\n"
         f"{prompt_fields_markdown}\n\n"
 
-        f"=== Instructions ===\n"
+        f"=== General Instructions ===\n"
         f"- Extract the requested information as **strictly valid JSON**.\n"
-        f"- If a field is empty, blank or marked \"empty\" in the structure, **leave it empty** in your output.\n"
+        f"- If a field or cell is empty, blank or marked \"empty\" in the structure, **leave it empty** in your output.\n"
         f"- Do NOT hallucinate or infer information not explicitly mentioned in the text.\n"
-        f"- Rows marked with '...' indicate a repeating pattern. Use the 3 rows above and 1 row below to understand the pattern and complete it for all job groups present.\n"
-        f"- Only extract salary-related data for workers aged 21 and older.\n"
+        f"- Never guess or fabricate values. Do not fill in missing data unless it is directly found in the source text.\n"
+        f"- Rows marked with \"...\" indicate a repeating pattern. Use the 3 rows above to understand the pattern and complete it for all job groups present.\n"
         f"- Do not return explanations, comments, or Markdown — return only pure JSON.\n\n"
 
-        f"=== Source Text ===\n{text}\n\n"
+        f"= Wage Instructions =\n"
+        f"- When multiple wage tables are present, focus only on tables that represent standard or regular wages (sometimes referred to as \"basic\" or \"normal\" even if not labeled explicitly).\n"
+        f"- If multiple tables exist for different job groups or levels under this standard wage type, include all of them.\n"
+        f"- Prefer hourly units when both hourly and monthly wage tables are available.\n"
+        f"- Only extract salary-related data for workers aged 21 and older.\n\n"
+
+        f"= Pension Instructions =\n"
+        f"- For all pension-related fields, help the model by searching for Dutch keywords like “AOW”, “pensioen”, and “regeling”.\n\n"
+
+        f"= Leave, Termination, Overtime, and Training Instructions =\n"
+        f"- For all fields related to leave, contract termination, working hours, overtime, or training, extract as much relevant information as possible - more is better, as long as it is factually present in the text.\n"
 
         f"=== Output Format ===\n"
         f"Return ONLY valid JSON, for example:\n"
         f"{{\"field1\": \"value1\", \"field2\": \"value2\", ...}}\n"
+        f"⚠️ Reminder: Only output factual information stated in the source text. No assumptions, no guesses.\n"
     )
     raw_output = query_gemini(prompt)
     cleaned_output = clean_gemini_output(raw_output)
@@ -134,12 +149,6 @@ for json_file in Path(INPUT_JSON_FOLDER).glob("*.json"):
             print("Row content before appending:", row)
 
         row_df = pd.DataFrame([row])
-        # Drop columns that are entirely empty across all rows (excluding "CAO" and "TTW")
-        non_empty_columns = [
-            col for col in row_df.columns if col in ("CAO", "TTW") or
-            any((val is not None and (not isinstance(val, str) or val.strip() != "")) for val in row_df[col])
-        ]
-        row_df_cleaned = row_df[non_empty_columns]
 
         row_df_full = row_df.reindex(columns=df_results.columns)
 

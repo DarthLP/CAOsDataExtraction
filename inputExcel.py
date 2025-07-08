@@ -1,21 +1,23 @@
 import pandas as pd
-import yaml
 
 # Load Excel
-excel_path = "inputExcel/250702 AI information matrix collapsed.xlsx"
+excel_path = "inputExcel/250702 AI information matrix.xlsx"
 df = pd.read_excel(excel_path, header=None)
 
 # First row = column names, second row = descriptions
 df.columns = df.iloc[0]
-descriptions = df.iloc[1]
-df = df[2:].reset_index(drop=True)
+df = df[1:].reset_index(drop=True)
 
-# Write extended YAML schema
-with open("fields.yaml", "w") as f:
-    yaml.dump(
-        [{'name': str(col), 'description': str(descriptions[col])} for col in df.columns],
-        f, sort_keys=False, allow_unicode=True
-    )
+# Build markdown table as string
+markdown = "| " + " | ".join([str(col).strip() for col in df.columns]) + " |\n"
+markdown += "| " + " | ".join(["---"] * len(df.columns)) + " |\n"
 
-print("Detailed fields.yaml written successfully.")
+for _, row in df.iterrows():
+    line = "| " + " | ".join([str(row[col]).strip() if pd.notna(row[col]) else "" for col in df.columns]) + " |"
+    markdown += line + "\n"
 
+# Save to file outside the inputExcel folder
+with open("fields_prompt.md", "w", encoding="utf-8") as f:
+    f.write(markdown)
+
+print("Markdown-style prompt structure written to fields_prompt.md")

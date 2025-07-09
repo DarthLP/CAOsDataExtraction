@@ -49,14 +49,8 @@ def extract_text_from_pdf(pdf_path):
             images[0].save(f"debug_images/{Path(pdf_path).stem}_page_{i + 1}.png")
             ocr_text = pytesseract.image_to_string(images[0]).strip()
 
-        # # Step 4: Merge based on content
-        # if normal_text and ocr_text and normal_text != ocr_text:
-        #     page_info["text"] = normal_text + "\n\n[OCR SUPPLEMENT]\n" + ocr_text
-        #     page_info["ocr_used"] = True
-        # elif normal_text:
-
         # Step 4: Prefer native text; fallback to OCR if native is empty
-        if normal_text:
+        if ocr_text == "":
             page_info["text"] = normal_text
             page_info["ocr_used"] = False
         elif ocr_text:

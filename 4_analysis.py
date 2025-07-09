@@ -6,14 +6,20 @@ from pathlib import Path
 from deep_translator import GoogleTranslator
 import google.generativeai as genai
 import time
+from dotenv import load_dotenv
 
 # === Configuration: Set paths and constants ===
 # Paths
-INPUT_JSON_FOLDER = "output_json"
+INPUT_JSON_FOLDER = "llmExtracted_json"
 FIELDS_PROMPT_PATH = "fields_prompt.md"
 OUTPUT_EXCEL_PATH = "results/extracted_data.xlsx"
 DEBUG_MODE = False
-MAX_JSON_FILES = 1  # Limit how many JSON files to process
+MAX_JSON_FILES = 2  # Limit how many JSON files to process
+
+# === Configure Google Generative AI (Gemini) API ===
+load_dotenv()
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+GEMINI_MODEL = "gemini-2.5-pro" 
 
 # === Load prompt fields from fields_prompt.md ===
 with open(FIELDS_PROMPT_PATH, "r", encoding="utf-8") as f:
@@ -22,10 +28,6 @@ columns = [col.strip() for col in prompt_fields_markdown.splitlines()[0].strip("
 
 # Initialize the result DataFrame with accurate column names
 df_results = pd.DataFrame(columns=columns)
-
-# === Configure Google Generative AI (Gemini) API ===
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-GEMINI_MODEL = "gemini-2.5-pro" 
 
 # Function to query Gemini model with retries
 def query_gemini(prompt, model=GEMINI_MODEL, retries=3, delay=2):
@@ -59,6 +61,7 @@ def extract_fields_from_text(text, prompt_fields_markdown, filename=""):
         f"You are an AI assistant that extracts structured JSON data from Dutch collective labor agreements (CAOs). These CAOs were originally provided as PDF files, and are now given to you as structured JSON files derived from them.\n\n"
         
         f"=== Source Text ===\n"
+        f"The input is a shortened and grouped JSON-like structure. Each section is titled according to its content (e.g., \"Wage information\", \"Pension information\"), and contains a list of paragraphs or table contents from the CAO PDF relevant to that topic.\n"
         f"From file: {filename}\n\n"
         f"{text}\n\n"
 
@@ -108,9 +111,15 @@ for json_file in Path(INPUT_JSON_FOLDER).glob("*.json"):
         if processed_files >= MAX_JSON_FILES:
             break
         processed_files += 1
-        pages = json.load(f)
+        context_by_infotype = json.load(f)
 
-    full_text = "\n".join(page["text"] for page in pages)
+    full_text_parts = []
+    for key, value in context_by_infotype.items():
+        if isinstance(value, list):
+            full_text_parts.append(f"== {key} ==\n" + "\n".join(value))
+        elif isinstance(value, str):
+            full_text_parts.append(f"== {key} ==\n{value}")
+    full_text = "\n\n".join(full_text_parts)
     # full_text = GoogleTranslator(source='nl', target='en').translate(full_text)
     combined_fields = dict.fromkeys(columns, "")
 

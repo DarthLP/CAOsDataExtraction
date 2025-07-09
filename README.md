@@ -12,10 +12,13 @@ CHECK
 Prompt includes:
 - Field descriptions from Excel
 - Clarifying sentence: "Each field includes a short description. Example values are provided using the prefix ‘Ex: …’ to illustrate expected content."
+CHECK
 
 ### 3. 🔁 Two-Stage LLM Extraction
 - **Stage 1:** Extract loosely structured relevant context (full tables, related text).
 - **Stage 2:** Map this to structured JSON matching the Excel format.
+CHECK 
+- **Stage 3:** Split up LLM into different categories: especially into salary outputs and the rest.
 
 ### 4. 🧪 Comparison & Evaluation
 - Compare 1-stage vs. 2-stage extraction.

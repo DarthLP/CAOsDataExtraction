@@ -164,42 +164,38 @@ def extract_fields_from_text(text, prompt_fields_markdown, filename=""):
         dict: Extracted fields as a dictionary.
     """
     prompt = (
-        f"You are an AI assistant that extracts structured JSON data from Dutch collective labor agreements (CAOs). These CAOs were originally provided as PDF files, and are now given to you as structured JSON files derived from them.\n\n"
-        
-        f"=== Source Text ===\n"
-        f"The input is a shortened and grouped JSON-like structure. Each section is titled according to its content (e.g., \"Wage information\", \"Pension information\"), and contains a list of paragraphs or table contents from the CAO PDF relevant to that topic.\n"
+        "You are an AI assistant that extracts structured JSON data from Dutch collective labor agreements (CAOs). "
+        "These CAOs were originally provided as PDF files, and are now given to you as structured JSON files derived from them.\n\n"
+
+        "=== Source Text ===\n"
+        "The input is a shortened and grouped JSON-like structure. Each section is titled according to its content (e.g., \"Wage information\", \"Pension information\"), and contains a list of paragraphs or table contents from the CAO PDF relevant to that topic.\n"
         f"From file: {filename}\n\n"
         f"{text}\n\n"
 
-        f"=== Context ===\n"
-        f"The following table is a structured list of fields to extract. The first row contains the field names. The rows below describe each field using the following format:\n"
-        f"Description (expected format). Help or further guidance. Ex: one or more examples\n"
+        "=== Extraction Fields ===\n"
+        "Below is a table of fields to extract. The first row contains the field names. The rows below describe each field. They have the following format: Description (expected format). Help or further guidance. Ex: one or more examples\n"
         f"{prompt_fields_markdown}\n\n"
 
-        f"=== General Instructions ===\n"
-        f"- Extract the requested information as **strictly valid JSON**.\n"
-        f"- If a field or cell is empty, blank or marked \"empty\" in the structure, **leave it empty** in your output.\n"
-        f"- Do NOT hallucinate or infer information not explicitly mentioned in the text.\n"
-        f"- Never guess or fabricate values. Do not fill in missing data unless it is directly found in the source text.\n"
-        f"- Rows marked with \"...\" indicate a repeating pattern. Use the 3 rows above to understand the pattern and complete it for all job groups present.\n"
-        f"- Do not return explanations, comments, or Markdown — return only pure JSON.\n\n"
+        "=== Extraction Instructions ===\n"
+        "- For each field in the table, extract the data from the source text.\n"
+        "- Do NOT hallucinate, infer, or guess any information. Only extract what is explicitly present in the text.\n"
+        "- Do NOT fill in missing data unless it is directly found in the source text.\n"
+        "- Do NOT repeat the prompt, instructions, or any explanations in your output.\n"
+        "- Do NOT use markdown, code blocks, or comments. Output only pure JSON.\n"
+        "- If a field or cell is empty, blank, or marked \"empty\" in the structure, leave it empty in your output.\n"
+        "- Rows marked with \"...\" indicate a repeating pattern. Use the 3 rows above to understand the pattern and complete it for all job groups present.\n"
+        "- Output all field names, even if the value is empty.\n\n"
 
-        f"= Wage Instructions =\n"
-        f"- When multiple wage tables are present, focus only on tables that represent standard or regular wages (sometimes referred to as \"basic\" or \"normal\" even if not labeled explicitly).\n"
-        f"- If multiple tables exist for different job groups or levels under this standard wage type, include all of them.\n"
-        f"- Prefer hourly units when both hourly and monthly wage tables are available.\n"
-        f"- Only extract salary-related data for workers aged 21 and older.\n\n"
+        "=== Special Domain Instructions ===\n"
+        "- Wage: When multiple wage tables are present, focus only on tables that represent standard or regular wages (sometimes referred to as \"basic\" or \"normal\" even if not labeled explicitly). If multiple tables exist for different job groups or levels under this standard wage type, include all of them. Prefer hourly units when both hourly and monthly wage tables are available. Only extract salary-related data for workers aged 21 and older.\n"
+        "- Pension: For all pension-related fields, help the model by searching for Dutch keywords like “AOW”, “pensioen”, and “regeling”.\n"
+        "- Leave, Termination, Overtime, and Training: For all fields related to leave, contract termination, working hours, overtime, or training, extract as much relevant information as possible - more is better, as long as it is factually present in the text.\n\n"
 
-        f"= Pension Instructions =\n"
-        f"- For all pension-related fields, help the model by searching for Dutch keywords like “AOW”, “pensioen”, and “regeling”.\n\n"
-
-        f"= Leave, Termination, Overtime, and Training Instructions =\n"
-        f"- For all fields related to leave, contract termination, working hours, overtime, or training, extract as much relevant information as possible - more is better, as long as it is factually present in the text.\n"
-
-        f"=== Output Format ===\n"
-        f"Return ONLY valid JSON, for example:\n"
-        f"{{\"field1\": \"value1\", \"field2\": \"value2\", ...}}\n"
-        f"⚠️ Reminder: Only output factual information stated in the source text. No assumptions, no guesses.\n"
+        "=== Output Format ===\n"
+        "Return ONLY valid JSON, for example:\n"
+        "{\"field1\": \"value1\", \"field2\": \"value2\", ...}\n"
+        "Do NOT wrap the JSON in code blocks or markdown. Do NOT include any explanations or comments.\n"
+        "Reminder: Only output factual information stated in the source text. No assumptions, no guesses. If unsure, leave the field empty.\n"
     )
     raw_output = query_gemini(prompt)
     cleaned_output = clean_gemini_output(raw_output)
@@ -264,6 +260,15 @@ for json_file in json_files:
         print(f"Reached limit of {MAX_JSON_FILES} files. Stopping processing.")
         break
     
+    file_basename = json_file.name
+    # Robust duplicate check: normalize case and whitespace
+    normalized_file_basename = file_basename.lower().strip()
+    if 'File_name' in df_results.columns:
+        normalized_existing = df_results['File_name'].dropna().apply(lambda x: str(x).lower().strip())
+        if normalized_file_basename in normalized_existing.values:
+            print(f"  Skipping {file_basename} (already processed by filename, robust check)")
+            continue
+
     # === Robust CAO number and ID lookup ===
     cao_number = None
     cao_id = None
@@ -353,6 +358,7 @@ for json_file in json_files:
         row["CAO"] = str(cao_number) if cao_number else json_file.stem
         row["id"] = str(cao_id) if cao_id else ""
         row["TTW"] = "yes" if "TTW" in json_file.stem.upper() else "no"
+        row["File_name"] = file_basename
 
         # === Merge CAO info from CSV ===
         # Try to find matching CAO info by PDF name

@@ -1,5 +1,9 @@
 import pandas as pd
 
+# =========================
+# Load and Process Excel Files
+# =========================
+
 # === Load Excel ===
 excel_path = "inputExcel/250702 AI information matrix.xlsx"
 df = pd.read_excel(excel_path, header=None)
@@ -13,7 +17,7 @@ markdown = "| " + " | ".join([str(col).strip() for col in df.columns]) + " |\n"
 markdown += "| " + " | ".join(["---"] * len(df.columns)) + " |\n"
 
 for _, row in df.iterrows():
-    line = "| " + " | ".join([str(row[col]).strip() if pd.notna(row[col]) else "" for col in df.columns]) + " |"
+    line = "| " + " | ".join([str(row[col]).strip() if bool(pd.notna(row[col])) else "" for col in df.columns]) + " |"
     markdown += line + "\n"
 
 # Save to file outside the inputExcel folder
@@ -35,7 +39,7 @@ markdown_collapsed = "| " + " | ".join([str(col).strip() for col in df_collapsed
 markdown_collapsed += "| " + " | ".join(["---"] * len(df_collapsed.columns)) + " |\n"
 
 for _, row in df_collapsed.iterrows():
-    line = "| " + " | ".join([str(row[col]).strip() if pd.notna(row[col]) else "" for col in df_collapsed.columns]) + " |"
+    line = "| " + " | ".join([str(row[col]).strip() if bool(pd.notna(row[col])) else "" for col in df_collapsed.columns]) + " |"
     markdown_collapsed += line + "\n"
 
 # Save collapsed markdown to file

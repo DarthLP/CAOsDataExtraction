@@ -7,6 +7,7 @@ from deep_translator import GoogleTranslator
 import google.generativeai as genai
 from dotenv import load_dotenv
 from tracker import update_progress
+import re
 
 # =========================
 # Configuration and Setup
@@ -224,6 +225,17 @@ def flatten_to_str_list(lst):
             result.append(str(item))
     return result
 
+# Robust duplicate check: normalize filename for deduplication
+
+def normalize_filename(name):
+    """
+    Normalize filename for robust duplicate detection: lowercase, remove extension, and strip non-alphanumeric characters.
+    """
+    name = name.lower()
+    name = re.sub(r'\.[^.]+$', '', name)  # Remove extension
+    name = re.sub(r'[^a-z0-9]', '', name)  # Remove non-alphanumeric
+    return name
+
 # =========================
 # Main Analysis Loop
 # =========================
@@ -261,12 +273,11 @@ for json_file in json_files:
         break
     
     file_basename = json_file.name
-    # Robust duplicate check: normalize case and whitespace
-    normalized_file_basename = file_basename.lower().strip()
+    normalized_file_basename = normalize_filename(file_basename)
     if 'File_name' in df_results.columns:
-        normalized_existing = df_results['File_name'].dropna().apply(lambda x: str(x).lower().strip())
+        normalized_existing = df_results['File_name'].dropna().apply(normalize_filename)
         if normalized_file_basename in normalized_existing.values:
-            print(f"  Skipping {file_basename} (already processed by filename, robust check)")
+            print(f"  Skipping {file_basename} (already processed by normalized filename, robust check)")
             continue
 
     # === Robust CAO number and ID lookup ===

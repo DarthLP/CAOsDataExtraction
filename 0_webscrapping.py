@@ -34,7 +34,7 @@ INPUT_EXCEL_PATH = "inputExcel/CAO_Frequencies_2014.xlsx"
 OUTPUT_FOLDER = "input_pdfs"
 DOWNLOAD_DELAY = 2  # Delay between downloads
 MAX_RETRIES = 3
-MAX_PDFS_PER_CAO = 1  # Set your desired limit here
+MAX_PDFS_PER_CAO = 10000  # Set your desired limit here
 
 # Initialize DataFrame to store extracted information
 extracted_data = []

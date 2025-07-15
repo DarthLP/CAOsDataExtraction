@@ -25,6 +25,7 @@ import urllib.parse
 import re
 import random
 from tracker import update_progress
+import traceback
 
 # =========================
 # Global Configuration
@@ -38,6 +39,7 @@ MAX_PDFS_PER_CAO = 10000  # Set your desired limit here
 
 # Initialize DataFrame to store extracted information
 extracted_data = []
+all_main_link_logs = []
 
 
 def random_delay(min_seconds=0.5, max_seconds=1.2):
@@ -122,6 +124,16 @@ def setup_chrome_driver():
     return driver
 
 
+def sanitize_filename(filename):
+    # Decode URL encodings
+    filename = urllib.parse.unquote(filename)
+    # Remove any characters not allowed in filenames (Windows/Unix safe)
+    filename = re.sub(r'[<>:"/\\|?*]', '', filename)
+    # Optionally, replace multiple spaces with a single space
+    filename = re.sub(r'\s+', ' ', filename).strip()
+    return filename
+
+
 def download_pdf(pdf_url, filename, output_folder):
     """
     Download a PDF file from the given URL and save it in the specified output folder.
@@ -136,15 +148,23 @@ def download_pdf(pdf_url, filename, output_folder):
         os.makedirs(output_folder, exist_ok=True)
         parsed_url = urllib.parse.urlparse(pdf_url)
         original_filename = os.path.basename(parsed_url.path)
+        original_filename = sanitize_filename(original_filename)
         if not original_filename or original_filename == '':
-            original_filename = f"{filename}.pdf"
-        file_path = os.path.join(output_folder, original_filename)
+            original_filename = f"{sanitize_filename(filename)}.pdf"
+        # Handle duplicate filenames by adding a counter
+        base_name, ext = os.path.splitext(original_filename)
+        counter = 1
+        final_filename = original_filename
+        while os.path.exists(os.path.join(output_folder, final_filename)):
+            final_filename = f"{base_name}_{counter}{ext}"
+            counter += 1
+        file_path = os.path.join(output_folder, final_filename)
         response = requests.get(pdf_url, stream=True, timeout=30)
         if response.status_code == 200:
             with open(file_path, "wb") as pdf_file:
                 for chunk in response.iter_content(chunk_size=8192):
                     pdf_file.write(chunk)
-            return original_filename  # Return the actual filename used
+            return final_filename  # Return the actual filename used
         else:
             return None
     except Exception as e:
@@ -337,7 +357,7 @@ def extract_page_info(driver, cao_number, position):
                 parsed_url = urllib.parse.urlparse(href)
                 original_filename = os.path.basename(parsed_url.path)
                 # URL decode the filename
-                original_filename = urllib.parse.unquote(original_filename)
+                original_filename = sanitize_filename(original_filename)
                 info['pdf_name'] = original_filename
                 break
         
@@ -356,81 +376,139 @@ def extract_pdf_links(driver, cao_number):
         cao_number (int or str): The CAO number being processed.
     Returns:
         list: List of dictionaries with PDF link info and metadata.
+        list: List of main link logs (dicts with 'cao_number', 'main_link_url', 'pdf_found')
     """
     pdf_links = []
+    main_link_logs = []
     position = 1
     
     # Try up to 2 times to extract PDFs
     for extraction_attempt in range(2):
         try:
-            # Find all main links (zaakregel__verwijzing)
-            main_links = driver.find_elements(By.CSS_SELECTOR, "a.zaakregel__verwijzing")
+            # Scroll to load all main links (for lazy loading websites)
+            last_height = driver.execute_script("return document.body.scrollHeight")
+            while True:
+                # Scroll down to bottom
+                driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+                # Wait for new content to load
+                time.sleep(2)
+                # Calculate new scroll height and compare with last scroll height
+                new_height = driver.execute_script("return document.body.scrollHeight")
+                if new_height == last_height:
+                    break
+                last_height = new_height
             
-            if not main_links and extraction_attempt == 0:
+            # Scroll back to top
+            driver.execute_script("window.scrollTo(0, 0);")
+            time.sleep(1)
+            
+            # Collect all main link URLs after scrolling
+            main_links = driver.find_elements(By.CSS_SELECTOR, "a.zaakregel__verwijzing")
+            main_link_urls = []
+            for link in main_links:
+                url = link.get_attribute('href')
+                if url:
+                    main_link_urls.append(url)
+
+            
+            if not main_link_urls and extraction_attempt == 0:
                 # If no links found on first attempt, wait a bit and try again
                 time.sleep(3)
                 main_links = driver.find_elements(By.CSS_SELECTOR, "a.zaakregel__verwijzing")
+                main_link_urls = [link.get_attribute('href') for link in main_links if link.get_attribute('href')]
             
-            for i, main_link in enumerate(main_links):
-                # Stop if we've found enough PDFs (only if MAX_PDFS_PER_CAO is not None)
-                if MAX_PDFS_PER_CAO is not None and len(pdf_links) >= MAX_PDFS_PER_CAO:
-                    break
-                    
+            # Iterate over the list of URLs
+            for main_link_url in main_link_urls:
+                pdf_found = False
+                found_pdf_name = ''
+                pdfs_found_count = 0
+                # Find the link with this URL on the current page
+                main_links = driver.find_elements(By.CSS_SELECTOR, "a.zaakregel__verwijzing")
+                link_to_click = None
+                for link in main_links:
+                    if link.get_attribute('href') == main_link_url:
+                        link_to_click = link
+                        break
+                if not link_to_click:
+                    print(f"    Could not find main link for URL: {main_link_url}")
+                    main_link_logs.append({
+                        'cao_number': cao_number,
+                        'main_link_url': main_link_url,
+                        'pdf_found': False,
+                        'pdf_name': '',
+                        'pdfs_found_count': 0
+                    })
+                    continue
                 try:
-                    # Scroll to the link and click it
-                    driver.execute_script("arguments[0].scrollIntoView(true);", main_link)
-                    main_link.click()
-                    
-                    # Wait for the new page to load
+                    driver.execute_script("arguments[0].scrollIntoView(true);", link_to_click)
+                    link_to_click.click()
+                    try:
+                        WebDriverWait(driver, 5).until(
+                            EC.presence_of_element_located((By.CSS_SELECTOR, "a.link--nochevron"))
+                        )
+                    except TimeoutException:
+                        pass
                     time.sleep(0.5)
-                    
-                    # Extract information for filename and metadata
                     extracted_info = "default_filename"
                     try:
                         attention_text_div = driver.find_element(By.CSS_SELECTOR, "div.aandachttekst__tekst > span")
                         extracted_info = attention_text_div.text
                     except NoSuchElementException:
                         pass
-                    
-                    # Extract page information
-                    page_info = extract_page_info(driver, cao_number, position)
-                    
-                    # Find PDF links on this page
                     nested_links = driver.find_elements(By.CSS_SELECTOR, "a.link--nochevron")
+                    # Count only unique PDF URLs
+                    pdf_urls = set()
+                    for nl in nested_links:
+                        href = nl.get_attribute('href')
+                        if href and href.endswith('.pdf'):
+                            pdf_urls.add(href)
+                    pdfs_found_count = len(pdf_urls)
+                    # Only process the first PDF link (if any)
                     for nested_link in nested_links:
-                        # Stop if we've found enough PDFs (only if MAX_PDFS_PER_CAO is not None)
                         if MAX_PDFS_PER_CAO is not None and len(pdf_links) >= MAX_PDFS_PER_CAO:
                             break
-                            
                         try:
                             href = nested_link.get_attribute("href")
                             if href and href.endswith(".pdf"):
                                 parsed_url = urllib.parse.urlparse(href)
                                 original_filename = os.path.basename(parsed_url.path)
-                                original_filename = urllib.parse.unquote(original_filename)
+                                original_filename = sanitize_filename(original_filename)
+                                page_info = extract_page_info(driver, cao_number, position)
                                 page_info['pdf_name'] = original_filename
+                                page_info['main_link_url'] = main_link_url
                                 pdf_links.append({
                                     'url': href,
                                     'description': extracted_info,
                                     'page_info': page_info
                                 })
-                                # Add to extracted data
-                                extracted_data.append(page_info)
+                                found_pdf_name = original_filename
+                                pdf_found = True
                                 position += 1
+                                break  # Only process the first PDF
                         except Exception as e:
                             pass
-                    
-                    # Go back to the main page
+                    # Log main link info
+                    main_link_logs.append({
+                        'cao_number': cao_number,
+                        'main_link_url': main_link_url,
+                        'pdf_found': pdf_found,
+                        'pdf_name': found_pdf_name,
+                        'pdfs_found_count': pdfs_found_count
+                    })
                     driver.back()
+                    try:
+                        WebDriverWait(driver, 5).until(
+                            EC.presence_of_element_located((By.CSS_SELECTOR, "a.zaakregel__verwijzing"))
+                        )
+                    except TimeoutException:
+                        pass
                     time.sleep(0.5)
-                    
                 except StaleElementReferenceException:
                     continue
                 except Exception as e:
                     driver.back()
                     time.sleep(3)
                     continue
-            
             # If we found PDFs, break out of retry loop
             if pdf_links:
                 break
@@ -442,7 +520,7 @@ def extract_pdf_links(driver, cao_number):
             else:
                 print(f"    Both extraction attempts failed for CAO {cao_number}")
     
-    return pdf_links
+    return pdf_links, main_link_logs
 
 
 def save_extracted_data():
@@ -505,8 +583,8 @@ def process_cao_number(driver, cao_number):
     if attempts_needed > 1:
         print(f"  ✓ CAO {cao_number} succeeded after {attempts_needed} attempts")
     
-    # Extract PDF links
-    pdf_links = extract_pdf_links(driver, cao_number)
+    # Extract PDF links and main link logs
+    pdf_links, main_link_logs = extract_pdf_links(driver, cao_number)
     
     if not pdf_links:
         print(f"  No PDFs found for CAO {cao_number}")
@@ -518,16 +596,74 @@ def process_cao_number(driver, cao_number):
     
     # Get list of already downloaded PDF filenames in the folder
     existing_pdfs = set(f for f in os.listdir(cao_folder) if f.lower().endswith('.pdf'))
+    
+    # Deduplicate PDFs based on URL to avoid processing the same PDF multiple times
+    seen_urls = set()
+    unique_pdf_links = []
+    for link_info in pdf_links:
+        url = link_info['url']
+        if url not in seen_urls:
+            seen_urls.add(url)
+            unique_pdf_links.append(link_info)
+    
+    print(f"    Found {len(pdf_links)} PDF links, {len(unique_pdf_links)} unique URLs")
+    
+    # Deduplicate extracted_data by pdf_name and main_link_url
+    unique_data = []
+    seen = set()
+    for entry in extracted_data:
+        key = (entry['pdf_name'], entry.get('main_link_url', ''))
+        if key not in seen:
+            unique_data.append(entry)
+            seen.add(key)
+    # Save unique_data to CSV
+    if unique_data:
+        df = pd.DataFrame(unique_data)
+        csv_path = os.path.join(OUTPUT_FOLDER, "extracted_cao_info.csv")
+        df.to_csv(csv_path, index=False, encoding='utf-8', sep=';')
+        print(f"📄 Extracted information saved to: {csv_path}")
+    # Save main link logs to a separate CSV
+    if main_link_logs:
+        df_log = pd.DataFrame(main_link_logs)
+        log_path = os.path.join(OUTPUT_FOLDER, "main_links_log.csv")
+        df_log.to_csv(log_path, index=False, encoding='utf-8', sep=';')
+        print(f"📄 Main link log saved to: {log_path}")
+    
     # Track which PDFs are skipped or downloaded
     skipped = 0
     # Download PDFs (all if MAX_PDFS_PER_CAO is None, otherwise up to the limit)
     downloaded_count = 0
-    for link_info in pdf_links:
+    downloaded_position = 1
+    downloaded_data = []
+    pdf_name_counts = {}
+    for link_info in unique_pdf_links:
         if MAX_PDFS_PER_CAO is not None and downloaded_count >= MAX_PDFS_PER_CAO:
             break
         pdf_name = link_info['page_info'].get('pdf_name')
-        if pdf_name in existing_pdfs:
-            print(f"    ⏩ Skipping already downloaded PDF: {pdf_name}")
+        if pdf_name is None:
+            print(f"[FATAL] pdf_name is None for CAO {cao_number}, main_link_url: {link_info['page_info'].get('main_link_url', 'N/A')}")
+            print(f"         link_info: {link_info}")
+            continue  # Skip this entry
+
+        base_name, ext = os.path.splitext(pdf_name)
+        count = pdf_name_counts.get(pdf_name, 0)
+        # Defensive: ensure count is always an int
+        if not isinstance(count, int) or count is None:
+            count = 0  # Force to 0
+
+        pdf_name_counts[pdf_name] = count + 1
+
+        if count > 0:
+            new_pdf_name = f"{base_name}_{count+1}{ext}"
+        else:
+            new_pdf_name = pdf_name
+        # Update the pdf_name in page_info and in main_link_logs (if present)
+        link_info['page_info']['pdf_name'] = new_pdf_name
+        # Also update the pdf_name in the main_link_logs for this main_link_url
+        for log in main_link_logs:
+            if log.get('main_link_url') == link_info['page_info'].get('main_link_url'):
+                log['pdf_name'] = new_pdf_name
+        if new_pdf_name in existing_pdfs:
             skipped += 1
             continue
         success = download_pdf(
@@ -536,16 +672,33 @@ def process_cao_number(driver, cao_number):
             cao_folder
         )
         if success:
-            print(f"    ⬇️ Downloaded PDF: {pdf_name}")
+            print(f"    ⬇️ Downloaded PDF: {new_pdf_name}")
             downloaded_count += 1
-            existing_pdfs.add(pdf_name)
+            existing_pdfs.add(new_pdf_name)
+            # Set the id field for the downloaded PDF
+            page_info = link_info['page_info']
+            page_info['id'] = f"{cao_number}{downloaded_position:03d}"
+            downloaded_position += 1
+            downloaded_data.append(page_info)
         else:
-            print(f"    ✗ Failed to download PDF: {pdf_name}")
+            print(f"    ✗ Failed to download PDF: {new_pdf_name}")
         time.sleep(DOWNLOAD_DELAY)
     print(f"  Downloaded {downloaded_count} new PDFs for CAO {cao_number} (skipped {skipped})")
     # Update tracker
     update_progress(cao_number, "pdfs_found", successful=downloaded_count)
-    return downloaded_count
+    # Save only downloaded_data to CSV
+    if downloaded_data:
+        df = pd.DataFrame(downloaded_data)
+        csv_path = os.path.join(OUTPUT_FOLDER, "extracted_cao_info.csv")
+        df.to_csv(csv_path, index=False, encoding='utf-8', sep=';')
+        print(f"📄 Extracted information saved to: {csv_path}")
+    # Save main link logs to a separate CSV
+    if main_link_logs:
+        df_log = pd.DataFrame(main_link_logs)
+        log_path = os.path.join(OUTPUT_FOLDER, "main_links_log.csv")
+        df_log.to_csv(log_path, index=False, encoding='utf-8', sep=';')
+        print(f"📄 Main link log saved to: {log_path}")
+    return downloaded_count, downloaded_data, main_link_logs
 
 
 def main():
@@ -572,7 +725,7 @@ def main():
         return
     
     total_downloaded = 0
-    
+    global extracted_data, all_main_link_logs
     for i, cao_number in enumerate(cao_numbers, 1):
         print(f"\n📄 Processing {i}/{len(cao_numbers)}: CAO {cao_number}")
         
@@ -581,8 +734,14 @@ def main():
         try:
             driver = setup_chrome_driver()
             
-            downloaded = process_cao_number(driver, cao_number)
-            total_downloaded += downloaded
+            downloaded, downloaded_data, main_link_logs = process_cao_number(driver, cao_number)
+            if downloaded is None:
+                downloaded = 0
+            total_downloaded += int(downloaded)
+            
+            # Accumulate all downloaded data and logs
+            extracted_data.extend(downloaded_data)
+            all_main_link_logs.extend(main_link_logs)
             
             # Add longer delay between CAO numbers to avoid rate limiting
             if i < len(cao_numbers):
@@ -598,15 +757,24 @@ def main():
                 except:
                     pass
     
-    # Save extracted data
-    df_extracted = save_extracted_data()
+    # Save all extracted data and logs at the end
+    if extracted_data:
+        df = pd.DataFrame(extracted_data)
+        csv_path = os.path.join(OUTPUT_FOLDER, "extracted_cao_info.csv")
+        df.to_csv(csv_path, index=False, encoding='utf-8', sep=';')
+        print(f"📄 Extracted information saved to: {csv_path}")
+    if all_main_link_logs:
+        df_log = pd.DataFrame(all_main_link_logs)
+        log_path = os.path.join(OUTPUT_FOLDER, "main_links_log.csv")
+        df_log.to_csv(log_path, index=False, encoding='utf-8', sep=';')
+        print(f"📄 Main link log saved to: {log_path}")
     
     print(f"\n✅ Download process completed!")
     print(f"📊 Total PDFs downloaded: {total_downloaded}")
     print(f"📁 Files saved in: {os.path.abspath(OUTPUT_FOLDER)}")
     
-    if df_extracted is not None:
-        print(f"📋 Extracted information for {len(df_extracted)} PDFs")
+    if extracted_data:
+        print(f"📋 Extracted information for {len(extracted_data)} PDFs")
 
 if __name__ == "__main__":
     main()

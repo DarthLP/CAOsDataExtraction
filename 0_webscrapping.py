@@ -40,6 +40,22 @@ MAX_PDFS_PER_CAO = 10000  # Set your desired limit here
 # Initialize DataFrame to store extracted information
 extracted_data = []
 all_main_link_logs = []
+existing_info_df = None
+existing_log_df = None
+existing_pdf_names_by_cao = {}
+existing_ids_by_cao = {}
+
+# Load existing info/logs if present
+if os.path.exists(os.path.join(OUTPUT_FOLDER, "extracted_cao_info.csv")):
+    existing_info_df = pd.read_csv(os.path.join(OUTPUT_FOLDER, "extracted_cao_info.csv"), sep=';')
+    for _, row in existing_info_df.iterrows():
+        cao = str(row['cao_number'])
+        pdf_name = str(row['pdf_name'])
+        id_val = str(row['id'])
+        existing_pdf_names_by_cao.setdefault(cao, set()).add(pdf_name)
+        existing_ids_by_cao.setdefault(cao, set()).add(id_val)
+if os.path.exists(os.path.join(OUTPUT_FOLDER, "main_links_log.csv")):
+    existing_log_df = pd.read_csv(os.path.join(OUTPUT_FOLDER, "main_links_log.csv"), sep=';')
 
 
 def random_delay(min_seconds=0.5, max_seconds=1.2):
@@ -49,6 +65,28 @@ def random_delay(min_seconds=0.5, max_seconds=1.2):
     """
     time.sleep(random.uniform(min_seconds, max_seconds))
 
+def close_overlays(driver):
+    """Try to close common overlays/popups if present."""
+    try:
+        # Example: close modal by class or id (customize as needed)
+        close_selectors = [
+            'button.close',
+            '.modal-close',
+            '.overlay-close',
+            'button[aria-label="Close"]',
+            '.ui-dialog-titlebar-close',
+        ]
+        for sel in close_selectors:
+            elements = driver.find_elements(By.CSS_SELECTOR, sel)
+            for el in elements:
+                try:
+                    if el.is_displayed() and el.is_enabled():
+                        el.click()
+                        random_delay(0.2, 0.5)
+                except Exception:
+                    pass
+    except Exception:
+        pass
 
 def setup_chrome_driver():
     """
@@ -181,87 +219,112 @@ def search_cao_number(driver, cao_number):
         bool: True if search and navigation succeeded, False otherwise.
     """
     try:
-        # Wait longer for the search box to be available
-        search_box = WebDriverWait(driver, 8).until(
-            EC.element_to_be_clickable((By.XPATH, '//*[@id="mZoekGmr"]'))
-        )
-        
-        # More human-like interaction
+        # Wait for the search box to be clickable, with retries
+        for _ in range(2):
+            try:
+                search_box = WebDriverWait(driver, 12).until(
+                    EC.element_to_be_clickable((By.XPATH, '//*[@id="mZoekGmr"]'))
+                )
+                break
+            except Exception:
+                close_overlays(driver)
+                random_delay(0.5, 1.0)
+        else:
+            return False
         driver.execute_script("arguments[0].scrollIntoView(true);", search_box)
         random_delay(0.3, 0.8)
         search_box.click()
         random_delay(0.3, 0.8)
         search_box.clear()
         random_delay(0.3, 0.8)
-        
-        # Type the CAO number character by character (more human-like)
         cao_str = str(cao_number)
         for char in cao_str:
             search_box.send_keys(char)
             random_delay(0.08, 0.15)
-        
         random_delay(0.5, 1.2)
-        
-        # Click the search button
-        submit_button = driver.find_element(By.XPATH, '//*[@id="mZoekGmr_btn"]')
+        # Click the search button, with retries
+        for _ in range(2):
+            try:
+                submit_button = WebDriverWait(driver, 8).until(
+                    EC.element_to_be_clickable((By.XPATH, '//*[@id="mZoekGmr_btn"]'))
+                )
+                break
+            except Exception:
+                close_overlays(driver)
+                random_delay(0.5, 1.0)
+        else:
+            return False
         driver.execute_script("arguments[0].scrollIntoView(true);", submit_button)
         random_delay(0.5, 1.2)
         submit_button.click()
-        
-        # Wait longer for results to load
-        time.sleep(2)
-        
-        # Click on "Geselecteerd" (Selected) with longer wait
-        geselecteerd = WebDriverWait(driver, 8).until(
-            EC.element_to_be_clickable((By.XPATH, "//span[text()='Geselecteerd']"))
-        )
+        random_delay(0.5, 1.2)
+        # Wait for 'Geselecteerd' tab, with retries
+        for _ in range(2):
+            try:
+                geselecteerd = WebDriverWait(driver, 12).until(
+                    EC.element_to_be_clickable((By.XPATH, "//span[text()='Geselecteerd']"))
+                )
+                break
+            except Exception:
+                close_overlays(driver)
+                random_delay(0.5, 1.0)
+        else:
+            return False
         driver.execute_script("arguments[0].scrollIntoView(true);", geselecteerd)
         random_delay(0.5, 1.2)
         geselecteerd.click()
         random_delay(0.5, 1.2)
-        
-        # Set the date to 01-01-2006 to filter PDFs from 2006 onwards
-        date_field = WebDriverWait(driver, 8).until(
-            EC.element_to_be_clickable((By.CLASS_NAME, "datumveld"))
-        )
+        # Wait for date field
+        for _ in range(2):
+            try:
+                date_field = WebDriverWait(driver, 8).until(
+                    EC.element_to_be_clickable((By.CLASS_NAME, "datumveld"))
+                )
+                break
+            except Exception:
+                close_overlays(driver)
+                random_delay(0.5, 1.0)
+        else:
+            return False
         driver.execute_script("arguments[0].scrollIntoView(true);", date_field)
         random_delay(0.5, 1.2)
         date_field.click()
         random_delay(0.5, 1.2)
         date_field.clear()
         random_delay(0.5, 1.2)
-        
-        # Type the date character by character
         date_str = "01-01-2006"
         for char in date_str:
             date_field.send_keys(char)
             random_delay(0.08, 0.15)
-        
         random_delay(0.5, 1.2)
-        
-        # Click the search button in the modal
-        search_button = driver.find_element(By.XPATH, '//*[@id="moz_item_edit_modal_slaop"]')
+        # Click the search button in the modal, with retries
+        for _ in range(2):
+            try:
+                search_button = WebDriverWait(driver, 8).until(
+                    EC.element_to_be_clickable((By.XPATH, '//*[@id="moz_item_edit_modal_slaop"]'))
+                )
+                break
+            except Exception:
+                close_overlays(driver)
+                random_delay(0.5, 1.0)
+        else:
+            return False
         driver.execute_script("arguments[0].scrollIntoView(true);", search_button)
         random_delay(0.5, 1.2)
         search_button.click()
-        
-        # Wait longer for the results page to load
-        time.sleep(2)
-        
+        random_delay(2.0, 2.5)
         return True
-        
     except (TimeoutException, NoSuchElementException) as e:
-        print(f"✗ Error searching for CAO {cao_number}: {e}")
+        close_overlays(driver)
         return False
     except WebDriverException as e:
+        close_overlays(driver)
         if "no such window" in str(e).lower() or "window already closed" in str(e).lower():
-            print(f"✗ Browser window closed during search for CAO {cao_number}")
             return False
         else:
-            print(f"✗ WebDriver error searching for CAO {cao_number}: {e}")
             return False
     except Exception as e:
-        print(f"✗ Unexpected error searching for CAO {cao_number}: {e}")
+        close_overlays(driver)
         return False
 
 
@@ -404,6 +467,14 @@ def extract_pdf_links(driver, cao_number):
             
             # Collect all main link URLs after scrolling
             main_links = driver.find_elements(By.CSS_SELECTOR, "a.zaakregel__verwijzing")
+            cao_number_str = str(cao_number)
+            filtered_main_links = []
+            for link in main_links:
+                text = link.text.strip()
+                # Accept if text starts with the CAO number and a separator (space, dash, etc.)
+                if re.match(rf"^{re.escape(cao_number_str)}[\s\-]", text):
+                    filtered_main_links.append(link)
+            main_links = filtered_main_links
             main_link_urls = []
             for link in main_links:
                 url = link.get_attribute('href')
@@ -415,6 +486,14 @@ def extract_pdf_links(driver, cao_number):
                 # If no links found on first attempt, wait a bit and try again
                 time.sleep(3)
                 main_links = driver.find_elements(By.CSS_SELECTOR, "a.zaakregel__verwijzing")
+                cao_number_str = str(cao_number)
+                filtered_main_links = []
+                for link in main_links:
+                    text = link.text.strip()
+                    # Accept if text starts with the CAO number and a separator (space, dash, etc.)
+                    if re.match(rf"^{re.escape(cao_number_str)}[\s\-]", text):
+                        filtered_main_links.append(link)
+                main_links = filtered_main_links
                 main_link_urls = [link.get_attribute('href') for link in main_links if link.get_attribute('href')]
             
             # Iterate over the list of URLs
@@ -430,13 +509,13 @@ def extract_pdf_links(driver, cao_number):
                         link_to_click = link
                         break
                 if not link_to_click:
-                    print(f"    Could not find main link for URL: {main_link_url}")
                     main_link_logs.append({
                         'cao_number': cao_number,
                         'main_link_url': main_link_url,
                         'pdf_found': False,
                         'pdf_name': '',
-                        'pdfs_found_count': 0
+                        'pdfs_found_count': 0,
+                        'id': ''
                     })
                     continue
                 try:
@@ -483,6 +562,7 @@ def extract_pdf_links(driver, cao_number):
                                 })
                                 found_pdf_name = original_filename
                                 pdf_found = True
+                                id_value = f"{cao_number}{position:03d}"
                                 position += 1
                                 break  # Only process the first PDF
                         except Exception as e:
@@ -493,7 +573,8 @@ def extract_pdf_links(driver, cao_number):
                         'main_link_url': main_link_url,
                         'pdf_found': pdf_found,
                         'pdf_name': found_pdf_name,
-                        'pdfs_found_count': pdfs_found_count
+                        'pdfs_found_count': pdfs_found_count,
+                        'id': id_value
                     })
                     driver.back()
                     try:
@@ -539,65 +620,51 @@ def save_extracted_data():
 
 
 def process_cao_number(driver, cao_number):
-    """
-    Orchestrate the process for a single CAO number: search, extract links, and download PDFs.
-    Args:
-        driver (webdriver.Chrome): Selenium WebDriver instance.
-        cao_number (int or str): The CAO number to process.
-    Returns:
-        int: Number of PDFs successfully downloaded for this CAO.
-    """
     attempts_needed = 0
     for attempt in range(MAX_RETRIES):
         attempts_needed = attempt + 1
         try:
-            # Navigate to the website
             driver.get(WEBSITE_URL)
-            time.sleep(2)  # Page load wait
-            
-            # Search for the CAO number
+            time.sleep(2)
+            random_delay(0.5, 1.0)
             if search_cao_number(driver, cao_number):
                 break
             else:
                 print(f"  Attempt {attempt + 1}/{MAX_RETRIES} failed for CAO {cao_number}")
+                try:
+                    driver.save_screenshot(f"debug_cao_{cao_number}_attempt{attempt+1}.png")
+                except Exception:
+                    pass
                 if attempt < MAX_RETRIES - 1:
-                    time.sleep(2)  # Retry delay
+                    time.sleep(2)
         except WebDriverException as e:
-            if "no such window" in str(e).lower() or "window already closed" in str(e).lower():
-                print(f"  Attempt {attempt + 1}/{MAX_RETRIES} failed for CAO {cao_number}: Browser window closed")
-                if attempt < MAX_RETRIES - 1:
-                    time.sleep(2)  # Window issue delay
-            else:
-                print(f"  Attempt {attempt + 1}/{MAX_RETRIES} failed for CAO {cao_number}: {e}")
-                if attempt < MAX_RETRIES - 1:
-                    time.sleep(2)  # Retry delay
+            print(f"  Attempt {attempt + 1}/{MAX_RETRIES} failed for CAO {cao_number}: {e}")
+            try:
+                driver.save_screenshot(f"debug_cao_{cao_number}_attempt{attempt+1}.png")
+            except Exception:
+                pass
+            if attempt < MAX_RETRIES - 1:
+                time.sleep(2)
         except Exception as e:
             print(f"  Attempt {attempt + 1}/{MAX_RETRIES} failed for CAO {cao_number}: {e}")
+            try:
+                driver.save_screenshot(f"debug_cao_{cao_number}_attempt{attempt+1}.png")
+            except Exception:
+                pass
             if attempt < MAX_RETRIES - 1:
-                time.sleep(2)  # Retry delay
+                time.sleep(2)
     else:
         print(f"✗ Failed to search for CAO {cao_number} after {MAX_RETRIES} attempts")
-        return 0
-    
-    # Show retry information if more than 1 attempt was needed
+        return 0, [], []
     if attempts_needed > 1:
         print(f"  ✓ CAO {cao_number} succeeded after {attempts_needed} attempts")
-    
-    # Extract PDF links and main link logs
     pdf_links, main_link_logs = extract_pdf_links(driver, cao_number)
-    
     if not pdf_links:
         print(f"  No PDFs found for CAO {cao_number}")
-        return 0
-    
-    # Create a subfolder for this CAO number
+        return 0, [], []
     cao_folder = os.path.join(OUTPUT_FOLDER, str(cao_number))
     os.makedirs(cao_folder, exist_ok=True)
-    
-    # Get list of already downloaded PDF filenames in the folder
     existing_pdfs = set(f for f in os.listdir(cao_folder) if f.lower().endswith('.pdf'))
-    
-    # Deduplicate PDFs based on URL to avoid processing the same PDF multiple times
     seen_urls = set()
     unique_pdf_links = []
     for link_info in pdf_links:
@@ -605,37 +672,24 @@ def process_cao_number(driver, cao_number):
         if url not in seen_urls:
             seen_urls.add(url)
             unique_pdf_links.append(link_info)
-    
     print(f"    Found {len(pdf_links)} PDF links, {len(unique_pdf_links)} unique URLs")
-    
-    # Deduplicate extracted_data by pdf_name and main_link_url
-    unique_data = []
-    seen = set()
-    for entry in extracted_data:
-        key = (entry['pdf_name'], entry.get('main_link_url', ''))
-        if key not in seen:
-            unique_data.append(entry)
-            seen.add(key)
-    # Save unique_data to CSV
-    if unique_data:
-        df = pd.DataFrame(unique_data)
-        csv_path = os.path.join(OUTPUT_FOLDER, "extracted_cao_info.csv")
-        df.to_csv(csv_path, index=False, encoding='utf-8', sep=';')
-        print(f"📄 Extracted information saved to: {csv_path}")
-    # Save main link logs to a separate CSV
-    if main_link_logs:
-        df_log = pd.DataFrame(main_link_logs)
-        log_path = os.path.join(OUTPUT_FOLDER, "main_links_log.csv")
-        df_log.to_csv(log_path, index=False, encoding='utf-8', sep=';')
-        print(f"📄 Main link log saved to: {log_path}")
-    
-    # Track which PDFs are skipped or downloaded
     skipped = 0
-    # Download PDFs (all if MAX_PDFS_PER_CAO is None, otherwise up to the limit)
     downloaded_count = 0
     downloaded_position = 1
     downloaded_data = []
     pdf_name_counts = {}
+    cao_str = str(cao_number)
+    existing_ids = existing_ids_by_cao.get(cao_str, set())
+    max_id_num = 0
+    for eid in existing_ids:
+        if eid.startswith(cao_str):
+            try:
+                num = int(eid[len(cao_str):])
+                if num > max_id_num:
+                    max_id_num = num
+            except:
+                pass
+    position = max_id_num + 1
     for link_info in unique_pdf_links:
         if MAX_PDFS_PER_CAO is not None and downloaded_count >= MAX_PDFS_PER_CAO:
             break
@@ -643,27 +697,23 @@ def process_cao_number(driver, cao_number):
         if pdf_name is None:
             print(f"[FATAL] pdf_name is None for CAO {cao_number}, main_link_url: {link_info['page_info'].get('main_link_url', 'N/A')}")
             print(f"         link_info: {link_info}")
-            continue  # Skip this entry
-
+            continue
         base_name, ext = os.path.splitext(pdf_name)
         count = pdf_name_counts.get(pdf_name, 0)
-        # Defensive: ensure count is always an int
         if not isinstance(count, int) or count is None:
-            count = 0  # Force to 0
-
+            count = 0
         pdf_name_counts[pdf_name] = count + 1
 
         if count > 0:
-            new_pdf_name = f"{base_name}_{count+1}{ext}"
+            new_pdf_name = f"{base_name}_{count}{ext}"
         else:
             new_pdf_name = pdf_name
-        # Update the pdf_name in page_info and in main_link_logs (if present)
+
         link_info['page_info']['pdf_name'] = new_pdf_name
-        # Also update the pdf_name in the main_link_logs for this main_link_url
         for log in main_link_logs:
             if log.get('main_link_url') == link_info['page_info'].get('main_link_url'):
                 log['pdf_name'] = new_pdf_name
-        if new_pdf_name in existing_pdfs:
+        if new_pdf_name in existing_pdf_names_by_cao.get(cao_str, set()):
             skipped += 1
             continue
         success = download_pdf(
@@ -675,42 +725,92 @@ def process_cao_number(driver, cao_number):
             print(f"    ⬇️ Downloaded PDF: {new_pdf_name}")
             downloaded_count += 1
             existing_pdfs.add(new_pdf_name)
-            # Set the id field for the downloaded PDF
+            existing_pdf_names_by_cao.setdefault(cao_str, set()).add(new_pdf_name)
+            new_id = f"{cao_str}{position:03d}"
+            while new_id in existing_ids:
+                position += 1
+                new_id = f"{cao_str}{position:03d}"
             page_info = link_info['page_info']
-            page_info['id'] = f"{cao_number}{downloaded_position:03d}"
-            downloaded_position += 1
+            page_info['id'] = new_id
+            existing_ids.add(new_id)
+            position += 1
             downloaded_data.append(page_info)
         else:
             print(f"    ✗ Failed to download PDF: {new_pdf_name}")
         time.sleep(DOWNLOAD_DELAY)
     print(f"  Downloaded {downloaded_count} new PDFs for CAO {cao_number} (skipped {skipped})")
-    # Update tracker
     update_progress(cao_number, "pdfs_found", successful=downloaded_count)
-    # Save only downloaded_data to CSV
-    if downloaded_data:
-        df = pd.DataFrame(downloaded_data)
-        csv_path = os.path.join(OUTPUT_FOLDER, "extracted_cao_info.csv")
-        df.to_csv(csv_path, index=False, encoding='utf-8', sep=';')
-        print(f"📄 Extracted information saved to: {csv_path}")
-    # Save main link logs to a separate CSV
-    if main_link_logs:
-        df_log = pd.DataFrame(main_link_logs)
-        log_path = os.path.join(OUTPUT_FOLDER, "main_links_log.csv")
-        df_log.to_csv(log_path, index=False, encoding='utf-8', sep=';')
-        print(f"📄 Main link log saved to: {log_path}")
+    # DO NOT write to CSV here!
     return downloaded_count, downloaded_data, main_link_logs
 
 
-def main():
+def sync_excels_with_pdfs():
     """
-    Main function to orchestrate the web scraping process for all CAO numbers listed in the Excel file.
-    Reads CAO numbers, processes each, and saves extracted metadata.
+    Remove rows from extracted_cao_info.csv and main_links_log.csv if the corresponding PDF file does not exist in the CAO folder.
+    Handles case and whitespace differences. Prints missing files and removed rows.
+    Only removes from main_links_log if pdf_found is True and the PDF is missing.
+    Keeps id as string.
     """
-    
-    # Ensure output folder exists
+    info_path = os.path.join(OUTPUT_FOLDER, "extracted_cao_info.csv")
+    log_path = os.path.join(OUTPUT_FOLDER, "main_links_log.csv")
+    if not os.path.exists(info_path):
+        print("No extracted_cao_info.csv found. Nothing to sync.")
+        return
+    info_df = pd.read_csv(info_path, sep=';', dtype={'id': str})
+    if os.path.exists(log_path):
+        log_df = pd.read_csv(log_path, sep=';', dtype={'id': str})
+    else:
+        log_df = None
+    # Check for each row if the PDF exists (normalize everything)
+    keep_rows = []
+    removed_rows = []
+    for idx, row in info_df.iterrows():
+        cao = str(row['cao_number']).strip()
+        pdf_name = str(row['pdf_name']).strip()
+        folder = os.path.join(OUTPUT_FOLDER, cao)
+        # List all files in the folder, normalize for comparison
+        if os.path.exists(folder):
+            files = [f for f in os.listdir(folder) if os.path.isfile(os.path.join(folder, f))]
+            files_norm = {f.lower().strip(): f for f in files}
+            pdf_name_norm = pdf_name.lower().strip()
+            if pdf_name_norm in files_norm:
+                keep_rows.append(idx)
+            else:
+                removed_rows.append((cao, pdf_name))
+                print(f"[SYNC] Missing PDF: {os.path.join(folder, pdf_name)} (removing row)")
+        else:
+            removed_rows.append((cao, pdf_name))
+            print(f"[SYNC] Missing folder: {folder} (removing row for {pdf_name})")
+    # Filter info_df
+    info_df = info_df.loc[keep_rows].reset_index(drop=True)
+    # Ensure id is string and empty if missing
+    if 'id' in info_df.columns and isinstance(info_df['id'], pd.Series):
+        info_df['id'] = info_df['id'].fillna('').astype(str)
+    info_df.to_csv(info_path, index=False, encoding='utf-8', sep=';')
+    print(f"[SYNC] Updated {info_path}, removed {len(removed_rows)} rows.")
+    # Filter log_df if present
+    if log_df is not None and not log_df.empty and 'pdf_name' in log_df.columns and 'cao_number' in log_df.columns:
+        valid_pairs = set(zip(info_df['cao_number'].astype(str).str.strip(), info_df['pdf_name'].astype(str).str.strip()))
+        def keep_log_row(r):
+            pair = (str(r['cao_number']).strip(), str(r['pdf_name']).strip())
+            # Only remove if pdf_found is True and the PDF is missing
+            if 'pdf_found' in r and r['pdf_found']:
+                return pair in valid_pairs
+            return True  # Keep rows where pdf_found is False (no PDF expected)
+        log_keep = log_df.apply(keep_log_row, axis=1)
+        removed_log = log_df[~log_keep]
+        log_df = log_df[log_keep].reset_index(drop=True)
+        # Ensure id is string and empty if missing
+        if 'id' in log_df.columns:
+            # Always convert to Series, which is safe for both Series and ndarray
+            log_df['id'] = pd.Series(log_df['id']).fillna('').astype(str)
+        log_df.to_csv(log_path, index=False, encoding='utf-8', sep=';')
+        print(f"[SYNC] Updated {log_path}, removed {len(removed_log)} rows.")
+
+if __name__ == "__main__":
+    sync_excels_with_pdfs()
+    # --- Begin main workflow ---
     os.makedirs(OUTPUT_FOLDER, exist_ok=True)
-    
-    # Read CAO numbers from Excel file
     try:
         df = pd.read_excel(INPUT_EXCEL_PATH)
         cao_series = pd.Series(df[df['Needed?'] == 'Yes']['CAO'])
@@ -718,63 +818,58 @@ def main():
         print(f"📋 Found {len(cao_numbers)} CAO numbers to process: {cao_numbers}")
     except Exception as e:
         print(f"✗ Error reading Excel file: {e}")
-        return
-    
+        exit(1)
     if not cao_numbers:
         print("✗ No CAO numbers found with 'Yes' in Needed? column")
-        return
-    
+        exit(1)
     total_downloaded = 0
-    global extracted_data, all_main_link_logs
     for i, cao_number in enumerate(cao_numbers, 1):
         print(f"\n📄 Processing {i}/{len(cao_numbers)}: CAO {cao_number}")
-        
-        # Create a new driver for each CAO to avoid session issues
         driver = None
         try:
             driver = setup_chrome_driver()
-            
             downloaded, downloaded_data, main_link_logs = process_cao_number(driver, cao_number)
             if downloaded is None:
                 downloaded = 0
             total_downloaded += int(downloaded)
-            
-            # Accumulate all downloaded data and logs
             extracted_data.extend(downloaded_data)
             all_main_link_logs.extend(main_link_logs)
-            
-            # Add longer delay between CAO numbers to avoid rate limiting
             if i < len(cao_numbers):
                 time.sleep(DOWNLOAD_DELAY)
-                
         except Exception as e:
             print(f"✗ Error processing CAO {cao_number}: {e}")
         finally:
-            # Always close the driver
             if driver:
                 try:
                     driver.quit()
                 except:
                     pass
-    
     # Save all extracted data and logs at the end
-    if extracted_data:
-        df = pd.DataFrame(extracted_data)
+    if extracted_data or existing_info_df is not None:
+        if existing_info_df is not None:
+            df = pd.concat([existing_info_df, pd.DataFrame(extracted_data)], ignore_index=True)
+            df = df.drop_duplicates(subset=['cao_number', 'pdf_name', 'id'])
+        else:
+            df = pd.DataFrame(extracted_data)
+        # Only call fillna/astype if df['id'] is a pandas Series
+        if not df.empty and 'id' in df.columns and isinstance(df['id'], pd.Series):
+            df['id'] = df['id'].fillna('').astype(str)
         csv_path = os.path.join(OUTPUT_FOLDER, "extracted_cao_info.csv")
         df.to_csv(csv_path, index=False, encoding='utf-8', sep=';')
         print(f"📄 Extracted information saved to: {csv_path}")
-    if all_main_link_logs:
-        df_log = pd.DataFrame(all_main_link_logs)
+    if all_main_link_logs or existing_log_df is not None:
+        if existing_log_df is not None:
+            df_log = pd.concat([existing_log_df, pd.DataFrame(all_main_link_logs)], ignore_index=True)
+            df_log = df_log.drop_duplicates(subset=['cao_number', 'main_link_url', 'id'])
+        else:
+            df_log = pd.DataFrame(all_main_link_logs)
+        if not df_log.empty and 'id' in df_log.columns and isinstance(df_log['id'], pd.Series):
+            df_log['id'] = df_log['id'].fillna('').astype(str)
         log_path = os.path.join(OUTPUT_FOLDER, "main_links_log.csv")
         df_log.to_csv(log_path, index=False, encoding='utf-8', sep=';')
         print(f"📄 Main link log saved to: {log_path}")
-    
     print(f"\n✅ Download process completed!")
     print(f"📊 Total PDFs downloaded: {total_downloaded}")
     print(f"📁 Files saved in: {os.path.abspath(OUTPUT_FOLDER)}")
-    
     if extracted_data:
         print(f"📋 Extracted information for {len(extracted_data)} PDFs")
-
-if __name__ == "__main__":
-    main()

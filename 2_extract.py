@@ -6,6 +6,7 @@ from pdf2image import convert_from_path  # For converting PDF pages to images (u
 import pytesseract  # For image-based text extraction
 import pdfplumber  # For detecting image-based regions within PDFs
 from tracker import update_progress
+import traceback
 
 # =========================
 # Configuration and Logging
@@ -14,6 +15,7 @@ from tracker import update_progress
 # Debug log file path
 DEBUG_LOG_FILE = "extraction_debug.log"
 DEBUG = False  # Set to False to disable debug logging
+images = False  # Set to True to save debug images of PDF pages for OCR
 
 # Suppress pdfminer warnings (used by pdfplumber) to avoid cluttering ouput through color warnings
 import logging
@@ -29,56 +31,139 @@ OUTPUT_FOLDER = "output_json"
 
 def extract_text_from_pdf(pdf_path):
     """
-    Extract text from a PDF file using native text extraction and OCR fallback for image-based pages.
-    For each page, use PyPDF2 for text, pdfplumber to detect images, and pytesseract for OCR if needed.
-    Args:
-        pdf_path (str): Path to the PDF file.
-    Returns:
-        list: List of dicts with page number, text, and OCR usage info for each page.
+    Extraction logic per page:
+    1. If pdfplumber detects an image, use OCR.
+    2. Else if PyPDF2 finds text, use the extracted text.
+    3. Else (no image and no text), use OCR as a fallback.
+    Loops over the maximum number of pages found by either library.
     """
-    # Load PDFs and intialize page date list.
-    reader = PdfReader(pdf_path)
-    pages = []
+    if DEBUG:
+        print(f"[DEBUG] Attempting to open PDF: {pdf_path}")
+    try:
+        reader = PdfReader(pdf_path)
+    except Exception as e:
+        if DEBUG:
+            print(f"[DEBUG] Failed to open PDF {pdf_path}: {e}")
+        return []
+    try:
+        plumber_pdf = pdfplumber.open(pdf_path)
+    except Exception as e:
+        if DEBUG:
+            print(f"[DEBUG] Failed to open PDF with pdfplumber {pdf_path}: {e}")
+        plumber_pdf = None
 
-    for i, page in enumerate(reader.pages):
-        # print(f"--- Processing page {i + 1} ---")
+    num_pages = max(len(reader.pages), len(plumber_pdf.pages) if plumber_pdf else 0)
+    pages = []
+    for i in range(num_pages):
+        if DEBUG:
+            print(f"[DEBUG] --- Processing page {i + 1} of {pdf_path} ---")
         page_info = {
             "page": i + 1,
             "ocr_used": False,
             "text": ""
         }
-
-        # Step 1: Native text extraction
-        normal_text = page.extract_text() or ""
-        normal_text = normal_text.strip()
-
-        # Step 2: Check for image-based regions using pdfplumber
-        with pdfplumber.open(pdf_path) as plumber_pdf:
-            plumber_page = plumber_pdf.pages[i]
-            im_objs = plumber_page.images
-            has_images = len(im_objs) > 0
-
-        # Step 3: Only run OCR if image regions are found
+        # Step 1: Native text extraction (PyPDF2)
+        if i < len(reader.pages):
+            try:
+                normal_text = reader.pages[i].extract_text() or ""
+                normal_text = normal_text.strip()
+                if DEBUG:
+                    print(f"[DEBUG] PyPDF2 text extraction done for page {i+1}")
+            except Exception as e:
+                if DEBUG:
+                    print(f"[DEBUG] PyPDF2 text extraction failed for page {i+1}: {e}")
+                normal_text = ""
+        else:
+            normal_text = ""
+        # Step 2: Image detection (pdfplumber)
+        has_images = False
+        if plumber_pdf and i < len(plumber_pdf.pages):
+            try:
+                plumber_page = plumber_pdf.pages[i]
+                im_objs = plumber_page.images
+                has_images = len(im_objs) > 0
+                if DEBUG:
+                    print(f"[DEBUG] pdfplumber found {len(im_objs)} images on page {i+1}")
+            except Exception as e:
+                if DEBUG:
+                    print(f"[DEBUG] pdfplumber failed for page {i+1}: {e}")
+                has_images = False
+        # Step 3: Extraction logic as specified
         ocr_text = ""
+        used_ocr = False
         if has_images:
-            images = convert_from_path(pdf_path, first_page=i + 1, last_page=i + 1)
-            images[0].save(f"debug_images/{Path(pdf_path).stem}_page_{i + 1}.png")
-            ocr_text = pytesseract.image_to_string(images[0]).strip()
-
-        # Step 4: Prefer native text; fallback to OCR if native is empty
-        if ocr_text == "":
+            if DEBUG:
+                print(f"    [DEBUG] Image detected, using OCR for {pdf_path}, page {i+1}")
+            try:
+                if DEBUG:
+                    print(f"    [DEBUG] Calling convert_from_path for page {i+1}")
+                images_list = convert_from_path(pdf_path, first_page=i + 1, last_page=i + 1)
+                if DEBUG:
+                    print(f"    [DEBUG] images_list created, length: {len(images_list)}")
+                if images_list:
+                    if DEBUG:
+                        print(f"    [DEBUG] images_list[0] exists, proceeding to save image (if enabled) and OCR")
+                    if images:
+                        images_list[0].save(f"debug_images/{Path(pdf_path).stem}_page_{i + 1}.png")
+                        if DEBUG:
+                            print(f"    [DEBUG] Saved debug image for page {i+1}")
+                    ocr_text = pytesseract.image_to_string(images_list[0]).strip()
+                    if DEBUG:
+                        print(f"    [DEBUG] OCR completed for page {i+1}")
+                    used_ocr = True
+                else:
+                    if DEBUG:
+                        print(f"    [DEBUG] images_list is empty for page {i+1}")
+                    ocr_text = ""
+            except Exception as e:
+                if DEBUG:
+                    print(f"    [WARN] OCR failed for {pdf_path}, page {i+1}: {e}")
+                ocr_text = ""
+        elif normal_text:
             page_info["text"] = normal_text
             page_info["ocr_used"] = False
-        elif ocr_text:
-            page_info["text"] = ocr_text
-            page_info["ocr_used"] = True
+            if DEBUG:
+                print(f"    [DEBUG] No image detected, using native text for page {i+1}")
         else:
+            if DEBUG:
+                print(f"    [DEBUG] No image and no text, using OCR fallback for {pdf_path}, page {i+1}")
+            try:
+                if DEBUG:
+                    print(f"    [DEBUG] Calling convert_from_path for page {i+1} (OCR fallback)")
+                images_list = convert_from_path(pdf_path, first_page=i + 1, last_page=i + 1)
+                if DEBUG:
+                    print(f"    [DEBUG] images_list created, length: {len(images_list)}")
+                if images_list:
+                    if DEBUG:
+                        print(f"    [DEBUG] images_list[0] exists, proceeding to save image (if enabled) and OCR (fallback)")
+                    if images:
+                        images_list[0].save(f"debug_images/{Path(pdf_path).stem}_page_{i + 1}.png")
+                        if DEBUG:
+                            print(f"    [DEBUG] Saved debug image for page {i+1} (fallback)")
+                    ocr_text = pytesseract.image_to_string(images_list[0]).strip()
+                    if DEBUG:
+                        print(f"    [DEBUG] OCR completed for page {i+1} (fallback)")
+                    used_ocr = True
+                else:
+                    if DEBUG:
+                        print(f"    [DEBUG] images_list is empty for page {i+1} (fallback)")
+                    ocr_text = ""
+            except Exception as e:
+                if DEBUG:
+                    print(f"    [WARN] OCR fallback failed for {pdf_path}, page {i+1}: {e}")
+                ocr_text = ""
+        # Step 4: Set text and ocr_used
+        if has_images or (not has_images and not normal_text):
+            page_info["text"] = ocr_text
+            page_info["ocr_used"] = used_ocr
+        # else already set above for native text
+        if not page_info["text"]:
             page_info["text"] = "[EMPTY PAGE]"
-            page_info["ocr_used"] = has_images
-
+        if DEBUG:
+            print(f"[DEBUG] Appending page_info for page {i+1}")
         pages.append(page_info)
-
-    # Return combined results for all pages
+    if plumber_pdf:
+        plumber_pdf.close()
     return pages
 
 # =========================
@@ -136,6 +221,7 @@ def main():
                 print(f"  Skipping {pdf_file.name} (extraction already exists)")
                 continue
             print(f"  Processing {pdf_file.name}")
+            print(f"[DEBUG] About to extract: {pdf_file}")
             # =========================
             # Log PDF section if debugging is enabled
             # =========================
@@ -166,6 +252,7 @@ def main():
                 
             except Exception as e:
                 print(f"  ❌ Failed to extract {pdf_file.name}: {e}")
+                traceback.print_exc()
                 failed_files.append(pdf_file.name)
         
         # Update tracker for this CAO

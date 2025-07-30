@@ -8,26 +8,74 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 from tracker import update_progress
 import re
+import sys
+import fcntl
 
 # =========================
 # Configuration and Setup
 # =========================
 
+def acquire_file_lock(file_path):
+    """Try to acquire a lock for processing a file. Returns True if lock acquired, False if already locked."""
+    lock_file = file_path.with_suffix('.analysis_lock')
+    try:
+        # Try to create lock file
+        with open(lock_file, 'w') as f:
+            fcntl.flock(f.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+            f.write(f"Process {process_id + 1} using API key {key_number}\n")
+            f.write(f"Timestamp: {time.time()}\n")
+        return True
+    except (IOError, OSError):
+        # File is already locked by another process
+        return False
+
+def release_file_lock(file_path):
+    """Release the lock for a file."""
+    lock_file = file_path.with_suffix('.analysis_lock')
+    try:
+        if lock_file.exists():
+            lock_file.unlink()
+    except:
+        pass  # Ignore errors when releasing lock
+
+def announce_cao_once(cao_number):
+    """Announce a CAO number only once across all processes using a simple file lock."""
+    announce_file = Path("results") / f".cao_{cao_number}_analysis_announced"
+    try:
+        # Try to create the announce file atomically
+        with open(announce_file, 'x') as f:
+            f.write(f"Announced by process {process_id + 1}\n")
+        print(f"--- CAO {cao_number} ---")
+        return True
+    except FileExistsError:
+        # Another process already announced this CAO (or from a previous run)
+        return False
+
 # Paths
 INPUT_JSON_FOLDER = "llmExtracted_json"
 FIELDS_PROMPT_PATH = "fields_prompt.md"
-OUTPUT_EXCEL_PATH = "results/extracted_data.xlsx"
 CAO_INFO_PATH = "input_pdfs/extracted_cao_info.csv"
 DEBUG_MODE = False
-MAX_JSON_FILES = 40  # Limit how many JSON files to process
+MAX_JSON_FILES = 2  # Limit how many JSON files to process
+
+# Get key number from command line or default to 1
+key_number = int(sys.argv[1]) if len(sys.argv) > 1 else 1
+# Get process ID and total processes for work distribution
+process_id = int(sys.argv[2]) if len(sys.argv) > 2 else 0
+total_processes = int(sys.argv[3]) if len(sys.argv) > 3 else 1
+
+# Process-specific output path (defined after process_id is available)
+OUTPUT_EXCEL_PATH = f"results/extracted_data_process_{process_id + 1}.xlsx"
 
 # =========================
 # Gemini API Setup
 # =========================
 
 load_dotenv()
-# type: ignore[attr-defined]
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+api_key = os.getenv(f"GOOGLE_API_KEY{key_number}")
+if not api_key:
+    raise ValueError(f"GOOGLE_API_KEY{key_number} environment variable not found. Please set it before running this script.")
+genai.configure(api_key=api_key)
 GEMINI_MODEL = "gemini-2.5-pro" 
 
 # =========================
@@ -167,7 +215,7 @@ def extract_fields_from_text(text, prompt_fields_markdown, filename=""):
     prompt = (
         "You are an AI assistant that extracts structured JSON data from Dutch collective labor agreements (CAOs). "
         "These CAOs were originally provided as PDF files, and are now given to you as structured JSON files derived from them.\n\n"
-
+        
         "=== Source Text ===\n"
         "The input is a shortened and grouped JSON-like structure. Each section is titled according to its content (e.g., \"Wage information\", \"Pension information\"), and contains a list of paragraphs or table contents from the CAO PDF relevant to that topic.\n"
         f"From file: {filename}\n\n"
@@ -190,7 +238,7 @@ def extract_fields_from_text(text, prompt_fields_markdown, filename=""):
         "=== Special Domain Instructions ===\n"
         "- Wage: When multiple wage tables are present, focus only on tables that represent standard or regular wages (sometimes referred to as \"basic\" or \"normal\" even if not labeled explicitly). If multiple tables exist for different job groups or levels under this standard wage type, include all of them. Prefer hourly units when both hourly and monthly wage tables are available. Only extract salary-related data for workers aged 21 and older.\n"
         "- Pension: For all pension-related fields, help the model by searching for Dutch keywords like “AOW”, “pensioen”, and “regeling”.\n"
-        "- Leave, Termination, Overtime, and Training: For all fields related to leave, contract termination, working hours, overtime, or training, extract as much relevant information as possible - more is better, as long as it is factually present in the text.\n\n"
+        "- Leave, Termination, Overtime, Training and Homeoffice: For all fields related to leave, contract termination, working hours, overtime, training or homeoffice, extract as much relevant information as possible - more is better, as long as it is factually present in the text.\n\n"
 
         "=== Output Format ===\n"
         "Return ONLY valid JSON, for example:\n"
@@ -243,225 +291,246 @@ def normalize_filename(name):
 # Track CAO numbers for analysis
 cao_analysis_tracking = {}
 
-# Counter for number of successfully analyzed files
-successful_analyses = 0  # Increments for each file successfully analyzed and appended to results
+# Get all CAO number folders in input folder
+cao_folders = sorted(
+    [f for f in Path(INPUT_JSON_FOLDER).iterdir() if f.is_dir() and f.name.isdigit()],
+    key=lambda f: int(f.name)
+)
+
+# Collect all JSON files from all CAO folders with their paths, ordered by CAO number then filename
+all_json_files = []
+for cao_folder in cao_folders:
+    cao_number = cao_folder.name
+    json_files = sorted(cao_folder.glob("*.json"))
+    for json_file in json_files:
+        all_json_files.append((cao_folder, json_file))
+
+# Process files using atomic file-level distribution
+current_cao = None
+processed_files = 0
+successful_analyses = 0
 failed_files = []
 
-# Check if output file already exists to load existing progress
-if os.path.exists(OUTPUT_EXCEL_PATH):
-    print(f"Loading existing progress from {OUTPUT_EXCEL_PATH}")
-    df_results = pd.read_excel(OUTPUT_EXCEL_PATH)
-    # Count already processed files (unique CAOs, not rows)
-    if 'CAO' in df_results.columns:
-        unique_caos = df_results['CAO'].nunique()
-        processed_files = unique_caos
-        print(f"Found {processed_files} already processed CAOs (unique files)")
-    else:
-        processed_files = 0
-        print(f"Found existing file but no CAO column, starting fresh")
-else:
-    print(f"Starting fresh analysis")
-    processed_files = 0
-
-# Get all JSON files to process
-json_files = list(Path(INPUT_JSON_FOLDER).rglob("*.json"))
-
-for json_file in json_files:
+for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
+    # Only process files that belong to this process
+    if file_idx % total_processes != process_id:
+        continue
+        
     # Check if we've reached the limit
     if processed_files >= MAX_JSON_FILES:
-        print(f"Reached limit of {MAX_JSON_FILES} files. Stopping processing.")
         break
+        
+    cao_number = cao_folder.name
     
-    file_basename = json_file.name
-    normalized_file_basename = normalize_filename(file_basename)
-    if 'File_name' in df_results.columns:
-        normalized_existing = df_results['File_name'].dropna().apply(normalize_filename)
-        if normalized_file_basename in normalized_existing.values:
-            print(f"  Skipping {file_basename} (already processed by normalized filename, robust check)")
+    # Print CAO number only when it changes and hasn't been announced yet
+    if current_cao != cao_number:
+        announce_cao_once(cao_number)
+        current_cao = cao_number
+    
+    # Try to acquire lock for this file to prevent double processing
+    if not acquire_file_lock(json_file):
+        print(f"  Skipping {json_file.name} (being processed by another process)")
+        time.sleep(2)
+        continue
+    
+    try:
+        # === Get CAO number and ID lookup first (needed for duplicate checking) ===
+        cao_id = None
+        pdf_name_cleaned = json_file.stem + ".pdf"
+        # Try direct match (cleaned/encoded)
+        if pdf_name_cleaned in cao_info_mapping:
+            cao_number = cao_info_mapping[pdf_name_cleaned]['cao_number']
+            cao_id = cao_info_mapping[pdf_name_cleaned]['id']
+        else:
+            # Try fuzzy match: compare ignoring spaces, dashes, and case
+            def normalize_lookup(s):
+                return s.replace(" ", "").replace("-", "").replace("_", "").lower()
+            normalized_cleaned = normalize_lookup(pdf_name_cleaned)
+            found = False
+            for original_pdf_name in cao_info_mapping.keys():
+                if normalize_lookup(original_pdf_name) == normalized_cleaned:
+                    cao_number = cao_info_mapping[original_pdf_name]['cao_number']
+                    cao_id = cao_info_mapping[original_pdf_name]['id']
+                    found = True
+                    break
+            if not found:
+                # Fall back to folder-based CAO number extraction
+                try:
+                    cao_number = int(json_file.parent.name)
+                except (ValueError, AttributeError):
+                    pass
+            if not cao_id:
+                if DEBUG_MODE:
+                    print(f"[DEBUG] Could not find CAO id for {json_file.name} (tried '{pdf_name_cleaned}' and fuzzy match)")
+        
+        # Check if this file was already processed by checking the final Excel file
+        final_excel_path = "results/extracted_data.xlsx"
+        already_processed = False
+        
+        if os.path.exists(final_excel_path):
+            try:
+                # Add small delay to avoid race conditions when reading Excel
+                time.sleep(0.1)
+                existing_df = pd.read_excel(final_excel_path)
+                if 'File_name' in existing_df.columns:
+                    # Check if this specific file is already in the Excel
+                    if json_file.name in existing_df['File_name'].values:
+                        already_processed = True
+                        print(f"  Skipping {json_file.name} (already in final Excel file)")
+                        continue
+            except Exception as e:
+                # If we can't read the Excel file, continue processing
+                if DEBUG_MODE:
+                    print(f"  Could not check existing Excel file: {e}")
+        
+        if already_processed:
             continue
 
-    # === Robust CAO number and ID lookup ===
-    cao_number = None
-    cao_id = None
-    pdf_name_cleaned = json_file.stem + ".pdf"
-    # Try direct match (cleaned/encoded)
-    if pdf_name_cleaned in cao_info_mapping:
-        cao_number = cao_info_mapping[pdf_name_cleaned]['cao_number']
-        cao_id = cao_info_mapping[pdf_name_cleaned]['id']
-    else:
-        # Try fuzzy match: compare ignoring spaces, dashes, and case
-        def normalize(s):
-            return s.replace(" ", "").replace("-", "").replace("_", "").lower()
-        normalized_cleaned = normalize(pdf_name_cleaned)
-        found = False
-        for original_pdf_name in cao_info_mapping.keys():
-            if normalize(original_pdf_name) == normalized_cleaned:
-                cao_number = cao_info_mapping[original_pdf_name]['cao_number']
-                cao_id = cao_info_mapping[original_pdf_name]['id']
-                found = True
-                break
-        if not found:
-            # Fall back to folder-based CAO number extraction
-            try:
-                cao_number = int(json_file.parent.name)
-            except (ValueError, AttributeError):
-                pass
-        if not cao_id:
-            print(f"[DEBUG] Could not find CAO id for {json_file.name} (tried '{pdf_name_cleaned}' and fuzzy match)")
+        with open(json_file, "r", encoding="utf-8") as f:
+            context_by_infotype = json.load(f)
 
-    # Check if this PDF (by id) was already processed
-    if cao_id and 'id' in df_results.columns and cao_id in df_results['id'].astype(str).values:
-        print(f"  Skipping {json_file.name} (id {cao_id} already processed)")
-        continue
-        
-    # Increment processed_files for each new file being processed
-    processed_files += 1
-    print(f"Processing {json_file.name} ({processed_files}/{MAX_JSON_FILES})")
-    
-    with open(json_file, "r", encoding="utf-8") as f:
-        context_by_infotype = json.load(f)
+        print(f"  {json_file.name}")
+        processed_files += 1
 
-    full_text_parts = []
-    for key, value in context_by_infotype.items():
-        if isinstance(value, list):
-            flat_value = flatten_to_str_list(value)
-            full_text_parts.append(f"== {key} ==\n" + "\n".join(flat_value))
-        elif isinstance(value, str):
-            full_text_parts.append(f"== {key} ==\n{value}")
-    full_text = "\n\n".join(full_text_parts)
-    # full_text = GoogleTranslator(source='nl', target='en').translate(full_text)
-    combined_fields = dict.fromkeys(columns, "")
+        full_text_parts = []
+        for key, value in context_by_infotype.items():
+            if isinstance(value, list):
+                flat_value = flatten_to_str_list(value)
+                full_text_parts.append(f"== {key} ==\n" + "\n".join(flat_value))
+            elif isinstance(value, str):
+                full_text_parts.append(f"== {key} ==\n{value}")
+        full_text = "\n\n".join(full_text_parts)
+        # full_text = GoogleTranslator(source='nl', target='en').translate(full_text)
+        combined_fields = dict.fromkeys(columns, "")
 
-    try:
         extracted = extract_fields_from_text(full_text, prompt_fields_markdown, filename=json_file.name)
         if not extracted:
-            print("Gemini failed to extract data. Skipping file.")
+            print(f"  ✗ Failed to extract data from {json_file.name}")
             failed_files.append(json_file.name)
             continue
-    except Exception as e:
-        print(f"  Error processing {json_file.name}: {e}")
-        failed_files.append(json_file.name)
-        continue
-    # Handle extracted as dict or list of dicts
-    if isinstance(extracted, dict):
-        extracted_items = [extracted]
-    elif isinstance(extracted, list):
-        extracted_items = extracted
-    else:
-        extracted_items = []
 
-    for item in extracted_items:
-        row = dict.fromkeys(columns, "")
-        for key, value in item.items():
-            if key in row:
-                row[key] = value
-
-        # Translate extracted field values from Dutch to English
-        for key, value in row.items():
-            if isinstance(value, str) and value.strip():
-                try:
-                    translated = GoogleTranslator(source='nl', target='en').translate(value)
-                    row[key] = translated
-                except Exception as e:
-                    if DEBUG_MODE:
-                        print(f"Translation error for key '{key}': {e}")
-
-        row["CAO"] = str(cao_number) if cao_number else json_file.stem
-        row["id"] = str(cao_id) if cao_id else ""
-        row["TTW"] = "yes" if "TTW" in json_file.stem.upper() else "no"
-        row["File_name"] = file_basename
-
-        # === Merge CAO info from CSV ===
-        # Try to find matching CAO info by PDF name
-        pdf_name = json_file.stem + ".pdf"  # Reconstruct PDF name from JSON filename
-        
-        if pdf_name in cao_info_mapping:
-            cao_info = cao_info_mapping[pdf_name]
-            # Map the fields as specified
-            row["CAO"] = cao_info['cao_number']
-            row["id"] = cao_info['id']
-            row["start_date"] = cao_info['ingangsdatum']
-            row["expiry_date"] = cao_info['expiratiedatum']
-            row["date_of_formal_notification"] = cao_info['datum_kennisgeving']
+        # Handle extracted as dict or list of dicts
+        if isinstance(extracted, dict):
+            extracted_items = [extracted]
+        elif isinstance(extracted, list):
+            extracted_items = extracted
         else:
+            extracted_items = []
+
+        for item in extracted_items:
+            row = dict.fromkeys(columns, "")
+            for key, value in item.items():
+                if key in row:
+                    row[key] = value
+
+            # Translate extracted field values from Dutch to English
+            for key, value in row.items():
+                if isinstance(value, str) and value.strip():
+                    try:
+                        translated = GoogleTranslator(source='nl', target='en').translate(value)
+                        row[key] = translated
+                    except Exception as e:
+                        if DEBUG_MODE:
+                            print(f"Translation error for key '{key}': {e}")
+
+            row["CAO"] = str(cao_number) if cao_number else json_file.stem
+            row["id"] = str(cao_id) if cao_id else ""
+            row["TTW"] = "yes" if "TTW" in json_file.stem.upper() else "no"
+            row["File_name"] = json_file.name # Changed from file_basename to json_file.name
+
+            # === Merge CAO info from CSV ===
+            # Try to find matching CAO info by PDF name
+            pdf_name = json_file.stem + ".pdf"  # Reconstruct PDF name from JSON filename
+            
+            if pdf_name in cao_info_mapping:
+                cao_info = cao_info_mapping[pdf_name]
+                # Map the fields as specified
+                row["CAO"] = cao_info['cao_number']
+                row["id"] = cao_info['id']
+                row["start_date"] = cao_info['ingangsdatum']
+                row["expiry_date"] = cao_info['expiratiedatum']
+                row["date_of_formal_notification"] = cao_info['datum_kennisgeving']
+            else:
+                if DEBUG_MODE:
+                    print(f"  No CAO info found for PDF: {pdf_name}")
+
             if DEBUG_MODE:
-                print(f"  No CAO info found for PDF: {pdf_name}")
+                print("Row content before appending:", row)
 
-        if DEBUG_MODE:
-            print("Row content before appending:", row)
+            row_df = pd.DataFrame([row])
 
-        row_df = pd.DataFrame([row])
+            row_df_full = row_df.reindex(columns=df_results.columns)
 
-        row_df_full = row_df.reindex(columns=df_results.columns)
+            # Fill NaNs with a placeholder to avoid FutureWarning during concat
+            row_df_full_filled = row_df_full.fillna("Empty")
 
-        # Fill NaNs with a placeholder to avoid FutureWarning during concat
-        row_df_full_filled = row_df_full.fillna("Empty")
+            if DEBUG_MODE:
+                print("About to append row:")
+                print(row_df_full_filled)
+                print("All NA after replace check?", row_df_full_filled.replace(["Empty", ""], pd.NA).isna().all(axis=1))
 
-        if DEBUG_MODE:
-            print("About to append row:")
-            print(row_df_full_filled)
-            print("All NA after replace check?", row_df_full_filled.replace(["Empty", ""], pd.NA).isna().all(axis=1))
+            # Final robust content check
+            row_to_append_check = row_df_full_filled.replace(["Empty", "", None], pd.NA)
+            nonmeta_cols = [col for col in row_to_append_check.columns if col not in ("CAO", "TTW", "File_name", "id")]
+            result = row_to_append_check[nonmeta_cols].isna().all(axis=1)
+            if isinstance(result, bool):
+                is_all_na = result
+            else:
+                is_all_na = result.iloc[0]
+            if is_all_na:
+                print("Skipped appending due to only Empty values.")
+                continue
+            if DEBUG_MODE:
+                print("Appending row after check passed:")
+                print(row_df_full_filled)
+                print("ROW BEFORE CONCAT:")
+                print(row_df_full_filled)
+                print("ROW TYPES:")
+                print(row_df_full_filled.dtypes)
+            df_results = pd.concat([df_results, row_df_full_filled], ignore_index=True)
+            df_results.replace("Empty", pd.NA, inplace=True)
 
-        # Final robust content check
-        row_to_append_check = row_df_full_filled.replace(["Empty", "", None], pd.NA)
-        nonmeta_cols = [col for col in row_to_append_check.columns if col not in ("CAO", "TTW", "File_name", "id")]
-        result = row_to_append_check[nonmeta_cols].isna().all(axis=1)
-        if isinstance(result, bool):
-            is_all_na = result
-        else:
-            is_all_na = result.iloc[0]
-        if is_all_na:
-            print("Skipped appending due to only Empty values.")
-            continue
-        if DEBUG_MODE:
-            print("Appending row after check passed:")
-            print(row_df_full_filled)
-            print("ROW BEFORE CONCAT:")
-            print(row_df_full_filled)
-            print("ROW TYPES:")
-            print(row_df_full_filled.dtypes)
-        df_results = pd.concat([df_results, row_df_full_filled], ignore_index=True)
-        df_results.replace("Empty", pd.NA, inplace=True)
-
-    # Track successful analysis
-    successful_analyses += 1
-    
-    # Track CAO number for this file
-    cao_number = None
-    if json_file.stem + ".pdf" in cao_info_mapping:
-        cao_number = cao_info_mapping[json_file.stem + ".pdf"]['cao_number']
-    else:
-        # Try to extract CAO number from folder structure
-        try:
-            cao_number = int(json_file.parent.name)
-        except (ValueError, AttributeError):
-            pass
-    
-    if cao_number:
-        if cao_number not in cao_analysis_tracking:
-            cao_analysis_tracking[cao_number] = {'successful': 0, 'failed': 0}
-        cao_analysis_tracking[cao_number]['successful'] += 1
+        # Track successful analysis
+        successful_analyses += 1
+        print(f"  ✓ {json_file.name}")
         
-        # Update tracker for this CAO immediately
-        update_progress(cao_number, "llm_analysis", 
-                       successful=cao_analysis_tracking[cao_number]['successful'], 
-                       failed_files=cao_analysis_tracking[cao_number].get('failed_files', []))
+        # Track CAO number for this file
+        if cao_number:
+            if cao_number not in cao_analysis_tracking:
+                cao_analysis_tracking[cao_number] = {'successful': 0, 'failed': 0}
+            cao_analysis_tracking[cao_number]['successful'] += 1
+            
+            # Update tracker for this CAO immediately
+            update_progress(cao_number, "llm_analysis", 
+                           successful=cao_analysis_tracking[cao_number]['successful'], 
+                           failed_files=cao_analysis_tracking[cao_number].get('failed_files', []))
 
-    # Save progress after each file to prevent data loss
-    os.makedirs(os.path.dirname(OUTPUT_EXCEL_PATH), exist_ok=True)
-    df_results.to_excel(OUTPUT_EXCEL_PATH, index=False)
-    print(f"  Progress saved to {OUTPUT_EXCEL_PATH}")
+        # Save progress after each file to prevent data loss
+        os.makedirs(os.path.dirname(OUTPUT_EXCEL_PATH), exist_ok=True)
+        df_results.to_excel(OUTPUT_EXCEL_PATH, index=False)
 
-    # Add 2-minute delay after processing each file to prevent rate limiting
-    print(f"  Completed processing {json_file.name}. Waiting 120 seconds before next file...")
-    time.sleep(120)
+        # Check if we've reached the limit before waiting
+        if processed_files >= MAX_JSON_FILES:
+            break
+        else:
+            # Add delay after successful request to prevent rate limiting
+            time.sleep(120)
+
+    except Exception as e:
+        print(f"  ✗ Error processing {json_file.name}: {e}")
+        failed_files.append(json_file.name)
+        # Release lock on error too
+        release_file_lock(json_file)
+    finally:
+        # Always release the lock
+        release_file_lock(json_file)
 
 # === Save final results to Excel ===
 os.makedirs(os.path.dirname(OUTPUT_EXCEL_PATH), exist_ok=True)
 df_results.to_excel(OUTPUT_EXCEL_PATH, index=False)
 
-# Print confirmation of completion
-print(f"Analysis complete. Saved to {OUTPUT_EXCEL_PATH}")
-print(f"📊 Analysis Summary: {successful_analyses} successful, {len(failed_files)} failed")
+# Print completion message
 if failed_files:
-    print(f"   Failed files: {', '.join(failed_files)}")
+    print(f"Process {process_id + 1} completed: {successful_analyses} successful, {len(failed_files)} failed")
+else:
+    print(f"Process {process_id + 1} completed: {successful_analyses} successful")

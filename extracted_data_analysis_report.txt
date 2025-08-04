@@ -1,0 +1,30 @@
+EXTRACTED DATA ANALYSIS REPORT
+==================================================
+
+Analysis of: results/extracted_data.xlsx
+Total rows: 2076
+Total columns: 67
+
+1. DUPLICATES ANALYSIS
+------------------------------
+Total duplicate groups: 0
+
+2. MISSING INFOTYPES ANALYSIS
+------------------------------
+CAOs with missing infotypes: 0
+
+3. EMPTY DATA ANALYSIS
+------------------------------
+CAOs with empty wage data: 1
+CAOs where ALL non-wage infotypes are empty: 0
+
+CAOs with empty wage data:
+  CAO Integrale tekst cao Open Teelten 1 maart 2023 tm 30 juni 2024 - 2303-0178 v0.1.json: 1 empty wage rows
+
+CAOs where ALL non-wage infotypes are empty:
+
+4. EMPTY INFOTYPES BY TYPE
+------------------------------
+Homeoffice: 117 CAOs
+Termination: 1 CAOs
+Wage: 1 CAOs

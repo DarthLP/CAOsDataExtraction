@@ -1,0 +1,1748 @@
+Found 5 API keys: [1, 2, 3, 4, 5]
+
+============================================================
+PHASE 1/2: 3_llmExtraction.py
+============================================================
+
+--- Launching 5 parallel LLM extraction processes (one per API key) ---
+
+  1393: Skipping Railinfra_CAO_2017_def_280917.json (already processed)
+  10: Skipping cao Bouw en Infra 2021-2022.json (already processed)
+  41: Skipping handel__in_bouwmaterialen_cao_integraal.json (already processed)
+  1345: Skipping CAOP_CAO_boek_A5_def_24_8_9uur.json (already processed)
+  254: Skipping cao 2022-2023 ttw 10 maart 2023 integraal.json (already processed)
+  725: Skipping Eindtekst cao Groen, Grond en Infrastructuur 1 januari 2025 - 30 september 2026 incl. 1e ttw per 1 januari 2025.json (already processed)
+  721: Skipping Cao-huisartsenzorg-2022-2023-incl-Handleiding.avv.json (already processed)
+  824: Skipping CAO MB 2019 2021SZW TTW Wagweu en art 64.docx.json (already processed)
+  526: Skipping CAO_tekst_2015__2016_aanmelding_tst_dispensatie.json (already processed)
+  1944: Skipping Integrale tekst cao Open Teelten 1 maart 2023 tm 30 juni 2024 - 2303-0178 v0.1.json (already processed)
+  254: Skipping CAO_2015_2017_TTW_integrale_tekst_1.json (already processed)
+  518: Skipping Cao boekje VDF-tekst geschoond.json (already processed)
+  50: Skipping Apotheken 50.json (already processed)
+  625: Skipping cao20162017_definitief.json (already processed)
+  518: Skipping CAOVDB_tekst_def_met_dispensatieregeling_geschoond.json (already processed)
+  2070: Skipping CAO Facilitaire contactcenters 2019 - 2021 versie 10.11.2020.json (already processed)
+  650: Skipping 2022.08.17 CAO Groothandel in Groenten en Fruit 1 jan. tm 31 dec 2022.json (already processed)
+  759: Skipping CAO SAVG 2021 2025 TTW 27 oktober 2022.json (already processed)
+  1639: CAO-DHZ 2017-2020 wijzigingen geaccepteerd.doc .json (Request size: 111.1 KB, 112,658 characters) [API 2/5]
+  1022: CAO MBO 2018-2020 - wijzigingen geaccepteerd 712020.json (Request size: 409.7 KB, 418,571 characters) [API 3/5]
+  465: sociale afspraken 2020 - 2023 geschoond.json (Request size: 114.8 KB, 117,040 characters) [API 1/5]
+  632: tekst_CAO_01112010__01012012.json (Request size: 156.9 KB, 160,469 characters) [API 4/5]
+  1165: cao 1 januari 2022 - 31 december 2023 definitief 23012023.json (Request size: 201.3 KB, 205,286 characters) [API 5/5]
+  1165: LLM extraction completed in 155.19 seconds [API 5/5]
+  1022: LLM extraction completed in 221.02 seconds [API 3/5]
+  632: LLM extraction completed in 224.43 seconds [API 4/5]
+  1639: LLM extraction completed in 244.22 seconds [API 2/5]
+  465: LLM extraction completed in 256.38 seconds [API 1/5]
+Process 5 completed: 1 actually processed, 5 total successful (including skipped)
+  83: cao voor de betonproductenindustrie.json (Request size: 131.3 KB, 134,317 characters) [API 5/5]
+Process 3 completed: 1 actually processed, 4 total successful (including skipped)
+  750: cao 1 april 2024 - 31 december 2025 18122024 opgeschoonde versie.json (Request size: 396.0 KB, 404,207 characters) [API 3/5]
+Process 4 completed: 1 actually processed, 5 total successful (including skipped)
+  633: Cao_integraal.json (Request size: 248.2 KB, 253,499 characters) [API 4/5]
+Process 2 completed: 1 actually processed, 4 total successful (including skipped)
+  826: HB 5e editie 2024_1.json (Request size: 1935.7 KB, 1,973,543 characters) [API 2/5]
+Process 1 completed: 1 actually processed, 5 total successful (including skipped)
+  2948: cao 2019-2021 tussentijdse wijziging .docx.json (Request size: 267.3 KB, 272,895 characters) [API 1/5]
+  826: LLM extraction completed in 70.91 seconds [API 2/5]
+  83: LLM extraction completed in 170.79 seconds [API 5/5]
+  633: LLM extraction completed in 154.92 seconds [API 4/5]
+  750: LLM extraction completed in 171.77 seconds [API 3/5]
+Process 2 completed: 2 actually processed, 5 total successful (including skipped)
+  1496: 01_CAO_BAKKERSBEDRIJF_1_OKTOBER_2016_2.json (Request size: 131.1 KB, 133,670 characters) [API 2/5]
+Process 5 completed: 2 actually processed, 6 total successful (including skipped)
+  10: Skipping Cao Bouw en Infra 2024 - TTW 12 februari 2024.pdf.json (already processed)
+  35: Skipping Cao Textielverzorging 2024-2025.json (already processed)
+  822: CAO_CAR_2017_2019_TTW_LL_nov_2018.json (Request size: 386.8 KB, 395,177 characters) [API 5/5]
+Process 4 completed: 2 actually processed, 6 total successful (including skipped)
+  533: CAO VGL 2019-2020 definitief schoon 010420.docx.json (Request size: 97.7 KB, 99,760 characters) [API 4/5]
+Process 3 completed: 2 actually processed, 5 total successful (including skipped)
+  573: Cao pluimvee - cao 2020-2021 na ttw2 art 77 .json (Request size: 89.8 KB, 91,942 characters) [API 3/5]
+  573: LLM extraction completed in 123.03 seconds [API 3/5]
+  2948: LLM extraction completed in 456.17 seconds [API 1/5]
+  533: LLM extraction completed in 190.24 seconds [API 4/5]
+  1496: LLM extraction completed in 292.31 seconds [API 2/5]
+  822: LLM extraction completed in 266.97 seconds [API 5/5]
+Process 3 completed: 3 actually processed, 6 total successful (including skipped)
+  1612: Integrale cao Kinderopvang 2020 - 2021 - gewijzigd.json (Request size: 435.6 KB, 445,007 characters) [API 3/5]
+Process 1 completed: 2 actually processed, 6 total successful (including skipped)
+  157: AWVN__534089_v1_Zuivel_CAO_I_2012_2014.json (Request size: 568.9 KB, 579,544 characters) [API 1/5]
+Process 4 completed: 3 actually processed, 7 total successful (including skipped)
+  2948: CAO_VVT_2010_2012_nieuwe_aanmelding_okt_.json (Request size: 546.4 KB, 552,797 characters) [API 4/5]
+Process 2 completed: 3 actually processed, 6 total successful (including skipped)
+  496: cao 1 juli 2018 - 30 juni 2023 definitief versie 2 met aanvullende wijziging voo.json (Request size: 301.5 KB, 308,327 characters) [API 2/5]
+Process 5 completed: 3 actually processed, 9 total successful (including skipped)
+  475: CAO Sport 2022-2023 2.json (Request size: 131.4 KB, 134,040 characters) [API 5/5]
+  157: LLM extraction completed in 146.07 seconds [API 1/5]
+  1612: LLM extraction completed in 168.73 seconds [API 3/5]
+  475: LLM extraction completed in 159.05 seconds [API 5/5]
+  496: LLM extraction completed in 164.56 seconds [API 2/5]
+Process 1 completed: 3 actually processed, 7 total successful (including skipped)
+  633: ABU CAO voor Uitzendkrachten 1-1-2021 wijz. bijhouden.doc.json (Request size: 185.2 KB, 189,300 characters) [API 1/5]
+Process 3 completed: 4 actually processed, 7 total successful (including skipped)
+  2948: CAO 2021 aanmelding_1.json (Request size: 234.8 KB, 239,920 characters) [API 3/5]
+Process 5 completed: 4 actually processed, 10 total successful (including skipped)
+  1296: ICK_CAO_2016_definitief.json (Request size: 213.0 KB, 217,741 characters) [API 5/5]
+  Attempt 1 failed (InternalServerError), retrying in 2 minutes...
+Process 2 completed: 4 actually processed, 7 total successful (including skipped)
+  725: Eindtekst cao Groen, Grond en Infrastructuur 1 januari 2024 - 31 december 2024 incl. 1e ttw per 1 januari 2024.json (Request size: 216.8 KB, 220,951 characters) [API 2/5]
+  Attempt 1 failed (InternalServerError), retrying in 2 minutes...
+  Manually constructed JSON for CAO 2021 aanmelding_1.json [API 3/5]
+  2948: LLM extraction completed in 109.90 seconds [API 3/5]
+  633: LLM extraction completed in 150.17 seconds [API 1/5]
+  2948: LLM extraction completed in 479.35 seconds [API 4/5]
+Process 3 completed: 5 actually processed, 8 total successful (including skipped)
+  604: CAO_Tekst___CAO_Vast_2011___2012.json (Request size: 144.1 KB, 147,316 characters) [API 3/5]
+Process 1 completed: 4 actually processed, 8 total successful (including skipped)
+  826: CAO_ISO_17_19.json (Request size: 380.4 KB, 388,747 characters) [API 1/5]
+  1296: LLM extraction completed in 269.72 seconds [API 5/5]
+Process 4 completed: 4 actually processed, 8 total successful (including skipped)
+  35: Skipping Cao Textielverzorging 2024-2025 vs aug24.json (already processed)
+  496: cao 1 juli 2018 - 30 juni 2023 definitief.docx .json (Request size: 284.7 KB, 291,081 characters) [API 4/5]
+  604: LLM extraction completed in 121.25 seconds [API 3/5]
+  725: LLM extraction completed in 345.31 seconds [API 2/5]
+Process 5 completed: 5 actually processed, 11 total successful (including skipped)
+  405: CAO_Kappers_1_juli_2017_30_juni_2019_1.json (Request size: 127.0 KB, 129,641 characters) [API 5/5]
+  826: LLM extraction completed in 203.70 seconds [API 1/5]
+  496: LLM extraction completed in 167.53 seconds [API 4/5]
+Process 3 completed: 6 actually processed, 9 total successful (including skipped)
+  2948: CAO VVT 2022-2023 ttw april23.json (Request size: 337.0 KB, 344,146 characters) [API 3/5]
+Process 2 completed: 5 actually processed, 8 total successful (including skipped)
+  233: CAOtekst_1apr2017_31mrt2019_PvL_30mei2018.json (Request size: 301.8 KB, 306,949 characters) [API 2/5]
+  405: LLM extraction completed in 148.90 seconds [API 5/5]
+Process 1 completed: 5 actually processed, 9 total successful (including skipped)
+  1165: cao_recreatie_2012_2013_definitieve_versie.json (Request size: 135.8 KB, 138,477 characters) [API 1/5]
+Process 4 completed: 5 actually processed, 10 total successful (including skipped)
+  549: Definitieve tekst CAO AGF Detailhandel 2024-2025_1.json (Request size: 50.4 KB, 51,268 characters) [API 4/5]
+  233: LLM extraction completed in 216.47 seconds [API 2/5]
+  2948: LLM extraction completed in 249.94 seconds [API 3/5]
+  549: LLM extraction completed in 135.36 seconds [API 4/5]
+Process 5 completed: 6 actually processed, 12 total successful (including skipped)
+  679: cao tekst Taxivervoer.json (Request size: 177.1 KB, 180,317 characters) [API 5/5]
+  1165: LLM extraction completed in 184.19 seconds [API 1/5]
+Process 2 completed: 6 actually processed, 9 total successful (including skipped)
+  233: 2024jan30_CAOHH2023-2024.json (Request size: 228.2 KB, 231,662 characters) [API 2/5]
+Process 3 completed: 7 actually processed, 10 total successful (including skipped)
+  301: CAOWMD20082011aanmelding2012.json (Request size: 521.2 KB, 529,640 characters) [API 3/5]
+  Attempt 1 failed (InternalServerError), retrying in 2 minutes...
+Process 4 completed: 6 actually processed, 11 total successful (including skipped)
+  884: Tekst CAO Boek en Kantoor 19 20 31-10-2019 ongemark def aanm.docx.json (Request size: 61.4 KB, 62,684 characters) [API 4/5]
+Process 1 completed: 6 actually processed, 10 total successful (including skipped)
+  1536: 16066-12 VSNU-CAO Nederlandse Universiteiten 2020.json (Request size: 230.9 KB, 236,159 characters) [API 1/5]
+  679: LLM extraction completed in 218.70 seconds [API 5/5]
+  884: LLM extraction completed in 119.22 seconds [API 4/5]
+  233: LLM extraction completed in 185.25 seconds [API 2/5]
+  1536: LLM extraction completed in 137.43 seconds [API 1/5]
+Process 5 completed: 7 actually processed, 13 total successful (including skipped)
+  1393: Cao Railinfrastructuur - 9 juli 2024.json (Request size: 123.7 KB, 126,203 characters) [API 5/5]
+Process 4 completed: 7 actually processed, 12 total successful (including skipped)
+  791: Textielgr__NVW_ttw_ivm_fkb_2012_2013_obv_1538864.json (Request size: 106.0 KB, 107,720 characters) [API 4/5]
+  301: LLM extraction completed in 328.32 seconds [API 3/5]
+Process 2 completed: 7 actually processed, 10 total successful (including skipped)
+  518: CAOVDB_2015_16__tekst_def_geschoond.json (Request size: 83.7 KB, 85,531 characters) [API 2/5]
+Process 1 completed: 7 actually processed, 11 total successful (including skipped)
+  1944: Cao Open Teelten 3e TTW per 1 juli 2019 definitief.docx.json (Request size: 198.9 KB, 201,785 characters) [API 1/5]
+  1393: LLM extraction completed in 206.58 seconds [API 5/5]
+  791: LLM extraction completed in 138.14 seconds [API 4/5]
+Process 3 completed: 8 actually processed, 11 total successful (including skipped)
+  254: CAO_2018_2019_integraal_versie_8.json (Request size: 255.2 KB, 260,544 characters) [API 3/5]
+  518: LLM extraction completed in 202.66 seconds [API 2/5]
+Process 5 completed: 8 actually processed, 14 total successful (including skipped)
+  3313: Cao_NWb_2013_2015_met_aanpassing_DI.json (Request size: 118.5 KB, 121,141 characters) [API 5/5]
+  1944: LLM extraction completed in 259.39 seconds [API 1/5]
+Process 4 completed: 8 actually processed, 13 total successful (including skipped)
+  650: CAO_Frugi_Venta_definitief_2012_2014.json (Request size: 136.7 KB, 139,696 characters) [API 4/5]
+Process 2 completed: 8 actually processed, 11 total successful (including skipped)
+  826: m_en_t_islollatiebedrijf_kvo.json (Request size: 1357.4 KB, 1,384,679 characters) [API 2/5]
+  3313: LLM extraction completed in 125.45 seconds [API 5/5]
+  254: LLM extraction completed in 292.76 seconds [API 3/5]
+Process 1 completed: 8 actually processed, 12 total successful (including skipped)
+  573: Cao pluimvee - cao 2020-2021 .json (Request size: 89.8 KB, 91,923 characters) [API 1/5]
+  650: LLM extraction completed in 249.56 seconds [API 4/5]
+Process 5 completed: 9 actually processed, 15 total successful (including skipped)
+  43: Skipping CAO_2015_2017_1.json (already processed)
+  679: CAO Zorgvervoer en Taxi 2024-2025 definitieve tekst 100125.json (Request size: 278.3 KB, 283,181 characters) [API 5/5]
+  826: LLM extraction completed in 243.76 seconds [API 2/5]
+Process 3 completed: 9 actually processed, 12 total successful (including skipped)
+  301: CAOSOCIAALWERK1921definitief_030120.json (Request size: 571.2 KB, 583,822 characters) [API 3/5]
+  573: LLM extraction completed in 208.80 seconds [API 1/5]
+Process 4 completed: 9 actually processed, 14 total successful (including skipped)
+  1060: NBBU Cao UK 2009-2013 SZW niet gemarkeerd.json (Request size: 118.4 KB, 120,913 characters) [API 4/5]
+  679: LLM extraction completed in 173.81 seconds [API 5/5]
+Process 2 completed: 9 actually processed, 12 total successful (including skipped)
+  496: cao_2014_2015_definitief_1.json (Request size: 259.5 KB, 265,323 characters) [API 2/5]
+  301: LLM extraction completed in 213.42 seconds [API 3/5]
+Process 1 completed: 9 actually processed, 13 total successful (including skipped)
+  1496: 01_CAO_BAKKERSBEDRIJF_1_AUGUSTUS_2011.json (Request size: 142.5 KB, 144,605 characters) [API 1/5]
+  1060: LLM extraction completed in 215.31 seconds [API 4/5]
+Process 5 completed: 10 actually processed, 17 total successful (including skipped)
+  1612: Integrale Cao Kinderopvang 2024 20-12-2024.json (Request size: 468.2 KB, 478,354 characters) [API 5/5]
+  496: LLM extraction completed in 211.76 seconds [API 2/5]
+Process 3 completed: 10 actually processed, 13 total successful (including skipped)
+  1496: CAO tekst.json (Request size: 159.0 KB, 160,337 characters) [API 3/5]
+  1496: LLM extraction completed in 211.31 seconds [API 1/5]
+Process 4 completed: 10 actually processed, 15 total successful (including skipped)
+  21: Skipping CAO_tekst_2017__2020_inclusief_FNV.json (already processed)
+  41: Skipping CAO-tekst 2019_vs4_def.docx .json (already processed)
+  1612: CAO_Kinderopvang_2012_2014_basistekst101114.json (Request size: 617.3 KB, 630,083 characters) [API 4/5]
+  1612: LLM extraction completed in 224.77 seconds [API 5/5]
+Process 2 completed: 10 actually processed, 13 total successful (including skipped)
+  791: Textielgroothandel_cao_ttw.json (Request size: 114.1 KB, 116,093 characters) [API 2/5]
+Process 1 completed: 10 actually processed, 14 total successful (including skipped)
+  824: CAO_MB.json (Request size: 414.5 KB, 423,564 characters) [API 1/5]
+  1612: LLM extraction completed in 222.13 seconds [API 4/5]
+Process 5 completed: 11 actually processed, 18 total successful (including skipped)
+  1165: cao 1 januari 2019 - 31 december 2020, definitief aangepast versie 1 juli.docx.json (Request size: 186.3 KB, 190,125 characters) [API 5/5]
+  Manually constructed JSON for Textielgroothandel_cao_ttw.json [API 2/5]
+  791: LLM extraction completed in 166.83 seconds [API 2/5]
+  1496: LLM extraction completed in 385.78 seconds [API 3/5]
+  824: LLM extraction completed in 216.70 seconds [API 1/5]
+Process 4 completed: 11 actually processed, 18 total successful (including skipped)
+  721: CAO_Huisartsenzorg_2013_W_versie_2.json (Request size: 145.5 KB, 148,662 characters) [API 4/5]
+Process 2 completed: 11 actually processed, 14 total successful (including skipped)
+  496: cao_2011_definitief.json (Request size: 206.9 KB, 211,271 characters) [API 2/5]
+Process 3 completed: 11 actually processed, 14 total successful (including skipped)
+  1285: cao_tekst_Tank_Was_def_3_juni_2016.json (Request size: 110.0 KB, 112,231 characters) [API 3/5]
+  1165: LLM extraction completed in 293.32 seconds [API 5/5]
+Process 1 completed: 11 actually processed, 15 total successful (including skipped)
+  21: Skipping CAO tekst 2020 basis.docx.json (already processed)
+  254: CAO_2015_2017_integrale_tekst2.json (Request size: 243.4 KB, 248,405 characters) [API 1/5]
+  496: LLM extraction completed in 176.33 seconds [API 2/5]
+  721: LLM extraction completed in 249.63 seconds [API 4/5]
+Process 5 completed: 12 actually processed, 19 total successful (including skipped)
+  1496: cao Bakkersbedrijf definitief versie 15082024.json (Request size: 1068.2 KB, 1,090,724 characters) [API 5/5]
+  1285: LLM extraction completed in 233.23 seconds [API 3/5]
+Process 2 completed: 12 actually processed, 15 total successful (including skipped)
+  306: CAO Particulier Kaaspakhuis 01-01-2024 definitief.json (Request size: 134.0 KB, 136,985 characters) [API 2/5]
+  254: LLM extraction completed in 283.63 seconds [API 1/5]
+Process 4 completed: 12 actually processed, 19 total successful (including skipped)
+  21: Skipping CAO_tekst_2019_basis_1.json (already processed)
+  637: Cao_Verzekeringsbedrijf_2016_2017_schoon_ttw.json (Request size: 158.5 KB, 162,103 characters) [API 4/5]
+Process 3 completed: 12 actually processed, 15 total successful (including skipped)
+  679: CAO_tekst_Taxivervoer_2014_2015.json (Request size: 203.0 KB, 205,682 characters) [API 3/5]
+  1496: LLM extraction completed in 208.14 seconds [API 5/5]
+  306: LLM extraction completed in 184.72 seconds [API 2/5]
+Process 1 completed: 12 actually processed, 17 total successful (including skipped)
+  254: 20241203 cao 2024-2025 ttw januari 2025 integraal.json (Request size: 378.9 KB, 386,947 characters) [API 1/5]
+  637: LLM extraction completed in 156.90 seconds [API 4/5]
+  679: LLM extraction completed in 156.68 seconds [API 3/5]
+Process 5 completed: 13 actually processed, 20 total successful (including skipped)
+  1496: BAKKERSBEDRIJF_cao.json (Request size: 208.7 KB, 211,666 characters) [API 5/5]
+Process 2 completed: 13 actually processed, 16 total successful (including skipped)
+  725: 2212-0813b defintieve tekst cao GGI met 1e ttw per 1 januari 2023.json (Request size: 242.1 KB, 246,849 characters) [API 2/5]
+Process 4 completed: 13 actually processed, 21 total successful (including skipped)
+  650: CAO Groothandel in Groenten en Fruit 2019-2020 na ttw2 art 29b en bijlage X.json (Request size: 162.7 KB, 166,278 characters) [API 4/5]
+Process 3 completed: 13 actually processed, 16 total successful (including skipped)
+  824: HB 5e editie 2024_2.json (Request size: 1962.4 KB, 2,000,863 characters) [API 3/5]
+  254: LLM extraction completed in 250.80 seconds [API 1/5]
+  1496: LLM extraction completed in 267.07 seconds [API 5/5]
+  650: LLM extraction completed in 228.98 seconds [API 4/5]
+Process 1 completed: 13 actually processed, 18 total successful (including skipped)
+  80: CAO Waterbouw 2022-2023_1.json (Request size: 174.3 KB, 178,011 characters) [API 1/5]
+  725: LLM extraction completed in 278.85 seconds [API 2/5]
+  824: LLM extraction completed in 235.52 seconds [API 3/5]
+Process 5 completed: 14 actually processed, 21 total successful (including skipped)
+  633: ABU CAO voor Uitzendkrachten 2021 integraal.json (Request size: 179.9 KB, 183,872 characters) [API 5/5]
+Process 4 completed: 14 actually processed, 22 total successful (including skipped)
+  26: Skipping CAO_vleessector_ongerenvooieerde_tekst_2013.json (already processed)
+  725: cao_leo_1_juli_2013_tm_30_juni_2014__20130716N_.json (Request size: 183.5 KB, 187,014 characters) [API 4/5]
+Process 2 completed: 14 actually processed, 17 total successful (including skipped)
+  1060: Cao uitzendkrachten LBV onwerkbaar weer dec 2021 wijzigingen geaccpteerd.json (Request size: 160.6 KB, 164,180 characters) [API 2/5]
+  80: LLM extraction completed in 215.96 seconds [API 1/5]
+Process 3 completed: 14 actually processed, 17 total successful (including skipped)
+  823: CAO_tekst_2011_2012_compleet_versie_28_juli.json (Request size: 772.8 KB, 789,611 characters) [API 3/5]
+  1060: LLM extraction completed in 131.69 seconds [API 2/5]
+  725: LLM extraction completed in 182.31 seconds [API 4/5]
+  633: LLM extraction completed in 244.66 seconds [API 5/5]
+Process 1 completed: 14 actually processed, 19 total successful (including skipped)
+  83: Cao Betonproductenindustrie 2019-2021 versie 08-04-2021.json (Request size: 134.8 KB, 136,696 characters) [API 1/5]
+Process 2 completed: 15 actually processed, 18 total successful (including skipped)
+  254: cao 2022-2023 6 januari 2022 aanmelding.json (Request size: 357.9 KB, 365,550 characters) [API 2/5]
+  Manually constructed JSON for CAO_tekst_2011_2012_compleet_versie_28_juli.json [API 3/5]
+  823: LLM extraction completed in 288.20 seconds [API 3/5]
+Process 4 completed: 15 actually processed, 24 total successful (including skipped)
+  2297: CAO_TI_2017_2019_TTW_GP_nov_2017.json (Request size: 400.0 KB, 408,723 characters) [API 4/5]
+Process 5 completed: 15 actually processed, 22 total successful (including skipped)
+  1612: Integrale gewijzigde cao Kinderopvang 2020-2021 (schone versie).docx.json (Request size: 447.4 KB, 457,005 characters) [API 5/5]
+  1612: LLM extraction completed in 94.03 seconds [API 5/5]
+  83: LLM extraction completed in 238.29 seconds [API 1/5]
+Process 3 completed: 15 actually processed, 18 total successful (including skipped)
+  1494: cao_po_2013_def_versie.json (Request size: 490.0 KB, 499,251 characters) [API 3/5]
+  254: LLM extraction completed in 213.20 seconds [API 2/5]
+  2297: LLM extraction completed in 194.56 seconds [API 4/5]
+  1494: LLM extraction completed in 99.68 seconds [API 3/5]
+Process 5 completed: 16 actually processed, 23 total successful (including skipped)
+  41: Skipping CAO_tekst_2017_2018_geschoond.json (already processed)
+Process 1 completed: 15 actually processed, 20 total successful (including skipped)
+  156: CAO_ziekenhuizen_2017_2019_DEF.json (Request size: 307.4 KB, 313,682 characters) [API 1/5]
+  301: Cao Sociaal Werk 2021 2023_280422definitief.json (Request size: 493.3 KB, 504,207 characters) [API 5/5]
+Process 2 completed: 16 actually processed, 19 total successful (including skipped)
+  721: wijz_III_cao_HAZ_2015_2017_incl_FWHZ_anmtkst_zwart.json (Request size: 370.6 KB, 378,072 characters) [API 2/5]
+Process 4 completed: 16 actually processed, 25 total successful (including skipped)
+  727: 170313_Cao_F_S__L_2016_2018_incl_Wonen_def_hvb.json (Request size: 314.9 KB, 321,310 characters) [API 4/5]
+Process 3 completed: 16 actually processed, 19 total successful (including skipped)
+  924: Tekst cao Reisbranche 1jan-1jul2022.json (Request size: 183.2 KB, 186,161 characters) [API 3/5]
+  301: LLM extraction completed in 154.31 seconds [API 5/5]
+  156: LLM extraction completed in 194.98 seconds [API 1/5]
+  924: LLM extraction completed in 106.09 seconds [API 3/5]
+  721: LLM extraction completed in 193.95 seconds [API 2/5]
+Process 5 completed: 17 actually processed, 25 total successful (including skipped)
+  637: Cao_Binnendienst_2013.json (Request size: 148.7 KB, 152,022 characters) [API 5/5]
+Process 1 completed: 16 actually processed, 21 total successful (including skipped)
+  625: 085_021_CAO_2022_2023DEF.json (Request size: 217.0 KB, 221,334 characters) [API 1/5]
+  727: LLM extraction completed in 300.05 seconds [API 4/5]
+Process 3 completed: 17 actually processed, 20 total successful (including skipped)
+  156: Tekst_Cao_Ziekenhuizen_2011_2014_definitief.json (Request size: 207.6 KB, 211,675 characters) [API 3/5]
+Process 2 completed: 17 actually processed, 20 total successful (including skipped)
+  1496: BAKKERSBEDRIJF_1_AUGUSTUS_2011_incl_bijlagen.json (Request size: 343.1 KB, 349,869 characters) [API 2/5]
+  637: LLM extraction completed in 151.56 seconds [API 5/5]
+  625: LLM extraction completed in 147.77 seconds [API 1/5]
+Process 4 completed: 17 actually processed, 26 total successful (including skipped)
+  148: Cao Graanbe- en verwerkende Bedrijven 2023 DEF.json (Request size: 156.3 KB, 159,821 characters) [API 4/5]
+  156: LLM extraction completed in 188.53 seconds [API 3/5]
+Process 5 completed: 18 actually processed, 26 total successful (including skipped)
+  157: Zuivel cao I 2021.json (Request size: 104.2 KB, 106,524 characters) [API 5/5]
+  1496: LLM extraction completed in 231.94 seconds [API 2/5]
+Process 1 completed: 17 actually processed, 22 total successful (including skipped)
+  1612: CAO_Kinderopvang_2012_2014_def.json (Request size: 324.0 KB, 330,528 characters) [API 1/5]
+  148: LLM extraction completed in 201.93 seconds [API 4/5]
+Process 3 completed: 18 actually processed, 21 total successful (including skipped)
+  2948: cao 2019-2021 tussentijdse wijziging versie 18 febr.docx.json (Request size: 264.1 KB, 269,815 characters) [API 3/5]
+Process 2 completed: 18 actually processed, 21 total successful (including skipped)
+  496: Cao Particuliere Beveiliging 2023-2024 versie 2- augustus 2023 ZONDER zichtbare wijzigingen.json (Request size: 275.9 KB, 281,055 characters) [API 2/5]
+  1612: LLM extraction completed in 163.97 seconds [API 1/5]
+  157: LLM extraction completed in 260.34 seconds [API 5/5]
+Process 4 completed: 18 actually processed, 27 total successful (including skipped)
+  822: CAO Car 2021 2024.json (Request size: 401.4 KB, 409,615 characters) [API 4/5]
+  496: LLM extraction completed in 160.56 seconds [API 2/5]
+Process 1 completed: 18 actually processed, 23 total successful (including skipped)
+  1060: NBBU_CAO_Uitzendkrachten_2015-2019_versie 2019 NL OTF.pdf .json (Request size: 151.7 KB, 155,077 characters) [API 1/5]
+Process 5 completed: 19 actually processed, 27 total successful (including skipped)
+  1022: CAO MBO 2020-2021 - wijzigingen geaccepteerd 29062020 def.json (Request size: 407.3 KB, 416,145 characters) [API 5/5]
+Process 2 completed: 19 actually processed, 22 total successful (including skipped)
+  650: CAO_tekst_Groenten_en_Fruit_met_wijz_.json (Request size: 136.5 KB, 139,441 characters) [API 2/5]
+  2948: LLM extraction completed in 405.47 seconds [API 3/5]
+  822: LLM extraction completed in 280.77 seconds [API 4/5]
+  1022: LLM extraction completed in 157.97 seconds [API 5/5]
+  Manually constructed JSON for NBBU_CAO_Uitzendkrachten_2015-2019_versie 2019 NL OTF.pdf .json [API 1/5]
+  1060: LLM extraction completed in 307.29 seconds [API 1/5]
+Process 3 completed: 19 actually processed, 22 total successful (including skipped)
+  1285: Ingediend bij SZW - Eindtekst cao Tankstations en Wasbedrijven 1 april 2025 - 31 december 2026.json (Request size: 131.6 KB, 134,524 characters) [API 3/5]
+Process 4 completed: 19 actually processed, 28 total successful (including skipped)
+  43: Skipping CAO_2013_2015__2_.json (already processed)
+  824: CAO_MB_TTW_juli.json (Request size: 416.3 KB, 425,441 characters) [API 4/5]
+Process 5 completed: 20 actually processed, 28 total successful (including skipped)
+  592: def. cao tekst Gespecialiseerde detailhandel in bloemen en planten 2023_1.json (Request size: 105.1 KB, 105,522 characters) [API 5/5]
+  650: LLM extraction completed in 314.27 seconds [API 2/5]
+Process 1 completed: 19 actually processed, 24 total successful (including skipped)
+  759: CAO SAVG 2021 2025 TTW februari 2023.json (Request size: 268.8 KB, 274,898 characters) [API 1/5]
+  592: LLM extraction completed in 135.68 seconds [API 5/5]
+  1285: LLM extraction completed in 215.59 seconds [API 3/5]
+  759: LLM extraction completed in 151.75 seconds [API 1/5]
+  824: LLM extraction completed in 272.44 seconds [API 4/5]
+Process 2 completed: 20 actually processed, 23 total successful (including skipped)
+  245: Plantum___definitieve_CAO_2011___2014.json (Request size: 87.4 KB, 87,979 characters) [API 2/5]
+Process 5 completed: 21 actually processed, 29 total successful (including skipped)
+  359: Cao Zoetwarenindustrie 2023-2024.json (Request size: 257.6 KB, 263,117 characters) [API 5/5]
+Process 3 completed: 20 actually processed, 23 total successful (including skipped)
+  234: cao_tekst_JZ_2015_2016_def_met_bijlagen_1_tm_10.json (Request size: 245.2 KB, 250,696 characters) [API 3/5]
+Process 1 completed: 20 actually processed, 25 total successful (including skipped)
+  759: cao_2011_2013_ttw2_functieloon_aanmelding.json (Request size: 333.3 KB, 340,059 characters) [API 1/5]
+Process 4 completed: 20 actually processed, 30 total successful (including skipped)
+  759: CAO SAVG 2025.json (Request size: 271.4 KB, 277,463 characters) [API 4/5]
+  245: LLM extraction completed in 172.65 seconds [API 2/5]
+  234: LLM extraction completed in 166.03 seconds [API 3/5]
+  759: LLM extraction completed in 143.49 seconds [API 4/5]
+  359: LLM extraction completed in 257.96 seconds [API 5/5]
+Process 2 completed: 21 actually processed, 24 total successful (including skipped)
+  549: CAO AGF Detailhandel 2021-2024 def_.json (Request size: 79.1 KB, 80,582 characters) [API 2/5]
+Process 3 completed: 21 actually processed, 24 total successful (including skipped)
+  50: Cao Apotheken 2024-2027 na ttw volledig met bijlagen 07-07-2025.json (Request size: 209.3 KB, 213,892 characters) [API 3/5]
+  549: LLM extraction completed in 100.98 seconds [API 2/5]
+  759: LLM extraction completed in 307.75 seconds [API 1/5]
+Process 4 completed: 21 actually processed, 31 total successful (including skipped)
+  301: CAOWMD20142016_definitief_301214_.json (Request size: 740.1 KB, 756,365 characters) [API 4/5]
+Process 5 completed: 22 actually processed, 30 total successful (including skipped)
+  233: 2024_17dec_schone_tekstcaotbvavv_MvD4.json (Request size: 235.6 KB, 239,314 characters) [API 5/5]
+Process 2 completed: 22 actually processed, 25 total successful (including skipped)
+  234: CAO_Jeugdzorg_28_04_11verlengd_schoon.json (Request size: 240.0 KB, 243,057 characters) [API 2/5]
+Process 1 completed: 21 actually processed, 26 total successful (including skipped)
+  625: cao_hbo_2014_2016.json (Request size: 210.0 KB, 214,434 characters) [API 1/5]
+  50: LLM extraction completed in 234.39 seconds [API 3/5]
+  233: LLM extraction completed in 216.91 seconds [API 5/5]
+  301: LLM extraction completed in 255.35 seconds [API 4/5]
+  234: LLM extraction completed in 163.95 seconds [API 2/5]
+  625: LLM extraction completed in 154.60 seconds [API 1/5]
+Process 3 completed: 22 actually processed, 25 total successful (including skipped)
+  822: CAO_CAR_2017_2019_TTW_juli_2017.json (Request size: 377.1 KB, 385,392 characters) [API 3/5]
+Process 5 completed: 23 actually processed, 31 total successful (including skipped)
+  2266: Integrale cao-tekst visdetailhandel 2024 .json (Request size: 192.7 KB, 196,202 characters) [API 5/5]
+Process 4 completed: 22 actually processed, 32 total successful (including skipped)
+  1287: Reglement_Garantiefonds_07_12_2011__2_.json (Request size: 18.9 KB, 19,345 characters) [API 4/5]
+Process 2 completed: 23 actually processed, 26 total successful (including skipped)
+  243: 20120946N_Cao_hoveniers_2011tm2013_TWW_artikel_9.json (Request size: 226.7 KB, 230,838 characters) [API 2/5]
+Process 1 completed: 22 actually processed, 27 total successful (including skipped)
+  1639: Dhz-cao 2009-2011 def.json (Request size: 146.0 KB, 149,033 characters) [API 1/5]
+  1287: LLM extraction completed in 74.14 seconds [API 4/5]
+  2266: LLM extraction completed in 149.17 seconds [API 5/5]
+  822: LLM extraction completed in 240.94 seconds [API 3/5]
+  1639: LLM extraction completed in 138.75 seconds [API 1/5]
+Process 4 completed: 23 actually processed, 33 total successful (including skipped)
+  1494: Versie 20250114 Teksten CAO PO 2024-2025.json (Request size: 374.6 KB, 383,020 characters) [API 4/5]
+Process 5 completed: 24 actually processed, 32 total successful (including skipped)
+  1285: CAO_tekst_2013_2015_def.json (Request size: 97.0 KB, 98,927 characters) [API 5/5]
+  243: LLM extraction completed in 263.07 seconds [API 2/5]
+Process 3 completed: 23 actually processed, 26 total successful (including skipped)
+  823: CAO_tekst_2012_2014_definitief.json (Request size: 729.5 KB, 745,405 characters) [API 3/5]
+Process 1 completed: 23 actually processed, 28 total successful (including skipped)
+  727: 220629 cao Retail Non-Food def.json (Request size: 334.9 KB, 341,719 characters) [API 1/5]
+  1494: LLM extraction completed in 152.17 seconds [API 4/5]
+Process 2 completed: 24 actually processed, 27 total successful (including skipped)
+  725: verlengde_cao_LEO__inclusief_ttw_1_maart_2016.json (Request size: 194.2 KB, 197,293 characters) [API 2/5]
+  1285: LLM extraction completed in 228.46 seconds [API 5/5]
+  823: LLM extraction completed in 205.72 seconds [API 3/5]
+Process 4 completed: 24 actually processed, 34 total successful (including skipped)
+  157: Zuivel cao I 1 januari 2023 tot en met 31 maart 2024.json (Request size: 120.9 KB, 123,597 characters) [API 4/5]
+  725: LLM extraction completed in 181.66 seconds [API 2/5]
+Process 5 completed: 25 actually processed, 33 total successful (including skipped)
+  924: AWVN__487825_v1_DefCAO_ANVR_2011_2012.json (Request size: 98.8 KB, 100,607 characters) [API 5/5]
+  727: LLM extraction completed in 341.21 seconds [API 1/5]
+Process 3 completed: 24 actually processed, 27 total successful (including skipped)
+  637: Cao_Binnendienst_schoon.json (Request size: 158.5 KB, 162,055 characters) [API 3/5]
+  157: LLM extraction completed in 222.12 seconds [API 4/5]
+  924: LLM extraction completed in 144.79 seconds [API 5/5]
+Process 2 completed: 25 actually processed, 28 total successful (including skipped)
+  518: CAO_2017_2018_tekst_aangepast_geschoond.json (Request size: 69.4 KB, 70,976 characters) [API 2/5]
+Process 1 completed: 24 actually processed, 29 total successful (including skipped)
+  791: Textielgroothandel_CAO_2011_2012.json (Request size: 105.2 KB, 106,960 characters) [API 1/5]
+  Manually constructed JSON for Cao_Binnendienst_schoon.json [API 3/5]
+  637: LLM extraction completed in 252.73 seconds [API 3/5]
+Process 4 completed: 25 actually processed, 35 total successful (including skipped)
+  301: CAOWMD_aanmelding_VERLENGING_2012_ttw_ivm_avv.json (Request size: 525.4 KB, 533,959 characters) [API 4/5]
+  518: LLM extraction completed in 172.24 seconds [API 2/5]
+Process 5 completed: 26 actually processed, 34 total successful (including skipped)
+  1060: NBBU_CAO_Uitzendkrachten 2015-2019_versie 2019 NL OTF.docx.json (Request size: 162.9 KB, 166,583 characters) [API 5/5]
+  791: LLM extraction completed in 148.23 seconds [API 1/5]
+Process 3 completed: 25 actually processed, 28 total successful (including skipped)
+  2535: Cao MITT 2024-2025 versie 18 06112024 (003).json (Request size: 169.7 KB, 172,842 characters) [API 3/5]
+  301: LLM extraction completed in 213.51 seconds [API 4/5]
+Process 2 completed: 26 actually processed, 29 total successful (including skipped)
+  884: CAO_Kantoor_18_19_def_aanm.json (Request size: 60.4 KB, 61,719 characters) [API 2/5]
+Process 1 completed: 25 actually processed, 30 total successful (including skipped)
+  50: Cao_Apotheken_2012_2013_plat.json (Request size: 201.7 KB, 205,020 characters) [API 1/5]
+  1060: LLM extraction completed in 206.04 seconds [API 5/5]
+  884: LLM extraction completed in 142.69 seconds [API 2/5]
+  2535: LLM extraction completed in 194.01 seconds [API 3/5]
+Process 4 completed: 26 actually processed, 36 total successful (including skipped)
+  791: Cao Textielgroothandel 2023-2024 versie 19-7-2023.json (Request size: 107.0 KB, 108,616 characters) [API 4/5]
+Process 5 completed: 27 actually processed, 35 total successful (including skipped)
+  21: Skipping CAO_tekst_2017_2020.json (already processed)
+  791: cao 2021-2023.json (Request size: 107.3 KB, 109,151 characters) [API 5/5]
+  50: LLM extraction completed in 232.40 seconds [API 1/5]
+Process 2 completed: 27 actually processed, 30 total successful (including skipped)
+  1496: CAO BAKKERSBEDRIJF 1 AUGUSTUS 2020 incl Bijlagen.docx.json (Request size: 588.9 KB, 600,773 characters) [API 2/5]
+Process 3 completed: 26 actually processed, 29 total successful (including skipped)
+  721: cao_HAZ_2014_2015_zwart_versie_II.json (Request size: 352.4 KB, 357,537 characters) [API 3/5]
+  791: LLM extraction completed in 160.25 seconds [API 4/5]
+  791: LLM extraction completed in 141.14 seconds [API 5/5]
+Process 1 completed: 26 actually processed, 31 total successful (including skipped)
+  750: cao 1 april 2022 - 31 maart 2024, definitief.json (Request size: 349.9 KB, 356,528 characters) [API 1/5]
+  721: LLM extraction completed in 158.80 seconds [API 3/5]
+Process 4 completed: 27 actually processed, 37 total successful (including skipped)
+  233: CAOtekst_2014_PvL_6mei2014.json (Request size: 302.4 KB, 307,543 characters) [API 4/5]
+Process 5 completed: 28 actually processed, 37 total successful (including skipped)
+  823: CAO_tekst_2011_2012_compleet_versie_19_juli.json (Request size: 778.2 KB, 794,071 characters) [API 5/5]
+  750: LLM extraction completed in 145.93 seconds [API 1/5]
+  1496: LLM extraction completed in 265.92 seconds [API 2/5]
+Process 3 completed: 27 actually processed, 30 total successful (including skipped)
+  2948: cao_teksten_2013_2014_aanmelding.json (Request size: 233.6 KB, 238,715 characters) [API 3/5]
+  233: LLM extraction completed in 173.93 seconds [API 4/5]
+Process 1 completed: 27 actually processed, 32 total successful (including skipped)
+  1285: CAO_tekst_2013_2015.json (Request size: 98.0 KB, 99,972 characters) [API 1/5]
+Process 2 completed: 28 actually processed, 31 total successful (including skipped)
+  433: CAO 2024 (1-1-2024 tm 30-6-2024)_2.json (Request size: 278.6 KB, 284,485 characters) [API 2/5]
+Process 4 completed: 28 actually processed, 38 total successful (including skipped)
+  475: Definitieve cao Sport 2022 - 2023.json (Request size: 136.0 KB, 138,737 characters) [API 4/5]
+  433: LLM extraction completed in 158.98 seconds [API 2/5]
+  1285: LLM extraction completed in 171.05 seconds [API 1/5]
+  475: LLM extraction completed in 156.93 seconds [API 4/5]
+Process 2 completed: 29 actually processed, 32 total successful (including skipped)
+  2948: cao_VVT.json (Request size: 240.6 KB, 245,925 characters) [API 2/5]
+Process 1 completed: 28 actually processed, 33 total successful (including skipped)
+  359: VBZ_cao_2014.json (Request size: 204.8 KB, 209,213 characters) [API 1/5]
+  Attempt 1 failed (504 timeout), retrying in 2 minutes...
+Process 4 completed: 29 actually processed, 39 total successful (including skipped)
+  26: Skipping cao 2021 compleetnav opmerkingen SZW.json (already processed)
+  2535: CAO_MITT_2012_2014_schoon_dd__18_10_2012.json (Request size: 269.2 KB, 274,258 characters) [API 4/5]
+  Attempt 1 failed (504 timeout), retrying in 2 minutes...
+  2535: LLM extraction completed in 131.34 seconds [API 4/5]
+  Manually constructed JSON for VBZ_cao_2014.json [API 1/5]
+  359: LLM extraction completed in 325.87 seconds [API 1/5]
+  2948: LLM extraction completed in 358.43 seconds [API 2/5]
+Process 4 completed: 30 actually processed, 41 total successful (including skipped)
+  433: CAO 2024 (1-1-2024 tm 30-6-2024)_1.json (Request size: 278.6 KB, 284,485 characters) [API 4/5]
+  823: LLM extraction completed in 996.54 seconds [API 5/5]
+Process 1 completed: 29 actually processed, 34 total successful (including skipped)
+  3313: cao_NWb_2015_2018.json (Request size: 130.0 KB, 132,857 characters) [API 1/5]
+Process 2 completed: 30 actually processed, 33 total successful (including skipped)
+  2948: cao_2014_2016_aanmelding.json (Request size: 323.9 KB, 331,104 characters) [API 2/5]
+  433: LLM extraction completed in 135.61 seconds [API 4/5]
+Process 5 completed: 29 actually processed, 38 total successful (including skipped)
+  2297: c2255_f14208_fp3241_CAO_TI_17_19_arcering.json (Request size: 391.0 KB, 399,598 characters) [API 5/5]
+  2948: LLM extraction completed in 1119.12 seconds [API 3/5]
+  3313: LLM extraction completed in 214.61 seconds [API 1/5]
+Process 4 completed: 31 actually processed, 42 total successful (including skipped)
+  10: Skipping TTW_CAO_1_7_2013.json (already processed)
+  1639: Cao_DHZ_branche_2015_17_getekend.json (Request size: 94.6 KB, 96,653 characters) [API 4/5]
+Process 3 completed: 28 actually processed, 31 total successful (including skipped)
+  254: cao 2024-2025, 30 januari 2024 integraal.json (Request size: 365.6 KB, 373,406 characters) [API 3/5]
+Process 1 completed: 30 actually processed, 35 total successful (including skipped)
+  83: cao_voor_de_betonproductenindustrie_2013__2014.json (Request size: 125.2 KB, 125,283 characters) [API 1/5]
+  2297: LLM extraction completed in 298.80 seconds [API 5/5]
+  1639: LLM extraction completed in 176.03 seconds [API 4/5]
+  2948: LLM extraction completed in 392.73 seconds [API 2/5]
+  254: LLM extraction completed in 214.59 seconds [API 3/5]
+Process 5 completed: 30 actually processed, 39 total successful (including skipped)
+  1574: Wijzigingen CAO GGZ 2019-2021 excl bijlage VI - 31 december 2020 definitief.docx.json (Request size: 366.4 KB, 374,067 characters) [API 5/5]
+Process 4 completed: 32 actually processed, 44 total successful (including skipped)
+  759: CAO SAG 2016 2021 ttw 3 april 2020.json (Request size: 263.0 KB, 268,974 characters) [API 4/5]
+Process 2 completed: 31 actually processed, 34 total successful (including skipped)
+  1494: CAO-PO 2023-2024.json (Request size: 407.7 KB, 416,950 characters) [API 2/5]
+  83: LLM extraction completed in 252.98 seconds [API 1/5]
+  759: LLM extraction completed in 152.15 seconds [API 4/5]
+Process 3 completed: 29 actually processed, 32 total successful (including skipped)
+  1285: cao tekst Tank Was 2020 2021 versie 22 juli 2020.doc.json (Request size: 132.6 KB, 135,200 characters) [API 3/5]
+  1494: LLM extraction completed in 160.78 seconds [API 2/5]
+Process 1 completed: 31 actually processed, 36 total successful (including skipped)
+  727: 230630 cao Retail Non-Food def.json (Request size: 338.8 KB, 345,614 characters) [API 1/5]
+  1574: LLM extraction completed in 255.38 seconds [API 5/5]
+Process 4 completed: 33 actually processed, 45 total successful (including skipped)
+  10: Skipping Cao Bouw en Infra 2023.json (already processed)
+  157: Zuivel I 2020.json (Request size: 100.3 KB, 102,475 characters) [API 4/5]
+  1285: LLM extraction completed in 202.08 seconds [API 3/5]
+Process 2 completed: 32 actually processed, 35 total successful (including skipped)
+  759: cao_2011_2013_ttw4_tijdelijke_maatr_aanmelding.json (Request size: 334.8 KB, 341,577 characters) [API 2/5]
+Process 5 completed: 31 actually processed, 40 total successful (including skipped)
+  2266: VNV_cao_boekje_A5_2015_408280_C.json (Request size: 39.8 KB, 40,638 characters) [API 5/5]
+  727: LLM extraction completed in 280.47 seconds [API 1/5]
+Process 3 completed: 30 actually processed, 33 total successful (including skipped)
+  650: Frugi_Venta_2009-2010_Groothandel_AGF.json (Request size: 337.7 KB, 344,361 characters) [API 3/5]
+  2266: LLM extraction completed in 166.37 seconds [API 5/5]
+  759: LLM extraction completed in 260.44 seconds [API 2/5]
+  157: LLM extraction completed in 296.08 seconds [API 4/5]
+Process 1 completed: 32 actually processed, 37 total successful (including skipped)
+  924: 2019 Tekst cao-reisbranche 1 november 2018 - 1 september 2019.pdf .json (Request size: 68.2 KB, 69,490 characters) [API 1/5]
+  650: LLM extraction completed in 232.02 seconds [API 3/5]
+Process 5 completed: 32 actually processed, 41 total successful (including skipped)
+  824: CAO_MB_2017_2019_TTW_LL_nov_2018.json (Request size: 410.1 KB, 419,036 characters) [API 5/5]
+Process 2 completed: 33 actually processed, 36 total successful (including skipped)
+  823: CAO MvT 2018-2020 DEF 2 oktober 2019.docx.json (Request size: 737.0 KB, 751,787 characters) [API 2/5]
+Process 4 completed: 34 actually processed, 47 total successful (including skipped)
+  1639: cao VWDHZ in pdf met handtekeningen.json (Request size: 110.3 KB, 112,433 characters) [API 4/5]
+  924: LLM extraction completed in 124.74 seconds [API 1/5]
+Process 3 completed: 31 actually processed, 34 total successful (including skipped)
+  1165: cao 1 januari 2022 - 31 december 2023 definitief 12052022.json (Request size: 195.6 KB, 199,577 characters) [API 3/5]
+  1639: LLM extraction completed in 167.70 seconds [API 4/5]
+  824: LLM extraction completed in 209.51 seconds [API 5/5]
+Process 1 completed: 33 actually processed, 38 total successful (including skipped)
+  1639: Dhz_cao_2009_2011_def.json (Request size: 146.0 KB, 149,033 characters) [API 1/5]
+  823: LLM extraction completed in 254.04 seconds [API 2/5]
+  1165: LLM extraction completed in 131.97 seconds [API 3/5]
+  1639: LLM extraction completed in 139.65 seconds [API 1/5]
+Process 4 completed: 35 actually processed, 48 total successful (including skipped)
+  750: cao 1 april 2022 - 31 maart 2024, definitief 01052023.json (Request size: 364.5 KB, 371,464 characters) [API 4/5]
+Process 5 completed: 33 actually processed, 42 total successful (including skipped)
+  41: Skipping CAO-tekst 2023-2024 versie 1.0 zonder wijzigingen.json (already processed)
+  526: CAO meubelindustrie 2020-2021 def_1.json (Request size: 197.1 KB, 201,126 characters) [API 5/5]
+Process 2 completed: 34 actually processed, 37 total successful (including skipped)
+  1296: Cdef_ ICK CAO 2022.json (Request size: 174.6 KB, 178,342 characters) [API 2/5]
+Process 3 completed: 32 actually processed, 35 total successful (including skipped)
+  2535: CAOMITT2014_16_tussent_wijz__juli_2017_sch_szw.json (Request size: 310.7 KB, 316,203 characters) [API 3/5]
+  750: LLM extraction completed in 142.45 seconds [API 4/5]
+Process 1 completed: 34 actually processed, 39 total successful (including skipped)
+  487: Cao Basis schone versie 09-12-2024 en statuten.json (Request size: 287.6 KB, 293,711 characters) [API 1/5]
+  1296: LLM extraction completed in 135.97 seconds [API 2/5]
+  526: LLM extraction completed in 222.83 seconds [API 5/5]
+  2535: LLM extraction completed in 160.68 seconds [API 3/5]
+Process 4 completed: 36 actually processed, 49 total successful (including skipped)
+  727: 201207 Cao Retail Non-Food 1-1-21 definitief.docx.json (Request size: 327.9 KB, 334,593 characters) [API 4/5]
+  487: LLM extraction completed in 157.09 seconds [API 1/5]
+Process 2 completed: 35 actually processed, 38 total successful (including skipped)
+  727: Cao_Fashion_en_Sport_Inretail_21_8_2013.json (Request size: 260.9 KB, 266,120 characters) [API 2/5]
+Process 5 completed: 34 actually processed, 44 total successful (including skipped)
+  1296: Tekst_ICK_CAO_2011.json (Request size: 210.3 KB, 214,915 characters) [API 5/5]
+Process 3 completed: 33 actually processed, 36 total successful (including skipped)
+  573: CAO_pluimvee_per_1_mei_2012.json (Request size: 136.3 KB, 138,817 characters) [API 3/5]
+Process 1 completed: 35 actually processed, 40 total successful (including skipped)
+  1618: Cao UMC wijzigingen per januari 2023.json (Request size: 436.0 KB, 444,359 characters) [API 1/5]
+  1296: LLM extraction completed in 145.09 seconds [API 5/5]
+  727: LLM extraction completed in 235.83 seconds [API 4/5]
+  727: LLM extraction completed in 207.68 seconds [API 2/5]
+  573: LLM extraction completed in 196.95 seconds [API 3/5]
+  1618: LLM extraction completed in 188.51 seconds [API 1/5]
+Process 5 completed: 35 actually processed, 45 total successful (including skipped)
+  1494: Def cao primair onderwijs 2019-2020.json (Request size: 484.1 KB, 494,507 characters) [API 5/5]
+Process 4 completed: 37 actually processed, 50 total successful (including skipped)
+  51: CAO_Timmer_aanp_avv_14_4_2014.json (Request size: 239.0 KB, 242,198 characters) [API 4/5]
+Process 2 completed: 36 actually processed, 39 total successful (including skipped)
+  433: CAO_2014_2016_2.json (Request size: 153.4 KB, 156,675 characters) [API 2/5]
+Process 3 completed: 34 actually processed, 37 total successful (including skipped)
+  301: Cao Sociaal Werk 2023-2025(definitief240723)def.json (Request size: 511.5 KB, 522,750 characters) [API 3/5]
+  1494: LLM extraction completed in 104.06 seconds [API 5/5]
+Process 1 completed: 36 actually processed, 41 total successful (including skipped)
+  243: TTW_Cao_hov_2_8_16.json (Request size: 262.0 KB, 267,035 characters) [API 1/5]
+  51: LLM extraction completed in 221.73 seconds [API 4/5]
+  433: LLM extraction completed in 190.08 seconds [API 2/5]
+  301: LLM extraction completed in 193.43 seconds [API 3/5]
+Process 5 completed: 36 actually processed, 46 total successful (including skipped)
+  243: Cao_Hov_ttw_5_12_2018.json (Request size: 257.2 KB, 261,921 characters) [API 5/5]
+  243: LLM extraction completed in 205.67 seconds [API 1/5]
+Process 4 completed: 38 actually processed, 51 total successful (including skipped)
+  214: 230428 cao OB 1.1.2023_31.3.2024_DEF.json (Request size: 243.0 KB, 248,368 characters) [API 4/5]
+Process 2 completed: 37 actually processed, 40 total successful (including skipped)
+  10: Skipping CAO_2011_aanmelding_TTW_11_2011.json (already processed)
+  1869: cao_Glastuinbouw_incl_ttw_1_1_2018_integrale_tekst.json (Request size: 156.1 KB, 157,897 characters) [API 2/5]
+  243: LLM extraction completed in 167.46 seconds [API 5/5]
+Process 3 completed: 35 actually processed, 38 total successful (including skipped)
+  730: CAO Technische Groothandel 2023-2025_Versie 2024-04-04.json (Request size: 117.8 KB, 120,411 characters) [API 3/5]
+  Attempt 1 failed (InternalServerError), retrying in 2 minutes...
+Process 1 completed: 37 actually processed, 42 total successful (including skipped)
+  1060: NBBU_CAO_Uitzendkrachten_2018.json (Request size: 145.5 KB, 148,816 characters) [API 1/5]
+  214: LLM extraction completed in 170.06 seconds [API 4/5]
+  1869: LLM extraction completed in 189.93 seconds [API 2/5]
+Process 5 completed: 37 actually processed, 47 total successful (including skipped)
+  884: CAO_Kantoor_en_Boek_17_18_def.json (Request size: 59.3 KB, 60,643 characters) [API 5/5]
+  1060: LLM extraction completed in 181.74 seconds [API 1/5]
+  884: LLM extraction completed in 111.28 seconds [API 5/5]
+Process 4 completed: 39 actually processed, 52 total successful (including skipped)
+  26: Skipping Vleessector_cao_incl__reglement_ongerenvooieerd.json (already processed)
+  730: LLM extraction completed in 300.88 seconds [API 3/5]
+  43: Skipping Cao Architectenbureaus 2021 2023 incl functiehandboek schoon.json (already processed)
+  496: Cao Particuliere Beveiliging versie 7 juni 2023 ZONDER zichtbare wijzigingen.json (Request size: 289.4 KB, 294,846 characters) [API 4/5]
+Process 2 completed: 38 actually processed, 42 total successful (including skipped)
+  1945: Cao_productiegerichte_dierhouderij_2014_2017.json (Request size: 148.0 KB, 150,183 characters) [API 2/5]
+Process 1 completed: 38 actually processed, 43 total successful (including skipped)
+  80: CAO_Waterbouw_2013_2014_def.json (Request size: 177.2 KB, 180,929 characters) [API 1/5]
+  496: LLM extraction completed in 131.79 seconds [API 4/5]
+Process 5 completed: 38 actually processed, 48 total successful (including skipped)
+  359: Zoetwarenindustrie 2019-2020 na ttw ivm artikel 14 en 25 lid 3.pdf .json (Request size: 240.1 KB, 245,284 characters) [API 5/5]
+Process 3 completed: 36 actually processed, 39 total successful (including skipped)
+  1612: Integrale Cao Kinderopvang 2024.json (Request size: 461.0 KB, 470,926 characters) [API 3/5]
+  80: LLM extraction completed in 125.95 seconds [API 1/5]
+  1612: LLM extraction completed in 98.27 seconds [API 3/5]
+  1945: LLM extraction completed in 253.97 seconds [API 2/5]
+Process 4 completed: 40 actually processed, 55 total successful (including skipped)
+  823: CAO_MvT_2014_2018_11_september.json (Request size: 721.2 KB, 736,835 characters) [API 4/5]
+Process 1 completed: 39 actually processed, 44 total successful (including skipped)
+  1471: CAO Grondstoffen Energie en Omgeving Services 2022-2023-2024 - signed.json (Request size: 449.3 KB, 459,189 characters) [API 1/5]
+  Manually constructed JSON for Zoetwarenindustrie 2019-2020 na ttw ivm artikel 14 en 25 lid 3.pdf .json [API 5/5]
+  359: LLM extraction completed in 282.45 seconds [API 5/5]
+Process 3 completed: 37 actually processed, 40 total successful (including skipped)
+  1945: cao Productiegerichte Dierhouderij 1 januari 2022 - 31 december 2023.json (Request size: 138.8 KB, 141,066 characters) [API 3/5]
+  Attempt 1 failed (InternalServerError), retrying in 2 minutes...
+Process 2 completed: 39 actually processed, 43 total successful (including skipped)
+  496: CAO PB 18 dec 2024- 27 dec 2026 zonder zichtbare wijzigingen.json (Request size: 267.2 KB, 271,975 characters) [API 2/5]
+  Attempt 1 failed (InternalServerError), retrying in 2 minutes...
+  823: LLM extraction completed in 186.64 seconds [API 4/5]
+  1471: LLM extraction completed in 178.19 seconds [API 1/5]
+Process 5 completed: 39 actually processed, 49 total successful (including skipped)
+  833: CAO-Woondiensten 2022-2023 versie 01-09-2022.json (Request size: 213.2 KB, 217,759 characters) [API 5/5]
+Process 4 completed: 41 actually processed, 56 total successful (including skipped)
+  1612: CAO_Kinderopvang.json (Request size: 323.5 KB, 330,038 characters) [API 4/5]
+  1945: LLM extraction completed in 286.94 seconds [API 3/5]
+  496: LLM extraction completed in 315.74 seconds [API 2/5]
+Process 1 completed: 40 actually processed, 45 total successful (including skipped)
+  316: CAO LMB 2020 2023 schone versie feb 22.json (Request size: 104.9 KB, 107,169 characters) [API 1/5]
+  1612: LLM extraction completed in 154.52 seconds [API 4/5]
+  833: LLM extraction completed in 224.26 seconds [API 5/5]
+Process 3 completed: 38 actually processed, 41 total successful (including skipped)
+  1188: CAO PDF DEF.json (Request size: 317.1 KB, 324,280 characters) [API 3/5]
+Process 2 completed: 40 actually processed, 44 total successful (including skipped)
+  924: cao Reisbranche 1jul2024-1jul2026 def.json (Request size: 184.8 KB, 187,579 characters) [API 2/5]
+  316: LLM extraction completed in 226.92 seconds [API 1/5]
+Process 4 completed: 42 actually processed, 57 total successful (including skipped)
+  43: Skipping Cao_2013_2015.json (already processed)
+  1060: NBBU_CAO_Uitzendkrachten_2015_per_1_juli_DEF.json (Request size: 146.3 KB, 149,677 characters) [API 4/5]
+Process 5 completed: 40 actually processed, 50 total successful (including skipped)
+  2070: 2024.12.10 WFC cao 2025-2027 Clean Version Final_ getekend szw.json (Request size: 89.5 KB, 91,311 characters) [API 5/5]
+  1188: LLM extraction completed in 140.71 seconds [API 3/5]
+  924: LLM extraction completed in 137.62 seconds [API 2/5]
+  2070: LLM extraction completed in 132.31 seconds [API 5/5]
+Process 1 completed: 41 actually processed, 46 total successful (including skipped)
+  727: 171115_Cao_F_S__L_2016_2018_definitief_hvb_1.json (Request size: 359.2 KB, 366,674 characters) [API 1/5]
+Process 3 completed: 39 actually processed, 42 total successful (including skipped)
+  683: CAO-2021-2022 ETD tekst TTW d.d. 20 juni 2023.json (Request size: 138.7 KB, 140,962 characters) [API 3/5]
+Process 2 completed: 41 actually processed, 45 total successful (including skipped)
+  650: Groothandel in Groenten en Fruit 2019-2020 definitief 03112019.json (Request size: 157.0 KB, 160,382 characters) [API 2/5]
+Process 5 completed: 41 actually processed, 51 total successful (including skipped)
+  625: CAO_2021-2022_DEF.json (Request size: 212.2 KB, 216,424 characters) [API 5/5]
+  1060: LLM extraction completed in 326.75 seconds [API 4/5]
+  683: LLM extraction completed in 176.53 seconds [API 3/5]
+  727: LLM extraction completed in 263.04 seconds [API 1/5]
+  650: LLM extraction completed in 198.25 seconds [API 2/5]
+  625: LLM extraction completed in 156.27 seconds [API 5/5]
+Process 4 completed: 43 actually processed, 59 total successful (including skipped)
+  526: Meubelindustrie__29_juli_2011.json (Request size: 300.4 KB, 306,456 characters) [API 4/5]
+Process 3 completed: 40 actually processed, 43 total successful (including skipped)
+  748: Cao_voor_het_Slagersbedrijf_1_4_13_tm_31_3_14.json (Request size: 148.1 KB, 151,266 characters) [API 3/5]
+Process 1 completed: 42 actually processed, 47 total successful (including skipped)
+  526: CAO_meubelindustrie_2018_2019_Def_1.json (Request size: 196.3 KB, 200,329 characters) [API 1/5]
+Process 2 completed: 42 actually processed, 46 total successful (including skipped)
+  475: Sport 2021 definitief.json (Request size: 127.9 KB, 130,476 characters) [API 2/5]
+Process 5 completed: 42 actually processed, 52 total successful (including skipped)
+  1944: Cao open teelten per 1 maart 2021 tot en met 28 februari 2023 1e TTW integraal.d.json (Request size: 186.7 KB, 189,900 characters) [API 5/5]
+  475: LLM extraction completed in 111.67 seconds [API 2/5]
+  526: LLM extraction completed in 258.22 seconds [API 4/5]
+  526: LLM extraction completed in 179.81 seconds [API 1/5]
+  748: LLM extraction completed in 259.22 seconds [API 3/5]
+  1944: LLM extraction completed in 236.78 seconds [API 5/5]
+Process 2 completed: 43 actually processed, 47 total successful (including skipped)
+  43: Skipping 43 Cao voor architectenbureaus_ 1 jan tm 31 dec 2024_schone tekst.json (already processed)
+  433: CAO 2019-2021 nota van wijziging 8-7-2019.docx.json (Request size: 182.5 KB, 186,386 characters) [API 2/5]
+Process 4 completed: 44 actually processed, 60 total successful (including skipped)
+  301: Cao Sociaal Werk 2023-2025(ttw031224opttw010724)definitief.json (Request size: 570.8 KB, 583,375 characters) [API 4/5]
+Process 1 completed: 43 actually processed, 48 total successful (including skipped)
+  2535: CAO MITT 2021-2022.json (Request size: 243.7 KB, 248,427 characters) [API 1/5]
+  Attempt 1 failed (InternalServerError), retrying in 2 minutes...
+Process 3 completed: 41 actually processed, 44 total successful (including skipped)
+  26: Skipping cao 2019-2020 met wijzigingen geacepteerd definitief.docx.json (already processed)
+  245: Tekst CAO Tuinzaadbedrijven 1 januari 2024 - 31 december 2025 def.json (Request size: 105.1 KB, 106,601 characters) [API 3/5]
+Process 5 completed: 43 actually processed, 53 total successful (including skipped)
+  234: Cao Jeugdzorg 2024- 2025 aanmeldversie juli 2024 schoon.json (Request size: 325.7 KB, 332,993 characters) [API 5/5]
+  301: LLM extraction completed in 150.16 seconds [API 4/5]
+  433: LLM extraction completed in 255.11 seconds [API 2/5]
+  245: LLM extraction completed in 184.05 seconds [API 3/5]
+  234: LLM extraction completed in 160.96 seconds [API 5/5]
+  2535: LLM extraction completed in 294.57 seconds [API 1/5]
+Process 4 completed: 45 actually processed, 61 total successful (including skipped)
+  1944: Open Teelten integrale tekst incl ttw.json (Request size: 178.2 KB, 180,848 characters) [API 4/5]
+Process 2 completed: 44 actually processed, 49 total successful (including skipped)
+  633: ABU CAO voor Uitzendkrachten 30-12-2019 integraal mei.json (Request size: 186.3 KB, 190,371 characters) [API 2/5]
+  Attempt 1 failed (InternalServerError), retrying in 2 minutes...
+Process 3 completed: 42 actually processed, 46 total successful (including skipped)
+  301: CAOWMD1213__270213__definitief.json (Request size: 544.5 KB, 553,474 characters) [API 3/5]
+Process 5 completed: 44 actually processed, 54 total successful (including skipped)
+  148: cao tekst 2010 - 2012 per 1-4-2011.json (Request size: 152.3 KB, 155,800 characters) [API 5/5]
+  1944: LLM extraction completed in 158.98 seconds [API 4/5]
+Process 1 completed: 44 actually processed, 49 total successful (including skipped)
+  3313: cao NWb 2023 ondertekende versie.json (Request size: 104.4 KB, 106,679 characters) [API 1/5]
+  301: LLM extraction completed in 181.07 seconds [API 3/5]
+  3313: LLM extraction completed in 146.08 seconds [API 1/5]
+Process 4 completed: 46 actually processed, 62 total successful (including skipped)
+  650: CAO Groothandel in Groenten en Fruit 2019-2020 na ttw art 13 23 40 bijlage III V.json (Request size: 162.7 KB, 166,266 characters) [API 4/5]
+  148: LLM extraction completed in 223.83 seconds [API 5/5]
+  633: LLM extraction completed in 288.31 seconds [API 2/5]
+Process 3 completed: 43 actually processed, 47 total successful (including skipped)
+  633: CAO_voor_uzk_16_9_2015_integraal.json (Request size: 253.9 KB, 259,301 characters) [API 3/5]
+Process 1 completed: 45 actually processed, 50 total successful (including skipped)
+  833: CAO_Woondiensten_2017_2018.json (Request size: 146.6 KB, 149,879 characters) [API 1/5]
+Process 5 completed: 45 actually processed, 55 total successful (including skipped)
+  791: cao_2016_2017_Textielgroothandel.json (Request size: 111.8 KB, 113,645 characters) [API 5/5]
+Process 2 completed: 45 actually processed, 50 total successful (including skipped)
+  41: Skipping cao tekst.json (already processed)
+  306: CAOtekst_AVV__integraal__verlenging.json (Request size: 189.0 KB, 193,059 characters) [API 2/5]
+  650: LLM extraction completed in 291.44 seconds [API 4/5]
+  833: LLM extraction completed in 155.68 seconds [API 1/5]
+  306: LLM extraction completed in 129.34 seconds [API 2/5]
+  633: LLM extraction completed in 231.89 seconds [API 3/5]
+  791: LLM extraction completed in 165.47 seconds [API 5/5]
+Process 4 completed: 47 actually processed, 63 total successful (including skipped)
+  1496: 01_CAO_BAKKERSBEDRIJF_1_APRIL_2015.json (Request size: 159.1 KB, 162,578 characters) [API 4/5]
+Process 1 completed: 46 actually processed, 51 total successful (including skipped)
+  1612: Integrale cao Kinderopvang 2020 - 2021.json (Request size: 435.7 KB, 445,057 characters) [API 1/5]
+Process 2 completed: 46 actually processed, 52 total successful (including skipped)
+  2535: SZW_CAOMITT2016_19_melding__tussent__wijz__sch.json (Request size: 306.1 KB, 310,441 characters) [API 2/5]
+Process 3 completed: 44 actually processed, 48 total successful (including skipped)
+  1060: NBBU_CAO_Uitzendkrachten_2015.json (Request size: 131.6 KB, 134,580 characters) [API 3/5]
+Process 5 completed: 46 actually processed, 56 total successful (including skipped)
+  633: CAO UZK januari 2011 integraal.json (Request size: 190.8 KB, 194,861 characters) [API 5/5]
+  1496: LLM extraction completed in 167.93 seconds [API 4/5]
+  2535: LLM extraction completed in 134.59 seconds [API 2/5]
+  1612: LLM extraction completed in 211.67 seconds [API 1/5]
+  Manually constructed JSON for NBBU_CAO_Uitzendkrachten_2015.json [API 3/5]
+  1060: LLM extraction completed in 189.13 seconds [API 3/5]
+  633: LLM extraction completed in 239.62 seconds [API 5/5]
+Process 4 completed: 48 actually processed, 64 total successful (including skipped)
+  721: 12_01_25_CAO_tekst_definitief.json (Request size: 139.1 KB, 142,032 characters) [API 4/5]
+Process 2 completed: 47 actually processed, 53 total successful (including skipped)
+  573: CAO_pluimvee_per_1_januari_2017_per_9_2_2017.json (Request size: 160.0 KB, 163,034 characters) [API 2/5]
+Process 1 completed: 47 actually processed, 52 total successful (including skipped)
+  730: CAOTG20162018Aanpassingen20170807.json (Request size: 131.9 KB, 134,251 characters) [API 1/5]
+Process 3 completed: 45 actually processed, 49 total successful (including skipped)
+  182: 202404~2.json (Request size: 156.2 KB, 157,861 characters) [API 3/5]
+Process 5 completed: 47 actually processed, 57 total successful (including skipped)
+  573: CAO_pluimvee_per_1_januari_2017.json (Request size: 160.2 KB, 163,295 characters) [API 5/5]
+  721: LLM extraction completed in 166.73 seconds [API 4/5]
+  182: LLM extraction completed in 162.15 seconds [API 3/5]
+  573: LLM extraction completed in 284.54 seconds [API 2/5]
+  Manually constructed JSON for CAOTG20162018Aanpassingen20170807.json [API 1/5]
+  730: LLM extraction completed in 254.18 seconds [API 1/5]
+Process 4 completed: 49 actually processed, 65 total successful (including skipped)
+  234: Jeugdzorg_Cao_2011_2013_def020712.json (Request size: 246.0 KB, 249,181 characters) [API 4/5]
+Process 3 completed: 46 actually processed, 50 total successful (including skipped)
+  21: Skipping CAO 2010 aanmelding.json (already processed)
+  214: Cao_OB_2015_2019_invulling_loonruimte_2016.json (Request size: 154.5 KB, 158,014 characters) [API 3/5]
+  573: LLM extraction completed in 304.27 seconds [API 5/5]
+  234: LLM extraction completed in 116.83 seconds [API 4/5]
+Process 2 completed: 48 actually processed, 54 total successful (including skipped)
+  182: 20221124 cao_horeca_2022-2023 na 2020_wijziging bijlage loontabellen schoon.json (Request size: 105.5 KB, 106,136 characters) [API 2/5]
+Process 1 completed: 48 actually processed, 53 total successful (including skipped)
+  1944: CAO_Open_Teelten__1_juli_2014_tm_30_juni_2015.json (Request size: 185.3 KB, 188,654 characters) [API 1/5]
+Process 5 completed: 48 actually processed, 58 total successful (including skipped)
+  725: cao GGI incl tref woorden def versie 2.docx.json (Request size: 215.3 KB, 219,579 characters) [API 5/5]
+  214: LLM extraction completed in 191.65 seconds [API 3/5]
+Process 4 completed: 50 actually processed, 66 total successful (including skipped)
+  1291: CAO_boekje_NHG_2014_2018_versie_2_mei_2014.json (Request size: 42.0 KB, 42,992 characters) [API 4/5]
+  1944: LLM extraction completed in 154.78 seconds [API 1/5]
+  1291: LLM extraction completed in 70.54 seconds [API 4/5]
+  182: LLM extraction completed in 241.98 seconds [API 2/5]
+Process 3 completed: 47 actually processed, 52 total successful (including skipped)
+  1165: cao_definitief_3_0_nav_opmerkingen_szw_avv.json (Request size: 161.4 KB, 164,629 characters) [API 3/5]
+Process 1 completed: 49 actually processed, 54 total successful (including skipped)
+  633: ABU CAO voor Uitzendkrachten 2021 - 2023 versie juli 2022 integraal.json (Request size: 196.9 KB, 201,228 characters) [API 1/5]
+Process 4 completed: 51 actually processed, 67 total successful (including skipped)
+  301: caosociaalwerk20172019_def191017_inclfuboek.json (Request size: 513.2 KB, 524,341 characters) [API 4/5]
+Process 2 completed: 49 actually processed, 55 total successful (including skipped)
+  1287: Grafimedia cao 2022-2024 15 februari 2022.json (Request size: 143.6 KB, 146,784 characters) [API 2/5]
+  725: LLM extraction completed in 309.30 seconds [API 5/5]
+  1165: LLM extraction completed in 201.25 seconds [API 3/5]
+  1287: LLM extraction completed in 154.51 seconds [API 2/5]
+  301: LLM extraction completed in 218.99 seconds [API 4/5]
+Process 5 completed: 49 actually processed, 59 total successful (including skipped)
+  526: CAO meubelindustrie 2022-2023.json (Request size: 183.7 KB, 186,504 characters) [API 5/5]
+Process 3 completed: 48 actually processed, 53 total successful (including skipped)
+  20: Skipping CAO_KNV_1_januari_2014__1_januari_2017.json (already processed)
+  3313: CAO NWb 2018-2021-def.json (Request size: 98.9 KB, 101,095 characters) [API 3/5]
+  633: LLM extraction completed in 404.56 seconds [API 1/5]
+Process 2 completed: 50 actually processed, 56 total successful (including skipped)
+  748: 01-CAO~1.DOC.json (Request size: 147.0 KB, 150,289 characters) [API 2/5]
+Process 4 completed: 52 actually processed, 68 total successful (including skipped)
+  824: CAO_MB_2017_2019_TTW_GP_nov_2017.json (Request size: 410.1 KB, 418,990 characters) [API 4/5]
+  526: LLM extraction completed in 216.07 seconds [API 5/5]
+  3313: LLM extraction completed in 188.23 seconds [API 3/5]
+Process 1 completed: 50 actually processed, 55 total successful (including skipped)
+  1496: 01_CAO_BAKKERSBEDRIJF_1_MAART_2012___definitief.json (Request size: 208.3 KB, 211,314 characters) [API 1/5]
+  748: LLM extraction completed in 216.99 seconds [API 2/5]
+  824: LLM extraction completed in 193.09 seconds [API 4/5]
+Process 5 completed: 50 actually processed, 60 total successful (including skipped)
+  633: CAO_voor_Uitzendkrachten_dec__2012_integraal.json (Request size: 237.3 KB, 242,422 characters) [API 5/5]
+Process 3 completed: 49 actually processed, 55 total successful (including skipped)
+  1285: cao tekst Tank Was 2022-2023, definitief 28032022.json (Request size: 123.2 KB, 125,925 characters) [API 3/5]
+  1496: LLM extraction completed in 198.62 seconds [API 1/5]
+Process 2 completed: 51 actually processed, 57 total successful (including skipped)
+  679: Taxivervoer_CAO_aann__CAO_627.json (Request size: 183.9 KB, 187,633 characters) [API 2/5]
+Process 4 completed: 53 actually processed, 69 total successful (including skipped)
+  50: Skipping Apotheken_2010_2011_cao_tekst.json (already processed)
+  433: CAO 2022-2024 (met wijzigingen 6-7-2023).json (Request size: 294.0 KB, 300,249 characters) [API 4/5]
+  633: LLM extraction completed in 153.13 seconds [API 5/5]
+  433: LLM extraction completed in 117.39 seconds [API 4/5]
+Process 1 completed: 51 actually processed, 56 total successful (including skipped)
+  730: CAO TG 2023-2025_Versie 2024-12-11.json (Request size: 123.9 KB, 126,623 characters) [API 1/5]
+  679: LLM extraction completed in 172.56 seconds [API 2/5]
+  1285: LLM extraction completed in 267.91 seconds [API 3/5]
+Process 5 completed: 51 actually processed, 61 total successful (including skipped)
+  3335: CAO_PLb_2013_caotekst.json (Request size: 162.4 KB, 165,993 characters) [API 5/5]
+Process 4 completed: 54 actually processed, 71 total successful (including skipped)
+  245: Afspraken cao Tuinzaadbedrijven 2020 versie definitief.json (Request size: 102.1 KB, 103,668 characters) [API 4/5]
+  730: LLM extraction completed in 164.75 seconds [API 1/5]
+Process 2 completed: 52 actually processed, 58 total successful (including skipped)
+  924: 2019 Tekst cao-reisbranche 1 november 2018 - 1 september 2019 - versie 2.0.json (Request size: 182.4 KB, 185,338 characters) [API 2/5]
+Process 3 completed: 50 actually processed, 56 total successful (including skipped)
+  2948: CAO_VVT_2012_2013_docx.json (Request size: 265.1 KB, 270,957 characters) [API 3/5]
+  3335: LLM extraction completed in 173.01 seconds [API 5/5]
+  924: LLM extraction completed in 140.28 seconds [API 2/5]
+  245: LLM extraction completed in 172.87 seconds [API 4/5]
+Process 1 completed: 52 actually processed, 57 total successful (including skipped)
+  2535: CAO MITT 2020 _1.json (Request size: 241.1 KB, 245,977 characters) [API 1/5]
+Process 5 completed: 52 actually processed, 62 total successful (including skipped)
+  317: Tekst CAO GHZ 2021-2024_DEFGEW.json (Request size: 277.7 KB, 283,587 characters) [API 5/5]
+Process 2 completed: 53 actually processed, 59 total successful (including skipped)
+  1612: CAO_Kinderopvang_2018_2019.json (Request size: 393.1 KB, 401,721 characters) [API 2/5]
+Process 4 completed: 55 actually processed, 72 total successful (including skipped)
+  1060: NBBU cao tussentijdse wijzigingen def.json (Request size: 186.4 KB, 190,492 characters) [API 4/5]
+  2535: LLM extraction completed in 187.55 seconds [API 1/5]
+  2948: LLM extraction completed in 384.21 seconds [API 3/5]
+  1612: LLM extraction completed in 128.38 seconds [API 2/5]
+  1060: LLM extraction completed in 129.61 seconds [API 4/5]
+Process 1 completed: 53 actually processed, 58 total successful (including skipped)
+  317: CAO GHZ 2019-2021 versie oktober 2020 zonder wijzigingen bijhouden.docx.json (Request size: 249.2 KB, 254,751 characters) [API 1/5]
+Process 3 completed: 51 actually processed, 57 total successful (including skipped)
+  316: CAO_LMB_2013_2017_SZW_V4_schoon.json (Request size: 142.0 KB, 145,008 characters) [API 3/5]
+  317: LLM extraction completed in 380.52 seconds [API 5/5]
+Process 2 completed: 54 actually processed, 60 total successful (including skipped)
+  148: Cao_boekje_2012_2013.json (Request size: 159.2 KB, 162,759 characters) [API 2/5]
+Process 4 completed: 56 actually processed, 73 total successful (including skipped)
+  496: cao 1 juli 2018 - 30 juni 2023 definitief april 2020.docx.json (Request size: 285.2 KB, 291,640 characters) [API 4/5]
+Process 5 completed: 53 actually processed, 63 total successful (including skipped)
+  679: TTW CAO Taxivervoer 2019 2020 v050320 DEF NET.docx.json (Request size: 275.7 KB, 279,986 characters) [API 5/5]
+  496: LLM extraction completed in 160.26 seconds [API 4/5]
+  317: LLM extraction completed in 305.08 seconds [API 1/5]
+  316: LLM extraction completed in 246.80 seconds [API 3/5]
+  148: LLM extraction completed in 220.42 seconds [API 2/5]
+Process 4 completed: 57 actually processed, 74 total successful (including skipped)
+  1296: ICK_CAO_2015___definitief.json (Request size: 199.5 KB, 203,830 characters) [API 4/5]
+  679: LLM extraction completed in 229.79 seconds [API 5/5]
+Process 1 completed: 54 actually processed, 59 total successful (including skipped)
+  1188: CAO_VO_2011_2012_def.json (Request size: 355.3 KB, 363,384 characters) [API 1/5]
+Process 3 completed: 52 actually processed, 58 total successful (including skipped)
+  26: Skipping Tussentijds_gewijzigde_cao.json (already processed)
+  41: Skipping CAO-tekst 2019_vs2.docx .json (already processed)
+  683: Elektro tekstCAO-2010-2011 (januari 2011).json (Request size: 150.8 KB, 153,874 characters) [API 3/5]
+Process 2 completed: 55 actually processed, 61 total successful (including skipped)
+  2535: CAO MITT 2023 versie 06072023.json (Request size: 261.9 KB, 266,696 characters) [API 2/5]
+  683: LLM extraction completed in 90.48 seconds [API 3/5]
+  1296: LLM extraction completed in 150.45 seconds [API 4/5]
+Process 5 completed: 54 actually processed, 64 total successful (including skipped)
+  2266: Integrale cao-tekst visdetailhandel 2025 geschoond.json (Request size: 215.5 KB, 219,125 characters) [API 5/5]
+  1188: LLM extraction completed in 190.22 seconds [API 1/5]
+  2535: LLM extraction completed in 229.75 seconds [API 2/5]
+Process 3 completed: 53 actually processed, 61 total successful (including skipped)
+  759: CAO_SAG_2016_2019__16_september_2016_.json (Request size: 282.6 KB, 289,000 characters) [API 3/5]
+Process 4 completed: 58 actually processed, 75 total successful (including skipped)
+  41: Skipping CAO-tekst 2021_2022_geschoond.json (already processed)
+  465: sociale afspraken 2020 - 2023 geschoond_1.json (Request size: 115.7 KB, 117,978 characters) [API 4/5]
+  2266: LLM extraction completed in 157.29 seconds [API 5/5]
+Process 1 completed: 55 actually processed, 60 total successful (including skipped)
+  727: 150824_Cao_Fashion__Sport_en_Lifestyle.json (Request size: 253.7 KB, 258,884 characters) [API 1/5]
+Process 2 completed: 56 actually processed, 62 total successful (including skipped)
+  924: CAO_teksten_voor_CAO_2013_2015_wijzigingen_def_R2.json (Request size: 98.7 KB, 100,503 characters) [API 2/5]
+  759: LLM extraction completed in 150.52 seconds [API 3/5]
+Process 5 completed: 55 actually processed, 65 total successful (including skipped)
+  10: Skipping cao Bouw en Infra 2021-2022_1.json (already processed)
+  1869: Integrale tekst Cao Glastuinbouw 1 januari 2024 tot en met 31 maart 2025 incl. 1e TTW per 1 januari 2024 (2406-1334).json (Request size: 181.5 KB, 184,970 characters) [API 5/5]
+  924: LLM extraction completed in 126.36 seconds [API 2/5]
+  465: LLM extraction completed in 267.70 seconds [API 4/5]
+  727: LLM extraction completed in 229.44 seconds [API 1/5]
+Process 3 completed: 54 actually processed, 62 total successful (including skipped)
+  3313: cao_Netwerkbedrijven_2_0_2011_2013.json (Request size: 103.7 KB, 103,490 characters) [API 3/5]
+  1869: LLM extraction completed in 174.10 seconds [API 5/5]
+Process 2 completed: 57 actually processed, 63 total successful (including skipped)
+  727: Cao_Fashion_en_Sport_Inretail.json (Request size: 255.1 KB, 260,184 characters) [API 2/5]
+  3313: LLM extraction completed in 130.41 seconds [API 3/5]
+Process 4 completed: 59 actually processed, 77 total successful (including skipped)
+  833: Woondiensten_cao_en_handboek.json (Request size: 879.6 KB, 898,272 characters) [API 4/5]
+Process 1 completed: 56 actually processed, 61 total successful (including skipped)
+  254: cao afbouw 2022-2023 6 januari 2022 aanmelding 2.docx.json (Request size: 359.9 KB, 367,620 characters) [API 1/5]
+  833: LLM extraction completed in 103.56 seconds [API 4/5]
+Process 5 completed: 56 actually processed, 67 total successful (including skipped)
+  475: Sport-CAO 2019-2020 ttw.json (Request size: 131.7 KB, 134,322 characters) [API 5/5]
+Process 3 completed: 55 actually processed, 63 total successful (including skipped)
+  26: Skipping CAO_2016_na_opm_artikel_42.json (already processed)
+  43: Skipping CAO_nw_2011_2013_boekje.json (already processed)
+  750: contractcatering cao en handboek.json (Request size: 652.7 KB, 664,897 characters) [API 3/5]
+  254: LLM extraction completed in 158.97 seconds [API 1/5]
+  475: LLM extraction completed in 108.34 seconds [API 5/5]
+  727: LLM extraction completed in 282.34 seconds [API 2/5]
+Process 4 completed: 60 actually processed, 78 total successful (including skipped)
+  1944: Integrale tekst cao Open Teelten 1 maart 2023 tm 30 juni 2024 incl. 3e TTW per 1 januari 2024 (2312-1367).json (Request size: 206.1 KB, 208,858 characters) [API 4/5]
+Process 1 completed: 57 actually processed, 62 total successful (including skipped)
+  35: Skipping Cao Textielverzorging 2023-2024 doorlopende tekst def.json (already processed)
+  80: CAO Waterbouw 2022-2023.json (Request size: 176.9 KB, 180,635 characters) [API 1/5]
+  750: LLM extraction completed in 214.58 seconds [API 3/5]
+Process 5 completed: 57 actually processed, 68 total successful (including skipped)
+  1612: CAO_Kinderopvang_2012_2014_aanmeld150813.json (Request size: 615.0 KB, 628,097 characters) [API 5/5]
+  1944: LLM extraction completed in 158.95 seconds [API 4/5]
+Process 2 completed: 58 actually processed, 64 total successful (including skipped)
+  41: Skipping CAO_tekst_2015_2016_geschoond.json (already processed)
+  2297: CAO_TI_arcering___wijz_AOW_LT.json (Request size: 405.5 KB, 414,439 characters) [API 2/5]
+  80: LLM extraction completed in 140.92 seconds [API 1/5]
+  1612: LLM extraction completed in 165.30 seconds [API 5/5]
+Process 3 completed: 56 actually processed, 66 total successful (including skipped)
+  1296: CAO 2019.json (Request size: 169.3 KB, 173,068 characters) [API 3/5]
+Process 4 completed: 61 actually processed, 79 total successful (including skipped)
+  163: CAO OV 1 juli 2021 31 december 2022 tekst aanmelding.json (Request size: 440.1 KB, 448,774 characters) [API 4/5]
+Process 1 completed: 58 actually processed, 64 total successful (including skipped)
+  254: cao 2022-2023 ttw februari 2023 integraal.json (Request size: 356.4 KB, 363,973 characters) [API 1/5]
+  2297: LLM extraction completed in 280.82 seconds [API 2/5]
+  1296: LLM extraction completed in 155.12 seconds [API 3/5]
+Process 5 completed: 58 actually processed, 69 total successful (including skipped)
+  679: CAO Zorgvervoer en Taxi 2024-2025 definitieve tekst 221124.json (Request size: 276.0 KB, 280,819 characters) [API 5/5]
+  163: LLM extraction completed in 180.17 seconds [API 4/5]
+  679: LLM extraction completed in 157.58 seconds [API 5/5]
+Process 3 completed: 57 actually processed, 67 total successful (including skipped)
+Process 2 completed: 59 actually processed, 66 total successful (including skipped)
+  1287: DEF Grafimedia cao 2024-2025 21012025.json (Request size: 136.6 KB, 139,681 characters) [API 3/5]
+  359: Zoetwaren_arbvoorw_CAO_2011_2012_.json (Request size: 445.7 KB, 455,381 characters) [API 2/5]
+  254: LLM extraction completed in 232.11 seconds [API 1/5]
+Process 4 completed: 62 actually processed, 80 total successful (including skipped)
+  1574: GGZ cao met wijziging salarisschaal.json (Request size: 359.7 KB, 366,864 characters) [API 4/5]
+  1287: LLM extraction completed in 154.20 seconds [API 3/5]
+Process 5 completed: 59 actually processed, 70 total successful (including skipped)
+  1165: handboek_compleet.json (Request size: 193.0 KB, 195,390 characters) [API 5/5]
+Process 1 completed: 59 actually processed, 65 total successful (including skipped)
+  759: CAO SAVG 2021 2025 (TTW maart 2024) schone versie.json (Request size: 262.8 KB, 268,679 characters) [API 1/5]
+  1165: LLM extraction completed in 81.92 seconds [API 5/5]
+  359: LLM extraction completed in 305.95 seconds [API 2/5]
+Process 3 completed: 58 actually processed, 68 total successful (including skipped)
+  1618: Cao_umc_2013___2015_officiele_tekst.json (Request size: 363.8 KB, 371,702 characters) [API 3/5]
+  759: LLM extraction completed in 145.72 seconds [API 1/5]
+  Manually constructed JSON for GGZ cao met wijziging salarisschaal.json [API 4/5]
+  1574: LLM extraction completed in 278.31 seconds [API 4/5]
+Process 5 completed: 60 actually processed, 71 total successful (including skipped)
+  1618: NFU-24.01131 CAO NL v08 def.json (Request size: 403.3 KB, 411,729 characters) [API 5/5]
+  1618: LLM extraction completed in 139.47 seconds [API 3/5]
+Process 2 completed: 60 actually processed, 67 total successful (including skipped)
+  51: avv_REDACTIETEKST_ARBVW_2013_26sept.json (Request size: 221.0 KB, 225,584 characters) [API 2/5]
+Process 1 completed: 60 actually processed, 66 total successful (including skipped)
+  727: 150824_Cao_Fashion__Sport___Lifestyle_hvb.json (Request size: 253.7 KB, 258,886 characters) [API 1/5]
+Process 4 completed: 63 actually processed, 81 total successful (including skipped)
+  51: INTEGRALE TEKST cao timmerindustrie 1 aug 2020 - 30 nov 2021.json (Request size: 235.2 KB, 239,026 characters) [API 4/5]
+  1618: LLM extraction completed in 148.90 seconds [API 5/5]
+  51: LLM extraction completed in 142.92 seconds [API 2/5]
+Process 3 completed: 59 actually processed, 69 total successful (including skipped)
+  317: Definitieve_tekst_CAO_GHZ_2014_2015.json (Request size: 247.7 KB, 253,300 characters) [API 3/5]
+  51: LLM extraction completed in 179.40 seconds [API 4/5]
+  727: LLM extraction completed in 244.97 seconds [API 1/5]
+Process 5 completed: 61 actually processed, 72 total successful (including skipped)
+  182: 20131221 cao_horeca_2024 - schone versie.json (Request size: 156.9 KB, 158,648 characters) [API 5/5]
+Process 2 completed: 61 actually processed, 68 total successful (including skipped)
+  730: CAO Technische Groothandel 2019-2022.json (Request size: 129.4 KB, 132,195 characters) [API 2/5]
+  317: LLM extraction completed in 167.42 seconds [API 3/5]
+Process 4 completed: 64 actually processed, 82 total successful (including skipped)
+  1165: cao_definitief.json (Request size: 160.5 KB, 163,711 characters) [API 4/5]
+Process 1 completed: 61 actually processed, 67 total successful (including skipped)
+  243: Integ_Cao_hov_incl_ttw_2018_2020.json (Request size: 257.0 KB, 261,712 characters) [API 1/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  182: LLM extraction completed in 187.09 seconds [API 5/5]
+  730: LLM extraction completed in 183.01 seconds [API 2/5]
+Process 3 completed: 60 actually processed, 70 total successful (including skipped)
+  475: CAO DEFINITIEF WOS.pdf .json (Request size: 129.2 KB, 131,867 characters) [API 3/5]
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  1165: LLM extraction completed in 212.90 seconds [API 4/5]
+Process 5 completed: 62 actually processed, 73 total successful (including skipped)
+  2266: Integrale cao-tekst visdetailhandel 2024 (definitieve versie 21 februari 2024).json (Request size: 190.9 KB, 194,413 characters) [API 5/5]
+  475: LLM extraction completed in 131.61 seconds [API 3/5]
+Process 2 completed: 62 actually processed, 69 total successful (including skipped)
+  822: HB 5e editie 2024_2.json (Request size: 1941.3 KB, 1,979,296 characters) [API 2/5]
+  2266: LLM extraction completed in 141.72 seconds [API 5/5]
+  822: LLM extraction completed in 104.62 seconds [API 2/5]
+Process 4 completed: 65 actually processed, 83 total successful (including skipped)
+  1165: cao 1 januari 2022 - 31 december 2023 definitief 28122022.json (Request size: 200.8 KB, 204,827 characters) [API 4/5]
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+Process 3 completed: 61 actually processed, 71 total successful (including skipped)
+  475: CAO_Sport_2016_2018_DEF.json (Request size: 153.5 KB, 156,668 characters) [API 3/5]
+  1165: LLM extraction completed in 139.26 seconds [API 4/5]
+  475: LLM extraction completed in 108.68 seconds [API 3/5]
+Process 5 completed: 63 actually processed, 74 total successful (including skipped)
+  1494: Def CAO-PO 2023-2024 23012024.json (Request size: 405.2 KB, 414,318 characters) [API 5/5]
+Process 2 completed: 63 actually processed, 70 total successful (including skipped)
+  1504: CAO_BTU_2012_2013_v1_21_Geschoond.json (Request size: 264.8 KB, 270,644 characters) [API 2/5]
+Process 4 completed: 66 actually processed, 84 total successful (including skipped)
+  824: HB 5e editie 2024_1.json (Request size: 1964.3 KB, 2,002,787 characters) [API 4/5]
+Process 3 completed: 62 actually processed, 72 total successful (including skipped)
+  509: CAO_tekst_2011_2012_def_.json (Request size: 70.0 KB, 71,574 characters) [API 3/5]
+  1494: LLM extraction completed in 181.85 seconds [API 5/5]
+  1504: LLM extraction completed in 184.00 seconds [API 2/5]
+  824: LLM extraction completed in 68.48 seconds [API 4/5]
+  509: LLM extraction completed in 171.38 seconds [API 3/5]
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+Process 5 completed: 64 actually processed, 75 total successful (including skipped)
+  730: CAO TG 2023-2025_Tussentijdse aanpassing.json (Request size: 122.9 KB, 125,485 characters) [API 5/5]
+Process 2 completed: 64 actually processed, 71 total successful (including skipped)
+  35: Skipping Raltex_volledige_tekst_met_alle_bijlagen_NA_TTW_1.json (already processed)
+  1494: caopo2013_verlngd_handtek_april2014.json (Request size: 601.9 KB, 613,818 characters) [API 2/5]
+Process 4 completed: 67 actually processed, 85 total successful (including skipped)
+  245: Tuinzaadbedrijven 1 januari 2023 - 31 december 2023 definitief.json (Request size: 101.1 KB, 102,876 characters) [API 4/5]
+Process 3 completed: 63 actually processed, 73 total successful (including skipped)
+  1536: CAO_NU_2_juli_2016___30_juni_2017.json (Request size: 231.8 KB, 237,074 characters) [API 3/5]
+  1494: LLM extraction completed in 139.30 seconds [API 2/5]
+  730: LLM extraction completed in 173.39 seconds [API 5/5]
+  245: LLM extraction completed in 152.07 seconds [API 4/5]
+  1536: LLM extraction completed in 120.32 seconds [API 3/5]
+Process 2 completed: 65 actually processed, 73 total successful (including skipped)
+  2266: cao_tkst_AVV_na_gesprek_ministerie_1.json (Request size: 37.2 KB, 38,039 characters) [API 2/5]
+Process 5 completed: 65 actually processed, 76 total successful (including skipped)
+  1393: Railinfra_CAO_2014_def_26042016.json (Request size: 161.8 KB, 165,155 characters) [API 5/5]
+Process 4 completed: 68 actually processed, 86 total successful (including skipped)
+  823: CAO MvT 2020-2021 DEFversie 19 januari 2021.docx.json (Request size: 955.0 KB, 974,753 characters) [API 4/5]
+Process 3 completed: 64 actually processed, 74 total successful (including skipped)
+  721: Cao HAZ 2024-2025 met Handleiding FWHZ 3-6-2024.json (Request size: 459.9 KB, 466,759 characters) [API 3/5]
+  Manually constructed JSON for cao_tkst_AVV_na_gesprek_ministerie_1.json [API 2/5]
+  2266: LLM extraction completed in 117.66 seconds [API 2/5]
+  1393: LLM extraction completed in 120.37 seconds [API 5/5]
+  823: LLM extraction completed in 202.44 seconds [API 4/5]
+Process 2 completed: 66 actually processed, 74 total successful (including skipped)
+  683: tekstCAO_2015_2017_INTEGRAAL.json (Request size: 127.3 KB, 129,799 characters) [API 2/5]
+Process 5 completed: 66 actually processed, 77 total successful (including skipped)
+  2948: CAO VVT 2022-2024 verlengde cao ttw.json (Request size: 410.7 KB, 419,514 characters) [API 5/5]
+  721: LLM extraction completed in 234.50 seconds [API 3/5]
+  683: LLM extraction completed in 114.38 seconds [API 2/5]
+Process 4 completed: 69 actually processed, 87 total successful (including skipped)
+  633: CAO_voor_Uitzendkrachten_integraal_1.json (Request size: 194.9 KB, 199,077 characters) [API 4/5]
+  2948: LLM extraction completed in 191.87 seconds [API 5/5]
+Process 3 completed: 65 actually processed, 75 total successful (including skipped)
+  526: CAO_tekst_2012_2014.json (Request size: 295.4 KB, 301,493 characters) [API 3/5]
+Process 2 completed: 67 actually processed, 75 total successful (including skipped)
+  592: cao_2011__2012_definitief.json (Request size: 98.9 KB, 100,841 characters) [API 2/5]
+  633: LLM extraction completed in 181.86 seconds [API 4/5]
+  All 5 attempts failed with rate limiting for Integ_Cao_hov_incl_ttw_2018_2020.json - skipping file
+  243: ✗ LLM extraction failed for Integ_Cao_hov_incl_ttw_2018_2020.json [API 1/5]
+  1496: Cao Bakkersbedrijf 1 juni 2021 - 1 juni 2023 definitief 12082022.json (Request size: 602.2 KB, 614,836 characters) [API 1/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+Process 5 completed: 67 actually processed, 78 total successful (including skipped)
+  487: Basis-cao Metalektro aanmelding ttw 21-8-19.docx.json (Request size: 262.1 KB, 267,758 characters) [API 5/5]
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  526: LLM extraction completed in 220.27 seconds [API 3/5]
+Process 4 completed: 70 actually processed, 88 total successful (including skipped)
+  518: Cao boekje Drogisterijbranche VDF- schoon.json (Request size: 69.8 KB, 71,327 characters) [API 4/5]
+  592: LLM extraction completed in 191.08 seconds [API 2/5]
+  487: LLM extraction completed in 163.10 seconds [API 5/5]
+Process 3 completed: 66 actually processed, 76 total successful (including skipped)
+  1393: Rallinfra caotekst.json (Request size: 144.7 KB, 147,773 characters) [API 3/5]
+  518: LLM extraction completed in 145.40 seconds [API 4/5]
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+Process 2 completed: 68 actually processed, 76 total successful (including skipped)
+  826: CAO_ISO_arcering___wijz_AOW_LT.json (Request size: 396.0 KB, 404,724 characters) [API 2/5]
+Process 5 completed: 68 actually processed, 79 total successful (including skipped)
+  1612: Integrale Cao Kinderopvang 2023-2024.json (Request size: 450.1 KB, 459,806 characters) [API 5/5]
+Process 4 completed: 71 actually processed, 89 total successful (including skipped)
+  549: CAO AGF Detailhandel 2020-2021 volledig def.docx.json (Request size: 75.0 KB, 76,391 characters) [API 4/5]
+  1393: LLM extraction completed in 192.31 seconds [API 3/5]
+  826: LLM extraction completed in 178.60 seconds [API 2/5]
+  1612: LLM extraction completed in 149.63 seconds [API 5/5]
+  549: LLM extraction completed in 148.50 seconds [API 4/5]
+Process 3 completed: 67 actually processed, 77 total successful (including skipped)
+  157: Zuivel_CAO_I_na_ttw_2012_2014_obv__1499987v0_2.json (Request size: 573.8 KB, 582,589 characters) [API 3/5]
+Process 2 completed: 69 actually processed, 77 total successful (including skipped)
+  35: Skipping Cao Textielverzorging integrale tekst 2020-2021_1.json (already processed)
+  10: Skipping cao_Bouw_en_Infra_2017_2018_def.json (already processed)
+  1393: Tekst Cao 2018.2019 def d.d. 22-05-2019 .pdf .json (Request size: 155.0 KB, 158,247 characters) [API 2/5]
+Process 5 completed: 69 actually processed, 80 total successful (including skipped)
+  1494: 20161230_cao_po_gewijzigd_per_1_jan_2017.json (Request size: 740.5 KB, 756,897 characters) [API 5/5]
+Process 4 completed: 72 actually processed, 90 total successful (including skipped)
+  727: cao_Mode__Sport_1_7_2010_tot_1_7_2012_22_8_2011.json (Request size: 243.2 KB, 248,030 characters) [API 4/5]
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  1494: LLM extraction completed in 92.04 seconds [API 5/5]
+  157: LLM extraction completed in 209.92 seconds [API 3/5]
+  1393: LLM extraction completed in 222.34 seconds [API 2/5]
+Process 5 completed: 70 actually processed, 81 total successful (including skipped)
+  2297: CAO_TI_2017_2019_TTW_LL_nov_2018.json (Request size: 403.9 KB, 412,687 characters) [API 5/5]
+  727: LLM extraction completed in 247.01 seconds [API 4/5]
+Process 3 completed: 68 actually processed, 78 total successful (including skipped)
+  80: CAO_Waterbouw_2015_2018_def__8_juli_2015.json (Request size: 194.9 KB, 199,010 characters) [API 3/5]
+Process 2 completed: 70 actually processed, 80 total successful (including skipped)
+  243: Cao Hoveniers 1 juli 2021 - 30 juni 2023 integraal.json (Request size: 255.5 KB, 260,570 characters) [API 2/5]
+  2297: LLM extraction completed in 203.48 seconds [API 5/5]
+Process 4 completed: 73 actually processed, 91 total successful (including skipped)
+  243: Integrale tekst cao voor het Hoveniersbedrijf 1 oktober 2024 tm 30 juni 2026 (2503-1886).json (Request size: 284.2 KB, 289,464 characters) [API 4/5]
+  80: LLM extraction completed in 199.17 seconds [API 3/5]
+  243: LLM extraction completed in 191.40 seconds [API 2/5]
+Process 5 completed: 71 actually processed, 82 total successful (including skipped)
+  725: 2104-0817 integrale cao GGI met 3e ttw.json (Request size: 217.0 KB, 221,258 characters) [API 5/5]
+Process 3 completed: 69 actually processed, 79 total successful (including skipped)
+  750: cao 1 april 2022 - 31 maart 2024, definitief 18072023.json (Request size: 368.6 KB, 375,488 characters) [API 3/5]
+  243: LLM extraction completed in 228.45 seconds [API 4/5]
+Process 2 completed: 71 actually processed, 81 total successful (including skipped)
+  301: CAOSOCIAALWERK1719_completetekst_def_030419schoon.docx .json (Request size: 574.0 KB, 586,266 characters) [API 2/5]
+  750: LLM extraction completed in 141.31 seconds [API 3/5]
+Process 4 completed: 74 actually processed, 92 total successful (including skipped)
+  182: 20240103 cao_horeca_2024 - tussentijdse wijziging - schone versie.json (Request size: 155.9 KB, 157,591 characters) [API 4/5]
+  301: LLM extraction completed in 162.73 seconds [API 2/5]
+  725: LLM extraction completed in 261.54 seconds [API 5/5]
+Process 3 completed: 70 actually processed, 80 total successful (including skipped)
+  609: CAO_tekst_Tuincentra.json (Request size: 109.4 KB, 111,478 characters) [API 3/5]
+  All 5 attempts failed with rate limiting for Cao Bakkersbedrijf 1 juni 2021 - 1 juni 2023 definitief 12082022.json - skipping file
+  1496: ✗ LLM extraction failed for Cao Bakkersbedrijf 1 juni 2021 - 1 juni 2023 definitief 12082022.json [API 1/5]
+  2266: Cao_Visdetailhandel_2017_2018.json (Request size: 42.4 KB, 43,266 characters) [API 1/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+Process 2 completed: 72 actually processed, 82 total successful (including skipped)
+  496: Cao Particuliere beveiliging Versie 5- januari 2022.json (Request size: 248.6 KB, 253,268 characters) [API 2/5]
+Process 5 completed: 72 actually processed, 83 total successful (including skipped)
+  243: 20120041N_Cao_hoveniers_TTW_2012.json (Request size: 228.2 KB, 232,324 characters) [API 5/5]
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  609: LLM extraction completed in 148.19 seconds [API 3/5]
+  182: LLM extraction completed in 272.70 seconds [API 4/5]
+  243: LLM extraction completed in 173.88 seconds [API 5/5]
+  496: LLM extraction completed in 227.51 seconds [API 2/5]
+Process 3 completed: 71 actually processed, 81 total successful (including skipped)
+  475: Sport_WOS_cao_2014.json (Request size: 130.9 KB, 133,704 characters) [API 3/5]
+Process 4 completed: 75 actually processed, 93 total successful (including skipped)
+  301: Cao Sociaal Werk 2023-2025(definitief_tussentijdsgewijzigdper010724).json (Request size: 566.8 KB, 579,267 characters) [API 4/5]
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  475: LLM extraction completed in 100.04 seconds [API 3/5]
+Process 5 completed: 73 actually processed, 84 total successful (including skipped)
+  80: CAO_Waterbouw__def_23_mei_2014_AVV.json (Request size: 172.2 KB, 175,856 characters) [API 5/5]
+Process 2 completed: 73 actually processed, 83 total successful (including skipped)
+  465: sociale_afspraken_2018___2019_geschoond.json (Request size: 100.4 KB, 102,365 characters) [API 2/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  301: LLM extraction completed in 137.22 seconds [API 4/5]
+  80: LLM extraction completed in 133.83 seconds [API 5/5]
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+Process 3 completed: 72 actually processed, 82 total successful (including skipped)
+  21: Skipping CAO tekst 2020 basis aangepast.docx.json (already processed)
+  1944: Open_Teelten_en_functiehandboek.json (Request size: 194.7 KB, 198,225 characters) [API 3/5]
+Process 4 completed: 76 actually processed, 94 total successful (including skipped)
+  633: Cao_integraal_1_1_2019_integraal.json (Request size: 262.1 KB, 267,731 characters) [API 4/5]
+Process 5 completed: 74 actually processed, 85 total successful (including skipped)
+  727: 161031_Cao_F_S__L_2016_2018_hvb.json (Request size: 276.1 KB, 281,647 characters) [API 5/5]
+  1944: LLM extraction completed in 199.60 seconds [API 3/5]
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  633: LLM extraction completed in 258.52 seconds [API 4/5]
+  727: LLM extraction completed in 204.29 seconds [API 5/5]
+Process 3 completed: 73 actually processed, 84 total successful (including skipped)
+  2297: M_en_T_Technisch_Installatiebedrijf_cao_en_handb_.json (Request size: 1374.0 KB, 1,401,678 characters) [API 3/5]
+Process 4 completed: 77 actually processed, 95 total successful (including skipped)
+  822: CAO CARR 2019 2021 SZW TTW Wagweu art 64.docx.json (Request size: 376.4 KB, 383,390 characters) [API 4/5]
+Process 5 completed: 75 actually processed, 86 total successful (including skipped)
+  21: Skipping CAO tekst 2021-2022 basis_1.json (already processed)
+  633: CAO_integrale_tekst.json (Request size: 190.9 KB, 194,925 characters) [API 5/5]
+  2297: LLM extraction completed in 209.60 seconds [API 3/5]
+  822: LLM extraction completed in 191.77 seconds [API 4/5]
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  633: LLM extraction completed in 197.73 seconds [API 5/5]
+Process 3 completed: 74 actually processed, 85 total successful (including skipped)
+  1165: cao-recreatie 2024 - 2025 herschreven versie opgemaakt definitief 21052024.json (Request size: 178.3 KB, 181,331 characters) [API 3/5]
+Process 4 completed: 78 actually processed, 96 total successful (including skipped)
+  1944: Cao_Open_Teelten_integrale_tekst_ttw.json (Request size: 187.5 KB, 190,447 characters) [API 4/5]
+Process 5 completed: 76 actually processed, 88 total successful (including skipped)
+  2297: CAO TI 2021 2024_1.json (Request size: 414.1 KB, 422,645 characters) [API 5/5]
+  1165: LLM extraction completed in 205.49 seconds [API 3/5]
+  1944: LLM extraction completed in 184.42 seconds [API 4/5]
+Process 3 completed: 75 actually processed, 86 total successful (including skipped)
+  301: Cao Sociaal Werk 2023-2025(metcorrectie150224).json (Request size: 568.2 KB, 580,729 characters) [API 3/5]
+  2297: LLM extraction completed in 265.78 seconds [API 5/5]
+  All 5 attempts failed with rate limiting for Cao_Visdetailhandel_2017_2018.json - skipping file
+  2266: ✗ LLM extraction failed for Cao_Visdetailhandel_2017_2018.json [API 1/5]
+  823: 2025-07-01 CAO MVT 2025 - 2027 - incl HFI DEF.json (Request size: 1040.5 KB, 1,062,367 characters) [API 1/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+Process 4 completed: 79 actually processed, 97 total successful (including skipped)
+  1944: Cao Open Teelten 4e TTW per 1 januari 2020.docx.json (Request size: 201.8 KB, 204,725 characters) [API 4/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  301: LLM extraction completed in 127.83 seconds [API 3/5]
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+Process 5 completed: 77 actually processed, 89 total successful (including skipped)
+  1471: Cao GEO SERVICES 2024-2026.json (Request size: 409.3 KB, 417,740 characters) [API 5/5]
+Process 3 completed: 76 actually processed, 87 total successful (including skipped)
+  2948: CAO_VVT_2010_2012_2_.json (Request size: 545.7 KB, 552,175 characters) [API 3/5]
+  1471: LLM extraction completed in 163.86 seconds [API 5/5]
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  All 5 attempts failed with rate limiting for sociale_afspraken_2018___2019_geschoond.json - skipping file
+  465: ✗ LLM extraction failed for sociale_afspraken_2018___2019_geschoond.json [API 2/5]
+  148: cao_tekst_2013___2014.json (Request size: 152.5 KB, 155,914 characters) [API 2/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+Process 5 completed: 78 actually processed, 90 total successful (including skipped)
+  1165: cao 1 januari 2022 - 31 december 2023 definitief 21042022.json (Request size: 195.6 KB, 199,534 characters) [API 5/5]
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  1165: LLM extraction completed in 175.63 seconds [API 5/5]
+  2948: LLM extraction completed in 426.25 seconds [API 3/5]
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+Process 5 completed: 79 actually processed, 91 total successful (including skipped)
+  822: CAO_CAR__TTW_JULI.json (Request size: 396.1 KB, 404,814 characters) [API 5/5]
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+Process 3 completed: 77 actually processed, 88 total successful (including skipped)
+  214: Openbare_Bibliotheken_2012_2013.json (Request size: 144.6 KB, 147,897 characters) [API 3/5]
+  214: LLM extraction completed in 144.77 seconds [API 3/5]
+  822: LLM extraction completed in 225.38 seconds [API 5/5]
+Process 3 completed: 78 actually processed, 89 total successful (including skipped)
+  683: CAO ETD platte tekst (d.d. 5 juni 2024).json (Request size: 120.0 KB, 121,915 characters) [API 3/5]
+Process 5 completed: 80 actually processed, 92 total successful (including skipped)
+  301: CAOSOCIAALWERK1719_070218__ttw_corr_avv_def.json (Request size: 514.4 KB, 525,536 characters) [API 5/5]
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  683: LLM extraction completed in 164.16 seconds [API 3/5]
+Process 3 completed: 79 actually processed, 90 total successful (including skipped)
+  10: Skipping TTW_CAO_definitief_12_november_2012.json (already processed)
+  301: LLM extraction completed in 286.22 seconds [API 5/5]
+  301: welzijn_maatschappelijk_dienstverlenning.json (Request size: 497.2 KB, 507,562 characters) [API 3/5]
+  301: LLM extraction completed in 172.56 seconds [API 3/5]
+Process 5 completed: 81 actually processed, 93 total successful (including skipped)
+  1165: cao_definitief_1.json (Request size: 170.7 KB, 174,144 characters) [API 5/5]
+  All 5 attempts failed with rate limiting for 2025-07-01 CAO MVT 2025 - 2027 - incl HFI DEF.json - skipping file
+  823: ✗ LLM extraction failed for 2025-07-01 CAO MVT 2025 - 2027 - incl HFI DEF.json [API 1/5]
+  496: cao_1_juli_2012___30_september_2013_definitief.json (Request size: 280.6 KB, 286,915 characters) [API 1/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  All 5 attempts failed with rate limiting for Cao Open Teelten 4e TTW per 1 januari 2020.docx.json - skipping file
+  1944: ✗ LLM extraction failed for Cao Open Teelten 4e TTW per 1 januari 2020.docx.json [API 4/5]
+  233: CAOtekst_2012_2013_PvL_5jun2012.json (Request size: 304.5 KB, 309,674 characters) [API 4/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+Process 3 completed: 80 actually processed, 92 total successful (including skipped)
+  254: CAO_2013_2014_definitief.json (Request size: 199.5 KB, 203,708 characters) [API 3/5]
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Manually constructed JSON for cao_definitief_1.json [API 5/5]
+  1165: LLM extraction completed in 242.81 seconds [API 5/5]
+Process 5 completed: 82 actually processed, 94 total successful (including skipped)
+  245: Tuinzaden_cao_2014_2016.json (Request size: 84.2 KB, 84,873 characters) [API 5/5]
+  254: LLM extraction completed in 258.17 seconds [API 3/5]
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  All 5 attempts failed with rate limiting for cao_tekst_2013___2014.json - skipping file
+  148: ✗ LLM extraction failed for cao_tekst_2013___2014.json [API 2/5]
+  2297: CAO TI 2021 2024.json (Request size: 414.1 KB, 422,643 characters) [API 2/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  245: LLM extraction completed in 162.57 seconds [API 5/5]
+Process 3 completed: 81 actually processed, 93 total successful (including skipped)
+  1165: cao_definitief_3_0.json (Request size: 171.2 KB, 174,628 characters) [API 3/5]
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+Process 5 completed: 83 actually processed, 95 total successful (including skipped)
+  163: CAO_OV_tekst_2016_en_2017_DEFINITIEF.json (Request size: 424.7 KB, 432,821 characters) [API 5/5]
+  1165: LLM extraction completed in 160.44 seconds [API 3/5]
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  163: LLM extraction completed in 166.21 seconds [API 5/5]
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+Process 3 completed: 82 actually processed, 94 total successful (including skipped)
+  823: CAO MvT 2020-2021 versie 23 dec 2020.docx.json (Request size: 954.9 KB, 974,568 characters) [API 3/5]
+Process 5 completed: 84 actually processed, 96 total successful (including skipped)
+  83: CAO_voor_de_betonproductenindustrie_2011_2013.json (Request size: 125.6 KB, 125,689 characters) [API 5/5]
+  823: LLM extraction completed in 195.24 seconds [API 3/5]
+  83: LLM extraction completed in 176.63 seconds [API 5/5]
+Process 3 completed: 83 actually processed, 95 total successful (including skipped)
+  679: CAO Taxivervoer 2021 NET.docx.json (Request size: 277.6 KB, 282,707 characters) [API 3/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+Process 5 completed: 85 actually processed, 97 total successful (including skipped)
+  791: Textielgroothandel_2012_2013.json (Request size: 106.5 KB, 108,246 characters) [API 5/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  All 5 attempts failed with rate limiting for cao_1_juli_2012___30_september_2013_definitief.json - skipping file
+  496: ✗ LLM extraction failed for cao_1_juli_2012___30_september_2013_definitief.json [API 1/5]
+  182: 20220101 cao_horeca_2022-2023 na 2020_wijziging_op_kvo_avv versie bronbestand.do.json (Request size: 99.2 KB, 100,219 characters) [API 1/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  All 5 attempts failed with rate limiting for CAOtekst_2012_2013_PvL_5jun2012.json - skipping file
+  233: ✗ LLM extraction failed for CAOtekst_2012_2013_PvL_5jun2012.json [API 4/5]
+  51: DEF_ARBVW_2011_2012.json (Request size: 229.0 KB, 233,866 characters) [API 4/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for CAO TI 2021 2024.json - skipping file
+  2297: ✗ LLM extraction failed for CAO TI 2021 2024.json [API 2/5]
+  2266: CAO visdetailhandel 2021-2023 def voor ministerie na controle wg.json (Request size: 176.6 KB, 179,359 characters) [API 2/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for CAO Taxivervoer 2021 NET.docx.json - skipping file
+  679: ✗ LLM extraction failed for CAO Taxivervoer 2021 NET.docx.json [API 3/5]
+  301: CAOWMD_VERLENGING_2012_ttw_ivm_avv.json (Request size: 525.5 KB, 534,043 characters) [API 3/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  All 5 attempts failed with rate limiting for Textielgroothandel_2012_2013.json - skipping file
+  791: ✗ LLM extraction failed for Textielgroothandel_2012_2013.json [API 5/5]
+  234: Bijlage 11 _ cao jz 21-23_B11_ Functieboek aanmeld.json (Request size: 445.5 KB, 453,997 characters) [API 5/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  All 5 attempts failed with rate limiting for 20220101 cao_horeca_2022-2023 na 2020_wijziging_op_kvo_avv versie bronbestand.do.json - skipping file
+  182: ✗ LLM extraction failed for 20220101 cao_horeca_2022-2023 na 2020_wijziging_op_kvo_avv versie bronbestand.do.json [API 1/5]
+  1944: 2104-1910 cao Open Teelten 2021-2023.json (Request size: 183.8 KB, 186,951 characters) [API 1/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  All 5 attempts failed with rate limiting for DEF_ARBVW_2011_2012.json - skipping file
+  51: ✗ LLM extraction failed for DEF_ARBVW_2011_2012.json [API 4/5]
+  750: cao 1 april 2024 - 31 december 2025.docx.json (Request size: 380.7 KB, 388,665 characters) [API 4/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for CAO visdetailhandel 2021-2023 def voor ministerie na controle wg.json - skipping file
+  2266: ✗ LLM extraction failed for CAO visdetailhandel 2021-2023 def voor ministerie na controle wg.json [API 2/5]
+  748: Cao_Slagersbedrijf__versie_1_7_17.json (Request size: 164.6 KB, 168,127 characters) [API 2/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for CAOWMD_VERLENGING_2012_ttw_ivm_avv.json - skipping file
+  301: ✗ LLM extraction failed for CAOWMD_VERLENGING_2012_ttw_ivm_avv.json [API 3/5]
+  526: CAO meubelindustrie 2020-2021 def P.json (Request size: 199.3 KB, 203,250 characters) [API 3/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  All 5 attempts failed with rate limiting for Bijlage 11 _ cao jz 21-23_B11_ Functieboek aanmeld.json - skipping file
+  234: ✗ LLM extraction failed for Bijlage 11 _ cao jz 21-23_B11_ Functieboek aanmeld.json [API 5/5]
+  1494: Def cao 2019-2020 nav aanvullende afspraken .json (Request size: 490.1 KB, 500,675 characters) [API 5/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  All 5 attempts failed with rate limiting for 2104-1910 cao Open Teelten 2021-2023.json - skipping file
+  1944: ✗ LLM extraction failed for 2104-1910 cao Open Teelten 2021-2023.json [API 1/5]
+  475: CAO_Sport_2016_2018_DEF_1.json (Request size: 153.5 KB, 156,668 characters) [API 1/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  All 5 attempts failed with rate limiting for cao 1 april 2024 - 31 december 2025.docx.json - skipping file
+  750: ✗ LLM extraction failed for cao 1 april 2024 - 31 december 2025.docx.json [API 4/5]
+  301: welzijn_en_maatschappelijke__tekst.json (Request size: 265.2 KB, 270,945 characters) [API 4/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for Cao_Slagersbedrijf__versie_1_7_17.json - skipping file
+  748: ✗ LLM extraction failed for Cao_Slagersbedrijf__versie_1_7_17.json [API 2/5]
+  615: CAO_voor_de_Zorgverzekeraars_2011_2012.json (Request size: 169.2 KB, 172,858 characters) [API 2/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for CAO meubelindustrie 2020-2021 def P.json - skipping file
+  526: ✗ LLM extraction failed for CAO meubelindustrie 2020-2021 def P.json [API 3/5]
+  650: Frugi_Venta_CAO_2011_2012_.json (Request size: 143.8 KB, 146,939 characters) [API 3/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  All 5 attempts failed with rate limiting for Def cao 2019-2020 nav aanvullende afspraken .json - skipping file
+  1494: ✗ LLM extraction failed for Def cao 2019-2020 nav aanvullende afspraken .json [API 5/5]
+  750: cao_2010___2012__versie_juli_2011_.json (Request size: 387.1 KB, 395,603 characters) [API 5/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  All 5 attempts failed with rate limiting for CAO_Sport_2016_2018_DEF_1.json - skipping file
+  475: ✗ LLM extraction failed for CAO_Sport_2016_2018_DEF_1.json [API 1/5]
+  824: CAO_MB_17_19.json (Request size: 401.0 KB, 409,776 characters) [API 1/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  All 5 attempts failed with rate limiting for welzijn_en_maatschappelijke__tekst.json - skipping file
+  301: ✗ LLM extraction failed for welzijn_en_maatschappelijke__tekst.json [API 4/5]
+  650: Groothandel_groenten_en_fruit_cao_2017_2018.json (Request size: 153.3 KB, 156,615 characters) [API 4/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for CAO_voor_de_Zorgverzekeraars_2011_2012.json - skipping file
+  615: ✗ LLM extraction failed for CAO_voor_de_Zorgverzekeraars_2011_2012.json [API 2/5]
+  1536: CAONU_1_januari_2015___1_juli_2016.json (Request size: 222.3 KB, 227,366 characters) [API 2/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for Frugi_Venta_CAO_2011_2012_.json - skipping file
+  650: ✗ LLM extraction failed for Frugi_Venta_CAO_2011_2012_.json [API 3/5]
+  254: cao 2020-2021 ttw integraal.docx.json (Request size: 389.7 KB, 398,071 characters) [API 3/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  All 5 attempts failed with rate limiting for cao_2010___2012__versie_juli_2011_.json - skipping file
+  750: ✗ LLM extraction failed for cao_2010___2012__versie_juli_2011_.json [API 5/5]
+  1496: BAKKERSBEDRIJF_cao_tekst_en_bijlagen.json (Request size: 343.4 KB, 350,172 characters) [API 5/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  All 5 attempts failed with rate limiting for CAO_MB_17_19.json - skipping file
+  824: ✗ LLM extraction failed for CAO_MB_17_19.json [API 1/5]
+  41: Skipping CAO-tekst 2023_2024_geschoond_02.json (already processed)
+  50: Skipping Apotheken 2019-2021 na ttw.json (already processed)
+  All 5 attempts failed with rate limiting for Groothandel_groenten_en_fruit_cao_2017_2018.json - skipping file
+  650: ✗ LLM extraction failed for Groothandel_groenten_en_fruit_cao_2017_2018.json [API 4/5]
+  433: CAO 2021 definitief.json (Request size: 192.2 KB, 196,253 characters) [API 4/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  1296: ICK CAO 2021_1.json (Request size: 172.6 KB, 176,384 characters) [API 1/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for CAONU_1_januari_2015___1_juli_2016.json - skipping file
+  1536: ✗ LLM extraction failed for CAONU_1_januari_2015___1_juli_2016.json [API 2/5]
+  1574: Tekst_CAO_GGZ_2011_2013_juli_2012.json (Request size: 355.3 KB, 362,448 characters) [API 2/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for cao 2020-2021 ttw integraal.docx.json - skipping file
+  254: ✗ LLM extraction failed for cao 2020-2021 ttw integraal.docx.json [API 3/5]
+  214: Cao OB 1.7.2020 31.12.2022 ondertekend.json (Request size: 257.9 KB, 263,668 characters) [API 3/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  All 5 attempts failed with rate limiting for BAKKERSBEDRIJF_cao_tekst_en_bijlagen.json - skipping file
+  1496: ✗ LLM extraction failed for BAKKERSBEDRIJF_cao_tekst_en_bijlagen.json [API 5/5]
+  822: HB 5e editie 2024.json (Request size: 1930.2 KB, 1,967,975 characters) [API 5/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  All 5 attempts failed with rate limiting for ICK CAO 2021_1.json - skipping file
+  1296: ✗ LLM extraction failed for ICK CAO 2021_1.json [API 1/5]
+  51: cao Timmerindustrie 1 dec 21 tt 1 mrt 2024_1.json (Request size: 248.7 KB, 252,854 characters) [API 1/5]
+  All 5 attempts failed with rate limiting for CAO 2021 definitief.json - skipping file
+  433: ✗ LLM extraction failed for CAO 2021 definitief.json [API 4/5]
+  1639: cao DHZ 2024-2026_def_dec_2024.json (Request size: 113.7 KB, 115,926 characters) [API 4/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for Tekst_CAO_GGZ_2011_2013_juli_2012.json - skipping file
+  1574: ✗ LLM extraction failed for Tekst_CAO_GGZ_2011_2013_juli_2012.json [API 2/5]
+  2535: CAO MITT 2010-2012 -melding sept 2010-schoon.json (Request size: 266.7 KB, 271,714 characters) [API 2/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for Cao OB 1.7.2020 31.12.2022 ondertekend.json - skipping file
+  214: ✗ LLM extraction failed for Cao OB 1.7.2020 31.12.2022 ondertekend.json [API 3/5]
+  884: CAO_Kantoor_en_Boek_17_18_nw_def.json (Request size: 62.0 KB, 63,382 characters) [API 3/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  All 5 attempts failed with rate limiting for HB 5e editie 2024.json - skipping file
+  822: ✗ LLM extraction failed for HB 5e editie 2024.json [API 5/5]
+  433: CAO 2024-2026 definitief met bijlagen.json (Request size: 272.1 KB, 276,832 characters) [API 5/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  All 5 attempts failed with rate limiting for cao Timmerindustrie 1 dec 21 tt 1 mrt 2024_1.json - skipping file
+  51: ✗ LLM extraction failed for cao Timmerindustrie 1 dec 21 tt 1 mrt 2024_1.json [API 1/5]
+  637: Cao Verzekeringsbedrijf 2021 def versie 20210311.json (Request size: 168.8 KB, 172,057 characters) [API 1/5]
+  All 5 attempts failed with rate limiting for cao DHZ 2024-2026_def_dec_2024.json - skipping file
+  1639: ✗ LLM extraction failed for cao DHZ 2024-2026_def_dec_2024.json [API 4/5]
+  750: cao_arbeidsvwd_2013_2014_gerenvooieerd.json (Request size: 389.9 KB, 398,341 characters) [API 4/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for CAO MITT 2010-2012 -melding sept 2010-schoon.json - skipping file
+  2535: ✗ LLM extraction failed for CAO MITT 2010-2012 -melding sept 2010-schoon.json [API 2/5]
+  306: CAO_tekst_definitief.json (Request size: 198.5 KB, 202,673 characters) [API 2/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for CAO_Kantoor_en_Boek_17_18_nw_def.json - skipping file
+  884: ✗ LLM extraction failed for CAO_Kantoor_en_Boek_17_18_nw_def.json [API 3/5]
+  1393: versie 2 def Cao Railinfrastructuur - DEFINITIEF juni 2024 - versie voor AVV - kopie.json (Request size: 121.9 KB, 124,399 characters) [API 3/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  All 5 attempts failed with rate limiting for CAO 2024-2026 definitief met bijlagen.json - skipping file
+  433: ✗ LLM extraction failed for CAO 2024-2026 definitief met bijlagen.json [API 5/5]
+  633: ABU-LBV CAO voor Uitzendkrachten 2021 integraal 7-22.json (Request size: 177.5 KB, 181,372 characters) [API 5/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  All 5 attempts failed with rate limiting for Cao Verzekeringsbedrijf 2021 def versie 20210311.json - skipping file
+  637: ✗ LLM extraction failed for Cao Verzekeringsbedrijf 2021 def versie 20210311.json [API 1/5]
+  633: ABU CAO voor Uitzendkrachten 30-12-2019 integraal dec.json (Request size: 185.6 KB, 189,710 characters) [API 1/5]
+  All 5 attempts failed with rate limiting for cao_arbeidsvwd_2013_2014_gerenvooieerd.json - skipping file
+  750: ✗ LLM extraction failed for cao_arbeidsvwd_2013_2014_gerenvooieerd.json [API 4/5]
+  1291: NHG-CAO 2019 tm 2022- herziene uitg. conform WAB 1 jan 2020.json (Request size: 37.3 KB, 38,127 characters) [API 4/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for CAO_tekst_definitief.json - skipping file
+  306: ✗ LLM extraction failed for CAO_tekst_definitief.json [API 2/5]
+  10: Skipping cao Bouw en Infra 2018-2019 TTW mrt19.pdf .json (already processed)
+  633: CAO_voor_uzk_29_6_2015_integraal.json (Request size: 258.5 KB, 264,052 characters) [API 2/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for versie 2 def Cao Railinfrastructuur - DEFINITIEF juni 2024 - versie voor AVV - kopie.json - skipping file
+  1393: ✗ LLM extraction failed for versie 2 def Cao Railinfrastructuur - DEFINITIEF juni 2024 - versie voor AVV - kopie.json [API 3/5]
+  1639: cao DHZ 2024-2026_def_juni_2025.json (Request size: 116.5 KB, 118,725 characters) [API 3/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  All 5 attempts failed with rate limiting for ABU-LBV CAO voor Uitzendkrachten 2021 integraal 7-22.json - skipping file
+  633: ✗ LLM extraction failed for ABU-LBV CAO voor Uitzendkrachten 2021 integraal 7-22.json [API 5/5]
+  924: cao Reisbranche 1jul2024-1jul2026 def1.json (Request size: 184.4 KB, 187,143 characters) [API 5/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  All 5 attempts failed with rate limiting for ABU CAO voor Uitzendkrachten 30-12-2019 integraal dec.json - skipping file
+  633: ✗ LLM extraction failed for ABU CAO voor Uitzendkrachten 30-12-2019 integraal dec.json [API 1/5]
+  All 5 attempts failed with rate limiting for NHG-CAO 2019 tm 2022- herziene uitg. conform WAB 1 jan 2020.json - skipping file
+  1291: ✗ LLM extraction failed for NHG-CAO 2019 tm 2022- herziene uitg. conform WAB 1 jan 2020.json [API 4/5]
+  633: Cao_integraal_1_7_2017.json (Request size: 248.1 KB, 253,438 characters) [API 1/5]
+  823: Cao MVT - incl HFI 31 januari 2024.json (Request size: 1037.6 KB, 1,059,486 characters) [API 4/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for CAO_voor_uzk_29_6_2015_integraal.json - skipping file
+  633: ✗ LLM extraction failed for CAO_voor_uzk_29_6_2015_integraal.json [API 2/5]
+  721: CAO_Huisartsenzorg_2013_W.json (Request size: 147.0 KB, 150,201 characters) [API 2/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for cao DHZ 2024-2026_def_juni_2025.json - skipping file
+  1639: ✗ LLM extraction failed for cao DHZ 2024-2026_def_juni_2025.json [API 3/5]
+  1944: cao open teelten 4e ttw per 1 juli 2022 - integrale tekst.json (Request size: 188.1 KB, 191,277 characters) [API 3/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  All 5 attempts failed with rate limiting for cao Reisbranche 1jul2024-1jul2026 def1.json - skipping file
+  924: ✗ LLM extraction failed for cao Reisbranche 1jul2024-1jul2026 def1.json [API 5/5]
+  80: CAO Waterbouw 2025-2027 schoon-zn.json (Request size: 190.1 KB, 194,175 characters) [API 5/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  All 5 attempts failed with rate limiting for Cao_integraal_1_7_2017.json - skipping file
+  633: ✗ LLM extraction failed for Cao_integraal_1_7_2017.json [API 1/5]
+  824: MT_Metaalbew__CAO___handb_.json (Request size: 1382.9 KB, 1,410,691 characters) [API 1/5]
+  All 5 attempts failed with rate limiting for Cao MVT - incl HFI 31 januari 2024.json - skipping file
+  823: ✗ LLM extraction failed for Cao MVT - incl HFI 31 januari 2024.json [API 4/5]
+  157: Cao I zuivel 2022na ttw def.json (Request size: 103.1 KB, 105,411 characters) [API 4/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for CAO_Huisartsenzorg_2013_W.json - skipping file
+  721: ✗ LLM extraction failed for CAO_Huisartsenzorg_2013_W.json [API 2/5]
+  2948: CAO 2021 aanmelding.json (Request size: 234.8 KB, 239,920 characters) [API 2/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for cao open teelten 4e ttw per 1 juli 2022 - integrale tekst.json - skipping file
+  1944: ✗ LLM extraction failed for cao open teelten 4e ttw per 1 juli 2022 - integrale tekst.json [API 3/5]
+  748: Cao_voor_het_Slagersbedrijf_1_4_2011_tm_31_3_2013.json (Request size: 159.8 KB, 163,211 characters) [API 3/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  All 5 attempts failed with rate limiting for CAO Waterbouw 2025-2027 schoon-zn.json - skipping file
+  80: ✗ LLM extraction failed for CAO Waterbouw 2025-2027 schoon-zn.json [API 5/5]
+  526: CAO_tekst_2015__2016_aangemeld.json (Request size: 241.0 KB, 246,297 characters) [API 5/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  All 5 attempts failed with rate limiting for Cao I zuivel 2022na ttw def.json - skipping file
+  157: ✗ LLM extraction failed for Cao I zuivel 2022na ttw def.json [API 4/5]
+  All 5 attempts failed with rate limiting for MT_Metaalbew__CAO___handb_.json - skipping file
+  475: def__cao_WOS_01_01_2012_totmet_31_12_2012.json (Request size: 117.1 KB, 119,674 characters) [API 4/5]
+  824: ✗ LLM extraction failed for MT_Metaalbew__CAO___handb_.json [API 1/5]
+  496: cao 1 juli 2018 - 30 juni 2023 definitief.docx _1.json (Request size: 284.7 KB, 291,081 characters) [API 1/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for CAO 2021 aanmelding.json - skipping file
+  2948: ✗ LLM extraction failed for CAO 2021 aanmelding.json [API 2/5]
+  2070: CAO Facilitaire contactcenters 2022-2023 na ttw 23-6-2023_.getekend.json (Request size: 85.8 KB, 87,340 characters) [API 2/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for Cao_voor_het_Slagersbedrijf_1_4_2011_tm_31_3_2013.json - skipping file
+  748: ✗ LLM extraction failed for Cao_voor_het_Slagersbedrijf_1_4_2011_tm_31_3_2013.json [API 3/5]
+  1287: DEF Grafimedia cao 2024-2025 schone versie TCC 29112024.json (Request size: 137.2 KB, 140,241 characters) [API 3/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  All 5 attempts failed with rate limiting for CAO_tekst_2015__2016_aangemeld.json - skipping file
+  526: ✗ LLM extraction failed for CAO_tekst_2015__2016_aangemeld.json [API 5/5]
+  632: NVB CAO-boekje 2021_14-04.json (Request size: 120.9 KB, 122,959 characters) [API 5/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  All 5 attempts failed with rate limiting for cao 1 juli 2018 - 30 juni 2023 definitief.docx _1.json - skipping file
+  496: ✗ LLM extraction failed for cao 1 juli 2018 - 30 juni 2023 definitief.docx _1.json [API 1/5]
+  526: CAO meubelindustrie 2018-2019 Def.docx .json (Request size: 198.2 KB, 202,292 characters) [API 1/5]
+  All 5 attempts failed with rate limiting for def__cao_WOS_01_01_2012_totmet_31_12_2012.json - skipping file
+  475: ✗ LLM extraction failed for def__cao_WOS_01_01_2012_totmet_31_12_2012.json [API 4/5]
+  1869: Cao Glastuinbouw 1 januari 2020 tot en met 31 december 2022 inclusief tweede TTW.json (Request size: 173.0 KB, 176,415 characters) [API 4/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for CAO Facilitaire contactcenters 2022-2023 na ttw 23-6-2023_.getekend.json - skipping file
+  2070: ✗ LLM extraction failed for CAO Facilitaire contactcenters 2022-2023 na ttw 23-6-2023_.getekend.json [API 2/5]
+  214: 15_00080a_NvW_Cao_OB_2015_2019_wijz_geaccepteerd.json (Request size: 153.0 KB, 156,453 characters) [API 2/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for DEF Grafimedia cao 2024-2025 schone versie TCC 29112024.json - skipping file
+  1287: ✗ LLM extraction failed for DEF Grafimedia cao 2024-2025 schone versie TCC 29112024.json [API 3/5]
+  1494: 20160711_cao_po_2016_2017_versie_iia.json (Request size: 730.9 KB, 747,442 characters) [API 3/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  All 5 attempts failed with rate limiting for NVB CAO-boekje 2021_14-04.json - skipping file
+  632: ✗ LLM extraction failed for NVB CAO-boekje 2021_14-04.json [API 5/5]
+  148: cao_arbeidsvoorwaarden_2018_2020_getekend_1.json (Request size: 129.8 KB, 132,704 characters) [API 5/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  All 5 attempts failed with rate limiting for CAO meubelindustrie 2018-2019 Def.docx .json - skipping file
+  526: ✗ LLM extraction failed for CAO meubelindustrie 2018-2019 Def.docx .json [API 1/5]
+  884: Boekhandel Kantoorvakhandel 2010-2012.json (Request size: 56.3 KB, 57,545 characters) [API 1/5]
+  All 5 attempts failed with rate limiting for Cao Glastuinbouw 1 januari 2020 tot en met 31 december 2022 inclusief tweede TTW.json - skipping file
+  1869: ✗ LLM extraction failed for Cao Glastuinbouw 1 januari 2020 tot en met 31 december 2022 inclusief tweede TTW.json [API 4/5]
+  632: CAO__01012014_tot_01072014__CAO_tekst_14_jan_2014.json (Request size: 152.5 KB, 155,947 characters) [API 4/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  All 5 attempts failed with rate limiting for 15_00080a_NvW_Cao_OB_2015_2019_wijz_geaccepteerd.json - skipping file
+  214: ✗ LLM extraction failed for 15_00080a_NvW_Cao_OB_2015_2019_wijz_geaccepteerd.json [API 2/5]
+  1547: CAO tekst juli 2019 tm juni 2021.json (Request size: 133.5 KB, 136,318 characters) [API 2/5]
+  Attempt 1 failed (rate limit), retrying in 2 minutes...
+  Attempt 2 failed (rate limit), retrying in 4 minutes...
+  Attempt 3 failed (rate limit), retrying in 8 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...
+  Attempt 4 failed (rate limit), retrying in 16 minutes...

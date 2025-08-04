@@ -7,11 +7,7 @@ This project uses AI to extract structured data from Dutch collective labour agr
 
 ## 🔄 Workflow Overview
 
-### 1. 🔁 Two-Stage LLM Extraction
-- Split up LLM into different categories: especially into salary outputs and the rest.
-
 ### 2. 🧪 Comparison & Evaluation
-- Compare 1-stage vs. 2-stage extraction.
 - Compare AI output to 20 ground truth results from previous RA.
 - Build validation pipeline: flag sparse/malformed rows, optionally score confidence.
 

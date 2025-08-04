@@ -53,7 +53,9 @@ INPUT_JSON_FOLDER = "output_json"
 OUTPUT_JSON_FOLDER = Path("llmExtracted_json")
 # FIELDS_PROMPT_PATH = "fields_prompt_collapsed.md"  # No longer needed - embedded in prompt
 DEBUG_MODE = False
-MAX_JSON_FILES = 1  # Limit how many JSON files to process
+MAX_JSON_FILES = 350  # Limit how many JSON files to process
+MAX_PROCESSING_TIME_HOURS = 1  # Maximum time to spend on a single file (hours)
+SORTED_FILES = False  # True for sorted files, False for shuffled files within each CAO folder
 OUTPUT_JSON_FOLDER.mkdir(exist_ok=True)
 
 # Get key number from command line or default to 1
@@ -62,9 +64,25 @@ key_number = int(sys.argv[1]) if len(sys.argv) > 1 else 1
 process_id = int(sys.argv[2]) if len(sys.argv) > 2 else 0
 total_processes = int(sys.argv[3]) if len(sys.argv) > 3 else 1
 
+# Set fixed seed for consistent shuffling across all processes
+if not SORTED_FILES:
+    import random
+    random.seed(42)
+
+# Load environment variables if not already loaded
+load_dotenv()
+
+# Try to get the specified API key, fallback to API key 1 if not found
 api_key = os.getenv(f"GOOGLE_API_KEY{key_number}")
 if not api_key:
-    raise ValueError(f"GOOGLE_API_KEY{key_number} environment variable not found. Please set it before running this script.")
+    # Fallback to API key 1 if the specified key doesn't exist
+    api_key = os.getenv("GOOGLE_API_KEY1")
+    if not api_key:
+        raise ValueError(f"Neither GOOGLE_API_KEY{key_number} nor GOOGLE_API_KEY1 environment variable found. Please set at least GOOGLE_API_KEY1 before running this script.")
+    else:
+        # Update key_number to 1 for consistency
+        key_number = 1
+        print(f"Warning: GOOGLE_API_KEY{key_number} not found, using GOOGLE_API_KEY1 instead")
 genai.configure(api_key=api_key)
 GEMINI_MODEL = "gemini-2.5-pro"
 
@@ -139,7 +157,7 @@ SYSTEM_PROMPT = (
 
     "=== EXTRACTION RULES ===\n"
     "1. COPY EXACTLY - Do not paraphrase, summarize, or modify the original text\n"
-    "2. BE COMPREHENSIVE - Include ALL relevant information, even if it seems minor\n"
+    "2. BE COMPREHENSIVE - Include ALL relevant information\n"
     "3. PRESERVE CONTEXT - Keep related information together (e.g., salary tables with job groups)\n"
     "4. INCLUDE TABLES - Copy wage tables and structured data completely, including headers and descriptions\n"
     "5. CAPTURE DETAILS - Include specific numbers, percentages, dates, and conditions\n"
@@ -192,6 +210,7 @@ def extract_broad_context(text, filename, max_retries=5):
             raise ValueError("Empty or invalid model response")
         except Exception as e:
             error_str = str(e).lower()
+            print(f"  DEBUG: Error type: {type(e).__name__}, Error message: {error_str}")
             
             # Handle 504 Deadline Exceeded errors with reasonable retry
             if "deadlineexceeded" in error_str or "504" in error_str:
@@ -205,10 +224,21 @@ def extract_broad_context(text, filename, max_retries=5):
                     print(f"  All {max_retries} attempts failed with 504 errors for {filename} - skipping file")
                     return ""  # Return empty string to skip this file
             
+            # Handle 500 Internal Server Errors with retry
+            elif "internal error" in error_str or "500" in error_str or "internalservererror" in error_str:
+                if attempt < max_retries - 1:
+                    wait_time = 120 * (2 ** attempt)  # 2 minutes, 4 minutes, 8 minutes, 16 minutes
+                    print(f"  Attempt {attempt + 1} failed (500 internal server error), retrying in {wait_time//60} minutes...")
+                    time.sleep(wait_time)
+                    continue
+                else:
+                    print(f"  All {max_retries} attempts failed with 500 internal server errors for {filename} - skipping file")
+                    return ""  # Return empty string to skip this file
+            
             # Handle other rate limiting errors
             elif any(keyword in error_str for keyword in ["quota", "rate limit", "too many requests", "429"]):
                 if attempt < max_retries - 1:
-                    wait_time = 300 * (2 ** attempt)  # 5 minutes, 10 minutes, 20 minutes
+                    wait_time = 120 * (2 ** attempt)  # 2 minutes, 4 minutes, 8 minutes, 16 minutes
                     print(f"  Attempt {attempt + 1} failed (rate limit), retrying in {wait_time//60} minutes...")
                     time.sleep(wait_time)
                     continue
@@ -218,7 +248,7 @@ def extract_broad_context(text, filename, max_retries=5):
             
             # Handle other errors with standard retry
             elif attempt < max_retries - 1:
-                wait_time = 60 * (2 ** attempt)  # 60s, 120s, 240s, 480s
+                wait_time = 120 * (2 ** attempt)  # 2min, 4min, 8min, 16min
                 print(f"  Attempt {attempt + 1} failed ({type(e).__name__}), retrying in {wait_time//60} minutes...")
                 time.sleep(wait_time)
                 continue
@@ -246,27 +276,27 @@ for cao_folder in cao_folders:
     for json_file in json_files:
         all_json_files.append((cao_folder, json_file))
 
+# Shuffle the entire file list once for consistent distribution across all processes
+if not SORTED_FILES:
+    import random
+    random.shuffle(all_json_files)
+
 # Process files using atomic file-level distribution
 current_cao = None
 processed_files = 0
 successful_extractions = 0
 failed_files = []
+timed_out_files = []
 
 for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
     # Only process files that belong to this process
     if file_idx % total_processes != process_id:
         continue
         
-    # Check if we've reached the limit
-    if processed_files >= MAX_JSON_FILES:
-        break
-        
     cao_number = cao_folder.name
     
-    # Print CAO number only when it changes and hasn't been announced yet
-    if current_cao != cao_number:
-        announce_cao_once(cao_number)
-        current_cao = cao_number
+    # Track current CAO for prefixing messages
+    current_cao = cao_number
     
     # Create corresponding output folder
     output_cao_folder = OUTPUT_JSON_FOLDER / cao_number
@@ -275,35 +305,60 @@ for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
     # Check if output file already exists (skip if already processed)
     output_file = output_cao_folder / json_file.name
     if output_file.exists():
-        print(f"  Skipping {json_file.name} (already processed)")
+        print(f"  {cao_number}: Skipping {json_file.name} (already processed)")
         # Small delay when skipping to maintain flow
         time.sleep(5)
         successful_extractions += 1  # Count as successful since it was already processed
         continue
     
+    # Check if we've reached the limit (only after skipping already processed files)
+    if processed_files >= MAX_JSON_FILES:
+        break
+    
     # Try to acquire lock for this file to prevent double processing
     if not acquire_file_lock(output_file):
-        print(f"  Skipping {json_file.name} (being processed by another process)")
+        print(f"  {cao_number}: Skipping {json_file.name} (being processed by another process)")
         time.sleep(2)
         continue
-        
-    print(f"  {json_file.name}")
-    processed_files += 1
         
     with open(json_file, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     full_text = "\n".join(page.get("text", "") for page in data if isinstance(page, dict))
     if not full_text:
-        print(f"  Skipping {json_file.name} (no text content)")
+        print(f"  {cao_number}: Skipping {json_file.name} (no text content)")
         continue
+        
+    # Calculate request size
+    request_size = len(full_text.encode('utf-8')) / 1024  # Size in KB
+    request_chars = len(full_text)
+    print(f"  {cao_number}: {json_file.name} (Request size: {request_size:.1f} KB, {request_chars:,} characters) [API {key_number}/{total_processes}]")
+    processed_files += 1
 
     try:
+        extraction_start = time.time()
+        max_processing_time = MAX_PROCESSING_TIME_HOURS * 3600  # Convert to seconds
+        
+        # Check if we've exceeded the maximum processing time
+        if time.time() - extraction_start > max_processing_time:
+            print(f"  {cao_number}: ⏰ Timeout after {MAX_PROCESSING_TIME_HOURS} hours for {json_file.name} [API {key_number}/{total_processes}]")
+            timed_out_files.append(json_file.name)
+            # Log timeout immediately
+            timeout_log_path = "timed_out_files_llm_extraction.txt"
+            with open(timeout_log_path, "a", encoding="utf-8") as f:
+                f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name}\n")
+            continue
+            
         raw_output = extract_broad_context(full_text, filename=json_file.name)
+        extraction_time = time.time() - extraction_start
         
         if not raw_output:
-            print(f"  ✗ LLM extraction failed for {json_file.name}")
+            print(f"  {cao_number}: ✗ LLM extraction failed for {json_file.name} [API {key_number}/{total_processes}]")
             failed_files.append(json_file.name)
+            # Log failure immediately
+            failed_log_path = "failed_files_llm_extraction.txt"
+            with open(failed_log_path, "a", encoding="utf-8") as f:
+                f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name}\n")
             continue
 
         # Clean LLM output to ensure valid JSON
@@ -411,7 +466,7 @@ for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
                     
                     # If we found any content, use it
                     if any(parsed_json.values()):
-                        print(f"  Manually constructed JSON for {json_file.name}")
+                        print(f"  Manually constructed JSON for {json_file.name} [API {key_number}/{total_processes}]")
                     else:
                         raise ValueError("No content found in manual construction")
                         
@@ -435,39 +490,55 @@ for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
                             if text_content.strip():
                                 parsed_json["General information"] = [text_content[:1000] + "..."]
                     except Exception as fallback_error:
-                        print(f"  ✗ Failed to extract data from {json_file.name}")
+                        print(f"  ✗ Failed to extract data from {json_file.name} [API {key_number}/{total_processes}]")
                         failed_files.append(json_file.name)
+                        # Log failure immediately
+                        failed_log_path = "failed_files_llm_extraction.txt"
+                        with open(failed_log_path, "a", encoding="utf-8") as f:
+                            f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name}\n")
                         continue
         
         # Save the parsed JSON (moved outside try/except blocks)
         if parsed_json:
             with open(out_path, "w", encoding="utf-8") as f:
                 json.dump(parsed_json, f, ensure_ascii=False, indent=2)
-            print(f"  ✓ {json_file.name}")
+            print(f"  {cao_number}: LLM extraction completed in {extraction_time:.2f} seconds [API {key_number}/{total_processes}]")
             successful_extractions += 1
             
             # Check if we've reached the limit before waiting
             if processed_files >= MAX_JSON_FILES:
                 break
             else:
-                # Add 2-minute delay after successful request to prevent rate limiting
-                time.sleep(120)
+                # Add 3-minute delay after successful request to prevent rate limiting
+                time.sleep(180)
         else:
-            print(f"  ✗ Failed to parse JSON for {json_file.name}")
+            print(f"  {cao_number}: ✗ Failed to parse JSON for {json_file.name} [API {key_number}/{total_processes}]")
             failed_files.append(json_file.name)
+            # Log failure immediately
+            failed_log_path = "failed_files_llm_extraction.txt"
+            with open(failed_log_path, "a", encoding="utf-8") as f:
+                f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name}\n")
     except Exception as e:
         import traceback
-        print(f"  Error with {json_file.name}: {e}")
+        print(f"  {cao_number}: Error with {json_file.name}: {e} [API {key_number}/{total_processes}]")
         traceback.print_exc()
         failed_files.append(json_file.name)
+        # Log failure immediately
+        failed_log_path = "failed_files_llm_extraction.txt"
+        with open(failed_log_path, "a", encoding="utf-8") as f:
+            f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name}\n")
         # Release lock on error too
         release_file_lock(output_file)
     finally:
         # Always release the lock
         release_file_lock(output_file)
-    
-    # Update tracker for this process
+
+# Print completion message
+if failed_files or timed_out_files:
+    print(f"Process {process_id + 1} completed: {processed_files} actually processed, {successful_extractions} total successful (including skipped), {len(failed_files)} failed, {len(timed_out_files)} timed out")
     if failed_files:
-        print(f"Process {process_id + 1} completed: {successful_extractions} successful, {len(failed_files)} failed")
-    else:
-        print(f"Process {process_id + 1} completed: {successful_extractions} successful")
+        print(f"Failed files: {failed_files}")
+    if timed_out_files:
+        print(f"Timed out files: {timed_out_files}")
+else:
+    print(f"Process {process_id + 1} completed: {processed_files} actually processed, {successful_extractions} total successful (including skipped)")

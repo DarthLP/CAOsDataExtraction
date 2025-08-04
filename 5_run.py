@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Define the scripts to run in order
-scripts = ["4_analysis.py"]
+scripts = ["3_llmExtraction.py", "4_analysis.py"]
 # scripts = ["0_webscrapping.py", "2_extract.py", "3_llmExtraction.py", "4_analysis.py"]
 
 
@@ -88,6 +88,10 @@ if results_folder.exists():
 python_executable = sys.executable
 
 for idx, script in enumerate(scripts):
+    print(f"\n{'='*60}")
+    print(f"PHASE {idx + 1}/{len(scripts)}: {script}")
+    print(f"{'='*60}")
+    
     if script == "3_llmExtraction.py":
         print(f"\n--- Launching {num_keys} parallel LLM extraction processes (one per API key) ---\n")
         processes = []
@@ -108,6 +112,8 @@ for idx, script in enumerate(scripts):
                     announce_file.unlink()
                 except:
                     pass  # Ignore errors when cleaning up
+        
+        print(f"\n✓ PHASE {idx + 1} COMPLETED: LLM Extraction")
     elif script == "4_analysis.py":
         print(f"\n--- Launching {num_keys} parallel analysis processes (one per API key) ---\n")
         processes = []
@@ -139,6 +145,8 @@ for idx, script in enumerate(scripts):
                     lock_file.unlink()
                 except:
                     pass  # Ignore errors when cleaning up
+        
+        print(f"\n✓ PHASE {idx + 1} COMPLETED: Analysis")
         
         # Merge all process-specific Excel files into one final file
         import pandas as pd
@@ -197,5 +205,5 @@ for idx, script in enumerate(scripts):
         subprocess.run([python_executable, script], check=True)
     # Add 2-minute delay between scripts (except after the last one)
     if idx < len(scripts) - 1:
-        print(f"\n--- Waiting 2 minutes before next script ---\n")
-        time.sleep(120)
+        print(f"\n--- Waiting 5 minutes before next script ---\n")
+        time.sleep(300)

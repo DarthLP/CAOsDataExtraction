@@ -53,7 +53,6 @@ class CAOTracker:
         """Save the updated Excel file"""
         try:
             self.df.to_excel(self.excel_path, index=False)
-            print(f"✅ Progress saved to {self.excel_path}")
         except Exception as e:
             print(f"❌ Error saving Excel file: {e}")
     
@@ -160,6 +159,63 @@ class CAOTracker:
         
         return failed_files
     
+    def get_failed_llm_analysis_files(self, cao_number):
+        """Get list of JSON files that failed LLM analysis"""
+        input_folder = Path("llmExtracted_json") / str(cao_number)
+        results_excel = Path("results/extracted_data.xlsx")
+        
+        if not input_folder.exists():
+            return []
+        
+        if not results_excel.exists():
+            # If no results Excel exists, all files failed
+            return [json_file.name for json_file in input_folder.glob("*.json")]
+        
+        # Read the results Excel file
+        try:
+            df_results = pd.read_excel(results_excel)
+            if 'File_name' not in df_results.columns:
+                # If no File_name column, all files failed
+                return [json_file.name for json_file in input_folder.glob("*.json")]
+            
+            # Get all filenames that exist in the results Excel for this CAO
+            cao_str = str(cao_number)
+            cao_results = df_results[df_results['CAO'].astype(str) == cao_str]
+            successful_files = set(cao_results['File_name'].values)
+            
+            # Find files that don't have entries in the results
+            failed_files = []
+            for json_file in input_folder.glob("*.json"):
+                if json_file.name not in successful_files:
+                    failed_files.append(json_file.name)
+            
+            return failed_files
+            
+        except Exception as e:
+            print(f"❌ Error reading results Excel file: {e}")
+            # If error reading Excel, consider all files failed
+            return [json_file.name for json_file in input_folder.glob("*.json")]
+    
+    def count_analysis_results(self, cao_number):
+        """Count successful analysis results for a CAO in the results Excel"""
+        results_excel = Path("results/extracted_data.xlsx")
+        
+        if not results_excel.exists():
+            return 0
+        
+        try:
+            df_results = pd.read_excel(results_excel)
+            if 'CAO' not in df_results.columns:
+                return 0
+            
+            cao_str = str(cao_number)
+            cao_results = df_results[df_results['CAO'].astype(str) == cao_str]
+            return len(cao_results)
+            
+        except Exception as e:
+            print(f"❌ Error reading results Excel file: {e}")
+            return 0
+
     def auto_update_from_files(self):
         """Automatically update tracking based on existing files"""
         print("🔄 Auto-updating progress from existing files...")
@@ -196,6 +252,15 @@ class CAOTracker:
             else:
                 # No extracted files - set LLM extraction to 0 successful, 0 failed
                 self.update_llm_extraction(cao_number, 0, [])
+            
+            # Update LLM analysis results with failed file names (even if 0 analyzed)
+            if llm_count > 0:
+                successful_analysis = self.count_analysis_results(cao_number)
+                failed_analysis_files = self.get_failed_llm_analysis_files(cao_number)
+                self.update_llm_analysis(cao_number, successful_analysis, failed_analysis_files)
+            else:
+                # No analyzed files - set LLM analysis to 0 successful, 0 failed
+                self.update_llm_analysis(cao_number, 0, [])
         
         self.save_excel()
         print("✅ Progress updated and saved")

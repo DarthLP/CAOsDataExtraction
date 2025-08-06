@@ -6,7 +6,7 @@ from pathlib import Path
 from deep_translator import GoogleTranslator
 import google.generativeai as genai
 from dotenv import load_dotenv
-from tracker import update_progress
+from OUTPUT_tracker import update_progress
 import re
 import sys
 import fcntl

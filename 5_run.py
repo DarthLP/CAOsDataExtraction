@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Define the scripts to run in order
-scripts = ["3_llmExtraction.py", "4_analysis.py"]
+scripts = ["4_analysis.py"]
 # scripts = ["0_webscrapping.py", "2_extract.py", "3_llmExtraction.py", "4_analysis.py"]
 
 

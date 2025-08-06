@@ -24,7 +24,7 @@ from bs4 import BeautifulSoup
 import urllib.parse
 import re
 import random
-from tracker import update_progress
+from OUTPUT_tracker import update_progress
 import traceback
 
 # =========================

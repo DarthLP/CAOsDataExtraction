@@ -1,0 +1,1617 @@
+Found 6 API keys: [1, 2, 3, 4, 5, 6]
+Cleaned up orphaned analysis lock file: CAO-DHZ 2017-2020 wijzigingen geaccepteerd.doc .analysis_lock
+Cleaned up orphaned analysis lock file: Cao boekje VDF-tekst geschoond.analysis_lock
+Cleaned up orphaned analysis lock file: CAOVDB_tekst_def_met_dispensatieregeling_geschoond.analysis_lock
+Cleaned up orphaned analysis lock file: CAO SAVG 2021 2025 TTW 27 oktober 2022.analysis_lock
+Cleaned up orphaned analysis lock file: CAO_2015_2017_TTW_integrale_tekst_1.analysis_lock
+Cleaned up orphaned analysis lock file: CAO MBO 2018-2020 - wijzigingen geaccepteerd 712020.analysis_lock
+
+============================================================
+PHASE 1/1: 4_analysis.py
+============================================================
+
+--- Launching 6 parallel analysis processes (one per API key) ---
+
+  10: Skipping cao Bouw en Infra 2021-2022.json (already in final Excel file)
+  41: Skipping handel__in_bouwmaterialen_cao_integraal.json (already in final Excel file)
+  254: Skipping cao 2022-2023 ttw 10 maart 2023 integraal.json (already in final Excel file)
+  1393: Skipping Railinfra_CAO_2017_def_280917.json (already in final Excel file)
+  1345: Skipping CAOP_CAO_boek_A5_def_24_8_9uur.json (already in final Excel file)
+  721: Skipping Cao-huisartsenzorg-2022-2023-incl-Handleiding.avv.json (already in final Excel file)
+  50: Skipping Apotheken 50.json (already in final Excel file)
+  725: Skipping Eindtekst cao Groen, Grond en Infrastructuur 1 januari 2025 - 30 september 2026 incl. 1e ttw per 1 januari 2025.json (already in final Excel file)
+  526: Skipping CAO_tekst_2015__2016_aanmelding_tst_dispensatie.json (already in final Excel file)
+  824: Skipping CAO MB 2019 2021SZW TTW Wagweu en art 64.docx.json (already in final Excel file)
+  1944: Skipping Integrale tekst cao Open Teelten 1 maart 2023 tm 30 juni 2024 - 2303-0178 v0.1.json (already in final Excel file)
+  625: Skipping cao20162017_definitief.json (already in final Excel file)
+  1639: Skipping CAO-DHZ 2017-2020 wijzigingen geaccepteerd.doc .json (already in final Excel file)
+  518: Skipping CAOVDB_tekst_def_met_dispensatieregeling_geschoond.json (already in final Excel file)
+  759: Skipping CAO SAVG 2021 2025 TTW 27 oktober 2022.json (already in final Excel file)
+  254: Skipping CAO_2015_2017_TTW_integrale_tekst_1.json (already in final Excel file)
+  1022: Skipping CAO MBO 2018-2020 - wijzigingen geaccepteerd 712020.json (already in final Excel file)
+  518: Skipping Cao boekje VDF-tekst geschoond.json (already in final Excel file)
+  750: Skipping cao 1 april 2024 - 31 december 2025 18122024 opgeschoonde versie.json (already in final Excel file)
+  650: Skipping 2022.08.17 CAO Groothandel in Groenten en Fruit 1 jan. tm 31 dec 2022.json (already in final Excel file)
+  826: Skipping HB 5e editie 2024_1.json (already in final Excel file)
+  632: Skipping tekst_CAO_01112010__01012012.json (already in final Excel file)
+  2070: Skipping CAO Facilitaire contactcenters 2019 - 2021 versie 10.11.2020.json (already in final Excel file)
+  465: Skipping sociale afspraken 2020 - 2023 geschoond.json (already in final Excel file)
+  633: Skipping Cao_integraal.json (already in final Excel file)
+  1165: Skipping cao 1 januari 2022 - 31 december 2023 definitief 23012023.json (already in final Excel file)
+  573: Skipping Cao pluimvee - cao 2020-2021 na ttw2 art 77 .json (already in final Excel file)
+  83: Skipping cao voor de betonproductenindustrie.json (already in final Excel file)
+  2948: Skipping cao 2019-2021 tussentijdse wijziging .docx.json (already in final Excel file)
+  1496: Skipping 01_CAO_BAKKERSBEDRIJF_1_OKTOBER_2016_2.json (already in final Excel file)
+  10: Skipping Cao Bouw en Infra 2024 - TTW 12 februari 2024.pdf.json (already in final Excel file)
+  533: Skipping CAO VGL 2019-2020 definitief schoon 010420.docx.json (already in final Excel file)
+  157: Skipping AWVN__534089_v1_Zuivel_CAO_I_2012_2014.json (already in final Excel file)
+  633: Skipping ABU CAO voor Uitzendkrachten 1-1-2021 wijz. bijhouden.doc.json (already in final Excel file)
+  1612: Skipping Integrale cao Kinderopvang 2020 - 2021 - gewijzigd.json (already in final Excel file)
+  496: Skipping cao 1 juli 2018 - 30 juni 2023 definitief versie 2 met aanvullende wijziging voo.json (already in final Excel file)
+  826: Skipping CAO_ISO_17_19.json (already in final Excel file)
+  725: Skipping Eindtekst cao Groen, Grond en Infrastructuur 1 januari 2024 - 31 december 2024 incl. 1e ttw per 1 januari 2024.json (already in final Excel file)
+  35: Skipping Cao Textielverzorging 2024-2025.json (already in final Excel file)
+  233: Skipping CAOtekst_1apr2017_31mrt2019_PvL_30mei2018.json (already in final Excel file)
+  2948: Skipping CAO_VVT_2010_2012_nieuwe_aanmelding_okt_.json (already in final Excel file)
+  2948: Skipping CAO 2021 aanmelding_1.json (already in final Excel file)
+  233: Skipping 2024jan30_CAOHH2023-2024.json (already in final Excel file)
+  604: Skipping CAO_Tekst___CAO_Vast_2011___2012.json (already in final Excel file)
+  1165: Skipping cao_recreatie_2012_2013_definitieve_versie.json (already in final Excel file)
+  2948: Skipping CAO VVT 2022-2023 ttw april23.json (already in final Excel file)
+  822: Skipping CAO_CAR_2017_2019_TTW_LL_nov_2018.json (already in final Excel file)
+  35: Skipping Cao Textielverzorging 2024-2025 vs aug24.json (already in final Excel file)
+  301: Skipping CAOWMD20082011aanmelding2012.json (already in final Excel file)
+  496: Skipping cao 1 juli 2018 - 30 juni 2023 definitief.docx .json (already in final Excel file)
+  518: Skipping CAOVDB_2015_16__tekst_def_geschoond.json (already in final Excel file)
+  549: Skipping Definitieve tekst CAO AGF Detailhandel 2024-2025_1.json (already in final Excel file)
+  1536: Skipping 16066-12 VSNU-CAO Nederlandse Universiteiten 2020.json (already in final Excel file)
+  475: Skipping CAO Sport 2022-2023 2.json (already in final Excel file)
+  884: Skipping Tekst CAO Boek en Kantoor 19 20 31-10-2019 ongemark def aanm.docx.json (already in final Excel file)
+  1296: Skipping ICK_CAO_2016_definitief.json (already in final Excel file)
+  826: Skipping m_en_t_islollatiebedrijf_kvo.json (already in final Excel file)
+  254: Skipping CAO_2018_2019_integraal_versie_8.json (already in final Excel file)
+  405: Skipping CAO_Kappers_1_juli_2017_30_juni_2019_1.json (already in final Excel file)
+  1944: Skipping Cao Open Teelten 3e TTW per 1 juli 2019 definitief.docx.json (already in final Excel file)
+  679: Skipping cao tekst Taxivervoer.json (already in final Excel file)
+  573: Skipping Cao pluimvee - cao 2020-2021 .json (already in final Excel file)
+  301: Skipping CAOSOCIAALWERK1921definitief_030120.json (already in final Excel file)
+  791: Skipping Textielgr__NVW_ttw_ivm_fkb_2012_2013_obv_1538864.json (already in final Excel file)
+  1496: Skipping 01_CAO_BAKKERSBEDRIJF_1_AUGUSTUS_2011.json (already in final Excel file)
+  496: Skipping cao_2014_2015_definitief_1.json (already in final Excel file)
+  824: Skipping CAO_MB.json (already in final Excel file)
+  650: Skipping CAO_Frugi_Venta_definitief_2012_2014.json (already in final Excel file)
+  791: Skipping Textielgroothandel_cao_ttw.json (already in final Excel file)
+  1393: Skipping Cao Railinfrastructuur - 9 juli 2024.json (already in final Excel file)
+  496: Skipping cao_2011_definitief.json (already in final Excel file)
+  1496: Skipping CAO tekst.json (already in final Excel file)
+  1285: Skipping cao_tekst_Tank_Was_def_3_juni_2016.json (already in final Excel file)
+  306: Skipping CAO Particulier Kaaspakhuis 01-01-2024 definitief.json (already in final Excel file)
+  3313: Skipping Cao_NWb_2013_2015_met_aanpassing_DI.json (already in final Excel file)
+  21: Skipping CAO tekst 2020 basis.docx.json (already in final Excel file)
+  679: Skipping CAO_tekst_Taxivervoer_2014_2015.json (already in final Excel file)
+  1060: NBBU Cao UK 2009-2013 SZW niet gemarkeerd.json [API 2/6]
+  1060: Salary LLM extraction (Request size: 21.9 KB, 22,397 characters) [API 2/6]
+  21: Skipping CAO_tekst_2017__2020_inclusief_FNV.json (already in final Excel file)
+  826: Skipping HB 5e editie 2024_2.json (already in final Excel file)
+  254: Skipping CAO_2015_2017_integrale_tekst2.json (already in final Excel file)
+  725: Skipping 2212-0813b defintieve tekst cao GGI met 1e ttw per 1 januari 2023.json (already in final Excel file)
+  41: Skipping CAO-tekst 2019_vs4_def.docx .json (already in final Excel file)
+  679: Skipping CAO Zorgvervoer en Taxi 2024-2025 definitieve tekst 100125.json (already in final Excel file)
+  1612: Skipping CAO_Kinderopvang_2012_2014_basistekst101114.json (already in final Excel file)
+  1060: Skipping Cao uitzendkrachten LBV onwerkbaar weer dec 2021 wijzigingen geaccpteerd.json (already in final Excel file)
+  823: Skipping CAO_tekst_2011_2012_compleet_versie_28_juli.json (already in final Excel file)
+  1612: Skipping Integrale Cao Kinderopvang 2024 20-12-2024.json (already in final Excel file)
+  1165: Skipping cao 1 januari 2019 - 31 december 2020, definitief aangepast versie 1 juli.docx.json (already in final Excel file)
+  80: Skipping CAO Waterbouw 2022-2023_1.json (already in final Excel file)
+  1494: cao_po_2013_def_versie.json [API 3/6]
+  1494: Salary LLM extraction (Request size: 1.3 KB, 1,306 characters) [API 3/6]
+  721: Skipping CAO_Huisartsenzorg_2013_W_versie_2.json (already in final Excel file)
+  83: Skipping Cao Betonproductenindustrie 2019-2021 versie 08-04-2021.json (already in final Excel file)
+  156: Skipping CAO_ziekenhuizen_2017_2019_DEF.json (already in final Excel file)
+  1496: Skipping cao Bakkersbedrijf definitief versie 15082024.json (already in final Excel file)
+  721: Skipping wijz_III_cao_HAZ_2015_2017_incl_FWHZ_anmtkst_zwart.json (already in final Excel file)
+  1496: Skipping BAKKERSBEDRIJF_1_AUGUSTUS_2011_incl_bijlagen.json (already in final Excel file)
+  496: Skipping Cao Particuliere Beveiliging 2023-2024 versie 2- augustus 2023 ZONDER zichtbare wijzigingen.json (already in final Excel file)
+  625: Skipping 085_021_CAO_2022_2023DEF.json (already in final Excel file)
+  156: Skipping Tekst_Cao_Ziekenhuizen_2011_2014_definitief.json (already in final Excel file)
+  2948: Skipping cao 2019-2021 tussentijdse wijziging versie 18 febr.docx.json (already in final Excel file)
+  1285: Skipping Ingediend bij SZW - Eindtekst cao Tankstations en Wasbedrijven 1 april 2025 - 31 december 2026.json (already in final Excel file)
+  650: Skipping CAO_tekst_Groenten_en_Fruit_met_wijz_.json (already in final Excel file)
+  650: Skipping CAO Groothandel in Groenten en Fruit 2019-2020 na ttw2 art 29b en bijlage X.json (already in final Excel file)
+  26: Skipping CAO_vleessector_ongerenvooieerde_tekst_2013.json (already in final Excel file)
+  725: Skipping cao_leo_1_juli_2013_tm_30_juni_2014__20130716N_.json (already in final Excel file)
+  234: Skipping cao_tekst_JZ_2015_2016_def_met_bijlagen_1_tm_10.json (already in final Excel file)
+  1612: Skipping Integrale gewijzigde cao Kinderopvang 2020-2021 (schone versie).docx.json (already in final Excel file)
+  41: Skipping CAO_tekst_2017_2018_geschoond.json (already in final Excel file)
+  301: Skipping Cao Sociaal Werk 2021 2023_280422definitief.json (already in final Excel file)
+  2297: Skipping CAO_TI_2017_2019_TTW_GP_nov_2017.json (already in final Excel file)
+  759: Skipping CAO SAVG 2021 2025 TTW februari 2023.json (already in final Excel file)
+  759: Skipping cao_2011_2013_ttw2_functieloon_aanmelding.json (already in final Excel file)
+  625: Skipping cao_hbo_2014_2016.json (already in final Excel file)
+  234: Skipping CAO_Jeugdzorg_28_04_11verlengd_schoon.json (already in final Excel file)
+  637: Skipping Cao_Binnendienst_2013.json (already in final Excel file)
+  243: Skipping 20120946N_Cao_hoveniers_2011tm2013_TWW_artikel_9.json (already in final Excel file)
+  725: Skipping verlengde_cao_LEO__inclusief_ttw_1_maart_2016.json (already in final Excel file)
+  823: Skipping CAO_tekst_2012_2014_definitief.json (already in final Excel file)
+  1639: Skipping Dhz-cao 2009-2011 def.json (already in final Excel file)
+  637: Skipping Cao_Binnendienst_schoon.json (already in final Excel file)
+  822: Skipping CAO Car 2021 2024.json (already in final Excel file)
+  2535: Skipping Cao MITT 2024-2025 versie 18 06112024 (003).json (already in final Excel file)
+  518: Skipping CAO_2017_2018_tekst_aangepast_geschoond.json (already in final Excel file)
+  43: Skipping CAO_2013_2015__2_.json (already in final Excel file)
+  824: Skipping CAO_MB_TTW_juli.json (already in final Excel file)
+  592: Skipping def. cao tekst Gespecialiseerde detailhandel in bloemen en planten 2023_1.json (already in final Excel file)
+  721: Skipping cao_HAZ_2014_2015_zwart_versie_II.json (already in final Excel file)
+  359: Skipping Cao Zoetwarenindustrie 2023-2024.json (already in final Excel file)
+  759: Skipping CAO SAVG 2025.json (already in final Excel file)
+  50: Skipping Cao_Apotheken_2012_2013_plat.json (already in final Excel file)
+  233: Skipping 2024_17dec_schone_tekstcaotbvavv_MvD4.json (already in final Excel file)
+  750: Skipping cao 1 april 2022 - 31 maart 2024, definitief.json (already in final Excel file)
+  2266: Skipping Integrale cao-tekst visdetailhandel 2024 .json (already in final Excel file)
+  1285: Skipping CAO_tekst_2013_2015.json (already in final Excel file)
+  433: Skipping CAO 2024 (1-1-2024 tm 30-6-2024)_2.json (already in final Excel file)
+  2948: Skipping cao_VVT.json (already in final Excel file)
+  359: Skipping VBZ_cao_2014.json (already in final Excel file)
+  2948: Skipping cao_2014_2016_aanmelding.json (already in final Excel file)
+  1285: Skipping cao tekst Tank Was 2020 2021 versie 22 juli 2020.doc.json (already in final Excel file)
+  650: Skipping Frugi_Venta_2009-2010_Groothandel_AGF.json (already in final Excel file)
+  1494: Skipping CAO-PO 2023-2024.json (already in final Excel file)
+  1494: Skipping Versie 20250114 Teksten CAO PO 2024-2025.json (already in final Excel file)
+  1165: Skipping cao 1 januari 2022 - 31 december 2023 definitief 12052022.json (already in final Excel file)
+  157: Skipping Zuivel cao I 1 januari 2023 tot en met 31 maart 2024.json (already in final Excel file)
+  2535: Skipping CAOMITT2014_16_tussent_wijz__juli_2017_sch_szw.json (already in final Excel file)
+  1060: Skipping NBBU_CAO_Uitzendkrachten 2015-2019_versie 2019 NL OTF.docx.json (already in final Excel file)
+  301: Skipping CAOWMD_aanmelding_VERLENGING_2012_ttw_ivm_avv.json (already in final Excel file)
+  21: Skipping CAO_tekst_2017_2020.json (already in final Excel file)
+  791: Skipping Cao Textielgroothandel 2023-2024 versie 19-7-2023.json (already in final Excel file)
+  727: Skipping 230630 cao Retail Non-Food def.json (already in final Excel file)
+  791: Skipping cao 2021-2023.json (already in final Excel file)
+  924: Skipping 2019 Tekst cao-reisbranche 1 november 2018 - 1 september 2019.pdf .json (already in final Excel file)
+  823: Skipping CAO_tekst_2011_2012_compleet_versie_19_juli.json (already in final Excel file)
+  1296: Skipping Cdef_ ICK CAO 2022.json (already in final Excel file)
+  1639: Skipping Dhz_cao_2009_2011_def.json (already in final Excel file)
+  727: Skipping Cao_Fashion_en_Sport_Inretail_21_8_2013.json (already in final Excel file)
+  487: Skipping Cao Basis schone versie 09-12-2024 en statuten.json (already in final Excel file)
+  730: Skipping CAO Technische Groothandel 2023-2025_Versie 2024-04-04.json (already in final Excel file)
+  433: Skipping CAO_2014_2016_2.json (already in final Excel file)
+  1612: Skipping Integrale Cao Kinderopvang 2024.json (already in final Excel file)
+  10: Skipping CAO_2011_aanmelding_TTW_11_2011.json (already in final Excel file)
+  26: Skipping cao 2021 compleetnav opmerkingen SZW.json (already in final Excel file)
+  1945: Skipping cao Productiegerichte Dierhouderij 1 januari 2022 - 31 december 2023.json (already in final Excel file)
+  2535: Skipping CAO_MITT_2012_2014_schoon_dd__18_10_2012.json (already in final Excel file)
+  1188: Skipping CAO PDF DEF.json (already in final Excel file)
+  2266: Skipping VNV_cao_boekje_A5_2015_408280_C.json (already in final Excel file)
+  433: Skipping CAO 2024 (1-1-2024 tm 30-6-2024)_1.json (already in final Excel file)
+  824: Skipping CAO_MB_2017_2019_TTW_LL_nov_2018.json (already in final Excel file)
+  10: Skipping TTW_CAO_1_7_2013.json (already in final Excel file)
+  1060: Skipping NBBU_CAO_Uitzendkrachten_2018.json (already in final Excel file)
+  41: Skipping CAO-tekst 2023-2024 versie 1.0 zonder wijzigingen.json (already in final Excel file)
+  80: Skipping CAO_Waterbouw_2013_2014_def.json (already in final Excel file)
+  526: Skipping CAO meubelindustrie 2020-2021 def_1.json (already in final Excel file)
+  496: Skipping CAO PB 18 dec 2024- 27 dec 2026 zonder zichtbare wijzigingen.json (already in final Excel file)
+  1471: Skipping CAO Grondstoffen Energie en Omgeving Services 2022-2023-2024 - signed.json (already in final Excel file)
+  924: Skipping cao Reisbranche 1jul2024-1jul2026 def.json (already in final Excel file)
+  316: Skipping CAO LMB 2020 2023 schone versie feb 22.json (already in final Excel file)
+  26: Skipping cao 2019-2020 met wijzigingen geacepteerd definitief.docx.json (already in final Excel file)
+  650: Skipping Groothandel in Groenten en Fruit 2019-2020 definitief 03112019.json (already in final Excel file)
+  245: Skipping Tekst CAO Tuinzaadbedrijven 1 januari 2024 - 31 december 2025 def.json (already in final Excel file)
+  475: Skipping Sport 2021 definitief.json (already in final Excel file)
+  10: Skipping Cao Bouw en Infra 2023.json (already in final Excel file)
+  301: Skipping CAOWMD1213__270213__definitief.json (already in final Excel file)
+  157: Skipping Zuivel I 2020.json (already in final Excel file)
+  633: Skipping CAO_voor_uzk_16_9_2015_integraal.json (already in final Excel file)
+  243: Skipping Cao_Hov_ttw_5_12_2018.json (already in final Excel file)
+  1639: Skipping cao VWDHZ in pdf met handtekeningen.json (already in final Excel file)
+  884: Skipping CAO_Kantoor_en_Boek_17_18_def.json (already in final Excel file)
+  750: Skipping cao 1 april 2022 - 31 maart 2024, definitief 01052023.json (already in final Excel file)
+  2535: Skipping CAO MITT 2021-2022.json (already in final Excel file)
+  359: Skipping Zoetwarenindustrie 2019-2020 na ttw ivm artikel 14 en 25 lid 3.pdf .json (already in final Excel file)
+  3313: Skipping cao NWb 2023 ondertekende versie.json (already in final Excel file)
+  833: Skipping CAO-Woondiensten 2022-2023 versie 01-09-2022.json (already in final Excel file)
+  633: Skipping ABU CAO voor Uitzendkrachten 30-12-2019 integraal mei.json (already in final Excel file)
+  833: Skipping CAO_Woondiensten_2017_2018.json (already in final Excel file)
+  41: Skipping cao tekst.json (already in final Excel file)
+  1612: Skipping Integrale cao Kinderopvang 2020 - 2021.json (already in final Excel file)
+  21: Skipping CAO 2010 aanmelding.json (already in final Excel file)
+  306: CAOtekst_AVV__integraal__verlenging.json [API 5/6]
+  306: Salary LLM extraction (Request size: 5.3 KB, 5,455 characters) [API 5/6]
+  214: Skipping Cao_OB_2015_2019_invulling_loonruimte_2016.json (already in final Excel file)
+  2535: Skipping SZW_CAOMITT2016_19_melding__tussent__wijz__sch.json (already in final Excel file)
+  214: Skipping 230428 cao OB 1.1.2023_31.3.2024_DEF.json (already in final Excel file)
+  26: Skipping Vleessector_cao_incl__reglement_ongerenvooieerd.json (already in final Excel file)
+  20: Skipping CAO_KNV_1_januari_2014__1_januari_2017.json (already in final Excel file)
+  1944: Skipping Cao open teelten per 1 maart 2021 tot en met 28 februari 2023 1e TTW integraal.d.json (already in final Excel file)
+  234: Skipping Cao Jeugdzorg 2024- 2025 aanmeldversie juli 2024 schoon.json (already in final Excel file)
+  496: Skipping Cao Particuliere Beveiliging versie 7 juni 2023 ZONDER zichtbare wijzigingen.json (already in final Excel file)
+  633: Skipping ABU CAO voor Uitzendkrachten 2021 - 2023 versie juli 2022 integraal.json (already in final Excel file)
+  1496: Skipping 01_CAO_BAKKERSBEDRIJF_1_MAART_2012___definitief.json (already in final Excel file)
+  791: Skipping cao_2016_2017_Textielgroothandel.json (already in final Excel file)
+  1287: Skipping Grafimedia cao 2022-2024 15 februari 2022.json (already in final Excel file)
+  748: Skipping 01-CAO~1.DOC.json (already in final Excel file)
+  2535: Skipping CAO MITT 2020 _1.json (already in final Excel file)
+  2948: Skipping CAO_VVT_2012_2013_docx.json (already in final Excel file)
+  316: Skipping CAO_LMB_2013_2017_SZW_V4_schoon.json (already in final Excel file)
+  924: Skipping 2019 Tekst cao-reisbranche 1 november 2018 - 1 september 2019 - versie 2.0.json (already in final Excel file)
+  43: Skipping Cao_2013_2015.json (already in final Excel file)
+  1060: Skipping NBBU_CAO_Uitzendkrachten_2015_per_1_juli_DEF.json (already in final Excel file)
+  41: Skipping CAO-tekst 2019_vs2.docx .json (already in final Excel file)
+  725: Skipping cao GGI incl tref woorden def versie 2.docx.json (already in final Excel file)
+  526: Skipping CAO meubelindustrie 2022-2023.json (already in final Excel file)
+  301: Skipping Cao Sociaal Werk 2023-2025(ttw031224opttw010724)definitief.json (already in final Excel file)
+  727: Skipping 150824_Cao_Fashion__Sport_en_Lifestyle.json (already in final Excel file)
+  254: Skipping cao afbouw 2022-2023 6 januari 2022 aanmelding 2.docx.json (already in final Excel file)
+  3335: Skipping CAO_PLb_2013_caotekst.json (already in final Excel file)
+  2535: Skipping CAO MITT 2023 versie 06072023.json (already in final Excel file)
+  924: Skipping CAO_teksten_voor_CAO_2013_2015_wijzigingen_def_R2.json (already in final Excel file)
+  80: CAO Waterbouw 2022-2023.json [API 4/6]
+  80: Salary LLM extraction (Request size: 11.1 KB, 11,359 characters) [API 4/6]
+  3313: Skipping cao_Netwerkbedrijven_2_0_2011_2013.json (already in final Excel file)
+  26: Skipping CAO_2016_na_opm_artikel_42.json (already in final Excel file)
+  1496: 01_CAO_BAKKERSBEDRIJF_1_APRIL_2015.json [API 1/6]
+  1496: Salary LLM extraction (Request size: 16.0 KB, 16,370 characters) [API 1/6]
+  721: 12_01_25_CAO_tekst_definitief.json [API 6/6]
+  721: Salary LLM extraction (Request size: 15.5 KB, 15,882 characters) [API 6/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 4/6]
+  1494: Salary LLM extraction completed in 49.98 seconds [API 3/6]
+  306: Salary LLM extraction completed in 54.63 seconds [API 5/6]
+  1060: Salary LLM extraction completed in 85.94 seconds [API 2/6]
+  1494: Rest LLM extraction (Request size: 22.5 KB, 22,959 characters) [API 3/6]
+  306: Rest LLM extraction (Request size: 25.4 KB, 26,006 characters) [API 5/6]
+  1060: Rest LLM extraction (Request size: 35.8 KB, 36,593 characters) [API 2/6]
+  721: Salary LLM extraction completed in 131.50 seconds [API 6/6]
+  1494: Rest LLM extraction completed in 50.04 seconds [API 3/6]
+  1494: Merge operation completed in 0.00 seconds [API 3/6]
+  1494: Total file processing time: 160.06 seconds [API 3/6]
+  1494: Starting 3-minute delay... [API 3/6]
+  1496: Salary LLM extraction completed in 162.33 seconds [API 1/6]
+  1060: Rest LLM extraction completed in 53.51 seconds [API 2/6]
+  1060: Merge operation completed in 0.00 seconds [API 2/6]
+  1060: Total file processing time: 199.56 seconds [API 2/6]
+  1060: Starting 3-minute delay... [API 2/6]
+  721: Rest LLM extraction (Request size: 35.1 KB, 35,836 characters) [API 6/6]
+  306: Rest LLM extraction completed in 87.17 seconds [API 5/6]
+  306: Merge operation completed in 0.00 seconds [API 5/6]
+  306: Total file processing time: 201.87 seconds [API 5/6]
+  306: Starting 3-minute delay... [API 5/6]
+  1496: Rest LLM extraction (Request size: 23.4 KB, 23,943 characters) [API 1/6]
+  80: Salary LLM extraction completed in 228.37 seconds [API 4/6]
+  721: Rest LLM extraction completed in 69.69 seconds [API 6/6]
+  721: Merge operation completed in 0.00 seconds [API 6/6]
+  721: Total file processing time: 261.29 seconds [API 6/6]
+  721: Starting 3-minute delay... [API 6/6]
+  1496: Rest LLM extraction completed in 52.41 seconds [API 1/6]
+  1496: Merge operation completed in 0.00 seconds [API 1/6]
+  1496: Total file processing time: 274.84 seconds [API 1/6]
+  1496: Starting 3-minute delay... [API 1/6]
+  80: Rest LLM extraction (Request size: 21.7 KB, 22,138 characters) [API 4/6]
+  1494: 3-minute delay completed in 180.00 seconds [API 3/6]
+  21: Skipping CAO_tekst_2019_basis_1.json (already in final Excel file)
+  1496: Skipping BAKKERSBEDRIJF_cao.json (already in final Excel file)
+  1612: Skipping CAO_Kinderopvang_2012_2014_def.json (already in final Excel file)
+  245: Skipping Plantum___definitieve_CAO_2011___2014.json (already in final Excel file)
+  50: Skipping Cao Apotheken 2024-2027 na ttw volledig met bijlagen 07-07-2025.json (already in final Excel file)
+  727: Skipping 170313_Cao_F_S__L_2016_2018_incl_Wonen_def_hvb.json (already in final Excel file)
+  157: Skipping Zuivel cao I 2021.json (already in final Excel file)
+  727: Skipping 220629 cao Retail Non-Food def.json (already in final Excel file)
+  884: Skipping CAO_Kantoor_18_19_def_aanm.json (already in final Excel file)
+  2948: Skipping cao_teksten_2013_2014_aanmelding.json (already in final Excel file)
+  301: Skipping CAOWMD20142016_definitief_301214_.json (already in final Excel file)
+  1285: Skipping CAO_tekst_2013_2015_def.json (already in final Excel file)
+  3313: Skipping cao_NWb_2015_2018.json (already in final Excel file)
+  759: Skipping cao_2011_2013_ttw4_tijdelijke_maatr_aanmelding.json (already in final Excel file)
+  573: Skipping CAO_pluimvee_per_1_mei_2012.json (already in final Excel file)
+  233: Skipping CAOtekst_2014_PvL_6mei2014.json (already in final Excel file)
+  2297: Skipping c2255_f14208_fp3241_CAO_TI_17_19_arcering.json (already in final Excel file)
+  1618: Skipping Cao UMC wijzigingen per januari 2023.json (already in final Excel file)
+  1869: Skipping cao_Glastuinbouw_incl_ttw_1_1_2018_integrale_tekst.json (already in final Excel file)
+  683: Skipping CAO-2021-2022 ETD tekst TTW d.d. 20 juni 2023.json (already in final Excel file)
+  1639: Skipping Cao_DHZ_branche_2015_17_getekend.json (already in final Excel file)
+  1296: Skipping Tekst_ICK_CAO_2011.json (already in final Excel file)
+  727: Skipping 171115_Cao_F_S__L_2016_2018_definitief_hvb_1.json (already in final Excel file)
+  43: Skipping 43 Cao voor architectenbureaus_ 1 jan tm 31 dec 2024_schone tekst.json (already in final Excel file)
+  80: Rest LLM extraction completed in 41.72 seconds [API 4/6]
+  80: Merge operation completed in 0.00 seconds [API 4/6]
+  80: Total file processing time: 330.13 seconds [API 4/6]
+  80: Starting 3-minute delay... [API 4/6]
+  1060: Skipping NBBU_CAO_Uitzendkrachten_2015.json (already in final Excel file)
+  727: Skipping 201207 Cao Retail Non-Food 1-1-21 definitief.docx.json (already in final Excel file)
+  2070: Skipping 2024.12.10 WFC cao 2025-2027 Clean Version Final_ getekend szw.json (already in final Excel file)
+  730: Skipping CAOTG20162018Aanpassingen20170807.json (already in final Excel file)
+  573: Skipping CAO_pluimvee_per_1_januari_2017_per_9_2_2017.json (already in final Excel file)
+  3313: Skipping CAO NWb 2018-2021-def.json (already in final Excel file)
+  823: Skipping CAO_MvT_2014_2018_11_september.json (already in final Excel file)
+  633: Skipping CAO UZK januari 2011 integraal.json (already in final Excel file)
+  317: Skipping CAO GHZ 2019-2021 versie oktober 2020 zonder wijzigingen bijhouden.docx.json (already in final Excel file)
+  1612: CAO_Kinderopvang_2018_2019.json [API 3/6]
+  1612: Salary LLM extraction (Request size: 13.8 KB, 14,136 characters) [API 3/6]
+  1060: 3-minute delay completed in 180.00 seconds [API 2/6]
+  43: Skipping CAO_2015_2017_1.json (already in final Excel file)
+  254: Skipping 20241203 cao 2024-2025 ttw januari 2025 integraal.json (already in final Excel file)
+  254: Skipping cao 2022-2023 6 januari 2022 aanmelding.json (already in final Excel file)
+  924: Skipping Tekst cao Reisbranche 1jan-1jul2022.json (already in final Excel file)
+  637: Skipping Cao_Verzekeringsbedrijf_2016_2017_schoon_ttw.json (already in final Excel file)
+  633: Skipping ABU CAO voor Uitzendkrachten 2021 integraal.json (already in final Excel file)
+  1060: Skipping NBBU_CAO_Uitzendkrachten_2015-2019_versie 2019 NL OTF.pdf .json (already in final Excel file)
+  549: Skipping CAO AGF Detailhandel 2021-2024 def_.json (already in final Excel file)
+  822: Skipping CAO_CAR_2017_2019_TTW_juli_2017.json (already in final Excel file)
+  148: Skipping Cao Graanbe- en verwerkende Bedrijven 2023 DEF.json (already in final Excel file)
+  1022: Skipping CAO MBO 2020-2021 - wijzigingen geaccepteerd 29062020 def.json (already in final Excel file)
+  791: Skipping Textielgroothandel_CAO_2011_2012.json (already in final Excel file)
+  1496: Skipping CAO BAKKERSBEDRIJF 1 AUGUSTUS 2020 incl Bijlagen.docx.json (already in final Excel file)
+  254: Skipping cao 2024-2025, 30 januari 2024 integraal.json (already in final Excel file)
+  1287: Skipping Reglement_Garantiefonds_07_12_2011__2_.json (already in final Excel file)
+  924: Skipping AWVN__487825_v1_DefCAO_ANVR_2011_2012.json (already in final Excel file)
+  83: Skipping cao_voor_de_betonproductenindustrie_2013__2014.json (already in final Excel file)
+  823: Skipping CAO MvT 2018-2020 DEF 2 oktober 2019.docx.json (already in final Excel file)
+  301: Skipping Cao Sociaal Werk 2023-2025(definitief240723)def.json (already in final Excel file)
+  475: Skipping Definitieve cao Sport 2022 - 2023.json (already in final Excel file)
+  1574: Skipping Wijzigingen CAO GGZ 2019-2021 excl bijlage VI - 31 december 2020 definitief.docx.json (already in final Excel file)
+  243: Skipping TTW_Cao_hov_2_8_16.json (already in final Excel file)
+  1945: Skipping Cao_productiegerichte_dierhouderij_2014_2017.json (already in final Excel file)
+  748: Skipping Cao_voor_het_Slagersbedrijf_1_4_13_tm_31_3_14.json (already in final Excel file)
+  759: Skipping CAO SAG 2016 2021 ttw 3 april 2020.json (already in final Excel file)
+  1494: Skipping Def cao primair onderwijs 2019-2020.json (already in final Excel file)
+  526: Skipping CAO_meubelindustrie_2018_2019_Def_1.json (already in final Excel file)
+  433: Skipping CAO 2019-2021 nota van wijziging 8-7-2019.docx.json (already in final Excel file)
+  182: Skipping 202404~2.json (already in final Excel file)
+  51: Skipping CAO_Timmer_aanp_avv_14_4_2014.json (already in final Excel file)
+  625: Skipping CAO_2021-2022_DEF.json (already in final Excel file)
+  1944: CAO_Open_Teelten__1_juli_2014_tm_30_juni_2015.json [API 2/6]
+  1944: Salary LLM extraction (Request size: 16.2 KB, 15,699 characters) [API 2/6]
+  306: 3-minute delay completed in 180.00 seconds [API 5/6]
+  1165: Skipping cao_definitief_3_0_nav_opmerkingen_szw_avv.json (already in final Excel file)
+  43: Skipping Cao Architectenbureaus 2021 2023 incl functiehandboek schoon.json (already in final Excel file)
+  148: Skipping cao tekst 2010 - 2012 per 1-4-2011.json (already in final Excel file)
+  730: Skipping CAO TG 2023-2025_Versie 2024-12-11.json (already in final Excel file)
+  679: Skipping Taxivervoer_CAO_aann__CAO_627.json (already in final Excel file)
+  26: Skipping Tussentijds_gewijzigde_cao.json (already in final Excel file)
+  526: Meubelindustrie__29_juli_2011.json [API 5/6]
+  526: Salary LLM extraction (Request size: 13.8 KB, 14,084 characters) [API 5/6]
+  1612: Salary LLM extraction completed in 62.44 seconds [API 3/6]
+  1944: Salary LLM extraction completed in 55.15 seconds [API 2/6]
+  721: 3-minute delay completed in 180.00 seconds [API 6/6]
+  10: Skipping cao Bouw en Infra 2021-2022_1.json (already in final Excel file)
+  243: Skipping Integ_Cao_hov_incl_ttw_2018_2020.json (already in final Excel file)
+  730: CAO Technische Groothandel 2019-2022.json [API 6/6]
+  730: Salary LLM extraction (Request size: 16.8 KB, 17,029 characters) [API 6/6]
+  526: Salary LLM extraction completed in 72.07 seconds [API 5/6]
+  1496: 3-minute delay completed in 180.00 seconds [API 1/6]
+  2266: Integrale cao-tekst visdetailhandel 2025 geschoond.json [API 1/6]
+  2266: Salary LLM extraction (Request size: 11.9 KB, 11,463 characters) [API 1/6]
+  1612: Rest LLM extraction (Request size: 19.0 KB, 19,405 characters) [API 3/6]
+  1944: Rest LLM extraction (Request size: 17.5 KB, 17,890 characters) [API 2/6]
+  80: 3-minute delay completed in 180.00 seconds [API 4/6]
+  41: Skipping CAO_tekst_2015_2016_geschoond.json (already in final Excel file)
+  750: contractcatering cao en handboek.json [API 4/6]
+  750: Salary LLM extraction (Request size: 12.5 KB, 12,822 characters) [API 4/6]
+  526: Rest LLM extraction (Request size: 63.7 KB, 65,119 characters) [API 5/6]
+  2266: Salary LLM extraction completed in 68.33 seconds [API 1/6]
+  1944: Rest LLM extraction completed in 53.94 seconds [API 2/6]
+  1944: Merge operation completed in 0.00 seconds [API 2/6]
+  1944: Total file processing time: 169.17 seconds [API 2/6]
+  1944: Starting 3-minute delay... [API 2/6]
+  1612: Rest LLM extraction completed in 84.46 seconds [API 3/6]
+  1612: Merge operation completed in 0.00 seconds [API 3/6]
+  1612: Total file processing time: 206.98 seconds [API 3/6]
+  1612: Starting 3-minute delay... [API 3/6]
+  730: Salary LLM extraction completed in 100.11 seconds [API 6/6]
+  526: Rest LLM extraction completed in 61.57 seconds [API 5/6]
+  526: Merge operation completed in 0.00 seconds [API 5/6]
+  526: Total file processing time: 193.70 seconds [API 5/6]
+  526: Starting 3-minute delay... [API 5/6]
+  750: Salary LLM extraction completed in 68.51 seconds [API 4/6]
+  2266: Rest LLM extraction (Request size: 27.2 KB, 27,785 characters) [API 1/6]
+  730: Rest LLM extraction (Request size: 36.1 KB, 36,979 characters) [API 6/6]
+  Attempt 1 failed (InternalServerError), retrying in 2 minutes... [API 6/6]
+  750: Rest LLM extraction (Request size: 48.3 KB, 49,366 characters) [API 4/6]
+  2266: Rest LLM extraction completed in 67.94 seconds [API 1/6]
+  2266: Merge operation completed in 0.00 seconds [API 1/6]
+  2266: Total file processing time: 196.35 seconds [API 1/6]
+  2266: Starting 3-minute delay... [API 1/6]
+  1944: 3-minute delay completed in 180.00 seconds [API 2/6]
+  750: Rest LLM extraction completed in 81.71 seconds [API 4/6]
+  750: Merge operation completed in 0.00 seconds [API 4/6]
+  750: Total file processing time: 210.28 seconds [API 4/6]
+  750: Starting 3-minute delay... [API 4/6]
+  182: Skipping 20221124 cao_horeca_2022-2023 na 2020_wijziging bijlage loontabellen schoon.json (already in final Excel file)
+  1285: Skipping cao tekst Tank Was 2022-2023, definitief 28032022.json (already in final Excel file)
+  1612: 3-minute delay completed in 180.00 seconds [API 3/6]
+  1612: Skipping CAO_Kinderopvang.json (already in final Excel file)
+  683: Elektro tekstCAO-2010-2011 (januari 2011).json [API 3/6]
+  683: Salary LLM extraction (Request size: 7.7 KB, 7,921 characters) [API 3/6]
+  573: Skipping CAO_pluimvee_per_1_januari_2017.json (already in final Excel file)
+  1188: Skipping CAO_VO_2011_2012_def.json (already in final Excel file)
+  148: Skipping Cao_boekje_2012_2013.json (already in final Excel file)
+  759: CAO_SAG_2016_2019__16_september_2016_.json [API 2/6]
+  759: Salary LLM extraction (Request size: 9.4 KB, 9,587 characters) [API 2/6]
+  526: 3-minute delay completed in 180.00 seconds [API 5/6]
+  633: CAO_voor_Uitzendkrachten_dec__2012_integraal.json [API 5/6]
+  633: Salary LLM extraction (Request size: 18.8 KB, 19,189 characters) [API 5/6]
+  730: Rest LLM extraction completed in 172.26 seconds [API 6/6]
+  730: Merge operation completed in 0.00 seconds [API 6/6]
+  730: Total file processing time: 332.45 seconds [API 6/6]
+  730: Starting 3-minute delay... [API 6/6]
+  683: Salary LLM extraction completed in 56.46 seconds [API 3/6]
+  759: Salary LLM extraction completed in 59.02 seconds [API 2/6]
+  2266: 3-minute delay completed in 180.00 seconds [API 1/6]
+  727: 150824_Cao_Fashion__Sport___Lifestyle_hvb.json [API 1/6]
+  727: Salary LLM extraction (Request size: 39.4 KB, 40,182 characters) [API 1/6]
+  683: Rest LLM extraction (Request size: 13.9 KB, 14,165 characters) [API 3/6]
+  759: Rest LLM extraction (Request size: 33.5 KB, 34,260 characters) [API 2/6]
+  633: Salary LLM extraction completed in 100.31 seconds [API 5/6]
+  683: Rest LLM extraction completed in 54.23 seconds [API 3/6]
+  683: Merge operation completed in 0.00 seconds [API 3/6]
+  683: Total file processing time: 170.75 seconds [API 3/6]
+  683: Starting 3-minute delay... [API 3/6]
+  759: Rest LLM extraction completed in 55.95 seconds [API 2/6]
+  759: Merge operation completed in 0.00 seconds [API 2/6]
+  759: Total file processing time: 175.03 seconds [API 2/6]
+  759: Starting 3-minute delay... [API 2/6]
+  750: 3-minute delay completed in 180.00 seconds [API 4/6]
+  1291: CAO_boekje_NHG_2014_2018_versie_2_mei_2014.json [API 4/6]
+  1291: Salary LLM extraction (Request size: 2.9 KB, 2,929 characters) [API 4/6]
+  Attempt 1 failed (InternalServerError), retrying in 2 minutes... [API 4/6]
+  633: Rest LLM extraction (Request size: 26.3 KB, 26,925 characters) [API 5/6]
+  730: 3-minute delay completed in 180.00 seconds [API 6/6]
+  317: Definitieve_tekst_CAO_GHZ_2014_2015.json [API 6/6]
+  317: Salary LLM extraction (Request size: 17.0 KB, 17,328 characters) [API 6/6]
+  727: Salary LLM extraction completed in 144.90 seconds [API 1/6]
+  633: Rest LLM extraction completed in 69.28 seconds [API 5/6]
+  633: Merge operation completed in 0.00 seconds [API 5/6]
+  633: Total file processing time: 229.67 seconds [API 5/6]
+  633: Starting 3-minute delay... [API 5/6]
+  727: Rest LLM extraction (Request size: 25.6 KB, 26,111 characters) [API 1/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 1/6]
+  1291: Salary LLM extraction completed in 147.18 seconds [API 4/6]
+  683: 3-minute delay completed in 180.00 seconds [API 3/6]
+  1944: Open Teelten integrale tekst incl ttw.json [API 3/6]
+  1944: Salary LLM extraction (Request size: 14.9 KB, 14,007 characters) [API 3/6]
+  759: 3-minute delay completed in 180.00 seconds [API 2/6]
+  650: CAO Groothandel in Groenten en Fruit 2019-2020 na ttw art 13 23 40 bijlage III V.json [API 2/6]
+  650: Salary LLM extraction (Request size: 38.9 KB, 39,761 characters) [API 2/6]
+  1291: Rest LLM extraction (Request size: 15.4 KB, 15,753 characters) [API 4/6]
+  1944: Salary LLM extraction completed in 55.99 seconds [API 3/6]
+  1291: Rest LLM extraction completed in 53.65 seconds [API 4/6]
+  1291: Merge operation completed in 0.00 seconds [API 4/6]
+  1291: Total file processing time: 260.89 seconds [API 4/6]
+  1291: Starting 3-minute delay... [API 4/6]
+  633: 3-minute delay completed in 180.00 seconds [API 5/6]
+  35: Skipping Cao Textielverzorging 2023-2024 doorlopende tekst def.json (already in final Excel file)
+  727: Cao_Fashion_en_Sport_Inretail.json [API 5/6]
+  727: Salary LLM extraction (Request size: 51.8 KB, 52,814 characters) [API 5/6]
+  650: Salary LLM extraction completed in 89.29 seconds [API 2/6]
+  317: Salary LLM extraction completed in 227.09 seconds [API 6/6]
+  1944: Rest LLM extraction (Request size: 20.7 KB, 21,102 characters) [API 3/6]
+  727: Rest LLM extraction completed in 173.97 seconds [API 1/6]
+  727: Merge operation completed in 0.00 seconds [API 1/6]
+  727: Total file processing time: 378.96 seconds [API 1/6]
+  727: Starting 3-minute delay... [API 1/6]
+  650: Rest LLM extraction (Request size: 29.8 KB, 30,411 characters) [API 2/6]
+  1944: Rest LLM extraction completed in 47.89 seconds [API 3/6]
+  1944: Merge operation completed in 0.00 seconds [API 3/6]
+  1944: Total file processing time: 163.94 seconds [API 3/6]
+  1944: Starting 3-minute delay... [API 3/6]
+  317: Rest LLM extraction (Request size: 21.9 KB, 22,452 characters) [API 6/6]
+  650: Rest LLM extraction completed in 50.47 seconds [API 2/6]
+  650: Merge operation completed in 0.00 seconds [API 2/6]
+  650: Total file processing time: 199.84 seconds [API 2/6]
+  650: Starting 3-minute delay... [API 2/6]
+  317: Rest LLM extraction completed in 70.75 seconds [API 6/6]
+  317: Merge operation completed in 0.00 seconds [API 6/6]
+  317: Total file processing time: 357.96 seconds [API 6/6]
+  317: Starting 3-minute delay... [API 6/6]
+  727: Salary LLM extraction completed in 152.00 seconds [API 5/6]
+  1291: 3-minute delay completed in 180.00 seconds [API 4/6]
+  475: Sport-CAO 2019-2020 ttw.json [API 4/6]
+  475: Salary LLM extraction (Request size: 5.7 KB, 5,830 characters) [API 4/6]
+  727: Rest LLM extraction (Request size: 18.1 KB, 18,497 characters) [API 5/6]
+  727: 3-minute delay completed in 180.00 seconds [API 1/6]
+  51: avv_REDACTIETEKST_ARBVW_2013_26sept.json [API 1/6]
+  51: Salary LLM extraction (Request size: 8.7 KB, 8,881 characters) [API 1/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 1/6]
+  1944: 3-minute delay completed in 180.00 seconds [API 3/6]
+  317: Tekst CAO GHZ 2021-2024_DEFGEW.json [API 3/6]
+  317: Salary LLM extraction (Request size: 34.8 KB, 35,504 characters) [API 3/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 3/6]
+  727: Rest LLM extraction completed in 71.47 seconds [API 5/6]
+  727: Merge operation completed in 0.00 seconds [API 5/6]
+  727: Total file processing time: 283.57 seconds [API 5/6]
+  727: Starting 3-minute delay... [API 5/6]
+  650: 3-minute delay completed in 180.00 seconds [API 2/6]
+  679: TTW CAO Taxivervoer 2019 2020 v050320 DEF NET.docx.json [API 2/6]
+  679: Salary LLM extraction (Request size: 19.7 KB, 20,016 characters) [API 2/6]
+  475: Salary LLM extraction completed in 125.37 seconds [API 4/6]
+  317: 3-minute delay completed in 180.00 seconds [API 6/6]
+  433: CAO 2022-2024 (met wijzigingen 6-7-2023).json [API 6/6]
+  433: Salary LLM extraction (Request size: 7.0 KB, 7,144 characters) [API 6/6]
+  Attempt 2 failed (ValueError), retrying in 4 minutes... [API 1/6]
+  679: Salary LLM extraction completed in 63.04 seconds [API 2/6]
+  475: Rest LLM extraction (Request size: 10.7 KB, 10,976 characters) [API 4/6]
+  433: Salary LLM extraction completed in 54.21 seconds [API 6/6]
+  475: Rest LLM extraction completed in 49.56 seconds [API 4/6]
+  475: Merge operation completed in 0.00 seconds [API 4/6]
+  475: Total file processing time: 235.03 seconds [API 4/6]
+  475: Starting 3-minute delay... [API 4/6]
+  679: Rest LLM extraction (Request size: 15.3 KB, 15,660 characters) [API 2/6]
+  433: Rest LLM extraction (Request size: 29.0 KB, 29,617 characters) [API 6/6]
+  727: 3-minute delay completed in 180.00 seconds [API 5/6]
+  43: Skipping CAO_nw_2011_2013_boekje.json (already in final Excel file)
+  234: Jeugdzorg_Cao_2011_2013_def020712.json [API 5/6]
+  234: Salary LLM extraction (Request size: 9.2 KB, 9,419 characters) [API 5/6]
+  679: Rest LLM extraction completed in 51.92 seconds [API 2/6]
+  679: Merge operation completed in 0.00 seconds [API 2/6]
+  679: Total file processing time: 174.98 seconds [API 2/6]
+  679: Starting 3-minute delay... [API 2/6]
+  433: Rest LLM extraction completed in 43.01 seconds [API 6/6]
+  433: Merge operation completed in 0.00 seconds [API 6/6]
+  433: Total file processing time: 157.29 seconds [API 6/6]
+  433: Starting 3-minute delay... [API 6/6]
+  234: Salary LLM extraction completed in 63.91 seconds [API 5/6]
+  234: Rest LLM extraction (Request size: 20.1 KB, 20,452 characters) [API 5/6]
+  475: 3-minute delay completed in 180.00 seconds [API 4/6]
+  2266: Cao_Visdetailhandel_2017_2018.json [API 4/6]
+  2266: Salary LLM extraction (Request size: 6.4 KB, 6,587 characters) [API 4/6]
+  317: Salary LLM extraction completed in 358.67 seconds [API 3/6]
+  234: Rest LLM extraction completed in 43.93 seconds [API 5/6]
+  234: Merge operation completed in 0.00 seconds [API 5/6]
+  234: Total file processing time: 167.91 seconds [API 5/6]
+  234: Starting 3-minute delay... [API 5/6]
+  2266: Salary LLM extraction completed in 54.56 seconds [API 4/6]
+  51: Salary LLM extraction completed in 422.64 seconds [API 1/6]
+  679: 3-minute delay completed in 180.00 seconds [API 2/6]
+  759: CAO SAVG 2021 2025 (TTW maart 2024) schone versie.json [API 2/6]
+  759: Salary LLM extraction (Request size: 9.0 KB, 9,119 characters) [API 2/6]
+  433: 3-minute delay completed in 180.00 seconds [API 6/6]
+  1618: NFU-24.01131 CAO NL v08 def.json [API 6/6]
+  1618: Salary LLM extraction (Request size: 14.7 KB, 15,022 characters) [API 6/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 6/6]
+  317: Rest LLM extraction (Request size: 60.7 KB, 61,924 characters) [API 3/6]
+  759: Salary LLM extraction completed in 52.25 seconds [API 2/6]
+  2266: Rest LLM extraction (Request size: 22.3 KB, 22,731 characters) [API 4/6]
+  51: Rest LLM extraction (Request size: 28.3 KB, 28,951 characters) [API 1/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 1/6]
+  317: Rest LLM extraction completed in 54.35 seconds [API 3/6]
+  317: Merge operation completed in 0.00 seconds [API 3/6]
+  317: Total file processing time: 473.16 seconds [API 3/6]
+  317: Starting 3-minute delay... [API 3/6]
+  2266: Rest LLM extraction completed in 42.09 seconds [API 4/6]
+  2266: Merge operation completed in 0.00 seconds [API 4/6]
+  2266: Total file processing time: 156.72 seconds [API 4/6]
+  2266: Starting 3-minute delay... [API 4/6]
+  759: Rest LLM extraction (Request size: 30.2 KB, 30,945 characters) [API 2/6]
+  Attempt 2 failed (ValueError), retrying in 4 minutes... [API 6/6]
+  234: 3-minute delay completed in 180.00 seconds [API 5/6]
+  1869: Integrale tekst Cao Glastuinbouw 1 januari 2024 tot en met 31 maart 2025 incl. 1e TTW per 1 januari 2024 (2406-1334).json [API 5/6]
+  1869: Salary LLM extraction (Request size: 8.3 KB, 8,487 characters) [API 5/6]
+  759: Rest LLM extraction completed in 60.11 seconds [API 2/6]
+  759: Merge operation completed in 0.00 seconds [API 2/6]
+  759: Total file processing time: 172.42 seconds [API 2/6]
+  759: Starting 3-minute delay... [API 2/6]
+  Attempt 2 failed (ValueError), retrying in 4 minutes... [API 1/6]
+  317: 3-minute delay completed in 180.00 seconds [API 3/6]
+  254: cao 2022-2023 ttw februari 2023 integraal.json [API 3/6]
+  254: Salary LLM extraction (Request size: 34.0 KB, 34,629 characters) [API 3/6]
+  1869: Salary LLM extraction completed in 116.88 seconds [API 5/6]
+  2266: 3-minute delay completed in 180.00 seconds [API 4/6]
+  1504: CAO_BTU_2012_2013_v1_21_Geschoond.json [API 4/6]
+  1504: Salary LLM extraction (Request size: 11.8 KB, 12,048 characters) [API 4/6]
+  1869: Rest LLM extraction (Request size: 18.2 KB, 18,615 characters) [API 5/6]
+  Attempt 1 failed (InternalServerError), retrying in 2 minutes... [API 5/6]
+  759: 3-minute delay completed in 180.00 seconds [API 2/6]
+  359: Zoetwaren_arbvoorw_CAO_2011_2012_.json [API 2/6]
+  359: Salary LLM extraction (Request size: 26.9 KB, 27,420 characters) [API 2/6]
+  1504: Salary LLM extraction completed in 88.90 seconds [API 4/6]
+  Attempt 3 failed (ValueError), retrying in 8 minutes... [API 6/6]
+  254: Salary LLM extraction completed in 132.04 seconds [API 3/6]
+  1504: Rest LLM extraction (Request size: 34.0 KB, 34,727 characters) [API 4/6]
+  359: Salary LLM extraction completed in 84.00 seconds [API 2/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 4/6]
+  Attempt 3 failed (ValueError), retrying in 8 minutes... [API 1/6]
+  254: Rest LLM extraction (Request size: 28.4 KB, 29,070 characters) [API 3/6]
+  Attempt 2 failed (ValueError), retrying in 4 minutes... [API 5/6]
+  359: Rest LLM extraction (Request size: 44.5 KB, 45,260 characters) [API 2/6]
+  254: Rest LLM extraction completed in 53.40 seconds [API 3/6]
+  254: Merge operation completed in 0.00 seconds [API 3/6]
+  254: Total file processing time: 245.54 seconds [API 3/6]
+  254: Starting 3-minute delay... [API 3/6]
+  359: Rest LLM extraction completed in 50.58 seconds [API 2/6]
+  359: Merge operation completed in 0.00 seconds [API 2/6]
+  359: Total file processing time: 194.71 seconds [API 2/6]
+  359: Starting 3-minute delay... [API 2/6]
+  1504: Rest LLM extraction completed in 196.31 seconds [API 4/6]
+  1504: Merge operation completed in 0.00 seconds [API 4/6]
+  1504: Total file processing time: 345.29 seconds [API 4/6]
+  1504: Starting 3-minute delay... [API 4/6]
+  254: 3-minute delay completed in 180.00 seconds [API 3/6]
+  2297: CAO_TI_arcering___wijz_AOW_LT.json [API 3/6]
+  2297: Salary LLM extraction (Request size: 27.9 KB, 28,510 characters) [API 3/6]
+  Attempt 3 failed (ValueError), retrying in 8 minutes... [API 5/6]
+  359: 3-minute delay completed in 180.00 seconds [API 2/6]
+  1287: DEF Grafimedia cao 2024-2025 21012025.json [API 2/6]
+  1287: Salary LLM extraction (Request size: 13.5 KB, 13,849 characters) [API 2/6]
+  2297: Salary LLM extraction completed in 111.29 seconds [API 3/6]
+  1504: 3-minute delay completed in 180.00 seconds [API 4/6]
+  475: CAO_Sport_2016_2018_DEF.json [API 4/6]
+  475: Salary LLM extraction (Request size: 7.3 KB, 7,161 characters) [API 4/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 4/6]
+  1287: Salary LLM extraction completed in 98.19 seconds [API 2/6]
+  2297: Rest LLM extraction (Request size: 49.2 KB, 50,325 characters) [API 3/6]
+  Attempt 4 failed (ValueError), retrying in 16 minutes... [API 6/6]
+  1287: Rest LLM extraction (Request size: 31.4 KB, 32,123 characters) [API 2/6]
+  2297: Rest LLM extraction completed in 63.58 seconds [API 3/6]
+  2297: Merge operation completed in 0.00 seconds [API 3/6]
+  2297: Total file processing time: 234.97 seconds [API 3/6]
+  2297: Starting 3-minute delay... [API 3/6]
+  Attempt 4 failed (ValueError), retrying in 16 minutes... [API 1/6]
+  1287: Rest LLM extraction completed in 48.74 seconds [API 2/6]
+  1287: Merge operation completed in 0.00 seconds [API 2/6]
+  1287: Total file processing time: 207.03 seconds [API 2/6]
+  1287: Starting 3-minute delay... [API 2/6]
+  Attempt 2 failed (ValueError), retrying in 4 minutes... [API 4/6]
+  2297: 3-minute delay completed in 180.00 seconds [API 3/6]
+  1296: CAO 2019.json [API 3/6]
+  1296: Salary LLM extraction (Request size: 9.9 KB, 10,131 characters) [API 3/6]
+  1287: 3-minute delay completed in 180.00 seconds [API 2/6]
+  824: CAO_MB_2017_2019_TTW_GP_nov_2017.json [API 2/6]
+  824: Salary LLM extraction (Request size: 23.9 KB, 24,457 characters) [API 2/6]
+  1296: Salary LLM extraction completed in 24.80 seconds [API 3/6]
+  1296: Rest LLM extraction (Request size: 30.0 KB, 30,705 characters) [API 3/6]
+  824: Salary LLM extraction completed in 89.98 seconds [API 2/6]
+  475: Salary LLM extraction completed in 418.85 seconds [API 4/6]
+  1296: Rest LLM extraction completed in 53.18 seconds [API 3/6]
+  1296: Merge operation completed in 0.00 seconds [API 3/6]
+  1296: Total file processing time: 138.04 seconds [API 3/6]
+  1296: Starting 3-minute delay... [API 3/6]
+  1869: Rest LLM extraction completed in 912.13 seconds [API 5/6]
+  1869: Merge operation completed in 0.00 seconds [API 5/6]
+  1869: Total file processing time: 1089.10 seconds [API 5/6]
+  1869: Starting 3-minute delay... [API 5/6]
+  824: Rest LLM extraction (Request size: 18.0 KB, 18,412 characters) [API 2/6]
+  475: Rest LLM extraction (Request size: 24.1 KB, 24,587 characters) [API 4/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 4/6]
+  824: Rest LLM extraction completed in 49.55 seconds [API 2/6]
+  824: Merge operation completed in 0.00 seconds [API 2/6]
+  824: Total file processing time: 199.62 seconds [API 2/6]
+  824: Starting 3-minute delay... [API 2/6]
+  1296: 3-minute delay completed in 180.00 seconds [API 3/6]
+  301: caosociaalwerk20172019_def191017_inclfuboek.json [API 3/6]
+  301: Salary LLM extraction (Request size: 25.6 KB, 26,162 characters) [API 3/6]
+  1869: 3-minute delay completed in 180.00 seconds [API 5/6]
+  1496: Cao Bakkersbedrijf 1 juni 2021 - 1 juni 2023 definitief 12082022.json [API 5/6]
+  1496: Salary LLM extraction (Request size: 13.4 KB, 13,549 characters) [API 5/6]
+  475: Rest LLM extraction completed in 162.31 seconds [API 4/6]
+  475: Merge operation completed in 0.00 seconds [API 4/6]
+  475: Total file processing time: 641.19 seconds [API 4/6]
+  475: Starting 3-minute delay... [API 4/6]
+  824: 3-minute delay completed in 180.00 seconds [API 2/6]
+  679: CAO Zorgvervoer en Taxi 2024-2025 definitieve tekst 221124.json [API 2/6]
+  679: Salary LLM extraction (Request size: 24.5 KB, 24,928 characters) [API 2/6]
+  1496: Salary LLM extraction completed in 98.56 seconds [API 5/6]
+  301: Salary LLM extraction completed in 119.61 seconds [API 3/6]
+  679: Salary LLM extraction completed in 71.93 seconds [API 2/6]
+  1496: Rest LLM extraction (Request size: 42.8 KB, 43,761 characters) [API 5/6]
+  301: Rest LLM extraction (Request size: 28.8 KB, 29,471 characters) [API 3/6]
+  475: 3-minute delay completed in 180.00 seconds [API 4/6]
+  1060: NBBU cao tussentijdse wijzigingen def.json [API 4/6]
+  1060: Salary LLM extraction (Request size: 12.9 KB, 13,145 characters) [API 4/6]
+  679: Rest LLM extraction (Request size: 17.5 KB, 17,889 characters) [API 2/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 4/6]
+  679: Rest LLM extraction completed in 38.92 seconds [API 2/6]
+  679: Merge operation completed in 0.00 seconds [API 2/6]
+  679: Total file processing time: 170.91 seconds [API 2/6]
+  679: Starting 3-minute delay... [API 2/6]
+  1496: Rest LLM extraction completed in 90.72 seconds [API 5/6]
+  1496: Merge operation completed in 0.00 seconds [API 5/6]
+  1496: Total file processing time: 249.37 seconds [API 5/6]
+  1496: Starting 3-minute delay... [API 5/6]
+  301: Rest LLM extraction completed in 93.49 seconds [API 3/6]
+  301: Merge operation completed in 0.00 seconds [API 3/6]
+  301: Total file processing time: 273.25 seconds [API 3/6]
+  301: Starting 3-minute delay... [API 3/6]
+  Attempt 2 failed (ValueError), retrying in 4 minutes... [API 4/6]
+  679: 3-minute delay completed in 180.00 seconds [API 2/6]
+  496: cao_1_juli_2012___30_september_2013_definitief.json [API 2/6]
+  496: Salary LLM extraction (Request size: 11.7 KB, 11,980 characters) [API 2/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 2/6]
+  1496: 3-minute delay completed in 180.00 seconds [API 5/6]
+  826: Skipping HB 5e editie 2024_2.json (already in final Excel file)
+  475: CAO DEFINITIEF WOS.pdf .json [API 5/6]
+  475: Salary LLM extraction (Request size: 11.2 KB, 11,452 characters) [API 5/6]
+  301: 3-minute delay completed in 180.00 seconds [API 3/6]
+  1612: CAO_Kinderopvang_2012_2014_aanmeld150813.json [API 3/6]
+  1612: Salary LLM extraction (Request size: 14.7 KB, 15,028 characters) [API 3/6]
+  1618: Salary LLM extraction completed in 1891.83 seconds [API 6/6]
+  1612: Salary LLM extraction completed in 75.87 seconds [API 3/6]
+  1618: Rest LLM extraction (Request size: 31.0 KB, 31,717 characters) [API 6/6]
+  51: Rest LLM extraction completed in 1918.93 seconds [API 1/6]
+  51: Merge operation completed in 0.00 seconds [API 1/6]
+  51: Total file processing time: 2401.66 seconds [API 1/6]
+  51: Starting 3-minute delay... [API 1/6]
+  1612: Rest LLM extraction (Request size: 27.1 KB, 27,691 characters) [API 3/6]
+  496: Salary LLM extraction completed in 169.45 seconds [API 2/6]
+  1618: Rest LLM extraction completed in 75.59 seconds [API 6/6]
+  1618: Merge operation completed in 0.00 seconds [API 6/6]
+  1618: Total file processing time: 2027.48 seconds [API 6/6]
+  1618: Starting 3-minute delay... [API 6/6]
+  475: Salary LLM extraction completed in 183.71 seconds [API 5/6]
+  1612: Rest LLM extraction completed in 57.36 seconds [API 3/6]
+  1612: Merge operation completed in 0.00 seconds [API 3/6]
+  1612: Total file processing time: 193.32 seconds [API 3/6]
+  1612: Starting 3-minute delay... [API 3/6]
+  496: Rest LLM extraction (Request size: 33.2 KB, 33,956 characters) [API 2/6]
+  1060: Salary LLM extraction completed in 455.43 seconds [API 4/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 2/6]
+  475: Rest LLM extraction (Request size: 17.3 KB, 17,704 characters) [API 5/6]
+  1060: Rest LLM extraction (Request size: 26.0 KB, 26,588 characters) [API 4/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 4/6]
+  475: Rest LLM extraction completed in 40.66 seconds [API 5/6]
+  475: Merge operation completed in 0.00 seconds [API 5/6]
+  475: Total file processing time: 284.49 seconds [API 5/6]
+  475: Starting 3-minute delay... [API 5/6]
+  51: 3-minute delay completed in 180.00 seconds [API 1/6]
+  1618: Cao_umc_2013___2015_officiele_tekst.json [API 1/6]
+  1618: Salary LLM extraction (Request size: 10.0 KB, 9,706 characters) [API 1/6]
+  1618: 3-minute delay completed in 180.00 seconds [API 6/6]
+  1944: 2104-1910 cao Open Teelten 2021-2023.json [API 6/6]
+  1944: Salary LLM extraction (Request size: 19.8 KB, 20,265 characters) [API 6/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 6/6]
+  1612: 3-minute delay completed in 180.00 seconds [API 3/6]
+  823: 2025-07-01 CAO MVT 2025 - 2027 - incl HFI DEF.json [API 3/6]
+  823: Salary LLM extraction (Request size: 36.2 KB, 37,015 characters) [API 3/6]
+  496: Rest LLM extraction completed in 196.62 seconds [API 2/6]
+  496: Merge operation completed in 0.00 seconds [API 2/6]
+  496: Total file processing time: 426.12 seconds [API 2/6]
+  496: Starting 3-minute delay... [API 2/6]
+  1060: Rest LLM extraction completed in 160.46 seconds [API 4/6]
+  1060: Merge operation completed in 0.00 seconds [API 4/6]
+  1060: Total file processing time: 676.00 seconds [API 4/6]
+  1060: Starting 3-minute delay... [API 4/6]
+  475: 3-minute delay completed in 180.00 seconds [API 5/6]
+  245: Afspraken cao Tuinzaadbedrijven 2020 versie definitief.json [API 5/6]
+  245: Salary LLM extraction (Request size: 12.2 KB, 11,868 characters) [API 5/6]
+  1618: Salary LLM extraction completed in 174.61 seconds [API 1/6]
+  823: Salary LLM extraction completed in 100.26 seconds [API 3/6]
+  Attempt 2 failed (ValueError), retrying in 4 minutes... [API 6/6]
+  1618: Rest LLM extraction (Request size: 18.7 KB, 19,120 characters) [API 1/6]
+  823: Rest LLM extraction (Request size: 31.1 KB, 31,816 characters) [API 3/6]
+  245: Salary LLM extraction completed in 79.70 seconds [API 5/6]
+  1618: Rest LLM extraction completed in 58.83 seconds [API 1/6]
+  1618: Merge operation completed in 0.00 seconds [API 1/6]
+  1618: Total file processing time: 293.55 seconds [API 1/6]
+  1618: Starting 3-minute delay... [API 1/6]
+  496: 3-minute delay completed in 180.00 seconds [API 2/6]
+  1494: caopo2013_verlngd_handtek_april2014.json [API 2/6]
+  1494: Salary LLM extraction (Request size: 6.2 KB, 6,346 characters) [API 2/6]
+  Attempt 1 failed (InternalServerError), retrying in 2 minutes... [API 2/6]
+  823: Rest LLM extraction completed in 52.88 seconds [API 3/6]
+  823: Merge operation completed in 0.00 seconds [API 3/6]
+  823: Total file processing time: 213.24 seconds [API 3/6]
+  823: Starting 3-minute delay... [API 3/6]
+  245: Rest LLM extraction (Request size: 24.4 KB, 24,847 characters) [API 5/6]
+  1060: 3-minute delay completed in 180.00 seconds [API 4/6]
+  2266: Integrale cao-tekst visdetailhandel 2024 (definitieve versie 21 februari 2024).json [API 4/6]
+  2266: Salary LLM extraction (Request size: 9.2 KB, 9,021 characters) [API 4/6]
+  245: Rest LLM extraction completed in 50.08 seconds [API 5/6]
+  245: Merge operation completed in 0.00 seconds [API 5/6]
+  245: Total file processing time: 189.87 seconds [API 5/6]
+  245: Starting 3-minute delay... [API 5/6]
+  2266: Salary LLM extraction completed in 67.37 seconds [API 4/6]
+  Attempt 3 failed (ValueError), retrying in 8 minutes... [API 6/6]
+  2266: Rest LLM extraction (Request size: 24.5 KB, 24,952 characters) [API 4/6]
+  1494: Salary LLM extraction completed in 174.36 seconds [API 2/6]
+  1618: 3-minute delay completed in 180.00 seconds [API 1/6]
+  50: Skipping Apotheken_2010_2011_cao_tekst.json (already in final Excel file)
+  1165: handboek_compleet.json [API 1/6]
+  1165: Salary LLM extraction (Request size: 17.6 KB, 17,986 characters) [API 1/6]
+  823: 3-minute delay completed in 180.00 seconds [API 3/6]
+  35: Skipping Raltex_volledige_tekst_met_alle_bijlagen_NA_TTW_1.json (already in final Excel file)
+  509: CAO_tekst_2011_2012_def_.json [API 3/6]
+  509: Salary LLM extraction (Request size: 19.6 KB, 20,042 characters) [API 3/6]
+  2266: Rest LLM extraction completed in 66.45 seconds [API 4/6]
+  2266: Merge operation completed in 0.00 seconds [API 4/6]
+  2266: Total file processing time: 193.89 seconds [API 4/6]
+  2266: Starting 3-minute delay... [API 4/6]
+  1494: Rest LLM extraction (Request size: 24.0 KB, 24,594 characters) [API 2/6]
+  245: 3-minute delay completed in 180.00 seconds [API 5/6]
+  182: 20131221 cao_horeca_2024 - schone versie.json [API 5/6]
+  182: Salary LLM extraction (Request size: 12.0 KB, 12,081 characters) [API 5/6]
+  1165: Salary LLM extraction completed in 75.78 seconds [API 1/6]
+  509: Salary LLM extraction completed in 80.14 seconds [API 3/6]
+  1494: Rest LLM extraction completed in 63.49 seconds [API 2/6]
+  1494: Merge operation completed in 0.00 seconds [API 2/6]
+  1494: Total file processing time: 297.90 seconds [API 2/6]
+  1494: Starting 3-minute delay... [API 2/6]
+  1165: Rest LLM extraction (Request size: 1.3 KB, 1,293 characters) [API 1/6]
+  509: Rest LLM extraction (Request size: 24.5 KB, 25,008 characters) [API 3/6]
+  182: Salary LLM extraction completed in 82.18 seconds [API 5/6]
+  1165: Rest LLM extraction completed in 19.14 seconds [API 1/6]
+  1165: Merge operation completed in 0.00 seconds [API 1/6]
+  1165: Total file processing time: 155.01 seconds [API 1/6]
+  1165: Starting 3-minute delay... [API 1/6]
+  182: Rest LLM extraction (Request size: 36.4 KB, 37,147 characters) [API 5/6]
+  509: Rest LLM extraction completed in 65.85 seconds [API 3/6]
+  509: Merge operation completed in 0.00 seconds [API 3/6]
+  509: Total file processing time: 206.07 seconds [API 3/6]
+  509: Starting 3-minute delay... [API 3/6]
+  2266: 3-minute delay completed in 180.00 seconds [API 4/6]
+  824: CAO_MB_17_19.json [API 4/6]
+  824: Salary LLM extraction (Request size: 22.0 KB, 22,474 characters) [API 4/6]
+  182: Rest LLM extraction completed in 53.25 seconds [API 5/6]
+  182: Merge operation completed in 0.00 seconds [API 5/6]
+  182: Total file processing time: 195.49 seconds [API 5/6]
+  182: Starting 3-minute delay... [API 5/6]
+  1494: 3-minute delay completed in 180.00 seconds [API 2/6]
+  1536: CAO_NU_2_juli_2016___30_juni_2017.json [API 2/6]
+  1536: Salary LLM extraction (Request size: 7.9 KB, 8,080 characters) [API 2/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 2/6]
+  1165: 3-minute delay completed in 180.00 seconds [API 1/6]
+  182: 20220101 cao_horeca_2022-2023 na 2020_wijziging_op_kvo_avv versie bronbestand.do.json [API 1/6]
+  182: Salary LLM extraction (Request size: 21.6 KB, 20,949 characters) [API 1/6]
+  824: Salary LLM extraction completed in 120.81 seconds [API 4/6]
+  509: 3-minute delay completed in 180.00 seconds [API 3/6]
+  496: cao 1 juli 2018 - 30 juni 2023 definitief april 2020.docx.json [API 3/6]
+  496: Salary LLM extraction (Request size: 10.0 KB, 10,271 characters) [API 3/6]
+  824: Rest LLM extraction (Request size: 21.8 KB, 22,315 characters) [API 4/6]
+  182: 3-minute delay completed in 180.00 seconds [API 5/6]
+  475: CAO_Sport_2016_2018_DEF_1.json [API 5/6]
+  475: Salary LLM extraction (Request size: 10.1 KB, 10,018 characters) [API 5/6]
+  182: Salary LLM extraction completed in 114.14 seconds [API 1/6]
+  496: Salary LLM extraction completed in 58.11 seconds [API 3/6]
+  824: Rest LLM extraction completed in 53.74 seconds [API 4/6]
+  824: Merge operation completed in 0.00 seconds [API 4/6]
+  824: Total file processing time: 234.64 seconds [API 4/6]
+  824: Starting 3-minute delay... [API 4/6]
+  1536: Salary LLM extraction completed in 196.60 seconds [API 2/6]
+  1944: Salary LLM extraction completed in 913.29 seconds [API 6/6]
+  182: Rest LLM extraction (Request size: 31.9 KB, 32,579 characters) [API 1/6]
+  496: Rest LLM extraction (Request size: 34.8 KB, 35,590 characters) [API 3/6]
+  1536: Rest LLM extraction (Request size: 27.7 KB, 28,347 characters) [API 2/6]
+  1944: Rest LLM extraction (Request size: 46.5 KB, 47,542 characters) [API 6/6]
+  182: Rest LLM extraction completed in 58.58 seconds [API 1/6]
+  182: Merge operation completed in 0.00 seconds [API 1/6]
+  182: Total file processing time: 232.80 seconds [API 1/6]
+  182: Starting 3-minute delay... [API 1/6]
+  496: Rest LLM extraction completed in 62.67 seconds [API 3/6]
+  496: Merge operation completed in 0.00 seconds [API 3/6]
+  496: Total file processing time: 180.81 seconds [API 3/6]
+  496: Starting 3-minute delay... [API 3/6]
+  475: Salary LLM extraction completed in 154.09 seconds [API 5/6]
+  1536: Rest LLM extraction completed in 52.01 seconds [API 2/6]
+  1536: Merge operation completed in 0.00 seconds [API 2/6]
+  1536: Total file processing time: 308.68 seconds [API 2/6]
+  1536: Starting 3-minute delay... [API 2/6]
+  1944: Rest LLM extraction completed in 56.93 seconds [API 6/6]
+  1944: Merge operation completed in 0.00 seconds [API 6/6]
+  1944: Total file processing time: 1030.30 seconds [API 6/6]
+  1944: Starting 3-minute delay... [API 6/6]
+  824: 3-minute delay completed in 180.00 seconds [API 4/6]
+  826: CAO_ISO_arcering___wijz_AOW_LT.json [API 4/6]
+  826: Salary LLM extraction (Request size: 23.9 KB, 24,480 characters) [API 4/6]
+  475: Rest LLM extraction (Request size: 24.9 KB, 25,448 characters) [API 5/6]
+  475: Rest LLM extraction completed in 51.61 seconds [API 5/6]
+  475: Merge operation completed in 0.00 seconds [API 5/6]
+  475: Total file processing time: 265.83 seconds [API 5/6]
+  475: Starting 3-minute delay... [API 5/6]
+  182: 3-minute delay completed in 180.00 seconds [API 1/6]
+  2266: cao_tkst_AVV_na_gesprek_ministerie_1.json [API 1/6]
+  2266: Salary LLM extraction (Request size: 7.6 KB, 7,801 characters) [API 1/6]
+  496: 3-minute delay completed in 180.00 seconds [API 3/6]
+  1494: Def CAO-PO 2023-2024 23012024.json [API 3/6]
+  1494: Salary LLM extraction (Request size: 16.1 KB, 16,482 characters) [API 3/6]
+  826: Salary LLM extraction completed in 118.77 seconds [API 4/6]
+  1536: 3-minute delay completed in 180.00 seconds [API 2/6]
+  1296: ICK_CAO_2015___definitief.json [API 2/6]
+  1296: Salary LLM extraction (Request size: 12.2 KB, 12,521 characters) [API 2/6]
+  1494: Salary LLM extraction completed in 41.12 seconds [API 3/6]
+  2266: Salary LLM extraction completed in 52.07 seconds [API 1/6]
+  1944: 3-minute delay completed in 180.00 seconds [API 6/6]
+  683: tekstCAO_2015_2017_INTEGRAAL.json [API 6/6]
+  683: Salary LLM extraction (Request size: 12.4 KB, 12,662 characters) [API 6/6]
+  826: Rest LLM extraction (Request size: 12.1 KB, 12,395 characters) [API 4/6]
+  1296: Salary LLM extraction completed in 58.44 seconds [API 2/6]
+  826: Rest LLM extraction completed in 33.48 seconds [API 4/6]
+  826: Merge operation completed in 0.00 seconds [API 4/6]
+  826: Total file processing time: 212.37 seconds [API 4/6]
+  826: Starting 3-minute delay... [API 4/6]
+  1494: Rest LLM extraction (Request size: 32.9 KB, 33,690 characters) [API 3/6]
+  2266: Rest LLM extraction (Request size: 18.5 KB, 18,891 characters) [API 1/6]
+  683: Salary LLM extraction completed in 76.68 seconds [API 6/6]
+  475: 3-minute delay completed in 180.00 seconds [API 5/6]
+  592: cao_2011__2012_definitief.json [API 5/6]
+  592: Salary LLM extraction (Request size: 17.9 KB, 18,264 characters) [API 5/6]
+  1296: Rest LLM extraction (Request size: 27.8 KB, 28,449 characters) [API 2/6]
+  2266: Rest LLM extraction completed in 61.54 seconds [API 1/6]
+  2266: Merge operation completed in 0.00 seconds [API 1/6]
+  2266: Total file processing time: 173.68 seconds [API 1/6]
+  2266: Starting 3-minute delay... [API 1/6]
+  1494: Rest LLM extraction completed in 79.16 seconds [API 3/6]
+  1494: Merge operation completed in 0.00 seconds [API 3/6]
+  1494: Total file processing time: 180.34 seconds [API 3/6]
+  1494: Starting 3-minute delay... [API 3/6]
+  683: Rest LLM extraction (Request size: 15.6 KB, 15,873 characters) [API 6/6]
+  592: Salary LLM extraction completed in 58.19 seconds [API 5/6]
+  1296: Rest LLM extraction completed in 69.57 seconds [API 2/6]
+  1296: Merge operation completed in 0.00 seconds [API 2/6]
+  1296: Total file processing time: 188.06 seconds [API 2/6]
+  1296: Starting 3-minute delay... [API 2/6]
+  592: Rest LLM extraction (Request size: 28.7 KB, 29,342 characters) [API 5/6]
+  683: Rest LLM extraction completed in 71.98 seconds [API 6/6]
+  683: Merge operation completed in 0.00 seconds [API 6/6]
+  683: Total file processing time: 208.72 seconds [API 6/6]
+  683: Starting 3-minute delay... [API 6/6]
+  826: 3-minute delay completed in 180.00 seconds [API 4/6]
+  157: Zuivel_CAO_I_na_ttw_2012_2014_obv__1499987v0_2.json [API 4/6]
+  157: Salary LLM extraction (Request size: 19.4 KB, 19,810 characters) [API 4/6]
+  592: Rest LLM extraction completed in 59.78 seconds [API 5/6]
+  592: Merge operation completed in 0.00 seconds [API 5/6]
+  592: Total file processing time: 178.05 seconds [API 5/6]
+  592: Starting 3-minute delay... [API 5/6]
+  2266: 3-minute delay completed in 180.01 seconds [API 1/6]
+  721: Cao HAZ 2024-2025 met Handleiding FWHZ 3-6-2024.json [API 1/6]
+  721: Salary LLM extraction (Request size: 15.9 KB, 16,228 characters) [API 1/6]
+  1494: 3-minute delay completed in 180.01 seconds [API 3/6]
+  41: Skipping CAO-tekst 2023_2024_geschoond_02.json (already in final Excel file)
+  35: Skipping Cao Textielverzorging integrale tekst 2020-2021_1.json (already in final Excel file)
+  80: CAO_Waterbouw_2015_2018_def__8_juli_2015.json [API 3/6]
+  80: Salary LLM extraction (Request size: 20.1 KB, 20,562 characters) [API 3/6]
+  157: Salary LLM extraction completed in 92.01 seconds [API 4/6]
+  1296: 3-minute delay completed in 180.01 seconds [API 2/6]
+  730: CAO TG 2023-2025_Tussentijdse aanpassing.json [API 2/6]
+  730: Salary LLM extraction (Request size: 17.0 KB, 17,230 characters) [API 2/6]
+  157: Rest LLM extraction (Request size: 41.6 KB, 42,550 characters) [API 4/6]
+  683: 3-minute delay completed in 180.01 seconds [API 6/6]
+  526: CAO_tekst_2012_2014.json [API 6/6]
+  526: Salary LLM extraction (Request size: 16.4 KB, 16,708 characters) [API 6/6]
+  721: Salary LLM extraction completed in 104.86 seconds [API 1/6]
+  592: 3-minute delay completed in 180.01 seconds [API 5/6]
+  1393: Rallinfra caotekst.json [API 5/6]
+  1393: Salary LLM extraction (Request size: 12.4 KB, 12,675 characters) [API 5/6]
+  526: Salary LLM extraction completed in 74.35 seconds [API 6/6]
+  721: Rest LLM extraction (Request size: 44.2 KB, 45,238 characters) [API 1/6]
+  157: Rest LLM extraction completed in 85.23 seconds [API 4/6]
+  157: Merge operation completed in 0.00 seconds [API 4/6]
+  157: Total file processing time: 237.33 seconds [API 4/6]
+  157: Starting 3-minute delay... [API 4/6]
+  730: Salary LLM extraction completed in 130.19 seconds [API 2/6]
+  526: Rest LLM extraction (Request size: 47.9 KB, 48,964 characters) [API 6/6]
+  721: Rest LLM extraction completed in 65.40 seconds [API 1/6]
+  721: Merge operation completed in 0.00 seconds [API 1/6]
+  721: Total file processing time: 230.37 seconds [API 1/6]
+  721: Starting 3-minute delay... [API 1/6]
+  730: Rest LLM extraction (Request size: 33.5 KB, 34,317 characters) [API 2/6]
+  1393: Salary LLM extraction completed in 110.84 seconds [API 5/6]
+  526: Rest LLM extraction completed in 45.97 seconds [API 6/6]
+  526: Merge operation completed in 0.00 seconds [API 6/6]
+  526: Total file processing time: 180.39 seconds [API 6/6]
+  526: Starting 3-minute delay... [API 6/6]
+  730: Rest LLM extraction completed in 59.40 seconds [API 2/6]
+  730: Merge operation completed in 0.00 seconds [API 2/6]
+  730: Total file processing time: 249.66 seconds [API 2/6]
+  730: Starting 3-minute delay... [API 2/6]
+  1393: Rest LLM extraction (Request size: 39.3 KB, 40,199 characters) [API 5/6]
+  157: 3-minute delay completed in 180.00 seconds [API 4/6]
+  1944: Integrale tekst cao Open Teelten 1 maart 2023 tm 30 juni 2024 incl. 3e TTW per 1 januari 2024 (2312-1367).json [API 4/6]
+  1944: Salary LLM extraction (Request size: 11.3 KB, 11,596 characters) [API 4/6]
+  80: Salary LLM extraction completed in 356.19 seconds [API 3/6]
+  1393: Rest LLM extraction completed in 71.36 seconds [API 5/6]
+  1393: Merge operation completed in 0.00 seconds [API 5/6]
+  1393: Total file processing time: 242.29 seconds [API 5/6]
+  1393: Starting 3-minute delay... [API 5/6]
+  721: 3-minute delay completed in 180.00 seconds [API 1/6]
+  41: Skipping CAO-tekst 2021_2022_geschoond.json (already in final Excel file)
+  1393: Railinfra_CAO_2014_def_26042016.json [API 1/6]
+  1393: Salary LLM extraction (Request size: 9.4 KB, 9,640 characters) [API 1/6]
+  1944: Salary LLM extraction completed in 79.77 seconds [API 4/6]
+  80: Rest LLM extraction (Request size: 23.6 KB, 24,090 characters) [API 3/6]
+  526: 3-minute delay completed in 180.00 seconds [API 6/6]
+  465: sociale afspraken 2020 - 2023 geschoond_1.json [API 6/6]
+  465: Salary LLM extraction (Request size: 24.5 KB, 25,068 characters) [API 6/6]
+  730: 3-minute delay completed in 179.99 seconds [API 2/6]
+  50: Skipping Apotheken 2019-2021 na ttw.json (already in final Excel file)
+  10: Skipping cao_Bouw_en_Infra_2017_2018_def.json (already in final Excel file)
+  750: cao 1 april 2022 - 31 maart 2024, definitief 18072023.json [API 2/6]
+  750: Salary LLM extraction (Request size: 9.8 KB, 10,029 characters) [API 2/6]
+  1944: Rest LLM extraction (Request size: 31.7 KB, 32,451 characters) [API 4/6]
+  80: Rest LLM extraction completed in 75.75 seconds [API 3/6]
+  80: Merge operation completed in 0.00 seconds [API 3/6]
+  80: Total file processing time: 492.17 seconds [API 3/6]
+  80: Starting 3-minute delay... [API 3/6]
+  465: Salary LLM extraction completed in 87.94 seconds [API 6/6]
+  1393: Salary LLM extraction completed in 126.52 seconds [API 1/6]
+  1944: Rest LLM extraction completed in 56.02 seconds [API 4/6]
+  1944: Merge operation completed in 0.00 seconds [API 4/6]
+  1944: Total file processing time: 195.89 seconds [API 4/6]
+  1944: Starting 3-minute delay... [API 4/6]
+  750: Salary LLM extraction completed in 70.09 seconds [API 2/6]
+  1393: 3-minute delay completed in 180.00 seconds [API 5/6]
+  833: Woondiensten_cao_en_handboek.json [API 5/6]
+  833: Salary LLM extraction (Request size: 5.6 KB, 5,755 characters) [API 5/6]
+  465: Rest LLM extraction (Request size: 45.9 KB, 46,662 characters) [API 6/6]
+  1393: Rest LLM extraction (Request size: 25.7 KB, 26,305 characters) [API 1/6]
+  750: Rest LLM extraction (Request size: 27.5 KB, 28,136 characters) [API 2/6]
+  1393: Rest LLM extraction completed in 58.67 seconds [API 1/6]
+  1393: Merge operation completed in 0.00 seconds [API 1/6]
+  1393: Total file processing time: 245.30 seconds [API 1/6]
+  1393: Starting 3-minute delay... [API 1/6]
+  465: Rest LLM extraction completed in 61.90 seconds [API 6/6]
+  465: Merge operation completed in 0.00 seconds [API 6/6]
+  465: Total file processing time: 209.92 seconds [API 6/6]
+  465: Starting 3-minute delay... [API 6/6]
+  833: Salary LLM extraction completed in 100.19 seconds [API 5/6]
+  750: Rest LLM extraction completed in 60.89 seconds [API 2/6]
+  750: Merge operation completed in 0.00 seconds [API 2/6]
+  750: Total file processing time: 191.06 seconds [API 2/6]
+  750: Starting 3-minute delay... [API 2/6]
+  80: 3-minute delay completed in 180.00 seconds [API 3/6]
+  163: CAO OV 1 juli 2021 31 december 2022 tekst aanmelding.json [API 3/6]
+  163: Salary LLM extraction (Request size: 18.4 KB, 18,737 characters) [API 3/6]
+  1944: 3-minute delay completed in 180.00 seconds [API 4/6]
+  1612: Integrale Cao Kinderopvang 2023-2024.json [API 4/6]
+  1612: Salary LLM extraction (Request size: 9.7 KB, 9,871 characters) [API 4/6]
+  833: Rest LLM extraction (Request size: 24.0 KB, 24,449 characters) [API 5/6]
+  163: Salary LLM extraction completed in 51.97 seconds [API 3/6]
+  1612: Salary LLM extraction completed in 31.19 seconds [API 4/6]
+  833: Rest LLM extraction completed in 56.30 seconds [API 5/6]
+  833: Merge operation completed in 0.00 seconds [API 5/6]
+  833: Total file processing time: 216.60 seconds [API 5/6]
+  833: Starting 3-minute delay... [API 5/6]
+  163: Rest LLM extraction (Request size: 30.6 KB, 31,182 characters) [API 3/6]
+  1612: Rest LLM extraction (Request size: 28.8 KB, 29,434 characters) [API 4/6]
+  1393: 3-minute delay completed in 180.00 seconds [API 1/6]
+  1296: ICK CAO 2021_1.json [API 1/6]
+  1296: Salary LLM extraction (Request size: 11.1 KB, 11,391 characters) [API 1/6]
+  465: 3-minute delay completed in 180.00 seconds [API 6/6]
+  2948: CAO VVT 2022-2024 verlengde cao ttw.json [API 6/6]
+  2948: Salary LLM extraction (Request size: 22.3 KB, 22,730 characters) [API 6/6]
+  750: 3-minute delay completed in 180.00 seconds [API 2/6]
+  1574: GGZ cao met wijziging salarisschaal.json [API 2/6]
+  1574: Salary LLM extraction (Request size: 31.7 KB, 32,370 characters) [API 2/6]
+  163: Rest LLM extraction completed in 72.57 seconds [API 3/6]
+  163: Merge operation completed in 0.00 seconds [API 3/6]
+  163: Total file processing time: 184.61 seconds [API 3/6]
+  163: Starting 3-minute delay... [API 3/6]
+  1612: Rest LLM extraction completed in 73.39 seconds [API 4/6]
+  1612: Merge operation completed in 0.00 seconds [API 4/6]
+  1612: Total file processing time: 164.64 seconds [API 4/6]
+  1612: Starting 3-minute delay... [API 4/6]
+  1296: Salary LLM extraction completed in 78.25 seconds [API 1/6]
+  2948: Salary LLM extraction completed in 75.94 seconds [API 6/6]
+  833: 3-minute delay completed in 180.00 seconds [API 5/6]
+  487: Basis-cao Metalektro aanmelding ttw 21-8-19.docx.json [API 5/6]
+  487: Salary LLM extraction (Request size: 10.9 KB, 11,192 characters) [API 5/6]
+  1296: Rest LLM extraction (Request size: 26.6 KB, 27,156 characters) [API 1/6]
+  2948: Rest LLM extraction (Request size: 39.3 KB, 40,104 characters) [API 6/6]
+  1574: Salary LLM extraction completed in 131.92 seconds [API 2/6]
+  487: Salary LLM extraction completed in 74.26 seconds [API 5/6]
+  1296: Rest LLM extraction completed in 62.77 seconds [API 1/6]
+  1296: Merge operation completed in 0.00 seconds [API 1/6]
+  1296: Total file processing time: 201.08 seconds [API 1/6]
+  1296: Starting 3-minute delay... [API 1/6]
+  2948: Rest LLM extraction completed in 63.39 seconds [API 6/6]
+  2948: Merge operation completed in 0.00 seconds [API 6/6]
+  2948: Total file processing time: 199.40 seconds [API 6/6]
+  2948: Starting 3-minute delay... [API 6/6]
+  1574: Rest LLM extraction (Request size: 38.2 KB, 38,938 characters) [API 2/6]
+  163: 3-minute delay completed in 179.99 seconds [API 3/6]
+  1494: 20161230_cao_po_gewijzigd_per_1_jan_2017.json [API 3/6]
+  1494: Salary LLM extraction (Request size: 4.6 KB, 4,369 characters) [API 3/6]
+  1612: 3-minute delay completed in 180.00 seconds [API 4/6]
+  633: ABU CAO voor Uitzendkrachten 30-12-2019 integraal dec.json [API 4/6]
+  633: Salary LLM extraction (Request size: 9.4 KB, 9,608 characters) [API 4/6]
+  487: Rest LLM extraction (Request size: 34.4 KB, 35,118 characters) [API 5/6]
+  1574: Rest LLM extraction completed in 54.38 seconds [API 2/6]
+  1574: Merge operation completed in 0.00 seconds [API 2/6]
+  1574: Total file processing time: 246.40 seconds [API 2/6]
+  1574: Starting 3-minute delay... [API 2/6]
+  633: Salary LLM extraction completed in 57.82 seconds [API 4/6]
+  487: Rest LLM extraction completed in 50.01 seconds [API 5/6]
+  487: Merge operation completed in 0.00 seconds [API 5/6]
+  487: Total file processing time: 184.37 seconds [API 5/6]
+  487: Starting 3-minute delay... [API 5/6]
+  1494: Salary LLM extraction completed in 100.50 seconds [API 3/6]
+  633: Rest LLM extraction (Request size: 22.7 KB, 23,214 characters) [API 4/6]
+  1494: Rest LLM extraction (Request size: 11.5 KB, 11,788 characters) [API 3/6]
+  1296: 3-minute delay completed in 180.00 seconds [API 1/6]
+  1393: Tekst Cao 2018.2019 def d.d. 22-05-2019 .pdf .json [API 1/6]
+  1393: Salary LLM extraction (Request size: 13.7 KB, 14,008 characters) [API 1/6]
+  2948: 3-minute delay completed in 180.00 seconds [API 6/6]
+  51: cao Timmerindustrie 1 dec 21 tt 1 mrt 2024_1.json [API 6/6]
+  51: Salary LLM extraction (Request size: 14.4 KB, 14,675 characters) [API 6/6]
+  633: Rest LLM extraction completed in 62.16 seconds [API 4/6]
+  633: Merge operation completed in 0.00 seconds [API 4/6]
+  633: Total file processing time: 180.06 seconds [API 4/6]
+  633: Starting 3-minute delay... [API 4/6]
+  1494: Rest LLM extraction completed in 64.07 seconds [API 3/6]
+  1494: Merge operation completed in 0.00 seconds [API 3/6]
+  1494: Total file processing time: 224.70 seconds [API 3/6]
+  1494: Starting 3-minute delay... [API 3/6]
+  1574: 3-minute delay completed in 180.00 seconds [API 2/6]
+  2297: CAO_TI_2017_2019_TTW_LL_nov_2018.json [API 2/6]
+  2297: Salary LLM extraction (Request size: 23.7 KB, 24,251 characters) [API 2/6]
+  51: Salary LLM extraction completed in 74.88 seconds [API 6/6]
+  487: 3-minute delay completed in 180.00 seconds [API 5/6]
+  637: Cao Verzekeringsbedrijf 2021 def versie 20210311.json [API 5/6]
+  637: Salary LLM extraction (Request size: 5.7 KB, 5,838 characters) [API 5/6]
+  1393: Salary LLM extraction completed in 121.64 seconds [API 1/6]
+  51: Rest LLM extraction (Request size: 32.4 KB, 33,131 characters) [API 6/6]
+  637: Salary LLM extraction completed in 48.00 seconds [API 5/6]
+  2297: Salary LLM extraction completed in 107.66 seconds [API 2/6]
+  1393: Rest LLM extraction (Request size: 46.4 KB, 47,440 characters) [API 1/6]
+  51: Rest LLM extraction completed in 52.32 seconds [API 6/6]
+  51: Merge operation completed in 0.00 seconds [API 6/6]
+  51: Total file processing time: 187.29 seconds [API 6/6]
+  51: Starting 3-minute delay... [API 6/6]
+  633: 3-minute delay completed in 180.00 seconds [API 4/6]
+  496: Cao Particuliere beveiliging Versie 5- januari 2022.json [API 4/6]
+  496: Salary LLM extraction (Request size: 24.1 KB, 23,900 characters) [API 4/6]
+  637: Rest LLM extraction (Request size: 25.7 KB, 26,232 characters) [API 5/6]
+  2297: Rest LLM extraction (Request size: 23.6 KB, 24,158 characters) [API 2/6]
+  1494: 3-minute delay completed in 180.00 seconds [API 3/6]
+  633: Cao_integraal_1_7_2017.json [API 3/6]
+  633: Salary LLM extraction (Request size: 45.6 KB, 46,606 characters) [API 3/6]
+  1393: Rest LLM extraction completed in 59.49 seconds [API 1/6]
+  1393: Merge operation completed in 0.00 seconds [API 1/6]
+  1393: Total file processing time: 241.22 seconds [API 1/6]
+  1393: Starting 3-minute delay... [API 1/6]
+  496: Salary LLM extraction completed in 59.24 seconds [API 4/6]
+  637: Rest LLM extraction completed in 59.30 seconds [API 5/6]
+  637: Merge operation completed in 0.00 seconds [API 5/6]
+  637: Total file processing time: 167.37 seconds [API 5/6]
+  2297: Rest LLM extraction completed in 42.26 seconds [API 2/6]
+  2297: Merge operation completed in 0.00 seconds [API 2/6]
+  637: Starting 3-minute delay... [API 5/6]
+  2297: Total file processing time: 209.97 seconds [API 2/6]
+  2297: Starting 3-minute delay... [API 2/6]
+  633: Salary LLM extraction completed in 87.24 seconds [API 3/6]
+  496: Rest LLM extraction (Request size: 35.2 KB, 35,846 characters) [API 4/6]
+  51: 3-minute delay completed in 180.00 seconds [API 6/6]
+  243: Cao Hoveniers 1 juli 2021 - 30 juni 2023 integraal.json [API 6/6]
+  243: Salary LLM extraction (Request size: 13.5 KB, 13,324 characters) [API 6/6]
+  496: Rest LLM extraction completed in 48.95 seconds [API 4/6]
+  496: Merge operation completed in 0.00 seconds [API 4/6]
+  496: Total file processing time: 168.27 seconds [API 4/6]
+  496: Starting 3-minute delay... [API 4/6]
+  633: Rest LLM extraction (Request size: 28.1 KB, 28,694 characters) [API 3/6]
+  1393: 3-minute delay completed in 180.00 seconds [API 1/6]
+  609: CAO_tekst_Tuincentra.json [API 1/6]
+  609: Salary LLM extraction (Request size: 10.4 KB, 10,623 characters) [API 1/6]
+  633: Rest LLM extraction completed in 54.35 seconds [API 3/6]
+  633: Merge operation completed in 0.00 seconds [API 3/6]
+  633: Total file processing time: 201.69 seconds [API 3/6]
+  633: Starting 3-minute delay... [API 3/6]
+  637: 3-minute delay completed in 180.00 seconds [API 5/6]
+  2297: 3-minute delay completed in 180.00 seconds [API 2/6]
+  301: CAOSOCIAALWERK1719_completetekst_def_030419schoon.docx .json [API 5/6]
+  301: Salary LLM extraction (Request size: 15.7 KB, 16,040 characters) [API 5/6]
+  824: MT_Metaalbew__CAO___handb_.json [API 2/6]
+  824: Salary LLM extraction (Request size: 34.7 KB, 35,452 characters) [API 2/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 2/6]
+  243: Salary LLM extraction completed in 95.15 seconds [API 6/6]
+  609: Salary LLM extraction completed in 87.65 seconds [API 1/6]
+  243: Rest LLM extraction (Request size: 35.2 KB, 35,944 characters) [API 6/6]
+  496: 3-minute delay completed in 180.00 seconds [API 4/6]
+  1944: Open_Teelten_en_functiehandboek.json [API 4/6]
+  1944: Salary LLM extraction (Request size: 19.0 KB, 19,165 characters) [API 4/6]
+  301: Salary LLM extraction completed in 104.33 seconds [API 5/6]
+  609: Rest LLM extraction (Request size: 26.8 KB, 27,270 characters) [API 1/6]
+  243: Rest LLM extraction completed in 51.41 seconds [API 6/6]
+  243: Merge operation completed in 0.00 seconds [API 6/6]
+  243: Total file processing time: 206.64 seconds [API 6/6]
+  243: Starting 3-minute delay... [API 6/6]
+  609: Rest LLM extraction completed in 43.43 seconds [API 1/6]
+  609: Merge operation completed in 0.00 seconds [API 1/6]
+  609: Total file processing time: 191.16 seconds [API 1/6]
+  609: Starting 3-minute delay... [API 1/6]
+  633: 3-minute delay completed in 180.00 seconds [API 3/6]
+  465: sociale_afspraken_2018___2019_geschoond.json [API 3/6]
+  465: Salary LLM extraction (Request size: 17.9 KB, 18,295 characters) [API 3/6]
+  301: Rest LLM extraction (Request size: 23.6 KB, 24,132 characters) [API 5/6]
+  1944: Salary LLM extraction completed in 67.42 seconds [API 4/6]
+  824: Salary LLM extraction completed in 226.94 seconds [API 2/6]
+  1944: Rest LLM extraction (Request size: 30.6 KB, 31,329 characters) [API 4/6]
+  301: Rest LLM extraction completed in 78.87 seconds [API 5/6]
+  301: Merge operation completed in 0.00 seconds [API 5/6]
+  301: Total file processing time: 243.31 seconds [API 5/6]
+  301: Starting 3-minute delay... [API 5/6]
+  465: Salary LLM extraction completed in 123.02 seconds [API 3/6]
+  824: Rest LLM extraction (Request size: 35.1 KB, 35,834 characters) [API 2/6]
+  1944: Rest LLM extraction completed in 63.08 seconds [API 4/6]
+  1944: Merge operation completed in 0.00 seconds [API 4/6]
+  1944: Total file processing time: 190.59 seconds [API 4/6]
+  1944: Starting 3-minute delay... [API 4/6]
+  243: 3-minute delay completed in 180.00 seconds [API 6/6]
+  475: Sport_WOS_cao_2014.json [API 6/6]
+  475: Salary LLM extraction (Request size: 5.9 KB, 6,037 characters) [API 6/6]
+  609: 3-minute delay completed in 180.00 seconds [API 1/6]
+  51: INTEGRALE TEKST cao timmerindustrie 1 aug 2020 - 30 nov 2021.json [API 1/6]
+  51: Salary LLM extraction (Request size: 19.2 KB, 19,616 characters) [API 1/6]
+  824: Rest LLM extraction completed in 50.16 seconds [API 2/6]
+  824: Merge operation completed in 0.00 seconds [API 2/6]
+  824: Total file processing time: 337.19 seconds [API 2/6]
+  824: Starting 3-minute delay... [API 2/6]
+  465: Rest LLM extraction (Request size: 31.5 KB, 32,004 characters) [API 3/6]
+  475: Salary LLM extraction completed in 95.24 seconds [API 6/6]
+  465: Rest LLM extraction completed in 58.11 seconds [API 3/6]
+  465: Merge operation completed in 0.00 seconds [API 3/6]
+  465: Total file processing time: 241.23 seconds [API 3/6]
+  465: Starting 3-minute delay... [API 3/6]
+  51: Salary LLM extraction completed in 73.94 seconds [API 1/6]
+  301: 3-minute delay completed in 180.00 seconds [API 5/6]
+  21: Skipping CAO tekst 2020 basis aangepast.docx.json (already in final Excel file)
+  1165: cao 1 januari 2022 - 31 december 2023 definitief 28122022.json [API 5/6]
+  1165: Salary LLM extraction (Request size: 13.8 KB, 14,139 characters) [API 5/6]
+  475: Rest LLM extraction (Request size: 19.3 KB, 19,789 characters) [API 6/6]
+  51: Rest LLM extraction (Request size: 36.3 KB, 37,089 characters) [API 1/6]
+  1944: 3-minute delay completed in 180.00 seconds [API 4/6]
+  826: Skipping HB 5e editie 2024_1.json (already in final Excel file)
+  727: 161031_Cao_F_S__L_2016_2018_hvb.json [API 4/6]
+  727: Salary LLM extraction (Request size: 24.8 KB, 25,322 characters) [API 4/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 4/6]
+  475: Rest LLM extraction completed in 48.45 seconds [API 6/6]
+  475: Merge operation completed in 0.00 seconds [API 6/6]
+  475: Total file processing time: 203.79 seconds [API 6/6]
+  475: Starting 3-minute delay... [API 6/6]
+  824: 3-minute delay completed in 180.00 seconds [API 2/6]
+  148: cao_tekst_2013___2014.json [API 2/6]
+  148: Salary LLM extraction (Request size: 9.8 KB, 9,995 characters) [API 2/6]
+  51: Rest LLM extraction completed in 48.27 seconds [API 1/6]
+  51: Merge operation completed in 0.00 seconds [API 1/6]
+  51: Total file processing time: 182.34 seconds [API 1/6]
+  51: Starting 3-minute delay... [API 1/6]
+  1165: Salary LLM extraction completed in 118.77 seconds [API 5/6]
+  465: 3-minute delay completed in 180.00 seconds [API 3/6]
+  2297: M_en_T_Technisch_Installatiebedrijf_cao_en_handb_.json [API 3/6]
+  2297: Salary LLM extraction (Request size: 25.5 KB, 26,069 characters) [API 3/6]
+  1165: Rest LLM extraction (Request size: 25.6 KB, 26,209 characters) [API 5/6]
+  148: Salary LLM extraction completed in 129.69 seconds [API 2/6]
+  1165: Rest LLM extraction completed in 65.73 seconds [API 5/6]
+  1165: Merge operation completed in 0.00 seconds [API 5/6]
+  1165: Total file processing time: 244.61 seconds [API 5/6]
+  1165: Starting 3-minute delay... [API 5/6]
+  475: 3-minute delay completed in 180.00 seconds [API 6/6]
+  750: cao_definitief.json [API 6/6]
+  750: Salary LLM extraction (Request size: 17.7 KB, 18,153 characters) [API 6/6]
+  2297: Salary LLM extraction completed in 104.64 seconds [API 3/6]
+  51: 3-minute delay completed in 180.00 seconds [API 1/6]
+  725: 2104-0817 integrale cao GGI met 3e ttw.json [API 1/6]
+  725: Salary LLM extraction (Request size: 36.1 KB, 36,749 characters) [API 1/6]
+  148: Rest LLM extraction (Request size: 31.9 KB, 32,653 characters) [API 2/6]
+  2297: Rest LLM extraction (Request size: 28.2 KB, 28,829 characters) [API 3/6]
+  750: Salary LLM extraction completed in 79.90 seconds [API 6/6]
+  727: Salary LLM extraction completed in 292.12 seconds [API 4/6]
+  725: Salary LLM extraction completed in 99.37 seconds [API 1/6]
+  2297: Rest LLM extraction completed in 56.32 seconds [API 3/6]
+  2297: Merge operation completed in 0.00 seconds [API 3/6]
+  2297: Total file processing time: 221.06 seconds [API 3/6]
+  2297: Starting 3-minute delay... [API 3/6]
+  148: Rest LLM extraction completed in 106.83 seconds [API 2/6]
+  148: Merge operation completed in 0.00 seconds [API 2/6]
+  148: Total file processing time: 296.62 seconds [API 2/6]
+  148: Starting 3-minute delay... [API 2/6]
+  750: Rest LLM extraction (Request size: 47.7 KB, 48,809 characters) [API 6/6]
+  727: Rest LLM extraction (Request size: 24.6 KB, 25,048 characters) [API 4/6]
+  1165: 3-minute delay completed in 180.00 seconds [API 5/6]
+  80: CAO_Waterbouw__def_23_mei_2014_AVV.json [API 5/6]
+  80: Salary LLM extraction (Request size: 13.4 KB, 13,732 characters) [API 5/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 5/6]
+  725: Rest LLM extraction (Request size: 34.3 KB, 35,078 characters) [API 1/6]
+  727: Rest LLM extraction completed in 52.64 seconds [API 4/6]
+  727: Merge operation completed in 0.00 seconds [API 4/6]
+  727: Total file processing time: 404.87 seconds [API 4/6]
+  727: Starting 3-minute delay... [API 4/6]
+  750: Rest LLM extraction completed in 65.74 seconds [API 6/6]
+  750: Merge operation completed in 0.00 seconds [API 6/6]
+  750: Total file processing time: 205.73 seconds [API 6/6]
+  750: Starting 3-minute delay... [API 6/6]
+  725: Rest LLM extraction completed in 56.52 seconds [API 1/6]
+  725: Merge operation completed in 0.00 seconds [API 1/6]
+  725: Total file processing time: 215.99 seconds [API 1/6]
+  725: Starting 3-minute delay... [API 1/6]
+  Attempt 2 failed (ValueError), retrying in 4 minutes... [API 5/6]
+  2297: 3-minute delay completed in 180.00 seconds [API 3/6]
+  245: Tuinzaadbedrijven 1 januari 2023 - 31 december 2023 definitief.json [API 3/6]
+  245: Salary LLM extraction (Request size: 11.3 KB, 11,188 characters) [API 3/6]
+  148: 3-minute delay completed in 180.00 seconds [API 2/6]
+  1165: cao-recreatie 2024 - 2025 herschreven versie opgemaakt definitief 21052024.json [API 2/6]
+  1165: Salary LLM extraction (Request size: 17.0 KB, 17,309 characters) [API 2/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 2/6]
+  727: 3-minute delay completed in 180.00 seconds [API 4/6]
+  823: CAO_MvT_2014_2018_29_november_2016.json [API 4/6]
+  823: Salary LLM extraction (Request size: 15.9 KB, 16,229 characters) [API 4/6]
+  750: 3-minute delay completed in 180.00 seconds [API 6/6]
+  243: 20120041N_Cao_hoveniers_TTW_2012.json [API 6/6]
+  243: Salary LLM extraction (Request size: 17.2 KB, 16,544 characters) [API 6/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 6/6]
+  725: 3-minute delay completed in 180.00 seconds [API 1/6]
+  496: cao 1 juli 2018 - 30 juni 2023 definitief.docx _1.json [API 1/6]
+  496: Salary LLM extraction (Request size: 13.9 KB, 14,217 characters) [API 1/6]
+  245: Salary LLM extraction completed in 117.10 seconds [API 3/6]
+  245: Rest LLM extraction (Request size: 26.2 KB, 26,728 characters) [API 3/6]
+  823: Salary LLM extraction completed in 103.14 seconds [API 4/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 3/6]
+  496: Salary LLM extraction completed in 100.15 seconds [API 1/6]
+  823: Rest LLM extraction (Request size: 23.9 KB, 24,417 characters) [API 4/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 4/6]
+  Attempt 3 failed (ValueError), retrying in 8 minutes... [API 5/6]
+  1165: Salary LLM extraction completed in 241.78 seconds [API 2/6]
+  496: Rest LLM extraction (Request size: 35.9 KB, 36,761 characters) [API 1/6]
+  243: Salary LLM extraction completed in 206.76 seconds [API 6/6]
+  1165: Rest LLM extraction (Request size: 29.9 KB, 30,593 characters) [API 2/6]
+  496: Rest LLM extraction completed in 69.23 seconds [API 1/6]
+  496: Merge operation completed in 0.00 seconds [API 1/6]
+  496: Total file processing time: 229.45 seconds [API 1/6]
+  496: Starting 3-minute delay... [API 1/6]
+  243: Rest LLM extraction (Request size: 28.7 KB, 29,336 characters) [API 6/6]
+  1165: Rest LLM extraction completed in 45.88 seconds [API 2/6]
+  1165: Merge operation completed in 0.00 seconds [API 2/6]
+  1165: Total file processing time: 347.76 seconds [API 2/6]
+  1165: Starting 3-minute delay... [API 2/6]
+  245: Rest LLM extraction completed in 212.58 seconds [API 3/6]
+  245: Merge operation completed in 0.00 seconds [API 3/6]
+  245: Total file processing time: 389.79 seconds [API 3/6]
+  245: Starting 3-minute delay... [API 3/6]
+  243: Rest LLM extraction completed in 58.88 seconds [API 6/6]
+  243: Merge operation completed in 0.00 seconds [API 6/6]
+  243: Total file processing time: 325.73 seconds [API 6/6]
+  243: Starting 3-minute delay... [API 6/6]
+  823: Rest LLM extraction completed in 173.21 seconds [API 4/6]
+  823: Merge operation completed in 0.00 seconds [API 4/6]
+  823: Total file processing time: 336.44 seconds [API 4/6]
+  823: Starting 3-minute delay... [API 4/6]
+  496: 3-minute delay completed in 180.00 seconds [API 1/6]
+  2297: CAO TI 2021 2024.json [API 1/6]
+  2297: Salary LLM extraction (Request size: 34.7 KB, 35,437 characters) [API 1/6]
+  1165: 3-minute delay completed in 180.00 seconds [API 2/6]
+  823: CAO MvT 2020-2021 DEFversie 19 januari 2021.docx.json [API 2/6]
+  823: Salary LLM extraction (Request size: 13.2 KB, 13,497 characters) [API 2/6]
+  245: 3-minute delay completed in 180.00 seconds [API 3/6]
+  21: Skipping CAO tekst 2021-2022 basis_1.json (already in final Excel file)
+  2535: SZW_CAOMITT2016_19_melding_schn_geen_wijz__zichtb_.json [API 3/6]
+  2535: Salary LLM extraction (Request size: 10.8 KB, 11,027 characters) [API 3/6]
+  243: 3-minute delay completed in 180.00 seconds [API 6/6]
+  526: CAO meubelindustrie 2018-2019 Def.docx .json [API 6/6]
+  526: Salary LLM extraction (Request size: 11.3 KB, 11,412 characters) [API 6/6]
+  823: 3-minute delay completed in 180.00 seconds [API 4/6]
+  615: CAO_voor_de_Zorgverzekeraars_2011_2012.json [API 4/6]
+  615: Salary LLM extraction (Request size: 13.0 KB, 13,262 characters) [API 4/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 4/6]
+  2297: Salary LLM extraction completed in 111.19 seconds [API 1/6]
+  823: Salary LLM extraction completed in 96.25 seconds [API 2/6]
+  526: Salary LLM extraction completed in 59.61 seconds [API 6/6]
+  2535: Salary LLM extraction completed in 106.28 seconds [API 3/6]
+  2297: Rest LLM extraction (Request size: 3.6 KB, 3,710 characters) [API 1/6]
+  823: Rest LLM extraction (Request size: 31.5 KB, 32,245 characters) [API 2/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 2/6]
+  526: Rest LLM extraction (Request size: 35.1 KB, 35,866 characters) [API 6/6]
+  2297: Rest LLM extraction completed in 33.07 seconds [API 1/6]
+  2297: Merge operation completed in 0.00 seconds [API 1/6]
+  2297: Total file processing time: 204.36 seconds [API 1/6]
+  2297: Starting 3-minute delay... [API 1/6]
+  2535: Rest LLM extraction (Request size: 24.2 KB, 24,755 characters) [API 3/6]
+  2535: Rest LLM extraction completed in 48.64 seconds [API 3/6]
+  2535: Merge operation completed in 0.00 seconds [API 3/6]
+  2535: Total file processing time: 215.03 seconds [API 3/6]
+  2535: Starting 3-minute delay... [API 3/6]
+  526: Rest LLM extraction completed in 80.44 seconds [API 6/6]
+  526: Merge operation completed in 0.00 seconds [API 6/6]
+  526: Total file processing time: 200.08 seconds [API 6/6]
+  526: Starting 3-minute delay... [API 6/6]
+  80: Salary LLM extraction completed in 944.00 seconds [API 5/6]
+  80: Rest LLM extraction (Request size: 17.7 KB, 18,061 characters) [API 5/6]
+  615: Salary LLM extraction completed in 275.60 seconds [API 4/6]
+  823: Rest LLM extraction completed in 198.54 seconds [API 2/6]
+  823: Merge operation completed in 0.00 seconds [API 2/6]
+  823: Total file processing time: 354.89 seconds [API 2/6]
+  823: Starting 3-minute delay... [API 2/6]
+  2297: 3-minute delay completed in 180.00 seconds [API 1/6]
+  301: Cao Sociaal Werk 2023-2025(metcorrectie150224).json [API 1/6]
+  301: Salary LLM extraction (Request size: 8.0 KB, 8,177 characters) [API 1/6]
+  80: Rest LLM extraction completed in 54.27 seconds [API 5/6]
+  80: Merge operation completed in 0.00 seconds [API 5/6]
+  80: Total file processing time: 1058.37 seconds [API 5/6]
+  80: Starting 3-minute delay... [API 5/6]
+  615: Rest LLM extraction (Request size: 41.6 KB, 42,480 characters) [API 4/6]
+  2535: 3-minute delay completed in 180.00 seconds [API 3/6]
+  1536: CAONU_1_januari_2015___1_juli_2016.json [API 3/6]
+  1536: Salary LLM extraction (Request size: 9.6 KB, 9,831 characters) [API 3/6]
+  Attempt 1 failed (InternalServerError), retrying in 2 minutes... [API 3/6]
+  526: 3-minute delay completed in 180.00 seconds [API 6/6]
+  2266: CAO visdetailhandel 2021-2023 def voor ministerie na controle wg.json [API 6/6]
+  2266: Salary LLM extraction (Request size: 17.5 KB, 16,925 characters) [API 6/6]
+  301: Salary LLM extraction completed in 76.64 seconds [API 1/6]
+  615: Rest LLM extraction completed in 61.05 seconds [API 4/6]
+  615: Merge operation completed in 0.00 seconds [API 4/6]
+  615: Total file processing time: 396.74 seconds [API 4/6]
+  615: Starting 3-minute delay... [API 4/6]
+  301: Rest LLM extraction (Request size: 30.0 KB, 30,681 characters) [API 1/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 1/6]
+  823: 3-minute delay completed in 180.00 seconds [API 2/6]
+  633: CAO_integrale_tekst.json [API 2/6]
+  633: Salary LLM extraction (Request size: 26.3 KB, 26,892 characters) [API 2/6]
+  Attempt 2 failed (ValueError), retrying in 4 minutes... [API 3/6]
+  2266: Salary LLM extraction completed in 129.22 seconds [API 6/6]
+  80: 3-minute delay completed in 179.99 seconds [API 5/6]
+  884: Boekhandel Kantoorvakhandel 2010-2012.json [API 5/6]
+  884: Salary LLM extraction (Request size: 9.8 KB, 10,023 characters) [API 5/6]
+  633: Salary LLM extraction completed in 80.96 seconds [API 2/6]
+  2266: Rest LLM extraction (Request size: 23.2 KB, 23,736 characters) [API 6/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 6/6]
+  615: 3-minute delay completed in 179.97 seconds [API 4/6]
+  683: CAO ETD platte tekst (d.d. 5 juni 2024).json [API 4/6]
+  683: Salary LLM extraction (Request size: 26.7 KB, 27,230 characters) [API 4/6]
+  633: Rest LLM extraction (Request size: 37.1 KB, 37,906 characters) [API 2/6]
+  884: Salary LLM extraction completed in 113.26 seconds [API 5/6]
+  301: Rest LLM extraction completed in 197.55 seconds [API 1/6]
+  301: Merge operation completed in 0.00 seconds [API 1/6]
+  301: Total file processing time: 334.31 seconds [API 1/6]
+  301: Starting 3-minute delay... [API 1/6]
+  683: Salary LLM extraction completed in 80.36 seconds [API 4/6]
+  633: Rest LLM extraction completed in 46.39 seconds [API 2/6]
+  633: Merge operation completed in 0.00 seconds [API 2/6]
+  633: Total file processing time: 187.44 seconds [API 2/6]
+  633: Starting 3-minute delay... [API 2/6]
+  884: Rest LLM extraction (Request size: 18.2 KB, 18,642 characters) [API 5/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 5/6]
+  683: Rest LLM extraction (Request size: 22.2 KB, 22,661 characters) [API 4/6]
+  2266: Rest LLM extraction completed in 177.17 seconds [API 6/6]
+  2266: Merge operation completed in 0.00 seconds [API 6/6]
+  2266: Total file processing time: 366.47 seconds [API 6/6]
+  2266: Starting 3-minute delay... [API 6/6]
+  683: Rest LLM extraction completed in 42.69 seconds [API 4/6]
+  683: Merge operation completed in 0.00 seconds [API 4/6]
+  683: Total file processing time: 183.14 seconds [API 4/6]
+  683: Starting 3-minute delay... [API 4/6]
+  1536: Salary LLM extraction completed in 421.13 seconds [API 3/6]
+  301: 3-minute delay completed in 180.00 seconds [API 1/6]
+  633: CAO_voor_Uitzendkrachten_integraal_1.json [API 1/6]
+  633: Salary LLM extraction (Request size: 15.3 KB, 15,626 characters) [API 1/6]
+  633: 3-minute delay completed in 180.00 seconds [API 2/6]
+  2266: CAO visdetailhandel 2019-2020 definitieve versie aangeboden aan ministerie.docx .json [API 2/6]
+  2266: Salary LLM extraction (Request size: 10.7 KB, 10,970 characters) [API 2/6]
+  1536: Rest LLM extraction (Request size: 29.3 KB, 30,000 characters) [API 3/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 3/6]
+  884: Rest LLM extraction completed in 188.73 seconds [API 5/6]
+  884: Merge operation completed in 0.00 seconds [API 5/6]
+  884: Total file processing time: 362.08 seconds [API 5/6]
+  884: Starting 3-minute delay... [API 5/6]
+  633: Salary LLM extraction completed in 69.05 seconds [API 1/6]
+  2266: Salary LLM extraction completed in 53.83 seconds [API 2/6]
+  2266: 3-minute delay completed in 180.00 seconds [API 6/6]
+  2948: CAO_VVT_2010_2012_2_.json [API 6/6]
+  2948: Salary LLM extraction (Request size: 53.6 KB, 54,877 characters) [API 6/6]
+  683: 3-minute delay completed in 180.00 seconds [API 4/6]
+  727: cao_Mode__Sport_1_7_2010_tot_1_7_2012_22_8_2011.json [API 4/6]
+  727: Salary LLM extraction (Request size: 41.0 KB, 41,799 characters) [API 4/6]
+  633: Rest LLM extraction (Request size: 38.5 KB, 39,311 characters) [API 1/6]
+  2266: Rest LLM extraction (Request size: 15.0 KB, 15,311 characters) [API 2/6]
+  633: Rest LLM extraction completed in 51.19 seconds [API 1/6]
+  633: Merge operation completed in 0.00 seconds [API 1/6]
+  633: Total file processing time: 180.37 seconds [API 1/6]
+  633: Starting 3-minute delay... [API 1/6]
+  2266: Rest LLM extraction completed in 53.05 seconds [API 2/6]
+  2266: Merge operation completed in 0.00 seconds [API 2/6]
+  2266: Total file processing time: 166.96 seconds [API 2/6]
+  2266: Starting 3-minute delay... [API 2/6]
+  1536: Rest LLM extraction completed in 169.06 seconds [API 3/6]
+  1536: Merge operation completed in 0.00 seconds [API 3/6]
+  1536: Total file processing time: 650.27 seconds [API 3/6]
+  1536: Starting 3-minute delay... [API 3/6]
+  2948: Salary LLM extraction completed in 124.52 seconds [API 6/6]
+  884: 3-minute delay completed in 180.00 seconds [API 5/6]
+  748: Cao_Slagersbedrijf__versie_1_7_17.json [API 5/6]
+  748: Salary LLM extraction (Request size: 25.5 KB, 25,938 characters) [API 5/6]
+  2948: Rest LLM extraction (Request size: 25.1 KB, 25,698 characters) [API 6/6]
+  727: Salary LLM extraction completed in 175.00 seconds [API 4/6]
+  2948: Rest LLM extraction completed in 44.68 seconds [API 6/6]
+  2948: Merge operation completed in 0.00 seconds [API 6/6]
+  2948: Total file processing time: 229.32 seconds [API 6/6]
+  2948: Starting 3-minute delay... [API 6/6]
+  727: Rest LLM extraction (Request size: 20.0 KB, 20,397 characters) [API 4/6]
+  633: 3-minute delay completed in 180.00 seconds [API 1/6]
+  2297: CAO TI 2021 2024_1.json [API 1/6]
+  2297: Salary LLM extraction (Request size: 42.6 KB, 43,523 characters) [API 1/6]
+  748: Salary LLM extraction completed in 140.45 seconds [API 5/6]
+  2266: 3-minute delay completed in 180.00 seconds [API 2/6]
+  1574: Tekst_CAO_GGZ_2011_2013_juli_2012.json [API 2/6]
+  1574: Salary LLM extraction (Request size: 18.0 KB, 18,434 characters) [API 2/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 2/6]
+  1536: 3-minute delay completed in 180.00 seconds [API 3/6]
+  10: Skipping TTW_CAO_definitief_12_november_2012.json (already in final Excel file)
+  243: Integrale tekst cao voor het Hoveniersbedrijf 1 oktober 2024 tm 30 juni 2026 (2503-1886).json [API 3/6]
+  243: Salary LLM extraction (Request size: 21.8 KB, 21,505 characters) [API 3/6]
+  727: Rest LLM extraction completed in 48.74 seconds [API 4/6]
+  727: Merge operation completed in 0.00 seconds [API 4/6]
+  727: Total file processing time: 283.89 seconds [API 4/6]
+  727: Starting 3-minute delay... [API 4/6]
+  748: Rest LLM extraction (Request size: 43.0 KB, 43,958 characters) [API 5/6]
+  243: Salary LLM extraction completed in 84.15 seconds [API 3/6]
+  2297: Salary LLM extraction completed in 106.54 seconds [API 1/6]
+  748: Rest LLM extraction completed in 60.73 seconds [API 5/6]
+  748: Merge operation completed in 0.00 seconds [API 5/6]
+  748: Total file processing time: 261.31 seconds [API 5/6]
+  748: Starting 3-minute delay... [API 5/6]
+  2948: 3-minute delay completed in 180.00 seconds [API 6/6]
+  518: Cao boekje Drogisterijbranche VDF- schoon.json [API 6/6]
+  518: Salary LLM extraction (Request size: 11.3 KB, 11,525 characters) [API 6/6]
+  243: Rest LLM extraction (Request size: 41.1 KB, 41,993 characters) [API 3/6]
+  2297: Rest LLM extraction (Request size: 31.2 KB, 31,777 characters) [API 1/6]
+  518: Salary LLM extraction completed in 65.75 seconds [API 6/6]
+  727: 3-minute delay completed in 179.99 seconds [API 4/6]
+  822: CAO_CAR__TTW_JULI.json [API 4/6]
+  822: Salary LLM extraction (Request size: 23.9 KB, 24,424 characters) [API 4/6]
+  2297: Rest LLM extraction completed in 53.21 seconds [API 1/6]
+  2297: Merge operation completed in 0.00 seconds [API 1/6]
+  2297: Total file processing time: 219.85 seconds [API 1/6]
+  2297: Starting 3-minute delay... [API 1/6]
+  243: Rest LLM extraction completed in 64.39 seconds [API 3/6]
+  243: Merge operation completed in 0.00 seconds [API 3/6]
+  243: Total file processing time: 208.59 seconds [API 3/6]
+  243: Starting 3-minute delay... [API 3/6]
+  1574: Salary LLM extraction completed in 237.89 seconds [API 2/6]
+  518: Rest LLM extraction (Request size: 24.2 KB, 24,779 characters) [API 6/6]
+  1574: Rest LLM extraction (Request size: 22.3 KB, 22,746 characters) [API 2/6]
+  748: 3-minute delay completed in 180.00 seconds [API 5/6]
+  214: Openbare_Bibliotheken_2012_2013.json [API 5/6]
+  214: Salary LLM extraction (Request size: 20.0 KB, 20,481 characters) [API 5/6]
+  822: Salary LLM extraction completed in 89.28 seconds [API 4/6]
+  518: Rest LLM extraction completed in 55.11 seconds [API 6/6]
+  518: Merge operation completed in 0.00 seconds [API 6/6]
+  518: Total file processing time: 180.94 seconds [API 6/6]
+  518: Starting 3-minute delay... [API 6/6]
+  1574: Rest LLM extraction completed in 40.31 seconds [API 2/6]
+  1574: Merge operation completed in 0.00 seconds [API 2/6]
+  1574: Total file processing time: 338.32 seconds [API 2/6]
+  1574: Starting 3-minute delay... [API 2/6]
+  822: Rest LLM extraction (Request size: 17.9 KB, 18,311 characters) [API 4/6]
+  2297: 3-minute delay completed in 180.00 seconds [API 1/6]
+  633: Uitzendkrachten_tekst.json [API 1/6]
+  633: Salary LLM extraction (Request size: 17.6 KB, 17,983 characters) [API 1/6]
+  243: 3-minute delay completed in 179.99 seconds [API 3/6]
+  301: CAOSOCIAALWERK1719_070218__ttw_corr_avv_def.json [API 3/6]
+  301: Salary LLM extraction (Request size: 20.1 KB, 20,599 characters) [API 3/6]
+  Attempt 1 failed (ValueError), retrying in 2 minutes... [API 3/6]
+  822: Rest LLM extraction completed in 49.09 seconds [API 4/6]
+  822: Merge operation completed in 0.00 seconds [API 4/6]
+  822: Total file processing time: 198.47 seconds [API 4/6]
+  822: Starting 3-minute delay... [API 4/6]
+  633: Salary LLM extraction completed in 78.49 seconds [API 1/6]
+  214: Salary LLM extraction completed in 197.63 seconds [API 5/6]
+  518: 3-minute delay completed in 180.00 seconds [API 6/6]
+  1471: Cao GEO SERVICES 2024-2026.json [API 6/6]
+  1471: Salary LLM extraction (Request size: 10.9 KB, 11,160 characters) [API 6/6]
+  1574: 3-minute delay completed in 180.00 seconds [API 2/6]
+  301: welzijn_maatschappelijk_dienstverlenning.json [API 2/6]
+  301: Salary LLM extraction (Request size: 16.2 KB, 16,587 characters) [API 2/6]
+  633: Rest LLM extraction (Request size: 24.3 KB, 24,831 characters) [API 1/6]
+  214: Rest LLM extraction (Request size: 18.9 KB, 19,369 characters) [API 5/6]
+  822: 3-minute delay completed in 180.00 seconds [API 4/6]
+  683: tekst_CAO20182020ETD_def.json [API 4/6]
+  683: Salary LLM extraction (Request size: 12.0 KB, 12,273 characters) [API 4/6]
+  633: Rest LLM extraction completed in 71.37 seconds [API 1/6]
+  633: Merge operation completed in 0.00 seconds [API 1/6]
+  633: Total file processing time: 209.96 seconds [API 1/6]
+  633: Starting 3-minute delay... [API 1/6]
+  214: Rest LLM extraction completed in 53.20 seconds [API 5/6]
+  214: Merge operation completed in 0.00 seconds [API 5/6]
+  214: Total file processing time: 310.92 seconds [API 5/6]
+  214: Starting 3-minute delay... [API 5/6]
+  301: Salary LLM extraction completed in 90.84 seconds [API 2/6]
+  301: Salary LLM extraction completed in 216.60 seconds [API 3/6]
+  1471: Salary LLM extraction completed in 121.78 seconds [API 6/6]
+  301: Rest LLM extraction (Request size: 28.6 KB, 29,208 characters) [API 2/6]
+  301: Rest LLM extraction (Request size: 46.5 KB, 47,560 characters) [API 3/6]
+  1471: Rest LLM extraction (Request size: 33.4 KB, 34,079 characters) [API 6/6]
+  683: Salary LLM extraction completed in 100.19 seconds [API 4/6]
+  301: Rest LLM extraction completed in 53.84 seconds [API 3/6]
+  301: Merge operation completed in 0.00 seconds [API 3/6]
+  301: Total file processing time: 330.57 seconds [API 3/6]
+  301: Starting 3-minute delay... [API 3/6]
+  301: Rest LLM extraction completed in 62.84 seconds [API 2/6]
+  301: Merge operation completed in 0.00 seconds [API 2/6]
+  301: Total file processing time: 213.79 seconds [API 2/6]
+  301: Starting 3-minute delay... [API 2/6]
+  683: Rest LLM extraction (Request size: 18.3 KB, 18,679 characters) [API 4/6]
+  1471: Rest LLM extraction completed in 68.44 seconds [API 6/6]
+  1471: Merge operation completed in 0.00 seconds [API 6/6]
+  1471: Total file processing time: 250.32 seconds [API 6/6]
+  1471: Starting 3-minute delay... [API 6/6]

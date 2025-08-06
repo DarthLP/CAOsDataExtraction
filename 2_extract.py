@@ -5,7 +5,7 @@ from PyPDF2 import PdfReader  # For reading text-based PDFs
 from pdf2image import convert_from_path  # For converting PDF pages to images (used for OCR fallback or supplement)
 import pytesseract  # For image-based text extraction
 import pdfplumber  # For detecting image-based regions within PDFs
-from tracker import update_progress
+from OUTPUT_tracker import update_progress
 import traceback
 
 # =========================

@@ -52,9 +52,9 @@ LLM_CANDIDATE_COUNT = 1
 MAX_RETRIES = 3
 
 # File paths
-CAO_DATA_PATH = "_EXTRA/CAOData2024.xlsx"
-TRANSLATION_HELPER_PATH = "_EXTRA/TranslationHelper.xlsx"
-OUTPUT_TRANSLATED_PATH = "_EXTRA/CAOData2024_Translated.xlsx"
+CAO_DATA_PATH = "inputs/_EXTRA/CAOData2024.xlsx"
+TRANSLATION_HELPER_PATH = "inputs/_EXTRA/TranslationHelper.xlsx"
+OUTPUT_TRANSLATED_PATH = "inputs/_EXTRA/CAOData2024_Translated.xlsx"
 
 # =========================
 # Gemini API Functions

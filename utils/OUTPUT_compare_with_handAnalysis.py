@@ -37,7 +37,7 @@ def load_datasets():
     Returns:
         tuple: (manual_df, extracted_df)
     """
-    manual_file = "dataset_CAO_182_533_156_316_433.xlsx"
+    manual_file = "inputs/_EXTRA/dataset_CAO_182_533_156_316_433.xlsx"
     extracted_file = "results/extracted_data.xlsx"
     
     if not os.path.exists(manual_file):

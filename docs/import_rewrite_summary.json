@@ -1,0 +1,14 @@
+{
+  "files_processed": 35,
+  "files_changed": 7,
+  "total_imports_updated": 7,
+  "changes": [
+    "pipelines/p3_1_llmExtraction.py: ImportFrom: monitoring_3_1 -> monitoring.monitoring_3_1",
+    "pipelines/p3_llmExtraction.py: ImportFrom: OUTPUT_tracker -> utils.OUTPUT_tracker",
+    "pipelines/p2_extract.py: ImportFrom: OUTPUT_tracker -> utils.OUTPUT_tracker",
+    "pipelines/p4_analysis.py: ImportFrom: OUTPUT_tracker -> utils.OUTPUT_tracker",
+    "pipelines/p0_webscraping.py: ImportFrom: OUTPUT_tracker -> utils.OUTPUT_tracker",
+    "monitoring/performance_logs/cleanup_duplicates.py: ImportFrom: monitoring_3_1 -> monitoring.monitoring_3_1",
+    "monitoring/performance_logs/update_summary.py: ImportFrom: monitoring_3_1 -> monitoring.monitoring_3_1"
+  ]
+}

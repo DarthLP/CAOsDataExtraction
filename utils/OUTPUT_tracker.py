@@ -130,7 +130,7 @@ class CAOTracker:
     def get_failed_pdf_files(self, cao_number):
         """Get list of PDF files that failed to parse"""
         pdf_folder = Path(f"input_pdfs/{cao_number}")
-        output_folder = Path("output_json") / str(cao_number)
+        output_folder = Path("outputs/parsed_pdfs") / str(cao_number)
         
         if not pdf_folder.exists():
             return []
@@ -145,8 +145,8 @@ class CAOTracker:
     
     def get_failed_llm_files(self, cao_number):
         """Get list of JSON files that failed LLM extraction"""
-        input_folder = Path("output_json") / str(cao_number)
-        output_folder = Path("llmExtracted_json") / str(cao_number)
+        input_folder = Path("outputs/parsed_pdfs") / str(cao_number)
+        output_folder = Path("outputs/llm_extracted") / str(cao_number)
         
         if not input_folder.exists():
             return []
@@ -229,11 +229,11 @@ class CAOTracker:
             pdf_count = self.count_pdfs_in_folder(cao_number)
             self.update_pdf_count(cao_number, pdf_count)
             
-            # Count extracted JSONs (output_json folder)
-            extracted_count = self.count_json_files("output_json", cao_number)
+            # Count extracted JSONs (outputs/parsed_pdfs folder)
+extracted_count = self.count_json_files("outputs/parsed_pdfs", cao_number)
             
-            # Count LLM processed JSONs (llmExtracted_json folder)
-            llm_count = self.count_json_files("llmExtracted_json", cao_number)
+            # Count LLM processed JSONs (outputs/llm_extracted folder)
+llm_count = self.count_json_files("outputs/llm_extracted", cao_number)
             
             # Update parsing results with failed file names (even if 0 PDFs)
             if pdf_count > 0:

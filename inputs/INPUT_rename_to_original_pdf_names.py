@@ -5,7 +5,7 @@ from pathlib import Path
 # Paths
 CSV_PATH = 'input_pdfs/extracted_cao_info.csv'
 PDF_ROOT = Path('input_pdfs')
-JSON_ROOTS = [Path('output_json'), Path('llmExtracted_json')]
+JSON_ROOTS = [Path('outputs/parsed_pdfs'), Path('outputs/llm_extracted')]
 
 # Load mapping
 df = pd.read_csv(CSV_PATH, sep=';')

@@ -6,7 +6,7 @@ from pathlib import Path
 CSV1 = 'input_pdfs/extracted_cao_info.csv'
 CSV2 = 'input_pdfs/main_links_log.csv'
 PDF_ROOT = 'input_pdfs'
-JSON_ROOT = 'output_json'
+JSON_ROOT = 'outputs/parsed_pdfs'
 
 # Read CSVs
 info_df = pd.read_csv(CSV1, sep=';')
@@ -49,7 +49,7 @@ for cao_number in cao_folders:
             for pdf in missing_log:
                 print(f'    {pdf} (CAO {cao_number})')
 
-print('\n==== JSONs in output_json/CAO/ with missing PDF in input_pdfs/CAO/ ====' )
+print('\n==== JSONs in outputs/parsed_pdfs/CAO/ with missing PDF in input_pdfs/CAO/ ====' )
 for cao_number in cao_folders:
     json_folder = os.path.join(JSON_ROOT, cao_number)
     pdf_folder = os.path.join(PDF_ROOT, cao_number)
@@ -83,8 +83,8 @@ for cao_number in cao_folders:
         for pdf in missing_in_csv:
             print(f'  {pdf} (CAO {cao_number})')
 
-# 2. JSONs in output_json/CAO/ with missing CSV entry
-print('\n==== JSONs in output_json/CAO/ with missing CSV entry ====' )
+# 2. JSONs in outputs/parsed_pdfs/CAO/ with missing CSV entry
+print('\n==== JSONs in outputs/parsed_pdfs/CAO/ with missing CSV entry ====' )
 for cao_number in cao_folders:
     json_folder = os.path.join(JSON_ROOT, cao_number)
     if not os.path.exists(json_folder):
@@ -102,7 +102,7 @@ for cao_number in cao_folders:
             print(f'  {json_name} (CAO {cao_number})')
 
 # 3. CSVs with missing JSON
-print('\n==== CSVs with missing JSON in output_json/CAO/ ====' )
+print('\n==== CSVs with missing JSON in outputs/parsed_pdfs/CAO/ ====' )
 for cao_number in cao_folders:
     json_folder = os.path.join(JSON_ROOT, cao_number)
     csv_pdf_names = get_csv_pdf_names(cao_number)

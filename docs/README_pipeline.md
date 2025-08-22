@@ -22,9 +22,10 @@ CAOsDataExtraction/
 │   ├── analysis/            # Analysis results
 │   ├── comparison/          # Comparison results
 │   ├── excel/               # Excel output files
-│   ├── json/                # JSON output files
+│   ├── llm_extracted/       # LLM extracted JSON files
 │   │   ├── old_flow/        # p3_llmExtraction output
 │   │   └── new_flow/        # p3_1_llmExtraction output
+│   ├── parsed_pdfs/         # Parsed PDF JSON files
 │   └── logs/                # Log files
 ├── pipelines/
 │   ├── __init__.py
@@ -77,7 +78,8 @@ All paths are centralized in `conf/config.yaml`:
 paths:
   inputs_pdfs: inputs/pdfs/input_pdfs
   inputs_excel: inputs/excel/inputExcel
-  outputs_json: outputs/json
+  outputs_json: outputs/llm_extracted
+  parsed_pdfs: outputs/parsed_pdfs
   outputs_excel: outputs/excel
   outputs_logs: outputs/logs
   outputs_analysis: outputs/analysis
@@ -90,8 +92,9 @@ paths:
 
 ## 📊 Output Structure
 
-- **Old LLM Flow:** `outputs/json/old_flow/` (from p3_llmExtraction.py)
-- **New LLM Flow:** `outputs/json/new_flow/` (from p3_1_llmExtraction.py)
+- **Old LLM Flow:** `outputs/llm_extracted/old_flow/` (from p3_llmExtraction.py)
+- **New LLM Flow:** `outputs/llm_extracted/new_flow/` (from p3_1_llmExtraction.py)
+- **Parsed PDFs:** `outputs/parsed_pdfs/` (from p2_extract.py)
 - **Analysis Results:** `outputs/analysis/`
 - **Comparison Results:** `outputs/comparison/`
 - **Excel Outputs:** `outputs/excel/`
@@ -100,8 +103,8 @@ paths:
 ## 🔄 Migration from Old Structure
 
 ### File Locations:
-- **llmExtracted_json/ → outputs/json/** (merged with output_json)
-- **output_json/ → outputs/json/**
+- **llmExtracted_json/ → outputs/llm_extracted/** (LLM extracted data)
+- **output_json/ → outputs/parsed_pdfs/** (parsed PDF data)
 - **input_pdfs/ → inputs/pdfs/input_pdfs/**
 - **inputExcel/ → inputs/excel/inputExcel/**
 - **results/ → outputs/excel/**

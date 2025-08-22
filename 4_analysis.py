@@ -71,7 +71,7 @@ total_processes = int(sys.argv[3]) if len(sys.argv) > 3 else 1
 # Set fixed seed for consistent shuffling across all processes
 if not SORTED_FILES:
     import random
-    random.seed(42)
+    random.seed(43)
 
 # Load environment variables if not already loaded
 load_dotenv()
@@ -96,7 +96,14 @@ OUTPUT_EXCEL_PATH = f"results/extracted_data_process_{process_id + 1}.xlsx"
 # =========================
 
 genai.configure(api_key=api_key)
-GEMINI_MODEL = "gemini-2.5-pro" 
+GEMINI_MODEL = "gemini-2.5-pro"
+
+# LLM Generation Configuration - Optimized for Maximum Consistency
+LLM_TEMPERATURE = 0.0  # Zero temperature for completely deterministic output
+LLM_TOP_P = 0.1  # Very low top_p to only consider most likely tokens
+LLM_TOP_K = 1  # Always pick the most likely token
+LLM_MAX_TOKENS = None  # No maximum output tokens - allow full response for large CAO files
+LLM_CANDIDATE_COUNT = 1  # Single response only 
 
 # =========================
 # Field Mappings for Infotype Categories
@@ -206,16 +213,19 @@ def load_cao_info():
     """
     Load CAO information from CSV and create a mapping dictionary.
     Returns:
-        dict: Mapping from pdf_name to CAO metadata.
+        dict: Mapping from composite key (pdf_name + cao_number) to CAO metadata.
     """
     cao_info_df = pd.read_csv(CAO_INFO_PATH, sep=';')
     
-    # Create mapping dictionary: pdf_name -> {cao_number, id, ingangsdatum, expiratiedatum, datum_kennisgeving}
+    # Create mapping dictionary: composite_key -> {cao_number, id, ingangsdatum, expiratiedatum, datum_kennisgeving}
+    # Use composite key to handle files with same name but different CAO numbers
     cao_mapping = {}
     for _, row in cao_info_df.iterrows():
         pdf_name = row['pdf_name']
-        cao_mapping[pdf_name] = {
-            'cao_number': row['cao_number'],
+        cao_number = row['cao_number']
+        composite_key = f"{pdf_name}_{cao_number}"
+        cao_mapping[composite_key] = {
+            'cao_number': cao_number,
             'id': row['id'],
             'ingangsdatum': row['ingangsdatum'],
             'expiratiedatum': row['expiratiedatum'],
@@ -252,7 +262,17 @@ def query_gemini(prompt, model=GEMINI_MODEL, max_retries=5):
         try:
             # type: ignore[attr-defined]
             model_obj = genai.GenerativeModel(model)
-            response = model_obj.generate_content(prompt)
+            
+            # Configure generation parameters for maximum consistency
+            generation_config = genai.types.GenerationConfig(
+                temperature=LLM_TEMPERATURE,
+                top_p=LLM_TOP_P,
+                top_k=LLM_TOP_K,
+                max_output_tokens=LLM_MAX_TOKENS,
+                candidate_count=LLM_CANDIDATE_COUNT
+            )
+            
+            response = model_obj.generate_content(prompt, generation_config=generation_config)
             if hasattr(response, "text") and response.text.strip():
                 return response.text
             raise ValueError("Empty or invalid model response")
@@ -672,31 +692,40 @@ for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
         # === Get CAO number and ID lookup first (needed for duplicate checking) ===
         cao_id = None
         pdf_name_cleaned = json_file.stem + ".pdf"
-        # Try direct match (cleaned/encoded)
-        if pdf_name_cleaned in cao_info_mapping:
-            cao_number = cao_info_mapping[pdf_name_cleaned]['cao_number']
-            cao_id = cao_info_mapping[pdf_name_cleaned]['id']
+        
+        # First, try to get CAO number from folder name
+        try:
+            cao_number = int(json_file.parent.name)
+        except (ValueError, AttributeError):
+            cao_number = None
+        
+        # Try composite key lookup (pdf_name + cao_number)
+        if cao_number:
+            composite_key = f"{pdf_name_cleaned}_{cao_number}"
+            if composite_key in cao_info_mapping:
+                cao_info = cao_info_mapping[composite_key]
+                cao_number = cao_info['cao_number']
+                cao_id = cao_info['id']
+            else:
+                # Try fuzzy match with composite key
+                def normalize_lookup(s):
+                    return s.replace(" ", "").replace("-", "").replace("_", "").lower()
+                normalized_cleaned = normalize_lookup(pdf_name_cleaned)
+                found = False
+                for key in cao_info_mapping.keys():
+                    # Extract pdf_name from composite key
+                    key_pdf_name = key.rsplit('_', 1)[0]  # Remove the CAO number part
+                    if normalize_lookup(key_pdf_name) == normalized_cleaned:
+                        cao_info = cao_info_mapping[key]
+                        if cao_info['cao_number'] == cao_number:
+                            cao_id = cao_info['id']
+                            found = True
+                            break
+                if not found and DEBUG_MODE:
+                    print(f"[DEBUG] Could not find CAO id for {json_file.name} with CAO {cao_number} (tried composite key '{composite_key}' and fuzzy match)")
         else:
-            # Try fuzzy match: compare ignoring spaces, dashes, and case
-            def normalize_lookup(s):
-                return s.replace(" ", "").replace("-", "").replace("_", "").lower()
-            normalized_cleaned = normalize_lookup(pdf_name_cleaned)
-            found = False
-            for original_pdf_name in cao_info_mapping.keys():
-                if normalize_lookup(original_pdf_name) == normalized_cleaned:
-                    cao_number = cao_info_mapping[original_pdf_name]['cao_number']
-                    cao_id = cao_info_mapping[original_pdf_name]['id']
-                    found = True
-                    break
-            if not found:
-                # Fall back to folder-based CAO number extraction
-                try:
-                    cao_number = int(json_file.parent.name)
-                except (ValueError, AttributeError):
-                    pass
-            if not cao_id:
-                if DEBUG_MODE:
-                    print(f"[DEBUG] Could not find CAO id for {json_file.name} (tried '{pdf_name_cleaned}' and fuzzy match)")
+            if DEBUG_MODE:
+                print(f"[DEBUG] Could not extract CAO number from folder for {json_file.name}")
         
         # Check if this file was already processed by checking the final Excel file
         final_excel_path = "results/extracted_data.xlsx"
@@ -707,11 +736,18 @@ for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
                 # Add small delay to avoid race conditions when reading Excel
                 time.sleep(0.1)
                 existing_df = pd.read_excel(final_excel_path)
-                if 'File_name' in existing_df.columns:
-                    # Check if this specific file is already in the final Excel
-                    if json_file.name in existing_df['File_name'].values:
+                if 'File_name' in existing_df.columns and 'CAO' in existing_df.columns:
+                    # Check if this specific file with this CAO number is already in the final Excel
+                    # Use both File_name AND CAO number to allow same filename in different CAOs
+                    # Convert Excel CAO column to string for comparison
+                    file_exists = existing_df[
+                        (existing_df['File_name'] == json_file.name) & 
+                        (existing_df['CAO'].astype(str) == str(cao_number))
+                    ].shape[0] > 0
+                    
+                    if file_exists:
                         already_processed = True
-                        print(f"  {cao_number}: Skipping {json_file.name} (already in final Excel file)")
+                        print(f"  {cao_number}: Skipping {json_file.name} (already in final Excel file for CAO {cao_number})")
                         release_file_lock(json_file)  # Release lock before skipping
                         continue
             except Exception as e:
@@ -860,20 +896,25 @@ for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
             row["File_name"] = json_file.name # Changed from file_basename to json_file.name
 
             # === Merge CAO info from CSV ===
-            # Try to find matching CAO info by PDF name
+            # Try to find matching CAO info using composite key (pdf_name + cao_number)
             pdf_name = json_file.stem + ".pdf"  # Reconstruct PDF name from JSON filename
             
-            if pdf_name in cao_info_mapping:
-                cao_info = cao_info_mapping[pdf_name]
-                # Map the fields as specified
-                row["CAO"] = cao_info['cao_number']
-                row["id"] = cao_info['id']
-                row["start_date"] = cao_info['ingangsdatum']
-                row["expiry_date"] = cao_info['expiratiedatum']
-                row["date_of_formal_notification"] = cao_info['datum_kennisgeving']
+            if cao_number:
+                composite_key = f"{pdf_name}_{cao_number}"
+                if composite_key in cao_info_mapping:
+                    cao_info = cao_info_mapping[composite_key]
+                    # Map the fields as specified
+                    row["CAO"] = cao_info['cao_number']
+                    row["id"] = cao_info['id']
+                    row["start_date"] = cao_info['ingangsdatum']
+                    row["expiry_date"] = cao_info['expiratiedatum']
+                    row["date_of_formal_notification"] = cao_info['datum_kennisgeving']
+                else:
+                    if DEBUG_MODE:
+                        print(f"  No CAO info found for composite key: {composite_key}")
             else:
                 if DEBUG_MODE:
-                    print(f"  No CAO info found for PDF: {pdf_name}")
+                    print(f"  No CAO number available for PDF: {pdf_name}")
 
             if DEBUG_MODE:
                 print("Row content before appending:", row)

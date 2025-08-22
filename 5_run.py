@@ -148,58 +148,15 @@ for idx, script in enumerate(scripts):
         
         print(f"\n✓ PHASE {idx + 1} COMPLETED: Analysis")
         
-        # Merge all process-specific Excel files into one final file
-        import pandas as pd
-        final_excel_path = "results/extracted_data.xlsx"
-        all_dataframes = []
-        
-        for key_num in available_keys:
-            process_file = f"results/extracted_data_process_{key_num}.xlsx"
-            if os.path.exists(process_file):
-                try:
-                    df = pd.read_excel(process_file)
-                    if not df.empty:
-                        # Filter out completely empty rows
-                        metadata_cols = ['CAO', 'TTW', 'File_name', 'id', 'start_date', 'expiry_date', 'date_of_formal_notification']
-                        content_cols = [col for col in df.columns if col not in metadata_cols]
-                        
-                        if content_cols:
-                            # Check if any content column has non-empty values
-                            df_filtered = df.dropna(subset=content_cols, how='all')
-                            # Also remove rows where all content columns are just empty strings
-                            mask = df_filtered[content_cols].replace(['', ' ', 'Empty'], pd.NA).notna().any(axis=1)
-                            df_filtered = df_filtered[mask]
-                        else:
-                            # If no content columns, keep all rows
-                            df_filtered = df
-                        
-                        if not df_filtered.empty:
-                            all_dataframes.append(df_filtered)
-                except Exception as e:
-                    print(f"Warning: Could not read {process_file}: {e}")
-        
-        if all_dataframes:
-            # Combine new data from current processes
-            new_df = pd.concat(all_dataframes, ignore_index=True)
-            
-            # Merge with existing Excel file if it exists
-            if os.path.exists(final_excel_path):
-                try:
-                    existing_df = pd.read_excel(final_excel_path)
-                    final_df = pd.concat([existing_df, new_df], ignore_index=True)
-                    print(f"✓ Added {len(new_df)} new rows to existing {len(existing_df)} rows")
-                except Exception as e:
-                    print(f"Warning: Could not read existing Excel: {e}")
-                    final_df = new_df
-            else:
-                final_df = new_df
-            
-            # Save final merged file
-            os.makedirs(os.path.dirname(final_excel_path), exist_ok=True)
-            final_df.to_excel(final_excel_path, index=False)
-            print(f"✓ Final results saved: {len(final_df)} total rows")
-        else:
-            print("Warning: No data found from any analysis process")
+        # Merge all process-specific Excel files into one final file using robust merge script
+        print(f"\n🔄 Merging analysis results to final extracted_data.xlsx...")
+        try:
+            subprocess.run([python_executable, "OUTPUT_merge_analysis_results.py"], check=True)
+            print(f"✓ Merge completed successfully")
+        except subprocess.CalledProcessError as e:
+            print(f"❌ Merge failed with error: {e}")
+        except Exception as e:
+            print(f"❌ Unexpected error during merge: {e}")
     else:
         print(f"\n--- Running {script} ---\n")
         subprocess.run([python_executable, script], check=True)

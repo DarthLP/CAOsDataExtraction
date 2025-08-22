@@ -1,0 +1,132 @@
+CAO 182 - ID 182001 - Horeca_cao__2018_2019_na_ttw.json COMPARISON ANALYSIS
+======================================================================
+
+Here is the data quality analysis for CAO Number 182, File ID 182001.
+
+### **OVERALL ANALYSIS**
+
+The AI extraction shows significant differences compared to the manual dataset. While some core information is captured, the AI often extracts more verbose, contextual information from the source text rather than the structured, specific data points found in the manual dataset. This leads to discrepancies in data type (e.g., text vs. number), completeness, and structure. Key issues include a completely missed salary table, different formatting for numerical values, and the extraction of long descriptive paragraphs where specific values are expected.
+
+---
+
+### **1. WAGE INFORMATION COMPARISON**
+
+**Missing Information:**
+*   **salary_2**: The entire second salary scale, effective from July 1, 2018, is missing. This includes all 11 salary values, the unit, and the start date.
+*   **salary_2_unit**: Missing from the extracted data.
+*   **salary_2_startdate**: Missing from the extracted data.
+*   **salary_increment_1**: The 1% salary increment for the first salary table is missing.
+*   **jobgroup**: Job groups IX, X, and XI are missing.
+*   **salary_note**: One note is missing. Manual says: "The age that must be reached to qualify for a benefit under the General Old Age Pensions Act (AOW),".
+
+**Additional Information:**
+*   **salary_increment_3**: The AI extracted a third salary increment field not present in the manual data.
+*   **salary_age_group**: The AI extracted the age group for the salaries ("21 years and older").
+*   **more_salaries**: The AI extracted a field indicating more salaries exist ("Yes").
+*   **salary_note**: The extracted note is far more detailed, providing context on how the hourly wage is calculated, the source of the wage adjustments, and performance-based increase possibilities.
+
+**Content Differences:**
+*   **salary_1**: The salary values are incomplete and have a different format. The AI extracted only 8 of the 11 salary levels and rounded the values to two decimal places.
+    *   Manual has 11 high-precision values (e.g., `9.582801967571507`, `9.740814963259854`). Extracted has 8 rounded values (e.g., `9.59`, `9.74`) - **FLAGGED AS DIFFERENCE**.
+*   **salary_increment_2**: The value format is different.
+    *   Manual says: `0.01`, Extracted says: `"1%"` - **FLAGGED AS DIFFERENCE**.
+*   **jobgroup**: The extracted data is missing context for Job Group I.
+    *   Manual says: `"I=Statutory minimum wage (WML)"`, Extracted says: `"I"` - **FLAGGED AS DIFFERENCE**.
+*   **salary_note**: The content is completely different. The manual data contains a specific note about checking job groups and the statutory minimum wage, while the extracted note provides a detailed explanation of wage calculations and adjustments.
+    *   Manual says: `"The table has the basic wages skilled worker, If you want to check the jobgroup you have to go to the link:www,khn,nl/cao,If the wages in the tables are lower than the statutory minimum (youth) wage, the employee is entitled to payment of the statutory minimum (youth) wage,"`, Extracted says: `"[A long descriptive paragraph about wage calculations and increases]"` - **FLAGGED AS DIFFERENCE**.
+
+---
+
+### **2. PENSION INFORMATION COMPARISON**
+
+**Missing Information:**
+*   **age_group**: The pension age group is missing.
+    *   Manual says: `"21 years and olders"`. This information is not present in the extracted pension data.
+
+**Additional Information:**
+*   **pension_premium_basic**: The AI extracted information about wage continuation during illness for AOW-eligible employees.
+*   **retire_age_basic**: The AI extracted information about the automatic termination of the contract upon reaching AOW age.
+
+**Content Differences:**
+*   No fields with matching names have different content. The differences are due to missing and additional fields.
+
+---
+
+### **3. LEAVE INFORMATION COMPARISON**
+
+**Missing Information:**
+*   **maternity_note**: This specific note is missing from the extracted data.
+    *   Manual says: `"Extraordinary leave with pay 2 days in case of delivery of your partner or in case of adoption"`.
+
+**Additional Information:**
+*   **maternity_leave**: The AI extracted a field with similar, but less detailed, information: `"2 days for the birth of a partner's child or for adoption."`.
+*   **maternity_pay**: The AI correctly identified that the leave is paid: `"Paid leave."`.
+*   **vacation_time**: The AI extracted a detailed summary of statutory and non-statutory vacation hours.
+*   **vacation_note**: The extracted note is significantly more detailed, covering holiday allowance, continuous vacation periods, and rules for apprentices/casual workers.
+
+**Content Differences:**
+*   **vacation_unit**: The description of the unit is different.
+    *   Manual says: `"hours of vacation per hour worked,"`, Extracted says: `"Hours and days per year, with an accrual rate per hour worked."` - **FLAGGED AS DIFFERENCE**.
+*   **vacation_note**: The content is substantially different.
+    *   Manual says: `"In a full-time situation, 152 hours is 20 days per year,The holiday year runs from 1 June to 31 May...You accrue an additional 0,0192 hours of vacation,"`, Extracted says: `"[A long descriptive paragraph about the holiday year, holiday allowance, continuous vacation, apprentices, and casual workers]"` - **FLAGGED AS DIFFERENCE**.
+
+---
+
+### **4. TERMINATION INFORMATION COMPARISON**
+
+**Missing Information:**
+*   **term_period_employer_unit**: The unit for the term period is missing.
+    *   Manual says: `"month for fixed-term employment contracts lasting 6 months or longe"`.
+
+**Additional Information:**
+*   **term_employer_note**: The AI extracted a detailed note on termination rules.
+*   **term_worker_note**: The AI extracted a note on early termination clauses.
+*   **probation_note**: The AI extracted a detailed note on the conditions for a new probation period.
+
+**Content Differences:**
+*   **term_period_employer**: The data type and content are completely different.
+    *   Manual says: `1` (a numeric value), Extracted says: `"The employer must inform the employee in writing at least one month before the end of a fixed-term contract of 6 months or longer..."` (a descriptive text) - **FLAGGED AS DIFFERENCE**.
+*   **probation_period**: The extracted value is incomplete compared to the manual value.
+    *   Manual says: `"The provisions of the Civil Code apply to a probationary period,When continuing an employment contract, a new trial period can only be agreed if the continuation clearly requires different skills and responsibilities from you,"`, Extracted says: `"The provisions of the Dutch Civil Code apply."` - **FLAGGED AS DIFFERENCE**.
+
+---
+
+### **5. OVERTIME INFORMATION COMPARISON**
+
+**Additional Information:**
+*   **overtime_allowance_min**: The AI extracted a definition of the overtime threshold.
+
+**Content Differences:**
+*   **overtime_compensation**: The extracted value is more detailed.
+    *   Manual says: `"For each hour of overtime worked, the employee may receive one hour of paid time off...or are compensated at 100%..."`, Extracted says: `"Overtime is defined as hours worked exceeding the normal working time (1,976 hours per 12 months). Compensation is provided as time-for-time...or...paid out at 100%..."` - **FLAGGED AS DIFFERENCE**.
+*   **max_hrs**: The extracted value is significantly more detailed and structured.
+    *   Manual says: `"12 per day"`, Extracted says: `"For employees 18 years and older: maximum of 12 hours per shift and 60 hours per week...[plus rules for ages 16/17 and 15]"` - **FLAGGED AS DIFFERENCE**.
+*   **shift_compensation**: The extracted content is different and more comprehensive.
+    *   Manual says: `"A night shift is a shift in which more than one hour work is performed between midnight and 6 a,m,If you perform one or more on-call shifts per week...your working time...is 2496 hours..."`, Extracted says: `"A night shift is...between 00:00 and 06:00. For front office staff...a night surcharge of 10%...For work on a public holiday, compensation is one hour of paid time off..."` - **FLAGGED AS DIFFERENCE**.
+*   **overtime_allowance_max**: The content is completely different.
+    *   Manual says: `"12 hours maximum per day "`, Extracted says: `"For employees 18 years or older, there is a maximum of 140 night shifts ending after 02:00 per 52 weeks..."` - **FLAGGED AS DIFFERENCE**.
+
+---
+
+### **6. TRAINING INFORMATION COMPARISON**
+
+**Additional Information:**
+*   The extracted `training` note is far more comprehensive, adding details about apprentice contracts, school hours, mentors, and interns, which are not in the manual data.
+
+**Content Differences:**
+*   **training**: The extracted information is more detailed than the manual entry.
+    *   Manual says: `"This budget amounts to at least 2%...you can only work in a catering company that is recognized as a training company by the SBB..."`, Extracted says: `"The employer must establish an annual development budget of at least 2%...[plus additional details on apprentices, mentors, and interns]"` - **FLAGGED AS DIFFERENCE**.
+
+---
+
+### **7. CONTRACT DATES COMPARISON**
+
+**Missing Information:**
+*   **temporary**: The field indicating if the contract is temporary is missing.
+    *   Manual says: `"No"`.
+
+**Additional Information:**
+*   None.
+
+**Content Differences:**
+*   No issues found. All matching date fields are identical.

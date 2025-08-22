@@ -2,7 +2,7 @@ EXTRACTED DATA ANALYSIS REPORT
 ==================================================
 
 Analysis of: results/extracted_data.xlsx
-Total rows: 5939
+Total rows: 23374
 Total columns: 67
 
 1. DUPLICATES ANALYSIS
@@ -11,22 +11,37 @@ Total duplicate groups: 0
 
 2. MISSING INFOTYPES ANALYSIS
 ------------------------------
-CAOs with missing infotypes: 0
+CAOs with missing infotypes: 3
+
+CAO CAOtekst_1apr2019-31dec2019_PvL_6mei2019.pdf .json:
+  Missing: wage
+  Present: homeoffice, training, leave, overtime, pension, termination
+
+CAO Reglement_Garantiefonds_07_12_2011__2_.json:
+  Missing: wage
+  Present: homeoffice, training, leave, overtime, pension, termination
+
+CAO CAO_Appo_en_GOVak_2018_2023.json:
+  Missing: wage
+  Present: homeoffice, training, leave, overtime, pension, termination
 
 3. EMPTY DATA ANALYSIS
 ------------------------------
-CAOs with empty wage data: 0
-CAOs where ALL non-wage infotypes are empty: 0
+CAOs with empty wage data: 1
+CAOs where ALL non-wage infotypes are empty: 1
 
 CAOs with empty wage data:
+  CAO CAO 2021 aanmelding_1.json: 1 empty wage rows
 
 CAOs where ALL non-wage infotypes are empty:
+  CAO cao_LEO_1mei_2016_tot_en_met_30_juni_2017.json
 
 4. EMPTY INFOTYPES BY TYPE
 ------------------------------
-Homeoffice: 299 CAOs
-Termination: 5 CAOs
-Pension: 4 CAOs
-Leave: 6 CAOs
-Overtime: 4 CAOs
-Training: 1 CAOs
+Homeoffice: 1154 CAOs
+Termination: 19 CAOs
+Leave: 26 CAOs
+Training: 5 CAOs
+Pension: 22 CAOs
+Overtime: 7 CAOs
+Wage: 1 CAOs

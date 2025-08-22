@@ -8,6 +8,57 @@ import pandas as pd
 import os
 from pathlib import Path
 import sys
+import time
+import tempfile
+import platform
+import subprocess
+
+
+def _atomic_save_excel_with_retries(df: pd.DataFrame, final_path: str, max_retries: int = 5, delay_seconds: int = 2) -> None:
+    """Save DataFrame to Excel atomically with retries to avoid intermittent FS/openpyxl timeouts.
+
+    Strategy:
+    - Write to a temporary file in the same directory (no dot-prefix to avoid Finder hidden quirks)
+    - On success, os.replace to the final path (atomic on POSIX)
+    - Retry on exceptions (e.g., TimeoutError) with small backoff
+    - On macOS, clear hidden flag if set
+    """
+    directory = os.path.dirname(final_path) or "."
+    os.makedirs(directory, exist_ok=True)
+
+    last_error: Exception | None = None
+    for attempt in range(1, max_retries + 1):
+        temp_file = None
+        try:
+            # Create temp file in same dir (avoid leading dot so Finder does not carry hidden attributes)
+            fd, temp_file = tempfile.mkstemp(prefix="merge_tmp_", suffix=".xlsx", dir=directory)
+            os.close(fd)
+
+            with pd.ExcelWriter(temp_file, engine="openpyxl") as writer:
+                df.to_excel(writer, index=False)
+
+            os.replace(temp_file, final_path)
+
+            # Best-effort: ensure file not hidden on macOS
+            if platform.system() == "Darwin":
+                try:
+                    subprocess.run(["chflags", "nohidden", final_path], check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                except Exception:
+                    pass
+            return
+        except Exception as e:  # noqa: BLE001
+            last_error = e
+            try:
+                if temp_file and os.path.exists(temp_file):
+                    os.remove(temp_file)
+            except Exception:
+                pass
+            if attempt < max_retries:
+                time.sleep(delay_seconds * attempt)
+                continue
+            break
+    raise RuntimeError(f"Failed to save Excel after {max_retries} attempts: {last_error}")
+
 
 def merge_analysis_results():
     """Merge all process-specific Excel files into the main extracted_data.xlsx"""
@@ -41,18 +92,14 @@ def merge_analysis_results():
             print(f"  - Found {len(df)} rows")
             
             if not df.empty:
-                # Filter out completely empty rows
                 metadata_cols = ['CAO', 'TTW', 'File_name', 'id', 'start_date', 'expiry_date', 'date_of_formal_notification']
                 content_cols = [col for col in df.columns if col not in metadata_cols]
                 
                 if content_cols:
-                    # Check if any content column has non-empty values
                     df_filtered = df.dropna(subset=content_cols, how='all')
-                    # Also remove rows where all content columns are just empty strings
                     mask = df_filtered[content_cols].replace(['', ' ', 'Empty'], pd.NA).notna().any(axis=1)
                     df_filtered = df_filtered[mask]
                 else:
-                    # If no content columns, keep all rows
                     df_filtered = df
                 
                 if not df_filtered.empty:
@@ -71,39 +118,40 @@ def merge_analysis_results():
         print("❌ No valid data found in any process file")
         return
     
-    # Combine new data from current processes
     print(f"\n📊 Combining {len(all_dataframes)} dataframes...")
     new_df = pd.concat(all_dataframes, ignore_index=True)
     print(f"✓ Combined {len(new_df)} total rows from process files")
     
-    # Note: Multiple rows per file is expected (one per infotype)
-    # So we don't remove "duplicates" based on File_name
     print(f"✓ Keeping all {len(new_df)} rows (multiple rows per file is normal)")
     
-    # Merge with existing Excel file if it exists
-    if os.path.exists(final_excel_path):
-        print(f"\n📖 Reading existing {final_excel_path}...")
+    if os.path.exists("results/extracted_data.xlsx"):
+        print(f"\n📖 Reading existing results/extracted_data.xlsx...")
         try:
-            existing_df = pd.read_excel(final_excel_path)
+            existing_df = pd.read_excel("results/extracted_data.xlsx")
             print(f"  - Found {len(existing_df)} existing rows")
             
-            # Check for overlapping files between existing and new data
-            if 'File_name' in existing_df.columns and 'File_name' in new_df.columns:
-                existing_files = set(existing_df['File_name'].dropna())
-                new_files = set(new_df['File_name'].dropna())
-                overlap = existing_files & new_files
+            if 'File_name' in existing_df.columns and 'File_name' in new_df.columns and 'CAO' in existing_df.columns and 'CAO' in new_df.columns:
+                # Use both File_name AND CAO number to allow same filename in different CAOs
+                # Create composite key for comparison
+                existing_df['file_cao_key'] = existing_df['File_name'] + '_' + existing_df['CAO'].astype(str)
+                new_df['file_cao_key'] = new_df['File_name'] + '_' + new_df['CAO'].astype(str)
+                
+                existing_keys = set(existing_df['file_cao_key'].dropna())
+                new_keys = set(new_df['file_cao_key'].dropna())
+                overlap = existing_keys & new_keys
                 
                 if overlap:
-                    print(f"⚠️  Found {len(overlap)} files that already exist in the main file")
-                    print(f"  - Overlapping files: {list(overlap)[:5]}{'...' if len(overlap) > 5 else ''}")
-                    
-                    # Remove overlapping files from new data to avoid double-processing
-                    new_df = new_df[~new_df['File_name'].isin(overlap)]
-                    print(f"✓ Removed overlapping files, now have {len(new_df)} new unique files")
+                    print(f"⚠️  Found {len(overlap)} file-CAO combinations that already exist in the main file")
+                    print(f"  - Overlapping combinations: {list(overlap)[:5]}{'...' if len(overlap) > 5 else ''}")
+                    new_df = new_df[~new_df['file_cao_key'].isin(overlap)]
+                    print(f"✓ Removed overlapping file-CAO combinations, now have {len(new_df)} new unique combinations")
                 else:
-                    print(f"✓ No overlapping files found")
+                    print(f"✓ No overlapping file-CAO combinations found")
+                
+                # Clean up temporary column
+                existing_df = existing_df.drop('file_cao_key', axis=1)
+                new_df = new_df.drop('file_cao_key', axis=1)
             
-            # Combine existing and new data
             final_df = pd.concat([existing_df, new_df], ignore_index=True)
             print(f"✓ Final result: {len(existing_df)} existing + {len(new_df)} new = {len(final_df)} total rows")
             
@@ -112,17 +160,14 @@ def merge_analysis_results():
             final_df = new_df
             print(f"✓ Using only new data: {len(final_df)} rows")
     else:
-        print(f"\n📝 No existing {final_excel_path} found, creating new file")
+        print(f"\n📝 No existing results/extracted_data.xlsx found, creating new file")
         final_df = new_df
         print(f"✓ Creating new file with {len(final_df)} rows")
     
-    # Save final merged file
-    os.makedirs(os.path.dirname(final_excel_path), exist_ok=True)
-    final_df.to_excel(final_excel_path, index=False)
-    print(f"\n✅ Final results saved to {final_excel_path}")
+    _atomic_save_excel_with_retries(final_df, "results/extracted_data.xlsx")
+    print(f"\n✅ Final results saved to results/extracted_data.xlsx")
     print(f"📊 Summary: {len(final_df)} total rows")
     
-    # Show breakdown by infotype if available
     if 'infotype' in final_df.columns:
         print(f"\n📋 Breakdown by infotype:")
         infotype_counts = final_df['infotype'].value_counts()

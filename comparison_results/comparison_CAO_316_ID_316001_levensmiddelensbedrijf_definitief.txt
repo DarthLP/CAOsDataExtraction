@@ -1,0 +1,148 @@
+CAO 316 - ID 316001 - levensmiddelensbedrijf_definitief.json COMPARISON ANALYSIS
+======================================================================
+
+Here is the data quality analysis of the extracted dataset against the manual dataset.
+
+### **OVERALL ANALYSIS**
+
+The AI extraction shows significant discrepancies when compared to the manual ground truth. While it successfully extracted some information, there are major errors in data interpretation (e.g., salary values and units), a substantial loss of detail (e.g., job groups), and extraction of incorrect or incomplete information across all categories. The extracted dataset also contains a large amount of information not present in the manual dataset, suggesting the AI may be summarizing or pulling from different sections of the source document than the manual process focused on.
+
+---
+
+### **1. WAGE INFORMATION COMPARISON**
+
+**Missing Information:**
+*   **salary_1**: The extracted data is missing 50 out of the 59 salary values present in the manual dataset.
+*   **salary_2**: The extracted data is missing all 57 hourly salary values from the manual dataset. It appears to have extracted different data entirely for this field.
+*   **jobgroup**: The detailed job group codes (e.g., `A-21-0`, `B-22-1`, `C-23-4`) from the manual data are completely missing. The AI has oversimplified them.
+
+**Additional Information:**
+*   The AI extracted a `salary_age_group` field ("21 years and older").
+*   The AI extracted a `more_salaries` field ("No").
+*   The AI extracted additional details in the `salary_note` regarding wages for the long-term unemployed, employees under 18, and performance-based increases for certain groups.
+*   The AI extracted job groups G, H, and I, which are not in the manual data.
+
+**Content Differences:**
+*   **salary_1**: The lists of salaries are substantially different. The AI missed most values and included three that are not in the manual data.
+    *   Manual has 59 distinct values (e.g., 8.33, 9.5, 10.37, 12.36). Extracted has only 9 values, including `15.73`, `18.05`, and `20.7` which are not in the manual list - **FLAGGED AS DIFFERENCE**.
+*   **salary_2**: The extracted values are incorrect and misinterpreted.
+    *   Manual contains 57 hourly wage values (e.g., 7.51, 8.37, 9.38). Extracted contains 9 completely different, larger numbers (e.g., 1202.11, 1339.97, 1500.52) - **FLAGGED AS DIFFERENCE**.
+*   **salary_2_unit**: The unit of payment was incorrectly identified.
+    *   Manual says: `hourly`, Extracted says: `per 4 weeks` - **FLAGGED AS DIFFERENCE**.
+*   **salary_1_startdate**: The start date is incorrect.
+    *   Manual says: `2011-10-01`, Extracted says: `10/10/2011` - **FLAGGED AS DIFFERENCE**.
+*   **salary_2_startdate**: The start date is incorrect.
+    *   Manual says: `2012-08-01`, Extracted says: `31/12/2012` - **FLAGGED AS DIFFERENCE**.
+*   **salary_increment_1 & salary_increment_2**: The format/data type is different.
+    *   Manual says: `0.018` and `0.02` (numeric), Extracted says: `1.8%` and `2.0%` (string) - **FLAGGED AS DIFFERENCE**.
+*   **jobgroup**: The extracted job groups are simplified and inaccurate.
+    *   Manual lists 60 specific codes (e.g., `A-21-0`, `B-21-1`). Extracted lists generic letters (`A`, `B`, `C`, etc.) and adds non-existent ones (`G`, `H`, `I`) - **FLAGGED AS DIFFERENCE**.
+*   **salary_note**: The content of the notes is entirely different.
+    *   Manual note describes how salary is determined from scales. Extracted note describes how periodic wages are calculated and includes other details not present in the manual note - **FLAGGED AS DIFFERENCE**.
+
+---
+
+### **2. PENSION INFORMATION COMPARISON**
+
+**Missing Information:**
+*   The `age_group` field, containing details about the pension accrual percentage, is missing from the extracted dataset. The information was instead merged incorrectly into `pension_premium_basic`.
+
+**Additional Information:**
+*   The AI extracted a `pension_premium_plus` field with information on supplementary pensions.
+*   The AI extracted a `pension_age_group` field ("21 to 65 years").
+
+**Content Differences:**
+*   **pension_premium_basic**: The extracted text is substantially different, containing information that belongs in other fields and adding extra details.
+    *   Manual text is a general statement about pension fund registration. Extracted text merges this with details on accrual percentages and adds information about an Early Retirement Scheme (V.U.T.) - **FLAGGED AS DIFFERENCE**.
+*   **retire_age_basic**: The data type is different.
+    *   Manual says: `65` (numeric), Extracted says: `65 years` (string) - **FLAGGED AS DIFFERENCE**.
+*   **retire_age_plus**: The extracted information is completely different from the manual value.
+    *   Manual says: `65` (numeric), Extracted says: "After 2011, no more V.U.T. (early retirement) benefits will be granted..." - **FLAGGED AS DIFFERENCE**.
+
+---
+
+### **3. LEAVE INFORMATION COMPARISON**
+
+**Missing Information:**
+*   No specific fields are missing, but the content of the `maternity_note` from the manual dataset was not extracted.
+
+**Additional Information:**
+*   The AI extracted a `maternity_leave` field (partner's leave).
+*   The AI extracted a `maternity_pay` field.
+*   The AI extracted a `vacation_time` field ("24 working days or 192 hours").
+*   The AI extracted significantly more detail in the `vacation_note` regarding consecutive holiday weeks, extra days for service/age, and rules during sickness.
+
+**Content Differences:**
+*   **maternity_note**: The topics of the manual and extracted notes are completely unrelated.
+    *   Manual note discusses incapacity for work due to pregnancy. Extracted note discusses partner's leave for childbirth - **FLAGGED AS DIFFERENCE**.
+*   **vacation_unit**: The extracted information is slightly different.
+    *   Manual says: `hours of paid vacation per vacation year,`, Extracted says: `days or hours per vacation year` - **FLAGGED AS DIFFERENCE**.
+*   **vacation_note**: The extracted note contains much more information than the manual version.
+    *   Manual note is brief. Extracted note is very detailed, including rules about holiday period, extra days, and sick leave, which are absent from the manual note - **FLAGGED AS DIFFERENCE**.
+
+---
+
+### **4. TERMINATION INFORMATION COMPARISON**
+
+**Missing Information:**
+*   The extracted `probation_period` text is missing the detail that the employer and employee can agree to a shorter or no trial period.
+*   The extracted `term_period_employer` text is missing the reference to the Dutch Civil Code (Article 7:672 BW).
+
+**Additional Information:**
+*   The AI extracted a `term_employer_note` field.
+*   The AI extracted a `term_period_worker` field.
+*   The AI extracted a `term_worker_note` field.
+*   The AI extracted a `probation_note` field.
+
+**Content Differences:**
+*   **term_period_employer**: The extracted text is a simplified version of the manual text and lacks a key reference.
+    *   Manual says: "In the event of termination, a notice period applies (Article 7:672 BW) which amounts to...", Extracted says: "At least one month for monthly paid employees..." - **FLAGGED AS DIFFERENCE**.
+*   **probation_period**: The extracted text is incomplete.
+    *   Manual text includes the clause "The employer and the employee can agree in writing to no trial period or to a shorter trial period," which is missing from the extracted text - **FLAGGED AS DIFFERENCE**.
+
+---
+
+### **5. OVERTIME INFORMATION COMPARISON**
+
+**Missing Information:**
+*   No information appears to be missing.
+
+**Additional Information:**
+*   The AI extracted a `min_hrs` field.
+*   The AI extracted an `overtime_allowance_min` field.
+*   The `overtime_compensation` text includes an exception for function groups E-I not mentioned in the manual version.
+*   The `max_hrs` text includes a general rule about a nine-hour maximum daily working time.
+*   The `shift_compensation` text is vastly more detailed than the manual version, providing specific surcharges.
+*   The `overtime_allowance_max` text adds a rule for employees aged 55+.
+
+**Content Differences:**
+*   **shift_compensation**: The extracted information is completely different and far more detailed.
+    *   Manual says: "The employee in the DC in full or partial service cannot be obliged to work on a night shift", Extracted provides a detailed breakdown of percentage surcharges for various shifts, days, and locations - **FLAGGED AS DIFFERENCE**.
+
+---
+
+### **6. TRAINING INFORMATION COMPARISON**
+
+**Missing Information:**
+*   The extracted `training` text is missing specific references to "CBL-Opleidingenhuis" and "www.supermarkt.nl".
+
+**Additional Information:**
+*   The AI extracted significant additional information in the `training` field regarding mandatory driver training, pre-retirement courses, a training fund, and Recognition of Prior Learning (EVC).
+
+**Content Differences:**
+*   **training**: The content is substantially different.
+    *   Manual text focuses on general information and specific resources. Extracted text omits the resources and adds extensive details on specific training schemes and funds not present in the manual note - **FLAGGED AS DIFFERENCE**.
+
+---
+
+### **7. CONTRACT DATES COMPARISON**
+
+**Missing Information:**
+*   The `temporary` field ("No") is missing from the extracted dataset.
+
+**Additional Information:**
+*   No additional information was found.
+
+**Content Differences:**
+*   **expiry_date_contract**: The extracted expiry date is incorrect.
+    *   Manual says: `31/03/2013`, Extracted says: `01/04/2013` - **FLAGGED AS DIFFERENCE**.

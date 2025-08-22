@@ -3,6 +3,7 @@
 paths:
   inputs_pdfs: inputs/pdfs/input_pdfs
   inputs_excel: inputs/excel/inputExcel
+  inputs_extra: inputs/_EXTRA
   outputs_json: outputs/llm_extracted
   outputs_excel: outputs/excel
   parsed_pdfs: outputs/parsed_pdfs

@@ -176,3 +176,32 @@ This document logs the complete reorganization of the CAO Data Extraction reposi
 - **Environment:** `conda activate caos-extract`
 
 **REORGANIZATION COMPLETED SUCCESSFULLY** ✅
+
+## 🚨 CRITICAL FIX - JSON FOLDERS RESTORED
+
+**Issue:** During the initial reorganization, I incorrectly merged `llmExtracted_json/` and `output_json/` into a single `outputs/json/` directory. These were actually different processing stages with the same filenames but completely different content.
+
+**Fix Applied:**
+- **`outputs/json/output_json/` → `outputs/parsed_pdfs/`** (parsed PDF data from p2_extract.py)
+- **`outputs/json/` → `outputs/llm_extracted/`** (LLM extracted data from p3_llmExtraction.py and p3_1_llmExtraction.py)
+
+**Correct Structure:**
+- **`outputs/parsed_pdfs/`** - Contains parsed PDF JSON files (raw text extraction)
+- **`outputs/llm_extracted/`** - Contains LLM processed JSON files (structured data extraction)
+  - `outputs/llm_extracted/old_flow/` - From p3_llmExtraction.py
+  - `outputs/llm_extracted/new_flow/` - From p3_1_llmExtraction.py
+
+**Updated Configuration:**
+- Added `parsed_pdfs: outputs/parsed_pdfs` to `conf/config.yaml`
+- Updated all script references to use correct paths
+- Updated documentation to reflect proper structure
+
+**Files Updated:**
+- `conf/config.yaml` - Added parsed_pdfs path
+- `inputs/INPUT_compare_pdfs_csv_vs_disk.py` - Updated JSON_ROOT path
+- `inputs/INPUT_rename_to_original_pdf_names.py` - Updated JSON_ROOTS paths
+- `utils/OUTPUT_tracker.py` - Updated all path references
+- `scripts/count_files.py` - Updated input folder path
+- `docs/README_pipeline.md` - Updated documentation
+
+**Status:** ✅ FIXED - Both JSON folders properly separated and preserved

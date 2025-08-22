@@ -45,9 +45,7 @@ import os
 import json
 import time
 from pathlib import Path
-import google.generativeai as genai
 from dotenv import load_dotenv
-from OUTPUT_tracker import update_progress
 import sys
 import fcntl
 from pydantic import BaseModel, Field, ConfigDict
@@ -62,12 +60,12 @@ class CAOExtractionSchema(BaseModel):
     """Schema for extracting structured data from Dutch CAO documents."""
     
     general_information: List[List[str]] = Field(
-        description="Extract: Document title, contract period dates, validity dates, parties involved, scope of agreement, general contract terms.",
+        description="Extract: Document title, contract period dates, validity dates, parties involved, scope of agreement. Be concise and focus on essential contract basics only.",
         default_factory=list
     )
     
     wage_information: List[List[str]] = Field(
-        description="Extract: Complete wage tables with all columns and rows, salary scales, job classifications, hourly/monthly rates, ages, age-based increases, allowances, bonuses. RULE: From multiple wage tables with identical data but different units (monthly, hourly, yearly), extract a maximum of one table: prefer hourly, otherwise any one available.",
+        description="Extract: Wage information and wage tables with all columns and rows, salary scales, job classifications, hourly/monthly rates, ages, increases, allowances, bonuses and short descriptions. IMPORTANT: Extract ALL wage tables, including different worker types, different dates, different percentages, different job categories, and different time periods. Only skip if tables are identical except for the unit (e.g., hourly vs monthly rates for the same job/date).",
         default_factory=list
     )
     
@@ -82,7 +80,7 @@ class CAOExtractionSchema(BaseModel):
     )
     
     termination_information: List[List[str]] = Field(
-        description="Extract: Notice periods, probation periods, termination procedures, dismissal rules, severance pay, exit requirements.",
+        description="Extract: Notice periods, probation periods, termination procedures, dismissal rules, severance pay, exit requirements. Include complete termination notice period tables with all age/service year combinations.",
         default_factory=list
     )
     
@@ -160,7 +158,6 @@ def announce_cao_once(cao_number):
 # Set paths and constants
 INPUT_JSON_FOLDER = "output_json"
 OUTPUT_JSON_FOLDER = Path("llmExtracted_json")
-DEBUG_MODE = False
 MAX_JSON_FILES = 350  # Limit how many JSON files to process
 MAX_PROCESSING_TIME_HOURS = 1  # Maximum time to spend on a single file (hours)
 SORTED_FILES = True  # True for sorted files, False for shuffled files within each CAO folder
@@ -217,12 +214,7 @@ performance_monitor = PerformanceMonitor(
     summary_file="performance_logs/extraction_summary.json"
 )
 
-# =========================
-# Structured Output Configuration
-# =========================
 
-# Note: Using structured output with Pydantic schema instead of prompt-based JSON generation
-# The schema is defined above in CAOExtractionSchema class
 
 def check_pdf_quality(pdf_path):
     """
@@ -480,42 +472,6 @@ def extract_with_pdf_upload(pdf_path, filename, cao_number, max_retries=5):
     
     for attempt in range(max_retries):
         try:
-            # Create the extraction prompt (concise, non-duplicative, context-preserving)
-            extraction_prompt = f"""
-You are an AI assistant extracting raw text from Dutch CAO PDFs.
-
-Goal:
-- Extract all relevant text into broad thematic categories as lists of complete snippets, where each snippet is an array of lines that preserves table rows and paragraph breaks.
-
-Note:
-- This is a user-provided CAO document; verbatim extraction is permitted for internal processing.
-
-Rules:
-- Preserve natural context; one snippet = one coherent unit (e.g., a wage table or a full paragraph).
-- Do not micro-structure, split fields or tables; keep related data together. Include headers and descriptions of tables.
-- Copy text literally (dates, numbers, percentages, units); no paraphrasing.
-- Cover all relevant content for each category.
-- Do not mix categories.
-- NO HALLUCINATION - Only extract information that is explicitly present in the text.
-
-Categories (with brief examples):
-- general_information: contract period, validity. Example: "Contract period: 01/04/2019–31/03/2023".
-- wage_information: wage tables with job groups, salaries, increases, age groups. Example: "Group I, 13,17 EUR/hour from 01/01/2018, age 21+".
-    - From multiple wage tables with identical data but different units (monthly, hourly, yearly), extract a maximum of one table: prefer hourly, otherwise any one available.
-- pension_information: schemes, premiums, retirement ages. Example: "Premium 21,4% in 2021, split evenly".
-- leave_information: maternity/adoption/child leave, vacation/time/units/rules. Example: "8% holiday allowance".
-- termination_information: notice periods, probation, rules. Example: "1 month notice if >6 months".
-- overtime_information: overtime pay, hours limits, shift compensation. Example: "35% surcharge; 25% 20:00–22:00; 50% 22:00–06:00".
-- training_information: training rights/budget/programs. Example: "2% payroll allocated; €175 POB".
-- homeoffice_information: remote work rules/allowances. Example: "€3/day; max 8 days/month".
-
-Formatting:
-- Return only JSON matching CAOExtractionSchema keys.
-- Each value is a list of snippets.
-- Each snippet is an array of strings (lines). Use one array element per logical line of the source.
-
-Document: {filename}
-"""
             
             # Add dynamic timeout (in seconds) based on file size
             if file_size_mb > 8.0:
@@ -558,28 +514,21 @@ Extract information from this Dutch CAO (Collective Labor Agreement) PDF documen
 
 TASK: Categorize and extract relevant information into the specified fields based on the document content.
 
-TOPICS TO EXTRACT:
-- General contract information (dates, parties, scope)
-- Wage tables and salary information
-- Pension schemes and contributions
-- Leave policies and vacation entitlements
-- Termination procedures and notice periods
-- Overtime rates and shift compensation
-- Training programs and budgets
-- Remote work policies and allowances
-
 CRITICAL RULES:
 - Extract ONLY information explicitly present in the document
 - Copy text literally (dates, numbers, percentages, units)
-- NO paraphrasing, NO interpretation, NO added explanations
-- NO unnecessary separator lines or formatting characters, NO decorative elements
-- Each snippet should be pure content from the document
+- Be precise: NO paraphrasing, NO interpretation, NO added explanations, NO decorative elements, NO unnecessary separator lines or formatting characters
 
 CONTENT INCLUSION RULES:
-- Include relevant headers, section titles, and table headers for each topic
-- Include relevant numerical values, percentages, amounts, and time periods for each topic
-- Include conditions, requirements, and procedural steps
-- Include entitlements, allowances, and eligibility criteria
+- Include relevant numerical values, percentages, amounts, and time periods
+- Include conditions, requirements, procedural steps, entitlements, allowances, and eligibility criteria
+- For tables, include short descriptions and table structure with headers and all data rows
+- WAGE TABLES: Extract ALL wage tables. Skip only if tables are identical except for the unit (hourly vs monthly vs yearly rates for the same job/date).
+
+TABLE FORMATTING:
+- Preserve table structure: each table row should be a single array element containing all columns
+- Keep table headers, descriptions, column names, and data rows together as complete units
+- Maintain column alignment and spacing within each row
 
 Document: {filename}
 """
@@ -605,7 +554,10 @@ Document: {filename}
             )
 
             # Access the structured output
-            if hasattr(response, 'text') and response.text.strip():
+            if response is None:
+                raise ValueError("No response received from model")
+            
+            if hasattr(response, 'text') and response.text and response.text.strip():
                 processing_time = time.time() - start_time
                 print(f"  INFO: Successfully extracted structured data from PDF (time: {processing_time:.1f}s)")
                 
@@ -628,6 +580,10 @@ Document: {filename}
         except Exception as e:
             error_str = str(e).lower()
             print(f"  DEBUG: PDF upload error type: {type(e).__name__}, Error message: {error_str}")
+            print(f"  DEBUG: Full error details: {e}")
+            if hasattr(e, '__traceback__'):
+                import traceback
+                print(f"  DEBUG: Traceback: {traceback.format_exc()}")
             
             # Handle timeout errors (504, DeadlineExceeded)
             if "deadlineexceeded" in error_str or "504" in error_str or "timeout" in error_str:

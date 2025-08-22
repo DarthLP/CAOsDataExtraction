@@ -12,10 +12,10 @@ from pathlib import Path
 def count_input_files():
     """Count all JSON files in input folders"""
     
-    input_folder = Path("output_json")
+    input_folder = Path("outputs/parsed_pdfs")
     
     if not input_folder.exists():
-        print("❌ Input folder 'output_json' not found!")
+        print("❌ Input folder 'outputs/parsed_pdfs' not found!")
         return 0
     
     total_files = 0

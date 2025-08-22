@@ -1,0 +1,507 @@
+import os
+import json
+from pickle import TRUE
+import time
+from pathlib import Path
+import google.generativeai as genai
+from dotenv import load_dotenv
+from utils.OUTPUT_tracker import update_progress
+import sys
+import fcntl
+
+
+def acquire_file_lock(file_path):
+    """Try to acquire a lock for processing a file. Returns True if lock acquired, False if already locked."""
+    lock_file = file_path.with_suffix('.lock')
+    try:
+        with open(lock_file, 'w') as f:
+            fcntl.flock(f.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+            f.write(f'Process {process_id + 1} using API key {key_number}\n')
+            f.write(f'Timestamp: {time.time()}\n')
+        return True
+    except (IOError, OSError):
+        return False
+
+
+def release_file_lock(file_path):
+    """Release the lock for a file."""
+    lock_file = file_path.with_suffix('.lock')
+    try:
+        if lock_file.exists():
+            lock_file.unlink()
+    except:
+        pass
+
+
+def announce_cao_once(cao_number):
+    """Announce a CAO number only once across all processes using a simple file lock."""
+    announce_file = OUTPUT_JSON_FOLDER / f'.cao_{cao_number}_announced'
+    try:
+        with open(announce_file, 'x') as f:
+            f.write(f'Announced by process {process_id + 1}\n')
+        print(f'--- CAO {cao_number} ---')
+        return True
+    except FileExistsError:
+        return False
+
+
+import yaml
+with open('conf/config.yaml', 'r') as f:
+    config = yaml.safe_load(f)
+INPUT_JSON_FOLDER = config['paths']['outputs_json']
+OUTPUT_JSON_FOLDER = Path(config['paths']['outputs_json']) / "old_flow"
+DEBUG_MODE = False
+MAX_JSON_FILES = 350
+MAX_PROCESSING_TIME_HOURS = 1
+SORTED_FILES = TRUE
+OUTPUT_JSON_FOLDER.mkdir(exist_ok=True)
+key_number = int(sys.argv[1]) if len(sys.argv) > 1 else 1
+process_id = int(sys.argv[2]) if len(sys.argv) > 2 else 0
+total_processes = int(sys.argv[3]) if len(sys.argv) > 3 else 1
+if not SORTED_FILES:
+    import random
+    random.seed(42)
+load_dotenv()
+api_key = os.getenv(f'GOOGLE_API_KEY{key_number}')
+if not api_key:
+    api_key = os.getenv('GOOGLE_API_KEY1')
+    if not api_key:
+        raise ValueError(
+            f'Neither GOOGLE_API_KEY{key_number} nor GOOGLE_API_KEY1 environment variable found. Please set at least GOOGLE_API_KEY1 before running this script.'
+            )
+    else:
+        key_number = 1
+        print(
+            f'Warning: GOOGLE_API_KEY{key_number} not found, using GOOGLE_API_KEY1 instead'
+            )
+genai.configure(api_key=api_key)
+GEMINI_MODEL = 'gemini-2.5-pro'
+LLM_TEMPERATURE = 0.0
+LLM_TOP_P = 0.1
+LLM_TOP_K = 1
+LLM_MAX_TOKENS = None
+LLM_CANDIDATE_COUNT = 1
+SYSTEM_PROMPT = """You are an AI assistant specialized in extracting **raw context** from Dutch collective labor agreements (CAOs).
+Your task is to identify and extract ALL relevant information from the CAO text according to specific field categories.
+
+=== Source Document ===
+File: {filename}
+Document text:
+{text}
+
+=== EXTRACTION TASK ===
+Extract ALL information that matches ANY of the following field categories. Be comprehensive - if information could be relevant, include it.
+
+=== FIELD CATEGORIES AND DEFINITIONS ===
+
+1. GENERAL INFORMATION
+- Start date of contract usually on front page (dates). Ex: 01/04/2019; 01/01/2017; 01/07/2018
+- End date of contract usually on front page (dates). Ex: 31/01/2023; 31/03/2019; 28/02/2014
+2. WAGE INFORMATION
+- All information about jobgroups. Often mentioned in wage tables (numbers or text). Ex: I=Statutory minimum wage (WML); F-21-5; 65-12-57
+- Salaries of the job groups. Usually listed in wage tables. (numbers). Ex: 13,17; 21,59; 9,58
+- Units of the salary values in the wage tables. (texts). Ex: hourly; monthly
+- Start dates of wage tables (dates in dd/mm/yyyy format). Ex: 01/01/2018; 01/01/2017; 01/07/2010
+- Percentage increases of salaries in wage tables. (numbers with % - may appear outside the tables, often near the Dutch words for increase such as "verhoging" or "loonsverhoging"). Ex: 1%; 3%; 10,5%
+- Age group the salary tables apply to, considering only workers aged 21 and older (text). Ex: 21 years and older; 22 years and olders
+
+- All additional context related to salary interpretation (text). Ex: Youth salary scales phased out from 2014; Hourly wage = monthly salary / 156; Classification via FWG® system; Introductory salary scales abolished as of 2013
+3. PENSION INFORMATION
+- pension premium basic: All information related to the basic pension premium and scheme (text). Ex: 50% of the pension premium will be paid by the employee; The pension scheme follows the rules of Stichting Bedrijfstakpensioenfonds; Employees aged 21 to 68 are registered with the Food Industry Pension Fund; The RVU allows early retirement up to AOW age if certain conditions are met
+- pension premium plus: All information related to additional or "plus" pension premiums, including age-related schemes like the Generation Policy and changes in contribution percentages (text). Ex: Pension premium increased to 21,4% in 2021, split evenly between employer and employee; Generation Policy applies to workers aged 60+ between 2018 and 2023; 0,2% premium increase for employees offset by wage increase on 1-6-2021
+- retire age basic: Retirement age for the basic pension scheme (text or number). Ex: 67; 68; 67–68
+- retire age plus: Retirement age for the additional or "plus" pension premium scheme (text or number). Ex: 65; 68; 66–68
+- pension age group: Age group eligible for the pension scheme (text). Ex: 21 years and older; 22 years and older
+
+4. LEAVE INFORMATION
+- maternity leave: All information related to the duration of maternity, adoption, or child-related leave (text). Ex: 5 days of paid maternity leave; At least 16 weeks; Additional 4 weeks in case of multiple births; Up to 5 weeks extra within 6 months after birth
+- maternity pay: All available information about salary, benefits, or compensation during maternity, adoption, or child-related leave (text). Include both employer and UWV contributions. Ex: 100% paid by employer; 70% UWV benefit; 100% of maximum daily wage
+- maternity note: All additional context related to maternity/ adoption/ child-related leave rules not covered in other fields (text). Include among other things rights, accruals, flexibility, partner substitution, and legal protections. Ex: Vacation accrues during leave; Leave may be split; Partner receives remaining leave if employee dies; 1 hour weekly reduction after birth
+- vacation time: All available information about the amount of vacation or holiday time employees are entitled to (number or text). Include base and extra entitlements. Ex: 0.0769; 192; 20
+- vacation unit: Unit or accrual structure of the vacation time reported in the previous column "vacation_time" (text). Be precise about whether it's hours, days, or a formula-based accrual. Ex: hours per vacation year; days per full-time contract
+- vacation note: All additional vacation/ holiday-related information not covered in other fields (text). Include accrual rules, holiday years, age/tenure-based bonuses, payout terms, and holiday allowance rules. Ex: Holiday year runs June–May; 8% holiday allowance; 3 weeks of consecutive vacation; 5 extra days after 40 years of service
+
+5. TERMINATION INFORMATION
+- termination period employer: All information about the notice period duration or unit for employer-initiated contract termination (text). Include special rules based on age, start date, or contract length. Ex: 1 month for contracts longer than 6 months; 4 weeks for employees with 10–15 years of service; Statutory period applies if longer than agreed term
+- termination employer note: All other information about employer-initiated contract termination not covered in the previous column "term_period_employer" (text). Include legal references, conditions, exceptions, or case-specific rules. Ex: Civil Code provisions apply; Prior employment counts toward service years; Periods may be defined in months or 4-week cycles
+- termination period worker: All information about the notice period duration or unit for worker-initiated contract termination (text). Include special rules based on age, start date, or contract length. Ex: 1 week if less than 2 years employed; 10 days; 6 weeks max based on age and service duration
+- termination worker note: All other information about worker-initiated contract termination not covered in the previous column "term_period_worker" (text). Include conditions, exceptions, legal references, or case-specific clauses. Ex: Old rule applies for employees aged 45+ as of Jan 1, 1999; Starting date for notice is always a Saturday
+- probation period: All information about the length or conditions of the probation period for new workers (text). Include all relevant rules based on contract length or type. Ex: 2 months for indefinite contracts; No trial period if contract ≤ 6 months; 1 month max for fixed-term contracts between 6 and 24 months
+- probation note: All other information about the probation period not covered in the previous column "probation_period" (text). Include references to conditions, exceptions, legal references, case-specific clauses or when probation is disallowed. Ex: Trial period only allowed if new role involves substantially different responsibilities; Article 7:652 of the Civil Code applies
+
+6. OVERTIME INFORMATION
+- overtime compensation: All information about overtime pay or compensation, including units, percentages, and whether compensation is given in time or money (text). Include legal rules, employer-specific clauses, and time limits. Ex: 35% surcharge on basic hourly wage; Paid time off within 4 weeks; 100% of hourly wage plus overtime premium; Overtime after 152 hours per period
+- max hrs: All information about the maximum allowed working hours or overtime hours, including what type of time it applies to and for which worker categories (text). Ex: 12 hours per day; Max 10 hours of overtime per week; 36 hours max overtime per 3 pay periods; 52-hour weekly average if salary exceeds IP number 74
+- min hrs: All information about the minimum required number of hours, days, weeks, or months to be worked, including units and reference periods (text). Ex: 24 hours per week; 8 hours per day minimum; 20 working days per month
+- shift compensation: All information about shift-based work and related compensation, including night, evening, early morning, and weekend shifts (text). Include hours, pay surcharges, limitations, and scheduling rules. Ex: 25% surcharge from 8pm–10pm; 50% surcharge between 10pm–6am; Night shift defined as work between 00:00 and 06:00; Max 20 shifts per 4-week period
+- overtime allowance min: All information about the minimum allowance for overtime or night shift work, including duration, compensation, and applicable legal limits (text). Ex: At least 4.5-hour shift to qualify for night compensation; Minimum 1 paid break for shifts covering 00:00–06:00; 16 night shifts over 16 weeks triggers lower working hour threshold
+- overtime allowance max: All information about the maximum allowance for overtime or night shift work, including duration, compensation, and applicable legal limits (text). Ex: Max 12 hours per day; Max 43 night shifts in 16 weeks; Max 36 overtime hours per 3 pay periods; Working time averaged over 13 weeks not to exceed 48 hours
+
+7. TRAINING INFORMATION
+- All information related to training, development, or education for employees or employers (text). Include training rights, budgets, mandatory recognition, funding percentages, and types of courses. Ex: Minimum 2% of annual payroll must be used for training; POB budget of €175 per year; Dutch language course and vocational training; Only recognized training companies may provide internships
+
+8. HOMEOFFICE INFORMATION
+- All information related to home office, remote work, or telecommuting (text). Include rules, eligibility, allowance, equipment, and any limitations. Ex: Employees may work from home up to 2 days per week; Home office allowance of €3 per day; Maximum 8 days per month remote work permitted.
+
+=== EXTRACTION RULES ===
+1. COPY EXACTLY - Do not paraphrase, summarize, or modify the original text
+2. BE COMPREHENSIVE - Include ALL relevant information
+3. PRESERVE CONTEXT - Keep related information together (e.g., salary tables with job groups)
+4. INCLUDE TABLES - Copy wage tables and structured data completely, including headers and descriptions
+5. CAPTURE DETAILS - Include specific numbers, percentages, dates, and conditions
+6. MAINTAIN STRUCTURE - Preserve the original document's organization where relevant
+7. NO HALLUCINATION - Only extract information that is explicitly present in the text
+
+=== OUTPUT FORMAT ===
+You MUST return ONLY a valid JSON object with these exact keys. Do not include any explanations, markdown formatting, or additional text.
+
+{{
+  "General information": ["..."],
+  "Wage information": ["..."],
+  "Pension information": ["..."],
+  "Leave information": ["..."],
+  "Termination information": ["..."],
+  "Overtime information": ["..."],
+  "Training information": ["..."]
+  "Homeoffice information": ["..."]
+}}
+
+CRITICAL REQUIREMENTS:
+- Return ONLY the JSON object - no markdown, no explanations, no extra text
+- Each key must contain a list of full, copied blocks of text (paragraphs, tables, etc.)
+- Each text block should be a complete, coherent piece of information
+- If no relevant information exists for a category, use an empty array []
+- Ensure all extracted information is accurate and complete
+- The response must be parseable as valid JSON
+- IMPORTANT: Escape any quotes within the text content using backslash (\\)
+- IMPORTANT: Do not include any text before or after the JSON object
+- IMPORTANT: Start your response with {{ and end with }}
+"""
+
+
+def extract_broad_context(text, filename, max_retries=5):
+    """
+    Extract context from CAO text using Gemini LLM with exponential backoff retry logic for errors.
+    Args:
+        text (str): The full CAO document text to extract from.
+        filename (str): The filename for context in the prompt.
+        max_retries (int): Maximum number of retry attempts for API errors.
+    Returns:
+        str: The raw LLM output (should be JSON string or similar).
+    Raises:
+        ValueError: If all retry attempts fail.
+    """
+    for attempt in range(max_retries):
+        try:
+            prompt = SYSTEM_PROMPT.format(filename=filename, text=text[:120000]
+                )
+            model = genai.GenerativeModel(GEMINI_MODEL)
+            generation_config = genai.types.GenerationConfig(temperature=
+                LLM_TEMPERATURE, top_p=LLM_TOP_P, top_k=LLM_TOP_K,
+                max_output_tokens=LLM_MAX_TOKENS, candidate_count=
+                LLM_CANDIDATE_COUNT)
+            response = model.generate_content(prompt, generation_config=
+                generation_config)
+            if hasattr(response, 'text') and response.text.strip():
+                return response.text
+            raise ValueError('Empty or invalid model response')
+        except Exception as e:
+            error_str = str(e).lower()
+            print(
+                f'  DEBUG: Error type: {type(e).__name__}, Error message: {error_str}'
+                )
+            if 'deadlineexceeded' in error_str or '504' in error_str:
+                if attempt < max_retries - 1:
+                    wait_time = 120 * 2 ** attempt
+                    print(
+                        f'  Attempt {attempt + 1} failed (504 timeout), retrying in {wait_time // 60} minutes...'
+                        )
+                    time.sleep(wait_time)
+                    continue
+                else:
+                    print(
+                        f'  All {max_retries} attempts failed with 504 errors for {filename} - skipping file'
+                        )
+                    return ''
+            elif 'internal error' in error_str or '500' in error_str or 'internalservererror' in error_str:
+                if attempt < max_retries - 1:
+                    wait_time = 120 * 2 ** attempt
+                    print(
+                        f'  Attempt {attempt + 1} failed (500 internal server error), retrying in {wait_time // 60} minutes...'
+                        )
+                    time.sleep(wait_time)
+                    continue
+                else:
+                    print(
+                        f'  All {max_retries} attempts failed with 500 internal server errors for {filename} - skipping file'
+                        )
+                    return ''
+            elif any(keyword in error_str for keyword in ['quota',
+                'rate limit', 'too many requests', '429']):
+                if attempt < max_retries - 1:
+                    wait_time = 120 * 2 ** attempt
+                    print(
+                        f'  Attempt {attempt + 1} failed (rate limit), retrying in {wait_time // 60} minutes...'
+                        )
+                    time.sleep(wait_time)
+                    continue
+                else:
+                    print(
+                        f'  All {max_retries} attempts failed with rate limiting for {filename} - skipping file'
+                        )
+                    return ''
+            elif attempt < max_retries - 1:
+                wait_time = 120 * 2 ** attempt
+                print(
+                    f'  Attempt {attempt + 1} failed ({type(e).__name__}), retrying in {wait_time // 60} minutes...'
+                    )
+                time.sleep(wait_time)
+                continue
+            else:
+                raise e
+    raise ValueError(f'All {max_retries} retry attempts failed for {filename}')
+
+
+cao_folders = sorted([f for f in Path(INPUT_JSON_FOLDER).iterdir() if f.
+    is_dir() and f.name.isdigit()], key=lambda f: int(f.name))
+all_json_files = []
+for cao_folder in cao_folders:
+    cao_number = cao_folder.name
+    json_files = sorted(cao_folder.glob('*.json'))
+    for json_file in json_files:
+        all_json_files.append((cao_folder, json_file))
+if not SORTED_FILES:
+    import random
+    random.shuffle(all_json_files)
+current_cao = None
+processed_files = 0
+successful_extractions = 0
+failed_files = []
+timed_out_files = []
+for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
+    if file_idx % total_processes != process_id:
+        continue
+    cao_number = cao_folder.name
+    current_cao = cao_number
+    output_cao_folder = OUTPUT_JSON_FOLDER / cao_number
+    output_cao_folder.mkdir(exist_ok=True)
+    output_file = output_cao_folder / json_file.name
+    if output_file.exists():
+        print(f'  {cao_number}: Skipping {json_file.name} (already processed)')
+        time.sleep(5)
+        successful_extractions += 1
+        continue
+    if processed_files >= MAX_JSON_FILES:
+        break
+    if not acquire_file_lock(output_file):
+        print(
+            f'  {cao_number}: Skipping {json_file.name} (being processed by another process)'
+            )
+        time.sleep(2)
+        continue
+    with open(json_file, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    full_text = '\n'.join(page.get('text', '') for page in data if
+        isinstance(page, dict))
+    if not full_text:
+        print(f'  {cao_number}: Skipping {json_file.name} (no text content)')
+        continue
+    request_size = len(full_text.encode('utf-8')) / 1024
+    request_chars = len(full_text)
+    print(
+        f'  {cao_number}: {json_file.name} (Request size: {request_size:.1f} KB, {request_chars:,} characters) [API {key_number}/{total_processes}]'
+        )
+    processed_files += 1
+    try:
+        extraction_start = time.time()
+        max_processing_time = MAX_PROCESSING_TIME_HOURS * 3600
+        if time.time() - extraction_start > max_processing_time:
+            print(
+                f'  {cao_number}: ⏰ Timeout after {MAX_PROCESSING_TIME_HOURS} hours for {json_file.name} [API {key_number}/{total_processes}]'
+                )
+            timed_out_files.append(json_file.name)
+            timeout_log_path = 'timed_out_files_llm_extraction.txt'
+            with open(timeout_log_path, 'a', encoding='utf-8') as f:
+                f.write(
+                    f"""{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name}
+"""
+                    )
+            continue
+        raw_output = extract_broad_context(full_text, filename=json_file.name)
+        extraction_time = time.time() - extraction_start
+        if not raw_output:
+            print(
+                f'  {cao_number}: ✗ LLM extraction failed for {json_file.name} [API {key_number}/{total_processes}]'
+                )
+            failed_files.append(json_file.name)
+            failed_log_path = 'failed_files_llm_extraction.txt'
+            with open(failed_log_path, 'a', encoding='utf-8') as f:
+                f.write(
+                    f"""{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name}
+"""
+                    )
+            continue
+        cleaned_output = raw_output.strip()
+        if cleaned_output.startswith('```'):
+            lines = cleaned_output.splitlines()
+            start_idx = None
+            end_idx = None
+            for i, line in enumerate(lines):
+                if line.strip().startswith('```') and start_idx is None:
+                    start_idx = i
+                elif line.strip().startswith('```') and start_idx is not None:
+                    end_idx = i
+                    break
+            if start_idx is not None and end_idx is not None:
+                cleaned_output = '\n'.join(lines[start_idx + 1:end_idx])
+            else:
+                cleaned_output = '\n'.join(line for line in lines if not
+                    line.strip().startswith('```'))
+        first_brace = cleaned_output.find('{')
+        last_brace = cleaned_output.rfind('}')
+        if first_brace != -1 and last_brace != -1 and last_brace > first_brace:
+            cleaned_output = cleaned_output[first_brace:last_brace + 1]
+        import re
+        cleaned_output = re.sub(',\\s*(?=[}\\]])', '', cleaned_output)
+        cleaned_output = re.sub('(?<!\\\\)\\n(?=.*":\\s*")', '\\n',
+            cleaned_output)
+        cleaned_output = re.sub('(?<!\\\\)\\r(?=.*":\\s*")', '\\r',
+            cleaned_output)
+        out_path = output_cao_folder / json_file.name
+        parsed_json = None
+        try:
+            parsed_json = json.loads(cleaned_output)
+        except Exception as parse_error:
+            try:
+                import re
+                json_match = re.search('\\{.*\\}', cleaned_output, re.DOTALL)
+                if json_match:
+                    json_str = json_match.group(0)
+                    json_str = re.sub(',\\s*(?=[}\\]])', '', json_str)
+                    parsed_json = json.loads(json_str)
+                elif cleaned_output.startswith('"'
+                    ) and cleaned_output.endswith('"'):
+                    try:
+                        unescaped = json.loads(cleaned_output)
+                        parsed_json = json.loads(unescaped)
+                    except:
+                        raise ValueError(
+                            'No valid JSON object found in response')
+                else:
+                    raise ValueError('No JSON object found in response')
+            except Exception as second_error:
+                try:
+                    expected_keys = ['General information',
+                        'Wage information', 'Pension information',
+                        'Leave information', 'Termination information',
+                        'Overtime information', 'Training information',
+                        'Homeoffice information']
+                    parsed_json = {}
+                    for key in expected_keys:
+                        key_pattern = f'"{re.escape(key)}"\\s*:\\s*\\[(.*?)\\]'
+                        match = re.search(key_pattern, cleaned_output, re.
+                            DOTALL | re.IGNORECASE)
+                        if match:
+                            content = match.group(1).strip()
+                            items = []
+                            if content:
+                                parts = content.split('","')
+                                for part in parts:
+                                    part = part.strip().strip('"').strip()
+                                    if part:
+                                        items.append(part)
+                                parsed_json[key] = items
+                            else:
+                                parsed_json[key] = []
+                        else:
+                            parsed_json[key] = []
+                    if any(parsed_json.values()):
+                        print(
+                            f'  Manually constructed JSON for {json_file.name} [API {key_number}/{total_processes}]'
+                            )
+                    else:
+                        raise ValueError(
+                            'No content found in manual construction')
+                except Exception as manual_error:
+                    try:
+                        parsed_json = {'General information': [],
+                            'Wage information': [], 'Pension information':
+                            [], 'Leave information': [],
+                            'Termination information': [],
+                            'Overtime information': [],
+                            'Training information': [],
+                            'Homeoffice information': []}
+                        if cleaned_output.strip():
+                            text_content = re.sub('[#*`]', '', cleaned_output)
+                            if text_content.strip():
+                                parsed_json['General information'] = [
+                                    text_content[:1000] + '...']
+                    except Exception as fallback_error:
+                        print(
+                            f'  ✗ Failed to extract data from {json_file.name} [API {key_number}/{total_processes}]'
+                            )
+                        failed_files.append(json_file.name)
+                        failed_log_path = 'failed_files_llm_extraction.txt'
+                        with open(failed_log_path, 'a', encoding='utf-8') as f:
+                            f.write(
+                                f"""{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name}
+"""
+                                )
+                        continue
+        if parsed_json:
+            with open(out_path, 'w', encoding='utf-8') as f:
+                json.dump(parsed_json, f, ensure_ascii=False, indent=2)
+            print(
+                f'  {cao_number}: LLM extraction completed in {extraction_time:.2f} seconds [API {key_number}/{total_processes}]'
+                )
+            successful_extractions += 1
+            if processed_files >= MAX_JSON_FILES:
+                break
+            else:
+                time.sleep(180)
+        else:
+            print(
+                f'  {cao_number}: ✗ Failed to parse JSON for {json_file.name} [API {key_number}/{total_processes}]'
+                )
+            failed_files.append(json_file.name)
+            failed_log_path = 'failed_files_llm_extraction.txt'
+            with open(failed_log_path, 'a', encoding='utf-8') as f:
+                f.write(
+                    f"""{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name}
+"""
+                    )
+    except Exception as e:
+        import traceback
+        print(
+            f'  {cao_number}: Error with {json_file.name}: {e} [API {key_number}/{total_processes}]'
+            )
+        traceback.print_exc()
+        failed_files.append(json_file.name)
+        failed_log_path = 'failed_files_llm_extraction.txt'
+        with open(failed_log_path, 'a', encoding='utf-8') as f:
+            f.write(
+                f"{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name}\n"
+                )
+        release_file_lock(output_file)
+    finally:
+        release_file_lock(output_file)
+if failed_files or timed_out_files:
+    print(
+        f'Process {process_id + 1} completed: {processed_files} actually processed, {successful_extractions} total successful (including skipped), {len(failed_files)} failed, {len(timed_out_files)} timed out'
+        )
+    if failed_files:
+        print(f'Failed files: {failed_files}')
+    if timed_out_files:
+        print(f'Timed out files: {timed_out_files}')
+else:
+    print(
+        f'Process {process_id + 1} completed: {processed_files} actually processed, {successful_extractions} total successful (including skipped)'
+        )
+
+def main():
+    """Main entry point for the LLM extraction pipeline."""
+    # The script runs automatically when imported or executed
+    pass
+
+if __name__ == "__main__":
+    main()

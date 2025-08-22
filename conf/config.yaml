@@ -1,0 +1,14 @@
+# Configuration file for CAO Data Extraction Pipeline
+
+paths:
+  inputs_pdfs: inputs/pdfs/input_pdfs
+  inputs_excel: inputs/excel/inputExcel
+  outputs_json: outputs/json
+  outputs_excel: outputs/excel
+  outputs_logs: outputs/logs
+  outputs_analysis: outputs/analysis
+  outputs_comparison: outputs/comparison
+  monitoring: monitoring
+  utils: utils
+  docs: docs
+  scripts: scripts

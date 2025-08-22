@@ -60,22 +60,23 @@ class ExtractedDataAnalyzer:
         
         return infotype_col, cao_cols
     
-    def find_duplicates(self, infotype_col: str, cao_col: str = 'CAO'):
-        """Find duplicates - multiple rows with same CAO and infotype (excluding Wage)"""
+    def find_duplicates(self, infotype_col: str, id_col: str = 'id'):
+        """Find duplicates - multiple rows with same ID and infotype (excluding Wage)"""
         print(f"\n🔍 Checking for duplicates (excluding Wage infotype)...")
         
-        # Group by CAO and infotype, but exclude Wage infotype
+        # Group by ID and infotype, but exclude Wage infotype
         duplicates = []
-        duplicate_groups = self.df.groupby([cao_col, infotype_col])
+        duplicate_groups = self.df.groupby([id_col, infotype_col])
         
-        for (cao, infotype), group in duplicate_groups:
+        for (file_id, infotype), group in duplicate_groups:
             # Skip Wage infotype as multiple rows are expected
             if infotype.lower() == 'wage':
                 continue
                 
             if len(group) > 1:
                 duplicates.append({
-                    'cao': cao,
+                    'id': file_id,
+                    'file_name': group['File_name'].iloc[0] if 'File_name' in group.columns else 'Unknown',
                     'infotype': infotype,
                     'count': len(group),
                     'rows': group.index.tolist()
@@ -92,7 +93,7 @@ class ExtractedDataAnalyzer:
         for infotype, dups in duplicate_by_infotype.items():
             print(f"  {infotype}: {len(dups)} duplicate groups")
             for dup in dups[:5]:  # Show first 5
-                print(f"    - CAO {dup['cao']}: {dup['count']} rows")
+                print(f"    - ID {dup['id']} ({dup['file_name']}): {dup['count']} rows")
             if len(dups) > 5:
                 print(f"    ... and {len(dups) - 5} more")
         
@@ -255,7 +256,7 @@ class ExtractedDataAnalyzer:
         print(f"Using CAO column: {cao_col}")
         
         # 1. Find duplicates
-        duplicates = self.find_duplicates(infotype_col, cao_col)
+        duplicates = self.find_duplicates(infotype_col, 'id')
         
         # 2. Check missing infotypes
         missing_infotypes, complete_caos = self.check_missing_infotypes(infotype_col, cao_col)
@@ -293,7 +294,7 @@ class ExtractedDataAnalyzer:
             f.write(f"Total duplicate groups: {len(duplicates)}\n\n")
             
             for dup in duplicates:
-                f.write(f"CAO {dup['cao']} - {dup['infotype']}: {dup['count']} rows\n")
+                f.write(f"ID {dup['id']} ({dup['file_name']}) - {dup['infotype']}: {dup['count']} rows\n")
                 f.write(f"  Row indices: {dup['rows']}\n\n")
             
             # 2. Missing infotypes

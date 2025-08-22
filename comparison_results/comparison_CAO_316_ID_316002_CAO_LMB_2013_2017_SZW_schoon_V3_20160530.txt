@@ -1,0 +1,156 @@
+CAO 316 - ID 316002 - CAO_LMB_2013_2017_SZW_schoon_V3_20160530.json COMPARISON ANALYSIS
+======================================================================
+
+Here is a detailed data quality analysis of the extracted dataset against the manual dataset.
+
+### **OVERALL ANALYSIS**
+
+**CAO Number:** 316
+**File ID:** 316002
+
+The AI extraction shows significant discrepancies compared to the manually verified ground truth data. Key issues include a massive number of missed salary values, simplification of job group codes, and substantial differences in the content of descriptive text fields across all categories. The AI also introduced new fields not present in the manual dataset and missed several fields that were present.
+
+---
+
+### **1. WAGE INFORMATION COMPARISON**
+
+**Missing Information:**
+*   **Salary Values**: The AI failed to extract the vast majority of salary values. For each salary scale (`salary_1` through `salary_5`), the manual dataset contains 49-64 distinct values, whereas the extracted dataset only contains 9 values for each. This represents a critical loss of over 85% of the detailed wage scale data.
+*   **Job Groups**: The detailed job group codes (e.g., "A-21-0", "B-22-3") are completely missing from the extracted data, having been replaced by simplified single letters.
+
+**Additional Information:**
+*   **salary_age_group**: The extracted dataset includes the field `salary_age_group` with the value "21 years and older", which is not in the manual dataset.
+*   **more_salaries**: The extracted dataset includes the field `more_salaries` with the value "No", which is not in the manual dataset.
+
+**Content Differences:**
+*   **jobgroup**: The AI incorrectly simplified the job group codes.
+    *   **Manual says**: A list of 64 specific codes like "A-21-0", "B-21-1", "C-23-5", etc.
+    *   **Extracted says**: A list of 9 single-letter codes: "A", "B", "C", "D", "E", "F", "G", "H", "I".
+    *   **FLAGGED AS DIFFERENCE** - The extracted data loses all specificity regarding age and service years.
+
+*   **salary_5_startdate**: The day of the month is incorrect.
+    *   **Manual says**: `2017-01-01 00:00:00`
+    *   **Extracted says**: `02/01/2017`
+    *   **FLAGGED AS DIFFERENCE**
+
+*   **salary_increment Fields**: The format and data type are different.
+    *   **salary_increment_1**: Manual `0.0125` (numeric), Extracted `"1.25%"` (string) - **FLAGGED AS DIFFERENCE**
+    *   **salary_increment_2**: Manual `0.0125` (numeric), Extracted `"1.25%"` (string) - **FLAGGED AS DIFFERENCE**
+    *   **salary_increment_3**: Manual `0.0175` (numeric), Extracted `"1.75%"` (string) - **FLAGGED AS DIFFERENCE**
+    *   **salary_increment_5**: Manual `0.0075` (numeric), Extracted `"0.75%"` (string) - **FLAGGED AS DIFFERENCE**
+
+*   **salary_note**: The content is completely different and does not align.
+    *   **Manual says**: "The salary of the employee classified in one of the job groups is at least equal to the amount determined for his age or for his years of service, stated in the salary scales in Appendix 2,The wage scales always state the wage per hour, per four weeks and per month, The period wage is calculated by multiplying the amount per hour by factor 160 and the amount per month by multiplying the hourly wage by factor 174,"
+    *   **Extracted says**: A different text about gross salary definition, non-rostered hours, adjustment for 22-year-olds, and entry-level wages.
+    *   **FLAGGED AS DIFFERENCE**
+
+---
+
+### **2. PENSION INFORMATION COMPARISON**
+
+**Missing Information:**
+*   **age_group**: This field, containing information about pension premium adjustments for 2012-2013, is missing from the extracted data. While some of its content appears to have been merged into the `pension_premium_basic` field, the original field is absent.
+
+**Additional Information:**
+*   **pension_premium_plus**: The extracted dataset contains a detailed note on supplementary pension accrual and early retirement (VUT) schemes, which is not present in the manual dataset.
+*   **pension_age_group**: The extracted dataset includes the field `pension_age_group` with the value "21 to 67 years", which is not in the manual dataset.
+
+**Content Differences:**
+*   **pension_premium_basic**: The extracted text is a significantly different and expanded summary compared to the manual text.
+    *   **Manual says**: A note about registering employees with the industry pension fund and being bound by its regulations.
+    *   **Extracted says**: A much longer text that includes the manual information but adds details about cost-covering measures, accrual rates, premium increases, and pension obligations during disability.
+    *   **FLAGGED AS DIFFERENCE**
+
+*   **retire_age_plus**: The extracted value is a text description instead of a number, and the content does not match.
+    *   **Manual says**: `67`
+    *   **Extracted says**: "Full-time employees can opt to work one day less per week for a maximum of one year before their pension starts. The VUT-eligible age for employees who were 55 or older on December 31, 2004, was gradually increased to 60 years and seven months between 2006 and 2010."
+    *   **FLAGGED AS DIFFERENCE**
+
+---
+
+### **3. LEAVE INFORMATION COMPARISON**
+
+**Additional Information:**
+*   **vacation_time**: The extracted dataset includes the field `vacation_time` with the value "24 working days or 192 hours", which is not in the manual dataset.
+
+**Content Differences:**
+*   **maternity_note**: The extracted text is an incomplete summary of the manual text.
+    *   **Manual says**: A detailed note covering rules for roster-free hours during full/partial incapacity, rescheduling, and exceptions for pregnancy/childbirth, robbery, industrial accidents, and chronic illness.
+    *   **Extracted says**: A shorter note focusing only on the exceptions for pregnancy and childbirth.
+    *   **FLAGGED AS DIFFERENCE**
+
+*   **vacation_unit**: The extracted text includes an alternative unit.
+    *   **Manual says**: "hours of paid vacation per vacation year,"
+    *   **Extracted says**: "working days or hours of vacation with pay per vacation year"
+    *   **FLAGGED AS DIFFERENCE**
+
+*   **vacation_note**: The content is substantially different.
+    *   **Manual says**: A note about pro-rata rights, and extra vacation days for length of service and age. It also mentions the 8% holiday allowance.
+    *   **Extracted says**: A different note covering the vacation year period, reduced working time hours (`roostervrije uren`), saving time for long-term leave, and holiday entitlement for holiday workers. While it also mentions service/age days and the holiday allowance, the surrounding context and additional information are completely different.
+    *   **FLAGGED AS DIFFERENCE**
+
+---
+
+### **4. TERMINATION INFORMATION COMPARISON**
+
+**Additional Information:**
+*   **term_employer_note**: The extracted dataset includes a note on dismissal permits and notice for fixed-term contracts, which is not in the manual dataset.
+*   **term_period_worker**: The extracted dataset includes notice periods for workers, which are not in the manual dataset.
+*   **term_worker_note**: The extracted dataset includes a note about the employee's 14-day reflection period, which is not in the manual dataset.
+*   **probation_note**: The extracted dataset includes a note about termination during the probationary period, which is not in the manual dataset.
+
+**Content Differences:**
+*   **term_period_employer**: The extracted text is an incomplete subset of the manual text.
+    *   **Manual says**: A detailed text including the context of termination on the first day of a month, reference to the Dutch Civil Code (BW), transition payment obligations, and then the notice periods.
+    *   **Extracted says**: Only the notice periods: "For monthly wage earners: at least one month. For periodic wage earners (four weeks): at least four weeks."
+    *   **FLAGGED AS DIFFERENCE**
+
+*   **probation_period**: The extracted text is a slightly rephrased and simplified version of the manual text.
+    *   **Manual says**: "For each new employment contract longer than six months, a trial period of two months applies..."
+    *   **Extracted says**: "For a new employment contract longer than six months, a two-month probationary period applies..."
+    *   **FLAGGED AS DIFFERENCE** (Minor difference in wording, but still a deviation).
+
+---
+
+### **5. OVERTIME INFORMATION COMPARISON**
+
+**Missing Information:**
+*   **overtime_allowance_max**: This field, specifying overtime limits for managers, is present in the manual dataset but missing from the extracted dataset. (Note: Similar information was incorrectly merged into the `max_hrs` field in the extracted data).
+
+**Additional Information:**
+*   **min_hrs**: The extracted dataset includes information on the normal working week and minimum hours for assistants, which is not in the manual dataset.
+*   **overtime_allowance_min**: The extracted dataset includes details on meal and coffee allowances, which are not in the manual dataset.
+
+**Content Differences:**
+*   **max_hrs**: The extracted text contains additional, unrelated information.
+    *   **Manual says**: A list of overtime limits specifically for company managers.
+    *   **Extracted says**: Information about the normal working day/week ("maximum of nine hours", "exceeding 45 in any week") in addition to the overtime limits for managers.
+    *   **FLAGGED AS DIFFERENCE**
+
+*   **shift_compensation**: The content is completely different.
+    *   **Manual says**: A single sentence stating that employees in a DC cannot be obliged to work a night shift.
+    *   **Extracted says**: A highly detailed breakdown of shift compensation percentages for stores and distribution centers for different days and times, plus surcharges for freezer work and on-call duty.
+    *   **FLAGGED AS DIFFERENCE**
+
+---
+
+### **6. TRAINING INFORMATION COMPARISON**
+
+**Content Differences:**
+*   **training**: The manual and extracted texts describe entirely different training provisions.
+    *   **Manual says**: Information about annual updates on training opportunities (CBL-Opleidingenhuis, MBO-BBL), rejection motivations, and performance reviews.
+    *   **Extracted says**: Information about mandatory Code 95 driver training, BBL programs, pre-retirement courses, union meetings, and safety instructions.
+    *   **FLAGGED AS DIFFERENCE** - The two fields contain completely unrelated information.
+
+---
+
+### **7. CONTRACT DATES COMPARISON**
+
+**Missing Information:**
+*   **temporary**: The field `temporary` with the value "No" is missing from the extracted dataset.
+
+**Content Differences:**
+*   **expiry_date_contract**: The extracted date is incorrect by one day.
+    *   **Manual says**: `31/03/2017`
+    *   **Extracted says**: `01/04/2017`
+    *   **FLAGGED AS DIFFERENCE**

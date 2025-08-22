@@ -1,5 +1,6 @@
 import os
 import json
+from pickle import TRUE
 import time
 from pathlib import Path
 import google.generativeai as genai
@@ -55,7 +56,7 @@ OUTPUT_JSON_FOLDER = Path("llmExtracted_json")
 DEBUG_MODE = False
 MAX_JSON_FILES = 350  # Limit how many JSON files to process
 MAX_PROCESSING_TIME_HOURS = 1  # Maximum time to spend on a single file (hours)
-SORTED_FILES = False  # True for sorted files, False for shuffled files within each CAO folder
+SORTED_FILES = TRUE  # True for sorted files, False for shuffled files within each CAO folder
 OUTPUT_JSON_FOLDER.mkdir(exist_ok=True)
 
 # Get key number from command line or default to 1
@@ -85,6 +86,13 @@ if not api_key:
         print(f"Warning: GOOGLE_API_KEY{key_number} not found, using GOOGLE_API_KEY1 instead")
 genai.configure(api_key=api_key)
 GEMINI_MODEL = "gemini-2.5-pro"
+
+# LLM Generation Configuration - Optimized for Maximum Consistency
+LLM_TEMPERATURE = 0.0  # Zero temperature for completely deterministic output
+LLM_TOP_P = 0.1  # Very low top_p to only consider most likely tokens
+LLM_TOP_K = 1  # Always pick the most likely token
+LLM_MAX_TOKENS = None  # No maximum output tokens - allow full response for large CAO files
+LLM_CANDIDATE_COUNT = 1  # Single response only
 
 # =========================
 # Prompt and Extraction Logic
@@ -204,7 +212,17 @@ def extract_broad_context(text, filename, max_retries=5):
         try:
             prompt = SYSTEM_PROMPT.format(filename=filename, text=text[:120000])
             model = genai.GenerativeModel(GEMINI_MODEL)
-            response = model.generate_content(prompt)
+            
+            # Configure generation parameters
+            generation_config = genai.types.GenerationConfig(
+                temperature=LLM_TEMPERATURE,
+                top_p=LLM_TOP_P,
+                top_k=LLM_TOP_K,
+                max_output_tokens=LLM_MAX_TOKENS,
+                candidate_count=LLM_CANDIDATE_COUNT
+            )
+            
+            response = model.generate_content(prompt, generation_config=generation_config)
             if hasattr(response, "text") and response.text.strip():
                 return response.text
             raise ValueError("Empty or invalid model response")

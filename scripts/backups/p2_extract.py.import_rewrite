@@ -1,0 +1,273 @@
+import os
+import json
+from pathlib import Path
+from PyPDF2 import PdfReader  # For reading text-based PDFs
+from pdf2image import convert_from_path  # For converting PDF pages to images (used for OCR fallback or supplement)
+import pytesseract  # For image-based text extraction
+import pdfplumber  # For detecting image-based regions within PDFs
+from OUTPUT_tracker import update_progress
+import traceback
+
+# =========================
+# Configuration and Logging
+# =========================
+
+# Debug log file path
+DEBUG_LOG_FILE = "extraction_debug.log"
+DEBUG = False  # Set to False to disable debug logging
+images = False  # Set to True to save debug images of PDF pages for OCR
+
+# Suppress pdfminer warnings (used by pdfplumber) to avoid cluttering ouput through color warnings
+import logging
+logging.getLogger("pdfminer").setLevel(logging.ERROR)
+
+import yaml
+
+# Load configuration
+with open('conf/config.yaml', 'r') as f:
+    config = yaml.safe_load(f)
+
+# Define input and output folder paths
+INPUT_FOLDER = config['paths']['inputs_pdfs']
+OUTPUT_FOLDER = config['paths']['outputs_json']
+
+# =========================
+# PDF Text Extraction Logic
+# =========================
+
+def extract_text_from_pdf(pdf_path):
+    """
+    Extraction logic per page:
+    1. If pdfplumber detects an image, use OCR.
+    2. Else if PyPDF2 finds text, use the extracted text.
+    3. Else (no image and no text), use OCR as a fallback.
+    Loops over the maximum number of pages found by either library.
+    """
+    if DEBUG:
+        print(f"[DEBUG] Attempting to open PDF: {pdf_path}")
+    try:
+        reader = PdfReader(pdf_path)
+    except Exception as e:
+        if DEBUG:
+            print(f"[DEBUG] Failed to open PDF {pdf_path}: {e}")
+        return []
+    try:
+        plumber_pdf = pdfplumber.open(pdf_path)
+    except Exception as e:
+        if DEBUG:
+            print(f"[DEBUG] Failed to open PDF with pdfplumber {pdf_path}: {e}")
+        plumber_pdf = None
+
+    num_pages = max(len(reader.pages), len(plumber_pdf.pages) if plumber_pdf else 0)
+    pages = []
+    for i in range(num_pages):
+        if DEBUG:
+            print(f"[DEBUG] --- Processing page {i + 1} of {pdf_path} ---")
+        page_info = {
+            "page": i + 1,
+            "ocr_used": False,
+            "text": ""
+        }
+        # Step 1: Native text extraction (PyPDF2)
+        if i < len(reader.pages):
+            try:
+                normal_text = reader.pages[i].extract_text() or ""
+                normal_text = normal_text.strip()
+                if DEBUG:
+                    print(f"[DEBUG] PyPDF2 text extraction done for page {i+1}")
+            except Exception as e:
+                if DEBUG:
+                    print(f"[DEBUG] PyPDF2 text extraction failed for page {i+1}: {e}")
+                normal_text = ""
+        else:
+            normal_text = ""
+        # Step 2: Image detection (pdfplumber)
+        has_images = False
+        if plumber_pdf and i < len(plumber_pdf.pages):
+            try:
+                plumber_page = plumber_pdf.pages[i]
+                im_objs = plumber_page.images
+                has_images = len(im_objs) > 0
+                if DEBUG:
+                    print(f"[DEBUG] pdfplumber found {len(im_objs)} images on page {i+1}")
+            except Exception as e:
+                if DEBUG:
+                    print(f"[DEBUG] pdfplumber failed for page {i+1}: {e}")
+                has_images = False
+        # Step 3: Extraction logic as specified
+        ocr_text = ""
+        used_ocr = False
+        if has_images:
+            if DEBUG:
+                print(f"    [DEBUG] Image detected, using OCR for {pdf_path}, page {i+1}")
+            try:
+                if DEBUG:
+                    print(f"    [DEBUG] Calling convert_from_path for page {i+1}")
+                images_list = convert_from_path(pdf_path, first_page=i + 1, last_page=i + 1)
+                if DEBUG:
+                    print(f"    [DEBUG] images_list created, length: {len(images_list)}")
+                if images_list:
+                    if DEBUG:
+                        print(f"    [DEBUG] images_list[0] exists, proceeding to save image (if enabled) and OCR")
+                    if images:
+                        images_list[0].save(f"debug_images/{Path(pdf_path).stem}_page_{i + 1}.png")
+                        if DEBUG:
+                            print(f"    [DEBUG] Saved debug image for page {i+1}")
+                    ocr_text = pytesseract.image_to_string(images_list[0]).strip()
+                    if DEBUG:
+                        print(f"    [DEBUG] OCR completed for page {i+1}")
+                    used_ocr = True
+                else:
+                    if DEBUG:
+                        print(f"    [DEBUG] images_list is empty for page {i+1}")
+                    ocr_text = ""
+            except Exception as e:
+                if DEBUG:
+                    print(f"    [WARN] OCR failed for {pdf_path}, page {i+1}: {e}")
+                ocr_text = ""
+        elif normal_text:
+            page_info["text"] = normal_text
+            page_info["ocr_used"] = False
+            if DEBUG:
+                print(f"    [DEBUG] No image detected, using native text for page {i+1}")
+        else:
+            if DEBUG:
+                print(f"    [DEBUG] No image and no text, using OCR fallback for {pdf_path}, page {i+1}")
+            try:
+                if DEBUG:
+                    print(f"    [DEBUG] Calling convert_from_path for page {i+1} (OCR fallback)")
+                images_list = convert_from_path(pdf_path, first_page=i + 1, last_page=i + 1)
+                if DEBUG:
+                    print(f"    [DEBUG] images_list created, length: {len(images_list)}")
+                if images_list:
+                    if DEBUG:
+                        print(f"    [DEBUG] images_list[0] exists, proceeding to save image (if enabled) and OCR (fallback)")
+                    if images:
+                        images_list[0].save(f"debug_images/{Path(pdf_path).stem}_page_{i + 1}.png")
+                        if DEBUG:
+                            print(f"    [DEBUG] Saved debug image for page {i+1} (fallback)")
+                    ocr_text = pytesseract.image_to_string(images_list[0]).strip()
+                    if DEBUG:
+                        print(f"    [DEBUG] OCR completed for page {i+1} (fallback)")
+                    used_ocr = True
+                else:
+                    if DEBUG:
+                        print(f"    [DEBUG] images_list is empty for page {i+1} (fallback)")
+                    ocr_text = ""
+            except Exception as e:
+                if DEBUG:
+                    print(f"    [WARN] OCR fallback failed for {pdf_path}, page {i+1}: {e}")
+                ocr_text = ""
+        # Step 4: Set text and ocr_used
+        if has_images or (not has_images and not normal_text):
+            page_info["text"] = ocr_text
+            page_info["ocr_used"] = used_ocr
+        # else already set above for native text
+        if not page_info["text"]:
+            page_info["text"] = "[EMPTY PAGE]"
+        if DEBUG:
+            print(f"[DEBUG] Appending page_info for page {i+1}")
+        pages.append(page_info)
+    if plumber_pdf:
+        plumber_pdf.close()
+    return pages
+
+# =========================
+# Main Extraction Driver
+# =========================
+
+def main():
+    """
+    Main driver function: loops through all CAO PDF folders, extracts text from each PDF,
+    and saves the results as JSON. Updates progress and logs debug info.
+    """
+    # Get all CAO number folders in input folder
+    cao_folders = [f for f in Path(INPUT_FOLDER).iterdir() if f.is_dir() and f.name.isdigit()]
+    os.makedirs(OUTPUT_FOLDER, exist_ok=True)
+    os.makedirs("debug_images", exist_ok=True)
+
+    # Only create log file if DEBUG is True
+    if DEBUG:
+        # =========================
+        # Create debug log file if debugging is enabled
+        # =========================
+        with open(DEBUG_LOG_FILE, "w", encoding="utf-8") as log_file:
+            log_file.write("PDF Extraction Debug Log\n\n")
+
+    # Loop over each CAO folder
+    for cao_folder in cao_folders:
+        cao_number = cao_folder.name
+        print(f"Processing CAO {cao_number}")
+        
+        # Create corresponding output folder
+        output_cao_folder = Path(OUTPUT_FOLDER) / cao_number
+        output_cao_folder.mkdir(exist_ok=True)
+        
+        # =========================
+        # Log CAO section if debugging is enabled
+        # =========================
+        if DEBUG:
+            with open(DEBUG_LOG_FILE, "a", encoding="utf-8") as log_file:
+                log_file.write(f"===== CAO {cao_number} =====\n")
+
+        # Get all PDF files in this CAO folder
+        pdf_files = list(cao_folder.glob("*.pdf"))
+        
+        # Track successful and failed extractions
+        successful_extractions = 0
+        failed_files = []
+        
+        # Loop over each PDF file in the CAO folder
+        for pdf_file in pdf_files:
+            json_out_path = output_cao_folder / (Path(pdf_file.name).with_suffix('.json').name)
+            # =========================
+            # Skip PDFs if extraction already exists
+            # =========================
+            if json_out_path.exists():
+                print(f"  Skipping {pdf_file.name} (extraction already exists)")
+                continue
+            print(f"  Processing {pdf_file.name}")
+            print(f"[DEBUG] About to extract: {pdf_file}")
+            # =========================
+            # Log PDF section if debugging is enabled
+            # =========================
+            if DEBUG:
+                with open(DEBUG_LOG_FILE, "a", encoding="utf-8") as log_file:
+                    log_file.write(f"  ----- {pdf_file.name} -----\n")
+
+            try:
+                # Extract page-wise text and OCR info
+                pages_data = extract_text_from_pdf(str(pdf_file))
+
+                # Debug: log OCR usage per page if DEBUG is set
+                if DEBUG:
+                    with open(DEBUG_LOG_FILE, "a", encoding="utf-8") as log_file:
+                        for page in pages_data:
+                            if page["ocr_used"]:
+                                log_file.write(f"    Page {page['page']}: OCR used\n")
+                            else:
+                                log_file.write(f"    Page {page['page']}: Native text only\n")
+                        log_file.write("\n")
+
+                # Save results to JSON in the corresponding CAO folder
+                with open(json_out_path, "w", encoding="utf-8") as f:
+                    json.dump(pages_data, f, indent=2, ensure_ascii=False)
+
+                print(f"  Saved to {json_out_path}")
+                successful_extractions += 1
+                
+            except Exception as e:
+                print(f"  ❌ Failed to extract {pdf_file.name}: {e}")
+                traceback.print_exc()
+                failed_files.append(pdf_file.name)
+        
+        # Update tracker for this CAO
+        update_progress(cao_number, "pdf_parsing", successful=successful_extractions, failed_files=failed_files)
+
+# =========================
+# Script Entry Point
+# =========================
+
+# Run the extraction if script is executed directly
+if __name__ == "__main__":
+    main()

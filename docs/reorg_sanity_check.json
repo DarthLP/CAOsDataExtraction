@@ -1,0 +1,56 @@
+{
+  "timestamp": "2025-08-22T18:56:04.638275",
+  "syntax_check": {
+    "passed": false,
+    "output": ""
+  },
+  "import_check": {
+    "pipelines.p0_webscraping": {
+      "status": "error",
+      "error": "No module named 'pipelines'"
+    },
+    "pipelines.p1_inputExcel": {
+      "status": "error",
+      "error": "No module named 'pipelines'"
+    },
+    "pipelines.p2_extract": {
+      "status": "error",
+      "error": "No module named 'pipelines'"
+    },
+    "pipelines.p3_llmExtraction": {
+      "status": "error",
+      "error": "No module named 'pipelines'"
+    },
+    "pipelines.p3_1_llmExtraction": {
+      "status": "error",
+      "error": "No module named 'pipelines'"
+    },
+    "pipelines.p4_analysis": {
+      "status": "error",
+      "error": "No module named 'pipelines'"
+    },
+    "pipelines.p5_run": {
+      "status": "error",
+      "error": "No module named 'pipelines'"
+    }
+  },
+  "config_check": {
+    "passed": true,
+    "missing_dirs_created": []
+  },
+  "directory_check": {
+    "passed": true,
+    "flow_dirs_created": [
+      "outputs/json/old_flow",
+      "outputs/json/new_flow"
+    ]
+  },
+  "summary": {
+    "syntax_passed": false,
+    "imports_passed": 0,
+    "total_imports": 7,
+    "config_passed": true,
+    "directories_passed": true,
+    "overall_status": "FAIL"
+  }
+}

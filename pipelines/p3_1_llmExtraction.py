@@ -38,7 +38,7 @@ INPUT:
 
 OUTPUT:
     - Extracted JSON data in output_json/[CAO_NUMBER]/ folders
-    - Error logs: failed_files_llm_extraction.txt, structured_output_parsing_errors.txt
+    - Error logs: outputs/logs/failed_files_llm_extraction.txt, outputs/logs/structured_output_parsing_errors.txt
 """
 import os
 import json
@@ -580,7 +580,7 @@ for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
             f'  {cao_number}: ✗ No PDF found for {json_file.name} [API {key_number}/{total_processes}]'
             )
         failed_files.append(json_file.name)
-        failed_log_path = 'failed_files_llm_extraction.txt'
+        failed_log_path = 'outputs/logs/failed_files_llm_extraction.txt'
         with open(failed_log_path, 'a', encoding='utf-8') as f:
             f.write(
                 f"""{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name} (PDF not found)
@@ -593,7 +593,7 @@ for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
             f'  {cao_number}: ✗ PDF quality check failed for {json_file.name}: {quality_message} [API {key_number}/{total_processes}]'
             )
         failed_files.append(json_file.name)
-        failed_log_path = 'failed_files_llm_extraction.txt'
+        failed_log_path = 'outputs/logs/failed_files_llm_extraction.txt'
         with open(failed_log_path, 'a', encoding='utf-8') as f:
             f.write(
                 f"""{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name} (PDF quality: {quality_message})
@@ -606,7 +606,7 @@ for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
             f'  {cao_number}: ✗ PDF file too large ({file_size_mb:.1f}MB) - exceeds 20MB limit for {json_file.name} [API {key_number}/{total_processes}]'
             )
         failed_files.append(json_file.name)
-        failed_log_path = 'failed_files_llm_extraction.txt'
+        failed_log_path = 'outputs/logs/failed_files_llm_extraction.txt'
         with open(failed_log_path, 'a', encoding='utf-8') as f:
             f.write(
                 f"""{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name} (PDF too large: {file_size_mb:.1f}MB)
@@ -625,7 +625,7 @@ for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
                 f'  {cao_number}: ⏰ Timeout after {MAX_PROCESSING_TIME_HOURS} hours for {json_file.name} [API {key_number}/{total_processes}]'
                 )
             timed_out_files.append(json_file.name)
-            timeout_log_path = 'timed_out_files_llm_extraction.txt'
+            timeout_log_path = 'outputs/logs/timed_out_files_llm_extraction.txt'
             with open(timeout_log_path, 'a', encoding='utf-8') as f:
                 f.write(
                     f"""{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name}
@@ -640,7 +640,7 @@ for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
                 f'  {cao_number}: ✗ LLM extraction failed for {json_file.name} [API {key_number}/{total_processes}]'
                 )
             failed_files.append(json_file.name)
-            failed_log_path = 'failed_files_llm_extraction.txt'
+            failed_log_path = 'outputs/logs/failed_files_llm_extraction.txt'
             with open(failed_log_path, 'a', encoding='utf-8') as f:
                 f.write(
                     f"""{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name}
@@ -672,7 +672,7 @@ for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
             )
         traceback.print_exc()
         failed_files.append(json_file.name)
-        failed_log_path = 'failed_files_llm_extraction.txt'
+        failed_log_path = 'outputs/logs/failed_files_llm_extraction.txt'
         with open(failed_log_path, 'a', encoding='utf-8') as f:
             f.write(
                 f"{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name}\n"

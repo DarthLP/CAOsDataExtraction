@@ -334,7 +334,7 @@ for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
                 f'  {cao_number}: ✗ LLM extraction failed for {json_file.name} [API {key_number}/{total_processes}]'
                 )
             failed_files.append(json_file.name)
-            failed_log_path = 'failed_files_llm_extraction.txt'
+            failed_log_path = 'outputs/logs/failed_files_llm_extraction.txt'
             with open(failed_log_path, 'a', encoding='utf-8') as f:
                 f.write(
                     f"""{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name}
@@ -441,7 +441,7 @@ for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
                             f'  ✗ Failed to extract data from {json_file.name} [API {key_number}/{total_processes}]'
                             )
                         failed_files.append(json_file.name)
-                        failed_log_path = 'failed_files_llm_extraction.txt'
+                        failed_log_path = 'outputs/logs/failed_files_llm_extraction.txt'
                         with open(failed_log_path, 'a', encoding='utf-8') as f:
                             f.write(
                                 f"""{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name}
@@ -464,7 +464,7 @@ for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
                 f'  {cao_number}: ✗ Failed to parse JSON for {json_file.name} [API {key_number}/{total_processes}]'
                 )
             failed_files.append(json_file.name)
-            failed_log_path = 'failed_files_llm_extraction.txt'
+            failed_log_path = 'outputs/logs/failed_files_llm_extraction.txt'
             with open(failed_log_path, 'a', encoding='utf-8') as f:
                 f.write(
                     f"""{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name}
@@ -477,7 +477,7 @@ for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
             )
         traceback.print_exc()
         failed_files.append(json_file.name)
-        failed_log_path = 'failed_files_llm_extraction.txt'
+        failed_log_path = 'outputs/logs/failed_files_llm_extraction.txt'
         with open(failed_log_path, 'a', encoding='utf-8') as f:
             f.write(
                 f"{time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}: {json_file.name}\n"

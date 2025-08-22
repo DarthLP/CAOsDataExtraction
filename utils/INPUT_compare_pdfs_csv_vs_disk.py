@@ -3,9 +3,9 @@ import pandas as pd
 from pathlib import Path
 
 # Paths
-CSV1 = 'input_pdfs/extracted_cao_info.csv'
-CSV2 = 'input_pdfs/main_links_log.csv'
-PDF_ROOT = 'input_pdfs'
+CSV1 = 'inputs/pdfs/input_pdfs/extracted_cao_info.csv'
+CSV2 = 'inputs/pdfs/input_pdfs/main_links_log.csv'
+PDF_ROOT = 'inputs/pdfs/input_pdfs'
 JSON_ROOT = 'outputs/parsed_pdfs'
 
 # Read CSVs

@@ -3,8 +3,8 @@ import pandas as pd
 from pathlib import Path
 
 # Paths
-CSV_PATH = 'input_pdfs/extracted_cao_info.csv'
-PDF_ROOT = Path('input_pdfs')
+CSV_PATH = 'inputs/pdfs/input_pdfs/extracted_cao_info.csv'
+PDF_ROOT = Path('inputs/pdfs/input_pdfs')
 JSON_ROOTS = [Path('outputs/parsed_pdfs'), Path('outputs/llm_extracted')]
 
 # Load mapping

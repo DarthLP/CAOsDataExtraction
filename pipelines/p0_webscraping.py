@@ -64,6 +64,12 @@ if os.path.exists(os.path.join(OUTPUT_FOLDER, 'extracted_cao_info.csv')):
 if os.path.exists(os.path.join(OUTPUT_FOLDER, 'main_links_log.csv')):
     existing_log_df = pd.read_csv(os.path.join(OUTPUT_FOLDER,
         'main_links_log.csv'), sep=';')
+    # Also load URLs from main_links_log.csv for duplicate detection
+    for _, row in existing_log_df.iterrows():
+        cao = str(row['cao_number'])
+        main_link_url = str(row.get('main_link_url', ''))
+        if main_link_url:
+            existing_urls_by_cao.setdefault(cao, set()).add(main_link_url)
 
 
 def random_delay(min_seconds=0.5, max_seconds=1.2):

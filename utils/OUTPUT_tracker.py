@@ -230,10 +230,10 @@ class CAOTracker:
             self.update_pdf_count(cao_number, pdf_count)
             
             # Count extracted JSONs (outputs/parsed_pdfs folder)
-extracted_count = self.count_json_files("outputs/parsed_pdfs", cao_number)
+            extracted_count = self.count_json_files("outputs/parsed_pdfs", cao_number)
             
             # Count LLM processed JSONs (outputs/llm_extracted folder)
-llm_count = self.count_json_files("outputs/llm_extracted", cao_number)
+            llm_count = self.count_json_files("outputs/llm_extracted", cao_number)
             
             # Update parsing results with failed file names (even if 0 PDFs)
             if pdf_count > 0:

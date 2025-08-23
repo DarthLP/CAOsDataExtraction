@@ -2,6 +2,7 @@
 
 Run:  - 'conda activate caos-extract' to activate environment. A
       - 'caffeinate python' + filename to prevent computer from sleeping
+        - e.g.: unbuffer caffeinate python pipelines/p0_webscraping.py 2>&1 | tee log.txt
 
 This project uses AI to extract structured data from Dutch collective labour agreements (CAOs).
 
@@ -22,15 +23,4 @@ This project uses AI to extract structured data from Dutch collective labour agr
 ---
 CAO Source: [uitvoeringarbeidsvoorwaardenwetgeving.nl](https://www.uitvoeringarbeidsvoorwaardenwetgeving.nl/mozard/!suite16.scherm1168?mGmr=66)
 
-
-
-Problems: 
-📄 Processing 10/35: CAO 1045
-  No PDFs found for CAO 1045
-
-📄 Processing 32/35: CAO 623
-  No PDFs found for CAO 623
-
-📄 Processing 24/35: CAO 2693
-  No PDFs found for CAO 2693
 

@@ -3,10 +3,15 @@ Web Scraping Script for CAO PDF Downloads
 Downloads PDFs from uitvoeringarbeidsvoorwaardenwetgeving.nl for specific CAO numbers
 """
 import os
+import sys
 import time
 import requests
 import pandas as pd
 from pathlib import Path
+
+# Add the parent directory to Python path so we can import utils
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -33,11 +38,16 @@ OUTPUT_FOLDER = config['paths']['inputs_pdfs']
 DOWNLOAD_DELAY = 2
 MAX_RETRIES = 3
 MAX_PDFS_PER_CAO = 10000
+
+# Date filter configuration for CAO document search
+MIN_INGANGSDATUM = '01-01-1900'  # Minimum start date (earliest documents to include)
+MAX_INGANGSDATUM = '01-01-2006'  # Maximum start date (latest documents to include - gets pre-2006 docs)
 extracted_data = []
 all_main_link_logs = []
 existing_info_df = None
 existing_log_df = None
 existing_pdf_names_by_cao = {}
+existing_urls_by_cao = {}
 existing_ids_by_cao = {}
 if os.path.exists(os.path.join(OUTPUT_FOLDER, 'extracted_cao_info.csv')):
     existing_info_df = pd.read_csv(os.path.join(OUTPUT_FOLDER,
@@ -46,8 +56,11 @@ if os.path.exists(os.path.join(OUTPUT_FOLDER, 'extracted_cao_info.csv')):
         cao = str(row['cao_number'])
         pdf_name = str(row['pdf_name'])
         id_val = str(row['id'])
+        main_link_url = str(row.get('main_link_url', ''))
         existing_pdf_names_by_cao.setdefault(cao, set()).add(pdf_name)
         existing_ids_by_cao.setdefault(cao, set()).add(id_val)
+        if main_link_url:
+            existing_urls_by_cao.setdefault(cao, set()).add(main_link_url)
 if os.path.exists(os.path.join(OUTPUT_FOLDER, 'main_links_log.csv')):
     existing_log_df = pd.read_csv(os.path.join(OUTPUT_FOLDER,
         'main_links_log.csv'), sep=';')
@@ -255,8 +268,22 @@ def search_cao_number(driver, cao_number):
         random_delay(0.5, 1.2)
         for _ in range(2):
             try:
+                # Use name attribute to target the specific MIN ingangsdatum field
+                # This is more reliable than class name when multiple elements have the same class
+                # Note: Field names change dynamically, so we need to find them at runtime
+                all_date_fields = driver.find_elements(By.CLASS_NAME, 'datumveld')
+                min_field_name = None
+                for field in all_date_fields:
+                    field_name = field.get_attribute('name')
+                    if field_name and '_dva' in field_name:
+                        min_field_name = field_name
+                        break
+                
+                if not min_field_name:
+                    return False
+                    
                 date_field = WebDriverWait(driver, 8).until(EC.
-                    element_to_be_clickable((By.CLASS_NAME, 'datumveld')))
+                    element_to_be_clickable((By.NAME, min_field_name)))
                 break
             except Exception:
                 close_overlays(driver)
@@ -269,9 +296,44 @@ def search_cao_number(driver, cao_number):
         random_delay(0.5, 1.2)
         date_field.clear()
         random_delay(0.5, 1.2)
-        date_str = '01-01-2006'
-        for char in date_str:
+        # Set MIN ingangsdatum to include all available documents
+        for char in MIN_INGANGSDATUM:
             date_field.send_keys(char)
+            random_delay(0.08, 0.15)
+        random_delay(0.5, 1.2)
+        
+        # Now set MAX ingangsdatum to 2006 to get only pre-2006 documents
+        for _ in range(2):
+            try:
+                # Use name attribute to target the specific MAX ingangsdatum field
+                # Note: Field names change dynamically, so we need to find them at runtime
+                max_field_name = None
+                for field in all_date_fields:
+                    field_name = field.get_attribute('name')
+                    if field_name and '_dtm' in field_name:
+                        max_field_name = field_name
+                        break
+                
+                if not max_field_name:
+                    return False
+                    
+                max_date_field = WebDriverWait(driver, 8).until(EC.
+                    element_to_be_clickable((By.NAME, max_field_name)))
+                break
+            except Exception:
+                close_overlays(driver)
+                random_delay(0.5, 1.0)
+        else:
+            return False
+        driver.execute_script('arguments[0].scrollIntoView(true);', max_date_field)
+        random_delay(0.5, 1.2)
+        max_date_field.click()
+        random_delay(0.5, 1.2)
+        max_date_field.clear()
+        random_delay(0.5, 1.2)
+        # Set MAX ingangsdatum to get only pre-2006 CAO documents
+        for char in MAX_INGANGSDATUM:
+            max_date_field.send_keys(char)
             random_delay(0.08, 0.15)
         random_delay(0.5, 1.2)
         for _ in range(2):
@@ -567,33 +629,24 @@ def process_cao_number(driver, cao_number):
                 print(
                     f'  Attempt {attempt + 1}/{MAX_RETRIES} failed for CAO {cao_number}'
                     )
-                try:
-                    driver.save_screenshot(
-                        f'debug_cao_{cao_number}_attempt{attempt + 1}.png')
-                except Exception:
-                    pass
+                # Debug screenshot removed to avoid cluttering the directory
+                pass
                 if attempt < MAX_RETRIES - 1:
                     time.sleep(2)
         except WebDriverException as e:
             print(
                 f'  Attempt {attempt + 1}/{MAX_RETRIES} failed for CAO {cao_number}: {e}'
                 )
-            try:
-                driver.save_screenshot(
-                    f'debug_cao_{cao_number}_attempt{attempt + 1}.png')
-            except Exception:
-                pass
+            # Debug screenshot removed to avoid cluttering the directory
+            pass
             if attempt < MAX_RETRIES - 1:
                 time.sleep(2)
         except Exception as e:
             print(
                 f'  Attempt {attempt + 1}/{MAX_RETRIES} failed for CAO {cao_number}: {e}'
                 )
-            try:
-                driver.save_screenshot(
-                    f'debug_cao_{cao_number}_attempt{attempt + 1}.png')
-            except Exception:
-                pass
+            # Debug screenshot removed to avoid cluttering the directory
+            pass
             if attempt < MAX_RETRIES - 1:
                 time.sleep(2)
     else:
@@ -664,7 +717,9 @@ def process_cao_number(driver, cao_number):
             if log.get('main_link_url') == link_info['page_info'].get(
                 'main_link_url'):
                 log['pdf_name'] = new_pdf_name
-        if new_pdf_name in existing_pdf_names_by_cao.get(cao_str, set()):
+        # Check if URL was already downloaded (more reliable than PDF name)
+        main_link_url = link_info['page_info'].get('main_link_url', '')
+        if main_link_url in existing_urls_by_cao.get(cao_str, set()):
             skipped += 1
             continue
         success = download_pdf(link_info['url'], link_info['description'],
@@ -675,6 +730,9 @@ def process_cao_number(driver, cao_number):
             existing_pdfs.add(new_pdf_name)
             existing_pdf_names_by_cao.setdefault(cao_str, set()).add(
                 new_pdf_name)
+            # Also track the URL for future duplicate detection
+            if main_link_url:
+                existing_urls_by_cao.setdefault(cao_str, set()).add(main_link_url)
             new_id = f'{cao_str}{position:03d}'
             while new_id in existing_ids:
                 position += 1

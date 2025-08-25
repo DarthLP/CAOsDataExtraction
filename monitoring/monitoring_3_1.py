@@ -79,7 +79,9 @@ class PerformanceMonitor:
                       api_key_used: int = 1,
                       process_id: int = 0,
                       cao_number: str = "",
-                      allow_duplicates: bool = False) -> None:
+                      allow_duplicates: bool = False,
+                      model: str = "",
+                      parameters: Optional[Dict[str, Any]] = None) -> None:
         """
         Log detailed performance data for a single extraction
         
@@ -130,7 +132,9 @@ class PerformanceMonitor:
             "error_message": error_message,
             "api_key_used": api_key_used,
             "process_id": process_id,
-            "free_tier_request": True  # All requests are free tier
+            "free_tier_request": True,  # All requests are free tier
+            "model": model,  # Model used (e.g., gemini-2.5-flash, gemini-2.5-pro)
+            "parameters": parameters or {}  # Model parameters (temperature, top_k, etc.)
         }
         
         # Write to JSON Lines file (one JSON object per line)

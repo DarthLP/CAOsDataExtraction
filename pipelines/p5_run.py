@@ -157,7 +157,7 @@ for idx, script in enumerate(scripts):
         # Merge all process-specific Excel files into one final file using robust merge script
         print(f"\n🔄 Merging analysis results to final extracted_data.xlsx...")
         try:
-            subprocess.run([python_executable, f"{config['paths']['utils']}/OUTPUT_merge_analysis_results.py"], check=True)
+            subprocess.run([python_executable, f"{config['paths']['utils_output']}/OUTPUT_merge_analysis_results.py"], check=True)
             print(f"✓ Merge completed successfully")
         except subprocess.CalledProcessError as e:
             print(f"❌ Merge failed with error: {e}")

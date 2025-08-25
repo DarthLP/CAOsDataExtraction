@@ -6,11 +6,14 @@ paths:
   inputs_extra: inputs/_EXTRA
   outputs_json: outputs/llm_extracted
   outputs_excel: outputs/excel
-  parsed_pdfs: outputs/parsed_pdfs
+  parsed_pdfs: outputs/parsed_pdfs/parsed_pdfs_json
+  parsed_pdfs_markdown: outputs/parsed_pdfs/parsed_pdfs_markdown
   outputs_logs: outputs/logs
   outputs_analysis: outputs/analysis
   outputs_comparison: outputs/comparison
   monitoring: monitoring
   utils: utils
+  utils_input: utils/input_utils
+  utils_output: utils/output_utils
   docs: docs
   scripts: scripts

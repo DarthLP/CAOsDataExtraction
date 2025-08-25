@@ -1,0 +1,529 @@
+🎯 CAO Markdown Extraction Pipeline
+📊 Process: 2/2
+🔑 API Key: 2
+📁 Input: outputs/parsed_pdfs/parsed_pdfs_markdown
+📁 Output: outputs/llm_extracted/new_flow
+📄 Files to process: 790
+
+--- CAO 10 ---
+  10: Skipping Bouwnijverheid_cao_tekst_docx.md (already processed)
+  10: CAO BOUW EN INFRA 2023 - INTERACTIEF DEF.md (Markdown: 0.4MB) [API 2/2]
+  INFO: Using Files API approach for CAO BOUW EN INFRA 2023 - INTERACTIEF DEF.md
+  INFO: Markdown file size: 0.37 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/m23046128a2v
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.37MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 91272 chars
+  INFO: Successfully extracted structured data from markdown (time: 226.9s)
+  INFO: Response size: 91,272 chars (~22,818 tokens)
+  INFO: Cleaned up uploaded file: files/m23046128a2v
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 228.35 seconds [API 2/2]
+  10: CAO_2011_aanmelding_TTW_11_2011.md (Markdown: 0.5MB) [API 2/2]
+  INFO: Using Files API approach for CAO_2011_aanmelding_TTW_11_2011.md
+  INFO: Markdown file size: 0.49 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/y11u70zcl6m0
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.49MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 49129 chars
+  INFO: Successfully extracted structured data from markdown (time: 116.8s)
+  INFO: Response size: 49,129 chars (~12,282 tokens)
+  INFO: Cleaned up uploaded file: files/y11u70zcl6m0
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 118.65 seconds [API 2/2]
+  10: Cao Bouw en Infra - versie 23 oktober 2023.md (Markdown: 0.4MB) [API 2/2]
+  INFO: Using Files API approach for Cao Bouw en Infra - versie 23 oktober 2023.md
+  INFO: Markdown file size: 0.37 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/w5dg77cdm1nu
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.37MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 39171 chars
+  INFO: Successfully extracted structured data from markdown (time: 85.7s)
+  INFO: Response size: 39,171 chars (~9,792 tokens)
+  INFO: Cleaned up uploaded file: files/w5dg77cdm1nu
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 86.74 seconds [API 2/2]
+  10: Cao Bouw en Infra 2024 - TTW 12 februari 2024.pdf.md (Markdown: 0.4MB) [API 2/2]
+  INFO: Using Files API approach for Cao Bouw en Infra 2024 - TTW 12 februari 2024.pdf.md
+  INFO: Markdown file size: 0.38 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/49n7nri5brkc
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.38MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 50874 chars
+  INFO: Successfully extracted structured data from markdown (time: 235.6s)
+  INFO: Response size: 50,874 chars (~12,718 tokens)
+  INFO: Cleaned up uploaded file: files/49n7nri5brkc
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 236.95 seconds [API 2/2]
+  10: Cao Bouw en Infra 2025 - 2027.md (Markdown: 0.4MB) [API 2/2]
+  INFO: Using Files API approach for Cao Bouw en Infra 2025 - 2027.md
+  INFO: Markdown file size: 0.39 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/zgdtk89iqr45
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.39MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 51904 chars
+  INFO: Successfully extracted structured data from markdown (time: 87.5s)
+  INFO: Response size: 51,904 chars (~12,976 tokens)
+  INFO: Cleaned up uploaded file: files/zgdtk89iqr45
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 89.28 seconds [API 2/2]
+  10: TTW_CAO_15_10_2013.md (Markdown: 0.5MB) [API 2/2]
+  INFO: Using Files API approach for TTW_CAO_15_10_2013.md
+  INFO: Markdown file size: 0.48 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/fmhqfajup5eu
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.48MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 45566 chars
+  INFO: Successfully extracted structured data from markdown (time: 92.2s)
+  INFO: Response size: 45,566 chars (~11,391 tokens)
+  INFO: Cleaned up uploaded file: files/fmhqfajup5eu
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 93.58 seconds [API 2/2]
+  10: TTW_CAO_1_7_2013.md (Markdown: 0.5MB) [API 2/2]
+  INFO: Using Files API approach for TTW_CAO_1_7_2013.md
+  INFO: Markdown file size: 0.48 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/ywh8oo3m9be5
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.48MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 31136 chars
+  INFO: Successfully extracted structured data from markdown (time: 104.9s)
+  INFO: Response size: 31,136 chars (~7,784 tokens)
+  INFO: Cleaned up uploaded file: files/ywh8oo3m9be5
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 106.38 seconds [API 2/2]
+  10: TTW_CAO_2014_aanmelding_juli_2014.md (Markdown: 0.5MB) [API 2/2]
+  INFO: Using Files API approach for TTW_CAO_2014_aanmelding_juli_2014.md
+  INFO: Markdown file size: 0.47 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/py26ij2eqihs
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.47MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 67355 chars
+  INFO: Successfully extracted structured data from markdown (time: 84.3s)
+  INFO: Response size: 67,355 chars (~16,838 tokens)
+  INFO: Cleaned up uploaded file: files/py26ij2eqihs
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 85.60 seconds [API 2/2]
+  10: TTW_cao_Bouw___Infra_integraal.md (Markdown: 0.5MB) [API 2/2]
+  INFO: Using Files API approach for TTW_cao_Bouw___Infra_integraal.md
+  INFO: Markdown file size: 0.47 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/rqq2sta2c509
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.47MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 102112 chars
+  INFO: Successfully extracted structured data from markdown (time: 150.7s)
+  INFO: Response size: 102,112 chars (~25,528 tokens)
+  INFO: Cleaned up uploaded file: files/rqq2sta2c509
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 151.82 seconds [API 2/2]
+  10: TTW_cao_Bouw_en_Infra_2017_2018_def.md (Markdown: 0.4MB) [API 2/2]
+  INFO: Using Files API approach for TTW_cao_Bouw_en_Infra_2017_2018_def.md
+  INFO: Markdown file size: 0.42 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/7blixqaqacs4
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.42MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 42379 chars
+  INFO: Successfully extracted structured data from markdown (time: 75.0s)
+  INFO: Response size: 42,379 chars (~10,594 tokens)
+  INFO: Cleaned up uploaded file: files/7blixqaqacs4
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 76.03 seconds [API 2/2]
+
+📈 PROGRESS ESTIMATE:
+   Progress: 2.8% (768 files remaining)
+   Estimated remaining time: 29.8 hours
+   Requests needed: 768
+   Days needed at 100 req/day: 7.7
+   Requests remaining today: 78
+   Average time per file: 139.6s
+  10: cao Bouw en Infra 2020.md (Markdown: 0.4MB) [API 2/2]
+  INFO: Using Files API approach for cao Bouw en Infra 2020.md
+  INFO: Markdown file size: 0.38 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/12qfigdexaag
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.38MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 49166 chars
+  INFO: Successfully extracted structured data from markdown (time: 101.2s)
+  INFO: Response size: 49,166 chars (~12,291 tokens)
+  INFO: Cleaned up uploaded file: files/12qfigdexaag
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 102.63 seconds [API 2/2]
+  10: cao Bouw en Infra 2021-2022_1.md (Markdown: 0.4MB) [API 2/2]
+  INFO: Using Files API approach for cao Bouw en Infra 2021-2022_1.md
+  INFO: Markdown file size: 0.40 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/xmo5elxusdof
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.40MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 42659 chars
+  INFO: Successfully extracted structured data from markdown (time: 135.1s)
+  INFO: Response size: 42,659 chars (~10,664 tokens)
+  INFO: Cleaned up uploaded file: files/xmo5elxusdof
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 136.64 seconds [API 2/2]
+  10: cao_Bouw__Infra_2015_2017_def.md (Markdown: 0.5MB) [API 2/2]
+  INFO: Using Files API approach for cao_Bouw__Infra_2015_2017_def.md
+  INFO: Markdown file size: 0.46 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/l0ktq2kso61e
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.46MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 115319 chars
+  INFO: Successfully extracted structured data from markdown (time: 172.2s)
+  INFO: Response size: 115,319 chars (~28,829 tokens)
+  INFO: Cleaned up uploaded file: files/l0ktq2kso61e
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 173.18 seconds [API 2/2]
+  10: cao_Bouw_en_Infra_2018_2019_TTW_dec18.md (Markdown: 0.4MB) [API 2/2]
+  INFO: Using Files API approach for cao_Bouw_en_Infra_2018_2019_TTW_dec18.md
+  INFO: Markdown file size: 0.43 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/lxk87mngsz9x
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.43MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 67407 chars
+  INFO: Successfully extracted structured data from markdown (time: 102.6s)
+  INFO: Response size: 67,407 chars (~16,851 tokens)
+  INFO: Cleaned up uploaded file: files/lxk87mngsz9x
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 104.13 seconds [API 2/2]
+  10: cao_Bouw_en_Infra_2018_2019_def.md (Markdown: 0.4MB) [API 2/2]
+  INFO: Using Files API approach for cao_Bouw_en_Infra_2018_2019_def.md
+  INFO: Markdown file size: 0.43 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/znyrgvdjxvoe
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.43MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 79049 chars
+  INFO: Successfully extracted structured data from markdown (time: 151.9s)
+  INFO: Response size: 79,049 chars (~19,762 tokens)
+  INFO: Cleaned up uploaded file: files/znyrgvdjxvoe
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 153.08 seconds [API 2/2]
+  20: Goederenvervoer_Nederland_2012_2013.md (Markdown: 0.2MB) [API 2/2]
+  INFO: Using Files API approach for Goederenvervoer_Nederland_2012_2013.md
+  INFO: Markdown file size: 0.16 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/ot4d9n2i0nat
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.16MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 48788 chars
+  INFO: Successfully extracted structured data from markdown (time: 160.1s)
+  INFO: Response size: 48,788 chars (~12,197 tokens)
+  INFO: Cleaned up uploaded file: files/ot4d9n2i0nat
+  INFO: JSON saved with proper formatting
+  20: LLM extraction completed in 161.88 seconds [API 2/2]
+  21: CAO tekst 2020 basis aangepast.docx.md (Markdown: 0.1MB) [API 2/2]
+  INFO: Using Files API approach for CAO tekst 2020 basis aangepast.docx.md
+  INFO: Markdown file size: 0.14 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/aygqoqmyq2co
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.14MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found direct text response: 57046 chars
+  INFO: Successfully extracted structured data from markdown (time: 165.6s)
+  INFO: Response size: 57,046 chars (~14,261 tokens)
+  ERROR: Invalid JSON structure
+  WARNING: Response schema validation failed for CAO tekst 2020 basis aangepast.docx.md
+  INFO: Cleaned up uploaded file: files/aygqoqmyq2co
+  WARNING: JSON parsing failed, saving as raw content: Unterminated string starting at: line 603 column 7 (char 56742)
+  21: LLM extraction completed in 167.31 seconds [API 2/2]
+  21: CAO tekst 2021-2022 basis.md (Markdown: 0.2MB) [API 2/2]
+  INFO: Using Files API approach for CAO tekst 2021-2022 basis.md
+  INFO: Markdown file size: 0.15 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/h6tnuz59d7f9
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.15MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found 0 content parts
+  DEBUG: No text parts found, trying fallback methods...
+  DEBUG: No fallback text found in response
+  DEBUG: Response attributes: ['__abstractmethods__', '__annotations__', '__class__', '__class_getitem__', '__class_vars__', '__copy__', '__deepcopy__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__fields__', '__fields_set__', '__format__', '__ge__', '__get_pydantic_core_schema__', '__get_pydantic_json_schema__', '__getattr__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__pretty__', '__private_attributes__', '__pydantic_complete__', '__pydantic_computed_fields__', '__pydantic_core_schema__', '__pydantic_custom_init__', '__pydantic_decorators__', '__pydantic_extra__', '__pydantic_fields__', '__pydantic_fields_set__', '__pydantic_generic_metadata__', '__pydantic_init_subclass__', '__pydantic_parent_namespace__', '__pydantic_post_init__', '__pydantic_private__', '__pydantic_root_model__', '__pydantic_serializer__', '__pydantic_setattr_handlers__', '__pydantic_validator__', '__reduce__', '__reduce_ex__', '__replace__', '__repr__', '__repr_args__', '__repr_name__', '__repr_recursion__', '__repr_str__', '__rich_repr__', '__setattr__', '__setstate__', '__signature__', '__sizeof__', '__slots__', '__str__', '__subclasshook__', '__weakref__', '_abc_impl', '_calculate_keys', '_copy_and_set_values', '_from_response', '_get_text', '_get_value', '_iter', '_setattr_handler', 'automatic_function_calling_history', 'candidates', 'code_execution_result', 'construct', 'copy', 'create_time', 'dict', 'executable_code', 'from_orm', 'function_calls', 'json', 'model_computed_fields', 'model_config', 'model_construct', 'model_copy', 'model_dump', 'model_dump_json', 'model_extra', 'model_fields', 'model_fields_set', 'model_json_schema', 'model_parametrized_name', 'model_post_init', 'model_rebuild', 'model_validate', 'model_validate_json', 'model_validate_strings', 'model_version', 'parse_file', 'parse_obj', 'parse_raw', 'parsed', 'prompt_feedback', 'response_id', 'schema', 'schema_json', 'sdk_http_response', 'text', 'to_json_dict', 'update_forward_refs', 'usage_metadata', 'validate']
+  INFO: Cleaned up uploaded file: files/h6tnuz59d7f9
+  DEBUG: Markdown upload error type: ValueError, Error message: no text parts found in response
+  DEBUG: Full error details: No text parts found in response
+  DEBUG: Token usage - Input: 62482, Output: None
+  🔍 DETAILED FAILURE ANALYSIS for CAO tekst 2021-2022 basis.md (attempt 1):
+    📊 Finish reason: FinishReason.STOP
+    🛡️  Safety ratings: []
+    📄 Content length: 0
+    ⏱️  Processing time: 25.362040042877197s
+    🔑 API key used: 2
+    🆔 Process ID: 1
+  DEBUG: Traceback: Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 900, in extract_with_markdown_upload
+    content, extraction_info = extract_text_safely(response, filename)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 639, in extract_text_safely
+    raise ValueError('No text parts found in response')
+ValueError: No text parts found in response
+
+  Attempt 1 failed (ValueError), retrying in 30 seconds...
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/ptg7k4rrdya2
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.15MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found 0 content parts
+  DEBUG: No text parts found, trying fallback methods...
+  DEBUG: No fallback text found in response
+  DEBUG: Response attributes: ['__abstractmethods__', '__annotations__', '__class__', '__class_getitem__', '__class_vars__', '__copy__', '__deepcopy__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__fields__', '__fields_set__', '__format__', '__ge__', '__get_pydantic_core_schema__', '__get_pydantic_json_schema__', '__getattr__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__pretty__', '__private_attributes__', '__pydantic_complete__', '__pydantic_computed_fields__', '__pydantic_core_schema__', '__pydantic_custom_init__', '__pydantic_decorators__', '__pydantic_extra__', '__pydantic_fields__', '__pydantic_fields_set__', '__pydantic_generic_metadata__', '__pydantic_init_subclass__', '__pydantic_parent_namespace__', '__pydantic_post_init__', '__pydantic_private__', '__pydantic_root_model__', '__pydantic_serializer__', '__pydantic_setattr_handlers__', '__pydantic_validator__', '__reduce__', '__reduce_ex__', '__replace__', '__repr__', '__repr_args__', '__repr_name__', '__repr_recursion__', '__repr_str__', '__rich_repr__', '__setattr__', '__setstate__', '__signature__', '__sizeof__', '__slots__', '__str__', '__subclasshook__', '__weakref__', '_abc_impl', '_calculate_keys', '_copy_and_set_values', '_from_response', '_get_text', '_get_value', '_iter', '_setattr_handler', 'automatic_function_calling_history', 'candidates', 'code_execution_result', 'construct', 'copy', 'create_time', 'dict', 'executable_code', 'from_orm', 'function_calls', 'json', 'model_computed_fields', 'model_config', 'model_construct', 'model_copy', 'model_dump', 'model_dump_json', 'model_extra', 'model_fields', 'model_fields_set', 'model_json_schema', 'model_parametrized_name', 'model_post_init', 'model_rebuild', 'model_validate', 'model_validate_json', 'model_validate_strings', 'model_version', 'parse_file', 'parse_obj', 'parse_raw', 'parsed', 'prompt_feedback', 'response_id', 'schema', 'schema_json', 'sdk_http_response', 'text', 'to_json_dict', 'update_forward_refs', 'usage_metadata', 'validate']
+  INFO: Cleaned up uploaded file: files/ptg7k4rrdya2
+  DEBUG: Markdown upload error type: ValueError, Error message: no text parts found in response
+  DEBUG: Full error details: No text parts found in response
+  DEBUG: Token usage - Input: 62482, Output: None
+  🔍 DETAILED FAILURE ANALYSIS for CAO tekst 2021-2022 basis.md (attempt 2):
+    📊 Finish reason: FinishReason.STOP
+    🛡️  Safety ratings: []
+    📄 Content length: 0
+    ⏱️  Processing time: 133.8821849822998s
+    🔑 API key used: 2
+    🆔 Process ID: 1
+  DEBUG: Traceback: Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 900, in extract_with_markdown_upload
+    content, extraction_info = extract_text_safely(response, filename)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 639, in extract_text_safely
+    raise ValueError('No text parts found in response')
+ValueError: No text parts found in response
+
+  Attempt 2 failed (ValueError), retrying in 60 seconds...
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/jhwkcr3nw859
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.15MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 58255 chars
+  INFO: Successfully extracted structured data from markdown (time: 412.9s)
+  INFO: Response size: 58,255 chars (~14,563 tokens)
+  INFO: Cleaned up uploaded file: files/jhwkcr3nw859
+  INFO: JSON saved with proper formatting
+  21: LLM extraction completed in 414.15 seconds [API 2/2]
+  21: CAO tekst 2023 basis.md (Markdown: 0.1MB) [API 2/2]
+  INFO: Using Files API approach for CAO tekst 2023 basis.md
+  INFO: Markdown file size: 0.14 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/1s5lklr91jgs
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.14MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 34500 chars
+  INFO: Successfully extracted structured data from markdown (time: 263.8s)
+  INFO: Response size: 34,500 chars (~8,625 tokens)
+  INFO: Cleaned up uploaded file: files/1s5lklr91jgs
+  INFO: JSON saved with proper formatting
+  21: LLM extraction completed in 265.12 seconds [API 2/2]
+  21: CAO tekst 2024 basis_1.md (Markdown: 0.1MB) [API 2/2]
+  INFO: Using Files API approach for CAO tekst 2024 basis_1.md
+  INFO: Markdown file size: 0.15 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/2c7cuh5u6uq7
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.15MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found 0 content parts
+  DEBUG: No text parts found, trying fallback methods...
+  DEBUG: No fallback text found in response
+  DEBUG: Response attributes: ['__abstractmethods__', '__annotations__', '__class__', '__class_getitem__', '__class_vars__', '__copy__', '__deepcopy__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__fields__', '__fields_set__', '__format__', '__ge__', '__get_pydantic_core_schema__', '__get_pydantic_json_schema__', '__getattr__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__pretty__', '__private_attributes__', '__pydantic_complete__', '__pydantic_computed_fields__', '__pydantic_core_schema__', '__pydantic_custom_init__', '__pydantic_decorators__', '__pydantic_extra__', '__pydantic_fields__', '__pydantic_fields_set__', '__pydantic_generic_metadata__', '__pydantic_init_subclass__', '__pydantic_parent_namespace__', '__pydantic_post_init__', '__pydantic_private__', '__pydantic_root_model__', '__pydantic_serializer__', '__pydantic_setattr_handlers__', '__pydantic_validator__', '__reduce__', '__reduce_ex__', '__replace__', '__repr__', '__repr_args__', '__repr_name__', '__repr_recursion__', '__repr_str__', '__rich_repr__', '__setattr__', '__setstate__', '__signature__', '__sizeof__', '__slots__', '__str__', '__subclasshook__', '__weakref__', '_abc_impl', '_calculate_keys', '_copy_and_set_values', '_from_response', '_get_text', '_get_value', '_iter', '_setattr_handler', 'automatic_function_calling_history', 'candidates', 'code_execution_result', 'construct', 'copy', 'create_time', 'dict', 'executable_code', 'from_orm', 'function_calls', 'json', 'model_computed_fields', 'model_config', 'model_construct', 'model_copy', 'model_dump', 'model_dump_json', 'model_extra', 'model_fields', 'model_fields_set', 'model_json_schema', 'model_parametrized_name', 'model_post_init', 'model_rebuild', 'model_validate', 'model_validate_json', 'model_validate_strings', 'model_version', 'parse_file', 'parse_obj', 'parse_raw', 'parsed', 'prompt_feedback', 'response_id', 'schema', 'schema_json', 'sdk_http_response', 'text', 'to_json_dict', 'update_forward_refs', 'usage_metadata', 'validate']
+  INFO: Cleaned up uploaded file: files/2c7cuh5u6uq7
+  DEBUG: Markdown upload error type: ValueError, Error message: no text parts found in response
+  DEBUG: Full error details: No text parts found in response
+  DEBUG: Token usage - Input: 60187, Output: None
+  🔍 DETAILED FAILURE ANALYSIS for CAO tekst 2024 basis_1.md (attempt 1):
+    📊 Finish reason: FinishReason.STOP
+    🛡️  Safety ratings: []
+    📄 Content length: 0
+    ⏱️  Processing time: 26.010462284088135s
+    🔑 API key used: 2
+    🆔 Process ID: 1
+  DEBUG: Traceback: Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 900, in extract_with_markdown_upload
+    # Log detailed failure information
+                           ^^^^^^^^^^^^
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 639, in extract_text_safely
+    print(f'  INFO: Using raw text content as fallback')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: No text parts found in response
+
+  Attempt 1 failed (ValueError), retrying in 30 seconds...
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/znnde5j05pdm
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.15MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found 0 content parts
+  DEBUG: No text parts found, trying fallback methods...
+  DEBUG: No fallback text found in response
+  DEBUG: Response attributes: ['__abstractmethods__', '__annotations__', '__class__', '__class_getitem__', '__class_vars__', '__copy__', '__deepcopy__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__fields__', '__fields_set__', '__format__', '__ge__', '__get_pydantic_core_schema__', '__get_pydantic_json_schema__', '__getattr__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__pretty__', '__private_attributes__', '__pydantic_complete__', '__pydantic_computed_fields__', '__pydantic_core_schema__', '__pydantic_custom_init__', '__pydantic_decorators__', '__pydantic_extra__', '__pydantic_fields__', '__pydantic_fields_set__', '__pydantic_generic_metadata__', '__pydantic_init_subclass__', '__pydantic_parent_namespace__', '__pydantic_post_init__', '__pydantic_private__', '__pydantic_root_model__', '__pydantic_serializer__', '__pydantic_setattr_handlers__', '__pydantic_validator__', '__reduce__', '__reduce_ex__', '__replace__', '__repr__', '__repr_args__', '__repr_name__', '__repr_recursion__', '__repr_str__', '__rich_repr__', '__setattr__', '__setstate__', '__signature__', '__sizeof__', '__slots__', '__str__', '__subclasshook__', '__weakref__', '_abc_impl', '_calculate_keys', '_copy_and_set_values', '_from_response', '_get_text', '_get_value', '_iter', '_setattr_handler', 'automatic_function_calling_history', 'candidates', 'code_execution_result', 'construct', 'copy', 'create_time', 'dict', 'executable_code', 'from_orm', 'function_calls', 'json', 'model_computed_fields', 'model_config', 'model_construct', 'model_copy', 'model_dump', 'model_dump_json', 'model_extra', 'model_fields', 'model_fields_set', 'model_json_schema', 'model_parametrized_name', 'model_post_init', 'model_rebuild', 'model_validate', 'model_validate_json', 'model_validate_strings', 'model_version', 'parse_file', 'parse_obj', 'parse_raw', 'parsed', 'prompt_feedback', 'response_id', 'schema', 'schema_json', 'sdk_http_response', 'text', 'to_json_dict', 'update_forward_refs', 'usage_metadata', 'validate']
+  INFO: Cleaned up uploaded file: files/znnde5j05pdm
+  DEBUG: Markdown upload error type: ValueError, Error message: no text parts found in response
+  DEBUG: Full error details: No text parts found in response
+  DEBUG: Token usage - Input: 60187, Output: None
+  🔍 DETAILED FAILURE ANALYSIS for CAO tekst 2024 basis_1.md (attempt 2):
+    📊 Finish reason: FinishReason.STOP
+    🛡️  Safety ratings: []
+    📄 Content length: 0
+    ⏱️  Processing time: 83.16635322570801s
+    🔑 API key used: 2
+    🆔 Process ID: 1
+  DEBUG: Traceback: Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 900, in extract_with_markdown_upload
+    return content
+                   
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 639, in extract_text_safely
+    except json.JSONDecodeError as e2:
+ValueError: No text parts found in response
+
+  Attempt 2 failed (ValueError), retrying in 60 seconds...
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/l8oecusd2q0x
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.15MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 32001 chars
+  INFO: Successfully extracted structured data from markdown (time: 324.6s)
+  INFO: Response size: 32,001 chars (~8,000 tokens)
+  INFO: Cleaned up uploaded file: files/l8oecusd2q0x
+  INFO: JSON saved with proper formatting
+  21: LLM extraction completed in 325.63 seconds [API 2/2]
+
+📈 PROGRESS ESTIMATE:
+   Progress: 5.3% (748 files remaining)
+   Estimated remaining time: 33.4 hours
+   Requests needed: 748
+   Days needed at 100 req/day: 7.5
+   Requests remaining today: 58
+   Average time per file: 160.6s

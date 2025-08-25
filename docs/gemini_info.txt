@@ -15,6 +15,22 @@ Token approximation:
 - 100 tokens ≈ 60–80 English words
 
 ================================================================================
+Google Gen AI SDK ducumentation: https://googleapis.github.io/python-genai/genai.html#module-genai.types
+================================================================================
+
+Submodules: 
+- genai.client module
+- genai.batches module
+- genai.caches module
+- genai.chats module
+- genai.files module - see below under: GENAI.FILES MODULE
+- genai.live module
+- genai.models module
+- genai.tokens module
+- genai.tunings module
+- genai.types module
+
+================================================================================
 THINKING CAPABILITIES - Gemini 2.5 Series Models: https://ai.google.dev/gemini-api/docs/thinking
 ================================================================================
 
@@ -728,6 +744,162 @@ response = client.models.generate_content(
 ⚠️ WARNING: Disabling safety settings may violate Terms of Service and could result in account review. Use only when absolutely necessary and with extreme caution.
 
 ================================================================================
+TROUBLESHOOTING GUIDE - Common Error Codes and Solutions: https://ai.google.dev/gemini-api/docs/troubleshooting
+================================================================================
+
+What is the Troubleshooting Guide?
+The troubleshooting guide provides comprehensive information about common error codes, their causes, and solutions when working with the Gemini API. This is essential for debugging issues and ensuring reliable API usage.
+
+Common Backend Error Codes:
+
+1. HTTP 400 - INVALID_ARGUMENT:
+   - CAUSE: Malformed request body, typos, missing required fields
+   - SOLUTION: Check API reference for request format, examples, and supported versions
+   - NOTE: Using newer API features with older endpoints can cause this error
+
+2. HTTP 400 - FAILED_PRECONDITION:
+   - CAUSE: Free tier not available in your country, billing not enabled
+   - SOLUTION: Setup paid plan using Google AI Studio
+   - NOTE: Required for regions where free tier is not supported
+
+3. HTTP 403 - PERMISSION_DENIED:
+   - CAUSE: Wrong API key, insufficient permissions, improper authentication for tuned models
+   - SOLUTION: Verify API key is set correctly and has proper access
+   - NOTE: Tuned models require proper authentication
+
+4. HTTP 404 - NOT_FOUND:
+   - CAUSE: Requested resource not found (images, audio, video files)
+   - SOLUTION: Check if all parameters in request are valid for your API version
+   - NOTE: Common with file uploads and references
+
+5. HTTP 429 - RESOURCE_EXHAUSTED:
+   - CAUSE: Rate limit exceeded, too many requests per minute
+   - SOLUTION: Verify you're within model's rate limit, request quota increase if needed
+   - NOTE: Common with free tier limitations
+
+6. HTTP 500 - INTERNAL:
+   - CAUSE: Unexpected error on Google's side, input context too long
+   - SOLUTION: Reduce input context, switch to another model (e.g., Gemini 1.5 Flash), wait and retry
+   - NOTE: If issue persists, report using Send feedback button in Google AI Studio
+
+7. HTTP 503 - UNAVAILABLE:
+   - CAUSE: Service temporarily overloaded or down, running out of capacity
+   - SOLUTION: Switch to another model temporarily, wait and retry
+   - NOTE: If issue persists, report using Send feedback button in Google AI Studio
+
+8. HTTP 504 - DEADLINE_EXCEEDED:
+   - CAUSE: Service unable to finish processing within deadline, prompt/context too large
+   - SOLUTION: Set larger 'timeout' in client request to avoid this error
+   - NOTE: Common with very large inputs or complex processing
+
+Model Parameter Validation:
+
+1. REQUIRED PARAMETER RANGES:
+   - Candidate count: 1-8 (integer)
+   - Temperature: 0.0-1.0
+   - Max output tokens: Use get_model() to determine maximum for your model
+   - TopP: 0.0-1.0
+
+2. API VERSION COMPATIBILITY:
+   - Ensure you're using correct API version (/v1 or /v1beta)
+   - Beta features only available in /v1beta version
+   - Check model support for specific features
+
+3. MODEL SUPPORT VERIFICATION:
+   - Verify you're using a supported model from the models page
+   - Check model capabilities for your specific use case
+   - Ensure model supports the features you're using
+
+Higher Latency with 2.5 Models:
+
+1. THINKING CAPABILITY IMPACT:
+   - 2.5 Flash and Pro models have thinking enabled by default
+   - This enhances quality but increases latency and token usage
+   - Can be adjusted or disabled for speed/cost optimization
+
+2. OPTIMIZATION STRATEGIES:
+   - Disable thinking: thinking_budget=0
+   - Use dynamic thinking: thinking_budget=-1
+   - Adjust thinking budget based on task complexity
+   - Refer to thinking documentation for guidance
+
+Safety Issues:
+
+1. PROMPT BLOCKING:
+   - Review prompt with respect to safety filters set in API call
+   - BlockedReason.OTHER indicates terms of service violation
+   - Adjust safety settings if appropriate for your use case
+
+2. SAFETY SETTING ADJUSTMENT:
+   - Review and modify safety filters as needed
+   - Ensure compliance with your application requirements
+   - Monitor for false positives/negatives
+
+Recitation Issues:
+
+1. RECITATION BLOCKING:
+   - Model stops generating due to RECITATION reason
+   - Indicates output may resemble certain data
+   - SOLUTION: Make prompt/context more unique, use higher temperature
+
+Repetitive Tokens Issues:
+
+1. REPEATED HYPHENS IN MARKDOWN TABLES:
+   - CAUSE: Model tries to create visually aligned tables with excessive hyphens
+   - SOLUTION: Add specific instructions for Markdown table formatting
+   - GUIDELINES: Use only 3 hyphens per column (|---|---|), avoid extra hyphens
+
+2. REPEATED TOKENS IN MARKDOWN TABLES:
+   - CAUSE: Model attempts visual alignment that's not required
+   - SOLUTION: Add instructions like "FOR TABLE HEADINGS, IMMEDIATELY ADD ' |' AFTER THE TABLE HEADING"
+   - TEMPERATURE: Use higher temperature (>= 0.8) to reduce repetitions
+
+3. REPEATED NEWLINES IN STRUCTURED OUTPUT:
+   - CAUSE: Unicode or escape sequences like \u or \t in input
+   - SOLUTION: Replace forbidden escape sequences with UTF-8 characters
+   - INSTRUCTION: "In quoted strings, the only allowed escape sequences are \\, \n, and \". Instead of \u escapes, use UTF-8."
+
+4. REPEATED TEXT IN STRUCTURED OUTPUT:
+   - CAUSE: Model output has different field order than defined schema
+   - SOLUTION: Don't specify field order in prompt, make all output fields required
+
+5. REPETITIVE TOOL CALLING:
+   - CAUSE: Model loses context of previous thoughts or calls unavailable endpoints
+   - SOLUTION: Instruct model to maintain state within thought process
+   - INSTRUCTION: "When thinking silently: ALWAYS start the thought with a brief (one sentence) recap of the current progress on the task."
+
+6. REPETITIVE TEXT NOT IN STRUCTURED OUTPUT:
+   - CAUSE: Model gets stuck on unresolvable request
+   - SOLUTION: Avoid explicit thinking orders, use higher temperature (>= 0.8)
+   - INSTRUCTIONS: Add "Be concise", "Don't repeat yourself", or "Provide the answer once"
+
+Best Practices for Troubleshooting:
+
+1. SYSTEMATIC APPROACH:
+   - Start with basic API calls to isolate issues
+   - Test with simpler prompts before adding complexity
+   - Use different models to identify model-specific issues
+   - Check API version compatibility
+
+2. ERROR HANDLING:
+   - Implement proper retry logic with exponential backoff
+   - Log error details for debugging
+   - Provide user-friendly error messages
+   - Monitor error patterns over time
+
+3. PERFORMANCE OPTIMIZATION:
+   - Monitor token usage and costs
+   - Use appropriate models for task complexity
+   - Optimize prompt length and structure
+   - Cache responses when possible
+
+4. DOCUMENTATION:
+   - Keep track of working configurations
+   - Document error patterns and solutions
+   - Maintain troubleshooting guides for your team
+   - Regular review and updates
+
+================================================================================
 FILES API - Working with Media Files and Documents: https://ai.google.dev/gemini-api/docs/files
 ================================================================================
 
@@ -899,3 +1071,219 @@ Usage Guidelines:
 - Maximum 2 GB per file, 20 GB total per project
 - No cost for file storage
 - Available in all regions where Gemini API is available
+
+================================================================================
+GENAI.FILES MODULE - File Management and Operations: https://googleapis.github.io/python-genai/genai.html#module-genai.files
+================================================================================
+
+What is the genai.files Module?
+The genai.files module provides comprehensive file management capabilities for the Google GenAI API, including both synchronous and asynchronous operations for uploading, downloading, retrieving, listing, and deleting files.
+
+Key Classes:
+
+1. FILES (Synchronous):
+   - Main class for file operations
+   - Supports all file management operations
+   - Returns immediate results
+
+2. ASYNCFILES (Asynchronous):
+   - Async version of Files class
+   - Supports all same operations as Files
+   - Returns awaitable results for non-blocking operations
+
+Core Operations:
+
+1. UPLOAD FILES:
+```python
+# Synchronous upload
+file = client.files.upload(file="path/to/document.pdf")
+
+# Asynchronous upload
+file = await client.aio.files.upload(file="path/to/document.pdf")
+
+# With configuration
+file = client.files.upload(
+    file="path/to/document.pdf",
+    config={
+        "display_name": "My Document",
+        "mime_type": "application/pdf"
+    }
+)
+```
+
+2. GET FILE INFORMATION:
+```python
+# Synchronous
+file_info = client.files.get(name='files/...')
+print(file_info.uri)
+
+# Asynchronous
+file_info = await client.aio.files.get(name='files/...')
+print(file_info.uri)
+```
+
+3. LIST FILES:
+```python
+# Synchronous
+for file in client.files.list():
+    print(f"File: {file.name}, Size: {file.size_bytes}")
+
+# Asynchronous
+async for file in client.aio.files.list():
+    print(f"File: {file.name}, Size: {file.size_bytes}")
+```
+
+4. DELETE FILES:
+```python
+# Synchronous
+client.files.delete(name='files/...')
+
+# Asynchronous
+await client.aio.files.delete(name='files/...')
+```
+
+5. DOWNLOAD FILES:
+```python
+# Check if file is downloadable
+for file in client.files.list():
+    if file.download_uri is not None:
+        break
+else:
+    raise ValueError('No files found with a download_uri.')
+
+# Download file data
+data = client.files.download(file=file)
+# Alternative methods:
+# data = client.files.download(file=file.name)
+# data = client.files.download(file=file.uri)
+```
+
+File Object Properties:
+
+1. BASIC PROPERTIES:
+   - name: File identifier
+   - uri: File URI for API calls
+   - size_bytes: File size in bytes
+   - mime_type: File MIME type
+   - display_name: Human-readable name
+
+2. STATE PROPERTIES:
+   - state: File processing state (ACTIVE, FAILED, etc.)
+   - create_time: File creation timestamp
+   - update_time: Last update timestamp
+
+3. DOWNLOAD PROPERTIES:
+   - download_uri: URI for downloading (if available)
+   - source: File source information
+
+Configuration Options:
+
+1. UPLOAD CONFIG:
+```python
+config = {
+    "display_name": "Custom Document Name",
+    "mime_type": "application/pdf",
+    "name": "custom_file_id"
+}
+```
+
+2. GET CONFIG:
+```python
+config = {
+    # Additional parameters for file retrieval
+}
+```
+
+3. DELETE CONFIG:
+```python
+config = {
+    # Additional parameters for file deletion
+}
+```
+
+Best Practices:
+
+1. FILE MANAGEMENT:
+   - Always check file state before using (ACTIVE vs FAILED)
+   - Clean up files after processing to save storage
+   - Use descriptive display_names for better organization
+   - Monitor file sizes to stay within limits
+
+2. ERROR HANDLING:
+   - Check file state after upload
+   - Handle upload failures gracefully
+   - Verify file exists before operations
+   - Implement retry logic for transient failures
+
+3. PERFORMANCE:
+   - Use async operations for bulk file processing
+   - Batch file operations when possible
+   - Monitor file processing times
+   - Implement proper cleanup to avoid storage bloat
+
+4. SECURITY:
+   - Validate file types before upload
+   - Check file sizes to prevent abuse
+   - Use appropriate MIME types
+   - Clean up sensitive files promptly
+
+Common Use Cases:
+
+1. DOCUMENT PROCESSING:
+```python
+# Upload and process document
+file = client.files.upload(file="document.pdf")
+response = client.models.generate_content(
+    model="gemini-2.5-flash",
+    contents=["Extract information from this document", file]
+)
+# Clean up after processing
+client.files.delete(name=file.name)
+```
+
+2. BATCH PROCESSING:
+```python
+# Process multiple files
+files = []
+for doc_path in document_paths:
+    file = client.files.upload(file=doc_path)
+    files.append(file)
+
+# Process all files
+for file in files:
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=["Process this document", file]
+    )
+    # Clean up
+    client.files.delete(name=file.name)
+```
+
+3. FILE STATE MONITORING:
+```python
+# Upload and wait for processing
+file = client.files.upload(file="large_document.pdf")
+max_wait = 300  # 5 minutes
+poll_interval = 2
+
+waited = 0
+while waited < max_wait:
+    file_info = client.files.get(name=file.name)
+    if file_info.state.name == 'ACTIVE':
+        break
+    elif file_info.state.name == 'FAILED':
+        raise ValueError(f'File processing failed: {file_info.name}')
+    time.sleep(poll_interval)
+    waited += poll_interval
+
+if waited >= max_wait:
+    raise TimeoutError(f'File not ready after {max_wait}s')
+```
+
+Important Notes:
+- Files are automatically deleted after 48 hours
+- Maximum 2 GB per file, 20 GB total per project
+- Files created by upload cannot be downloaded
+- Use download_uri property to check if file is downloadable
+- Async operations require proper await handling
+- File state checking is crucial for reliable processing

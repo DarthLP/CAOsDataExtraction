@@ -1,0 +1,405 @@
+🎯 CAO Markdown Extraction Pipeline
+📊 Process: 1/2
+🔑 API Key: 1
+📁 Input: outputs/parsed_pdfs/parsed_pdfs_markdown
+📁 Output: outputs/llm_extracted/new_flow
+📄 Files to process: 790
+
+  10: Skipping Bouw CAO 2011 aanmelding TTW 1-2011.md (already processed)
+  10: CAO BOUW EN INFRA 2021-2022 INTERACTIEF.md (Markdown: 0.4MB) [API 1/2]
+  INFO: Using Files API approach for CAO BOUW EN INFRA 2021-2022 INTERACTIEF.md
+  INFO: Markdown file size: 0.39 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/9ildc1ewcgun
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.39MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.MAX_TOKENS
+  DEBUG: Found direct text response: 46235 chars
+  INFO: Successfully extracted structured data from markdown (time: 245.8s)
+  INFO: Response size: 46,235 chars (~11,558 tokens)
+  ERROR: Invalid JSON structure
+  WARNING: Response schema validation failed for CAO BOUW EN INFRA 2021-2022 INTERACTIEF.md
+  INFO: Cleaned up uploaded file: files/9ildc1ewcgun
+  WARNING: JSON parsing failed, saving as raw content: Unterminated string starting at: line 497 column 7 (char 46183)
+  10: LLM extraction completed in 246.68 seconds [API 1/2]
+  10: Skipping CAO BOUW EN INFRA 2023 - INTERACTIEF mei 2023.md (already processed)
+  10: CAO_2014_aanmelding_20_3_2014.md (Markdown: 0.5MB) [API 1/2]
+  INFO: Using Files API approach for CAO_2014_aanmelding_20_3_2014.md
+  INFO: Markdown file size: 0.48 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/5cb5n5c9hbc7
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.48MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 62533 chars
+  INFO: Successfully extracted structured data from markdown (time: 83.0s)
+  INFO: Response size: 62,533 chars (~15,633 tokens)
+  INFO: Cleaned up uploaded file: files/5cb5n5c9hbc7
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 84.38 seconds [API 1/2]
+  10: Cao Bouw en Infra 2023.md (Markdown: 0.4MB) [API 1/2]
+  INFO: Using Files API approach for Cao Bouw en Infra 2023.md
+  INFO: Markdown file size: 0.38 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/07px7q1whh3f
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.38MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 58017 chars
+  INFO: Successfully extracted structured data from markdown (time: 267.0s)
+  INFO: Response size: 58,017 chars (~14,504 tokens)
+  INFO: Cleaned up uploaded file: files/07px7q1whh3f
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 268.17 seconds [API 1/2]
+  10: Cao Bouw en Infra 2024.md (Markdown: 0.4MB) [API 1/2]
+  INFO: Using Files API approach for Cao Bouw en Infra 2024.md
+  INFO: Markdown file size: 0.38 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/2o4f9v5edk9l
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.38MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 53297 chars
+  INFO: Successfully extracted structured data from markdown (time: 163.4s)
+  INFO: Response size: 53,297 chars (~13,324 tokens)
+  INFO: Cleaned up uploaded file: files/2o4f9v5edk9l
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 164.34 seconds [API 1/2]
+  10: Cao Bouw en Infra 2025 - 2027.pdf.md (Markdown: 0.4MB) [API 1/2]
+  INFO: Using Files API approach for Cao Bouw en Infra 2025 - 2027.pdf.md
+  INFO: Markdown file size: 0.39 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/h2lsbgreutop
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.39MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 50453 chars
+  INFO: Successfully extracted structured data from markdown (time: 80.4s)
+  INFO: Response size: 50,453 chars (~12,613 tokens)
+  INFO: Cleaned up uploaded file: files/h2lsbgreutop
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 81.60 seconds [API 1/2]
+  10: TTW_CAO_1_5_2013.md (Markdown: 0.5MB) [API 1/2]
+  INFO: Using Files API approach for TTW_CAO_1_5_2013.md
+  INFO: Markdown file size: 0.48 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/iul258tamvbj
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.48MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 96553 chars
+  INFO: Successfully extracted structured data from markdown (time: 133.7s)
+  INFO: Response size: 96,553 chars (~24,138 tokens)
+  INFO: Cleaned up uploaded file: files/iul258tamvbj
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 135.06 seconds [API 1/2]
+  10: TTW_CAO_2014_4.md (Markdown: 0.5MB) [API 1/2]
+  INFO: Using Files API approach for TTW_CAO_2014_4.md
+  INFO: Markdown file size: 0.47 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/4zjo9lf5wkvj
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.47MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 103299 chars
+  INFO: Successfully extracted structured data from markdown (time: 128.7s)
+  INFO: Response size: 103,299 chars (~25,824 tokens)
+  INFO: Cleaned up uploaded file: files/4zjo9lf5wkvj
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 130.34 seconds [API 1/2]
+  10: TTW_CAO_definitief_12_november_2012.md (Markdown: 0.5MB) [API 1/2]
+  INFO: Using Files API approach for TTW_CAO_definitief_12_november_2012.md
+  INFO: Markdown file size: 0.48 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/oufv0wlk8r77
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.48MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 93526 chars
+  INFO: Successfully extracted structured data from markdown (time: 138.1s)
+  INFO: Response size: 93,526 chars (~23,381 tokens)
+  INFO: Cleaned up uploaded file: files/oufv0wlk8r77
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 139.53 seconds [API 1/2]
+  10: TTW_cao_Bouw_en_Infra_10_2017.md (Markdown: 0.4MB) [API 1/2]
+  INFO: Using Files API approach for TTW_cao_Bouw_en_Infra_10_2017.md
+  INFO: Markdown file size: 0.43 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/j9ahxo9rozij
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.43MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 97314 chars
+  INFO: Successfully extracted structured data from markdown (time: 116.7s)
+  INFO: Response size: 97,314 chars (~24,328 tokens)
+  INFO: Cleaned up uploaded file: files/j9ahxo9rozij
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 119.02 seconds [API 1/2]
+  10: cao Bouw en Infra 2018-2019 TTW mrt19.pdf .md (Markdown: 0.4MB) [API 1/2]
+  INFO: Using Files API approach for cao Bouw en Infra 2018-2019 TTW mrt19.pdf .md
+  INFO: Markdown file size: 0.44 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/0ss00bjx99yl
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.44MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 118955 chars
+  INFO: Successfully extracted structured data from markdown (time: 187.4s)
+  INFO: Response size: 118,955 chars (~29,738 tokens)
+  INFO: Cleaned up uploaded file: files/0ss00bjx99yl
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 188.49 seconds [API 1/2]
+
+📈 PROGRESS ESTIMATE:
+   Progress: 2.9% (767 files remaining)
+   Estimated remaining time: 30.2 hours
+   Requests needed: 767
+   Days needed at 100 req/day: 7.7
+   Requests remaining today: 77
+   Average time per file: 141.7s
+  10: cao Bouw en Infra 2021-2022.md (Markdown: 0.4MB) [API 1/2]
+  INFO: Using Files API approach for cao Bouw en Infra 2021-2022.md
+  INFO: Markdown file size: 0.40 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/i2utq2l9wake
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.40MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 28158 chars
+  INFO: Successfully extracted structured data from markdown (time: 60.9s)
+  INFO: Response size: 28,158 chars (~7,039 tokens)
+  INFO: Cleaned up uploaded file: files/i2utq2l9wake
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 62.35 seconds [API 1/2]
+  10: cao Bouw en Infra 2021-2022_2.md (Markdown: 0.4MB) [API 1/2]
+  INFO: Using Files API approach for cao Bouw en Infra 2021-2022_2.md
+  INFO: Markdown file size: 0.40 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/annjwh0admdo
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.40MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 34694 chars
+  INFO: Successfully extracted structured data from markdown (time: 131.4s)
+  INFO: Response size: 34,694 chars (~8,673 tokens)
+  INFO: Cleaned up uploaded file: files/annjwh0admdo
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 132.49 seconds [API 1/2]
+  10: cao_Bouw_en_Infra_2017_2018_def.md (Markdown: 0.4MB) [API 1/2]
+  INFO: Using Files API approach for cao_Bouw_en_Infra_2017_2018_def.md
+  INFO: Markdown file size: 0.42 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/7aqzjidcxxqw
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.42MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 66441 chars
+  INFO: Successfully extracted structured data from markdown (time: 96.9s)
+  INFO: Response size: 66,441 chars (~16,610 tokens)
+  INFO: Cleaned up uploaded file: files/7aqzjidcxxqw
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 98.50 seconds [API 1/2]
+  10: cao_Bouw_en_Infra_2018_2019_TTW_okt18.md (Markdown: 0.4MB) [API 1/2]
+  INFO: Using Files API approach for cao_Bouw_en_Infra_2018_2019_TTW_okt18.md
+  INFO: Markdown file size: 0.43 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/dyb52okgwvmx
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.43MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 101300 chars
+  INFO: Successfully extracted structured data from markdown (time: 121.5s)
+  INFO: Response size: 101,300 chars (~25,325 tokens)
+  INFO: Cleaned up uploaded file: files/dyb52okgwvmx
+  INFO: JSON saved with proper formatting
+  10: LLM extraction completed in 123.07 seconds [API 1/2]
+--- CAO 20 ---
+  20: CAO_KNV_1_januari_2014__1_januari_2017.md (Markdown: 0.2MB) [API 1/2]
+  INFO: Using Files API approach for CAO_KNV_1_januari_2014__1_januari_2017.md
+  INFO: Markdown file size: 0.16 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/v7d9j0ac2pk6
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.16MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 43659 chars
+  INFO: Successfully extracted structured data from markdown (time: 188.0s)
+  INFO: Response size: 43,659 chars (~10,914 tokens)
+  INFO: Cleaned up uploaded file: files/v7d9j0ac2pk6
+  INFO: JSON saved with proper formatting
+  20: LLM extraction completed in 189.22 seconds [API 1/2]
+--- CAO 21 ---
+  21: CAO 2010 aanmelding.md (Markdown: 0.1MB) [API 1/2]
+  INFO: Using Files API approach for CAO 2010 aanmelding.md
+  INFO: Markdown file size: 0.14 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/i6yfwjo3avkw
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.14MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 61211 chars
+  INFO: Successfully extracted structured data from markdown (time: 187.6s)
+  INFO: Response size: 61,211 chars (~15,302 tokens)
+  INFO: Cleaned up uploaded file: files/i6yfwjo3avkw
+  INFO: JSON saved with proper formatting
+  21: LLM extraction completed in 189.73 seconds [API 1/2]
+  21: CAO tekst 2020 basis.docx.md (Markdown: 0.1MB) [API 1/2]
+  INFO: Using Files API approach for CAO tekst 2020 basis.docx.md
+  INFO: Markdown file size: 0.14 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/khrxvroxr3km
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.14MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 40442 chars
+  INFO: Successfully extracted structured data from markdown (time: 239.7s)
+  INFO: Response size: 40,442 chars (~10,110 tokens)
+  INFO: Cleaned up uploaded file: files/khrxvroxr3km
+  INFO: JSON saved with proper formatting
+  21: LLM extraction completed in 241.24 seconds [API 1/2]
+  21: CAO tekst 2021-2022 basis_1.md (Markdown: 0.2MB) [API 1/2]
+  INFO: Using Files API approach for CAO tekst 2021-2022 basis_1.md
+  INFO: Markdown file size: 0.15 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/m0x25z8pvdru
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.15MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 59134 chars
+  INFO: Successfully extracted structured data from markdown (time: 258.6s)
+  INFO: Response size: 59,134 chars (~14,783 tokens)
+  INFO: Cleaned up uploaded file: files/m0x25z8pvdru
+  INFO: JSON saved with proper formatting
+  21: LLM extraction completed in 259.98 seconds [API 1/2]
+  21: CAO tekst 2024 basis.md (Markdown: 0.1MB) [API 1/2]
+  INFO: Using Files API approach for CAO tekst 2024 basis.md
+  INFO: Markdown file size: 0.15 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/n45zy94djvik
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.15MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found direct text response: 3014 chars
+  INFO: Successfully extracted structured data from markdown (time: 209.7s)
+  INFO: Response size: 3,014 chars (~753 tokens)
+  ERROR: Invalid JSON structure
+  WARNING: Response schema validation failed for CAO tekst 2024 basis.md
+  INFO: Cleaned up uploaded file: files/n45zy94djvik
+  WARNING: JSON parsing failed, saving as raw content: Unterminated string starting at: line 41 column 7 (char 2969)
+  21: LLM extraction completed in 211.43 seconds [API 1/2]
+  21: CAO_2012_aanmelding.md (Markdown: 0.1MB) [API 1/2]
+  INFO: Using Files API approach for CAO_2012_aanmelding.md
+  INFO: Markdown file size: 0.13 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/m40ub77itgo6
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.13MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 44105 chars
+  INFO: Successfully extracted structured data from markdown (time: 212.3s)
+  INFO: Response size: 44,105 chars (~11,026 tokens)
+  INFO: Cleaned up uploaded file: files/m40ub77itgo6
+  INFO: JSON saved with proper formatting
+  21: LLM extraction completed in 213.37 seconds [API 1/2]
+
+📈 PROGRESS ESTIMATE:
+   Progress: 5.4% (747 files remaining)
+   Estimated remaining time: 33.6 hours
+   Requests needed: 747
+   Days needed at 100 req/day: 7.5
+   Requests remaining today: 57
+   Average time per file: 161.8s

@@ -31,7 +31,7 @@ def get_file_size_mb(file_path):
 def find_matching_files():
     """Find matching PDF and JSON files."""
     pdfs_folder = Path('pdfs/input_pdfs')
-    parsed_folder = Path('outputs/parsed_pdfs')
+    parsed_folder = Path('outputs/parsed_pdfs/parsed_pdfs_json')
     
     matches = []
     

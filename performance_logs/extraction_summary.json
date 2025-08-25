@@ -1,14 +1,17 @@
 {
-  "total_files_processed": 0,
-  "successful_extractions": 0,
+  "total_files_processed": 3,
+  "successful_extractions": 3,
   "failed_extractions": 0,
-  "total_processing_time_hours": 0,
-  "total_tokens_used": 0,
-  "total_requests_used": 0,
-  "avg_processing_time_seconds": 0,
-  "avg_tokens_per_file": 0,
-  "largest_file_mb": 0,
-  "slowest_file_seconds": 0,
+  "total_processing_time_hours": 0.12655277777777776,
+  "total_tokens_used": 554174,
+  "total_requests_used": 3,
+  "avg_processing_time_seconds": 151.86333333333332,
+  "avg_tokens_per_file": 184724.66666666666,
+  "largest_file_mb": 0.48,
+  "slowest_file_seconds": 200.2,
+  "most_tokens_used": 200282,
+  "success_rate_percent": 100.0,
   "daily_request_limit": 100,
-  "last_updated": "2025-08-22T18:58:46.628201"
+  "requests_remaining_today": 97,
+  "last_updated": "2025-08-25T14:26:33.455802"
 }

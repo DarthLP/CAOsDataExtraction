@@ -6833,3 +6833,1563 @@ ValueError: Incomplete JSON: Content does not end with } - JSON appears to be tr
   INFO: File is ready for processing
   DEBUG: File validation passed - size: 0.39MB
   DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 111452 chars
+  INFO: Successfully extracted structured data from markdown (time: 220.1s)
+  INFO: Response size: 111,452 chars (~27,863 tokens)
+  INFO: Cleaned up uploaded file: files/6u62g5q9fyph
+  ✅ JSON saved with proper formatting
+  822: LLM extraction completed in 221.59 seconds [API 5/6]
+
+📈 PROGRESS ESTIMATE:
+   Progress: 370.3% (-711 files remaining)
+   Estimated remaining time: -28.9 hours
+   Requests needed: -711
+   Days needed at 100 req/day: -7.1
+   Requests remaining today: 0
+   Average time per file: 146.4s
+  822: M_T_Totaal_tekst.md (Markdown: 1.3MB) [API 5/6]
+  INFO: Using Files API approach for M_T_Totaal_tekst.md
+  INFO: Markdown file size: 1.33 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/lqe0kgm4mbkv
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 1.33MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 80776 chars
+  INFO: Successfully extracted structured data from markdown (time: 213.6s)
+  INFO: Response size: 80,776 chars (~20,194 tokens)
+  INFO: Cleaned up uploaded file: files/lqe0kgm4mbkv
+  ✅ JSON saved with proper formatting
+  822: LLM extraction completed in 215.37 seconds [API 5/6]
+--- CAO 823 ---
+  823: CAO MvT 2018-2020 DEF 29 mei19.docx .md (Markdown: 0.7MB) [API 5/6]
+  INFO: Using Files API approach for CAO MvT 2018-2020 DEF 29 mei19.docx .md
+  INFO: Markdown file size: 0.72 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/vcrz9b5yupxh
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.72MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 57494 chars
+  INFO: Successfully extracted structured data from markdown (time: 119.2s)
+  INFO: Response size: 57,494 chars (~14,373 tokens)
+  INFO: Cleaned up uploaded file: files/vcrz9b5yupxh
+  ✅ JSON saved with proper formatting
+  823: LLM extraction completed in 121.18 seconds [API 5/6]
+  823: CAO_tekst_2011_2012_compleet_versie_28_juli.md (Markdown: 0.8MB) [API 5/6]
+  INFO: Using Files API approach for CAO_tekst_2011_2012_compleet_versie_28_juli.md
+  INFO: Markdown file size: 0.76 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/x1ii2wn73phi
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.76MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 137809 chars
+  INFO: Successfully extracted structured data from markdown (time: 237.4s)
+  INFO: Response size: 137,809 chars (~34,452 tokens)
+  INFO: Cleaned up uploaded file: files/x1ii2wn73phi
+  ✅ JSON saved with proper formatting
+  823: LLM extraction completed in 239.06 seconds [API 5/6]
+  823: Concept cao MVT - incl HFI DEF.md (Markdown: 1.0MB) [API 5/6]
+  INFO: Using Files API approach for Concept cao MVT - incl HFI DEF.md
+  INFO: Markdown file size: 0.98 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/kq8uvjb3xwsc
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.98MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 42573 chars
+  INFO: Successfully extracted structured data from markdown (time: 109.7s)
+  INFO: Response size: 42,573 chars (~10,643 tokens)
+  INFO: Cleaned up uploaded file: files/kq8uvjb3xwsc
+  ✅ JSON saved with proper formatting
+  823: LLM extraction completed in 111.27 seconds [API 5/6]
+  824: CAO_MB.md (Markdown: 0.4MB) [API 5/6]
+  INFO: Using Files API approach for CAO_MB.md
+  INFO: Markdown file size: 0.41 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/gzbpo9lmy1sz
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.41MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 90067 chars
+  INFO: Successfully extracted structured data from markdown (time: 233.4s)
+  INFO: Response size: 90,067 chars (~22,516 tokens)
+  INFO: Cleaned up uploaded file: files/gzbpo9lmy1sz
+  ✅ JSON saved with proper formatting
+  824: LLM extraction completed in 234.57 seconds [API 5/6]
+  824: CAO_MB_arcering___wijz_AOW_LT.md (Markdown: 0.4MB) [API 5/6]
+  INFO: Using Files API approach for CAO_MB_arcering___wijz_AOW_LT.md
+  INFO: Markdown file size: 0.41 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/dwoyngy1ubug
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.41MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 76991 chars
+  INFO: Successfully extracted structured data from markdown (time: 161.6s)
+  INFO: Response size: 76,991 chars (~19,247 tokens)
+  INFO: Cleaned up uploaded file: files/dwoyngy1ubug
+  ✅ JSON saved with proper formatting
+  824: LLM extraction completed in 162.95 seconds [API 5/6]
+  824: cao_mb_aangepast_n_a_v_bed.md (Markdown: 1.4MB) [API 5/6]
+  INFO: Using Files API approach for cao_mb_aangepast_n_a_v_bed.md
+  INFO: Markdown file size: 1.36 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/eioi9abnvvzc
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 1.36MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 54610 chars
+  INFO: Successfully extracted structured data from markdown (time: 215.7s)
+  INFO: Response size: 54,610 chars (~13,652 tokens)
+  INFO: Cleaned up uploaded file: files/eioi9abnvvzc
+  ✅ JSON saved with proper formatting
+  824: LLM extraction completed in 217.59 seconds [API 5/6]
+  826: CAO_ISO.md (Markdown: 0.4MB) [API 5/6]
+  INFO: Using Files API approach for CAO_ISO.md
+  INFO: Markdown file size: 0.39 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/ebahxhco2toq
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.39MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.MAX_TOKENS
+  DEBUG: Checking response.parsed: hasattr=True, value=NOT_FOUND
+  DEBUG: Checking response.text: hasattr=True, value={
+  "general_information": [
+    [
+      "Document Title",
+      "COLLECTIEVE ARBEIDSOVEREENKOMST"
+    ],
+    [
+      "Contract Period",
+      "Valid from March 1, 2015, up to and including April 30, 2017"
+    ],
+    [
+      "Parties Involved",
+      "Employer organizations: Nederlandse Vereniging van Ondernemers in het Thermisch Isolatiebedrijf (VIB)"
+    ],
+    [
+      "Parties Involved",
+      "Employee organizations: FNV, CNV Vakmensen, De Unie"
+    ],
+    [
+      "Other Involved Entity",
+      "Stichting Vakraad Metaal en Techniek"
+    ],
+    [
+      "Scope of Agreement",
+      "Metaal en Techniek (Metal and Technology), specifically the thermal and/or acoustic insulation industry (het thermisch en/of akoestisch isolatiebedrijf)"
+    ]
+  ],
+  "wage_information": [
+    [
+      "Article 31: Salary Payment per Month or per Four-Week Period",
+      "Salary payment exclusively takes place either per month or per four-week period. Salary means the agreed fixed remuneration, including the personal allowance as referred to in Article 36a and comparable fixed salary components (excluding any allowances, bonuses, expense reimbursements and the like) due per month or per four-week period by the employer. Payment of salary and any shift allowance takes place no later than the last working day of the month or four-week period for which this salary is due. Payment of any allowances, bonuses, expense reimbursements and the like and of advances to be settled takes place no later than the last working day of the following month or four-week period as referred to in paragraph 2, unless otherwise stipulated in this CAO."
+    ],
+    [
+      "Article 32: Salary Tables",
+      "The tables included in Articles 33a and 33b apply to a work schedule based on an average weekly working time of 38 hours calculated over a maximum period of one year, for employees who have not yet reached the age of 65. For a work schedule based on a shorter average weekly working time, the employee is entitled to a proportional salary."
+    ],
+    [
+      "Article 32a: Application of Salary Tables for Youth Groups",
+      "The employer pays employees up to 23 years of age who do not possess the diplomas referred to in paragraph 2 at least the salary stated under 'Youth Groups WML' that corresponds to the employee's age, also taking into account the provisions of Article 41. The employer pays an employee up to 23 years of age who possesses: at least a VBO/MAVO/VMBO diploma at least the salary as stated under 'Youth Groups VBO/MAVO/VMBO' that corresponds to the employee's age, or at least a vocational diploma, obtained via the vocational training pathway (formerly apprenticeship) as referred to in the Education and Vocational Education Act, at least the salary as stated under 'Youth Groups vocational diploma' that corresponds to the employee's age, if and insofar as that employee performs a function for which the vocational diploma is relevant, or if and insofar as an employee performs a function for which the advanced vocational diploma is relevant and that employee has successfully completed at least the first year of the Education and Vocational Education Act at the level of formerly advanced apprenticeship, at least the salary as stated under 'Youth Groups advanced vocational diploma' that corresponds to the employee's age. The vocational diplomas referred to in this paragraph are the vocational diplomas recognized by the CAO parties involved in the collective labor agreements mentioned in Article 3."
+    ],
+    [
+      "Article 32b: Application of Participation Act Salary Table",
+      "For employees with a work disability who rely on the municipality for employment support and who, in the opinion of the UWV, are unable to earn the statutory minimum wage (WML), employees with a WSW indication, and employees in the Wajong scheme, the following applies. The company determines what the employee referred to in paragraph 1 can earn within the range of 100% - 120% WML. The employee referred to here who has an earning capacity of 100% will progress to one of the salary tables in Articles 32, 32a, and 33 of the CAO. The employer pays no more than the applicable table salary for the employee referred to here in the company, after deduction of any wage subsidies actually received by that employee. The WML per month as of July 1, 2015, is EUR 1,507.80. If this WML amount changes, the new WML amount applies. 120% WML is obtained by multiplying the applicable WML amount by 120 and then dividing by 100."
+    ],
+    [
+      "Article 33: Application of Salary Tables for 23-Year-Olds and Older",
+      "Employees aged 23 or older are classified into one of the salary groups based on the function they perform. Functional years mean the years during which the employee performs his function (from age 23) in the employer's company. Functional years also include the fictitious functional years granted by the employer to the employee. The employer pays employees classified in one of salary groups A to J at least the salary determined in their salary group, taking into account the number of functional years granted to the employee. For employees classified in salary group A, the provisions of Article 41 also apply. Employees who have been unemployed for at least 1 year upon commencing employment, are 23 years or older, and are unable to perform a function at the functional level of salary group A, receive the statutory minimum wage for 23 years and older during an introductory period of a maximum of one year. The minimum wage for employees aged 23 and older as of July 1, 2015, is EUR 1,507.80 per month, respectively EUR 1,391.80 per four-week period. If these statutory amounts change, the new statutory amounts apply. If the company uses a wage table agreed upon with the v.v., OR, or PVT, the change for salary scales B to F does not apply."
+    ],
+    [
+      "SALARY TABLE for monthly payment from March 1, 2015 to December 1, 2015",
+      "wml,vbo/mavo/vmbo,vakdiploma,voortgezet vakdiploma",
+      "16 jaar,518,10,652,737,830",
+      "17 jaar,593,20,749,844,946",
+      "18 jaar,683,30,862,969,1093",
+      "19 jaar,788,45,996,1120,1260",
+      "20 jaar,923,60,1168,1311,1477",
+      "21 jaar,1088,80,1372,1545,1740",
+      "22 jaar,1276,55,1695,1825,1903",
+      "SALARISGROEPEN,A / 2,B / 3,C / 4,D / 5,E / 6,F / 7,G / 8,H / 9,I / 10,J / 11",
+      "0,1501,80,1824,1899,1939,2001,2102,2274,2466,2700,2981",
+      "1,1773,1881,1915,1958,2038,2151,2322,2521,2762,3042",
+      "2,1787,1897,1930,1981,2077,2197,2371,2567,2820,3103",
+      "3,1805,1910,1945,1997,2108,2244,2427,2626,2880,3172",
+      "4,,1924,1958,2020,2150,2290,2473,2681,2938,3231",
+      "5,,,1944,1978,2037,2184,2337,2523,2731,2993,3293",
+      "6,,,,1963,1998,2070,2222,2385,2568,2783,3053,3359",
+      "7,,,,,1983,2018,2100,2289,2457,2625,2834,3108,3423",
+      "8,,,,,,,2888,3172,3486",
+      "9,,,,,,,,3225,3548",
+      "10,,,,,,,,,3613",
+      "This table was valid from March 1, 2015, with the understanding that the amounts in the Wet Minimumloon (WML) and A 0 functional years table have been adjusted to the amounts applicable as of January 1, 2015, according to the WML. If these amounts change, the new statutory amounts apply."
+    ],
+    [
+      "SALARY TABLE for monthly payment from December 1, 2015 to July 1, 2016",
+      "wml,vbo/mavo/vmbo,vakdiploma,voortgezet vakdiploma",
+      "16 jaar,520,20,663,750,845",
+      "17 jaar,595,60,762,859,963",
+      "18 jaar,686,05,877,986,1112",
+      "19 jaar,791,60,1013,1140,1282",
+      "20 jaar,927,30,1188,1334,1503",
+      "21 jaar,1093,15,1396,1572,1770",
+      "22 jaar,1281,65,1725,1857,1936",
+      "SALARISGROEPEN,A / 2,B / 3,C / 4,D / 5,E / 6,F / 7,G / 8,H / 9,I / 10,J / 11",
+      "0,1507,80,1856,1932,1973,2036,2139,2314,2509,2747,3033",
+      "1,1804,1914,1949,1992,2074,2189,2363,2565,2810,3095",
+      "2,1818,1930,1964,2016,2113,2235,2412,2612,2869,3157",
+      "3,1837,1943,1979,2032,2145,2283,2469,2672,2930,3228",
+      "4,,1958,1992,2055,2188,2330,2516,2728,2989,3288",
+      "5,,,1978,2013,2073,2222,2378,2567,2779,3045,3351",
+      "6,,,,1997,2033,2106,2261,2427,2613,2832,3106,3418",
+      "7,,,,,2018,2053,2137,2329,2500,2671,2884,3162,3483",
+      "8,,,,,,,2939,3228,3547",
+      "9,,,,,,,,3281,3610",
+      "10,,,,,,,,,3676",
+      "This is the CAO table effective December 1, 2015. The wage increase of December 1, 2015 (1.75%) has been processed in the VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, salary group A 1 to 3 functional years, and salary groups B to J. The amounts in the Wet Minimumloon (WML) and A 0 functional years table conform to the WML amounts applicable as of July 1, 2015. If these amounts change, the new statutory amounts apply."
+    ],
+    [
+      "SALARY TABLE for monthly payment from July 1, 2016 to September 1, 2016",
+      "wml,vbo/mavo/vmbo,vakdiploma,voortgezet vakdiploma",
+      "16 jaar,526,00,675,763,860",
+      "17 jaar,602,20,775,874,980",
+      "18 jaar,693,70,892,1003,1131",
+      "19 jaar,800,40,1031,1160,1304",
+      "20 jaar,937,65,1209,1357,1529",
+      "21 jaar,1105,35,1420,1600,1801",
+      "22 jaar,1295,90,1755,1890,1970",
+      "SALARISGROEPEN,A / 2,B / 3,C / 4,D / 5,E / 6,F / 7,G / 8,H / 9,I / 10,J / 11",
+      "0,1524,60,1888,1966,2008,2072,2176,2355,2553,2795,3086",
+      "1,1836,1948,1983,2027,2110,2227,2404,2610,2859,3149",
+      "2,1850,1964,1998,2051,2150,2274,2454,2658,2919,3212",
+      "3,1869,1977,2014,2068,2183,2323,2512,2719,2981,3284",
+      "4,,1992,2027,2091,2226,2371,2560,2776,3041,3346",
+      "5,,,2013,2048,2109,2261,2420,2612,2828,3098,3410",
+      "6,,,,2032,2069,2143,2301,2469,2659,2882,3160,3478",
+      "7,,,,,2053,2089,2174,2370,2544,2718,2934,3217,3544",
+      "8,,,,,,,2990,3284,3609",
+      "9,,,,,,,,3338,3673",
+      "10,,,,,,,,,3740",
+      "This is the CAO table effective July 1, 2016. The wage increase of July 1, 2016 (1.75%) has been processed in the VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, salary group A 1 to 3 functional years, and salary groups B to J. The amounts in the Wet Minimumloon (WML) and A 0 functional years table conform to the WML amounts applicable as of January 1, 2016. If these amounts change, the new statutory amounts apply."
+    ],
+    [
+      "SALARY TABLE for monthly payment from September 1, 2016 to January 1, 2017",
+      "wml,vbo/mavo/vmbo,vakdiploma,voortgezet vakdiploma",
+      "16 jaar,526,00,675,801,898",
+      "17 jaar,602,20,775,912,1018",
+      "18 jaar,693,70,892,1041,1169",
+      "19 jaar,800,40,1031,1198,1342",
+      "20 jaar,937,65,1209,1395,1567",
+      "21 jaar,1105,35,1420,1638,1839",
+      "22 jaar,1295,90,1755,1928,2008",
+      "SALARISGROEPEN,A / 2,B / 3,C / 4,D / 5,E / 6,F / 7,G / 8,H / 9,I / 10,J / 11",
+      "0,1524,60,1888,1966,2008,2072,2176,2355,2553,2795,3086",
+      "1,1836,1948,1983,2027,2110,2227,2404,2610,2859,3149",
+      "2,1850,1964,1998,2051,2150,2274,2454,2658,2919,3212",
+      "3,1869,1977,2014,2068,2183,2323,2512,2719,2981,3284",
+      "4,,1992,2027,2091,2226,2371,2560,2776,3041,3346",
+      "5,,,2013,2048,2109,2261,2420,2612,2828,3098,3410",
+      "6,,,,2032,2069,2143,2301,2469,2659,2882,3160,3478",
+      "7,,,,,2053,2089,2174,2370,2544,2718,2934,3217,3544",
+      "8,,,,,,,2990,3284,3609",
+      "9,,,,,,,,3338,3673",
+      "10,,,,,,,,,3740",
+      "This is the CAO table effective September 1, 2016. The wage increase of September 1, 2016 (EUR 38.00) has been processed in the vocational diploma and advanced vocational diploma tables. The amounts in the Wet Minimumloon (WML) and A 0 functional years table conform to the WML amounts applicable as of January 1, 2016. If these amounts change, the new statutory amounts apply."
+    ],
+    [
+      "SALARY TABLE for monthly payment from January 1, 2017",
+      "wml,vbo/mavo/vmbo,vakdiploma,voortgezet vakdiploma",
+      "16 jaar,526,00,679,805,903",
+      "17 jaar,602,20,779,917,1024",
+      "18 jaar,693,70,897,1047,1175",
+      "19 jaar,800,40,1037,1205,1349",
+      "20 jaar,937,65,1216,1403,1576",
+      "21 jaar,1105,35,1428,1647,1849",
+      "22 jaar,1295,90,1765,1939,2019",
+      "SALARISGROEPEN,A / 2,B / 3,C / 4,D / 5,E / 6,F / 7,G / 8,H / 9,I / 10,J / 11",
+      "0,1524,60,1898,1977,2019,2083,2188,2368,2567,2810,3103",
+      "1,1846,1959,1994,2038,2122,2239,2417,2624,2875,3166",
+      "2,1860,1975,2009,2062,2162,2287,2468,2673,2935,3230",
+      "3,1879,1988,2025,2079,2195,2336,2526,2734,2997,3302",
+      "4,,2003,2038,2103,2238,2384,2574,2791,3058,3364",
+      "5,,,2024,2059,2121,2273,2433,2626,2844,3115,3429",
+      "6,,,,2043,2080,2155,2314,2483,2674,2898,3177,3497",
+      "7,,,,,2064,2100,2186,2383,2558,2733,2950,3235,3563",
+      "8,,,,,,,3006,3302,3629",
+      "9,,,,,,,,3356,3693",
+      "10,,,,,,,,,3761",
+      "This is the CAO table effective January 1, 2017. The wage increase of January 1, 2017 (0.55%) has been processed in the VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, salary group A 1 to 3 functional years, and salary groups B to J. The amounts in the Wet Minimumloon (WML) and A 0 functional years table conform to the WML amounts applicable as of January 1, 2016. If these amounts change, the new statutory amounts apply."
+    ],
+    [
+      "SALARY TABLE for four-week payment from March 1, 2015 to December 1, 2015",
+      "wml,vbo/mavo/vmbo,vakdiploma,voortgezet vakdiploma",
+      "16 jaar,478,20,599,678,764",
+      "17 jaar,547,60,689,777,870",
+      "18 jaar,630,80,793,891,1005",
+      "19 jaar,727,80,916,1030,1158",
+      "20 jaar,852,60,1074,1206,1358",
+      "21 jaar,1005,00,1262,1421,1600",
+      "22 jaar,1178,20,1559,1678,1750",
+      "SALARISGROEPEN,A / 2,B / 3,C / 4,D / 5,E / 6,F / 7,G / 8,H / 9,I / 10,J / 11",
+      "0,1386,20,1678,1747,1783,1840,1933,2091,2268,2483,2742",
+      "1,1631,1730,1762,1801,1874,1978,2136,2319,2540,2798",
+      "2,1644,1745,1775,1822,1910,2021,2181,2361,2593,2854",
+      "3,1660,1757,1789,1836,1939,2064,2232,2415,2648,2917",
+      "4,,1770,1801,1858,1977,2106,2274,2465,2702,2971",
+      "5,,,1788,1819,1874,2009,2149,2321,2512,2753,3028",
+      "6,,,,1805,1837,1903,2043,2194,2362,2560,2808,3089",
+      "7,,,,,1824,1856,1931,2105,2260,2414,2606,2858,3148",
+      "8,,,,,,,2656,2917,3206",
+      "9,,,,,,,,2966,3264",
+      "10,,,,,,,,,3323",
+      "This table was valid from March 1, 2015, with the understanding that the amounts in the Wet Minimumloon (WML) and A 0 functional years table have been adjusted to the amounts applicable as of January 1, 2015, according to the WML. If these amounts change, the new statutory amounts apply."
+    ],
+    [
+      "SALARY TABLE for four-week payment from December 1, 2015 to July 1, 2016",
+      "wml,vbo/mavo/vmbo,vakdiploma,voortgezet vakdiploma",
+      "16 jaar,480,20,610,690,777",
+      "17 jaar,549,80,701,790,885",
+      "18 jaar,633,20,807,907,1023",
+      "19 jaar,730,60,932,1048,1179",
+      "20 jaar,856,00,1093,1227,1382",
+      "21 jaar,1009,00,1284,1446,1628",
+      "22 jaar,1183,00,1586,1708,1781",
+      "SALARISGROEPEN,A / 2,B / 3,C / 4,D / 5,E / 6,F / 7,G / 8,H / 9,I / 10,J / 11",
+      "0,1391,80,1707,1777,1815,1873,1967,2128,2308,2527,2790",
+      "1,1659,1760,1792,1832,1907,2013,2173,2359,2585,2847",
+      "2,1672,1775,1806,1854,1944,2056,2219,2402,2639,2904",
+      "3,1689,1787,1820,1869,1973,2100,2271,2457,2695,2968",
+      "4,,1800,1832,1890,2012,2143,2314,2509,2749,3024",
+      "5,,,1819,1851,1906,2044,2187,2361,2556,2801,3082",
+      "6,,,,1837,1870,1937,2079,2232,2403,2604,2857,3143",
+      "7,,,,,1856,1888,1965,2142,2299,2456,2652,2908,3203",
+      "8,,,,,,,2703,2968,3262",
+      "9,,,,,,,,3018,3320",
+      "10,,,,,,,,,3381",
+      "This is the CAO table effective December 1, 2015. The amounts have been calculated by multiplying the unrounded monthly table amounts by the factor 0.9197. The amounts in the Wet Minimumloon (WML) and A 0 functional years table conform to the WML amounts applicable as of July 1, 2015. If these amounts change, the new statutory amounts apply."
+    ],
+    [
+      "SALARY TABLE for four-week payment from July 1, 2016 to September 1, 2016",
+      "wml,vbo/mavo/vmbo,vakdiploma,voortgezet vakdiploma",
+      "16 jaar,485,60,620,702,791",
+      "17 jaar,556,00,713,804,901",
+      "18 jaar,640,40,821,923,1041",
+      "19 jaar,738,80,948,1067,1200",
+      "20 jaar,865,60,1112,1248,1407",
+      "21 jaar,1020,40,1306,1471,1656",
+      "22 jaar,1196,20,1614,1738,1812",
+      "SALARISGROEPEN,A / 2,B / 3,C / 4,D / 5,E / 6,F / 7,G / 8,H / 9,I / 10,J / 11",
+      "0,1407,40,1737,1808,1846,1905,2002,2165,2348,2571,2838",
+      "1,1688,1791,1824,1864,1941,2048,2211,2400,2630,2896",
+      "2,1701,1806,1838,1887,1977,2092,2257,2444,2685,2954",
+      "3,1719,1818,1852,1902,2007,2136,2310,2500,2742,3021",
+      "4,,1832,1864,1923,2048,2180,2354,2553,2797,3077",
+      "5,,,1851,1884,1940,2079,2225,2402,2601,2850,3136",
+      "6,,,,1869,1902,1971,2116,2271,2445,2650,2907,3199",
+      "7,,,,,1888,1921,2000,2179,2339,2500,2699,2959,3259",
+      "8,,,,,,,2750,3021,3319",
+      "9,,,,,,,,3070,3378",
+      "10,,,,,,,,,3440",
+      "This is the CAO table effective July 1, 2016. The amounts have been calculated by multiplying the unrounded monthly table amounts by the factor 0.9197. The amounts in the Wet Minimumloon (WML) and A 0 functional years table conform to the WML amounts applicable as of January 1, 2016. If these amounts change, the new statutory amounts apply."
+    ],
+    [
+      "SALARY TABLE for four-week payment from September 1, 2016 to January 1, 2017",
+      "wml,vbo/mavo/vmbo,vakdiploma,voortgezet vakdiploma",
+      "16 jaar,485,60,621,737,826",
+      "17 jaar,556,00,713,839,936",
+      "18 jaar,640,40,820,957,1075",
+      "19 jaar,738,80,948,1102,1234",
+      "20 jaar,865,60,1112,1283,1441",
+      "21 jaar,1020,40,1306,1506,1691",
+      "22 jaar,1196,20,1614,1773,1847",
+      "SALARISGROEPEN,A / 2,B / 3,C / 4,D / 5,E / 6,F / 7,G / 8,H / 9,I / 10,J / 11",
+      "0,1407,40,1736,1808,1847,1906,2001,2166,2348,2571,2838",
+      "1,1689,1792,1824,1864,1941,2048,2211,2400,2629,2896",
+      "2,1701,1806,1838,1886,1977,2091,2257,2445,2685,2954",
+      "3,1719,1818,1852,1902,2008,2136,2310,2501,2742,3020",
+      "4,,1832,1864,1923,2047,2181,2354,2553,2797,3077",
+      "5,,,1851,1884,1940,2079,2226,2402,2601,2849,3136",
+      "6,,,,1869,1903,1971,2116,2271,2445,2651,2906,3199",
+      "7,,,,,1888,1921,1999,2180,2340,2500,2698,2959,3259",
+      "8,,,,,,,2750,3020,3319",
+      "9,,,,,,,,3070,3378",
+      "10,,,,,,,,,3440",
+      "This is the CAO table effective September 1, 2016. The amounts have been calculated by multiplying the unrounded monthly table amounts by the factor 0.9197. The amounts in the Wet Minimumloon (WML) and A 0 functional years table conform to the WML amounts applicable as of January 1, 2016. If these amounts change, the new statutory amounts apply."
+    ],
+    [
+      "SALARY TABLE for four-week payment from January 1, 2017",
+      "wml,vbo/mavo/vmbo,vakdiploma,voortgezet vakdiploma",
+      "16 jaar,485,60,624,741,830",
+      "17 jaar,556,00,717,843,941",
+      "18 jaar,640,40,825,963,1081",
+      "19 jaar,738,80,953,1108,1241",
+      "20 jaar,865,60,1118,1290,1449",
+      "21 jaar,1020,40,1313,1515,1701",
+      "22 jaar,1196,20,1623,1783,1857",
+      "SALARISGROEPEN,A / 2,B / 3,C / 4,D / 5,E / 6,F / 7,G / 8,H / 9,I / 10,J / 11",
+      "0,1407,40,1746,1818,1857,1916,2012,2178,2361,2585,2854",
+      "1,1698,1801,1834,1874,1951,2059,2223,2414,2644,2912",
+      "2,1711,1816,1848,1897,1988,2103,2269,2458,2699,2970",
+      "3,1728,1828,1862,1912,2019,2148,2323,2514,2757,3037",
+      "4,,1842,1874,1934,2059,2193,2367,2567,2812,3094",
+      "5,,,1862,1894,1950,2091,2238,2415,2615,2865,3153",
+      "6,,,,1879,1913,1982,2128,2283,2459,2665,2922,3216",
+      "7,,,,,1899,1932,2010,2192,2353,2513,2713,2975,3277",
+      "8,,,,,,,2765,3037,3337",
+      "9,,,,,,,,3087,3397",
+      "10,,,,,,,,,3459",
+      "This is the CAO table effective January 1, 2017. The amounts have been calculated by multiplying the unrounded monthly table amounts by the factor 0.9197. The amounts in the Wet Minimumloon (WML) and A 0 functional years table conform to the WML amounts applicable as of January 1, 2016. If these amounts change, the new statutory amounts apply."
+    ],
+    [
+      "Article 34: Salary Increase in Connection with Age",
+      "Increases related to age are granted from the start of the payment period in which the employee's birthday falls. The foregoing does not apply if the same deviating arrangement was in force for all employees, or is determined in consultation with the works council or the employee delegation."
+    ],
+    [
+      "Article 35: Salary Increase in Connection with Functional Years",
+      "Increases based on functional years are granted once a year, but no later than in the payment period in which a new functional year begins, until the maximum number of functional years in the relevant salary group has been reached. If the same deviating arrangement was in force for all employees, or is determined in consultation with the works council or the employee delegation, a functional year increase can be granted in a period of up to 6 months after, and with retroactive effect to, the payment period in which a new functional year begins."
+    ],
+    [
+      "Article 36: Change of Function; Retraining, Re-schooling, and Further Training",
+      "Employees who will perform a function classified in a higher salary group will at least maintain their salary. The provision in paragraph 1 applies mutatis mutandis to employees who will perform another function classified in the same salary group. Employees who will perform a function classified in a lower salary group will continue to receive the salary they earned in the previous function for at least three payment periods. Subsequently, they may or may not be gradually classified into the new salary group. Notwithstanding the provisions in paragraph 3, when an employee aged 55 or older is classified into a lower salary group, the difference between the old and new salary will be paid out in the form of an allowance. Salary increases will only be calculated on the new salary. The allowance will remain unchanged. For employees who are retrained upon commencing employment, no salary scale applies during the first three payment periods. Retraining means an education to regain wholly or partially lost competence in performing a specific function that the employee to be trained performed. For employees who are re-schooled upon commencing employment, no salary scale applies during the first six payment periods, with the understanding that this term of six to twelve payment periods will be extended if re-schooling takes place for a function classified in one of the salary groups higher than D. For employees who will receive further training upon commencing employment to acquire additional professional knowledge, respectively skills for performing their function, no salary scale will apply during the first three payment periods, if the further training takes place during daily working hours. Employees already employed who, at the employer's request, follow a course for retraining, re-schooling, or further training, as referred to in paragraphs 5 to 7, during daily working hours, will not experience a salary decrease during the course duration."
+    ],
+    [
+      "Article 36a: Salary Consequences of FC-Handboek Implementation",
+      "Employees who have not yet reached the adult age for their profession: If an employee who has not yet reached the adult age for their profession is classified into a higher functional group, they will be classified into the salary group that matches their classification and age. Their new salary must be at least equal to their current salary. In case there is no corresponding age, the employee will be scaled in with fictitious functional years such that the table salary is equal to the current salary. If the current salary appears to be between the table salaries corresponding to two consecutive functional years, the salary corresponding to the table salary of the lower functional year will be granted. The difference between the current salary and the table salary belonging to their classification will be granted in the form of a personal allowance. Collective salary increases will be granted on the personal allowance. Individual salary increases will be offset against the personal allowance. Employees who have reached the adult age for their profession: If an employee who has reached the adult age for their profession is classified into a higher functional group, they will be classified into the salary group that matches their classification, such that they receive a fictitious number of functional years whereby their new salary is at least equal to their current salary. If the employee has a salary lower than the table salary at 0 functional years, the salary will be increased such that it is equal to the table salary belonging to 0 functional years. If the employee has a salary that is between the table salaries of two consecutive functional years of their new salary group, the salary will be increased such that it is equal to the table salary belonging to the next higher functional year. If an employee who has reached the adult age for their profession is classified into a lower functional group, they will be classified into the salary group that matches their classification, such that their new salary is equal to their current salary. If the employee's current salary falls between the table salaries of two consecutive functional years, the salary corresponding to the table salary of the lower functional year will be granted. The difference between the (lower) table salary and the current salary will be granted in the form of a personal allowance. Collective salary increases will be granted on the personal allowance. Individual salary increases will be offset against the personal allowance."
+    ],
+    [
+      "Article 37: Remuneration Systems",
+      "The employer who intends to introduce, change, or abolish a remuneration system (tariff, merit-rating, etc.) in (a part of) the company, will consult with the works council or the employee delegation about this. At the request of the employer or of one or more employees or the works council or the employee delegation, the employer organizations and employee organizations will be invited to attend the consultation to obtain advice regarding the subject referred to in the previous paragraph. If the consultation between the employer and the works council or the employee delegation does not lead to agreement, but the employer nevertheless wishes to make a decision as referred to in paragraph 1, he will seek advice from the company council, in which case the employer and the works council or the employee delegation must act in accordance with the advice given by the company council."
+    ],
+    [
+      "Article 37a: Basic Salary for Representatives",
+      "For representatives and/or salespeople, the basic salary per salary payment period is at least the minimum wage established by or pursuant to the Minimum Wage Act. For representatives and/or salespeople, general percentage salary increases, as well as one-time payments, will be calculated over at least the basic salary per salary payment period."
+    ],
+    [
+      "Article 39: Union Contribution",
+      "The employee can submit a request to the employer for a reduction of the gross wage in December equal to the costs paid by him in the relevant calendar year for membership of an employee organization, as further specified in the Regulation on Supplementing the Employment Agreement. The employer can grant this request in exchange for a cost reimbursement equal to the aforementioned paid membership costs. If the request is not granted, the employer must pay for a study day in which the employee participates and which day is demonstrably organized by one of the employee organizations. For the year 2015, CAO parties recommend that the employee can submit a request to the employer for a reduction of the gross wage in December 2015 equal to the costs paid by him in the relevant calendar year for membership of an employee organization, as further specified in the Regulation on Supplementing the Employment Agreement."
+    ],
+    [
+      "Article 41: Application of Salary Increase",
+      "The applicable salary for the employee will be increased by 1.75% on December 1, 2015, by 1.75% on July 1, 2016, and by 0.55% on January 1, 2017. The employer pays employees up to 23 years of age who do not possess a diploma as referred to in Article 32a paragraph 2, as well as employees classified in salary group A, from the date on which this employee becomes entitled to a salary increase due to age, at least the salary applicable to him on that date, increased by the difference between the table salary belonging to his age and the table salary belonging to his new age. Employees aged 50 or older can, after consultation with the employer, convert the salary increase wholly or partly into a maximum of 22 days (176 hours) of free time. If the employee wishes to obtain more than 22 days (176 hours) of free time per year through conversion of the salary increase(s), this can only be done in consultation with the employer. The calculation of the amount of free time that can be obtained maximally with a salary increase is done according to the following three steps: 1. Salary + Salary increase(s) = New Salary; 2. 100 - ((Salary / New Salary) x 100) = Maximum conversion percentage; 3. Maximum conversion percentage x 19.76 hours = Maximum amount of free time. If the aforementioned conversion is used, the salary applicable to the employee, including the salary increase(s) referred to in paragraph 1, will be reduced by a gross reduction corresponding to the part of the salary increase converted into free time. A recalculation must be made annually."
+    ],
+    [
+      "Article 41a: One-time Payment",
+      "The employer pays in February 2016 to the employee who is employed by the employer on February 1, 2016, a one-time payment of 0.65% of 12 times the employee's salary for February 2016, respectively a one-time payment of 0.65% of 13 times the four-week salary for the period in which February 1, 2016, falls."
+    ],
+    [
+      "Article 45: Shift Allowance",
+      "The employer pays employees working in shifts an allowance of 14% of the monthly salary or the four-week salary."
+    ]
+  ],
+  "pension_information": [
+    [
+      "Article 13a: End of Employment",
+      "The employment for an indefinite period ends automatically, meaning without any notice being required, on the first day on which the state old-age pension (AOW) commences. Employees who will receive a pension payment from the Pensioenfonds Metaal en Techniek must notify the employer at least three months before the effective date of the payment."
+    ],
+    [
+      "Article 15: Employment with Employees who have Reached AOW-Eligible Age or an Employee who Receives a Pension Payment from the Pensioenfonds Metaal en Techniek",
+      "An employment contract can be entered into for a fixed term or for an indefinite period with an employee who has reached the AOW-eligible age or with an employee who receives a pension payment from the Pensioenfonds Metaal en Techniek. If a fixed-term employment contract has been continued for a fixed term, no prior notice is required for its termination. Likewise, no prior notice is required if two or more fixed-term employment contracts have succeeded each other with interruptions. If the employment contract has been entered into for an indefinite period, or if a fixed-term employment contract is continued without objection after the expiry of this period, the employment contract can be terminated by notice, with the understanding that Article 16 paragraph 2 remains inapplicable. Otherwise, the provisions of this CAO apply to the employment contract, unless otherwise agreed in writing. It is recommended to enter into employment contracts for (each time) a specific, short period of at least three months and at most one year. If notice is required, the total duration of the employment must be taken into account for determining the notice period (see Article 16 CAO and 7:672 BW), and the consent of the UWV Werkbedrijf is also required. Since Article 33 of the CAO applies to employees below the age of 65, the remuneration of employees who have exceeded this age must be explicitly agreed upon. The intention is that the employee's net income for equal work does not decrease. The other CAO provisions remain applicable, unless otherwise agreed in writing. For employees aged 65 and older, different rules may apply regarding social security and/or pension than for employees younger than 65. This article comes into effect on January 1, 2016."
+    ],
+    [
+      "Article 15b: Employment with Employees with Part-time Pension",
+      "An employee who is 58 years or older and has not yet reached the AOW-eligible age can take part-time pension under the following conditions: the employee must submit a request to the employer six months before the intended date; the part-time pension must be at least (on average) 4 hours (usually half a day) per week and a maximum of 50% of the original weekly working hours. The employer grants the request unless serious business or service interests oppose it. If a dispute arises regarding the aforementioned request, advice can be sought from the Vakraad. The employment contract will be automatically adjusted pro rata after the request is granted, and Article 2a paragraph 2 applies mutatis mutandis."
+    ],
+    [
+      "Article 42: Payment of Overtime",
+      "At the employee's choice, overtime and the allowances thereon are compensated in one of the following ways: 1. overtime and allowances are compensated in money; 2. overtime and allowances are converted for pension purchase; 3. overtime is compensated in paid free time, allowances in money or by deposit for pension purchase."
+    ],
+    [
+      "Article 65a: Supplementary Disability Pension",
+      "There is an N.V. 'N.V. Schadeverzekering Metaal en Technische Bedrijfstakken'. The purpose of the foundation is, in accordance with and under the conditions further specified in the relevant regulations, to offer and provide damage insurance to cover financial risk as a result of disability. The N.V. also aims to collect and manage funds for financing the aforementioned purposes. The implementation of the purposes described in paragraph 2 is further regulated in the CAO Supplementary Disability Pension Metal and Technology Industries agreed upon in addition to this CAO. The employer can recover a maximum of 50% of the differentiated premium for the WGA, reduced by the interest rate surcharge, from the employee."
+    ],
+    [
+      "Article 69: Pension Fund",
+      "In this article: 'pension fund' means: Stichting Pensioenfonds Metaal en Techniek, located in The Hague; 'pension regulations' means: the pension regulations of the pension fund, as approved by the Minister of Social Affairs and Employment; 'employee' means the person referred to in Article 2, who is a participant within the meaning of the pension regulations. Except for the cases mentioned in the pension regulations, the employer owes the premium established by said regulations for each employee. The employer has no right of recovery from the employee for the part of the premium related to the so-called VPL-part. For the remaining premium, the employer has a right of recovery from the employee for half of the corresponding premium percentage minus a percentage derived from 0.57% of the industry's wage sum. This is translated by the Stichting Pensioenfonds Metaal en Techniek into a premium percentage of the premium base. The employer notifies the Stichting Pensioenfonds Metaal en Techniek of the death of an employee to obtain any widow's and/or orphan's pension. For current deduction percentages according to paragraph 2, see the Vakraad website: www.vakraad.nl."
+    ],
+    [
+      "Article 70: Death Benefit",
+      "Upon the death of an employee, the employer is obliged to provide a payment to the surviving relatives as referred to in Article 7:674 BW, amounting to the wage the employee was entitled to immediately prior to their death. This payment relates to the period from the day after death up to and including the last day of the second month after the month in which the death occurred. For the application of this article, surviving relatives mean the longest-living spouse or registered partner with whom the employee did not live permanently separated, or in their absence, the minor children to whom the deceased was related by family law, and in their absence, the person with whom the employee lived in a family context and whose living expenses he largely provided for. Unmarried cohabitation as referred to in the first sentence exists if two unmarried persons maintain a joint household, with the exception of first-degree blood relatives. A joint household as referred to in the second sentence exists if the persons concerned have their main residence in the same dwelling and they demonstrate care for each other by contributing to household expenses or otherwise providing for each other's care. The death benefit, referred to in paragraph 2, can be reduced by the amount of the benefit that the surviving relatives are entitled to due to the employee's death under any legally prescribed sickness or disability insurance and under the Supplementary Benefits Act."
+    ]
+  ],
+  "leave_information": [
+    [
+      "Article 18a: Forms of Working Time Reduction",
+      "The choice of the form of working time reduction as well as the change of choice must be made in consultation with the works council. In the absence of a works council, the working time reduction is established after consultation with the employee delegation. Furthermore, for companies listed by the employee organizations with the Federatie Werkgeversorganisaties Metaaltechniek, there is also the possibility to change the choice in consultation with the employee organizations. If the employee starts working part-time, the employment contract must state whether ADV (working time reduction) is enjoyed in time or in money. ADV-time cannot be scheduled on Sundays and public holidays as referred to in Article 19 paragraph 1. Options: ADV-blocks: 8 consecutive ADV-hours per 4 weeks; 4 consecutive ADV-hours per 2 weeks; 2 consecutive ADV-hours per week. Flexible working time: a week of at least 34 and a maximum of 45 hours, with a minimum of 0 hours and a maximum of 9 hours per day. ADV-days: Only for employers performing work on construction sites. (Parts of) ADV-days are, unless otherwise agreed in consultation with the works council or the employee delegation, set on those (parts of) days when the construction site is inaccessible due to ADV. Any remaining (parts of) ADV-days must be determined in consultation with the works council or the employee delegation. Free choice: Another form of working time reduction can be chosen in consultation with the works council or the employee delegation, or in consultation with the employee organizations in the cases referred to in paragraph 1, penultimate sentence, of this article. If this is used, the chosen form of working time reduction must be reported to the Vakraad."
+    ],
+    [
+      "Article 18b: Settlement of Working Time Reduction",
+      "If, at the end of the employment, the employee is still entitled to ADV-time or has taken too much ADV-time, this will be settled in time or in money. If an employee is incapacitated for work during ADV-time, this does not need to be compensated. For settlement in money, Article 31 paragraph 1, increased by any applicable shift allowance, applies. If work is performed during ADV-time, replacement ADV-time is determined in consultation with the employee. The replacement ADV-time must be taken no later than in the following calendar quarter."
+    ],
+    [
+      "Article 19: Work on Sundays and Public Holidays",
+      "As a rule, no work will be performed on Sundays, as well as on New Year's Day, 2nd Easter Day, Ascension Day, 2nd Pentecost Day, both Christmas Days, the national holiday (April 27). If (in any year) May 5 is declared a national holiday by CAO parties on which no work is performed, then (in that year) the 24th vacation day will be collectively set on May 5 if it falls on a day on which the employee would normally work according to his work schedule. If an employee declares conscientious objections to working on Sundays, generally recognized Christian holidays, Roman Catholic holidays generally celebrated as Sundays, or Good Friday, he cannot be compelled to perform such work."
+    ],
+    [
+      "Article 30: Exchange",
+      "The employee can, according to the rules described in this article, exchange sources (ADV-hours, vacation hours, allowances, or other funding sources) for goals (money, or tax-facilitated schemes). The following sources can be exchanged for the stated goals: ADV-hours and/or vacation hours can be exchanged for money, or tax-facilitated schemes, according to legal possibilities. The allowances and other funding sources mentioned in this CAO can be exchanged for money (one-time payment), or used to buy free hours as referred to in paragraph 4 below. As of January 1, 2017, the employer has the right to buy 8 vacation hours (usually one vacation day) from the employee. The employer has the right to buy these structurally from the employee if the employee already had more than 192 hours (usually 24 vacation days) at individual or company level. The employer can decide on both the first and second sentences. For employees with shorter working hours, the provisions of Article 2a paragraph 2 CAO apply. Employees with working hours as referred to in Article 18 paragraph 1 first sentence can buy a maximum of 64 hours of free time per calendar year. For employees with shorter working hours, the provisions of Article 2a paragraph 2 CAO apply. The exchange of sources for goals takes place in consultation between the employee and the employer, with the exception of the decision to purchase (a maximum of 64 hours) of free time. The employee can decide this himself. The exchange agreement must be known to the employer and employee before January 1 of the year in which the exchange agreement applies and is valid for one calendar year. For each new calendar year, an exchange agreement as referred to in paragraphs 3 and 4 can be re-established. When an exchange involves a conversion from time to money or vice versa, the exchange rate is 0.607% of the monthly salary per hour as referred to in Article 31 CAO (0.658% per hour of the four-week salary). For settlement, the employee can choose from the following options: The costs of buying free time pursuant to paragraph 4, calculated based on the exchange rate from paragraph 7, are deducted from allowances to be paid to the employee, such as, and insofar as applicable, overtime allowance, shift allowance, holiday allowance, day window allowance, all insofar as the allowance is not included in the salary as referred to in Article 31 CAO. If the amount of the allowance(s) is insufficient to cover the free time, the deduction takes place from the salary in the period(s) in which the free time is taken. In case of payment for the sale of free time, the payment takes place in the period(s) in which work is performed on these days. Funds obtained from the sale of free time can also be used for tax-facilitated schemes. The costs or benefits, calculated based on the exchange rate from paragraph 7, associated with the exchange for the employee, are deducted from the salary payment or paid out in equal parts during the calendar year with the payment of the monthly salary or the four-week salary. Another settlement method can be chosen in consultation between employer and employee. An exchange agreement must be effected in the calendar year. If it appears that at the end of a calendar quarter a (part of the) exchange agreement cannot be effected or not fully effected due to the employee's incapacity for work, settlement takes place at the end of that calendar quarter. Deducted amounts for which no leave could be taken in that quarter are then paid out with the salary payment; extra paid amounts for which no extra work could be performed in that quarter are then deducted or not paid out. Employer and employee can make other agreements about this in consultation. An exchange agreement has no effect on the salary as referred to in Article 31 for the calculation of income-related components regulated by CAO, such as the overtime allowance and the day window allowance, with the exception of the holiday allowance as referred to in Article 59. An exchange agreement has no effect on the salary as referred to in Article 31 for the calculation of income-related components not regulated by CAO, such as a thirteenth month or a profit-sharing scheme, unless other agreements are made in consultation between the employer and OR/PVT, the employee delegation, or in their absence, the employee organizations."
+    ],
+    [
+      "Article 30a: Four-Day Workweek",
+      "The employee can, by using his free time rights, request the employer to adjust his workweek to four days while maintaining full-time employment, insofar as the balance of these free time rights allows. The employee can use the sources from Exchange but also vacation days from Articles 50 and 51 of the CAO and other time elements he is entitled to. The employer will, within four weeks of the employee's request, communicate his decision to the employee with a substantive justification if the request is rejected."
+    ],
+    [
+      "Article 41: Application of Salary Increase",
+      "Employees aged 50 or older can, after consultation with the employer, convert the salary increase wholly or partly into a maximum of 22 days (176 hours) of free time. If the employee wishes to obtain more than 22 days (176 hours) of free time per year through conversion of the salary increase(s), this can only be done in consultation with the employer."
+    ],
+    [
+      "Article 42: Payment of Overtime",
+      "At the employee's choice, overtime and the allowances thereon are compensated in one of the following ways: ... 3. overtime is compensated in paid free time, allowances in money or by deposit for pension purchase. Per calendar year, ten days can be compensated in free time rights in the manner referred to above under sub 3; then the remaining overtime can only be compensated in time in consultation with the employer. If there is overtime, the employee must make this choice in writing at the beginning of each quarter for the overtime occurring in that quarter. Notwithstanding Article 42 paragraph 5a sub 3, the allowance can also be compensated in paid free time in consultation between employer and employee. If the employee chooses the option mentioned under Article 42 paragraph 5a sub 3, the following provisions apply: The paid free time rights acquired through overtime are taken in consultation between employer and employee. If, at the end of the calendar year, the free time rights acquired through overtime have not been taken, they can, at the employee's request, be paid out, used for pension purchase, or carried over to the next calendar year. In the latter case, the employer is obliged to enable the employee to take his balance from the previous calendar year as paid free time in the first quarter. The allowance is calculated by reducing the remunerations mentioned in Article 42 paragraph 2 or any higher remunerations applicable in the company by 0.658% per hour of the four-week salary or by 0.607% per hour of the monthly salary."
+    ],
+    [
+      "Article 44: Payment of Travel Hours",
+      "When performing project work, if the working time including agreed breaks and travel time (only the part of the travel time that the employee had to travel longer than he normally needs to the place for which the employment was entered into) is more than 10.5 hours per day, the employee has the right to compensate the time exceeding 10.5 hours in free time. The maximum travel time to be compensated in free time in connection with project work is 6 days per year. The maximum travel time to be compensated in free time in connection with project work and overtime combined is 12 days per year. The remaining hours can only be compensated in time in consultation with the employer. Taking leave takes place in accordance with Article 42 paragraph 5a of this CAO."
+    ],
+    [
+      "Article 49: Definition of Vacation Day",
+      "A vacation day in the following articles means a day on which the employee would normally work according to his work schedule if he were not on vacation on that day."
+    ],
+    [
+      "Article 50: Vacation Entitlements",
+      "Employees for whom a five-day work schedule applies based on an average weekly working time of 38 hours calculated over a maximum period of one year, receive 192 vacation hours per year (usually 24 vacation days). Until January 1, 2006, the employee as referred to above received 200 vacation hours per year (usually 25 vacation days). As of January 1, 2017, the aforementioned paragraph 1 will cease to apply and the following will apply: Employees for whom a five-day work schedule applies based on an average weekly working time of 38 hours calculated over a maximum period of 1 year, receive 200 vacation hours (usually 25 days). Existing agreements at company or individual level that lead to vacation entitlements exceeding the number of vacation hours specified in this CAO are not affected by the amended description of vacation entitlements in hours in this CAO and will be increased by 8 vacation hours (usually one vacation day) as of January 1, 2017. For employees with a shorter average weekly working time, the employee is entitled to proportional vacation. For employment during part of the calendar year, the employee is entitled to proportional vacation."
+    ],
+    [
+      "Article 51: Extra Vacation Entitlements for Older Employees (Old Scheme before Jan 1, 2017)",
+      "The employee who, on June 30 or December 31 of the current year, has been continuously employed by the employer for at least six months, acquires, in addition to the vacation mentioned in Article 50, at each of the aforementioned times: a. 12 vacation hours (usually one and a half vacation days) if he is then 50 years or older; b. 16 vacation hours (usually two vacation days) if he is then 55 years or older; c. 28 vacation hours (usually three and a half vacation days) if he is then 57 1/2 years; d. 40 vacation hours (usually five vacation days) if he is then 58 years or older; e. 48 vacation hours (usually six vacation days) if he is then 60 years; f. 52 vacation hours (usually six and a half vacation days) if he is then 61 years; g. 56 vacation hours (usually seven vacation days) if he is then 62 years; h. 60 vacation hours (usually seven and a half vacation days) if he is then 63 years; i. 64 vacation hours (usually eight vacation days) if he is then 64 years. For employees who turn 61 on or after July 1, 2012, the provisions of paragraph 1 under a to f apply. Notwithstanding the provisions of paragraph 1, for employees who are 61 years or older on June 30, 2012, and have been continuously employed by the employer for at least six months, they acquire no more vacation hours than the number of vacation hours they were entitled to on June 30, 2012, based on the provisions of paragraph 1, in addition to the vacation mentioned in Article 50, on each June 30 and December 31 of the current year."
+    ],
+    [
+      "Article 51: Extra Vacation Entitlements for Older Employees (New Scheme from Jan 1, 2017)",
+      "As of January 1, 2017, the following applies: The employee who, on June 30 or December 31 of the current year, has been continuously employed by the employer for at least six months, acquires, in addition to the vacation mentioned in Article 50, at each of the aforementioned times: a. 4 vacation hours (usually half a vacation day) if he is then 53 years or older; b. 8 vacation hours (usually one vacation day) if he is then 55 years or older; c. 16 vacation hours (usually two vacation days) if he is then 57 years; d. 32 vacation hours (usually four vacation days) if he is then 58 years or older; e. 40 vacation hours (usually five vacation days) if he is then 60 years; f. 48 vacation hours (usually six vacation days) if he is then 61 years or older; h. 50 vacation hours (usually six and a quarter vacation days) if he is then 65 years. Transition arrangement: The number of extra vacation rights that the employee aged 50 or older had on the reference date of December 31, 2016, he retains minus 4 vacation hours (usually half a day) per reference date until he starts receiving more hours based on the extra vacation rights of this article per reference date. From that moment on, that new rule applies to him. If the employee is fully incapacitated for work for more than 12 months on a reference date (June 30 or December 31), he does not acquire any extra vacation hours (usually vacation days) at that moment."
+    ],
+    [
+      "Article 52: Deduction of Vacation Day for Second Sick Leave",
+      "For employees who report sick for the second time in a calendar year, other than due to pregnancy and/or childbirth, the employer will consider one day of absence due to incapacity for work as a leave day taken by the employee. The number of hours to be deducted from the employee's vacation balance is equal to the number of hours the employee would have worked according to his work schedule on the first day of incapacity for work, with a maximum of 8 hours."
+    ],
+    [
+      "Article 53: Limitation of Vacation Entitlements",
+      "The employee does not accrue vacation for the period during which he is not entitled to his salary due to not performing the agreed work. Notwithstanding the provisions in paragraph 1, the employee does accrue vacation for the period during which he is not entitled to salary: a. in the cases as mentioned in Articles 62 paragraph 1 sub b and 63, b. in the case of an employee who on May 1 of the calendar year: has not yet reached the age of 18, does not perform the agreed work due to attending education for which the employer has provided the opportunity. Female employees accrue vacation for the period during which they are unable to perform the agreed work due to pregnancy and childbirth. The vacation entitlements referred to in paragraph 2 expire if the employment is terminated by the employee before work is resumed, unless termination of employment occurs based on a written medical advice to that effect."
+    ],
+    [
+      "Article 54: Continuous Vacation",
+      "Continuous vacation is generally taken between April 30 and October 1 and comprises, unless business interests oppose it, 21 or more calendar days. If business interests oppose a continuous vacation of 21 or more calendar days, the continuous vacation comprises at least 14 or more calendar days. The determination of continuous vacation is made by the employer in consultation with the employee concerned, provided the employee requests it in time and his entitlements are sufficient. Before January 1, the employer can, after consultation with the works council or the employee delegation, determine when a continuous vacation will be taken collectively. In individual cases, this can be deviated from in consultation between the employer and the employee concerned. For companies with a legally mandatory works council, the consent of the works council is required for determining a collective continuous vacation."
+    ],
+    [
+      "Article 55: Determining Leave Days",
+      "The determination of individual leave days is made by the employer in consultation with the employee, provided the employee requests them at least two working days in advance and his entitlements are sufficient. Religious holidays for Dutch and foreign employees, May 1, and other holidays, other than those mentioned in Article 19 paragraph 1, on which time off is taken, count as individual leave days. Except for the provisions in paragraph 3, the employer is authorized, after consultation with the works council or the employee delegation, to determine a maximum of three collective leave days. The determination of collective leave days is made as early as possible. The employer who performs work on a construction site is authorized, after consultation with the works council or the employee delegation, to determine that more than three leave days are taken collectively."
+    ],
+    [
+      "Article 55a: Calculation of Taken Vacation Days",
+      "If the employee takes vacation on a day he would normally work according to his work schedule, his vacation balance is reduced by the number of hours he would normally work according to his work schedule."
+    ],
+    [
+      "Article 56: Continued Payment of Salary During Vacation",
+      "The employee retains the right to continued payment of salary during the enjoyment of his entitled vacation, increased by any applicable shift allowance. If a collective vacation applies in a company, the employee whose entitlement to this vacation is insufficient and who cannot be employed, retains the right to continued payment of salary, increased by any applicable shift allowance. The same applies to collective leave days."
+    ],
+    [
+      "Article 57: Settlement of Excess or Insufficient Vacation Days",
+      "During employment, the employer can have the employee make up for excess vacation days/hours taken or deduct them from future vacation accrual. Vacation days/hours not yet taken cannot be replaced by a cash payment during employment. At the end of employment, the employer can settle excess vacation days/hours taken by the employee with what he owes to this employee, if the termination of employment occurs at the employee's request. Upon termination of employment, the employee is entitled to compensation for insufficient vacation days/hours taken by him. For the amount of compensation, Article 31 paragraph 1, increased by any applicable shift allowance, applies mutatis mutandis. Upon termination of employment due to an urgent reason or during the probation period, excess or insufficient vacation days/hours taken by the employee will be settled in money. For representatives and/or salespeople, the calculation of compensation for excess or insufficient vacation days/hours taken is based on the basic salary, increased by earned commission, regardless of the payment date of this commission. Commission is only included in the calculation if there is a right to commission for the vacation days/hours for which compensation is paid. Earned commission means the commission earned during the last 12 calendar months immediately preceding the date of termination of employment, converted to the number of vacation days/hours for which compensation is to be calculated. In case of incapacity for work during the last 12 calendar months immediately preceding the date of termination of employment, the last 12 calendar months during which the function was actually performed while fit for work will apply as the last 12 calendar months. At the end of employment, the employer provides the employee with a written statement showing how many vacation days/hours the employee has not taken but has been paid for."
+    ],
+    [
+      "Article 58: Expiry of Vacation Entitlements",
+      "The employee who is incapacitated for work at the start of his determined continuous vacation or of one or more of his determined leave days/hours, receives the vacation days/hours he could not use at another time, but no later than five years after the last day of the calendar year in which the entitlement to vacation arose. If employer and employee disagree on whether or to what extent the employee could have used vacation days/hours, the most diligent party can submit the dispute to the Vakraad for decision. Notwithstanding the provisions of Article 7:640a BW, the employee can save vacation hours (days) in accordance with the following paragraphs. The employee can save a maximum of 26 times the agreed average weekly working hours in vacation hours (days) over a period of five years for an individual purpose to be determined by him. The employee who wishes to use the saved vacation hours (days) referred to here for a period of three weeks or less must notify the employer at least three months prior to the start of the vacation hours (days). If this period is longer than three weeks, the employee must notify the employer at least six months prior to the start of these vacation hours (days)."
+    ],
+    [
+      "Article 59: Holiday Allowance",
+      "The employee is entitled, taking into account the provisions of Article 60, to a holiday allowance of 8% of what he has earned since the last preceding July 1. In the earnings referred to in the previous sentence, unless another arrangement exists in the company, the following are excluded: overtime, temporary short-time work, travel hours falling outside daily working hours, expense reimbursements, the thirteenth month, the day window allowance if it has been paid for less than 30 days per year, profit-sharing schemes, etc., and one-time payment(s). Remunerations in connection with remuneration systems as referred to in Article 37 do belong to the earnings referred to in the first sentence of this paragraph. The holiday allowance is due on June 30, or on the date of termination of employment. The holiday allowance is reduced by a proportional part of the amount specified in paragraph 1: a. for the time the employee takes off at his own expense; b. for the time the employee has not performed his work since the last preceding July 1, other than due to incapacity for work or short-time work, whereby the first month is disregarded. For representatives, salary as referred to in paragraph 1 means: the basic salary for the period July 1/June 30 + the commission paid in that period. The holiday allowance due for representatives is not higher than 8% of three times the statutory minimum wage per year."
+    ],
+    [
+      "Article 60: Minimum Holiday Allowance",
+      "The employee who is employed on March 1, 2015, or commences employment thereafter, and who has reached the age of 23 but not the AOW-eligible age on June 30, 2015, receives a holiday allowance of at least EUR 156.24 per month (EUR 143.69 per four-week period) in the period from March 1, 2015, to December 1, 2015. The employee who is employed on December 1, 2015, or commences employment thereafter, and who has reached the age of 23 but not the AOW-eligible age on June 30, 2015, receives a holiday allowance of at least EUR 158.97 per month (EUR 146.20 per four-week period) in the period from December 1, 2015, to July 1, 2016. The employee who is employed on July 1, 2016, or commences employment thereafter, and who has reached the age of 23 but not the AOW-eligible age on June 30, 2016, receives a holiday allowance of at least EUR 161.75 per month (EUR 148.76 per four-week period) in the period from July 1, 2016, to January 1, 2017. The employee who is employed on January 1, 2017, or commences employment thereafter, and who has reached the age of 23 but not the AOW-eligible age on June 30, 2016, receives a holiday allowance of at least EUR 162.64 per month (EUR 149.58 per four-week period) in the period from January 1, 2017."
+    ],
+    [
+      "Article 61: Short Leave",
+      "With exclusion of the provisions of the third and fourth paragraphs of Article 7:629 of the Civil Code, in case of absence, insofar as this is necessary within daily working hours, with continued payment of salary, time off is granted for the duration stated below: a. for four consecutive days for: death of the life partner, a cohabiting child or foster child; b. for two consecutive days for: marriage or registered partnership of the employee; c. for one day for: birth of the life partner; adoption by the employee; marriage or registered partnership of a parent, parent of the life partner, child, grandchild, brother, sister, brother and/or sister of the life partner; death of a parent, life partner of the parent, parent of the life partner, non-cohabiting child or foster child, brother or sister; attendance at the funeral or cremation of a parent, life partner of the parent, parent of the life partner, non-cohabiting child or foster child, brother or sister; death or attendance at the funeral or cremation of a grandparent of the employee or of his life partner, grandchild, son-in-law, daughter-in-law, brother and/or sister of the life partner, as well as the life partner of (the latter) brother or sister; 25th and 40th wedding anniversary of the employee; medical examination for compulsory military service, whereby continued payment of salary only needs to take place if the employee does not receive compensation from the Ministry of Defense; profession of a child, brother or sister or priestly ordination of a child or brother; 25th, 40th, 50th, and 60th wedding anniversary of the parents, or of the parents of the life partner; d. for the time necessary for taking an exam, including a maximum of one re-exam for a diploma or certificate under the Education and Vocational Education Act; for the time necessary for taking a vocational exam for another recognized diploma - provided this is in the interest of the company - if an absence of no longer than two days is necessary; for a longer period to be reasonably determined by the employer if an exam as referred to in the previous sentence requires an absence of more than two days; e. for a period to be reasonably determined by the employer up to a maximum of one day for: fulfillment of an obligation imposed by law or by the government without financial compensation, insofar as this obligation must be fulfilled personally; f. for a maximum of two hours for: exercising the right to vote. Life partner as referred to above under a and c means the spouse of the employee, or the person, not being a parent, brother or sister of the employee, with whom the employee permanently maintains a joint household and whose name has been made known to the employer in advance by the employee. Life partner of the parent as referred to above in the third and fourth bullet points under c, means the spouse of the parent or the person, not being a parent, brother or sister of the parent, with whom the parent permanently maintains a joint household. Short leave should by no means be considered an extra vacation. If, for example, one of the events that may give rise to short leave falls during vacation or on a day off, the employee is no longer entitled to short leave days after the vacation or day off, unless leave is still necessary due to that event."
+    ],
+    [
+      "Article 62: Special Leave",
+      "Employees who are members of an employee organization will be granted time off, provided the request is made known to the employer by the employee organization in time: a. with continued payment of salary for the time necessary to attend as an official delegate a meeting of one of the following bodies of their organization: congress, union council, industry group department and national industry group council/sector council Metaal en Techniek (FNV Bondgenoten); congress, union council, professional group board, CAO committee, and district cadre group (CNV Vakmensen); congress, executive council, industry group board and national industry group meeting (De Unie); b. at their own expense for the time necessary to participate in courses and/or training activities of their organization. The aforementioned request can only be refused if it can be made plausible that granting the request seriously harms business interests or seriously jeopardizes the normal performance of the employee's function. Employees who are members of the Participants' Council of the Stichting Pensioenfonds Metaal en Techniek will be granted time off with continued payment of salary for the time necessary to attend meetings of the Participants' Council."
+    ],
+    [
+      "Article 63: Leave at Own Expense",
+      "Employees who possess a statement showing how many vacation days they still had with a previous employer are entitled to leave at their own expense for that number of days. The employer is not obliged to grant the employee these leave days if the employee did not notify this before commencing employment."
+    ],
+    [
+      "Article 63a: Life-Course Savings Scheme",
+      "If the employee uses his saved balance under the Life-Course Savings Scheme, the following applies: 1. The leave can be taken both full-time and part-time; 2. The employee must submit a request for leave of less than 3 months in writing to the employer at least 3 months before the intended start date. A request for leave of 3 months or longer must be submitted in writing at least 6 months before that date. 3. The employer makes a decision on the request after consultation with the employee within one month of receiving the request. 4. The employer grants the request if the employee wishes to take leave for a period of no longer than 2 years immediately preceding the moment he retires."
+    ],
+    [
+      "Article 64: Forced Absence",
+      "In case of forced absence as referred to in Article 7:628 of the Civil Code, the continued payment of the salary due as a result, increased by any applicable shift allowance, is limited to five days, unless the absence is due to the employer's fault. If two or more periods of forced absence follow each other with an interruption of no more than 3 days, during which the employee has performed paid work at the employer's instruction, these periods of forced absence are considered as one period of absence for the application of the 5 days referred to in the previous sentence. Notwithstanding the first paragraph, the employer is not obliged to pay any salary, increased by any applicable shift allowance, if work cannot be performed due to forced absence caused by frost, strong wind, high water levels, flooding(s), ice drift, or the situation of snow at the workplace, slipperiness at the workplace, and/or thaw at the workplace, except for the provisions in paragraph 3 of this article. For every (full) day that work cannot be performed due to the causes referred to in the previous paragraph, the employer provides a supplement to the benefit received by the employee under the Unemployment Insurance Act, up to 100% of the individually agreed salary applicable to the employee, increased by any applicable shift allowance. For each period of frost or high water, the aforementioned supplement must be paid for a maximum of two weeks. In a period of frost or high water that has already begun, the two-week period is deemed to be interrupted if work has been performed for at least three consecutive days. After these three days, a new period of a maximum of two weeks of supplement for the employer begins, if and insofar as there is still forced absence due to frost or high water. In case the employee does not receive a benefit under the Unemployment Insurance Act based on the so-called reference requirement, the employee retains the right to a supplement of the salary by the employer up to 100%. Upon the employer's introduction of a temporary short-time work scheme approved by the competent authority (including reduction to a 0-hour week), the employer does not pay salary over the time during which no work was performed. If the employee is entitled to a benefit under the Unemployment Insurance Act from the Uitvoeringsinstituut Werknemersverzekeringen (UWV) to which the employer is affiliated, because the employer is not obliged to pay salary, increased by any applicable shift allowance, pursuant to the previous paragraph, this benefit is supplemented by the employer to the lost salary. If a person works less than 15 hours per week and the times at which work must be performed are not fixed, or if the scope of work is not or not unambiguously fixed, then, notwithstanding paragraphs 1 to 5, Article 7:628 BW does not apply during the first 12 months of the agreement. Forced absence does not terminate the employment."
+    ],
+    [
+      "Article 66a: Pregnancy and Maternity Leave",
+      "Female employees are entitled to pregnancy and maternity leave in connection with their delivery. The right to pregnancy leave exists from six weeks before the day after the presumed date of delivery, as indicated in a written statement from a doctor or midwife submitted to the employer, up to and including the day of delivery. Pregnancy leave starts no later than four weeks before the day after the presumed date of delivery. Maternity leave starts on the day after delivery and amounts to ten consecutive weeks, increased by the number of days that the pregnancy leave up to and including the presumed date of delivery, or, if earlier, up to and including the actual date of delivery, was less than six weeks. If a child is admitted to a hospital during maternity leave due to its medical condition, the maternity leave is extended by the number of days of admission, calculated from the eighth day of admission up to and including the last day of maternity leave, to a maximum of ten weeks. Notwithstanding the third paragraph, the female employee can request the employer to split the maternity leave after 6 weeks from the start of that leave. The female employee can take this part of the leave during the period of 30 weeks, which period starts the day after the maternity leave has been split. The request must be made no later than three weeks after the leave has started. The duration of the split maternity leave that is taken later is equal to the weekly working hours at the time of the maternity leave following the actual date of delivery. The employer agrees to the request no later than two weeks after the request has been made, unless serious business or service interests oppose it. The female employee reports to the employer: the day from which she takes pregnancy leave no later than three weeks before that day; her delivery no later than the second day following the day of delivery. The employee reports to the employer the taking of leave in connection with adoption, if possible, no later than three weeks before the start date of the leave, stating the duration of the leave. The notification must be accompanied by documents showing that a child has been or will be adopted."
+    ],
+    [
+      "Article 67: Supplement to Salary (Sick Leave)",
+      "The employer is obliged, in case of full or partial incapacity for work of the employee, to continue paying the salary that the employee would have earned if fit for work for a maximum period of 24 months, whereby 100% of that salary is paid during the first six months and 90% of that salary during the following 18 months. Notwithstanding the provisions in paragraph 1 sub a, for employees who partially resume work or resume work on a therapeutic basis, 100% of the salary that the employee would have earned if fit for work is continued to be paid by the employer during the aforementioned period of maximum 24 months during that period of work resumption. Notwithstanding the provisions in paragraph 1 sub a, for employees for whom it has been determined that they have no chance of recovery and no remaining earning capacity, 100% of the salary that the employee would have earned if fit for work is continued to be paid by the employer during the aforementioned period of maximum 24 months. The salary continuation referred to in paragraph 1 is reduced by: a. the amount of any - unreduced - monetary benefit that the employee is entitled to or could be entitled to under any legally prescribed insurance; b. the amount to which the employee is entitled or could have been entitled if he had insured himself for a supplementary disability pension with the N.V. Schadeverzekering Metaal en Technische Bedrijfstakken, unless the lack of insurance is due to actions or omissions of the employer; c. the amount that is not deducted from the employee by the pension fund due to premium exemption, insofar as the employee's share of the premium was deducted by the employer in accordance with the regulations before the onset of the incapacity for work; this does not apply to employees who have been incapacitated for work for one year or longer on April 1, 2003. Salary in this article means the salary as referred to in Article 31 paragraph 1, increased by any applicable shift allowance and/or performance allowance. Notwithstanding the provisions in paragraph 1, the employer has no obligation to pay more than 70% of the salary if the incapacity for work results from activities performed in violation of Article 26 of this CAO. In the cases mentioned in Article 7:629 paragraph 3 BW, the employer has no obligation to continue paying salary as referred to in Article 67 paragraph 1 of this CAO. Notwithstanding the provisions in paragraph 1, the employer has no obligation to pay salary if the employee is only entitled to a benefit under the Unemployment Insurance Act. For the application of the provisions in the first paragraph, periods during which the employee was prevented from performing his work due to the same cause of incapacity for work are aggregated if they follow each other with an interruption of less than six months. For the application of the provisions in the first paragraph, periods during which the employee was prevented from performing his work due to different causes of incapacity for work are aggregated if they follow each other with an interruption of less than four weeks. The employee must adhere to the rules of conduct as mentioned in Bijlage 7. The employer can apply the sanctions mentioned in this appendix."
+    ],
+    [
+      "Article 68: Holiday Allowance in Case of Long-term Incapacity for Work",
+      "Employees who are continuously incapacitated for work retain their entitlement to holiday allowance for a maximum of 24 months, subject to deduction of the holiday payment they are entitled to under any legally prescribed insurance. This entitlement does not apply to employees aged 65 or older."
+    ]
+  ],
+  "termination_information": [
+    [
+      "Article 12: Probation Period",
+      "This article applies to both fixed-term employment contracts longer than six months and indefinite-term employment contracts. The first two months of employment will count as a probation period for both parties, unless a shorter probation period or no probation period has been agreed upon in writing. During the probation period, both the employer and the employee can terminate the employment at the end of the workday."
+    ],
+    [
+      "Article 13a: End of Employment",
+      "The employment for an indefinite period ends automatically, meaning without any notice being required, on the first day on which the state old-age pension (AOW) commences. Employees who will receive a pension payment from the Pensioenfonds Metaal en Techniek must notify the employer at least three months before the effective date of the payment."
+    ],
+    [
+      "Article 14: Fixed-Term Employment",
+      "Notwithstanding the provisions in Article 13, an employment contract can only be entered into for a fixed term in writing. A fixed-term employment contract can be entered into either for a specific period or for an agreed task. If the completion of the agreed task appears to take less than six months, the employee must be informed at least one week before the expected end date of the task. If the completion of the agreed task appears to take six months or longer, the employee must be informed at least one month before the expected end date of the task. If a fixed-term employment contract has been continued a maximum of two times for a fixed term and these employment contracts together do not last longer than 24 months, the one or two times continued employment contract ends automatically without prior notice as referred to in Article 16 being required. If an employment contract is entered into for no more than three months that immediately follows an employment contract entered into between the same parties for 24 months or longer, that continued employment contract ends automatically without prior notice as referred to in Article 16 being required. Notwithstanding the provisions of Article 7:668a paragraph 2 BW, regarding the periods during which an employee, prior to commencing employment with the employer, worked as a temporary worker for the employer, these periods are considered as one fixed-term employment contract, if and insofar as that period was interrupted solely due to the temporary worker's incapacity for work and a related termination of the employment contract with the temporary employment agency, with the understanding that the time limit of Article 7:668a BW (being two years) is not exceeded, respectively continues to count. In accordance with Article 7:668a paragraph 9 BW, Article 7:668a BW does not apply to employment contracts entered into exclusively or predominantly for the employee's education. For fixed-term employment contracts of 6 months or longer, the employer is legally obliged to inform the employee in writing at least 1 month before the fixed-term employment contract ends automatically, whether or not the employment contract will be continued."
+    ],
+    [
+      "Article 15: Employment with Employees who have Reached AOW-Eligible Age or an Employee who Receives a Pension Payment from the Pensioenfonds Metaal en Techniek",
+      "If a fixed-term employment contract has been continued for a fixed term, no prior notice is required for its termination. Likewise, no prior notice is required if two or more fixed-term employment contracts have succeeded each other with interruptions. If the employment contract has been entered into for an indefinite period, or if a fixed-term employment contract is continued without objection after the expiry of this period, the employment contract can be terminated by notice, with the understanding that Article 16 paragraph 2 remains inapplicable."
+    ],
+    [
+      "Article 16: Notice",
+      "Termination of an employment contract takes place with due observance of the terms as mentioned in Article 7:672 BW. Termination takes place with due observance of the notice periods against the end of the month for monthly salary payment and against the end of the four-week period for four-week salary payment."
+    ],
+    [
+      "Article 7:672 BW (from Bijlage 11M): Notice Period",
+      "Termination takes place against the end of the month, unless a different day has been designated by written agreement or by custom. The notice period to be observed by the employer for an employment contract that on the day of termination: a. lasted shorter than five years: one month; b. lasted five years or longer, but shorter than ten years: two months; c. lasted ten years or longer, but shorter than fifteen years: three months; d. lasted fifteen years or longer: four months. The notice period to be observed by the employee is one month. If the consent, referred to in Article 671a, paragraph 1, has been granted, the notice period to be observed by the employer is shortened by the duration of the period commencing on the date on which the complete request for consent was received and ending on the date of the decision on the request for consent, with the understanding that a period of at least one month remains. The period, referred to in paragraph 2, can only be shortened by collective labor agreement or by regulation by or on behalf of a competent administrative body. The period can be extended in writing. The period, referred to in paragraph 3, can be deviated from in writing. The notice period for the employee may not be longer than six months when extended, and for the employer not shorter than double that for the employee. By collective labor agreement or by regulation by or on behalf of a competent administrative body, the notice period, referred to in paragraph 6, second sentence, for the employer can be shortened, provided the period is not shorter than that for the employee. For the application of paragraph 2, employment contracts are deemed to form the same, uninterrupted employment contract in case of reinstatement of the employment contract pursuant to Article 682 or Article 683. The party giving notice against an earlier day than applies between the parties, owes the other party compensation equal to the amount of the salary fixed in money for the period that the employment contract should have continued with regular notice. The subdistrict court judge can mitigate the compensation, referred to in paragraph 9, if he deems this equitable in view of the circumstances, with the understanding that the compensation cannot be less than the salary fixed in money for the notice period, referred to in paragraph 2, nor less than the salary fixed in money for three months."
+    ],
+    [
+      "Article XXI FLEXWET (from Bijlage 11M)",
+      "For employees who were 45 years or older at the time this act came into force and for whom a longer notice period applied at that time than under this act, the old period remains applicable as long as they remain employed by the same employer."
+    ],
+    [
+      "Article 16 C CAO (old) (from Bijlage 11M)",
+      "As of the effective date of the Flexibility and Security Act, Articles 16a and 16b cease to apply and the following notice periods apply: 1. The employee must observe a notice period of one month. 2. The employer must observe the following notice periods: a. one month, if the employment lasted shorter than five years; b. two months, if the employment lasted five years or longer, but shorter than ten years; c. three months, if the employment lasted ten years or longer, but shorter than fifteen years; d. four months, if the employment lasted fifteen years or longer. With due observance of the provisions in paragraphs 1, 2 and 3, termination takes place such that the employment ends at the end of the payment period as referred to in Article 31 paragraph 1. For employees who were 45 years or older on January 1, 1999, and for whom a longer notice period applied on January 1, 1999, according to Article 16a or 16b than according to Article 16c, the old period remains applicable as long as they remain employed by the same employer. The employer may not give notice during the period that the employee is incapacitated for work, unless the incapacity has lasted for at least two years continuously. The employer may not give notice during the period that an adult employee is prevented from performing the agreed work because he - without the intention of performing military service or other government service as a profession - fulfills an obligation imposed on him by law, or arising from an obligation entered into by him with the government, regarding national defense or the protection of public order. The provisions in the previous paragraph apply to minor employees if the employment has lasted for at least one year at the time the impediment commences. Notwithstanding the provisions in paragraphs 2 and 3, a notice period of at least one month and at most six months can be agreed upon in writing with representatives."
+    ],
+    [
+      "Article 27: Non-Compete Clause and Economic Crisis",
+      "In case of an agreed non-compete clause/relationship clause and dismissal by the employer due to business economic reasons as a result of the crisis, the employee may freely move in the labor market, provided the old employer is not seriously harmed."
+    ],
+    [
+      "Article 29: Return from Military Service",
+      "Before leaving military service, the employee must report - if possible one month in advance - to the employer with whom he is employed, so that the latter can determine when the employee will resume his work."
+    ],
+    [
+      "Article 36: Training Agreement and Termination",
+      "The employer can agree with an employee who is taken into retraining, re-schooling, or further training, that the employment will not be terminated by either party within one year after the training has been completed successfully or unsuccessfully. Such an agreement, as referred to in the previous sentence, must be entered into in writing. In such an agreement, it can also be stipulated that the employer will place the employee in the function for which he has been retrained, re-schooled, or further trained, respectively that the employee will accept the intended function. The employee who terminates the employment before the time referred to in paragraph 9 is liable for damages. The compensation remains limited to the salary, increased by the costs that the employer may have incurred on behalf of the employee in connection with his participation in the course, such as books, travel expenses, etc."
+    ],
+    [
+      "Article 57: Settlement of Excess or Insufficient
+  DEBUG: Found direct text response: 89542 chars
+  INFO: Successfully extracted structured data from markdown (time: 257.7s)
+  INFO: Response size: 89,542 chars (~22,385 tokens)
+  ERROR: Invalid JSON structure
+  WARNING: Response schema validation failed for CAO_ISO.md
+  INFO: Cleaned up uploaded file: files/ebahxhco2toq
+  826: ✗ Incomplete JSON: Content does not end with } - JSON appears to be truncated for CAO_ISO.md [API 5/6]
+  826: Error with CAO_ISO.md: Incomplete JSON: Content does not end with } - JSON appears to be truncated [API 5/6]
+Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 1094, in process_single_file
+ValueError: Incomplete JSON: Content does not end with } - JSON appears to be truncated
+  826: CAO_ISO_arcering___wijz_AOW_LT.md (Markdown: 0.4MB) [API 5/6]
+  INFO: Using Files API approach for CAO_ISO_arcering___wijz_AOW_LT.md
+  INFO: Markdown file size: 0.39 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/0cjh3wdnfdhn
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.39MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 69948 chars
+  INFO: Successfully extracted structured data from markdown (time: 201.7s)
+  INFO: Response size: 69,948 chars (~17,487 tokens)
+  INFO: Cleaned up uploaded file: files/0cjh3wdnfdhn
+  ✅ JSON saved with proper formatting
+  826: LLM extraction completed in 203.37 seconds [API 5/6]
+  826: m_en_t_islollatiebedrijf_kvo.md (Markdown: 1.3MB) [API 5/6]
+  INFO: Using Files API approach for m_en_t_islollatiebedrijf_kvo.md
+  INFO: Markdown file size: 1.33 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/yyd50k4m7z0r
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 1.33MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 55185 chars
+  INFO: Successfully extracted structured data from markdown (time: 155.2s)
+  INFO: Response size: 55,185 chars (~13,796 tokens)
+  INFO: Cleaned up uploaded file: files/yyd50k4m7z0r
+  ✅ JSON saved with proper formatting
+  826: LLM extraction completed in 156.38 seconds [API 5/6]
+
+📈 PROGRESS ESTIMATE:
+   Progress: 393.9% (-773 files remaining)
+   Estimated remaining time: -31.7 hours
+   Requests needed: -773
+   Days needed at 100 req/day: -7.7
+   Requests remaining today: 0
+   Average time per file: 147.6s
+  833: CAO_Woondiensten_2017_2018.md (Markdown: 0.1MB) [API 5/6]
+  INFO: Using Files API approach for CAO_Woondiensten_2017_2018.md
+  INFO: Markdown file size: 0.14 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/qsltq6np86ad
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.14MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 46096 chars
+  INFO: Successfully extracted structured data from markdown (time: 94.7s)
+  INFO: Response size: 46,096 chars (~11,524 tokens)
+  INFO: Cleaned up uploaded file: files/qsltq6np86ad
+  ✅ JSON saved with proper formatting
+  833: LLM extraction completed in 96.61 seconds [API 5/6]
+  833: cao woondiensten en handboek.md (Markdown: 0.9MB) [API 5/6]
+  INFO: Using Files API approach for cao woondiensten en handboek.md
+  INFO: Markdown file size: 0.95 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/hp8299pmx0ws
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.95MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 46284 chars
+  INFO: Successfully extracted structured data from markdown (time: 119.0s)
+  INFO: Response size: 46,284 chars (~11,571 tokens)
+  INFO: Cleaned up uploaded file: files/hp8299pmx0ws
+  ✅ JSON saved with proper formatting
+  833: LLM extraction completed in 120.30 seconds [API 5/6]
+  884: CAO_Kantoor_en_Boek_17_18_nw_def.md (Markdown: 0.1MB) [API 5/6]
+  INFO: Using Files API approach for CAO_Kantoor_en_Boek_17_18_nw_def.md
+  INFO: Markdown file size: 0.06 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/kakpjoh303fd
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.06MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 29342 chars
+  INFO: Successfully extracted structured data from markdown (time: 99.1s)
+  INFO: Response size: 29,342 chars (~7,335 tokens)
+  INFO: Cleaned up uploaded file: files/kakpjoh303fd
+  ✅ JSON saved with proper formatting
+  884: LLM extraction completed in 100.45 seconds [API 5/6]
+  884: Tekst CAO Boek en Kantoor 21 23 def.md (Markdown: 0.1MB) [API 5/6]
+  INFO: Using Files API approach for Tekst CAO Boek en Kantoor 21 23 def.md
+  INFO: Markdown file size: 0.06 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/tjebzcrvqlep
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.06MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 23624 chars
+  INFO: Successfully extracted structured data from markdown (time: 96.8s)
+  INFO: Response size: 23,624 chars (~5,906 tokens)
+  INFO: Cleaned up uploaded file: files/tjebzcrvqlep
+  ✅ JSON saved with proper formatting
+  884: LLM extraction completed in 98.17 seconds [API 5/6]
+--- CAO 924 ---
+  924: CAO_2015_2016_aanmelding.md (Markdown: 0.1MB) [API 5/6]
+  INFO: Using Files API approach for CAO_2015_2016_aanmelding.md
+  INFO: Markdown file size: 0.07 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/ynzti9qdifdp
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.07MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 28226 chars
+  INFO: Successfully extracted structured data from markdown (time: 119.2s)
+  INFO: Response size: 28,226 chars (~7,056 tokens)
+  INFO: Cleaned up uploaded file: files/ynzti9qdifdp
+  ✅ JSON saved with proper formatting
+  924: LLM extraction completed in 120.10 seconds [API 5/6]
+  924: Tekst cao Reisbranche definitief.docx.md (Markdown: 0.1MB) [API 5/6]
+  INFO: Using Files API approach for Tekst cao Reisbranche definitief.docx.md
+  INFO: Markdown file size: 0.05 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/956mxj8ush2a
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.05MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 20491 chars
+  INFO: Successfully extracted structured data from markdown (time: 89.7s)
+  INFO: Response size: 20,491 chars (~5,122 tokens)
+  INFO: Cleaned up uploaded file: files/956mxj8ush2a
+  ✅ JSON saved with proper formatting
+  924: LLM extraction completed in 91.22 seconds [API 5/6]
+  924: cao Reisbranche 1jul2024-1jul2026 def2.md (Markdown: 0.2MB) [API 5/6]
+  INFO: Using Files API approach for cao Reisbranche 1jul2024-1jul2026 def2.md
+  INFO: Markdown file size: 0.18 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/6u4m3x6yphr0
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.18MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 39189 chars
+  INFO: Successfully extracted structured data from markdown (time: 126.4s)
+  INFO: Response size: 39,189 chars (~9,797 tokens)
+  INFO: Cleaned up uploaded file: files/6u4m3x6yphr0
+  ✅ JSON saved with proper formatting
+  924: LLM extraction completed in 127.63 seconds [API 5/6]
+--- CAO 1022 ---
+  1022: CAO MBO 2021 - wijzigingen geaccepteerd 09072021.md (Markdown: 0.4MB) [API 5/6]
+  INFO: Using Files API approach for CAO MBO 2021 - wijzigingen geaccepteerd 09072021.md
+  INFO: Markdown file size: 0.40 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/cfls5uj3looc
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.40MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 45178 chars
+  INFO: Successfully extracted structured data from markdown (time: 73.4s)
+  INFO: Response size: 45,178 chars (~11,294 tokens)
+  INFO: Cleaned up uploaded file: files/cfls5uj3looc
+  ✅ JSON saved with proper formatting
+  1022: LLM extraction completed in 74.80 seconds [API 5/6]
+  1022: CAO_MBO_2014_2015_in_Word___nieuwe_versie.md (Markdown: 0.4MB) [API 5/6]
+  INFO: Using Files API approach for CAO_MBO_2014_2015_in_Word___nieuwe_versie.md
+  INFO: Markdown file size: 0.36 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/y8z0ou5vsvl2
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.36MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 1055 chars
+  INFO: Successfully extracted structured data from markdown (time: 161.3s)
+  INFO: Response size: 1,055 chars (~263 tokens)
+  INFO: Cleaned up uploaded file: files/y8z0ou5vsvl2
+  ✅ JSON saved with proper formatting
+  1022: LLM extraction completed in 162.52 seconds [API 5/6]
+--- CAO 1060 ---
+  1060: 2180679_NBBU_CAO_Uitzendkrachten_2018_OTFp.md (Markdown: 0.1MB) [API 5/6]
+  INFO: Using Files API approach for 2180679_NBBU_CAO_Uitzendkrachten_2018_OTFp.md
+  INFO: Markdown file size: 0.15 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/4nlpusi4hg29
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.15MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 40023 chars
+  INFO: Successfully extracted structured data from markdown (time: 63.1s)
+  INFO: Response size: 40,023 chars (~10,005 tokens)
+  INFO: Cleaned up uploaded file: files/4nlpusi4hg29
+  ✅ JSON saved with proper formatting
+  1060: LLM extraction completed in 64.38 seconds [API 5/6]
+
+📈 PROGRESS ESTIMATE:
+   Progress: 415.6% (-830 files remaining)
+   Estimated remaining time: -33.9 hours
+   Requests needed: -830
+   Days needed at 100 req/day: -8.3
+   Requests remaining today: 0
+   Average time per file: 146.9s
+  1060: NBBU cao tussentijdse wijzigingen januari 2023.md (Markdown: 0.2MB) [API 5/6]
+  INFO: Using Files API approach for NBBU cao tussentijdse wijzigingen januari 2023.md
+  INFO: Markdown file size: 0.18 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/yevz80ha2i7e
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.18MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 42716 chars
+  INFO: Successfully extracted structured data from markdown (time: 135.5s)
+  INFO: Response size: 42,716 chars (~10,679 tokens)
+  INFO: Cleaned up uploaded file: files/yevz80ha2i7e
+  ✅ JSON saved with proper formatting
+  1060: LLM extraction completed in 136.57 seconds [API 5/6]
+  1060: NBBU_CAO_Uitzendkrachten-NL 2024.def.md (Markdown: 0.2MB) [API 5/6]
+  INFO: Using Files API approach for NBBU_CAO_Uitzendkrachten-NL 2024.def.md
+  INFO: Markdown file size: 0.17 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/cjiz37ixi22p
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.17MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 37235 chars
+  INFO: Successfully extracted structured data from markdown (time: 66.2s)
+  INFO: Response size: 37,235 chars (~9,308 tokens)
+  INFO: Cleaned up uploaded file: files/cjiz37ixi22p
+  ✅ JSON saved with proper formatting
+  1060: LLM extraction completed in 67.14 seconds [API 5/6]
+  1060: NBBU_CAO_Uitzendkrachten_2015_per_1_juli_DEF.md (Markdown: 0.1MB) [API 5/6]
+  INFO: Using Files API approach for NBBU_CAO_Uitzendkrachten_2015_per_1_juli_DEF.md
+  INFO: Markdown file size: 0.14 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/tp336209kvjt
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.14MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 81915 chars
+  INFO: Successfully extracted structured data from markdown (time: 224.8s)
+  INFO: Response size: 81,915 chars (~20,478 tokens)
+  INFO: Cleaned up uploaded file: files/tp336209kvjt
+  ✅ JSON saved with proper formatting
+  1060: LLM extraction completed in 226.00 seconds [API 5/6]
+  1060: definitieve_cao_tekst.md (Markdown: 0.1MB) [API 5/6]
+  INFO: Using Files API approach for definitieve_cao_tekst.md
+  INFO: Markdown file size: 0.12 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/kswxuev9efpb
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.12MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 40344 chars
+  INFO: Successfully extracted structured data from markdown (time: 94.3s)
+  INFO: Response size: 40,344 chars (~10,086 tokens)
+  INFO: Cleaned up uploaded file: files/kswxuev9efpb
+  ✅ JSON saved with proper formatting
+  1060: LLM extraction completed in 95.43 seconds [API 5/6]
+  1165: cao 1 januari 2019 - 31 december 2020, definitief aangepast.docx .md (Markdown: 0.2MB) [API 5/6]
+  INFO: Using Files API approach for cao 1 januari 2019 - 31 december 2020, definitief aangepast.docx .md
+  INFO: Markdown file size: 0.18 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/sj1l1zd7jc5s
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.18MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 56241 chars
+  INFO: Successfully extracted structured data from markdown (time: 185.0s)
+  INFO: Response size: 56,241 chars (~14,060 tokens)
+  INFO: Cleaned up uploaded file: files/sj1l1zd7jc5s
+  ✅ JSON saved with proper formatting
+  1165: LLM extraction completed in 186.15 seconds [API 5/6]
+  1165: cao 1 januari 2022 - 31 december 2023 definitief 23012023.md (Markdown: 0.2MB) [API 5/6]
+  INFO: Using Files API approach for cao 1 januari 2022 - 31 december 2023 definitief 23012023.md
+  INFO: Markdown file size: 0.20 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/ow53wsla1mmt
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.20MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 47159 chars
+  INFO: Successfully extracted structured data from markdown (time: 160.0s)
+  INFO: Response size: 47,159 chars (~11,789 tokens)
+  INFO: Cleaned up uploaded file: files/ow53wsla1mmt
+  ✅ JSON saved with proper formatting
+  1165: LLM extraction completed in 161.38 seconds [API 5/6]
+  1165: cao_Recreatie_2013_2014_def__versie.md (Markdown: 0.1MB) [API 5/6]
+  INFO: Using Files API approach for cao_Recreatie_2013_2014_def__versie.md
+  INFO: Markdown file size: 0.13 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/2qnqttafpw0d
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.13MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 46235 chars
+  INFO: Successfully extracted structured data from markdown (time: 144.6s)
+  INFO: Response size: 46,235 chars (~11,558 tokens)
+  INFO: Cleaned up uploaded file: files/2qnqttafpw0d
+  ✅ JSON saved with proper formatting
+  1165: LLM extraction completed in 145.80 seconds [API 5/6]
+  1165: cao_definitief_3_0_nav_opmerkingen_szw_avv.md (Markdown: 0.2MB) [API 5/6]
+  INFO: Using Files API approach for cao_definitief_3_0_nav_opmerkingen_szw_avv.md
+  INFO: Markdown file size: 0.16 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/ycj4i9pw4e1r
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.16MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 1303 chars
+  INFO: Successfully extracted structured data from markdown (time: 66.7s)
+  INFO: Response size: 1,303 chars (~325 tokens)
+  INFO: Cleaned up uploaded file: files/ycj4i9pw4e1r
+  ✅ JSON saved with proper formatting
+  1165: LLM extraction completed in 68.25 seconds [API 5/6]
+  1165: recreatie_definitief_1.md (Markdown: 0.1MB) [API 5/6]
+  INFO: Using Files API approach for recreatie_definitief_1.md
+  INFO: Markdown file size: 0.15 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/jz6iven4v3rc
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.15MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 47970 chars
+  INFO: Successfully extracted structured data from markdown (time: 127.7s)
+  INFO: Response size: 47,970 chars (~11,992 tokens)
+  INFO: Cleaned up uploaded file: files/jz6iven4v3rc
+  ✅ JSON saved with proper formatting
+  1165: LLM extraction completed in 128.99 seconds [API 5/6]
+  1188: CAO_VO_2014__2015.md (Markdown: 0.3MB) [API 5/6]
+  INFO: Using Files API approach for CAO_VO_2014__2015.md
+  INFO: Markdown file size: 0.33 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/zpva0wrx4zzx
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.33MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 50277 chars
+  INFO: Successfully extracted structured data from markdown (time: 164.5s)
+  INFO: Response size: 50,277 chars (~12,569 tokens)
+  INFO: Cleaned up uploaded file: files/zpva0wrx4zzx
+  ✅ JSON saved with proper formatting
+  1188: LLM extraction completed in 165.67 seconds [API 5/6]
+
+📈 PROGRESS ESTIMATE:
+   Progress: 438.8% (-891 files remaining)
+   Estimated remaining time: -36.3 hours
+   Requests needed: -891
+   Days needed at 100 req/day: -8.9
+   Requests remaining today: 0
+   Average time per file: 146.5s
+--- CAO 1285 ---
+  1285: CAO_tekst_2013_2015.md (Markdown: 0.1MB) [API 5/6]
+  INFO: Using Files API approach for CAO_tekst_2013_2015.md
+  INFO: Markdown file size: 0.10 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/2pc0z8dpuab3
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.10MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 58051 chars
+  INFO: Successfully extracted structured data from markdown (time: 126.4s)
+  INFO: Response size: 58,051 chars (~14,512 tokens)
+  INFO: Cleaned up uploaded file: files/2pc0z8dpuab3
+  ✅ JSON saved with proper formatting
+  1285: LLM extraction completed in 127.64 seconds [API 5/6]
+  1285: cao tekst Tank Was 2020 2021 versie 22 juni.doc.md (Markdown: 0.1MB) [API 5/6]
+  INFO: Using Files API approach for cao tekst Tank Was 2020 2021 versie 22 juni.doc.md
+  INFO: Markdown file size: 0.13 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/6q90afuatatk
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.13MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 49697 chars
+  INFO: Successfully extracted structured data from markdown (time: 112.3s)
+  INFO: Response size: 49,697 chars (~12,424 tokens)
+  INFO: Cleaned up uploaded file: files/6q90afuatatk
+  ✅ JSON saved with proper formatting
+  1285: LLM extraction completed in 113.66 seconds [API 5/6]
+  1285: cao_tekst_Tank_Was_2017_2019_def_1.md (Markdown: 0.1MB) [API 5/6]
+  INFO: Using Files API approach for cao_tekst_Tank_Was_2017_2019_def_1.md
+  INFO: Markdown file size: 0.11 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/5wc35t64x02u
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.11MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 40856 chars
+  INFO: Successfully extracted structured data from markdown (time: 91.6s)
+  INFO: Response size: 40,856 chars (~10,214 tokens)
+  INFO: Cleaned up uploaded file: files/5wc35t64x02u
+  ✅ JSON saved with proper formatting
+  1285: LLM extraction completed in 93.14 seconds [API 5/6]
+--- CAO 1287 ---
+  1287: DEF Grafimedia cao 2024-2025 TCC 09122024.md (Markdown: 0.1MB) [API 5/6]
+  INFO: Using Files API approach for DEF Grafimedia cao 2024-2025 TCC 09122024.md
+  INFO: Markdown file size: 0.13 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/srmfmgbq3yjo
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.13MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 15861 chars
+  INFO: Successfully extracted structured data from markdown (time: 73.2s)
+  INFO: Response size: 15,861 chars (~3,965 tokens)
+  INFO: Cleaned up uploaded file: files/srmfmgbq3yjo
+  ✅ JSON saved with proper formatting
+  1287: LLM extraction completed in 74.43 seconds [API 5/6]
+  1287: Grafimedia cao 2020-2021 gewijzigde werkingssfeer.md (Markdown: 0.1MB) [API 5/6]
+  INFO: Using Files API approach for Grafimedia cao 2020-2021 gewijzigde werkingssfeer.md
+  INFO: Markdown file size: 0.14 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/xctybvdredzb
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.14MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 22227 chars
+  INFO: Successfully extracted structured data from markdown (time: 72.9s)
+  INFO: Response size: 22,227 chars (~5,556 tokens)
+  INFO: Cleaned up uploaded file: files/xctybvdredzb
+  ✅ JSON saved with proper formatting
+  1287: LLM extraction completed in 74.25 seconds [API 5/6]
+  1287: Grafimedia_cao.md (Markdown: 1.1MB) [API 5/6]
+  INFO: Using Files API approach for Grafimedia_cao.md
+  INFO: Markdown file size: 1.11 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/9h2nifxabrvl
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 1.11MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 60373 chars
+  INFO: Successfully extracted structured data from markdown (time: 122.6s)
+  INFO: Response size: 60,373 chars (~15,093 tokens)
+  INFO: Cleaned up uploaded file: files/9h2nifxabrvl
+  ✅ JSON saved with proper formatting
+  1287: LLM extraction completed in 124.07 seconds [API 5/6]
+--- CAO 1291 ---
+  1291: NHG-CAO 2019 tm 2022- herziene uitg. conform WAB 1 jan 2020.md (Markdown: 0.0MB) [API 5/6]
+  INFO: Using Files API approach for NHG-CAO 2019 tm 2022- herziene uitg. conform WAB 1 jan 2020.md
+  INFO: Markdown file size: 0.04 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/mpjm50kli3w2
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.04MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 17774 chars
+  INFO: Successfully extracted structured data from markdown (time: 56.5s)
+  INFO: Response size: 17,774 chars (~4,443 tokens)
+  INFO: Cleaned up uploaded file: files/mpjm50kli3w2
+  ✅ JSON saved with proper formatting
+  1291: LLM extraction completed in 57.54 seconds [API 5/6]
+--- CAO 1296 ---
+  1296: Cdef_ ICK CAO 2022.md (Markdown: 0.2MB) [API 5/6]
+  INFO: Using Files API approach for Cdef_ ICK CAO 2022.md
+  INFO: Markdown file size: 0.17 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/8ut4qf90ft8a
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.17MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 39090 chars
+  INFO: Successfully extracted structured data from markdown (time: 187.7s)
+  INFO: Response size: 39,090 chars (~9,772 tokens)
+  INFO: Cleaned up uploaded file: files/8ut4qf90ft8a
+  ✅ JSON saved with proper formatting
+  1296: LLM extraction completed in 189.33 seconds [API 5/6]
+  1296: ICK CAO 2021_1.md (Markdown: 0.2MB) [API 5/6]
+  INFO: Using Files API approach for ICK CAO 2021_1.md
+  INFO: Markdown file size: 0.17 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/kqxxo1ihrhvb
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.17MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=NOT_FOUND
+  DEBUG: Checking response.text: hasattr=True, value={
+  "general_information": [
+    [
+      "Document Title",
+      "CAO 2021 for the Information, Communication and Office Technology Branch"
+    ],
+    [
+      "Contract Period",
+      "1 January 2021 to 31 December 2021"
+    ],
+    [
+      "Parties Involved",
+      "NLdigital Werkgeversvereniging, FNV, CNV Vakmensen, De Unie"
+    ],
+    [
+      "Scope of Agreement (Werkingssfeer)",
+      "Applies to employers who are members of NLdigital Werkgeversvereniging and whose company primarily performs hardware activities in the Information, Communication and Office Technology (ICK) branch. 'Primarily' means the number of hours worked by employees involved in hardware activities is greater than hours in any other sector. This also includes employers whose shares are owned by a legal entity, and whose employees are at least 90% engaged in repairing/maintaining hardware sold by that legal entity."
+    ],
+    [
+      "Hardware Activities Definition",
+      "Selling, assembling, distributing, repairing, and/or maintaining hardware and its parts/accessories. Hardware includes: Hardware systems (design from equipment delivery, management/operation of data processing infrastructure), Office machines, Network infrastructure (design from equipment delivery, management/operation of network infrastructure), System software, Documentservices (operational management of document flows, production, distribution, archiving, material management, analysis, internal training)."
+    ],
+    [
+      "Exclusions from Scope",
+      "Retail companies (defined by sales of books, magazines, office supplies, etc.), employers under the Vutech CAO (Wholesale in Technical products, Household articles and Metals) as of 31 December 1995. Also excluded are employers less than three years old (unless not considered a startup, then dispensation possible for max three years), and those under CAOs for metalworking, electrical engineering, plumbing, gold/silver industry, metal/electrical industry (including higher personnel), and construction."
+    ],
+    [
+      "CAO Type",
+      "Minimum-CAO for A1 provisions and frameworks in A2 provisions."
+    ],
+    [
+      "Employment Contract Obligation",
+      "Employer must enter into a written individual employment contract with the employee, referring to the applicable CAO, and provide a copy of the CAO upon employment."
+    ],
+    [
+      "Employer Obligation for Consultation",
+      "Employer must consult with trade unions at an early stage regarding consequences for employees in case of significant staff reduction or transfers due to divestment, merger, liquidation, or other business-economic circumstances."
+    ],
+    [
+      "Occupational Health Service Obligation",
+      "Employer is obliged to join a certified occupational health service (Arbodienst) or a certified doctor and maintain a sound occupational health policy."
+    ],
+    [
+      "Definitions - Employer",
+      "A natural or legal person established in the Netherlands, or a partnership, general partnership, or limited partnership formed by two or more such natural and/or legal persons jointly, whose company falls under the scope."
+    ],
+    [
+      "Definitions - Employee",
+      "A natural person who has concluded an employment contract with the employer as referred to in Article 7:610 BW, with the exception of temporary workers and interns, provided their annual income is less than threshold II. Excluded are directors or managers of a company and the highest-ranking officials directly involved in determining company policy."
+    ],
+    [
+      "Definitions - Part-time Employee",
+      "An employee who works based on fixed working hours shorter than the normal working hours. CAO employment conditions are applied proportionally, unless otherwise specified."
+    ],
+    [
+      "Definitions - Bedrijfsoverleg (Company Consultation)",
+      "Consultation between employer and works council (based on the Works Councils Act) or trade unions with appointment rights in the Stichting van de Arbeid."
+    ],
+    [
+      "Definitions - Amounts",
+      "Where amounts or financially derivable terms are mentioned in this CAO, they are gross amounts, unless otherwise stated."
+    ],
+    [
+      "Definitions - Life Partner",
+      "A partner with whom
+  DEBUG: Found direct text response: 4279 chars
+  INFO: Successfully extracted structured data from markdown (time: 65.5s)
+  INFO: Response size: 4,279 chars (~1,069 tokens)
+  ERROR: Invalid JSON structure
+  WARNING: Response schema validation failed for ICK CAO 2021_1.md
+  INFO: Cleaned up uploaded file: files/kqxxo1ihrhvb
+  1296: ✗ Incomplete JSON: Content does not end with } - JSON appears to be truncated for ICK CAO 2021_1.md [API 5/6]
+  1296: Error with ICK CAO 2021_1.md: Incomplete JSON: Content does not end with } - JSON appears to be truncated [API 5/6]
+Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 1094, in process_single_file
+ValueError: Incomplete JSON: Content does not end with } - JSON appears to be truncated
+  1296: ICK_CAO_2015___definitief.md (Markdown: 0.2MB) [API 5/6]
+  INFO: Using Files API approach for ICK_CAO_2015___definitief.md
+  INFO: Markdown file size: 0.20 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/jsmy67impwux
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.20MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 20432 chars
+  INFO: Successfully extracted structured data from markdown (time: 56.3s)
+  INFO: Response size: 20,432 chars (~5,108 tokens)
+  INFO: Cleaned up uploaded file: files/jsmy67impwux
+  ✅ JSON saved with proper formatting
+  1296: LLM extraction completed in 57.95 seconds [API 5/6]
+
+📈 PROGRESS ESTIMATE:
+   Progress: 459.7% (-946 files remaining)
+   Estimated remaining time: -38.1 hours
+   Requests needed: -946
+   Days needed at 100 req/day: -9.5
+   Requests remaining today: 0
+   Average time per file: 144.9s
+--- CAO 1345 ---
+  1345: 20211015__Tekst Cao SW 2021-2025_def.md (Markdown: 0.2MB) [API 5/6]
+  INFO: Using Files API approach for 20211015__Tekst Cao SW 2021-2025_def.md
+  INFO: Markdown file size: 0.22 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/tnfrb0guu2n3
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.22MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 22378 chars
+  INFO: Successfully extracted structured data from markdown (time: 45.8s)
+  INFO: Response size: 22,378 chars (~5,594 tokens)
+  INFO: Cleaned up uploaded file: files/tnfrb0guu2n3
+  ✅ JSON saved with proper formatting
+  1345: LLM extraction completed in 47.15 seconds [API 5/6]
+--- CAO 1393 ---
+  1393: Cao Railinfrastructuur - DEFINITIEF 21 maart 2024 (002).md (Markdown: 0.1MB) [API 5/6]
+  INFO: Using Files API approach for Cao Railinfrastructuur - DEFINITIEF 21 maart 2024 (002).md
+  INFO: Markdown file size: 0.12 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/e5yfbjqudymt
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.12MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 39686 chars
+  INFO: Successfully extracted structured data from markdown (time: 106.1s)
+  INFO: Response size: 39,686 chars (~9,921 tokens)
+  INFO: Cleaned up uploaded file: files/e5yfbjqudymt
+  ✅ JSON saved with proper formatting
+  1393: LLM extraction completed in 107.44 seconds [API 5/6]
+  1393: Railinfra_CAO_2017_def_280917.md (Markdown: 0.2MB) [API 5/6]
+  INFO: Using Files API approach for Railinfra_CAO_2017_def_280917.md
+  INFO: Markdown file size: 0.16 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/nggsf45cufq4
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.16MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 74493 chars
+  INFO: Successfully extracted structured data from markdown (time: 222.1s)
+  INFO: Response size: 74,493 chars (~18,623 tokens)
+  INFO: Cleaned up uploaded file: files/nggsf45cufq4
+  ✅ JSON saved with proper formatting
+  1393: LLM extraction completed in 223.48 seconds [API 5/6]
+  1393: versie 2 def Cao Railinfrastructuur - DEFINITIEF juni 2024 - versie voor AVV - kopie.md (Markdown: 0.1MB) [API 5/6]
+  INFO: Using Files API approach for versie 2 def Cao Railinfrastructuur - DEFINITIEF juni 2024 - versie voor AVV - kopie.md
+  INFO: Markdown file size: 0.12 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/dpmo9xmdrkg8
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.12MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 40111 chars
+  INFO: Successfully extracted structured data from markdown (time: 108.0s)
+  INFO: Response size: 40,111 chars (~10,027 tokens)
+  INFO: Cleaned up uploaded file: files/dpmo9xmdrkg8
+  ✅ JSON saved with proper formatting
+  1393: LLM extraction completed in 109.23 seconds [API 5/6]
+--- CAO 1471 ---
+  1471: Cao_Afval_en_Milieu_Proces_2016_2017.md (Markdown: 0.2MB) [API 5/6]
+  INFO: Using Files API approach for Cao_Afval_en_Milieu_Proces_2016_2017.md
+  INFO: Markdown file size: 0.19 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/wtacbebql88y
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.19MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 31714 chars
+  INFO: Successfully extracted structured data from markdown (time: 162.1s)
+  INFO: Response size: 31,714 chars (~7,928 tokens)
+  INFO: Cleaned up uploaded file: files/wtacbebql88y
+  ✅ JSON saved with proper formatting
+  1471: LLM extraction completed in 163.30 seconds [API 5/6]

@@ -5405,3 +5405,1599 @@ ValueError: No text parts found in response
   INFO: File is ready for processing
   DEBUG: File validation passed - size: 0.11MB
   DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 40841 chars
+  INFO: Successfully extracted structured data from markdown (time: 95.7s)
+  INFO: Response size: 40,841 chars (~10,210 tokens)
+  INFO: Cleaned up uploaded file: files/btw7rji2mzzl
+  ✅ JSON saved with proper formatting
+  791: LLM extraction completed in 96.66 seconds [API 3/6]
+  791: Textielgroothandel_cao_2014_2016.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for Textielgroothandel_cao_2014_2016.md
+  INFO: Markdown file size: 0.11 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/3aj8hswjl47z
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.11MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 38967 chars
+  INFO: Successfully extracted structured data from markdown (time: 102.6s)
+  INFO: Response size: 38,967 chars (~9,741 tokens)
+  INFO: Cleaned up uploaded file: files/3aj8hswjl47z
+  ✅ JSON saved with proper formatting
+  791: LLM extraction completed in 103.50 seconds [API 3/6]
+  822: CAO CARR 2019 2021 SZW TTW V2 Wagweu.docx.md (Markdown: 0.4MB) [API 3/6]
+  INFO: Using Files API approach for CAO CARR 2019 2021 SZW TTW V2 Wagweu.docx.md
+  INFO: Markdown file size: 0.37 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/bqau4oiya8pt
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.37MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 48703 chars
+  INFO: Successfully extracted structured data from markdown (time: 97.1s)
+  INFO: Response size: 48,703 chars (~12,175 tokens)
+  INFO: Cleaned up uploaded file: files/bqau4oiya8pt
+  ✅ JSON saved with proper formatting
+  822: LLM extraction completed in 98.26 seconds [API 3/6]
+  822: CAO_CAR_2017_2019_TTW_LL_nov_2018.md (Markdown: 0.4MB) [API 3/6]
+  INFO: Using Files API approach for CAO_CAR_2017_2019_TTW_LL_nov_2018.md
+  INFO: Markdown file size: 0.38 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/a1ou9sn7dtfp
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.38MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 120209 chars
+  INFO: Successfully extracted structured data from markdown (time: 162.5s)
+  INFO: Response size: 120,209 chars (~30,052 tokens)
+  INFO: Cleaned up uploaded file: files/a1ou9sn7dtfp
+  ✅ JSON saved with proper formatting
+  822: LLM extraction completed in 163.64 seconds [API 3/6]
+
+📈 PROGRESS ESTIMATE:
+   Progress: 376.8% (-728 files remaining)
+   Estimated remaining time: -29.7 hours
+   Requests needed: -728
+   Days needed at 100 req/day: -7.3
+   Requests remaining today: 0
+   Average time per file: 146.7s
+  822: HB 5e editie 2024_1.md (Markdown: 1.9MB) [API 3/6]
+  INFO: Using Files API approach for HB 5e editie 2024_1.md
+  INFO: Markdown file size: 1.89 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/5f3238t77o40
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 1.89MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 55494 chars
+  INFO: Successfully extracted structured data from markdown (time: 125.6s)
+  INFO: Response size: 55,494 chars (~13,873 tokens)
+  INFO: Cleaned up uploaded file: files/5f3238t77o40
+  ✅ JSON saved with proper formatting
+  822: LLM extraction completed in 126.82 seconds [API 3/6]
+  823: 2025-07-01 CAO MVT 2025 - 2027 - incl HFI DEF.md (Markdown: 1.0MB) [API 3/6]
+  INFO: Using Files API approach for 2025-07-01 CAO MVT 2025 - 2027 - incl HFI DEF.md
+  INFO: Markdown file size: 1.02 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/d1wwwvno1gf6
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 1.02MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 96272 chars
+  INFO: Successfully extracted structured data from markdown (time: 164.6s)
+  INFO: Response size: 96,272 chars (~24,068 tokens)
+  INFO: Cleaned up uploaded file: files/d1wwwvno1gf6
+  ✅ JSON saved with proper formatting
+  823: LLM extraction completed in 166.44 seconds [API 3/6]
+  823: CAO_MvT_2014_2018_29_november_2016.md (Markdown: 0.7MB) [API 3/6]
+  INFO: Using Files API approach for CAO_MvT_2014_2018_29_november_2016.md
+  INFO: Markdown file size: 0.71 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/tk31pt4esn0u
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.71MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 86822 chars
+  INFO: Successfully extracted structured data from markdown (time: 161.8s)
+  INFO: Response size: 86,822 chars (~21,705 tokens)
+  INFO: Cleaned up uploaded file: files/tk31pt4esn0u
+  ✅ JSON saved with proper formatting
+  823: LLM extraction completed in 164.22 seconds [API 3/6]
+  823: Cao MVT - incl HFI 8 juni 2022.md (Markdown: 1.0MB) [API 3/6]
+  INFO: Using Files API approach for Cao MVT - incl HFI 8 juni 2022.md
+  INFO: Markdown file size: 0.98 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/o28zsvr1lult
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.98MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 38398 chars
+  INFO: Successfully extracted structured data from markdown (time: 115.6s)
+  INFO: Response size: 38,398 chars (~9,599 tokens)
+  INFO: Cleaned up uploaded file: files/o28zsvr1lult
+  ✅ JSON saved with proper formatting
+  823: LLM extraction completed in 117.23 seconds [API 3/6]
+  824: CAO MB 2021 2024_1.md (Markdown: 0.4MB) [API 3/6]
+  INFO: Using Files API approach for CAO MB 2021 2024_1.md
+  INFO: Markdown file size: 0.42 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/nv8r82mnbb61
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.42MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 68241 chars
+  INFO: Successfully extracted structured data from markdown (time: 138.4s)
+  INFO: Response size: 68,241 chars (~17,060 tokens)
+  INFO: Cleaned up uploaded file: files/nv8r82mnbb61
+  ✅ JSON saved with proper formatting
+  824: LLM extraction completed in 140.38 seconds [API 3/6]
+  824: CAO_MB_2017_2019_TTW_juli_2017.md (Markdown: 0.4MB) [API 3/6]
+  INFO: Using Files API approach for CAO_MB_2017_2019_TTW_juli_2017.md
+  INFO: Markdown file size: 0.39 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/xa1p2plwizu8
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.39MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 55653 chars
+  INFO: Successfully extracted structured data from markdown (time: 159.6s)
+  INFO: Response size: 55,653 chars (~13,913 tokens)
+  INFO: Cleaned up uploaded file: files/xa1p2plwizu8
+  ✅ JSON saved with proper formatting
+  824: LLM extraction completed in 160.56 seconds [API 3/6]
+  824: MT_Metaalbew__CAO___handb_.md (Markdown: 1.4MB) [API 3/6]
+  INFO: Using Files API approach for MT_Metaalbew__CAO___handb_.md
+  INFO: Markdown file size: 1.36 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/sbppuuzm8fxa
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 1.36MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 107227 chars
+  INFO: Successfully extracted structured data from markdown (time: 247.1s)
+  INFO: Response size: 107,227 chars (~26,806 tokens)
+  INFO: Cleaned up uploaded file: files/sbppuuzm8fxa
+  ✅ JSON saved with proper formatting
+  824: LLM extraction completed in 248.48 seconds [API 3/6]
+  826: CAO ISO 2021 2024_1.md (Markdown: 0.4MB) [API 3/6]
+  INFO: Using Files API approach for CAO ISO 2021 2024_1.md
+  INFO: Markdown file size: 0.40 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/snra10tcxbdt
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.40MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 30259 chars
+  INFO: Successfully extracted structured data from markdown (time: 196.8s)
+  INFO: Response size: 30,259 chars (~7,564 tokens)
+  INFO: Cleaned up uploaded file: files/snra10tcxbdt
+  ✅ JSON saved with proper formatting
+  826: LLM extraction completed in 198.43 seconds [API 3/6]
+  826: CAO_ISO_2017_2019__TTW_LL_nov_2018.md (Markdown: 0.4MB) [API 3/6]
+  INFO: Using Files API approach for CAO_ISO_2017_2019__TTW_LL_nov_2018.md
+  INFO: Markdown file size: 0.38 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/9arn21p9anb4
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.38MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 78889 chars
+  INFO: Successfully extracted structured data from markdown (time: 211.8s)
+  INFO: Response size: 78,889 chars (~19,722 tokens)
+  INFO: Cleaned up uploaded file: files/9arn21p9anb4
+  ✅ JSON saved with proper formatting
+  826: LLM extraction completed in 212.98 seconds [API 3/6]
+--- CAO 826 ---
+  826: Isolatie_cao_en_handboek.md (Markdown: 1.3MB) [API 3/6]
+  INFO: Using Files API approach for Isolatie_cao_en_handboek.md
+  INFO: Markdown file size: 1.33 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/gfq5417vam1n
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 1.33MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 77886 chars
+  INFO: Successfully extracted structured data from markdown (time: 269.3s)
+  INFO: Response size: 77,886 chars (~19,471 tokens)
+  INFO: Cleaned up uploaded file: files/gfq5417vam1n
+  ✅ JSON saved with proper formatting
+  826: LLM extraction completed in 270.95 seconds [API 3/6]
+
+📈 PROGRESS ESTIMATE:
+   Progress: 400.8% (-791 files remaining)
+   Estimated remaining time: -32.5 hours
+   Requests needed: -791
+   Days needed at 100 req/day: -7.9
+   Requests remaining today: 0
+   Average time per file: 147.8s
+  833: CAO_Woondiensten_2013_tm_juni_definitieve_tekst.md (Markdown: 0.2MB) [API 3/6]
+  INFO: Using Files API approach for CAO_Woondiensten_2013_tm_juni_definitieve_tekst.md
+  INFO: Markdown file size: 0.18 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/ybe68xax3cu5
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.18MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 47024 chars
+  INFO: Successfully extracted structured data from markdown (time: 140.1s)
+  INFO: Response size: 47,024 chars (~11,756 tokens)
+  INFO: Cleaned up uploaded file: files/ybe68xax3cu5
+  ✅ JSON saved with proper formatting
+  833: LLM extraction completed in 141.10 seconds [API 3/6]
+  833: Woondiensten_cao_en_handboek.md (Markdown: 0.9MB) [API 3/6]
+  INFO: Using Files API approach for Woondiensten_cao_en_handboek.md
+  INFO: Markdown file size: 0.87 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/toas3l1stvdq
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.87MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 35204 chars
+  INFO: Successfully extracted structured data from markdown (time: 110.3s)
+  INFO: Response size: 35,204 chars (~8,801 tokens)
+  INFO: Cleaned up uploaded file: files/toas3l1stvdq
+  ✅ JSON saved with proper formatting
+  833: LLM extraction completed in 111.66 seconds [API 3/6]
+  884: CAO_Kantoor_en_Boek_16_17_def.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for CAO_Kantoor_en_Boek_16_17_def.md
+  INFO: Markdown file size: 0.06 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/gr3h6aw0t4w5
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.06MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 30102 chars
+  INFO: Successfully extracted structured data from markdown (time: 125.4s)
+  INFO: Response size: 30,102 chars (~7,525 tokens)
+  INFO: Cleaned up uploaded file: files/gr3h6aw0t4w5
+  ✅ JSON saved with proper formatting
+  884: LLM extraction completed in 126.71 seconds [API 3/6]
+  884: Cao_Boekhandel_en_Kantoorvakhandel_2014_2016.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for Cao_Boekhandel_en_Kantoorvakhandel_2014_2016.md
+  INFO: Markdown file size: 0.05 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/1bvof09vgvgq
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.05MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=NOT_FOUND
+  DEBUG: Checking response.text: hasattr=True, value=None
+  DEBUG: Found 0 content parts
+  DEBUG: No text parts found, trying fallback methods...
+  DEBUG: No fallback text found in response
+  DEBUG: Response attributes: ['__abstractmethods__', '__annotations__', '__class__', '__class_getitem__', '__class_vars__', '__copy__', '__deepcopy__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__fields__', '__fields_set__', '__format__', '__ge__', '__get_pydantic_core_schema__', '__get_pydantic_json_schema__', '__getattr__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__pretty__', '__private_attributes__', '__pydantic_complete__', '__pydantic_computed_fields__', '__pydantic_core_schema__', '__pydantic_custom_init__', '__pydantic_decorators__', '__pydantic_extra__', '__pydantic_fields__', '__pydantic_fields_set__', '__pydantic_generic_metadata__', '__pydantic_init_subclass__', '__pydantic_parent_namespace__', '__pydantic_post_init__', '__pydantic_private__', '__pydantic_root_model__', '__pydantic_serializer__', '__pydantic_setattr_handlers__', '__pydantic_validator__', '__reduce__', '__reduce_ex__', '__replace__', '__repr__', '__repr_args__', '__repr_name__', '__repr_recursion__', '__repr_str__', '__rich_repr__', '__setattr__', '__setstate__', '__signature__', '__sizeof__', '__slots__', '__str__', '__subclasshook__', '__weakref__', '_abc_impl', '_calculate_keys', '_copy_and_set_values', '_from_response', '_get_text', '_get_value', '_iter', '_setattr_handler', 'automatic_function_calling_history', 'candidates', 'code_execution_result', 'construct', 'copy', 'create_time', 'dict', 'executable_code', 'from_orm', 'function_calls', 'json', 'model_computed_fields', 'model_config', 'model_construct', 'model_copy', 'model_dump', 'model_dump_json', 'model_extra', 'model_fields', 'model_fields_set', 'model_json_schema', 'model_parametrized_name', 'model_post_init', 'model_rebuild', 'model_validate', 'model_validate_json', 'model_validate_strings', 'model_version', 'parse_file', 'parse_obj', 'parse_raw', 'parsed', 'prompt_feedback', 'response_id', 'schema', 'schema_json', 'sdk_http_response', 'text', 'to_json_dict', 'update_forward_refs', 'usage_metadata', 'validate']
+  INFO: Cleaned up uploaded file: files/1bvof09vgvgq
+  DEBUG: Markdown upload error type: ValueError, Error message: no text parts found in response
+  DEBUG: Full error details: No text parts found in response
+  DEBUG: Token usage - Input: 18592, Output: None
+  🔍 DETAILED FAILURE ANALYSIS for Cao_Boekhandel_en_Kantoorvakhandel_2014_2016.md (attempt 1):
+    📊 Finish reason: FinishReason.STOP
+    🛡️  Safety ratings: []
+    📄 Content length: 0
+    ⏱️  Processing time: 42.796367168426514s
+    🔑 API key used: 3
+    🆔 Process ID: 2
+  DEBUG: Traceback: Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 924, in extract_with_markdown_upload
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 654, in extract_text_safely
+    else:
+        ^^
+ValueError: No text parts found in response
+
+  Attempt 1 failed (ValueError), retrying in 30 seconds...
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/60wf06uz3guc
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.05MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 25172 chars
+  INFO: Successfully extracted structured data from markdown (time: 166.7s)
+  INFO: Response size: 25,172 chars (~6,293 tokens)
+  INFO: Cleaned up uploaded file: files/60wf06uz3guc
+  ✅ JSON saved with proper formatting
+  884: LLM extraction completed in 167.77 seconds [API 3/6]
+  924: ANVR_CAO_2012_2013_Gecorrigeerde_tekst_def_R1.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for ANVR_CAO_2012_2013_Gecorrigeerde_tekst_def_R1.md
+  INFO: Markdown file size: 0.10 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/y2pi8pdevxmh
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.10MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=NOT_FOUND
+  DEBUG: Checking response.text: hasattr=True, value={
+  "general_information": [
+    [
+      "Document title: COLLECTIEVE ARBEIDSOVEREENKOMST VOOR DE REISBRANCHE (Collective Labor Agreement for the Travel Industry)"
+    ],
+    [
+      "Contract period: 1 April 2012 - 1 November 2013"
+    ],
+    [
+      "Parties involved (employer): De Algemene Nederlandse Vereniging van Reisondernemingen (ANVR) te Baarn"
+    ],
+    [
+      "Parties involved (employee unions): De CNV Dienstenbond te Hoofddorp, De FNV Bondgenoten te Utrecht, De Unie te Culemborg"
+    ],
+    [
+      "Scope: The travel industry, defined as companies or parts of companies primarily operating as travel organizers or travel agents. A travel organizer offers pre-organized trips in their own name. A travel agent mediates in travel agreements (transport, accommodation, package tours)."
+    ],
+    [
+      "Exclusions from scope: Companies or parts of companies where a CAO was applicable on 1 January 1993, as well as touring car companies, airlines, shipping companies, and railway companies."
+    ],
+    [
+      "Temporary workers: Fall under the scope of the CAO for Temporary Workers, with specific articles from this CAO (Article 7 function classification and remuneration, Article 8a collective wage increase, Article 8b individual wage increase, Article 10 overtime (surcharge), Article 11 special hours (surcharge), Article 18 holiday allowance) being applicable to them. The employer as hirer must ensure these provisions are met and use NEN 4400 certified temporary employment agencies."
+    ],
+    [
+      "Favorable deviations: The validity of company-agreed wages and other employment conditions that deviate favorably for the employee from this CAO is not affected. The employer is only allowed to deviate favorably for the employee from the employment conditions in this CAO."
+    ]
+  ],
+  "wage_information": [
+    [
+      "Collective wage increase: Employees in functiegroepen 2 to 7 are entitled to a collective wage increase of 2% on the actual wage, effective 1 November 2012. If wages are paid every four weeks, the increase can be paid from 9 November 2012."
+    ],
+    [
+      "Individual wage increase: Between 1 January and 1 April of each calendar year, an individual wage increase is granted. For employees in salary groups 2 to 7 who earn less than their applicable scale maximum and have been employed for six months or longer, an appraisal interview will be held. Based on the appraisal result, the employee receives a wage increase of at least 1% for a 'good or higher' rating and 0% for a 'moderate or lower' rating. If the appraisal interview does not take place due to the employer's demonstrable lack of initiative, the rating is considered 'good or higher' for the purpose of this article. The increase is calculated on the actual salary up to the scale maximum. Collective CAO wage increases (Article 8a) cumulate with individual increases."
+    ],
+    [
+      "Wage table: CAO Reisbranche gross wages per 1 November 2012 (+ 2.00%) for a five-day work week of 39 hours (Wages per month)",
+      "Age, Scale, Group 2, Group 3, Group 4, Group 5, Group 6, Group 7",
+      "17, , 582.25, 600.11, 624.16, 655.58, 695.01, ",
+      "18, , 670.79, 691.30, 719.03, 754.76, 800.36, ",
+      "19, , 773.86, 797.29, 829.32, 871.21, 923.58, ",
+      "20, , 906.96, 934.07, 971.65, 1020.32, 1081.94, ",
+      "21, , 1068.99, 1101.03, 1145.40, 1202.69, 1275.40, ",
+      "22, , 1253.22, 1290.80, 1342.57, 1410.34, 1495.36, ",
+      "23 or older, Min., 1474.41, 1518.78, 1579.76, 1659.26, 1759.07, 1882.28",
+      "23 or older, Max., 1709.68, 1915.00, 2145.23, 2402.87, 2691.74, 3015.05"
+    ],
+    [
+      "Job classifications (Functiegroepen): Employees are classified based on the work performed. The functiegroepen are:",
+      "Functiegroep 2: Simple tasks requiring some professional and company knowledge, performed with some independence under direct supervision. Requires a lower vocational education. Example functions: junior travel salesperson, travel document employee, receptionist/telephonist, airport hostess, administration employee I, traffic employee I, travel salesperson I, business travel salesperson I.",
+      "Functiegroep 3: Independent tasks requiring professional and company knowledge. For specialized tasks, the employee can rely on a group 4 or higher employee. Example functions: departmental secretary, allotment management, guide/tour leader inbound tourism, IATA specialist I, administration employee II, commercial internal sales employee, E-commerce employee I, ticketing employee, traffic employee II (with IATA), travel salesperson II, inbound tourism travel salesperson I, group travel salesperson I, business travel salesperson II.",
+      "Functiegroep 4: Independent tasks requiring extensive professional and company knowledge (often partly gained through experience) and co-supervision (or full supervision in the absence of the manager) of a few employees in functiegroepen 1, 2, or 3; or independent tasks requiring special professional knowledge and skills at MBO level. Example functions: assistant product manager, IATA specialist II, administration employee III, brochure compilation employee, client service employee, travel salesperson III, inbound tourism travel salesperson II, group travel salesperson II, business travel salesperson III.",
+      "Functiegroep 5: Independent tasks requiring extensive professional and company knowledge (often partly gained through experience) and management under partial supervision of a department with at least 3 employees; or independent management of a small branch (maximum 2 employees); or independent tasks requiring extensive special professional knowledge and skills at MBO+ level. Example functions: marketing & communication employee, supervisor/team leader I, branch manager I, commercial external sales employee, E-commerce employee II.",
+      "Functiegroep 6: Independent tasks requiring extensive professional and company knowledge, as well as full management of a department with at least 3 and at most 7 employees; or a branch with a maximum of 5 employees; or specialized, independent tasks requiring HBO-level professional knowledge, all including responsibility for achieving departmental/branch targets and associated budget responsibility. Example functions: supervisor/team leader II, branch manager II.",
+      "Functiegroep 7: Daily full management of a department with more than 7 employees; or a branch with more than 5 but a maximum of 10 employees; or specialized tasks with a high degree of independence requiring HBO or academic level professional knowledge and carrying a significant risk of damage to the company, all including (within organizational frameworks) budget responsibility for activities performed by the department or branch, as well as responsibility for achieving targets regarding turnover, results, and costs. Example functions: branch manager III."
+    ]
+  ],
+  "pension_information": [
+    [
+      "Pension scheme: There is an industry pension fund, organized as the Stichting Bedrijfstakpensioenfonds voor de Reisbranche Reiswerk Pensioenen (Industry Pension Fund for the Travel Industry Reiswerk Pensions)."
+    ],
+    [
+      "Pension fund regulations: The regulations of the pension scheme can be downloaded from www.reiswerk-pensioenen.nl."
+    ],
+    [
+      "Eligibility: Employees aged 21 or older are obliged to participate in the pension scheme according to the Bedrijfstakpensioenfonds voor de Reisbranche (Global)."
+    ],
+    [
+      "Future research: CAO parties agree to research the establishment of a future-proof pension scheme for the travel industry during the term of this CAO. This research will consider continuing the current scheme, merging with another industry pension fund, and developing a completely new scheme. Stichting FOOR is requested to conduct and finance this research."
+    ]
+  ],
+  "leave_information": [
+    [
+      "Normal annual vacation: 24 days."
+    ],
+    [
+      "Increased annual vacation based on age and service: For an uninterrupted employment of at least 5 full years within the travel industry, upon reaching the following ages in the current vacation year:",
+      "- 45 years: 25 days",
+      "- 50 years: 26 days",
+      "- 55 years: 27 days"
+    ],
+    [
+      "Proportional vacation: For employment less than a full year or for part-time work, vacation is calculated proportionally. Part-time workers also accrue vacation rights for hours worked beyond their agreed working time, unless it is overtime."
+    ],
+    [
+      "Consecutive vacation: Employees have the right to take at least 3 consecutive weeks of vacation per vacation year. The employer has the right to determine that an employee takes at least 2 consecutive weeks of vacation per vacation year."
+    ],
+    [
+      "Mandatory vacation day: The employer has the right to designate 1 vacation day per year as a mandatory vacation day."
+    ],
+    [
+      "Holiday allowance: 8% of the gross wage. Payment is made no later than May. The allowance is calculated over the preceding period from May to April."
+    ],
+    [
+      "Public holidays: New Year's Day, first and second Easter Day, Ascension Day, first and second Pentecost Day, Koninginnedag, first and second Christmas Day, and 5 May in lustrum years. If no work is performed on a public holiday, normal wages are paid if work would normally have been done on that day."
+    ],
+    [
+      "Special leave (with pay):",
+      "- Marriage or registered partnership: 2 days",
+      "- Marriage of child, brother, sister, brother-in-law, sister-in-law, and remarriage of a parent or parent-in-law: 1 day",
+      "- In connection with the birth of the spouse, including the statutory right to maternity leave under Article 4:2 Wet arbeid en zorg: 3 days",
+      "- 25-, 40-, and 50-year wedding anniversary of the employee, their children, (grand)parents (if notified at least 1 week in advance): 1 day",
+      "- 25- and 40-year service anniversary: 1 day",
+      "- Death of spouse or cohabiting child: from the day of death up to and including the day of burial/cremation",
+      "- Death of a parent or non-cohabiting child: 2 days",
+      "- Death of brothers, sisters, brothers-in-law, sisters-in-law, grandparents, parents-in-law, children-in-law, or grandchildren: 1 day",
+      "- Hospital admission or discharge of spouse or unmarried child: 1 day",
+      "- Per move: 1 day, with a maximum of 2 days per 2 years",
+      "- Fulfillment of a legal/government obligation without financial compensation that must be personally fulfilled: reasonable time, maximum 1 day"
+    ],
+    [
+      "Vacation after maternity leave: The employee can, in consultation with the employer, take vacation days immediately following the employee's maternity leave as described in Article 4, paragraph 2 of the Wet Arbeid en Zorg."
+    ]
+  ],
+  "termination_information": [
+    [
+      "Probation period: Upon entering into an employment contract, for both indefinite and fixed-term contracts
+  DEBUG: Found direct text response: 11041 chars
+  INFO: Successfully extracted structured data from markdown (time: 33.4s)
+  INFO: Response size: 11,041 chars (~2,760 tokens)
+  ERROR: Invalid JSON structure
+  WARNING: Response schema validation failed for ANVR_CAO_2012_2013_Gecorrigeerde_tekst_def_R1.md
+  INFO: Cleaned up uploaded file: files/y2pi8pdevxmh
+  924: ✗ Incomplete JSON: Content does not end with } - JSON appears to be truncated for ANVR_CAO_2012_2013_Gecorrigeerde_tekst_def_R1.md [API 3/6]
+  924: Error with ANVR_CAO_2012_2013_Gecorrigeerde_tekst_def_R1.md: Incomplete JSON: Content does not end with } - JSON appears to be truncated [API 3/6]
+Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 1094, in process_single_file
+ValueError: Incomplete JSON: Content does not end with } - JSON appears to be truncated
+  924: Tekst cao Reisbranche 1jan-1jul2022.md (Markdown: 0.2MB) [API 3/6]
+  INFO: Using Files API approach for Tekst cao Reisbranche 1jan-1jul2022.md
+  INFO: Markdown file size: 0.18 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/fk9wkh75r4s6
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.18MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 16483 chars
+  INFO: Successfully extracted structured data from markdown (time: 80.0s)
+  INFO: Response size: 16,483 chars (~4,120 tokens)
+  INFO: Cleaned up uploaded file: files/fk9wkh75r4s6
+  ✅ JSON saved with proper formatting
+  924: LLM extraction completed in 81.10 seconds [API 3/6]
+  924: cao Reisbranche 1jul2024-1jul2026 def.md (Markdown: 0.2MB) [API 3/6]
+  INFO: Using Files API approach for cao Reisbranche 1jul2024-1jul2026 def.md
+  INFO: Markdown file size: 0.18 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/f55yz4iyzozp
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.18MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 30096 chars
+  INFO: Successfully extracted structured data from markdown (time: 90.6s)
+  INFO: Response size: 30,096 chars (~7,524 tokens)
+  INFO: Cleaned up uploaded file: files/f55yz4iyzozp
+  ✅ JSON saved with proper formatting
+  924: LLM extraction completed in 92.04 seconds [API 3/6]
+  1022: CAO MBO 2018-2020 - wijzigingen geaccepteerd 712020.md (Markdown: 0.4MB) [API 3/6]
+  INFO: Using Files API approach for CAO MBO 2018-2020 - wijzigingen geaccepteerd 712020.md
+  INFO: Markdown file size: 0.40 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/rgbc19yelons
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.40MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 51838 chars
+  INFO: Successfully extracted structured data from markdown (time: 116.8s)
+  INFO: Response size: 51,838 chars (~12,959 tokens)
+  INFO: Cleaned up uploaded file: files/rgbc19yelons
+  ✅ JSON saved with proper formatting
+  1022: LLM extraction completed in 118.13 seconds [API 3/6]
+  1022: CAO MBO 2023-2024.md (Markdown: 0.4MB) [API 3/6]
+  INFO: Using Files API approach for CAO MBO 2023-2024.md
+  INFO: Markdown file size: 0.41 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/pvcjperl7pf8
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.41MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 65488 chars
+  INFO: Successfully extracted structured data from markdown (time: 162.8s)
+  INFO: Response size: 65,488 chars (~16,372 tokens)
+  INFO: Cleaned up uploaded file: files/pvcjperl7pf8
+  ✅ JSON saved with proper formatting
+  1022: LLM extraction completed in 163.64 seconds [API 3/6]
+  1022: CAO_MBO_2018_2020_in_Word.md (Markdown: 0.4MB) [API 3/6]
+  INFO: Using Files API approach for CAO_MBO_2018_2020_in_Word.md
+  INFO: Markdown file size: 0.40 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/638a0o24oug2
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.40MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 88175 chars
+  INFO: Successfully extracted structured data from markdown (time: 230.2s)
+  INFO: Response size: 88,175 chars (~22,043 tokens)
+  INFO: Cleaned up uploaded file: files/638a0o24oug2
+  ✅ JSON saved with proper formatting
+  1022: LLM extraction completed in 232.14 seconds [API 3/6]
+
+📈 PROGRESS ESTIMATE:
+   Progress: 422.8% (-849 files remaining)
+   Estimated remaining time: -34.6 hours
+   Requests needed: -849
+   Days needed at 100 req/day: -8.5
+   Requests remaining today: 0
+   Average time per file: 146.7s
+  1060: NBBU cao per 1-1-2022 defintief wijziging accept.md (Markdown: 0.2MB) [API 3/6]
+  INFO: Using Files API approach for NBBU cao per 1-1-2022 defintief wijziging accept.md
+  INFO: Markdown file size: 0.18 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/ym2gafnehvex
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.18MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=NOT_FOUND
+  DEBUG: Checking response.text: hasattr=True, value={
+  "general_information": [
+    [
+      "Document title: CAO Document - Extracted Content"
+    ],
+    [
+      "Contract period: 1 January 2022 to 2 January 2023"
+    ],
+    [
+      "Parties involved: FNV, CNV Vakmensen.nl, De Unie (employee parties); De Nederlandse Bond van Bemiddelings- en Uitzendondernemingen (NBBU) (employer party)"
+    ],
+    [
+      "Scope of agreement: Applies to employers who are members of NBBU. Applies to temporary employment agreements of members, not being payroll agreements as defined in Article 7:692 BW, unless dispensation is granted under Article 43 of the CAO."
+    ],
+    [
+      "Scope exception: Chapter 2, with the exception of the temporary employment clause, remains applicable to fixed-term payroll agreements concluded before and continuing after 1 January 2020 until their termination. This is subject to the additional condition that the terms of employment of these payroll agreements comply with legal provisions for payroll agreements and are at least equal to what was applicable to payroll agreements concluded before 1 January 2020. In deviation from Article 18, a vacation allowance percentage of 8% applies, unless a higher percentage is required by law for payroll."
+    ],
+    [
+      "Scope exception: The CAO for Temporary Workers is not applicable to temporary employment agencies that provide more than 50% of their annual wage sum in workers to employers covered by the CAO Bouw & Infra."
+    ],
+    [
+      "Scope exception: For temporary employment agencies that are members of ABU or NBBU, or are dispensed from the generally binding CAO Bouw & Infra, this CAO applies in deviation from sub a. and in accordance with Article 1, paragraph 1."
+    ],
+    [
+      "Scope exception: If a temporary employment agency provides a temporary worker to a client bound by the CAO Bouw & Infra, and the CAO for Temporary Workers applies to this agency, the agency is obliged to inquire with the client and confirm to the temporary worker which specific provisions from Annex 7 of the CAO Bouw & Infra apply to them."
+    ]
+  ],
+  "wage_information": [
+    [
+      "Article 16 Inlenersbeloning (Client's Remuneration) - Until 3 January 2022:",
+      "The temporary worker is entitled to the client's remuneration, unless Article 33 is applied. The client's remuneration consists of the following six elements, each of which is at least equal to the remuneration of an employee working in a similar or equivalent position in the service of the client, where the temporary worker performs work under the client's direction and supervision:",
+      "a. solely the applicable periodic wage in the scale;",
+      "b. the applicable reduction in working hours. This can - at the discretion of the temporary employment agency - be compensated in time and/or money;",
+      "c. allowances for overtime, for irregular work (including public holidays), shifted hours, shift work, and work under physically demanding circumstances related to the nature of the work (including working in low or high temperatures, working with hazardous substances, or dirty work);",
+      "d. initial wage increase (amount and timing as determined by the client);",
+      "e. expense reimbursement (to the extent that the temporary employment agency can pay this free of wage tax and premiums: travel expenses, accommodation expenses, and other expenses necessary for the performance of the function);",
+      "f. periodic increases (amount and timing as determined by the client)."
+    ],
+    [
+      "Article 16 Inlenersbeloning (Client's Remuneration) - From 3 January 2022:",
+      "The temporary worker is entitled to the client's remuneration, unless Article 33 is applied. The client's remuneration consists of the following nine elements, each of which is at least equal to the remuneration of an employee working in a similar or equivalent position in the service of the client, where the temporary worker performs work under the client's direction and supervision:",
+      "a. solely the applicable periodic wage in the scale;",
+      "b. the applicable reduction in working hours. This can - at the discretion of the temporary employment agency - be compensated in time and/or money;",
+      "c. all allowances for irregular work and/or work under (physically) demanding circumstances related to the nature of the work. This includes (but is not limited to): overtime, working on evening, weekend, and public holiday hours, shifted hours, shift work, low and/or high temperatures, hazardous substances, dirty work);",
+      "d. initial wage increase from the same time and with the same amount as with the client;",
+      "e. expense reimbursements (to the extent that the temporary employment agency can pay these free of wage tax and premiums);",
+      "f. periodic increases (amount and timing as determined by the client);",
+      "g. reimbursement of travel hours and/or travel time related to the work (unless travel hours or travel time are already considered worked hours);",
+      "h. one-off payments, regardless of the purpose or reason for the payment. One-off payments do not include periodically recurring payments;",
+      "i. home office allowances, where the part of the allowance not specifically exempted by law is paid gross."
+    ],
+    [
+      "Article 16 Inlenersbeloning (Client's Remuneration) - From 1 January 2023:",
+      "Sub j is added to lid 1 (making the client's remuneration consist of 10 elements):",
+      "j. fixed year-end bonuses (amount, timing, and conditions as determined by the client)."
+    ],
+    [
+      "Article 17 Calculation of hourly wage and/or ADV compensation in money:",
+      "If the client's CAO or AVR specifies an hourly wage definition, that definition is used. If not, the hourly wage is calculated as: Monthly wage / (4.35 * Normal Working Hours (NAD)).",
+      "If the client's CAO or AVR provides for ADV in the form of paid leave, the temporary employment agency can choose to compensate ADV in time or money. If compensated in money, and the CAO/AVR specifies an ADV percentage or calculation method, that is used. If not, the ADV compensation in money is calculated as:",
+      "Calculation based on ADV in days: ADV days per year / 254",
+      "Calculation based on ADV in hours: ADV hours per year / (254 * (NAD / 5))"
+    ],
+    [
+      "Article 18 Vacation Allowance:",
+      "The temporary worker is entitled to 8.33% vacation allowance of the actual wage over:",
+      "• worked days;",
+      "• vacation days;",
+      "• public holidays;",
+      "• days on which the temporary worker is incapacitated for work;",
+      "• compensatory hours; and",
+      "• hours for which the temporary worker is entitled to continued wage payment under Article 22 due to loss of temporary employment."
+    ],
+    [
+      "Article 19 Compensatory Hours:",
+      "The temporary employment agency can agree in writing with the temporary worker that the allowance for irregular working hours and/or overtime allowance will not be paid out, but will be used for the accrual of compensatory hours in time.",
+      "Irregularity or overtime allowances are converted into time that the temporary worker can take as leave. To calculate the accrual in time, the number of hours for which the allowances were accrued is multiplied by the applicable allowance percentage."
+    ],
+    [
+      "Article 20 Exchange of Terms of Employment:",
+      "A portion of the remuneration as referred to in Article 16, paragraph 1, including allowances for irregular working hours and overtime, compensatory hours (Article 19), and above-statutory vacation days, can be exchanged for tax-free reimbursements or provisions related to extraterritorial costs (e.g., double housing costs, travel costs to/from home country, extra living expenses).",
+      "Limitations:",
+      "a. Exchange is only allowed for double housing costs, travel costs to and from the country of origin of the temporary worker, and extra living expenses.",
+      "b. Mandatory legal provisions must be considered.",
+      "c. Exchange is only allowed if and to the extent fiscally permissible.",
+      "d. The amount of tax-free reimbursements or value of tax-free provisions must be stated on the payslip.",
+      "e. Exchange must be agreed upon in advance and recorded in the temporary employment agreement.",
+      "f. Wage after exchange must not be lower than the applicable statutory minimum wage.",
+      "g. Exchange is limited to a maximum of 30% of the wage as referred to in paragraph 1.",
+      "h. Tax-free reimbursement is limited to actual costs. Tax-free provision is valued at economic market value.",
+      "i. No accrual of (reservations for) vacation days, vacation allowance, short-term absence and special leave, public holidays, and waiting days over the exchanged wage. These rights are accrued only over the reduced wage.",
+      "j. Pension accrual takes place over the exchanged part of the wage, if applicable.",
+      "k. Exchange does not affect the basis for overtime wage and irregular working hours allowance.",
+      "l. The exchanged wage and value of above-statutory vacation days for tax-free reimbursement/provision is maximum 81% of the amount of extraterritorial costs the agency wants to reimburse/provide tax-free. The 81% does not apply to exchange of irregular working hours/overtime allowances and compensatory hours."
+    ],
+    [
+      "Article 21 Determining Remuneration for Non-Classifiable Temporary Workers:",
+      "A non-classifiable temporary worker is one whose work cannot be classified in the client's job structure. The remuneration is determined through discussions with the temporary worker and, if applicable, the client, considering required capacities, responsibilities, experience, and education level.",
+      "The temporary employment agency must demonstrate that the work is non-classifiable upon request."
+    ],
+    [
+      "Article 33 CAO-Remuneration Allocation Group:",
+      "To increase employability and improve mediation/guidance for finding work, temporary workers belonging to the allocation group can receive CAO-remuneration, which deviates from the client's remuneration (Article 16).",
+      "The allocation group includes temporary workers who:",
+      "a. are designated by the government as persons with a distance to the labor market (e.g., Wet banenafspraak, Participatiewet, WWB, disabled/restricted workers).",
+      "b. have not obtained a starting qualification (no HAVO/VWO diploma, or minimum MBO level 2) and will follow a qualifying training offered by the temporary employment agency.",
+      "Skilled temporary workers (regardless of country of origin) working in their own profession cannot be classified in the allocation group.",
+      "When applying CAO-remuneration, the temporary worker is classified in the job grid in Annex IV. CAO-remuneration can only be applied if the temporary worker is classified in job group 6 or lower. The actual hourly wage is determined, with the amounts in column I of the salary table below serving as the lower limit. After 26 worked weeks, the temporary employment agency grants the temporary worker a periodic increase, corresponding to the percentage in column II of the table below.",
+      "The duration of CAO-remuneration application is limited to a maximum of 52 worked weeks. After 52 worked weeks, the temporary worker is fully remunerated according to the client's remuneration (Article 16, paragraph 1).",
+      "An exception to the 52-week limit applies to temporary workers without a starting qualification (lid 2 sub b). For these workers, the period can be extended until the training is completed, up to a maximum of 104 worked weeks. If extended, the temporary worker is entitled to a second periodic increase from the 53rd week. After the extended period (max 104 weeks), the temporary worker is fully remunerated according to the client's remuneration (Article 16).",
+      "The counting of 52 or 104 worked weeks continues after an interruption of two years or less. The duration of the interruption is not counted. After full utilization of the 52 or 104 worked weeks, the counting cannot restart.",
+      "The hourly wage is adjusted twice a year (Jan 1 and July 1) by the percentage of the statutory minimum wage increase. If a wage increase coincides with a periodic increase, the actual hourly wage is increased first, then the periodic increase is applied."
+    ],
+    [
+      "Salaristabel per 1-7-2021 (CAO-Remuneration Allocation Group)",
+      "Functiegroep, (I) Beginsalaris, (II) Periodieke verhoging naar functiegroep",
+      "1, statutory minimum (Youth) wage, 2.25%",
+      "2, statutory minimum (Youth) wage, 2.25%",
+      "3, statutory minimum (Youth) wage, 2.25%",
+      "4, EUR 11.60, 2.25%",
+      "5, EUR 12.13, 2.25%",
+      "6, EUR 12.72, 2.25%",
+      "Note: For minimum actual hourly wages, a normal working week of 40 hours is assumed. For shorter working weeks, the hourly wage based on the statutory minimum (youth) wage must be recalculated to comply with the Wet minimumloon en minimumvakantiebijslag."
+    ],
+    [
+      "Salaristabel per 1-1-2022 (CAO-Remuneration Allocation Group)",
+      "Functiegroep, (I) Beginsalaris, (II) Periodieke verhoging naar functiegroep",
+      "1, statutory minimum (Youth) wage, 2.25%",
+      "2, statutory minimum (Youth) wage, 2.25%",
+      "3, statutory minimum (Youth) wage, 2.25%",
+      "4, EUR 11.76, 2.25%",
+      "5, EUR 12.30, 2.25%",
+      "6, EUR 12.90, 2.25%",
+      "Note: For minimum actual hourly wages, a normal working week of 40 hours is assumed. For shorter working weeks, the hourly wage based on the statutory minimum (youth) wage must be recalculated to comply with the Wet minimumloon en minimumvakantiebijslag."
+    ],
+    [
+      "Article 33.5: For temporary workers aged 15-20, the percentages of the statutory minimum youth wage, in accordance with Article 2 of the Besluit minimumjeugdloon, can be applied to the actual hourly wages of the CAO-remuneration. For determining the applicable age percentage, the age to be reached in that calendar year is used for the entire calendar year."
+    ],
+    [
+      "Bijlage I: Reservation and Compensation Percentages (2022 and 2023)",
+      "Article, 2022, 2023",
+      "reservation vacation days, 10.87%, 10.92%",
+      "reservation statutory vacation days, 8.70%, 8.73%",
+      "payout above-statutory vacation days, 2.17%, 2.18%",
+      "short-term absence, birth leave and special leave, 0.60%, 0.60%",
+      "generally recognized public holidays, 2.17%, 2.62%",
+      "vacation temporary workers, 8.33%, 8.33%",
+      "Waiting day compensation Temporary Employment Agencies I, 0.71%, 0.71%",
+      "Waiting day compensation Temporary Employment Agencies II, 1.16%, 1.16%",
+      "Maximum percentage deduction supplementary Sickness Benefits Act Temporary Employment Agencies I, 0.58%, 0.58%",
+      "Maximum percentage deduction supplementary Sickness Benefits Act Temporary Employment Agencies II, 1.33%, 1.33%"
+    ],
+    [
+      "Article 39 Income Guarantee (from 3 January 2022):",
+      "A temporary worker who comes to the Netherlands for the first time for work with that temporary employment agency and is recruited outside the Netherlands by that agency or on its behalf by a third party, is entitled to at least the full-time minimum (youth) wage for the first two months, regardless of contract duration and hours worked ('the income guarantee').",
+      "The income guarantee period is proportionally shortened for contractually defined short-term projects, provided clarity on duration and conditions was given in the home country. If the project later extends to two months or more, the two-month guarantee period applies retroactively.",
+      "The income guarantee lapses if, within two weeks of starting work, situations like dysfunction, culpable conduct by the temporary worker, or other cases where an income guarantee is inappropriate, arise, leading the agency to no longer employ the worker. In such cases, the worker is entitled to:",
+      "a. A return-home guarantee, with transport costs to the home country paid by the agency.",
+      "b. The option to stay for five consecutive nights in agency-provided accommodation at the agency's expense.",
+      "c. Forgiveness of any outstanding debts incurred or arisen in the first two weeks of the worker's arrival in the Netherlands, to the extent they could not be legally withheld/offset, and relate to: transport home country-Netherlands, commuting, housing, and/or health insurance.",
+      "If such circumstances occur between two weeks and two months after starting work, the right to income guarantee remains.",
+      "If the worker's performance after the income guarantee period is a reason not to offer (new) work, the agency must inform the worker two weeks before the end of the two-month period."
+    ]
+  ],
+  "pension_information": [
+    [
+      "Article 32 Pension:",
+      "A pension scheme has been agreed upon by CAO parties, providing for pension accrual for temporary workers. This pension scheme is laid down in the pension agreement and is attached as an annex to this CAO.",
+      "Stichting Pensioenfonds voor Personeelsdiensten (StiPP) is tasked by CAO parties with implementing the pension scheme.",
+      "The pension agreement is laid down in the statutes and regulations of StiPP. The pension scheme consists of a Basic Scheme (Basisregeling) and a Plus Scheme (Plusregeling).",
+      "The statutes and regulations of StiPP are decisive for the rights and obligations of temporary workers and temporary employment agencies.",
+      "CAO parties agree on the premium. The premium amounts to:",
+      "a. for the Basic Scheme 2.6% of the gross wage;",
+      "b. for the Plus Scheme a maximum of 12% of the pensionable basis. Of this premium, the temporary employment agency may deduct a maximum of one-third from the temporary worker's gross wage.",
+      "Deviation from the Basic and Plus pension schemes as described in this agreement is always permitted in favor of the temporary worker."
+    ],
+    [
+      "Bijlage III: Basisregeling - Waiting Period and Participation:",
+      "The temporary worker becomes a participant in the Basic Scheme once they have completed the waiting period. During the waiting period, the temporary worker is not yet a participant and no pension is accrued. The waiting period for the Basic Scheme ends when the temporary worker has worked for more than 8 weeks for one temporary employment agency.",
+      "Rules for counting waiting period weeks:",
+      "a. Only weeks actually worked are counted. The reason for not working is irrelevant.",
+      "b. Weeks must be worked for the same temporary employment agency, unless it's a group situation (sub d).",
+      "c. Worked weeks do not need to be consecutive, but if there's an interruption of more than 26 weeks, the counting restarts.",
+      "d. In case of successive employers, relevant employment history with the previous employer is counted for worked weeks, in accordance with Article 12 of the CAO.",
+      "e. In case of a group as defined in Article 2:24b BW, relevant employment history with the previous employer within the same group is counted.",
+      "f. The employer can also be an employer exempt from StiPP.",
+      "A temporary worker can also join the Basic Scheme earlier if entitled by collective/individual employment agreement, or if they voluntarily continued participation after employment ended.",
+      "Participation in a pension scheme of an employer exempt from StiPP is considered equivalent.",
+      "A temporary worker cannot join the Basic Scheme before the first day of the month in which they turn 21.",
+      "If a temporary worker was a participant in the Basic Scheme and starts a new temporary employment agreement:",
+      "a. If the interruption is not longer than 52 weeks, they rejoin the Basic Scheme.",
+      "b. If the interruption is 52 weeks or longer, they do not rejoin and must complete the waiting period again.",
+      "Transitional provision for waiting period (until 2022, 26 weeks): For temporary workers in week 1 of 2022 who had worked more than 8 weeks for the same agency, they become participants from week 1 of 2022. If less than 8 weeks, previous worked weeks count towards the new 8-week waiting period."
+    ],
+    [
+      "Bijlage III: Basisregeling - Premium and Pensionable Salary:",
+      "The average premium is 2.6% of the pensionable salary. Every temporary employment agency must pay this premium.",
+      "The Basic Scheme is a defined contribution scheme with a retirement age of 67, providing for the formation of a pension capital for the purchase of a lifelong old-age pension and/or a partner's pension based on an age-independent premium.",
+      "Pensionable salary per week/four weeks/calendar month consists of: wage for employee insurance (excluding private use of company car), employee's share in pension premium (EUR 0 for Basic Scheme), and wage exchanged for tax-free reimbursements/provisions for extraterritorial costs.",
+      "Pensionable salary is capped at a maximum hourly amount, annually determined by StiPP, derived from the maximum insured amount for social insurance."
+    ],
+    [
+      "Bijlage III: Plusregeling - Participation:",
+      "A temporary worker becomes a participant in the Plus Scheme if they meet one of the following descriptions:",
+      "a. The temporary worker has been a participant in the Basic Scheme for 52 weeks. This does not require employment with the same temporary employment agency. Weeks do not need to be consecutive, but an interruption of 52 weeks or more between two temporary employment agreements resets the count.",
+      "b. The temporary worker is entitled to earlier participation in the Plus Scheme based on a collective and/or individual employment agreement.",
+      "c. The temporary worker has worked for more than 60 weeks for one temporary employment agency and is not yet a participant in the Basic Scheme.",
+      "d. The (former) temporary worker has voluntarily continued their participation after the end of employment or is entitled to premium exemption and continuation of participation in case of incapacity for work.",
+      "A temporary worker cannot join the Plus Scheme before the first day of the month in which they turn 21.",
+      "Participation in a pension scheme of an employer exempt from StiPP is considered equivalent."
+    ],
+    [
+      "Bijlage III: Plusregeling - Rejoining after Interruption:",
+      "If a temporary worker was a participant in the Plus Scheme and starts a new temporary employment agreement:",
+      "a. If the interruption between the two temporary employment agreements is shorter than 26 weeks, they rejoin the Plus Scheme.",
+      "b. If it has been shorter than 52 weeks since they were a participant in the Basic Scheme, they become a participant in the Plus Scheme.",
+      "c. If it has been longer than 52 weeks since they were a participant in the Basic Scheme and the interruption between the two temporary employment agreements is longer than 26 weeks but shorter than 52 weeks, they become a participant in the Basic Scheme.",
+      "d. If the interruption between the two temporary employment agreements lasts 52 weeks or longer, they must complete the waiting period for the Basic Scheme again before becoming a participant in the Basic Scheme."
+    ],
+    [
+      "Bijlage III: Plusregeling - Premium and Pensionable Basis:",
+      "The average premium is 12.0% of the pensionable basis. Every temporary employment agency must pay this premium.",
+      "The pensionable basis is the pensionable salary, reduced by the franchise. The franchise per period is determined by multiplying the number of paid hours in the relevant period by the hourly franchise. The hourly franchise is annually determined by the StiPP board and is derived from the annual franchise, which is equal to the amount taken as a starting point in Article 10aa, paragraph 1, of the Uitvoeringsbesluit loonbelasting 1965 for an accrual percentage of 1.788% and a 36-hour work week.",
+      "Pensionable salary per week/four weeks/calendar month consists of: wage for employee insurance (excluding private use of company car), employee's share in pension premium, and wage exchanged for tax-free reimbursements/provisions for extraterritorial costs.",
+      "Pensionable salary is capped at a maximum hourly amount, annually determined by StiPP, derived from the maximum insured amount for social insurance."
+    ],
+    [
+      "Bijlage III: Plusregeling - Pension Premium Staffel (2022 and 2021)",
+      "Age group, Pension premium 2022, Pension premium 2021",
+      "21-24, 4.20%, 4.20%",
+      "25-29, 5.20%, 5.20%",
+      "30-34, 6.30%, 6.30%",
+      "35-39, 7.70%, 7.70%",
+      "40-44, 9.30%, 9.30%",
+      "45-49, 11.40%, 11.40%",
+      "50-54, 14.00%, 14.00%",
+      "55-59, 17.20%, 17.20%",
+      "60-64, 21.40%, 21.40%",
+      "65-66, 25.70%, 25.70%"
+    ],
+    [
+      "Bijlage III: Plusregeling - Incapacity for Work and Death:",
+      "In case of incapacity for work (Wet werk en inkomen naar arbeidsvermogen), pension accrual can be continued premium-free, proportional to the degree of incapacity, at the premium contribution level at the start of incapacity.",
+      "In case of death during employment, the pension scheme provides a risk insurance for the partner's pension over future employment time."
+    ],
+    [
+      "Bijlage III: Plusregeling - Employee Contribution:",
+      "The temporary employment agency is entitled to deduct a portion of the pension premiums from the temporary worker's wage, if and when they fall under the pension scheme. The deduction amount is a maximum of one-third of the average premium mentioned in lid 18."
+    ]
+  ],
+  "leave_information": [
+    [
+      "Article 26 Vacation Days - General:",
+      "The temporary worker is entitled to 16 2/3 hours of vacation for every fully worked month, or a proportional part thereof if not a full month was worked.",
+      "The temporary worker is entitled to three consecutive weeks or three times one week of vacation, provided these vacation rights have been accrued.",
+      "In phase 1-2 and 3, statutory vacation days expire one year after the last day of the calendar year in which the entitlement arose (deviation from Article 7:640a BW). In phase 4, statutory vacation days also expire five years after the last day of the calendar year in which the entitlement arose (deviation from Article 7:640a BW). Above-statutory days expire in all phases five years after the last day of the calendar year in which the entitlement arose.",
+      "The temporary employment agency is obliged to enable the temporary worker to take their vacation days.",
+      "The temporary employment agency can establish a vacation policy, observing paragraph 4.",
+      "Paragraph 3 applies to vacation days accrued after 1 January 2020. For statutory vacation days accrued in phase 4 until 1 January 2020, an expiry period of twelve months after the last day of the calendar year in which the days were acquired applies."
+    ],
+    [
+      "Article 26 Vacation Days - Temporary Employment Agreement with Temporary Employment Clause:",
+      "The temporary employment agency reserves 10.87% in 2022 of the temporary worker's actual wage. This is increased by the waiting day compensation in accordance with Article 25, paragraph 4.",
+      "When the temporary worker takes vacation and the temporary employment agreement continues, the actual wage is paid from the accrued vacation reservation, to the extent the reservation is sufficient.",
+      "When a temporary employment agreement with a temporary employment clause is followed by a temporary employment agreement without a temporary employment clause, the reservation for vacation days is converted into a proportional entitlement to vacation days with continued wage payment. The temporary employment agency provides the temporary worker with a written statement of the conversion."
+    ],
+    [
+      "Article 26 Vacation Days - Temporary Employment Agreement without Temporary Employment Clause:",
+      "When a temporary worker with a temporary employment agreement without a temporary employment clause takes vacation, they are entitled to continued payment of the actual wage to the extent that the right to vacation has been acquired under paragraph 1."
+    ],
+    [
+      "Article 26 Vacation Days - Supplementary Payments:",
+      "If applicable, in addition to paragraphs 8 and 10, the actual wage for vacation days is supplemented with those reimbursements that the temporary worker would have received under the CAO-remuneration or client's remuneration if they had worked during the vacation. Cost reimbursements are not included in these reimbursements."
+    ],
+    [
+      "Article 27 Public Holidays:",
+      "Generally recognized public holidays, provided they do not fall on a Saturday and/or Sunday, are:",
+      "• New Year's Day;",
+      "• Easter Monday;",
+      "• Ascension Day;",
+      "• Whit Monday;",
+      "• Both Christmas Days;",
+      "• King's Day or the day replacing it; and",
+      "• Liberation Day in lustrum years (every five years).",
+      "A temporary worker is granted a public holiday if it is not clear from the temporary employment agreement or the assignment whether the public holiday falls on a day normally considered a working day, and:",
+      "a. the temporary worker has worked on that specific day of the week at least seven times in a period of thirteen consecutive weeks immediately preceding the public holiday; or",
+      "b. the temporary worker has not yet worked thirteen consecutive weeks and has worked on that specific day of the week in more than half of the weeks worked.",
+      "For the calculation of the aforementioned period of thirteen weeks (sub a.) or less (sub b.), successive agreements are added together if and to the extent that they follow each other within a period of one month. Interruption periods are not counted."
+    ],
+    [
+      "Article 27 Public Holidays - Temporary Employment Agreement with Temporary Employment Clause:",
+      "If the temporary worker is entitled to a public holiday, the following applies regarding wage payment. For wage payment to the temporary worker during public holidays on which no work is performed due to that public holiday, the temporary employment agency must choose one of the two options below for its entire company for at least one calendar year:",
+      "a. The temporary employment agency reserves 2.17% in 2022 of the temporary worker's actual wage. This is increased by the waiting day compensation in accordance with Article 25, paragraph 4. When it is a public holiday, the actual wage is paid from the accrued public holiday reservation, to the extent the reservation is sufficient; or",
+      "b. the temporary worker is entitled to continued payment of the actual wage on public holidays.",
+      "The temporary employment agency must inform the temporary worker in writing of its choice. If the choice changes, the rights acquired by the temporary worker under the previous choice must first be settled."
+    ],
+    [
+      "Article 27 Public Holidays - Temporary Employment Agreement without Temporary Employment Clause:",
+      "The temporary worker with a temporary employment agreement without a temporary employment clause is entitled to continued payment of the actual wage on public holidays on which no work is performed due to that public holiday."
+    ],
+    [
+      "Article 27 Public Holidays - Wage Calculation for Public Holidays:",
+      "If no clear working hours are agreed upon for the public holiday, or if actual working hours deviate structurally from agreed hours in the 13-week period (or shorter), the actual wage is due over the average of all hours for which wage was paid on that day in the relevant period. Overtime is excluded unless it is structural."
+    ],
+    [
+      "Article 28 Short-Term Absence, Birth Leave, and Special Leave:",
+      "The temporary worker is entitled to short-term absence, defined as absence for a reasonable duration due to:",
+      "a. unforeseen circumstances requiring immediate interruption of work; or",
+      "b. fulfillment of a legal or government-imposed obligation without financial compensation, which could not be done in their free time; or",
+      "c. very special personal circumstances.",
+      "After the birth of the partner's child or a child recognized by the temporary worker, the temporary worker is entitled to birth leave for a period of four weeks from the first day of birth. Birth leave amounts to once the weekly working hours.",
+      "The temporary worker is entitled to special leave for:",
+      "a. engagement of temporary worker: one day",
+      "b. marriage or registered partnership of temporary worker: two days",
+      "c. marriage or registered partnership of (grand)child, brother or sister, or parents: one day",
+      "d. death of partner or child: from the day of death up to and including the day of the funeral",
+      "e. death of brother or sister, parents, grandparents, grandchild: one day + attendance at funeral, unless the temporary worker arranges the funeral, then from the day of death up to and including the day of the funeral",
+      "f. 12.5-, 25-, and 40-year wedding anniversary: one day",
+      "g. 25-, 40-year service anniversary: one day",
+      "h. 25-, 40-, 50-, 60-, and 70-year wedding anniversary of parents and grandparents: one day",
+      "i. taking a (professional) exam to obtain a recognized diploma: one day",
+      "Definitions for this article:",
+      "Child: child of the temporary worker or their partner, including adopted, step, foster child, or recognized child.",
+      "Brother or sister: adopted, half, step, and foster brother; adopted, half, step, and foster sister, brother-in-law, and sister-in-law.",
+      "Parents: parents of the temporary worker, including adopted, step, foster, or in-laws.",
+      "Grandparents: grandparents of the temporary worker or their partner, including grandparents of an adopted, step, or foster child.",
+      "Partner: spouse, registered partner, or person with whom the temporary worker cohabits unmarried.",
+      "The temporary worker must inform the temporary employment agency as soon as possible about taking short-term absence, birth leave, or special leave."
+    ],
+    [
+      "Article 28 Short-Term Absence, Birth Leave, and Special Leave - Temporary Employment Agreement with Temporary Employment Clause:",
+      "For short-term absence and special leave, the temporary employment agency reserves 0.6% of the temporary worker's actual wage. This is increased by the waiting day compensation in accordance with Article 25, paragraph 4.",
+      "When the temporary worker takes short-term absence or special leave and the temporary employment agreement continues, the actual wage is paid from the accrued reservation, to the extent the reservation is sufficient.",
+      "When the temporary worker takes birth leave and the temporary employment agreement continues, the wage as referred to in Article 1:2 Wet arbeid en zorg is paid from the accrued reservation. If the reservation is insufficient, it is supplemented by the temporary employment agency."
+    ],
+    [
+      "Article 28 Short-Term Absence, Birth Leave, and Special Leave - Temporary Employment Agreement without Temporary Employment Clause:",
+      "When a temporary worker with a temporary employment agreement without a temporary employment clause takes short-term absence or special leave, they are entitled to continued payment of the actual wage for the number of hours they would have worked on that day(s).",
+      "When the temporary worker takes birth leave, they are entitled to the wage as referred to in Article 1:2 Wet arbeid en zorg."
+    ],
+    [
+      "Article 29 Payout of Leave Rights/Reservations, Compensatory Hours, and Vacation Allowance - Temporary Employment Agreement with Temporary Employment Clause:",
+      "Reservations for vacation, public holidays, short-term absence/special leave are not paid out weekly/monthly/periodically, but reserved until the temporary worker takes the said leave.",
+      "a. When the temporary employment agreement with a temporary employment clause ends and no new temporary employment agreement is entered into immediately thereafter, unpaid reservations for vacation, public holidays, short-term absence/special
+  DEBUG: Found direct text response: 36628 chars
+  INFO: Successfully extracted structured data from markdown (time: 56.9s)
+  INFO: Response size: 36,628 chars (~9,157 tokens)
+  ERROR: Invalid JSON structure
+  WARNING: Response schema validation failed for NBBU cao per 1-1-2022 defintief wijziging accept.md
+  INFO: Cleaned up uploaded file: files/ym2gafnehvex
+  1060: ✗ Incomplete JSON: Content does not end with } - JSON appears to be truncated for NBBU cao per 1-1-2022 defintief wijziging accept.md [API 3/6]
+  1060: Error with NBBU cao per 1-1-2022 defintief wijziging accept.md: Incomplete JSON: Content does not end with } - JSON appears to be truncated [API 3/6]
+Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 1094, in process_single_file
+ValueError: Incomplete JSON: Content does not end with } - JSON appears to be truncated
+  1060: NBBU_CAO_Uitzendkrachten 2015-2019_versie 2019 NL OTF.docx.md (Markdown: 0.2MB) [API 3/6]
+  INFO: Using Files API approach for NBBU_CAO_Uitzendkrachten 2015-2019_versie 2019 NL OTF.docx.md
+  INFO: Markdown file size: 0.16 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/ryh66hez98fl
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.16MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 33132 chars
+  INFO: Successfully extracted structured data from markdown (time: 52.5s)
+  INFO: Response size: 33,132 chars (~8,283 tokens)
+  INFO: Cleaned up uploaded file: files/ryh66hez98fl
+  ✅ JSON saved with proper formatting
+  1060: LLM extraction completed in 54.06 seconds [API 3/6]
+  1060: NBBU_CAO_Uitzendkrachten_2015.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for NBBU_CAO_Uitzendkrachten_2015.md
+  INFO: Markdown file size: 0.13 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/kixr211j9ovh
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.13MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 27638 chars
+  INFO: Successfully extracted structured data from markdown (time: 90.7s)
+  INFO: Response size: 27,638 chars (~6,909 tokens)
+  INFO: Cleaned up uploaded file: files/kixr211j9ovh
+  ✅ JSON saved with proper formatting
+  1060: LLM extraction completed in 92.25 seconds [API 3/6]
+  1060: NBBU_Uitzendkrachten_1060.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for NBBU_Uitzendkrachten_1060.md
+  INFO: Markdown file size: 0.12 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/w0hk5pxnzcl3
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.12MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 50282 chars
+  INFO: Successfully extracted structured data from markdown (time: 141.5s)
+  INFO: Response size: 50,282 chars (~12,570 tokens)
+  INFO: Cleaned up uploaded file: files/w0hk5pxnzcl3
+  ✅ JSON saved with proper formatting
+  1060: LLM extraction completed in 142.84 seconds [API 3/6]
+  1165: cao 1 januari 2019 - 31 december 2020, definitief aangepast versie 1 juli.docx.md (Markdown: 0.2MB) [API 3/6]
+  INFO: Using Files API approach for cao 1 januari 2019 - 31 december 2020, definitief aangepast versie 1 juli.docx.md
+  INFO: Markdown file size: 0.18 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/ouy6mwcq6co6
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.18MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 48157 chars
+  INFO: Successfully extracted structured data from markdown (time: 102.1s)
+  INFO: Response size: 48,157 chars (~12,039 tokens)
+  INFO: Cleaned up uploaded file: files/ouy6mwcq6co6
+  ✅ JSON saved with proper formatting
+  1165: LLM extraction completed in 103.39 seconds [API 3/6]
+  1165: cao 1 januari 2022 - 31 december 2023 definitief 12052022.md (Markdown: 0.2MB) [API 3/6]
+  INFO: Using Files API approach for cao 1 januari 2022 - 31 december 2023 definitief 12052022.md
+  INFO: Markdown file size: 0.19 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/ythcxd3btoep
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.19MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 41268 chars
+  INFO: Successfully extracted structured data from markdown (time: 109.5s)
+  INFO: Response size: 41,268 chars (~10,317 tokens)
+  INFO: Cleaned up uploaded file: files/ythcxd3btoep
+  ✅ JSON saved with proper formatting
+  1165: LLM extraction completed in 110.95 seconds [API 3/6]
+  1165: cao-recreatie 2024 - 2025 herschreven versie opgemaakt definitief 25062024.md (Markdown: 0.2MB) [API 3/6]
+  INFO: Using Files API approach for cao-recreatie 2024 - 2025 herschreven versie opgemaakt definitief 25062024.md
+  INFO: Markdown file size: 0.18 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/ayaqpy584vql
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.18MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 47491 chars
+  INFO: Successfully extracted structured data from markdown (time: 181.4s)
+  INFO: Response size: 47,491 chars (~11,872 tokens)
+  INFO: Cleaned up uploaded file: files/ayaqpy584vql
+  ✅ JSON saved with proper formatting
+  1165: LLM extraction completed in 182.67 seconds [API 3/6]
+  1165: cao_definitief_2_0_nav_opm_drukproef.md (Markdown: 0.2MB) [API 3/6]
+  INFO: Using Files API approach for cao_definitief_2_0_nav_opm_drukproef.md
+  INFO: Markdown file size: 0.16 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/n014o1nmxmr7
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.16MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 53519 chars
+  INFO: Successfully extracted structured data from markdown (time: 154.0s)
+  INFO: Response size: 53,519 chars (~13,379 tokens)
+  INFO: Cleaned up uploaded file: files/n014o1nmxmr7
+  ✅ JSON saved with proper formatting
+  1165: LLM extraction completed in 155.12 seconds [API 3/6]
+  1165: handboek_compleet.md (Markdown: 0.2MB) [API 3/6]
+  INFO: Using Files API approach for handboek_compleet.md
+  INFO: Markdown file size: 0.19 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/b8ggmme6jymw
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.19MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 10702 chars
+  INFO: Successfully extracted structured data from markdown (time: 63.3s)
+  INFO: Response size: 10,702 chars (~2,675 tokens)
+  INFO: Cleaned up uploaded file: files/b8ggmme6jymw
+  ✅ JSON saved with proper formatting
+  1165: LLM extraction completed in 64.69 seconds [API 3/6]
+  1188: CAO VO 2024 2025 zonder handtekeningen en namen (tbv aanmelding) PDF.md (Markdown: 0.3MB) [API 3/6]
+  INFO: Using Files API approach for CAO VO 2024 2025 zonder handtekeningen en namen (tbv aanmelding) PDF.md
+  INFO: Markdown file size: 0.33 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/icxzqiuvavvr
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.33MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 15441 chars
+  INFO: Successfully extracted structured data from markdown (time: 87.3s)
+  INFO: Response size: 15,441 chars (~3,860 tokens)
+  INFO: Cleaned up uploaded file: files/icxzqiuvavvr
+  ✅ JSON saved with proper formatting
+  1188: LLM extraction completed in 88.85 seconds [API 3/6]
+
+📈 PROGRESS ESTIMATE:
+   Progress: 442.2% (-900 files remaining)
+   Estimated remaining time: -36.6 hours
+   Requests needed: -900
+   Days needed at 100 req/day: -9.0
+   Requests remaining today: 0
+   Average time per file: 146.4s
+  1285: CAO_tekst_2011_2013.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for CAO_tekst_2011_2013.md
+  INFO: Markdown file size: 0.09 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/j0sp5jpv5doy
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.09MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 37689 chars
+  INFO: Successfully extracted structured data from markdown (time: 105.4s)
+  INFO: Response size: 37,689 chars (~9,422 tokens)
+  INFO: Cleaned up uploaded file: files/j0sp5jpv5doy
+  ✅ JSON saved with proper formatting
+  1285: LLM extraction completed in 107.16 seconds [API 3/6]
+  1285: cao tekst Tank Was 2020 2021 versie 20 juli 2020.doc.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for cao tekst Tank Was 2020 2021 versie 20 juli 2020.doc.md
+  INFO: Markdown file size: 0.13 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/hqvw0oqc6qts
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.13MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 42161 chars
+  INFO: Successfully extracted structured data from markdown (time: 87.6s)
+  INFO: Response size: 42,161 chars (~10,540 tokens)
+  INFO: Cleaned up uploaded file: files/hqvw0oqc6qts
+  ✅ JSON saved with proper formatting
+  1285: LLM extraction completed in 89.17 seconds [API 3/6]
+  1285: cao tekst Tank Was 2024 - 2025, definitief 25012024.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for cao tekst Tank Was 2024 - 2025, definitief 25012024.md
+  INFO: Markdown file size: 0.12 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/p708b9drv1bz
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.12MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 62735 chars
+  INFO: Successfully extracted structured data from markdown (time: 155.6s)
+  INFO: Response size: 62,735 chars (~15,683 tokens)
+  INFO: Cleaned up uploaded file: files/p708b9drv1bz
+  ✅ JSON saved with proper formatting
+  1285: LLM extraction completed in 157.00 seconds [API 3/6]
+  1287: Cao_2012_2013_wijz_art_169_z_renv_fndsbep_def.md (Markdown: 0.4MB) [API 3/6]
+  INFO: Using Files API approach for Cao_2012_2013_wijz_art_169_z_renv_fndsbep_def.md
+  INFO: Markdown file size: 0.44 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/j7e0edkb0v3z
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.44MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 84956 chars
+  INFO: Successfully extracted structured data from markdown (time: 155.5s)
+  INFO: Response size: 84,956 chars (~21,239 tokens)
+  INFO: Cleaned up uploaded file: files/j7e0edkb0v3z
+  ✅ JSON saved with proper formatting
+  1287: LLM extraction completed in 156.92 seconds [API 3/6]
+  1287: Grafimedia cao 2020-2021 - def 230221.docx.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for Grafimedia cao 2020-2021 - def 230221.docx.md
+  INFO: Markdown file size: 0.14 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/c3dhrup446fl
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.14MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 24538 chars
+  INFO: Successfully extracted structured data from markdown (time: 63.6s)
+  INFO: Response size: 24,538 chars (~6,134 tokens)
+  INFO: Cleaned up uploaded file: files/c3dhrup446fl
+  ✅ JSON saved with proper formatting
+  1287: LLM extraction completed in 64.99 seconds [API 3/6]
+  1287: Grafimedia cao 2022-2024 2 maart 2022.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for Grafimedia cao 2022-2024 2 maart 2022.md
+  INFO: Markdown file size: 0.14 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/4ejartalqxt1
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.14MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 29112 chars
+  INFO: Successfully extracted structured data from markdown (time: 89.2s)
+  INFO: Response size: 29,112 chars (~7,278 tokens)
+  INFO: Cleaned up uploaded file: files/4ejartalqxt1
+  ✅ JSON saved with proper formatting
+  1287: LLM extraction completed in 90.09 seconds [API 3/6]
+  1291: CAO_boekje_NHG_2014_2018_versie_2_mei_2014.md (Markdown: 0.0MB) [API 3/6]
+  INFO: Using Files API approach for CAO_boekje_NHG_2014_2018_versie_2_mei_2014.md
+  INFO: Markdown file size: 0.04 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/j7wqmncvremm
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.04MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=NOT_FOUND
+  DEBUG: Checking response.text: hasattr=True, value=None
+  DEBUG: Found 0 content parts
+  DEBUG: No text parts found, trying fallback methods...
+  DEBUG: No fallback text found in response
+  DEBUG: Response attributes: ['__abstractmethods__', '__annotations__', '__class__', '__class_getitem__', '__class_vars__', '__copy__', '__deepcopy__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__fields__', '__fields_set__', '__format__', '__ge__', '__get_pydantic_core_schema__', '__get_pydantic_json_schema__', '__getattr__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__pretty__', '__private_attributes__', '__pydantic_complete__', '__pydantic_computed_fields__', '__pydantic_core_schema__', '__pydantic_custom_init__', '__pydantic_decorators__', '__pydantic_extra__', '__pydantic_fields__', '__pydantic_fields_set__', '__pydantic_generic_metadata__', '__pydantic_init_subclass__', '__pydantic_parent_namespace__', '__pydantic_post_init__', '__pydantic_private__', '__pydantic_root_model__', '__pydantic_serializer__', '__pydantic_setattr_handlers__', '__pydantic_validator__', '__reduce__', '__reduce_ex__', '__replace__', '__repr__', '__repr_args__', '__repr_name__', '__repr_recursion__', '__repr_str__', '__rich_repr__', '__setattr__', '__setstate__', '__signature__', '__sizeof__', '__slots__', '__str__', '__subclasshook__', '__weakref__', '_abc_impl', '_calculate_keys', '_copy_and_set_values', '_from_response', '_get_text', '_get_value', '_iter', '_setattr_handler', 'automatic_function_calling_history', 'candidates', 'code_execution_result', 'construct', 'copy', 'create_time', 'dict', 'executable_code', 'from_orm', 'function_calls', 'json', 'model_computed_fields', 'model_config', 'model_construct', 'model_copy', 'model_dump', 'model_dump_json', 'model_extra', 'model_fields', 'model_fields_set', 'model_json_schema', 'model_parametrized_name', 'model_post_init', 'model_rebuild', 'model_validate', 'model_validate_json', 'model_validate_strings', 'model_version', 'parse_file', 'parse_obj', 'parse_raw', 'parsed', 'prompt_feedback', 'response_id', 'schema', 'schema_json', 'sdk_http_response', 'text', 'to_json_dict', 'update_forward_refs', 'usage_metadata', 'validate']
+  INFO: Cleaned up uploaded file: files/j7wqmncvremm
+  DEBUG: Markdown upload error type: ValueError, Error message: no text parts found in response
+  DEBUG: Full error details: No text parts found in response
+  DEBUG: Token usage - Input: 14025, Output: None
+  🔍 DETAILED FAILURE ANALYSIS for CAO_boekje_NHG_2014_2018_versie_2_mei_2014.md (attempt 1):
+    📊 Finish reason: FinishReason.STOP
+    🛡️  Safety ratings: []
+    📄 Content length: 0
+    ⏱️  Processing time: 5.525038719177246s
+    🔑 API key used: 3
+    🆔 Process ID: 2
+  DEBUG: Traceback: Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 924, in extract_with_markdown_upload
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 654, in extract_text_safely
+    else:
+        ^^
+ValueError: No text parts found in response
+
+  Attempt 1 failed (ValueError), retrying in 30 seconds...
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/5vc692jnwr1x
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.04MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=NOT_FOUND
+  DEBUG: Checking response.text: hasattr=True, value={
+  "general_information": [
+    [
+      "Document title: Collectieve arbeidsovereenkomst voor het horecabedrijf"
+    ],
+    [
+      "Contract period: 1 januari 2014 tot en met 31 december 2018"
+    ],
+    [
+      "Publication date: uitgave 2 - mei 2014"
+    ],
+    [
+      "Parties involved: abgp (werknemerszijde), nhg (werkgeverszijde)"
+    ],
+    [
+      "Scope of agreement: This CAO is applicable to the employment contract between the employee and the employer. This CAO is applied to employees of an employer whose main activity is classified under the horecabranche and/or catering (excluding companies that, due to the nature of their activities, fall under the scope of the CAO for the contract catering sector) and who is a member of the nhg. Furthermore, this CAO is applicable to the hired third party (m/f), unless the latter falls under the scope of another CAO."
+    ],
+    [
+      "Duration, extension and termination of the CAO: This CAO commences on January 1, 2014 and ends on December 31, 2018. This CAO can be terminated by parties with a notice period of three months before the end of the term, by means of a registered letter. As long as none of the parties proceeds to terminate this CAO, it will be tacitly extended by one year. In case of termination by one of the parties without a new CAO having been established, all provisions of this CAO will remain in force for one year after expiration."
+    ],
+    [
+      "Minimum employment conditions: Parties aim to agree on minimum employment conditions with this CAO. The employer is at all times permitted to deviate from provisions in this CAO in a manner favorable to the employee."
+    ]
+  ],
+  "wage_information": [
+    [
+      "Wage increase: An employee can be employed by the employer for a maximum of three consecutive years at the statutory minimum wage. Thereafter, the employee is entitled to a three percent annual wage increase, including any wage rounds or price compensations agreed upon by parties. These increases apply for a maximum of ten years."
+    ],
+    [
+      "Job classification and salary: The employer establishes a job description for each position in the company with a corresponding salary and other employment conditions appropriate to the difficulty of the position."
+    ],
+    [
+      "Holiday allowance: The holiday allowance amounts to eight percent of the gross wage. For the calculation of the holiday allowance, the year runs from May 1 to April 30 of the following year. Payment of the holiday allowance takes place annually in May. For an employment contract with a deferred performance obligation or a preliminary agreement, monthly payment of the holiday allowance can also be chosen."
+    ],
+    [
+      "Public holiday surcharge: An employee is entitled to a surcharge of 50 percent in time or money if he/she works on Christmas Day, Boxing Day, and/or New Year's Day. The choice for this surcharge in time or money is made in consultation with the employee."
+    ],
+    [
+      "Anniversary payment: The employer will provide an anniversary payment to the employee for 25 and 40 years of service. The payment amounts to: at 25 years of service: one gross monthly salary; at 40 years of service: two gross monthly salaries."
+    ],
+    [
+      "Wage adjustment: CAO partners conduct an annual wage round and can agree on a wage adjustment. The employer is obliged to implement that wage adjustment per the agreed subsequent date. November 1, prior to the year of implementation of the wage adjustment, will be used as the reference wage for a wage round."
+    ],
+    [
+      "Death benefit: Upon the death of an employee, who at the time of death was employed based on an indefinite-term employment contract, the employer will provide a death benefit of two gross monthly salaries to the surviving relatives. If the employee at the time of death was employed based on a fixed-term employment contract, the employer will provide a death benefit of one gross monthly salary to the surviving relatives."
+    ]
+  ],
+  "pension_information": [
+    [
+      "Pension scheme: With regard to pension formation, this CAO refers to the mandatory participation and the dispensation possibilities of the pensioenfonds horeca en catering."
+    ]
+  ],
+  "leave_information": [
+    [
+      "Vacation days: The vacation year runs from January 1 to December 31. An employee who is employed at the start of the vacation year, for a full-time employment contract, accrues 25 vacation days (20 statutory and 5 above-statutory) per full calendar year. For entry or exit during the vacation year and/or for an employment contract of less than 38 hours per week, the employee is entitled to a proportional part of these 25 vacation days."
+    ],
+    [
+      "Vacation day management: The employer registers the accrual and uptake of both statutory and above-statutory vacation days, such that the balance of each is known. Upon request, the employer makes transparent how many statutory and above-statutory vacation days the employee is entitled to at any given moment. The employer has the duty to enable the employee to take vacation days. Vacation days can exclusively be taken with the employer's permission. The employer decides within fourteen days on an employee's request in accordance with article 7:638 lid 2 BW. In case of refusal, the employer will state the serious reasons that oppose the request."
+    ],
+    [
+      "Vacation day duration: Vacation days may be taken for a maximum of three consecutive weeks and must be taken for a minimum of two consecutive weeks."
+    ],
+    [
+      "Mandatory free days: The employer can annually designate two above-statutory vacation days as mandatory free days."
+    ],
+    [
+      "Order of deduction for vacation days: Taken vacation days are first deducted from the balance of statutory vacation days, then from the balance of above-statutory vacation days."
+    ],
+    [
+      "Expiration of vacation days: Unused statutory vacation days expire on July 1 of the calendar year after the calendar year of accrual, subject to legal exception. Unused above-statutory vacation days expire after five years after the calendar year of accrual."
+    ],
+    [
+      "Offsetting over-taken vacation days: If an employee has taken too many vacation days, the employer has the right to offset these vacation days."
+    ],
+    [
+      "Table: Extra Vacation Days based on Age and Service Years",
+      "Condition, Total Vacation Days",
+      "Age 45, 27 days",
+      "Age 50, 28 days",
+      "Age 55, 29 days",
+      "Service 10 years, 26 days",
+      "Service 20 years, 27 days",
+      "Service 30 years, 28 days",
+      "Note: If age and service overlap, the extra vacation days are cumulative. Effective from the month following the one in which the age and/or service jubilee is reached."
+    ],
+    [
+      "Leave savings scheme: The above-statutory vacation days (five per year) plus extra paid leave days plus saved overtime hours may be saved by the employee within the framework of a leave savings scheme. This leave savings scheme is requested by the employee in writing. The purpose of the request must be clearly stated by the employee in the application. The employer can only refuse the application on good grounds if the company's interest is demonstrably harmed. Approval or refusal is done in writing. The leave savings scheme takes effect at the moment of written confirmation. The moment of taking this leave is done in mutual consultation. A maximum of 75 days can be saved under this scheme. A maximum of 5 years can be saved under this scheme."
+    ],
+    [
+      "Special leave with retention of wages: This article applies to Wet Arbeid en Zorg article 4:1 and 7:618 and 7:629 BW. The spouse mentioned in this article is equated with the life partner as well as the relationship partner. Table: Paid Special Leave. Columns: Event, Duration. Rows: Death or attending the funeral/cremation of a grandparent, grandchild, parent-in-law, 1 day; Death or attending the funeral/cremation of a sibling, parent, step-parent, 2 days; Employee's marriage, 2 days; Birth of spouse's child and adoption, 2 days; Employee involved as executor of will for a first-degree family member, 4 days; Death of spouse or child, 5 days."
+    ],
+    [
+      "Special unpaid leave: One day of unpaid leave is granted, provided the employee has requested this leave at least one month in advance, for: engagement of employee; marriage of one of the children, siblings of employee; 25th or 40th wedding anniversary of employee; relocation of employee (maximum once per year). Unpaid leave is granted for one day, provided requested one day in advance, for death or attending a funeral or cremation of a brother-in-law, sister-in-law, son-in-law, or daughter-in-law. If an employee makes a request for unpaid leave that does not fall under the aforementioned reasons: the employer always has the right to refuse or grant the application for unpaid leave, taking into account mutual interests; no vacation rights are accrued during unpaid leave; during unpaid leave, the employee may not perform paid work elsewhere. For every form of unpaid leave, if the leave has financial or insurance-technical consequences, these are at the expense of the employee."
+    ],
+    [
+      "Organizational leave: An employee who is registered by the abgp as a cadre member with the employer is entitled to three paid leave days per year, provided these are demonstrably used for attending union meetings."
+    ],
+    [
+      "Parental leave: An employee is entitled to unpaid parental leave for the care of their own, foster, or stepchild, provided the employment contract has lasted at least one year and the child is not older than eight years. For every employee who is entitled to parental leave, the unpaid leave amounts to a continuous period of a maximum of six months at half the weekly working hours, or three months at full working hours. The employee must apply for parental leave in writing to the employer at least three months in advance. During parental leave, the employee only accrues vacation rights for the hours actually worked. Furthermore, article 3:1 of the Wet Arbeid en Zorg applies to parental leave."
+    ],
+    [
+      "Maternity and childbirth leave: The female employee is entitled to maternity and childbirth leave in connection with her pregnancy according to article 3:1 of the Wet Arbeid en Zorg."
+    ],
+    [
+      "Continued payment in case of incapacity
+  DEBUG: Found direct text response: 10517 chars
+  INFO: Successfully extracted structured data from markdown (time: 90.3s)
+  INFO: Response size: 10,517 chars (~2,629 tokens)
+  ERROR: Invalid JSON structure
+  WARNING: Response schema validation failed for CAO_boekje_NHG_2014_2018_versie_2_mei_2014.md
+  INFO: Cleaned up uploaded file: files/5vc692jnwr1x
+  1291: ✗ Incomplete JSON: Content does not end with } - JSON appears to be truncated for CAO_boekje_NHG_2014_2018_versie_2_mei_2014.md [API 3/6]
+  1291: Error with CAO_boekje_NHG_2014_2018_versie_2_mei_2014.md: Incomplete JSON: Content does not end with } - JSON appears to be truncated [API 3/6]
+Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 1094, in process_single_file
+ValueError: Incomplete JSON: Content does not end with } - JSON appears to be truncated
+  1291: wijziging_NHG_CAO__teksten_1_juli_2016_2016.md (Markdown: 0.0MB) [API 3/6]
+  INFO: Using Files API approach for wijziging_NHG_CAO__teksten_1_juli_2016_2016.md
+  INFO: Markdown file size: 0.01 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/lvarqfbcd0hf
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.01MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 8740 chars
+  INFO: Successfully extracted structured data from markdown (time: 31.5s)
+  INFO: Response size: 8,740 chars (~2,185 tokens)
+  INFO: Cleaned up uploaded file: files/lvarqfbcd0hf
+  ✅ JSON saved with proper formatting
+  1291: LLM extraction completed in 33.08 seconds [API 3/6]
+  1296: ICK CAO 2020_def.docx.md (Markdown: 0.2MB) [API 3/6]
+  INFO: Using Files API approach for ICK CAO 2020_def.docx.md
+  INFO: Markdown file size: 0.17 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/i9990qmud14n
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.17MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 37103 chars
+  INFO: Successfully extracted structured data from markdown (time: 188.4s)
+  INFO: Response size: 37,103 chars (~9,275 tokens)
+  INFO: Cleaned up uploaded file: files/i9990qmud14n
+  ✅ JSON saved with proper formatting
+  1296: LLM extraction completed in 189.47 seconds [API 3/6]
+  1296: ICK-CAO 2018.pdf .md (Markdown: 0.2MB) [API 3/6]
+  INFO: Using Files API approach for ICK-CAO 2018.pdf .md
+  INFO: Markdown file size: 0.19 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/qytpa9roenrt
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.19MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 27595 chars
+  INFO: Successfully extracted structured data from markdown (time: 93.6s)
+  INFO: Response size: 27,595 chars (~6,898 tokens)
+  INFO: Cleaned up uploaded file: files/qytpa9roenrt
+  ✅ JSON saved with proper formatting
+  1296: LLM extraction completed in 94.80 seconds [API 3/6]
+
+📈 PROGRESS ESTIMATE:
+   Progress: 464.3% (-958 files remaining)
+   Estimated remaining time: -38.5 hours
+   Requests needed: -958
+   Days needed at 100 req/day: -9.6
+   Requests remaining today: 0
+   Average time per file: 144.6s
+  1345: 130214_gehelecao1_versienatosw_4_AP.md (Markdown: 0.3MB) [API 3/6]
+  INFO: Using Files API approach for 130214_gehelecao1_versienatosw_4_AP.md
+  INFO: Markdown file size: 0.30 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/q52f150z1720
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.30MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 29267 chars
+  INFO: Successfully extracted structured data from markdown (time: 118.4s)
+  INFO: Response size: 29,267 chars (~7,316 tokens)
+  INFO: Cleaned up uploaded file: files/q52f150z1720
+  ✅ JSON saved with proper formatting
+  1345: LLM extraction completed in 119.79 seconds [API 3/6]
+  1345: cao sociale werkvoorziening.md (Markdown: 0.3MB) [API 3/6]
+  INFO: Using Files API approach for cao sociale werkvoorziening.md
+  INFO: Markdown file size: 0.27 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/v2ks521fuim9
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.27MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Converted structured output to JSON: 72682 chars
+  INFO: Successfully extracted structured data from markdown (time: 270.6s)
+  INFO: Response size: 72,682 chars (~18,170 tokens)
+  INFO: Cleaned up uploaded file: files/v2ks521fuim9
+  ✅ JSON saved with proper formatting
+  1345: LLM extraction completed in 272.01 seconds [API 3/6]
+  1393: Railinfra_CAO_2013__DEF_02_08_13.md (Markdown: 0.2MB) [API 3/6]
+  INFO: Using Files API approach for Railinfra_CAO_2013__DEF_02_08_13.md
+  INFO: Markdown file size: 0.16 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/m2b4mk3xwhlb
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.16MB
+  DEBUG: Constructed 2 content parts for API call

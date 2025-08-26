@@ -26,10 +26,12 @@ USAGE:
         python p3_llmExtraction.py --key_number 2 --process_id 1 --total_processes 2
 
     Bash script for parallel execution:
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 4 2>&1 | tee log1.txt &
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --process_id 1 --total_processes 4 2>&1 | tee log2.txt &
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 3 --process_id 2 --total_processes 4 2>&1 | tee log3.txt &
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 4 --process_id 3 --total_processes 4 2>&1 | tee log4.txt &
+        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 6 2>&1 | tee log1.txt &
+        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --process_id 1 --total_processes 6 2>&1 | tee log2.txt &
+        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 3 --process_id 2 --total_processes 6 2>&1 | tee log3.txt &
+        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 4 --process_id 3 --total_processes 6 2>&1 | tee log4.txt &
+        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 5 --process_id 4 --total_processes 6 2>&1 | tee log5.txt &
+        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 6 --process_id 5 --total_processes 6 2>&1 | tee log6.txt &
 
     With file limit:
         python p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 1 --max_files 10
@@ -377,19 +379,53 @@ def announce_cao_once(cao_number: str, context: ProcessingContext) -> bool:
 
 
 def save_extraction_result(output_path: Path, content: str):
-    """Save extraction result to file."""
+    """Save extraction result to file with comprehensive JSON validation."""
     # print(f'  INFO: Saving structured output directly (length: {len(content)} chars)')
+    
+    # Comprehensive JSON validation before saving
+    validation_result = validate_json_completeness(content, output_path.name)
+    if not validation_result['is_valid']:
+        print(f'  ❌ JSON validation failed for {output_path.name}: {validation_result["error"]}')
+        print(f'  🗑️  Skipping save of incomplete JSON file')
+        return False
     
     # Parse and reformat JSON for better structure
     try:
         data = json.loads(content)
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
-        print(f'  INFO: JSON saved with proper formatting')
+        print(f'  ✅ JSON saved with proper formatting')
+        return True
     except json.JSONDecodeError as e:
-        print(f'  WARNING: JSON parsing failed, saving as raw content: {e}')
-        with open(output_path, 'w', encoding='utf-8') as f:
-            f.write(content)
+        print(f'  ❌ JSON parsing failed, skipping save: {e}')
+        return False
+
+
+def validate_json_completeness(content: str, filename: str) -> dict:
+    """
+    Comprehensive JSON validation to ensure completeness and validity.
+    
+    Returns:
+        dict: {'is_valid': bool, 'error': str or None}
+    """
+    # Check if content is empty
+    if not content or not content.strip():
+        return {'is_valid': False, 'error': 'Empty content'}
+    
+    # Check if content starts with {
+    if not content.strip().startswith('{'):
+        return {'is_valid': False, 'error': 'Content does not start with {'}
+    
+    # Check if content ends with }
+    if not content.strip().endswith('}'):
+        return {'is_valid': False, 'error': 'Content does not end with } - JSON appears to be truncated'}
+    
+    # Try to parse JSON to validate structure
+    try:
+        json.loads(content)
+        return {'is_valid': True, 'error': None}
+    except json.JSONDecodeError as e:
+        return {'is_valid': False, 'error': f'JSON parsing error: {str(e)}'}
 
 
 def cleanup_uploaded_file(client, uploaded_file):
@@ -462,7 +498,7 @@ def create_extraction_prompt(filename: str) -> str:
         - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess any information.
         - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
         - Be precise: NO paraphrasing, NO interpretation, NO added explanations, NO decorative elements, NO unnecessary separator lines or formatting characters.
-        - IMPORTANT: Translate all Dutch text to English.
+        - IMPORTANT: Translate all Dutch text into clear and precise English but keep names, organizations, and abbreviations in Dutch. For legal clauses, preserve the exact legal meaning without simplification.
     CONTENT INCLUSION RULES:
         - Include relevant numerical values, percentages, amounts, and time periods.
         - Include conditions, requirements, procedural steps, entitlements, allowances, and eligibility criteria.
@@ -567,7 +603,7 @@ def extract_text_safely(response, filename: str):
         return "", {"finish": fr, "safety": safety_info, "filename": filename}
     
     # Check for structured output first (when using response_schema)
-    print(f'  DEBUG: Checking response.parsed: hasattr={hasattr(response, "parsed")}, value={getattr(response, "parsed", "NOT_FOUND")}')
+    print(f'  DEBUG: Checking response.parsed: hasattr={hasattr(response, "parsed")}, value={"FOUND" if hasattr(response, "parsed") and response.parsed else "NOT_FOUND"}')
     if hasattr(response, 'parsed') and response.parsed:
         print(f'  DEBUG: Found structured output in response.parsed')
         print(f'  DEBUG: response.parsed type: {type(response.parsed)}')
@@ -614,7 +650,6 @@ def extract_text_safely(response, filename: str):
         
         # Try direct response attributes (but we already checked for parsed and text above)
         print(f'  DEBUG: No fallback text found in response')
-        print(f'  DEBUG: Response attributes: {dir(response)}')
         raise ValueError('No text parts found in response')
     else:
         content = "".join(text_chunks)
@@ -675,6 +710,15 @@ def handle_llm_errors(error: Exception, attempt: int, max_retries: int, file_siz
         else:
             print(f'  All {max_retries} attempts failed with empty response errors')
             return False
+    elif 'incomplete json' in error_str or 'json validation failed' in error_str or 'truncated' in error_str:
+        if attempt < max_retries - 1:
+            wait_time = 30 * 2 ** attempt
+            print(f'  Attempt {attempt + 1} failed (incomplete JSON), retrying in {wait_time} seconds...')
+            time.sleep(wait_time)
+            return True
+        else:
+            print(f'  All {max_retries} attempts failed with incomplete JSON errors')
+            return False
     elif 'quota' in error_str or '429' in error_str:
         # Check if it's a daily quota limit (not retryable)
         if 'perday' in error_str or 'daily' in error_str or '3000000' in error_str:
@@ -731,7 +775,7 @@ def log_detailed_failure(response_info: dict, filename: str, attempt: int):
     print(f'  🔍 DETAILED FAILURE ANALYSIS for {filename} (attempt {attempt + 1}):')
     print(f'    📊 Finish reason: {response_info.get("finish", "UNKNOWN")}')
     print(f'    🛡️  Safety ratings: {response_info.get("safety", [])}')
-    print(f'    📄 Content length: {len(response_info.get("content", ""))}')
+    print(f'    📄 Content length: {len(response_info.get("content", ""))} chars')
     print(f'    ⏱️  Processing time: {response_info.get("processing_time", "UNKNOWN")}s')
     print(f'    🔑 API key used: {response_info.get("api_key", "UNKNOWN")}')
     print(f'    🆔 Process ID: {response_info.get("process_id", "UNKNOWN")}')
@@ -1041,12 +1085,23 @@ def process_single_file(markdown_file: Path, cao_number: str, output_folder: Pat
             log_processing_result(markdown_file.name, False, context)
             return True
         
-        # Save result
-        save_extraction_result(output_file, raw_output)
-        print(f'  {cao_number}: LLM extraction completed in {extraction_time:.2f} seconds [API {context.key_number}/{context.total_processes}]')
+        # Validate JSON before saving
+        validation_result = validate_json_completeness(raw_output, markdown_file.name)
+        if not validation_result['is_valid']:
+            error_msg = f"Incomplete JSON: {validation_result['error']}"
+            print(f'  {cao_number}: ✗ {error_msg} for {markdown_file.name} [API {context.key_number}/{context.total_processes}]')
+            raise ValueError(error_msg)
         
-        # Mark as successful after saving
-        context.stats.add_success(markdown_file.name)
+        # Save result with validation
+        save_success = save_extraction_result(output_file, raw_output)
+        if save_success:
+            print(f'  {cao_number}: LLM extraction completed in {extraction_time:.2f} seconds [API {context.key_number}/{context.total_processes}]')
+            # Mark as successful after saving
+            context.stats.add_success(markdown_file.name)
+        else:
+            print(f'  {cao_number}: ✗ JSON validation failed, extraction not saved for {markdown_file.name} [API {context.key_number}/{context.total_processes}]')
+            log_processing_result(markdown_file.name, False, context, "JSON validation failed - incomplete or invalid JSON")
+            return True
         
         # Update progress
         if context.stats.processed_files % 10 == 0:

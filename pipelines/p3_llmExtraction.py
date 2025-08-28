@@ -503,7 +503,7 @@ def create_extraction_prompt(filename: str) -> str:
         - Include relevant numerical values, percentages, amounts, and time periods.
         - Include conditions, requirements, procedural steps, entitlements, allowances, and eligibility criteria.
         - For tables, include short descriptions and table structure with headers and all data rows and columns.
-        - WAGE TABLES: Extract wage tables that differ in time periods, worker types, job categories, age groups, or other meaningful differences. For unit conversions (hourly vs monthly vs weekly vs 4 weeks vs yearly for same workers/periods/jobs/ages/others), extract only one version.
+        - WAGE TABLES: Extract wage tables that differ in time periods, worker types, job categories, age groups, or other meaningful differences. For unit conversions (hourly vs monthly vs weekly vs 4 weeks vs yearly for same workers/periods/jobs/ages/others) extract only one version, preferably hourly.
     TABLE FORMATTING:
         - Structure tables as below, including headers, descriptions, and footnotes: 
             [

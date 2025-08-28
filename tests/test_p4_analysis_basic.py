@@ -55,7 +55,7 @@ def test_nonsalary_schema():
     )
     
     pension_info = PensionInfo(
-        pension_premium_basic="50% employee, 50% employer",
+        pension_scheme_basic="50% employee, 50% employer",
         retire_age_basic="67"
     )
     
@@ -71,7 +71,7 @@ def test_nonsalary_schema():
     assert "contract_information" in result
     assert "pension_information" in result
     assert result["contract_information"]["start_date_contract"] == "2023-01-01"
-    assert result["pension_information"]["pension_premium_basic"] == "50% employee, 50% employer"
+    assert result["pension_information"]["pension_scheme_basic"] == "50% employee, 50% employer"
     
     print("✓ Non-salary schema test passed")
 
@@ -96,7 +96,7 @@ def test_merge_extraction_results():
             "expiry_date_contract": "2024-12-31"
         },
         "pension_information": {
-            "pension_premium_basic": "50% employee, 50% employer",
+            "pension_scheme_basic": "50% employee, 50% employer",
             "retire_age_basic": "67"
         }
     }
@@ -115,7 +115,7 @@ def test_merge_extraction_results():
     # Check that we have pension row
     pension_rows = [r for r in merged_results if r.get('infotype') == 'Pension']
     assert len(pension_rows) == 1
-    assert pension_rows[0]['pension_premium_basic'] == '50% employee, 50% employer'
+    assert pension_rows[0]['pension_scheme_basic'] == '50% employee, 50% employer'
     
     print("✓ Merge extraction results test passed")
 

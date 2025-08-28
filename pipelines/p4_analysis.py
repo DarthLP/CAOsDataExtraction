@@ -1,36 +1,18 @@
 """
-CAO Data Analysis Script with Schema-Driven Extraction
-====================================================
+CAO Data Analysis - LLM Extraction Pipeline (p4_analysis.py)
 
-DESCRIPTION:
-This script performs structured analysis of Dutch Collective Labor Agreement (CAO) JSON data
-using Google's Gemini AI with schema-driven extraction. It processes JSON files from the
-llm_Extracted/new_flow pipeline and extracts salary and non-salary information using
-separate LLM calls with strict Pydantic validation.
-
-FEATURES:
-- Schema-driven extraction with Pydantic validation
-- Separate salary and non-salary LLM extractions
-- Token safety checks (800K limit)
-- Multi-process support for parallel processing
-- Robust error handling with exponential backoff
-- File locking to prevent duplicate processing
-- CAO info integration and Excel output generation
+This script performs schema-driven LLM extraction on CAO JSON files.
+It extracts salary and non-salary information using Google Gemini API.
 
 USAGE:
-    Single Process:
-        python p4_analysis.py --key_number 7 --process_id 0 --total_processes 1
-        
-    Multi-Process (2 parallel processes):
-        python p4_analysis.py --key_number 7 --process_id 0 --total_processes 2
-        python p4_analysis.py --key_number 8 --process_id 1 --total_processes 2
+    Single process:
+        python pipelines/p4_analysis.py --key_number 7 --process_id 0 --total_processes 1
 
-    Bash script for parallel execution:
-        unbuffer caffeinate python pipelines/p4_analysis.py --key_number 7 --process_id 0 --total_processes 6 2>&1 | tee log1.txt &
-        unbuffer caffeinate python pipelines/p4_analysis.py --key_number 8 --process_id 1 --total_processes 6 2>&1 | tee log2.txt &
+    Multi-process:
+        python pipelines/p4_analysis.py --key_number 7 --process_id 0 --total_processes 6
 
     With file limit:
-        python p4_analysis.py --key_number 7 --process_id 0 --total_processes 1 --max_files 10
+        python pipelines/p4_analysis.py --key_number 7 --process_id 0 --total_processes 1 --max_files 10
 
 ARGUMENTS:
     --key_number: Which API key to use (7, 8 for testing) - defaults to 7
@@ -45,7 +27,7 @@ INPUT:
     - JSON files in {config['paths']['outputs_json']}/new_flow/[CAO_NUMBER]/ folders
 
 OUTPUT:
-    - Extracted Excel data in outputs/excel/new_results/ folders
+    - Extracted JSON data in outputs/llm_analysis/salary/ and outputs/llm_analysis/non_salary/
     - Error logs: outputs/logs/failed_files_analysis.txt
 """
 
@@ -77,11 +59,202 @@ from pydantic import BaseModel, Field, ConfigDict
 from google import genai
 from google.genai import types
 
-# Shared utility imports
-from utils.llm_client import (
-    setup_environment, setup_gemini_client, get_model_parameters,
-    handle_llm_errors, validate_llm_response_json
-)
+# =============================================================================
+# LLM CLIENT FUNCTIONS
+# =============================================================================
+def setup_environment(key_number: int = 1) -> tuple[str, int]:
+    """
+    Setup environment variables and API key.
+    
+    Args:
+        key_number: Which API key to use (1, 2, 3, etc.)
+        
+    Returns:
+        tuple: (api_key, actual_key_number)
+        
+    Raises:
+        ValueError: If no API key is found
+    """
+    load_dotenv()
+    
+    api_key = os.getenv(f'GOOGLE_API_KEY{key_number}')
+    if not api_key:
+        api_key = os.getenv('GOOGLE_API_KEY1')
+        if not api_key:
+            raise ValueError(
+                f'Neither GOOGLE_API_KEY{key_number} nor GOOGLE_API_KEY1 environment variable found. '
+                f'Please set at least GOOGLE_API_KEY1 before running this script.'
+            )
+        else:
+            key_number = 1
+            print(f'Warning: GOOGLE_API_KEY{key_number} not found, using GOOGLE_API_KEY1 instead')
+    
+    return api_key, key_number
+
+
+def setup_gemini_client(api_key: str):
+    """
+    Setup Gemini client with the provided API key.
+    
+    Args:
+        api_key: Google Gemini API key
+        
+    Returns:
+        genai.Client: Configured Gemini client
+    """
+    return genai.Client(api_key=api_key)
+
+
+def get_model_parameters() -> Dict[str, Any]:
+    """
+    Get standard model parameters for consistent LLM configuration.
+    
+    Returns:
+        dict: Model configuration parameters
+    """
+    return {
+        "model": MODEL,
+        "temperature": 0.0,
+        "top_p": 0.1,
+        "top_k": 1,
+        "max_tokens": None,
+        "candidate_count": 1,
+        "seed": 42,  # For deterministic output
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+        "thinking_budget": 1024,  # Medium complexity tasks
+        "max_retries": 5
+    }
+
+
+def calculate_quota_retry_delay(file_size_mb: float, attempt: int) -> int:
+    """
+    Calculate quota retry delay based on file size and attempt number.
+    
+    Formula: (estimated_tokens / 125000) * 60 seconds * (2^attempt) + buffer
+    - 125,000 tokens per minute limit
+    - Exponential backoff: 2^attempt
+    - Buffer time for safety
+    
+    Args:
+        file_size_mb: Size of file in MB
+        attempt: Current attempt number (0-based)
+        
+    Returns:
+        int: Delay in seconds
+    """
+    # Estimate tokens: roughly 4 chars per token, file_size_mb * 1024 * 1024 / 4
+    estimated_tokens = int(file_size_mb * 1024 * 1024 / 4)
+    
+    # Calculate minutes needed to process this file
+    minutes_needed = estimated_tokens / 125000
+    
+    # Add exponential backoff: 2^attempt
+    backoff_multiplier = 2 ** attempt
+    
+    # Add buffer time (1-2 minutes for safety)
+    buffer_minutes = 1 + attempt
+    
+    # Calculate total delay in seconds
+    total_delay_seconds = int((minutes_needed * backoff_multiplier + buffer_minutes) * 60)
+    
+    print(f'  DEBUG: File size: {file_size_mb:.2f}MB, Estimated tokens: {estimated_tokens:,}')
+    print(f'  DEBUG: Minutes needed: {minutes_needed:.1f}, Backoff: {backoff_multiplier}x, Buffer: {buffer_minutes}min')
+    print(f'  DEBUG: Total delay: {total_delay_seconds // 60} minutes ({total_delay_seconds} seconds)')
+    
+    return total_delay_seconds
+
+
+def handle_llm_errors(error: Exception, attempt: int, max_retries: int, 
+                     file_size_mb: float = 0, context: Optional[str] = None) -> bool:
+    """
+    Handle different types of LLM errors with appropriate retry logic.
+    
+    Args:
+        error: The exception that occurred
+        attempt: Current attempt number (0-based)
+        max_retries: Maximum number of retry attempts
+        file_size_mb: Size of file in MB (for quota calculations)
+        context: Optional context string for logging
+        
+    Returns:
+        bool: True if should retry, False if should give up
+    """
+    error_str = str(error).lower()
+    
+    if ('deadlineexceeded' in error_str or '504' in error_str or 
+        'timeout' in error_str or 'truncated' in error_str):
+        if attempt < max_retries - 1:
+            wait_time = 120 * 2 ** attempt
+            print(f'  Attempt {attempt + 1} failed (timeout/truncation), retrying in {wait_time // 60} minutes...')
+            time.sleep(wait_time)
+            return True
+        else:
+            print(f'  All {max_retries} attempts failed with timeout/truncation errors')
+            return False
+    elif 'serviceunavailable' in error_str or '503' in error_str or 'connection reset' in error_str or '500' in error_str or 'internal' in error_str:
+        if attempt < max_retries - 1:
+            wait_time = 60 * 2 ** attempt
+            print(f'  Attempt {attempt + 1} failed (service unavailable/internal error), retrying in {wait_time // 60} minutes...')
+            time.sleep(wait_time)
+            return True
+        else:
+            print(f'  All {max_retries} attempts failed with service errors')
+            return False
+    elif any(keyword in error_str for keyword in ['quota', 'rate limit', 'too many requests', '429']):
+        if attempt < max_retries - 1:
+            wait_time = calculate_quota_retry_delay(file_size_mb, attempt)
+            print(f'  Attempt {attempt + 1} failed (rate limit), retrying in {wait_time // 60} minutes...')
+            time.sleep(wait_time)
+            return True
+        else:
+            print(f'  All {max_retries} attempts failed with rate limiting')
+            return False
+    elif attempt < max_retries - 1:
+        wait_time = 60 * 2 ** attempt
+        print(f'  Attempt {attempt + 1} failed ({type(error).__name__}), retrying in {wait_time // 60} minutes...')
+        time.sleep(wait_time)
+        return True
+    else:
+        print(f'  All {max_retries} attempts failed with {type(error).__name__}: {error}')
+        return False
+
+
+def validate_llm_response_json(content: str, filename: str) -> dict:
+    """
+    Validate LLM response JSON for completeness and validity.
+    
+    Args:
+        content: Raw response content from LLM
+        filename: Filename for context in error messages
+        
+    Returns:
+        dict: {'is_valid': bool, 'error': str or None}
+    """
+    # Check if content is empty
+    if not content or not content.strip():
+        return {'is_valid': False, 'error': 'Empty content'}
+    
+    # Check if content starts with {
+    if not content.strip().startswith('{'):
+        return {'is_valid': False, 'error': 'Content does not start with {'}
+    
+    # Check if content ends with }
+    if not content.strip().endswith('}'):
+        return {'is_valid': False, 'error': 'Content does not end with } - JSON appears to be truncated'}
+    
+    # Try to parse JSON to validate structure
+    try:
+        json.loads(content)
+        return {'is_valid': True, 'error': None}
+    except json.JSONDecodeError as e:
+        return {'is_valid': False, 'error': f'JSON parsing error: {str(e)}'}
+
+# =============================================================================
+# CONSTANTS
+# =============================================================================
+# Global configuration constants
+MODEL = 'gemini-2.5-flash'  # Use same model as p3_llmExtraction.py
 
 
 # =============================================================================
@@ -91,45 +264,45 @@ from utils.llm_client import (
 
 class SalaryRow(BaseModel):
     """Schema for a single salary row representing one job group."""
-    jobgroup: str = ""
-    salary_1: str = ""
-    salary_1_unit: str = ""
-    salary_1_startdate: str = ""
-    salary_increment_1: str = ""
+    jobgroup: str = Field(default="", description="Job group or position title (e.g. 'I=Statutory minimum wage (WML)', 'F-21-5', 'A')")
+    salary_1: str = Field(default="", description="Salary of the first job group listed in the earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
+    salary_1_unit: str = Field(default="", description="Unit for first salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_1_startdate: str = Field(default="", description="Start date for first salary (DD/MM/YYYY format)")
+    salary_increment_1: str = Field(default="", description="Percentage increase of salaries in the earliest wage table (e.g., '2%', '3%')")
     
-    salary_2: str = ""
-    salary_2_unit: str = ""
-    salary_2_startdate: str = ""
-    salary_increment_2: str = ""
+    salary_2: str = Field(default="", description="Salary of the first job group listed in the second earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
+    salary_2_unit: str = Field(default="", description="Unit for second salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_2_startdate: str = Field(default="", description="Start date for second salary (DD/MM/YYYY format)")
+    salary_increment_2: str = Field(default="", description="Percentage increase of salaries in the second earliest wage table (e.g., '2%', '3%')")
     
-    salary_3: str = ""
-    salary_3_unit: str = ""
-    salary_3_startdate: str = ""
-    salary_increment_3: str = ""
+    salary_3: str = Field(default="", description="Salary of the first job group listed in the third earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
+    salary_3_unit: str = Field(default="", description="Unit for third salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_3_startdate: str = Field(default="", description="Start date for third salary (DD/MM/YYYY format)")
+    salary_increment_3: str = Field(default="", description="Percentage increase of salaries in the third earliest wage table (e.g., '2%', '3%')")
     
-    salary_4: str = ""
-    salary_4_unit: str = ""
-    salary_4_startdate: str = ""
-    salary_increment_4: str = ""
+    salary_4: str = Field(default="", description="Salary of the first job group listed in the fourth earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
+    salary_4_unit: str = Field(default="", description="Unit for fourth salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_4_startdate: str = Field(default="", description="Start date for fourth salary (DD/MM/YYYY format)")
+    salary_increment_4: str = Field(default="", description="Percentage increase of salaries in the fourth earliest wage table (e.g., '2%', '3%')")
     
-    salary_5: str = ""
-    salary_5_unit: str = ""
-    salary_5_startdate: str = ""
-    salary_increment_5: str = ""
+    salary_5: str = Field(default="", description="Salary of the first job group listed in the fifth earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
+    salary_5_unit: str = Field(default="", description="Unit for fifth salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_5_startdate: str = Field(default="", description="Start date for fifth salary (DD/MM/YYYY format)")
+    salary_increment_5: str = Field(default="", description="Percentage increase of salaries in the fifth earliest wage table (e.g., '2%', '3%')")
     
-    salary_6: str = ""
-    salary_6_unit: str = ""
-    salary_6_startdate: str = ""
-    salary_increment_6: str = ""
+    salary_6: str = Field(default="", description="Salary of the first job group listed in the sixth earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
+    salary_6_unit: str = Field(default="", description="Unit for sixth salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_6_startdate: str = Field(default="", description="Start date for sixth salary (DD/MM/YYYY format)")
+    salary_increment_6: str = Field(default="", description="Percentage increase of salaries in the sixth earliest wage table (e.g., '2%', '3%')")
     
-    salary_7: str = ""
-    salary_7_unit: str = ""
-    salary_7_startdate: str = ""
-    salary_increment_7: str = ""
+    salary_7: str = Field(default="", description="Salary of the first job group listed in the seventh earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
+    salary_7_unit: str = Field(default="", description="Unit for seventh salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_7_startdate: str = Field(default="", description="Start date for seventh salary (DD/MM/YYYY format)")
+    salary_increment_7: str = Field(default="", description="Percentage increase of salaries in the seventh earliest wage table (e.g., '2%', '3%')")
     
-    more_salaries: bool = False
-    salary_note: str = ""
-    salary_age_group: str = ""
+    more_salaries: bool = Field(default=False, description="True if there are more than the 7 salary steps, salary_1..salary_7, in this job group")
+    salary_note: str = Field(default="", description="Additional context related to salary interpretation or about the salary table (e.g., 'Youth salary scales phased out from 2014', 'Hourly wage = monthly salary / 156', 'Classification via FWG® system')")
+    salary_age_group: str = Field(default="", description="Age group the salary of the first job group applies to (e.g., '21+', '18-20', '22', 'all ages')")
 
 
 class SalaryExtractionSchema(BaseModel):
@@ -139,57 +312,57 @@ class SalaryExtractionSchema(BaseModel):
 
 class ContractInfo(BaseModel):
     """Schema for contract information."""
-    start_date_contract: str = ""
-    expiry_date_contract: str = ""
+    start_date_contract: str = Field(default="", description="Contract start date (DD/MM/YYYY format or descriptive text)")
+    expiry_date_contract: str = Field(default="", description="Contract expiry/end date (DD/MM/YYYY format or descriptive text)")
 
 
 class PensionInfo(BaseModel):
     """Schema for pension information."""
-    pension_premium_basic: str = ""
-    pension_premium_plus: str = ""
-    retire_age_basic: str = ""
-    retire_age_plus: str = ""
-    pension_age_group: str = ""
+    pension_scheme_basic: str = Field(default="", description="Basic pension scheme rules, premiums, development and structure (e.g., '50% pension premium paid by employee', 'Employees 21-68 eligible', 'follows rules of Stichting Bedrijfstakpensioenfonds')")
+    pension_scheme_plus: str = Field(default="", description="Additional or “plus” pension scheme rules, premiums, development and structure (e.g., '2% additional premium', 'Generation Policy for 60+ between 2018 and 2023', '0.2% increase for employees offset on 1-6-2021')")
+    retire_age_basic: str = Field(default="", description="Retirement age for the basic pension scheme (e.g., '67', '65-67 years')")
+    retire_age_plus: str = Field(default="", description="Retirement age for the additional or “plus” pension scheme (e.g., '62', '60 years')")
+    pension_age_group: str = Field(default="", description="Age group eligible for pension schemes (e.g., '21+', 'all employees')")
 
 
 class LeaveInfo(BaseModel):
     """Schema for leave information."""
-    maternity_leave: str = ""
-    maternity_pay: str = ""
-    maternity_note: str = ""
-    vacation_time: str = ""
-    vacation_unit: str = ""
-    vacation_note: str = ""
+    maternity_leave: str = Field(default="", description="Child-related (Maternity, adoption, etc.) leave duration (e.g., '5 days of paid maternity leave', 'Additional 4 weeks in multiple births', '5 weeks extra unpaid leave within 6 months after birth')")
+    maternity_pay: str = Field(default="", description="Salary and benefits during child-related leave (e.g., '100% paid by employer', 'full salary', '70% UWV benefit')")
+    maternity_note: str = Field(default="", description="Additional child-related leave rules (e.g., 'Vacation accrues during leave', 'leave may be split between partners')")
+    vacation_time: str = Field(default="", description="Annual vacation time (e.g., '25', '0.0769')")
+    vacation_unit: str = Field(default="", description="Unit for vacation time (e.g., 'hours per vacation year', 'weeks')")
+    vacation_note: str = Field(default="", description="Additional vacation rules (e.g., 'plus public holidays for part time workers', '8% holiday allowance', '5 extra days after 4')")
 
 
 class TerminationInfo(BaseModel):
     """Schema for termination information."""
-    term_period_employer: str = ""
-    term_employer_note: str = ""
-    term_period_worker: str = ""
-    term_worker_note: str = ""
-    probation_period: str = ""
-    probation_note: str = ""
+    term_period_employer: str = Field(default="", description="Notice period required from employer - include special rules based on age, start date, or contract length (e.g., '30 days', 'Statutory period applies if longer than agreed term')")
+    term_employer_note: str = Field(default="", description="Additional notes about employer termination (e.g., 'longer for senior positions', 'plus 1 month per year of service', 'Civil Code provisions apply')")
+    term_period_worker: str = Field(default="", description="Notice period required from worker - include special rules based on age, start date, or contract length (e.g., '1 week if less than 2 years employed', '30 days')")
+    term_worker_note: str = Field(default="", description="Additional notes about worker termination (e.g., 'Starting date for notice is always a Saturday', 'can be extended')")
+    probation_period: str = Field(default="", description="Probation period duration (e.g., '2 months for indefinite contracts', '60 days', 'No trial period if contract ≤ 6 months')")
+    probation_note: str = Field(default="", description="Additional notes about probation (e.g., 'Article 7:652 of the Civil Code applies', 'shorter notice period during probation')")
 
 
 class OvertimeInfo(BaseModel):
     """Schema for overtime information."""
-    overtime_compensation: str = ""
-    max_hrs: str = ""
-    min_hrs: str = ""
-    shift_compensation: str = ""
-    overtime_allowance_min: str = ""
-    overtime_allowance_max: str = ""
+    overtime_compensation: str = Field(default="", description="Overtime pay and compensation rate (e.g., '1:1 Time Off In Lieu', '100% of hourly wage plus overtime premium', '€25/hour')")
+    max_hrs: str = Field(default="", description="Maximum working and overtime time (e.g., '52-hour weekly average if salary exceeds IP number 74', '16 hours/month')")
+    min_hrs: str = Field(default="", description="Minimum working and overtime time (e.g., '8 hours per day', '96 hours/month')")
+    shift_compensation: str = Field(default="", description="Shift compensations (e.g., '25% surcharge 8pm–10pm', ' Night shift 00:00 and 06:00', 'Max 20 shifts per 4-weeks')")
+    overtime_allowance_min: str = Field(default="", description="Minimum overtime and shift allowance (e.g., 'min 4-hour shift to qualify for night compensation', '16 night shifts over 16 weeks triggers lower working hour threshold')")
+    overtime_allowance_max: str = Field(default="", description="Maximum overtime and shift allowance (e.g., 'Working time averaged over 13 weeks not to exceed 48 hours', 'max 10 hours a day')")
 
 
 class TrainingInfo(BaseModel):
     """Schema for training information."""
-    training: str = ""
+    training: str = Field(default="", description="Training rights, budgets and requirements (e.g., '€175 per year budget', '5 days training leave', 'mandatory safety training')")
 
 
 class HomeofficeInfo(BaseModel):
     """Schema for homeoffice information."""
-    Homeoffice: str = ""
+    Homeoffice: str = Field(default="", description="Home office and remote work rules (e.g., 'up to 2 days/week', 'Home office allowance of €3 per day', 'equipment provided')")
 
 
 class NonSalaryExtractionSchema(BaseModel):
@@ -216,7 +389,7 @@ class AnalysisConfig:
     cao_info_path: str
     max_processing_time_hours: int = 1
     max_json_files: int = 1
-    token_limit: int = 800000  # 800K tokens safety limit
+    token_limit: int = 900000  # 900K tokens safety limit
 
 
 def load_configuration() -> AnalysisConfig:
@@ -226,8 +399,9 @@ def load_configuration() -> AnalysisConfig:
     
     return AnalysisConfig(
         input_folder=config_data['paths']['outputs_json'] + "/new_flow",
-        output_folder=Path(config_data['paths']['outputs_excel']) / "new_results",
-        cao_info_path=f"{config_data['paths']['inputs_pdfs']}/extracted_cao_info.csv"
+        output_folder=Path(config_data['paths']['outputs_json']) / "llm_analysis",
+        cao_info_path=f"{config_data['paths']['inputs_pdfs']}/extracted_cao_info.csv",
+        max_json_files=config_data.get('max_json_files', 1000000)  # Default to 1M if not specified
     )
 
 
@@ -282,7 +456,7 @@ def check_token_limit(json_text: str, filename: str) -> bool:
     # Estimate tokens: ~4 chars per token for Gemini models
     estimated_tokens = len(json_text) // 4
     
-    if estimated_tokens > 800000:  # 800K token safety limit
+    if estimated_tokens > 900000:  # 900K token safety limit
         print(f'  {filename}: Skipping - estimated {estimated_tokens:,} tokens exceeds 800K limit')
         return False
     
@@ -320,108 +494,56 @@ class ModelOutputParseError(Exception):
 # =============================================================================
 # Exact prompt templates for salary and non-salary extraction
 
-SALARY_PROMPT = """You are an information-extraction assistant. Input: JSON text derived from a Dutch CAO (collective labour agreement) that contains wage tables and related wage text.
-TASK: Extract structured salary data and return PURE JSON matching the exact schema below.
+SALARY_PROMPT = """
 
-Schema (conceptual):
-{{
-  "salary_information": [
-    {{ SalaryRow }}, ...
-  ]
-}}
-Each SalaryRow MUST include these keys exactly:
-["jobgroup","salary_1","salary_1_unit","salary_1_startdate","salary_increment_1",
- "salary_2","salary_2_unit","salary_2_startdate","salary_increment_2",
- "salary_3","salary_3_unit","salary_3_startdate","salary_increment_3",
- "salary_4","salary_4_unit","salary_4_startdate","salary_increment_4",
- "salary_5","salary_5_unit","salary_5_startdate","salary_increment_5",
- "salary_6","salary_6_unit","salary_6_startdate","salary_increment_6",
- "salary_7","salary_7_unit","salary_7_startdate","salary_increment_7",
- "more_salaries","salary_note","salary_age_group"]
+    You are an information-extraction assistant. Input: text derived from a Dutch CAO (collective labour agreement) that contains wage tables and related wage text.
 
-Instructions:
-- Output MUST be valid JSON and nothing else (no markdown, no commentary).
-- Output MUST be a single JSON object with top-level key "salary_information" whose value is a list of SalaryRow objects.
-- Each SalaryRow represents exactly one job group (one Excel row). Return as many SalaryRow objects as necessary (0..N).
-- If a job group lists more than 7 salary steps, fill salary_1..salary_7 and set more_salaries = true.
-- If multiple tables are identical except unit (hourly vs monthly vs weekly), keep only one (prefer hourly).
-- Extract salary info applicable to ages 21+; if the table is age-specific, ensure salary_age_group reflects it (e.g., "21+").
-- Use empty string "" for missing values.
-- Translate any Dutch text to English, except organization names or abbreviations (preserve them).
-- Where possible add a short context in salary_note (e.g., "table p.12", "36h week").
-- Do NOT invent or hallucinate values.
+    TASK: Extract structured salary data from the provided text:
+    Filename: {filename}
+    Source text: {source_json}
 
-Filename: {filename}
-Source JSON:
-{source_json}
+    CRITICAL RULES:
+        - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess.
+        - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
+        - For missing values: Use empty string "" for string fields and use null for numbers, dates, and boolean fields.
 
-Return: valid JSON object, example:
-{{
-  "salary_information": [
-    {{
-      "jobgroup": "Helper A",
-      "salary_1": "2200",
-      "salary_1_unit": "monthly",
-      "salary_1_startdate": "2023-01-01",
-      "salary_increment_1": "2%",
-      "salary_2": "",
-      "salary_2_unit": "",
-      "salary_2_startdate": "",
-      "salary_increment_2": "",
-      ...
-      "more_salaries": false,
-      "salary_note": "based on 36h week (table p.5)",
-      "salary_age_group": "21+"
-    }},
-    ...
-  ]
-}}"""
+    CONTENT INCLUSION RULES:
+        - Focus on standard/regular wage tables (not special allowances or bonuses). If multiple tables exist for different time periods under this standard wage type, include all of them. 
+        - Extract salary information for each job groups within standard wage tables.
+        - Include all job groups within standard wage tables.
+        - Prefer hourly units when multiple unit versions of the same wage table exist (hourly vs monthly vs weekly vs 4 weeks vs yearly for same workers/periods/jobs/ages/others). If hourly is absent, keep the available unit as-is.
+        - Salary_note, salary_age_group and more_salaries fields should be consistent across all job groups since they usually apply to the entire wage tables (if not mention it in the salary_note field). Include comprehensive information in the salary_note field.
+
+    AGE GROUP SELECTION RULES:
+        - For each wage table: Extract data for the age group that covers the most worker ages (e.g., 22+, 23+, 25+)
+        - Prefer open-ended age groups (like 23+) over narrow ranges (like 50-90)
+        - If a job group has no data for the selected age group, keep it empty (do not use data from other age groups)
+        - Different wage tables may have different "oldest age groups" - extract each table's appropriate age group
+        - In the age_group field: Use the oldest age group from all extracted data and note if it changed over time in the salary_note field
+
+    OUTPUT: Only valid JSON format matching the provided schema structure.
+    """
 
 
-NON_SALARY_PROMPT = """You are an information-extraction assistant. Input: JSON text derived from a Dutch CAO that contains general contract info, pension, leave, termination, overtime, training and homeoffice sections.
-TASK: Extract structured non-salary data and return PURE JSON matching the exact structure below.
+NON_SALARY_PROMPT = """
 
-Return EXACT structure (keys and nested keys must exist; use "" for missing values):
+    You are an information-extraction assistant. Input: text derived from a Dutch CAO (collective labour agreement) that contains general contract info, pension, leave, termination, overtime, training and homeoffice sections.
 
-{{
-  "contract_information": {{
-    "start_date_contract":"", "expiry_date_contract":""
-  }},
-  "pension_information": {{
-    "pension_premium_basic":"", "pension_premium_plus":"",
-    "retire_age_basic":"", "retire_age_plus":"", "pension_age_group":""
-  }},
-  "leave_information": {{
-    "maternity_leave":"", "maternity_pay":"", "maternity_note":"",
-    "vacation_time":"", "vacation_unit":"", "vacation_note":""
-  }},
-  "termination_information": {{
-    "term_period_employer":"", "term_employer_note":"",
-    "term_period_worker":"", "term_worker_note":"",
-    "probation_period":"", "probation_note":""
-  }},
-  "overtime_information": {{
-    "overtime_compensation":"", "max_hrs":"", "min_hrs":"",
-    "shift_compensation":"", "overtime_allowance_min":"", "overtime_allowance_max":""
-  }},
-  "training_information": {{"training":""}},
-  "homeoffice_information": {{"Homeoffice":""}}
-}}
+    TASK: Extract structured data from the provided text:
+    Filename: {filename}
+    Source text: {source_json}
 
-Rules:
-- Output MUST be valid JSON and nothing else (no markdown, no commentary).
-- Translate Dutch → English (preserve organization names / abbreviations).
-- For pensions: look for "AOW", "pensioen", "premie", "fonds" and extract fund names, contribution percentages, eligibility, retirement ages.
-- For termination: include complete notice period tables if present; include context (page/line) in notes where available.
-- For leave/overtime/training/homeoffice: extract factual short strings; if multiple candidate values exist, include the most detailed factual one and log conflicts.
-- Use "" for missing fields.
-- Do NOT invent or hallucinate values.
+    CRITICAL RULES:
+        - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess.
+        - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
 
-Filename: {filename}
-Source JSON:
-{source_json}
+    EXTRACTION GUIDELINES:
+        - Extract factual information for each field based on the schema descriptions.
+        - Include relevant conditions, exceptions, and legal references in note fields.
+        - For missing values: Use empty string "" for string fields and use null for numbers, dates, and boolean fields.
 
-Return: valid JSON object matching the structure above."""
+    OUTPUT: Only valid JSON format matching the provided schema structure.
+    """
 
 
 # =============================================================================
@@ -575,229 +697,339 @@ def parse_llm_response(response_text: str, filename: str, schema_type: str):
 
 
 def extract_salary_from_json(json_obj: dict, filename: str, client) -> List[dict]:
-    """
-    Extract salary information from JSON using LLM.
+    """Extract salary information from JSON using LLM."""
+    print(f'  DEBUG: Starting salary extraction for {filename}')
+    print(f'  DEBUG: Input JSON keys: {list(json_obj.keys())}')
     
-    Args:
-        json_obj: JSON object containing CAO data
-        filename: Filename for context
-        client: Gemini client instance
-        
-    Returns:
-        List[dict]: List of salary row dictionaries
-    """
-    # Extract wage information section
     salary_text = ""
-    if 'wage_information' in json_obj:
-        value = json_obj['wage_information']
-        if isinstance(value, list):
-            # Flatten nested lists
-            flat_value = []
-            for item in value:
-                if isinstance(item, list):
-                    flat_value.extend(item)
-                else:
-                    flat_value.append(str(item))
-            salary_text = f'== Wage information ==\n' + '\n'.join(flat_value)
-        elif isinstance(value, str):
-            salary_text = f'== Wage information ==\n{value}'
+    wage_keys = ['wage_information', 'Wage information', 'wage information', 'WAGE_INFORMATION']
     
-    if not salary_text.strip():
-        return []
-    
-    # Check token limit
-    if not check_token_limit(salary_text, filename):
-        return []
-    
-    # Create prompt
-    prompt = SALARY_PROMPT.format(filename=filename, source_json=salary_text)
-    
-    # Try structured output first, fallback to text if it fails
-    try:
-        # Use structured output for better validation
-        model_params = get_model_parameters()
-        safety_settings = [
-            types.SafetySetting(
-                category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
-                threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-            ),
-            types.SafetySetting(
-                category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-                threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-            ),
-            types.SafetySetting(
-                category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-                threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-            ),
-            types.SafetySetting(
-                category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-                threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-            )
-        ]
-        
-        config = {
-            'temperature': model_params["temperature"],
-            'top_p': model_params["top_p"],
-            'top_k': model_params["top_k"],
-            'max_output_tokens': model_params["max_tokens"],
-            'candidate_count': model_params["candidate_count"],
-            'seed': model_params["seed"],
-            'presence_penalty': model_params["presence_penalty"],
-            'frequency_penalty': model_params["frequency_penalty"],
-            'thinking_config': types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
-            'http_options': types.HttpOptions(timeout=300000),
-            'safety_settings': safety_settings,
-            'response_mime_type': 'application/json',
-            'response_schema': SalaryExtractionSchema
-        }
-        
-        response = client.models.generate_content(
-            model=model_params["model"],
-            contents=prompt,
-            config=config
-        )
-        
-        # Check if we got structured output
-        if hasattr(response, 'parsed') and response.parsed:
-            return [row.model_dump() for row in response.parsed.salary_information]
-        elif hasattr(response, 'text') and response.text and response.text.strip():
-            # Fallback to text parsing
-            parsed_data = parse_llm_response(response.text, filename, 'salary')
-            salary_schema = SalaryExtractionSchema.parse_obj(parsed_data)
-            return [row.model_dump() for row in salary_schema.salary_information]
-        else:
-            raise ValueError('Empty or invalid model response')
+    for key in wage_keys:
+        if key in json_obj:
+            value = json_obj[key]
+            print(f'  DEBUG: Found wage key: {key}')
+            print(f'  DEBUG: Wage value type: {type(value)}')
+            print(f'  DEBUG: Wage value length: {len(str(value)) if value else 0}')
             
-    except Exception as e:
-        # Fallback to text-based extraction
-        print(f'  WARNING: Structured output failed for {filename}, falling back to text extraction: {e}')
-        raw_output = query_gemini_with_retry(client, prompt, filename)
-        parsed_data = parse_llm_response(raw_output, filename, 'salary')
-        
-        # Validate with Pydantic schema
-        try:
-            salary_schema = SalaryExtractionSchema.parse_obj(parsed_data)
-            return [row.model_dump() for row in salary_schema.salary_information]
-        except Exception as e:
-            log_analysis_error(filename, f"Salary schema validation failed: {e}", raw_output)
-            raise ModelOutputParseError(f"Salary schema validation failed: {e}")
-
-
-def extract_nonsalary_from_json(json_obj: dict, filename: str, client) -> dict:
-    """
-    Extract non-salary information from JSON using LLM.
-    
-    Args:
-        json_obj: JSON object containing CAO data
-        filename: Filename for context
-        client: Gemini client instance
-        
-    Returns:
-        dict: Non-salary extraction results
-    """
-    # Extract non-wage sections
-    rest_sections = ['general_information', 'pension_information', 'leave_information', 
-                    'termination_information', 'overtime_information', 'training_information', 
-                    'homeoffice_information']
-    
-    rest_text_parts = []
-    for section in rest_sections:
-        if section in json_obj:
-            value = json_obj[section]
             if isinstance(value, list):
-                # Flatten nested lists
                 flat_value = []
                 for item in value:
                     if isinstance(item, list):
                         flat_value.extend(item)
+                    elif isinstance(item, str):
+                        if 'wage' in item.lower() or 'salary' in item.lower() or 'salaris' in item.lower():
+                            flat_value.append(item)
                     else:
                         flat_value.append(str(item))
-                rest_text_parts.append(f'== {section} ==\n' + '\n'.join(flat_value))
+                salary_text = f'== Wage information ==\n' + '\n'.join(flat_value)
+                print(f'  DEBUG: Created salary text from list, length: {len(salary_text)}')
             elif isinstance(value, str):
-                rest_text_parts.append(f'== {section} ==\n{value}')
+                salary_text = f'== Wage information ==\n{value}'
+                print(f'  DEBUG: Created salary text from string, length: {len(salary_text)}')
+            break
     
-    rest_text = '\n\n'.join(rest_text_parts)
+    general_keys = ['general_information', 'General information', 'general information', 'GENERAL_INFORMATION']
+    for key in general_keys:
+        if key in json_obj:
+            value = json_obj[key]
+            print(f'  DEBUG: Found general key: {key}')
+            print(f'  DEBUG: General value type: {type(value)}')
+            
+            if isinstance(value, list):
+                for item in value:
+                    if isinstance(item, str):
+                        try:
+                            nested_data = json.loads(item)
+                            print(f'  DEBUG: Successfully parsed nested JSON from general info')
+                            wage_keys_nested = ['wage_information', 'Wage information', 'wage information', 'WAGE_INFORMATION']
+                            for wage_key in wage_keys_nested:
+                                if wage_key in nested_data and nested_data[wage_key]:
+                                    wage_data = nested_data[wage_key]
+                                    if isinstance(wage_data, list):
+                                        salary_text = f'== Wage information ==\n' + '\n'.join(wage_data)
+                                    else:
+                                        salary_text = f'== Wage information ==\n{wage_data}'
+                                    print(f'  DEBUG: Found wage data in nested JSON, length: {len(salary_text)}')
+                                    break
+                            if salary_text.strip():
+                                break
+                        except json.JSONDecodeError:
+                            if 'wage' in item.lower() or 'salary' in item.lower() or 'salaris' in item.lower():
+                                salary_text = f'== Wage information ==\n{item}'
+                                print(f'  DEBUG: Found wage-related text in general info, length: {len(salary_text)}')
+                                break
+            elif isinstance(value, str):
+                if 'wage' in value.lower() or 'salary' in value.lower() or 'salaris' in value.lower():
+                    salary_text = f'== Wage information ==\n{value}'
+                    print(f'  DEBUG: Found wage-related text in general string, length: {len(salary_text)}')
+                    break
     
-    if not rest_text.strip():
-        # Return empty structure
-        return NonSalaryExtractionSchema().model_dump()
+    print(f'  DEBUG: Final salary text length: {len(salary_text)}')
+    if salary_text.strip():
+        print(f'  DEBUG: Salary text preview: {salary_text[:200]}...')
+    else:
+        print(f'  DEBUG: No salary text found!')
+        return []
     
-    # Check token limit
-    if not check_token_limit(rest_text, filename):
-        return NonSalaryExtractionSchema().model_dump()
+    if not check_token_limit(salary_text, filename):
+        return []
     
-    # Create prompt
-    prompt = NON_SALARY_PROMPT.format(filename=filename, source_json=rest_text)
+    prompt = SALARY_PROMPT.format(filename=filename, source_json=salary_text)
+    print(f'  DEBUG: Prompt length: {len(prompt)}')
+    print(f'  DEBUG: Prompt preview: {prompt[:300]}...')
     
-    # Try structured output first, fallback to text if it fails
+    model_params = get_model_parameters()
+    print(f'  DEBUG: Model params: {model_params}')
+    
+    safety_settings = [
+        {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
+        {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
+        {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
+        {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"}
+    ]
+    
+    config = {
+        "temperature": model_params["temperature"],
+        "top_p": model_params["top_p"],
+        "top_k": model_params["top_k"],
+        "max_output_tokens": 65536,  # 65536 tokens to handle longer responses
+        "candidate_count": model_params["candidate_count"],
+        "seed": model_params["seed"],
+        "presence_penalty": model_params["presence_penalty"],
+        "frequency_penalty": model_params["frequency_penalty"],
+        "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
+        "response_mime_type": "application/json",
+        "response_schema": SalaryExtractionSchema
+    }
+    
+    print(f'  DEBUG: API config: {config}')
+    
     try:
-        # Use structured output for better validation
-        model_params = get_model_parameters()
-        safety_settings = [
-            types.SafetySetting(
-                category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
-                threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-            ),
-            types.SafetySetting(
-                category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-                threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-            ),
-            types.SafetySetting(
-                category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-                threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-            ),
-            types.SafetySetting(
-                category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-                threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-            )
-        ]
-        
-        config = {
-            'temperature': model_params["temperature"],
-            'top_p': model_params["top_p"],
-            'top_k': model_params["top_k"],
-            'max_output_tokens': model_params["max_tokens"],
-            'candidate_count': model_params["candidate_count"],
-            'seed': model_params["seed"],
-            'presence_penalty': model_params["presence_penalty"],
-            'frequency_penalty': model_params["frequency_penalty"],
-            'thinking_config': types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
-            'http_options': types.HttpOptions(timeout=300000),
-            'safety_settings': safety_settings,
-            'response_mime_type': 'application/json',
-            'response_schema': NonSalaryExtractionSchema
-        }
-        
+        print(f'  DEBUG: Making API call...')
         response = client.models.generate_content(
-            model=model_params["model"],
+            model=MODEL,
             contents=prompt,
             config=config
         )
         
-        # Check if we got structured output
+        print(f'  DEBUG: API response received')
+        print(f'  DEBUG: Response type: {type(response)}')
+        print(f'  DEBUG: Response attributes: {dir(response)}')
+        
         if hasattr(response, 'parsed') and response.parsed:
-            return response.parsed.model_dump()
-        elif hasattr(response, 'text') and response.text and response.text.strip():
-            # Fallback to text parsing
-            parsed_data = parse_llm_response(response.text, filename, 'nonsalary')
-            nonsalary_schema = NonSalaryExtractionSchema.parse_obj(parsed_data)
-            return nonsalary_schema.model_dump()
+            print(f'  DEBUG: Response has parsed attribute')
+            # response.parsed is now a Pydantic model (SalaryExtractionSchema)
+            result = [row.model_dump() for row in response.parsed.salary_information]
+            print(f'  DEBUG: Parsed {len(result)} salary rows')
+            return result
         else:
-            raise ValueError('Empty or invalid model response')
+            print(f'  DEBUG: No parsed attribute in response')
+            if hasattr(response, 'text'):
+                print(f'  DEBUG: Response text length: {len(response.text) if response.text else 0}')
+                if response.text:
+                    print(f'  DEBUG: Response text preview: {response.text[:300]}...')
+                    # Try to parse the text manually
+                    try:
+                        parsed_json = json.loads(response.text)
+                        print(f'  DEBUG: Successfully parsed response text manually')
+                        # Validate against schema
+                        if 'salary_information' in parsed_json:
+                            salary_schema = SalaryExtractionSchema(**parsed_json)
+                            result = [row.model_dump() for row in salary_schema.salary_information]
+                            print(f'  DEBUG: Salary manual parse result: {len(result)} rows')
+                            return result
+                        else:
+                            print(f'  DEBUG: No salary_information key in parsed JSON')
+                    except json.JSONDecodeError as e:
+                        print(f'  DEBUG: Failed to parse response text as JSON: {e}')
+                    except Exception as e:
+                        print(f'  DEBUG: Failed to validate parsed JSON against schema: {e}')
+            log_analysis_error(filename, "No structured output received from model", "")
+            return []
             
     except Exception as e:
-        # Fallback to text-based extraction
-        print(f'  WARNING: Structured output failed for {filename}, falling back to text extraction: {e}')
-        raw_output = query_gemini_with_retry(client, prompt, filename)
-        parsed_data = parse_llm_response(raw_output, filename, 'nonsalary')
+        print(f'  DEBUG: API call failed with error: {type(e).__name__}: {e}')
+        # Retry logic with proper attempt tracking
+        for attempt in range(5):  # Max 5 retries
+            if handle_llm_errors(e, attempt, 5, context=filename):
+                time.sleep(2)
+                try:
+                    print(f'  DEBUG: Retry attempt {attempt + 1}...')
+                    response = client.models.generate_content(
+                        model=MODEL,
+                        contents=prompt,
+                        config=config
+                    )
+                    
+                    if hasattr(response, 'parsed') and response.parsed:
+                        result = [row.model_dump() for row in response.parsed.salary_information]
+                        print(f'  DEBUG: Retry successful, parsed {len(result)} salary rows')
+                        return result
+                    else:
+                        log_analysis_error(filename, "No structured output received from model on retry", "")
+                        return []
+                        
+                except Exception as retry_error:
+                    print(f'  DEBUG: Retry {attempt + 1} failed: {type(retry_error).__name__}: {retry_error}')
+                    e = retry_error  # Update error for next iteration
+                    continue
+            else:
+                break
         
-        # Validate with Pydantic schema
-        try:
-            nonsalary_schema = NonSalaryExtractionSchema.parse_obj(parsed_data)
-            return nonsalary_schema.model_dump()
-        except Exception as e:
-            log_analysis_error(filename, f"Non-salary schema validation failed: {e}", raw_output)
-            raise ModelOutputParseError(f"Non-salary schema validation failed: {e}")
+        log_analysis_error(filename, f"Salary extraction failed after all retries: {e}", "")
+        return []
+
+
+def extract_nonsalary_from_json(json_obj: dict, filename: str, client) -> dict:
+    """Extract non-salary information from JSON using LLM."""
+    print(f'  DEBUG: Starting non-salary extraction for {filename}')
+    print(f'  DEBUG: Input JSON keys: {list(json_obj.keys())}')
+    
+    # Extract all non-wage sections
+    non_salary_text = ""
+    sections_to_extract = [
+        'general_information', 'General information', 'general information', 'GENERAL_INFORMATION',
+        'pension_information', 'Pension information', 'pension information', 'PENSION_INFORMATION',
+        'leave_information', 'Leave information', 'leave information', 'LEAVE_INFORMATION',
+        'termination_information', 'Termination information', 'termination information', 'TERMINATION_INFORMATION',
+        'overtime_information', 'Overtime information', 'overtime information', 'OVERTIME_INFORMATION',
+        'training_information', 'Training information', 'training information', 'TRAINING_INFORMATION',
+        'homeoffice_information', 'Homeoffice information', 'homeoffice information', 'HOMEOFFICE_INFORMATION'
+    ]
+    
+    for key in sections_to_extract:
+        if key in json_obj:
+            value = json_obj[key]
+            print(f'  DEBUG: Found non-salary key: {key}')
+            print(f'  DEBUG: Value type: {type(value)}')
+            print(f'  DEBUG: Value length: {len(str(value)) if value else 0}')
+            
+            if isinstance(value, list):
+                flat_value = []
+                for item in value:
+                    if isinstance(item, list):
+                        flat_value.extend(item)
+                    elif isinstance(item, str):
+                        flat_value.append(item)
+                    else:
+                        flat_value.append(str(item))
+                non_salary_text += f'== {key} ==\n' + '\n'.join(flat_value) + '\n\n'
+                print(f'  DEBUG: Added section from list, total length now: {len(non_salary_text)}')
+            elif isinstance(value, str):
+                non_salary_text += f'== {key} ==\n{value}\n\n'
+                print(f'  DEBUG: Added section from string, total length now: {len(non_salary_text)}')
+    
+    print(f'  DEBUG: Final non-salary text length: {len(non_salary_text)}')
+    if non_salary_text.strip():
+        print(f'  DEBUG: Non-salary text preview: {non_salary_text[:200]}...')
+    else:
+        print(f'  DEBUG: No non-salary text found!')
+        return NonSalaryExtractionSchema().model_dump()
+    
+    if not check_token_limit(non_salary_text, filename):
+        return NonSalaryExtractionSchema().model_dump()
+    
+    prompt = NON_SALARY_PROMPT.format(filename=filename, source_json=non_salary_text)
+    print(f'  DEBUG: Non-salary prompt length: {len(prompt)}')
+    print(f'  DEBUG: Non-salary prompt preview: {prompt[:300]}...')
+    
+    model_params = get_model_parameters()
+    print(f'  DEBUG: Non-salary model params: {model_params}')
+    
+    safety_settings = [
+        {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
+        {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
+        {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
+        {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"}
+    ]
+    
+    config = {
+        "temperature": model_params["temperature"],
+        "top_p": model_params["top_p"],
+        "top_k": model_params["top_k"],
+        "max_output_tokens": 32768,  # Increased from 8192 to handle longer responses
+        "candidate_count": model_params["candidate_count"],
+        "seed": model_params["seed"],
+        "presence_penalty": model_params["presence_penalty"],
+        "frequency_penalty": model_params["frequency_penalty"],
+        "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
+        "response_mime_type": "application/json",
+        "response_schema": NonSalaryExtractionSchema
+    }
+    
+    print(f'  DEBUG: Non-salary API config: {config}')
+    
+    try:
+        print(f'  DEBUG: Making non-salary API call...')
+        response = client.models.generate_content(
+            model=MODEL,
+            contents=prompt,
+            config=config
+        )
+        
+        print(f'  DEBUG: Non-salary API response received')
+        print(f'  DEBUG: Non-salary response type: {type(response)}')
+        print(f'  DEBUG: Non-salary response attributes: {dir(response)}')
+        
+        if hasattr(response, 'parsed') and response.parsed:
+            print(f'  DEBUG: Non-salary response has parsed attribute')
+            # response.parsed is now a Pydantic model (NonSalaryExtractionSchema)
+            result = response.parsed.model_dump()
+            print(f'  DEBUG: Non-salary parsed result keys: {list(result.keys())}')
+            return result
+        else:
+            print(f'  DEBUG: No parsed attribute in non-salary response')
+            if hasattr(response, 'text'):
+                print(f'  DEBUG: Non-salary response text length: {len(response.text) if response.text else 0}')
+                if response.text:
+                    print(f'  DEBUG: Non-salary response text preview: {response.text[:300]}...')
+                    # Try to parse the text manually
+                    try:
+                        parsed_json = json.loads(response.text)
+                        print(f'  DEBUG: Successfully parsed response text manually')
+                        # Validate against schema
+                        schema = NonSalaryExtractionSchema(**parsed_json)
+                        result = schema.model_dump()
+                        print(f'  DEBUG: Non-salary manual parse result keys: {list(result.keys())}')
+                        return result
+                    except json.JSONDecodeError as e:
+                        print(f'  DEBUG: Failed to parse response text as JSON: {e}')
+                    except Exception as e:
+                        print(f'  DEBUG: Failed to validate parsed JSON against schema: {e}')
+            log_analysis_error(filename, "No structured output received from model for non-salary", "")
+            return NonSalaryExtractionSchema().model_dump()
+            
+    except Exception as e:
+        print(f'  DEBUG: Non-salary API call failed with error: {type(e).__name__}: {e}')
+        # Retry logic with proper attempt tracking
+        for attempt in range(5):  # Max 5 retries
+            if handle_llm_errors(e, attempt, 5, context=filename):
+                time.sleep(2)
+                try:
+                    print(f'  DEBUG: Non-salary retry attempt {attempt + 1}...')
+                    response = client.models.generate_content(
+                        model=MODEL,
+                        contents=prompt,
+                        config=config
+                    )
+                    
+                    if hasattr(response, 'parsed') and response.parsed:
+                        result = response.parsed.model_dump()
+                        print(f'  DEBUG: Non-salary retry successful, parsed result keys: {list(result.keys())}')
+                        return result
+                    else:
+                        log_analysis_error(filename, "No structured output received from model for non-salary on retry", "")
+                        return NonSalaryExtractionSchema().model_dump()
+                        
+                except Exception as retry_error:
+                    print(f'  DEBUG: Non-salary retry {attempt + 1} failed: {type(retry_error).__name__}: {retry_error}')
+                    e = retry_error  # Update error for next iteration
+                    continue
+            else:
+                break
+        
+        log_analysis_error(filename, f"Non-salary extraction failed after all retries: {e}", "")
+        return NonSalaryExtractionSchema().model_dump()
 
 
 def analyze_cao_json(json_text: str, filename: str = None) -> dict:
@@ -903,6 +1135,14 @@ def discover_json_files(input_folder: str) -> List[Tuple[Path, Path]]:
     return all_files
 
 
+def is_file_already_processed(filename: str, cao_number: str) -> bool:
+    """Check if a file has already been processed by looking for existing LLM analysis files."""
+    salary_file = Path('outputs/llm_analysis/salary') / cao_number / f"{Path(filename).stem}_salary.json"
+    non_salary_file = Path('outputs/llm_analysis/non_salary') / cao_number / f"{Path(filename).stem}_non_salary.json"
+    
+    return salary_file.exists() and non_salary_file.exists()
+
+
 # =============================================================================
 # CAO INFO INTEGRATION
 # =============================================================================
@@ -975,209 +1215,93 @@ def find_cao_info(pdf_name: str, cao_number: int, cao_info_mapping: dict) -> Opt
 # =============================================================================
 # Functions for creating Excel output and merging extracted data
 
-def merge_extraction_results(salary_extracted: List[dict], rest_extracted: dict) -> List[dict]:
+def save_extraction_json(data: dict, filename: str, extraction_type: str, cao_number: str = None):
     """
-    Merge results from salary and rest extractions into multiple rows with specific infotype labels.
+    Save extracted JSON data to appropriate folders for analysis.
     
     Args:
-        salary_extracted: List of salary extraction results
-        rest_extracted: Non-salary extraction results
-        
-    Returns:
-        List[dict]: List of merged extraction results with complete field structure
+        data: Extracted data to save
+        filename: Original filename
+        extraction_type: 'salary' or 'non_salary'
+        cao_number: CAO number for folder organization
     """
-    # Define the complete field structure (all fields from fields_prompt.md)
-    # This should match the current system's column structure
-    all_fields = [
-        'File_name', 'CAO', 'id', 'TTW', 'infotype',
-        'jobgroup', 'salary_1', 'salary_1_unit', 'salary_1_startdate', 'salary_increment_1',
-        'salary_2', 'salary_2_unit', 'salary_2_startdate', 'salary_increment_2',
-        'salary_3', 'salary_3_unit', 'salary_3_startdate', 'salary_increment_3',
-        'salary_4', 'salary_4_unit', 'salary_4_startdate', 'salary_increment_4',
-        'salary_5', 'salary_5_unit', 'salary_5_startdate', 'salary_increment_5',
-        'salary_6', 'salary_6_unit', 'salary_6_startdate', 'salary_increment_6',
-        'salary_7', 'salary_7_unit', 'salary_7_startdate', 'salary_increment_7',
-        'more_salaries', 'salary_note', 'salary_age_group',
-        'start_date_contract', 'expiry_date_contract',
-        'pension_premium_basic', 'pension_premium_plus', 'retire_age_basic', 'retire_age_plus', 'pension_age_group',
-        'maternity_leave', 'maternity_pay', 'maternity_note', 'vacation_time', 'vacation_unit', 'vacation_note',
-        'term_period_employer', 'term_employer_note', 'term_period_worker', 'term_worker_note', 'probation_period', 'probation_note',
-        'overtime_compensation', 'max_hrs', 'min_hrs', 'shift_compensation', 'overtime_allowance_min', 'overtime_allowance_max',
-        'training', 'Homeoffice'
-    ]
-    
-    # Define field mappings for different infotypes
-    INFOTYPE_FIELD_MAPPINGS = {
-        'Pension': ['pension_premium_basic', 'pension_premium_plus', 'retire_age_basic', 'retire_age_plus', 'pension_age_group'],
-        'Leave': ['maternity_leave', 'maternity_pay', 'maternity_note', 'vacation_time', 'vacation_unit', 'vacation_note'],
-        'Termination': ['term_period_employer', 'term_employer_note', 'term_period_worker', 'term_worker_note', 'probation_period', 'probation_note'],
-        'Overtime': ['overtime_compensation', 'max_hrs', 'min_hrs', 'shift_compensation', 'overtime_allowance_min', 'overtime_allowance_max'],
-        'Training': ['training'],
-        'Homeoffice': ['Homeoffice']
-    }
-    
-    merged_results = []
-    
-    # Process salary items
-    for salary_item in salary_extracted:
-        if not isinstance(salary_item, dict):
-            continue
-            
-        # Create wage row
-        wage_row = {field: '' for field in all_fields}
-        wage_row['infotype'] = 'Wage'
+    try:
+        # Create base path
+        base_path = Path('outputs/llm_analysis')
+        if extraction_type == 'salary':
+            save_path = base_path / 'salary'
+        else:
+            save_path = base_path / 'non_salary'
         
-        # Fill salary fields
-        for field, value in salary_item.items():
-            if field in wage_row and value:
-                wage_row[field] = value
+        # Create CAO-specific subfolder if cao_number provided
+        if cao_number:
+            save_path = save_path / str(cao_number)
         
-        # Add contract dates from rest_extracted if available
-        if 'contract_information' in rest_extracted:
-            contract_info = rest_extracted['contract_information']
-            if contract_info.get('start_date_contract'):
-                wage_row['start_date_contract'] = contract_info['start_date_contract']
-            if contract_info.get('expiry_date_contract'):
-                wage_row['expiry_date_contract'] = contract_info['expiry_date_contract']
+        save_path.mkdir(parents=True, exist_ok=True)
         
-        merged_results.append(wage_row)
-    
-    # Process non-salary items (create separate rows for each infotype)
-    for infotype, fields in INFOTYPE_FIELD_MAPPINGS.items():
-        rest_row = {field: '' for field in all_fields}
-        rest_row['infotype'] = infotype
+        # Create filename
+        base_name = Path(filename).stem
+        json_filename = f"{base_name}_{extraction_type}.json"
+        file_path = save_path / json_filename
         
-        # Map fields based on infotype
-        if infotype == 'Pension' and 'pension_information' in rest_extracted:
-            pension_info = rest_extracted['pension_information']
-            for field in fields:
-                if field in pension_info and pension_info[field]:
-                    rest_row[field] = pension_info[field]
-        elif infotype == 'Leave' and 'leave_information' in rest_extracted:
-            leave_info = rest_extracted['leave_information']
-            for field in fields:
-                if field in leave_info and leave_info[field]:
-                    rest_row[field] = leave_info[field]
-        elif infotype == 'Termination' and 'termination_information' in rest_extracted:
-            termination_info = rest_extracted['termination_information']
-            for field in fields:
-                if field in termination_info and termination_info[field]:
-                    rest_row[field] = termination_info[field]
-        elif infotype == 'Overtime' and 'overtime_information' in rest_extracted:
-            overtime_info = rest_extracted['overtime_information']
-            for field in fields:
-                if field in overtime_info and overtime_info[field]:
-                    rest_row[field] = overtime_info[field]
-        elif infotype == 'Training' and 'training_information' in rest_extracted:
-            training_info = rest_extracted['training_information']
-            for field in fields:
-                if field in training_info and training_info[field]:
-                    rest_row[field] = training_info[field]
-        elif infotype == 'Homeoffice' and 'homeoffice_information' in rest_extracted:
-            homeoffice_info = rest_extracted['homeoffice_information']
-            for field in fields:
-                if field in homeoffice_info and homeoffice_info[field]:
-                    rest_row[field] = homeoffice_info[field]
+        # Save JSON data
+        with open(file_path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
         
-        # Add contract dates
-        if 'contract_information' in rest_extracted:
-            contract_info = rest_extracted['contract_information']
-            if contract_info.get('start_date_contract'):
-                rest_row['start_date_contract'] = contract_info['start_date_contract']
-            if contract_info.get('expiry_date_contract'):
-                rest_row['expiry_date_contract'] = contract_info['expiry_date_contract']
-        
-        merged_results.append(rest_row)
-    
-    return merged_results
+    except Exception as e:
+        print(f'  DEBUG: Failed to save {extraction_type} extraction: {e}')
 
 
 def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapping: dict, 
-                       config: AnalysisConfig, context: dict, df_results: pd.DataFrame) -> Tuple[bool, pd.DataFrame]:
-    """
-    Process a single JSON file through the analysis pipeline.
-    
-    Args:
-        json_file: Path to the JSON file
-        cao_folder: CAO folder containing the file
-        client: Gemini client instance
-        cao_info_mapping: CAO info mapping dictionary
-        config: Analysis configuration
-        context: Processing context
-        df_results: Current results DataFrame
-        
-    Returns:
-        Tuple[bool, pd.DataFrame]: (success, updated_df_results)
-    """
-    cao_number = cao_folder.name
+                       config: AnalysisConfig, context: Dict[str, Any]) -> bool:
+    """Process a single JSON file and save LLM extraction results."""
     filename = json_file.name
+    cao_number = cao_folder.name
     
-    print(f'  {cao_number}: {filename} [API {context["key_number"]}/{context["total_processes"]}]')
+    print(f'  {cao_number}: {filename}')
     
     try:
         # Read JSON file
         with open(json_file, 'r', encoding='utf-8') as f:
             json_data = json.load(f)
         
+        # Check if file is already processed
+        if is_file_already_processed(filename, cao_number):
+            print(f'  {cao_number}: Skipping {filename} (already processed)')
+            return True  # Return True since we successfully skipped it
+
         # Extract salary information
         salary_extracted = extract_salary_from_json(json_data, filename, client)
+        print(f'  {cao_number}: Salary extraction - {len(salary_extracted)} rows')
         
         # Extract non-salary information
         rest_extracted = extract_nonsalary_from_json(json_data, filename, client)
         
-        # Merge results
-        merged_results = merge_extraction_results(salary_extracted, rest_extracted)
+        # Count non-salary data
+        non_salary_count = 0
+        for key, value in rest_extracted.items():
+            if isinstance(value, dict):
+                for subkey, subvalue in value.items():
+                    if subvalue and subvalue != "":
+                        non_salary_count += 1
+        print(f'  {cao_number}: Non-salary extraction - {non_salary_count} fields with data')
         
-        if not merged_results:
+        # Save extracted JSON data
+        save_extraction_json({'salary_information': salary_extracted}, filename, 'salary', cao_number)
+        save_extraction_json(rest_extracted, filename, 'non_salary', cao_number)
+
+        # Check if we got any data
+        if not salary_extracted and not any(value for value in rest_extracted.values() if isinstance(value, dict) and any(v for v in value.values() if v)):
             print(f'  {cao_number}: No data extracted from {filename}')
-            return False, df_results
-        
-        # Process each merged result
-        for item in merged_results:
-            # Add metadata
-            item['CAO'] = str(cao_number) if cao_number else json_file.stem
-            item['TTW'] = 'yes' if 'TTW' in json_file.stem.upper() else 'no'
-            item['File_name'] = json_file.name
-            
-            # Find CAO info
-            cao_id = None
-            pdf_name = json_file.stem + '.pdf'
-            if cao_number:
-                cao_info = find_cao_info(pdf_name, int(cao_number), cao_info_mapping)
-                if cao_info:
-                    item['CAO'] = cao_info['cao_number']
-                    item['id'] = cao_info['id']
-                    item['start_date'] = cao_info['ingangsdatum']
-                    item['expiry_date'] = cao_info['expiratiedatum']
-                    item['date_of_formal_notification'] = cao_info['datum_kennisgeving']
-                    cao_id = cao_info['id']
-                else:
-                    item['id'] = ''
-            else:
-                item['id'] = ''
-            
-            # Create DataFrame row
-            row_df = pd.DataFrame([item])
-            
-            # Ensure all columns exist
-            if df_results.empty:
-                df_results = row_df
-            else:
-                # Reindex to match existing columns
-                row_df_full = row_df.reindex(columns=df_results.columns, fill_value='')
-                df_results = pd.concat([df_results, row_df_full], ignore_index=True)
-        
-        # Save incremental Excel file
-        output_path = config.output_folder / f"extracted_data_process_{context['process_id'] + 1}.xlsx"
-        df_results.to_excel(output_path, index=False)
+            return False
         
         print(f'  {cao_number}: Successfully processed {filename}')
-        return True, df_results
+        return True
         
     except Exception as e:
-        print(f'  {cao_number}: ✗ Error processing {filename}: {e}')
-        log_analysis_error(filename, str(e))
-        return False, df_results
+        print(f'  {cao_number}: Error processing {filename}: {e}')
+        log_analysis_error(filename, f"Processing error: {e}", "")
+        return False
 
 
 # =============================================================================
@@ -1212,15 +1336,16 @@ def main():
         # Filter files for this process
         process_files = [f for i, f in enumerate(all_files) if i % args.total_processes == args.process_id]
         
-        if args.max_files:
-            process_files = process_files[:args.max_files]
+        # Apply file limit from config or command line
+        max_files = args.max_files if args.max_files is not None else config.max_json_files
+        if max_files:
+            process_files = process_files[:max_files]
         
         print(f'Process {args.process_id + 1}: Processing {len(process_files)} files')
         
         # Process files
         successful_analyses = 0
         failed_files = []
-        df_results = pd.DataFrame()  # Initialize empty DataFrame
         
         for cao_folder, json_file in process_files:
             if not acquire_file_lock(json_file):
@@ -1229,8 +1354,8 @@ def main():
                 continue
             
             try:
-                success, df_results = process_single_file(json_file, cao_folder, context['client'], 
-                                                        cao_info_mapping, config, context, df_results)
+                success = process_single_file(json_file, cao_folder, context['client'], 
+                                            cao_info_mapping, config, context)
                 if success:
                     successful_analyses += 1
                 else:
@@ -1270,25 +1395,58 @@ def cli_test_fixture():
             print(f"Testing with fixture: {args.fixture}")
             result = analyze_cao_json(json_text, args.fixture)
             
+            # Save extracted JSON data for analysis
+            base_name = Path(args.fixture).stem
+            save_extraction_json(result['salary_extraction'], base_name, 'salary')
+            save_extraction_json(result['non_salary_extraction'], base_name, 'non_salary')
+            
             print("\n=== EXTRACTION RESULTS ===")
-            print(f"Salary rows: {len(result['salary_extraction'])}")
-            print(f"Non-salary fields: {len(result['non_salary_extraction'])}")
-            
-            print("\n=== SALARY EXTRACTION ===")
-            for i, row in enumerate(result['salary_extraction']):
-                print(f"Row {i+1}: {row.get('jobgroup', 'N/A')} - {row.get('salary_1', 'N/A')} {row.get('salary_1_unit', '')}")
-            
-            print("\n=== NON-SALARY EXTRACTION ===")
+            salary_count = len(result['salary_extraction'])
+            # Count only non-empty values in non-salary extraction
+            nonsalary_count = 0
             for key, value in result['non_salary_extraction'].items():
                 if isinstance(value, dict):
-                    print(f"{key}:")
+                    for subkey, subvalue in value.items():
+                        if subvalue and subvalue != "":  # Only count non-empty values
+                            nonsalary_count += 1
+                elif value and value != "":  # Only count non-empty values
+                    nonsalary_count += 1
+            print(f"Salary rows: {salary_count}")
+            print(f"Non-salary fields with data: {nonsalary_count}")
+            
+            print("\n=== SALARY EXTRACTION ===")
+            if salary_count > 0:
+                for i, row in enumerate(result['salary_extraction']):
+                    print(f"Row {i+1}: {row.get('jobgroup', 'N/A')} - {row.get('salary_1', 'N/A')} {row.get('salary_1_unit', '')}")
+            else:
+                print("No salary data extracted")
+            
+            print("\n=== NON-SALARY EXTRACTION ===")
+            has_nonsalary_data = False
+            for key, value in result['non_salary_extraction'].items():
+                if isinstance(value, dict):
+                    has_data = False
                     for subkey, subvalue in value.items():
                         if subvalue:  # Only show non-empty values
+                            if not has_data:
+                                print(f"{key}:")
+                                has_data = True
+                                has_nonsalary_data = True
                             print(f"  {subkey}: {subvalue}")
                 elif value:  # Only show non-empty values
                     print(f"{key}: {value}")
+                    has_nonsalary_data = True
             
-            print("\n✓ Fixture test completed successfully!")
+            if not has_nonsalary_data:
+                print("No non-salary data extracted")
+            
+            # Determine if extraction was successful
+            total_extracted = salary_count + nonsalary_count
+            if total_extracted > 0:
+                print(f"\n✓ Fixture test completed successfully! Extracted {total_extracted} data points.")
+            else:
+                print(f"\n⚠ Fixture test completed but no data was extracted. Check API quota and retry.")
+                return 1
             
         except Exception as e:
             print(f"✗ Fixture test failed: {e}")

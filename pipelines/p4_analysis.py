@@ -1,35 +1,1108 @@
+"""
+CAO Data Analysis - LLM Extraction Pipeline (p4_analysis.py)
+
+This script performs schema-driven LLM extraction on CAO JSON files.
+It extracts salary and non-salary information using Google Gemini API.
+
+USAGE:
+    Single process:
+        python pipelines/p4_analysis.py --key_number 7 --process_id 0 --total_processes 1
+
+    Multi-process:
+        python pipelines/p4_analysis.py --key_number 7 --process_id 0 --total_processes 6
+
+    With file limit:
+        python pipelines/p4_analysis.py --key_number 7 --process_id 0 --total_processes 1 --max_files 10
+
+ARGUMENTS:
+    --key_number: Which API key to use (7, 8 for testing) - defaults to 7
+    --process_id: Process ID for work distribution (0-based) - defaults to 0
+    --total_processes: Total number of parallel processes - defaults to 1
+    --max_files: Maximum number of files to process (optional)
+
+ENVIRONMENT VARIABLES:
+    GOOGLE_API_KEY7, GOOGLE_API_KEY8: Google Gemini API keys for testing
+
+INPUT:
+    - JSON files in {config['paths']['outputs_json']}/new_flow/[CAO_NUMBER]/ folders
+
+OUTPUT:
+    - Extracted JSON data in outputs/llm_analysis/salary/ and outputs/llm_analysis/non_salary/
+    - Error logs: outputs/logs/failed_files_analysis.txt
+"""
+
+# =============================================================================
+# IMPORTS
+# =============================================================================
+# Standard library imports for file operations, system access, and data handling
 import os
 import sys
 import json
-import pandas as pd
 import time
+import argparse
+import fcntl
+import re
 from pathlib import Path
+from typing import List, Optional, Tuple, Dict, Any
+from dataclasses import dataclass, field
 
 # Add the parent directory to Python path so we can import utils
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from deep_translator import GoogleTranslator
-import google.generativeai as genai
+# Third-party imports for environment variables, file locking, and data validation
 from dotenv import load_dotenv
-from utils.OUTPUT_tracker import update_progress
-import re
-import fcntl
+import pandas as pd
+import yaml
+from pydantic import BaseModel, Field, ConfigDict
+
+# Google Gemini API imports
+from google import genai
+from google.genai import types
+
+# =============================================================================
+# LLM CLIENT FUNCTIONS
+# =============================================================================
+def setup_environment(key_number: int = 1) -> tuple[str, int]:
+    """
+    Setup environment variables and API key.
+    
+    Args:
+        key_number: Which API key to use (1, 2, 3, etc.)
+        
+    Returns:
+        tuple: (api_key, actual_key_number)
+        
+    Raises:
+        ValueError: If no API key is found
+    """
+    load_dotenv()
+    
+    api_key = os.getenv(f'GOOGLE_API_KEY{key_number}')
+    if not api_key:
+        api_key = os.getenv('GOOGLE_API_KEY1')
+        if not api_key:
+            raise ValueError(
+                f'Neither GOOGLE_API_KEY{key_number} nor GOOGLE_API_KEY1 environment variable found. '
+                f'Please set at least GOOGLE_API_KEY1 before running this script.'
+            )
+        else:
+            key_number = 1
+            print(f'Warning: GOOGLE_API_KEY{key_number} not found, using GOOGLE_API_KEY1 instead')
+    
+    return api_key, key_number
 
 
-def acquire_file_lock(file_path):
-    """Try to acquire a lock for processing a file. Returns True if lock acquired, False if already locked."""
+def setup_gemini_client(api_key: str):
+    """
+    Setup Gemini client with the provided API key.
+    
+    Args:
+        api_key: Google Gemini API key
+        
+    Returns:
+        genai.Client: Configured Gemini client
+    """
+    return genai.Client(api_key=api_key)
+
+
+def get_model_parameters() -> Dict[str, Any]:
+    """
+    Get standard model parameters for consistent LLM configuration.
+    
+    Returns:
+        dict: Model configuration parameters
+    """
+    return {
+        "model": MODEL,
+        "temperature": 0.0,
+        "top_p": 0.1,
+        "top_k": 1,
+        "max_tokens": None,
+        "candidate_count": 1,
+        "seed": 42,  # For deterministic output
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+        "thinking_budget": 1024,  # Medium complexity tasks
+        "max_retries": 5
+    }
+
+
+def calculate_quota_retry_delay(file_size_mb: float, attempt: int) -> int:
+    """
+    Calculate quota retry delay based on file size and attempt number.
+    
+    Formula: (estimated_tokens / 125000) * 60 seconds * (2^attempt) + buffer
+    - 125,000 tokens per minute limit
+    - Exponential backoff: 2^attempt
+    - Buffer time for safety
+    
+    Args:
+        file_size_mb: Size of file in MB
+        attempt: Current attempt number (0-based)
+        
+    Returns:
+        int: Delay in seconds
+    """
+    # Estimate tokens: roughly 4 chars per token, file_size_mb * 1024 * 1024 / 4
+    estimated_tokens = int(file_size_mb * 1024 * 1024 / 4)
+    
+    # Calculate minutes needed to process this file
+    minutes_needed = estimated_tokens / 125000
+    
+    # Add exponential backoff: 2^attempt
+    backoff_multiplier = 2 ** attempt
+    
+    # Add buffer time (1-2 minutes for safety)
+    buffer_minutes = 1 + attempt
+    
+    # Calculate total delay in seconds
+    total_delay_seconds = int((minutes_needed * backoff_multiplier + buffer_minutes) * 60)
+    
+    print(f'  DEBUG: File size: {file_size_mb:.2f}MB, Estimated tokens: {estimated_tokens:,}')
+    print(f'  DEBUG: Minutes needed: {minutes_needed:.1f}, Backoff: {backoff_multiplier}x, Buffer: {buffer_minutes}min')
+    print(f'  DEBUG: Total delay: {total_delay_seconds // 60} minutes ({total_delay_seconds} seconds)')
+    
+    return total_delay_seconds
+
+
+def handle_llm_errors(error: Exception, attempt: int, max_retries: int, 
+                     file_size_mb: float = 0, context: Optional[str] = None) -> bool:
+    """
+    Handle different types of LLM errors with appropriate retry logic.
+    
+    Args:
+        error: The exception that occurred
+        attempt: Current attempt number (0-based)
+        max_retries: Maximum number of retry attempts
+        file_size_mb: Size of file in MB (for quota calculations)
+        context: Optional context string for logging
+        
+    Returns:
+        bool: True if should retry, False if should give up
+    """
+    error_str = str(error).lower()
+    
+    if ('deadlineexceeded' in error_str or '504' in error_str or 
+        'timeout' in error_str or 'truncated' in error_str):
+        if attempt < max_retries - 1:
+            wait_time = 120 * 2 ** attempt
+            print(f'  Attempt {attempt + 1} failed (timeout/truncation), retrying in {wait_time // 60} minutes...')
+            time.sleep(wait_time)
+            return True
+        else:
+            print(f'  All {max_retries} attempts failed with timeout/truncation errors')
+            return False
+    elif 'serviceunavailable' in error_str or '503' in error_str or 'connection reset' in error_str or '500' in error_str or 'internal' in error_str:
+        if attempt < max_retries - 1:
+            wait_time = 60 * 2 ** attempt
+            print(f'  Attempt {attempt + 1} failed (service unavailable/internal error), retrying in {wait_time // 60} minutes...')
+            time.sleep(wait_time)
+            return True
+        else:
+            print(f'  All {max_retries} attempts failed with service errors')
+            return False
+    elif any(keyword in error_str for keyword in ['quota', 'rate limit', 'too many requests', '429']):
+        if attempt < max_retries - 1:
+            wait_time = calculate_quota_retry_delay(file_size_mb, attempt)
+            print(f'  Attempt {attempt + 1} failed (rate limit), retrying in {wait_time // 60} minutes...')
+            time.sleep(wait_time)
+            return True
+        else:
+            print(f'  All {max_retries} attempts failed with rate limiting')
+            return False
+    elif attempt < max_retries - 1:
+        wait_time = 60 * 2 ** attempt
+        print(f'  Attempt {attempt + 1} failed ({type(error).__name__}), retrying in {wait_time // 60} minutes...')
+        time.sleep(wait_time)
+        return True
+    else:
+        print(f'  All {max_retries} attempts failed with {type(error).__name__}: {error}')
+        return False
+
+
+def validate_llm_response_json(content: str, filename: str) -> dict:
+    """
+    Validate LLM response JSON for completeness and validity.
+    
+    Args:
+        content: Raw response content from LLM
+        filename: Filename for context in error messages
+        
+    Returns:
+        dict: {'is_valid': bool, 'error': str or None}
+    """
+    # Check if content is empty
+    if not content or not content.strip():
+        return {'is_valid': False, 'error': 'Empty content'}
+    
+    # Check if content starts with {
+    if not content.strip().startswith('{'):
+        return {'is_valid': False, 'error': 'Content does not start with {'}
+    
+    # Check if content ends with }
+    if not content.strip().endswith('}'):
+        return {'is_valid': False, 'error': 'Content does not end with } - JSON appears to be truncated'}
+    
+    # Try to parse JSON to validate structure
+    try:
+        json.loads(content)
+        return {'is_valid': True, 'error': None}
+    except json.JSONDecodeError as e:
+        return {'is_valid': False, 'error': f'JSON parsing error: {str(e)}'}
+
+# =============================================================================
+# CONSTANTS
+# =============================================================================
+# Global configuration constants
+MODEL = 'gemini-2.5-flash'  # Use same model as p3_llmExtraction.py
+
+
+# =============================================================================
+# DATA SCHEMAS
+# =============================================================================
+# Pydantic schemas for structured extraction of CAO document information
+
+class SalaryRow(BaseModel):
+    """Schema for a single salary row representing one job group."""
+    jobgroup: str = Field(default="", description="Job group or position title (e.g. 'I=Statutory minimum wage (WML)', 'F-21-5', 'A')")
+    salary_1: str = Field(default="", description="Salary of the first job group listed in the earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
+    salary_1_unit: str = Field(default="", description="Unit for first salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_1_startdate: str = Field(default="", description="Start date for first salary (DD/MM/YYYY format)")
+    salary_increment_1: str = Field(default="", description="Percentage increase of salaries in the earliest wage table (e.g., '2%', '3%')")
+    
+    salary_2: str = Field(default="", description="Salary of the first job group listed in the second earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
+    salary_2_unit: str = Field(default="", description="Unit for second salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_2_startdate: str = Field(default="", description="Start date for second salary (DD/MM/YYYY format)")
+    salary_increment_2: str = Field(default="", description="Percentage increase of salaries in the second earliest wage table (e.g., '2%', '3%')")
+    
+    salary_3: str = Field(default="", description="Salary of the first job group listed in the third earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
+    salary_3_unit: str = Field(default="", description="Unit for third salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_3_startdate: str = Field(default="", description="Start date for third salary (DD/MM/YYYY format)")
+    salary_increment_3: str = Field(default="", description="Percentage increase of salaries in the third earliest wage table (e.g., '2%', '3%')")
+    
+    salary_4: str = Field(default="", description="Salary of the first job group listed in the fourth earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
+    salary_4_unit: str = Field(default="", description="Unit for fourth salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_4_startdate: str = Field(default="", description="Start date for fourth salary (DD/MM/YYYY format)")
+    salary_increment_4: str = Field(default="", description="Percentage increase of salaries in the fourth earliest wage table (e.g., '2%', '3%')")
+    
+    salary_5: str = Field(default="", description="Salary of the first job group listed in the fifth earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
+    salary_5_unit: str = Field(default="", description="Unit for fifth salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_5_startdate: str = Field(default="", description="Start date for fifth salary (DD/MM/YYYY format)")
+    salary_increment_5: str = Field(default="", description="Percentage increase of salaries in the fifth earliest wage table (e.g., '2%', '3%')")
+    
+    salary_6: str = Field(default="", description="Salary of the first job group listed in the sixth earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
+    salary_6_unit: str = Field(default="", description="Unit for sixth salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_6_startdate: str = Field(default="", description="Start date for sixth salary (DD/MM/YYYY format)")
+    salary_increment_6: str = Field(default="", description="Percentage increase of salaries in the sixth earliest wage table (e.g., '2%', '3%')")
+    
+    salary_7: str = Field(default="", description="Salary of the first job group listed in the seventh earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
+    salary_7_unit: str = Field(default="", description="Unit for seventh salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_7_startdate: str = Field(default="", description="Start date for seventh salary (DD/MM/YYYY format)")
+    salary_increment_7: str = Field(default="", description="Percentage increase of salaries in the seventh earliest wage table (e.g., '2%', '3%')")
+    
+    more_salaries: bool = Field(default=False, description="True if there are more than the 7 salary steps, salary_1..salary_7, in this job group")
+    salary_note: str = Field(default="", description="Additional context related to salary interpretation or about the salary table (e.g., 'Youth salary scales phased out from 2014', 'Hourly wage = monthly salary / 156', 'Classification via FWG® system')")
+    salary_age_group: str = Field(default="", description="Age group the salary of the first job group applies to (e.g., '21+', '18-20', '22', 'all ages')")
+
+
+class SalaryExtractionSchema(BaseModel):
+    """Schema for salary extraction results."""
+    salary_information: List[SalaryRow] = Field(default_factory=list)
+
+
+class ContractInfo(BaseModel):
+    """Schema for contract information."""
+    start_date_contract: str = Field(default="", description="Contract start date (DD/MM/YYYY format or descriptive text)")
+    expiry_date_contract: str = Field(default="", description="Contract expiry/end date (DD/MM/YYYY format or descriptive text)")
+
+
+class PensionInfo(BaseModel):
+    """Schema for pension information."""
+    pension_scheme_basic: str = Field(default="", description="Basic pension scheme rules, premiums, development and structure (e.g., '50% pension premium paid by employee', 'Employees 21-68 eligible', 'follows rules of Stichting Bedrijfstakpensioenfonds')")
+    pension_scheme_plus: str = Field(default="", description="Additional or “plus” pension scheme rules, premiums, development and structure (e.g., '2% additional premium', 'Generation Policy for 60+ between 2018 and 2023', '0.2% increase for employees offset on 1-6-2021')")
+    retire_age_basic: str = Field(default="", description="Retirement age for the basic pension scheme (e.g., '67', '65-67 years')")
+    retire_age_plus: str = Field(default="", description="Retirement age for the additional or “plus” pension scheme (e.g., '62', '60 years')")
+    pension_age_group: str = Field(default="", description="Age group eligible for pension schemes (e.g., '21+', 'all employees')")
+
+
+class LeaveInfo(BaseModel):
+    """Schema for leave information."""
+    maternity_leave: str = Field(default="", description="Child-related (Maternity, adoption, etc.) leave duration (e.g., '5 days of paid maternity leave', 'Additional 4 weeks in multiple births', '5 weeks extra unpaid leave within 6 months after birth')")
+    maternity_pay: str = Field(default="", description="Salary and benefits during child-related leave (e.g., '100% paid by employer', 'full salary', '70% UWV benefit')")
+    maternity_note: str = Field(default="", description="Additional child-related leave rules (e.g., 'Vacation accrues during leave', 'leave may be split between partners')")
+    vacation_time: str = Field(default="", description="Annual vacation time (e.g., '25', '0.0769')")
+    vacation_unit: str = Field(default="", description="Unit for vacation time (e.g., 'hours per vacation year', 'weeks')")
+    vacation_note: str = Field(default="", description="Additional vacation rules (e.g., 'plus public holidays for part time workers', '8% holiday allowance', '5 extra days after 4')")
+
+
+class TerminationInfo(BaseModel):
+    """Schema for termination information."""
+    term_period_employer: str = Field(default="", description="Notice period required from employer - include special rules based on age, start date, or contract length (e.g., '30 days', 'Statutory period applies if longer than agreed term')")
+    term_employer_note: str = Field(default="", description="Additional notes about employer termination (e.g., 'longer for senior positions', 'plus 1 month per year of service', 'Civil Code provisions apply')")
+    term_period_worker: str = Field(default="", description="Notice period required from worker - include special rules based on age, start date, or contract length (e.g., '1 week if less than 2 years employed', '30 days')")
+    term_worker_note: str = Field(default="", description="Additional notes about worker termination (e.g., 'Starting date for notice is always a Saturday', 'can be extended')")
+    probation_period: str = Field(default="", description="Probation period duration (e.g., '2 months for indefinite contracts', '60 days', 'No trial period if contract ≤ 6 months')")
+    probation_note: str = Field(default="", description="Additional notes about probation (e.g., 'Article 7:652 of the Civil Code applies', 'shorter notice period during probation')")
+
+
+class OvertimeInfo(BaseModel):
+    """Schema for overtime information."""
+    overtime_compensation: str = Field(default="", description="Overtime pay and compensation rate (e.g., '1:1 Time Off In Lieu', '100% of hourly wage plus overtime premium', '€25/hour')")
+    max_hrs: str = Field(default="", description="Maximum working and overtime time (e.g., '52-hour weekly average if salary exceeds IP number 74', '16 hours/month')")
+    min_hrs: str = Field(default="", description="Minimum working and overtime time (e.g., '8 hours per day', '96 hours/month')")
+    shift_compensation: str = Field(default="", description="Shift compensations (e.g., '25% surcharge 8pm–10pm', ' Night shift 00:00 and 06:00', 'Max 20 shifts per 4-weeks')")
+    overtime_allowance_min: str = Field(default="", description="Minimum overtime and shift allowance (e.g., 'min 4-hour shift to qualify for night compensation', '16 night shifts over 16 weeks triggers lower working hour threshold')")
+    overtime_allowance_max: str = Field(default="", description="Maximum overtime and shift allowance (e.g., 'Working time averaged over 13 weeks not to exceed 48 hours', 'max 10 hours a day')")
+
+
+class TrainingInfo(BaseModel):
+    """Schema for training information."""
+    training: str = Field(default="", description="Training rights, budgets and requirements (e.g., '€175 per year budget', '5 days training leave', 'mandatory safety training')")
+
+
+class HomeofficeInfo(BaseModel):
+    """Schema for homeoffice information."""
+    Homeoffice: str = Field(default="", description="Home office and remote work rules (e.g., 'up to 2 days/week', 'Home office allowance of €3 per day', 'equipment provided')")
+
+
+class NonSalaryExtractionSchema(BaseModel):
+    """Schema for non-salary extraction results."""
+    contract_information: ContractInfo = Field(default_factory=ContractInfo)
+    pension_information: PensionInfo = Field(default_factory=PensionInfo)
+    leave_information: LeaveInfo = Field(default_factory=LeaveInfo)
+    termination_information: TerminationInfo = Field(default_factory=TerminationInfo)
+    overtime_information: OvertimeInfo = Field(default_factory=OvertimeInfo)
+    training_information: TrainingInfo = Field(default_factory=TrainingInfo)
+    homeoffice_information: HomeofficeInfo = Field(default_factory=HomeofficeInfo)
+
+
+# =============================================================================
+# CONFIGURATION & SETUP FUNCTIONS
+# =============================================================================
+# Functions for loading configuration, setting up environment, and initializing components
+
+@dataclass
+class AnalysisConfig:
+    """Configuration for the analysis pipeline."""
+    input_folder: str
+    output_folder: Path
+    cao_info_path: str
+    max_processing_time_hours: int = 1
+    max_json_files: int = 1
+    token_limit: int = 900000  # 900K tokens safety limit
+
+
+def load_configuration() -> AnalysisConfig:
+    """Load and validate configuration from config.yaml."""
+    with open('conf/config.yaml', 'r') as f:
+        config_data = yaml.safe_load(f)
+    
+    return AnalysisConfig(
+        input_folder=config_data['paths']['outputs_json'] + "/new_flow",
+        output_folder=Path(config_data['paths']['outputs_json']) / "llm_analysis",
+        cao_info_path=f"{config_data['paths']['inputs_pdfs']}/extracted_cao_info.csv",
+        max_json_files=config_data.get('max_json_files', 1000000)  # Default to 1M if not specified
+    )
+
+
+def setup_processing_context(config: AnalysisConfig, process_id: int, 
+                           total_processes: int, key_number: int) -> Dict[str, Any]:
+    """Setup complete processing context."""
+    api_key, actual_key_number = setup_environment(key_number)
+    client = setup_gemini_client(api_key)
+    
+    return {
+        'config': config,
+        'process_id': process_id,
+        'total_processes': total_processes,
+        'api_key': api_key,
+        'key_number': actual_key_number,
+        'client': client
+    }
+
+
+def validate_input_paths(config: AnalysisConfig):
+    """Validate that input/output paths exist and are accessible."""
+    if not os.path.exists(config.input_folder):
+        raise ValueError(f"Input folder does not exist: {config.input_folder}")
+    
+    config.output_folder.mkdir(exist_ok=True)
+    
+    # Check if we can write to output folder
+    test_file = config.output_folder / ".test_write"
+    try:
+        test_file.write_text("test")
+        test_file.unlink()
+    except Exception as e:
+        raise ValueError(f"Cannot write to output folder: {config.output_folder}, Error: {e}")
+
+
+# =============================================================================
+# TOKEN SAFETY & VALIDATION FUNCTIONS
+# =============================================================================
+# Functions for checking token limits and validating input data
+
+def check_token_limit(json_text: str, filename: str) -> bool:
+    """
+    Check if JSON text exceeds token limit.
+    
+    Args:
+        json_text: JSON text to check
+        filename: Filename for logging context
+        
+    Returns:
+        bool: True if safe to process, False if should skip
+    """
+    # Estimate tokens: ~4 chars per token for Gemini models
+    estimated_tokens = len(json_text) // 4
+    
+    if estimated_tokens > 900000:  # 900K token safety limit
+        print(f'  {filename}: Skipping - estimated {estimated_tokens:,} tokens exceeds 800K limit')
+        return False
+    
+    return True
+
+
+def log_analysis_error(filename: str, error: str, raw_output: str = None):
+    """
+    Log analysis errors to the designated log file.
+    
+    Args:
+        filename: Name of the file being processed
+        error: Error message
+        raw_output: Raw LLM output (optional)
+    """
+    log_path = 'outputs/logs/failed_files_analysis.txt'
+    os.makedirs(os.path.dirname(log_path), exist_ok=True)
+    
+    with open(log_path, 'a', encoding='utf-8') as f:
+        f.write(f"Timestamp: {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
+        f.write(f"File: {filename}\n")
+        f.write(f"Error: {error}\n")
+        if raw_output:
+            f.write(f"Raw Output: {raw_output}\n")
+        f.write("-" * 80 + "\n")
+
+
+class ModelOutputParseError(Exception):
+    """Custom exception for model output parsing errors."""
+    pass
+
+
+# =============================================================================
+# LLM PROMPT TEMPLATES
+# =============================================================================
+# Exact prompt templates for salary and non-salary extraction
+
+SALARY_PROMPT = """
+
+    You are an information-extraction assistant. Input: text derived from a Dutch CAO (collective labour agreement) that contains wage tables and related wage text.
+
+    TASK: Extract structured salary data from the provided text:
+    Filename: {filename}
+    Source text: {source_json}
+
+    CRITICAL RULES:
+        - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess.
+        - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
+        - For missing values: Use empty string "" for string fields and use null for numbers, dates, and boolean fields.
+
+    CONTENT INCLUSION RULES:
+        - Focus on standard/regular wage tables (not special allowances or bonuses). If multiple tables exist for different time periods under this standard wage type, include all of them. 
+        - Extract salary information for each job groups within standard wage tables.
+        - Include all job groups within standard wage tables.
+        - Prefer hourly units when multiple unit versions of the same wage table exist (hourly vs monthly vs weekly vs 4 weeks vs yearly for same workers/periods/jobs/ages/others). If hourly is absent, keep the available unit as-is.
+        - Salary_note, salary_age_group and more_salaries fields should be consistent across all job groups since they usually apply to the entire wage tables (if not mention it in the salary_note field). Include comprehensive information in the salary_note field.
+
+    AGE GROUP SELECTION RULES:
+        - For each wage table: Extract data for the age group that covers the most worker ages (e.g., 22+, 23+, 25+)
+        - Prefer open-ended age groups (like 23+) over narrow ranges (like 50-90)
+        - If a job group has no data for the selected age group, keep it empty (do not use data from other age groups)
+        - Different wage tables may have different "oldest age groups" - extract each table's appropriate age group
+        - In the age_group field: Use the oldest age group from all extracted data and note if it changed over time in the salary_note field
+
+    OUTPUT: Only valid JSON format matching the provided schema structure.
+    """
+
+
+NON_SALARY_PROMPT = """
+
+    You are an information-extraction assistant. Input: text derived from a Dutch CAO (collective labour agreement) that contains general contract info, pension, leave, termination, overtime, training and homeoffice sections.
+
+    TASK: Extract structured data from the provided text:
+    Filename: {filename}
+    Source text: {source_json}
+
+    CRITICAL RULES:
+        - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess.
+        - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
+
+    EXTRACTION GUIDELINES:
+        - Extract factual information for each field based on the schema descriptions.
+        - Include relevant conditions, exceptions, and legal references in note fields.
+        - For missing values: Use empty string "" for string fields and use null for numbers, dates, and boolean fields.
+
+    OUTPUT: Only valid JSON format matching the provided schema structure.
+    """
+
+
+# =============================================================================
+# LLM EXTRACTION FUNCTIONS
+# =============================================================================
+# Functions for calling the LLM and processing responses
+
+def query_gemini_with_retry(client, prompt: str, filename: str, max_retries: int = 5) -> str:
+    """
+    Query Gemini model with retry logic and error handling.
+    
+    Args:
+        client: Gemini client instance
+        prompt: Prompt to send to the model
+        filename: Filename for context in error messages
+        max_retries: Maximum number of retry attempts
+        
+    Returns:
+        str: Raw model response text
+        
+    Raises:
+        Exception: If all retry attempts fail
+    """
+    model_params = get_model_parameters()
+    
+    # Define safety settings (same as p3)
+    safety_settings = [
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
+            threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+            threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+            threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+            threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
+        )
+    ]
+    
+    for attempt in range(max_retries):
+        try:
+            config = {
+                'temperature': model_params["temperature"],
+                'top_p': model_params["top_p"],
+                'top_k': model_params["top_k"],
+                'max_output_tokens': model_params["max_tokens"],
+                'candidate_count': model_params["candidate_count"],
+                'seed': model_params["seed"],
+                'presence_penalty': model_params["presence_penalty"],
+                'frequency_penalty': model_params["frequency_penalty"],
+                'thinking_config': types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
+                'http_options': types.HttpOptions(timeout=300000),  # 5 minutes timeout
+                'safety_settings': safety_settings
+            }
+            
+            response = client.models.generate_content(
+                model=model_params["model"],
+                contents=prompt,
+                config=config
+            )
+            
+            if hasattr(response, 'text') and response.text and response.text.strip():
+                return response.text
+            else:
+                raise ValueError('Empty or invalid model response')
+                
+        except Exception as e:
+            if not handle_llm_errors(e, attempt, max_retries, context=filename):
+                raise e
+    
+    raise ValueError(f'All {max_retries} retry attempts failed')
+
+
+def clean_gemini_output(output: str) -> str:
+    """
+    Clean the Gemini model output by removing markdown and trailing commas.
+    
+    Args:
+        output: Raw output from Gemini
+        
+    Returns:
+        str: Cleaned output string
+    """
+    if output.strip().startswith('```'):
+        lines = output.strip().splitlines()
+        content = '\n'.join(line for line in lines if not line.strip().startswith('```'))
+    else:
+        content = output.strip()
+    
+    # Remove trailing commas before closing braces/brackets
+    content = re.sub(r',\s*(?=[}\]])', '', content)
+    return content
+
+
+def parse_llm_response(response_text: str, filename: str, schema_type: str):
+    """
+    Parse and validate LLM response with cleanup and retry logic.
+    
+    Args:
+        response_text: Raw response from LLM
+        filename: Filename for context
+        schema_type: Type of schema ('salary' or 'nonsalary')
+        
+    Returns:
+        dict: Parsed and validated data
+        
+    Raises:
+        ModelOutputParseError: If parsing fails after cleanup attempts
+    """
+    # First validation attempt
+    validation_result = validate_llm_response_json(response_text, filename)
+    
+    if validation_result['is_valid']:
+        try:
+            return json.loads(response_text)
+        except json.JSONDecodeError as e:
+            # This shouldn't happen if validation passed, but handle it
+            raise ModelOutputParseError(f"JSON parsing failed despite validation: {e}")
+    
+    # Cleanup attempt
+    cleaned_output = clean_gemini_output(response_text)
+    validation_result = validate_llm_response_json(cleaned_output, filename)
+    
+    if validation_result['is_valid']:
+        try:
+            return json.loads(cleaned_output)
+        except json.JSONDecodeError as e:
+            log_analysis_error(filename, f"JSON parsing failed after cleanup: {e}", cleaned_output)
+            raise ModelOutputParseError(f"JSON parsing failed after cleanup: {e}")
+    
+    # Final attempt: strip everything before first { and after last }
+    try:
+        start_idx = cleaned_output.find('{')
+        end_idx = cleaned_output.rfind('}') + 1
+        if start_idx != -1 and end_idx > start_idx:
+            final_attempt = cleaned_output[start_idx:end_idx]
+            json.loads(final_attempt)  # Test if valid
+            return json.loads(final_attempt)
+    except (json.JSONDecodeError, ValueError):
+        pass
+    
+    # All attempts failed
+    log_analysis_error(filename, f"All parsing attempts failed for {schema_type} extraction", response_text)
+    raise ModelOutputParseError(f"Failed to parse {schema_type} extraction response")
+
+
+def extract_salary_from_json(json_obj: dict, filename: str, client) -> List[dict]:
+    """Extract salary information from JSON using LLM."""
+    print(f'  DEBUG: Starting salary extraction for {filename}')
+    print(f'  DEBUG: Input JSON keys: {list(json_obj.keys())}')
+    
+    salary_text = ""
+    wage_keys = ['wage_information', 'Wage information', 'wage information', 'WAGE_INFORMATION']
+    
+    for key in wage_keys:
+        if key in json_obj:
+            value = json_obj[key]
+            print(f'  DEBUG: Found wage key: {key}')
+            print(f'  DEBUG: Wage value type: {type(value)}')
+            print(f'  DEBUG: Wage value length: {len(str(value)) if value else 0}')
+            
+            if isinstance(value, list):
+                flat_value = []
+                for item in value:
+                    if isinstance(item, list):
+                        flat_value.extend(item)
+                    elif isinstance(item, str):
+                        if 'wage' in item.lower() or 'salary' in item.lower() or 'salaris' in item.lower():
+                            flat_value.append(item)
+                    else:
+                        flat_value.append(str(item))
+                salary_text = f'== Wage information ==\n' + '\n'.join(flat_value)
+                print(f'  DEBUG: Created salary text from list, length: {len(salary_text)}')
+            elif isinstance(value, str):
+                salary_text = f'== Wage information ==\n{value}'
+                print(f'  DEBUG: Created salary text from string, length: {len(salary_text)}')
+            break
+    
+    general_keys = ['general_information', 'General information', 'general information', 'GENERAL_INFORMATION']
+    for key in general_keys:
+        if key in json_obj:
+            value = json_obj[key]
+            print(f'  DEBUG: Found general key: {key}')
+            print(f'  DEBUG: General value type: {type(value)}')
+            
+            if isinstance(value, list):
+                for item in value:
+                    if isinstance(item, str):
+                        try:
+                            nested_data = json.loads(item)
+                            print(f'  DEBUG: Successfully parsed nested JSON from general info')
+                            wage_keys_nested = ['wage_information', 'Wage information', 'wage information', 'WAGE_INFORMATION']
+                            for wage_key in wage_keys_nested:
+                                if wage_key in nested_data and nested_data[wage_key]:
+                                    wage_data = nested_data[wage_key]
+                                    if isinstance(wage_data, list):
+                                        salary_text = f'== Wage information ==\n' + '\n'.join(wage_data)
+                                    else:
+                                        salary_text = f'== Wage information ==\n{wage_data}'
+                                    print(f'  DEBUG: Found wage data in nested JSON, length: {len(salary_text)}')
+                                    break
+                            if salary_text.strip():
+                                break
+                        except json.JSONDecodeError:
+                            if 'wage' in item.lower() or 'salary' in item.lower() or 'salaris' in item.lower():
+                                salary_text = f'== Wage information ==\n{item}'
+                                print(f'  DEBUG: Found wage-related text in general info, length: {len(salary_text)}')
+                                break
+            elif isinstance(value, str):
+                if 'wage' in value.lower() or 'salary' in value.lower() or 'salaris' in value.lower():
+                    salary_text = f'== Wage information ==\n{value}'
+                    print(f'  DEBUG: Found wage-related text in general string, length: {len(salary_text)}')
+                    break
+    
+    print(f'  DEBUG: Final salary text length: {len(salary_text)}')
+    if salary_text.strip():
+        print(f'  DEBUG: Salary text preview: {salary_text[:200]}...')
+    else:
+        print(f'  DEBUG: No salary text found!')
+        return []
+    
+    if not check_token_limit(salary_text, filename):
+        return []
+    
+    prompt = SALARY_PROMPT.format(filename=filename, source_json=salary_text)
+    print(f'  DEBUG: Prompt length: {len(prompt)}')
+    print(f'  DEBUG: Prompt preview: {prompt[:300]}...')
+    
+    model_params = get_model_parameters()
+    print(f'  DEBUG: Model params: {model_params}')
+    
+    safety_settings = [
+        {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
+        {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
+        {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
+        {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"}
+    ]
+    
+    config = {
+        "temperature": model_params["temperature"],
+        "top_p": model_params["top_p"],
+        "top_k": model_params["top_k"],
+        "max_output_tokens": 65536,  # 65536 tokens to handle longer responses
+        "candidate_count": model_params["candidate_count"],
+        "seed": model_params["seed"],
+        "presence_penalty": model_params["presence_penalty"],
+        "frequency_penalty": model_params["frequency_penalty"],
+        "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
+        "response_mime_type": "application/json",
+        "response_schema": SalaryExtractionSchema
+    }
+    
+    print(f'  DEBUG: API config: {config}')
+    
+    try:
+        print(f'  DEBUG: Making API call...')
+        response = client.models.generate_content(
+            model=MODEL,
+            contents=prompt,
+            config=config
+        )
+        
+        print(f'  DEBUG: API response received')
+        print(f'  DEBUG: Response type: {type(response)}')
+        print(f'  DEBUG: Response attributes: {dir(response)}')
+        
+        if hasattr(response, 'parsed') and response.parsed:
+            print(f'  DEBUG: Response has parsed attribute')
+            # response.parsed is now a Pydantic model (SalaryExtractionSchema)
+            result = [row.model_dump() for row in response.parsed.salary_information]
+            print(f'  DEBUG: Parsed {len(result)} salary rows')
+            return result
+        else:
+            print(f'  DEBUG: No parsed attribute in response')
+            if hasattr(response, 'text'):
+                print(f'  DEBUG: Response text length: {len(response.text) if response.text else 0}')
+                if response.text:
+                    print(f'  DEBUG: Response text preview: {response.text[:300]}...')
+                    # Try to parse the text manually
+                    try:
+                        parsed_json = json.loads(response.text)
+                        print(f'  DEBUG: Successfully parsed response text manually')
+                        # Validate against schema
+                        if 'salary_information' in parsed_json:
+                            salary_schema = SalaryExtractionSchema(**parsed_json)
+                            result = [row.model_dump() for row in salary_schema.salary_information]
+                            print(f'  DEBUG: Salary manual parse result: {len(result)} rows')
+                            return result
+                        else:
+                            print(f'  DEBUG: No salary_information key in parsed JSON')
+                    except json.JSONDecodeError as e:
+                        print(f'  DEBUG: Failed to parse response text as JSON: {e}')
+                    except Exception as e:
+                        print(f'  DEBUG: Failed to validate parsed JSON against schema: {e}')
+            log_analysis_error(filename, "No structured output received from model", "")
+            return []
+            
+    except Exception as e:
+        print(f'  DEBUG: API call failed with error: {type(e).__name__}: {e}')
+        # Retry logic with proper attempt tracking
+        for attempt in range(5):  # Max 5 retries
+            if handle_llm_errors(e, attempt, 5, context=filename):
+                time.sleep(2)
+                try:
+                    print(f'  DEBUG: Retry attempt {attempt + 1}...')
+                    response = client.models.generate_content(
+                        model=MODEL,
+                        contents=prompt,
+                        config=config
+                    )
+                    
+                    if hasattr(response, 'parsed') and response.parsed:
+                        result = [row.model_dump() for row in response.parsed.salary_information]
+                        print(f'  DEBUG: Retry successful, parsed {len(result)} salary rows')
+                        return result
+                    else:
+                        log_analysis_error(filename, "No structured output received from model on retry", "")
+                        return []
+                        
+                except Exception as retry_error:
+                    print(f'  DEBUG: Retry {attempt + 1} failed: {type(retry_error).__name__}: {retry_error}')
+                    e = retry_error  # Update error for next iteration
+                    continue
+            else:
+                break
+        
+        log_analysis_error(filename, f"Salary extraction failed after all retries: {e}", "")
+        return []
+
+
+def extract_nonsalary_from_json(json_obj: dict, filename: str, client) -> dict:
+    """Extract non-salary information from JSON using LLM."""
+    print(f'  DEBUG: Starting non-salary extraction for {filename}')
+    print(f'  DEBUG: Input JSON keys: {list(json_obj.keys())}')
+    
+    # Extract all non-wage sections
+    non_salary_text = ""
+    sections_to_extract = [
+        'general_information', 'General information', 'general information', 'GENERAL_INFORMATION',
+        'pension_information', 'Pension information', 'pension information', 'PENSION_INFORMATION',
+        'leave_information', 'Leave information', 'leave information', 'LEAVE_INFORMATION',
+        'termination_information', 'Termination information', 'termination information', 'TERMINATION_INFORMATION',
+        'overtime_information', 'Overtime information', 'overtime information', 'OVERTIME_INFORMATION',
+        'training_information', 'Training information', 'training information', 'TRAINING_INFORMATION',
+        'homeoffice_information', 'Homeoffice information', 'homeoffice information', 'HOMEOFFICE_INFORMATION'
+    ]
+    
+    for key in sections_to_extract:
+        if key in json_obj:
+            value = json_obj[key]
+            print(f'  DEBUG: Found non-salary key: {key}')
+            print(f'  DEBUG: Value type: {type(value)}')
+            print(f'  DEBUG: Value length: {len(str(value)) if value else 0}')
+            
+            if isinstance(value, list):
+                flat_value = []
+                for item in value:
+                    if isinstance(item, list):
+                        flat_value.extend(item)
+                    elif isinstance(item, str):
+                        flat_value.append(item)
+                    else:
+                        flat_value.append(str(item))
+                non_salary_text += f'== {key} ==\n' + '\n'.join(flat_value) + '\n\n'
+                print(f'  DEBUG: Added section from list, total length now: {len(non_salary_text)}')
+            elif isinstance(value, str):
+                non_salary_text += f'== {key} ==\n{value}\n\n'
+                print(f'  DEBUG: Added section from string, total length now: {len(non_salary_text)}')
+    
+    print(f'  DEBUG: Final non-salary text length: {len(non_salary_text)}')
+    if non_salary_text.strip():
+        print(f'  DEBUG: Non-salary text preview: {non_salary_text[:200]}...')
+    else:
+        print(f'  DEBUG: No non-salary text found!')
+        return NonSalaryExtractionSchema().model_dump()
+    
+    if not check_token_limit(non_salary_text, filename):
+        return NonSalaryExtractionSchema().model_dump()
+    
+    prompt = NON_SALARY_PROMPT.format(filename=filename, source_json=non_salary_text)
+    print(f'  DEBUG: Non-salary prompt length: {len(prompt)}')
+    print(f'  DEBUG: Non-salary prompt preview: {prompt[:300]}...')
+    
+    model_params = get_model_parameters()
+    print(f'  DEBUG: Non-salary model params: {model_params}')
+    
+    safety_settings = [
+        {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
+        {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
+        {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
+        {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"}
+    ]
+    
+    config = {
+        "temperature": model_params["temperature"],
+        "top_p": model_params["top_p"],
+        "top_k": model_params["top_k"],
+        "max_output_tokens": 32768,  # Increased from 8192 to handle longer responses
+        "candidate_count": model_params["candidate_count"],
+        "seed": model_params["seed"],
+        "presence_penalty": model_params["presence_penalty"],
+        "frequency_penalty": model_params["frequency_penalty"],
+        "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
+        "response_mime_type": "application/json",
+        "response_schema": NonSalaryExtractionSchema
+    }
+    
+    print(f'  DEBUG: Non-salary API config: {config}')
+    
+    try:
+        print(f'  DEBUG: Making non-salary API call...')
+        response = client.models.generate_content(
+            model=MODEL,
+            contents=prompt,
+            config=config
+        )
+        
+        print(f'  DEBUG: Non-salary API response received')
+        print(f'  DEBUG: Non-salary response type: {type(response)}')
+        print(f'  DEBUG: Non-salary response attributes: {dir(response)}')
+        
+        if hasattr(response, 'parsed') and response.parsed:
+            print(f'  DEBUG: Non-salary response has parsed attribute')
+            # response.parsed is now a Pydantic model (NonSalaryExtractionSchema)
+            result = response.parsed.model_dump()
+            print(f'  DEBUG: Non-salary parsed result keys: {list(result.keys())}')
+            return result
+        else:
+            print(f'  DEBUG: No parsed attribute in non-salary response')
+            if hasattr(response, 'text'):
+                print(f'  DEBUG: Non-salary response text length: {len(response.text) if response.text else 0}')
+                if response.text:
+                    print(f'  DEBUG: Non-salary response text preview: {response.text[:300]}...')
+                    # Try to parse the text manually
+                    try:
+                        parsed_json = json.loads(response.text)
+                        print(f'  DEBUG: Successfully parsed response text manually')
+                        # Validate against schema
+                        schema = NonSalaryExtractionSchema(**parsed_json)
+                        result = schema.model_dump()
+                        print(f'  DEBUG: Non-salary manual parse result keys: {list(result.keys())}')
+                        return result
+                    except json.JSONDecodeError as e:
+                        print(f'  DEBUG: Failed to parse response text as JSON: {e}')
+                    except Exception as e:
+                        print(f'  DEBUG: Failed to validate parsed JSON against schema: {e}')
+            log_analysis_error(filename, "No structured output received from model for non-salary", "")
+            return NonSalaryExtractionSchema().model_dump()
+            
+    except Exception as e:
+        print(f'  DEBUG: Non-salary API call failed with error: {type(e).__name__}: {e}')
+        # Retry logic with proper attempt tracking
+        for attempt in range(5):  # Max 5 retries
+            if handle_llm_errors(e, attempt, 5, context=filename):
+                time.sleep(2)
+                try:
+                    print(f'  DEBUG: Non-salary retry attempt {attempt + 1}...')
+                    response = client.models.generate_content(
+                        model=MODEL,
+                        contents=prompt,
+                        config=config
+                    )
+                    
+                    if hasattr(response, 'parsed') and response.parsed:
+                        result = response.parsed.model_dump()
+                        print(f'  DEBUG: Non-salary retry successful, parsed result keys: {list(result.keys())}')
+                        return result
+                    else:
+                        log_analysis_error(filename, "No structured output received from model for non-salary on retry", "")
+                        return NonSalaryExtractionSchema().model_dump()
+                        
+                except Exception as retry_error:
+                    print(f'  DEBUG: Non-salary retry {attempt + 1} failed: {type(retry_error).__name__}: {retry_error}')
+                    e = retry_error  # Update error for next iteration
+                    continue
+            else:
+                break
+        
+        log_analysis_error(filename, f"Non-salary extraction failed after all retries: {e}", "")
+        return NonSalaryExtractionSchema().model_dump()
+
+
+def analyze_cao_json(json_text: str, filename: str = None) -> dict:
+    """
+    Main analysis function that processes JSON text and returns structured data.
+    
+    Args:
+        json_text: Raw JSON string content from llm_Extracted/new_flow
+        filename: Optional filename for context
+        
+    Returns:
+        dict: Combined extraction results with structure:
+              {"salary_extraction": List[dict], "non_salary_extraction": dict}
+    """
+    if not json_text or not json_text.strip():
+        return {
+            "salary_extraction": [],
+            "non_salary_extraction": NonSalaryExtractionSchema().model_dump()
+        }
+    
+    try:
+        # Parse JSON text
+        json_obj = json.loads(json_text)
+        
+        # Setup LLM client
+        api_key, key_number = setup_environment()
+        client = setup_gemini_client(api_key)
+        
+        # Extract salary information
+        salary_extracted = extract_salary_from_json(json_obj, filename or "unknown", client)
+        
+        # Extract non-salary information
+        nonsalary_extracted = extract_nonsalary_from_json(json_obj, filename or "unknown", client)
+        
+        return {
+            "salary_extraction": salary_extracted,
+            "non_salary_extraction": nonsalary_extracted
+        }
+        
+    except json.JSONDecodeError as e:
+        log_analysis_error(filename or "unknown", f"JSON parsing failed: {e}", json_text)
+        raise ModelOutputParseError(f"Invalid JSON input: {e}")
+    except Exception as e:
+        log_analysis_error(filename or "unknown", f"Analysis failed: {e}", json_text)
+        raise
+
+
+# =============================================================================
+# FILE PROCESSING & MULTI-PROCESS SUPPORT
+# =============================================================================
+# Functions for file discovery, locking, and multi-process coordination
+
+def acquire_file_lock(file_path: Path) -> bool:
+    """
+    Try to acquire a lock for processing a file.
+    
+    Args:
+        file_path: Path to the file to lock
+        
+    Returns:
+        bool: True if lock acquired, False if already locked
+    """
     lock_file = file_path.with_suffix('.analysis_lock')
     try:
         with open(lock_file, 'w') as f:
             fcntl.flock(f.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
-            f.write(f'Process {process_id + 1} using API key {key_number}\n')
             f.write(f'Timestamp: {time.time()}\n')
         return True
     except (IOError, OSError):
         return False
 
 
-def release_file_lock(file_path):
+def release_file_lock(file_path: Path):
     """Release the lock for a file."""
     lock_file = file_path.with_suffix('.analysis_lock')
     try:
@@ -39,901 +1112,351 @@ def release_file_lock(file_path):
         pass
 
 
-def announce_cao_once(cao_number):
-    """Announce a CAO number only once across all processes using a simple file lock."""
-    announce_file = Path('results') / f'.cao_{cao_number}_analysis_announced'
-    try:
-        with open(announce_file, 'x') as f:
-            f.write(f'Announced by process {process_id + 1}\n')
-        print(f'--- CAO {cao_number} ---')
-        return True
-    except FileExistsError:
-        return False
-
-
-import yaml
-with open('conf/config.yaml', 'r') as f:
-    config = yaml.safe_load(f)
-INPUT_JSON_FOLDER = config['paths']['outputs_json']
-FIELDS_PROMPT_PATH = f"{config['paths']['docs']}/fields_prompt.md"
-FIELDS_PROMPT_SALARY_PATH = (
-    f"{config['paths']['docs']}/fields_prompt_salary.md")
-FIELDS_PROMPT_REST_PATH = f"{config['paths']['docs']}/fields_prompt_rest.md"
-CAO_INFO_PATH = f"{config['paths']['inputs_pdfs']}/extracted_cao_info.csv"
-DEBUG_MODE = False
-MAX_JSON_FILES = 1000
-MAX_PROCESSING_TIME_HOURS = 1
-SORTED_FILES = False
-key_number = int(sys.argv[1]) if len(sys.argv) > 1 else 1
-process_id = int(sys.argv[2]) if len(sys.argv) > 2 else 0
-total_processes = int(sys.argv[3]) if len(sys.argv) > 3 else 1
-if not SORTED_FILES:
-    import random
-    random.seed(43)
-load_dotenv()
-api_key = os.getenv(f'GOOGLE_API_KEY{key_number}')
-if not api_key:
-    api_key = os.getenv('GOOGLE_API_KEY1')
-    if not api_key:
-        raise ValueError(
-            f'Neither GOOGLE_API_KEY{key_number} nor GOOGLE_API_KEY1 environment variable found. Please set at least GOOGLE_API_KEY1 before running this script.'
-            )
-    else:
-        key_number = 1
-        print(
-            f'Warning: GOOGLE_API_KEY{key_number} not found, using GOOGLE_API_KEY1 instead'
-            )
-OUTPUT_EXCEL_PATH = (
-    f"{config['paths']['outputs_excel']}/extracted_data_process_{process_id + 1}.xlsx"
-    )
-genai.configure(api_key=api_key)
-GEMINI_MODEL = 'gemini-2.5-pro'
-LLM_TEMPERATURE = 0.0
-LLM_TOP_P = 0.1
-LLM_TOP_K = 1
-LLM_MAX_TOKENS = None
-LLM_CANDIDATE_COUNT = 1
-INFOTYPE_FIELD_MAPPINGS = {'Pension': ['pension_premium_basic',
-    'pension_premium_plus', 'retire_age_basic', 'retire_age_plus',
-    'pension_age_group'], 'Leave': ['maternity_leave', 'maternity_pay',
-    'maternity_note', 'vacation_time', 'vacation_unit', 'vacation_note'],
-    'Termination': ['term_period_employer', 'term_employer_note',
-    'term_period_worker', 'term_worker_note', 'probation_period',
-    'probation_note'], 'Overtime': ['overtime_compensation', 'max_hrs',
-    'min_hrs', 'shift_compensation', 'overtime_allowance_min',
-    'overtime_allowance_max'], 'Training': ['training'], 'Homeoffice': [
-    'Homeoffice']}
-with open(FIELDS_PROMPT_PATH, 'r', encoding='utf-8') as f:
-    prompt_fields_markdown = f.read()
-columns = [col.strip() for col in prompt_fields_markdown.splitlines()[0].
-    strip('|').split('|')]
-with open(FIELDS_PROMPT_SALARY_PATH, 'r', encoding='utf-8') as f:
-    prompt_salary_markdown = f.read()
-with open(FIELDS_PROMPT_REST_PATH, 'r', encoding='utf-8') as f:
-    prompt_rest_markdown = f.read()
-salary_columns = [col.strip() for col in prompt_salary_markdown.splitlines(
-    )[0].strip('|').split('|')]
-rest_columns = [col.strip() for col in prompt_rest_markdown.splitlines()[0]
-    .strip('|').split('|')]
-salary_fields = [col for col in salary_columns if col != 'File_name']
-rest_fields = [col for col in rest_columns if col != 'File_name']
-if DEBUG_MODE:
-    print(
-        f'DEBUG: Dynamically extracted {len(salary_fields)} salary fields: {salary_fields}'
-        )
-    print(
-        f'DEBUG: Dynamically extracted {len(rest_fields)} rest fields: {rest_fields}'
-        )
-    print(f'DEBUG: Total columns from main prompt: {len(columns)}')
-    print(
-        f"DEBUG: Expected total after merge: {len(set(salary_fields + rest_fields + ['File_name', 'CAO', 'id']))}"
-        )
-
-
-def verify_field_coverage():
+def discover_json_files(input_folder: str) -> List[Tuple[Path, Path]]:
     """
-    Verify field coverage and explain the merge strategy.
+    Discover all JSON files organized by CAO.
     
-    New Strategy:
-    1. Extract salary fields from fields_prompt_salary.md
-    2. Extract rest fields from fields_prompt_rest.md  
-    3. Create complete structure from fields_prompt.md (ALL fields)
-    4. Populate structure with extracted data from both extractions
+    Args:
+        input_folder: Path to the input folder
+        
+    Returns:
+        List[Tuple[Path, Path]]: List of (cao_folder, json_file) tuples
     """
-    programmatic_fields = {'CAO', 'id'}
-    main_fields = set(columns)
-    split_fields = set(salary_fields + rest_fields + ['File_name'])
-    split_fields.update(programmatic_fields)
-    extractable_fields = main_fields & split_fields
-    missing_from_split = main_fields - split_fields
-    extra_in_split = split_fields - main_fields
-    if DEBUG_MODE:
-        print(
-            f'✓ Merge Strategy: Complete structure from fields_prompt.md ({len(main_fields)} fields)'
-            )
-        print(
-            f'✓ Extractable fields: {len(extractable_fields)}/{len(main_fields)}'
-            )
-        if missing_from_split:
-            print(
-                f'⚠️  Fields in main prompt but not extractable: {missing_from_split}'
-                )
-            print('   (These will remain empty in final output)')
-        if extra_in_split:
-            print(
-                f'ℹ️  Fields extractable but not in main structure: {extra_in_split}'
-                )
-            print('   (These will be ignored during merge)')
-        coverage_percent = len(extractable_fields) / len(main_fields) * 100
-        print(
-            f'✓ Coverage: {coverage_percent:.1f}% of main structure is extractable'
-            )
-    return len(missing_from_split) == 0
+    cao_folders = sorted([f for f in Path(input_folder).iterdir() 
+                         if f.is_dir() and f.name.isdigit()], 
+                        key=lambda f: int(f.name))
+    
+    all_files = []
+    for cao_folder in cao_folders:
+        json_files = sorted(cao_folder.glob('*.json'))
+        for json_file in json_files:
+            all_files.append((cao_folder, json_file))
+    
+    return all_files
 
 
-verify_field_coverage()
+def is_file_already_processed(filename: str, cao_number: str) -> bool:
+    """Check if a file has already been processed by looking for existing LLM analysis files."""
+    salary_file = Path('outputs/llm_analysis/salary') / cao_number / f"{Path(filename).stem}_salary.json"
+    non_salary_file = Path('outputs/llm_analysis/non_salary') / cao_number / f"{Path(filename).stem}_non_salary.json"
+    
+    return salary_file.exists() and non_salary_file.exists()
 
 
-def load_cao_info():
+# =============================================================================
+# CAO INFO INTEGRATION
+# =============================================================================
+# Functions for loading and merging CAO metadata
+
+def load_cao_info(cao_info_path: str) -> dict:
     """
     Load CAO information from CSV and create a mapping dictionary.
+    
+    Args:
+        cao_info_path: Path to the CAO info CSV file
+        
     Returns:
-        dict: Mapping from composite key (pdf_name + cao_number) to CAO metadata.
+        dict: Mapping from composite key (pdf_name + cao_number) to CAO metadata
     """
-    cao_info_df = pd.read_csv(CAO_INFO_PATH, sep=';')
+    cao_info_df = pd.read_csv(cao_info_path, sep=';')
     cao_mapping = {}
+    
     for _, row in cao_info_df.iterrows():
         pdf_name = row['pdf_name']
         cao_number = row['cao_number']
         composite_key = f'{pdf_name}_{cao_number}'
-        cao_mapping[composite_key] = {'cao_number': cao_number, 'id': row[
-            'id'], 'ingangsdatum': row['ingangsdatum'], 'expiratiedatum':
-            row['expiratiedatum'], 'datum_kennisgeving': row[
-            'datum_kennisgeving']}
+        cao_mapping[composite_key] = {
+            'cao_number': cao_number,
+            'id': row['id'],
+            'ingangsdatum': row['ingangsdatum'],
+            'expiratiedatum': row['expiratiedatum'],
+            'datum_kennisgeving': row['datum_kennisgeving']
+        }
+    
     return cao_mapping
 
 
-cao_info_mapping = load_cao_info()
-df_results = pd.DataFrame(columns=columns)
+def normalize_lookup(s: str) -> str:
+    """Normalize string for fuzzy matching."""
+    return s.replace(' ', '').replace('-', '').replace('_', '').lower()
 
 
-def query_gemini(prompt, model=GEMINI_MODEL, max_retries=5):
+def find_cao_info(pdf_name: str, cao_number: int, cao_info_mapping: dict) -> Optional[dict]:
     """
-    Query Gemini model with improved exponential backoff retry logic for 504 errors.
+    Find CAO info for a given PDF and CAO number.
+    
     Args:
-        prompt (str): The prompt to send to Gemini.
-        model (str): The Gemini model name.
-        max_retries (int): Maximum number of retry attempts.
+        pdf_name: Name of the PDF file
+        cao_number: CAO number
+        cao_info_mapping: Mapping dictionary from load_cao_info
+        
     Returns:
-        str: The raw Gemini output.
+        Optional[dict]: CAO info if found, None otherwise
     """
-    for attempt in range(max_retries):
-        try:
-            model_obj = genai.GenerativeModel(model)
-            generation_config = genai.types.GenerationConfig(temperature=
-                LLM_TEMPERATURE, top_p=LLM_TOP_P, top_k=LLM_TOP_K,
-                max_output_tokens=LLM_MAX_TOKENS, candidate_count=
-                LLM_CANDIDATE_COUNT)
-            response = model_obj.generate_content(prompt, generation_config
-                =generation_config)
-            if hasattr(response, 'text') and response.text.strip():
-                return response.text
-            raise ValueError('Empty or invalid model response')
-        except Exception as e:
-            error_str = str(e).lower()
-            if 'deadlineexceeded' in error_str or '504' in error_str:
-                if attempt < max_retries - 1:
-                    wait_time = 120 * 2 ** attempt
-                    print(
-                        f'  Attempt {attempt + 1} failed (504 timeout), retrying in {wait_time // 60} minutes... [API {key_number}/{total_processes}]'
-                        )
-                    time.sleep(wait_time)
-                    continue
-                else:
-                    print(
-                        f'  All {max_retries} attempts failed with 504 errors - skipping file [API {key_number}/{total_processes}]'
-                        )
-                    return ''
-            elif any(keyword in error_str for keyword in ['quota',
-                'rate limit', 'too many requests', '429']):
-                if attempt < max_retries - 1:
-                    wait_time = 120 * 2 ** attempt
-                    print(
-                        f'  Attempt {attempt + 1} failed (rate limit), retrying in {wait_time // 60} minutes... [API {key_number}/{total_processes}]'
-                        )
-                    time.sleep(wait_time)
-                    continue
-                else:
-                    print(
-                        f'  All {max_retries} attempts failed with rate limiting - skipping file [API {key_number}/{total_processes}]'
-                        )
-                    return ''
-            elif attempt < max_retries - 1:
-                wait_time = 120 * 2 ** attempt
-                print(
-                    f'  Attempt {attempt + 1} failed ({type(e).__name__}), retrying in {wait_time // 60} minutes... [API {key_number}/{total_processes}]'
-                    )
-                time.sleep(wait_time)
-                continue
-            else:
-                raise e
-    raise ValueError(f'All {max_retries} retry attempts failed')
+    # Try exact match first
+    composite_key = f'{pdf_name}_{cao_number}'
+    if composite_key in cao_info_mapping:
+        return cao_info_mapping[composite_key]
+    
+    # Try fuzzy match
+    normalized_pdf = normalize_lookup(pdf_name)
+    for key in cao_info_mapping.keys():
+        key_pdf_name = key.rsplit('_', 1)[0]
+        if normalize_lookup(key_pdf_name) == normalized_pdf:
+            cao_info = cao_info_mapping[key]
+            if cao_info['cao_number'] == cao_number:
+                return cao_info
+    
+    return None
 
 
-def clean_gemini_output(output):
+# =============================================================================
+# EXCEL OUTPUT & DATA MERGING
+# =============================================================================
+# Functions for creating Excel output and merging extracted data
+
+def save_extraction_json(data: dict, filename: str, extraction_type: str, cao_number: str = None):
     """
-    Clean the Gemini model output by removing markdown and trailing commas.
+    Save extracted JSON data to appropriate folders for analysis.
+    
     Args:
-        output (str): The raw output from Gemini.
-    Returns:
-        str: Cleaned output string.
+        data: Extracted data to save
+        filename: Original filename
+        extraction_type: 'salary' or 'non_salary'
+        cao_number: CAO number for folder organization
     """
-    if output.strip().startswith('```'):
-        lines = output.strip().splitlines()
-        content = '\n'.join(line for line in lines if not line.strip().
-            startswith('```'))
-    else:
-        content = output.strip()
-    import re
-    content = re.sub(',\\s*(?=[}\\]])', '', content)
-    return content
-
-
-def extract_fields_from_text(text, prompt_fields_markdown, filename=''):
-    """
-    Generate a prompt with the list of desired fields and extract structured data from text.
-    Args:
-        text (str): The full CAO text to extract from.
-        prompt_fields_markdown (str): Markdown table of fields.
-        filename (str): The filename for context.
-    Returns:
-        dict: Extracted fields as a dictionary.
-    """
-    prompt = f"""You are an AI assistant that extracts structured JSON data from Dutch collective labor agreements (CAOs). These CAOs were originally provided as PDF files, and are now given to you as structured JSON files derived from them.
-
-=== Source Text ===
-The input is a shortened and grouped JSON-like structure. Each section is titled according to its content (e.g., "Wage information", "Pension information"), and contains a list of paragraphs or table contents from the CAO PDF relevant to that topic.
-From file: {filename}
-
-{text}
-
-=== Extraction Fields ===
-Below is a table of fields to extract. The first row contains the field names. The rows below describe each field. They have the following format: Description (expected format). Help or further guidance. Ex: one or more examples
-{prompt_fields_markdown}
-
-=== Extraction Instructions ===
-- For each field in the table, extract the data from the source text.
-- Do NOT hallucinate, infer, or guess any information. Only extract what is explicitly present in the text.
-- Do NOT fill in missing data unless it is directly found in the source text.
-- Do NOT repeat the prompt, instructions, or any explanations in your output.
-- Do NOT use markdown, code blocks, or comments. Output only pure JSON.
-- If a field or cell is empty, blank, or marked "empty" in the structure, leave it empty in your output.
-- Rows marked with "..." indicate a repeating pattern. Use the 3 rows above to understand the pattern and complete it for all job groups present.
-- Output all field names, even if the value is empty.
-
-=== Special Domain Instructions ===
-- Wage: When multiple wage tables are present, focus only on tables that represent standard or regular wages (sometimes referred to as "basic" or "normal" even if not labeled explicitly). If multiple tables exist for different job groups or levels under this standard wage type, include all of them. Prefer hourly units when both hourly and monthly wage tables are available. Only extract salary-related data for workers aged 21 and older.
-- Pension: For all pension-related fields, help the model by searching for Dutch keywords like “AOW”, “pensioen”, and “regeling”.
-- Leave, Termination, Overtime, Training and Homeoffice: For all fields related to leave, contract termination, working hours, overtime, training or homeoffice, extract as much relevant information as possible - more is better, as long as it is factually present in the text.
-
-=== Output Format ===
-Return ONLY valid JSON, for example:
-{{"field1": "value1", "field2": "value2", ...}}
-Do NOT wrap the JSON in code blocks or markdown. Do NOT include any explanations or comments.
-Reminder: Only output factual information stated in the source text. No assumptions, no guesses. If unsure, leave the field empty.
-"""
-    raw_output = query_gemini(prompt)
-    cleaned_output = clean_gemini_output(raw_output)
     try:
-        return json.loads(cleaned_output)
-    except Exception as e:
-        if DEBUG_MODE:
-            print(
-                f'Failed to parse JSON from model output: {e}\nRaw output:\n{cleaned_output}'
-                )
-        return {}
-
-
-def extract_salary_fields_from_text(text, prompt_fields_markdown, filename=''):
-    """
-    Extract salary-related fields from CAO text using only wage information.
-    Args:
-        text (str): The wage information section from CAO JSON.
-        prompt_fields_markdown (str): Markdown table of salary fields.
-        filename (str): The filename for context.
-    Returns:
-        dict: Extracted salary fields as a dictionary.
-    """
-    prompt = f"""You are an AI assistant that extracts structured JSON data from Dutch collective labor agreements (CAOs). These CAOs were originally provided as PDF files, and are now given to you as structured JSON files derived from them.
-
-=== Source Text ===
-The input is wage information from a CAO document. This section contains salary tables, job classifications, and wage-related rules.
-{text}
-
-=== Extraction Fields ===
-Below is a table of salary fields to extract. The first row contains the field names. The rows below describe each field. They have the following format: Description (expected format). Help or further guidance. Ex: one or more examples
-{prompt_fields_markdown}
-
-=== Extraction Instructions ===
-- For each field in the table, extract the data from the source text.
-- Do NOT hallucinate, infer, or guess any information. Only extract what is explicitly present in the text.
-- Do NOT fill in missing data unless it is directly found in the source text.
-- Do NOT repeat the prompt, instructions, or any explanations in your output.
-- Do NOT use markdown, code blocks, or comments. Output only pure JSON.
-- Rows marked with "..." indicate a repeating pattern. Use the 3 rows above to understand the pattern and complete it for all job groups present.
-- Output all field names, even if the value is empty.
-
-=== Special Domain Instructions ===
-- Wage: When multiple wage tables are present, focus only on tables that represent standard or regular wages (sometimes referred to as "basic" or "normal" even if not labeled explicitly). If multiple tables exist for different job groups or levels under this standard wage type, include all of them. Prefer hourly units when both hourly and monthly wage tables are available. Only extract salary-related data for workers aged 21 and older.
-- IMPORTANT: Translate all extracted values from Dutch to English before outputting them.
-
-=== Output Format ===
-Return ONLY valid JSON, for example:
-{{"field1": "value1", "field2": "value2", ...}}
-Do NOT wrap the JSON in code blocks or markdown. Do NOT include any explanations or comments.
-Reminder: Only output factual information stated directly in the source text! No assumptions, no guesses!
-"""
-    raw_output = query_gemini(prompt)
-    if not raw_output:
-        return None
-    cleaned_output = clean_gemini_output(raw_output)
-    try:
-        return json.loads(cleaned_output)
-    except Exception as e:
-        if DEBUG_MODE:
-            print(
-                f'Failed to parse JSON from salary extraction: {e}\nRaw output:\n{cleaned_output}'
-                )
-        return {}
-
-
-def extract_rest_fields_from_text(text, prompt_fields_markdown, filename=''):
-    """
-    Extract non-salary fields from CAO text using general, pension, leave, termination, overtime, training, and homeoffice information.
-    Args:
-        text (str): The non-wage sections from CAO JSON.
-        prompt_fields_markdown (str): Markdown table of non-salary fields.
-        filename (str): The filename for context.
-    Returns:
-        dict: Extracted non-salary fields as a dictionary.
-    """
-    prompt = f"""You are an AI assistant that extracts structured JSON data from Dutch collective labor agreements (CAOs). These CAOs were originally provided as PDF files, and are now given to you as structured JSON files derived from them.
-
-=== Source Text ===
-The input contains information from a CAO document, including general contract information, pension details, leave policies, termination procedures, overtime rules, training provisions, and home office policies.
-From file: {filename}
-
-{text}
-
-=== Extraction Fields ===
-Below is a table of fields to extract. The first row contains the field names. The rows below describe each field. They have the following format: Description (expected format). Help or further guidance. Ex: one or more examples
-{prompt_fields_markdown}
-
-=== Extraction Instructions ===
-- For each field in the table, extract the data from the source text.
-- Do NOT hallucinate, infer, or guess any information. Only extract what is explicitly present in the text.
-- Do NOT fill in missing data unless it is directly found in the source text.
-- Do NOT repeat the prompt, instructions, or any explanations in your output.
-- Do NOT use markdown, code blocks, or comments. Output only pure JSON.
-- Output all field names, even if the value is empty.
-
-=== Special Domain Instructions ===
-- Pension: For all pension-related fields, help the model by searching for Dutch keywords like "AOW", "pensioen", and "regeling".
-- Leave, Termination, Overtime, Training and Homeoffice: For all fields related to leave, contract termination, working hours, overtime, training or homeoffice, extract as much relevant information as possible - more is better, as long as it is factually present in the text.
-- IMPORTANT: Translate all extracted values from Dutch to English before outputting them.
-
-=== Output Format ===
-Return ONLY valid JSON, for example:
-{{"field1": "value1", "field2": "value2", ...}}
-Do NOT wrap the JSON in code blocks or markdown. Do NOT include any explanations or comments.
-Reminder: Only output factual information stated in the source text! No assumptions, no guesses!
-"""
-    raw_output = query_gemini(prompt)
-    if not raw_output:
-        return None
-    cleaned_output = clean_gemini_output(raw_output)
-    try:
-        return json.loads(cleaned_output)
-    except Exception as e:
-        if DEBUG_MODE:
-            print(
-                f'Failed to parse JSON from rest extraction: {e}\nRaw output:\n{cleaned_output}'
-                )
-        return {}
-
-
-def merge_extraction_results(salary_extracted, rest_extracted):
-    """
-    Merge results from salary and rest extractions into multiple rows with specific infotype labels.
-    Creates complete structure from fields_prompt.md and populates with extracted data.
-    Handles both single dictionaries and lists of dictionaries.
-    Args:
-        salary_extracted (dict or list): Results from salary extraction.
-        rest_extracted (dict or list): Results from rest extraction.
-    Returns:
-        list: List of merged extraction results with complete field structure and infotype labels.
-    """
-    if isinstance(salary_extracted, dict):
-        salary_items = [salary_extracted]
-    elif isinstance(salary_extracted, list):
-        salary_items = salary_extracted
-    else:
-        salary_items = [{}]
-    if isinstance(rest_extracted, dict):
-        rest_items = [rest_extracted]
-    elif isinstance(rest_extracted, list):
-        rest_items = rest_extracted
-    else:
-        rest_items = [{}]
-    if DEBUG_MODE:
-        print(
-            f'    DEBUG: Processing {len(salary_items)} salary items and {len(rest_items)} rest items'
-            )
-        for i, salary_item in enumerate(salary_items):
-            if isinstance(salary_item, dict):
-                populated_fields = [field for field, value in salary_item.
-                    items() if value]
-                print(
-                    f'    DEBUG: Salary item {i + 1}: {len(populated_fields)} populated fields'
-                    )
-            else:
-                print(f'    DEBUG: Salary item {i + 1}: {type(salary_item)}')
-    merged_results = []
-    for salary_item in salary_items:
-        wage_row = {field: '' for field in columns}
-        wage_row['infotype'] = 'Wage'
-        if isinstance(salary_item, dict):
-            for field, value in salary_item.items():
-                if field in wage_row and value:
-                    wage_row[field] = value
-        elif DEBUG_MODE:
-            print(
-                f'    DEBUG: Skipping non-dict salary item: {type(salary_item)}'
-                )
-        for rest_item in rest_items:
-            if isinstance(rest_item, dict):
-                if 'start_date_contract' in rest_item and rest_item[
-                    'start_date_contract']:
-                    wage_row['start_date_contract'] = rest_item[
-                        'start_date_contract']
-                if 'expiry_date_contract' in rest_item and rest_item[
-                    'expiry_date_contract']:
-                    wage_row['expiry_date_contract'] = rest_item[
-                        'expiry_date_contract']
-        merged_results.append(wage_row)
-        if DEBUG_MODE:
-            populated_wage_fields = [field for field, value in wage_row.
-                items() if value]
-            print(
-                f'    DEBUG: Created wage row with {len(populated_wage_fields)} populated fields: {populated_wage_fields}'
-                )
-    for rest_item in rest_items:
-        if not isinstance(rest_item, dict):
-            if DEBUG_MODE:
-                print(
-                    f'    DEBUG: Skipping non-dict rest item: {type(rest_item)}'
-                    )
-            continue
-        for infotype, fields in INFOTYPE_FIELD_MAPPINGS.items():
-            rest_row = {field: '' for field in columns}
-            rest_row['infotype'] = infotype
-            for field in fields:
-                if field in rest_item and rest_item[field]:
-                    rest_row[field] = rest_item[field]
-            if 'start_date_contract' in rest_item and rest_item[
-                'start_date_contract']:
-                rest_row['start_date_contract'] = rest_item[
-                    'start_date_contract']
-            if 'expiry_date_contract' in rest_item and rest_item[
-                'expiry_date_contract']:
-                rest_row['expiry_date_contract'] = rest_item[
-                    'expiry_date_contract']
-            merged_results.append(rest_row)
-    if DEBUG_MODE:
-        print(f'    DEBUG: Created {len(merged_results)} merged result(s)')
-        for i, result in enumerate(merged_results):
-            populated_fields = [field for field, value in result.items() if
-                value]
-            infotype = result.get('infotype', 'Unknown')
-            print(
-                f"    DEBUG: Result {i + 1}: {len(populated_fields)}/{len(columns)} fields populated, infotype='{infotype}'"
-                )
-            if result.get('jobgroup'):
-                print(
-                    f"    DEBUG: Result {i + 1}: jobgroup = '{result['jobgroup']}'"
-                    )
-            if infotype == 'Wage':
-                salary_fields = [field for field in result.keys() if field.
-                    startswith('salary_') and result[field]]
-                print(
-                    f'    DEBUG: Wage row {i + 1} has {len(salary_fields)} salary fields: {salary_fields}'
-                    )
-    return merged_results
-
-
-def flatten_to_str_list(lst):
-    """
-    Recursively flatten a nested list into a list of strings, joining sublists with ' | '.
-    Args:
-        lst (list): The list to flatten.
-    Returns:
-        list: Flattened list of strings.
-    """
-    result = []
-    for item in lst:
-        if isinstance(item, list):
-            result.append(' | '.join(str(subitem) for subitem in
-                flatten_to_str_list(item)))
+        # Create base path
+        base_path = Path('outputs/llm_analysis')
+        if extraction_type == 'salary':
+            save_path = base_path / 'salary'
         else:
-            result.append(str(item))
-    return result
-
-
-def normalize_filename(name):
-    """
-    Normalize filename for robust duplicate detection: lowercase, remove extension, and strip non-alphanumeric characters.
-    """
-    name = name.lower()
-    name = re.sub('\\.[^.]+$', '', name)
-    name = re.sub('[^a-z0-9]', '', name)
-    return name
-
-
-cao_analysis_tracking = {}
-cao_folders = sorted([f for f in Path(INPUT_JSON_FOLDER).iterdir() if f.
-    is_dir() and f.name.isdigit()], key=lambda f: int(f.name))
-all_json_files = []
-for cao_folder in cao_folders:
-    cao_number = cao_folder.name
-    json_files = sorted(cao_folder.glob('*.json'))
-    for json_file in json_files:
-        all_json_files.append((cao_folder, json_file))
-if not SORTED_FILES:
-    import random
-    random.shuffle(all_json_files)
-current_cao = None
-processed_files = 0
-successful_analyses = 0
-failed_files = []
-timed_out_files = []
-for file_idx, (cao_folder, json_file) in enumerate(all_json_files):
-    if file_idx % total_processes != process_id:
-        continue
-    if processed_files >= MAX_JSON_FILES:
-        break
-    cao_number = cao_folder.name
-    current_cao = cao_number
-    if not acquire_file_lock(json_file):
-        print(
-            f'  {cao_number}: Skipping {json_file.name} (being processed by another process)'
-            )
-        time.sleep(2)
-        continue
-    try:
-        cao_id = None
-        pdf_name_cleaned = json_file.stem + '.pdf'
-        try:
-            cao_number = int(json_file.parent.name)
-        except (ValueError, AttributeError):
-            cao_number = None
+            save_path = base_path / 'non_salary'
+        
+        # Create CAO-specific subfolder if cao_number provided
         if cao_number:
-            composite_key = f'{pdf_name_cleaned}_{cao_number}'
-            if composite_key in cao_info_mapping:
-                cao_info = cao_info_mapping[composite_key]
-                cao_number = cao_info['cao_number']
-                cao_id = cao_info['id']
-            else:
+            save_path = save_path / str(cao_number)
+        
+        save_path.mkdir(parents=True, exist_ok=True)
+        
+        # Create filename
+        base_name = Path(filename).stem
+        json_filename = f"{base_name}_{extraction_type}.json"
+        file_path = save_path / json_filename
+        
+        # Save JSON data
+        with open(file_path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+        
+    except Exception as e:
+        print(f'  DEBUG: Failed to save {extraction_type} extraction: {e}')
 
-                def normalize_lookup(s):
-                    return s.replace(' ', '').replace('-', '').replace('_', ''
-                        ).lower()
-                normalized_cleaned = normalize_lookup(pdf_name_cleaned)
-                found = False
-                for key in cao_info_mapping.keys():
-                    key_pdf_name = key.rsplit('_', 1)[0]
-                    if normalize_lookup(key_pdf_name) == normalized_cleaned:
-                        cao_info = cao_info_mapping[key]
-                        if cao_info['cao_number'] == cao_number:
-                            cao_id = cao_info['id']
-                            found = True
-                            break
-                if not found and DEBUG_MODE:
-                    print(
-                        f"[DEBUG] Could not find CAO id for {json_file.name} with CAO {cao_number} (tried composite key '{composite_key}' and fuzzy match)"
-                        )
-        elif DEBUG_MODE:
-            print(
-                f'[DEBUG] Could not extract CAO number from folder for {json_file.name}'
-                )
-        final_excel_path = (
-            f"{config['paths']['outputs_excel']}/extracted_data.xlsx")
-        already_processed = False
-        if os.path.exists(final_excel_path):
-            try:
-                time.sleep(0.1)
-                existing_df = pd.read_excel(final_excel_path)
-                if ('File_name' in existing_df.columns and 'CAO' in
-                    existing_df.columns):
-                    file_exists = existing_df[(existing_df['File_name'] ==
-                        json_file.name) & (existing_df['CAO'].astype(str) ==
-                        str(cao_number))].shape[0] > 0
-                    if file_exists:
-                        already_processed = True
-                        print(
-                            f'  {cao_number}: Skipping {json_file.name} (already in final Excel file for CAO {cao_number})'
-                            )
-                        release_file_lock(json_file)
-                        continue
-            except Exception as e:
-                if DEBUG_MODE:
-                    print(f'  Could not check final Excel file: {e}')
-        if already_processed:
-            release_file_lock(json_file)
-            continue
+
+def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapping: dict, 
+                       config: AnalysisConfig, context: Dict[str, Any]) -> bool:
+    """Process a single JSON file and save LLM extraction results."""
+    filename = json_file.name
+    cao_number = cao_folder.name
+    
+    print(f'  {cao_number}: {filename}')
+    
+    try:
+        # Read JSON file
         with open(json_file, 'r', encoding='utf-8') as f:
-            context_by_infotype = json.load(f)
-        print(
-            f'  {cao_number}: {json_file.name} [API {key_number}/{total_processes}]'
-            )
-        file_start = time.time()
-        max_processing_time = MAX_PROCESSING_TIME_HOURS * 3600
-        processed_files += 1
-        salary_text = ''
-        if 'Wage information' in context_by_infotype:
-            value = context_by_infotype['Wage information']
-            if isinstance(value, list):
-                flat_value = flatten_to_str_list(value)
-                salary_text = f'== Wage information ==\n' + '\n'.join(
-                    flat_value)
-            elif isinstance(value, str):
-                salary_text = f'== Wage information ==\n{value}'
-        rest_sections = ['General information', 'Pension information',
-            'Leave information', 'Termination information',
-            'Overtime information', 'Training information',
-            'Homeoffice information']
-        rest_text_parts = []
-        for section in rest_sections:
-            if section in context_by_infotype:
-                value = context_by_infotype[section]
-                if isinstance(value, list):
-                    flat_value = flatten_to_str_list(value)
-                    rest_text_parts.append(f'== {section} ==\n' + '\n'.join
-                        (flat_value))
-                elif isinstance(value, str):
-                    rest_text_parts.append(f'== {section} ==\n{value}')
-        rest_text = '\n\n'.join(rest_text_parts)
-        if time.time() - file_start > max_processing_time:
-            print(
-                f'  {cao_number}: ⏰ Timeout after {MAX_PROCESSING_TIME_HOURS} hours for {json_file.name} [API {key_number}/{total_processes}]'
-                )
-            timed_out_files.append(json_file.name)
-            continue
-        salary_request_size = len(salary_text.encode('utf-8')) / 1024
-        salary_request_chars = len(salary_text)
-        print(
-            f'  {cao_number}: Salary LLM extraction (Request size: {salary_request_size:.1f} KB, {salary_request_chars:,} characters) [API {key_number}/{total_processes}]'
-            )
-        salary_start = time.time()
-        salary_extracted = extract_salary_fields_from_text(salary_text,
-            prompt_salary_markdown, filename=json_file.name)
-        salary_time = time.time() - salary_start
-        print(
-            f'  {cao_number}: Salary LLM extraction completed in {salary_time:.2f} seconds [API {key_number}/{total_processes}]'
-            )
-        if salary_extracted is None:
-            print(
-                f'  {cao_number}: ✗ Salary extraction failed for {json_file.name} [API {key_number}/{total_processes}]'
-                )
-            failed_files.append(json_file.name)
-            continue
-        if DEBUG_MODE:
-            print(f'  DEBUG: Salary extracted data: {salary_extracted}')
-            if salary_extracted:
-                if isinstance(salary_extracted, dict):
-                    populated_salary_fields = [field for field, value in
-                        salary_extracted.items() if value]
-                    print(
-                        f'  DEBUG: Populated salary fields: {populated_salary_fields}'
-                        )
-                elif isinstance(salary_extracted, list):
-                    print(
-                        f'  DEBUG: Salary extracted is a list with {len(salary_extracted)} items'
-                        )
-                    for i, item in enumerate(salary_extracted):
-                        if isinstance(item, dict):
-                            populated_fields = [field for field, value in
-                                item.items() if value]
-                            print(
-                                f'  DEBUG: Item {i + 1} has {len(populated_fields)} populated fields: {populated_fields}'
-                                )
-                        else:
-                            print(f'  DEBUG: Item {i + 1} is {type(item)}')
-                else:
-                    print(
-                        f'  DEBUG: Salary extracted is {type(salary_extracted)}'
-                        )
-            else:
-                print(f'  DEBUG: No salary data extracted!')
-        if time.time() - file_start > max_processing_time:
-            print(
-                f'  {cao_number}: ⏰ Timeout after {MAX_PROCESSING_TIME_HOURS} hours for {json_file.name} [API {key_number}/{total_processes}]'
-                )
-            timed_out_files.append(json_file.name)
-            continue
-        time.sleep(60)
-        rest_request_size = len(rest_text.encode('utf-8')) / 1024
-        rest_request_chars = len(rest_text)
-        print(
-            f'  {cao_number}: Rest LLM extraction (Request size: {rest_request_size:.1f} KB, {rest_request_chars:,} characters) [API {key_number}/{total_processes}]'
-            )
-        rest_start = time.time()
-        rest_extracted = extract_rest_fields_from_text(rest_text,
-            prompt_rest_markdown, filename=json_file.name)
-        rest_time = time.time() - rest_start
-        print(
-            f'  {cao_number}: Rest LLM extraction completed in {rest_time:.2f} seconds [API {key_number}/{total_processes}]'
-            )
-        if rest_extracted is None:
-            print(
-                f'  {cao_number}: ✗ Rest extraction failed for {json_file.name} [API {key_number}/{total_processes}]'
-                )
-            failed_files.append(json_file.name)
-            continue
-        merge_start = time.time()
-        extracted = merge_extraction_results(salary_extracted, rest_extracted)
-        merge_time = time.time() - merge_start
-        print(
-            f'  {cao_number}: Merge operation completed in {merge_time:.2f} seconds [API {key_number}/{total_processes}]'
-            )
-        if not extracted:
-            print(
-                f'  {cao_number}: ✗ Failed to extract data from {json_file.name}'
-                )
-            failed_files.append(json_file.name)
-            continue
-        if isinstance(extracted, dict):
-            extracted_items = [extracted]
-        elif isinstance(extracted, list):
-            extracted_items = extracted
-        else:
-            extracted_items = []
-        for item in extracted_items:
-            row = dict.fromkeys(columns, '')
-            for key, value in item.items():
-                if key in row:
-                    row[key] = value
-            row['CAO'] = str(cao_number) if cao_number else json_file.stem
-            row['id'] = str(cao_id) if cao_id else ''
-            row['TTW'] = 'yes' if 'TTW' in json_file.stem.upper() else 'no'
-            row['File_name'] = json_file.name
-            pdf_name = json_file.stem + '.pdf'
-            if cao_number:
-                composite_key = f'{pdf_name}_{cao_number}'
-                if composite_key in cao_info_mapping:
-                    cao_info = cao_info_mapping[composite_key]
-                    row['CAO'] = cao_info['cao_number']
-                    row['id'] = cao_info['id']
-                    row['start_date'] = cao_info['ingangsdatum']
-                    row['expiry_date'] = cao_info['expiratiedatum']
-                    row['date_of_formal_notification'] = cao_info[
-                        'datum_kennisgeving']
-                elif DEBUG_MODE:
-                    print(
-                        f'  No CAO info found for composite key: {composite_key}'
-                        )
-            elif DEBUG_MODE:
-                print(f'  No CAO number available for PDF: {pdf_name}')
-            if DEBUG_MODE:
-                print('Row content before appending:', row)
-            row_df = pd.DataFrame([row])
-            row_df_full = row_df.reindex(columns=df_results.columns)
-            row_df_full_filled = row_df_full.fillna('Empty')
-            if DEBUG_MODE:
-                print('About to append row:')
-                print(row_df_full_filled)
-                print('All NA after replace check?', row_df_full_filled.
-                    replace(['Empty', ''], pd.NA).isna().all(axis=1))
-            row_to_append_check = row_df_full_filled.replace(['Empty', '',
-                None], pd.NA)
-            nonmeta_cols = [col for col in row_to_append_check.columns if 
-                col not in ('CAO', 'TTW', 'File_name', 'id', 'infotype')]
-            result = row_to_append_check[nonmeta_cols].isna().all(axis=1)
-            if isinstance(result, bool):
-                is_all_na = result
-            else:
-                is_all_na = result.iloc[0]
-            if is_all_na:
-                print('Skipped appending due to only Empty values.')
-                continue
-            if DEBUG_MODE:
-                print('Appending row after check passed:')
-                print(row_df_full_filled)
-                print('ROW BEFORE CONCAT:')
-                print(row_df_full_filled)
-                print('ROW TYPES:')
-                print(row_df_full_filled.dtypes)
-            if df_results.empty:
-                df_results = row_df_full_filled
-            else:
-                df_results = df_results.astype('object')
-                row_df_full_filled = row_df_full_filled.astype('object')
-                df_results = pd.concat([df_results, row_df_full_filled],
-                    ignore_index=True, copy=False)
-            df_results.replace('Empty', pd.NA, inplace=True)
-        file_time = time.time() - file_start
-        print(
-            f'  {cao_number}: Total file processing time: {file_time:.2f} seconds [API {key_number}/{total_processes}]'
-            )
-        successful_analyses += 1
-        if cao_number:
-            if cao_number not in cao_analysis_tracking:
-                cao_analysis_tracking[cao_number] = {'successful': 0,
-                    'failed': 0}
-            cao_analysis_tracking[cao_number]['successful'] += 1
-            update_progress(cao_number, 'llm_analysis', successful=
-                cao_analysis_tracking[cao_number]['successful'],
-                failed_files=cao_analysis_tracking[cao_number].get(
-                'failed_files', []))
-        os.makedirs(os.path.dirname(OUTPUT_EXCEL_PATH), exist_ok=True)
-        df_results.to_excel(OUTPUT_EXCEL_PATH, index=False)
-        if processed_files >= MAX_JSON_FILES:
-            print(
-                f'  {cao_number}: Reached MAX_JSON_FILES limit, exiting [API {key_number}/{total_processes}]'
-                )
-            break
-        else:
-            print(
-                f'  {cao_number}: Starting 3-minute delay... [API {key_number}/{total_processes}]'
-                )
-            delay_start = time.time()
-            time.sleep(180)
-            delay_time = time.time() - delay_start
-            print(
-                f'  {cao_number}: 3-minute delay completed in {delay_time:.2f} seconds [API {key_number}/{total_processes}]'
-                )
+            json_data = json.load(f)
+        
+        # Check if file is already processed
+        if is_file_already_processed(filename, cao_number):
+            print(f'  {cao_number}: Skipping {filename} (already processed)')
+            return True  # Return True since we successfully skipped it
+
+        # Extract salary information
+        salary_extracted = extract_salary_from_json(json_data, filename, client)
+        print(f'  {cao_number}: Salary extraction - {len(salary_extracted)} rows')
+        
+        # Extract non-salary information
+        rest_extracted = extract_nonsalary_from_json(json_data, filename, client)
+        
+        # Count non-salary data
+        non_salary_count = 0
+        for key, value in rest_extracted.items():
+            if isinstance(value, dict):
+                for subkey, subvalue in value.items():
+                    if subvalue and subvalue != "":
+                        non_salary_count += 1
+        print(f'  {cao_number}: Non-salary extraction - {non_salary_count} fields with data')
+        
+        # Save extracted JSON data
+        save_extraction_json({'salary_information': salary_extracted}, filename, 'salary', cao_number)
+        save_extraction_json(rest_extracted, filename, 'non_salary', cao_number)
+
+        # Check if we got any data
+        if not salary_extracted and not any(value for value in rest_extracted.values() if isinstance(value, dict) and any(v for v in value.values() if v)):
+            print(f'  {cao_number}: No data extracted from {filename}')
+            return False
+        
+        print(f'  {cao_number}: Successfully processed {filename}')
+        return True
+        
     except Exception as e:
-        print(f'  {cao_number}: ✗ Error processing {json_file.name}: {e}')
-        failed_files.append(json_file.name)
-        release_file_lock(json_file)
-    finally:
-        release_file_lock(json_file)
-os.makedirs(os.path.dirname(OUTPUT_EXCEL_PATH), exist_ok=True)
-df_results.to_excel(OUTPUT_EXCEL_PATH, index=False)
-if failed_files:
-    failed_log_path = 'failed_files_analysis.txt'
-    with open(failed_log_path, 'a', encoding='utf-8') as f:
-        f.write(
-            f"Timestamp: {time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}\n"
-            )
-        for file in failed_files:
-            f.write(f'API {key_number}: {file}\n')
-    print(f'Failed files saved to: {failed_log_path}')
-if timed_out_files:
-    timeout_log_path = 'timed_out_files_analysis.txt'
-    with open(timeout_log_path, 'a', encoding='utf-8') as f:
-        f.write(
-            f"Timestamp: {time.strftime('%Y-%m-%d %H:%M:%S')} - API {key_number}\n"
-            )
-        for file in timed_out_files:
-            f.write(f'API {key_number}: {file}\n')
-    print(f'Timed out files saved to: {timeout_log_path}')
-if failed_files or timed_out_files:
-    print(
-        f'Process {process_id + 1} completed: {successful_analyses} successful, {len(failed_files)} failed, {len(timed_out_files)} timed out'
-        )
-    if failed_files:
-        print(f'Failed files: {failed_files}')
-    if timed_out_files:
-        print(f'Timed out files: {timed_out_files}')
-else:
-    print(
-        f'Process {process_id + 1} completed: {successful_analyses} successful'
-        )
+        print(f'  {cao_number}: Error processing {filename}: {e}')
+        log_analysis_error(filename, f"Processing error: {e}", "")
+        return False
+
+
+# =============================================================================
+# MAIN EXECUTION FUNCTIONS
+# =============================================================================
+# Functions for orchestrating the complete analysis pipeline
 
 def main():
     """Main entry point for the analysis pipeline."""
-    # The script runs automatically when imported or executed
-    pass
+    parser = argparse.ArgumentParser(description='CAO Data Analysis with Schema-Driven Extraction')
+    parser.add_argument('--key_number', type=int, default=7, help='API key number to use')
+    parser.add_argument('--process_id', type=int, default=0, help='Process ID for work distribution')
+    parser.add_argument('--total_processes', type=int, default=1, help='Total number of parallel processes')
+    parser.add_argument('--max_files', type=int, help='Maximum number of files to process')
+    
+    args = parser.parse_args()
+    
+    try:
+        # Load configuration
+        config = load_configuration()
+        validate_input_paths(config)
+        
+        # Setup processing context
+        context = setup_processing_context(config, args.process_id, args.total_processes, args.key_number)
+        
+        # Load CAO info
+        cao_info_mapping = load_cao_info(config.cao_info_path)
+        
+        # Discover files
+        all_files = discover_json_files(config.input_folder)
+        
+        # Filter files for this process
+        process_files = [f for i, f in enumerate(all_files) if i % args.total_processes == args.process_id]
+        
+        # Apply file limit from config or command line
+        max_files = args.max_files if args.max_files is not None else config.max_json_files
+        if max_files:
+            process_files = process_files[:max_files]
+        
+        print(f'Process {args.process_id + 1}: Processing {len(process_files)} files')
+        
+        # Process files
+        successful_analyses = 0
+        failed_files = []
+        
+        for cao_folder, json_file in process_files:
+            if not acquire_file_lock(json_file):
+                print(f'  Skipping {json_file.name} (being processed by another process)')
+                time.sleep(2)
+                continue
+            
+            try:
+                success = process_single_file(json_file, cao_folder, context['client'], 
+                                            cao_info_mapping, config, context)
+                if success:
+                    successful_analyses += 1
+                else:
+                    failed_files.append(json_file.name)
+            finally:
+                release_file_lock(json_file)
+        
+        print(f'Process {args.process_id + 1} completed: {successful_analyses} successful, {len(failed_files)} failed')
+        
+    except Exception as e:
+        print(f'Fatal error: {e}')
+        sys.exit(1)
+
+
+def cli_test_fixture():
+    """
+    CLI helper for testing with fixture files.
+    Usage: python -m p4_analysis --fixture tests/fixtures/example_salary.json
+    """
+    import argparse
+    
+    parser = argparse.ArgumentParser(description='Test p4_analysis with fixture files')
+    parser.add_argument('--fixture', type=str, help='Path to fixture JSON file')
+    parser.add_argument('--key_number', type=int, default=7, help='API key number to use')
+    parser.add_argument('--process_id', type=int, default=0, help='Process ID')
+    parser.add_argument('--total_processes', type=int, default=1, help='Total number of processes')
+    parser.add_argument('--max_files', type=int, help='Maximum number of files to process')
+    
+    args = parser.parse_args()
+    
+    if args.fixture:
+        # Test with fixture file
+        try:
+            with open(args.fixture, 'r', encoding='utf-8') as f:
+                json_text = f.read()
+            
+            print(f"Testing with fixture: {args.fixture}")
+            result = analyze_cao_json(json_text, args.fixture)
+            
+            # Save extracted JSON data for analysis
+            base_name = Path(args.fixture).stem
+            save_extraction_json(result['salary_extraction'], base_name, 'salary')
+            save_extraction_json(result['non_salary_extraction'], base_name, 'non_salary')
+            
+            print("\n=== EXTRACTION RESULTS ===")
+            salary_count = len(result['salary_extraction'])
+            # Count only non-empty values in non-salary extraction
+            nonsalary_count = 0
+            for key, value in result['non_salary_extraction'].items():
+                if isinstance(value, dict):
+                    for subkey, subvalue in value.items():
+                        if subvalue and subvalue != "":  # Only count non-empty values
+                            nonsalary_count += 1
+                elif value and value != "":  # Only count non-empty values
+                    nonsalary_count += 1
+            print(f"Salary rows: {salary_count}")
+            print(f"Non-salary fields with data: {nonsalary_count}")
+            
+            print("\n=== SALARY EXTRACTION ===")
+            if salary_count > 0:
+                for i, row in enumerate(result['salary_extraction']):
+                    print(f"Row {i+1}: {row.get('jobgroup', 'N/A')} - {row.get('salary_1', 'N/A')} {row.get('salary_1_unit', '')}")
+            else:
+                print("No salary data extracted")
+            
+            print("\n=== NON-SALARY EXTRACTION ===")
+            has_nonsalary_data = False
+            for key, value in result['non_salary_extraction'].items():
+                if isinstance(value, dict):
+                    has_data = False
+                    for subkey, subvalue in value.items():
+                        if subvalue:  # Only show non-empty values
+                            if not has_data:
+                                print(f"{key}:")
+                                has_data = True
+                                has_nonsalary_data = True
+                            print(f"  {subkey}: {subvalue}")
+                elif value:  # Only show non-empty values
+                    print(f"{key}: {value}")
+                    has_nonsalary_data = True
+            
+            if not has_nonsalary_data:
+                print("No non-salary data extracted")
+            
+            # Determine if extraction was successful
+            total_extracted = salary_count + nonsalary_count
+            if total_extracted > 0:
+                print(f"\n✓ Fixture test completed successfully! Extracted {total_extracted} data points.")
+            else:
+                print(f"\n⚠ Fixture test completed but no data was extracted. Check API quota and retry.")
+                return 1
+            
+        except Exception as e:
+            print(f"✗ Fixture test failed: {e}")
+            return 1
+    else:
+        # Run normal main function
+        main()
+    
+    return 0
+
 
 if __name__ == "__main__":
-    main()
+    exit(cli_test_fixture())

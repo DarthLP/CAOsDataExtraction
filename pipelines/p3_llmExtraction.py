@@ -493,17 +493,21 @@ def create_extraction_prompt(filename: str) -> str:
     """Create the extraction prompt for CAO document processing."""
     return f"""
     Extract information from this Dutch CAO (Collective Labor Agreement) Markdown document, which is a parsed version of the original PDF.
+   
     TASK: Categorize and extract relevant information into the specified fields based on the document content.
+    
     CRITICAL RULES:
         - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess any information.
         - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
         - Be precise: NO paraphrasing, NO interpretation, NO added explanations, NO decorative elements, NO unnecessary separator lines or formatting characters.
         - IMPORTANT: Translate all Dutch text into clear and precise English but keep names, organizations, and abbreviations in Dutch. For legal clauses, preserve the exact legal meaning without simplification.
+    
     CONTENT INCLUSION RULES:
         - Include relevant numerical values, percentages, amounts, and time periods.
         - Include conditions, requirements, procedural steps, entitlements, allowances, and eligibility criteria.
         - For tables, include short descriptions and table structure with headers and all data rows and columns.
         - WAGE TABLES: Extract wage tables that differ in time periods, worker types, job categories, age groups, or other meaningful differences. For unit conversions (hourly vs monthly vs weekly vs 4 weeks vs yearly for same workers/periods/jobs/ages/others) extract only one version, preferably hourly.
+    
     TABLE FORMATTING:
         - Structure tables as below, including headers, descriptions, and footnotes: 
             [
@@ -513,10 +517,13 @@ def create_extraction_prompt(filename: str) -> str:
                 "additional rows as needed (for example for footnotes and further descriptions)"
             ]
         - If the original table structure is unclear or messy (missing headers, empty cells, broken formatting), reorganize it into a logical structure like the example above.
+    
     JSON OUTPUT REQUIREMENTS:
         - Output ONLY valid JSON format.
         - Use ONLY standard ASCII characters (no special/control characters).
         - Replace any special characters with standard equivalents.
+        - Ensure the JSON response is complete and properly closed with all necessary braces.
+
     Document: {filename}
     """
 
@@ -929,6 +936,34 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                 print(f'  INFO: Successfully extracted structured data from markdown (time: {processing_time:.1f}s)')
                 print(f'  INFO: Response size: {content_length:,} chars (~{estimated_tokens:,} tokens)')
                 
+                # Check for truncation indicators
+                finish_reason = extraction_info.get("finish", "UNKNOWN")
+                is_truncated = finish_reason == "MAX_TOKENS"
+                
+                # Validate JSON completeness
+                validation_result = validate_json_completeness(content, filename)
+                is_json_complete = validation_result['is_valid']
+                
+                # If JSON is incomplete or response was truncated, retry
+                if not is_json_complete or is_truncated:
+                    print(f'  WARNING: JSON incomplete or truncated (finish_reason: {finish_reason}) - retrying...')
+                    cleanup_uploaded_file(context.client, uploaded_file)
+                    
+                    # If this is the last attempt, log the failure and return None
+                    if attempt == context.config.max_retries - 1:
+                        error_msg = f"JSON incomplete after {context.config.max_retries} attempts: {validation_result.get('error', 'Unknown error')}"
+                        print(f'  ERROR: {error_msg}')
+                        context.performance_monitor.log_extraction(
+                            filename=filename, file_size_mb=file_size_mb, processing_time=processing_time,
+                            usage_metadata=response.usage_metadata, success=False, error_message=error_msg,
+                            api_key_used=context.key_number, process_id=context.process_id, cao_number=cao_number,
+                            model=context.config.model, parameters=get_model_parameters(context.config)
+                        )
+                        return None
+                    
+                    # Continue to next retry attempt
+                    continue
+                
                 # Validate response schema
                 if not validate_response_schema(content, filename):
                     print(f'  WARNING: Response schema validation failed for {filename}')
@@ -1084,13 +1119,6 @@ def process_single_file(markdown_file: Path, cao_number: str, output_folder: Pat
             print(f'  {cao_number}: ✗ LLM extraction failed for {markdown_file.name} [API {context.key_number}/{context.total_processes}]')
             log_processing_result(markdown_file.name, False, context)
             return True
-        
-        # Validate JSON before saving
-        validation_result = validate_json_completeness(raw_output, markdown_file.name)
-        if not validation_result['is_valid']:
-            error_msg = f"Incomplete JSON: {validation_result['error']}"
-            print(f'  {cao_number}: ✗ {error_msg} for {markdown_file.name} [API {context.key_number}/{context.total_processes}]')
-            raise ValueError(error_msg)
         
         # Save result with validation
         save_success = save_extraction_result(output_file, raw_output)

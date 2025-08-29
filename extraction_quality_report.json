@@ -1,65 +1,79 @@
 {
   "summary": {
-    "total_files": 1557,
+    "total_files": 1575,
     "files_with_errors": 0,
-    "files_needing_reextraction": 8,
-    "average_content_length": 48715.92999357739
+    "files_needing_reextraction": 10,
+    "average_content_length": 48726.04888888889
   },
   "section_stats": {
     "general_information": {
-      "present": 1557,
+      "present": 1575,
       "empty": 0,
       "missing": 0
     },
     "wage_information": {
-      "present": 1553,
-      "empty": 4,
+      "present": 1570,
+      "empty": 5,
       "missing": 0
     },
     "pension_information": {
-      "present": 1544,
-      "empty": 13,
+      "present": 1560,
+      "empty": 15,
       "missing": 0
     },
     "leave_information": {
-      "present": 1550,
-      "empty": 7,
+      "present": 1566,
+      "empty": 9,
       "missing": 0
     },
     "termination_information": {
-      "present": 1549,
-      "empty": 8,
-      "missing": 0
-    },
-    "overtime_information": {
-      "present": 1547,
+      "present": 1565,
       "empty": 10,
       "missing": 0
     },
-    "training_information": {
-      "present": 1545,
+    "overtime_information": {
+      "present": 1563,
       "empty": 12,
       "missing": 0
     },
+    "training_information": {
+      "present": 1561,
+      "empty": 14,
+      "missing": 0
+    },
     "homeoffice_information": {
-      "present": 579,
-      "empty": 978,
+      "present": 588,
+      "empty": 987,
       "missing": 0
     }
   },
   "files_with_minimal_output": [
+    "Grafimedia_cao_2015_2018_def_incl_stat_regl.md.json",
     "gewijzigde_cao_2016_2018_artikel_12_2.md.json",
     "CAO AGF Detailhandel 2020-2021 volledig.docx.md.json",
+    "cao_Netwerkbedrijven_2_0_2011_2013.md.json",
     "CAOtekst_1apr2019-31dec2019_PvL_6mei2019.pdf .md.json",
     "Def_tekst_Ttw_cao_R.md.json",
     "wijziging_NHG_CAO__teksten_1_juli_2016_2016.md.json",
     "cao 2019-2021 tussentijdse wijziging .docx.md.json",
     "Zuivel cao I 2022.md.json",
-    "CAO_Appo_en_GOVak_2018_2023.md.json",
-    "cao open teelten 4e ttw per 1 juli 2022 - integrale tekst.md.json",
-    "Reglement_Garantiefonds_07_12_2011__2_.md.json"
+    "CAO_Appo_en_GOVak_2018_2023.md.json"
   ],
   "reextraction_recommendations": [
+    {
+      "file": "Grafimedia_cao_2015_2018_def_incl_stat_regl.md.json",
+      "reason": "No wage information",
+      "empty_sections": [
+        "wage_information",
+        "pension_information",
+        "leave_information",
+        "termination_information",
+        "overtime_information",
+        "training_information",
+        "homeoffice_information"
+      ],
+      "content_length": 1036
+    },
     {
       "file": "gewijzigde_cao_2016_2018_artikel_12_2.md.json",
       "reason": "No wage information",
@@ -150,6 +164,19 @@
       "content_length": 13377
     },
     {
+      "file": "Officiele_versie_NL_Cao_UMC_2011_2013.md.json",
+      "reason": "Too many empty sections: 6 empty (including homeoffice)",
+      "empty_sections": [
+        "pension_information",
+        "leave_information",
+        "termination_information",
+        "overtime_information",
+        "training_information",
+        "homeoffice_information"
+      ],
+      "content_length": 15864
+    },
+    {
       "file": "handboek_compleet.md.json",
       "reason": "Too many empty sections: 6 empty (including homeoffice)",
       "empty_sections": [
@@ -164,6 +191,69 @@
     }
   ],
   "detailed_analyses": [
+    {
+      "file": "Grafimedia_cao_2015_2018_def_incl_stat_regl.md.json",
+      "file_size": 1438,
+      "sections": {
+        "general_information": {
+          "content_length": 1036,
+          "item_count": 6,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        },
+        "pension_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        },
+        "leave_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        },
+        "termination_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        },
+        "overtime_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        },
+        "training_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        },
+        "homeoffice_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        }
+      },
+      "empty_sections": [
+        "wage_information",
+        "pension_information",
+        "leave_information",
+        "termination_information",
+        "overtime_information",
+        "training_information",
+        "homeoffice_information"
+      ],
+      "total_content_length": 1036,
+      "has_wage_info": false,
+      "has_pension_info": false,
+      "has_leave_info": false,
+      "has_termination_info": false,
+      "has_overtime_info": false,
+      "has_training_info": false,
+      "has_homeoffice_info": false
+    },
     {
       "file": "gewijzigde_cao_2016_2018_artikel_12_2.md.json",
       "file_size": 1465,
@@ -288,6 +378,61 @@
       "has_overtime_info": false,
       "has_training_info": false,
       "has_homeoffice_info": false
+    },
+    {
+      "file": "cao_Netwerkbedrijven_2_0_2011_2013.md.json",
+      "file_size": 4185,
+      "sections": {
+        "general_information": {
+          "content_length": 1052,
+          "item_count": 8,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 813,
+          "item_count": 8,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 323,
+          "item_count": 5,
+          "is_empty": false
+        },
+        "leave_information": {
+          "content_length": 545,
+          "item_count": 10,
+          "is_empty": false
+        },
+        "termination_information": {
+          "content_length": 60,
+          "item_count": 1,
+          "is_empty": false
+        },
+        "overtime_information": {
+          "content_length": 107,
+          "item_count": 2,
+          "is_empty": false
+        },
+        "training_information": {
+          "content_length": 205,
+          "item_count": 3,
+          "is_empty": false
+        },
+        "homeoffice_information": {
+          "content_length": 74,
+          "item_count": 1,
+          "is_empty": false
+        }
+      },
+      "empty_sections": [],
+      "total_content_length": 3179,
+      "has_wage_info": true,
+      "has_pension_info": true,
+      "has_leave_info": true,
+      "has_termination_info": true,
+      "has_overtime_info": true,
+      "has_training_info": true,
+      "has_homeoffice_info": true
     },
     {
       "file": "CAOtekst_1apr2019-31dec2019_PvL_6mei2019.pdf .md.json",
@@ -1729,6 +1874,68 @@
       "has_homeoffice_info": true
     },
     {
+      "file": "Officiele_versie_NL_Cao_UMC_2011_2013.md.json",
+      "file_size": 18494,
+      "sections": {
+        "general_information": {
+          "content_length": 1182,
+          "item_count": 7,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 14682,
+          "item_count": 32,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        },
+        "leave_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        },
+        "termination_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        },
+        "overtime_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        },
+        "training_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        },
+        "homeoffice_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        }
+      },
+      "empty_sections": [
+        "pension_information",
+        "leave_information",
+        "termination_information",
+        "overtime_information",
+        "training_information",
+        "homeoffice_information"
+      ],
+      "total_content_length": 15864,
+      "has_wage_info": true,
+      "has_pension_info": false,
+      "has_leave_info": false,
+      "has_termination_info": false,
+      "has_overtime_info": false,
+      "has_training_info": false,
+      "has_homeoffice_info": false
+    },
+    {
       "file": "CAO_Sport_2016_2018_DEF.md.json",
       "file_size": 17523,
       "sections": {
@@ -1889,6 +2096,63 @@
         "homeoffice_information"
       ],
       "total_content_length": 16032,
+      "has_wage_info": true,
+      "has_pension_info": true,
+      "has_leave_info": true,
+      "has_termination_info": true,
+      "has_overtime_info": true,
+      "has_training_info": true,
+      "has_homeoffice_info": false
+    },
+    {
+      "file": "CAO VVT 2025-2026_TTW 1.md.json",
+      "file_size": 21728,
+      "sections": {
+        "general_information": {
+          "content_length": 1009,
+          "item_count": 8,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 7233,
+          "item_count": 126,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 1111,
+          "item_count": 5,
+          "is_empty": false
+        },
+        "leave_information": {
+          "content_length": 1650,
+          "item_count": 5,
+          "is_empty": false
+        },
+        "termination_information": {
+          "content_length": 2294,
+          "item_count": 6,
+          "is_empty": false
+        },
+        "overtime_information": {
+          "content_length": 2250,
+          "item_count": 27,
+          "is_empty": false
+        },
+        "training_information": {
+          "content_length": 517,
+          "item_count": 2,
+          "is_empty": false
+        },
+        "homeoffice_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        }
+      },
+      "empty_sections": [
+        "homeoffice_information"
+      ],
+      "total_content_length": 16064,
       "has_wage_info": true,
       "has_pension_info": true,
       "has_leave_info": true,
@@ -21488,6 +21752,61 @@
       "has_homeoffice_info": true
     },
     {
+      "file": "huisartsenzorg_2017_2019_TTW.md.json",
+      "file_size": 33655,
+      "sections": {
+        "general_information": {
+          "content_length": 539,
+          "item_count": 5,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 11842,
+          "item_count": 13,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 891,
+          "item_count": 6,
+          "is_empty": false
+        },
+        "leave_information": {
+          "content_length": 5787,
+          "item_count": 12,
+          "is_empty": false
+        },
+        "termination_information": {
+          "content_length": 4337,
+          "item_count": 8,
+          "is_empty": false
+        },
+        "overtime_information": {
+          "content_length": 4075,
+          "item_count": 7,
+          "is_empty": false
+        },
+        "training_information": {
+          "content_length": 4180,
+          "item_count": 6,
+          "is_empty": false
+        },
+        "homeoffice_information": {
+          "content_length": 414,
+          "item_count": 1,
+          "is_empty": false
+        }
+      },
+      "empty_sections": [],
+      "total_content_length": 32065,
+      "has_wage_info": true,
+      "has_pension_info": true,
+      "has_leave_info": true,
+      "has_termination_info": true,
+      "has_overtime_info": true,
+      "has_training_info": true,
+      "has_homeoffice_info": true
+    },
+    {
       "file": "cao_leo_2_januari_2012___30_juni_2013_incl_ttw.md.json",
       "file_size": 35042,
       "sections": {
@@ -35082,6 +35401,63 @@
       "has_homeoffice_info": false
     },
     {
+      "file": "cao_2011_2013.md.json",
+      "file_size": 42205,
+      "sections": {
+        "general_information": {
+          "content_length": 1631,
+          "item_count": 5,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 13183,
+          "item_count": 23,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 1260,
+          "item_count": 5,
+          "is_empty": false
+        },
+        "leave_information": {
+          "content_length": 9835,
+          "item_count": 30,
+          "is_empty": false
+        },
+        "termination_information": {
+          "content_length": 2552,
+          "item_count": 8,
+          "is_empty": false
+        },
+        "overtime_information": {
+          "content_length": 4925,
+          "item_count": 14,
+          "is_empty": false
+        },
+        "training_information": {
+          "content_length": 5885,
+          "item_count": 12,
+          "is_empty": false
+        },
+        "homeoffice_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        }
+      },
+      "empty_sections": [
+        "homeoffice_information"
+      ],
+      "total_content_length": 39271,
+      "has_wage_info": true,
+      "has_pension_info": true,
+      "has_leave_info": true,
+      "has_termination_info": true,
+      "has_overtime_info": true,
+      "has_training_info": true,
+      "has_homeoffice_info": false
+    },
+    {
       "file": "Cao Textielverzorging integrale tekst TTW.md.json",
       "file_size": 42696,
       "sections": {
@@ -36704,6 +37080,63 @@
         "homeoffice_information"
       ],
       "total_content_length": 39970,
+      "has_wage_info": true,
+      "has_pension_info": true,
+      "has_leave_info": true,
+      "has_termination_info": true,
+      "has_overtime_info": true,
+      "has_training_info": true,
+      "has_homeoffice_info": false
+    },
+    {
+      "file": "CAO_MBO_2014_2015_in_Word___nieuwe_versie.md.json",
+      "file_size": 50773,
+      "sections": {
+        "general_information": {
+          "content_length": 493,
+          "item_count": 4,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 6351,
+          "item_count": 211,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 2069,
+          "item_count": 8,
+          "is_empty": false
+        },
+        "leave_information": {
+          "content_length": 12912,
+          "item_count": 33,
+          "is_empty": false
+        },
+        "termination_information": {
+          "content_length": 6288,
+          "item_count": 15,
+          "is_empty": false
+        },
+        "overtime_information": {
+          "content_length": 5972,
+          "item_count": 33,
+          "is_empty": false
+        },
+        "training_information": {
+          "content_length": 5896,
+          "item_count": 13,
+          "is_empty": false
+        },
+        "homeoffice_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        }
+      },
+      "empty_sections": [
+        "homeoffice_information"
+      ],
+      "total_content_length": 39981,
       "has_wage_info": true,
       "has_pension_info": true,
       "has_leave_info": true,
@@ -47701,6 +48134,61 @@
       "has_homeoffice_info": true
     },
     {
+      "file": "cao_VVT.md.json",
+      "file_size": 47691,
+      "sections": {
+        "general_information": {
+          "content_length": 1017,
+          "item_count": 5,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 14666,
+          "item_count": 27,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 1022,
+          "item_count": 2,
+          "is_empty": false
+        },
+        "leave_information": {
+          "content_length": 7327,
+          "item_count": 14,
+          "is_empty": false
+        },
+        "termination_information": {
+          "content_length": 2957,
+          "item_count": 2,
+          "is_empty": false
+        },
+        "overtime_information": {
+          "content_length": 12878,
+          "item_count": 12,
+          "is_empty": false
+        },
+        "training_information": {
+          "content_length": 3907,
+          "item_count": 8,
+          "is_empty": false
+        },
+        "homeoffice_information": {
+          "content_length": 2082,
+          "item_count": 3,
+          "is_empty": false
+        }
+      },
+      "empty_sections": [],
+      "total_content_length": 45856,
+      "has_wage_info": true,
+      "has_pension_info": true,
+      "has_leave_info": true,
+      "has_termination_info": true,
+      "has_overtime_info": true,
+      "has_training_info": true,
+      "has_homeoffice_info": true
+    },
+    {
       "file": "CAOHBO_2023_2024.md.json",
       "file_size": 47899,
       "sections": {
@@ -55586,6 +56074,61 @@
       "has_homeoffice_info": true
     },
     {
+      "file": "CAO VVT 2022-2024 verlengde cao def.md.json",
+      "file_size": 55020,
+      "sections": {
+        "general_information": {
+          "content_length": 996,
+          "item_count": 4,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 25226,
+          "item_count": 48,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 6736,
+          "item_count": 13,
+          "is_empty": false
+        },
+        "leave_information": {
+          "content_length": 7495,
+          "item_count": 9,
+          "is_empty": false
+        },
+        "termination_information": {
+          "content_length": 2070,
+          "item_count": 3,
+          "is_empty": false
+        },
+        "overtime_information": {
+          "content_length": 6252,
+          "item_count": 8,
+          "is_empty": false
+        },
+        "training_information": {
+          "content_length": 2074,
+          "item_count": 4,
+          "is_empty": false
+        },
+        "homeoffice_information": {
+          "content_length": 305,
+          "item_count": 1,
+          "is_empty": false
+        }
+      },
+      "empty_sections": [],
+      "total_content_length": 51154,
+      "has_wage_info": true,
+      "has_pension_info": true,
+      "has_leave_info": true,
+      "has_termination_info": true,
+      "has_overtime_info": true,
+      "has_training_info": true,
+      "has_homeoffice_info": true
+    },
+    {
       "file": "Cao OB 2024 2026_incl gewijz Ontheffingsregeling.md.json",
       "file_size": 53503,
       "sections": {
@@ -55973,6 +56516,63 @@
         "homeoffice_information"
       ],
       "total_content_length": 51607,
+      "has_wage_info": true,
+      "has_pension_info": true,
+      "has_leave_info": true,
+      "has_termination_info": true,
+      "has_overtime_info": true,
+      "has_training_info": true,
+      "has_homeoffice_info": false
+    },
+    {
+      "file": "cao open teelten 3e ttw 1 januari 2022 integraal _.md.json",
+      "file_size": 54889,
+      "sections": {
+        "general_information": {
+          "content_length": 1765,
+          "item_count": 6,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 18723,
+          "item_count": 19,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 1931,
+          "item_count": 5,
+          "is_empty": false
+        },
+        "leave_information": {
+          "content_length": 10130,
+          "item_count": 15,
+          "is_empty": false
+        },
+        "termination_information": {
+          "content_length": 10987,
+          "item_count": 12,
+          "is_empty": false
+        },
+        "overtime_information": {
+          "content_length": 5724,
+          "item_count": 11,
+          "is_empty": false
+        },
+        "training_information": {
+          "content_length": 2351,
+          "item_count": 4,
+          "is_empty": false
+        },
+        "homeoffice_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        }
+      },
+      "empty_sections": [
+        "homeoffice_information"
+      ],
+      "total_content_length": 51611,
       "has_wage_info": true,
       "has_pension_info": true,
       "has_leave_info": true,
@@ -62745,6 +63345,61 @@
       "has_homeoffice_info": false
     },
     {
+      "file": "CAO VVT 2022-2023 ttwnov22a.md.json",
+      "file_size": 85281,
+      "sections": {
+        "general_information": {
+          "content_length": 902,
+          "item_count": 5,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 45669,
+          "item_count": 18,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 1934,
+          "item_count": 8,
+          "is_empty": false
+        },
+        "leave_information": {
+          "content_length": 3204,
+          "item_count": 16,
+          "is_empty": false
+        },
+        "termination_information": {
+          "content_length": 1030,
+          "item_count": 7,
+          "is_empty": false
+        },
+        "overtime_information": {
+          "content_length": 2629,
+          "item_count": 11,
+          "is_empty": false
+        },
+        "training_information": {
+          "content_length": 398,
+          "item_count": 4,
+          "is_empty": false
+        },
+        "homeoffice_information": {
+          "content_length": 231,
+          "item_count": 1,
+          "is_empty": false
+        }
+      },
+      "empty_sections": [],
+      "total_content_length": 55997,
+      "has_wage_info": true,
+      "has_pension_info": true,
+      "has_leave_info": true,
+      "has_termination_info": true,
+      "has_overtime_info": true,
+      "has_training_info": true,
+      "has_homeoffice_info": true
+    },
+    {
       "file": "Cao_Binnendienst_2015__2016_addendum.md.json",
       "file_size": 61593,
       "sections": {
@@ -67740,6 +68395,116 @@
       "has_homeoffice_info": false
     },
     {
+      "file": "cao 2019-2021 tussentijdse wijziging.docx.md.json",
+      "file_size": 64432,
+      "sections": {
+        "general_information": {
+          "content_length": 13120,
+          "item_count": 34,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 10055,
+          "item_count": 1,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 2376,
+          "item_count": 5,
+          "is_empty": false
+        },
+        "leave_information": {
+          "content_length": 9259,
+          "item_count": 24,
+          "is_empty": false
+        },
+        "termination_information": {
+          "content_length": 3873,
+          "item_count": 6,
+          "is_empty": false
+        },
+        "overtime_information": {
+          "content_length": 14233,
+          "item_count": 22,
+          "is_empty": false
+        },
+        "training_information": {
+          "content_length": 4290,
+          "item_count": 10,
+          "is_empty": false
+        },
+        "homeoffice_information": {
+          "content_length": 3660,
+          "item_count": 5,
+          "is_empty": false
+        }
+      },
+      "empty_sections": [],
+      "total_content_length": 60866,
+      "has_wage_info": true,
+      "has_pension_info": true,
+      "has_leave_info": true,
+      "has_termination_info": true,
+      "has_overtime_info": true,
+      "has_training_info": true,
+      "has_homeoffice_info": true
+    },
+    {
+      "file": "Integrale Cao Kinderopvang 2025-2026.md.json",
+      "file_size": 64248,
+      "sections": {
+        "general_information": {
+          "content_length": 1152,
+          "item_count": 6,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 20935,
+          "item_count": 18,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 1214,
+          "item_count": 2,
+          "is_empty": false
+        },
+        "leave_information": {
+          "content_length": 20700,
+          "item_count": 13,
+          "is_empty": false
+        },
+        "termination_information": {
+          "content_length": 7113,
+          "item_count": 3,
+          "is_empty": false
+        },
+        "overtime_information": {
+          "content_length": 4362,
+          "item_count": 4,
+          "is_empty": false
+        },
+        "training_information": {
+          "content_length": 3809,
+          "item_count": 4,
+          "is_empty": false
+        },
+        "homeoffice_information": {
+          "content_length": 1811,
+          "item_count": 1,
+          "is_empty": false
+        }
+      },
+      "empty_sections": [],
+      "total_content_length": 61096,
+      "has_wage_info": true,
+      "has_pension_info": true,
+      "has_leave_info": true,
+      "has_termination_info": true,
+      "has_overtime_info": true,
+      "has_training_info": true,
+      "has_homeoffice_info": true
+    },
+    {
       "file": "CAO_20_11_2016_tm_31_12_2018_correctie.md.json",
       "file_size": 68888,
       "sections": {
@@ -70497,6 +71262,63 @@
       "has_homeoffice_info": false
     },
     {
+      "file": "171115_Cao_F_S__L_2016_2018_definitief_hvb_1.md.json",
+      "file_size": 69890,
+      "sections": {
+        "general_information": {
+          "content_length": 5725,
+          "item_count": 8,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 35621,
+          "item_count": 38,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 1616,
+          "item_count": 6,
+          "is_empty": false
+        },
+        "leave_information": {
+          "content_length": 10851,
+          "item_count": 22,
+          "is_empty": false
+        },
+        "termination_information": {
+          "content_length": 1161,
+          "item_count": 4,
+          "is_empty": false
+        },
+        "overtime_information": {
+          "content_length": 6190,
+          "item_count": 8,
+          "is_empty": false
+        },
+        "training_information": {
+          "content_length": 4154,
+          "item_count": 7,
+          "is_empty": false
+        },
+        "homeoffice_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        }
+      },
+      "empty_sections": [
+        "homeoffice_information"
+      ],
+      "total_content_length": 65318,
+      "has_wage_info": true,
+      "has_pension_info": true,
+      "has_leave_info": true,
+      "has_termination_info": true,
+      "has_overtime_info": true,
+      "has_training_info": true,
+      "has_homeoffice_info": false
+    },
+    {
       "file": "MITT cao 2019-2020.md.json",
       "file_size": 71671,
       "sections": {
@@ -71999,6 +72821,61 @@
       },
       "empty_sections": [],
       "total_content_length": 67217,
+      "has_wage_info": true,
+      "has_pension_info": true,
+      "has_leave_info": true,
+      "has_termination_info": true,
+      "has_overtime_info": true,
+      "has_training_info": true,
+      "has_homeoffice_info": true
+    },
+    {
+      "file": "Tekst CAO GHZ 2021-2024_DEFGEW.md.json",
+      "file_size": 73072,
+      "sections": {
+        "general_information": {
+          "content_length": 2719,
+          "item_count": 7,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 29305,
+          "item_count": 22,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 1540,
+          "item_count": 4,
+          "is_empty": false
+        },
+        "leave_information": {
+          "content_length": 6318,
+          "item_count": 12,
+          "is_empty": false
+        },
+        "termination_information": {
+          "content_length": 9919,
+          "item_count": 8,
+          "is_empty": false
+        },
+        "overtime_information": {
+          "content_length": 11244,
+          "item_count": 15,
+          "is_empty": false
+        },
+        "training_information": {
+          "content_length": 4831,
+          "item_count": 8,
+          "is_empty": false
+        },
+        "homeoffice_information": {
+          "content_length": 1360,
+          "item_count": 2,
+          "is_empty": false
+        }
+      },
+      "empty_sections": [],
+      "total_content_length": 67236,
       "has_wage_info": true,
       "has_pension_info": true,
       "has_leave_info": true,
@@ -75992,6 +76869,63 @@
       "has_overtime_info": true,
       "has_training_info": true,
       "has_homeoffice_info": true
+    },
+    {
+      "file": "171115_Cao_F_S__L_2016_2018_definitief_hvb_2.md.json",
+      "file_size": 79224,
+      "sections": {
+        "general_information": {
+          "content_length": 7837,
+          "item_count": 25,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 30646,
+          "item_count": 34,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 1528,
+          "item_count": 6,
+          "is_empty": false
+        },
+        "leave_information": {
+          "content_length": 9858,
+          "item_count": 19,
+          "is_empty": false
+        },
+        "termination_information": {
+          "content_length": 4863,
+          "item_count": 11,
+          "is_empty": false
+        },
+        "overtime_information": {
+          "content_length": 14787,
+          "item_count": 20,
+          "is_empty": false
+        },
+        "training_information": {
+          "content_length": 5434,
+          "item_count": 11,
+          "is_empty": false
+        },
+        "homeoffice_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        }
+      },
+      "empty_sections": [
+        "homeoffice_information"
+      ],
+      "total_content_length": 74953,
+      "has_wage_info": true,
+      "has_pension_info": true,
+      "has_leave_info": true,
+      "has_termination_info": true,
+      "has_overtime_info": true,
+      "has_training_info": true,
+      "has_homeoffice_info": false
     },
     {
       "file": "cao_2012_definitief.md.json",
@@ -83098,6 +84032,61 @@
       "has_homeoffice_info": false
     },
     {
+      "file": "CAO2021-2024_Augustus2023def_0_0.md.json",
+      "file_size": 101882,
+      "sections": {
+        "general_information": {
+          "content_length": 12327,
+          "item_count": 21,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 19578,
+          "item_count": 23,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 821,
+          "item_count": 2,
+          "is_empty": false
+        },
+        "leave_information": {
+          "content_length": 13979,
+          "item_count": 20,
+          "is_empty": false
+        },
+        "termination_information": {
+          "content_length": 16008,
+          "item_count": 10,
+          "is_empty": false
+        },
+        "overtime_information": {
+          "content_length": 21124,
+          "item_count": 29,
+          "is_empty": false
+        },
+        "training_information": {
+          "content_length": 9700,
+          "item_count": 13,
+          "is_empty": false
+        },
+        "homeoffice_information": {
+          "content_length": 664,
+          "item_count": 2,
+          "is_empty": false
+        }
+      },
+      "empty_sections": [],
+      "total_content_length": 94201,
+      "has_wage_info": true,
+      "has_pension_info": true,
+      "has_leave_info": true,
+      "has_termination_info": true,
+      "has_overtime_info": true,
+      "has_training_info": true,
+      "has_homeoffice_info": true
+    },
+    {
       "file": "ICK-cao 2023.md.json",
       "file_size": 99446,
       "sections": {
@@ -86618,6 +87607,63 @@
         "homeoffice_information"
       ],
       "total_content_length": 115903,
+      "has_wage_info": true,
+      "has_pension_info": true,
+      "has_leave_info": true,
+      "has_termination_info": true,
+      "has_overtime_info": true,
+      "has_training_info": true,
+      "has_homeoffice_info": false
+    },
+    {
+      "file": "cao_teksten_2013_2014_aanmelding.md.json",
+      "file_size": 119599,
+      "sections": {
+        "general_information": {
+          "content_length": 710,
+          "item_count": 5,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 52265,
+          "item_count": 37,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 3374,
+          "item_count": 4,
+          "is_empty": false
+        },
+        "leave_information": {
+          "content_length": 10056,
+          "item_count": 16,
+          "is_empty": false
+        },
+        "termination_information": {
+          "content_length": 13052,
+          "item_count": 15,
+          "is_empty": false
+        },
+        "overtime_information": {
+          "content_length": 28046,
+          "item_count": 17,
+          "is_empty": false
+        },
+        "training_information": {
+          "content_length": 9573,
+          "item_count": 12,
+          "is_empty": false
+        },
+        "homeoffice_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        }
+      },
+      "empty_sections": [
+        "homeoffice_information"
+      ],
+      "total_content_length": 117076,
       "has_wage_info": true,
       "has_pension_info": true,
       "has_leave_info": true,

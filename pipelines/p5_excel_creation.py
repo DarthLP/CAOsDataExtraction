@@ -5,18 +5,12 @@ This script creates Excel output from LLM extraction results.
 It merges salary and non-salary data, adds CAO info, and creates final Excel files.
 
 USAGE:
-    Single process:
-        python pipelines/p5_excel_creation.py --process_id 0 --total_processes 1
-
-    Multi-process:
-        python pipelines/p5_excel_creation.py --process_id 0 --total_processes 6
+    python pipelines/p5_excel_creation.py
 
     With file limit:
-        python pipelines/p5_excel_creation.py --process_id 0 --total_processes 1 --max_files 10
+        python pipelines/p5_excel_creation.py --max_files 10
 
 ARGUMENTS:
-    --process_id: Process ID for work distribution (0-based) - defaults to 0
-    --total_processes: Total number of parallel processes - defaults to 1
     --max_files: Maximum number of files to process (optional)
 
 INPUT:
@@ -34,6 +28,7 @@ import os
 import sys
 import json
 import argparse
+import csv
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
@@ -44,7 +39,6 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # Third-party imports
 import pandas as pd
 import yaml
-from dotenv import load_dotenv
 
 # =============================================================================
 # CONFIGURATION
@@ -55,7 +49,7 @@ class ExcelConfig:
     llm_analysis_folder: Path
     cao_info_path: str
     output_folder: Path
-    max_json_files: int = 1000000
+    max_json_files: int = 1000000  # Default value for max files to process
 
 def load_configuration() -> ExcelConfig:
     """Load and validate configuration from config.yaml."""
@@ -65,13 +59,32 @@ def load_configuration() -> ExcelConfig:
     return ExcelConfig(
         llm_analysis_folder=Path('outputs/llm_analysis'),
         cao_info_path="pdfs/input_pdfs/extracted_cao_info.csv",  # Fixed path
-        output_folder=Path(config_data['paths']['outputs_excel']) / "new_results",
-        max_json_files=config_data.get('max_json_files', 1000000)
+        output_folder=Path(config_data['paths']['outputs_excel']) / "new_results"
     )
 
 # =============================================================================
 # DATA MERGING FUNCTIONS
 # =============================================================================
+def truncate_text_for_excel(text: str, max_length: int = 32000) -> str:
+    """
+    Truncate text to fit Excel cell limits.
+    
+    Args:
+        text: Text to truncate
+        max_length: Maximum length (default 32000 to stay under Excel's 32767 limit)
+        
+    Returns:
+        str: Truncated text with ellipsis if needed
+    """
+    if not text or not isinstance(text, str):
+        return text
+    
+    if len(text) <= max_length:
+        return text
+    
+    # Truncate and add ellipsis
+    return text[:max_length-3] + "..."
+
 def merge_extraction_results(salary_extracted: List[dict], rest_extracted: dict, cao_dates: Dict[str, str]) -> List[dict]:
     """
     Merge results from salary and rest extractions into multiple rows with specific infotype labels.
@@ -102,6 +115,12 @@ def merge_extraction_results(salary_extracted: List[dict], rest_extracted: dict,
         'training', 'Homeoffice'
     ]
     
+    def safe_truncate(value):
+        """Safely truncate any value to fit Excel limits."""
+        if isinstance(value, str):
+            return truncate_text_for_excel(value)
+        return value
+    
     # Define field mappings for different infotypes
     INFOTYPE_FIELD_MAPPINGS = {
         'Pension': ['pension_premium_basic', 'pension_premium_plus', 'retire_age_basic', 'retire_age_plus', 'pension_age_group'],
@@ -128,7 +147,7 @@ def merge_extraction_results(salary_extracted: List[dict], rest_extracted: dict,
             # Fill salary fields
             for field, value in salary_item.items():
                 if field in wage_row and value:
-                    wage_row[field] = value
+                    wage_row[field] = safe_truncate(value)
             
             # Add contract dates from rest_extracted if available
             if 'contract_information' in rest_extracted:
@@ -182,32 +201,32 @@ def merge_extraction_results(salary_extracted: List[dict], rest_extracted: dict,
             }
             for excel_field, pydantic_field in field_mapping.items():
                 if pydantic_field in pension_info and pension_info[pydantic_field]:
-                    rest_row[excel_field] = pension_info[pydantic_field]
+                    rest_row[excel_field] = safe_truncate(pension_info[pydantic_field])
         elif infotype == 'Leave' and 'leave_information' in rest_extracted:
             leave_info = rest_extracted['leave_information']
             for field in fields:
                 if field in leave_info and leave_info[field]:
-                    rest_row[field] = leave_info[field]
+                    rest_row[field] = safe_truncate(leave_info[field])
         elif infotype == 'Termination' and 'termination_information' in rest_extracted:
             termination_info = rest_extracted['termination_information']
             for field in fields:
                 if field in termination_info and termination_info[field]:
-                    rest_row[field] = termination_info[field]
+                    rest_row[field] = safe_truncate(termination_info[field])
         elif infotype == 'Overtime' and 'overtime_information' in rest_extracted:
             overtime_info = rest_extracted['overtime_information']
             for field in fields:
                 if field in overtime_info and overtime_info[field]:
-                    rest_row[field] = overtime_info[field]
+                    rest_row[field] = safe_truncate(overtime_info[field])
         elif infotype == 'Training' and 'training_information' in rest_extracted:
             training_info = rest_extracted['training_information']
             for field in fields:
                 if field in training_info and training_info[field]:
-                    rest_row[field] = training_info[field]
+                    rest_row[field] = safe_truncate(training_info[field])
         elif infotype == 'Homeoffice' and 'homeoffice_information' in rest_extracted:
             homeoffice_info = rest_extracted['homeoffice_information']
             for field in fields:
                 if field in homeoffice_info and homeoffice_info[field]:
-                    rest_row[field] = homeoffice_info[field]
+                    rest_row[field] = safe_truncate(homeoffice_info[field])
         
         # Add contract dates from p4_analysis.py
         if 'contract_information' in rest_extracted:
@@ -223,6 +242,12 @@ def merge_extraction_results(salary_extracted: List[dict], rest_extracted: dict,
         rest_row['date_of_formal_notification'] = cao_dates.get('date_of_formal_notification', '')
         
         merged_results.append(rest_row)
+    
+    # Final safety check: ensure all string values are truncated
+    for result in merged_results:
+        for field, value in result.items():
+            if isinstance(value, str) and len(value) > 32000:
+                result[field] = truncate_text_for_excel(value)
     
     return merged_results
 
@@ -240,15 +265,19 @@ def load_cao_info(cao_info_path: str) -> Dict[str, Dict[str, str]]:
             
             for _, row in df.iterrows():
                 cao_number = str(row.get('cao_number', ''))
-                if cao_number:
-                    cao_info_mapping[cao_number] = {
+                pdf_name = str(row.get('pdf_name', ''))
+                if cao_number and pdf_name:
+                    # Create key as "cao_number:pdf_name" for unique identification
+                    key = f"{cao_number}:{pdf_name}"
+                    cao_info_mapping[key] = {
+                        'cao_number': cao_number,
                         'id': str(row.get('id', '')),
                         'TTW': 'yes' if 'TTW' in str(row.get('pdf_name', '')).upper() else 'no',
                         'ingangsdatum': str(row.get('ingangsdatum', '')),
                         'expiratiedatum': str(row.get('expiratiedatum', '')),
                         'datum_kennisgeving': str(row.get('datum_kennisgeving', ''))
                     }
-            print(f"  Mapped {len(cao_info_mapping)} CAO numbers")
+            print(f"  Mapped {len(cao_info_mapping)} unique CAO entries")
         except Exception as e:
             print(f"Warning: Could not load CAO info from {cao_info_path}: {e}")
     else:
@@ -292,8 +321,27 @@ def process_llm_file(cao_number: str, salary_file: Path, cao_info_mapping: Dict[
         with open(non_salary_file, 'r', encoding='utf-8') as f:
             rest_extracted = json.load(f)
     
-    # Get CAO info dates
-    cao_info = cao_info_mapping.get(cao_number, {})
+    # Find matching CAO info by CAO number and filename
+    # Convert filename back to original PDF name (remove .json extension and _salary suffix)
+    original_filename = salary_file.stem.replace('_salary', '')
+    
+    # Also remove .md extension if present (LLM files have .md extensions)
+    original_filename = original_filename.replace('.md', '')
+    
+    # Try to find exact match first (with .pdf extension)
+    cao_info_key = f"{cao_number}:{original_filename}.pdf"
+    cao_info = cao_info_mapping.get(cao_info_key, {})
+    
+    # If no exact match, try to find by filename only (in case CAO number folder is wrong)
+    if not cao_info:
+        for key, info in cao_info_mapping.items():
+            # Compare without extensions (both .pdf and .md)
+            csv_filename = info.get('pdf_name', '').replace('.pdf', '')
+            if csv_filename == original_filename:
+                cao_info = info
+                print(f'    Found CAO info by filename match: {key}')
+                break
+    
     cao_dates = {
         'start_date': cao_info.get('ingangsdatum', ''),
         'expiry_date': cao_info.get('expiratiedatum', ''),
@@ -309,16 +357,14 @@ def process_llm_file(cao_number: str, salary_file: Path, cao_info_mapping: Dict[
         item['CAO'] = cao_number
         
         # Add CAO info if available
-        if cao_number in cao_info_mapping:
-            cao_info = cao_info_mapping[cao_number]
+        if cao_info:
             item['id'] = cao_info.get('id', '')
             item['TTW'] = cao_info.get('TTW', '')
-            # Note: infotype is set by data processing logic, not from CAO info
-            print(f'    Added CAO info: id={item["id"]}, TTW={item["TTW"]}')
+            print(f'    Added CAO info: id={item["id"]}, TTW={item["TTW"]}, dates={cao_dates}')
         else:
             item['id'] = ''
             item['TTW'] = ''
-            print(f'    No CAO info found for CAO {cao_number}')
+            print(f'    No CAO info found for CAO {cao_number}, filename {original_filename}')
     
     return merged_results
 
@@ -328,8 +374,6 @@ def process_llm_file(cao_number: str, salary_file: Path, cao_info_mapping: Dict[
 def main():
     """Main entry point for Excel creation."""
     parser = argparse.ArgumentParser(description='CAO Data Excel Creation')
-    parser.add_argument('--process_id', type=int, default=0, help='Process ID for work distribution')
-    parser.add_argument('--total_processes', type=int, default=1, help='Total number of parallel processes')
     parser.add_argument('--max_files', type=int, help='Maximum number of files to process')
     
     args = parser.parse_args()
@@ -344,23 +388,23 @@ def main():
         
         # Discover files
         all_files = discover_llm_files(config.llm_analysis_folder)
-        
-        # Filter files for this process
-        process_files = [f for i, f in enumerate(all_files) if i % args.total_processes == args.process_id]
+        print(f"  Discovered {len(all_files)} total files")
         
         # Apply file limit
         max_files = args.max_files if args.max_files is not None else config.max_json_files
-        if max_files:
-            process_files = process_files[:max_files]
+        print(f"  Max files limit: {max_files}")
+        if max_files and max_files < len(all_files):
+            all_files = all_files[:max_files]
+            print(f"  Limited to {len(all_files)} files due to max_files limit")
         
-        print(f'Process {args.process_id + 1}: Processing {len(process_files)} files')
+        print(f'Processing {len(all_files)} files')
         
         # Process files
         all_results = []
         successful_files = 0
         failed_files = []
         
-        for cao_number, salary_file in process_files:
+        for cao_number, salary_file in all_files:
             try:
                 results = process_llm_file(cao_number, salary_file, cao_info_mapping, config)
                 all_results.extend(results)
@@ -372,15 +416,48 @@ def main():
         
         # Create DataFrame and save Excel
         if all_results:
-            df_results = pd.DataFrame(all_results)
-            output_path = config.output_folder / f"extracted_data.xlsx"
-            df_results.to_excel(output_path, index=False)
-            print(f'  Saved Excel file: {output_path}')
-            print(f'  Total rows: {len(df_results)}')
+            try:
+                df_results = pd.DataFrame(all_results)
+                print(f'  Created DataFrame with {len(df_results)} rows and {len(df_results.columns)} columns')
+                
+                # Check for any extremely long text fields
+                for col in df_results.columns:
+                    if df_results[col].dtype == 'object':
+                        max_len = df_results[col].astype(str).str.len().max()
+                        if max_len > 30000:
+                            print(f'  WARNING: Column {col} has text with {max_len} characters')
+                
+                # Check if DataFrame is too large for Excel
+                total_cells = len(df_results) * len(df_results.columns)
+                if total_cells > 1000000:  # Excel limit is ~1M cells
+                    print(f'  WARNING: DataFrame has {total_cells} cells, which is close to Excel limits')
+                    print(f'  Saving as CSV instead of Excel to avoid issues')
+                    output_path = config.output_folder / f"extracted_data.csv"
+                    # Save CSV with better formatting for readability (using semicolon delimiter for European Excel)
+                    df_results.to_csv(output_path, index=False, encoding='utf-8', quoting=csv.QUOTE_ALL, sep=';')
+                    print(f'  Saved CSV file: {output_path}')
+                    print(f'  Total rows: {len(df_results)}')
+                else:
+                    # Try to save as Excel
+                    output_path = config.output_folder / f"extracted_data.xlsx"
+                    df_results.to_excel(output_path, index=False, engine='openpyxl')
+                    print(f'  Saved Excel file: {output_path}')
+                    print(f'  Total rows: {len(df_results)}')
+                
+            except Exception as e:
+                print(f'  ERROR creating Excel file: {e}')
+                # Try to save as CSV as fallback
+                try:
+                    csv_path = config.output_folder / f"extracted_data.csv"
+                    # Save CSV with better formatting for readability (using semicolon delimiter for European Excel)
+                    df_results.to_csv(csv_path, index=False, encoding='utf-8', quoting=csv.QUOTE_ALL, sep=';')
+                    print(f'  Saved CSV file as fallback: {csv_path}')
+                except Exception as csv_error:
+                    print(f'  ERROR saving CSV fallback: {csv_error}')
         else:
             print('  No data to save')
         
-        print(f'Process {args.process_id + 1} completed: {successful_files} successful, {len(failed_files)} failed')
+        print(f'Completed: {successful_files} successful, {len(failed_files)} failed')
         
     except Exception as e:
         print(f'Fatal error: {e}')

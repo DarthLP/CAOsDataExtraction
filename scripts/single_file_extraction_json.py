@@ -168,8 +168,8 @@ LLM_PRESENCE_PENALTY = 0
 LLM_FREQUENCY_PENALTY = 0
 LLM_THINKING_BUDGET = -1
 performance_monitor = PerformanceMonitor(log_file=
-    'performance_logs/extraction_performance.jsonl', summary_file=
-    'performance_logs/extraction_summary.json')
+    'performance_logs/llm_extraction/extraction_performance.jsonl', summary_file=
+    'performance_logs/llm_extraction/extraction_summary.json')
 
 
 def extract_with_json_upload(markdown_path, filename, cao_number, max_retries=2):

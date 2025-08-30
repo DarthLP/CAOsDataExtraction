@@ -9,7 +9,12 @@ USAGE:
         python pipelines/p4_analysis.py --key_number 7 --process_id 0 --total_processes 1
 
     Multi-process:
-        python pipelines/p4_analysis.py --key_number 7 --process_id 0 --total_processes 6
+        unbuffer caffeinate python pipelines/p4_analysis.py --key_number 7 --process_id 0 --total_processes 6 2>&1 | tee log1.txt &
+        unbuffer caffeinate python pipelines/p4_analysis.py --key_number 2 --process_id 1 --total_processes 6 2>&1 | tee log2.txt &
+        unbuffer caffeinate python pipelines/p4_analysis.py --key_number 3 --process_id 2 --total_processes 6 2>&1 | tee log3.txt &
+        unbuffer caffeinate python pipelines/p4_analysis.py --key_number 4 --process_id 3 --total_processes 6 2>&1 | tee log4.txt &
+        unbuffer caffeinate python pipelines/p4_analysis.py --key_number 5 --process_id 4 --total_processes 6 2>&1 | tee log5.txt &
+        unbuffer caffeinate python pipelines/p4_analysis.py --key_number 6 --process_id 5 --total_processes 6 2>&1 | tee log6.txt &
 
     With file limit:
         python pipelines/p4_analysis.py --key_number 7 --process_id 0 --total_processes 1 --max_files 10
@@ -50,14 +55,23 @@ from dataclasses import dataclass, field
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Third-party imports for environment variables, file locking, and data validation
-from dotenv import load_dotenv
 import pandas as pd
 import yaml
 from pydantic import BaseModel, Field, ConfigDict
+from dotenv import load_dotenv
 
 # Google Gemini API imports
 from google import genai
 from google.genai import types
+
+# Import performance monitoring
+from monitoring.monitoring_3_1 import PerformanceMonitor
+
+# =============================================================================
+# GLOBAL FLAGS
+# =============================================================================
+# Global flag to signal quota exhaustion for graceful shutdown
+quota_exhausted_flag = False
 
 # =============================================================================
 # LLM CLIENT FUNCTIONS
@@ -105,12 +119,12 @@ def setup_gemini_client(api_key: str):
     return genai.Client(api_key=api_key)
 
 
-def get_model_parameters() -> Dict[str, Any]:
+def get_model_parameters() -> dict:
     """
-    Get standard model parameters for consistent LLM configuration.
+    Get model parameters for LLM calls.
     
     Returns:
-        dict: Model configuration parameters
+        dict: Model parameters
     """
     return {
         "model": MODEL,
@@ -119,12 +133,13 @@ def get_model_parameters() -> Dict[str, Any]:
         "top_k": 1,
         "max_tokens": None,
         "candidate_count": 1,
-        "seed": 42,  # For deterministic output
+        "seed": 42,
         "presence_penalty": 0.0,
         "frequency_penalty": 0.0,
-        "thinking_budget": 1024,  # Medium complexity tasks
+        "thinking_budget": -1,  # Dynamic thinking (like p3)
         "max_retries": 5
     }
+
 
 
 def calculate_quota_retry_delay(file_size_mb: float, attempt: int) -> int:
@@ -194,15 +209,43 @@ def handle_llm_errors(error: Exception, attempt: int, max_retries: int,
             return False
     elif 'serviceunavailable' in error_str or '503' in error_str or 'connection reset' in error_str or '500' in error_str or 'internal' in error_str:
         if attempt < max_retries - 1:
-            wait_time = 60 * 2 ** attempt
-            print(f'  Attempt {attempt + 1} failed (service unavailable/internal error), retrying in {wait_time // 60} minutes...')
+            # Custom wait times for 503 errors: 2, 4, 8, 12, 20 minutes
+            wait_times = [2, 4, 8, 12, 20]  # minutes
+            wait_time_minutes = wait_times[min(attempt, len(wait_times) - 1)]
+            wait_time = wait_time_minutes * 60  # convert to seconds
+            print(f'  Attempt {attempt + 1} failed (service unavailable/internal error), retrying in {wait_time_minutes} minutes...')
             time.sleep(wait_time)
             return True
         else:
             print(f'  All {max_retries} attempts failed with service errors')
             return False
-    elif any(keyword in error_str for keyword in ['quota', 'rate limit', 'too many requests', '429']):
+    elif 'no content parts found' in error_str or 'no content' in error_str:
         if attempt < max_retries - 1:
+            wait_time = 60 * 2 ** attempt
+            print(f'  Attempt {attempt + 1} failed (empty response), retrying in {wait_time // 60} minutes...')
+            time.sleep(wait_time)
+            return True
+        else:
+            print(f'  All {max_retries} attempts failed with empty response errors')
+            return False
+    elif 'incomplete json' in error_str or 'json validation failed' in error_str or 'truncated' in error_str:
+        if attempt < max_retries - 1:
+            wait_time = 30 * 2 ** attempt
+            print(f'  Attempt {attempt + 1} failed (incomplete JSON), retrying in {wait_time} seconds...')
+            time.sleep(wait_time)
+            return True
+        else:
+            print(f'  All {max_retries} attempts failed with incomplete JSON errors')
+            return False
+    elif any(keyword in error_str for keyword in ['quota', 'rate limit', 'too many requests', '429']):
+        # Check specifically for RESOURCE_EXHAUSTED (quota exceeded)
+        if 'resource_exhausted' in error_str and 'quota' in error_str:
+            print(f'  🚨 API QUOTA EXHAUSTED detected - Process will shutdown gracefully')
+            # Set global flag to trigger graceful shutdown
+            global quota_exhausted_flag
+            quota_exhausted_flag = True
+            return False  # Don't retry, trigger shutdown
+        elif attempt < max_retries - 1:
             wait_time = calculate_quota_retry_delay(file_size_mb, attempt)
             print(f'  Attempt {attempt + 1} failed (rate limit), retrying in {wait_time // 60} minutes...')
             time.sleep(wait_time)
@@ -218,6 +261,82 @@ def handle_llm_errors(error: Exception, attempt: int, max_retries: int,
     else:
         print(f'  All {max_retries} attempts failed with {type(error).__name__}: {error}')
         return False
+
+
+def log_api_response_details(response, filename: str, processing_time: float = 0) -> None:
+    """
+    Log detailed information about API response for debugging and monitoring.
+    
+    Args:
+        response: The API response object
+        filename: Name of the file being processed
+        processing_time: Time taken for API call in seconds
+    """
+    try:
+        # Extract input/output token counts if available
+        input_tokens = "N/A"
+        output_tokens = "N/A"
+        if hasattr(response, 'usage_metadata'):
+            if hasattr(response.usage_metadata, 'prompt_token_count'):
+                input_tokens = response.usage_metadata.prompt_token_count
+            if hasattr(response.usage_metadata, 'candidates_token_count'):
+                output_tokens = response.usage_metadata.candidates_token_count
+        
+        # Extract response size
+        response_size = 0
+        if hasattr(response, 'text') and response.text:
+            response_size = len(response.text)
+        elif hasattr(response, 'parsed') and response.parsed:
+            response_size = len(str(response.parsed))
+        
+        # Extract finish reason
+        finish_reason = "UNKNOWN"
+        if hasattr(response, 'candidates') and response.candidates:
+            candidate = response.candidates[0]
+            if hasattr(candidate, 'finish_reason'):
+                finish_reason = str(candidate.finish_reason)
+        
+        # Log the comprehensive details
+        print(f"  📊 API Response Details for {filename}:")
+        print(f"    - Input tokens: {input_tokens} | Output tokens: {output_tokens} (max: 65536)")
+        print(f"    - Response size: {response_size} chars | Finish reason: {finish_reason}")
+        print(f"    - Processing time: {processing_time:.1f}s | Status: SUCCESS")
+        
+    except Exception as e:
+        print(f"  ⚠️  Failed to log response details for {filename}: {e}")
+
+
+def check_response_truncation(response, filename: str) -> bool:
+    """
+    Check if the LLM response was truncated.
+    
+    Args:
+        response: The LLM response object
+        filename: Filename for context
+        
+    Returns:
+        bool: True if response was truncated, False otherwise
+    """
+    # Check finish reason for truncation
+    if hasattr(response, 'candidates') and response.candidates:
+        candidate = response.candidates[0]
+        if hasattr(candidate, 'finish_reason'):
+            if candidate.finish_reason == 'MAX_TOKENS':
+                print(f'  DEBUG: Response truncated due to MAX_TOKENS limit for {filename}')
+                return True
+    
+    # Check if response text is empty or very short
+    if hasattr(response, 'text') and response.text:
+        if len(response.text.strip()) < 50:  # Very short response
+            print(f'  DEBUG: Response text is very short ({len(response.text)} chars) for {filename}')
+            return True
+    
+    # Check if parsed attribute is empty when we expect structured output
+    if hasattr(response, 'parsed') and response.parsed is None:
+        print(f'  DEBUG: No parsed structured output for {filename}')
+        return True
+    
+    return False
 
 
 def validate_llm_response_json(content: str, filename: str) -> dict:
@@ -254,7 +373,7 @@ def validate_llm_response_json(content: str, filename: str) -> dict:
 # CONSTANTS
 # =============================================================================
 # Global configuration constants
-MODEL = 'gemini-2.5-flash'  # Use same model as p3_llmExtraction.py
+MODEL = 'gemini-2.5-flash'  
 
 
 # =============================================================================
@@ -264,45 +383,45 @@ MODEL = 'gemini-2.5-flash'  # Use same model as p3_llmExtraction.py
 
 class SalaryRow(BaseModel):
     """Schema for a single salary row representing one job group."""
-    jobgroup: str = Field(default="", description="Job group or position title (e.g. 'I=Statutory minimum wage (WML)', 'F-21-5', 'A')")
-    salary_1: str = Field(default="", description="Salary of the first job group listed in the earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
-    salary_1_unit: str = Field(default="", description="Unit for first salary (e.g., 'hourly', 'monthly', 'weekly')")
+    jobgroup: str = Field(default="", description="Job group code or position title - with descriptions in parentheses if explicitly mentioned (e.g., 'F-21-5 (workers with high school diploma)', 'I (Statutory minimum wage)')")    
+    salary_1: str = Field(default="", description="Salary of the first job group listed in the earliest wage table (numeric value as string; e.g. '13,17')")
+    salary_1_unit: str = Field(default="", description="Unit for first salary (e.g., 'hourly')")
     salary_1_startdate: str = Field(default="", description="Start date for first salary (DD/MM/YYYY format)")
-    salary_increment_1: str = Field(default="", description="Percentage increase of salaries in the earliest wage table (e.g., '2%', '3%')")
+    salary_increment_1: str = Field(default="", description="Percentage increase of first salary in the earliest wage table (e.g., '2%')")
     
-    salary_2: str = Field(default="", description="Salary of the first job group listed in the second earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
-    salary_2_unit: str = Field(default="", description="Unit for second salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_2: str = Field(default="", description="Salary of the first job group listed in the second earliest wage table (numeric value as string; e.g. '13,17')")
+    salary_2_unit: str = Field(default="", description="Unit for second salary (e.g., 'hourly')")
     salary_2_startdate: str = Field(default="", description="Start date for second salary (DD/MM/YYYY format)")
-    salary_increment_2: str = Field(default="", description="Percentage increase of salaries in the second earliest wage table (e.g., '2%', '3%')")
+    salary_increment_2: str = Field(default="", description="Percentage increase of second salary in the second earliest wage table (e.g., '2%')")
     
-    salary_3: str = Field(default="", description="Salary of the first job group listed in the third earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
-    salary_3_unit: str = Field(default="", description="Unit for third salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_3: str = Field(default="", description="Salary of the first job group listed in the third earliest wage table (numeric value as string; e.g. '13,17')")
+    salary_3_unit: str = Field(default="", description="Unit for third salary (e.g., 'hourly')")
     salary_3_startdate: str = Field(default="", description="Start date for third salary (DD/MM/YYYY format)")
-    salary_increment_3: str = Field(default="", description="Percentage increase of salaries in the third earliest wage table (e.g., '2%', '3%')")
+    salary_increment_3: str = Field(default="", description="Percentage increase of third salary in the third earliest wage table (e.g., '2%')")
     
-    salary_4: str = Field(default="", description="Salary of the first job group listed in the fourth earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
-    salary_4_unit: str = Field(default="", description="Unit for fourth salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_4: str = Field(default="", description="Salary of the first job group listed in the fourth earliest wage table (numeric value as string; e.g. '21,59')")
+    salary_4_unit: str = Field(default="", description="Unit for fourth salary (e.g., 'hourly')")
     salary_4_startdate: str = Field(default="", description="Start date for fourth salary (DD/MM/YYYY format)")
-    salary_increment_4: str = Field(default="", description="Percentage increase of salaries in the fourth earliest wage table (e.g., '2%', '3%')")
+    salary_increment_4: str = Field(default="", description="Percentage increase of fourth salary in the fourth earliest wage table (e.g., '2%')")
     
-    salary_5: str = Field(default="", description="Salary of the first job group listed in the fifth earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
-    salary_5_unit: str = Field(default="", description="Unit for fifth salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_5: str = Field(default="", description="Salary of the first job group listed in the fifth earliest wage table (numeric value as string; e.g. '21,59')")
+    salary_5_unit: str = Field(default="", description="Unit for fifth salary (e.g., 'hourly')")
     salary_5_startdate: str = Field(default="", description="Start date for fifth salary (DD/MM/YYYY format)")
-    salary_increment_5: str = Field(default="", description="Percentage increase of salaries in the fifth earliest wage table (e.g., '2%', '3%')")
+    salary_increment_5: str = Field(default="", description="Percentage increase of salaries in the fifth earliest wage table (e.g., '2%')")
     
-    salary_6: str = Field(default="", description="Salary of the first job group listed in the sixth earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
-    salary_6_unit: str = Field(default="", description="Unit for sixth salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_6: str = Field(default="", description="Salary of the first job group listed in the sixth earliest wage table (numeric value as string; e.g. '13,17')")
+    salary_6_unit: str = Field(default="", description="Unit for sixth salary (e.g., 'hourly')")
     salary_6_startdate: str = Field(default="", description="Start date for sixth salary (DD/MM/YYYY format)")
-    salary_increment_6: str = Field(default="", description="Percentage increase of salaries in the sixth earliest wage table (e.g., '2%', '3%')")
+    salary_increment_6: str = Field(default="", description="Percentage increase of sixth salary in the sixth earliest wage table (e.g., '2%')")
     
-    salary_7: str = Field(default="", description="Salary of the first job group listed in the seventh earliest wage table (numeric value as string; e.g. '13,17', '21,59')")
-    salary_7_unit: str = Field(default="", description="Unit for seventh salary (e.g., 'hourly', 'monthly', 'weekly')")
+    salary_7: str = Field(default="", description="Salary of the first job group listed in the seventh earliest wage table (numeric value as string; e.g. '13,17')")
+    salary_7_unit: str = Field(default="", description="Unit for seventh salary (e.g., 'hourly')")
     salary_7_startdate: str = Field(default="", description="Start date for seventh salary (DD/MM/YYYY format)")
-    salary_increment_7: str = Field(default="", description="Percentage increase of salaries in the seventh earliest wage table (e.g., '2%', '3%')")
+    salary_increment_7: str = Field(default="", description="Percentage increase of seventh salary in the seventh earliest wage table (e.g., '2%')")
     
-    more_salaries: bool = Field(default=False, description="True if there are more than the 7 salary steps, salary_1..salary_7, in this job group")
-    salary_note: str = Field(default="", description="Additional context related to salary interpretation or about the salary table (e.g., 'Youth salary scales phased out from 2014', 'Hourly wage = monthly salary / 156', 'Classification via FWG® system')")
-    salary_age_group: str = Field(default="", description="Age group the salary of the first job group applies to (e.g., '21+', '18-20', '22', 'all ages')")
+    more_salaries: bool = Field(default=False, description="ONLY True if there are more than the 7 salary steps, salary_1,...,salary_7, in this job group. Hence, all salary fields salary_1,...,salary_7 must be filled.")
+    salary_note: str = Field(default="", description="Table-level salary context including calculation methods, effective dates and conditions")
+    salary_age_group: str = Field(default="", description="Age group the salary of the first job group applies to (e.g., '21+', 'all ages')")
 
 
 class SalaryExtractionSchema(BaseModel):
@@ -312,22 +431,22 @@ class SalaryExtractionSchema(BaseModel):
 
 class ContractInfo(BaseModel):
     """Schema for contract information."""
-    start_date_contract: str = Field(default="", description="Contract start date (DD/MM/YYYY format or descriptive text)")
-    expiry_date_contract: str = Field(default="", description="Contract expiry/end date (DD/MM/YYYY format or descriptive text)")
+    start_date_contract: str = Field(default="", description="Contract start date (DD/MM/YYYY format)")
+    expiry_date_contract: str = Field(default="", description="Contract expiry/end date (DD/MM/YYYY format)")
 
 
 class PensionInfo(BaseModel):
     """Schema for pension information."""
     pension_scheme_basic: str = Field(default="", description="Basic pension scheme rules, premiums, development and structure (e.g., '50% pension premium paid by employee', 'Employees 21-68 eligible', 'follows rules of Stichting Bedrijfstakpensioenfonds')")
-    pension_scheme_plus: str = Field(default="", description="Additional or “plus” pension scheme rules, premiums, development and structure (e.g., '2% additional premium', 'Generation Policy for 60+ between 2018 and 2023', '0.2% increase for employees offset on 1-6-2021')")
+    pension_scheme_plus: str = Field(default="", description="Additional or 'plus' pension scheme rules, premiums, development and structure (e.g., '2% additional premium', 'Generation Policy for 60+ between 2018 and 2023', '0.2% increase for employees offset on 1-6-2021')")
     retire_age_basic: str = Field(default="", description="Retirement age for the basic pension scheme (e.g., '67', '65-67 years')")
-    retire_age_plus: str = Field(default="", description="Retirement age for the additional or “plus” pension scheme (e.g., '62', '60 years')")
+    retire_age_plus: str = Field(default="", description="Retirement age for the additional or 'plus' pension scheme (e.g., '62', '60 years')")
     pension_age_group: str = Field(default="", description="Age group eligible for pension schemes (e.g., '21+', 'all employees')")
 
 
 class LeaveInfo(BaseModel):
     """Schema for leave information."""
-    maternity_leave: str = Field(default="", description="Child-related (Maternity, adoption, etc.) leave duration (e.g., '5 days of paid maternity leave', 'Additional 4 weeks in multiple births', '5 weeks extra unpaid leave within 6 months after birth')")
+    maternity_leave: str = Field(default="", description="Child-related (Maternity, adoption, etc.) leave duration (e.g., '5 days of paid maternity leave', 'Additional 4 weeks in multiple births', '5 weeks extra unpaid leave after birth')")
     maternity_pay: str = Field(default="", description="Salary and benefits during child-related leave (e.g., '100% paid by employer', 'full salary', '70% UWV benefit')")
     maternity_note: str = Field(default="", description="Additional child-related leave rules (e.g., 'Vacation accrues during leave', 'leave may be split between partners')")
     vacation_time: str = Field(default="", description="Annual vacation time (e.g., '25', '0.0769')")
@@ -388,7 +507,7 @@ class AnalysisConfig:
     output_folder: Path
     cao_info_path: str
     max_processing_time_hours: int = 1
-    max_json_files: int = 1
+    max_json_files: int = 1000000  # Default value for max files to process
     token_limit: int = 900000  # 900K tokens safety limit
 
 
@@ -400,8 +519,15 @@ def load_configuration() -> AnalysisConfig:
     return AnalysisConfig(
         input_folder=config_data['paths']['outputs_json'] + "/new_flow",
         output_folder=Path(config_data['paths']['outputs_json']) / "llm_analysis",
-        cao_info_path=f"{config_data['paths']['inputs_pdfs']}/extracted_cao_info.csv",
-        max_json_files=config_data.get('max_json_files', 1000000)  # Default to 1M if not specified
+        cao_info_path=f"{config_data['paths']['inputs_pdfs']}/extracted_cao_info.csv"
+    )
+
+
+def setup_performance_monitor_p4() -> PerformanceMonitor:
+    """Setup performance monitoring for p4 analysis pipeline."""
+    return PerformanceMonitor(
+        log_file='performance_logs/llm_analysis/analysis_performance.jsonl',
+        summary_file='performance_logs/llm_analysis/analysis_summary.json'
     )
 
 
@@ -410,6 +536,7 @@ def setup_processing_context(config: AnalysisConfig, process_id: int,
     """Setup complete processing context."""
     api_key, actual_key_number = setup_environment(key_number)
     client = setup_gemini_client(api_key)
+    performance_monitor = setup_performance_monitor_p4()
     
     return {
         'config': config,
@@ -417,7 +544,8 @@ def setup_processing_context(config: AnalysisConfig, process_id: int,
         'total_processes': total_processes,
         'api_key': api_key,
         'key_number': actual_key_number,
-        'client': client
+        'client': client,
+        'performance_monitor': performance_monitor
     }
 
 
@@ -506,22 +634,39 @@ SALARY_PROMPT = """
         - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess.
         - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
         - For missing values: Use empty string "" for string fields and use null for numbers, dates, and boolean fields.
+        - Output ONLY valid JSON format matching the provided schema structure.
 
-    CONTENT INCLUSION RULES:
-        - Focus on standard/regular wage tables (not special allowances or bonuses). If multiple tables exist for different time periods under this standard wage type, include all of them. 
-        - Extract salary information for each job groups within standard wage tables.
-        - Include all job groups within standard wage tables.
-        - Prefer hourly units when multiple unit versions of the same wage table exist (hourly vs monthly vs weekly vs 4 weeks vs yearly for same workers/periods/jobs/ages/others). If hourly is absent, keep the available unit as-is.
-        - Salary_note, salary_age_group and more_salaries fields should be consistent across all job groups since they usually apply to the entire wage tables (if not mention it in the salary_note field). Include comprehensive information in the salary_note field.
+    UNIT & TABLE SELECTION:
+        - Include ONLY standard/regular wage tables - EXCLUDE allowances, bonuses, overtime, reimbursements, and non-standard worker roles like apprentices or foremen.
+        - If multiple tables exist for different time periods under this standard wage type, include all of them. 
+        - Within standard wage tables extract salary information for each job group and include all job groups.
+        - Unit choice: if the same table exists in multiple units for the same workers/groups/periods/ages, choose the hourly version. Do NOT perform unit conversions. If hourly is absent, keep the original unit as-is.
+        - If salaries are presented as a range (e.g., "€2,000 – €2,400"), always extract the minimum value as the salary and state this in salary_note field.
 
-    AGE GROUP SELECTION RULES:
-        - For each wage table: Extract data for the age group that covers the most worker ages (e.g., 22+, 23+, 25+)
-        - Prefer open-ended age groups (like 23+) over narrow ranges (like 50-90)
-        - If a job group has no data for the selected age group, keep it empty (do not use data from other age groups)
-        - Different wage tables may have different "oldest age groups" - extract each table's appropriate age group
-        - In the age_group field: Use the oldest age group from all extracted data and note if it changed over time in the salary_note field
+    AGE GROUP SELECTION:
+        - Select EXACTLY ONE age group per wage table, using this order of preference:
+            1. Open-ended groups (e.g., "22+"), preferring the lowest starting age if multiple exist.
+            2. If none exist, select the group that covers the widest span (e.g. '20 - 65' preferred over '20 - 50').
+            3. If tied, select the group with the highest maximum age (e.g. '20 - 65' preferred over '20 - 60' and '22' preferred over '21').
+        - IGNORE age and job groups limited to workers under 21 (e.g., "16-20", "20") unless the group is open-ended ("20+") or spans older ages ("18-65").
+        - Extract data only for the selected age group; do not output multiple age groups.
+        - NEVER borrow values across age groups. If a job group has no data for the chosen age group, leave its fields empty/null.
+        - Record the chosen age group in the age_group field. If the chosen group changes across different wage tables/periods, note this in salary_note.
 
-    OUTPUT: Only valid JSON format matching the provided schema structure.
+    NOTES & CONSISTENCY:
+        - Salary_note, salary_age_group and more_salaries fields should be consistent across all job groups since they usually apply to entire wage tables (if this is not the case mention it in the salary_note field). 
+        - The field more_salaries must be set to true ONLY IF all salary_1 through salary_7 are filled for the job group and there exists at least one additional salary value in a later period. Otherwise, more_salaries must be null.
+        - No Gaps Rule: When multiple salary values are present in a row, map them sequentially into salary_1, salary_2, salary_3, etc. without skipping any index.
+
+    PROCESS — FOLLOW IN THIS ORDER:
+        1. Filter tables: keep only eligible standard wage tables (apply UNIT & TABLE rules).
+        2. For each included table: extract all job groups present (do not omit).
+        3. For each table: select EXACTLY ONE age group using AGE GROUP rules.
+        4. Collect table versions for the same standard table and sort them EARLIEST→LATEST (per TIME-PERIOD ORDERING).
+        5. For each job group (aligned across versions as described): assign salary_1, salary_2, ... by chronological order of versions (observe NO GAPS rule), and for each salary_x also fill: salary_x_unit, salary_x_startdate and salary_increment_x.
+        6. Fill fields salary_note, salary_age_group and more_salaries
+
+    FINAL CHECK: Before producing output, verify that ALL above constraints are satisfied. Then output a single JSON object conforming exactly to the schema.
     """
 
 
@@ -536,13 +681,14 @@ NON_SALARY_PROMPT = """
     CRITICAL RULES:
         - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess.
         - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
+        - Output ONLY valid JSON format matching the provided schema structure.
 
     EXTRACTION GUIDELINES:
-        - Extract factual information for each field based on the schema descriptions.
+        - Extract factual information for each field based on the schema descriptions. Be concise.
         - Include relevant conditions, exceptions, and legal references in note fields.
         - For missing values: Use empty string "" for string fields and use null for numbers, dates, and boolean fields.
 
-    OUTPUT: Only valid JSON format matching the provided schema structure.
+    FINAL CHECK: Before producing output, verify that ALL above constraints are satisfied. Then output a single JSON object conforming exactly to the schema.
     """
 
 
@@ -696,7 +842,7 @@ def parse_llm_response(response_text: str, filename: str, schema_type: str):
     raise ModelOutputParseError(f"Failed to parse {schema_type} extraction response")
 
 
-def extract_salary_from_json(json_obj: dict, filename: str, client) -> List[dict]:
+def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None) -> List[dict]:
     """Extract salary information from JSON using LLM."""
     print(f'  DEBUG: Starting salary extraction for {filename}')
     print(f'  DEBUG: Input JSON keys: {list(json_obj.keys())}')
@@ -792,7 +938,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client) -> List[dict
         "temperature": model_params["temperature"],
         "top_p": model_params["top_p"],
         "top_k": model_params["top_k"],
-        "max_output_tokens": 65536,  # 65536 tokens to handle longer responses
+        "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
         "candidate_count": model_params["candidate_count"],
         "seed": model_params["seed"],
         "presence_penalty": model_params["presence_penalty"],
@@ -806,21 +952,48 @@ def extract_salary_from_json(json_obj: dict, filename: str, client) -> List[dict
     
     try:
         print(f'  DEBUG: Making API call...')
+        start_time = time.time()
         response = client.models.generate_content(
             model=MODEL,
             contents=prompt,
             config=config
         )
+        processing_time = time.time() - start_time
         
         print(f'  DEBUG: API response received')
         print(f'  DEBUG: Response type: {type(response)}')
         print(f'  DEBUG: Response attributes: {dir(response)}')
         
-        if hasattr(response, 'parsed') and response.parsed:
+        # Log detailed response information
+        log_api_response_details(response, filename, processing_time)
+        
+        # Check for truncation
+        if check_response_truncation(response, filename):
+            print(f'  DEBUG: Response appears to be truncated, will retry with different parameters')
+            raise Exception("Response truncated - incomplete JSON")
+        
+        # Check if response has parsed attribute (structured output)
+        if hasattr(response, 'parsed') and response.parsed is not None:
             print(f'  DEBUG: Response has parsed attribute')
-            # response.parsed is now a Pydantic model (SalaryExtractionSchema)
             result = [row.model_dump() for row in response.parsed.salary_information]
             print(f'  DEBUG: Parsed {len(result)} salary rows')
+            
+            # Log successful salary extraction
+            if context and 'performance_monitor' in context:
+                file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+                context['performance_monitor'].log_analysis(
+                    filename=filename,
+                    file_size_mb=file_size_mb,
+                    processing_time=processing_time,
+                    usage_metadata=getattr(response, 'usage_metadata', None),
+                    success=True,
+                    analysis_type="salary",
+                    api_key_used=context.get('key_number', 1),
+                    process_id=context.get('process_id', 0),
+                    cao_number="",  # Will be extracted from file path if needed
+                    model="gemini-2.5-flash"
+                )
+            
             return result
         else:
             print(f'  DEBUG: No parsed attribute in response')
@@ -828,9 +1001,22 @@ def extract_salary_from_json(json_obj: dict, filename: str, client) -> List[dict
                 print(f'  DEBUG: Response text length: {len(response.text) if response.text else 0}')
                 if response.text:
                     print(f'  DEBUG: Response text preview: {response.text[:300]}...')
-                    # Try to parse the text manually
+                    # Try to parse the text manually with better error handling
                     try:
-                        parsed_json = json.loads(response.text)
+                        # First, try to clean up the JSON if it's truncated
+                        cleaned_text = response.text.strip()
+                        if cleaned_text.endswith(','):
+                            cleaned_text = cleaned_text[:-1]
+                        if not cleaned_text.endswith('}'):
+                            # Try to find the last complete object
+                            last_brace = cleaned_text.rfind('}')
+                            if last_brace > 0:
+                                cleaned_text = cleaned_text[:last_brace+1]
+                            else:
+                                # If no closing brace, try to add one
+                                cleaned_text += '}'
+                        
+                        parsed_json = json.loads(cleaned_text)
                         print(f'  DEBUG: Successfully parsed response text manually')
                         # Validate against schema
                         if 'salary_information' in parsed_json:
@@ -842,45 +1028,147 @@ def extract_salary_from_json(json_obj: dict, filename: str, client) -> List[dict
                             print(f'  DEBUG: No salary_information key in parsed JSON')
                     except json.JSONDecodeError as e:
                         print(f'  DEBUG: Failed to parse response text as JSON: {e}')
+                        # Try to extract partial data from the response
+                        try:
+                            # Look for salary_information array in the text
+                            import re
+                            salary_match = re.search(r'"salary_information":\s*\[(.*?)\]', response.text, re.DOTALL)
+                            if salary_match:
+                                salary_content = salary_match.group(1)
+                                print(f'  DEBUG: Found partial salary content, length: {len(salary_content)}')
+                                # Try to parse individual salary objects
+                                # This is a simplified approach - in production you might want more sophisticated parsing
+                                log_analysis_error(filename, f"Partial salary data found but couldn't parse: {e}", response.text[:1000])
+                            else:
+                                print(f'  DEBUG: No salary_information found in response text')
+                                log_analysis_error(filename, f"JSON parsing failed and no salary data found: {e}", response.text[:1000])
+                        except Exception as parse_error:
+                            print(f'  DEBUG: Failed to extract partial data: {parse_error}')
+                            log_analysis_error(filename, f"Complete parsing failure: {e}", response.text[:1000])
                     except Exception as e:
                         print(f'  DEBUG: Failed to validate parsed JSON against schema: {e}')
-            log_analysis_error(filename, "No structured output received from model", "")
-            return []
+                        log_analysis_error(filename, f"Schema validation failed: {e}", response.text[:1000])
+                log_analysis_error(filename, "No structured output received from model", "")
+                return []
             
     except Exception as e:
         print(f'  DEBUG: API call failed with error: {type(e).__name__}: {e}')
-        # Retry logic with proper attempt tracking
-        for attempt in range(5):  # Max 5 retries
-            if handle_llm_errors(e, attempt, 5, context=filename):
-                time.sleep(2)
-                try:
-                    print(f'  DEBUG: Retry attempt {attempt + 1}...')
-                    response = client.models.generate_content(
-                        model=MODEL,
-                        contents=prompt,
-                        config=config
-                    )
-                    
-                    if hasattr(response, 'parsed') and response.parsed:
-                        result = [row.model_dump() for row in response.parsed.salary_information]
-                        print(f'  DEBUG: Retry successful, parsed {len(result)} salary rows')
-                        return result
-                    else:
-                        log_analysis_error(filename, "No structured output received from model on retry", "")
-                        return []
-                        
-                except Exception as retry_error:
-                    print(f'  DEBUG: Retry {attempt + 1} failed: {type(retry_error).__name__}: {retry_error}')
-                    e = retry_error  # Update error for next iteration
-                    continue
-            else:
-                break
+        last_error = e  # Capture the initial error
         
-        log_analysis_error(filename, f"Salary extraction failed after all retries: {e}", "")
+        # Retry logic with proper attempt tracking
+        for attempt in range(5):
+            try:
+                # Get model parameters (same for all attempts, like p3)
+                model_params = get_model_parameters()
+                
+                print(f'  DEBUG: Model params: {model_params}')
+                
+                # Prepare API configuration
+                config = {
+                    "temperature": model_params["temperature"],
+                    "top_p": model_params["top_p"],
+                    "top_k": model_params["top_k"],
+                    "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
+                    "candidate_count": model_params["candidate_count"],
+                    "seed": model_params["seed"],
+                    "presence_penalty": model_params["presence_penalty"],
+                    "frequency_penalty": model_params["frequency_penalty"],
+                    "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
+                    "response_mime_type": "application/json",
+                    "response_schema": SalaryExtractionSchema
+                }
+                
+                print(f'  DEBUG: API config: {config}')
+                print(f'  DEBUG: Making API call...')
+                
+                start_time = time.time()
+                response = client.models.generate_content(
+                    model=MODEL,
+                    contents=prompt,
+                    config=config
+                )
+                processing_time = time.time() - start_time
+                
+                print(f'  DEBUG: API response received')
+                print(f'  DEBUG: Response type: {type(response)}')
+                print(f'  DEBUG: Response attributes: {dir(response)}')
+                
+                # Log detailed response information
+                log_api_response_details(response, filename, processing_time)
+                
+                # Check for truncation
+                if check_response_truncation(response, filename):
+                    print(f'  DEBUG: Response appears to be truncated, will retry with different parameters')
+                    raise Exception("Response truncated - incomplete JSON")
+                
+                # Check if response has parsed attribute (structured output)
+                if hasattr(response, 'parsed') and response.parsed is not None:
+                    print(f'  DEBUG: Response has parsed attribute')
+                    result = [row.model_dump() for row in response.parsed.salary_information]
+                    print(f'  DEBUG: Parsed {len(result)} salary rows')
+                    
+                    # Log successful salary extraction
+                    if context and 'performance_monitor' in context:
+                        file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+                        context['performance_monitor'].log_analysis(
+                            filename=filename,
+                            file_size_mb=file_size_mb,
+                            processing_time=processing_time,
+                            usage_metadata=getattr(response, 'usage_metadata', None),
+                            success=True,
+                            analysis_type="salary",
+                            api_key_used=context.get('key_number', 1),
+                            process_id=context.get('process_id', 0),
+                            cao_number="",  # Will be extracted from file path if needed
+                            model="gemini-2.5-flash"
+                        )
+                    
+                    return result
+                    
+            except Exception as e:
+                last_error = e  # Update last error for each attempt
+                print(f'  DEBUG: Attempt {attempt + 1} failed: {type(e).__name__}: {e}')
+                
+                # Check if quota was exhausted during this attempt
+                global quota_exhausted_flag
+                if quota_exhausted_flag:
+                    print(f'  DEBUG: Quota exhausted during salary extraction, stopping retries')
+                    break
+                    
+                if attempt < 4:  # Not the last attempt
+                    if handle_llm_errors(e, attempt, 5, context=filename):
+                        continue  # Retry
+                    else:
+                        break  # Don't retry
+                else:
+                    # Last attempt failed
+                    print(f'  DEBUG: All attempts failed')
+                    break
+        
+        # If we get here, all attempts failed
+        log_analysis_error(filename, f"All retry attempts failed: {type(last_error).__name__}: {last_error}", "")
+        
+        # Log failed salary extraction
+        if context and 'performance_monitor' in context:
+            file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+            context['performance_monitor'].log_analysis(
+                filename=filename,
+                file_size_mb=file_size_mb,
+                processing_time=0,  # No processing time available for failures
+                usage_metadata=None,
+                success=False,
+                analysis_type="salary",
+                error_message=f"All retry attempts failed: {type(last_error).__name__}: {last_error}",
+                api_key_used=context.get('key_number', 1),
+                process_id=context.get('process_id', 0),
+                cao_number="",
+                model="gemini-2.5-flash"
+            )
+        
         return []
 
 
-def extract_nonsalary_from_json(json_obj: dict, filename: str, client) -> dict:
+def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None) -> dict:
     """Extract non-salary information from JSON using LLM."""
     print(f'  DEBUG: Starting non-salary extraction for {filename}')
     print(f'  DEBUG: Input JSON keys: {list(json_obj.keys())}')
@@ -947,7 +1235,7 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client) -> dict:
         "temperature": model_params["temperature"],
         "top_p": model_params["top_p"],
         "top_k": model_params["top_k"],
-        "max_output_tokens": 32768,  # Increased from 8192 to handle longer responses
+        "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
         "candidate_count": model_params["candidate_count"],
         "seed": model_params["seed"],
         "presence_penalty": model_params["presence_penalty"],
@@ -961,21 +1249,48 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client) -> dict:
     
     try:
         print(f'  DEBUG: Making non-salary API call...')
+        start_time = time.time()
         response = client.models.generate_content(
             model=MODEL,
             contents=prompt,
             config=config
         )
+        processing_time = time.time() - start_time
         
         print(f'  DEBUG: Non-salary API response received')
         print(f'  DEBUG: Non-salary response type: {type(response)}')
         print(f'  DEBUG: Non-salary response attributes: {dir(response)}')
         
-        if hasattr(response, 'parsed') and response.parsed:
+        # Log detailed response information
+        log_api_response_details(response, f"{filename} (non-salary)", processing_time)
+        
+        # Check for truncation
+        if check_response_truncation(response, filename):
+            print(f'  DEBUG: Non-salary response appears to be truncated, will retry with different parameters')
+            raise Exception("Response truncated - incomplete JSON")
+        
+        # Check if response has parsed attribute (structured output)
+        if hasattr(response, 'parsed') and response.parsed is not None:
             print(f'  DEBUG: Non-salary response has parsed attribute')
-            # response.parsed is now a Pydantic model (NonSalaryExtractionSchema)
             result = response.parsed.model_dump()
             print(f'  DEBUG: Non-salary parsed result keys: {list(result.keys())}')
+            
+            # Log successful non-salary extraction
+            if context and 'performance_monitor' in context:
+                file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+                context['performance_monitor'].log_analysis(
+                    filename=filename,
+                    file_size_mb=file_size_mb,
+                    processing_time=processing_time,
+                    usage_metadata=getattr(response, 'usage_metadata', None),
+                    success=True,
+                    analysis_type="non_salary",
+                    api_key_used=context.get('key_number', 1),
+                    process_id=context.get('process_id', 0),
+                    cao_number="",  # Will be extracted from file path if needed
+                    model="gemini-2.5-flash"
+                )
+            
             return result
         else:
             print(f'  DEBUG: No parsed attribute in non-salary response')
@@ -1001,35 +1316,119 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client) -> dict:
             
     except Exception as e:
         print(f'  DEBUG: Non-salary API call failed with error: {type(e).__name__}: {e}')
-        # Retry logic with proper attempt tracking
-        for attempt in range(5):  # Max 5 retries
-            if handle_llm_errors(e, attempt, 5, context=filename):
-                time.sleep(2)
-                try:
-                    print(f'  DEBUG: Non-salary retry attempt {attempt + 1}...')
-                    response = client.models.generate_content(
-                        model=MODEL,
-                        contents=prompt,
-                        config=config
-                    )
-                    
-                    if hasattr(response, 'parsed') and response.parsed:
-                        result = response.parsed.model_dump()
-                        print(f'  DEBUG: Non-salary retry successful, parsed result keys: {list(result.keys())}')
-                        return result
-                    else:
-                        log_analysis_error(filename, "No structured output received from model for non-salary on retry", "")
-                        return NonSalaryExtractionSchema().model_dump()
-                        
-                except Exception as retry_error:
-                    print(f'  DEBUG: Non-salary retry {attempt + 1} failed: {type(retry_error).__name__}: {retry_error}')
-                    e = retry_error  # Update error for next iteration
-                    continue
-            else:
-                break
+        last_error = e  # Capture the initial error
         
-        log_analysis_error(filename, f"Non-salary extraction failed after all retries: {e}", "")
-        return NonSalaryExtractionSchema().model_dump()
+        # Retry logic with proper attempt tracking
+        for attempt in range(5):
+            try:
+                # Get model parameters (same for all attempts, like p3)
+                model_params = get_model_parameters()
+                
+                print(f'  DEBUG: Non-salary model params: {model_params}')
+                
+                # Prepare API configuration
+                config = {
+                    "temperature": model_params["temperature"],
+                    "top_p": model_params["top_p"],
+                    "top_k": model_params["top_k"],
+                    "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
+                    "candidate_count": model_params["candidate_count"],
+                    "seed": model_params["seed"],
+                    "presence_penalty": model_params["presence_penalty"],
+                    "frequency_penalty": model_params["frequency_penalty"],
+                    "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
+                    "response_mime_type": "application/json",
+                    "response_schema": NonSalaryExtractionSchema
+                }
+                
+                print(f'  DEBUG: Non-salary API config: {config}')
+                print(f'  DEBUG: Making non-salary API call...')
+                
+                start_time = time.time()
+                response = client.models.generate_content(
+                    model=MODEL,
+                    contents=prompt,
+                    config=config
+                )
+                processing_time = time.time() - start_time
+                
+                print(f'  DEBUG: Non-salary API response received')
+                print(f'  DEBUG: Non-salary response type: {type(response)}')
+                print(f'  DEBUG: Non-salary response attributes: {dir(response)}')
+                
+                # Log detailed response information
+                log_api_response_details(response, f"{filename} (non-salary)", processing_time)
+                
+                # Check for truncation
+                if check_response_truncation(response, filename):
+                    print(f'  DEBUG: Non-salary response appears to be truncated, will retry with different parameters')
+                    raise Exception("Response truncated - incomplete JSON")
+                
+                # Check if response has parsed attribute (structured output)
+                if hasattr(response, 'parsed') and response.parsed is not None:
+                    print(f'  DEBUG: Non-salary response has parsed attribute')
+                    result = response.parsed.model_dump()
+                    print(f'  DEBUG: Non-salary parsed result keys: {list(result.keys())}')
+                    
+                    # Log successful non-salary extraction
+                    if context and 'performance_monitor' in context:
+                        file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+                        context['performance_monitor'].log_analysis(
+                            filename=filename,
+                            file_size_mb=file_size_mb,
+                            processing_time=processing_time,
+                            usage_metadata=getattr(response, 'usage_metadata', None),
+                            success=True,
+                            analysis_type="non_salary",
+                            api_key_used=context.get('key_number', 1),
+                            process_id=context.get('process_id', 0),
+                            cao_number="",  # Will be extracted from file path if needed
+                            model="gemini-2.5-flash"
+                        )
+                    
+                    return result
+                    
+            except Exception as e:
+                last_error = e  # Update last error for each attempt
+                print(f'  DEBUG: Non-salary attempt {attempt + 1} failed: {type(e).__name__}: {e}')
+                
+                # Check if quota was exhausted during this attempt
+                global quota_exhausted_flag
+                if quota_exhausted_flag:
+                    print(f'  DEBUG: Quota exhausted during non-salary extraction, stopping retries')
+                    break
+                    
+                if attempt < 4:  # Not the last attempt
+                    if handle_llm_errors(e, attempt, 5, context=filename):
+                        continue  # Retry
+                    else:
+                        break  # Don't retry
+                else:
+                    # Last attempt failed
+                    print(f'  DEBUG: All non-salary attempts failed')
+                    break
+        
+        # If we get here, all attempts failed
+        log_analysis_error(filename, f"All non-salary retry attempts failed: {type(last_error).__name__}: {last_error}", "")
+        
+        # Log failed non-salary extraction
+        if context and 'performance_monitor' in context:
+            file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+            context['performance_monitor'].log_analysis(
+                filename=filename,
+                file_size_mb=file_size_mb,
+                processing_time=0,  # No processing time available for failures
+                usage_metadata=None,
+                success=False,
+                analysis_type="non_salary",
+                error_message=f"All retry attempts failed: {type(last_error).__name__}: {last_error}",
+                api_key_used=context.get('key_number', 1),
+                process_id=context.get('process_id', 0),
+                cao_number="",
+                model="gemini-2.5-flash"
+            )
+        
+        return {}
 
 
 def analyze_cao_json(json_text: str, filename: str = None) -> dict:
@@ -1059,10 +1458,10 @@ def analyze_cao_json(json_text: str, filename: str = None) -> dict:
         client = setup_gemini_client(api_key)
         
         # Extract salary information
-        salary_extracted = extract_salary_from_json(json_obj, filename or "unknown", client)
+        salary_extracted = extract_salary_from_json(json_obj, filename or "unknown", client, None)
         
         # Extract non-salary information
-        nonsalary_extracted = extract_nonsalary_from_json(json_obj, filename or "unknown", client)
+        nonsalary_extracted = extract_nonsalary_from_json(json_obj, filename or "unknown", client, None)
         
         return {
             "salary_extraction": salary_extracted,
@@ -1271,11 +1670,11 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
             return True  # Return True since we successfully skipped it
 
         # Extract salary information
-        salary_extracted = extract_salary_from_json(json_data, filename, client)
+        salary_extracted = extract_salary_from_json(json_data, filename, client, context)
         print(f'  {cao_number}: Salary extraction - {len(salary_extracted)} rows')
         
         # Extract non-salary information
-        rest_extracted = extract_nonsalary_from_json(json_data, filename, client)
+        rest_extracted = extract_nonsalary_from_json(json_data, filename, client, context)
         
         # Count non-salary data
         non_salary_count = 0
@@ -1348,6 +1747,14 @@ def main():
         failed_files = []
         
         for cao_folder, json_file in process_files:
+            # Check for quota exhaustion flag before processing each file
+            global quota_exhausted_flag
+            if quota_exhausted_flag:
+                print(f'🚨 QUOTA EXHAUSTED - Process {args.process_id + 1} (API key {args.key_number}) shutting down gracefully')
+                print(f'📊 Partial results: {successful_analyses} successful, {len(failed_files)} failed before shutdown')
+                print(f'🧹 Cleaning up and exiting...')
+                break
+            
             if not acquire_file_lock(json_file):
                 print(f'  Skipping {json_file.name} (being processed by another process)')
                 time.sleep(2)
@@ -1360,10 +1767,20 @@ def main():
                     successful_analyses += 1
                 else:
                     failed_files.append(json_file.name)
+                    
+                # Check quota flag again after processing (in case it was set during processing)
+                if quota_exhausted_flag:
+                    print(f'🚨 QUOTA EXHAUSTED during processing - Process {args.process_id + 1} shutting down gracefully')
+                    break
+                    
             finally:
                 release_file_lock(json_file)
         
-        print(f'Process {args.process_id + 1} completed: {successful_analyses} successful, {len(failed_files)} failed')
+        # Final summary with quota exhaustion indication
+        if quota_exhausted_flag:
+            print(f'Process {args.process_id + 1} completed with QUOTA EXHAUSTION: {successful_analyses} successful, {len(failed_files)} failed')
+        else:
+            print(f'Process {args.process_id + 1} completed: {successful_analyses} successful, {len(failed_files)} failed')
         
     except Exception as e:
         print(f'Fatal error: {e}')

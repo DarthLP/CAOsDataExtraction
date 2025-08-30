@@ -483,7 +483,7 @@ def analyze_llm_analysis_quality(base_dir: str = "outputs/llm_analysis"):
         print(f"   ✅ All files appear to have adequate analysis quality!")
     
     # Save detailed report
-    report_file = "llm_analysis_quality_report.json"
+    report_file = "performance_logs/llm_analysis/llm_analysis_quality_report.json"
     with open(report_file, 'w', encoding='utf-8') as f:
         json.dump({
             'summary': {

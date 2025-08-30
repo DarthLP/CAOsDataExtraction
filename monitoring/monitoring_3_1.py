@@ -50,8 +50,8 @@ class PerformanceMonitor:
     """Comprehensive performance monitoring for CAO extraction"""
     
     def __init__(self, 
-                 log_file: str = "extraction_performance.jsonl",
-                 summary_file: str = "extraction_summary.json",
+                 log_file: str = "performance_logs/llm_extraction/extraction_performance.jsonl",
+                 summary_file: str = "performance_logs/llm_extraction/extraction_summary.json",
                  free_tier_daily_limit: int = 100):
         """
         Initialize performance monitor
@@ -357,6 +357,90 @@ class PerformanceMonitor:
         print(f"   Days needed at 100 req/day: {progress['days_needed_at_current_rate']:.1f}")
         print(f"   Requests remaining today: {progress['requests_remaining_today']}")
         print(f"   Average time per file: {progress['avg_time_per_file_seconds']:.1f}s")
+
+    def log_analysis(self,
+                    filename: str,
+                    file_size_mb: float,
+                    processing_time: float,
+                    usage_metadata: Optional[types.UsageMetadata],
+                    success: bool,
+                    analysis_type: str = "combined",  # "salary", "non_salary", or "combined"
+                    error_message: Optional[str] = None,
+                    api_key_used: int = 1,
+                    process_id: int = 0,
+                    cao_number: str = "",
+                    allow_duplicates: bool = True,  # Analysis can have multiple entries per file
+                    model: str = "gemini-2.5-flash",
+                    parameters: Optional[Dict[str, Any]] = None) -> None:
+        """
+        Log detailed performance data for a single analysis (p4 pipeline)
+        
+        Args:
+            filename: Name of the processed file
+            file_size_mb: File size in megabytes  
+            processing_time: Processing time in seconds
+            usage_metadata: Gemini API usage metadata
+            success: Whether analysis was successful
+            analysis_type: Type of analysis ("salary", "non_salary", or "combined")
+            error_message: Error message if failed
+            api_key_used: API key number used
+            process_id: Process ID for multi-processing
+            cao_number: CAO number for the file
+            allow_duplicates: If False, check for existing entries first
+            model: Model name used
+            parameters: Model parameters used
+        """
+        
+        # Extract token usage
+        input_tokens = 0
+        output_tokens = 0
+        total_tokens = 0
+        
+        if usage_metadata:
+            if hasattr(usage_metadata, 'prompt_token_count'):
+                input_tokens = usage_metadata.prompt_token_count
+            if hasattr(usage_metadata, 'candidates_token_count'):
+                output_tokens = usage_metadata.candidates_token_count
+            total_tokens = input_tokens + output_tokens
+        
+        # Create log entry for analysis
+        log_entry = {
+            "timestamp": datetime.now().isoformat(),
+            "filename": filename,
+            "cao_number": cao_number,
+            "analysis_type": analysis_type,
+            "file_size_mb": round(file_size_mb, 2),
+            "processing_time_seconds": round(processing_time, 2),
+            "input_tokens": input_tokens,
+            "output_tokens": output_tokens, 
+            "total_tokens": total_tokens,
+            "success": success,
+            "error_message": error_message,
+            "api_key_used": api_key_used,
+            "process_id": process_id,
+            "free_tier_request": True,  # Assuming free tier for now
+            "model": model,
+            "parameters": parameters or {}
+        }
+        
+        # Check for duplicates if needed
+        if not allow_duplicates:
+            existing_data = self.get_performance_data()
+            for entry in existing_data:
+                if (entry.get('filename') == filename and 
+                    entry.get('cao_number') == cao_number and
+                    entry.get('analysis_type') == analysis_type):
+                    return  # Skip duplicate
+        
+        # Write to log file with file locking
+        with open(self.log_file, 'a', encoding='utf-8') as f:
+            try:
+                fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+                f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
+                fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+            except Exception as e:
+                print(f"Warning: Could not acquire file lock for logging: {e}")
+                f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
 
 # Convenience functions for easy integration
 def create_monitor() -> PerformanceMonitor:

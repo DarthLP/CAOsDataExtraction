@@ -242,8 +242,8 @@ def setup_gemini_client(api_key: str):
 def setup_performance_monitor() -> PerformanceMonitor:
     """Setup performance monitoring."""
     return PerformanceMonitor(
-        log_file='performance_logs/extraction_performance.jsonl',
-        summary_file='performance_logs/extraction_summary.json'
+        log_file='performance_logs/llm_extraction/extraction_performance.jsonl',
+        summary_file='performance_logs/llm_extraction/extraction_summary.json'
     )
 
 

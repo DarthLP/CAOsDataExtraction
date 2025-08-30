@@ -64,6 +64,15 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
+# Import performance monitoring
+from monitoring.monitoring_3_1 import PerformanceMonitor
+
+# =============================================================================
+# GLOBAL FLAGS
+# =============================================================================
+# Global flag to signal quota exhaustion for graceful shutdown
+quota_exhausted_flag = False
+
 # =============================================================================
 # LLM CLIENT FUNCTIONS
 # =============================================================================
@@ -200,8 +209,11 @@ def handle_llm_errors(error: Exception, attempt: int, max_retries: int,
             return False
     elif 'serviceunavailable' in error_str or '503' in error_str or 'connection reset' in error_str or '500' in error_str or 'internal' in error_str:
         if attempt < max_retries - 1:
-            wait_time = 60 * 2 ** attempt
-            print(f'  Attempt {attempt + 1} failed (service unavailable/internal error), retrying in {wait_time // 60} minutes...')
+            # Custom wait times for 503 errors: 2, 4, 8, 12, 20 minutes
+            wait_times = [2, 4, 8, 12, 20]  # minutes
+            wait_time_minutes = wait_times[min(attempt, len(wait_times) - 1)]
+            wait_time = wait_time_minutes * 60  # convert to seconds
+            print(f'  Attempt {attempt + 1} failed (service unavailable/internal error), retrying in {wait_time_minutes} minutes...')
             time.sleep(wait_time)
             return True
         else:
@@ -226,7 +238,14 @@ def handle_llm_errors(error: Exception, attempt: int, max_retries: int,
             print(f'  All {max_retries} attempts failed with incomplete JSON errors')
             return False
     elif any(keyword in error_str for keyword in ['quota', 'rate limit', 'too many requests', '429']):
-        if attempt < max_retries - 1:
+        # Check specifically for RESOURCE_EXHAUSTED (quota exceeded)
+        if 'resource_exhausted' in error_str and 'quota' in error_str:
+            print(f'  🚨 API QUOTA EXHAUSTED detected - Process will shutdown gracefully')
+            # Set global flag to trigger graceful shutdown
+            global quota_exhausted_flag
+            quota_exhausted_flag = True
+            return False  # Don't retry, trigger shutdown
+        elif attempt < max_retries - 1:
             wait_time = calculate_quota_retry_delay(file_size_mb, attempt)
             print(f'  Attempt {attempt + 1} failed (rate limit), retrying in {wait_time // 60} minutes...')
             time.sleep(wait_time)
@@ -242,6 +261,49 @@ def handle_llm_errors(error: Exception, attempt: int, max_retries: int,
     else:
         print(f'  All {max_retries} attempts failed with {type(error).__name__}: {error}')
         return False
+
+
+def log_api_response_details(response, filename: str, processing_time: float = 0) -> None:
+    """
+    Log detailed information about API response for debugging and monitoring.
+    
+    Args:
+        response: The API response object
+        filename: Name of the file being processed
+        processing_time: Time taken for API call in seconds
+    """
+    try:
+        # Extract input/output token counts if available
+        input_tokens = "N/A"
+        output_tokens = "N/A"
+        if hasattr(response, 'usage_metadata'):
+            if hasattr(response.usage_metadata, 'prompt_token_count'):
+                input_tokens = response.usage_metadata.prompt_token_count
+            if hasattr(response.usage_metadata, 'candidates_token_count'):
+                output_tokens = response.usage_metadata.candidates_token_count
+        
+        # Extract response size
+        response_size = 0
+        if hasattr(response, 'text') and response.text:
+            response_size = len(response.text)
+        elif hasattr(response, 'parsed') and response.parsed:
+            response_size = len(str(response.parsed))
+        
+        # Extract finish reason
+        finish_reason = "UNKNOWN"
+        if hasattr(response, 'candidates') and response.candidates:
+            candidate = response.candidates[0]
+            if hasattr(candidate, 'finish_reason'):
+                finish_reason = str(candidate.finish_reason)
+        
+        # Log the comprehensive details
+        print(f"  📊 API Response Details for {filename}:")
+        print(f"    - Input tokens: {input_tokens} | Output tokens: {output_tokens} (max: 65536)")
+        print(f"    - Response size: {response_size} chars | Finish reason: {finish_reason}")
+        print(f"    - Processing time: {processing_time:.1f}s | Status: SUCCESS")
+        
+    except Exception as e:
+        print(f"  ⚠️  Failed to log response details for {filename}: {e}")
 
 
 def check_response_truncation(response, filename: str) -> bool:
@@ -461,11 +523,20 @@ def load_configuration() -> AnalysisConfig:
     )
 
 
+def setup_performance_monitor_p4() -> PerformanceMonitor:
+    """Setup performance monitoring for p4 analysis pipeline."""
+    return PerformanceMonitor(
+        log_file='performance_logs/llm_analysis/analysis_performance.jsonl',
+        summary_file='performance_logs/llm_analysis/analysis_summary.json'
+    )
+
+
 def setup_processing_context(config: AnalysisConfig, process_id: int, 
                            total_processes: int, key_number: int) -> Dict[str, Any]:
     """Setup complete processing context."""
     api_key, actual_key_number = setup_environment(key_number)
     client = setup_gemini_client(api_key)
+    performance_monitor = setup_performance_monitor_p4()
     
     return {
         'config': config,
@@ -473,7 +544,8 @@ def setup_processing_context(config: AnalysisConfig, process_id: int,
         'total_processes': total_processes,
         'api_key': api_key,
         'key_number': actual_key_number,
-        'client': client
+        'client': client,
+        'performance_monitor': performance_monitor
     }
 
 
@@ -770,7 +842,7 @@ def parse_llm_response(response_text: str, filename: str, schema_type: str):
     raise ModelOutputParseError(f"Failed to parse {schema_type} extraction response")
 
 
-def extract_salary_from_json(json_obj: dict, filename: str, client) -> List[dict]:
+def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None) -> List[dict]:
     """Extract salary information from JSON using LLM."""
     print(f'  DEBUG: Starting salary extraction for {filename}')
     print(f'  DEBUG: Input JSON keys: {list(json_obj.keys())}')
@@ -880,15 +952,20 @@ def extract_salary_from_json(json_obj: dict, filename: str, client) -> List[dict
     
     try:
         print(f'  DEBUG: Making API call...')
+        start_time = time.time()
         response = client.models.generate_content(
             model=MODEL,
             contents=prompt,
             config=config
         )
+        processing_time = time.time() - start_time
         
         print(f'  DEBUG: API response received')
         print(f'  DEBUG: Response type: {type(response)}')
         print(f'  DEBUG: Response attributes: {dir(response)}')
+        
+        # Log detailed response information
+        log_api_response_details(response, filename, processing_time)
         
         # Check for truncation
         if check_response_truncation(response, filename):
@@ -900,6 +977,23 @@ def extract_salary_from_json(json_obj: dict, filename: str, client) -> List[dict
             print(f'  DEBUG: Response has parsed attribute')
             result = [row.model_dump() for row in response.parsed.salary_information]
             print(f'  DEBUG: Parsed {len(result)} salary rows')
+            
+            # Log successful salary extraction
+            if context and 'performance_monitor' in context:
+                file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+                context['performance_monitor'].log_analysis(
+                    filename=filename,
+                    file_size_mb=file_size_mb,
+                    processing_time=processing_time,
+                    usage_metadata=getattr(response, 'usage_metadata', None),
+                    success=True,
+                    analysis_type="salary",
+                    api_key_used=context.get('key_number', 1),
+                    process_id=context.get('process_id', 0),
+                    cao_number="",  # Will be extracted from file path if needed
+                    model="gemini-2.5-flash"
+                )
+            
             return result
         else:
             print(f'  DEBUG: No parsed attribute in response')
@@ -959,6 +1053,8 @@ def extract_salary_from_json(json_obj: dict, filename: str, client) -> List[dict
             
     except Exception as e:
         print(f'  DEBUG: API call failed with error: {type(e).__name__}: {e}')
+        last_error = e  # Capture the initial error
+        
         # Retry logic with proper attempt tracking
         for attempt in range(5):
             try:
@@ -985,15 +1081,20 @@ def extract_salary_from_json(json_obj: dict, filename: str, client) -> List[dict
                 print(f'  DEBUG: API config: {config}')
                 print(f'  DEBUG: Making API call...')
                 
+                start_time = time.time()
                 response = client.models.generate_content(
                     model=MODEL,
                     contents=prompt,
                     config=config
                 )
+                processing_time = time.time() - start_time
                 
                 print(f'  DEBUG: API response received')
                 print(f'  DEBUG: Response type: {type(response)}')
                 print(f'  DEBUG: Response attributes: {dir(response)}')
+                
+                # Log detailed response information
+                log_api_response_details(response, filename, processing_time)
                 
                 # Check for truncation
                 if check_response_truncation(response, filename):
@@ -1005,10 +1106,35 @@ def extract_salary_from_json(json_obj: dict, filename: str, client) -> List[dict
                     print(f'  DEBUG: Response has parsed attribute')
                     result = [row.model_dump() for row in response.parsed.salary_information]
                     print(f'  DEBUG: Parsed {len(result)} salary rows')
+                    
+                    # Log successful salary extraction
+                    if context and 'performance_monitor' in context:
+                        file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+                        context['performance_monitor'].log_analysis(
+                            filename=filename,
+                            file_size_mb=file_size_mb,
+                            processing_time=processing_time,
+                            usage_metadata=getattr(response, 'usage_metadata', None),
+                            success=True,
+                            analysis_type="salary",
+                            api_key_used=context.get('key_number', 1),
+                            process_id=context.get('process_id', 0),
+                            cao_number="",  # Will be extracted from file path if needed
+                            model="gemini-2.5-flash"
+                        )
+                    
                     return result
                     
             except Exception as e:
+                last_error = e  # Update last error for each attempt
                 print(f'  DEBUG: Attempt {attempt + 1} failed: {type(e).__name__}: {e}')
+                
+                # Check if quota was exhausted during this attempt
+                global quota_exhausted_flag
+                if quota_exhausted_flag:
+                    print(f'  DEBUG: Quota exhausted during salary extraction, stopping retries')
+                    break
+                    
                 if attempt < 4:  # Not the last attempt
                     if handle_llm_errors(e, attempt, 5, context=filename):
                         continue  # Retry
@@ -1020,11 +1146,29 @@ def extract_salary_from_json(json_obj: dict, filename: str, client) -> List[dict
                     break
         
         # If we get here, all attempts failed
-        log_analysis_error(filename, f"All retry attempts failed: {type(e).__name__}: {e}", "")
+        log_analysis_error(filename, f"All retry attempts failed: {type(last_error).__name__}: {last_error}", "")
+        
+        # Log failed salary extraction
+        if context and 'performance_monitor' in context:
+            file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+            context['performance_monitor'].log_analysis(
+                filename=filename,
+                file_size_mb=file_size_mb,
+                processing_time=0,  # No processing time available for failures
+                usage_metadata=None,
+                success=False,
+                analysis_type="salary",
+                error_message=f"All retry attempts failed: {type(last_error).__name__}: {last_error}",
+                api_key_used=context.get('key_number', 1),
+                process_id=context.get('process_id', 0),
+                cao_number="",
+                model="gemini-2.5-flash"
+            )
+        
         return []
 
 
-def extract_nonsalary_from_json(json_obj: dict, filename: str, client) -> dict:
+def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None) -> dict:
     """Extract non-salary information from JSON using LLM."""
     print(f'  DEBUG: Starting non-salary extraction for {filename}')
     print(f'  DEBUG: Input JSON keys: {list(json_obj.keys())}')
@@ -1105,15 +1249,20 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client) -> dict:
     
     try:
         print(f'  DEBUG: Making non-salary API call...')
+        start_time = time.time()
         response = client.models.generate_content(
             model=MODEL,
             contents=prompt,
             config=config
         )
+        processing_time = time.time() - start_time
         
         print(f'  DEBUG: Non-salary API response received')
         print(f'  DEBUG: Non-salary response type: {type(response)}')
         print(f'  DEBUG: Non-salary response attributes: {dir(response)}')
+        
+        # Log detailed response information
+        log_api_response_details(response, f"{filename} (non-salary)", processing_time)
         
         # Check for truncation
         if check_response_truncation(response, filename):
@@ -1125,6 +1274,23 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client) -> dict:
             print(f'  DEBUG: Non-salary response has parsed attribute')
             result = response.parsed.model_dump()
             print(f'  DEBUG: Non-salary parsed result keys: {list(result.keys())}')
+            
+            # Log successful non-salary extraction
+            if context and 'performance_monitor' in context:
+                file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+                context['performance_monitor'].log_analysis(
+                    filename=filename,
+                    file_size_mb=file_size_mb,
+                    processing_time=processing_time,
+                    usage_metadata=getattr(response, 'usage_metadata', None),
+                    success=True,
+                    analysis_type="non_salary",
+                    api_key_used=context.get('key_number', 1),
+                    process_id=context.get('process_id', 0),
+                    cao_number="",  # Will be extracted from file path if needed
+                    model="gemini-2.5-flash"
+                )
+            
             return result
         else:
             print(f'  DEBUG: No parsed attribute in non-salary response')
@@ -1150,6 +1316,8 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client) -> dict:
             
     except Exception as e:
         print(f'  DEBUG: Non-salary API call failed with error: {type(e).__name__}: {e}')
+        last_error = e  # Capture the initial error
+        
         # Retry logic with proper attempt tracking
         for attempt in range(5):
             try:
@@ -1176,15 +1344,20 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client) -> dict:
                 print(f'  DEBUG: Non-salary API config: {config}')
                 print(f'  DEBUG: Making non-salary API call...')
                 
+                start_time = time.time()
                 response = client.models.generate_content(
                     model=MODEL,
                     contents=prompt,
                     config=config
                 )
+                processing_time = time.time() - start_time
                 
                 print(f'  DEBUG: Non-salary API response received')
                 print(f'  DEBUG: Non-salary response type: {type(response)}')
                 print(f'  DEBUG: Non-salary response attributes: {dir(response)}')
+                
+                # Log detailed response information
+                log_api_response_details(response, f"{filename} (non-salary)", processing_time)
                 
                 # Check for truncation
                 if check_response_truncation(response, filename):
@@ -1196,10 +1369,35 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client) -> dict:
                     print(f'  DEBUG: Non-salary response has parsed attribute')
                     result = response.parsed.model_dump()
                     print(f'  DEBUG: Non-salary parsed result keys: {list(result.keys())}')
+                    
+                    # Log successful non-salary extraction
+                    if context and 'performance_monitor' in context:
+                        file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+                        context['performance_monitor'].log_analysis(
+                            filename=filename,
+                            file_size_mb=file_size_mb,
+                            processing_time=processing_time,
+                            usage_metadata=getattr(response, 'usage_metadata', None),
+                            success=True,
+                            analysis_type="non_salary",
+                            api_key_used=context.get('key_number', 1),
+                            process_id=context.get('process_id', 0),
+                            cao_number="",  # Will be extracted from file path if needed
+                            model="gemini-2.5-flash"
+                        )
+                    
                     return result
                     
             except Exception as e:
+                last_error = e  # Update last error for each attempt
                 print(f'  DEBUG: Non-salary attempt {attempt + 1} failed: {type(e).__name__}: {e}')
+                
+                # Check if quota was exhausted during this attempt
+                global quota_exhausted_flag
+                if quota_exhausted_flag:
+                    print(f'  DEBUG: Quota exhausted during non-salary extraction, stopping retries')
+                    break
+                    
                 if attempt < 4:  # Not the last attempt
                     if handle_llm_errors(e, attempt, 5, context=filename):
                         continue  # Retry
@@ -1211,7 +1409,25 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client) -> dict:
                     break
         
         # If we get here, all attempts failed
-        log_analysis_error(filename, f"All non-salary retry attempts failed: {type(e).__name__}: {e}", "")
+        log_analysis_error(filename, f"All non-salary retry attempts failed: {type(last_error).__name__}: {last_error}", "")
+        
+        # Log failed non-salary extraction
+        if context and 'performance_monitor' in context:
+            file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+            context['performance_monitor'].log_analysis(
+                filename=filename,
+                file_size_mb=file_size_mb,
+                processing_time=0,  # No processing time available for failures
+                usage_metadata=None,
+                success=False,
+                analysis_type="non_salary",
+                error_message=f"All retry attempts failed: {type(last_error).__name__}: {last_error}",
+                api_key_used=context.get('key_number', 1),
+                process_id=context.get('process_id', 0),
+                cao_number="",
+                model="gemini-2.5-flash"
+            )
+        
         return {}
 
 
@@ -1242,10 +1458,10 @@ def analyze_cao_json(json_text: str, filename: str = None) -> dict:
         client = setup_gemini_client(api_key)
         
         # Extract salary information
-        salary_extracted = extract_salary_from_json(json_obj, filename or "unknown", client)
+        salary_extracted = extract_salary_from_json(json_obj, filename or "unknown", client, None)
         
         # Extract non-salary information
-        nonsalary_extracted = extract_nonsalary_from_json(json_obj, filename or "unknown", client)
+        nonsalary_extracted = extract_nonsalary_from_json(json_obj, filename or "unknown", client, None)
         
         return {
             "salary_extraction": salary_extracted,
@@ -1454,11 +1670,11 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
             return True  # Return True since we successfully skipped it
 
         # Extract salary information
-        salary_extracted = extract_salary_from_json(json_data, filename, client)
+        salary_extracted = extract_salary_from_json(json_data, filename, client, context)
         print(f'  {cao_number}: Salary extraction - {len(salary_extracted)} rows')
         
         # Extract non-salary information
-        rest_extracted = extract_nonsalary_from_json(json_data, filename, client)
+        rest_extracted = extract_nonsalary_from_json(json_data, filename, client, context)
         
         # Count non-salary data
         non_salary_count = 0
@@ -1531,6 +1747,14 @@ def main():
         failed_files = []
         
         for cao_folder, json_file in process_files:
+            # Check for quota exhaustion flag before processing each file
+            global quota_exhausted_flag
+            if quota_exhausted_flag:
+                print(f'🚨 QUOTA EXHAUSTED - Process {args.process_id + 1} (API key {args.key_number}) shutting down gracefully')
+                print(f'📊 Partial results: {successful_analyses} successful, {len(failed_files)} failed before shutdown')
+                print(f'🧹 Cleaning up and exiting...')
+                break
+            
             if not acquire_file_lock(json_file):
                 print(f'  Skipping {json_file.name} (being processed by another process)')
                 time.sleep(2)
@@ -1543,10 +1767,20 @@ def main():
                     successful_analyses += 1
                 else:
                     failed_files.append(json_file.name)
+                    
+                # Check quota flag again after processing (in case it was set during processing)
+                if quota_exhausted_flag:
+                    print(f'🚨 QUOTA EXHAUSTED during processing - Process {args.process_id + 1} shutting down gracefully')
+                    break
+                    
             finally:
                 release_file_lock(json_file)
         
-        print(f'Process {args.process_id + 1} completed: {successful_analyses} successful, {len(failed_files)} failed')
+        # Final summary with quota exhaustion indication
+        if quota_exhausted_flag:
+            print(f'Process {args.process_id + 1} completed with QUOTA EXHAUSTION: {successful_analyses} successful, {len(failed_files)} failed')
+        else:
+            print(f'Process {args.process_id + 1} completed: {successful_analyses} successful, {len(failed_files)} failed')
         
     except Exception as e:
         print(f'Fatal error: {e}')

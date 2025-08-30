@@ -318,7 +318,7 @@ def analyze_extraction_quality(output_dir: str = "outputs/llm_extracted/new_flow
     print(f"   Files with >2 empty sections (including homeoffice): {files_many_empty}")
     
     # Save detailed report
-    report_file = "extraction_quality_report.json"
+    report_file = "performance_logs/llm_extraction/extraction_quality_report.json"
     with open(report_file, 'w', encoding='utf-8') as f:
         json.dump({
             'summary': {

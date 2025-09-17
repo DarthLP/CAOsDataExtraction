@@ -1,6 +1,69 @@
 """
-Web Scraping Script for CAO PDF Downloads
-Downloads PDFs from uitvoeringarbeidsvoorwaardenwetgeving.nl for specific CAO numbers
+CAO PDF Web Scraper (Primary + Extra runs)
+==========================================
+
+DESCRIPTION:
+This script downloads CAO PDF documents from `uitvoeringarbeidsvoorwaardenwetgeving.nl` for specified
+CAO numbers, using Selenium with robust scrolling and link discovery. It supports two output flows:
+- Primary run (historic/legacy): saves to `inputs/pdfs/input_pdfs/<CAO>/` and writes
+  `extracted_cao_info.csv` and `main_links_log.csv` in the primary root.
+- Extra run (second pass): saves to `inputs/pdfs/input_pdfs_extra/<CAO>/` and writes
+  `extracted_cao_info_extra.csv` and `main_links_log_extra.csv` in the extra root.
+
+KEY BEHAVIOR:
+- Reads CAO selection from Excel `CAO_Frequencies_2014.xlsx` in `inputs/excel/inputExcel`.
+- Keeps strict CAO-number filtering: only links matching the selected CAO are used.
+- Avoids duplicates via URL-based skip lists merged from both primary and extra CSVs.
+- For the Extra run, CAOs with folders already present in the primary location are skipped.
+- ID generation is preserved and continues from existing IDs across both datasets.
+
+FEATURES:
+- Headless Chrome with hardened/anti-automation options and custom download directory.
+- Combined duplicate prevention using existing primary and extra metadata.
+- Per-CAO folders with safe filename sanitization and incremental renaming when needed.
+- Minimal, informative console output consistent with repository style.
+
+USAGE:
+    Primary-only (default historical mode, not run by this script by default):
+        python pipelines/p0_webscraping.py  # legacy expected to process Yes, see toggle below
+
+    Extra run (current behavior of this script):
+        python pipelines/p0_webscraping.py
+
+    Test one specific CAO (helper script):
+        python scripts/test_extra_cao.py --cao <CAO_NUMBER>
+
+ARGUMENTS:
+    This script does not take CLI args. Behavior is configured via:
+    - Excel selection `Needed?` column (values: Yes, Extra, No)
+    - Top-level toggle `SKIP_YES_CAOS` in this file (default True)
+
+SELECTION LOGIC:
+- Excel `Needed?` handling:
+  - 'Extra': process and save into `inputs/pdfs/input_pdfs_extra/<CAO>/`
+  - 'Yes': skipped by default (`SKIP_YES_CAOS = True`). Toggle to include if needed
+  - 'No': skipped
+- Extra skip rule: if `<PRIMARY_OUTPUT_FOLDER>/<CAO>/` exists, skip that CAO in Extra run
+
+INPUTS:
+- Excel: `{config['paths']['inputs_excel']}/CAO_Frequencies_2014.xlsx`
+- Website: hardcoded `WEBSITE_URL`
+- Existing metadata (for duplicate avoidance):
+  - Primary: `{PRIMARY_OUTPUT_FOLDER}/extracted_cao_info.csv`, `{PRIMARY_OUTPUT_FOLDER}/main_links_log.csv`
+  - Extra: `{EXTRA_OUTPUT_FOLDER}/extracted_cao_info_extra.csv`, `{EXTRA_OUTPUT_FOLDER}/main_links_log_extra.csv`
+
+OUTPUTS:
+- PDFs:
+  - Extra: `{EXTRA_OUTPUT_FOLDER}/<CAO>/*.pdf`
+  - Primary (legacy): `{PRIMARY_OUTPUT_FOLDER}/<CAO>/*.pdf`
+- CSV metadata:
+  - Extra: `{EXTRA_OUTPUT_FOLDER}/extracted_cao_info_extra.csv`, `{EXTRA_OUTPUT_FOLDER}/main_links_log_extra.csv`
+  - Primary (legacy): `{PRIMARY_OUTPUT_FOLDER}/extracted_cao_info.csv`, `{PRIMARY_OUTPUT_FOLDER}/main_links_log.csv`
+
+NOTES:
+- Chrome download directory is parameterized; for Extra it is set to the Extra root.
+- ID and URL-based deduplication merge state from primary+extra to avoid re-downloading/renumbering.
+- Paths are ASCII; filenames are sanitized and deduplicated by suffixing counters when needed.
 """
 import os
 import sys
@@ -34,38 +97,75 @@ WEBSITE_URL = (
     )
 INPUT_EXCEL_PATH = (
     f"{config['paths']['inputs_excel']}/CAO_Frequencies_2014.xlsx")
-OUTPUT_FOLDER = config['paths']['inputs_pdfs']
+PRIMARY_OUTPUT_FOLDER = config['paths']['inputs_pdfs']
+EXTRA_OUTPUT_FOLDER = config['paths'].get('inputs_pdfs_extra', 'inputs/pdfs/input_pdfs_extra')
+# Current run targets the Extra folder by default
+OUTPUT_FOLDER = EXTRA_OUTPUT_FOLDER
+# Toggle to skip CAOs marked 'Yes' in Excel (they are already downloaded)
+SKIP_YES_CAOS = True
 DOWNLOAD_DELAY = 2
 MAX_RETRIES = 3
 MAX_PDFS_PER_CAO = 10000
 
-# Date filter configuration for CAO document search
-MIN_INGANGSDATUM = '01-01-1900'  # Minimum start date (earliest documents to include)
-MAX_INGANGSDATUM = '01-01-2006'  # Maximum start date (latest documents to include - gets pre-2006 docs)
+# Date filter configuration for CAO document search (include all dates)
+MIN_INGANGSDATUM = '01-01-1900'
+MAX_INGANGSDATUM = '01-01-2100'
 extracted_data = []
 all_main_link_logs = []
-existing_info_df = None
-existing_log_df = None
+existing_info_df_primary = None
+existing_log_df_primary = None
+existing_info_df_extra = None
+existing_log_df_extra = None
 existing_pdf_names_by_cao = {}
 existing_urls_by_cao = {}
 existing_ids_by_cao = {}
-if os.path.exists(os.path.join(OUTPUT_FOLDER, 'extracted_cao_info.csv')):
-    existing_info_df = pd.read_csv(os.path.join(OUTPUT_FOLDER,
+existing_page_names_by_cao = {}
+# Load existing metadata from primary folder
+if os.path.exists(os.path.join(PRIMARY_OUTPUT_FOLDER, 'extracted_cao_info.csv')):
+    existing_info_df_primary = pd.read_csv(os.path.join(PRIMARY_OUTPUT_FOLDER,
         'extracted_cao_info.csv'), sep=';')
-    for _, row in existing_info_df.iterrows():
+    for _, row in existing_info_df_primary.iterrows():
         cao = str(row['cao_number'])
         pdf_name = str(row['pdf_name'])
         id_val = str(row['id'])
         main_link_url = str(row.get('main_link_url', ''))
         existing_pdf_names_by_cao.setdefault(cao, set()).add(pdf_name)
         existing_ids_by_cao.setdefault(cao, set()).add(id_val)
+        page_name = str(row.get('page_name', ''))
+        if page_name:
+            existing_page_names_by_cao.setdefault(cao, set()).add(page_name)
         if main_link_url:
             existing_urls_by_cao.setdefault(cao, set()).add(main_link_url)
-if os.path.exists(os.path.join(OUTPUT_FOLDER, 'main_links_log.csv')):
-    existing_log_df = pd.read_csv(os.path.join(OUTPUT_FOLDER,
+# Load URLs from primary main_links_log.csv for duplicate detection
+if os.path.exists(os.path.join(PRIMARY_OUTPUT_FOLDER, 'main_links_log.csv')):
+    existing_log_df_primary = pd.read_csv(os.path.join(PRIMARY_OUTPUT_FOLDER,
         'main_links_log.csv'), sep=';')
-    # Also load URLs from main_links_log.csv for duplicate detection
-    for _, row in existing_log_df.iterrows():
+    for _, row in existing_log_df_primary.iterrows():
+        cao = str(row['cao_number'])
+        main_link_url = str(row.get('main_link_url', ''))
+        if main_link_url:
+            existing_urls_by_cao.setdefault(cao, set()).add(main_link_url)
+
+# Load existing metadata from extra folder
+extra_info_path = os.path.join(EXTRA_OUTPUT_FOLDER, 'extracted_cao_info_extra.csv')
+if os.path.exists(extra_info_path):
+    existing_info_df_extra = pd.read_csv(extra_info_path, sep=';')
+    for _, row in existing_info_df_extra.iterrows():
+        cao = str(row['cao_number'])
+        pdf_name = str(row['pdf_name'])
+        id_val = str(row['id'])
+        main_link_url = str(row.get('main_link_url', ''))
+        existing_pdf_names_by_cao.setdefault(cao, set()).add(pdf_name)
+        existing_ids_by_cao.setdefault(cao, set()).add(id_val)
+        page_name = str(row.get('page_name', ''))
+        if page_name:
+            existing_page_names_by_cao.setdefault(cao, set()).add(page_name)
+        if main_link_url:
+            existing_urls_by_cao.setdefault(cao, set()).add(main_link_url)
+extra_log_path = os.path.join(EXTRA_OUTPUT_FOLDER, 'main_links_log_extra.csv')
+if os.path.exists(extra_log_path):
+    existing_log_df_extra = pd.read_csv(extra_log_path, sep=';')
+    for _, row in existing_log_df_extra.iterrows():
         cao = str(row['cao_number'])
         main_link_url = str(row.get('main_link_url', ''))
         if main_link_url:
@@ -98,7 +198,7 @@ def close_overlays(driver):
         pass
 
 
-def setup_chrome_driver():
+def setup_chrome_driver(download_dir=None):
     """
     Set up and return a Selenium Chrome WebDriver with options for headless operation,
     anti-fingerprinting, and custom download preferences.
@@ -106,7 +206,9 @@ def setup_chrome_driver():
         driver (webdriver.Chrome): Configured Chrome WebDriver instance.
     """
     chrome_options = Options()
-    prefs = {'download.default_directory': os.path.abspath(OUTPUT_FOLDER),
+    if download_dir is None:
+        download_dir = OUTPUT_FOLDER
+    prefs = {'download.default_directory': os.path.abspath(download_dir),
         'download.prompt_for_download': False, 'download.directory_upgrade':
         True, 'plugins.always_open_pdf_externally': True,
         'safebrowsing.enabled': True}
@@ -606,7 +708,7 @@ def extract_pdf_links(driver, cao_number):
     return pdf_links, main_link_logs
 
 
-def save_extracted_data():
+def save_extracted_data(info_csv_filename='extracted_cao_info_extra.csv'):
     """
     Save the extracted metadata for all processed PDFs to a CSV file in the output folder.
     Returns:
@@ -614,14 +716,50 @@ def save_extracted_data():
     """
     if extracted_data:
         df = pd.DataFrame(extracted_data)
-        csv_path = os.path.join(OUTPUT_FOLDER, 'extracted_cao_info.csv')
+        csv_path = os.path.join(OUTPUT_FOLDER, info_csv_filename)
         df.to_csv(csv_path, index=False, encoding='utf-8', sep=';')
         print(f'📄 Extracted information saved to: {csv_path}')
         return df
     return None
 
 
-def process_cao_number(driver, cao_number):
+def _atomic_write_csv(path, df):
+    tmp_path = f"{path}.tmp"
+    df.to_csv(tmp_path, index=False, encoding='utf-8', sep=';')
+    os.replace(tmp_path, path)
+
+
+def persist_extra_csvs_for_cao(downloaded_data, main_link_logs):
+    """
+    Append rows for a single CAO to extra CSVs atomically, with de-duplication.
+    """
+    info_path = os.path.join(EXTRA_OUTPUT_FOLDER, 'extracted_cao_info_extra.csv')
+    log_path = os.path.join(EXTRA_OUTPUT_FOLDER, 'main_links_log_extra.csv')
+    os.makedirs(EXTRA_OUTPUT_FOLDER, exist_ok=True)
+    info_existing = pd.read_csv(info_path, sep=';') if os.path.exists(info_path) else pd.DataFrame()
+    log_existing = pd.read_csv(log_path, sep=';') if os.path.exists(log_path) else pd.DataFrame()
+    info_new = pd.DataFrame(downloaded_data)
+    log_new = pd.DataFrame(main_link_logs)
+    if not info_existing.empty:
+        info_df = pd.concat([info_existing, info_new], ignore_index=True)
+    else:
+        info_df = info_new
+    if not log_existing.empty:
+        log_df = pd.concat([log_existing, log_new], ignore_index=True)
+    else:
+        log_df = log_new
+    if not info_df.empty and 'id' in info_df.columns and isinstance(info_df['id'], pd.Series):
+        info_df['id'] = info_df['id'].fillna('').astype(str)
+    if not log_df.empty and 'id' in log_df.columns and isinstance(log_df['id'], pd.Series):
+        log_df['id'] = log_df['id'].fillna('').astype(str)
+    if not info_df.empty:
+        info_df = info_df.drop_duplicates(subset=['cao_number', 'pdf_name', 'id'])
+        _atomic_write_csv(info_path, info_df)
+    if not log_df.empty:
+        log_df = log_df.drop_duplicates(subset=['cao_number', 'main_link_url', 'id'])
+        _atomic_write_csv(log_path, log_df)
+
+def process_cao_number(driver, cao_number, output_base_folder=None):
     attempts_needed = 0
     for attempt in range(MAX_RETRIES):
         attempts_needed = attempt + 1
@@ -667,7 +805,9 @@ def process_cao_number(driver, cao_number):
     if not pdf_links:
         print(f'  No PDFs found for CAO {cao_number}')
         return 0, [], []
-    cao_folder = os.path.join(OUTPUT_FOLDER, str(cao_number))
+    if output_base_folder is None:
+        output_base_folder = OUTPUT_FOLDER
+    cao_folder = os.path.join(output_base_folder, str(cao_number))
     os.makedirs(cao_folder, exist_ok=True)
     existing_pdfs = set(f for f in os.listdir(cao_folder) if f.lower().
         endswith('.pdf'))
@@ -723,9 +863,9 @@ def process_cao_number(driver, cao_number):
             if log.get('main_link_url') == link_info['page_info'].get(
                 'main_link_url'):
                 log['pdf_name'] = new_pdf_name
-        # Check if URL was already downloaded (more reliable than PDF name)
-        main_link_url = link_info['page_info'].get('main_link_url', '')
-        if main_link_url in existing_urls_by_cao.get(cao_str, set()):
+        # Check if page_name was already processed (more reliable than URL)
+        page_name = link_info['page_info'].get('page_name', '')
+        if page_name and page_name in existing_page_names_by_cao.get(cao_str, set()):
             skipped += 1
             continue
         success = download_pdf(link_info['url'], link_info['description'],
@@ -736,7 +876,11 @@ def process_cao_number(driver, cao_number):
             existing_pdfs.add(new_pdf_name)
             existing_pdf_names_by_cao.setdefault(cao_str, set()).add(
                 new_pdf_name)
+            # Track page_name for future duplicate detection
+            if page_name:
+                existing_page_names_by_cao.setdefault(cao_str, set()).add(page_name)
             # Also track the URL for future duplicate detection
+            main_link_url = link_info['page_info'].get('main_link_url', '')
             if main_link_url:
                 existing_urls_by_cao.setdefault(cao_str, set()).add(main_link_url)
             new_id = f'{cao_str}{position:03d}'
@@ -758,17 +902,17 @@ def process_cao_number(driver, cao_number):
     return downloaded_count, downloaded_data, main_link_logs
 
 
-def sync_excels_with_pdfs():
+def sync_excels_with_pdfs(info_csv_filename='extracted_cao_info_extra.csv', log_csv_filename='main_links_log_extra.csv'):
     """
     Remove rows from extracted_cao_info.csv and main_links_log.csv if the corresponding PDF file does not exist in the CAO folder.
     Handles case and whitespace differences. Prints missing files and removed rows.
     Only removes from main_links_log if pdf_found is True and the PDF is missing.
     Keeps id as string.
     """
-    info_path = os.path.join(OUTPUT_FOLDER, 'extracted_cao_info.csv')
-    log_path = os.path.join(OUTPUT_FOLDER, 'main_links_log.csv')
+    info_path = os.path.join(OUTPUT_FOLDER, info_csv_filename)
+    log_path = os.path.join(OUTPUT_FOLDER, log_csv_filename)
     if not os.path.exists(info_path):
-        print('No extracted_cao_info.csv found. Nothing to sync.')
+        print(f'No {os.path.basename(info_path)} found. Nothing to sync.')
         return
     info_df = pd.read_csv(info_path, sep=';', dtype={'id': str})
     if os.path.exists(log_path):
@@ -823,34 +967,45 @@ def sync_excels_with_pdfs():
 
 
 if __name__ == '__main__':
-    sync_excels_with_pdfs()
-    os.makedirs(OUTPUT_FOLDER, exist_ok=True)
+    os.makedirs(EXTRA_OUTPUT_FOLDER, exist_ok=True)
+    os.makedirs(PRIMARY_OUTPUT_FOLDER, exist_ok=True)
+    sync_excels_with_pdfs('extracted_cao_info_extra.csv', 'main_links_log_extra.csv')
     try:
         df = pd.read_excel(INPUT_EXCEL_PATH)
-        cao_series = pd.Series(df[df['Needed?'] == 'Yes']['CAO'])
-        cao_numbers = cao_series.dropna().astype(int).tolist()
-        print(
-            f'📋 Found {len(cao_numbers)} CAO numbers to process: {cao_numbers}'
-            )
+        # Build processed_cao_numbers from primary folder names
+        processed_cao_numbers = set([name for name in os.listdir(PRIMARY_OUTPUT_FOLDER) if os.path.isdir(os.path.join(PRIMARY_OUTPUT_FOLDER, name)) and name.isdigit()])
+        if SKIP_YES_CAOS:
+            df = df[df['Needed?'] != 'Yes']
+        # Only process Extra rows
+        df_extra = df[df['Needed?'] == 'Extra']
+        # Skip Extra CAOs that already exist in primary folder
+        df_extra = df_extra[~df_extra['CAO'].astype(str).isin(processed_cao_numbers)]
+        cao_numbers = df_extra['CAO'].dropna().astype(int).tolist()
+        print(f"📋 Found {len(cao_numbers)} 'Extra' CAO numbers to process: {cao_numbers}")
     except Exception as e:
         print(f'✗ Error reading Excel file: {e}')
         exit(1)
     if not cao_numbers:
-        print("✗ No CAO numbers found with 'Yes' in Needed? column")
-        exit(1)
+        print("✗ No CAO numbers found to process for 'Extra' run")
+        exit(0)
     total_downloaded = 0
     for i, cao_number in enumerate(cao_numbers, 1):
         print(f'\n📄 Processing {i}/{len(cao_numbers)}: CAO {cao_number}')
         driver = None
         try:
-            driver = setup_chrome_driver()
+            driver = setup_chrome_driver(download_dir=EXTRA_OUTPUT_FOLDER)
             downloaded, downloaded_data, main_link_logs = process_cao_number(
-                driver, cao_number)
+                driver, cao_number, output_base_folder=EXTRA_OUTPUT_FOLDER)
             if downloaded is None:
                 downloaded = 0
             total_downloaded += int(downloaded)
             extracted_data.extend(downloaded_data)
             all_main_link_logs.extend(main_link_logs)
+            # Per-CAO flush to extra CSVs (atomic)
+            try:
+                persist_extra_csvs_for_cao(downloaded_data, main_link_logs)
+            except Exception:
+                pass
             if i < len(cao_numbers):
                 time.sleep(DOWNLOAD_DELAY)
         except Exception as e:
@@ -861,35 +1016,36 @@ if __name__ == '__main__':
                     driver.quit()
                 except:
                     pass
-    if extracted_data or existing_info_df is not None:
-        if existing_info_df is not None:
-            df = pd.concat([existing_info_df, pd.DataFrame(extracted_data)],
-                ignore_index=True)
-            df = df.drop_duplicates(subset=['cao_number', 'pdf_name', 'id'])
-        else:
-            df = pd.DataFrame(extracted_data)
-        if not df.empty and 'id' in df.columns and isinstance(df['id'], pd.
-            Series):
+    if extracted_data or (existing_info_df_extra is not None or existing_info_df_primary is not None):
+        base_df = []
+        if existing_info_df_primary is not None:
+            base_df.append(existing_info_df_primary)
+        if existing_info_df_extra is not None:
+            base_df.append(existing_info_df_extra)
+        base_df.append(pd.DataFrame(extracted_data))
+        df = pd.concat(base_df, ignore_index=True)
+        df = df.drop_duplicates(subset=['cao_number', 'pdf_name', 'id'])
+        if not df.empty and 'id' in df.columns and isinstance(df['id'], pd.Series):
             df['id'] = df['id'].fillna('').astype(str)
-        csv_path = os.path.join(OUTPUT_FOLDER, 'extracted_cao_info.csv')
+        csv_path = os.path.join(EXTRA_OUTPUT_FOLDER, 'extracted_cao_info_extra.csv')
         df.to_csv(csv_path, index=False, encoding='utf-8', sep=';')
         print(f'📄 Extracted information saved to: {csv_path}')
-    if all_main_link_logs or existing_log_df is not None:
-        if existing_log_df is not None:
-            df_log = pd.concat([existing_log_df, pd.DataFrame(
-                all_main_link_logs)], ignore_index=True)
-            df_log = df_log.drop_duplicates(subset=['cao_number',
-                'main_link_url', 'id'])
-        else:
-            df_log = pd.DataFrame(all_main_link_logs)
-        if not df_log.empty and 'id' in df_log.columns and isinstance(df_log
-            ['id'], pd.Series):
+    if all_main_link_logs or (existing_log_df_extra is not None or existing_log_df_primary is not None):
+        base_logs = []
+        if existing_log_df_primary is not None:
+            base_logs.append(existing_log_df_primary)
+        if existing_log_df_extra is not None:
+            base_logs.append(existing_log_df_extra)
+        base_logs.append(pd.DataFrame(all_main_link_logs))
+        df_log = pd.concat(base_logs, ignore_index=True)
+        df_log = df_log.drop_duplicates(subset=['cao_number', 'main_link_url', 'id'])
+        if not df_log.empty and 'id' in df_log.columns and isinstance(df_log['id'], pd.Series):
             df_log['id'] = df_log['id'].fillna('').astype(str)
-        log_path = os.path.join(OUTPUT_FOLDER, 'main_links_log.csv')
+        log_path = os.path.join(EXTRA_OUTPUT_FOLDER, 'main_links_log_extra.csv')
         df_log.to_csv(log_path, index=False, encoding='utf-8', sep=';')
         print(f'📄 Main link log saved to: {log_path}')
-    print(f'\n✅ Download process completed!')
+    print(f'\n✅ Extra run completed!')
     print(f'📊 Total PDFs downloaded: {total_downloaded}')
-    print(f'📁 Files saved in: {os.path.abspath(OUTPUT_FOLDER)}')
+    print(f'📁 Files saved in: {os.path.abspath(EXTRA_OUTPUT_FOLDER)}')
     if extracted_data:
         print(f'📋 Extracted information for {len(extracted_data)} PDFs')

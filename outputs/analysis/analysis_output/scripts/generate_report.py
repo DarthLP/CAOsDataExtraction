@@ -4,14 +4,15 @@ generate_report.py
 
 Description:
     Generates a Word report that compiles key plots and metrics from the Part 1 and Part 2 analyses.
-    The report is structured by content themes (coverage, gaps & renewals, seasonality, salary tables,
-    benefits, missingness, and activity over time), not by script parts. It embeds plots and summarizes
+    The report is structured by content themes (files over time, coverage, gaps & renewals, seasonality,
+    salary tables, benefits, and missingness), not by script parts. It embeds plots and summarizes
     key figures from the produced Excel tables.
 
 Usage:
     python generate_report.py \
-        --outdir "/absolute/path/to/analysis_output" \
-        --output "/absolute/path/to/analysis_output/CAO_analysis_report.docx"
+        --outdir "/absolute/path/to/outputs/analysis/analysis_output" \
+        --output "/absolute/path/to/outputs/analysis/analysis_output/CAO_analysis_report.docx" \
+        [--zero-file-caos "49,1045,838,2693,623,2425,468"]
 
 Notes:
     - Expects plots under: {outdir}/plots/part1 and {outdir}/plots/part2
@@ -25,7 +26,7 @@ from __future__ import annotations
 import argparse
 import os
 from datetime import datetime
-from typing import Dict, Optional
+from typing import Dict, Optional, List
 
 import pandas as pd
 
@@ -132,6 +133,18 @@ def compute_part2_summaries(tables_dir_part2: str) -> Dict[str, object]:
     return results
 
 
+def add_top_summary(doc: Document, p1: Dict[str, object], plots_dir_part1: str, zero_file_line: Optional[str] = None) -> None:
+    """Insert top-level summary lines before sections, matching the Word layout."""
+    if "num_caos" in p1:
+        add_paragraph(doc, f"Total CAOs analyzed: {int(p1['num_caos'])}")
+        if zero_file_line:
+            add_paragraph(doc, zero_file_line)
+    if "avg_files_per_cao" in p1 and p1["avg_files_per_cao"] is not None:
+        add_paragraph(doc, f"Average number of files per CAO: {float(p1['avg_files_per_cao']):.2f}")
+        # Place the histogram of number of files per CAO right after this line
+        add_image(doc, path(plots_dir_part1, "hist_num_files_per_cao.png"), "Files per CAO distribution")
+
+
 def add_coverage_section(doc: Document, plots_dir_part1: str, p1: Dict[str, object]) -> None:
     add_heading(doc, "Coverage and Periods", level=1)
     add_paragraph(doc, "Coverage is defined per CAO as the union of all validity periods we found in the source files. The earliest start date and latest expiry date establish the outer window. Inside that window there may be internal gaps (days where no period was in force) or overlaps (two or more periods simultaneously covering the same time). This section summarizes those high‑level time bounds and how many files contribute to each CAO.")
@@ -141,20 +154,16 @@ def add_coverage_section(doc: Document, plots_dir_part1: str, p1: Dict[str, obje
         add_paragraph(doc, f"CAOs fully covered without internal gaps: {p1['fully_covered_caos']}")
     if "avg_coverage_months" in p1 and p1["avg_coverage_months"] is not None:
         add_paragraph(doc, f"Average coverage window (earliest start to latest end): {p1['avg_coverage_months']:.1f} months")
-    if "avg_files_per_cao" in p1 and p1["avg_files_per_cao"] is not None:
-        add_paragraph(doc, f"Average number of files per CAO: {p1['avg_files_per_cao']:.2f}")
     add_paragraph(doc, "Interpretation guidance: a long coverage window with few files suggests sparse renewals or long multi‑year agreements; a short window with many files suggests frequent renewals, addenda, or multiple document variants.")
 
     add_image(doc, path(plots_dir_part1, "hist_earliest_start_years.png"), "Earliest start years distribution")
     add_image(doc, path(plots_dir_part1, "hist_latest_expiry_years.png"), "Latest expiry years distribution")
-    add_image(doc, path(plots_dir_part1, "hist_num_files_per_cao.png"), "Files per CAO distribution")
     add_image(doc, path(plots_dir_part1, "scatter_files_vs_coverage_months.png"), "Files vs coverage length (months)")
 
 
 def add_gaps_renewals_section(doc: Document, plots_dir_part1: str, p1: Dict[str, object]) -> None:
     add_heading(doc, "Gaps and Renewals", level=1)
     add_paragraph(doc, "Renewal gap = next period's start date minus previous period's end date after sorting by start date within a CAO. We distinguish: (a) negative gaps = overlaps (the next starts before the previous ends), (b) zero gaps = contiguous renewals (back‑to‑back), and (c) positive gaps = uncovered time. Only positive gaps represent true holes in coverage.")
-    add_paragraph(doc, "Large negative gaps typically arise when published periods use placeholder end dates (e.g., 2028‑12‑31) that were superseded early. Use the positive‑only statistics to understand actual breaks; use the 'all transitions' statistics to understand administrative cadence including overlaps.")
 
     # Overall renewal stats
     renew_overall_df = p1.get("renewal_overall")
@@ -172,7 +181,7 @@ def add_gaps_renewals_section(doc: Document, plots_dir_part1: str, p1: Dict[str,
 
 def add_seasonality_section(doc: Document, plots_dir_part1: str) -> None:
     add_heading(doc, "Seasonality of Dates", level=1)
-    add_paragraph(doc, "We show the month of all period starts and expiries across the corpus. This can reveal preferred renewal months (e.g., January or July) or administrative clustering (e.g., expiries at year‑end). These charts are descriptive; they do not account for period length or document weight.")
+    add_paragraph(doc, "We show the month of all period starts and expiries across the corpus. This can reveal preferred renewal months (e.g., January or July) or administrative clustering (e.g., expiries at year‑end).")
     add_image(doc, path(plots_dir_part1, "seasonality_all_start_months.png"), "All start months")
     add_image(doc, path(plots_dir_part1, "seasonality_all_expiry_months.png"), "All expiry months")
 
@@ -195,8 +204,8 @@ def add_salary_section(doc: Document, plots_dir_part2: str, p2: Dict[str, object
 
 def add_benefits_section(doc: Document, plots_dir_part2: str, p2: Dict[str, object]) -> None:
     add_heading(doc, "Benefits", level=1)
-    add_paragraph(doc, "Benefit presence is detected when any mapped column for a topic is non‑empty in a file. Mapping includes: pension (pension, retire), leave (vacation, maternity, vakantie, verlof), termination (term_*, ontslag, beëindiging, probation), overtime (overtime, shift compensation, max/min hours), training, and homeoffice. Presence indicates the topic is mentioned with data, not necessarily that it is exhaustive or standardized.")
-    add_paragraph(doc, "Use the prevalence‑over‑time chart to see adoption trends (e.g., rise of homeoffice). Presence can be conservative for sparse entries and liberal for verbose narrative; interpret comparatively across topics and years rather than as absolute compliance.")
+    add_paragraph(doc, "Benefit presence is detected when any mapped column for a topic is non‑empty in a file. Mapping includes: pension, leave, termination, overtime, training, and homeoffice. Presence indicates the topic is mentioned with data, not necessarily that it is exhaustive or standardized.")
+    add_paragraph(doc, "Use the prevalence‑over‑time chart to see adoption trends (e.g., rise of homeoffice).")
     add_image(doc, path(plots_dir_part2, "hist_benefits_percent_and_count.png"), "Benefits presence: % (left) and counts (right scale)")
     add_image(doc, path(plots_dir_part2, "line_benefit_prevalence_over_time.png"), "Benefit prevalence over time (% of files)")
 
@@ -218,11 +227,11 @@ def add_missingness_section(doc: Document, plots_dir_part2: str, p2: Dict[str, o
 
 def add_activity_over_time_section(doc: Document, plots_dir_part2: str) -> None:
     add_heading(doc, "Files Over Time", level=1)
-    add_paragraph(doc, "We compare counts of files by earliest start year and by end year. Divergence between the lines can indicate long periods (many end in later years) or back‑dated agreements (starts cluster earlier). This provides context for interpreting completeness/prevalence trends.")
+    add_paragraph(doc, "We compare counts of files by earliest start year and by end year.")
     add_image(doc, path(plots_dir_part2, "line_num_files_per_year_start_vs_end.png"), "Files per year: start vs end")
 
 
-def build_report(outdir: str, output_docx: str) -> None:
+def build_report(outdir: str, output_docx: str, zero_file_caos: Optional[List[str]] = None) -> None:
     plots_dir_part1 = path(outdir, "plots", "part1")
     plots_dir_part2 = path(outdir, "plots", "part2")
     tables_dir_part1 = path(outdir, "tables", "part1")
@@ -237,15 +246,22 @@ def build_report(outdir: str, output_docx: str) -> None:
     doc = Document()
     doc.add_heading("CAO Analysis Report", 0)
     add_paragraph(doc, f"Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    add_paragraph(doc, "This report consolidates date coverage, renewal dynamics, salary information, and benefits presence across CAOs. It explains how each metric is constructed and how to read the visualizations. We avoid repeating labels already visible in charts; instead we focus on definitions, caveats, and how to connect the pieces into a coherent view.")
+    add_paragraph(doc, "This report consolidates date coverage, renewal dynamics, salary information, and benefits presence across CAOs. It explains how each metric is constructed and how to read the visualizations.")
 
+    # Top-level summary lines (before sections)
+    zero_line = None
+    if zero_file_caos:
+        zero_line = f"– {len(zero_file_caos)} CAOs were in the list of CAOs to analyze but had 0 files and are not counted (CAO numbers: {', '.join([str(x) for x in zero_file_caos])})"
+    add_top_summary(doc, p1, plots_dir_part1, zero_line)
+
+    # Files over time first, matching updated Word layout
+    add_activity_over_time_section(doc, plots_dir_part2)
     add_coverage_section(doc, plots_dir_part1, p1)
     add_gaps_renewals_section(doc, plots_dir_part1, p1)
     add_seasonality_section(doc, plots_dir_part1)
     add_salary_section(doc, plots_dir_part2, p2)
     add_benefits_section(doc, plots_dir_part2, p2)
     add_missingness_section(doc, plots_dir_part2, p2)
-    add_activity_over_time_section(doc, plots_dir_part2)
 
     os.makedirs(os.path.dirname(output_docx), exist_ok=True)
     doc.save(output_docx)
@@ -253,14 +269,22 @@ def build_report(outdir: str, output_docx: str) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate a Word report from analysis outputs")
-    parser.add_argument("--outdir", required=True, help="Absolute path to output root directory (analysis_output)")
+    parser.add_argument("--outdir", required=False, default="outputs/analysis/analysis_output", help="Output root directory. Default: outputs/analysis/analysis_output")
     parser.add_argument("--output", required=False, default=None, help="Absolute path to the .docx to write")
+    parser.add_argument(
+        "--zero-file-caos",
+        default="",
+        help="Comma-separated list of CAO numbers that were in scope but had 0 files (to list under the Total CAOs line)",
+    )
     args = parser.parse_args()
 
     output_docx = args.output or path(args.outdir, "CAO_analysis_report.docx")
 
     print("Building Word report...")
-    build_report(args.outdir, output_docx)
+    zero_list = []
+    if args.zero_file_caos:
+        zero_list = [s.strip() for s in args.zero_file_caos.split(",") if s.strip()]
+    build_report(args.outdir, output_docx, zero_file_caos=zero_list)
     print(f"Saved report to: {output_docx}")
 
 

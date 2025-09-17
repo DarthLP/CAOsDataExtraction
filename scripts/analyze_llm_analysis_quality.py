@@ -304,6 +304,15 @@ def analyze_llm_analysis_quality(base_dir: str = "outputs/llm_analysis"):
         print(f"   Average non-salary content length: {avg_non_salary_content:.0f} chars")
     print()
     
+    # Additional informational counts (no re-analysis triggers)
+    salary_no_jobgroups_count = sum(1 for a in all_salary_analyses if 'error' not in a and not a.get('has_jobgroups', False))
+    salary_low_content_count = sum(1 for a in all_salary_analyses if 'error' not in a and a.get('total_content_length', 0) < 1000)
+    non_salary_low_content_count = sum(1 for a in all_non_salary_analyses if 'error' not in a and a.get('total_content_length', 0) < 2000)
+    print(f"   Salary files with no jobgroups: {salary_no_jobgroups_count}")
+    print(f"   Salary files with very low content (<1000 chars): {salary_low_content_count}")
+    print(f"   Non-salary files with very low content (<2000 chars): {non_salary_low_content_count}")
+    print()
+    
     # Files with minimal output (salary)
     if all_salary_analyses:
         salary_analyses_sorted = sorted([a for a in all_salary_analyses if 'error' not in a], key=lambda x: x.get('total_content_length', 0))
@@ -400,18 +409,6 @@ def analyze_llm_analysis_quality(base_dir: str = "outputs/llm_analysis"):
             if not analysis['has_salary_info']:
                 reanalysis_reason = "No salary information"
             
-            # Check if no jobgroups found
-            elif not analysis['has_jobgroups']:
-                reanalysis_reason = "No jobgroups found"
-            
-            # Check if very low content (less than 1000 chars)
-            elif analysis['total_content_length'] < 1000:
-                reanalysis_reason = f"Very low content: {analysis['total_content_length']} chars"
-            
-            # Check if very few salary entries (1 or 2 for large CAOs)
-            elif analysis['salary_entries'] <= 2 and analysis['total_content_length'] < 5000:
-                reanalysis_reason = f"Very few salary entries: {analysis['salary_entries']} entries"
-            
             if reanalysis_reason:
                 salary_files_needing_reanalysis.append({
                     'file': analysis['file'],
@@ -436,10 +433,6 @@ def analyze_llm_analysis_quality(base_dir: str = "outputs/llm_analysis"):
             # Check if more than 3 sections are empty
             elif len(analysis['empty_sections']) > 3:
                 reanalysis_reason = f"Too many empty sections: {len(analysis['empty_sections'])} empty"
-            
-            # Check if very low content (less than 2000 chars)
-            elif analysis['total_content_length'] < 2000:
-                reanalysis_reason = f"Very low content: {analysis['total_content_length']} chars"
             
             # Check if critical sections are empty (contract + pension)
             elif not analysis['has_contract_info'] and not analysis['has_pension_info']:
@@ -479,6 +472,104 @@ def analyze_llm_analysis_quality(base_dir: str = "outputs/llm_analysis"):
                 print(f"       Empty sections: {len(file_info['empty_sections'])}/7")
         
         print(f"\n   💡 Consider re-analyzing these files with an improved prompt.")
+    
+    # Option to delete files needing re-analysis
+    if len(salary_files_needing_reanalysis) > 0 or len(non_salary_files_needing_reanalysis) > 0:
+        print(f"\n🗑️  DELETE FILES NEEDING RE-ANALYSIS:")
+        print(f"   {'='*60}")
+        print(f"   Would you like to delete the files that need re-analysis?")
+        print(f"   This will remove the incomplete analysis files so they can be re-analyzed.")
+        
+        total_files_to_delete = len(salary_files_needing_reanalysis) + len(non_salary_files_needing_reanalysis)
+        delete_response = input(f"\n❓ Delete {total_files_to_delete} files needing re-analysis? (y/N): ")
+        
+        if delete_response.lower() in ['y', 'yes']:
+            deleted_count = 0
+            print(f"\n🗑️  DELETING FILES:")
+            print(f"   {'='*60}")
+            
+            # Delete salary files
+            if salary_files_needing_reanalysis:
+                print(f"\n🔴 SALARY FILES:")
+                for file_info in salary_files_needing_reanalysis:
+                    # Find the actual file path
+                    file_path = None
+                    cao_salary_dir = salary_path / file_info['cao_number']
+                    if cao_salary_dir.exists():
+                        for json_file in cao_salary_dir.glob("*.json"):
+                            if json_file.name == file_info['file']:
+                                file_path = json_file
+                                break
+                    
+                    if file_path and file_path.exists():
+                        print(f"\n📄 File: {file_info['file']} (CAO {file_info['cao_number']})")
+                        print(f"   Reason: {file_info['reason']}")
+                        print(f"   Content: {file_info['content_length']} chars")
+                        print(f"   Salary entries: {file_info['salary_entries']}")
+                        
+                        individual_response = input(f"   ❓ Delete this salary file? (y/N): ")
+                        
+                        if individual_response.lower() in ['y', 'yes']:
+                            try:
+                                file_path.unlink()
+                                print(f"   ✅ DELETED: {file_info['file']}")
+                                deleted_count += 1
+                            except Exception as e:
+                                print(f"   ❌ Failed to delete {file_info['file']}: {e}")
+                        else:
+                            print(f"   ⏭️  SKIPPED: {file_info['file']}")
+                    else:
+                        print(f"   ⚠️  File not found: {file_info['file']}")
+            
+            # Delete non-salary files
+            if non_salary_files_needing_reanalysis:
+                print(f"\n🔵 NON-SALARY FILES:")
+                for file_info in non_salary_files_needing_reanalysis:
+                    # Find the actual file path
+                    file_path = None
+                    cao_non_salary_dir = non_salary_path / file_info['cao_number']
+                    if cao_non_salary_dir.exists():
+                        for json_file in cao_non_salary_dir.glob("*.json"):
+                            if json_file.name == file_info['file']:
+                                file_path = json_file
+                                break
+                    
+                    if file_path and file_path.exists():
+                        print(f"\n📄 File: {file_info['file']} (CAO {file_info['cao_number']})")
+                        print(f"   Reason: {file_info['reason']}")
+                        print(f"   Content: {file_info['content_length']} chars")
+                        print(f"   Empty sections: {len(file_info['empty_sections'])}/7")
+                        if len(file_info['empty_sections']) > 0:
+                            empty_list = ', '.join(file_info['empty_sections'][:3])
+                            if len(file_info['empty_sections']) > 3:
+                                empty_list += f" (+{len(file_info['empty_sections']) - 3} more)"
+                            print(f"   Missing: {empty_list}")
+                        
+                        individual_response = input(f"   ❓ Delete this non-salary file? (y/N): ")
+                        
+                        if individual_response.lower() in ['y', 'yes']:
+                            try:
+                                file_path.unlink()
+                                print(f"   ✅ DELETED: {file_info['file']}")
+                                deleted_count += 1
+                            except Exception as e:
+                                print(f"   ❌ Failed to delete {file_info['file']}: {e}")
+                        else:
+                            print(f"   ⏭️  SKIPPED: {file_info['file']}")
+                    else:
+                        print(f"   ⚠️  File not found: {file_info['file']}")
+            
+            print(f"\n📊 DELETION SUMMARY:")
+            print(f"   {'='*60}")
+            print(f"   Files deleted: {deleted_count}")
+            print(f"   Files skipped: {total_files_to_delete - deleted_count}")
+            
+            if deleted_count > 0:
+                print(f"\n💡 Next steps:")
+                print(f"   - Run the analysis pipeline (p4_analysis.py) again to re-analyze the deleted files")
+                print(f"   - The improved prompt should produce better analysis results")
+        else:
+            print(f"   ⏭️  Deletion cancelled")
     else:
         print(f"   ✅ All files appear to have adequate analysis quality!")
     

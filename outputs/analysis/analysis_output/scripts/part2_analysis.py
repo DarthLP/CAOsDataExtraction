@@ -18,16 +18,16 @@ Description:
 
 Usage:
     python part2_analysis.py \
-        --extracted "/absolute/path/to/results/extracted_data.xlsx" \
-        --outdir "/absolute/path/to/analysis_output" \
+        --extracted "/absolute/path/to/outputs/excel/new_results/extracted_data.xlsx" \
+        --outdir "/absolute/path/to/outputs/analysis/analysis_output" \
         [--coverage "/absolute/path/to/analysis_output/tables/part1/cao_coverage_summary.csv"] \
         [--sheet "Sheet1"]
 
 Notes:
-    - Accepts .xlsx or .csv for the extracted results dataset.
+    - Accepts .xlsx or .csv for the extracted results dataset. If .xlsx is missing, falls back to .csv with the same basename.
     - Tries to infer columns for CAO number, start date, end date, salary table presence/count, and benefits.
     - Dates are parsed from multiple formats.
-    - Outputs plots as .png into plots/part2 and tables as .csv into tables/part2 under the provided outdir.
+    - Outputs plots as .png into {outdir}/plots/part2 and tables as Excel (.xlsx with README) into {outdir}/tables/part2.
     - Console output is minimal and focuses on key completion messages.
 """
 
@@ -183,10 +183,20 @@ def ensure_dirs(base_outdir: str) -> Dict[str, str]:
 def load_extracted(path: str, sheet: Optional[str] = None) -> pd.DataFrame:
     ext = os.path.splitext(path)[1].lower()
     if ext in [".xlsx", ".xlsm", ".xls"]:
-        df = pd.read_excel(path, sheet_name=(sheet if sheet is not None else 0))
+        try:
+            return pd.read_excel(path, sheet_name=(sheet if sheet is not None else 0))
+        except FileNotFoundError:
+            # Fallback to CSV in the same directory if Excel file is absent
+            csv_candidate = os.path.splitext(path)[0] + ".csv"
+            if os.path.exists(csv_candidate):
+                return pd.read_csv(csv_candidate, sep=';')
+            raise
     else:
-        df = pd.read_csv(path)
-    return df
+        # Try semicolon separator first (p5_excel_creation.py format), then comma
+        try:
+            return pd.read_csv(path, sep=';')
+        except Exception:
+            return pd.read_csv(path)
 
 
 def load_coverage(path: str) -> pd.DataFrame:
@@ -213,8 +223,9 @@ def load_coverage(path: str) -> pd.DataFrame:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="CAO content analyses (Part 2)")
-    parser.add_argument("--extracted", required=True, help="Absolute path to extracted_data (.xlsx or .csv)")
-    parser.add_argument("--outdir", required=True, help="Absolute path to output root directory (analysis_output)")
+    default_extracted = os.path.join("outputs", "excel", "new_results", "extracted_data.csv")
+    parser.add_argument("--extracted", required=False, default=default_extracted, help="Path to extracted_data (.csv recommended; .xlsx supported but may be truncated; semicolon-separated CSV expected)")
+    parser.add_argument("--outdir", required=False, default="outputs/analysis/analysis_output", help="Output root directory. Default: outputs/analysis/analysis_output")
     parser.add_argument("--coverage", default=None, help="Optional path to Part 1 coverage summary CSV to enable correlation analyses")
     parser.add_argument("--sheet", default=None, help="Excel sheet name if reading from .xlsx")
     args = parser.parse_args()
@@ -605,8 +616,9 @@ def main() -> None:
     plt.close(fig)
 
     # 7) Correlation: Coverage Period vs Salary Tables & Benefits (plots removed per request)
-    if args.coverage and os.path.exists(args.coverage):
-        cov = load_coverage(args.coverage)
+    coverage_path = args.coverage or os.path.join(args.outdir, "tables", "part1", "cao_coverage_summary.csv")
+    if coverage_path and os.path.exists(coverage_path):
+        cov = load_coverage(coverage_path)
         if "cao_number" in cov.columns and "coverage_months" in cov.columns:
             per_cao = file_df.groupby("cao_number").agg({
                 "salary_table_count": "mean",

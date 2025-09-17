@@ -4,6 +4,7 @@ part1_analysis.py
 
 Description:
     CAO date-based analyses on an input dataset containing CAO numbers and validity periods.
+    Recommended input is the consolidated CAO info at `pdfs/input_pdfs/extracted_cao_info.csv`.
 
     Performs:
       1) Earliest & latest dates per CAO, gap coverage check, list gaps.
@@ -14,15 +15,16 @@ Description:
 
 Usage:
     python part1_analysis.py \
-        --cao-info "/absolute/path/to/extracted_cao_info.(xlsx|csv)" \
-        --outdir "/absolute/path/to/analysis_output" \
+        --cao-info "/absolute/path/to/pdfs/input_pdfs/extracted_cao_info.(csv|xlsx)" \
+        --outdir "/absolute/path/to/outputs/analysis/analysis_output" \
         [--sheet "Sheet1"]
 
 Notes:
-    - Accepts .xlsx or .csv for the CAO info dataset.
+    - Accepts .csv or .xlsx for the CAO info dataset.
     - Tries to infer column names for CAO number, start date, and end date using flexible matching.
     - Dates are parsed from multiple formats; non-parsable dates are dropped with a warning in the summary tables.
-    - Outputs plots as .png into plots/part1 and tables as .csv into tables/part1 under the provided outdir.
+    - Outputs plots as .png into {outdir}/plots/part1 and tables as Excel (.xlsx with README) into {outdir}/tables/part1,
+      with detailed gap/renewal tables written under {outdir}/tables/part1/details.
     - Console output is minimal and focuses on key completion messages.
 """
 
@@ -208,8 +210,8 @@ def write_excel_with_description(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="CAO date-based analyses (Part 1)")
-    parser.add_argument("--cao-info", required=True, help="Absolute path to extracted_cao_info (.xlsx or .csv)")
-    parser.add_argument("--outdir", required=True, help="Absolute path to output root directory (analysis_output)")
+    parser.add_argument("--cao-info", required=False, default="pdfs/input_pdfs/extracted_cao_info.csv", help="Path to extracted_cao_info (.csv or .xlsx). Default: pdfs/input_pdfs/extracted_cao_info.csv")
+    parser.add_argument("--outdir", required=False, default="outputs/analysis/analysis_output", help="Output root directory. Default: outputs/analysis/analysis_output")
     parser.add_argument("--sheet", default=None, help="Excel sheet name if reading from .xlsx")
     args = parser.parse_args()
 

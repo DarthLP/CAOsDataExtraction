@@ -383,45 +383,45 @@ MODEL = 'gemini-2.5-flash'
 
 class SalaryRow(BaseModel):
     """Schema for a single salary row representing one job group."""
-    jobgroup: str = Field(default="", description="Job group code or position title - with descriptions in parentheses if explicitly mentioned (e.g., 'F-21-5 (workers with high school diploma)', 'I (Statutory minimum wage)')")    
-    salary_1: str = Field(default="", description="Salary of the first job group listed in the earliest wage table (numeric value as string; e.g. '13,17')")
-    salary_1_unit: str = Field(default="", description="Unit for first salary (e.g., 'hourly')")
-    salary_1_startdate: str = Field(default="", description="Start date for first salary (DD/MM/YYYY format)")
-    salary_increment_1: str = Field(default="", description="Percentage increase of first salary in the earliest wage table (e.g., '2%')")
+    jobgroup: str = Field(default="", description="Job group name - if mentioned put descriptions in parentheses (e.g., 'F-45-9 (workers with high school diploma)')")    
+    salary_1: str = Field(default="", description="Salary of the first job group listed in the earliest wage table")
+    salary_1_unit: str = Field(default="", description="Unit for first salary")
+    salary_1_startdate: str = Field(default="", description="Start date for first salary")
+    salary_increment_1: str = Field(default="", description="Percentage increase of first salary in the earliest wage table")
     
-    salary_2: str = Field(default="", description="Salary of the first job group listed in the second earliest wage table (numeric value as string; e.g. '13,17')")
-    salary_2_unit: str = Field(default="", description="Unit for second salary (e.g., 'hourly')")
-    salary_2_startdate: str = Field(default="", description="Start date for second salary (DD/MM/YYYY format)")
-    salary_increment_2: str = Field(default="", description="Percentage increase of second salary in the second earliest wage table (e.g., '2%')")
+    salary_2: str = Field(default="", description="Salary of the first job group listed in the second earliest wage table")
+    salary_2_unit: str = Field(default="", description="Unit for second salary")
+    salary_2_startdate: str = Field(default="", description="Start date for second salary")
+    salary_increment_2: str = Field(default="", description="Percentage increase of second salary in the second earliest wage table")
     
-    salary_3: str = Field(default="", description="Salary of the first job group listed in the third earliest wage table (numeric value as string; e.g. '13,17')")
-    salary_3_unit: str = Field(default="", description="Unit for third salary (e.g., 'hourly')")
-    salary_3_startdate: str = Field(default="", description="Start date for third salary (DD/MM/YYYY format)")
-    salary_increment_3: str = Field(default="", description="Percentage increase of third salary in the third earliest wage table (e.g., '2%')")
+    salary_3: str = Field(default="", description="Salary of the first job group listed in the third earliest wage table")
+    salary_3_unit: str = Field(default="", description="Unit for third salary")
+    salary_3_startdate: str = Field(default="", description="Start date for third salary")
+    salary_increment_3: str = Field(default="", description="Percentage increase of third salary in the third earliest wage table")
     
-    salary_4: str = Field(default="", description="Salary of the first job group listed in the fourth earliest wage table (numeric value as string; e.g. '21,59')")
-    salary_4_unit: str = Field(default="", description="Unit for fourth salary (e.g., 'hourly')")
-    salary_4_startdate: str = Field(default="", description="Start date for fourth salary (DD/MM/YYYY format)")
-    salary_increment_4: str = Field(default="", description="Percentage increase of fourth salary in the fourth earliest wage table (e.g., '2%')")
+    salary_4: str = Field(default="", description="Salary of the first job group listed in the fourth earliest wage table")
+    salary_4_unit: str = Field(default="", description="Unit for fourth salary")
+    salary_4_startdate: str = Field(default="", description="Start date for fourth salary")
+    salary_increment_4: str = Field(default="", description="Percentage increase of fourth salary in the fourth earliest wage table")
     
-    salary_5: str = Field(default="", description="Salary of the first job group listed in the fifth earliest wage table (numeric value as string; e.g. '21,59')")
-    salary_5_unit: str = Field(default="", description="Unit for fifth salary (e.g., 'hourly')")
-    salary_5_startdate: str = Field(default="", description="Start date for fifth salary (DD/MM/YYYY format)")
-    salary_increment_5: str = Field(default="", description="Percentage increase of salaries in the fifth earliest wage table (e.g., '2%')")
+    salary_5: str = Field(default="", description="Salary of the first job group listed in the fifth earliest wage table")
+    salary_5_unit: str = Field(default="", description="Unit for fifth salary")
+    salary_5_startdate: str = Field(default="", description="Start date for fifth salary")
+    salary_increment_5: str = Field(default="", description="Percentage increase of salaries in the fifth earliest wage table")
     
-    salary_6: str = Field(default="", description="Salary of the first job group listed in the sixth earliest wage table (numeric value as string; e.g. '13,17')")
-    salary_6_unit: str = Field(default="", description="Unit for sixth salary (e.g., 'hourly')")
-    salary_6_startdate: str = Field(default="", description="Start date for sixth salary (DD/MM/YYYY format)")
-    salary_increment_6: str = Field(default="", description="Percentage increase of sixth salary in the sixth earliest wage table (e.g., '2%')")
+    salary_6: str = Field(default="", description="Salary of the first job group listed in the sixth earliest wage table")
+    salary_6_unit: str = Field(default="", description="Unit for sixth salary")
+    salary_6_startdate: str = Field(default="", description="Start date for sixth salary")
+    salary_increment_6: str = Field(default="", description="Percentage increase of sixth salary in the sixth earliest wage table")
     
-    salary_7: str = Field(default="", description="Salary of the first job group listed in the seventh earliest wage table (numeric value as string; e.g. '13,17')")
-    salary_7_unit: str = Field(default="", description="Unit for seventh salary (e.g., 'hourly')")
-    salary_7_startdate: str = Field(default="", description="Start date for seventh salary (DD/MM/YYYY format)")
-    salary_increment_7: str = Field(default="", description="Percentage increase of seventh salary in the seventh earliest wage table (e.g., '2%')")
+    salary_7: str = Field(default="", description="Salary of the first job group listed in the seventh earliest wage table")
+    salary_7_unit: str = Field(default="", description="Unit for seventh salary")
+    salary_7_startdate: str = Field(default="", description="Start date for seventh salary")
+    salary_increment_7: str = Field(default="", description="Percentage increase of seventh salary in the seventh earliest wage table")
     
-    more_salaries: bool = Field(default=False, description="ONLY True if there are more than the 7 salary steps, salary_1,...,salary_7, in this job group. Hence, all salary fields salary_1,...,salary_7 must be filled.")
-    salary_note: str = Field(default="", description="Table-level salary context including calculation methods, effective dates and conditions")
-    salary_age_group: str = Field(default="", description="Age group the salary of the first job group applies to (e.g., '21+', 'all ages')")
+    more_salaries: bool = Field(default=False, description="True ONLY if the job group has more than 7 salary steps (i.e., salary_1 … salary_7 are all filled and at least one additional salary exists); otherwise False")
+    salary_note: str = Field(default="", description="Table-level salary context including calculation methods, effective dates, conditions, and any additional regular/standard wage increments beyond salary_increment_1,...,salary_increment_7")
+    salary_age_group: str = Field(default="", description="Age group the salary of the first job group applies to")
 
 
 class SalaryExtractionSchema(BaseModel):
@@ -431,52 +431,52 @@ class SalaryExtractionSchema(BaseModel):
 
 class ContractInfo(BaseModel):
     """Schema for contract information."""
-    start_date_contract: str = Field(default="", description="Contract start date (DD/MM/YYYY format)")
-    expiry_date_contract: str = Field(default="", description="Contract expiry/end date (DD/MM/YYYY format)")
+    start_date_contract: str = Field(default="", description="Contract start date")
+    expiry_date_contract: str = Field(default="", description="Contract expiry/end date")
 
 
 class PensionInfo(BaseModel):
     """Schema for pension information."""
-    pension_scheme_basic: str = Field(default="", description="Basic pension scheme rules, premiums, development and structure (e.g., '50% pension premium paid by employee', 'Employees 21-68 eligible', 'follows rules of Stichting Bedrijfstakpensioenfonds')")
-    pension_scheme_plus: str = Field(default="", description="Additional or 'plus' pension scheme rules, premiums, development and structure (e.g., '2% additional premium', 'Generation Policy for 60+ between 2018 and 2023', '0.2% increase for employees offset on 1-6-2021')")
-    retire_age_basic: str = Field(default="", description="Retirement age for the basic pension scheme (e.g., '67', '65-67 years')")
-    retire_age_plus: str = Field(default="", description="Retirement age for the additional or 'plus' pension scheme (e.g., '62', '60 years')")
-    pension_age_group: str = Field(default="", description="Age group eligible for pension schemes (e.g., '21+', 'all employees')")
+    pension_scheme_basic: str = Field(default="", description="Basic pension scheme rules, premiums, development and structure (e.g., '50% pension premium paid by employee', 'Employees 21-68 eligible')")
+    pension_scheme_plus: str = Field(default="", description="Additional or 'plus' pension scheme rules, premiums, development and structure (e.g., '2% additional premium', 'Generation Policy for 60+')")
+    retire_age_basic: str = Field(default="", description="Retirement age for the basic pension scheme")
+    retire_age_plus: str = Field(default="", description="Retirement age for the additional or 'plus' pension scheme")
+    pension_age_group: str = Field(default="", description="Age group eligible for pension schemes (e.g., '21+')")
 
 
 class LeaveInfo(BaseModel):
     """Schema for leave information."""
-    maternity_leave: str = Field(default="", description="Child-related (Maternity, adoption, etc.) leave duration (e.g., '5 days of paid maternity leave', 'Additional 4 weeks in multiple births', '5 weeks extra unpaid leave after birth')")
-    maternity_pay: str = Field(default="", description="Salary and benefits during child-related leave (e.g., '100% paid by employer', 'full salary', '70% UWV benefit')")
+    maternity_leave: str = Field(default="", description="Child-related (Maternity, adoption, etc.) leave duration (e.g., '5 days of paid maternity leave', 'Additional 4 weeks in multiple births')")
+    maternity_pay: str = Field(default="", description="Salary and benefits during child-related leave (e.g., '100% paid by employer', '70% UWV benefit')")
     maternity_note: str = Field(default="", description="Additional child-related leave rules (e.g., 'Vacation accrues during leave', 'leave may be split between partners')")
-    vacation_time: str = Field(default="", description="Annual vacation time (e.g., '25', '0.0769')")
-    vacation_unit: str = Field(default="", description="Unit for vacation time (e.g., 'hours per vacation year', 'weeks')")
-    vacation_note: str = Field(default="", description="Additional vacation rules (e.g., 'plus public holidays for part time workers', '8% holiday allowance', '5 extra days after 4')")
+    vacation_time: str = Field(default="", description="Annual vacation time")
+    vacation_unit: str = Field(default="", description="Unit of vacation time (e.g., 'weeks')")
+    vacation_note: str = Field(default="", description="Additional vacation rules (e.g., 'plus public holidays for part time workers', '8% holiday allowance')")
 
 
 class TerminationInfo(BaseModel):
     """Schema for termination information."""
-    term_period_employer: str = Field(default="", description="Notice period required from employer - include special rules based on age, start date, or contract length (e.g., '30 days', 'Statutory period applies if longer than agreed term')")
-    term_employer_note: str = Field(default="", description="Additional notes about employer termination (e.g., 'longer for senior positions', 'plus 1 month per year of service', 'Civil Code provisions apply')")
-    term_period_worker: str = Field(default="", description="Notice period required from worker - include special rules based on age, start date, or contract length (e.g., '1 week if less than 2 years employed', '30 days')")
+    term_period_employer: str = Field(default="", description="Notice period required from employer - include special rules based on age, start date, or contract length")
+    term_employer_note: str = Field(default="", description="Additional notes about employer termination (e.g., 'plus 1 month per year of service', 'Civil Code provisions apply')")
+    term_period_worker: str = Field(default="", description="Notice period required from worker - include special rules based on age, start date, or contract length")
     term_worker_note: str = Field(default="", description="Additional notes about worker termination (e.g., 'Starting date for notice is always a Saturday', 'can be extended')")
-    probation_period: str = Field(default="", description="Probation period duration (e.g., '2 months for indefinite contracts', '60 days', 'No trial period if contract ≤ 6 months')")
-    probation_note: str = Field(default="", description="Additional notes about probation (e.g., 'Article 7:652 of the Civil Code applies', 'shorter notice period during probation')")
+    probation_period: str = Field(default="", description="Probation period duration (e.g., '2 months for indefinite contracts', '60 days')")
+    probation_note: str = Field(default="", description="Additional notes about probation (e.g., 'Article 7 of the Civil Code applies', 'shorter notice period during probation')")
 
 
 class OvertimeInfo(BaseModel):
     """Schema for overtime information."""
-    overtime_compensation: str = Field(default="", description="Overtime pay and compensation rate (e.g., '1:1 Time Off In Lieu', '100% of hourly wage plus overtime premium', '€25/hour')")
+    overtime_compensation: str = Field(default="", description="Overtime pay and compensation rate (e.g., '1:1 Time Off In Lieu', '€25/hour')")
     max_hrs: str = Field(default="", description="Maximum working and overtime time (e.g., '52-hour weekly average if salary exceeds IP number 74', '16 hours/month')")
-    min_hrs: str = Field(default="", description="Minimum working and overtime time (e.g., '8 hours per day', '96 hours/month')")
-    shift_compensation: str = Field(default="", description="Shift compensations (e.g., '25% surcharge 8pm–10pm', ' Night shift 00:00 and 06:00', 'Max 20 shifts per 4-weeks')")
-    overtime_allowance_min: str = Field(default="", description="Minimum overtime and shift allowance (e.g., 'min 4-hour shift to qualify for night compensation', '16 night shifts over 16 weeks triggers lower working hour threshold')")
-    overtime_allowance_max: str = Field(default="", description="Maximum overtime and shift allowance (e.g., 'Working time averaged over 13 weeks not to exceed 48 hours', 'max 10 hours a day')")
+    min_hrs: str = Field(default="", description="Minimum working and overtime time (e.g., '96 hours/month')")
+    shift_compensation: str = Field(default="", description="Shift compensations (e.g., '25% surcharge 8pm–10pm', 'Max 20 shifts per 4-weeks')")
+    overtime_allowance_min: str = Field(default="", description="Minimum overtime and shift allowance (e.g., 'min 4-hour shift to qualify for night compensation')")
+    overtime_allowance_max: str = Field(default="", description="Maximum overtime and shift allowance (e.g., 'max 10 hours a day')")
 
 
 class TrainingInfo(BaseModel):
     """Schema for training information."""
-    training: str = Field(default="", description="Training rights, budgets and requirements (e.g., '€175 per year budget', '5 days training leave', 'mandatory safety training')")
+    training: str = Field(default="", description="Training rights, budgets and requirements (e.g., '€175 per year budget', '5 days of mandatory safety training')")
 
 
 class HomeofficeInfo(BaseModel):
@@ -516,9 +516,13 @@ def load_configuration() -> AnalysisConfig:
     with open('conf/config.yaml', 'r') as f:
         config_data = yaml.safe_load(f)
     
+    # Resolve project root (two levels up from this file: pipelines/ -> repo root)
+    project_root = Path(__file__).resolve().parents[1]
+    output_base = project_root / 'outputs' / 'llm_analysis'
+    
     return AnalysisConfig(
         input_folder=config_data['paths']['outputs_json'] + "/new_flow",
-        output_folder=Path(config_data['paths']['outputs_json']) / "llm_analysis",
+        output_folder=output_base,
         cao_info_path=f"{config_data['paths']['inputs_pdfs']}/extracted_cao_info.csv"
     )
 
@@ -554,11 +558,17 @@ def validate_input_paths(config: AnalysisConfig):
     if not os.path.exists(config.input_folder):
         raise ValueError(f"Input folder does not exist: {config.input_folder}")
     
-    config.output_folder.mkdir(exist_ok=True)
+    # Ensure full directory tree exists (avoid race conditions across processes)
+    config.output_folder.mkdir(parents=True, exist_ok=True)
     
-    # Check if we can write to output folder
+    # Check if we can write to output folder (retry once if parent disappears)
     test_file = config.output_folder / ".test_write"
     try:
+        test_file.write_text("test")
+        test_file.unlink()
+    except FileNotFoundError:
+        # Recreate and retry once
+        config.output_folder.mkdir(parents=True, exist_ok=True)
         test_file.write_text("test")
         test_file.unlink()
     except Exception as e:
@@ -631,16 +641,15 @@ SALARY_PROMPT = """
     Source text: {source_json}
 
     CRITICAL RULES:
-        - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess.
-        - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
-        - For missing values: Use empty string "" for string fields and use null for numbers, dates, and boolean fields.
-        - Output ONLY valid JSON format matching the provided schema structure.
+         - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess.
+         - For missing values: Use empty string "" for string fields and false for boolean fields.
+         - Output ONLY valid JSON format matching the provided schema structure.
 
     UNIT & TABLE SELECTION:
         - Include ONLY standard/regular wage tables - EXCLUDE allowances, bonuses, overtime, reimbursements, and non-standard worker roles like apprentices or foremen.
         - If multiple tables exist for different time periods under this standard wage type, include all of them. 
-        - Within standard wage tables extract salary information for each job group and include all job groups.
-        - Unit choice: if the same table exists in multiple units for the same workers/groups/periods/ages, choose the hourly version. Do NOT perform unit conversions. If hourly is absent, keep the original unit as-is.
+        - Within standard wage tables extract salary information for all job groups.
+        - Unit choice: if the same table exists in multiple units for the same workers/groups/periods/ages, choose the hourly version. If hourly is absent, KEEP the original unit as-is.
         - If salaries are presented as a range (e.g., "€2,000 – €2,400"), always extract the minimum value as the salary and state this in salary_note field.
 
     AGE GROUP SELECTION:
@@ -654,19 +663,21 @@ SALARY_PROMPT = """
         - Record the chosen age group in the age_group field. If the chosen group changes across different wage tables/periods, note this in salary_note.
 
     NOTES & CONSISTENCY:
-        - Salary_note, salary_age_group and more_salaries fields should be consistent across all job groups since they usually apply to entire wage tables (if this is not the case mention it in the salary_note field). 
-        - The field more_salaries must be set to true ONLY IF all salary_1 through salary_7 are filled for the job group and there exists at least one additional salary value in a later period. Otherwise, more_salaries must be null.
-        - No Gaps Rule: When multiple salary values are present in a row, map them sequentially into salary_1, salary_2, salary_3, etc. without skipping any index.
+         - Salary_note, salary_age_group and more_salaries fields should be consistent across all job groups since they usually apply to entire wage tables (if this is not the case mention it in the salary_note field). 
+         - No Gaps Rule: When multiple salary values are present for the same jobgroup, map them sequentially into salary_1, salary_2, salary_3, etc. without skipping any index.
+         - Save dates in DD/MM/YYYY format.
+         - If no suitable salary information is found at all, return an empty salary_information array but include one entry with only salary_note field filled as "NO SALARY INFO FOUND".
+         - Be very concise and precise in your output, especially in lengthy fields (like salary_note).
 
     PROCESS — FOLLOW IN THIS ORDER:
         1. Filter tables: keep only eligible standard wage tables (apply UNIT & TABLE rules).
         2. For each included table: extract all job groups present (do not omit).
         3. For each table: select EXACTLY ONE age group using AGE GROUP rules.
         4. Collect table versions for the same standard table and sort them EARLIEST→LATEST (per TIME-PERIOD ORDERING).
-        5. For each job group (aligned across versions as described): assign salary_1, salary_2, ... by chronological order of versions (observe NO GAPS rule), and for each salary_x also fill: salary_x_unit, salary_x_startdate and salary_increment_x.
+        5. For each job group (aligned across versions as described): assign salary_1, salary_2, ... by chronological order of versions (observe NO GAPS rule), and fill for each salary_x: salary_x_unit, salary_x_startdate and salary_increment_x.
         6. Fill fields salary_note, salary_age_group and more_salaries
 
-    FINAL CHECK: Before producing output, verify that ALL above constraints are satisfied. Then output a single JSON object conforming exactly to the schema.
+    FINAL CHECK: Before producing output, verify that all above constraints are satisfied. Then output a single JSON object conforming exactly to the schema.
     """
 
 
@@ -686,9 +697,10 @@ NON_SALARY_PROMPT = """
     EXTRACTION GUIDELINES:
         - Extract factual information for each field based on the schema descriptions. Be concise.
         - Include relevant conditions, exceptions, and legal references in note fields.
-        - For missing values: Use empty string "" for string fields and use null for numbers, dates, and boolean fields.
+        - For missing values use empty string "".
+        - Save dates in DD/MM/YYYY format.
 
-    FINAL CHECK: Before producing output, verify that ALL above constraints are satisfied. Then output a single JSON object conforming exactly to the schema.
+    FINAL CHECK: Before producing output, verify that all above constraints are satisfied. Then output a single JSON object conforming exactly to the schema.
     """
 
 
@@ -927,11 +939,24 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
     model_params = get_model_parameters()
     print(f'  DEBUG: Model params: {model_params}')
     
+    # Use proper safety settings format for newer google-genai API
     safety_settings = [
-        {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
-        {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
-        {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
-        {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"}
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        )
     ]
     
     config = {
@@ -945,7 +970,8 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
         "frequency_penalty": model_params["frequency_penalty"],
         "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
         "response_mime_type": "application/json",
-        "response_schema": SalaryExtractionSchema
+        "response_schema": SalaryExtractionSchema,
+        "safety_settings": safety_settings  # Include safety settings in config
     }
     
     print(f'  DEBUG: API config: {config}')
@@ -966,6 +992,12 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
         
         # Log detailed response information
         log_api_response_details(response, filename, processing_time)
+        
+        # Log actual response content for debugging
+        if hasattr(response, 'text') and response.text:
+            print(f'  DEBUG: Response text sample: "{response.text[:100]}..."')
+        if hasattr(response, 'parsed'):
+            print(f'  DEBUG: Parsed response: {response.parsed}')
         
         # Check for truncation
         if check_response_truncation(response, filename):
@@ -1063,6 +1095,26 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                 
                 print(f'  DEBUG: Model params: {model_params}')
                 
+                # Use proper safety settings format for newer google-genai API
+                safety_settings = [
+                    types.SafetySetting(
+                        category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
+                        threshold=types.HarmBlockThreshold.BLOCK_NONE
+                    ),
+                    types.SafetySetting(
+                        category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+                        threshold=types.HarmBlockThreshold.BLOCK_NONE
+                    ),
+                    types.SafetySetting(
+                        category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+                        threshold=types.HarmBlockThreshold.BLOCK_NONE
+                    ),
+                    types.SafetySetting(
+                        category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+                        threshold=types.HarmBlockThreshold.BLOCK_NONE
+                    )
+                ]
+                
                 # Prepare API configuration
                 config = {
                     "temperature": model_params["temperature"],
@@ -1075,7 +1127,8 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                     "frequency_penalty": model_params["frequency_penalty"],
                     "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
                     "response_mime_type": "application/json",
-                    "response_schema": SalaryExtractionSchema
+                    "response_schema": SalaryExtractionSchema,
+                    "safety_settings": safety_settings  # Include safety settings in config
                 }
                 
                 print(f'  DEBUG: API config: {config}')
@@ -1224,11 +1277,24 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
     model_params = get_model_parameters()
     print(f'  DEBUG: Non-salary model params: {model_params}')
     
+    # Use proper safety settings format for newer google-genai API
     safety_settings = [
-        {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
-        {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
-        {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
-        {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"}
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        )
     ]
     
     config = {
@@ -1242,7 +1308,8 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
         "frequency_penalty": model_params["frequency_penalty"],
         "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
         "response_mime_type": "application/json",
-        "response_schema": NonSalaryExtractionSchema
+        "response_schema": NonSalaryExtractionSchema,
+        "safety_settings": safety_settings  # Include safety settings in config
     }
     
     print(f'  DEBUG: Non-salary API config: {config}')
@@ -1263,6 +1330,12 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
         
         # Log detailed response information
         log_api_response_details(response, f"{filename} (non-salary)", processing_time)
+        
+        # Log actual response content for debugging
+        if hasattr(response, 'text') and response.text:
+            print(f'  DEBUG: Non-salary response text sample: "{response.text[:100]}..."')
+        if hasattr(response, 'parsed'):
+            print(f'  DEBUG: Non-salary parsed response: {response.parsed}')
         
         # Check for truncation
         if check_response_truncation(response, filename):
@@ -1326,6 +1399,26 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
                 
                 print(f'  DEBUG: Non-salary model params: {model_params}')
                 
+                # Use proper safety settings format for newer google-genai API
+                safety_settings = [
+                    types.SafetySetting(
+                        category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
+                        threshold=types.HarmBlockThreshold.BLOCK_NONE
+                    ),
+                    types.SafetySetting(
+                        category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+                        threshold=types.HarmBlockThreshold.BLOCK_NONE
+                    ),
+                    types.SafetySetting(
+                        category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+                        threshold=types.HarmBlockThreshold.BLOCK_NONE
+                    ),
+                    types.SafetySetting(
+                        category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+                        threshold=types.HarmBlockThreshold.BLOCK_NONE
+                    )
+                ]
+                
                 # Prepare API configuration
                 config = {
                     "temperature": model_params["temperature"],
@@ -1338,7 +1431,8 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
                     "frequency_penalty": model_params["frequency_penalty"],
                     "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
                     "response_mime_type": "application/json",
-                    "response_schema": NonSalaryExtractionSchema
+                    "response_schema": NonSalaryExtractionSchema,
+                    "safety_settings": safety_settings  # Include safety settings in config
                 }
                 
                 print(f'  DEBUG: Non-salary API config: {config}')

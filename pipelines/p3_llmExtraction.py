@@ -62,6 +62,7 @@ import sys
 import json
 import time
 import argparse
+import threading
 from pathlib import Path
 from typing import List, Optional, Tuple, Dict, Any
 from dataclasses import dataclass, field
@@ -71,7 +72,6 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Third-party imports for environment variables, file locking, and data validation
 from dotenv import load_dotenv
-import fcntl
 from pydantic import BaseModel, Field, ConfigDict
 import yaml
 from monitoring.monitoring_3_1 import PerformanceMonitor
@@ -227,6 +227,40 @@ class CAOExtractionSchema(BaseModel):
 # Process-specific quota flags to stop individual processes when daily quota is hit
 process_quota_flags = {}
 
+# Lock TTL for cleanup
+LOCK_TTL_HOURS = 24
+
+
+# =============================================================================
+# DEBUG BUFFER CLASS
+# =============================================================================
+class DebugBuffer:
+    """Buffer for debug messages that can be flushed on failure or streamed live."""
+    def __init__(self, live: bool = False, max_lines: int = 1000):
+        self.live = live
+        self.max_lines = max_lines
+        self.lines: list[str] = []
+    
+    def log(self, msg: str):
+        if self.live:
+            print(msg)
+        elif len(self.lines) < self.max_lines:
+            self.lines.append(msg)
+    
+    def flush(self):
+        for line in self.lines:
+            print(line)
+        self.lines.clear()
+    
+    def clear(self):
+        self.lines.clear()
+    
+    def enable_live(self):
+        self.live = True
+    
+    def snapshot(self, last_n: int = 200) -> list[str]:
+        return self.lines[-last_n:]
+
 # =============================================================================
 # CONFIGURATION CLASSES
 # =============================================================================
@@ -242,7 +276,7 @@ class ExtractionConfig:
     model: str = 'gemini-2.5-flash'
     temperature: float = 0.0
     top_p: float = 0.1
-    top_k: int = 1
+    top_k: int = 0.9
     max_tokens: int = 65536
     candidate_count: int = 1
     seed: int = 42
@@ -300,6 +334,11 @@ class ProcessingContext:
     client: Any  # Gemini client
     performance_monitor: PerformanceMonitor
     stats: ExtractionStats = field(default_factory=ExtractionStats)
+    debug: Any = None  # DebugBuffer
+    current_stage: str = ""
+    stage_start_ts: float = 0.0
+    file_start_ts: float = 0.0
+    live_escalated: bool = False
 
 
 # =============================================================================
@@ -351,11 +390,12 @@ def setup_performance_monitor() -> PerformanceMonitor:
 
 
 def setup_processing_context(config: ExtractionConfig, process_id: int, 
-                           total_processes: int, key_number: int) -> ProcessingContext:
+                           total_processes: int, key_number: int, verbose: bool = False) -> ProcessingContext:
     """Setup complete processing context."""
     api_key, actual_key_number = setup_environment(key_number)
     client = setup_gemini_client(api_key)
     performance_monitor = setup_performance_monitor()
+    debug_buffer = DebugBuffer(live=verbose)
     
     return ProcessingContext(
         config=config,
@@ -364,7 +404,8 @@ def setup_processing_context(config: ExtractionConfig, process_id: int,
         api_key=api_key,
         key_number=actual_key_number,
         client=client,
-        performance_monitor=performance_monitor
+        performance_monitor=performance_monitor,
+        debug=debug_buffer
     )
 
 
@@ -443,29 +484,63 @@ def validate_markdown_file(markdown_path: str) -> Tuple[bool, str]:
 
 
 # =============================================================================
+# HEARTBEAT WATCHDOG FUNCTIONS
+# =============================================================================
+# Functions for monitoring long-running stages and escalating debug output
+def heartbeat_watchdog(context: ProcessingContext, hang_threshold: int, heartbeat_interval: int, stop_event: threading.Event):
+    """Watchdog thread that monitors stage duration and escalates debug output on long stages."""
+    while not stop_event.is_set():
+        try:
+            if context.current_stage and context.stage_start_ts > 0:
+                elapsed = time.time() - context.stage_start_ts
+                
+                # Check if we should escalate to live debug
+                if elapsed >= hang_threshold and not context.live_escalated:
+                    print(f'[HEARTBEAT] long-running stage={context.current_stage} elapsed={elapsed:.0f}s — enabling live debug')
+                    # Flush buffered debug once
+                    for line in context.debug.snapshot():
+                        print(line)
+                    context.debug.enable_live()
+                    context.live_escalated = True
+                
+                # Continue heartbeats if already escalated
+                elif context.live_escalated:
+                    file_elapsed = time.time() - context.file_start_ts
+                    print(f'[HEARTBEAT] stage={context.current_stage} elapsed={elapsed:.0f}s (file {file_elapsed:.0f}s)')
+            
+            # Wait for next heartbeat or stop signal
+            if stop_event.wait(heartbeat_interval):
+                break
+                
+        except Exception as e:
+            # Don't let watchdog errors crash the main process
+            print(f'[HEARTBEAT] Watchdog error: {e}')
+            break
+
+
+# =============================================================================
 # FILE LOCKING & MANAGEMENT FUNCTIONS
 # =============================================================================
 # Functions for file locking, cleanup, and result saving
 def acquire_file_lock(file_path: Path, context: ProcessingContext) -> bool:
-    """Try to acquire a lock for processing a file."""
-    lock_file = file_path.with_suffix('.lock')
+    """Try to acquire a lock for processing a file using atomic file creation."""
+    lock_path = Path(str(file_path) + '.lock')
     try:
-        with open(lock_file, 'w') as f:
-            fcntl.flock(f.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
-            f.write(f'Process {context.process_id + 1} using API key {context.key_number}\n')
-            f.write(f'Timestamp: {time.time()}\n')
+        fd = os.open(str(lock_path), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        with os.fdopen(fd, 'w') as f:
+            f.write(f'pid={context.process_id} key={context.key_number} ts={time.time()}\n')
         return True
-    except (IOError, OSError):
+    except FileExistsError:
         return False
 
 
 def release_file_lock(file_path: Path):
     """Release the lock for a file."""
-    lock_file = file_path.with_suffix('.lock')
+    lock_path = Path(str(file_path) + '.lock')
     try:
-        if lock_file.exists():
-            lock_file.unlink()
-    except:
+        if lock_path.exists():
+            lock_path.unlink()
+    except Exception:
         pass
 
 
@@ -568,9 +643,7 @@ def calculate_quota_retry_delay(file_size_mb: float, attempt: int) -> int:
     # Calculate total delay in seconds
     total_delay_seconds = int((minutes_needed * backoff_multiplier + buffer_minutes) * 60)
     
-    print(f'  DEBUG: File size: {file_size_mb:.2f}MB, Estimated tokens: {estimated_tokens:,}')
-    print(f'  DEBUG: Minutes needed: {minutes_needed:.1f}, Backoff: {backoff_multiplier}x, Buffer: {buffer_minutes}min')
-    print(f'  DEBUG: Total delay: {total_delay_seconds // 60} minutes ({total_delay_seconds} seconds)')
+    # Debug logging moved to context.debug.log() calls in calling functions
     
     return total_delay_seconds
 
@@ -733,12 +806,13 @@ def safe_contents(prompt: str, uploaded_file=None):
     return contents
 
 
-def extract_text_safely(response, filename: str):
+def extract_text_safely(response, filename: str, context: ProcessingContext = None):
     """Safely extract text from response with proper error handling and JSON cleanup."""
     if response is None:
         raise ValueError('No response received from model')
     
-    print(f'  DEBUG: Response object type: {type(response)}')
+    if context and context.debug:
+        context.debug.log(f'  DEBUG: Response object type: {type(response)}')
     
     # Check if we have candidates
     if not getattr(response, "candidates", None):
@@ -748,31 +822,38 @@ def extract_text_safely(response, filename: str):
     
     # Check finish reason first - this is critical for understanding failures
     fr = getattr(cand, "finish_reason", None)
-    print(f'  DEBUG: Finish reason: {fr}')
+    if context and context.debug:
+        context.debug.log(f'  DEBUG: Finish reason: {fr}')
     
     # If filtered or blocked, don't try to access text
     if fr and fr not in ["STOP", "MAX_TOKENS"]:
         safety_info = []
         if hasattr(cand, "safety_ratings") and cand.safety_ratings is not None:
             safety_info = [(r.category, r.probability) for r in cand.safety_ratings]
-        print(f'  DEBUG: Response blocked - Finish reason: {fr}, Safety ratings: {safety_info}')
+        if context and context.debug:
+            context.debug.log(f'  DEBUG: Response blocked - Finish reason: {fr}, Safety ratings: {safety_info}')
         return "", {"finish": fr, "safety": safety_info, "filename": filename}
     
     # Check for structured output first (when using response_schema)
-    print(f'  DEBUG: Checking response.parsed: hasattr={hasattr(response, "parsed")}, value={"FOUND" if hasattr(response, "parsed") and response.parsed else "NOT_FOUND"}')
+    if context and context.debug:
+        context.debug.log(f'  DEBUG: Checking response.parsed: hasattr={hasattr(response, "parsed")}, value={"FOUND" if hasattr(response, "parsed") and response.parsed else "NOT_FOUND"}')
     if hasattr(response, 'parsed') and response.parsed:
-        print(f'  DEBUG: Found structured output in response.parsed')
-        print(f'  DEBUG: response.parsed type: {type(response.parsed)}')
-        print(f'  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]')
+        if context and context.debug:
+            context.debug.log(f'  DEBUG: Found structured output in response.parsed')
+            context.debug.log(f'  DEBUG: response.parsed type: {type(response.parsed)}')
+            context.debug.log(f'  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]')
         # Convert structured output to JSON string
         content = response.parsed.model_dump_json()
-        print(f'  DEBUG: Converted structured output to JSON: {len(content)} chars')
+        if context and context.debug:
+            context.debug.log(f'  DEBUG: Converted structured output to JSON: {len(content)} chars')
         return content, {"finish": fr or "STOP", "filename": filename}
     
     # Check for direct text response (when not using response_schema)
-    print(f'  DEBUG: Checking response.text: hasattr={hasattr(response, "text")}, value={getattr(response, "text", "NOT_FOUND")}')
+    if context and context.debug:
+        context.debug.log(f'  DEBUG: Checking response.text: hasattr={hasattr(response, "text")}, value={getattr(response, "text", "NOT_FOUND")}')
     if hasattr(response, 'text') and response.text:
-        print(f'  DEBUG: Found direct text response: {len(response.text)} chars')
+        if context and context.debug:
+            context.debug.log(f'  DEBUG: Found direct text response: {len(response.text)} chars')
         content = response.text
         return content, {"finish": fr or "STOP", "filename": filename}
     
@@ -785,39 +866,50 @@ def extract_text_safely(response, filename: str):
         raise ValueError('No content in response candidate')
     
     parts = getattr(content, "parts", []) or []
-    print(f'  DEBUG: Found {len(parts)} content parts')
+    if context and context.debug:
+        context.debug.log(f'  DEBUG: Found {len(parts)} content parts')
     
     # Debug: Print all part types to understand what we're getting
     for i, part in enumerate(parts):
-        print(f'  DEBUG: Part {i}: type={type(part).__name__}, attributes={dir(part)}')
+        if context and context.debug:
+            context.debug.log(f'  DEBUG: Part {i}: type={type(part).__name__}, attributes={dir(part)}')
         if hasattr(part, "text") and part.text:
             text_chunks.append(part.text)
-            print(f'  DEBUG: Part {i}: text length = {len(part.text)}')
+            if context and context.debug:
+                context.debug.log(f'  DEBUG: Part {i}: text length = {len(part.text)}')
         elif hasattr(part, "function_call"):
-            print(f'  DEBUG: Part {i}: function_call found')
+            if context and context.debug:
+                context.debug.log(f'  DEBUG: Part {i}: function_call found')
         elif hasattr(part, "inline_data"):
-            print(f'  DEBUG: Part {i}: inline_data found')
+            if context and context.debug:
+                context.debug.log(f'  DEBUG: Part {i}: inline_data found')
         else:
-            print(f'  DEBUG: Part {i}: no text content, no function_call, no inline_data')
+            if context and context.debug:
+                context.debug.log(f'  DEBUG: Part {i}: no text content, no function_call, no inline_data')
     
     if not text_chunks:
         # Try fallback: check if response has direct text attribute
-        print(f'  DEBUG: No text parts found, trying fallback methods...')
+        if context and context.debug:
+            context.debug.log(f'  DEBUG: No text parts found, trying fallback methods...')
         
         # Try direct response attributes (but we already checked for parsed and text above)
-        print(f'  DEBUG: No fallback text found in response')
+        if context and context.debug:
+            context.debug.log(f'  DEBUG: No fallback text found in response')
         raise ValueError('No text parts found in response')
     else:
         content = "".join(text_chunks)
-        print(f'  DEBUG: Total extracted text length: {len(content)}')
+        if context and context.debug:
+            context.debug.log(f'  DEBUG: Total extracted text length: {len(content)}')
     
     # Apply JSON cleanup (integrated from original validate_llm_response)
     if content.strip().startswith('{') and content.strip().endswith('}'):
         try:
             json.loads(content)
-            print(f'  DEBUG: JSON is valid without cleanup')
+            if context and context.debug:
+                context.debug.log(f'  DEBUG: JSON is valid without cleanup')
         except json.JSONDecodeError as e:
-            print(f'  WARNING: JSON parsing failed, attempting cleanup: {str(e)}')
+            if context and context.debug:
+                context.debug.log(f'  WARNING: JSON parsing failed, attempting cleanup: {str(e)}')
             
             # Remove problematic control characters (but keep \n, \t, \r)
             import re
@@ -825,16 +917,18 @@ def extract_text_safely(response, filename: str):
             
             try:
                 json.loads(cleaned_content)
-                print(f'  INFO: JSON cleanup successful, using cleaned content')
+                if context and context.debug:
+                    context.debug.log(f'  INFO: JSON cleanup successful, using cleaned content')
                 content = cleaned_content
             except json.JSONDecodeError as e2:
-                print(f'  WARNING: JSON cleanup failed: {str(e2)}')
-                print(f'  INFO: Using raw text content as fallback')
+                if context and context.debug:
+                    context.debug.log(f'  WARNING: JSON cleanup failed: {str(e2)}')
+                    context.debug.log(f'  INFO: Using raw text content as fallback')
     
     return content, {"finish": fr or "STOP", "filename": filename}
 
 
-def handle_llm_errors(error: Exception, attempt: int, max_retries: int, file_size_mb: float = 0, context=None) -> bool:
+def handle_llm_errors(error: Exception, attempt: int, max_retries: int, file_size_mb: float = 0, context=None, remaining_budget_s: Optional[int] = None) -> bool:
     """Handle different types of LLM errors with appropriate retry logic."""
     error_str = str(error).lower()
     
@@ -842,6 +936,8 @@ def handle_llm_errors(error: Exception, attempt: int, max_retries: int, file_siz
         'timeout' in error_str or 'truncated' in error_str):
         if attempt < max_retries - 1:
             wait_time = 120 * 2 ** attempt
+            if remaining_budget_s is not None:
+                wait_time = min(wait_time, max(0, int(remaining_budget_s) - 5))
             print(f'  Attempt {attempt + 1} failed (timeout/truncation), retrying in {wait_time // 60} minutes...')
             time.sleep(wait_time)
             return True
@@ -959,7 +1055,7 @@ def validate_response_schema(content: str, filename: str) -> bool:
 # =============================================================================
 # Main function for extracting content from markdown files using Gemini API
 def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: str, 
-                               context: ProcessingContext) -> Optional[str]:
+                               context: ProcessingContext, remaining_budget_s: Optional[int] = None) -> Optional[str]:
     """Extract using Files API approach - upload markdown file to Gemini."""
     print(f'  INFO: Using Files API approach for {filename}')
     start_time = time.time()
@@ -985,9 +1081,19 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
     else:
         timeout_seconds = 600
     
+    # Cap timeout by remaining budget if provided
+    if remaining_budget_s is not None:
+        per_call_cap = max(15, int(remaining_budget_s) - 5)
+        timeout_seconds = min(timeout_seconds, per_call_cap)
+        if remaining_budget_s <= 0:
+            raise TimeoutError(f'No remaining budget for {filename}')
+    
     for attempt in range(context.config.max_retries):
         uploaded_file = None
         try:
+            # Stage marker: uploading
+            context.current_stage = "uploading"
+            context.stage_start_ts = time.time()
             print(f'  INFO: Uploading markdown file to Gemini...')
             try:
                 uploaded_file = context.client.files.upload(
@@ -1000,6 +1106,7 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                 raise ValueError(f'Failed to upload file {filename}: {e}')
             
             # Check file state and wait for processing
+            context.current_stage = "file_state_polling"
             max_wait_seconds = (300 if file_size_mb <= 5.0 else 600 if file_size_mb <= 10.0 else 900)
             poll_interval_seconds = 2
             waited = 0
@@ -1055,6 +1162,10 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
             # Safely construct contents for API call
             safe_content = safe_contents(extraction_prompt, uploaded_file)
             
+            # Stage marker: generating content
+            context.current_stage = "generating_content"
+            context.stage_start_ts = time.time()
+            
             # Use the original working approach with response_schema
             response = context.client.models.generate_content(
                 model=context.config.model,
@@ -1076,7 +1187,11 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                 }
             )
             
-            content, extraction_info = extract_text_safely(response, filename)
+            content, extraction_info = extract_text_safely(response, filename, context)
+            
+            # Stage marker: validating and saving
+            context.current_stage = "validating_saving"
+            context.stage_start_ts = time.time()
             
             if content:
                 processing_time = time.time() - start_time
@@ -1179,7 +1294,7 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                 print(f'  DEBUG: Traceback: {traceback.format_exc()}')
             
             # Handle retry logic
-            if handle_llm_errors(e, attempt, context.config.max_retries, file_size_mb, context):
+            if handle_llm_errors(e, attempt, context.config.max_retries, file_size_mb, context, remaining_budget_s):
                         continue
             else:
                 processing_time = time.time() - start_time
@@ -1200,13 +1315,25 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
 # =============================================================================
 # Functions for processing individual files and managing the processing workflow
 def process_single_file(markdown_file: Path, cao_number: str, output_folder: Path, 
-                       context: ProcessingContext, total_files: int) -> bool:
+                       context: ProcessingContext, total_files: int, hang_threshold: int = 900, heartbeat_interval: int = 100) -> bool:
     """Process a single markdown file end-to-end."""
-    # Generate output filename
-    output_filename = markdown_file.name
-    if not output_filename.endswith('.json'):
-        output_filename += '.json'
+    # Initialize file timing and debug
+    file_start = time.time()
+    context.file_start_ts = file_start
+    context.debug.clear()
+    context.live_escalated = False
     
+    # Start heartbeat watchdog
+    stop_event = threading.Event()
+    watchdog_thread = threading.Thread(
+        target=heartbeat_watchdog,
+        args=(context, hang_threshold, heartbeat_interval, stop_event),
+        daemon=True
+    )
+    watchdog_thread.start()
+    
+    # Generate output filename
+    output_filename = f"{markdown_file.stem}_extract.json"
     output_file = output_folder / output_filename
     
     # Check if already processed
@@ -1243,19 +1370,25 @@ def process_single_file(markdown_file: Path, cao_number: str, output_folder: Pat
         
         print(f'  {cao_number}: {markdown_file.name} (Markdown: {file_size_mb:.1f}MB) [API {context.key_number}/{context.total_processes}]')
         
-        # Check timeout
-        extraction_start = time.time()
-        max_processing_time = context.config.max_processing_hours * 3600
-        if time.time() - extraction_start > max_processing_time:
-            print(f'  {cao_number}: ⏰ Timeout after {context.config.max_processing_hours} hours for {markdown_file.name} [API {context.key_number}/{context.total_processes}]')
-            context.stats.add_timeout(markdown_file.name)
-            timeout_log_path = 'outputs/logs/timed_out_files_llm_extraction.txt'
-            with open(timeout_log_path, 'a', encoding='utf-8') as f:
-                f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - API {context.key_number}: {markdown_file.name}\n")
-            return True
+        # Check per-file deadline (skip for first processed file)
+        deadline_s = int(context.config.max_processing_hours * 3600)
+        enforce_deadline = (context.stats.processed_files > 0)
+        
+        if enforce_deadline:
+            remaining = deadline_s - (time.time() - file_start)
+            if remaining <= 0:
+                print(f'  {cao_number}: ⏰ Timeout after {context.config.max_processing_hours} hours for {markdown_file.name} [API {context.key_number}/{context.total_processes}]')
+                context.stats.add_timeout(markdown_file.name)
+                timeout_log_path = 'outputs/logs/timed_out_files_llm_extraction.txt'
+                with open(timeout_log_path, 'a', encoding='utf-8') as f:
+                    f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - API {context.key_number}: {markdown_file.name}\n")
+                return True
+        else:
+            remaining = None
         
         # Extract content
-        raw_output = extract_with_markdown_upload(str(markdown_file), markdown_file.name, cao_number, context)
+        extraction_start = time.time()
+        raw_output = extract_with_markdown_upload(str(markdown_file), markdown_file.name, cao_number, context, remaining)
         extraction_time = time.time() - extraction_start
         
         # Check if daily quota was hit during extraction
@@ -1266,6 +1399,7 @@ def process_single_file(markdown_file: Path, cao_number: str, output_folder: Pat
         
         if not raw_output:
             print(f'  {cao_number}: ✗ LLM extraction failed for {markdown_file.name} [API {context.key_number}/{context.total_processes}]')
+            context.debug.flush()  # Show debug info on failure
             log_processing_result(markdown_file.name, False, context)
             return True
         
@@ -1277,6 +1411,7 @@ def process_single_file(markdown_file: Path, cao_number: str, output_folder: Pat
             context.stats.add_success(markdown_file.name)
         else:
             print(f'  {cao_number}: ✗ JSON validation failed, extraction not saved for {markdown_file.name} [API {context.key_number}/{context.total_processes}]')
+            context.debug.flush()  # Show debug info on failure
             log_processing_result(markdown_file.name, False, context, "JSON validation failed - incomplete or invalid JSON")
             return True
         
@@ -1292,10 +1427,14 @@ def process_single_file(markdown_file: Path, cao_number: str, output_folder: Pat
     except Exception as e:
         import traceback
         print(f'  {cao_number}: Error with {markdown_file.name}: {e} [API {context.key_number}/{context.total_processes}]')
+        context.debug.flush()  # Show debug info on failure
         traceback.print_exc()
         log_processing_result(markdown_file.name, False, context, str(e))
         return True
     finally:
+        # Stop the heartbeat watchdog
+        stop_event.set()
+        watchdog_thread.join(timeout=1)  # Give it 1 second to stop gracefully
         release_file_lock(output_file)
 
 
@@ -1314,18 +1453,21 @@ def cleanup_announce_files(context: ProcessingContext):
         if announce_files:
             print(f'  🧹 Cleaned up {len(announce_files)} announce files')
         
-        # Clean up lock files in all CAO folders
+        # Clean up stale lock files
         lock_files_found = 0
-        for cao_folder in context.config.output_folder.iterdir():
-            if cao_folder.is_dir() and cao_folder.name.isdigit():
-                lock_files = list(cao_folder.glob('.cao_*_processing'))
-                for lock_file in lock_files:
+        current_time = time.time()
+        ttl_seconds = LOCK_TTL_HOURS * 3600
+        
+        for lock_file in context.config.output_folder.rglob('*.json.lock'):
+            try:
+                if current_time - lock_file.stat().st_mtime > ttl_seconds:
                     lock_file.unlink()
-                    print(f'  🧹 Cleaned up lock file: {cao_folder.name}/{lock_file.name}')
                     lock_files_found += 1
+            except Exception:
+                pass  # Ignore errors on individual files
         
         if lock_files_found > 0:
-            print(f'  🧹 Cleaned up {lock_files_found} lock files')
+            print(f'  🧹 Cleaned up {lock_files_found} stale lock files')
             
     except Exception as e:
         print(f'  ⚠️  Warning: Failed to clean up files: {e}')
@@ -1369,6 +1511,10 @@ def run_extraction_pipeline():
     parser.add_argument('--process_id', type=int, default=0, help='Process ID for parallel processing')
     parser.add_argument('--total_processes', type=int, default=1, help='Total number of parallel processes')
     parser.add_argument('--max_files', type=int, help='Maximum number of files to process')
+    parser.add_argument('--verbose', action='store_true', help='Stream debug output live')
+    parser.add_argument('--debug_on_failure', action='store_true', default=True, help='Flush debug buffer on failures')
+    parser.add_argument('--hang_threshold', type=int, default=600, help='Seconds before enabling live debug on long stages')
+    parser.add_argument('--heartbeat', type=int, default=90, help='Heartbeat interval in seconds for long stages')
     
     args = parser.parse_args()
     
@@ -1387,7 +1533,7 @@ def run_extraction_pipeline():
     validate_input_paths(config)
     
     # Setup processing context
-    context = setup_processing_context(config, process_id, total_processes, key_number)
+    context = setup_processing_context(config, process_id, total_processes, key_number, args.verbose)
     
     # Clean up announce files from previous runs at the beginning
     cleanup_announce_files(context)
@@ -1414,7 +1560,7 @@ def run_extraction_pipeline():
         announce_cao_once(cao_number, context)
         
         # Process file
-        should_continue = process_single_file(markdown_file, cao_number, output_folder, context, len(filtered_files))
+        should_continue = process_single_file(markdown_file, cao_number, output_folder, context, len(filtered_files), args.hang_threshold, args.heartbeat)
         if not should_continue:
             break
     

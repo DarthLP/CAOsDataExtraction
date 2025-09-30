@@ -19,11 +19,11 @@ FEATURES:
 
 USAGE:
     Single Process:
-        python p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 1
+        python pipelines/p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 1
         
     Multi-Process (2 parallel processes):
-        python p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 2
-        python p3_llmExtraction.py --key_number 2 --process_id 1 --total_processes 2
+        python pipelines/p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 2
+        python pipelines/p3_llmExtraction.py --key_number 2 --process_id 1 --total_processes 2
 
     Bash script for parallel execution:
         unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 6 2>&1 | tee log1.txt &
@@ -88,34 +88,137 @@ from google.genai import types
 class CAOExtractionSchema(BaseModel):
     """Schema for extracting structured data from Dutch CAO documents."""
     general_information: List[List[str]] = Field(description=
-        'Extract: Document title, contract period dates, validity dates, parties involved, scope of agreement. Be concise and focus on essential contract basics only.'
+        """Extract the following basic CAO contract information if present in the CAO: 
+        - start, end and signing date, 
+        - retroactive application (applies?, period, scope, exclusions, back-pay terms, interest/surcharge), 
+        - scope type of the CAO itself (sectoral, firm, group, niche),
+        - company name and scope if single-firm,  
+        - SBI codes and version that define the scope of this CAO, 
+        - whether deviations are explicitly allowed at company-agreement level (yes/no, with topics if mentioned), 
+        - AVV status (algemeen verbindend verklaard) with start and end dates if specified."""
         , default_factory=list)
     wage_information: List[List[str]] = Field(description=
-        'Extract: Wage tables and salary information, including job classifications, ages, increases, bonuses and short descriptions. SKIP: Tables identical except unit conversion (hourly vs monthly vs weekly vs 4 weeks for same data). KEEP: Tables with different periods, worker types, job categories, or other differences.'
+        """Extract wage and salary information explicitly stated in the CAO: 
+        - wage tables and salary scales, 
+        - job classifications / functions / pay groups, 
+        - age-related or service-year pay steps, 
+        - wage increases, 
+        - bonuses and allowances including sign-on, 13th month, lump sums, profit-sharing, performance, seniority/loyalty bonuses, job-specific allowances, retirement gratuities, insurance/savings benefits, 
+        - short notes explaining wage system/tables; 
+        SKIP: tables that are identical except for unit conversion (hourly vs monthly vs weekly vs 4 weeks for same data); 
+        KEEP: tables or rules that differ by period, worker type, job category, or other substantive distinctions."""
         , default_factory=list)
     pension_information: List[List[str]] = Field(description=
-        'Extract: Pension scheme details, contribution percentages, employer/employee splits, retirement ages, eligibility requirements, pension fund information.'
+        """Extract ALL explicitly stated pension scheme information, including when present: 
+        - type of scheme (DB, DC, hybrid), 
+        - contribution percentages, employer/employee splits and premiums, 
+        - accrual rules and franchise values, 
+        - retirement ages, 
+        - eligibility rules and accrual during leave/illness, 
+        - special provisions (e.g. excedentregeling, premium change rules, group differences), 
+        - pension fund name/abbreviation,
+        - any other pension-related information mentioned.
+        If the CAO explicitly states there is no occupational pension beyond AOW, note: 'no occupational pension (AOW only)'."""
         , default_factory=list)
     leave_information: List[List[str]] = Field(description=
-        'Extract: Vacation days/weeks, holiday allowances, maternity leave, paternity leave, sick leave policies, special leave types.'
+        """Extract ALL explicitly stated leave information, including when present:
+        - vacation entitlement and holiday allowance, 
+        - maternity and paternity/partner leave, 
+        - adoption and parental leave, 
+        - sick leave and care leave (short- and long-term), 
+        - special leaves including Liberation Day policy and senior days,
+        - any other leave-related information mentioned."""
         , default_factory=list)
     termination_information: List[List[str]] = Field(description=
-        'Extract: Notice periods, probation periods, termination procedures, dismissal rules, severance pay, exit requirements. Include complete termination notice period tables with all age/service year combinations.'
+        """Extract ALL explicitly stated termination rules, including when present: 
+        - notice periods for employers and employees (include full tables by age/service year if provided), 
+        - rules on shortening, floors, and approval paths (UWV/judge), 
+        - dismissal protections and conditions (e.g. during sickness), 
+        - automatic end of employment at AOW age or other exit conditions, 
+        - probation periods and maximum durations, 
+        - severance pay and WW supplements beyond statutory transition pay,
+        - any other termination-related information mentioned."""        
         , default_factory=list)
     overtime_information: List[List[str]] = Field(description=
-        'Extract: Overtime rates, shift differentials, weekend/holiday pay, night work compensation, maximum hours, overtime conditions.'
+        """Extract ALL explicitly stated information about overtime, shift and atypical hours, including when present:
+        - overtime thresholds and compensation rules,
+        - overtime rates and surcharges (including how they are applied or stacked),
+        - shift, night, weekend, and holiday allowances,
+        - rest periods and weekends-off guarantees,
+        - maximum working hours or limits on compulsory overtime,
+        - any other overtime/shift/atypical hours-related information mentioned (e.g. TOIL)."""
         , default_factory=list)
     training_information: List[List[str]] = Field(description=
-        'Extract: Training entitlements, education budgets, professional development programs, course allowances, study time, certification support.'
+        """Extract ALL explicitly stated information about training, including when present:
+        - paid study and training time, budgets and reimbursements,
+        - career scans or employability assessments,
+        - sectoral/CAO training funds,
+        - employer obligations for mandatory training,
+        - reclaim clauses if employees leave,
+        - any other training-related information mentioned."""
         , default_factory=list)
     homeoffice_information: List[List[str]] = Field(description=
-        'Extract: Remote work policies, home office allowances, equipment provisions, internet/phone reimbursements, work-from-home conditions, hybrid work arrangements.'
+        """Extract ALL explicitly stated information about home office and remote work, including when present:
+        - entitlement to work from home (time and conditions),
+        - fixed allowances or reimbursements (e.g. stipend, internet/phone, equipment),
+        - decision rules or agreements required,
+        - health and safety obligations at home,
+        - travel time compensation for home-worksite arrangements,
+        - any other home office/remote work-related information mentioned."""
+        , default_factory=list)
+    contract_type_information: List[List[str]] = Field(description=
+        """Extract ALL explicitly stated information about contract types, including when present:
+        - rules on full-time and part-time work (standard hours, ranges, conditions),
+        - provisions on min-max or zero-hour/on-call contracts,
+        - deviations from the statutory fixed-term chain (ketenregeling),
+        - rights to convert temporary to permanent contracts,
+        - any other information and rules on contract forms (e.g., freelance, internships)."""
+        , default_factory=list)
+    childcare_information: List[List[str]] = Field(description=
+        """Extract ALL explicitly stated childcare provisions in the CAO, including when present:
+        - allowances or subsidies,
+        - in-house or employer/sector-arranged childcare,
+        - discounts or priority access,
+        - age limits and scope (e.g., after-school care),
+        - provider rules and interaction with public benefits,
+        - eligibility conditions (e.g. tenure, FTE),
+        - sector fund financing,
+        - other childcare-related provisions."""
+        , default_factory=list)
+    safety_information: List[List[str]] = Field(description=
+        """Extract ALL explicitly stated safety and integrity provisions, including when present:
+        - harassment or integrity protocols (e.g., bullying, discrimination, aggression),
+        - confidential counsellors or external reporting channels,
+        - mandatory safety or risk-prevention training,
+        - joint safety/health committees or sectoral Arbo arrangements,
+        - other safety-related measures or obligations."""
+        , default_factory=list)
+    AI_information: List[List[str]] = Field(description=
+        """Extract ALL explicitly stated information about AI and algorithmic management, including when present:
+        - rules on automated decisions and human review,
+        - transparency, disclosure and audit obligations,
+        - governance bodies or committees,
+        - worker rights to contest AI-based decisions,
+        - training or upskilling provisions related to AI,
+        - any other AI and algorithmic management-related information mentioned."""
+        , default_factory=list)
+    fringe_benefits_information: List[List[str]] = Field(description=
+        """Extract ALL explicitly stated fringe benefits, including when present:
+        - commuting or travel allowances,
+        - bicycle/leasefiets or mobility schemes,
+        - meal benefits (meals, vouchers, allowances, canteen subsidies),
+        - health insurance contributions or discounts,
+        - relocation or housing allowances,
+        - costs of mandatory certifications,
+        - other non-cash benefits (e.g., wellbeing, gym, ergonomics)."""
         , default_factory=list)
     model_config = ConfigDict(title='CAO Extraction Schema',
         json_schema_extra={'propertyOrdering': ['general_information',
         'wage_information', 'pension_information', 'leave_information',
         'termination_information', 'overtime_information',
-        'training_information', 'homeoffice_information']})
+        'training_information', 'homeoffice_information',
+        'contract_type_information', 'safety_information',
+        'childcare_information', 'AI_information', 'fringe_benefits_information']})
 
 
 # =============================================================================
@@ -147,7 +250,7 @@ class ExtractionConfig:
     frequency_penalty: float = 0
     thinking_budget: int = -1
     max_retries: int = 5
-    delay_between_files: int = 200  # about 5 minutes between files to avoid rate limits
+    delay_between_files: int = 200  # about 200 seconds between files to avoid rate limits
 
 
 @dataclass
@@ -492,37 +595,83 @@ def get_model_parameters(config) -> Dict[str, Any]:
 def create_extraction_prompt(filename: str) -> str:
     """Create the extraction prompt for CAO document processing."""
     return f"""
-    Extract information from this Dutch CAO (Collective Labor Agreement) Markdown document, which is a parsed version of the original PDF.
+    Extract information from this Dutch CAO (Collective Labor Agreement) Markdown document (parsed from PDF).
    
-    TASK: Categorize and extract relevant information into the specified fields based on the document content.
-    
+    GOAL: Produce one JSON object with the exact keys in OUTPUT_JSON_TEMPLATE, each mapping to a List[List[str]]. If nothing is found for a key, return an empty list.
+
+    THINKING & OUTPUT: Think step by step INTERNALLY to locate, route, and clean the data, but OUTPUT ONLY the final JSON (no explanations, no notes, no chain-of-thought).
+        
     CRITICAL RULES:
         - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess any information.
         - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
         - Be precise: NO paraphrasing, NO interpretation, NO added explanations, NO decorative elements, NO unnecessary separator lines or formatting characters.
-        - IMPORTANT: Translate all Dutch text into clear and precise English but keep names, organizations, and abbreviations in Dutch. For legal clauses, preserve the exact legal meaning without simplification.
+        - IMPORTANT: Translate all Dutch text into clear and precise English but keep names and organizations in Dutch. For legal clauses, preserve the exact legal meaning without simplification.
     
-    CONTENT INCLUSION RULES:
-        - Include relevant numerical values, percentages, amounts, and time periods.
-        - Include conditions, requirements, procedural steps, entitlements, allowances, and eligibility criteria.
-        - For tables, include short descriptions and table structure with headers and all data rows and columns.
-        - WAGE TABLES: Extract wage tables that differ in time periods, worker types, job categories, age groups, or other meaningful differences. For unit conversions (hourly vs monthly vs weekly vs 4 weeks vs yearly for same workers/periods/jobs/ages/others) extract only one version, preferably hourly.
+    INSIDE SECTION RULES: Order does not matter within a section - keep related items together (e.g., a table followed by its short note).
     
-    TABLE FORMATTING:
-        - Structure tables as below, including headers, descriptions, and footnotes: 
+    ROUTING RULES (Use to avoid duplicates across sections):
+        - Wage vs Overtime: atypical hours pay → overtime_information; structural bonuses → wage_information.  
+        - Wage vs Fringe: cash → wage_information; non-cash perks/reimbursements → fringe_benefits_information.  
+        - Homeoffice vs Fringe: WFH-specific (stipend, equipment, internet) → homeoffice_information; general perks → fringe_benefits_information.  
+        - Childcare vs Leave: time off/pay during leave → leave_information; childcare services/subsidies/discounts → childcare_information.  
+        - Training vs Safety vs AI: safety/Arbo training → safety_information; AI-related training → AI_information; all other training → training_information.  
+        - Safety vs Homeoffice: safety/Arbo for home working → homeoffice_information; general safety/integrity → safety_information.  
+        - Pension vs Wage vs Fringe: pension schemes/funds → pension_information; wages/bonuses → wage_information; non-pension perks → fringe_benefits_information.  
+        - Contract vs Termination: contract forms/ketenregeling/conversion → contract_type_information; notice/dismissal/severance/WW supplements → termination_information.  
+        - Holidays: pay/allowance for working on holidays → overtime_information; days off/policies → leave_information.  
+    
+    WHAT TO INCLUDE:
+        - Numbers, amounts, percentages, dates, periods, conditions, eligibility rules, procedures, entitlements, allowances.
+        - Tables: include a compact structure (see TABLE FORMAT) with headers and all data rows and columns plus any short note that explains the table.
+
+    WAGE TABLE DEDUP (IMPORTANT):
+        - Keep tables that differ by period, worker type, job category, age/service ladders, or other substantive differences.
+        - SKIP tables that are identical except for unit conversion (hourly vs monthly vs weekly vs 4-week vs yearly); keep ONE version (prefer hourly if present).
+
+    TABLE FORMAT:
+        - Represent each table as a short list of strings like:
             [
-                "Table title with context and units", 
-                "column headers with descriptions", 
-                "row data with values", 
-                "additional rows as needed (for example for footnotes and further descriptions)"
+                "Table title with context and units",
+                "Columns: <Row label (if present)> | <Col 1 label> | <Col 2 label> | <Col 3 label> | ...",
+                "<Row 1 label (if present)> | <v1> | <v2> | <v3> | ... ",
+                "<Row 2 label (if present)> | <v1> | <v2> | <v3> | ... ",
+                "... (one string per row)",
+                "Additional notes or clarifying information if any"
             ]
-        - If the original table structure is unclear or messy (missing headers, empty cells, broken formatting), reorganize it into a logical structure like the example above.
-    
+
+    EXTRACTION STEPS (INTERNAL — DO NOT OUTPUT):
+        1) Read & anchor: read all instructions and section descriptions.
+        2) Sweep & mark: scan the whole document; mark every clause/table/text that matches any section description; ignore text/sentences/clasues/passages that matches none.
+        3) Route: apply the ROUTING RULES to decide the correct section when overlaps occur.
+        4) Length pre-check: if the marked set, when extracted verbatim, would likely exceed ~262,144 characters, plan to trim narrative/boilerplate in step 5.
+        5) Extract, translate & build — DO NOT HALLUCINATE:
+            - Build one JSON object with the exact keys in OUTPUT_JSON_TEMPLATE, in this order: general_information → wage_information → pension_information → leave_information → termination_information → overtime_information → training_information → homeoffice_information → contract_type_information → safety_information → childcare_information → AI_information → fringe_benefits_information.
+            - Copy numbers/dates/%/units/names literally; translate all other Dutch text to clear English; leave blank if not stated.
+            - Tables: rebuild to TABLE FORMAT; apply WAGE TABLE DEDUP (remove pure unit-conversion duplicates; prefer hourly).
+            - Consolidate: keep related items adjacent.
+            - If trimming per Step 4 is needed, shorten only narrative notes or minor wording not directly tied to field content, without changing legal meaning.
+        6) Validate: output one JSON object only; UTF-8 only; valid JSON (balanced brackets, no trailing commas); all template keys present (empty list if none).
+
     JSON OUTPUT REQUIREMENTS:
-        - Output ONLY valid JSON format.
-        - Use ONLY standard ASCII characters (no special/control characters).
-        - Replace any special characters with standard equivalents.
-        - Ensure the JSON response is complete and properly closed with all necessary braces.
+        - Output ONLY valid JSON (no markdown fences, no extra text). JSON must be UTF-8.
+        - Ensure brackets/commas are correct; no trailing commas; all top-level keys present.
+
+    OUTPUT_JSON_TEMPLATE:
+        {{
+            "general_information": [],
+            "wage_information": [],
+            "pension_information": [],
+            "leave_information": [],
+            "termination_information": [],
+            "overtime_information": [],
+            "training_information": [],
+            "homeoffice_information": [],
+            "contract_type_information": [],
+            "safety_information": [],
+            "childcare_information": [],
+            "AI_information": [],
+            "fringe_benefits_information": []
+        }}
 
     Document: {filename}
     """
@@ -792,7 +941,7 @@ def validate_response_schema(content: str, filename: str) -> bool:
     """Validate that response contains expected schema structure."""
     try:
         data = json.loads(content)
-        required_fields = ['general_information', 'wage_information', 'pension_information']
+        required_fields = ['general_information', 'wage_information', 'pension_information', 'leave_information']
         missing_fields = [field for field in required_fields if field not in data]
         
         if missing_fields:

@@ -65,6 +65,7 @@ NOTES:
 - ID and URL-based deduplication merge state from primary+extra to avoid re-downloading/renumbering.
 - Paths are ASCII; filenames are sanitized and deduplicated by suffixing counters when needed.
 """
+
 import os
 import sys
 import time
@@ -838,6 +839,8 @@ def process_cao_number(driver, cao_number, output_base_folder=None):
             except:
                 pass
     position = max_id_num + 1
+    # Filter main_link_logs to only include entries for PDFs we'll actually process
+    filtered_main_link_logs = []
     for link_info in unique_pdf_links:
         if (MAX_PDFS_PER_CAO is not None and downloaded_count >=
             MAX_PDFS_PER_CAO):
@@ -859,15 +862,19 @@ def process_cao_number(driver, cao_number, output_base_folder=None):
         else:
             new_pdf_name = pdf_name
         link_info['page_info']['pdf_name'] = new_pdf_name
-        for log in main_link_logs:
-            if log.get('main_link_url') == link_info['page_info'].get(
-                'main_link_url'):
-                log['pdf_name'] = new_pdf_name
         # Check if page_name was already processed (more reliable than URL)
         page_name = link_info['page_info'].get('page_name', '')
         if page_name and page_name in existing_page_names_by_cao.get(cao_str, set()):
             skipped += 1
             continue
+        
+        # Add to filtered main_link_logs only for PDFs we're processing
+        main_link_url = link_info['page_info'].get('main_link_url', '')
+        for log in main_link_logs:
+            if log.get('main_link_url') == main_link_url:
+                log['pdf_name'] = new_pdf_name
+                filtered_main_link_logs.append(log)
+                break
         success = download_pdf(link_info['url'], link_info['description'],
             cao_folder)
         if success:
@@ -895,11 +902,12 @@ def process_cao_number(driver, cao_number, output_base_folder=None):
         else:
             print(f'    ✗ Failed to download PDF: {new_pdf_name}')
         time.sleep(DOWNLOAD_DELAY)
+    total_found = len(unique_pdf_links)
     print(
         f'  Downloaded {downloaded_count} new PDFs for CAO {cao_number} (skipped {skipped})'
         )
-    update_progress(cao_number, 'pdfs_found', successful=downloaded_count)
-    return downloaded_count, downloaded_data, main_link_logs
+    update_progress(cao_number, 'pdfs_found', successful=total_found)
+    return downloaded_count, downloaded_data, filtered_main_link_logs
 
 
 def sync_excels_with_pdfs(info_csv_filename='extracted_cao_info_extra.csv', log_csv_filename='main_links_log_extra.csv'):
@@ -925,6 +933,9 @@ def sync_excels_with_pdfs(info_csv_filename='extracted_cao_info_extra.csv', log_
         cao = str(row['cao_number']).strip()
         pdf_name = str(row['pdf_name']).strip()
         folder = os.path.join(OUTPUT_FOLDER, cao)
+        
+        # Only remove rows if folder exists but PDF is missing
+        # Keep all rows if folder doesn't exist (CAO might have no PDFs)
         if os.path.exists(folder):
             files = [f for f in os.listdir(folder) if os.path.isfile(os.
                 path.join(folder, f))]
@@ -938,10 +949,8 @@ def sync_excels_with_pdfs(info_csv_filename='extracted_cao_info_extra.csv', log_
                     f'[SYNC] Missing PDF: {os.path.join(folder, pdf_name)} (removing row)'
                     )
         else:
-            removed_rows.append((cao, pdf_name))
-            print(
-                f'[SYNC] Missing folder: {folder} (removing row for {pdf_name})'
-                )
+            # Keep row even if folder doesn't exist - CAO might have no PDFs
+            keep_rows.append(idx)
     info_df = info_df.loc[keep_rows].reset_index(drop=True)
     if 'id' in info_df.columns and isinstance(info_df['id'], pd.Series):
         info_df['id'] = info_df['id'].fillna('').astype(str)

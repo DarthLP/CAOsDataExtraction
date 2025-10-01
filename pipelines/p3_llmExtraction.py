@@ -675,7 +675,7 @@ def create_extraction_prompt(filename: str) -> str:
     THINKING & OUTPUT: Think step by step INTERNALLY to locate, route, and clean the data, but OUTPUT ONLY the final JSON (no explanations, no notes, no chain-of-thought).
         
     CRITICAL RULES:
-        - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess any information.
+        - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess any information. Always VERIFY the extracted information with the document.
         - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
         - Be precise: NO paraphrasing, NO interpretation, NO added explanations, NO decorative elements, NO unnecessary separator lines or formatting characters.
         - IMPORTANT: Translate all Dutch text into clear and precise English but keep names and organizations in Dutch. For legal clauses, preserve the exact legal meaning without simplification.
@@ -723,7 +723,8 @@ def create_extraction_prompt(filename: str) -> str:
             - Tables: rebuild to TABLE FORMAT; apply WAGE TABLE DEDUP (remove pure unit-conversion duplicates; prefer hourly).
             - Consolidate: keep related items adjacent.
             - If trimming per Step 4 is needed, shorten only narrative notes or minor wording not directly tied to field content, without changing legal meaning.
-        6) Validate: output one JSON object only; UTF-8 only; valid JSON (balanced brackets, no trailing commas); all template keys present (empty list if none).
+        6) Verify: confirm that every extracted fact, number, table, or clause is explicitly present in the document (allowing for shortening, restructuring, and translation to English). Correct or remove anything not grounded in the source. Do not infer or guess.
+        7) Validate: output one JSON object only; UTF-8 only; valid JSON (balanced brackets, no trailing commas); all template keys present (empty list if none).
 
     JSON OUTPUT REQUIREMENTS:
         - Output ONLY valid JSON (no markdown fences, no extra text). JSON must be UTF-8.

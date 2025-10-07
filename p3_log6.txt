@@ -1,0 +1,19 @@
+  🧹 Cleaned up announce file: .cao_10_announced
+  🧹 Cleaned up 1 announce files
+🎯 CAO Markdown Extraction Pipeline
+📊 Process: 6/6
+🔑 API Key: 6
+📁 Input: outputs/parsed_pdfs/parsed_pdfs_markdown
+📁 Output: outputs/llm_extracted/new_flow
+📄 Files to process: 34
+
+--- CAO 10 ---
+  10: Skipping CAO_2011_aanmelding_TTW_11_2011.md (being processed by another process)
+  10: Cao Bouw en Infra 2025 - 2027.md (Markdown: 0.4MB) [API 6/6]
+  INFO: Using Files API approach for Cao Bouw en Infra 2025 - 2027.md
+  INFO: Markdown file size: 0.40 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/jft2v6quyuf9
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.40MB
+  DEBUG: Constructed 2 content parts for API call

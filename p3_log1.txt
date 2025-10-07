@@ -1,0 +1,19 @@
+  🧹 Cleaned up announce file: .cao_10_announced
+  🧹 Cleaned up 1 announce files
+🎯 CAO Markdown Extraction Pipeline
+📊 Process: 1/6
+🔑 API Key: 1
+📁 Input: outputs/parsed_pdfs/parsed_pdfs_markdown
+📁 Output: outputs/llm_extracted/new_flow
+📄 Files to process: 34
+
+--- CAO 10 ---
+  10: Skipping Bouw CAO 2011 aanmelding TTW 1-2011.md (being processed by another process)
+  10: CAO_2014_aanmelding_20_3_2014.md (Markdown: 0.5MB) [API 1/6]
+  INFO: Using Files API approach for CAO_2014_aanmelding_20_3_2014.md
+  INFO: Markdown file size: 0.48 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/csnij0s8v3so
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.48MB
+  DEBUG: Constructed 2 content parts for API call

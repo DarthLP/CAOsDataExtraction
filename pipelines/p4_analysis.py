@@ -40,6 +40,7 @@ OUTPUT:
 # IMPORTS
 # =============================================================================
 # Standard library imports for file operations, system access, and data handling
+from datetime import date
 import os
 import sys
 import json
@@ -381,6 +382,7 @@ MODEL = 'gemini-2.5-flash'
 # =============================================================================
 # Pydantic schemas for structured extraction of CAO document information
 
+# Salary schema:
 class SalaryRow(BaseModel):
     """Schema for a single salary row representing one job group."""
     jobgroup: str = Field(default="", description="Job group name - if mentioned put descriptions in parentheses (e.g., 'F-45-9 (workers with high school diploma)')")    
@@ -429,70 +431,1275 @@ class SalaryExtractionSchema(BaseModel):
     salary_information: List[SalaryRow] = Field(default_factory=list)
 
 
-class ContractInfo(BaseModel):
-    """Schema for contract information."""
-    start_date_contract: str = Field(default="", description="Contract start date")
-    expiry_date_contract: str = Field(default="", description="Contract expiry/end date")
+# Non-salary schema:
+from typing import Literal, Optional
+
+# ----------------------------
+# GENERAL INFORMATION
+# ----------------------------
+class GeneralInfo(BaseModel):
+    """Schema for general contract information (record exactly as stated in the CAO)."""
+    start_date_contract: str = Field(
+        default="",
+        description="CAO validity start date (DD/MM/YYYY)."
+    )
+    expiry_date_contract: str = Field(
+        default="",
+        description="CAO validity end date (DD/MM/YYYY)."
+    )
+    signing_date: str = Field(
+        default="",
+        description="Date the CAO was signed by the parties (DD/MM/YYYY)."
+    )
+
+    # Retroactivity — record only when explicitly stated
+    retroactive_applies: bool = Field(
+        default=False,
+        description="Set true only if the CAO explicitly states that (some) terms apply retroactively."
+    )
+    retroactive_start_date: str = Field(
+        default="",
+        description="Start date of retroactive application (DD/MM/YYYY) — ONLY if retroactive_applies = true."
+    )
+    retroactive_end_date: str = Field(
+        default="",
+        description="End date of retroactive application (DD/MM/YYYY) — ONLY if retroactive_applies = true."
+    )
+    retroactive_scope_note: str = Field(
+        default="",
+        description="What is retroactive (e.g., wage scales, allowances) — ONLY if retroactive_applies = true."
+    )
+    retroactive_backpay_due: bool = Field(
+        default=False,
+        description="Set true only if back-pay for the retro period is explicitly required — ONLY if retroactive_applies = true."
+    )
+    retroactive_backpay_terms: str = Field(
+        default="",
+        description="Back-pay rules as stated (e.g., 'next payroll', '≥2 installments') — ONLY if retroactive_applies = true AND retroactive_backpay_due = true."
+    )
+    retroactive_exclusions_note: str = Field(
+        default="",
+        description="Groups or items explicitly excluded from retroactivity — ONLY if retroactive_applies = true."
+    )
+    retroactive_interest_or_surcharge: str = Field(
+        default="",
+        description="Interest/surcharge on late back-pay, if stated — ONLY if retroactive_applies = true AND retroactive_backpay_due = true."
+    )
+
+    # Scope / classification
+    sbi_code_primary: str = Field(
+        default="",
+        description="Primary SBI code (e.g., '41.20')."
+    )
+    sbi_code_secondary: str = Field(
+        default="",
+        description="Secondary SBI code(s), if any (comma-separated)."
+    )
+    sbi_code_version: str = Field(
+        default="",
+        description="Version of the SBI classification (e.g., 'SBI 2008')."
+    )
+
+    deviation_allowed_company_level: bool = Field(
+        default=False,
+        description="Set true only if the CAO explicitly permits company-level deviations from CAO terms."
+    )
+    cao_scope_type: Literal[
+        "sectoral", "single_company", "group", "association_limited",
+        "occupational_niche", "unspecified", "other"
+    ] = Field(
+        default="unspecified",
+        description="CAO scope type."
+    )
+    firm_name: str = Field(
+        default="",
+        description="Company name — ONLY if cao_scope_type = 'single_company'."
+    )
+    firm_cao_scope_description: str = Field(
+        default="",
+        description="Brief description of firm-level scope, as stated."
+    )
+
+    # AVV (generally binding)
+    avv_applies: bool = Field(
+        default=False,
+        description="Set true only if the CAO is/was declared generally binding (AVV)."
+    )
+    avv_start_date: str = Field(
+        default="",
+        description="AVV start date (DD/MM/YYYY) — ONLY if avv_applies = true."
+    )
+    avv_end_date: str = Field(
+        default="",
+        description="AVV end date (DD/MM/YYYY) — ONLY if avv_applies = true."
+    )
 
 
+# ----------------------------
+# PENSION INFORMATION
+# ----------------------------
 class PensionInfo(BaseModel):
-    """Schema for pension information."""
-    pension_scheme_basic: str = Field(default="", description="Basic pension scheme rules, premiums, development and structure (e.g., '50% pension premium paid by employee', 'Employees 21-68 eligible')")
-    pension_scheme_plus: str = Field(default="", description="Additional or 'plus' pension scheme rules, premiums, development and structure (e.g., '2% additional premium', 'Generation Policy for 60+')")
-    retire_age_basic: str = Field(default="", description="Retirement age for the basic pension scheme")
-    retire_age_plus: str = Field(default="", description="Retirement age for the additional or 'plus' pension scheme")
-    pension_age_group: str = Field(default="", description="Age group eligible for pension schemes (e.g., '21+')")
+    """Schema for pension information (record values exactly as stated; do not infer statutory comparisons)."""
+    has_pension_scheme: bool = Field(
+        default=False,
+        description="Set true only if any pension scheme beyond AOW is mentioned; false if none is mentioned."
+    )
+    pension_type: Literal["DB", "DC", "hybrid", "unknown", "unspecified", "other"] = Field(
+        default="unspecified",
+        description="Scheme type: DB = Defined Benefit; DC = Defined Contribution; hybrid = combination."
+    )
+    mandatory_participation: bool = Field(
+        default=False,
+        description="Set true only if participation in a (sector) pension fund is explicitly mandatory."
+    )
+
+    # Selection rule for 'typical' group (if needed for single values)
+    selection_rule_pension: Literal[
+        "majority_headcount", "office_vs_field_rule", "base_tier", "latest_year",
+        "other", "default_unknown", "unspecified"
+    ] = Field(
+        default="unspecified",
+        description=(
+            "How the 'typical' group was chosen when multiple rates exist. Preference order: "
+            "majority_headcount (largest group) > office_vs_field_rule (core group in dual-group CAOs) > "
+            "base_tier (lowest service band for ages 23–65) > latest_year (most recent values) > other > "
+            "default_unknown (could not determine)."
+        )
+    )
+
+    employee_contribution_value: Optional[float] = Field(
+        default=None,
+        description="Employee pension contribution for the chosen group (numeric value)."
+    )
+    employee_contribution_unit: str = Field(
+        default="",
+        description="Unit of employee_contribution_value (e.g., '% of pensionable base')."
+    )
+    accrual_rate_value: Optional[float] = Field(
+        default=None,
+        description="Annual accrual rate for the chosen group (numeric value)."
+    )
+    accrual_rate_unit: str = Field(
+        default="",
+        description="Unit of accrual_rate_value (e.g., '% of pensionable salary per year')."
+    )
+    franchise_value: Optional[float] = Field(
+        default=None,
+        description="Franchise amount for the CAO period (numeric value)."
+    )
+    franchise_unit: str = Field(
+        default="",
+        description="Unit of franchise_value (e.g., 'EUR per year')."
+    )
+
+    retirement_age_normal_value: Optional[float] = Field(
+        default=None,
+        description="Normal retirement age (years), as stated."
+    )
+    retirement_age_early_value: Optional[float] = Field(
+        default=None,
+        description="Early retirement age (years), if stated."
+    )
+    retirement_age_deferred_value: Optional[float] = Field(
+        default=None,
+        description="Deferred/postponed retirement age (years), if stated."
+    )
+
+    accrual_during_statutory_leaves: bool = Field(
+        default=False,
+        description="Set true only if the CAO explicitly states accrual continues during statutory leaves (birth/parental/adoption/long-term care)."
+    )
+    accrual_during_illness_year2: bool = Field(
+        default=False,
+        description="Set true only if full accrual continues in the 2nd year of illness is explicitly stated."
+    )
+    excedentregeling_present: bool = Field(
+        default=False,
+        description="Set true if an 'excedentregeling' (accrual above wage cap) is explicitly offered."
+    )
+    premium_change_equal_split: bool = Field(
+        default=False,
+        description="Set true only if future premium changes are explicitly split equally between employer and employee."
+    )
+
+    # Heterogeneity (capture ranges; do not infer)
+    heterogeneity_present_pension: bool = Field(
+        default=False,
+        description="Set true if different pension rates are shown for major groups."
+    )
+    employee_contribution_min_value: Optional[float] = Field(
+        default=None,
+        description="Minimum employee contribution among major groups — ONLY if heterogeneity_present_pension = true."
+    )
+    employee_contribution_max_value: Optional[float] = Field(
+        default=None,
+        description="Maximum employee contribution among major groups — ONLY if heterogeneity_present_pension = true."
+    )
+    premium_total_min_value: Optional[float] = Field(
+        default=None,
+        description="Minimum total pension premium among major groups — ONLY if heterogeneity_present_pension = true."
+    )
+    premium_total_max_value: Optional[float] = Field(
+        default=None,
+        description="Maximum total pension premium among major groups — ONLY if heterogeneity_present_pension = true."
+    )
+    premium_total_unit: str = Field(
+        default="",
+        description="Unit for the above pension percentages (usually '% of pensionable base'); note if units differ across fields."
+    )
 
 
+# ----------------------------
+# LEAVE INFORMATION
+# ----------------------------
 class LeaveInfo(BaseModel):
-    """Schema for leave information."""
-    maternity_leave: str = Field(default="", description="Child-related (Maternity, adoption, etc.) leave duration (e.g., '5 days of paid maternity leave', 'Additional 4 weeks in multiple births')")
-    maternity_pay: str = Field(default="", description="Salary and benefits during child-related leave (e.g., '100% paid by employer', '70% UWV benefit')")
-    maternity_note: str = Field(default="", description="Additional child-related leave rules (e.g., 'Vacation accrues during leave', 'leave may be split between partners')")
-    vacation_time: str = Field(default="", description="Annual vacation time")
-    vacation_unit: str = Field(default="", description="Unit of vacation time (e.g., 'weeks')")
-    vacation_note: str = Field(default="", description="Additional vacation rules (e.g., 'plus public holidays for part time workers', '8% holiday allowance')")
+    """
+    Schema for leave information.
+    Policy: record absolute CAO entitlements exactly as stated (durations, pay levels, units).
+    Do NOT compare to statutory baselines in the prompt; only set '*_above_statutory' flags
+    when the CAO explicitly says so. Any historical comparison to statute is a downstream analysis task.
+    """
+    has_leave_enhancements: bool = Field(
+        default=False,
+        description="Set true only if the CAO explicitly states any leave improvement or top-up relative to statute."
+    )
 
+    # Maternity
+    has_above_statutory_maternity: bool = Field(
+        default=False,
+        description="Set true only if the CAO explicitly states an enhancement above statutory for maternity."
+    )
+    paid_maternity_leave_value: Optional[float] = Field(
+        default=None,
+        description="Duration of fully paid maternity leave exactly as stated in the CAO (numeric)."
+    )
+    paid_maternity_leave_unit: str = Field(
+        default="",
+        description="Unit of paid_maternity_leave_value (e.g., 'weeks', 'days')."
+    )
+    partially_paid_maternity_leave_value: Optional[float] = Field(
+        default=None,
+        description="Duration of partially paid maternity leave as stated (numeric)."
+    )
+    partially_paid_maternity_leave_unit: str = Field(
+        default="",
+        description="Unit of partially_paid_maternity_leave_value."
+    )
+    partially_paid_maternity_pay_value: Optional[float] = Field(
+        default=None,
+        description="Pay level during partially paid maternity leave (numeric)."
+    )
+    partially_paid_maternity_pay_unit: str = Field(
+        default="",
+        description="Unit of partially_paid_maternity_pay_value (e.g., '% of wage')."
+    )
+    unpaid_maternity_leave_value: Optional[float] = Field(
+        default=None,
+        description="Duration of additional unpaid maternity leave, as stated (numeric)."
+    )
+    unpaid_maternity_leave_unit: str = Field(
+        default="",
+        description="Unit of unpaid_maternity_leave_value."
+    )
+    maternity_note: str = Field(
+        default="",
+        description="Notes exactly as stated (e.g., 'paid by UWV', eligibility, waiting periods). Do not add interpretations."
+    )
 
+    # Paternity / partner
+    paternity_explicitly_above_statutory: bool = Field(
+        default=False,
+        description="Set true only if the CAO explicitly states any improvement for paternity/partner leave."
+    )
+    paid_paternity_leave_value: Optional[float] = Field(
+        default=None,
+        description="Duration of fully paid paternity/partner leave as stated (numeric)."
+    )
+    paid_paternity_leave_unit: str = Field(
+        default="",
+        description="Unit of paid_paternity_leave_value."
+    )
+    partially_paid_paternity_leave_value: Optional[float] = Field(
+        default=None,
+        description="Duration of partially paid paternity/partner leave as stated (numeric)."
+    )
+    partially_paid_paternity_leave_unit: str = Field(
+        default="",
+        description="Unit of partially_paid_paternity_leave_value."
+    )
+    partially_paid_paternity_pay_value: Optional[float] = Field(
+        default=None,
+        description="Pay level during partially paid paternity/partner leave (numeric)."
+    )
+    partially_paid_paternity_pay_unit: str = Field(
+        default="",
+        description="Unit of partially_paid_paternity_pay_value."
+    )
+    unpaid_paternity_leave_value: Optional[float] = Field(
+        default=None,
+        description="Duration of unpaid paternity/partner leave as stated (numeric)."
+    )
+    unpaid_paternity_leave_unit: str = Field(
+        default="",
+        description="Unit of unpaid_paternity_leave_value."
+    )
+
+    # Adoption / foster
+    adoption_leave_value: Optional[float] = Field(
+        default=None,
+        description="Duration of adoption/foster leave as stated (numeric)."
+    )
+    adoption_leave_unit: str = Field(
+        default="",
+        description="Unit of adoption_leave_value."
+    )
+    adoption_pay_value: Optional[float] = Field(
+        default=None,
+        description="Pay level during adoption/foster leave (numeric)."
+    )
+    adoption_pay_unit: str = Field(
+        default="",
+        description="Unit of adoption_pay_value (e.g., '%', 'EUR per day')."
+    )
+
+    # Parental
+    parental_leave_topup_present: bool = Field(
+        default=False,
+        description="Set true only if an employer top-up for parental leave is explicitly stated."
+    )
+    parental_leave_topup_pay_value: Optional[float] = Field(
+        default=None,
+        description="Top-up pay level during parental leave (numeric), as stated."
+    )
+    parental_leave_topup_pay_unit: str = Field(
+        default="",
+        description="Unit of parental_leave_topup_pay_value (e.g., '% of wage')."
+    )
+    parental_leave_unpaid_value: Optional[float] = Field(
+        default=None,
+        description="Duration of unpaid parental leave as stated (numeric)."
+    )
+    parental_leave_unpaid_unit: str = Field(
+        default="",
+        description="Unit of parental_leave_unpaid_value."
+    )
+
+    # Abortion
+    abortion_leave_present: bool = Field(
+        default=False,
+        description="Set true only if a specific abortion leave provision is explicitly mentioned."
+    )
+
+    # Sickness
+    sick_leave_topup_present: bool = Field(
+        default=False,
+        description="Set true only if an employer sick-pay top-up is explicitly stated."
+    )
+    sickpay_continuation_duration_value: Optional[float] = Field(
+        default=None,
+        description="Duration of stated sick-pay continuation/top-up (numeric)."
+    )
+    sickpay_continuation_duration_unit: str = Field(
+        default="",
+        description="Unit of sickpay_continuation_duration_value (e.g., 'weeks', 'months')."
+    )
+    sickpay_continuation_value: Optional[float] = Field(
+        default=None,
+        description="Sick-pay continuation rate as stated (numeric, e.g., 100, 90)."
+    )
+    sickpay_continuation_unit: str = Field(
+        default="",
+        description="Unit of sickpay_continuation_value (e.g., '% of wage')."
+    )
+    sickpay_extra_insurance_present: bool = Field(
+        default=False,
+        description="Set true if extra disability/WGA-gap insurance is explicitly included."
+    )
+
+    # Care leave
+    care_leave_topup_present: bool = Field(
+        default=False,
+        description="Set true only if the CAO explicitly tops up short-/long-term care leave."
+    )
+    short_term_care_leave_value: Optional[float] = Field(
+        default=None,
+        description="Duration of short-term care leave as stated (numeric)."
+    )
+    short_term_care_leave_unit: str = Field(
+        default="",
+        description="Unit of short_term_care_leave_value."
+    )
+    short_term_care_pay_value: Optional[float] = Field(
+        default=None,
+        description="Pay level during short-term care leave (numeric)."
+    )
+    short_term_care_pay_unit: str = Field(
+        default="",
+        description="Unit of short_term_care_pay_value."
+    )
+    long_term_care_leave_value: Optional[float] = Field(
+        default=None,
+        description="Duration of long-term care leave as stated (numeric)."
+    )
+    long_term_care_leave_unit: str = Field(
+        default="",
+        description="Unit of long_term_care_leave_value."
+    )
+    long_term_care_pay_value: Optional[float] = Field(
+        default=None,
+        description="Pay level during long-term care leave (numeric)."
+    )
+    long_term_care_pay_unit: str = Field(
+        default="",
+        description="Unit of long_term_care_pay_value."
+    )
+
+    # Vacation & holiday allowance
+    vacation_time_typical_value: Optional[float] = Field(
+        default=None,
+        description="Typical vacation entitlement for a standard worker, as stated (numeric)."
+    )
+    vacation_unit: str = Field(
+        default="",
+        description="Unit of vacation_time_typical_value (e.g., 'days per year', 'hours')."
+    )
+    vacation_bonus_value: Optional[float] = Field(
+        default=None,
+        description="Holiday allowance (vakantiegeld) amount or percentage, as stated (numeric)."
+    )
+    vacation_bonus_unit: str = Field(
+        default="",
+        description="Unit of vacation_bonus_value (e.g., '% of base wage', 'EUR per year')."
+    )
+
+    # Heterogeneity & notes
+    heterogeneity_present_leave: bool = Field(
+        default=False,
+        description="Set true if major groups have different leave entitlements or pay levels."
+    )
+    liberation_day_annual: bool = Field(
+        default=False,
+        description="Set true if 5 May (Liberation Day) is a paid day off every year, as stated."
+    )
+    liberation_day_lustrum: bool = Field(
+        default=False,
+        description="Set true if 5 May is a paid day off only in lustrum years (every 5 years), as stated."
+    )
+    liberation_day_comp_note: str = Field(
+        default="",
+        description="Compensation note if Liberation Day is not a day off, exactly as stated."
+    )
+    leave_note: str = Field(
+        default="",
+        description="Any special leaves (bereavement, calamity, ADV/ATV, public holidays, senior days); no interpretations or external additions."
+    )
+
+# ----------------------------
+# TERMINATION INFORMATION
+# ----------------------------
 class TerminationInfo(BaseModel):
-    """Schema for termination information."""
-    term_period_employer: str = Field(default="", description="Notice period required from employer - include special rules based on age, start date, or contract length")
-    term_employer_note: str = Field(default="", description="Additional notes about employer termination (e.g., 'plus 1 month per year of service', 'Civil Code provisions apply')")
-    term_period_worker: str = Field(default="", description="Notice period required from worker - include special rules based on age, start date, or contract length")
-    term_worker_note: str = Field(default="", description="Additional notes about worker termination (e.g., 'Starting date for notice is always a Saturday', 'can be extended')")
-    probation_period: str = Field(default="", description="Probation period duration (e.g., '2 months for indefinite contracts', '60 days')")
-    probation_note: str = Field(default="", description="Additional notes about probation (e.g., 'Article 7 of the Civil Code applies', 'shorter notice period during probation')")
+    """Schema for termination information (record exactly as stated; no statutory inference)."""
+
+    has_termination_rules: bool = Field(
+        default=False,
+        description="Set true only if the CAO explicitly contains termination/notice rules beyond statutory defaults."
+    )
+
+    selection_rule_notice: Literal[
+        "majority_headcount", "base_tier", "office_vs_field_rule", "latest_year",
+        "default_unknown", "unspecified", "other"
+    ] = Field(
+        default="unspecified",
+        description=(
+            "How the 'typical' group for notice was chosen when multiple rules exist. "
+            "Preference order: majority_headcount (largest group); office_vs_field_rule (core group in dual-group CAOs); "
+            "base_tier (lowest service band for ages 23-65); latest_year (most recent values); other; default_unknown (unclear)."
+        )
+    )
+
+    employer_notice_typical_value: Optional[float] = Field(
+        default=None,
+        description="Typical employer notice period (employer terminating). Numeric value, exactly as stated."
+    )
+    employer_notice_unit: str = Field(
+        default="",
+        description="Unit of employer_notice_typical_value (e.g., 'weeks', 'months', 'full calendar month')."
+    )
+
+    employee_notice_typical_value: Optional[float] = Field(
+        default=None,
+        description="Typical employee notice period (employee resigning). Numeric value, exactly as stated."
+    )
+    employee_notice_unit: str = Field(
+        default="",
+        description="Unit of employee_notice_typical_value (e.g., 'weeks', 'months')."
+    )
+
+    heterogeneity_present_notice: bool = Field(
+        default=False,
+        description="Set true if major groups have different notice periods."
+    )
+
+    employer_notice_min_value: Optional[float] = Field(
+        default=None,
+        description="Shortest employer notice duration across main groups (numeric) — ONLY if heterogeneity_present_notice = true."
+    )
+    employer_notice_min_unit: str = Field(
+        default="",
+        description="Unit of employer_notice_min_value (e.g., 'weeks', 'months', 'full calendar month') — ONLY if heterogeneity_present_notice = true."
+    )
+    employer_notice_max_value: Optional[float] = Field(
+        default=None,
+        description="Longest employer notice duration across main groups (numeric) — ONLY if heterogeneity_present_notice = true."
+    )
+    employer_notice_max_unit: str = Field(
+        default="",
+        description="Unit of employer_notice_max_value (e.g., 'weeks', 'months', 'full calendar month') — ONLY if heterogeneity_present_notice = true."
+    )
+
+    employee_notice_min_value: Optional[float] = Field(
+        default=None,
+        description="Shortest employee notice duration across main groups (numeric) — ONLY if heterogeneity_present_notice = true."
+    )
+    employee_notice_min_unit: str = Field(
+        default="",
+        description="Unit of employee_notice_min_value (e.g., 'weeks', 'months') — ONLY if heterogeneity_present_notice = true."
+    )
+    employee_notice_max_value: Optional[float] = Field(
+        default=None,
+        description="Longest employee notice duration across main groups (numeric) — ONLY if heterogeneity_present_notice = true."
+    )
+    employee_notice_max_unit: str = Field(
+        default="",
+        description="Unit of employee_notice_max_value (e.g., 'weeks', 'months') — ONLY if heterogeneity_present_notice = true."
+    )
+
+    can_shorten_notice_with_uwv_permit: bool = Field(
+        default=False,
+        description="Set true only if the CAO explicitly allows notice to be shortened with a UWV permit."
+    )
+    notice_minimum_floor_value: Optional[float] = Field(
+        default=None,
+        description="Minimum notice duration that must remain after any shortening (numeric) — ONLY if can_shorten_notice_with_uwv_permit = true."
+    )
+    notice_minimum_floor_unit: str = Field(
+        default="",
+        description="Unit of notice_minimum_floor_value (e.g., 'month', 'weeks') — ONLY if can_shorten_notice_with_uwv_permit = true."
+    )
+
+    dismissal_approval_required: Literal[
+        "UWV", "Judge", "Both", "None", "Conditional", "unspecified", "other"
+    ] = Field(
+        default="unspecified",
+        description="Which approval or authorization route the CAO states is required for a standard dismissal (e.g., UWV permit, court decision, both, or none). Use 'Conditional' if approval applies only in specific cases or time periods."
+    )
+
+    sickness_dismissal_protection: bool = Field(
+        default=False,
+        description="Set true if the CAO reiterates or extends the dismissal ban/protection during sickness."
+    )
+
+    end_at_AOW_age_automatic: bool = Field(
+        default=False,
+        description="Set true only if the CAO states employment ends automatically at AOW (statutory pension) age."
+    )
+
+    probation_allowed: bool = Field(
+        default=False,
+        description="Set true only if the CAO explicitly allows a probationary period in general."
+    )
+    probation_max_months_fixedterm: Optional[float] = Field(
+        default=None,
+        description="Maximum probation period for fixed-term contracts (months), exactly as stated."
+    )
+    probation_max_months_indefinite: Optional[float] = Field(
+        default=None,
+        description="Maximum probation period for indefinite-term contracts (months), exactly as stated."
+    )
+
+    severance_or_ww_supplement_present: bool = Field(
+        default=False,
+        description="Set true only if the CAO adds severance or WW (unemployment) supplements beyond statutory transition pay."
+    )
+    severance_extra_value: Optional[float] = Field(
+        default=None,
+        description="Quantified extra severance if stated (e.g., 1.0 = one monthly wage per service year) — ONLY if severance_or_ww_supplement_present = true."
+    )
+    severance_extra_unit: str = Field(
+        default="",
+        description="Unit of severance_extra_value (e.g., 'monthly wage per year of service', '% of annual salary') — ONLY if severance_or_ww_supplement_present = true."
+    )
+    severance_extra_formula_note: str = Field(
+        default="",
+        description="Short formula or rule text for extra severance — ONLY if severance_or_ww_supplement_present = true."
+    )
 
 
+# ----------------------------
+# OVERTIME INFORMATION
+# ----------------------------
 class OvertimeInfo(BaseModel):
-    """Schema for overtime information."""
-    overtime_compensation: str = Field(default="", description="Overtime pay and compensation rate (e.g., '1:1 Time Off In Lieu', '€25/hour')")
-    max_hrs: str = Field(default="", description="Maximum working and overtime time (e.g., '52-hour weekly average if salary exceeds IP number 74', '16 hours/month')")
-    min_hrs: str = Field(default="", description="Minimum working and overtime time (e.g., '96 hours/month')")
-    shift_compensation: str = Field(default="", description="Shift compensations (e.g., '25% surcharge 8pm–10pm', 'Max 20 shifts per 4-weeks')")
-    overtime_allowance_min: str = Field(default="", description="Minimum overtime and shift allowance (e.g., 'min 4-hour shift to qualify for night compensation')")
-    overtime_allowance_max: str = Field(default="", description="Maximum overtime and shift allowance (e.g., 'max 10 hours a day')")
+    """Schema for overtime information (record exactly as stated; add units whenever a value is present)."""
+
+    has_overtime_rules: bool = Field(
+        default=False,
+        description="Set true only if the CAO specifies overtime or allowance rules beyond statutory defaults."
+    )
+
+    selection_rule_overtime: Literal[
+        "majority_headcount", "base_tier", "office_vs_field_rule", "latest_year",
+        "default_unknown", "unspecified", "other"
+    ] = Field(
+        default="unspecified",
+        description=(
+            "How the 'typical' group for overtime was chosen when multiple worker groups exist. Use the same selection logic as in notice and pension fields. "
+            "Preference order: majority_headcount (largest group); office_vs_field_rule (core group in dual-group CAOs); "
+            "base_tier (lowest service band for ages 23-65); latest_year (most recent values); other; default_unknown (unclear)."
+        )
+    )
+
+    overtime_trigger_daily_value: Optional[float] = Field(
+        default=None,
+        description="Daily threshold after which hours count as overtime (numeric), exactly as stated."
+    )
+    overtime_trigger_daily_unit: str = Field(
+        default="",
+        description="Unit of overtime_trigger_daily_value (usually 'hours per day')."
+    )
+    overtime_trigger_weekly_value: Optional[float] = Field(
+        default=None,
+        description="Weekly threshold after which hours count as overtime (numeric), exactly as stated."
+    )
+    overtime_trigger_weekly_unit: str = Field(
+        default="",
+        description="Unit of overtime_trigger_weekly_value (usually 'hours per week')."
+    )
+
+    # Surcharges
+    overtime_allowance_typical_value: Optional[float] = Field(
+        default=None,
+        description="Typical overtime surcharge (numeric, e.g., 25, 30, 50)."
+    )
+    overtime_allowance_min_value: Optional[float] = Field(
+        default=None,
+        description="Minimum overtime surcharge across main cases — ONLY if heterogeneity_present_overtime = true."
+    )
+    overtime_allowance_max_value: Optional[float] = Field(
+        default=None,
+        description="Maximum overtime surcharge across main cases — ONLY if heterogeneity_present_overtime = true."
+    )
+    overtime_allowance_unit: str = Field(
+        default="",
+        description="Unit of overtime_allowance_typical_value, overtime_allowance_min_value and overtime_allowance_max_value (e.g., '% of hourly wage'). Mention if units differ across fields."
+    )
+
+    overtime_compensation_mode: Literal[
+        "pay", "TOIL", "both", "unspecified", "other"
+    ] = Field(
+        default="unspecified",
+        description="How overtime is compensated according to the CAO: 'pay' = monetary payment, 'TOIL' = time off in lieu, 'both' = both options are provided, or 'unspecified' if not clearly stated."
+    )
+
+    stacking_rule: Literal[
+        "highest_only", "cumulative", "unclear", "unspecified", "other"
+    ] = Field(
+        default="unspecified",
+        description="How surcharges (e.g., overtime, night, weekend) interact: only highest applies, cumulative stacking, or unclear."
+    )
+
+    # Shift / unfavourable hours
+    shift_allowance_present: bool = Field(
+        default=False,
+        description="Set true only if the CAO explicitly provides a separate shift allowance for working in regular shifts, distinct from overtime pay."
+    )
+    shift_allowance_min_value: Optional[float] = Field(
+        default=None,
+        description="Lowest common shift allowance — ONLY if shift_allowance_present = true."
+    )
+    shift_allowance_max_value: Optional[float] = Field(
+        default=None,
+        description="Highest common shift allowance — ONLY if shift_allowance_present = true."
+    )
+    shift_allowance_unit: str = Field(
+        default="",
+        description="Unit of shift allowances (e.g., '% of (basic) wage', '% per week') — ONLY if shift_allowance_present = true."
+    )
+
+    unfavourable_hours_allowance_max_value: Optional[float] = Field(
+        default=None,
+        description="Maximum allowance for work during unfavourable hours (e.g., night, weekend, or holiday work). Distinct from overtime pay and from regular shift allowances."
+    )
+    unfavourable_hours_allowance_unit: str = Field(
+        default="",
+        description="Unit of unfavourable hours allowance (e.g., '% of hourly wage')."
+    )
+
+    # Working time bounds and rest
+    min_rest_between_shifts_value: Optional[float] = Field(
+        default=None,
+        description="Minimum rest required between shifts (numeric), exactly as stated."
+    )
+    min_rest_between_shifts_unit: str = Field(
+        default="",
+        description="Unit of min_rest_between_shifts_value (usually 'hours')."
+    )
+
+    max_hours_per_day_value: Optional[float] = Field(
+        default=None,
+        description="Maximum daily working time set by the CAO (numeric)."
+    )
+    max_hours_per_day_unit: str = Field(
+        default="",
+        description="Unit of max_hours_per_day_value (usually 'hours per day')."
+    )
+
+    max_hours_per_week_value: Optional[float] = Field(
+        default=None,
+        description="Maximum weekly working time set by the CAO (numeric)."
+    )
+    max_hours_per_week_unit: str = Field(
+        default="",
+        description="Unit of max_hours_per_week_value (usually 'hours per week')."
+    )
+
+    compulsory_overtime_limit_annual_value: Optional[float] = Field(
+        default=None,
+        description="Maximum annual compulsory overtime if specified (numeric)."
+    )
+    compulsory_overtime_limit_annual_unit: str = Field(
+        default="",
+        description="Unit of compulsory_overtime_limit_annual_value (e.g., 'hours per year')."
+    )
+
+    guaranteed_weekends_off_rule_text: str = Field(
+        default="",
+        description="Verbatim summary if the CAO guarantees a minimum number of weekends off."
+    )
 
 
+# ----------------------------
+# TRAINING INFORMATION
+# ----------------------------
 class TrainingInfo(BaseModel):
-    """Schema for training information."""
-    training: str = Field(default="", description="Training rights, budgets and requirements (e.g., '€175 per year budget', '5 days of mandatory safety training')")
+    """Schema for training information (record exactly as stated; add units when values are present)."""
+
+    has_training_rights: bool = Field(
+        default=False,
+        description="Set true only if the CAO grants training/education rights."
+    )
+
+    training_time_per_year_value: Optional[float] = Field(
+        default=None,
+        description="Typical paid training time per year (numeric), exactly as stated."
+    )
+    training_time_per_year_unit: str = Field(
+        default="",
+        description="Unit of training_time_per_year_value (e.g., 'days per year', 'hours per year')."
+    )
+
+    training_budget_value: Optional[float] = Field(
+        default=None,
+        description="Annual monetary training budget (numeric), exactly as stated."
+    )
+    training_budget_unit: str = Field(
+        default="",
+        description="Unit of training_budget_value (e.g., 'EUR per year', '% of salary')."
+    )
+
+    career_scan_frequency_value: Optional[float] = Field(
+        default=None,
+        description="Frequency of employability/career scans (numeric), exactly as stated."
+    )
+    career_scan_frequency_unit: str = Field(
+        default="",
+        description="Unit of career_scan_frequency_value (e.g., 'years')."
+    )
+
+    cost_reimbursement_rate_value: Optional[float] = Field(
+    default=None,
+    description=(
+        "Percentage or amount of training/study costs reimbursed by the employer or sector fund (numeric) — only if explicitly stated in the CAO."
+    )
+    )
+    cost_reimbursement_rate_unit: str = Field(
+        default="",
+        description=(
+            "Unit of cost_reimbursement_rate_value (e.g., '% of tuition', '% of total cost', 'EUR per course')."
+        )
+    )
+
+    training_fund_present: bool = Field(
+        default=False,
+        description="Set true if a sectoral/CAO training fund finances training or subsidies."
+    )
+    reclaim_clause_present: bool = Field(
+        default=False,
+        description="Set true if the employer may reclaim training costs upon early departure (as stated)."
+    )
+    mandatory_training_paid: bool = Field(
+        default=False,
+        description="Set true only if the CAO states employer pays 100% for mandatory/company-required training."
+    )
+
+    training_note: str = Field(
+        default="",
+        description="Concise verbatim summary of special rules (e.g., BBL, apprenticeships, exam leave, only statutory minimum training is paid)."
+    )
 
 
+# ----------------------------
+# HOMEOFFICE / TELEWORK INFORMATION
+# ----------------------------
 class HomeofficeInfo(BaseModel):
-    """Schema for homeoffice information."""
-    Homeoffice: str = Field(default="", description="Home office and remote work rules (e.g., 'up to 2 days/week', 'Home office allowance of €3 per day', 'equipment provided')")
+    """Schema for home office / telework information (record exactly as stated)."""
 
+    has_homeoffice_rights: bool = Field(
+        default=False,
+        description="Set true only if the CAO includes home office / telework provisions."
+    )
+
+    homeoffice_entitlement_value: Optional[float] = Field(
+        default=None,
+        description="Entitled amount of remote work allowed, as explicitly stated in the CAO (numeric)."
+    )
+    homeoffice_entitlement_unit: str = Field(
+        default="",
+        description="Unit of homeoffice_entitlement_value (e.g., 'days per week', 'days per month')."
+    )
+
+    homeoffice_stipend_present: bool = Field(
+        default=False,
+        description="Set true only if a fixed home office allowance is stated."
+    )
+    homeoffice_stipend_value: Optional[float] = Field(
+        default=None,
+        description="Home office allowance amount (numeric) — ONLY if homeoffice_stipend_present = true."
+    )
+    homeoffice_stipend_unit: str = Field(
+        default="",
+        description="Unit of homeoffice_stipend_value (e.g., 'EUR per day', 'EUR per month') — ONLY if homeoffice_stipend_present = true."
+    )
+
+    homeoffice_discretion_level: Literal[
+        "employer_only", "joint_with_OR", "employee_request", "none", "unspecified", "other"
+    ] = Field(
+        default="unspecified",
+        description="Who decides on home office arrangements, as explicitly stated in the CAO: 'employer_only' = employer has full discretion; 'joint_with_OR' = decision made jointly with the Works Council; 'employee_request' = employees may request or decide; 'none' = not specified; or 'other' if phrased differently."
+    )
+
+    homeoffice_costs_reimbursed: bool = Field(
+        default=False,
+        description="Set true if the employer reimburses home office-related costs."
+    )
+    homeoffice_costs_note: str = Field(
+        default="",
+        description="Short note on reimbursed cost types — ONLY if homeoffice_costs_reimbursed = true."
+    )
+
+    homeoffice_agreement_required: bool = Field(
+        default=False,
+        description="Set true if a formal telework agreement/protocol is required."
+    )
+    homeoffice_health_safety_guarantee: bool = Field(
+        default=False,
+        description="Set true if the employer commits to meet OSH/Arbo obligations at the home office."
+    )
+    homeoffice_travel_time_compensation: bool = Field(
+        default=False,
+        description="Set true only if the CAO explicitly states that additional commuting time arising from home-office or hybrid work (e.g., occasional travel to workplace) is compensated."
+    )
+
+    homeoffice_note: str = Field(
+        default="",
+        description="Other remarks (e.g., equipment provision, campaigns, stimulation-only, only statutory minimum provisions)."
+    )
+
+
+# ----------------------------
+# CONTRACT TYPE INFORMATION
+# ----------------------------
+class ContractTypeInfo(BaseModel):
+    """Schema for contract type rules (record exactly as stated; units with values)."""
+
+    has_contract_type_rules: bool = Field(
+        default=False,
+        description="Set true only if the CAO sets explicit rules on contract types of the workers beyond statutory defaults."
+    )
+
+    full_time_hours_value: Optional[float] = Field(
+        default=None,
+        description="Standard full-time working hours (numeric), exactly as stated."
+    )
+    full_time_hours_unit: str = Field(
+        default="",
+        description="Unit of full_time_hours_value (e.g., 'hours per week')."
+    )
+
+    part_time_allowed: bool = Field(
+        default=False,
+        description="Set true only if part-time contracts are explicitly permitted for standard workers."
+    )
+    part_time_range_min_value: Optional[float] = Field(
+        default=None,
+        description="Smallest standard part-time fraction/hours allowed — ONLY if part_time_allowed = true."
+    )
+    part_time_range_max_value: Optional[float] = Field(
+        default=None,
+        description="Largest standard part-time fraction/hours allowed (≤ full-time) — ONLY if part_time_allowed = true."
+    )
+    part_time_range_unit: str = Field(
+        default="",
+        description="Unit of part_time_range_* (e.g., '% of full-time', 'hours per week') — ONLY if part_time_allowed = true."
+    )
+
+    minmax_hours_contract_allowed: bool = Field(
+        default=False,
+        description="Set true if 'min-max' (bandwidth) contracts are explicitly permitted."
+    )
+    minmax_hours_min_value: Optional[float] = Field(
+        default=None,
+        description="Minimum guaranteed hours for min-max contracts — ONLY if minmax_hours_contract_allowed = true."
+    )
+    minmax_hours_max_value: Optional[float] = Field(
+        default=None,
+        description="Maximum deployable hours for min-max contracts — ONLY if minmax_hours_contract_allowed = true."
+    )
+    minmax_hours_unit: str = Field(
+        default="",
+        description="Unit of minmax_hours_* (e.g., 'hours per week', 'hours per month') — ONLY if minmax_hours_contract_allowed = true."
+    )
+
+    zero_hour_oncall_allowed: bool = Field(
+        default=False,
+        description="Set true if zero-hour or on-call contracts are explicitly allowed."
+    )
+
+    ketenregeling_deviation_present: bool = Field(
+        default=False,
+        description="Set true only if the CAO deviates from the statutory 'ketenregeling' (fixed-term chain rule)."
+    )
+    ketenregeling_max_contracts_value: Optional[float] = Field(
+        default=None,
+        description="Maximum number of successive fixed-term contracts — ONLY if ketenregeling_deviation_present = true."
+    )
+    ketenregeling_max_duration_value: Optional[float] = Field(
+        default=None,
+        description="Maximum total duration of the fixed-term chain — ONLY if ketenregeling_deviation_present = true."
+    )
+    ketenregeling_max_duration_unit: str = Field(
+        default="",
+        description="Unit of ketenregeling_max_duration_value (e.g., 'months', 'years') — ONLY if ketenregeling_deviation_present = true."
+    )
+
+    conversion_rights_temp_to_perm_present: bool = Field(
+        default=False,
+        description="Set true if the CAO grants extra rights to convert fixed-term to indefinite contracts beyond the law."
+    )
+    conversion_rights_rule_text: str = Field(
+        default="",
+        description="Exact rule text on conversion from fixed-term to indefinite contracts, as stated (e.g., 'conversion after 24 months of continuous service') — ONLY if conversion_rights_temp_to_perm_present = true."    
+    )
+
+
+# ----------------------------
+# FRINGE BENEFITS INFORMATION
+# ----------------------------
+class FringeBenefitsInfo(BaseModel):
+    """Schema for fringe benefits (record exactly as stated; units with values)."""
+
+    has_fringe_benefits: bool = Field(
+        default=False,
+        description="Set true only if the CAO mentions any fringe benefits beyond base pay."
+    )
+
+    commuting_allowance_present: bool = Field(
+        default=False,
+        description="Set true if commuting is reimbursed."
+    )
+    commuting_allowance_value: Optional[float] = Field(
+        default=None,
+        description="Commuting allowance amount (numeric) — ONLY if commuting_allowance_present = true."
+    )
+    commuting_allowance_unit: str = Field(
+        default="",
+        description="Unit of commuting_allowance_value (e.g., 'EUR per km', '2nd-class PT fully reimbursed') — ONLY if commuting_allowance_present = true."
+    )
+
+    bike_scheme_present: bool = Field(
+        default=False,
+        description="Set true if a bicycle/leasefiets scheme is present."
+    )
+    bike_scheme_note: str = Field(
+        default="",
+        description="Short note exactly as stated (e.g., 'leasefiets via WKR; own contribution €X') — ONLY if bike_scheme_present = true."
+    )
+
+    internet_or_phone_reimbursement_present: bool = Field(
+        default=False,
+        description="Set true if internet and/or phone costs are reimbursed."
+    )
+
+    meal_benefit_present: bool = Field(
+        default=False,
+        description="Set true if a meal benefit is provided."
+    )
+    meal_benefit_type: Literal[
+        "free_meals", "subsidised_canteen", "meal_vouchers",
+        "meal_allowance", "other", "unspecified"
+    ] = Field(
+        default="unspecified",
+        description="Type of meal benefit — ONLY if meal_benefit_present = true."
+    )
+    meal_benefit_value: Optional[float] = Field(
+        default=None,
+        description="Meal benefit amount/percentage (numeric) — ONLY if meal_benefit_present = true."
+    )
+    meal_benefit_unit: str = Field(
+        default="",
+        description="Unit of meal_benefit_value (e.g., 'EUR per meal', '% discount') — ONLY if meal_benefit_present = true."
+    )
+
+    health_insurance_support_present: bool = Field(
+        default=False,
+        description="Set true if there is an employer contribution or collective discount for health insurance."
+    )
+    health_insurance_support_note: str = Field(
+        default="",
+        description="Short note exactly as stated describing the health insurance support (e.g., 'collective discount via insurer') — ONLY if health_insurance_support_present = true."
+    )
+
+    relocation_allowance_present: bool = Field(
+        default=False,
+        description="Set true if relocation/housing support is provided."
+    )
+    relocation_allowance_value: Optional[float] = Field(
+        default=None,
+        description="Relocation allowance value (numeric) — ONLY if relocation_allowance_present = true."
+    )
+    relocation_allowance_unit: str = Field(
+        default="",
+        description="Unit of relocation_allowance_value (e.g., 'EUR one-off', 'EUR per km moved') — ONLY if relocation_allowance_present = true."
+    )
+
+    mandatory_certifications_paid: bool = Field(
+        default=False,
+        description="Set true if the employer covers costs of mandatory licenses/certifications."
+    )
+
+    other_fringe_benefits_note: str = Field(
+        default="",
+        description="Concise catch-all for other benefits (e.g., wellbeing/gym)."
+    )
+
+
+# ----------------------------
+# SAFETY / INTEGRITY INFORMATION
+# ----------------------------
+class SafetyInfo(BaseModel):
+    """Schema for safety and integrity provisions (record exactly as stated)."""
+
+    harassment_protocol_present: bool = Field(
+        default=False,
+        description="Set true if a sexual harassment/integrity protocol is included."
+    )
+    harassment_protocol_note: str = Field(
+        default="",
+        description="Short description of the harassment protocol exactly as stated (e.g., 'confidential counsellor', 'external reporting desk') — ONLY if harassment_protocol_present = true."
+    )
+
+    integrity_protocol_present: bool = Field(
+        default=False,
+        description="Set true if a broader integrity/behavior protocol is included."
+    )
+
+    confidential_counsellor_present: bool = Field(
+        default=False,
+        description="Set true if an internal or external confidential adviser is explicitly provided."
+    )
+
+    reporting_channel_external: bool = Field(
+        default=False,
+        description="Set true if an external reporting channel is guaranteed."
+    )
+
+    safety_training_present: bool = Field(
+        default=False,
+        description="Set true if the employer/sector funds mandatory safety or psychosocial risk training."
+    )
+
+    safety_committee_present: bool = Field(
+        default=False,
+        description="Set true if a joint safety/health committee is provided."
+    )
+
+    safety_note: str = Field(
+        default="",
+        description="Concise catch-all for unusual obligations (e.g., sector fund finances Arbo services)."
+    )
+
+
+# ----------------------------
+# CHILDCARE INFORMATION
+# ----------------------------
+class ChildcareInfo(BaseModel):
+    """Schema for childcare support (record exactly as stated; units with values)."""
+
+    childcare_support_present: bool = Field(
+        default=False,
+        description="Set true if the employer provides any childcare benefit/support."
+    )
+
+    childcare_support_value: Optional[float] = Field(
+        default=None,
+        description="Monetary childcare support amount (numeric)."
+    )
+    childcare_support_unit: str = Field(
+        default="",
+        description="Unit of childcare_support_value (e.g., 'EUR per month per child')."
+    )
+
+    childcare_support_cap_value: Optional[float] = Field(
+        default=None,
+        description="Maximum employer/sector contribution if a cap is stated (numeric)."
+    )
+    childcare_support_cap_unit: str = Field(
+        default="",
+            description="Unit of childcare_support_cap_value (e.g., 'EUR per year per child')."
+    )
+
+    childcare_inhouse_present: bool = Field(
+        default=False,
+        description="Set true if on-site or company-arranged childcare is provided/financed."
+    )
+    childcare_discount_present: bool = Field(
+        default=False,
+        description="Set true if discounts at contracted childcare institutions are provided."
+    )
+    childcare_priority_access: bool = Field(
+        default=False,
+        description="Set true if priority access or reserved places are provided."
+    )
+
+    childcare_age_min_value: Optional[float] = Field(
+        default=None,
+        description="Minimum covered child age if stated (numeric)."
+    )
+    childcare_age_max_value: Optional[float] = Field(
+        default=None,
+        description="Maximum covered child age if stated (numeric)."
+    )
+    childcare_age_limit_note: str = Field(
+        default="",
+        description="Free-form age scope details."
+    )
+
+    childcare_provider_scope: Literal[
+        "any", "contracted_only", "sector_only", "company_only", "unspecified", "other"
+    ] = Field(
+        default="unspecified",
+        description="Which childcare providers qualify for the employer/sector childcare support, as explicitly stated: "
+        "'any' = all registered providers; "
+        "'contracted_only' = only providers with a contract/arrangement; "
+        "'sector_only' = sector-specific facilities; "
+        "'company_only' = company-run or on-site childcare; "
+        "'unspecified' = not stated."
+    )
+
+    childcare_coordination_with_public_benefit: Literal[
+        "top_up_after_public_benefit", "within_fiscal_max", "gross_before_public_benefit",
+        "unspecified", "other"
+    ] = Field(
+        default="unspecified",
+        description="How childcare benefits interact with public subsidies/fiscal rules."
+    )
+
+    childcare_funding_through_sector_fund: bool = Field(
+        default=False,
+        description="Set true if childcare support is financed via a sector fund."
+    )
+
+    childcare_min_tenure_months: Optional[float] = Field(
+        default=None,
+        description="Minimum tenure required to be eligible for the childcare benefit (months)."
+    )
+    childcare_min_fte_value: Optional[float] = Field(
+        default=None,
+        description="Minimum employment fraction (FTE) required for childcare benefit eligibility (numeric)."
+    )
+    childcare_min_fte_unit: str = Field(
+        default="",
+        description="Unit of childcare_min_fte_value (e.g., '% of full-time')."
+    )
+
+    childcare_benefit_eligibility_note: str = Field(
+        default="",
+        description="Other eligibility limits or conditions exactly as stated."
+    )
+
+
+# ----------------------------
+# AI / ALGORITHMIC MANAGEMENT
+# ----------------------------
+class AIInfo(BaseModel):
+    """Schema for AI/ML/LLM provisions (record exactly as stated)."""
+
+    ai_policy_exists: bool = Field(
+        default=False,
+        description="Set true only if the CAO contains any AI/algorithmic-management provisions."
+    )
+
+    ai_automated_decisions_rule: Literal[
+        "never", "with_human_review", "unspecified", "other"
+    ] = Field(
+        default="unspecified",
+        description="Are automated AI decisions allowed (e.g., scheduling, performance evaluation) — ONLY if ai_policy_exists = true."
+    )
+
+    ai_transparency_requirements: str = Field(
+        default="",
+        description="Required disclosures (purpose, data, vendor, logic, worker information) — ONLY if ai_policy_exists = true."
+    )
+
+    ai_bias_audit_rule: Literal[
+        "annual", "≥annual", "none", "unspecified", "other"
+    ] = Field(
+        default="unspecified",
+        description="Frequency/requirement of bias audits (e.g., annual, every 2 years) — ONLY if ai_policy_exists = true."
+    )
+
+    ai_governance_body_present: bool = Field(
+        default=False,
+        description="Set true if a joint AI/Data/OR governance body/committee exists — ONLY if ai_policy_exists = true."
+    )
+
+    ai_dispute_rights_note: str = Field(
+        default="",
+        description="How workers can contest AI-based decisions (verbatim summary) — ONLY if ai_policy_exists = true."
+    )
+
+    ai_training_rights_present: bool = Field(
+        default=False,
+        description="Set true if AI-literacy or upskilling provisions for affected roles are included — ONLY if ai_policy_exists = true."
+    )
+    ai_training_rights_note: str = Field(
+        default="",
+        description="Hours/budget or redeployment pathways exactly as stated — ONLY if ai_policy_exists = true."
+    )
 
 class NonSalaryExtractionSchema(BaseModel):
     """Schema for non-salary extraction results."""
-    contract_information: ContractInfo = Field(default_factory=ContractInfo)
+    general_information: GeneralInfo = Field(default_factory=GeneralInfo)
     pension_information: PensionInfo = Field(default_factory=PensionInfo)
     leave_information: LeaveInfo = Field(default_factory=LeaveInfo)
     termination_information: TerminationInfo = Field(default_factory=TerminationInfo)
     overtime_information: OvertimeInfo = Field(default_factory=OvertimeInfo)
     training_information: TrainingInfo = Field(default_factory=TrainingInfo)
     homeoffice_information: HomeofficeInfo = Field(default_factory=HomeofficeInfo)
+    contract_type_information: ContractTypeInfo = Field(default_factory=ContractTypeInfo)
+    fringe_benefits_information: FringeBenefitsInfo = Field(default_factory=FringeBenefitsInfo)
+    safety_information: SafetyInfo = Field(default_factory=SafetyInfo)
+    childcare_information: ChildcareInfo = Field(default_factory=ChildcareInfo)
+    ai_information: AIInfo = Field(default_factory=AIInfo)
 
 
 # =============================================================================
@@ -650,7 +1857,7 @@ SALARY_PROMPT = """
         - If multiple tables exist for different time periods under this standard wage type, include all of them. 
         - Within standard wage tables extract salary information for all job groups.
         - Unit choice: if the same table exists in multiple units for the same workers/groups/periods/ages, choose the hourly version. If hourly is absent, KEEP the original unit as-is.
-        - If salaries are presented as a range (e.g., "€2,000 – €2,400"), always extract the minimum value as the salary and state this in salary_note field.
+        - If salaries are presented as a range (e.g., "€2,000 - €2,400"), always extract the minimum value as the salary and state this in salary_note field.
 
     AGE GROUP SELECTION:
         - Select EXACTLY ONE age group per wage table, using this order of preference:
@@ -701,6 +1908,95 @@ NON_SALARY_PROMPT = """
         - Save dates in DD/MM/YYYY format.
 
     FINAL CHECK: Before producing output, verify that all above constraints are satisfied. Then output a single JSON object conforming exactly to the schema.
+
+    ADDITIONAL GUIDANCE FOR COMPREHENSIVE EXTRACTION:
+    
+    HOW TO CHOOSE THE TYPICAL GROUP!!!!!!!
+
+    Value–Unit rule:
+        Whenever a numeric value (*_value) is extracted, always record the corresponding unit (*_unit) exactly as stated in the CAO text (e.g., "% of wage", "EUR per month", "days per year", "weeks", etc.).
+        If no value is present, leave the unit field empty ("").
+        Never output a unit without its corresponding value.
+
+    Recording policy: Record all leave and pension entitlements exactly as stated in the CAO (durations, percentages, amounts, units). Do not compare to statutory law or infer whether something is ‘above/beyond statutory’. Only set any ‘_above_statutory’ or ‘_topup_present’ booleans when the CAO explicitly says so. Historical comparisons to statute will be computed downstream.
+
+    WORKER FOCUS:
+        - Focus on normal workers (roughly 24–65 years old). Where groups (e.g., Construction vs UTA) differ and you can't pick a clear "typical," we allow min/max just for the key metrics (notice periods, overtime allowances, etc.).
+        - For heterogeneity fields (heterogeneity_present_*), set to true if major groups have different terms for normal workers.
+        - When heterogeneity is present, fill both typical values AND min/max values for key metrics.
+    
+    PENSION GROUP CONSISTENCY:
+        - In pension_information, first choose the typical worker/group using selection_rule_pension and pension_type.
+        - ALL following pension fields from employee_contribution_value until heterogeneity_present_pension should ONLY consider this same chosen group of workers.
+        - Do not mix values from different groups - maintain consistency within the pension section.
+    
+    CONDITIONAL GATING:
+        - For parent boolean fields (e.g., has_pension_scheme, parental_leave_topup_present, homeoffice_stipend_present), dependent fields are only populated when the parent is true.
+        - If parent boolean is false, set dependent numeric fields to null, string fields to "", and boolean fields to false.
+        - This prevents hallucination and keeps output stable.
+    
+    ENUM VALUES:
+        - Use exact enum values when possible. If the CAO text doesn't match any listed enum value, use 'other' or 'unspecified' as appropriate.
+        - Key enums include:
+          * cao_scope_type: "sectoral", "single_company", "group", "association_limited", "occupational_niche", "unspecified", "other"
+          * pension_type: "DB", "DC", "hybrid", "unknown", "unspecified", "other"
+          * selection_rule_*: "majority_headcount", "base_tier", "office_vs_field_rule", "latest_year", "default_unknown", "unspecified", "other"
+          * dismissal_approval_required: "UWV", "Judge", "Both", "None", "Conditional", "unspecified", "other"
+          * overtime_compensation_mode: "pay", "TOIL", "both", "unspecified", "other"
+          * homeoffice_discretion_level: "employer_only", "joint_with_OR", "employee_request", "none", "unspecified", "other"
+          * meal_benefit_type: "free_meals", "subsidised_canteen", "meal_vouchers", "meal_allowance", "other", "unspecified"
+          * childcare_provider_scope: "any", "contracted_only", "sector_only", "company_only", "unspecified", "other"
+          * ai_automated_decisions_rule: "never", "with_human_review", "unspecified", "other"
+    
+    DATA TYPES AND MISSING VALUES:
+        - Numeric fields (*_value): Use actual numbers (float/int) or null if missing
+        - Unit fields (*_unit): Always strings, empty string "" if missing
+        - Boolean fields: true/false only
+        - Date fields: DD/MM/YYYY format, empty string "" if missing
+        - String fields: empty string "" if missing
+    
+    COMPREHENSIVE CATEGORIES:
+        Extract from all categories: General, Pension, Leave, Termination, Overtime, Training, Homeoffice, Contract Type, Fringe Benefits, Safety, Childcare, AI/ML/LLM.
+        Each category has specific fields - refer to schema descriptions for detailed field requirements.
+    
+    CONDITIONAL FIELD RULES (CRITICAL):
+        - When a boolean parent field is false, ALL dependent fields MUST be:
+          * null for numeric fields (*_value)
+          * "" (empty string) for string fields (*_unit, *_note, text fields)
+          * false for boolean fields
+          * "unspecified" for enum fields
+        - Common parent-child patterns:
+          * If parental_leave_topup_present=false → topup pay fields = null/""
+          * If sick_leave_topup_present=false → sickpay continuation fields = null/""
+          * If shift_allowance_present=false → shift allowance detail fields = null/""
+          * If childcare_support_present=false → most childcare detail fields = null/""
+          * If ai_policy_exists=false → ALL other AI fields = null/""/false/"unspecified"
+        - NEVER extract detail fields when parent is false - this is hallucination
+    
+    VALUE + UNIT FIELD PAIRS:
+        - Many fields come in (value, unit) pairs: *_value and *_unit
+        - Extract numeric value (int/float or null) into *_value field
+        - Extract unit EXACTLY as written in CAO into *_unit field
+        - Common units: 'EUR per month', '% of salary', 'days per year', 'hours per week', 'weeks', 'months'
+        - If no unit stated, use descriptive unit (e.g., 'days', 'EUR') not blank
+        - Value and unit should always be extracted together or both left empty
+    
+    HETEROGENEITY DETECTION:
+        - Set heterogeneity_present_*=true when major worker groups have different terms:
+          * >20% difference for percentages
+          * >1 month difference for time periods
+          * Different structures/types entirely
+        - When heterogeneity_present_*=true: extract BOTH typical values AND min/max values
+        - When heterogeneity_present_*=false: only extract typical values, leave min/max as null
+    
+    ENUM FIELD RULES:
+        - Use exact enum value if CAO text clearly matches
+        - Use "unspecified" if CAO doesn't mention this aspect at all
+        - Use "other" if CAO mentions something not in the enum list
+        - Never guess or infer enum values from context
+        - Key enums: cao_scope_type, pension_type, selection_rule_*, dismissal_approval_required, 
+          overtime_compensation_mode, homeoffice_discretion_level, meal_benefit_type, 
+          childcare_provider_scope, ai_automated_decisions_rule
     """
 
 
@@ -1235,7 +2531,12 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
         'termination_information', 'Termination information', 'termination information', 'TERMINATION_INFORMATION',
         'overtime_information', 'Overtime information', 'overtime information', 'OVERTIME_INFORMATION',
         'training_information', 'Training information', 'training information', 'TRAINING_INFORMATION',
-        'homeoffice_information', 'Homeoffice information', 'homeoffice information', 'HOMEOFFICE_INFORMATION'
+        'homeoffice_information', 'Homeoffice information', 'homeoffice information', 'HOMEOFFICE_INFORMATION',
+        'contract_type_information', 'Contract type information', 'contract type information', 'CONTRACT_TYPE_INFORMATION',
+        'fringe_benefits_information', 'Fringe benefits information', 'fringe benefits information', 'FRINGE_BENEFITS_INFORMATION',
+        'safety_information', 'Safety information', 'safety information', 'SAFETY_INFORMATION',
+        'childcare_information', 'Childcare information', 'childcare information', 'CHILDCARE_INFORMATION',
+        'ai_information', 'AI information', 'ai information', 'AI_INFORMATION'
     ]
     
     for key in sections_to_extract:

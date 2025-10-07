@@ -1,0 +1,24 @@
+  🧹 Cleaned up announce file: .cao_10_announced
+  🧹 Cleaned up 1 announce files
+🎯 CAO Markdown Extraction Pipeline
+📊 Process: 3/6
+🔑 API Key: 3
+📁 Input: outputs/parsed_pdfs/parsed_pdfs_markdown
+📁 Output: outputs/llm_extracted/new_flow
+📄 Files to process: 34
+
+--- CAO 10 ---
+  10: Skipping CAO BOUW EN INFRA 2021-2022 INTERACTIEF.md (being processed by another process)
+  10: Cao Bouw en Infra 2023.md (Markdown: 0.4MB) [API 3/6]
+  INFO: Using Files API approach for Cao Bouw en Infra 2023.md
+  INFO: Markdown file size: 0.38 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/c1gpps70s723
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.38MB
+  DEBUG: Constructed 2 content parts for API call
+  INFO: Successfully extracted structured data from markdown (time: 85.7s)
+  INFO: Response size: 61,985 chars (~15,496 tokens)
+  INFO: Cleaned up uploaded file: files/c1gpps70s723
+  ✅ JSON saved with proper formatting
+  10: LLM extraction completed in 86.94 seconds [API 3/6]

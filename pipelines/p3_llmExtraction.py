@@ -26,12 +26,12 @@ USAGE:
         python pipelines/p3_llmExtraction.py --key_number 2 --process_id 1 --total_processes 2
 
     Bash script for parallel execution:
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 6 2>&1 | tee log1.txt &
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --process_id 1 --total_processes 6 2>&1 | tee log2.txt &
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 3 --process_id 2 --total_processes 6 2>&1 | tee log3.txt &
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 4 --process_id 3 --total_processes 6 2>&1 | tee log4.txt &
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 5 --process_id 4 --total_processes 6 2>&1 | tee log5.txt &
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 6 --process_id 5 --total_processes 6 2>&1 | tee log6.txt &
+        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 6 2>&1 | tee p3_log1.txt &
+        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --process_id 1 --total_processes 6 2>&1 | tee p3_log2.txt &
+        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 3 --process_id 2 --total_processes 6 2>&1 | tee p3_log3.txt &
+        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 4 --process_id 3 --total_processes 6 2>&1 | tee p3_log4.txt &
+        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 5 --process_id 4 --total_processes 6 2>&1 | tee p3_log5.txt &
+        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 6 --process_id 5 --total_processes 6 2>&1 | tee p3_log6.txt &
 
     With file limit:
         python p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 1 --max_files 10
@@ -175,7 +175,7 @@ class CAOExtractionSchema(BaseModel):
         - any other information and rules on contract forms (e.g., freelance, internships)."""
         , default_factory=list)
     childcare_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated childcare provisions in the CAO, including when present:
+        """Extract ALL explicitly stated childcare information in the CAO, including when present:
         - allowances or subsidies,
         - in-house or employer/sector-arranged childcare,
         - discounts or priority access,
@@ -276,7 +276,7 @@ class ExtractionConfig:
     model: str = 'gemini-2.5-flash'
     temperature: float = 0.0
     top_p: float = 0.1
-    top_k: int = 0.9
+    top_k: int = 1
     max_tokens: int = 65536
     candidate_count: int = 1
     seed: int = 42
@@ -668,8 +668,8 @@ def get_model_parameters(config) -> Dict[str, Any]:
 def create_extraction_prompt(filename: str) -> str:
     """Create the extraction prompt for CAO document processing."""
     return f"""
-    Extract information from this Dutch CAO (Collective Labor Agreement) Markdown document (parsed from PDF).
-   
+    Extract information from the Dutch CAO Markdown document parsed from a PDF. Pages are marked ## Page X _native_ (text-based) or ## Page X  _OCR_ (image-based); use these labels to interpret the layout correctly.
+
     GOAL: Produce one JSON object with the exact keys in OUTPUT_JSON_TEMPLATE, each mapping to a List[List[str]]. If nothing is found for a key, return an empty list.
 
     THINKING & OUTPUT: Think step by step INTERNALLY to locate, route, and clean the data, but OUTPUT ONLY the final JSON (no explanations, no notes, no chain-of-thought).
@@ -678,9 +678,9 @@ def create_extraction_prompt(filename: str) -> str:
         - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess any information. Always VERIFY the extracted information with the document.
         - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
         - Be precise: NO paraphrasing, NO interpretation, NO added explanations, NO decorative elements, NO unnecessary separator lines or formatting characters.
-        - IMPORTANT: Translate all Dutch text into clear and precise English but keep names and organizations in Dutch. For legal clauses, preserve the exact legal meaning without simplification.
+        - IMPORTANT: Translate all Dutch text (clauses, tables, titles, etc.) into clear and precise English but keep names in Dutch. For legal clauses, preserve the exact legal meaning without simplification.
     
-    INSIDE SECTION RULES: Order does not matter within a section - keep related items together (e.g., a table followed by its short note).
+    INSIDE SECTION RULES: Order does not matter within a section - keep related items together (e.g., a table followed by its note/explanation).
     
     ROUTING RULES (Use to avoid duplicates across sections):
         - Wage vs Overtime: atypical hours pay → overtime_information; structural bonuses → wage_information.  
@@ -1316,7 +1316,7 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
 # =============================================================================
 # Functions for processing individual files and managing the processing workflow
 def process_single_file(markdown_file: Path, cao_number: str, output_folder: Path, 
-                       context: ProcessingContext, total_files: int, hang_threshold: int = 900, heartbeat_interval: int = 100) -> bool:
+                       context: ProcessingContext, total_files: int, hang_threshold: int = 1500, heartbeat_interval: int = 300) -> bool:
     """Process a single markdown file end-to-end."""
     # Initialize file timing and debug
     file_start = time.time()

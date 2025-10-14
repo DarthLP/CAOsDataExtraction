@@ -1,7 +1,11 @@
 """
 CAO Data Analysis - LLM Extraction Pipeline (p4_analysis.py)
 
-This script performs schema-driven LLM extraction on CAO JSON files.
+This script performs schema-driven LLM extraction on CAO JSON files with:
+- Adaptive retry strategy with parameter adjustment (temp/top_p/top_k on attempts 4-5)
+- Failure-aware retry guidance for LLM-controllable errors (truncated JSON, empty responses)
+- Robust error handling and performance monitoring
+
 It extracts salary and non-salary information using Google Gemini API.
 
 USAGE:
@@ -40,7 +44,6 @@ OUTPUT:
 # IMPORTS
 # =============================================================================
 # Standard library imports for file operations, system access, and data handling
-from datetime import date
 import os
 import sys
 import json
@@ -48,8 +51,10 @@ import time
 import argparse
 import fcntl
 import re
+from enum import Enum
 from pathlib import Path
-from typing import List, Optional, Tuple, Dict, Any
+from types import NoneType
+from typing import List, Optional, Tuple, Dict, Any, Literal
 from dataclasses import dataclass, field
 
 # Add the parent directory to Python path so we can import utils
@@ -58,7 +63,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # Third-party imports for environment variables, file locking, and data validation
 import pandas as pd
 import yaml
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, Field, ConfigDict, conint, constr
 from dotenv import load_dotenv
 
 # Google Gemini API imports
@@ -141,6 +146,100 @@ def get_model_parameters() -> dict:
         "max_retries": 5
     }
 
+
+def get_adjusted_parameters(attempt: int) -> dict:
+    """
+    Get adjusted model parameters based on retry attempt.
+    
+    - Attempts 0-2 (1st-3rd tries): original parameters
+    - Attempt 3 (4th try): temperature +0.1, top_p +0.1, top_k -10%
+    - Attempt 4+ (5th+ try): temperature +0.2, top_p +0.2, top_k -20%
+    
+    Args:
+        attempt: Current retry attempt number (0-based)
+        
+    Returns:
+        dict: Model parameters with attempt-based adjustments
+    """
+    # Get base parameters
+    base_params = get_model_parameters()
+    
+    # Calculate adjustment based on attempt
+    if attempt <= 2:
+        # First 3 attempts: use original parameters
+        adjustment = 0.0
+    elif attempt == 3:
+        # 4th attempt: +0.1 adjustment
+        adjustment = 0.1
+    else:
+        # 5th+ attempt: +0.2 adjustment
+        adjustment = 0.2
+    
+    # Calculate adjusted values
+    adjusted_temp = base_params["temperature"] + adjustment
+    adjusted_top_p = min(1.0, base_params["top_p"] + adjustment)  # Cap at 1.0
+    adjusted_top_k = max(1, int(base_params["top_k"] - adjustment * base_params["top_k"]))  # Reduce by percentage, min 1
+    
+    return {
+        "model": base_params["model"],
+        "temperature": adjusted_temp,
+        "top_p": adjusted_top_p,
+        "top_k": adjusted_top_k,
+        "max_tokens": base_params["max_tokens"],
+        "candidate_count": base_params["candidate_count"],
+        "seed": base_params["seed"],
+        "presence_penalty": base_params["presence_penalty"],
+        "frequency_penalty": base_params["frequency_penalty"],
+        "thinking_budget": base_params["thinking_budget"],
+        "max_retries": base_params["max_retries"]
+    }
+
+
+def get_retry_guidance(error_message: str) -> tuple[str, str]:
+    """
+    Get retry guidance based on previous failure for LLM-controllable errors.
+    
+    Only provides guidance for the 2 most common LLM-controllable errors:
+    1. Truncated JSON (incomplete response)
+    2. Empty/no text response
+    
+    For all other errors (timeouts, 504, etc.), returns empty string.
+    
+    Args:
+        error_message: The error message from the previous attempt
+        
+    Returns:
+        tuple: (guidance_text, error_type) where error_type is "" if no guidance
+    """
+    if not error_message:
+        return "", ""
+    
+    error_lower = error_message.lower()
+    
+    # Check for truncated JSON error
+    if "does not end with }" in error_lower or "truncated" in error_lower:
+        guidance = """
+    PREVIOUS ATTEMPT FAILED: Response was TRUNCATED (incomplete JSON).
+    CRITICAL: Ensure your response ENDS with the closing }  
+        - Be more CONCISE in narrative descriptions while keeping all important data intact
+        - Prioritize completing the JSON structure over verbose explanations
+        - Keep all numbers, dates, tables - compress only explanatory text
+    """
+        return guidance, "truncated JSON"
+    
+    # Check for empty response error
+    if "no text parts" in error_lower or "no content" in error_lower:
+        guidance = """
+    PREVIOUS ATTEMPT FAILED: No valid output was generated.
+    CRITICAL: Output ONLY the JSON object
+        - No markdown code fences (no ```json)
+        - Include ALL required fields (use empty [] if no data)
+        - Ensure final JSON output is generated, not just thinking tokens
+    """
+        return guidance, "empty response"
+    
+    # For all other errors, return empty string (no guidance)
+    return "", ""
 
 
 def calculate_quota_retry_delay(file_size_mb: float, attempt: int) -> int:
@@ -340,36 +439,6 @@ def check_response_truncation(response, filename: str) -> bool:
     return False
 
 
-def validate_llm_response_json(content: str, filename: str) -> dict:
-    """
-    Validate LLM response JSON for completeness and validity.
-    
-    Args:
-        content: Raw response content from LLM
-        filename: Filename for context in error messages
-        
-    Returns:
-        dict: {'is_valid': bool, 'error': str or None}
-    """
-    # Check if content is empty
-    if not content or not content.strip():
-        return {'is_valid': False, 'error': 'Empty content'}
-    
-    # Check if content starts with {
-    if not content.strip().startswith('{'):
-        return {'is_valid': False, 'error': 'Content does not start with {'}
-    
-    # Check if content ends with }
-    if not content.strip().endswith('}'):
-        return {'is_valid': False, 'error': 'Content does not end with } - JSON appears to be truncated'}
-    
-    # Try to parse JSON to validate structure
-    try:
-        json.loads(content)
-        return {'is_valid': True, 'error': None}
-    except json.JSONDecodeError as e:
-        return {'is_valid': False, 'error': f'JSON parsing error: {str(e)}'}
-
 # =============================================================================
 # CONSTANTS
 # =============================================================================
@@ -382,57 +451,166 @@ MODEL = 'gemini-2.5-flash'
 # =============================================================================
 # Pydantic schemas for structured extraction of CAO document information
 
-# Salary schema:
-class SalaryRow(BaseModel):
-    """Schema for a single salary row representing one job group."""
-    jobgroup: str = Field(default="", description="Job group name - if mentioned put descriptions in parentheses (e.g., 'F-45-9 (workers with high school diploma)')")    
-    salary_1: str = Field(default="", description="Salary of the first job group listed in the earliest wage table")
-    salary_1_unit: str = Field(default="", description="Unit for first salary")
-    salary_1_startdate: str = Field(default="", description="Start date for first salary")
-    salary_increment_1: str = Field(default="", description="Percentage increase of first salary in the earliest wage table")
-    
-    salary_2: str = Field(default="", description="Salary of the first job group listed in the second earliest wage table")
-    salary_2_unit: str = Field(default="", description="Unit for second salary")
-    salary_2_startdate: str = Field(default="", description="Start date for second salary")
-    salary_increment_2: str = Field(default="", description="Percentage increase of second salary in the second earliest wage table")
-    
-    salary_3: str = Field(default="", description="Salary of the first job group listed in the third earliest wage table")
-    salary_3_unit: str = Field(default="", description="Unit for third salary")
-    salary_3_startdate: str = Field(default="", description="Start date for third salary")
-    salary_increment_3: str = Field(default="", description="Percentage increase of third salary in the third earliest wage table")
-    
-    salary_4: str = Field(default="", description="Salary of the first job group listed in the fourth earliest wage table")
-    salary_4_unit: str = Field(default="", description="Unit for fourth salary")
-    salary_4_startdate: str = Field(default="", description="Start date for fourth salary")
-    salary_increment_4: str = Field(default="", description="Percentage increase of fourth salary in the fourth earliest wage table")
-    
-    salary_5: str = Field(default="", description="Salary of the first job group listed in the fifth earliest wage table")
-    salary_5_unit: str = Field(default="", description="Unit for fifth salary")
-    salary_5_startdate: str = Field(default="", description="Start date for fifth salary")
-    salary_increment_5: str = Field(default="", description="Percentage increase of salaries in the fifth earliest wage table")
-    
-    salary_6: str = Field(default="", description="Salary of the first job group listed in the sixth earliest wage table")
-    salary_6_unit: str = Field(default="", description="Unit for sixth salary")
-    salary_6_startdate: str = Field(default="", description="Start date for sixth salary")
-    salary_increment_6: str = Field(default="", description="Percentage increase of sixth salary in the sixth earliest wage table")
-    
-    salary_7: str = Field(default="", description="Salary of the first job group listed in the seventh earliest wage table")
-    salary_7_unit: str = Field(default="", description="Unit for seventh salary")
-    salary_7_startdate: str = Field(default="", description="Start date for seventh salary")
-    salary_increment_7: str = Field(default="", description="Percentage increase of seventh salary in the seventh earliest wage table")
-    
-    more_salaries: bool = Field(default=False, description="True ONLY if the job group has more than 7 salary steps (i.e., salary_1 … salary_7 are all filled and at least one additional salary exists); otherwise False")
-    salary_note: str = Field(default="", description="Table-level salary context including calculation methods, effective dates, conditions, and any additional regular/standard wage increments beyond salary_increment_1,...,salary_increment_7")
-    salary_age_group: str = Field(default="", description="Age group the salary of the first job group applies to")
+# ---------------------------------------------------------------------
+# AMOUNT CLASSES
+# ---------------------------------------------------------------------
 
+
+class Amount(BaseModel):
+    """Value-unit pair for amounts, durations, percentages, etc."""
+    value: Optional[float] = None
+    unit: Optional[str] = None
+
+
+class AmountRange(BaseModel):
+    """Compact min/max range with shared unit."""
+    min: Optional[float] = None
+    max: Optional[float] = None
+    unit: Optional[str] = None
+
+
+# ---------------------------------------------------------------------
+# SALARY POINT: one effective value in time
+# ---------------------------------------------------------------------
+class SalaryPoint(BaseModel):
+    """
+    One effective salary value valid for a specific period.
+
+    Each SalaryPoint represents a single salary entry from a wage table or 
+    general increase clause — defined by its start date and (if stated) end date. 
+    It records the raw printed amount, pay unit, and optional context such as 
+    general increase, working hours basis, or inclusion of holiday allowance.
+    """
+
+    start_date: str = Field(
+        ...,
+        description="Date the salary amount becomes effective (YYYY-MM-DD format)."
+    )
+
+    end_date: Optional[str] = Field(
+        default=None,
+        description="Date the salary amount ceases to apply, if explicitly stated (YYYY-MM-DD format). "
+                    "Omit if not given or still in force at contract expiry."
+    )
+
+    amount: float = Field(
+        ...,
+        description="Gross salary amount as printed in the CAO (no conversions or derivations)."
+    )
+
+    currency: str = Field(
+        default="EUR",
+        description="Currency of the printed salary amount."
+    )
+
+    unit: str = Field(
+        ...,
+        description="Pay period unit as stated (e.g., 'monthly', '4-week', 'weekly', 'hourly', 'annual')."
+    )
+
+    published_in_table_label: str = Field(
+        default="",
+        description="Identifier of the wage table or adjustment version (e.g., 'per 1 Nov 2023', 'Table A - 2024 rates')."
+    )
+
+    increase_percent: Optional[float] = Field(
+        default=None,
+        description="If the CAO specifies a general percentage increase for this table or time period (e.g., 3.00 for a +3% wage rise), record it here; otherwise omit."
+    )
+
+    includes_holiday_allowance: Optional[bool] = Field(
+        default=None,
+        description="True if the printed amount explicitly includes holiday allowance; "
+                    "False if explicitly excludes it; Omit if not stated."
+    )
+
+    hours_basis_ft_week: Optional[float] = Field(
+        default=None,
+        description="Full-time weekly hours underlying this amount (e.g., 36, 37, 38, 40), "
+                    "recorded only if explicitly for the table version; omit if not mentioned."
+    )
+
+    note: str = Field(
+        default="",
+        description="Footnotes, exceptions, or remarks directly tied to this wage entry. "
+                    "Keep concise but faithful to the original text."
+    )
+
+
+# ---------------------------------------------------------------------
+# SALARY ROW: one job group × step × optional age/education
+# ---------------------------------------------------------------------
+class SalaryRow(BaseModel):
+    """
+    One complete wage-scale cell representing a combination of:
+    (job group) × [optional step/trede] × [optional age band] × [optional education level].
+
+    The 'timeline' field contains the series of salary values (`SalaryPoint`) 
+    over time, as published in successive CAO wage tables.
+    """
+
+    # ---- Identification / scoping ----
+    jobgroup: str = Field(
+        ...,
+        description="Job group or salary scale label/code. "
+                    "If a descriptive subtitle is given, append it in parentheses (e.g., 'F-45-9 (workers with high school diploma)')."
+    )
+
+    step_label: Optional[str] = Field(
+        default=None,
+        description="Printed label of the step/trede (e.g., 'trede 0', 'periodiek 3', 'aanloopschaal C'); omit if not printed."
+    )
+
+    is_entry_or_aanloop_scale: Optional[bool] = Field(
+        default=None,
+        description="True if explicitly described as an entry/aanloop scale; "
+                    "False if explicitly standard; Omit if not stated."
+    )
+
+    # ---- Filters (only when printed) ----
+    salary_age_group: str = Field(
+        default="",
+        description="Printed age band of the wage table (e.g., '23 jaar', '21+'). Consider only age bands capturing at least some workers aged between 23-65. Leave empty if not printed."
+    )
+
+    salary_education: Optional[str] = Field(
+        default=None,
+        description="Printed education level qualifier (e.g., 'MBO-2', 'HBO-bachelor'), if stated; omit if not printed."
+    )
+
+    canonical_fulltime_hours_per_week: Optional[float] = Field(
+        default=None,
+        description="Full-time weekly hours baseline for this CAO (e.g., 37). Record only if explicitly stated, not derived. Omit if not printed."
+    )
+
+    # ---- Salary timeline ----
+    timeline: List[SalaryPoint] = Field(
+        default_factory=list,
+        description="Chronological list of salary points (each from a wage table or increase clause)."
+    )
+
+    # ---- Meta / context ----
+    salary_note: str = Field(
+        default="",
+        description="Row-level remarks that apply across all timeline points "
+                    "(e.g., 'All amounts exclude 8% holiday allowance unless noted', "
+                    "'Scale F merges into G from 2026-01-01')."
+    )
 
 class SalaryExtractionSchema(BaseModel):
-    """Schema for salary extraction results."""
-    salary_information: List[SalaryRow] = Field(default_factory=list)
+    """Top-level container for all extracted wage-related information from one CAO."""
+    salary_information: List[SalaryRow] = Field(
+        default_factory=list,
+        description=(
+            "List of all wage-scale rows extracted from the CAO, "
+            "each describing one (job group) × [optional step/trede] × "
+            "[optional age band] × [optional education level] × timeline."
+        )
+    )
 
-
-# Non-salary schema:
-from typing import Literal, Optional
+#----------------------------
+# Non-salary information
+#----------------------------
 
 # ----------------------------
 # GENERAL INFORMATION
@@ -441,15 +619,15 @@ class GeneralInfo(BaseModel):
     """Schema for general contract information (record exactly as stated in the CAO)."""
     start_date_contract: str = Field(
         default="",
-        description="CAO validity start date (DD/MM/YYYY)."
+        description="CAO validity start date (YYYY-MM-DD)."
     )
     expiry_date_contract: str = Field(
         default="",
-        description="CAO validity end date (DD/MM/YYYY)."
+        description="CAO validity end date (YYYY-MM-DD)."
     )
     signing_date: str = Field(
         default="",
-        description="Date the CAO was signed by the parties (DD/MM/YYYY)."
+        description="Date the CAO was signed by the parties (YYYY-MM-DD)."
     )
 
     # Retroactivity — record only when explicitly stated
@@ -459,31 +637,31 @@ class GeneralInfo(BaseModel):
     )
     retroactive_start_date: str = Field(
         default="",
-        description="Start date of retroactive application (DD/MM/YYYY) — ONLY if retroactive_applies = true."
+        description="Start date of retroactive application (YYYY-MM-DD). Leave empty if retroactive_applies = false."
     )
     retroactive_end_date: str = Field(
         default="",
-        description="End date of retroactive application (DD/MM/YYYY) — ONLY if retroactive_applies = true."
+        description="End date of retroactive application (YYYY-MM-DD). Leave empty if retroactive_applies = false."
     )
     retroactive_scope_note: str = Field(
         default="",
-        description="What is retroactive (e.g., wage scales, allowances) — ONLY if retroactive_applies = true."
+        description="What is retroactive (e.g., wage scales, allowances). Leave empty if retroactive_applies = false."
     )
-    retroactive_backpay_due: bool = Field(
-        default=False,
-        description="Set true only if back-pay for the retro period is explicitly required — ONLY if retroactive_applies = true."
+    retroactive_backpay_due: Optional[bool] = Field(
+        default=None,
+        description="Set true only if back-pay for the retro period is explicitly required, false if not explicitly stated — Omit if retroactive_applies = false."
     )
     retroactive_backpay_terms: str = Field(
         default="",
-        description="Back-pay rules as stated (e.g., 'next payroll', '≥2 installments') — ONLY if retroactive_applies = true AND retroactive_backpay_due = true."
+        description="Back-pay rules as stated. Leave empty if retroactive_applies = false OR retroactive_backpay_due = false."
     )
     retroactive_exclusions_note: str = Field(
         default="",
-        description="Groups or items explicitly excluded from retroactivity — ONLY if retroactive_applies = true."
+        description="Groups or items explicitly excluded from retroactivity. Leave empty if retroactive_applies = false."
     )
     retroactive_interest_or_surcharge: str = Field(
         default="",
-        description="Interest/surcharge on late back-pay, if stated — ONLY if retroactive_applies = true AND retroactive_backpay_due = true."
+        description="Interest/surcharge on late back-pay, if stated. Leave empty if retroactive_applies = false OR retroactive_backpay_due = false."
     )
 
     # Scope / classification
@@ -504,12 +682,9 @@ class GeneralInfo(BaseModel):
         default=False,
         description="Set true only if the CAO explicitly permits company-level deviations from CAO terms."
     )
-    cao_scope_type: Literal[
-        "sectoral", "single_company", "group", "association_limited",
-        "occupational_niche", "unspecified", "other"
-    ] = Field(
+    cao_scope_type: str = Field(
         default="unspecified",
-        description="CAO scope type."
+        description="CAO scope type (e.g., 'sectoral', 'single_company', 'group', 'association_limited', 'occupational_niche', 'unspecified', 'other')."
     )
     firm_name: str = Field(
         default="",
@@ -527,11 +702,122 @@ class GeneralInfo(BaseModel):
     )
     avv_start_date: str = Field(
         default="",
-        description="AVV start date (DD/MM/YYYY) — ONLY if avv_applies = true."
+        description="AVV start date (YYYY-MM-DD) — ONLY if avv_applies = true."
     )
     avv_end_date: str = Field(
         default="",
-        description="AVV end date (DD/MM/YYYY) — ONLY if avv_applies = true."
+        description="AVV end date (YYYY-MM-DD) — ONLY if avv_applies = true."
+    )
+
+# ----------------------------
+# BONUSES (WAGE)
+# ----------------------------
+class BonusesInfo(BaseModel):
+    has_bonus_schemes: bool = Field(
+        default=False,
+        description="Set true only if the CAO explicitly provides any recurring or structural bonus/incentive beyond base salary."
+    )
+
+    sign_on_bonus_present: bool = Field(
+        default=False,
+        description="Set true only if the CAO includes a sign-on bonus for new hires."
+    )
+    sign_on_bonus: Optional[Amount] = Field(
+        default=None,
+        description="Sign-on bonus amount with unit (e.g., value=500, unit='EUR one-off') — Omit if sign_on_bonus_present = false."
+    )
+
+    thirteenth_month_present: bool = Field(
+        default=False,
+        description="Set true only if the CAO grants a 13th month of salary (or equivalent)."
+    )
+    thirteenth_month: Optional[Amount] = Field(
+        default=None,
+        description="13th-month value with unit (e.g., value=1.0, unit='monthly wage' or value=50, unit='% of annual salary') — Omit if thirteenth_month_present = false."
+    )
+
+    fixed_annual_lump: Optional[Amount] = Field(
+        default=None,
+        description="Fixed recurring lump sum per year with unit (e.g., value=1000, unit='EUR per year')."
+    )
+
+    profit_sharing_present: bool = Field(
+        default=False,
+        description="Set true only if a profit-sharing scheme is explicitly stated."
+    )
+    profit_sharing_note: str = Field(
+        default="",
+        description="Short description of how profit-sharing is calculated (e.g., '% of company profit'). Leave empty if profit_sharing_present = false."
+    )
+
+    performance_bonus_present: bool = Field(
+        default=False,
+        description="Set true only if a performance/target-based bonus beyond base pay is explicitly stated."
+    )
+
+    job_specific_allowances_present: bool = Field(
+        default=False,
+        description="Set true only if role-linked allowances are explicitly stated (e.g., cashier allowance, driver's license allowance)."
+    )
+    job_specific_allowances_note: str = Field(
+        default="",
+        description="Short description of role-linked allowances as stated. Leave empty if job_specific_allowances_present = false."
+    )
+
+    qualification_bonus_present: bool = Field(
+        default=False,
+        description="Set true only if a monetary bonus for obtaining specific diplomas/certifications is explicitly stated."
+    )
+    qualification_bonus_note: str = Field(
+        default="",
+        description=(
+            "Short note exactly as stated describing qualification-related bonuses — include whether it is one-off or recurring (e.g., monthly), the amount or percentage, eligible diplomas/certifications, and any other stated conditions (e.g., job relevance, repayment if leaving early). Leave empty if qualification_bonus_present = false."
+        )
+    )
+
+    seniority_or_loyalty_bonus_present: bool = Field(
+        default=False,
+        description="Set true only if a bonus/gratuity for long service or seniority is explicitly stated."
+    )
+
+    retirement_gratuity_present: bool = Field(
+        default=False,
+        description="Set true only if a lump sum at retirement or long-service exit is explicitly stated."
+    )
+    retirement_gratuity_note: str = Field(
+        default="",
+        description="Description/value of lump sum at retirement or long-service exit exactly as stated (e.g., '1 month salary after 25 years'). Leave empty if retirement_gratuity_present = false."
+    )
+
+# ----------------------------
+# WAGE SCALES & PROGRESSION
+# ----------------------------
+class WageScalesInfo(BaseModel):
+    entry_step_by_experience_present: bool = Field(
+        default=False,
+        description="Set true only if the CAO allows a higher initial step/trede based on relevant experience/competence."
+    )
+    entry_step_by_experience_rule: str = Field(
+        default="",
+        description="Short rule text exactly as stated (e.g., '≥3 yrs relevant exp → start ≥ Trede 3; manager discretion'). Leave empty if entry_step_by_experience_present = false."
+    )
+
+    personal_allowance_at_max_scale_present: bool = Field(
+        default=False,
+        description="Set true only if a personal pay supplement ('persoonlijke toeslag') is granted when an employee reaches the maximum of the wage scale or retains a higher wage after reclassification."
+    )
+    personal_allowance_rule_text: str = Field(
+        default="",
+        description="Basis/%/amount, duration, pensionability, and any phase-out or indexation exactly as stated. Leave empty if personal_allowance_at_max_scale_present = false."
+    )
+
+    performance_step_variation_present: bool = Field(
+        default=False,
+        description="Set true only if the employer may grant extra steps or withhold steps based on performance."
+    )
+    performance_step_variation_rule: str = Field(
+        default="",
+        description="Criteria/limits exactly as stated (e.g., 'max +2 steps after excellent rating; withholding requires PIP & OR notification'). Leave empty if performance_step_variation_present = false."
     )
 
 
@@ -544,9 +830,9 @@ class PensionInfo(BaseModel):
         default=False,
         description="Set true only if any pension scheme beyond AOW is mentioned; false if none is mentioned."
     )
-    pension_type: Literal["DB", "DC", "hybrid", "unknown", "unspecified", "other"] = Field(
+    pension_type: str = Field(
         default="unspecified",
-        description="Scheme type: DB = Defined Benefit; DC = Defined Contribution; hybrid = combination."
+        description="Scheme type (e.g., 'DB' = Defined Benefit, 'DC' = Defined Contribution, 'hybrid' = combination, 'unspecified', 'other')."
     )
     mandatory_participation: bool = Field(
         default=False,
@@ -554,60 +840,42 @@ class PensionInfo(BaseModel):
     )
 
     # Selection rule for 'typical' group (if needed for single values)
-    selection_rule_pension: Literal[
-        "majority_headcount", "office_vs_field_rule", "base_tier", "latest_year",
-        "other", "default_unknown", "unspecified"
-    ] = Field(
+    selection_rule_pension: str = Field(
         default="unspecified",
         description=(
-            "How the 'typical' group was chosen when multiple rates exist. Preference order: "
-            "majority_headcount (largest group) > office_vs_field_rule (core group in dual-group CAOs) > "
-            "base_tier (lowest service band for ages 23–65) > latest_year (most recent values) > other > "
-            "default_unknown (could not determine)."
+            "How the 'typical' group was chosen when multiple rates exist (e.g., 'majority_headcount', 'office_vs_field_rule', 'base_tier', 'latest_year', 'other', 'unspecified')."
         )
     )
 
-    employee_contribution_value: Optional[float] = Field(
+    employee_contrib: Optional[Amount] = Field(
         default=None,
-        description="Employee pension contribution for the chosen group (numeric value)."
+        description="Employee pension contribution for the chosen group with unit (e.g., value=5.5, unit='% of salary')."
     )
-    employee_contribution_unit: str = Field(
-        default="",
-        description="Unit of employee_contribution_value (e.g., '% of pensionable base')."
-    )
-    accrual_rate_value: Optional[float] = Field(
+    accrual_rate: Optional[Amount] = Field(
         default=None,
-        description="Annual accrual rate for the chosen group (numeric value)."
+        description="Annual accrual rate for the chosen group with unit (e.g., value=1.875, unit='% per year')."
     )
-    accrual_rate_unit: str = Field(
-        default="",
-        description="Unit of accrual_rate_value (e.g., '% of pensionable salary per year')."
-    )
-    franchise_value: Optional[float] = Field(
+    franchise: Optional[Amount] = Field(
         default=None,
-        description="Franchise amount for the CAO period (numeric value)."
-    )
-    franchise_unit: str = Field(
-        default="",
-        description="Unit of franchise_value (e.g., 'EUR per year')."
+        description="Franchise amount for the CAO period with unit (e.g., value=14400, unit='EUR per year')."
     )
 
-    retirement_age_normal_value: Optional[float] = Field(
+    retirement_age_normal: Optional[Amount] = Field(
         default=None,
-        description="Normal retirement age (years), as stated."
+        description="Normal retirement age (e.g., value=67, unit='years')."
     )
-    retirement_age_early_value: Optional[float] = Field(
+    retirement_age_early: Optional[Amount] = Field(
         default=None,
-        description="Early retirement age (years), if stated."
+        description="Early retirement age (e.g., value=63, unit='years')."
     )
-    retirement_age_deferred_value: Optional[float] = Field(
+    retirement_age_deferred: Optional[Amount] = Field(
         default=None,
-        description="Deferred/postponed retirement age (years), if stated."
+        description="Deferred/postponed retirement age (e.g., value=70, unit='years')."
     )
 
     accrual_during_statutory_leaves: bool = Field(
         default=False,
-        description="Set true only if the CAO explicitly states accrual continues during statutory leaves (birth/parental/adoption/long-term care)."
+        description="Set true only if the CAO explicitly states accrual continues during statutory leaves."
     )
     accrual_during_illness_year2: bool = Field(
         default=False,
@@ -627,25 +895,13 @@ class PensionInfo(BaseModel):
         default=False,
         description="Set true if different pension rates are shown for major groups."
     )
-    employee_contribution_min_value: Optional[float] = Field(
+    employee_contrib_range: Optional[AmountRange] = Field(
         default=None,
-        description="Minimum employee contribution among major groups — ONLY if heterogeneity_present_pension = true."
+        description="Employee contribution range among major groups (e.g., min=4.5, max=6.5, unit='% of salary') — Omit if heterogeneity_present_pension = false."
     )
-    employee_contribution_max_value: Optional[float] = Field(
+    premium_total_range: Optional[AmountRange] = Field(
         default=None,
-        description="Maximum employee contribution among major groups — ONLY if heterogeneity_present_pension = true."
-    )
-    premium_total_min_value: Optional[float] = Field(
-        default=None,
-        description="Minimum total pension premium among major groups — ONLY if heterogeneity_present_pension = true."
-    )
-    premium_total_max_value: Optional[float] = Field(
-        default=None,
-        description="Maximum total pension premium among major groups — ONLY if heterogeneity_present_pension = true."
-    )
-    premium_total_unit: str = Field(
-        default="",
-        description="Unit for the above pension percentages (usually '% of pensionable base'); note if units differ across fields."
+        description="Total pension premium range among major groups (e.g., min=15, max=25, unit='% of salary') — Omit if heterogeneity_present_pension = false."
     )
 
 
@@ -669,41 +925,25 @@ class LeaveInfo(BaseModel):
         default=False,
         description="Set true only if the CAO explicitly states an enhancement above statutory for maternity."
     )
-    paid_maternity_leave_value: Optional[float] = Field(
+    paid_maternity_leave: Optional[Amount] = Field(
         default=None,
-        description="Duration of fully paid maternity leave exactly as stated in the CAO (numeric)."
+        description="Duration of fully paid maternity leave exactly as stated in the CAO (e.g., value=16, unit='weeks')."
     )
-    paid_maternity_leave_unit: str = Field(
-        default="",
-        description="Unit of paid_maternity_leave_value (e.g., 'weeks', 'days')."
-    )
-    partially_paid_maternity_leave_value: Optional[float] = Field(
+    partially_paid_maternity_leave: Optional[Amount] = Field(
         default=None,
-        description="Duration of partially paid maternity leave as stated (numeric)."
+        description="Duration of partially paid maternity leave as stated (e.g., value=10, unit='weeks')."
     )
-    partially_paid_maternity_leave_unit: str = Field(
-        default="",
-        description="Unit of partially_paid_maternity_leave_value."
-    )
-    partially_paid_maternity_pay_value: Optional[float] = Field(
+    partially_paid_maternity_pay: Optional[Amount] = Field(
         default=None,
-        description="Pay level during partially paid maternity leave (numeric)."
+        description="Pay level during partially paid maternity leave (e.g., value=70, unit='% of salary')."
     )
-    partially_paid_maternity_pay_unit: str = Field(
-        default="",
-        description="Unit of partially_paid_maternity_pay_value (e.g., '% of wage')."
-    )
-    unpaid_maternity_leave_value: Optional[float] = Field(
+    unpaid_maternity_leave: Optional[Amount] = Field(
         default=None,
-        description="Duration of additional unpaid maternity leave, as stated (numeric)."
-    )
-    unpaid_maternity_leave_unit: str = Field(
-        default="",
-        description="Unit of unpaid_maternity_leave_value."
+        description="Duration of additional unpaid maternity leave, as stated (e.g., value=6, unit='weeks')."
     )
     maternity_note: str = Field(
         default="",
-        description="Notes exactly as stated (e.g., 'paid by UWV', eligibility, waiting periods). Do not add interpretations."
+        description="Maternity notes exactly as stated."
     )
 
     # Paternity / partner
@@ -711,55 +951,31 @@ class LeaveInfo(BaseModel):
         default=False,
         description="Set true only if the CAO explicitly states any improvement for paternity/partner leave."
     )
-    paid_paternity_leave_value: Optional[float] = Field(
+    paid_paternity_leave: Optional[Amount] = Field(
         default=None,
-        description="Duration of fully paid paternity/partner leave as stated (numeric)."
+        description="Duration of fully paid paternity/partner leave as stated (e.g., value=6, unit='weeks')."
     )
-    paid_paternity_leave_unit: str = Field(
-        default="",
-        description="Unit of paid_paternity_leave_value."
-    )
-    partially_paid_paternity_leave_value: Optional[float] = Field(
+    partially_paid_paternity_leave: Optional[Amount] = Field(
         default=None,
-        description="Duration of partially paid paternity/partner leave as stated (numeric)."
+        description="Duration of partially paid paternity/partner leave as stated (e.g., value=4, unit='weeks')."
     )
-    partially_paid_paternity_leave_unit: str = Field(
-        default="",
-        description="Unit of partially_paid_paternity_leave_value."
-    )
-    partially_paid_paternity_pay_value: Optional[float] = Field(
+    partially_paid_paternity_pay: Optional[Amount] = Field(
         default=None,
-        description="Pay level during partially paid paternity/partner leave (numeric)."
+        description="Pay level during partially paid paternity/partner leave (e.g., value=70, unit='% of salary')."
     )
-    partially_paid_paternity_pay_unit: str = Field(
-        default="",
-        description="Unit of partially_paid_paternity_pay_value."
-    )
-    unpaid_paternity_leave_value: Optional[float] = Field(
+    unpaid_paternity_leave: Optional[Amount] = Field(
         default=None,
-        description="Duration of unpaid paternity/partner leave as stated (numeric)."
-    )
-    unpaid_paternity_leave_unit: str = Field(
-        default="",
-        description="Unit of unpaid_paternity_leave_value."
+        description="Duration of unpaid paternity/partner leave as stated (e.g., value=2, unit='weeks')."
     )
 
     # Adoption / foster
-    adoption_leave_value: Optional[float] = Field(
+    adoption_leave: Optional[Amount] = Field(
         default=None,
-        description="Duration of adoption/foster leave as stated (numeric)."
+        description="Duration of adoption/foster leave as stated (e.g., value=10, unit='weeks')."
     )
-    adoption_leave_unit: str = Field(
-        default="",
-        description="Unit of adoption_leave_value."
-    )
-    adoption_pay_value: Optional[float] = Field(
+    adoption_pay: Optional[Amount] = Field(
         default=None,
-        description="Pay level during adoption/foster leave (numeric)."
-    )
-    adoption_pay_unit: str = Field(
-        default="",
-        description="Unit of adoption_pay_value (e.g., '%', 'EUR per day')."
+        description="Pay level during adoption/foster leave (e.g., value=100, unit='% of salary')."
     )
 
     # Parental
@@ -767,21 +983,13 @@ class LeaveInfo(BaseModel):
         default=False,
         description="Set true only if an employer top-up for parental leave is explicitly stated."
     )
-    parental_leave_topup_pay_value: Optional[float] = Field(
+    parental_leave_topup_pay: Optional[Amount] = Field(
         default=None,
-        description="Top-up pay level during parental leave (numeric), as stated."
+        description="Top-up pay level during parental leave, as stated (e.g., value=70, unit='% of salary')."
     )
-    parental_leave_topup_pay_unit: str = Field(
-        default="",
-        description="Unit of parental_leave_topup_pay_value (e.g., '% of wage')."
-    )
-    parental_leave_unpaid_value: Optional[float] = Field(
+    parental_leave_unpaid: Optional[Amount] = Field(
         default=None,
-        description="Duration of unpaid parental leave as stated (numeric)."
-    )
-    parental_leave_unpaid_unit: str = Field(
-        default="",
-        description="Unit of parental_leave_unpaid_value."
+        description="Duration of unpaid parental leave as stated (e.g., value=26, unit='weeks')."
     )
 
     # Abortion
@@ -795,21 +1003,13 @@ class LeaveInfo(BaseModel):
         default=False,
         description="Set true only if an employer sick-pay top-up is explicitly stated."
     )
-    sickpay_continuation_duration_value: Optional[float] = Field(
+    sickpay_duration: Optional[Amount] = Field(
         default=None,
-        description="Duration of stated sick-pay continuation/top-up (numeric)."
+        description="Duration of stated sick-pay continuation/top-up (e.g., value=104, unit='weeks')."
     )
-    sickpay_continuation_duration_unit: str = Field(
-        default="",
-        description="Unit of sickpay_continuation_duration_value (e.g., 'weeks', 'months')."
-    )
-    sickpay_continuation_value: Optional[float] = Field(
+    sickpay_continuation: Optional[Amount] = Field(
         default=None,
-        description="Sick-pay continuation rate as stated (numeric, e.g., 100, 90)."
-    )
-    sickpay_continuation_unit: str = Field(
-        default="",
-        description="Unit of sickpay_continuation_value (e.g., '% of wage')."
+        description="Sick-pay continuation rate as stated (e.g., value=70, unit='% of salary')."
     )
     sickpay_extra_insurance_present: bool = Field(
         default=False,
@@ -821,55 +1021,31 @@ class LeaveInfo(BaseModel):
         default=False,
         description="Set true only if the CAO explicitly tops up short-/long-term care leave."
     )
-    short_term_care_leave_value: Optional[float] = Field(
+    short_term_care_leave: Optional[Amount] = Field(
         default=None,
-        description="Duration of short-term care leave as stated (numeric)."
+        description="Duration of short-term care leave (e.g., value=10, unit='days per year')."
     )
-    short_term_care_leave_unit: str = Field(
-        default="",
-        description="Unit of short_term_care_leave_value."
-    )
-    short_term_care_pay_value: Optional[float] = Field(
+    short_term_care_pay: Optional[Amount] = Field(
         default=None,
-        description="Pay level during short-term care leave (numeric)."
+        description="Pay level during short-term care leave (e.g., value=100, unit='% of salary')."
     )
-    short_term_care_pay_unit: str = Field(
-        default="",
-        description="Unit of short_term_care_pay_value."
-    )
-    long_term_care_leave_value: Optional[float] = Field(
+    long_term_care_leave: Optional[Amount] = Field(
         default=None,
-        description="Duration of long-term care leave as stated (numeric)."
+        description="Duration of long-term care leave (e.g., value=6, unit='months')."
     )
-    long_term_care_leave_unit: str = Field(
-        default="",
-        description="Unit of long_term_care_leave_value."
-    )
-    long_term_care_pay_value: Optional[float] = Field(
+    long_term_care_pay: Optional[Amount] = Field(
         default=None,
-        description="Pay level during long-term care leave (numeric)."
-    )
-    long_term_care_pay_unit: str = Field(
-        default="",
-        description="Unit of long_term_care_pay_value."
+        description="Pay level during long-term care leave (e.g., value=70, unit='% of salary')."
     )
 
     # Vacation & holiday allowance
-    vacation_time_typical_value: Optional[float] = Field(
+    vacation_time: Optional[Amount] = Field(
         default=None,
-        description="Typical vacation entitlement for a standard worker, as stated (numeric)."
+        description="Typical vacation entitlement for a standard worker (e.g., value=25, unit='days per year')."
     )
-    vacation_unit: str = Field(
-        default="",
-        description="Unit of vacation_time_typical_value (e.g., 'days per year', 'hours')."
-    )
-    vacation_bonus_value: Optional[float] = Field(
+    vacation_bonus: Optional[Amount] = Field(
         default=None,
-        description="Holiday allowance (vakantiegeld) amount or percentage, as stated (numeric)."
-    )
-    vacation_bonus_unit: str = Field(
-        default="",
-        description="Unit of vacation_bonus_value (e.g., '% of base wage', 'EUR per year')."
+        description="Holiday allowance (vakantiegeld) amount or percentage (e.g., value=8, unit='% of annual salary')."
     )
 
     # Heterogeneity & notes
@@ -887,11 +1063,23 @@ class LeaveInfo(BaseModel):
     )
     liberation_day_comp_note: str = Field(
         default="",
-        description="Compensation note if Liberation Day is not a day off, exactly as stated."
+        description="Compensation note if Liberation Day is not a day off."
+    )
+    extra_leave_seniority_present: bool = Field(
+        default=False,
+        description=(
+            "Set true only if the CAO explicitly grants extra vacation or leave entitlements based on years of service and/or age."
+        )
+    )
+    extra_leave_seniority_schedule: str = Field(
+        default="",
+        description=(
+            "Compact schedule or rule exactly as stated, showing seniority- or age-based leave increments. Leave empty if extra_leave_seniority_present = false."
+        )
     )
     leave_note: str = Field(
         default="",
-        description="Any special leaves (bereavement, calamity, ADV/ATV, public holidays, senior days); no interpretations or external additions."
+        description="Any special leaves."
     )
 
 # ----------------------------
@@ -905,34 +1093,21 @@ class TerminationInfo(BaseModel):
         description="Set true only if the CAO explicitly contains termination/notice rules beyond statutory defaults."
     )
 
-    selection_rule_notice: Literal[
-        "majority_headcount", "base_tier", "office_vs_field_rule", "latest_year",
-        "default_unknown", "unspecified", "other"
-    ] = Field(
+    selection_rule_notice: str = Field(
         default="unspecified",
         description=(
-            "How the 'typical' group for notice was chosen when multiple rules exist. "
-            "Preference order: majority_headcount (largest group); office_vs_field_rule (core group in dual-group CAOs); "
-            "base_tier (lowest service band for ages 23-65); latest_year (most recent values); other; default_unknown (unclear)."
+            "How the 'typical' group for notice was chosen when multiple rules exist (e.g., 'majority_headcount', 'base_tier', 'office_vs_field_rule', 'latest_year', 'unspecified', 'other')."
         )
     )
 
-    employer_notice_typical_value: Optional[float] = Field(
+    employer_notice: Optional[Amount] = Field(
         default=None,
-        description="Typical employer notice period (employer terminating). Numeric value, exactly as stated."
-    )
-    employer_notice_unit: str = Field(
-        default="",
-        description="Unit of employer_notice_typical_value (e.g., 'weeks', 'months', 'full calendar month')."
+        description="Typical employer notice period (employer terminating) (e.g., value=2, unit='months')."
     )
 
-    employee_notice_typical_value: Optional[float] = Field(
+    employee_notice: Optional[Amount] = Field(
         default=None,
-        description="Typical employee notice period (employee resigning). Numeric value, exactly as stated."
-    )
-    employee_notice_unit: str = Field(
-        default="",
-        description="Unit of employee_notice_typical_value (e.g., 'weeks', 'months')."
+        description="Typical employee notice period (employee resigning) (e.g., value=1, unit='months')."
     )
 
     heterogeneity_present_notice: bool = Field(
@@ -940,58 +1115,42 @@ class TerminationInfo(BaseModel):
         description="Set true if major groups have different notice periods."
     )
 
-    employer_notice_min_value: Optional[float] = Field(
+    employer_notice_range: Optional[AmountRange] = Field(
         default=None,
-        description="Shortest employer notice duration across main groups (numeric) — ONLY if heterogeneity_present_notice = true."
-    )
-    employer_notice_min_unit: str = Field(
-        default="",
-        description="Unit of employer_notice_min_value (e.g., 'weeks', 'months', 'full calendar month') — ONLY if heterogeneity_present_notice = true."
-    )
-    employer_notice_max_value: Optional[float] = Field(
-        default=None,
-        description="Longest employer notice duration across main groups (numeric) — ONLY if heterogeneity_present_notice = true."
-    )
-    employer_notice_max_unit: str = Field(
-        default="",
-        description="Unit of employer_notice_max_value (e.g., 'weeks', 'months', 'full calendar month') — ONLY if heterogeneity_present_notice = true."
+        description="Employer notice duration range across main groups (e.g., min=1, max=3, unit='months') — Omit if heterogeneity_present_notice = false."
     )
 
-    employee_notice_min_value: Optional[float] = Field(
+    employee_notice_range: Optional[AmountRange] = Field(
         default=None,
-        description="Shortest employee notice duration across main groups (numeric) — ONLY if heterogeneity_present_notice = true."
+        description="Employee notice duration range across main groups (e.g., min=1, max=2, unit='months') — Omit if heterogeneity_present_notice = false."
     )
-    employee_notice_min_unit: str = Field(
+
+    notice_period_by_tenure_present: bool = Field(
+        default=False,
+        description=(
+            "Set true only if notice periods vary explicitly by years of service (for employer and/or employee)."
+        )
+    )
+
+    notice_period_by_tenure_rule: str = Field(
         default="",
-        description="Unit of employee_notice_min_value (e.g., 'weeks', 'months') — ONLY if heterogeneity_present_notice = true."
-    )
-    employee_notice_max_value: Optional[float] = Field(
-        default=None,
-        description="Longest employee notice duration across main groups (numeric) — ONLY if heterogeneity_present_notice = true."
-    )
-    employee_notice_max_unit: str = Field(
-        default="",
-        description="Unit of employee_notice_max_value (e.g., 'weeks', 'months') — ONLY if heterogeneity_present_notice = true."
+        description=(
+            "Exact rule or schedule for tenure-based notice periods as stated. Leave empty if notice_period_by_tenure_present = false."
+        )
     )
 
     can_shorten_notice_with_uwv_permit: bool = Field(
         default=False,
         description="Set true only if the CAO explicitly allows notice to be shortened with a UWV permit."
     )
-    notice_minimum_floor_value: Optional[float] = Field(
+    notice_min_floor: Optional[Amount] = Field(
         default=None,
-        description="Minimum notice duration that must remain after any shortening (numeric) — ONLY if can_shorten_notice_with_uwv_permit = true."
-    )
-    notice_minimum_floor_unit: str = Field(
-        default="",
-        description="Unit of notice_minimum_floor_value (e.g., 'month', 'weeks') — ONLY if can_shorten_notice_with_uwv_permit = true."
+        description="Minimum notice duration that must remain after any shortening (e.g., value=1, unit='months') — Omit if can_shorten_notice_with_uwv_permit = false."
     )
 
-    dismissal_approval_required: Literal[
-        "UWV", "Judge", "Both", "None", "Conditional", "unspecified", "other"
-    ] = Field(
+    dismissal_approval: str = Field(
         default="unspecified",
-        description="Which approval or authorization route the CAO states is required for a standard dismissal (e.g., UWV permit, court decision, both, or none). Use 'Conditional' if approval applies only in specific cases or time periods."
+        description="Which approval or authorization route the CAO states is required for a standard dismissal (e.g., 'UWV', 'Judge', 'Both', 'None', 'Conditional', 'unspecified', 'other'). Use 'Conditional' if approval applies only in specific cases or time periods."
     )
 
     sickness_dismissal_protection: bool = Field(
@@ -1008,32 +1167,33 @@ class TerminationInfo(BaseModel):
         default=False,
         description="Set true only if the CAO explicitly allows a probationary period in general."
     )
-    probation_max_months_fixedterm: Optional[float] = Field(
+    probation_fixedterm: Optional[Amount] = Field(
         default=None,
-        description="Maximum probation period for fixed-term contracts (months), exactly as stated."
+        description="Maximum probation period for fixed-term contracts (e.g., value=2, unit='months'), exactly as stated."
     )
-    probation_max_months_indefinite: Optional[float] = Field(
+    probation_indefinite: Optional[Amount] = Field(
         default=None,
-        description="Maximum probation period for indefinite-term contracts (months), exactly as stated."
+        description="Maximum probation period for indefinite-term contracts (e.g., value=1, unit='months'), exactly as stated."
     )
 
     severance_or_ww_supplement_present: bool = Field(
         default=False,
         description="Set true only if the CAO adds severance or WW (unemployment) supplements beyond statutory transition pay."
     )
-    severance_extra_value: Optional[float] = Field(
+    severance_extra: Optional[Amount] = Field(
         default=None,
-        description="Quantified extra severance if stated (e.g., 1.0 = one monthly wage per service year) — ONLY if severance_or_ww_supplement_present = true."
-    )
-    severance_extra_unit: str = Field(
-        default="",
-        description="Unit of severance_extra_value (e.g., 'monthly wage per year of service', '% of annual salary') — ONLY if severance_or_ww_supplement_present = true."
+        description="Quantified extra severance if stated (e.g., value=5000, unit='EUR') — Omit if severance_or_ww_supplement_present = false."
     )
     severance_extra_formula_note: str = Field(
         default="",
-        description="Short formula or rule text for extra severance — ONLY if severance_or_ww_supplement_present = true."
+        description="Short formula or rule text for extra severance. Leave empty if severance_or_ww_supplement_present = false."
     )
-
+    severance_by_tenure_rule_note: str = Field(
+        default="",
+        description=(
+            "Brief formula or schedule exactly as stated if the CAO adds tenure-based severance beyond statutory transition pay. Leave empty if not applicable."
+        )
+    )
 
 # ----------------------------
 # OVERTIME INFORMATION
@@ -1046,65 +1206,42 @@ class OvertimeInfo(BaseModel):
         description="Set true only if the CAO specifies overtime or allowance rules beyond statutory defaults."
     )
 
-    selection_rule_overtime: Literal[
-        "majority_headcount", "base_tier", "office_vs_field_rule", "latest_year",
-        "default_unknown", "unspecified", "other"
-    ] = Field(
+    selection_rule_overtime: str = Field(
         default="unspecified",
         description=(
-            "How the 'typical' group for overtime was chosen when multiple worker groups exist. Use the same selection logic as in notice and pension fields. "
-            "Preference order: majority_headcount (largest group); office_vs_field_rule (core group in dual-group CAOs); "
-            "base_tier (lowest service band for ages 23-65); latest_year (most recent values); other; default_unknown (unclear)."
+            "How the 'typical' group for overtime was chosen when multiple worker groups exist (e.g., 'majority_headcount', 'base_tier', 'office_vs_field_rule', 'latest_year', 'unspecified', 'other'). Use the same selection logic as in notice and pension fields."
         )
     )
 
-    overtime_trigger_daily_value: Optional[float] = Field(
+    overtime_trigger_daily: Optional[Amount] = Field(
         default=None,
-        description="Daily threshold after which hours count as overtime (numeric), exactly as stated."
+        description="Daily threshold after which hours count as overtime, exactly as stated (e.g., value=8, unit='hours')."
     )
-    overtime_trigger_daily_unit: str = Field(
-        default="",
-        description="Unit of overtime_trigger_daily_value (usually 'hours per day')."
-    )
-    overtime_trigger_weekly_value: Optional[float] = Field(
+    overtime_trigger_weekly: Optional[Amount] = Field(
         default=None,
-        description="Weekly threshold after which hours count as overtime (numeric), exactly as stated."
-    )
-    overtime_trigger_weekly_unit: str = Field(
-        default="",
-        description="Unit of overtime_trigger_weekly_value (usually 'hours per week')."
+        description="Weekly threshold after which hours count as overtime, exactly as stated (e.g., value=40, unit='hours')."
     )
 
     # Surcharges
-    overtime_allowance_typical_value: Optional[float] = Field(
-        default=None,
-        description="Typical overtime surcharge (numeric, e.g., 25, 30, 50)."
-    )
-    overtime_allowance_min_value: Optional[float] = Field(
-        default=None,
-        description="Minimum overtime surcharge across main cases — ONLY if heterogeneity_present_overtime = true."
-    )
-    overtime_allowance_max_value: Optional[float] = Field(
-        default=None,
-        description="Maximum overtime surcharge across main cases — ONLY if heterogeneity_present_overtime = true."
-    )
-    overtime_allowance_unit: str = Field(
-        default="",
-        description="Unit of overtime_allowance_typical_value, overtime_allowance_min_value and overtime_allowance_max_value (e.g., '% of hourly wage'). Mention if units differ across fields."
-    )
-
-    overtime_compensation_mode: Literal[
-        "pay", "TOIL", "both", "unspecified", "other"
-    ] = Field(
+    overtime_compensation_mode: str = Field(
         default="unspecified",
-        description="How overtime is compensated according to the CAO: 'pay' = monetary payment, 'TOIL' = time off in lieu, 'both' = both options are provided, or 'unspecified' if not clearly stated."
+        description="How overtime is compensated according to the CAO (e.g., 'monetary_pay', 'TOIL', 'both', 'unspecified', 'other')."
     )
-
-    stacking_rule: Literal[
-        "highest_only", "cumulative", "unclear", "unspecified", "other"
-    ] = Field(
+    stacking_rule: str = Field(
         default="unspecified",
-        description="How surcharges (e.g., overtime, night, weekend) interact: only highest applies, cumulative stacking, or unclear."
+        description="How surcharges (e.g., overtime, night, weekend) interact (e.g., 'highest_only', 'cumulative', 'unclear', 'unspecified', 'other')."
+    )
+    overtime_allowance: Optional[Amount] = Field(
+        default=None,
+        description="Typical overtime surcharge (e.g., value=150, unit='% of hourly rate')."
+    )
+    heterogeneity_present_overtime: bool = Field(
+        default=False,
+        description="Set true if different overtime rates are shown for major groups."
+    )
+    overtime_allowance_range: Optional[AmountRange] = Field(
+        default=None,
+        description="Overtime surcharge range across main cases (e.g., min=125, max=175, unit='% of hourly rate') — Omit if heterogeneity_present_overtime = false."
     )
 
     # Shift / unfavourable hours
@@ -1112,63 +1249,35 @@ class OvertimeInfo(BaseModel):
         default=False,
         description="Set true only if the CAO explicitly provides a separate shift allowance for working in regular shifts, distinct from overtime pay."
     )
-    shift_allowance_min_value: Optional[float] = Field(
+    shift_allowance_range: Optional[AmountRange] = Field(
         default=None,
-        description="Lowest common shift allowance — ONLY if shift_allowance_present = true."
-    )
-    shift_allowance_max_value: Optional[float] = Field(
-        default=None,
-        description="Highest common shift allowance — ONLY if shift_allowance_present = true."
-    )
-    shift_allowance_unit: str = Field(
-        default="",
-        description="Unit of shift allowances (e.g., '% of (basic) wage', '% per week') — ONLY if shift_allowance_present = true."
+        description="Shift allowance range (e.g., min=10, max=25, unit='% of hourly rate') — Omit if shift_allowance_present = false."
     )
 
-    unfavourable_hours_allowance_max_value: Optional[float] = Field(
+    unfavourable_hours_allowance: Optional[Amount] = Field(
         default=None,
-        description="Maximum allowance for work during unfavourable hours (e.g., night, weekend, or holiday work). Distinct from overtime pay and from regular shift allowances."
-    )
-    unfavourable_hours_allowance_unit: str = Field(
-        default="",
-        description="Unit of unfavourable hours allowance (e.g., '% of hourly wage')."
+        description="Maximum allowance for work during unfavourable hours (e.g., value=20, unit='% of hourly rate'). Distinct from overtime pay and from regular shift allowances."
     )
 
     # Working time bounds and rest
-    min_rest_between_shifts_value: Optional[float] = Field(
+    min_rest_between_shifts: Optional[Amount] = Field(
         default=None,
-        description="Minimum rest required between shifts (numeric), exactly as stated."
-    )
-    min_rest_between_shifts_unit: str = Field(
-        default="",
-        description="Unit of min_rest_between_shifts_value (usually 'hours')."
+        description="Minimum rest required between shifts, exactly as stated (e.g., value=11, unit='hours')."
     )
 
-    max_hours_per_day_value: Optional[float] = Field(
+    max_hours_per_day: Optional[Amount] = Field(
         default=None,
-        description="Maximum daily working time set by the CAO (numeric)."
-    )
-    max_hours_per_day_unit: str = Field(
-        default="",
-        description="Unit of max_hours_per_day_value (usually 'hours per day')."
+        description="Maximum daily working time set by the CAO (e.g., value=10, unit='hours')."
     )
 
-    max_hours_per_week_value: Optional[float] = Field(
+    max_hours_per_week: Optional[Amount] = Field(
         default=None,
-        description="Maximum weekly working time set by the CAO (numeric)."
-    )
-    max_hours_per_week_unit: str = Field(
-        default="",
-        description="Unit of max_hours_per_week_value (usually 'hours per week')."
+        description="Maximum weekly working time set by the CAO (e.g., value=45, unit='hours')."
     )
 
-    compulsory_overtime_limit_annual_value: Optional[float] = Field(
+    compulsory_overtime_annual: Optional[Amount] = Field(
         default=None,
-        description="Maximum annual compulsory overtime if specified (numeric)."
-    )
-    compulsory_overtime_limit_annual_unit: str = Field(
-        default="",
-        description="Unit of compulsory_overtime_limit_annual_value (e.g., 'hours per year')."
+        description="Maximum annual compulsory overtime if specified (e.g., value=200, unit='hours per year')."
     )
 
     guaranteed_weekends_off_rule_text: str = Field(
@@ -1188,44 +1297,24 @@ class TrainingInfo(BaseModel):
         description="Set true only if the CAO grants training/education rights."
     )
 
-    training_time_per_year_value: Optional[float] = Field(
+    training_time_yearly: Optional[Amount] = Field(
         default=None,
-        description="Typical paid training time per year (numeric), exactly as stated."
-    )
-    training_time_per_year_unit: str = Field(
-        default="",
-        description="Unit of training_time_per_year_value (e.g., 'days per year', 'hours per year')."
+        description="Typical paid training time per year (e.g., value=40, unit='hours per year')."
     )
 
-    training_budget_value: Optional[float] = Field(
+    training_budget: Optional[Amount] = Field(
         default=None,
-        description="Annual monetary training budget (numeric), exactly as stated."
-    )
-    training_budget_unit: str = Field(
-        default="",
-        description="Unit of training_budget_value (e.g., 'EUR per year', '% of salary')."
+        description="Annual monetary training budget (e.g., value=2000, unit='EUR per year')."
     )
 
-    career_scan_frequency_value: Optional[float] = Field(
+    career_scan_freq: Optional[Amount] = Field(
         default=None,
-        description="Frequency of employability/career scans (numeric), exactly as stated."
-    )
-    career_scan_frequency_unit: str = Field(
-        default="",
-        description="Unit of career_scan_frequency_value (e.g., 'years')."
+        description="Frequency of employability/career scans (e.g., value=2, unit='times per year')."
     )
 
-    cost_reimbursement_rate_value: Optional[float] = Field(
-    default=None,
-    description=(
-        "Percentage or amount of training/study costs reimbursed by the employer or sector fund (numeric) — only if explicitly stated in the CAO."
-    )
-    )
-    cost_reimbursement_rate_unit: str = Field(
-        default="",
-        description=(
-            "Unit of cost_reimbursement_rate_value (e.g., '% of tuition', '% of total cost', 'EUR per course')."
-        )
+    cost_reimbursement: Optional[Amount] = Field(
+        default=None,
+        description="Percentage or amount of training/study costs reimbursed by the employer or sector fund (e.g., value=100, unit='% of costs')."
     )
 
     training_fund_present: bool = Field(
@@ -1234,7 +1323,7 @@ class TrainingInfo(BaseModel):
     )
     reclaim_clause_present: bool = Field(
         default=False,
-        description="Set true if the employer may reclaim training costs upon early departure (as stated)."
+        description="Set true if the employer may reclaim training costs upon early departure."
     )
     mandatory_training_paid: bool = Field(
         default=False,
@@ -1243,7 +1332,7 @@ class TrainingInfo(BaseModel):
 
     training_note: str = Field(
         default="",
-        description="Concise verbatim summary of special rules (e.g., BBL, apprenticeships, exam leave, only statutory minimum training is paid)."
+        description="Concise verbatim summary of special rules."
     )
 
 
@@ -1258,33 +1347,23 @@ class HomeofficeInfo(BaseModel):
         description="Set true only if the CAO includes home office / telework provisions."
     )
 
-    homeoffice_entitlement_value: Optional[float] = Field(
+    homeoffice_entitlement: Optional[Amount] = Field(
         default=None,
-        description="Entitled amount of remote work allowed, as explicitly stated in the CAO (numeric)."
-    )
-    homeoffice_entitlement_unit: str = Field(
-        default="",
-        description="Unit of homeoffice_entitlement_value (e.g., 'days per week', 'days per month')."
+        description="Entitled amount of remote work allowed, as explicitly stated in the CAO (e.g., value=2, unit='days per week')."
     )
 
     homeoffice_stipend_present: bool = Field(
         default=False,
         description="Set true only if a fixed home office allowance is stated."
     )
-    homeoffice_stipend_value: Optional[float] = Field(
+    homeoffice_stipend: Optional[Amount] = Field(
         default=None,
-        description="Home office allowance amount (numeric) — ONLY if homeoffice_stipend_present = true."
-    )
-    homeoffice_stipend_unit: str = Field(
-        default="",
-        description="Unit of homeoffice_stipend_value (e.g., 'EUR per day', 'EUR per month') — ONLY if homeoffice_stipend_present = true."
+        description="Home office allowance amount (e.g., value=50, unit='EUR per month') — Omit if homeoffice_stipend_present = false."
     )
 
-    homeoffice_discretion_level: Literal[
-        "employer_only", "joint_with_OR", "employee_request", "none", "unspecified", "other"
-    ] = Field(
+    homeoffice_discretion: str = Field(
         default="unspecified",
-        description="Who decides on home office arrangements, as explicitly stated in the CAO: 'employer_only' = employer has full discretion; 'joint_with_OR' = decision made jointly with the Works Council; 'employee_request' = employees may request or decide; 'none' = not specified; or 'other' if phrased differently."
+        description="Who decides on home office arrangements, as explicitly stated in the CAO (e.g., 'employer_only', 'joint_with_OR' = decision made jointly with the Works Council, 'employee_request' = employees may request or decide, 'unspecified', 'other')."
     )
 
     homeoffice_costs_reimbursed: bool = Field(
@@ -1293,7 +1372,7 @@ class HomeofficeInfo(BaseModel):
     )
     homeoffice_costs_note: str = Field(
         default="",
-        description="Short note on reimbursed cost types — ONLY if homeoffice_costs_reimbursed = true."
+        description="Short note on reimbursed cost types. Leave empty if homeoffice_costs_reimbursed = false."
     )
 
     homeoffice_agreement_required: bool = Field(
@@ -1306,7 +1385,7 @@ class HomeofficeInfo(BaseModel):
     )
     homeoffice_travel_time_compensation: bool = Field(
         default=False,
-        description="Set true only if the CAO explicitly states that additional commuting time arising from home-office or hybrid work (e.g., occasional travel to workplace) is compensated."
+        description="Set true only if the CAO explicitly states that additional commuting time arising from home-office or hybrid work is compensated."
     )
 
     homeoffice_note: str = Field(
@@ -1326,47 +1405,27 @@ class ContractTypeInfo(BaseModel):
         description="Set true only if the CAO sets explicit rules on contract types of the workers beyond statutory defaults."
     )
 
-    full_time_hours_value: Optional[float] = Field(
+    full_time_hours: Optional[Amount] = Field(
         default=None,
-        description="Standard full-time working hours (numeric), exactly as stated."
-    )
-    full_time_hours_unit: str = Field(
-        default="",
-        description="Unit of full_time_hours_value (e.g., 'hours per week')."
+        description="Standard full-time working hours, exactly as stated (e.g., value=38, unit='hours per week')."
     )
 
     part_time_allowed: bool = Field(
         default=False,
         description="Set true only if part-time contracts are explicitly permitted for standard workers."
     )
-    part_time_range_min_value: Optional[float] = Field(
+    part_time_range: Optional[AmountRange] = Field(
         default=None,
-        description="Smallest standard part-time fraction/hours allowed — ONLY if part_time_allowed = true."
-    )
-    part_time_range_max_value: Optional[float] = Field(
-        default=None,
-        description="Largest standard part-time fraction/hours allowed (≤ full-time) — ONLY if part_time_allowed = true."
-    )
-    part_time_range_unit: str = Field(
-        default="",
-        description="Unit of part_time_range_* (e.g., '% of full-time', 'hours per week') — ONLY if part_time_allowed = true."
+        description="Part-time fraction/hours range (e.g., min=0.5, max=0.9, unit='FTE') — Omit if part_time_allowed = false."
     )
 
     minmax_hours_contract_allowed: bool = Field(
         default=False,
         description="Set true if 'min-max' (bandwidth) contracts are explicitly permitted."
     )
-    minmax_hours_min_value: Optional[float] = Field(
+    minmax_hours_range: Optional[AmountRange] = Field(
         default=None,
-        description="Minimum guaranteed hours for min-max contracts — ONLY if minmax_hours_contract_allowed = true."
-    )
-    minmax_hours_max_value: Optional[float] = Field(
-        default=None,
-        description="Maximum deployable hours for min-max contracts — ONLY if minmax_hours_contract_allowed = true."
-    )
-    minmax_hours_unit: str = Field(
-        default="",
-        description="Unit of minmax_hours_* (e.g., 'hours per week', 'hours per month') — ONLY if minmax_hours_contract_allowed = true."
+        description="Min-max contract hours range (e.g., min=20, max=40, unit='hours per week') — Omit if minmax_hours_contract_allowed = false."
     )
 
     zero_hour_oncall_allowed: bool = Field(
@@ -1378,17 +1437,13 @@ class ContractTypeInfo(BaseModel):
         default=False,
         description="Set true only if the CAO deviates from the statutory 'ketenregeling' (fixed-term chain rule)."
     )
-    ketenregeling_max_contracts_value: Optional[float] = Field(
+    ketenregeling_max_contracts: Optional[Amount] = Field(
         default=None,
-        description="Maximum number of successive fixed-term contracts — ONLY if ketenregeling_deviation_present = true."
+        description="Maximum number of successive fixed-term contracts (e.g., value=3, unit='contracts') — Omit if ketenregeling_deviation_present = false."
     )
-    ketenregeling_max_duration_value: Optional[float] = Field(
+    ketenregeling_max_duration: Optional[Amount] = Field(
         default=None,
-        description="Maximum total duration of the fixed-term chain — ONLY if ketenregeling_deviation_present = true."
-    )
-    ketenregeling_max_duration_unit: str = Field(
-        default="",
-        description="Unit of ketenregeling_max_duration_value (e.g., 'months', 'years') — ONLY if ketenregeling_deviation_present = true."
+        description="Maximum total duration of the fixed-term chain (e.g., value=24, unit='months') — Omit if ketenregeling_deviation_present = false."
     )
 
     conversion_rights_temp_to_perm_present: bool = Field(
@@ -1397,7 +1452,7 @@ class ContractTypeInfo(BaseModel):
     )
     conversion_rights_rule_text: str = Field(
         default="",
-        description="Exact rule text on conversion from fixed-term to indefinite contracts, as stated (e.g., 'conversion after 24 months of continuous service') — ONLY if conversion_rights_temp_to_perm_present = true."    
+        description="Exact rule text on conversion from fixed-term to indefinite contracts, as stated. Leave empty if conversion_rights_temp_to_perm_present = false."    
     )
 
 
@@ -1416,13 +1471,9 @@ class FringeBenefitsInfo(BaseModel):
         default=False,
         description="Set true if commuting is reimbursed."
     )
-    commuting_allowance_value: Optional[float] = Field(
+    commuting_allowance: Optional[Amount] = Field(
         default=None,
-        description="Commuting allowance amount (numeric) — ONLY if commuting_allowance_present = true."
-    )
-    commuting_allowance_unit: str = Field(
-        default="",
-        description="Unit of commuting_allowance_value (e.g., 'EUR per km', '2nd-class PT fully reimbursed') — ONLY if commuting_allowance_present = true."
+        description="Commuting allowance amount (e.g., value=0.19, unit='EUR per km') — Omit if commuting_allowance_present = false."
     )
 
     bike_scheme_present: bool = Field(
@@ -1431,7 +1482,7 @@ class FringeBenefitsInfo(BaseModel):
     )
     bike_scheme_note: str = Field(
         default="",
-        description="Short note exactly as stated (e.g., 'leasefiets via WKR; own contribution €X') — ONLY if bike_scheme_present = true."
+        description="Short note exactly as stated. Leave empty if bike_scheme_present = false."
     )
 
     internet_or_phone_reimbursement_present: bool = Field(
@@ -1443,20 +1494,13 @@ class FringeBenefitsInfo(BaseModel):
         default=False,
         description="Set true if a meal benefit is provided."
     )
-    meal_benefit_type: Literal[
-        "free_meals", "subsidised_canteen", "meal_vouchers",
-        "meal_allowance", "other", "unspecified"
-    ] = Field(
+    meal_benefit_type: str = Field(
         default="unspecified",
-        description="Type of meal benefit — ONLY if meal_benefit_present = true."
+        description="Type of meal benefit (e.g., 'free_meals', 'subsidised_canteen', 'meal_vouchers', 'meal_allowance', 'other', 'unspecified')."
     )
-    meal_benefit_value: Optional[float] = Field(
+    meal_benefit_amt: Optional[Amount] = Field(
         default=None,
-        description="Meal benefit amount/percentage (numeric) — ONLY if meal_benefit_present = true."
-    )
-    meal_benefit_unit: str = Field(
-        default="",
-        description="Unit of meal_benefit_value (e.g., 'EUR per meal', '% discount') — ONLY if meal_benefit_present = true."
+        description="Meal benefit amount/percentage (e.g., value=5, unit='EUR per day') — Omit if meal_benefit_present = false."
     )
 
     health_insurance_support_present: bool = Field(
@@ -1465,20 +1509,24 @@ class FringeBenefitsInfo(BaseModel):
     )
     health_insurance_support_note: str = Field(
         default="",
-        description="Short note exactly as stated describing the health insurance support (e.g., 'collective discount via insurer') — ONLY if health_insurance_support_present = true."
+        description="Short note exactly as stated describing the health insurance support. Leave empty if health_insurance_support_present = false."
+    )
+    insurance_or_savings_benefit_present: bool = Field(
+        default=False,
+        description="Set true only if employer-paid financial benefits are explicitly stated."
+    )
+    insurance_or_savings_benefit_note: str = Field(
+        default="",
+        description="Short description exactly as stated. Leave empty if insurance_or_savings_benefit_present = false."
     )
 
     relocation_allowance_present: bool = Field(
         default=False,
         description="Set true if relocation/housing support is provided."
     )
-    relocation_allowance_value: Optional[float] = Field(
+    relocation_allowance: Optional[Amount] = Field(
         default=None,
-        description="Relocation allowance value (numeric) — ONLY if relocation_allowance_present = true."
-    )
-    relocation_allowance_unit: str = Field(
-        default="",
-        description="Unit of relocation_allowance_value (e.g., 'EUR one-off', 'EUR per km moved') — ONLY if relocation_allowance_present = true."
+        description="Relocation allowance value (e.g., value=5000, unit='EUR one-off') — Omit if relocation_allowance_present = false."
     )
 
     mandatory_certifications_paid: bool = Field(
@@ -1488,7 +1536,7 @@ class FringeBenefitsInfo(BaseModel):
 
     other_fringe_benefits_note: str = Field(
         default="",
-        description="Concise catch-all for other benefits (e.g., wellbeing/gym)."
+        description="Concise catch-all for other benefits."
     )
 
 
@@ -1504,7 +1552,7 @@ class SafetyInfo(BaseModel):
     )
     harassment_protocol_note: str = Field(
         default="",
-        description="Short description of the harassment protocol exactly as stated (e.g., 'confidential counsellor', 'external reporting desk') — ONLY if harassment_protocol_present = true."
+        description="Short description of the harassment protocol exactly as stated. Leave empty if harassment_protocol_present = false."
     )
 
     integrity_protocol_present: bool = Field(
@@ -1532,9 +1580,43 @@ class SafetyInfo(BaseModel):
         description="Set true if a joint safety/health committee is provided."
     )
 
+    rie_psa_required: bool = Field(
+        default=False,
+        description="True if the CAO requires a Risk Inventory & Evaluation (RI&E) to cover psychosocial risks such as stress or burnout."
+    )
+
+    psa_prevention_measures_present: bool = Field(
+        default=False,
+        description="True if the CAO lists explicit PSA prevention or wellbeing measures."
+    )
+    psa_measures_note: str = Field(
+        default="",
+        description="Concise summary of psychosocial-risk or wellbeing measures."
+    )
+
+    arbodienst_access_provided: bool = Field(
+        default=False,
+        description="True if the CAO guarantees employee access to an occupational health service (arbodienst/bedrijfsarts) or sector-funded prevention service."
+    )
+
+    preventive_medical_checkup_present: bool = Field(
+        default=False,
+        description="True if the CAO mentions a Preventive Medical Examination (PMO/PAGO) or health-check entitlement."
+    )
+
+    workload_monitoring_present: bool = Field(
+        default=False,
+        description="True if the CAO includes workload or stress monitoring."
+    )
+
+    wellbeing_program_present: bool = Field(
+        default=False,
+        description="True if the CAO includes wellbeing or vitality programs."
+    )
+
     safety_note: str = Field(
         default="",
-        description="Concise catch-all for unusual obligations (e.g., sector fund finances Arbo services)."
+        description="Catch-all for unusual obligations."
     )
 
 
@@ -1549,22 +1631,14 @@ class ChildcareInfo(BaseModel):
         description="Set true if the employer provides any childcare benefit/support."
     )
 
-    childcare_support_value: Optional[float] = Field(
+    childcare_support: Optional[Amount] = Field(
         default=None,
-        description="Monetary childcare support amount (numeric)."
-    )
-    childcare_support_unit: str = Field(
-        default="",
-        description="Unit of childcare_support_value (e.g., 'EUR per month per child')."
+        description="Monetary childcare support amount (e.g., value=200, unit='EUR per month')."
     )
 
-    childcare_support_cap_value: Optional[float] = Field(
+    childcare_support_cap: Optional[Amount] = Field(
         default=None,
-        description="Maximum employer/sector contribution if a cap is stated (numeric)."
-    )
-    childcare_support_cap_unit: str = Field(
-        default="",
-            description="Unit of childcare_support_cap_value (e.g., 'EUR per year per child')."
+        description="Maximum employer/sector contribution if a cap is stated (e.g., value=400, unit='EUR per month')."
     )
 
     childcare_inhouse_present: bool = Field(
@@ -1580,24 +1654,22 @@ class ChildcareInfo(BaseModel):
         description="Set true if priority access or reserved places are provided."
     )
 
-    childcare_age_min_value: Optional[float] = Field(
+    childcare_age_min: Optional[Amount] = Field(
         default=None,
-        description="Minimum covered child age if stated (numeric)."
+        description="Minimum covered child age if stated (e.g., value=0, unit='years')."
     )
-    childcare_age_max_value: Optional[float] = Field(
+    childcare_age_max: Optional[Amount] = Field(
         default=None,
-        description="Maximum covered child age if stated (numeric)."
+        description="Maximum covered child age if stated (e.g., value=12, unit='years')."
     )
     childcare_age_limit_note: str = Field(
         default="",
         description="Free-form age scope details."
     )
 
-    childcare_provider_scope: Literal[
-        "any", "contracted_only", "sector_only", "company_only", "unspecified", "other"
-    ] = Field(
+    childcare_provider_scope: str = Field(
         default="unspecified",
-        description="Which childcare providers qualify for the employer/sector childcare support, as explicitly stated: "
+        description="Which childcare providers qualify for the employer/sector childcare support, as explicitly stated (e.g., 'any', 'contracted_only', 'sector_only', 'company_only', 'unspecified', 'other'): "
         "'any' = all registered providers; "
         "'contracted_only' = only providers with a contract/arrangement; "
         "'sector_only' = sector-specific facilities; "
@@ -1605,12 +1677,9 @@ class ChildcareInfo(BaseModel):
         "'unspecified' = not stated."
     )
 
-    childcare_coordination_with_public_benefit: Literal[
-        "top_up_after_public_benefit", "within_fiscal_max", "gross_before_public_benefit",
-        "unspecified", "other"
-    ] = Field(
+    childcare_public_coord: str = Field(
         default="unspecified",
-        description="How childcare benefits interact with public subsidies/fiscal rules."
+        description="How childcare benefits interact with public subsidies/fiscal rules (e.g., 'top_up_after_public_benefit', 'within_fiscal_max', 'gross_before_public_benefit', 'unspecified', 'other')."
     )
 
     childcare_funding_through_sector_fund: bool = Field(
@@ -1622,13 +1691,9 @@ class ChildcareInfo(BaseModel):
         default=None,
         description="Minimum tenure required to be eligible for the childcare benefit (months)."
     )
-    childcare_min_fte_value: Optional[float] = Field(
+    childcare_min_fte: Optional[Amount] = Field(
         default=None,
-        description="Minimum employment fraction (FTE) required for childcare benefit eligibility (numeric)."
-    )
-    childcare_min_fte_unit: str = Field(
-        default="",
-        description="Unit of childcare_min_fte_value (e.g., '% of full-time')."
+        description="Minimum employment fraction (FTE) required for childcare benefit eligibility (e.g., value=0.5, unit='FTE')."
     )
 
     childcare_benefit_eligibility_note: str = Field(
@@ -1648,58 +1713,62 @@ class AIInfo(BaseModel):
         description="Set true only if the CAO contains any AI/algorithmic-management provisions."
     )
 
-    ai_automated_decisions_rule: Literal[
-        "never", "with_human_review", "unspecified", "other"
-    ] = Field(
+    ai_automated_decisions: str = Field(
         default="unspecified",
-        description="Are automated AI decisions allowed (e.g., scheduling, performance evaluation) — ONLY if ai_policy_exists = true."
+        description="Are automated AI decisions allowed (e.g., 'never', 'with_human_review', 'unspecified', 'other')."
     )
 
     ai_transparency_requirements: str = Field(
         default="",
-        description="Required disclosures (purpose, data, vendor, logic, worker information) — ONLY if ai_policy_exists = true."
+        description="Required disclosures (purpose, data, vendor, logic, worker information). Leave empty if ai_policy_exists = false."
     )
 
-    ai_bias_audit_rule: Literal[
-        "annual", "≥annual", "none", "unspecified", "other"
-    ] = Field(
+    ai_bias_audit: str = Field(
         default="unspecified",
-        description="Frequency/requirement of bias audits (e.g., annual, every 2 years) — ONLY if ai_policy_exists = true."
+        description="Frequency/requirement of bias audits (e.g., 'annual', '≥annual', 'none', 'unspecified', 'other')."
     )
 
     ai_governance_body_present: bool = Field(
         default=False,
-        description="Set true if a joint AI/Data/OR governance body/committee exists — ONLY if ai_policy_exists = true."
+        description="Set true if a joint AI/Data/OR governance body/committee exists."
     )
 
     ai_dispute_rights_note: str = Field(
         default="",
-        description="How workers can contest AI-based decisions (verbatim summary) — ONLY if ai_policy_exists = true."
+        description="Summary of how workers can contest AI-based decisions. Leave empty if ai_policy_exists = false."
     )
 
     ai_training_rights_present: bool = Field(
         default=False,
-        description="Set true if AI-literacy or upskilling provisions for affected roles are included — ONLY if ai_policy_exists = true."
+        description="Set true if AI-literacy or upskilling provisions for affected roles are included."
     )
     ai_training_rights_note: str = Field(
         default="",
-        description="Hours/budget or redeployment pathways exactly as stated — ONLY if ai_policy_exists = true."
+        description="Hours/budget or redeployment pathways exactly as stated. Leave empty if ai_policy_exists = false."
     )
+
 
 class NonSalaryExtractionSchema(BaseModel):
     """Schema for non-salary extraction results."""
-    general_information: GeneralInfo = Field(default_factory=GeneralInfo)
-    pension_information: PensionInfo = Field(default_factory=PensionInfo)
-    leave_information: LeaveInfo = Field(default_factory=LeaveInfo)
-    termination_information: TerminationInfo = Field(default_factory=TerminationInfo)
-    overtime_information: OvertimeInfo = Field(default_factory=OvertimeInfo)
-    training_information: TrainingInfo = Field(default_factory=TrainingInfo)
-    homeoffice_information: HomeofficeInfo = Field(default_factory=HomeofficeInfo)
-    contract_type_information: ContractTypeInfo = Field(default_factory=ContractTypeInfo)
-    fringe_benefits_information: FringeBenefitsInfo = Field(default_factory=FringeBenefitsInfo)
-    safety_information: SafetyInfo = Field(default_factory=SafetyInfo)
-    childcare_information: ChildcareInfo = Field(default_factory=ChildcareInfo)
-    ai_information: AIInfo = Field(default_factory=AIInfo)
+
+
+# general_information: GeneralInfo = Field(default_factory=GeneralInfo)
+# bonuses_info: BonusesInfo = Field(default_factory=BonusesInfo)
+# wage_scales_info: WageScalesInfo = Field(default_factory=WageScalesInfo)
+# pension_information: PensionInfo = Field(default_factory=PensionInfo)
+# termination_information: TerminationInfo = Field(default_factory=TerminationInfo)
+
+
+# leave_information: LeaveInfo = Field(default_factory=LeaveInfo)
+# overtime_information: OvertimeInfo = Field(default_factory=OvertimeInfo)
+# training_information: TrainingInfo = Field(default_factory=TrainingInfo)
+
+# homeoffice_information: HomeofficeInfo = Field(default_factory=HomeofficeInfo)
+# contract_type_information: ContractTypeInfo = Field(default_factory=ContractTypeInfo)
+# safety_information: SafetyInfo = Field(default_factory=SafetyInfo)
+# childcare_information: ChildcareInfo = Field(default_factory=ChildcareInfo)
+# ai_information: AIInfo = Field(default_factory=AIInfo)
+# fringe_benefits_information: FringeBenefitsInfo = Field(default_factory=FringeBenefitsInfo)
 
 
 # =============================================================================
@@ -1760,7 +1829,7 @@ def setup_processing_context(config: AnalysisConfig, process_id: int,
     }
 
 
-def validate_input_paths(config: AnalysisConfig):
+def validate_input_paths(config: AnalysisConfig, process_id: int = 0):
     """Validate that input/output paths exist and are accessible."""
     if not os.path.exists(config.input_folder):
         raise ValueError(f"Input folder does not exist: {config.input_folder}")
@@ -1768,18 +1837,23 @@ def validate_input_paths(config: AnalysisConfig):
     # Ensure full directory tree exists (avoid race conditions across processes)
     config.output_folder.mkdir(parents=True, exist_ok=True)
     
-    # Check if we can write to output folder (retry once if parent disappears)
-    test_file = config.output_folder / ".test_write"
+    # Check if we can write to output folder
+    # Use process_id to avoid race conditions when running parallel processes
+    test_file = config.output_folder / f".test_write_p{process_id}"
     try:
         test_file.write_text("test")
-        test_file.unlink()
-    except FileNotFoundError:
-        # Recreate and retry once
-        config.output_folder.mkdir(parents=True, exist_ok=True)
-        test_file.write_text("test")
-        test_file.unlink()
+        if not test_file.exists():
+            raise ValueError("Test file was not created")
     except Exception as e:
         raise ValueError(f"Cannot write to output folder: {config.output_folder}, Error: {e}")
+    finally:
+        # Clean up test file if it exists (do this separately from validation)
+        if test_file.exists():
+            try:
+                test_file.unlink(missing_ok=True)
+            except Exception:
+                # Ignore cleanup errors - write permission was already validated
+                pass
 
 
 # =============================================================================
@@ -1839,164 +1913,132 @@ class ModelOutputParseError(Exception):
 # =============================================================================
 # Exact prompt templates for salary and non-salary extraction
 
-SALARY_PROMPT = """
+SALARY_PROMPT = """Extract structured salary data from a JSON object derived from the Dutch CAO document.
 
-    You are an information-extraction assistant. Input: text derived from a Dutch CAO (collective labour agreement) that contains wage tables and related wage text.
+    GOAL: Produce ONE JSON object that matches the exact field names, structure, and data types defined in the Pydantic schema. Output ONLY valid JSON (UTF-8), no explanations, no hallucination, no guessing, no markdown fences, no extra text.
 
-    TASK: Extract structured salary data from the provided text:
+    INPUTS
     Filename: {filename}
     Source text: {source_json}
 
-    CRITICAL RULES:
-         - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess.
-         - For missing values: Use empty string "" for string fields and false for boolean fields.
-         - Output ONLY valid JSON format matching the provided schema structure.
+    CRITICAL RULES
+        - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess.
+        - Missing values: Omit optional fields entirely. For required fields with no value: strings → "", booleans → false, numbers/floats → null.    
+        - Output ONLY valid JSON format matching the provided schema structure.
 
-    UNIT & TABLE SELECTION:
-        - Include ONLY standard/regular wage tables - EXCLUDE allowances, bonuses, overtime, reimbursements, and non-standard worker roles like apprentices or foremen.
-        - If multiple tables exist for different time periods under this standard wage type, include all of them. 
-        - Within standard wage tables extract salary information for all job groups.
-        - Unit choice: if the same table exists in multiple units for the same workers/groups/periods/ages, choose the hourly version. If hourly is absent, KEEP the original unit as-is.
-        - If salaries are presented as a range (e.g., "€2,000 - €2,400"), always extract the minimum value as the salary and state this in salary_note field.
+    TABLE SELECTION
+        - Include ONLY standard/regular wage tables 
+        - EXCLUDE allowances, bonuses, overtime, reimbursements, and non-standard worker roles like apprentices or foremen.
+        - If multiple tables exist for different time periods, education levels, job groups, steps, or age bands under this standard wage type, include all of them. 
+        - Record the unit exactly as printed. If the same baseline is printed in multiple units for the SAME workers/period/step/education/age, choose ONE using this order: hourly > monthly > 4-week > weekly > annual.
 
-    AGE GROUP SELECTION:
-        - Select EXACTLY ONE age group per wage table, using this order of preference:
-            1. Open-ended groups (e.g., "22+"), preferring the lowest starting age if multiple exist.
-            2. If none exist, select the group that covers the widest span (e.g. '20 - 65' preferred over '20 - 50').
-            3. If tied, select the group with the highest maximum age (e.g. '20 - 65' preferred over '20 - 60' and '22' preferred over '21').
-        - IGNORE age and job groups limited to workers under 21 (e.g., "16-20", "20") unless the group is open-ended ("20+") or spans older ages ("18-65").
-        - Extract data only for the selected age group; do not output multiple age groups.
-        - NEVER borrow values across age groups. If a job group has no data for the chosen age group, leave its fields empty/null.
-        - Record the chosen age group in the age_group field. If the chosen group changes across different wage tables/periods, note this in salary_note.
+    TABLE AGE GROUP SELECTION
+        - Create distinct SalaryRow objects for each adult-eligible age band present:
+            - Open-ended adult bands (e.g., “22+”, “23+”), OR
+            - Bands that intersect ages 23-65.
+        - IGNORE age and job groups limited to workers under 23 (e.g., "16-20", "20") unless the group is open-ended ("20+") or spans older ages ("18-65").
 
-    NOTES & CONSISTENCY:
-         - Salary_note, salary_age_group and more_salaries fields should be consistent across all job groups since they usually apply to entire wage tables (if this is not the case mention it in the salary_note field). 
-         - No Gaps Rule: When multiple salary values are present for the same jobgroup, map them sequentially into salary_1, salary_2, salary_3, etc. without skipping any index.
-         - Save dates in DD/MM/YYYY format.
-         - If no suitable salary information is found at all, return an empty salary_information array but include one entry with only salary_note field filled as "NO SALARY INFO FOUND".
-         - Be very concise and precise in your output, especially in lengthy fields (like salary_note).
+    TABLE JOB GROUPS, STEPS, EDUCATION
+        - Extract ALL job groups visible in the standard wage table.
+        - If steps/trede (periodieken) are shown, create a separate SalaryRow per jobgroup × step (× [age] × [education]).
+        - If education tiers (e.g., MBO/HBO) determine different wages, create separate rows per jobgroup × education (× step × [age]).
 
-    PROCESS — FOLLOW IN THIS ORDER:
-        1. Filter tables: keep only eligible standard wage tables (apply UNIT & TABLE rules).
-        2. For each included table: extract all job groups present (do not omit).
-        3. For each table: select EXACTLY ONE age group using AGE GROUP rules.
-        4. Collect table versions for the same standard table and sort them EARLIEST→LATEST (per TIME-PERIOD ORDERING).
-        5. For each job group (aligned across versions as described): assign salary_1, salary_2, ... by chronological order of versions (observe NO GAPS rule), and fill for each salary_x: salary_x_unit, salary_x_startdate and salary_increment_x.
-        6. Fill fields salary_note, salary_age_group and more_salaries
+    TABLE AMOUNTS, PERCENTAGES, DATES
+        - Salary amount: output as a number using a dot as the decimal separator (e.g., 2300.00). Do NOT use quotes, commas or thousands separators.
+        - increase_percent: include only if the table or a relating clause explicitly states a general % for that version.
+        - Dates: Use YYYY-MM-DD format (e.g., "2023-11-01"). Do NOT invent or infer dates.
+    
+    TABLE TIMELINE CONSTRUCTION
+        - For each (jobgroup × [step] × [age] × [education]), build `timeline` with a SalaryPoint per table version that prints salary amounts.
+        - Each SalaryPoint MUST have a printed amount. If only a % increase is announced but no new amounts are printed, DO NOT add a timeline point; instead mention the % in a note.
+        - Use start_date exactly as the table heading states, converting to YYYY-MM-DD format (e.g., "per 1 Nov 2023" → "2023-11-01"). If day is not printed, use the first day of the month, same for month.
+        - Align timeline points for the SAME (jobgroup × [step] × [age] × [education]) across table versions by matching jobgroup, step labels, education levels, and age bands.        
 
-    FINAL CHECK: Before producing output, verify that all above constraints are satisfied. Then output a single JSON object conforming exactly to the schema.
+    WORKFLOW STEPS (INTERNAL - DO NOT OUTPUT)
+        0) Read all instructions and field descriptions of the Pydantic output schema.  
+            - Review and internalize all general rules.  
+            - Read the input text to get a sense of the content and structure.
+        1) Locate all standard wage tables via TABLE SELECTION rules.
+        2) For each selected table in 1) detect all age groups that satisfy the TABLE AGE GROUP SELECTION rules.
+        3) For each table version, detect all jobgroups, steps and education levels that satisfy the TABLE JOB GROUPS, STEPS, EDUCATION rules.
+        4) Create the timeline salary table structure by applying the TABLE TIMELINE CONSTRUCTION rules. Match the jobgroup, step labels, education levels, and age bands across table versions, then:
+            - Build one SalaryRow per (jobgroup × [step] × [age] × [education]).
+            - For each SalaryRow, append a SalaryPoint per table version / time period.
+            - Align timeline points for the SAME jobgroup × [step] × [age] × [education].
+        6) Sort each row's timeline by start_date. Final pass: drop any fields that are not printed (omit or null).
+        7) Verify (SOURCE-GROUNDED) that every extracted number/date/percentage/unit/clause is explicitly present in the input. Remove or correct anything not grounded.
+        8) Validate (SCHEMA & JSON) that the output is a valid JSON object that conforms exactly to the Pydantic schema (keys, types, null/”” conventions).
+        9) Output only the final JSON.
+
+    JSON OUTPUT REQUIREMENTS
+        - Output ONLY a single valid JSON. No comments, no trailing commas, no text before/after.
+        - Do NOT include fields not defined above.
+        - Schema summary (orientation only; responseSchema enforces structure):
+            Output a single JSON object:
+            {{
+            "salary_information": [ SalaryRow, ... ]
+            }}
+        
     """
 
 
-NON_SALARY_PROMPT = """
+NON_SALARY_PROMPT = """Extract structured information from a JSON object derived from the Dutch CAO document.
+    
+    GOAL: Produce ONE JSON object that matches the exact field names, structure, and data types defined in the Pydantic schema. Output ONLY valid JSON (UTF-8), no explanations, no markdown fences, no extra text.
 
-    You are an information-extraction assistant. Input: text derived from a Dutch CAO (collective labour agreement) that contains general contract info, pension, leave, termination, overtime, training and homeoffice sections.
-
-    TASK: Extract structured data from the provided text:
+    INPUTS:
     Filename: {filename}
     Source text: {source_json}
 
-    CRITICAL RULES:
-        - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess.
-        - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
+    CRITICAL RULES
+        - Extract ONLY what is explicitly present in the CAO. Do NOT infer, guess, or hallucinate.
+        - Copy numbers/dates/percentages/units EXACTLY as written. Preserve all values literally.
+        - Dates MUST be formatted as YYYY-MM-DD (omit or "" if missing).
+        - Be precise: no paraphrasing of quantitative terms; no decorative characters or separator lines.
         - Output ONLY valid JSON format matching the provided schema structure.
 
-    EXTRACTION GUIDELINES:
-        - Extract factual information for each field based on the schema descriptions. Be concise.
+    EXTRACTION GUIDELINES
+        - Extract factual information for each field based on the schema descriptions.
         - Include relevant conditions, exceptions, and legal references in note fields.
-        - For missing values use empty string "".
-        - Save dates in DD/MM/YYYY format.
+        - For missing values: omit optional fields; use the defined default for required ones — null, "", false, or "unspecified" depending on the field type.
+        - Do NOT compare to statutory law or mark “above statutory” unless the CAO explicitly says so.
 
-    FINAL CHECK: Before producing output, verify that all above constraints are satisfied. Then output a single JSON object conforming exactly to the schema.
+    AMOUNT & AMOUNT RANGE RULES
+        - For Amount fields: record both value and unit as an object (e.g., {{"value": 500, "unit": "EUR one-off"}}).
+        - For AmountRange fields: record min, max, and unit as an object (e.g., {{"min": 1, "max": 3, "unit": "months"}}).
+        - If no value is present, omit the entire Amount/AmountRange object. Never output a unit without its value.
+        - Value fields are numeric (float or null). Unit fields are strings.
 
-    ADDITIONAL GUIDANCE FOR COMPREHENSIVE EXTRACTION:
-    
-    HOW TO CHOOSE THE TYPICAL GROUP!!!!!!!
+    WORKER FOCUS & TYPICAL GROUP
+        - Focus on “normal workers” (≈23-65 years, no small groups). If groups differ (e.g., Construction vs UTA) and a single typical cannot be clearly chosen, allow min/max ONLY for key metrics (e.g., notice periods, overtime allowances).
+        - Set heterogeneity_present_* = true when major worker groups have any different terms.
+        - When heterogeneity_present_* = true: fill BOTH typical values AND min/max fields for key metrics. When false: fill typical values only; leave min/max as null. 
+        - In pension_information, termination_information and overtime_information, first choose the typical worker/group using selection_rule_*. Preference order: majority_headcount (largest group) > office_vs_field_rule (core group) > base_tier (lowest service band for ages 23-65) > latest_year (most recent values) > other > unspecified (could not determine).
+            - pension_information: From employee_contrib till premium_change_equal_split, populate data ONLY for this group.
+            - overtime_information: From overtime_trigger_daily till overtime_allowance, populate data ONLY for this group.
+            - termination_information: From employer_notice till heterogeneity_present_notice, populate data ONLY for this group.
 
-    Value–Unit rule:
-        Whenever a numeric value (*_value) is extracted, always record the corresponding unit (*_unit) exactly as stated in the CAO text (e.g., "% of wage", "EUR per month", "days per year", "weeks", etc.).
-        If no value is present, leave the unit field empty ("").
-        Never output a unit without its corresponding value.
+    EXTRACTION STEPS (INTERNAL - DO NOT OUTPUT)
+        1) READ & ANCHOR: Read all general rules, field descriptions of the Pydantic output schema and and scan the content in the input.
+        2) PROCESS sections in schema order. For each schema section, search the input for the matching section with the same name and write outputs to that section (Mapping is 1→1).
+            - Capture literals exactly (numbers, percentages, units, dates).
+            - Apply WORKER FOCUS & TYPICAL GROUP rules (heterogeneity, selection rules, pension consistency, overtime consistency).
+            - Apply EXTRACTION GUIDELINES, AMOUNT & AMOUNT RANGE RULES, DATA TYPES & MISSING VALUES, and string fields (exact tokens; else "other"/"unspecified").
+        4) CROSS-FIELD CONSISTENCY
+	        - Ensure Amount and AmountRange objects are coherent; units consistent across ranges where applicable.
+	        - Ranges coherent (min ≤ typ ≤ max when present).
+	        - Validate all dates (YYYY-MM-DD).
+	    5) VERIFY (SOURCE-GROUNDED)
+	        - Confirm every extracted number/date/percentage/unit/clause is explicitly present in the input.
+	        - Remove or correct anything not grounded.
+	    6) VALIDATE (SCHEMA & JSON)
+	        - Build one JSON object that conforms exactly to the Pydantic schema (keys, types, null/”” conventions).
+	        - JSON is UTF-8, syntactically valid (balanced brackets, no trailing commas).
+	    7) Output only the final JSON.
 
-    Recording policy: Record all leave and pension entitlements exactly as stated in the CAO (durations, percentages, amounts, units). Do not compare to statutory law or infer whether something is ‘above/beyond statutory’. Only set any ‘_above_statutory’ or ‘_topup_present’ booleans when the CAO explicitly says so. Historical comparisons to statute will be computed downstream.
-
-    WORKER FOCUS:
-        - Focus on normal workers (roughly 24–65 years old). Where groups (e.g., Construction vs UTA) differ and you can't pick a clear "typical," we allow min/max just for the key metrics (notice periods, overtime allowances, etc.).
-        - For heterogeneity fields (heterogeneity_present_*), set to true if major groups have different terms for normal workers.
-        - When heterogeneity is present, fill both typical values AND min/max values for key metrics.
-    
-    PENSION GROUP CONSISTENCY:
-        - In pension_information, first choose the typical worker/group using selection_rule_pension and pension_type.
-        - ALL following pension fields from employee_contribution_value until heterogeneity_present_pension should ONLY consider this same chosen group of workers.
-        - Do not mix values from different groups - maintain consistency within the pension section.
-    
-    CONDITIONAL GATING:
-        - For parent boolean fields (e.g., has_pension_scheme, parental_leave_topup_present, homeoffice_stipend_present), dependent fields are only populated when the parent is true.
-        - If parent boolean is false, set dependent numeric fields to null, string fields to "", and boolean fields to false.
-        - This prevents hallucination and keeps output stable.
-    
-    ENUM VALUES:
-        - Use exact enum values when possible. If the CAO text doesn't match any listed enum value, use 'other' or 'unspecified' as appropriate.
-        - Key enums include:
-          * cao_scope_type: "sectoral", "single_company", "group", "association_limited", "occupational_niche", "unspecified", "other"
-          * pension_type: "DB", "DC", "hybrid", "unknown", "unspecified", "other"
-          * selection_rule_*: "majority_headcount", "base_tier", "office_vs_field_rule", "latest_year", "default_unknown", "unspecified", "other"
-          * dismissal_approval_required: "UWV", "Judge", "Both", "None", "Conditional", "unspecified", "other"
-          * overtime_compensation_mode: "pay", "TOIL", "both", "unspecified", "other"
-          * homeoffice_discretion_level: "employer_only", "joint_with_OR", "employee_request", "none", "unspecified", "other"
-          * meal_benefit_type: "free_meals", "subsidised_canteen", "meal_vouchers", "meal_allowance", "other", "unspecified"
-          * childcare_provider_scope: "any", "contracted_only", "sector_only", "company_only", "unspecified", "other"
-          * ai_automated_decisions_rule: "never", "with_human_review", "unspecified", "other"
-    
-    DATA TYPES AND MISSING VALUES:
-        - Numeric fields (*_value): Use actual numbers (float/int) or null if missing
-        - Unit fields (*_unit): Always strings, empty string "" if missing
-        - Boolean fields: true/false only
-        - Date fields: DD/MM/YYYY format, empty string "" if missing
-        - String fields: empty string "" if missing
-    
-    COMPREHENSIVE CATEGORIES:
-        Extract from all categories: General, Pension, Leave, Termination, Overtime, Training, Homeoffice, Contract Type, Fringe Benefits, Safety, Childcare, AI/ML/LLM.
-        Each category has specific fields - refer to schema descriptions for detailed field requirements.
-    
-    CONDITIONAL FIELD RULES (CRITICAL):
-        - When a boolean parent field is false, ALL dependent fields MUST be:
-          * null for numeric fields (*_value)
-          * "" (empty string) for string fields (*_unit, *_note, text fields)
-          * false for boolean fields
-          * "unspecified" for enum fields
-        - Common parent-child patterns:
-          * If parental_leave_topup_present=false → topup pay fields = null/""
-          * If sick_leave_topup_present=false → sickpay continuation fields = null/""
-          * If shift_allowance_present=false → shift allowance detail fields = null/""
-          * If childcare_support_present=false → most childcare detail fields = null/""
-          * If ai_policy_exists=false → ALL other AI fields = null/""/false/"unspecified"
-        - NEVER extract detail fields when parent is false - this is hallucination
-    
-    VALUE + UNIT FIELD PAIRS:
-        - Many fields come in (value, unit) pairs: *_value and *_unit
-        - Extract numeric value (int/float or null) into *_value field
-        - Extract unit EXACTLY as written in CAO into *_unit field
-        - Common units: 'EUR per month', '% of salary', 'days per year', 'hours per week', 'weeks', 'months'
-        - If no unit stated, use descriptive unit (e.g., 'days', 'EUR') not blank
-        - Value and unit should always be extracted together or both left empty
-    
-    HETEROGENEITY DETECTION:
-        - Set heterogeneity_present_*=true when major worker groups have different terms:
-          * >20% difference for percentages
-          * >1 month difference for time periods
-          * Different structures/types entirely
-        - When heterogeneity_present_*=true: extract BOTH typical values AND min/max values
-        - When heterogeneity_present_*=false: only extract typical values, leave min/max as null
-    
-    ENUM FIELD RULES:
-        - Use exact enum value if CAO text clearly matches
-        - Use "unspecified" if CAO doesn't mention this aspect at all
-        - Use "other" if CAO mentions something not in the enum list
-        - Never guess or infer enum values from context
-        - Key enums: cao_scope_type, pension_type, selection_rule_*, dismissal_approval_required, 
-          overtime_compensation_mode, homeoffice_discretion_level, meal_benefit_type, 
-          childcare_provider_scope, ai_automated_decisions_rule
+    JSON OUTPUT REQUIREMENTS
+        - Output ONLY valid JSON (no markdown fences, no extra text). JSON must be UTF-8.
+        - Ensure brackets/commas are correct; no trailing commas; all fields present.
     """
 
 
@@ -2005,155 +2047,8 @@ NON_SALARY_PROMPT = """
 # =============================================================================
 # Functions for calling the LLM and processing responses
 
-def query_gemini_with_retry(client, prompt: str, filename: str, max_retries: int = 5) -> str:
-    """
-    Query Gemini model with retry logic and error handling.
-    
-    Args:
-        client: Gemini client instance
-        prompt: Prompt to send to the model
-        filename: Filename for context in error messages
-        max_retries: Maximum number of retry attempts
-        
-    Returns:
-        str: Raw model response text
-        
-    Raises:
-        Exception: If all retry attempts fail
-    """
-    model_params = get_model_parameters()
-    
-    # Define safety settings (same as p3)
-    safety_settings = [
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
-            threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-        ),
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-            threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-        ),
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-            threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-        ),
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-            threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-        )
-    ]
-    
-    for attempt in range(max_retries):
-        try:
-            config = {
-                'temperature': model_params["temperature"],
-                'top_p': model_params["top_p"],
-                'top_k': model_params["top_k"],
-                'max_output_tokens': model_params["max_tokens"],
-                'candidate_count': model_params["candidate_count"],
-                'seed': model_params["seed"],
-                'presence_penalty': model_params["presence_penalty"],
-                'frequency_penalty': model_params["frequency_penalty"],
-                'thinking_config': types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
-                'http_options': types.HttpOptions(timeout=300000),  # 5 minutes timeout
-                'safety_settings': safety_settings
-            }
-            
-            response = client.models.generate_content(
-                model=model_params["model"],
-                contents=prompt,
-                config=config
-            )
-            
-            if hasattr(response, 'text') and response.text and response.text.strip():
-                return response.text
-            else:
-                raise ValueError('Empty or invalid model response')
-                
-        except Exception as e:
-            if not handle_llm_errors(e, attempt, max_retries, context=filename):
-                raise e
-    
-    raise ValueError(f'All {max_retries} retry attempts failed')
-
-
-def clean_gemini_output(output: str) -> str:
-    """
-    Clean the Gemini model output by removing markdown and trailing commas.
-    
-    Args:
-        output: Raw output from Gemini
-        
-    Returns:
-        str: Cleaned output string
-    """
-    if output.strip().startswith('```'):
-        lines = output.strip().splitlines()
-        content = '\n'.join(line for line in lines if not line.strip().startswith('```'))
-    else:
-        content = output.strip()
-    
-    # Remove trailing commas before closing braces/brackets
-    content = re.sub(r',\s*(?=[}\]])', '', content)
-    return content
-
-
-def parse_llm_response(response_text: str, filename: str, schema_type: str):
-    """
-    Parse and validate LLM response with cleanup and retry logic.
-    
-    Args:
-        response_text: Raw response from LLM
-        filename: Filename for context
-        schema_type: Type of schema ('salary' or 'nonsalary')
-        
-    Returns:
-        dict: Parsed and validated data
-        
-    Raises:
-        ModelOutputParseError: If parsing fails after cleanup attempts
-    """
-    # First validation attempt
-    validation_result = validate_llm_response_json(response_text, filename)
-    
-    if validation_result['is_valid']:
-        try:
-            return json.loads(response_text)
-        except json.JSONDecodeError as e:
-            # This shouldn't happen if validation passed, but handle it
-            raise ModelOutputParseError(f"JSON parsing failed despite validation: {e}")
-    
-    # Cleanup attempt
-    cleaned_output = clean_gemini_output(response_text)
-    validation_result = validate_llm_response_json(cleaned_output, filename)
-    
-    if validation_result['is_valid']:
-        try:
-            return json.loads(cleaned_output)
-        except json.JSONDecodeError as e:
-            log_analysis_error(filename, f"JSON parsing failed after cleanup: {e}", cleaned_output)
-            raise ModelOutputParseError(f"JSON parsing failed after cleanup: {e}")
-    
-    # Final attempt: strip everything before first { and after last }
-    try:
-        start_idx = cleaned_output.find('{')
-        end_idx = cleaned_output.rfind('}') + 1
-        if start_idx != -1 and end_idx > start_idx:
-            final_attempt = cleaned_output[start_idx:end_idx]
-            json.loads(final_attempt)  # Test if valid
-            return json.loads(final_attempt)
-    except (json.JSONDecodeError, ValueError):
-        pass
-    
-    # All attempts failed
-    log_analysis_error(filename, f"All parsing attempts failed for {schema_type} extraction", response_text)
-    raise ModelOutputParseError(f"Failed to parse {schema_type} extraction response")
-
-
 def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None) -> List[dict]:
     """Extract salary information from JSON using LLM."""
-    print(f'  DEBUG: Starting salary extraction for {filename}')
-    print(f'  DEBUG: Input JSON keys: {list(json_obj.keys())}')
     
     salary_text = ""
     wage_keys = ['wage_information', 'Wage information', 'wage information', 'WAGE_INFORMATION']
@@ -2161,9 +2056,6 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
     for key in wage_keys:
         if key in json_obj:
             value = json_obj[key]
-            print(f'  DEBUG: Found wage key: {key}')
-            print(f'  DEBUG: Wage value type: {type(value)}')
-            print(f'  DEBUG: Wage value length: {len(str(value)) if value else 0}')
             
             if isinstance(value, list):
                 flat_value = []
@@ -2176,64 +2068,56 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                     else:
                         flat_value.append(str(item))
                 salary_text = f'== Wage information ==\n' + '\n'.join(flat_value)
-                print(f'  DEBUG: Created salary text from list, length: {len(salary_text)}')
             elif isinstance(value, str):
                 salary_text = f'== Wage information ==\n{value}'
-                print(f'  DEBUG: Created salary text from string, length: {len(salary_text)}')
             break
     
-    general_keys = ['general_information', 'General information', 'general information', 'GENERAL_INFORMATION']
-    for key in general_keys:
-        if key in json_obj:
-            value = json_obj[key]
-            print(f'  DEBUG: Found general key: {key}')
-            print(f'  DEBUG: General value type: {type(value)}')
-            
-            if isinstance(value, list):
-                for item in value:
-                    if isinstance(item, str):
-                        try:
-                            nested_data = json.loads(item)
-                            print(f'  DEBUG: Successfully parsed nested JSON from general info')
-                            wage_keys_nested = ['wage_information', 'Wage information', 'wage information', 'WAGE_INFORMATION']
-                            for wage_key in wage_keys_nested:
-                                if wage_key in nested_data and nested_data[wage_key]:
-                                    wage_data = nested_data[wage_key]
-                                    if isinstance(wage_data, list):
-                                        salary_text = f'== Wage information ==\n' + '\n'.join(wage_data)
-                                    else:
-                                        salary_text = f'== Wage information ==\n{wage_data}'
-                                    print(f'  DEBUG: Found wage data in nested JSON, length: {len(salary_text)}')
+    # Only process general_information if no wage information was found
+    if not salary_text.strip():
+        general_keys = ['general_information', 'General information', 'general information', 'GENERAL_INFORMATION']
+        for key in general_keys:
+            if key in json_obj:
+                value = json_obj[key]
+                
+                if isinstance(value, list):
+                    for item in value:
+                        if isinstance(item, str):
+                            try:
+                                nested_data = json.loads(item)
+                                wage_keys_nested = ['wage_information', 'Wage information', 'wage information', 'WAGE_INFORMATION']
+                                for wage_key in wage_keys_nested:
+                                    if wage_key in nested_data and nested_data[wage_key]:
+                                        wage_data = nested_data[wage_key]
+                                        if isinstance(wage_data, list):
+                                            salary_text = f'== Wage information ==\n' + '\n'.join(wage_data)
+                                        else:
+                                            salary_text = f'== Wage information ==\n{wage_data}'
+                                        break
+                                if salary_text.strip():
                                     break
-                            if salary_text.strip():
-                                break
-                        except json.JSONDecodeError:
-                            if 'wage' in item.lower() or 'salary' in item.lower() or 'salaris' in item.lower():
-                                salary_text = f'== Wage information ==\n{item}'
-                                print(f'  DEBUG: Found wage-related text in general info, length: {len(salary_text)}')
-                                break
-            elif isinstance(value, str):
-                if 'wage' in value.lower() or 'salary' in value.lower() or 'salaris' in value.lower():
-                    salary_text = f'== Wage information ==\n{value}'
-                    print(f'  DEBUG: Found wage-related text in general string, length: {len(salary_text)}')
-                    break
+                            except json.JSONDecodeError:
+                                if 'wage' in item.lower() or 'salary' in item.lower() or 'salaris' in item.lower():
+                                    salary_text = f'== Wage information ==\n{item}'
+                                    break
+                elif isinstance(value, str):
+                    if 'wage' in value.lower() or 'salary' in value.lower() or 'salaris' in value.lower():
+                        salary_text = f'== Wage information ==\n{value}'
+                        break
     
-    print(f'  DEBUG: Final salary text length: {len(salary_text)}')
-    if salary_text.strip():
-        print(f'  DEBUG: Salary text preview: {salary_text[:200]}...')
-    else:
+    if not salary_text.strip():
         print(f'  DEBUG: No salary text found!')
         return []
     
     if not check_token_limit(salary_text, filename):
         return []
     
-    prompt = SALARY_PROMPT.format(filename=filename, source_json=salary_text)
-    print(f'  DEBUG: Prompt length: {len(prompt)}')
-    print(f'  DEBUG: Prompt preview: {prompt[:300]}...')
+    try:
+        base_prompt = SALARY_PROMPT.format(filename=filename, source_json=salary_text)
+    except Exception as e:
+        raise
     
     model_params = get_model_parameters()
-    print(f'  DEBUG: Model params: {model_params}')
+    
     
     # Use proper safety settings format for newer google-genai API
     safety_settings = [
@@ -2270,41 +2154,28 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
         "safety_settings": safety_settings  # Include safety settings in config
     }
     
-    print(f'  DEBUG: API config: {config}')
-    
     try:
         print(f'  DEBUG: Making API call...')
         start_time = time.time()
         response = client.models.generate_content(
             model=MODEL,
-            contents=prompt,
+            contents=base_prompt,
             config=config
         )
         processing_time = time.time() - start_time
         
-        print(f'  DEBUG: API response received')
-        print(f'  DEBUG: Response type: {type(response)}')
-        print(f'  DEBUG: Response attributes: {dir(response)}')
         
         # Log detailed response information
         log_api_response_details(response, filename, processing_time)
         
-        # Log actual response content for debugging
-        if hasattr(response, 'text') and response.text:
-            print(f'  DEBUG: Response text sample: "{response.text[:100]}..."')
-        if hasattr(response, 'parsed'):
-            print(f'  DEBUG: Parsed response: {response.parsed}')
         
         # Check for truncation
         if check_response_truncation(response, filename):
-            print(f'  DEBUG: Response appears to be truncated, will retry with different parameters')
             raise Exception("Response truncated - incomplete JSON")
         
         # Check if response has parsed attribute (structured output)
         if hasattr(response, 'parsed') and response.parsed is not None:
-            print(f'  DEBUG: Response has parsed attribute')
             result = [row.model_dump() for row in response.parsed.salary_information]
-            print(f'  DEBUG: Parsed {len(result)} salary rows')
             
             # Log successful salary extraction
             if context and 'performance_monitor' in context:
@@ -2324,72 +2195,69 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
             
             return result
         else:
-            print(f'  DEBUG: No parsed attribute in response')
             if hasattr(response, 'text'):
-                print(f'  DEBUG: Response text length: {len(response.text) if response.text else 0}')
-                if response.text:
-                    print(f'  DEBUG: Response text preview: {response.text[:300]}...')
-                    # Try to parse the text manually with better error handling
+                # Try to parse the text manually with better error handling
+                try:
+                    cleaned_text = response.text.strip()
+                    
+                    # Remove markdown code fences if present
+                    if cleaned_text.startswith('```'):
+                        lines = cleaned_text.split('\n')
+                        cleaned_text = '\n'.join(lines[1:-1]).strip()
+                    
+                    parsed_json = json.loads(cleaned_text)
+                    # Validate against schema
+                    if 'salary_information' in parsed_json:
+                        salary_schema = SalaryExtractionSchema(**parsed_json)
+                        result = [row.model_dump() for row in salary_schema.salary_information]
+                        return result
+                    else:
+                        log_analysis_error(filename, f"No salary_information key in parsed JSON. Available keys: {list(parsed_json.keys())}", str(parsed_json))
+                except json.JSONDecodeError as e:
+                    # Try to extract partial data from the response
                     try:
-                        # First, try to clean up the JSON if it's truncated
-                        cleaned_text = response.text.strip()
-                        if cleaned_text.endswith(','):
-                            cleaned_text = cleaned_text[:-1]
-                        if not cleaned_text.endswith('}'):
-                            # Try to find the last complete object
-                            last_brace = cleaned_text.rfind('}')
-                            if last_brace > 0:
-                                cleaned_text = cleaned_text[:last_brace+1]
-                            else:
-                                # If no closing brace, try to add one
-                                cleaned_text += '}'
-                        
-                        parsed_json = json.loads(cleaned_text)
-                        print(f'  DEBUG: Successfully parsed response text manually')
-                        # Validate against schema
-                        if 'salary_information' in parsed_json:
-                            salary_schema = SalaryExtractionSchema(**parsed_json)
-                            result = [row.model_dump() for row in salary_schema.salary_information]
-                            print(f'  DEBUG: Salary manual parse result: {len(result)} rows')
-                            return result
+                        # Look for salary_information array in the text
+                        import re
+                        salary_match = re.search(r'"salary_information":\s*\[(.*?)\]', response.text, re.DOTALL)
+                        if salary_match:
+                            salary_content = salary_match.group(1)
+                            # Try to parse individual salary objects
+                            # This is a simplified approach - in production you might want more sophisticated parsing
+                            log_analysis_error(filename, f"Partial salary data found but couldn't parse: {e}", response.text[:1000])
                         else:
-                            print(f'  DEBUG: No salary_information key in parsed JSON')
-                    except json.JSONDecodeError as e:
-                        print(f'  DEBUG: Failed to parse response text as JSON: {e}')
-                        # Try to extract partial data from the response
-                        try:
-                            # Look for salary_information array in the text
-                            import re
-                            salary_match = re.search(r'"salary_information":\s*\[(.*?)\]', response.text, re.DOTALL)
-                            if salary_match:
-                                salary_content = salary_match.group(1)
-                                print(f'  DEBUG: Found partial salary content, length: {len(salary_content)}')
-                                # Try to parse individual salary objects
-                                # This is a simplified approach - in production you might want more sophisticated parsing
-                                log_analysis_error(filename, f"Partial salary data found but couldn't parse: {e}", response.text[:1000])
-                            else:
-                                print(f'  DEBUG: No salary_information found in response text')
-                                log_analysis_error(filename, f"JSON parsing failed and no salary data found: {e}", response.text[:1000])
-                        except Exception as parse_error:
-                            print(f'  DEBUG: Failed to extract partial data: {parse_error}')
-                            log_analysis_error(filename, f"Complete parsing failure: {e}", response.text[:1000])
-                    except Exception as e:
-                        print(f'  DEBUG: Failed to validate parsed JSON against schema: {e}')
-                        log_analysis_error(filename, f"Schema validation failed: {e}", response.text[:1000])
+                            log_analysis_error(filename, f"JSON parsing failed and no salary data found: {e}", response.text[:1000])
+                    except Exception as parse_error:
+                        log_analysis_error(filename, f"Complete parsing failure: {e}", response.text[:1000])
+                except Exception as e:
+                    log_analysis_error(filename, f"Schema validation failed: {e}", response.text[:1000])
+            else:
                 log_analysis_error(filename, "No structured output received from model", "")
                 return []
             
     except Exception as e:
-        print(f'  DEBUG: API call failed with error: {type(e).__name__}: {e}')
         last_error = e  # Capture the initial error
+        last_error_message = None  # Track error message for retry guidance
         
         # Retry logic with proper attempt tracking
         for attempt in range(5):
             try:
-                # Get model parameters (same for all attempts, like p3)
-                model_params = get_model_parameters()
+                # Get adjusted parameters for this attempt
+                adjusted_params = get_adjusted_parameters(attempt)
                 
-                print(f'  DEBUG: Model params: {model_params}')
+                # Generate retry guidance (only if attempt >= 2)
+                retry_guidance = ""
+                error_type = ""
+                if attempt >= 2 and last_error_message:
+                    retry_guidance, error_type = get_retry_guidance(last_error_message)
+                    if retry_guidance:
+                        print(f'  INFO: Adding retry guidance for: {error_type}')
+                
+                # Recreate prompt with guidance if applicable
+                prompt = base_prompt  # Reset to original
+                if retry_guidance:
+                    prompt += f"\n\n{retry_guidance}"
+                
+                print(f'  DEBUG: Model params: {adjusted_params}')
                 
                 # Use proper safety settings format for newer google-genai API
                 safety_settings = [
@@ -2413,21 +2281,20 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                 
                 # Prepare API configuration
                 config = {
-                    "temperature": model_params["temperature"],
-                    "top_p": model_params["top_p"],
-                    "top_k": model_params["top_k"],
+                    "temperature": adjusted_params["temperature"],
+                    "top_p": adjusted_params["top_p"],
+                    "top_k": adjusted_params["top_k"],
                     "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
-                    "candidate_count": model_params["candidate_count"],
-                    "seed": model_params["seed"],
-                    "presence_penalty": model_params["presence_penalty"],
-                    "frequency_penalty": model_params["frequency_penalty"],
-                    "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
+                    "candidate_count": adjusted_params["candidate_count"],
+                    "seed": adjusted_params["seed"],
+                    "presence_penalty": adjusted_params["presence_penalty"],
+                    "frequency_penalty": adjusted_params["frequency_penalty"],
+                    "thinking_config": types.ThinkingConfig(thinking_budget=adjusted_params["thinking_budget"]),
                     "response_mime_type": "application/json",
                     "response_schema": SalaryExtractionSchema,
                     "safety_settings": safety_settings  # Include safety settings in config
                 }
                 
-                print(f'  DEBUG: API config: {config}')
                 print(f'  DEBUG: Making API call...')
                 
                 start_time = time.time()
@@ -2459,6 +2326,12 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                     # Log successful salary extraction
                     if context and 'performance_monitor' in context:
                         file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+                        
+                        # Add retry guidance info to parameters for logging
+                        log_params = adjusted_params.copy()
+                        if retry_guidance:
+                            log_params['retry_guidance_used'] = error_type
+                        
                         context['performance_monitor'].log_analysis(
                             filename=filename,
                             file_size_mb=file_size_mb,
@@ -2469,13 +2342,15 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                             api_key_used=context.get('key_number', 1),
                             process_id=context.get('process_id', 0),
                             cao_number="",  # Will be extracted from file path if needed
-                            model="gemini-2.5-flash"
+                            model="gemini-2.5-flash",
+                            parameters=log_params
                         )
                     
                     return result
                     
             except Exception as e:
                 last_error = e  # Update last error for each attempt
+                last_error_message = str(e)  # Capture error message for retry guidance
                 print(f'  DEBUG: Attempt {attempt + 1} failed: {type(e).__name__}: {e}')
                 
                 # Check if quota was exhausted during this attempt
@@ -2500,6 +2375,14 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
         # Log failed salary extraction
         if context and 'performance_monitor' in context:
             file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+            
+            # Get final attempt parameters for logging (attempt 4 = 5th try)
+            final_params = get_adjusted_parameters(4)
+            if last_error_message:
+                final_guidance, final_error_type = get_retry_guidance(last_error_message)
+                if final_guidance:
+                    final_params['retry_guidance_used'] = final_error_type
+            
             context['performance_monitor'].log_analysis(
                 filename=filename,
                 file_size_mb=file_size_mb,
@@ -2511,7 +2394,8 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                 api_key_used=context.get('key_number', 1),
                 process_id=context.get('process_id', 0),
                 cao_number="",
-                model="gemini-2.5-flash"
+                model="gemini-2.5-flash",
+                parameters=final_params
             )
         
         return []
@@ -2519,13 +2403,12 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
 
 def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None) -> dict:
     """Extract non-salary information from JSON using LLM."""
-    print(f'  DEBUG: Starting non-salary extraction for {filename}')
-    print(f'  DEBUG: Input JSON keys: {list(json_obj.keys())}')
     
-    # Extract all non-wage sections
+    # Extract all non-wage sections (including wage_information for wage scales context)
     non_salary_text = ""
     sections_to_extract = [
         'general_information', 'General information', 'general information', 'GENERAL_INFORMATION',
+        'wage_information', 'Wage information', 'wage information', 'WAGE_INFORMATION',
         'pension_information', 'Pension information', 'pension information', 'PENSION_INFORMATION',
         'leave_information', 'Leave information', 'leave information', 'LEAVE_INFORMATION',
         'termination_information', 'Termination information', 'termination information', 'TERMINATION_INFORMATION',
@@ -2536,15 +2419,12 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
         'fringe_benefits_information', 'Fringe benefits information', 'fringe benefits information', 'FRINGE_BENEFITS_INFORMATION',
         'safety_information', 'Safety information', 'safety information', 'SAFETY_INFORMATION',
         'childcare_information', 'Childcare information', 'childcare information', 'CHILDCARE_INFORMATION',
-        'ai_information', 'AI information', 'ai information', 'AI_INFORMATION'
+        'AI_information', 'AI information', 'ai information', 'ai_INFORMATION',
     ]
     
     for key in sections_to_extract:
         if key in json_obj:
             value = json_obj[key]
-            print(f'  DEBUG: Found non-salary key: {key}')
-            print(f'  DEBUG: Value type: {type(value)}')
-            print(f'  DEBUG: Value length: {len(str(value)) if value else 0}')
             
             if isinstance(value, list):
                 flat_value = []
@@ -2556,7 +2436,6 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
                     else:
                         flat_value.append(str(item))
                 non_salary_text += f'== {key} ==\n' + '\n'.join(flat_value) + '\n\n'
-                print(f'  DEBUG: Added section from list, total length now: {len(non_salary_text)}')
             elif isinstance(value, str):
                 non_salary_text += f'== {key} ==\n{value}\n\n'
                 print(f'  DEBUG: Added section from string, total length now: {len(non_salary_text)}')
@@ -2571,12 +2450,9 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
     if not check_token_limit(non_salary_text, filename):
         return NonSalaryExtractionSchema().model_dump()
     
-    prompt = NON_SALARY_PROMPT.format(filename=filename, source_json=non_salary_text)
-    print(f'  DEBUG: Non-salary prompt length: {len(prompt)}')
-    print(f'  DEBUG: Non-salary prompt preview: {prompt[:300]}...')
+    base_prompt = NON_SALARY_PROMPT.format(filename=filename, source_json=non_salary_text)
     
     model_params = get_model_parameters()
-    print(f'  DEBUG: Non-salary model params: {model_params}')
     
     # Use proper safety settings format for newer google-genai API
     safety_settings = [
@@ -2613,41 +2489,25 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
         "safety_settings": safety_settings  # Include safety settings in config
     }
     
-    print(f'  DEBUG: Non-salary API config: {config}')
-    
     try:
-        print(f'  DEBUG: Making non-salary API call...')
         start_time = time.time()
         response = client.models.generate_content(
             model=MODEL,
-            contents=prompt,
+            contents=base_prompt,
             config=config
         )
         processing_time = time.time() - start_time
         
-        print(f'  DEBUG: Non-salary API response received')
-        print(f'  DEBUG: Non-salary response type: {type(response)}')
-        print(f'  DEBUG: Non-salary response attributes: {dir(response)}')
-        
         # Log detailed response information
         log_api_response_details(response, f"{filename} (non-salary)", processing_time)
         
-        # Log actual response content for debugging
-        if hasattr(response, 'text') and response.text:
-            print(f'  DEBUG: Non-salary response text sample: "{response.text[:100]}..."')
-        if hasattr(response, 'parsed'):
-            print(f'  DEBUG: Non-salary parsed response: {response.parsed}')
-        
         # Check for truncation
         if check_response_truncation(response, filename):
-            print(f'  DEBUG: Non-salary response appears to be truncated, will retry with different parameters')
             raise Exception("Response truncated - incomplete JSON")
         
         # Check if response has parsed attribute (structured output)
         if hasattr(response, 'parsed') and response.parsed is not None:
-            print(f'  DEBUG: Non-salary response has parsed attribute')
             result = response.parsed.model_dump()
-            print(f'  DEBUG: Non-salary parsed result keys: {list(result.keys())}')
             
             # Log successful non-salary extraction
             if context and 'performance_monitor' in context:
@@ -2674,7 +2534,14 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
                     print(f'  DEBUG: Non-salary response text preview: {response.text[:300]}...')
                     # Try to parse the text manually
                     try:
-                        parsed_json = json.loads(response.text)
+                        cleaned_text = response.text.strip()
+                        
+                        # Remove markdown code fences if present
+                        if cleaned_text.startswith('```'):
+                            lines = cleaned_text.split('\n')
+                            cleaned_text = '\n'.join(lines[1:-1]).strip()
+                        
+                        parsed_json = json.loads(cleaned_text)
                         print(f'  DEBUG: Successfully parsed response text manually')
                         # Validate against schema
                         schema = NonSalaryExtractionSchema(**parsed_json)
@@ -2691,15 +2558,27 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
     except Exception as e:
         print(f'  DEBUG: Non-salary API call failed with error: {type(e).__name__}: {e}')
         last_error = e  # Capture the initial error
+        last_error_message = None  # Track error message for retry guidance
         
         # Retry logic with proper attempt tracking
         for attempt in range(5):
             try:
-                # Get model parameters (same for all attempts, like p3)
-                model_params = get_model_parameters()
+                # Get adjusted parameters for this attempt
+                adjusted_params = get_adjusted_parameters(attempt)
                 
-                print(f'  DEBUG: Non-salary model params: {model_params}')
+                # Generate retry guidance (only if attempt >= 2)
+                retry_guidance = ""
+                error_type = ""
+                if attempt >= 2 and last_error_message:
+                    retry_guidance, error_type = get_retry_guidance(last_error_message)
+                    if retry_guidance:
+                        print(f'  INFO: Adding retry guidance for: {error_type}')
                 
+                # Recreate prompt with guidance if applicable
+                prompt = base_prompt  # Reset to original
+                if retry_guidance:
+                    prompt += f"\n\n{retry_guidance}"
+                                
                 # Use proper safety settings format for newer google-genai API
                 safety_settings = [
                     types.SafetySetting(
@@ -2722,21 +2601,20 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
                 
                 # Prepare API configuration
                 config = {
-                    "temperature": model_params["temperature"],
-                    "top_p": model_params["top_p"],
-                    "top_k": model_params["top_k"],
+                    "temperature": adjusted_params["temperature"],
+                    "top_p": adjusted_params["top_p"],
+                    "top_k": adjusted_params["top_k"],
                     "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
-                    "candidate_count": model_params["candidate_count"],
-                    "seed": model_params["seed"],
-                    "presence_penalty": model_params["presence_penalty"],
-                    "frequency_penalty": model_params["frequency_penalty"],
-                    "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
+                    "candidate_count": adjusted_params["candidate_count"],
+                    "seed": adjusted_params["seed"],
+                    "presence_penalty": adjusted_params["presence_penalty"],
+                    "frequency_penalty": adjusted_params["frequency_penalty"],
+                    "thinking_config": types.ThinkingConfig(thinking_budget=adjusted_params["thinking_budget"]),
                     "response_mime_type": "application/json",
                     "response_schema": NonSalaryExtractionSchema,
                     "safety_settings": safety_settings  # Include safety settings in config
                 }
                 
-                print(f'  DEBUG: Non-salary API config: {config}')
                 print(f'  DEBUG: Making non-salary API call...')
                 
                 start_time = time.time()
@@ -2768,6 +2646,12 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
                     # Log successful non-salary extraction
                     if context and 'performance_monitor' in context:
                         file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+                        
+                        # Add retry guidance info to parameters for logging
+                        log_params = adjusted_params.copy()
+                        if retry_guidance:
+                            log_params['retry_guidance_used'] = error_type
+                        
                         context['performance_monitor'].log_analysis(
                             filename=filename,
                             file_size_mb=file_size_mb,
@@ -2778,13 +2662,15 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
                             api_key_used=context.get('key_number', 1),
                             process_id=context.get('process_id', 0),
                             cao_number="",  # Will be extracted from file path if needed
-                            model="gemini-2.5-flash"
+                            model="gemini-2.5-pro",
+                            parameters=log_params
                         )
                     
                     return result
                     
             except Exception as e:
                 last_error = e  # Update last error for each attempt
+                last_error_message = str(e)  # Capture error message for retry guidance
                 print(f'  DEBUG: Non-salary attempt {attempt + 1} failed: {type(e).__name__}: {e}')
                 
                 # Check if quota was exhausted during this attempt
@@ -2809,6 +2695,14 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
         # Log failed non-salary extraction
         if context and 'performance_monitor' in context:
             file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+            
+            # Get final attempt parameters for logging (attempt 4 = 5th try)
+            final_params = get_adjusted_parameters(4)
+            if last_error_message:
+                final_guidance, final_error_type = get_retry_guidance(last_error_message)
+                if final_guidance:
+                    final_params['retry_guidance_used'] = final_error_type
+            
             context['performance_monitor'].log_analysis(
                 filename=filename,
                 file_size_mb=file_size_mb,
@@ -2820,7 +2714,8 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
                 api_key_used=context.get('key_number', 1),
                 process_id=context.get('process_id', 0),
                 cao_number="",
-                model="gemini-2.5-flash"
+                model="gemini-2.5-flash",
+                parameters=final_params
             )
         
         return {}
@@ -2901,9 +2796,9 @@ def release_file_lock(file_path: Path):
     lock_file = file_path.with_suffix('.analysis_lock')
     try:
         if lock_file.exists():
-            lock_file.unlink()
+            lock_file.unlink(missing_ok=True)
     except:
-        pass
+        pass  # Ignore errors (file might be deleted by another process)
 
 
 def discover_json_files(input_folder: str) -> List[Tuple[Path, Path]]:
@@ -2931,8 +2826,13 @@ def discover_json_files(input_folder: str) -> List[Tuple[Path, Path]]:
 
 def is_file_already_processed(filename: str, cao_number: str) -> bool:
     """Check if a file has already been processed by looking for existing LLM analysis files."""
-    salary_file = Path('outputs/llm_analysis/salary') / cao_number / f"{Path(filename).stem}_salary.json"
-    non_salary_file = Path('outputs/llm_analysis/non_salary') / cao_number / f"{Path(filename).stem}_non_salary.json"
+    # Remove _extract from filename if present
+    base_name = Path(filename).stem
+    if base_name.endswith('_extract'):
+        base_name = base_name[:-8]  # Remove '_extract'
+    
+    salary_file = Path('outputs/llm_analysis/salary') / cao_number / f"{base_name}_analysis.json"
+    non_salary_file = Path('outputs/llm_analysis/non_salary') / cao_number / f"{base_name}_analysis.json"
     
     return salary_file.exists() and non_salary_file.exists()
 
@@ -3033,9 +2933,11 @@ def save_extraction_json(data: dict, filename: str, extraction_type: str, cao_nu
         
         save_path.mkdir(parents=True, exist_ok=True)
         
-        # Create filename
+        # Create filename - remove _extract if present and use _analysis suffix
         base_name = Path(filename).stem
-        json_filename = f"{base_name}_{extraction_type}.json"
+        if base_name.endswith('_extract'):
+            base_name = base_name[:-8]  # Remove '_extract'
+        json_filename = f"{base_name}_analysis.json"
         file_path = save_path / json_filename
         
         # Save JSON data
@@ -3064,12 +2966,15 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
             print(f'  {cao_number}: Skipping {filename} (already processed)')
             return True  # Return True since we successfully skipped it
 
-        # Extract salary information
+        # Extract salary information - SKIPPED
         salary_extracted = extract_salary_from_json(json_data, filename, client, context)
-        print(f'  {cao_number}: Salary extraction - {len(salary_extracted)} rows')
+        # salary_extracted = []  # Skip salary extraction
+        print(f'  {cao_number}: Salary extraction - SKIPPED')
         
-        # Extract non-salary information
-        rest_extracted = extract_nonsalary_from_json(json_data, filename, client, context)
+        # Extract non-salary information - SKIPPED
+        # rest_extracted = extract_nonsalary_from_json(json_data, filename, client, context)
+        rest_extracted = NonSalaryExtractionSchema().model_dump()  # Skip non-salary extraction
+        print(f'  {cao_number}: Non-salary extraction - SKIPPED')
         
         # Count non-salary data
         non_salary_count = 0
@@ -3078,7 +2983,10 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
                 for subkey, subvalue in value.items():
                     if subvalue and subvalue != "":
                         non_salary_count += 1
-        print(f'  {cao_number}: Non-salary extraction - {non_salary_count} fields with data')
+        
+        # Debug what we're getting from salary extraction
+        print(f'  DEBUG: salary_extracted type: {type(salary_extracted)}')
+        print(f'  DEBUG: salary_extracted content: {repr(salary_extracted)}')
         
         # Save extracted JSON data
         save_extraction_json({'salary_information': salary_extracted}, filename, 'salary', cao_number)
@@ -3116,7 +3024,9 @@ def main():
     try:
         # Load configuration
         config = load_configuration()
-        validate_input_paths(config)
+        
+        # Validate paths (pass process_id to avoid race conditions in parallel execution)
+        validate_input_paths(config, args.process_id)
         
         # Setup processing context
         context = setup_processing_context(config, args.process_id, args.total_processes, args.key_number)

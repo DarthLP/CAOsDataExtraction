@@ -1,24 +1,345 @@
-  🧹 Cleaned up announce file: .cao_10_announced
-  🧹 Cleaned up 1 announce files
 🎯 CAO Markdown Extraction Pipeline
 📊 Process: 5/6
 🔑 API Key: 5
 📁 Input: outputs/parsed_pdfs/parsed_pdfs_markdown
 📁 Output: outputs/llm_extracted/new_flow
-📄 Files to process: 34
+📄 Files to process: 263
 
---- CAO 10 ---
-  10: Skipping CAO BOUW EN INFRA 2023 - INTERACTIEF mei 2023.md (being processed by another process)
-  10: Cao Bouw en Infra 2024.md (Markdown: 0.4MB) [API 5/6]
-  INFO: Using Files API approach for Cao Bouw en Infra 2024.md
-  INFO: Markdown file size: 0.38 MB
-  INFO: Uploading markdown file to Gemini...
-  INFO: File uploaded successfully: files/22vof5b5mrok
-  INFO: File is ready for processing
-  DEBUG: File validation passed - size: 0.38MB
-  DEBUG: Constructed 2 content parts for API call
-  INFO: Successfully extracted structured data from markdown (time: 105.9s)
-  INFO: Response size: 55,010 chars (~13,752 tokens)
-  INFO: Cleaned up uploaded file: files/22vof5b5mrok
-  ✅ JSON saved with proper formatting
-  10: LLM extraction completed in 107.47 seconds [API 5/6]
+  10: Skipping CAO BOUW EN INFRA 2023 - INTERACTIEF mei 2023.md (already processed)
+  10: Skipping Cao Bouw en Infra 2024.md (already processed)
+  10: Skipping TTW_CAO_2014_4.md (already processed)
+  10: Skipping cao Bouw en Infra 2018-2019 TTW mrt19.pdf .md (already processed)
+  10: Skipping cao_Bouw_en_Infra_2017_2018_def.md (already processed)
+--- CAO 21 ---
+  21: Skipping CAO 2010 aanmelding.md (already processed)
+  21: Skipping CAO tekst 2024 basis.md (already processed)
+  21: Skipping CAO_tekst_2019_basis.md (already processed)
+  26: Skipping CAO_VLEESSECTOR_2014_ongerenvooieerd_1.md (already processed)
+  26: Skipping Tussentijds_gewijzigde_cao.md (already processed)
+  26: Skipping cao vlees 2022-2024 definitief.md (already processed)
+  35: Skipping Cao Textielverzorging 2025-2026.md (already processed)
+  35: Skipping Cao Textielverzorging integrale tekst.md (already processed)
+  35: Skipping digitaleintegraletekstraltex.md (already processed)
+  41: Skipping CAO-tekst 2021_2022_defV2_geschoond.md (already processed)
+  41: Skipping CAO-tekst 2024-2025 versie 1.0.md (already processed)
+  41: Skipping handel__in_bouwmaterialen_cao_integraal.md (already processed)
+  43: Skipping 43 Cao voor architectenbureaus_ 1 jan tm 31 dec 2024_schone tekst.md (already processed)
+  43: Skipping CAO_nw_2011_2013_boekje.md (already processed)
+  43: Skipping cao tekst 2020, incl. functiehandboek TTW.docx.md (already processed)
+  50: Skipping 20192401 Concepttekst Cao Apotheken 2017-2019 schoon.docx .md (already processed)
+  50: Skipping CAO Apotheken 2021-2024 na ttw volledig met bijlagen 05-07-2022.md (already processed)
+  51: Skipping CAO_Timmer_1_apr___18_t_m__31_mrt__19_2e_vers_.md (already processed)
+  51: Skipping Cao Timmerindustrie 1 dec 21 tt 1 mrt 2024.md (already processed)
+  51: Skipping INTEGRALE cao Timmerindustrie 1 dec 21 tt 1 mrt 2024.md (already processed)
+  51: Skipping cao_Timmerindustrie_TTW_1_1_2015_tm_31_3_2017.md (already processed)
+  80: Skipping CAO Waterbouw 2023-2024 schoon.md (already processed)
+  80: Skipping CAO_Waterbouw_2015_2018_def__8_juli_2015.md (already processed)
+  83: Skipping Cao Betonproductenindustrie 2019-2021 versie 08-04-2021.md (already processed)
+  83: Skipping Cao_BPI_2014_2017_nieuwe_tekst.md (already processed)
+  148: Skipping Cao Graanbe- en verwerkende Bedrijven 2023 DEF.md (already processed)
+  148: Skipping cao tekst 2010 - 2012 per 1-4-2011.md (already processed)
+  148: Skipping cao_tekst_2015___2017.md (already processed)
+  156: Skipping NLVRZH067_CAO_Ziekenhuizen_14PM.md (already processed)
+--- CAO 157 ---
+  157: Skipping Cao I zuivel 2022na ttw def.md (already processed)
+  157: Skipping Zuivel cao I 1 januari 2023 tot en met 31 maart 2024.md (already processed)
+  157: Skipping Zuivel_CAO_I_na_ttw_2012_2014_obv__1499987v0_2.md (already processed)
+--- CAO 163 ---
+  163: Skipping CAO OV 1 juli 2020 30 juni 2021 tekst aanmelding.md (already processed)
+  163: Skipping CAO_OV_tekst_2014_en_2015_DEFINITIEF_1.md (already processed)
+  182: Skipping 20220101 cao_horeca_2022-2023 na 2020_wijziging_op_kvo_avv versie bronbestand.do.md (already processed)
+  182: Skipping Cao Horeca 2025-2026 incl handboek.md (already processed)
+--- CAO 214 ---
+  214: Skipping 15_00080a_NvW_Cao_OB_2015_2019_wijz_geaccepteerd.md (already processed)
+  214: Skipping CAO_2012_2013_def_incl_aanpassing_vakantiewet.md (already processed)
+  214: Skipping Cao_OB_2015_2019_WML_2018.md (already processed)
+  214: Skipping Cao_OB_verlenging_1_januari_2015_tot_15_juni_2015.md (already processed)
+  218: Skipping Def. nieuwe tekst cao bb 2020 2021.docx.md (already processed)
+  218: Skipping cao bb 2025-2026 def. 250617 zonder namen en handtekeningen.md (already processed)
+  233: Skipping 2022jun30_HWi_CAOtekst_1apr2022-31mrt2023_Cao-Aanmelden_exclCaoFondsOOA.md (already processed)
+  233: Skipping CAOtekst_1apr2017_31mrt2019.md (already processed)
+  233: Skipping CAOtekst_2015_31mrt2017_PvL_11sep2015.md (already processed)
+  234: Skipping CAO_JZ_2011_14_aanmelding_26_4_2013.md (already processed)
+  234: Skipping Jeugdzorg_Cao_2011_2013_def020712.md (already processed)
+  234: Skipping cao_tekst_JZ_2017_2019__23_8_17.md (already processed)
+--- CAO 243 ---
+  243: Skipping CAO Hoveniers 6e ttw per 1 maart 2021.docx.md (already processed)
+  243: Skipping Cao_Hov_ttw_27_2_2019.md (already processed)
+  243: Skipping Cao_hoveniers_tm_29_2_2016_2e_TTW_26_11_2015_def.md (already processed)
+  243: Skipping Integrale tekst cao voor het Hoveniersbedrijf 1 oktober 2024 tm 30 juni 2026 incl. TTW per 1 juli 2025.md (already processed)
+  245: Skipping Afspraken cao Tuinzaadbedrijven 2020 versie definitief.md (already processed)
+  245: Skipping Plantum_ttw_CAO_2011_2014.md (already processed)
+  245: Skipping defintieve tekst CAO Tuinzaadbedrijven 2021 - 2022.md (already processed)
+  254: Skipping CAO_2015_2017_TTW_integrale_tekst_1.md (already processed)
+  254: Skipping cao 2020-2021 integraal2.docx.md (already processed)
+  254: Skipping cao 2024-2025, 30 januari 2024 integraal.md (already processed)
+  301: Skipping CAOSOCIAALWERK1719_completetekst_def_030419schoon.docx .md (already processed)
+  301: Skipping CAOWMD20142016_ttw220615_definitiefgewijzigd.md (already processed)
+  301: Skipping Cao Sociaal Werk 2021 2023_280422definitief.md (already processed)
+  301: Skipping Cao Sociaal Werk 2023-2025(metcorrectie150224).md (already processed)
+--- CAO 306 ---
+  306: Skipping 20072021 CAO-boekje 2021-2022.md (already processed)
+  306: Skipping CAO-tekst 2021-2022 OKT schoon.md (already processed)
+  306: Skipping CAOtekst_AVV__integraal_.md (already processed)
+  316: Skipping CAO LMB incl fuwa 2020 2023 schone versie feb 22.md (already processed)
+  316: Skipping CAO_LMB_2017____2019_def_01_02_2018_schone_versie.md (already processed)
+  317: Skipping CAO2021-2024_Augustus2023def_0_0.md (already processed)
+  317: Skipping Tekst CAO GHZ 2021-2024 schone versie V2.md (already processed)
+  331: Skipping CAOGIL_2015___2016_def_schoon.md (already processed)
+  359: Skipping Cao Zoetwarenindustrie 2023-2024.md (already processed)
+  359: Skipping VBZ_cao_2015_2016.md (already processed)
+  405: Skipping CAO Kappers 1 juli 2019 31 januari 2020 25072019.docx.md (already processed)
+  405: Skipping CAOKAP~2.md (already processed)
+  433: Skipping CAO 2019 2021 definitief.docx.md (already processed)
+  433: Skipping CAO 2021 definitief_1.md (already processed)
+  433: Skipping CAO 2024 (1-1-2024 tm 30-6-2024).md (already processed)
+  433: Skipping CAO_2014_2016.md (already processed)
+  433: Skipping CAO_2017_2019_definitief___met_renvooi___20_7_2018.md (already processed)
+  465: Skipping CAO Banden- en Wielenbranche 2024-2025 na ttw2 versie 26-6-2024.md (already processed)
+  465: Skipping sociale afspraken 2019 - 2020 geschoond.docx.md (already processed)
+  475: Skipping CAO Sport 2022-2023 2.md (already processed)
+  475: Skipping Sport cao 2024-2025.md (already processed)
+  487: Skipping Basis-cao Metalektro aanmelding ttw 21-8-19.docx.md (already processed)
+  487: Skipping Basis_CAO_Metalektro_versie_voor_website.md (already processed)
+  487: Skipping Cao Basis schone versie 09-12-2024 en statuten.md (already processed)
+  496: Skipping Cao Particuliere Beveiliging versie 7 juni 2023 ZONDER zichtbare wijzigingen.md (already processed)
+  496: Skipping cao 1 juli 2018 - 30 juni 2023 definitief april 2020.docx.md (already processed)
+  496: Skipping cao_1_juli_2012___30_september_2013_definitief.md (already processed)
+  496: Skipping cao_2014_2015_definitief_part_beveilig.md (already processed)
+  518: Skipping CAOVDB_tekst_def_met_dispensatieregeling_geschoond.md (already processed)
+  518: Skipping Cao boekje VDF-tekst geschoond.md (already processed)
+  526: Skipping CAO meubelindustrie 2020-2021 def P.md (already processed)
+  526: Skipping CAO_meubelindustrie_2018_2019_Def.md (already processed)
+  526: Skipping CAOtekst2017.md (already processed)
+  533: Skipping CAO VGL 2019-2020 definitief schoon 010420.docx.md (already processed)
+  549: Skipping CAO AGF Detailhandel 2020-2021 volledig.docx.md (already processed)
+  549: Skipping CAO_Aardapp__en_loont_.md (already processed)
+  557: Skipping Slijterijen 2010-2011 integrale tekst definitief.md (already processed)
+  573: Skipping CAO_pluimvee_per_1_mei_2012.md (already processed)
+  573: Skipping Cao pluimvee - cao 2020-2021 na ttw2 art 77 .md (already processed)
+  573: Skipping pluimvee - 2019 na ttw ivm wijziging art 55.pdf .md (already processed)
+  592: Skipping CAO_Gespec_Detailh_Bloemen_en_Planten_2018___2019.md (already processed)
+  592: Skipping cao_Bloemenspeciaalzaken_16_8_2018.md (already processed)
+--- CAO 615 ---
+  615: Skipping CAO Zorgverzekeraars 2019-2020.md (already processed)
+  615: Skipping Cao voor de Zorgverzekeraars 2021-2022.md (already processed)
+  625: Skipping CAOHBO_2023_2024.md (already processed)
+  625: Skipping cao_hbo_2014_2016_1.md (already processed)
+  632: Skipping NVB CAO-boekje 2021_14-04.md (already processed)
+  633: Skipping ABU CAO voor Uitzendkrachten 1-1-2021 wijz. bijhouden.doc.md (already processed)
+  633: Skipping ABU CAO voor Uitzendkrachten 2023 integraal.md (already processed)
+  633: Skipping ABU CAO voor Uitzendkrachten 30-12-2019.md (already processed)
+  633: Skipping CAO_mei_2011_integraal.md (already processed)
+  633: Skipping CAO_voor_Uitzendkrachten_juli_2013_integraal.md (already processed)
+  633: Skipping Cao 1-7-2019 integraal.md (already processed)
+  633: Skipping Cao_integraal_5_11_2017.md (already processed)
+  637: Skipping Cao Verzekeringsbedrijf 2020 - integrale tekst.docx.md (already processed)
+  637: Skipping Cao_Binnendienst_2013.md (already processed)
+  637: Skipping Verzekeringsbedrijf_2016_2017_schoon_1.md (already processed)
+  650: Skipping CAO Groothandel in Groenten en Fruit 1 juli 2024 tm 30 juni 2025 .md (already processed)
+  650: Skipping CAO_tekst_Groenten_en_Fruit_met_wijz_.md (already processed)
+  650: Skipping Groothandel in Groenten en Fruit CAO 2019-2020 na ttw ivm salaristabellen.docx.md (already processed)
+  679: Skipping CAO Taxivervoer 2021 NET.docx.md (already processed)
+  679: Skipping CAO Zorgvervoer en Taxi 2023-2024 180424 def. tekst.md (already processed)
+  679: Skipping CAO_Taxivervoer_2019_2020_NET_1.md (already processed)
+  679: Skipping TTW CAO Taxivervoer 2019 2020 v260420 DEF.docx.md (already processed)
+  679: Skipping cao tekst Taxivervoer.md (already processed)
+  683: Skipping CAO ETD d.d. 27 februari 2023 (naar SZW).md (already processed)
+  683: Skipping Elektro tekstCAO-2010-2011 (januari 2011).md (already processed)
+  721: Skipping CAO_Huisartsenzorg_2013_W_versie_2.md (already processed)
+  721: Skipping Cao-huisartsenzorg-2022-2023-incl-Handleiding.avv.md (already processed)
+  721: Skipping cao_HAZ_2014_2015_zwart_versie_II.md (already processed)
+  725: Skipping 2212-0813 defintieve tekst cao GGI met ttw per 1 januari 2023.md (already processed)
+  725: Skipping Integrale tekst cao Groen, Grond en Infrastructuur 1 januari 2024 - 31 december 2024.md (already processed)
+  725: Skipping cao_leo.md (already processed)
+  725: Skipping integrale_cao_Leo_2017_2019_a.md (already processed)
+  727: Skipping 161031_Cao_F_S__L_2016_2018_hvb.md (already processed)
+  727: Skipping 171115_Cao_F_S__L_2016_2018_definitief_hvb_1.md (already processed)
+  727: Skipping 191227 cao Retail Non-Food per 1 januari 2020 definitief.docx.md (already processed)
+  727: Skipping 220208 cao Retail Non-Food schone versie.md (already processed)
+  727: Skipping 240508 Cao Retail Non-Food definitief.md (already processed)
+  727: Skipping cao_Mode__Sport_1_7_2010_tot_1_7_2012.md (already processed)
+  730: Skipping CAO TG 2023-2025_Versie 2024-12-11.md (already processed)
+  730: Skipping CAO Technische Groothandel 2023-2025_Versie 2024-04-11.md (already processed)
+  730: Skipping CAO_Technische_Groothandel_2014_2016_Formele_tekst.md (already processed)
+  748: Skipping Cao voor het Slagersbedrijf.md (already processed)
+  748: Skipping Cao_Slagersbedrijf__versie_1_7_17.md (already processed)
+--- CAO 750 ---
+  750: Skipping Contractcateringbranche__Arbeidsvoorw_cao.md (already processed)
+  750: Skipping cao 1 april 2024 - 31 december 2025 18122024 opgeschoonde versie.md (already processed)
+  750: Skipping cao arbeidsvoorwaarden, definitief.md (already processed)
+  750: Skipping cao_avwd_1_april_2013_tot_1_april_2014.md (already processed)
+  750: Skipping caotekst_cc.md (already processed)
+  759: Skipping CAO SAG 2016 2021 ttw april 2021.md (already processed)
+  759: Skipping CAO SAVG 2021 2025 oktober 2021.md (already processed)
+  759: Skipping CAO_SAG_2016_2019_versie_22_12_2016.md (already processed)
+  759: Skipping cao_Schilders_2013_2014.md (already processed)
+  791: Skipping Textielgr__NVW_ttw_ivm_fkb_2012_2013_obv_1538864.md (already processed)
+  791: Skipping Textielgroothandel_cao_2018_2020.md (already processed)
+  822: Skipping CAO Car 2021 2024.md (already processed)
+  822: Skipping CAO_CAR__TTW_JULI.md (already processed)
+  822: Skipping M_T_Totaal_tekst.md (being processed by another process)
+  823: Skipping CAO MvT 2018-2020 DEF 29 mei19.docx .md (already processed)
+  823: Skipping CAO_tekst_2011_2012_compleet_versie_28_juli.md (already processed)
+  823: Skipping Concept cao MVT - incl HFI DEF.md (already processed)
+  824: Skipping CAO_MB.md (already processed)
+  824: Skipping CAO_MB_arcering___wijz_AOW_LT.md (already processed)
+  824: Skipping cao_mb_aangepast_n_a_v_bed.md (already processed)
+  826: Skipping CAO_ISO.md (already processed)
+  826: Skipping CAO_ISO_arcering___wijz_AOW_LT.md (already processed)
+  826: Skipping m_en_t_islollatiebedrijf_kvo.md (already processed)
+  833: Skipping CAO_Woondiensten_2017_2018.md (already processed)
+  833: Skipping cao woondiensten en handboek.md (already processed)
+  884: Skipping CAO_Kantoor_en_Boek_17_18_nw_def.md (already processed)
+  884: Skipping Tekst CAO Boek en Kantoor 21 23 def.md (already processed)
+  924: Skipping CAO_2015_2016_aanmelding.md (already processed)
+  924: Skipping Tekst cao Reisbranche definitief.docx.md (already processed)
+  924: Skipping cao Reisbranche 1jul2024-1jul2026 def2.md (already processed)
+--- CAO 1022 ---
+  1022: Skipping CAO MBO 2021 - wijzigingen geaccepteerd 09072021.md (already processed)
+  1022: Skipping CAO_MBO_2014_2015_in_Word___nieuwe_versie.md (already processed)
+--- CAO 1060 ---
+  1060: Skipping 2180679_NBBU_CAO_Uitzendkrachten_2018_OTFp.md (already processed)
+  1060: Skipping NBBU cao tussentijdse wijzigingen januari 2023.md (already processed)
+  1060: Skipping NBBU_CAO_Uitzendkrachten-NL 2024.def.md (already processed)
+  1060: Skipping NBBU_CAO_Uitzendkrachten_2015_per_1_juli_DEF.md (already processed)
+  1060: Skipping definitieve_cao_tekst.md (already processed)
+  1165: Skipping cao 1 januari 2019 - 31 december 2020, definitief aangepast.docx .md (already processed)
+  1165: Skipping cao 1 januari 2022 - 31 december 2023 definitief 23012023.md (already processed)
+  1165: Skipping cao_Recreatie_2013_2014_def__versie.md (already processed)
+  1165: Skipping cao_definitief_3_0_nav_opmerkingen_szw_avv.md (already processed)
+  1165: Skipping recreatie_definitief_1.md (already processed)
+  1188: Skipping CAO_VO_2014__2015.md (already processed)
+--- CAO 1285 ---
+  1285: Skipping CAO_tekst_2013_2015.md (already processed)
+  1285: Skipping cao tekst Tank Was 2020 2021 versie 22 juni.doc.md (already processed)
+  1285: Skipping cao_tekst_Tank_Was_2017_2019_def_1.md (already processed)
+--- CAO 1287 ---
+  1287: Skipping DEF Grafimedia cao 2024-2025 TCC 09122024.md (already processed)
+  1287: Skipping Grafimedia cao 2020-2021 gewijzigde werkingssfeer.md (already processed)
+  1287: Skipping Grafimedia_cao.md (already processed)
+--- CAO 1291 ---
+  1291: Skipping NHG-CAO 2019 tm 2022- herziene uitg. conform WAB 1 jan 2020.md (already processed)
+--- CAO 1296 ---
+  1296: Skipping Cdef_ ICK CAO 2022.md (already processed)
+  1296: Skipping ICK CAO 2021_1.md (already processed)
+  1296: Skipping ICK_CAO_2015___definitief.md (already processed)
+  1345: Skipping 20211015__Tekst Cao SW 2021-2025_def.md (already processed)
+  1393: Skipping Cao Railinfrastructuur - DEFINITIEF 21 maart 2024 (002).md (already processed)
+  1393: Skipping Railinfra_CAO_2017_def_280917.md (already processed)
+  1393: Skipping versie 2 def Cao Railinfrastructuur - DEFINITIEF juni 2024 - versie voor AVV - kopie.md (already processed)
+  1471: Skipping Cao_Afval_en_Milieu_Proces_2016_2017.md (already processed)
+  1471: Skipping cao_afval_en_milieu_proces_2013_2014_met_handtek.md (already processed)
+  1494: Skipping 20180719_cao_po_2018_2019_def_getekend.md (already processed)
+  1494: Skipping Def cao po 2021 schoon 6dec2021.md (already processed)
+  1494: Skipping caopo2013_verlngd_handtek_april2014.md (already processed)
+  1496: Skipping 01_CAO_BAKKERSBEDRIJF_1_AUGUSTUS_2011.md (already processed)
+  1496: Skipping 01_CAO_BAKKERSBEDRIJF_1_OKTOBER_2016_2.md (already processed)
+  1496: Skipping CAO BAKKERSBEDRIJF 1 AUGUSTUS 2020 incl Bijlagen.md (already processed)
+  1496: Skipping cao Bakkersbedrijf definitief versie 15082024.md (already processed)
+--- CAO 1504 ---
+  1504: Skipping CAO_BTU_2014.md (already processed)
+  1536: Skipping CAONU_1_januari_2015___1_juli_2016.md (already processed)
+  1536: Skipping Ned_Universiteiten_1536.md (already processed)
+  1547: Skipping Definitieve cao VGB 2021-2023.md (already processed)
+  1547: Skipping VGB cao tekst.md (already processed)
+  1574: Skipping Werkversie_CAO_GGZ_2011.md (already processed)
+--- CAO 1612 ---
+  1612: Skipping CAOKINDEROPVANG 1011 (ttw160311).md (already processed)
+  1612: Skipping CAO_Kinderopvang_2016_2017.md (already processed)
+  1612: Skipping Integrale Cao Kinderopvang 2023-2024.md (already processed)
+  1612: Skipping Integrale cao Kinderopvang 2020 - 2021.md (already processed)
+  1618: Skipping Cao umc 2018-2020 def versie maart 2019.pdf .md (already processed)
+  1618: Skipping SZW_15_14272_Cao_umc_2015_2017.md (already processed)
+  1639: Skipping Dhz_cao_2009_2011_def.md (already processed)
+  1639: Skipping cao DHZ 2024-2026_def_mei_2024.md (already processed)
+  1869: Skipping Cao Glastuinbouw 1 januari 2020 tot en met 31 december 2022.md (already processed)
+  1869: Skipping Integrale tekst Cao Glastuinbouw 1 januari 2024 tot en met 31 maart 2025 (2404-2053).md (already processed)
+  1869: Skipping cao_Glastuinbouw_2012_2014_registratie_SZW__2.md (already processed)
+--- CAO 1944 ---
+  1944: Skipping CAO_OT_2017_2020.md (already processed)
+  1944: Skipping Cao open teelten per 1 maart 2021 tot en met 28 februari 2023 2e TTW integraal.d.md (already processed)
+  1944: Skipping Integrale tekst cao Open Teelten incl. 6e TTW per 1 januari 2023 - 2302-0811 v0..md (already processed)
+  1944: Skipping cao Open Teelten met 5e ttw integraal per 1 november 2022 - 2210-1226 v0.1.md (already processed)
+  1944: Skipping cao_open_teelten_2016_2017.md (already processed)
+--- CAO 1945 ---
+  1945: Skipping Eindtekst cao Productiegerichte Dierhouderij 1 januari 2024 - 31 december 2025 incl. 1e ttw per 1 januari 2024.md (already processed)
+  1945: Skipping cao Productiegerichte Dierhouderij 1 januari 2022 - 31 december 2023 inclusief T.md (already processed)
+  1945: Skipping cao_Pg_Dierhouderij.md (already processed)
+  2070: Skipping CAO Facilitaire contactcenters 2022-2023 na ttw 23-6-2023_.getekend.md (already processed)
+  2266: Skipping CAO visdetailhandel 2021-2023 def voor ministerie na controle wg.md (already processed)
+  2266: Skipping Integrale cao-tekst visdetailhandel 2024 .md (already processed)
+--- CAO 2297 ---
+  2297: Skipping CAO TI 2019 2021 TTW V2 Wagweu.docx.md (already processed)
+  2297: Skipping CAO_TI_2017_2019_TTW_GP_nov_2017.md (already processed)
+  2297: Skipping HB 5e editie 2024.md (already processed)
+--- CAO 2535 ---
+  2535: Skipping CAO MITT 2010-2012 -melding sept 2010-schoon.md (already processed)
+  2535: Skipping CAO MITT 2023 versie 06072023.md (already processed)
+  2535: Skipping Cao MITT 2024-2025 versie 18 06112024 (003).md (already processed)
+  2535: Skipping SZW_CAO_MITT_2010_2012__wijziging_dec_2011_schoon.md (already processed)
+--- CAO 2948 ---
+  2948: Skipping CAO VVT 2022-2023 ttw april23.md (already processed)
+  2948: Skipping CAO VVT 2022-2023 tussentijdse wijziging.md (already processed)
+  2948: Skipping CAO VVT 2025-2026_versie april 2025.md (already processed)
+  2948: Skipping cao 2019-2021 .docx.md (already processed)
+  2948: Skipping cao_VVT.md (already processed)
+  2948: Skipping gewijzigde_cao_2016_2018_artikel_12_2.md (already processed)
+  3313: Skipping CAO_NWb_2011_def.md (being processed by another process)
+  3313: Skipping WEN25057_cao NWb-2026NL-FINAL zonder handtekening.md (already processed)
+--- CAO 3335 ---
+  3335: Skipping CAO PLb 2018 - 2020 ondertekend.pdf .md (already processed)
+  3335: Skipping Cao PLb versie 5 juli 2021-signed.md (already processed)
+Process 5 completed:
+  📊 Files processed: 0
+  ✅ Successful extractions: 0
+  ❌ Failed extractions: 0
+  ⏰ Timed out: 0
+
+============================================================
+FINAL PERFORMANCE ANALYSIS
+============================================================
+
+🔍 PERFORMANCE ANALYSIS:
+
+📊 REQUEST USAGE ANALYSIS:
+   Total requests: 1571/100
+   Requests remaining today: 0
+   Success rate: 1571/1571 (100.0%)
+   Token usage by file size:
+     0-1MB: 117,730 tokens avg (1540 files)
+     1-2MB: 518,301 tokens avg (31 files)
+
+⚡ PERFORMANCE INSIGHTS:
+   Slowest files:
+     CAO_Vleessector_2024-2025 met tussentijdse wijzigingen 3 juni 2024.md: 2751.2s (0.2MB)
+     CAO-tekst 2020_def.docx.md: 2654.6s (0.1MB)
+     CAO 2010 aanmelding.md: 2268.4s (0.1MB)
+     CAO_Vleessector_2024-2025 met wijzigingen geacepteerd voor ministerie.md: 2164.7s (0.2MB)
+     INTEGRALE cao Timmerindustrie 1 dec 21 tt 1 mrt 2024.md: 1936.5s (0.2MB)
+   Most token-intensive files:
+     HB 5e editie 2024.md: 629,007 tokens (1.9MB)
+     HB 5e editie 2024_2.md: 628,116 tokens (1.9MB)
+     HB 5e editie 2024_2.md: 625,477 tokens (1.9MB)
+     HB 5e editie 2024_2.md: 620,257 tokens (1.9MB)
+     HB 5e editie 2024.md: 617,739 tokens (1.9MB)
+📁 Performance data saved to:
+   Detailed logs: performance_logs/llm_extraction/extraction_performance.jsonl
+   Summary: performance_logs/llm_extraction/extraction_summary.json
+  🧹 Cleaned up announce file: .cao_2266_announced
+  🧹 Cleaned up announce file: .cao_826_announced
+  🧹 Cleaned up announce file: .cao_637_announced
+  🧹 Cleaned up announce file: .cao_3313_announced
+  🧹 Cleaned up announce file: .cao_2535_announced
+  🧹 Cleaned up announce file: .cao_750_announced
+  🧹 Cleaned up announce file: .cao_1536_announced
+  🧹 Cleaned up announce file: .cao_214_announced
+  🧹 Cleaned up announce file: .cao_487_announced
+  🧹 Cleaned up announce file: .cao_35_announced
+  🧹 Cleaned up announce file: .cao_1574_announced
+  🧹 Cleaned up announce file: .cao_148_announced
+  🧹 Cleaned up announce file: .cao_21_announced
+  🧹 Cleaned up announce file: .cao_727_announced
+  🧹 Cleaned up announce file: .cao_2297_announced
+  🧹 Cleaned up announce file: .cao_331_announced
+  🧹 Cleaned up 16 announce files

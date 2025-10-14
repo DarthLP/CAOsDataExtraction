@@ -12,6 +12,8 @@ FEATURES:
 - Context-preserving extraction (keeps related information together)
 - Multi-process support for parallel processing
 - Robust error handling with exponential backoff
+- Adaptive retry strategy with parameter adjustment (temp/top_p/top_k on attempts 4-5)
+- Failure-aware retry guidance for LLM-controllable errors (truncated JSON, empty responses)
 - Markdown quality validation and best practices enforcement
 - Dynamic timeouts based on file size
 - File locking to prevent duplicate processing
@@ -99,14 +101,17 @@ class CAOExtractionSchema(BaseModel):
         , default_factory=list)
     wage_information: List[List[str]] = Field(description=
         """Extract wage and salary information explicitly stated in the CAO: 
-        - wage tables and salary scales, 
-        - job classifications / functions / pay groups, 
-        - age-related or service-year pay steps, 
-        - wage increases, 
-        - bonuses and allowances including sign-on, 13th month, lump sums, profit-sharing, performance, seniority/loyalty bonuses, job-specific allowances, retirement gratuities, insurance/savings benefits, 
-        - short notes explaining wage system/tables; 
+        - all wage tables (that are not identical except for unit conversion) and salary scales, 
+        - job classifications, function groups, and pay groups/grades,
+        - age-related or service-year/experience-based pay steps (trede/periodieken), including any transitions between age bands and experience steps,
+        - rules governing progression within scales (e.g., annual increments, step frequency, performance-based step changes, freeze/unfreeze conditions),
+        - entry-placement rules (e.g., starting above step 0 for prior relevant experience or competence),
+        - personal allowances at the maximum of a scale (“persoonlijke toeslag”) and their conditions (basis, %/amount, pensionability, duration, phase-out),
+        - general wage increases (periodic percentage or nominal increases applied sector-wide or by group),
+        - all bonuses and allowances, including sign-on, 13th month, fixed lump sums, profit-sharing, performance bonuses, seniority/loyalty or jubilee bonuses, job-specific allowances, retirement gratuities, and insurance/savings benefits,
+        - notes explaining how the wage system or tables operate (e.g., “scale applies to 36-h week”, “wages include 8% holiday allowance”, “conversion rules for youth to adult wage scale”).
         SKIP: tables that are identical except for unit conversion (hourly vs monthly vs weekly vs 4 weeks for same data); 
-        KEEP: tables or rules that differ by period, worker type, job category, or other substantive distinctions."""
+        KEEP: tables or rules that differ by period, worker type, education level, job group/function scale, experience steps (periodieken/trede), age bands, or other substantive distinctions."""
         , default_factory=list)
     pension_information: List[List[str]] = Field(description=
         """Extract ALL explicitly stated pension scheme information, including when present: 
@@ -187,11 +192,15 @@ class CAOExtractionSchema(BaseModel):
         , default_factory=list)
     safety_information: List[List[str]] = Field(description=
         """Extract ALL explicitly stated safety and integrity provisions, including when present:
-        - harassment or integrity protocols (e.g., bullying, discrimination, aggression),
-        - confidential counsellors or external reporting channels,
-        - mandatory safety or risk-prevention training,
+        - harassment, bullying, discrimination, aggression, or integrity protocols,
+        - prevention of psychosocial risks (PSA) such as stress, burnout, or workload pressure,
+        - RI&E requirements covering PSA,
+        - confidential counsellors or internal/external contact points,
+        - training or awareness on wellbeing and respectful behaviour,
+        - reporting procedures and follow-up in PSA/integrity cases,
         - joint safety/health committees or sectoral Arbo arrangements,
-        - other safety-related measures or obligations."""
+        - mandatory safety or risk-prevention training,
+        - other safety, health, or integrity-related measures or obligations."""
         , default_factory=list)
     AI_information: List[List[str]] = Field(description=
         """Extract ALL explicitly stated information about AI and algorithmic management, including when present:
@@ -284,7 +293,7 @@ class ExtractionConfig:
     frequency_penalty: float = 0
     thinking_budget: int = -1
     max_retries: int = 5
-    delay_between_files: int = 200  # about 200 seconds between files to avoid rate limits
+    delay_between_files: int = 150  # about 150 seconds between files to avoid rate limits
 
 
 @dataclass
@@ -409,20 +418,30 @@ def setup_processing_context(config: ExtractionConfig, process_id: int,
     )
 
 
-def validate_input_paths(config: ExtractionConfig):
+def validate_input_paths(config: ExtractionConfig, process_id: int = 0):
     """Validate that input/output paths exist and are accessible."""
     if not os.path.exists(config.input_folder):
         raise ValueError(f"Input folder does not exist: {config.input_folder}")
     
-    config.output_folder.mkdir(exist_ok=True)
+    config.output_folder.mkdir(parents=True, exist_ok=True)
     
     # Check if we can write to output folder
-    test_file = config.output_folder / ".test_write"
+    # Use process_id to avoid race conditions when running parallel processes
+    test_file = config.output_folder / f".test_write_p{process_id}"
     try:
         test_file.write_text("test")
-        test_file.unlink()
+        if not test_file.exists():
+            raise ValueError("Test file was not created")
     except Exception as e:
         raise ValueError(f"Cannot write to output folder: {config.output_folder}, Error: {e}")
+    finally:
+        # Clean up test file if it exists (do this separately from validation)
+        if test_file.exists():
+            try:
+                test_file.unlink()
+            except Exception:
+                # Ignore cleanup errors - write permission was already validated
+                pass
 
 
 # =============================================================================
@@ -665,6 +684,94 @@ def get_model_parameters(config) -> Dict[str, Any]:
     }
 
 
+def get_adjusted_parameters(config, attempt: int) -> Dict[str, Any]:
+    """
+    Get adjusted model parameters based on retry attempt.
+    
+    - Attempts 0-2 (1st-3rd tries): original parameters
+    - Attempt 3 (4th try): temperature +0.1, top_p +0.1, top_k -0.1
+    - Attempt 4+ (5th+ try): temperature +0.2, top_p +0.2, top_k -0.2
+    
+    Returns:
+        dict: Model parameters with attempt-based adjustments
+    """
+    if attempt <= 2:
+        # First 3 attempts: use original parameters
+        adjustment = 0.0
+    elif attempt == 3:
+        # 4th attempt: +0.1 adjustment
+        adjustment = 0.1
+    else:
+        # 5th+ attempt: +0.2 adjustment
+        adjustment = 0.2
+    
+    # Calculate adjusted values
+    adjusted_temp = config.temperature + adjustment
+    adjusted_top_p = min(1.0, config.top_p + adjustment)  # Cap at 1.0
+    adjusted_top_k = max(1, int(config.top_k - adjustment * config.top_k))  # Reduce by percentage, min 1
+    
+    return {
+        "model": config.model,
+        "temperature": adjusted_temp,
+        "top_p": adjusted_top_p,
+        "top_k": adjusted_top_k,
+        "max_tokens": config.max_tokens,
+        "candidate_count": config.candidate_count,
+        "seed": config.seed,
+        "presence_penalty": config.presence_penalty,
+        "frequency_penalty": config.frequency_penalty,
+        "thinking_budget": config.thinking_budget,
+        "max_retries": config.max_retries
+    }
+
+
+def get_retry_guidance(error_message: str) -> tuple[str, str]:
+    """
+    Get retry guidance based on previous failure for LLM-controllable errors.
+    
+    Only provides guidance for the 2 most common LLM-controllable errors:
+    1. Truncated JSON (incomplete response)
+    2. Empty/no text response
+    
+    For all other errors (timeouts, 504, etc.), returns empty string.
+    
+    Args:
+        error_message: The error message from the previous attempt
+        
+    Returns:
+        tuple: (guidance_text, error_type) where error_type is "" if no guidance
+    """
+    if not error_message:
+        return "", ""
+    
+    error_lower = error_message.lower()
+    
+    # Check for truncated JSON error
+    if "does not end with }" in error_lower or "truncated" in error_lower:
+        guidance = """
+    PREVIOUS ATTEMPT FAILED: Response was TRUNCATED (incomplete JSON).
+    CRITICAL: Ensure your response ENDS with the closing }  
+        - Be more CONCISE in narrative descriptions while keeping all important data intact
+        - Prioritize completing the JSON structure over verbose explanations
+        - Keep all numbers, dates, tables - compress only explanatory text
+    """
+        return guidance, "truncated JSON"
+    
+    # Check for empty response error
+    if "no text parts" in error_lower or "no content" in error_lower:
+        guidance = """
+    PREVIOUS ATTEMPT FAILED: No valid output was generated.
+    CRITICAL: Output ONLY the JSON object
+        - No markdown code fences (no ```json)
+        - Include ALL required fields (use empty [] if no data)
+        - Ensure final JSON output is generated, not just thinking tokens
+    """
+        return guidance, "empty response"
+    
+    # For all other errors, return empty string (no guidance)
+    return "", ""
+
+
 def create_extraction_prompt(filename: str) -> str:
     """Create the extraction prompt for CAO document processing."""
     return f"""
@@ -698,7 +805,7 @@ def create_extraction_prompt(filename: str) -> str:
         - Tables: include a compact structure (see TABLE FORMAT) with headers and all data rows and columns plus any short note that explains the table.
 
     WAGE TABLE DEDUP (IMPORTANT):
-        - Keep tables that differ by period, worker type, job category, age/service ladders, or other substantive differences.
+        - Keep tables that differ by period, worker type, education level, job group/function scale, experience steps (periodieken/trede), age bands, or other substantive distinctions.
         - SKIP tables that are identical except for unit conversion (hourly vs monthly vs weekly vs 4-week vs yearly); keep ONE version (prefer hourly if present).
 
     TABLE FORMAT:
@@ -712,18 +819,18 @@ def create_extraction_prompt(filename: str) -> str:
                 "Additional notes or clarifying information if any"
             ]
 
-    EXTRACTION STEPS (INTERNAL — DO NOT OUTPUT):
+    EXTRACTION STEPS (INTERNAL - DO NOT OUTPUT):
         1) Read & anchor: read all instructions and section descriptions.
         2) Sweep & mark: scan the whole document; mark every clause/table/text that matches any section description; ignore text/sentences/clasues/passages that matches none.
         3) Route: apply the ROUTING RULES to decide the correct section when overlaps occur.
         4) Length pre-check: if the marked set, when extracted verbatim, would likely exceed ~262,144 characters, plan to trim narrative/boilerplate in step 5.
         5) Extract, translate & build — DO NOT HALLUCINATE:
             - Build one JSON object with the exact keys in OUTPUT_JSON_TEMPLATE, in this order: general_information → wage_information → pension_information → leave_information → termination_information → overtime_information → training_information → homeoffice_information → contract_type_information → safety_information → childcare_information → AI_information → fringe_benefits_information.
-            - Copy numbers/dates/%/units/names literally; translate all other Dutch text to clear English; leave blank if not stated.
+            - COPY numbers/dates/%/names literally; TRANSLATE all other Dutch text (clauses, part of tables that are not numbers or names, titles, etc.) to clear English; leave blank if not stated.
             - Tables: rebuild to TABLE FORMAT; apply WAGE TABLE DEDUP (remove pure unit-conversion duplicates; prefer hourly).
             - Consolidate: keep related items adjacent.
             - If trimming per Step 4 is needed, shorten only narrative notes or minor wording not directly tied to field content, without changing legal meaning.
-        6) Verify: confirm that every extracted fact, number, table, or clause is explicitly present in the document (allowing for shortening, restructuring, and translation to English). Correct or remove anything not grounded in the source. Do not infer or guess.
+        6) Verify: confirm that every extracted fact, number, table, or clause is explicitly present in the document (allowing for shortening, restructuring, and translation to English) and that no important information is missing. Correct or remove anything not grounded in the source. Do not infer or guess.
         7) Validate: output one JSON object only; UTF-8 only; valid JSON (balanced brackets, no trailing commas); all template keys present (empty list if none).
 
     JSON OUTPUT REQUIREMENTS:
@@ -1089,12 +1196,32 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
         if remaining_budget_s <= 0:
             raise TimeoutError(f'No remaining budget for {filename}')
     
+    # Track last error message for retry guidance
+    last_error_message = None
+    
     for attempt in range(context.config.max_retries):
+        # Get adjusted parameters for this attempt (needed for logging even on errors)
+        adjusted_params = get_adjusted_parameters(context.config, attempt)
+        
+        # Generate retry guidance for LLM-controllable errors (only after 2nd attempt)
+        retry_guidance = ""
+        error_type = ""
+        if attempt >= 2 and last_error_message:
+            retry_guidance, error_type = get_retry_guidance(last_error_message)
+            if retry_guidance:
+                print(f'  INFO: Adding retry guidance for: {error_type}')
+        
         uploaded_file = None
         try:
             # Stage marker: uploading
             context.current_stage = "uploading"
             context.stage_start_ts = time.time()
+            
+            # Log parameter adjustments if this is attempt 3 or 4 (4th or 5th try)
+            if attempt >= 3:
+                boost = 0.1 if attempt == 3 else 0.2
+                print(f'  INFO: Attempt {attempt + 1} - Adjusting parameters: temp={adjusted_params["temperature"]:.1f}, top_p={adjusted_params["top_p"]:.1f}, top_k={adjusted_params["top_k"]} (boost +{boost})')
+            
             print(f'  INFO: Uploading markdown file to Gemini...')
             try:
                 uploaded_file = context.client.files.upload(
@@ -1140,6 +1267,10 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
             # Create and validate extraction prompt
             extraction_prompt = create_extraction_prompt(filename)
             
+            # Add retry guidance if applicable (only for LLM-controllable errors after 2nd attempt)
+            if retry_guidance:
+                extraction_prompt += f"\n\n{retry_guidance}"
+            
             # Disable safety settings to prevent content filtering
             safety_settings = [
                 types.SafetySetting(
@@ -1172,9 +1303,9 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                 model=context.config.model,
                 contents=safe_content,
                 config={
-                    'temperature': context.config.temperature,
-                    'top_p': context.config.top_p,
-                    'top_k': context.config.top_k,
+                    'temperature': adjusted_params['temperature'],
+                    'top_p': adjusted_params['top_p'],
+                    'top_k': adjusted_params['top_k'],
                     'max_output_tokens': context.config.max_tokens,
                     'candidate_count': context.config.candidate_count,
                     'seed': context.config.seed,
@@ -1211,18 +1342,29 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                 
                 # If JSON is incomplete or response was truncated, retry
                 if not is_json_complete or is_truncated:
-                    print(f'  WARNING: JSON incomplete or truncated (finish_reason: {finish_reason}) - retrying...')
+                    error_msg = f"JSON incomplete or truncated: {validation_result.get('error', 'Unknown error')}"
+                    print(f'  WARNING: {error_msg} - retrying...')
+                    
+                    # Store error message for retry guidance
+                    last_error_message = error_msg
+                    
                     cleanup_uploaded_file(context.client, uploaded_file)
                     
                     # If this is the last attempt, log the failure and return None
                     if attempt == context.config.max_retries - 1:
                         error_msg = f"JSON incomplete after {context.config.max_retries} attempts: {validation_result.get('error', 'Unknown error')}"
                         print(f'  ERROR: {error_msg}')
+                        
+                        # Add retry guidance info to parameters for logging
+                        log_params = adjusted_params.copy()
+                        if retry_guidance:
+                            log_params['retry_guidance_used'] = error_type
+                        
                         context.performance_monitor.log_extraction(
                             filename=filename, file_size_mb=file_size_mb, processing_time=processing_time,
                             usage_metadata=response.usage_metadata, success=False, error_message=error_msg,
                             api_key_used=context.key_number, process_id=context.process_id, cao_number=cao_number,
-                            model=context.config.model, parameters=get_model_parameters(context.config)
+                            model=context.config.model, parameters=log_params
                         )
                         return None
                     
@@ -1233,11 +1375,16 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                 if not validate_response_schema(content, filename):
                     print(f'  WARNING: Response schema validation failed for {filename}')
                 
+                # Add retry guidance info to parameters for logging
+                log_params = adjusted_params.copy()
+                if retry_guidance:
+                    log_params['retry_guidance_used'] = error_type
+                
                 context.performance_monitor.log_extraction(
                     filename=filename, file_size_mb=file_size_mb, processing_time=processing_time,
                     usage_metadata=response.usage_metadata, success=True, api_key_used=context.key_number,
                     process_id=context.process_id, cao_number=cao_number,
-                    model=context.config.model, parameters=get_model_parameters(context.config)
+                    model=context.config.model, parameters=log_params
                 )
                 
                 cleanup_uploaded_file(context.client, uploaded_file)
@@ -1294,17 +1441,26 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                 import traceback
                 print(f'  DEBUG: Traceback: {traceback.format_exc()}')
             
+            # Store error message for retry guidance
+            last_error_message = str(e)
+            
             # Handle retry logic
             if handle_llm_errors(e, attempt, context.config.max_retries, file_size_mb, context, remaining_budget_s):
                         continue
             else:
                 processing_time = time.time() - start_time
                 print(f'  Markdown upload failed after {context.config.max_retries} attempts')
+                
+                # Add retry guidance info to parameters for logging
+                log_params = adjusted_params.copy()
+                if retry_guidance:
+                    log_params['retry_guidance_used'] = error_type
+                
                 context.performance_monitor.log_extraction(
                     filename=filename, file_size_mb=file_size_mb, processing_time=processing_time,
                     usage_metadata=None, success=False, error_message=f'Failed after {context.config.max_retries} attempts: {str(e)}',
                     api_key_used=context.key_number, process_id=context.process_id, cao_number=cao_number,
-                    model=context.config.model, parameters=get_model_parameters(context.config)
+                    model=context.config.model, parameters=log_params
                 )
                 return None
     
@@ -1448,11 +1604,17 @@ def cleanup_announce_files(context: ProcessingContext):
     try:
         # Clean up announce files
         announce_files = list(context.config.output_folder.glob('.cao_*_announced'))
+        cleaned_count = 0
         for announce_file in announce_files:
-            announce_file.unlink()
-            print(f'  🧹 Cleaned up announce file: {announce_file.name}')
-        if announce_files:
-            print(f'  🧹 Cleaned up {len(announce_files)} announce files')
+            try:
+                announce_file.unlink(missing_ok=True)
+                cleaned_count += 1
+                print(f'  🧹 Cleaned up announce file: {announce_file.name}')
+            except Exception as e:
+                # Ignore errors (file might have been deleted by another process)
+                pass
+        if cleaned_count > 0:
+            print(f'  🧹 Cleaned up {cleaned_count} announce files')
         
         # Clean up stale lock files
         lock_files_found = 0
@@ -1462,10 +1624,10 @@ def cleanup_announce_files(context: ProcessingContext):
         for lock_file in context.config.output_folder.rglob('*.json.lock'):
             try:
                 if current_time - lock_file.stat().st_mtime > ttl_seconds:
-                    lock_file.unlink()
+                    lock_file.unlink(missing_ok=True)
                     lock_files_found += 1
             except Exception:
-                pass  # Ignore errors on individual files
+                pass  # Ignore errors on individual files (file might be deleted by another process)
         
         if lock_files_found > 0:
             print(f'  🧹 Cleaned up {lock_files_found} stale lock files')
@@ -1530,8 +1692,8 @@ def run_extraction_pipeline():
     if args.max_files is not None:
         config.max_files = args.max_files
     
-    # Validate paths
-    validate_input_paths(config)
+    # Validate paths (pass process_id to avoid race conditions in parallel execution)
+    validate_input_paths(config, process_id)
     
     # Setup processing context
     context = setup_processing_context(config, process_id, total_processes, key_number, args.verbose)

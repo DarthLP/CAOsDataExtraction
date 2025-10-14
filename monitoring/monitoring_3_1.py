@@ -364,14 +364,15 @@ class PerformanceMonitor:
                     processing_time: float,
                     usage_metadata: Optional[types.UsageMetadata],
                     success: bool,
-                    analysis_type: str = "combined",  # "salary", "non_salary", or "combined"
+                    analysis_type: str = "combined",  # "salary", "non_salary_part1", "non_salary_part2", "non_salary_part3", or "combined"
                     error_message: Optional[str] = None,
                     api_key_used: int = 1,
                     process_id: int = 0,
                     cao_number: str = "",
                     allow_duplicates: bool = True,  # Analysis can have multiple entries per file
                     model: str = "gemini-2.5-flash",
-                    parameters: Optional[Dict[str, Any]] = None) -> None:
+                    parameters: Optional[Dict[str, Any]] = None,
+                    log_file_suffix: Optional[str] = None) -> None:
         """
         Log detailed performance data for a single analysis (p4 pipeline)
         
@@ -423,23 +424,116 @@ class PerformanceMonitor:
             "parameters": parameters or {}
         }
         
-        # Check for duplicates if needed
+        # Determine log file based on analysis type or suffix
+        if log_file_suffix:
+            log_file = f"performance_logs/llm_analysis/analysis_performance_{log_file_suffix}.jsonl"
+        elif analysis_type == "salary":
+            log_file = "performance_logs/llm_analysis/analysis_performance_salary.jsonl"
+        elif analysis_type == "non_salary_part1":
+            log_file = "performance_logs/llm_analysis/analysis_performance_non_salary1.jsonl"
+        elif analysis_type == "non_salary_part2":
+            log_file = "performance_logs/llm_analysis/analysis_performance_non_salary2.jsonl"
+        elif analysis_type == "non_salary_part3":
+            log_file = "performance_logs/llm_analysis/analysis_performance_non_salary3.jsonl"
+        elif analysis_type == "combined":
+            log_file = "performance_logs/llm_analysis/analysis_performance.jsonl"
+        else:
+            log_file = self.log_file  # Default fallback
+        
+        # Check for duplicates if needed and remove existing entry
         if not allow_duplicates:
-            existing_data = self.get_performance_data()
-            for entry in existing_data:
-                if (entry.get('filename') == filename and 
-                    entry.get('cao_number') == cao_number and
-                    entry.get('analysis_type') == analysis_type):
-                    return  # Skip duplicate
+            try:
+                with open(log_file, "r", encoding="utf-8") as f:
+                    lines = f.readlines()
+                
+                if lines:
+                    existing_data = [json.loads(line) for line in lines if line.strip()]
+                    # Filter out existing entry for this file/cao/analysis_type
+                    filtered_data = []
+                    for entry in existing_data:
+                        if not (entry.get('filename') == filename and 
+                                entry.get('cao_number') == cao_number and
+                                entry.get('analysis_type') == analysis_type):
+                            filtered_data.append(entry)
+                    
+                    # Write back the filtered data (removing the old entry)
+                    with open(log_file, "w", encoding="utf-8") as f:
+                        for entry in filtered_data:
+                            f.write(json.dumps(entry) + "\n")
+            except FileNotFoundError:
+                pass  # File doesn't exist yet, no duplicates to check
+        
+        # Ensure log directory exists
+        Path(log_file).parent.mkdir(parents=True, exist_ok=True)
         
         # Write to log file with file locking
-        with open(self.log_file, 'a', encoding='utf-8') as f:
+        with open(log_file, 'a', encoding='utf-8') as f:
             try:
                 fcntl.flock(f.fileno(), fcntl.LOCK_EX)
                 f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
                 fcntl.flock(f.fileno(), fcntl.LOCK_UN)
             except Exception as e:
                 print(f"Warning: Could not acquire file lock for logging: {e}")
+                f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
+
+    def log_combined_analysis(self,
+                             filename: str,
+                             file_size_mb: float,
+                             total_processing_time: float,
+                             total_input_tokens: int,
+                             total_output_tokens: int,
+                             all_successful: bool,
+                             api_key_used: int = 1,
+                             process_id: int = 0,
+                             cao_number: str = "",
+                             model: str = "gemini-2.5-flash") -> None:
+        """
+        Log combined analysis results when all 4 parts (salary + 3 non-salary parts) succeed
+        
+        Args:
+            filename: Name of the processed file
+            file_size_mb: File size in megabytes
+            total_processing_time: Sum of all processing times
+            total_input_tokens: Sum of all input tokens
+            total_output_tokens: Sum of all output tokens
+            all_successful: Whether all 4 parts succeeded
+            api_key_used: API key number used
+            process_id: Process ID for multi-processing
+            cao_number: CAO number for the file
+            model: Model name used
+        """
+        
+        # Create log entry for combined analysis
+        log_entry = {
+            "timestamp": datetime.now().isoformat(),
+            "filename": filename,
+            "cao_number": cao_number,
+            "analysis_type": "combined",
+            "file_size_mb": round(file_size_mb, 2),
+            "processing_time_seconds": round(total_processing_time, 2),
+            "input_tokens": total_input_tokens,
+            "output_tokens": total_output_tokens, 
+            "total_tokens": total_input_tokens + total_output_tokens,
+            "success": all_successful,
+            "error_message": None if all_successful else "One or more parts failed",
+            "api_key_used": api_key_used,
+            "process_id": process_id,
+            "free_tier_request": True,  # Assuming free tier for now
+            "model": model,
+            "parameters": {"combined": True}
+        }
+        
+        # Write to combined log file
+        log_file = "performance_logs/llm_analysis/analysis_performance.jsonl"
+        Path(log_file).parent.mkdir(parents=True, exist_ok=True)
+        
+        with open(log_file, 'a', encoding='utf-8') as f:
+            try:
+                fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+                f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
+                fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+            except Exception as e:
+                print(f"Warning: Could not acquire file lock for combined logging: {e}")
                 f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
 
 # Convenience functions for easy integration

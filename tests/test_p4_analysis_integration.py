@@ -12,8 +12,8 @@ from pathlib import Path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from pipelines.p4_analysis import (
-    extract_salary_from_json, extract_nonsalary_from_json,
-    merge_extraction_results, analyze_cao_json
+    extract_salary_from_json,
+    merge_extraction_results
 )
 
 
@@ -99,37 +99,11 @@ def test_with_real_json_file():
         raise
 
 
-def test_analyze_cao_json_function():
-    """Test the main analyze_cao_json function."""
-    # Test with the fixture
-    fixture_path = "tests/fixtures/example_salary.json"
-    
-    if not os.path.exists(fixture_path):
-        print(f"Fixture {fixture_path} does not exist, skipping test")
-        return
-    
-    try:
-        with open(fixture_path, 'r', encoding='utf-8') as f:
-            json_text = f.read()
-        
-        # Test the function
-        result = analyze_cao_json(json_text, "test_fixture.json")
-        
-        assert isinstance(result, dict)
-        assert "salary_extraction" in result
-        assert "non_salary_extraction" in result
-        
-        print("✓ analyze_cao_json function test passed")
-        
-    except Exception as e:
-        print(f"✗ analyze_cao_json function test failed: {e}")
-        raise
 
 
 if __name__ == "__main__":
     print("Running integration tests for p4_analysis.py...")
     
-    test_analyze_cao_json_function()
     test_with_real_json_file()
     
     print("\n✓ All integration tests passed!")

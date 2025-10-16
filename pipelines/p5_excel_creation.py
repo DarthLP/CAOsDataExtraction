@@ -1,8 +1,8 @@
 """
 CAO Data Analysis - Excel Creation Pipeline (p5_excel_creation.py)
 
-This script creates Excel output from LLM extraction results.
-It merges salary and non-salary data, adds CAO info, and creates final Excel files.
+This script creates separate Excel outputs for salary and non-salary data from LLM extraction results.
+It merges data from three non-salary folders, adds CAO info, and creates final Excel files.
 
 USAGE:
     python pipelines/p5_excel_creation.py
@@ -19,6 +19,8 @@ INPUT:
 
 OUTPUT:
     - Excel files in outputs/excel/new_results/
+      - extracted_data_salary.xlsx
+      - extracted_data_non_salary.xlsx
 """
 
 # =============================================================================
@@ -39,6 +41,12 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # Third-party imports
 import pandas as pd
 import yaml
+
+# Import Excel schema definitions
+from schema.excel_output_schema import (
+    get_salary_columns, get_non_salary_columns, 
+    flatten_salary_row, flatten_non_salary_data
+)
 
 # =============================================================================
 # CONFIGURATION
@@ -63,7 +71,7 @@ def load_configuration() -> ExcelConfig:
     )
 
 # =============================================================================
-# DATA MERGING FUNCTIONS
+# DATA PROCESSING FUNCTIONS
 # =============================================================================
 def truncate_text_for_excel(text: str, max_length: int = 32000) -> str:
     """
@@ -85,171 +93,25 @@ def truncate_text_for_excel(text: str, max_length: int = 32000) -> str:
     # Truncate and add ellipsis
     return text[:max_length-3] + "..."
 
-def merge_extraction_results(salary_extracted: List[dict], rest_extracted: dict, cao_dates: Dict[str, str]) -> List[dict]:
+def normalize_filename(filename: str) -> str:
     """
-    Merge results from salary and rest extractions into multiple rows with specific infotype labels.
+    Normalize filename by removing common suffixes for matching.
     
     Args:
-        salary_extracted: List of salary extraction results
-        rest_extracted: Non-salary extraction results
-        cao_dates: Dictionary containing CAO start date, expiry date, and date of formal notification
+        filename: Original filename
         
     Returns:
-        List[dict]: List of merged extraction results with complete field structure
+        str: Normalized filename for matching
     """
-    # Define the complete field structure in the exact order specified
-    all_fields = [
-        'File_name', 'CAO', 'id', 'infotype', 'start_date', 'expiry_date', 'start_date_contract', 'expiry_date_contract', 'date_of_formal_notification', 'TTW',
-        'jobgroup', 'salary_1', 'salary_1_unit', 'salary_1_startdate', 'salary_increment_1',
-        'salary_2', 'salary_2_unit', 'salary_2_startdate', 'salary_increment_2',
-        'salary_3', 'salary_3_unit', 'salary_3_startdate', 'salary_increment_3',
-        'salary_4', 'salary_4_unit', 'salary_4_startdate', 'salary_increment_4',
-        'salary_5', 'salary_5_unit', 'salary_5_startdate', 'salary_increment_5',
-        'salary_6', 'salary_6_unit', 'salary_6_startdate', 'salary_increment_6',
-        'salary_7', 'salary_7_unit', 'salary_7_startdate', 'salary_increment_7',
-        'more_salaries', 'salary_note', 'salary_age_group',
-        'pension_premium_basic', 'pension_premium_plus', 'retire_age_basic', 'retire_age_plus', 'pension_age_group',
-        'maternity_leave', 'maternity_pay', 'maternity_note', 'vacation_time', 'vacation_unit', 'vacation_note',
-        'term_period_employer', 'term_employer_note', 'term_period_worker', 'term_worker_note', 'probation_period', 'probation_note',
-        'overtime_compensation', 'max_hrs', 'min_hrs', 'shift_compensation', 'overtime_allowance_min', 'overtime_allowance_max',
-        'training', 'Homeoffice'
-    ]
+    # Remove common suffixes
+    suffixes_to_remove = ['.pdf', '.md', '_analysis', '_extract']
     
-    def safe_truncate(value):
-        """Safely truncate any value to fit Excel limits."""
-        if isinstance(value, str):
-            return truncate_text_for_excel(value)
-        return value
+    normalized = filename
+    for suffix in suffixes_to_remove:
+        if normalized.endswith(suffix):
+            normalized = normalized[:-len(suffix)]
     
-    # Define field mappings for different infotypes
-    INFOTYPE_FIELD_MAPPINGS = {
-        'Pension': ['pension_premium_basic', 'pension_premium_plus', 'retire_age_basic', 'retire_age_plus', 'pension_age_group'],
-        'Leave': ['maternity_leave', 'maternity_pay', 'maternity_note', 'vacation_time', 'vacation_unit', 'vacation_note'],
-        'Termination': ['term_period_employer', 'term_employer_note', 'term_period_worker', 'term_worker_note', 'probation_period', 'probation_note'],
-        'Overtime': ['overtime_compensation', 'max_hrs', 'min_hrs', 'shift_compensation', 'overtime_allowance_min', 'overtime_allowance_max'],
-        'Training': ['training'],
-        'Homeoffice': ['Homeoffice']
-    }
-    
-    merged_results = []
-    
-    # Process salary items - always create at least one wage row
-    if salary_extracted:
-        # Create wage rows for each salary item
-        for salary_item in salary_extracted:
-            if not isinstance(salary_item, dict):
-                continue
-                
-            # Create wage row
-            wage_row = {field: '' for field in all_fields}
-            wage_row['infotype'] = 'Wage'
-            
-            # Fill salary fields
-            for field, value in salary_item.items():
-                if field in wage_row and value:
-                    wage_row[field] = safe_truncate(value)
-            
-            # Add contract dates from rest_extracted if available
-            if 'contract_information' in rest_extracted:
-                contract_info = rest_extracted['contract_information']
-                if contract_info.get('start_date_contract'):
-                    wage_row['start_date_contract'] = contract_info['start_date_contract']
-                if contract_info.get('expiry_date_contract'):
-                    wage_row['expiry_date_contract'] = contract_info['expiry_date_contract']
-            
-            # Add CAO dates
-            wage_row['start_date'] = cao_dates.get('start_date', '')
-            wage_row['expiry_date'] = cao_dates.get('expiry_date', '')
-            wage_row['date_of_formal_notification'] = cao_dates.get('date_of_formal_notification', '')
-            
-            merged_results.append(wage_row)
-    else:
-        # Create empty wage row if no salary data
-        wage_row = {field: '' for field in all_fields}
-        wage_row['infotype'] = 'Wage'
-        
-        # Add contract dates from rest_extracted if available
-        if 'contract_information' in rest_extracted:
-            contract_info = rest_extracted['contract_information']
-            if contract_info.get('start_date_contract'):
-                wage_row['start_date_contract'] = contract_info['start_date_contract']
-            if contract_info.get('expiry_date_contract'):
-                wage_row['expiry_date_contract'] = contract_info['expiry_date_contract']
-        
-        # Add CAO dates
-        wage_row['start_date'] = cao_dates.get('start_date', '')
-        wage_row['expiry_date'] = cao_dates.get('expiry_date', '')
-        wage_row['date_of_formal_notification'] = cao_dates.get('date_of_formal_notification', '')
-        
-        merged_results.append(wage_row)
-    
-    # Process non-salary items (create separate rows for each infotype)
-    for infotype, fields in INFOTYPE_FIELD_MAPPINGS.items():
-        rest_row = {field: '' for field in all_fields}
-        rest_row['infotype'] = infotype
-        
-        # Map fields based on infotype
-        if infotype == 'Pension' and 'pension_information' in rest_extracted:
-            pension_info = rest_extracted['pension_information']
-            # Map Pydantic field names to Excel column names
-            field_mapping = {
-                'pension_premium_basic': 'pension_scheme_basic',
-                'pension_premium_plus': 'pension_scheme_plus',
-                'retire_age_basic': 'retire_age_basic',
-                'retire_age_plus': 'retire_age_plus',
-                'pension_age_group': 'pension_age_group'
-            }
-            for excel_field, pydantic_field in field_mapping.items():
-                if pydantic_field in pension_info and pension_info[pydantic_field]:
-                    rest_row[excel_field] = safe_truncate(pension_info[pydantic_field])
-        elif infotype == 'Leave' and 'leave_information' in rest_extracted:
-            leave_info = rest_extracted['leave_information']
-            for field in fields:
-                if field in leave_info and leave_info[field]:
-                    rest_row[field] = safe_truncate(leave_info[field])
-        elif infotype == 'Termination' and 'termination_information' in rest_extracted:
-            termination_info = rest_extracted['termination_information']
-            for field in fields:
-                if field in termination_info and termination_info[field]:
-                    rest_row[field] = safe_truncate(termination_info[field])
-        elif infotype == 'Overtime' and 'overtime_information' in rest_extracted:
-            overtime_info = rest_extracted['overtime_information']
-            for field in fields:
-                if field in overtime_info and overtime_info[field]:
-                    rest_row[field] = safe_truncate(overtime_info[field])
-        elif infotype == 'Training' and 'training_information' in rest_extracted:
-            training_info = rest_extracted['training_information']
-            for field in fields:
-                if field in training_info and training_info[field]:
-                    rest_row[field] = safe_truncate(training_info[field])
-        elif infotype == 'Homeoffice' and 'homeoffice_information' in rest_extracted:
-            homeoffice_info = rest_extracted['homeoffice_information']
-            for field in fields:
-                if field in homeoffice_info and homeoffice_info[field]:
-                    rest_row[field] = safe_truncate(homeoffice_info[field])
-        
-        # Add contract dates from p4_analysis.py
-        if 'contract_information' in rest_extracted:
-            contract_info = rest_extracted['contract_information']
-            if contract_info.get('start_date_contract'):
-                rest_row['start_date_contract'] = contract_info['start_date_contract']
-            if contract_info.get('expiry_date_contract'):
-                rest_row['expiry_date_contract'] = contract_info['expiry_date_contract']
-        
-        # Add CAO dates to the rest_row
-        rest_row['start_date'] = cao_dates.get('start_date', '')
-        rest_row['expiry_date'] = cao_dates.get('expiry_date', '')
-        rest_row['date_of_formal_notification'] = cao_dates.get('date_of_formal_notification', '')
-        
-        merged_results.append(rest_row)
-    
-    # Final safety check: ensure all string values are truncated
-    for result in merged_results:
-        for field, value in result.items():
-            if isinstance(value, str) and len(value) > 32000:
-                result[field] = truncate_text_for_excel(value)
-    
-    return merged_results
+    return normalized
 
 def load_cao_info(cao_info_path: str) -> Dict[str, Dict[str, str]]:
     """Load CAO information from CSV file."""
@@ -285,6 +147,84 @@ def load_cao_info(cao_info_path: str) -> Dict[str, Dict[str, str]]:
     
     return cao_info_mapping
 
+def match_cao_info(cao_number: str, filename: str, cao_info_mapping: Dict[str, Dict[str, str]]) -> Dict[str, str]:
+    """
+    Match CAO info using robust filename matching.
+    
+    Args:
+        cao_number: CAO number from folder name
+        filename: Original filename
+        cao_info_mapping: CAO info mapping from CSV
+        
+    Returns:
+        Dict with CAO metadata
+    """
+    # Normalize filename for matching
+    normalized_filename = normalize_filename(filename)
+    
+    # Try exact match first (with .pdf extension)
+    cao_info_key = f"{cao_number}:{normalized_filename}.pdf"
+    cao_info = cao_info_mapping.get(cao_info_key, {})
+    
+    # If no exact match, try to find by filename only (in case CAO number folder is wrong)
+    if not cao_info:
+        for key, info in cao_info_mapping.items():
+            # Compare normalized filenames
+            csv_filename = normalize_filename(info.get('pdf_name', ''))
+            if csv_filename == normalized_filename:
+                cao_info = info
+                print(f'    Found CAO info by filename match: {key}')
+                break
+    
+    # Create metadata dict
+    metadata = {
+        'cao_number': cao_number,
+        'id': cao_info.get('id', ''),
+        'TTW': cao_info.get('TTW', ''),
+        'ingangsdatum': cao_info.get('ingangsdatum', ''),
+        'expiratiedatum': cao_info.get('expiratiedatum', ''),
+        'datum_kennisgeving': cao_info.get('datum_kennisgeving', ''),
+        'file_name': filename
+    }
+    
+    if cao_info:
+        print(f'    Added CAO info: id={metadata["id"]}, TTW={metadata["TTW"]}')
+    else:
+        print(f'    No CAO info found for CAO {cao_number}, filename {normalized_filename}')
+    
+    return metadata
+
+def load_non_salary_data(cao_number: str, filename: str, llm_analysis_folder: Path) -> Dict[str, Any]:
+    """
+    Load and merge non-salary data from three folders.
+    
+    Args:
+        cao_number: CAO number
+        filename: Base filename (without extensions)
+        llm_analysis_folder: Path to llm_analysis folder
+        
+    Returns:
+        Dict with merged non-salary data
+    """
+    non_salary_folders = ['gen_bon_wag_pen_ter', 'lea_ove_tra', 'hom_con_saf_chi_ai_fri']
+    merged_data = {}
+    
+    for folder in non_salary_folders:
+        non_salary_file = llm_analysis_folder / 'non_salary' / folder / cao_number / f"{filename}_analysis.json"
+        
+        if non_salary_file.exists():
+            try:
+                with open(non_salary_file, 'r', encoding='utf-8') as f:
+                    folder_data = json.load(f)
+                    merged_data.update(folder_data)
+                print(f'    Loaded non-salary data from {folder}')
+            except Exception as e:
+                print(f'    Warning: Could not load {non_salary_file}: {e}')
+        else:
+            print(f'    Warning: Non-salary file not found: {non_salary_file}')
+    
+    return merged_data
+
 # =============================================================================
 # FILE PROCESSING FUNCTIONS
 # =============================================================================
@@ -298,75 +238,48 @@ def discover_llm_files(llm_analysis_folder: Path) -> List[tuple]:
         for cao_folder in salary_folder.iterdir():
             if cao_folder.is_dir():
                 cao_number = cao_folder.name
-                for json_file in cao_folder.glob('*_salary.json'):
-                    files.append((cao_number, json_file))
+                for json_file in cao_folder.glob('*_analysis.json'):
+                    # Extract base filename
+                    base_filename = json_file.stem.replace('_analysis', '')
+                    files.append((cao_number, base_filename, json_file))
     
     return files
 
-def process_llm_file(cao_number: str, salary_file: Path, cao_info_mapping: Dict[str, Dict[str, str]], 
-                    config: ExcelConfig) -> List[dict]:
-    """Process a single LLM file and return merged results."""
-    filename = salary_file.stem.replace('_salary', '') + '.json'
-    
+def process_salary_file(cao_number: str, base_filename: str, salary_file: Path, 
+                       cao_info_mapping: Dict[str, Dict[str, str]], config: ExcelConfig) -> List[dict]:
+    """Process a single salary file and return Excel rows."""
     # Load salary data
     with open(salary_file, 'r', encoding='utf-8') as f:
         salary_data = json.load(f)
-    salary_extracted = salary_data.get('salary_information', [])
     
-    # Load non-salary data
-    non_salary_file = config.llm_analysis_folder / 'non_salary' / cao_number / f"{salary_file.stem.replace('_salary', '')}_non_salary.json"
+    salary_rows = salary_data.get('salary_information', [])
     
-    rest_extracted = {}
-    if non_salary_file.exists():
-        with open(non_salary_file, 'r', encoding='utf-8') as f:
-            rest_extracted = json.load(f)
+    # Get CAO metadata
+    cao_metadata = match_cao_info(cao_number, base_filename, cao_info_mapping)
     
-    # Find matching CAO info by CAO number and filename
-    # Convert filename back to original PDF name (remove .json extension and _salary suffix)
-    original_filename = salary_file.stem.replace('_salary', '')
+    # Convert to Excel rows
+    excel_rows = []
+    for salary_row in salary_rows:
+        rows = flatten_salary_row(salary_row, cao_metadata)
+        excel_rows.extend(rows)
     
-    # Also remove .md extension if present (LLM files have .md extensions)
-    original_filename = original_filename.replace('.md', '')
+    print(f'  {cao_number}: Processed {len(excel_rows)} salary rows from {salary_file.name}')
+    return excel_rows
+
+def process_non_salary_file(cao_number: str, base_filename: str, cao_info_mapping: Dict[str, Dict[str, str]], 
+                           config: ExcelConfig) -> Dict[str, Any]:
+    """Process non-salary data for a single file and return Excel row."""
+    # Load and merge non-salary data
+    non_salary_data = load_non_salary_data(cao_number, base_filename, config.llm_analysis_folder)
     
-    # Try to find exact match first (with .pdf extension)
-    cao_info_key = f"{cao_number}:{original_filename}.pdf"
-    cao_info = cao_info_mapping.get(cao_info_key, {})
+    # Get CAO metadata
+    cao_metadata = match_cao_info(cao_number, base_filename, cao_info_mapping)
     
-    # If no exact match, try to find by filename only (in case CAO number folder is wrong)
-    if not cao_info:
-        for key, info in cao_info_mapping.items():
-            # Compare without extensions (both .pdf and .md)
-            csv_filename = info.get('pdf_name', '').replace('.pdf', '')
-            if csv_filename == original_filename:
-                cao_info = info
-                print(f'    Found CAO info by filename match: {key}')
-                break
+    # Convert to Excel row
+    excel_row = flatten_non_salary_data(non_salary_data, cao_metadata)
     
-    cao_dates = {
-        'start_date': cao_info.get('ingangsdatum', ''),
-        'expiry_date': cao_info.get('expiratiedatum', ''),
-        'date_of_formal_notification': cao_info.get('datum_kennisgeving', '')
-    }
-    
-    # Merge results
-    merged_results = merge_extraction_results(salary_extracted, rest_extracted, cao_dates)
-    
-    # Add metadata
-    for item in merged_results:
-        item['File_name'] = filename
-        item['CAO'] = cao_number
-        
-        # Add CAO info if available
-        if cao_info:
-            item['id'] = cao_info.get('id', '')
-            item['TTW'] = cao_info.get('TTW', '')
-            print(f'    Added CAO info: id={item["id"]}, TTW={item["TTW"]}, dates={cao_dates}')
-        else:
-            item['id'] = ''
-            item['TTW'] = ''
-            print(f'    No CAO info found for CAO {cao_number}, filename {original_filename}')
-    
-    return merged_results
+    print(f'  {cao_number}: Processed non-salary data for {base_filename}')
+    return excel_row
 
 # =============================================================================
 # MAIN EXECUTION
@@ -400,62 +313,79 @@ def main():
         print(f'Processing {len(all_files)} files')
         
         # Process files
-        all_results = []
+        salary_results = []
+        non_salary_results = []
         successful_files = 0
         failed_files = []
         
-        for cao_number, salary_file in all_files:
+        for cao_number, base_filename, salary_file in all_files:
             try:
-                results = process_llm_file(cao_number, salary_file, cao_info_mapping, config)
-                all_results.extend(results)
+                # Process salary data
+                salary_rows = process_salary_file(cao_number, base_filename, salary_file, cao_info_mapping, config)
+                salary_results.extend(salary_rows)
+                
+                # Process non-salary data
+                non_salary_row = process_non_salary_file(cao_number, base_filename, cao_info_mapping, config)
+                non_salary_results.append(non_salary_row)
+                
                 successful_files += 1
                 print(f'  {cao_number}: Processed {salary_file.name}')
             except Exception as e:
                 print(f'  {cao_number}: Error processing {salary_file.name}: {e}')
                 failed_files.append(salary_file.name)
         
-        # Create DataFrame and save Excel
-        if all_results:
+        # Create DataFrames and save Excel files
+        if salary_results:
             try:
-                df_results = pd.DataFrame(all_results)
-                print(f'  Created DataFrame with {len(df_results)} rows and {len(df_results.columns)} columns')
+                # Get column definitions
+                salary_columns = get_salary_columns()
                 
-                # Check for any extremely long text fields
-                for col in df_results.columns:
-                    if df_results[col].dtype == 'object':
-                        max_len = df_results[col].astype(str).str.len().max()
-                        if max_len > 30000:
-                            print(f'  WARNING: Column {col} has text with {max_len} characters')
+                # Create DataFrame
+                df_salary = pd.DataFrame(salary_results)
                 
-                # Check if DataFrame is too large for Excel
-                total_cells = len(df_results) * len(df_results.columns)
-                if total_cells > 1000000:  # Excel limit is ~1M cells
-                    print(f'  WARNING: DataFrame has {total_cells} cells, which is close to Excel limits')
-                    print(f'  Saving as CSV instead of Excel to avoid issues')
-                    output_path = config.output_folder / f"extracted_data.csv"
-                    # Save CSV with better formatting for readability (using semicolon delimiter for European Excel)
-                    df_results.to_csv(output_path, index=False, encoding='utf-8', quoting=csv.QUOTE_ALL, sep=';')
-                    print(f'  Saved CSV file: {output_path}')
-                    print(f'  Total rows: {len(df_results)}')
-                else:
-                    # Try to save as Excel
-                    output_path = config.output_folder / f"extracted_data.xlsx"
-                    df_results.to_excel(output_path, index=False, engine='openpyxl')
-                    print(f'  Saved Excel file: {output_path}')
-                    print(f'  Total rows: {len(df_results)}')
+                # Ensure all columns exist (fill missing with empty values)
+                missing_cols = [col for col in salary_columns if col not in df_salary.columns]
+                if missing_cols:
+                    df_salary = pd.concat([df_salary, pd.DataFrame(columns=missing_cols)], axis=1)
+                
+                # Reorder columns
+                df_salary = df_salary[salary_columns]
+                
+                print(f'  Created salary DataFrame with {len(df_salary)} rows and {len(df_salary.columns)} columns')
+                
+                # Save salary Excel
+                salary_output_path = config.output_folder / "extracted_data_salary.xlsx"
+                df_salary.to_excel(salary_output_path, index=False, engine='openpyxl')
+                print(f'  Saved salary Excel file: {salary_output_path}')
                 
             except Exception as e:
-                print(f'  ERROR creating Excel file: {e}')
-                # Try to save as CSV as fallback
-                try:
-                    csv_path = config.output_folder / f"extracted_data.csv"
-                    # Save CSV with better formatting for readability (using semicolon delimiter for European Excel)
-                    df_results.to_csv(csv_path, index=False, encoding='utf-8', quoting=csv.QUOTE_ALL, sep=';')
-                    print(f'  Saved CSV file as fallback: {csv_path}')
-                except Exception as csv_error:
-                    print(f'  ERROR saving CSV fallback: {csv_error}')
-        else:
-            print('  No data to save')
+                print(f'  ERROR creating salary Excel file: {e}')
+        
+        if non_salary_results:
+            try:
+                # Get column definitions
+                non_salary_columns = get_non_salary_columns()
+                
+                # Create DataFrame
+                df_non_salary = pd.DataFrame(non_salary_results)
+                
+                # Ensure all columns exist (fill missing with empty values)
+                missing_cols = [col for col in non_salary_columns if col not in df_non_salary.columns]
+                if missing_cols:
+                    df_non_salary = pd.concat([df_non_salary, pd.DataFrame(columns=missing_cols)], axis=1)
+                
+                # Reorder columns
+                df_non_salary = df_non_salary[non_salary_columns]
+                
+                print(f'  Created non-salary DataFrame with {len(df_non_salary)} rows and {len(df_non_salary.columns)} columns')
+                
+                # Save non-salary Excel
+                non_salary_output_path = config.output_folder / "extracted_data_non_salary.xlsx"
+                df_non_salary.to_excel(non_salary_output_path, index=False, engine='openpyxl')
+                print(f'  Saved non-salary Excel file: {non_salary_output_path}')
+                
+            except Exception as e:
+                print(f'  ERROR creating non-salary Excel file: {e}')
         
         print(f'Completed: {successful_files} successful, {len(failed_files)} failed')
         

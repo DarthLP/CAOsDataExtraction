@@ -1,24 +1,366 @@
 Process 1: Processing 262 files
   10: Bouw CAO 2011 aanmelding TTW 1-2011_extract.json
-  DEBUG: Making API call...
-Processing time: 37.2s | Status: SUCCESS
-  Salary: Schema validation passed - 11 salary entries
-  10: Salary extraction completed
-  Part 1 extraction starting for Bouw CAO 2011 aanmelding TTW 1-2011_extract.json
-  10: Error processing Bouw CAO 2011 aanmelding TTW 1-2011_extract.json: 'section'
+  10: Skipping Bouw CAO 2011 aanmelding TTW 1-2011_extract.json (all parts already processed)
   10: CAO_2014_aanmelding_20_3_2014_extract.json
-  DEBUG: Making API call...
-Processing time: 28.1s | Status: SUCCESS
-  Salary: Schema validation passed - 11 salary entries
-  10: Salary extraction completed
-  Part 1 extraction starting for CAO_2014_aanmelding_20_3_2014_extract.json
-  10: Error processing CAO_2014_aanmelding_20_3_2014_extract.json: 'section'
+  10: Skipping CAO_2014_aanmelding_20_3_2014_extract.json (all parts already processed)
   10: Cao Bouw en Infra 2025 - 2027_extract.json
-  DEBUG: Making API call...
-Processing time: 42.4s | Status: SUCCESS
-  Salary: Schema validation passed - 17 salary entries
-  10: Salary extraction completed
-  Part 1 extraction starting for Cao Bouw en Infra 2025 - 2027_extract.json
-  10: Error processing Cao Bouw en Infra 2025 - 2027_extract.json: 'section'
+  10: Skipping Cao Bouw en Infra 2025 - 2027_extract.json (all parts already processed)
   10: TTW_CAO_definitief_12_november_2012_extract.json
+  10: Skipping TTW_CAO_definitief_12_november_2012_extract.json (all parts already processed)
+  10: cao Bouw en Infra 2021-2022_1_extract.json
+  10: Skipping cao Bouw en Infra 2021-2022_1_extract.json (all parts already processed)
+  10: cao_Bouw_en_Infra_2018_2019_TTW_okt18_extract.json
+  10: Skipping cao_Bouw_en_Infra_2018_2019_TTW_okt18_extract.json (all parts already processed)
+  21: CAO tekst 2020 basis.docx_extract.json
+  21: Skipping CAO tekst 2020 basis.docx_extract.json (all parts already processed)
+  21: CAO_2012_aanmelding_extract.json
+  21: Skipping CAO_2012_aanmelding_extract.json (all parts already processed)
+  26: CAO_2016_extract.json
+  26: Skipping CAO_2016_extract.json (all parts already processed)
+  26: CAO_Vlees_2011__ongerenvooieerd__extract.json
+  26: Skipping CAO_Vlees_2011__ongerenvooieerd__extract.json (all parts already processed)
+  26: cao 2019-2020 met wijzigingen geacepteerd definitief.docx_1_extract.json
+  26: Skipping cao 2019-2020 met wijzigingen geacepteerd definitief.docx_1_extract.json (all parts already processed)
+  35: Cao Textielverzorging 2023-2024 TTW doorlopende tekst_extract.json
+  35: Skipping Cao Textielverzorging 2023-2024 TTW doorlopende tekst_extract.json (all parts already processed)
+  35: Cao Textielverzorging integrale tekst 2020-2021 TTW2_extract.json
+  35: Skipping Cao Textielverzorging integrale tekst 2020-2021 TTW2_extract.json (all parts already processed)
+  35: Raltex_CAO_Textielverzorging_doorlopende_tekst_extract.json
+  35: Skipping Raltex_CAO_Textielverzorging_doorlopende_tekst_extract.json (all parts already processed)
+  41: CAO-tekst 2019_vs2.docx _extract.json
+  41: Skipping CAO-tekst 2019_vs2.docx _extract.json (all parts already processed)
+  41: CAO-tekst 2021_2022_geschoond_extract.json
+  41: Skipping CAO-tekst 2021_2022_geschoond_extract.json (all parts already processed)
+  41: CAO_tekst_2010_2012_per01042013_extract.json
+  41: Skipping CAO_tekst_2010_2012_per01042013_extract.json (all parts already processed)
+  41: integrale CAO-tekst 2010-2012_extract.json
+  41: Skipping integrale CAO-tekst 2010-2012_extract.json (all parts already processed)
+  43: Architecten_met_salaristabel_extract.json
+  43: Skipping Architecten_met_salaristabel_extract.json (all parts already processed)
+  43: Cao Architectenbureaus 2021 2023 incl functiehandboek_TTW artikel 22 lid 5_schoon_extract.json
+  43: Skipping Cao Architectenbureaus 2021 2023 incl functiehandboek_TTW artikel 22 lid 5_schoon_extract.json (all parts already processed)
+  43: cao_architectenbureaus_2017_2019_2_extract.json
+  43: Skipping cao_architectenbureaus_2017_2019_2_extract.json (all parts already processed)
+  50: Apotheken 50_extract.json
+  50: Skipping Apotheken 50_extract.json (all parts already processed)
+  50: Cao Apotheken 2024-2027 na ttw volledig met bijlagen 07-07-2025_extract.json
+  50: Skipping Cao Apotheken 2024-2027 na ttw volledig met bijlagen 07-07-2025_extract.json (all parts already processed)
+  51: CAO_Timmer_avv_27_3_2014_extract.json
+  51: Skipping CAO_Timmer_avv_27_3_2014_extract.json (all parts already processed)
+  51: DEF_ARBVW_2011_2012_extract.json
+  51: Skipping DEF_ARBVW_2011_2012_extract.json (all parts already processed)
+  51: Minis_Cao_Timmer_apr__2017__apr__2018_extract.json
+  51: Skipping Minis_Cao_Timmer_apr__2017__apr__2018_extract.json (all parts already processed)
+  80: CAO Waterbouw 2019-2020 definitief.docx _extract.json
+  80: Skipping CAO Waterbouw 2019-2020 definitief.docx _extract.json (all parts already processed)
+  80: CAO Waterbouw 2025-2027 schoon-zn_extract.json
+  80: Skipping CAO Waterbouw 2025-2027 schoon-zn_extract.json (all parts already processed)
+  80: CAO_Waterbouw__def_23_mei_2014_AVV_extract.json
+  80: Skipping CAO_Waterbouw__def_23_mei_2014_AVV_extract.json (all parts already processed)
+  83: Cao Betonproductenindustrie 2021-2022 na ttw definitief_extract.json
+  83: Skipping Cao Betonproductenindustrie 2021-2022 na ttw definitief_extract.json (all parts already processed)
+  83: Integrale_Cao_tekst_2017_2019_vs3_extract.json
+  83: Skipping Integrale_Cao_tekst_2017_2019_vs3_extract.json (all parts already processed)
+  148: Cao Graanbe- en verwerkende bedrijven 2020 - 2022_extract.json
+  148: Skipping Cao Graanbe- en verwerkende bedrijven 2020 - 2022_extract.json (all parts already processed)
+  148: cao_arbeidsvoorwaarden_2018_2020_getekend_extract.json
+  148: Skipping cao_arbeidsvoorwaarden_2018_2020_getekend_extract.json (all parts already processed)
+  156: CAO_ziekenhuizen_2017_2019_DEF_extract.json
+  156: Skipping CAO_ziekenhuizen_2017_2019_DEF_extract.json (all parts already processed)
+  156: Tekst_Cao_Ziekenhuizen_2011_2014_definitief_extract.json
+  156: Skipping Tekst_Cao_Ziekenhuizen_2011_2014_definitief_extract.json (all parts already processed)
+  157: Zuivel I 2018-2020.docx _extract.json
+  157: Skipping Zuivel I 2018-2020.docx _extract.json (all parts already processed)
+  157: Zuivel cao I 2022_extract.json
+  157: Skipping Zuivel cao I 2022_extract.json (all parts already processed)
+  157: Zuivelindustrie_tekst_nieuw_2014_2016_extract.json
+  157: Skipping Zuivelindustrie_tekst_nieuw_2014_2016_extract.json (all parts already processed)
+  163: CAO_OV_tekst_2013_DEFINITIEF_extract.json
+  163: Skipping CAO_OV_tekst_2013_DEFINITIEF_extract.json (all parts already processed)
+  182: 20131221 cao_horeca_2024 - schone versie_extract.json
+  182: Skipping 20131221 cao_horeca_2024 - schone versie_extract.json (all parts already processed)
+  182: 20221124 cao_horeca_2022-2023 na 2020_wijziging bijlage loontabellen schoon_extract.json
+  182: Skipping 20221124 cao_horeca_2022-2023 na 2020_wijziging bijlage loontabellen schoon_extract.json (all parts already processed)
+  182: KHN_cao_2018_2019_extract.json
+  182: Skipping KHN_cao_2018_2019_extract.json (all parts already processed)
+  214: 231122_wijz geaccepteerd_tussentijdse wijziging ivm avv_230428 cao OB 1.1.2023_31.3.2024_DEF_extract.json
+  214: Skipping 231122_wijz geaccepteerd_tussentijdse wijziging ivm avv_230428 cao OB 1.1.2023_31.3.2024_DEF_extract.json (all parts already processed)
+  214: Cao OB 1.7.2020 31.12.2022 ondertekend_extract.json
+  214: Skipping Cao OB 1.7.2020 31.12.2022 ondertekend_extract.json (all parts already processed)
+  214: Cao_OB_2015_2019_invulling_loonruimte_2018_extract.json
+  214: Skipping Cao_OB_2015_2019_invulling_loonruimte_2018_extract.json (all parts already processed)
+  218: CAO_2015_2016_definitieve_tekst_extract.json
+  218: Skipping CAO_2015_2016_definitieve_tekst_extract.json (all parts already processed)
+  218: Tekst_CAO_BB_1_4_13_tm_31_13_extract.json
+  218: Skipping Tekst_CAO_BB_1_4_13_tm_31_13_extract.json (all parts already processed)
+  233: 2020jan8_PvL_CAOtekst_1apr2019-31mrt2020_extract.json
+  233: Skipping 2020jan8_PvL_CAOtekst_1apr2019-31mrt2020_extract.json (all parts already processed)
+  233: 2024_31okt_tekstcaotbvavvschoon_MvD_extract.json
+  233: Skipping 2024_31okt_tekstcaotbvavvschoon_MvD_extract.json (all parts already processed)
+  233: CAOtekst_2012_2013_PvL_26jul2012_extract.json
+  233: Skipping CAOtekst_2012_2013_PvL_26jul2012_extract.json (all parts already processed)
+  234: CAO Jeugdzorg 10-02-11schoon_extract.json
+  234: Skipping CAO Jeugdzorg 10-02-11schoon_extract.json (all parts already processed)
+  234: Cao Jeugdzorg 2024- 2025 aanmeldversie juli 2024 schoon_extract.json
+  234: Skipping Cao Jeugdzorg 2024- 2025 aanmeldversie juli 2024 schoon_extract.json (all parts already processed)
+  234: cao_jeugdzorg_2014_2015_def_extract.json
+  234: Skipping cao_jeugdzorg_2014_2015_def_extract.json (all parts already processed)
+  243: 20110636N_Cao_hoveniers_01032011_tm_28022013_extract.json
+  243: Skipping 20110636N_Cao_hoveniers_01032011_tm_28022013_extract.json (all parts already processed)
+  243: Cao Hoveniers 1 juli 2021 - 30 juni 2023 integraal_extract.json
+  243: Skipping Cao Hoveniers 1 juli 2021 - 30 juni 2023 integraal_extract.json (all parts already processed)
+  243: Cao_hov_v3_extract.json
+  243: Skipping Cao_hov_v3_extract.json (all parts already processed)
+  243: Integrale tekst cao voor het Hoveniersbedrijf 1 juli 2023 tm 30 september 2024 (2402-1326)_extract.json
+  243: Skipping Integrale tekst cao voor het Hoveniersbedrijf 1 juli 2023 tm 30 september 2024 (2402-1326)_extract.json (all parts already processed)
+  243: cao Hoveniers incl 4e ttw 1 novemb er 2020 def 2010-0194.docx_extract.json
+  243: Skipping cao Hoveniers incl 4e ttw 1 novemb er 2020 def 2010-0194.docx_extract.json (all parts already processed)
+  245: Cao_Tuinzaadbedrijven_20180101___20191231_extract.json
+  245: Skipping Cao_Tuinzaadbedrijven_20180101___20191231_extract.json (all parts already processed)
+  245: Tuinzaadbedrijven 2021 - 2022 TTW augustus 2022_extract.json
+  245: Skipping Tuinzaadbedrijven 2021 - 2022 TTW augustus 2022_extract.json (all parts already processed)
+  254: CAO_2013_2014_definitief_2_extract.json
+  254: Skipping CAO_2013_2014_definitief_2_extract.json (all parts already processed)
+  254: CAO_2018_2019_integraal_extract.json
+  254: Skipping CAO_2018_2019_integraal_extract.json (all parts already processed)
+  254: cao 2022-2023 ttw 10 maart 2023 integraal_extract.json
+  254: Skipping cao 2022-2023 ttw 10 maart 2023 integraal_extract.json (all parts already processed)
+  254: cao_afbouw_2011_12__integrale_cao_extract.json
+  254: Processing missing parts: salary, part1, part2, part3
+  DEBUG: Making API call...
+Processing time: 79.9s | Status: SUCCESS
+  Salary: Schema validation passed - 27 salary entries
+  254: Salary extraction completed
+  Part 1 extraction starting for cao_afbouw_2011_12__integrale_cao_extract.json
+  254: Non-salary part 1 extraction completed
+  Part 2 extraction starting for cao_afbouw_2011_12__integrale_cao_extract.json
+Processing time: 56.7s | Status: SUCCESS
+  254: Non-salary part 2 extraction completed
+  Part 3 extraction starting for cao_afbouw_2011_12__integrale_cao_extract.json
+Processing time: 34.4s | Status: SUCCESS
+  254: Non-salary part 3 extraction completed
+  254: Combined analysis logged successfully
+  254: Successfully processed cao_afbouw_2011_12__integrale_cao_extract.json
+  301: CAOWMD1213__270213__definitief_extract.json
+  301: Processing missing parts: salary, part1, part2, part3
+  DEBUG: Making API call...
+Processing time: 328.4s | Status: SUCCESS
+  DEBUG: Response truncated due to MAX_TOKENS limit for CAOWMD1213__270213__definitief_extract.json
+  DEBUG: Truncated response saved to: performance_logs/llm_analysis/max_tokens_truncated/20251016_103243_CAOWMD1213__270213__definitief_extract.json_truncated.txt
+  DEBUG: Making API call...
+  DEBUG: API response received
+  DEBUG: Response type: <class 'google.genai.types.GenerateContentResponse'>
+Processing time: 343.2s | Status: SUCCESS
+  DEBUG: Response truncated due to MAX_TOKENS limit for CAOWMD1213__270213__definitief_extract.json
+  DEBUG: Truncated response saved to: performance_logs/llm_analysis/max_tokens_truncated/20251016_103826_CAOWMD1213__270213__definitief_extract.json_truncated.txt
+  DEBUG: Response appears to be truncated, will retry with different parameters
+  DEBUG: Attempt 1 failed: Exception: Response truncated - incomplete JSON
+  Attempt 1 failed (timeout/truncation), retrying in 2 minutes...
+  301: Salary extraction completed
+  Part 1 extraction starting for CAOWMD1213__270213__definitief_extract.json
+  301: Non-salary part 1 extraction completed
+  Part 2 extraction starting for CAOWMD1213__270213__definitief_extract.json
+Processing time: 39.5s | Status: SUCCESS
+  301: Non-salary part 2 extraction completed
+  Part 3 extraction starting for CAOWMD1213__270213__definitief_extract.json
+Processing time: 47.3s | Status: SUCCESS
+  301: Non-salary part 3 extraction completed
+  301: Combined analysis logged successfully
+  301: Successfully processed CAOWMD1213__270213__definitief_extract.json
+  301: CAOWMD_aanmelding_VERLENGING_2012_ttw_ivm_avv_extract.json
+  301: Processing missing parts: salary, part1, part2, part3
+  DEBUG: Making API call...
+Processing time: 344.5s | Status: SUCCESS
+  DEBUG: Response truncated due to MAX_TOKENS limit for CAOWMD_aanmelding_VERLENGING_2012_ttw_ivm_avv_extract.json
+  DEBUG: Truncated response saved to: performance_logs/llm_analysis/max_tokens_truncated/20251016_104818_CAOWMD_aanmelding_VERLENGING_2012_ttw_ivm_avv_extract.json_truncated.txt
+  DEBUG: Making API call...
+  DEBUG: API response received
+  DEBUG: Response type: <class 'google.genai.types.GenerateContentResponse'>
+Processing time: 338.0s | Status: SUCCESS
+  DEBUG: Response truncated due to MAX_TOKENS limit for CAOWMD_aanmelding_VERLENGING_2012_ttw_ivm_avv_extract.json
+  DEBUG: Truncated response saved to: performance_logs/llm_analysis/max_tokens_truncated/20251016_105356_CAOWMD_aanmelding_VERLENGING_2012_ttw_ivm_avv_extract.json_truncated.txt
+  DEBUG: Response appears to be truncated, will retry with different parameters
+  DEBUG: Attempt 1 failed: Exception: Response truncated - incomplete JSON
+  Attempt 1 failed (timeout/truncation), retrying in 2 minutes...
+  301: Salary extraction completed
+  Part 1 extraction starting for CAOWMD_aanmelding_VERLENGING_2012_ttw_ivm_avv_extract.json
+  301: Non-salary part 1 extraction completed
+  Part 2 extraction starting for CAOWMD_aanmelding_VERLENGING_2012_ttw_ivm_avv_extract.json
+Processing time: 56.7s | Status: SUCCESS
+  301: Non-salary part 2 extraction completed
+  Part 3 extraction starting for CAOWMD_aanmelding_VERLENGING_2012_ttw_ivm_avv_extract.json
+Processing time: 56.3s | Status: SUCCESS
+  301: Non-salary part 3 extraction completed
+  301: Combined analysis logged successfully
+  301: Successfully processed CAOWMD_aanmelding_VERLENGING_2012_ttw_ivm_avv_extract.json
+  301: Cao Sociaal Werk 2023-2025(definitief_tussentijdsgewijzigdper010724)_extract.json
+  301: Processing missing parts: salary, part1, part2, part3
+  DEBUG: Making API call...
+Processing time: 344.8s | Status: SUCCESS
+  DEBUG: Response truncated due to MAX_TOKENS limit for Cao Sociaal Werk 2023-2025(definitief_tussentijdsgewijzigdper010724)_extract.json
+  DEBUG: Truncated response saved to: performance_logs/llm_analysis/max_tokens_truncated/20251016_110416_Cao_Sociaal_Werk_2023-2025(definitief_tussentijdsgewijzigdper010724)_extract.json_truncated.txt
+  DEBUG: Making API call...
+  DEBUG: API response received
+  DEBUG: Response type: <class 'google.genai.types.GenerateContentResponse'>
+Processing time: 349.9s | Status: SUCCESS
+  DEBUG: Response truncated due to MAX_TOKENS limit for Cao Sociaal Werk 2023-2025(definitief_tussentijdsgewijzigdper010724)_extract.json
+  DEBUG: Truncated response saved to: performance_logs/llm_analysis/max_tokens_truncated/20251016_111006_Cao_Sociaal_Werk_2023-2025(definitief_tussentijdsgewijzigdper010724)_extract.json_truncated.txt
+  DEBUG: Response appears to be truncated, will retry with different parameters
+  DEBUG: Attempt 1 failed: Exception: Response truncated - incomplete JSON
+  Attempt 1 failed (timeout/truncation), retrying in 2 minutes...
+  301: Salary extraction completed
+  Part 1 extraction starting for Cao Sociaal Werk 2023-2025(definitief_tussentijdsgewijzigdper010724)_extract.json
+  301: Non-salary part 1 extraction completed
+  Part 2 extraction starting for Cao Sociaal Werk 2023-2025(definitief_tussentijdsgewijzigdper010724)_extract.json
+Processing time: 66.0s | Status: SUCCESS
+  301: Non-salary part 2 extraction completed
+  Part 3 extraction starting for Cao Sociaal Werk 2023-2025(definitief_tussentijdsgewijzigdper010724)_extract.json
+Processing time: 47.7s | Status: SUCCESS
+  301: Non-salary part 3 extraction completed
+  301: Combined analysis logged successfully
+  301: Successfully processed Cao Sociaal Werk 2023-2025(definitief_tussentijdsgewijzigdper010724)_extract.json
+  301: ttwnov15_CAOWMD1416_def_exb2b15_wijzws_151215_def_extract.json
+  301: Processing missing parts: salary, part1, part2, part3
+  DEBUG: Making API call...
+Processing time: 336.1s | Status: SUCCESS
+  DEBUG: Response truncated due to MAX_TOKENS limit for ttwnov15_CAOWMD1416_def_exb2b15_wijzws_151215_def_extract.json
+  DEBUG: Truncated response saved to: performance_logs/llm_analysis/max_tokens_truncated/20251016_112026_ttwnov15_CAOWMD1416_def_exb2b15_wijzws_151215_def_extract.json_truncated.txt
+  DEBUG: Making API call...
+  DEBUG: API response received
+  DEBUG: Response type: <class 'google.genai.types.GenerateContentResponse'>
+Processing time: 339.8s | Status: SUCCESS
+  DEBUG: Response truncated due to MAX_TOKENS limit for ttwnov15_CAOWMD1416_def_exb2b15_wijzws_151215_def_extract.json
+  DEBUG: Truncated response saved to: performance_logs/llm_analysis/max_tokens_truncated/20251016_112606_ttwnov15_CAOWMD1416_def_exb2b15_wijzws_151215_def_extract.json_truncated.txt
+  DEBUG: Response appears to be truncated, will retry with different parameters
+  DEBUG: Attempt 1 failed: Exception: Response truncated - incomplete JSON
+  Attempt 1 failed (timeout/truncation), retrying in 2 minutes...
+  301: Salary extraction completed
+  Part 1 extraction starting for ttwnov15_CAOWMD1416_def_exb2b15_wijzws_151215_def_extract.json
+  301: Non-salary part 1 extraction completed
+  Part 2 extraction starting for ttwnov15_CAOWMD1416_def_exb2b15_wijzws_151215_def_extract.json
+Processing time: 48.1s | Status: SUCCESS
+  301: Non-salary part 2 extraction completed
+  Part 3 extraction starting for ttwnov15_CAOWMD1416_def_exb2b15_wijzws_151215_def_extract.json
+Processing time: 49.6s | Status: SUCCESS
+  301: Non-salary part 3 extraction completed
+  301: Combined analysis logged successfully
+  301: Successfully processed ttwnov15_CAOWMD1416_def_exb2b15_wijzws_151215_def_extract.json
+  306: CAO Particulier Kaaspakhuis 01-01-2024 definitief_extract.json
+  306: Processing missing parts: salary, part1, part2, part3
+  DEBUG: Making API call...
+Processing time: 258.5s | Status: SUCCESS
+  Salary: Schema validation passed - 66 salary entries
+  306: Salary extraction completed
+  Part 1 extraction starting for CAO Particulier Kaaspakhuis 01-01-2024 definitief_extract.json
+  306: Non-salary part 1 extraction completed
+  Part 2 extraction starting for CAO Particulier Kaaspakhuis 01-01-2024 definitief_extract.json
+Processing time: 55.8s | Status: SUCCESS
+  306: Non-salary part 2 extraction completed
+  Part 3 extraction starting for CAO Particulier Kaaspakhuis 01-01-2024 definitief_extract.json
+Processing time: 23.5s | Status: SUCCESS
+  306: Non-salary part 3 extraction completed
+  306: Combined analysis logged successfully
+  306: Successfully processed CAO Particulier Kaaspakhuis 01-01-2024 definitief_extract.json
+  306: CAO_tekst_definitief_extract.json
+  306: Processing missing parts: salary, part1, part2, part3
+  DEBUG: Making API call...
+Processing time: 112.4s | Status: SUCCESS
+  Salary: Schema validation passed - 66 salary entries
+  306: Salary extraction completed
+  Part 1 extraction starting for CAO_tekst_definitief_extract.json
+  306: Non-salary part 1 extraction completed
+  Part 2 extraction starting for CAO_tekst_definitief_extract.json
+Processing time: 35.5s | Status: SUCCESS
+  306: Non-salary part 2 extraction completed
+  Part 3 extraction starting for CAO_tekst_definitief_extract.json
+Processing time: 15.3s | Status: SUCCESS
+  306: Non-salary part 3 extraction completed
+  306: Combined analysis logged successfully
+  306: Successfully processed CAO_tekst_definitief_extract.json
+  316: CAO LMB 2019 - 2020 V 210220 def.docx_extract.json
+  316: Processing missing parts: salary, part1, part2, part3
+  DEBUG: Making API call...
+Processing time: 138.3s | Status: SUCCESS
+  Salary: Schema validation passed - 67 salary entries
+  316: Salary extraction completed
+  Part 1 extraction starting for CAO LMB 2019 - 2020 V 210220 def.docx_extract.json
+  316: Non-salary part 1 extraction completed
+  Part 2 extraction starting for CAO LMB 2019 - 2020 V 210220 def.docx_extract.json
+Processing time: 43.1s | Status: SUCCESS
+  316: Non-salary part 2 extraction completed
+  Part 3 extraction starting for CAO LMB 2019 - 2020 V 210220 def.docx_extract.json
+Processing time: 22.9s | Status: SUCCESS
+  316: Non-salary part 3 extraction completed
+  316: Combined analysis logged successfully
+  316: Successfully processed CAO LMB 2019 - 2020 V 210220 def.docx_extract.json
+  316: CAO_LMB_2013_2017_SZW_V4_schoon_extract.json
+  316: Processing missing parts: salary, part1, part2, part3
+  DEBUG: Making API call...
+Processing time: 130.2s | Status: SUCCESS
+  Salary: Schema validation passed - 34 salary entries
+  316: Salary extraction completed
+  Part 1 extraction starting for CAO_LMB_2013_2017_SZW_V4_schoon_extract.json
+  316: Non-salary part 1 extraction completed
+  Part 2 extraction starting for CAO_LMB_2013_2017_SZW_V4_schoon_extract.json
+Processing time: 41.4s | Status: SUCCESS
+  316: Non-salary part 2 extraction completed
+  Part 3 extraction starting for CAO_LMB_2013_2017_SZW_V4_schoon_extract.json
+Processing time: 40.9s | Status: SUCCESS
+  316: Non-salary part 3 extraction completed
+  316: Combined analysis logged successfully
+  316: Successfully processed CAO_LMB_2013_2017_SZW_V4_schoon_extract.json
+  317: CAO GHZ 2019-2021 definitief zonder wijzigingen 20200107.docx_extract.json
+  317: Processing missing parts: salary, part1, part2, part3
+  DEBUG: Making API call...
+Processing time: 359.2s | Status: SUCCESS
+  DEBUG: Response truncated due to MAX_TOKENS limit for CAO GHZ 2019-2021 definitief zonder wijzigingen 20200107.docx_extract.json
+  DEBUG: Truncated response saved to: performance_logs/llm_analysis/max_tokens_truncated/20251016_115438_CAO_GHZ_2019-2021_definitief_zonder_wijzigingen_20200107.docx_extract.json_truncated.txt
+  DEBUG: Making API call...
+  DEBUG: API response received
+  DEBUG: Response type: <class 'google.genai.types.GenerateContentResponse'>
+Processing time: 329.3s | Status: SUCCESS
+  DEBUG: Response truncated due to MAX_TOKENS limit for CAO GHZ 2019-2021 definitief zonder wijzigingen 20200107.docx_extract.json
+  DEBUG: Truncated response saved to: performance_logs/llm_analysis/max_tokens_truncated/20251016_120008_CAO_GHZ_2019-2021_definitief_zonder_wijzigingen_20200107.docx_extract.json_truncated.txt
+  DEBUG: Response appears to be truncated, will retry with different parameters
+  DEBUG: Attempt 1 failed: Exception: Response truncated - incomplete JSON
+  Attempt 1 failed (timeout/truncation), retrying in 2 minutes...
+  317: Salary extraction completed
+  Part 1 extraction starting for CAO GHZ 2019-2021 definitief zonder wijzigingen 20200107.docx_extract.json
+  317: Non-salary part 1 extraction completed
+  Part 2 extraction starting for CAO GHZ 2019-2021 definitief zonder wijzigingen 20200107.docx_extract.json
+Processing time: 56.8s | Status: SUCCESS
+  317: Non-salary part 2 extraction completed
+  Part 3 extraction starting for CAO GHZ 2019-2021 definitief zonder wijzigingen 20200107.docx_extract.json
+Processing time: 35.4s | Status: SUCCESS
+  317: Non-salary part 3 extraction completed
+  317: Combined analysis logged successfully
+  317: Successfully processed CAO GHZ 2019-2021 definitief zonder wijzigingen 20200107.docx_extract.json
+  317: Def_tekst_CAO_GHZ_2014_2015_vs20140709_extract.json
+  317: Processing missing parts: salary, part1, part2, part3
+  DEBUG: Making API call...
+Processing time: 350.0s | Status: SUCCESS
+  DEBUG: Response truncated due to MAX_TOKENS limit for Def_tekst_CAO_GHZ_2014_2015_vs20140709_extract.json
+  DEBUG: Truncated response saved to: performance_logs/llm_analysis/max_tokens_truncated/20251016_121008_Def_tekst_CAO_GHZ_2014_2015_vs20140709_extract.json_truncated.txt
+  DEBUG: Making API call...
+  DEBUG: API response received
+  DEBUG: Response type: <class 'google.genai.types.GenerateContentResponse'>
+Processing time: 329.6s | Status: SUCCESS
+  DEBUG: Response truncated due to MAX_TOKENS limit for Def_tekst_CAO_GHZ_2014_2015_vs20140709_extract.json
+  DEBUG: Truncated response saved to: performance_logs/llm_analysis/max_tokens_truncated/20251016_121537_Def_tekst_CAO_GHZ_2014_2015_vs20140709_extract.json_truncated.txt
+  DEBUG: Response appears to be truncated, will retry with different parameters
+  DEBUG: Attempt 1 failed: Exception: Response truncated - incomplete JSON
+  Attempt 1 failed (timeout/truncation), retrying in 2 minutes...
+  317: Salary extraction completed
+  Part 1 extraction starting for Def_tekst_CAO_GHZ_2014_2015_vs20140709_extract.json
+  317: Non-salary part 1 extraction completed
+  Part 2 extraction starting for Def_tekst_CAO_GHZ_2014_2015_vs20140709_extract.json
+Processing time: 51.0s | Status: SUCCESS
+  317: Non-salary part 2 extraction completed
+  Part 3 extraction starting for Def_tekst_CAO_GHZ_2014_2015_vs20140709_extract.json
+Processing time: 15.6s | Status: SUCCESS
+  317: Non-salary part 3 extraction completed
+  317: Combined analysis logged successfully
+  317: Successfully processed Def_tekst_CAO_GHZ_2014_2015_vs20140709_extract.json
+  317: gehandicaptenzorg integrale tekst_extract.json
+  317: Processing missing parts: salary, part1, part2, part3
   DEBUG: Making API call...

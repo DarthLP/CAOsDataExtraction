@@ -98,8 +98,8 @@ from monitoring.monitoring_3_1 import PerformanceMonitor
 # =============================================================================
 # GLOBAL FLAGS
 # =============================================================================
-# Global flag to signal quota exhaustion for graceful shutdown
-quota_exhausted_flag = False
+# Process-specific quota flags to stop individual processes when quota is hit
+process_quota_flags = {}
 
 # =============================================================================
 # LLM CLIENT FUNCTIONS
@@ -155,17 +155,15 @@ def get_model_parameters() -> dict:
         dict: Model parameters
     """
     return {
-        "model": MODEL,
-        "temperature": 0.0,
-        "top_p": 0.1,
-        "top_k": 1,
-        "max_tokens": None,
-        "candidate_count": 1,
-        "seed": 42,
-        "presence_penalty": 0.0,
-        "frequency_penalty": 0.0,
-        "thinking_budget": -1,  # Dynamic thinking (like p3)
-        "max_retries": 5
+    "model": MODEL,
+    "temperature": 0.0,
+    "top_p": 0.1,
+    "top_k": 1,
+    "max_tokens": 65536,
+    "candidate_count": 1,
+    "seed": 42,
+    "thinking_budget": -1,  # Dynamic thinking (like p3)
+    "max_retries": 0
     }
 
 
@@ -173,9 +171,11 @@ def get_adjusted_parameters(attempt: int) -> dict:
     """
     Get adjusted model parameters based on retry attempt.
     
-    - Attempts 0-2 (1st-3rd tries): original parameters
-    - Attempt 3 (4th try): temperature +0.1, top_p +0.1, top_k -10%
-    - Attempt 4+ (5th+ try): temperature +0.2, top_p +0.2, top_k -20%
+    - Attempt 0 (1st try): original parameters
+    - Attempt 1 (2nd try): original parameters  
+    - Attempt 2 (3rd try): temperature +0.1, top_p +0.1, top_k -10%
+    - Attempt 3 (4th try): temperature +0.2, top_p +0.2, top_k -20%
+    - Attempt 4+ (5th+ try): temperature +0.3, top_p +0.3, top_k -30%
     
     Args:
         attempt: Current retry attempt number (0-based)
@@ -186,16 +186,13 @@ def get_adjusted_parameters(attempt: int) -> dict:
     # Get base parameters
     base_params = get_model_parameters()
     
-    # Calculate adjustment based on attempt
-    if attempt <= 2:
-        # First 3 attempts: use original parameters
+    # Calculate adjustment based on attempt (0.1 steps starting from attempt 2)
+    if attempt <= 1:
+        # First 2 attempts: use original parameters
         adjustment = 0.0
-    elif attempt == 3:
-        # 4th attempt: +0.1 adjustment
-        adjustment = 0.1
     else:
-        # 5th+ attempt: +0.2 adjustment
-        adjustment = 0.2
+        # Starting from 3rd attempt: +0.1 per step
+        adjustment = 0.1 * (attempt - 1)
     
     # Calculate adjusted values
     adjusted_temp = base_params["temperature"] + adjustment
@@ -210,8 +207,6 @@ def get_adjusted_parameters(attempt: int) -> dict:
         "max_tokens": base_params["max_tokens"],
         "candidate_count": base_params["candidate_count"],
         "seed": base_params["seed"],
-        "presence_penalty": base_params["presence_penalty"],
-        "frequency_penalty": base_params["frequency_penalty"],
         "thinking_budget": base_params["thinking_budget"],
         "max_retries": base_params["max_retries"]
     }
@@ -363,9 +358,15 @@ def handle_llm_errors(error: Exception, attempt: int, max_retries: int,
         # Check specifically for RESOURCE_EXHAUSTED (quota exceeded)
         if 'resource_exhausted' in error_str and 'quota' in error_str:
             print(f'  🚨 API QUOTA EXHAUSTED detected - Process will shutdown gracefully')
-            # Set global flag to trigger graceful shutdown
-            global quota_exhausted_flag
-            quota_exhausted_flag = True
+            # Set per-process flag to trigger graceful shutdown
+            global process_quota_flags
+            # Extract process_id from context if available, otherwise use 0
+            process_id = 0
+            if context and hasattr(context, 'process_id'):
+                process_id = context.process_id
+            elif context and isinstance(context, dict) and 'process_id' in context:
+                process_id = context['process_id']
+            process_quota_flags[process_id] = True
             return False  # Don't retry, trigger shutdown
         elif attempt < max_retries - 1:
             wait_time = calculate_quota_retry_delay(file_size_mb, attempt)
@@ -479,20 +480,114 @@ def check_response_truncation(response, filename: str) -> bool:
         if hasattr(candidate, 'finish_reason'):
             if candidate.finish_reason == 'MAX_TOKENS':
                 print(f'  DEBUG: Response truncated due to MAX_TOKENS limit for {filename}')
+                save_truncated_response(response.text, filename)
                 return True
     
     # Check if response text is empty or very short
     if hasattr(response, 'text') and response.text:
-        if len(response.text.strip()) < 50:  # Very short response
-            print(f'  DEBUG: Response text is very short ({len(response.text)} chars) for {filename}')
+        text = response.text.strip()
+        if len(text) < 10:  # Extremely short response (likely empty/invalid)
+            print(f'  DEBUG: Response text is extremely short ({len(text)} chars) for {filename}')
             return True
+        elif len(text) < 50:  # Short response - check if it's valid JSON
+            print(f'  DEBUG: Response text is short ({len(text)} chars) for {filename}')
+            # Check if it's valid JSON structure (starts with { and ends with })
+            if text.startswith('{') and text.endswith('}'):
+                try:
+                    import json
+                    json.loads(text)  # Try to parse it
+                    print(f'  DEBUG: Short response is valid JSON, not truncated')
+                    return False  # Valid short JSON, not truncated
+                except json.JSONDecodeError:
+                    print(f'  DEBUG: Short response is invalid JSON, likely truncated')
+                    return True
+            else:
+                print(f'  DEBUG: Short response does not look like JSON, likely truncated')
+                return True
     
     # Check if parsed attribute is empty when we expect structured output
     if hasattr(response, 'parsed') and response.parsed is None:
         print(f'  DEBUG: No parsed structured output for {filename}')
         return True
     
+    
     return False
+
+
+
+
+def extract_clean_filename(filename: str) -> str:
+    """
+    Extract a clean filename from the original filename for truncated file naming.
+    
+    Args:
+        filename: Original filename (e.g., "CAO_GHZ_2019-2021_definitief_zonder_wijzigingen_20200107.docx_extract.json")
+        
+    Returns:
+        Clean filename (e.g., "CAO_GHZ_2019-2021_definitief")
+    """
+    import re
+    
+    # Remove _extract.json suffix if present
+    clean_name = filename
+    if clean_name.endswith('_extract.json'):
+        clean_name = clean_name[:-13]  # Remove '_extract.json'
+    elif clean_name.endswith('.json'):
+        clean_name = clean_name[:-5]   # Remove '.json'
+    
+    # Remove common file extensions
+    extensions_to_remove = ['.docx', '.pdf', '.doc']
+    for ext in extensions_to_remove:
+        if clean_name.endswith(ext):
+            clean_name = clean_name[:-len(ext)]
+            break
+    
+    # Clean up the name - remove extra underscores and make it more readable
+    clean_name = re.sub(r'_+', '_', clean_name)  # Replace multiple underscores with single
+    clean_name = clean_name.strip('_')  # Remove leading/trailing underscores
+    
+    # Limit length to avoid overly long filenames
+    if len(clean_name) > 100:
+        clean_name = clean_name[:100].rstrip('_')
+    
+    return clean_name
+
+
+def save_truncated_response(response_text: str, filename: str):
+    """
+    Save truncated response to file for debugging analysis.
+    
+    Args:
+        response_text: The truncated response text
+        filename: Original filename for context
+    """
+    try:
+        import os
+        from datetime import datetime
+        
+        # Create the truncated responses directory
+        truncated_dir = Path("performance_logs/llm_analysis/max_tokens_truncated")
+        truncated_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Create clean filename without timestamp
+        clean_filename = extract_clean_filename(filename)
+        truncated_filename = f"{clean_filename}_truncated.txt"
+        truncated_file = truncated_dir / truncated_filename
+        
+        # Save the truncated response
+        with open(truncated_file, 'w', encoding='utf-8') as f:
+            f.write(f"TRUNCATED RESPONSE DEBUG INFO\n")
+            f.write(f"Original filename: {filename}\n")
+            f.write(f"Timestamp: {datetime.now().isoformat()}\n")
+            f.write(f"Response length: {len(response_text)} characters\n")
+            f.write(f"Finish reason: MAX_TOKENS\n")
+            f.write(f"{'='*80}\n\n")
+            f.write(response_text)
+        
+        print(f'  DEBUG: Truncated response saved to: {truncated_file}')
+        
+    except Exception as e:
+        print(f'  DEBUG: Failed to save truncated response: {e}')
 
 
 # =============================================================================
@@ -554,19 +649,15 @@ class SalaryPoint(BaseModel):
         description="Gross salary amount as printed in the CAO (no conversions or derivations)."
     )
 
-    currency: str = Field(
-        default="EUR",
-        description="Currency of the printed salary amount."
-    )
 
     unit: str = Field(
         ...,
         description="Pay period unit as stated (e.g., 'monthly', '4-week', 'weekly', 'hourly', 'annual')."
     )
 
-    published_in_table_label: str = Field(
+    table_label: str = Field(
         default="",
-        description="Identifier of the wage table or adjustment version (e.g., 'per 1 Nov 2023', 'Table A - 2024 rates')."
+        description="Concise identifier of the wage table or adjustment version (e.g., 'per 1 Nov 2023', 'Table A - 2024 rates')."
     )
 
     increase_percent: Optional[float] = Field(
@@ -574,10 +665,10 @@ class SalaryPoint(BaseModel):
         description="If the CAO specifies a general percentage increase for this table or time period (e.g., 3.00 for a +3% wage rise), record it here; otherwise omit."
     )
 
-    includes_holiday_allowance: Optional[bool] = Field(
+    holiday_in_amount: Optional[bool] = Field(
         default=None,
         description="True if the printed amount explicitly includes holiday allowance; "
-                    "False if explicitly excludes it; Omit if not stated."
+                    "Omit if not stated or if false."
     )
 
     hours_basis_ft_week: Optional[float] = Field(
@@ -586,10 +677,10 @@ class SalaryPoint(BaseModel):
                     "recorded only if explicitly for the table version; omit if not mentioned."
     )
 
-    note: str = Field(
-        default="",
+    note: Optional[str] = Field(
+        default=None,
         description="Footnotes, exceptions, or remarks directly tied to this wage entry. "
-                    "Keep concise but faithful to the original text."
+                    "Keep concise but faithful to the original text. Omit if not present."
     )
 
 
@@ -606,15 +697,9 @@ class SalaryRow(BaseModel):
     """
 
     # ---- Identification / scoping ----
-    worker_type: str = Field(
-        ...,
-        description="Worker type or category (e.g., 'standard worker', 'office worker', 'Construction worker')."
-    )
-
     jobgroup: str = Field(
         ...,
-        description="Job group or salary scale label/code. "
-                    "If a descriptive subtitle is given, append it in parentheses (e.g., 'F-45-9 (workers with high school diploma)')."
+        description="Job group or salary scale label/code. If a descriptive subtitle is given, append it in parentheses (e.g., 'F-45-9 (workers with high school diploma)')."
     )
 
     step_label: Optional[str] = Field(
@@ -622,36 +707,41 @@ class SalaryRow(BaseModel):
         description="Printed label of the step/trede (e.g., 'trede 0', 'periodiek 3', 'aanloopschaal C'); omit if not printed."
     )
 
-    is_entry_or_aanloop_scale: Optional[bool] = Field(
+    worker_type: Optional[str] = Field(
+        default=None,
+        description="Worker type or category. Omit if generic (e.g., 'employee', 'standard worker') AND only one worker type exists. Keep when meaningful (e.g., 'Construction worker', 'UTA employee')."
+    )
+
+    is_entry: Optional[bool] = Field(
         default=None,
         description="True if explicitly described as an entry/aanloop scale; "
                     "False if explicitly standard; Omit if not stated."
     )
 
     # ---- Filters (only when printed) ----
-    salary_age_group: str = Field(
-        default="",
-        description="Printed age band of the wage table (e.g., '23 jaar', '21+'). Consider only age bands capturing at least some workers aged between 23-65. Leave empty if not printed."
+    age_group: Optional[str] = Field(
+        default=None,
+        description="Printed age band of the wage table (e.g., '23 jaar', '21+'). Consider only age bands capturing at least some workers aged between 23-65. Omit if not printed."
     )
 
-    salary_education: Optional[str] = Field(
+    education: Optional[str] = Field(
         default=None,
         description="Printed education level qualifier (e.g., 'MBO-2', 'HBO-bachelor'), if stated; omit if not printed."
     )
 
-    canonical_fulltime_hours_per_week: Optional[float] = Field(
+    ft_hours: Optional[float] = Field(
         default=None,
         description="Full-time weekly hours baseline for this CAO (e.g., 37). Record only if explicitly stated, not derived. Omit if not printed."
     )
 
     # ---- Contract type information ----
-    contract_type_permanency: Optional[str] = Field(
+    permanency: Optional[str] = Field(
         default=None,
         description="Contract permanency type as explicitly stated (e.g., 'permanent', 'temporary', 'fixed-term'). "
                     "Omit if not printed or not applicable to this salary row."
     )
 
-    contract_type_hours: Optional[str] = Field(
+    hours_type: Optional[str] = Field(
         default=None,
         description="Work arrangement type as explicitly stated (e.g., 'full-time', 'part-time'). "
                     "Omit if not printed or not applicable to this salary row."
@@ -664,11 +754,11 @@ class SalaryRow(BaseModel):
     )
 
     # ---- Meta / context ----
-    salary_note: str = Field(
-        default="",
+    row_note: Optional[str] = Field(
+        default=None,
         description="Row-level remarks that apply across all timeline points "
                     "(e.g., 'All amounts exclude 8% holiday allowance unless noted', "
-                    "'Scale F merges into G from 2026-01-01')."
+                    "'Scale F merges into G from 2026-01-01'). Keep concise but faithful to the original text. Omit if not present."
     )
 
 class SalaryExtractionSchema(BaseModel):
@@ -677,7 +767,7 @@ class SalaryExtractionSchema(BaseModel):
         default_factory=list,
         description=(
             "List of all wage-scale rows extracted from the CAO, "
-            "each describing one (worker type) × (job group) × [optional step/trede] × "
+            "each describing one (job group) × (step) × [optional worker type] × "
             "[optional age band] × [optional education level] × [optional contract type] × timeline."
         )
     )
@@ -2005,14 +2095,15 @@ SALARY_PROMPT = """Extract structured salary data from a JSON object derived fro
 
     CRITICAL RULES
         - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess.
-        - Missing values: Omit optional fields entirely. For required fields with no value: strings → "", booleans → false, numbers/floats → null.    
+        - Missing values: Omit optional fields entirely. Only include optional fields with actual values.
         - Output ONLY valid JSON format matching the provided schema structure.
 
     TABLE SELECTION
         - Include ONLY standard/regular wage tables. 
         - EXCLUDE allowances, bonuses, overtime, irregular hours, reimbursements, and non-standard worker roles like apprentices, interns, trainees, or foremen.
         - If multiple tables exist for different worker types, time periods, education levels, job groups, steps, or age bands under this standard wage type, include all of them. 
-        - Record the unit exactly as printed. If the same baseline is printed in multiple units for the SAME workers/period/step/education/age, choose ONE using this order: hourly > monthly > 4-week > weekly > annual.
+        - Record the unit exactly as printed. If the same baseline is printed in multiple units for the SAME workers/period/step/education/age, choose ONE using this order: monthly > hourly > 4-week > weekly > annual.
+        - SKIP tables that are identical except for unit conversion (monthly vs hourly vs weekly vs 4-week vs yearly); keep ONE version (prefer monthly if present). Keep tables that differ by time period, worker type, education level, job group/function scale, steps (periodieken/trede), age bands, or contract type.
 
     TABLE AGE GROUP SELECTION
         - Create distinct SalaryRow objects for each adult-eligible age band present:
@@ -2022,9 +2113,10 @@ SALARY_PROMPT = """Extract structured salary data from a JSON object derived fro
 
     TABLE JOB GROUPS, STEPS, EDUCATION, CONTRACT TYPE
         - Extract ALL job groups visible in the standard wage table.
-        - If steps/trede (periodieken) are shown, create a separate SalaryRow per worker type × jobgroup × step (× [age] × [education] × [contract type]).
-        - If education tiers (e.g., MBO/HBO) determine different wages, create separate rows per worker type × jobgroup × education (× step × [age] × [contract type]).
-        - If contract permanency or contract hours (work arrangement) determine different wages, create separate rows per worker type × jobgroup × contract type (× step × [age] × [education]).
+        - If steps/trede (periodieken) are shown, create a separate SalaryRow per jobgroup × step × [worker type] (× [age] × [education] × [contract type]).
+        - If education tiers (e.g., MBO/HBO) determine different wages, create separate rows per jobgroup × step × [worker type] × education (× [age] × [contract type]).
+        - If contract permanency or contract hours (work arrangement) determine different wages, create separate rows per jobgroup × step × [worker type] × contract type (× [age] × [education]).
+        - Worker type field: OMIT if the value is generic (e.g. 'employee', 'standard worker') AND there is only one worker type in the entire CAO. KEEP when it provides meaningful distinction between different worker categories.
 
     TABLE AMOUNTS, PERCENTAGES, DATES
         - Salary amount: output as a number using a dot as the decimal separator (e.g., 2300.00). Do NOT use quotes, commas or thousands separators.
@@ -2032,10 +2124,10 @@ SALARY_PROMPT = """Extract structured salary data from a JSON object derived fro
         - Dates: Use YYYY-MM-DD format (e.g., "2023-11-01"). Do NOT invent or infer dates.
     
     TABLE TIMELINE CONSTRUCTION
-        - For each (worker type × jobgroup × [step] × [age] × [education] × [contract type]), build `timeline` with a SalaryPoint per table version that prints salary amounts.
+        - For each (jobgroup × step × [worker type] × [age] × [education] × [contract type]), build `timeline` with a SalaryPoint per table version that prints salary amounts.
         - Each SalaryPoint MUST have a printed amount. If only a % increase is announced but no new amounts are printed, DO NOT add a timeline point; instead mention the % in a note.
         - Use start_date exactly as the table heading or clause states, converting to YYYY-MM-DD format (e.g., "per 1 Nov 2023" → "2023-11-01"). If day is not printed, use the first day of the month, same for month.
-        - Align timeline points for the SAME (worker type × jobgroup × [step] × [age] × [education] × [contract type]) across time periods / table versions. Do not impute missing values.
+        - Align timeline points for the SAME (jobgroup × step × [worker type] × [age] × [education] × [contract type]) across time periods / table versions. Do not impute missing values.
 
     WORKFLOW STEPS (INTERNAL - DO NOT OUTPUT)
         1) READ & ANCHOR
@@ -2043,14 +2135,14 @@ SALARY_PROMPT = """Extract structured salary data from a JSON object derived fro
             - Read the input text to understand its structure, content, and table layout.
         2) LOCATE & MARK all standard wage tables according to the TABLE SELECTION rules.
         3) DETECT AGE GROUPS: Within each selected table, extract all age groups meeting the TABLE AGE GROUP SELECTION criteria.
-        4) DETECT JOB GROUPS, STEPS, EDUCATION LEVELS & CONTRACT TYPES: For each table version, identify worker types, job groups, steps, education levels, and contract types following the TABLE JOB GROUP, STEP, EDUCATION, CONTRACT TYPE rules.
+        4) DETECT JOB GROUPS, STEPS, EDUCATION LEVELS & CONTRACT TYPES: For each table version, identify job groups, steps, worker types, education levels, and contract types following the TABLE JOB GROUP, STEP, EDUCATION, CONTRACT TYPE rules.
         5) CONSTRUCT TIMELINE STRUCTURE:
-            5.1) Apply TABLE TIMELINE CONSTRUCTION rules to align worker types, job groups, steps, education levels, age bands, and contract types across table versions.
-            5.2) Build one SalaryRow for every unique detected combination of (worker type × jobgroup × [step] × [age] × [education] × [contract type]).
-            5.3) Build timeline: For each SalaryRow, create one SalaryPoint per version/time period where that combination appears, then normalize labels (worker type/jobgroup/step/age/education/contract type), deduplicate identical periods, and align all points that refer to the same combination across versions (no imputation).
+            5.1) Apply TABLE TIMELINE CONSTRUCTION rules to align job groups, steps, worker types, education levels, age bands, and contract types across table versions.
+            5.2) Build one SalaryRow for every unique detected combination of (jobgroup × step × [worker type] × [age] × [education] × [contract type]).
+            5.3) Build timeline: For each SalaryRow, create one SalaryPoint per version/time period where that combination appears, then normalize labels (jobgroup/step/worker type/age/education/contract type), deduplicate identical periods, and align all points that refer to the same combination across versions (no imputation).
         6) SORT & CLEAN each row's timeline chronologically by start_date. Omit or nullify any fields not explicitly printed in the source.
         7) VERIFY (SOURCE-GROUNDED) that every extracted number/date/percentage/unit/clause is explicitly present in the input. Remove or correct anything not grounded.
-        8) VALIDATE (SCHEMA & JSON) that the output is a valid JSON object that conforms exactly to the Pydantic schema (keys, types, null/"" conventions).
+        8) VALIDATE (SCHEMA & JSON) that the output is a valid JSON object that conforms exactly to the Pydantic schema (keys, types, null/""/omit conventions).
         9) OUTPUT only the final JSON.
 
     JSON OUTPUT REQUIREMENTS
@@ -2085,7 +2177,7 @@ NON_SALARY_PROMPT = """Extract structured information from a JSON object derived
     EXTRACTION GUIDELINES
         - Extract factual information for each field based on the schema descriptions.
         - Include relevant conditions, exceptions, and legal references in note fields.
-        - For missing values: omit optional fields; use the defined default for required ones — null, "", false, or "unspecified" depending on the field type.
+        - Missing values: Omit optional fields entirely. Only include optional fields with actual values.
         - Do NOT compare to statutory law or mark “above statutory” unless the CAO explicitly says so.
 
     AMOUNT & AMOUNT RANGE RULES
@@ -2119,7 +2211,7 @@ NON_SALARY_PROMPT = """Extract structured information from a JSON object derived
 	        - Confirm every extracted number/date/percentage/unit/clause is explicitly present in the input.
 	        - Remove or correct anything not grounded.
 	    6) VALIDATE (SCHEMA & JSON)
-	        - Build one JSON object that conforms exactly to the Pydantic schema (keys, types, null/”” conventions).
+	        - Build one JSON object that conforms exactly to the Pydantic schema (keys, types, null/””/omit conventions).
 	        - JSON is UTF-8, syntactically valid (balanced brackets, no trailing commas).
 	    7) OUTPUT only the final JSON.
 
@@ -2233,8 +2325,6 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
         "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
         "candidate_count": model_params["candidate_count"],
         "seed": model_params["seed"],
-        "presence_penalty": model_params["presence_penalty"],
-        "frequency_penalty": model_params["frequency_penalty"],
         "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
         "response_mime_type": "application/json",
         "response_schema": SalaryExtractionSchema,
@@ -2264,10 +2354,8 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
         if hasattr(response, 'parsed') and response.parsed is not None:
             result = [row.model_dump() for row in response.parsed.salary_information]
             
-            # Validate schema - salary should have salary_information section
-            if not result:
-                print(f'  Salary: Validation failed - empty salary_information')
-                raise Exception("Schema validation failed - empty salary_information")
+            # Validate schema - salary_information can be empty if no salary data exists
+            # Empty array is valid - some CAOs may not have salary information
             
             print(f'  Salary: Schema validation passed - {len(result)} salary entries')
             
@@ -2334,7 +2422,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
         last_error_message = None  # Track error message for retry guidance
         
         # Retry logic with proper attempt tracking
-        for attempt in range(5):
+        for attempt in range(model_params["max_retries"] + 1):
             try:
                 # Get adjusted parameters for this attempt
                 adjusted_params = get_adjusted_parameters(attempt)
@@ -2352,7 +2440,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                 if retry_guidance:
                     prompt += f"\n\n{retry_guidance}"
                 
-                print(f'  DEBUG: Model params: {adjusted_params}')
+                # print(f'  DEBUG: Model params: {adjusted_params}')
                 
                 # Use proper safety settings format for newer google-genai API
                 safety_settings = [
@@ -2382,8 +2470,6 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                     "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
                     "candidate_count": adjusted_params["candidate_count"],
                     "seed": adjusted_params["seed"],
-                    "presence_penalty": adjusted_params["presence_penalty"],
-                    "frequency_penalty": adjusted_params["frequency_penalty"],
                     "thinking_config": types.ThinkingConfig(thinking_budget=adjusted_params["thinking_budget"]),
                     "response_mime_type": "application/json",
                     "response_schema": SalaryExtractionSchema,
@@ -2402,7 +2488,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                 
                 print(f'  DEBUG: API response received')
                 print(f'  DEBUG: Response type: {type(response)}')
-                print(f'  DEBUG: Response attributes: {dir(response)}')
+                # print(f'  DEBUG: Response attributes: {dir(response)}')
                 
                 # Log detailed response information
                 log_api_response_details(response, filename, processing_time)
@@ -2449,8 +2535,9 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                 print(f'  DEBUG: Attempt {attempt + 1} failed: {type(e).__name__}: {e}')
                 
                 # Check if quota was exhausted during this attempt
-                global quota_exhausted_flag
-                if quota_exhausted_flag:
+                global process_quota_flags
+                process_id = context.get('process_id', 0) if context else 0
+                if process_id in process_quota_flags and process_quota_flags[process_id]:
                     print(f'  DEBUG: Quota exhausted during salary extraction, stopping retries')
                     break
                     
@@ -2576,8 +2663,6 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
         "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
         "candidate_count": model_params["candidate_count"],
         "seed": model_params["seed"],
-        "presence_penalty": model_params["presence_penalty"],
-        "frequency_penalty": model_params["frequency_penalty"],
         "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
         "response_mime_type": "application/json",
         "response_schema": NonSalaryExtractionSchema,
@@ -2656,7 +2741,7 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
         last_error_message = None  # Track error message for retry guidance
         
         # Retry logic with proper attempt tracking
-        for attempt in range(5):
+        for attempt in range(model_params["max_retries"] + 1):
             try:
                 # Get adjusted parameters for this attempt
                 adjusted_params = get_adjusted_parameters(attempt)
@@ -2702,8 +2787,6 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
                     "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
                     "candidate_count": adjusted_params["candidate_count"],
                     "seed": adjusted_params["seed"],
-                    "presence_penalty": adjusted_params["presence_penalty"],
-                    "frequency_penalty": adjusted_params["frequency_penalty"],
                     "thinking_config": types.ThinkingConfig(thinking_budget=adjusted_params["thinking_budget"]),
                     "response_mime_type": "application/json",
                     "response_schema": NonSalaryExtractionSchema,
@@ -2769,8 +2852,9 @@ def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: 
                 print(f'  DEBUG: Non-salary attempt {attempt + 1} failed: {type(e).__name__}: {e}')
                 
                 # Check if quota was exhausted during this attempt
-                global quota_exhausted_flag
-                if quota_exhausted_flag:
+                global process_quota_flags
+                process_id = context.get('process_id', 0) if context else 0
+                if process_id in process_quota_flags and process_quota_flags[process_id]:
                     print(f'  DEBUG: Quota exhausted during non-salary extraction, stopping retries')
                     break
                     
@@ -2864,8 +2948,6 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
         "max_output_tokens": 65536,
         "candidate_count": model_params["candidate_count"],
         "seed": model_params["seed"],
-        "presence_penalty": model_params["presence_penalty"],
-        "frequency_penalty": model_params["frequency_penalty"],
         "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
         "response_mime_type": "application/json",
         "response_schema": NonSalaryPart1,
@@ -2914,7 +2996,6 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
                     parameters=model_params
                 )
             
-            print(f'  Part 1 extraction completed successfully')
             return result
         else:
             print(f'  Part 1: No structured output received from model')
@@ -2958,7 +3039,7 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
         last_error_message = None
         
         # Retry logic with proper attempt tracking
-        for attempt in range(5):
+        for attempt in range(model_params["max_retries"] + 1):
             try:
                 # Get adjusted parameters for this attempt
                 adjusted_params = get_adjusted_parameters(attempt)
@@ -3004,8 +3085,6 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
                     "max_output_tokens": 65536,
                     "candidate_count": adjusted_params["candidate_count"],
                     "seed": adjusted_params["seed"],
-                    "presence_penalty": adjusted_params["presence_penalty"],
-                    "frequency_penalty": adjusted_params["frequency_penalty"],
                     "thinking_config": types.ThinkingConfig(thinking_budget=adjusted_params["thinking_budget"]),
                     "response_mime_type": "application/json",
                     "response_schema": NonSalaryPart1,
@@ -3068,8 +3147,9 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
                 print(f'  Part 1: Attempt {attempt + 1} failed: {type(e).__name__}: {e}')
                 
                 # Check if quota was exhausted during this attempt
-                global quota_exhausted_flag
-                if quota_exhausted_flag:
+                global process_quota_flags
+                process_id = context.get('process_id', 0) if context else 0
+                if process_id in process_quota_flags and process_quota_flags[process_id]:
                     print(f'  Part 1: Quota exhausted, stopping retries')
                     break
                     
@@ -3164,8 +3244,6 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
         "max_output_tokens": 65536,
         "candidate_count": model_params["candidate_count"],
         "seed": model_params["seed"],
-        "presence_penalty": model_params["presence_penalty"],
-        "frequency_penalty": model_params["frequency_penalty"],
         "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
         "response_mime_type": "application/json",
         "response_schema": NonSalaryPart2,
@@ -3216,7 +3294,6 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
                     parameters=model_params
                 )
             
-            print(f'  Part 2 extraction completed successfully')
             return result
         else:
             print(f'  DEBUG: No parsed attribute in part 2 response')
@@ -3253,7 +3330,7 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
         last_error_message = None
         
         # Retry logic with proper attempt tracking
-        for attempt in range(5):
+        for attempt in range(model_params["max_retries"] + 1):
             try:
                 # Get adjusted parameters for this attempt
                 adjusted_params = get_adjusted_parameters(attempt)
@@ -3299,8 +3376,6 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
                     "max_output_tokens": 65536,
                     "candidate_count": adjusted_params["candidate_count"],
                     "seed": adjusted_params["seed"],
-                    "presence_penalty": adjusted_params["presence_penalty"],
-                    "frequency_penalty": adjusted_params["frequency_penalty"],
                     "thinking_config": types.ThinkingConfig(thinking_budget=adjusted_params["thinking_budget"]),
                     "response_mime_type": "application/json",
                     "response_schema": NonSalaryPart2,
@@ -3364,8 +3439,9 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
                 print(f'  DEBUG: Part 2 attempt {attempt + 1} failed: {type(e).__name__}: {e}')
                 
                 # Check if quota was exhausted during this attempt
-                global quota_exhausted_flag
-                if quota_exhausted_flag:
+                global process_quota_flags
+                process_id = context.get('process_id', 0) if context else 0
+                if process_id in process_quota_flags and process_quota_flags[process_id]:
                     print(f'  DEBUG: Quota exhausted during part 2 extraction, stopping retries')
                     break
                     
@@ -3459,8 +3535,6 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
         "max_output_tokens": 65536,
         "candidate_count": model_params["candidate_count"],
         "seed": model_params["seed"],
-        "presence_penalty": model_params["presence_penalty"],
-        "frequency_penalty": model_params["frequency_penalty"],
         "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
         "response_mime_type": "application/json",
         "response_schema": NonSalaryPart3,
@@ -3512,7 +3586,6 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
                     parameters=model_params
                 )
             
-            print(f'  Part 3 extraction completed successfully')
             return result
         else:
             print(f'  Part 3: No structured output received from model')
@@ -3556,7 +3629,7 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
         last_error_message = None
         
         # Retry logic with proper attempt tracking
-        for attempt in range(5):
+        for attempt in range(model_params["max_retries"] + 1):
             try:
                 # Get adjusted parameters for this attempt
                 adjusted_params = get_adjusted_parameters(attempt)
@@ -3602,8 +3675,6 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
                     "max_output_tokens": 65536,
                     "candidate_count": adjusted_params["candidate_count"],
                     "seed": adjusted_params["seed"],
-                    "presence_penalty": adjusted_params["presence_penalty"],
-                    "frequency_penalty": adjusted_params["frequency_penalty"],
                     "thinking_config": types.ThinkingConfig(thinking_budget=adjusted_params["thinking_budget"]),
                     "response_mime_type": "application/json",
                     "response_schema": NonSalaryPart3,
@@ -3667,8 +3738,9 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
                 print(f'  DEBUG: Part 3 attempt {attempt + 1} failed: {type(e).__name__}: {e}')
                 
                 # Check if quota was exhausted during this attempt
-                global quota_exhausted_flag
-                if quota_exhausted_flag:
+                global process_quota_flags
+                process_id = context.get('process_id', 0) if context else 0
+                if process_id in process_quota_flags and process_quota_flags[process_id]:
                     print(f'  DEBUG: Quota exhausted during part 3 extraction, stopping retries')
                     break
                     
@@ -3954,6 +4026,37 @@ def save_extraction_json(data: dict, filename: str, extraction_type: str, cao_nu
         print(f'  DEBUG: Failed to save {extraction_type} extraction: {e}')
 
 
+def check_missing_extraction_parts(filename: str, cao_number: str) -> dict:
+    """
+    Check which extraction parts are missing for a given file.
+    
+    Returns:
+        dict with keys: 'salary', 'part1', 'part2', 'part3' 
+        and boolean values indicating if that part is missing
+    """
+    base_dir = Path("outputs/llm_analysis")
+    
+    missing = {
+        'salary': True,
+        'part1': True, 
+        'part2': True,
+        'part3': True
+    }
+    
+    # Check each output file (using correct folder structure from save_extraction_json)
+    salary_file = base_dir / "salary" / cao_number / filename.replace("_extract.json", "_analysis.json")
+    part1_file = base_dir / "non_salary" / "gen_bon_wag_pen_ter" / cao_number / filename.replace("_extract.json", "_analysis.json")
+    part2_file = base_dir / "non_salary" / "lea_ove_tra" / cao_number / filename.replace("_extract.json", "_analysis.json")
+    part3_file = base_dir / "non_salary" / "hom_con_saf_chi_ai_fri" / cao_number / filename.replace("_extract.json", "_analysis.json")
+    
+    missing['salary'] = not salary_file.exists()
+    missing['part1'] = not part1_file.exists()
+    missing['part2'] = not part2_file.exists()
+    missing['part3'] = not part3_file.exists()
+    
+    return missing
+
+
 def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapping: dict, 
                        config: AnalysisConfig, context: Dict[str, Any]) -> bool:
     """Process a single JSON file and save LLM extraction results."""
@@ -3967,54 +4070,104 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
         with open(json_file, 'r', encoding='utf-8') as f:
             json_data = json.load(f)
         
-        # Check if file is already processed
-        if is_file_already_processed(filename, cao_number):
-            print(f'  {cao_number}: Skipping {filename} (already processed)')
-            return True  # Return True since we successfully skipped it
+        # Check which parts are missing
+        missing_parts = check_missing_extraction_parts(filename, cao_number)
 
-        # Extract salary information
-        salary_extracted = extract_salary_from_json(json_data, filename, client, context)
-        salary_success = bool(salary_extracted)
-        print(f'  {cao_number}: Salary extraction {"completed" if salary_success else "failed"}')
+        # If all parts exist, skip entirely
+        if not any(missing_parts.values()):
+            print(f'  {cao_number}: Skipping {filename} (all parts already processed)')
+            return True
+            
+        # Print which parts need processing
+        parts_to_process = [k for k, v in missing_parts.items() if v]
+        print(f'  {cao_number}: Processing missing parts: {", ".join(parts_to_process)}')
+
+        # Check if quota was exhausted for this process
+        global process_quota_flags
+        process_id = context.get('process_id', 0) if context else 0
+        if process_id in process_quota_flags and process_quota_flags[process_id]:
+            print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
+            return False  # Stop processing this process only
+
+        # Extract salary information (only if missing)
+        if missing_parts['salary']:
+            salary_extracted = extract_salary_from_json(json_data, filename, client, context)
+            salary_success = salary_extracted is not None
+            print(f'  {cao_number}: Salary extraction {"completed" if salary_success else "failed"}')
+        else:
+            salary_extracted = None
+            salary_success = None  # Not run
+            print(f'  {cao_number}: Salary extraction skipped (already exists)')
+
+        # Extract non-salary part 1 (only if missing)
+        if missing_parts['part1']:
+            part1_extracted = extract_nonsalary_part1_from_json(json_data, filename, client, context)
+            part1_success = part1_extracted is not None
+            print(f'  {cao_number}: Non-salary part 1 extraction {"completed" if part1_success else "failed"}')
+        else:
+            part1_extracted = None
+            part1_success = None
+            print(f'  {cao_number}: Non-salary part 1 extraction skipped (already exists)')
+
+        # Extract non-salary part 2 (only if missing)
+        if missing_parts['part2']:
+            part2_extracted = extract_nonsalary_part2_from_json(json_data, filename, client, context)
+            part2_success = part2_extracted is not None
+            print(f'  {cao_number}: Non-salary part 2 extraction {"completed" if part2_success else "failed"}')
+        else:
+            part2_extracted = None
+            part2_success = None
+            print(f'  {cao_number}: Non-salary part 2 extraction skipped (already exists)')
+
+        # Extract non-salary part 3 (only if missing)
+        if missing_parts['part3']:
+            part3_extracted = extract_nonsalary_part3_from_json(json_data, filename, client, context)
+            part3_success = part3_extracted is not None
+            print(f'  {cao_number}: Non-salary part 3 extraction {"completed" if part3_success else "failed"}')
+        else:
+            part3_extracted = None
+            part3_success = None
+            print(f'  {cao_number}: Non-salary part 3 extraction skipped (already exists)')
         
-        # Extract non-salary parts (3 separate calls)
-        part1_extracted = extract_nonsalary_part1_from_json(json_data, filename, client, context)
-        part1_success = bool(part1_extracted)
-        print(f'  {cao_number}: Non-salary part 1 extraction {"completed" if part1_success else "failed"}')
-        
-        part2_extracted = extract_nonsalary_part2_from_json(json_data, filename, client, context)
-        part2_success = bool(part2_extracted)
-        print(f'  {cao_number}: Non-salary part 2 extraction {"completed" if part2_success else "failed"}')
-        
-        part3_extracted = extract_nonsalary_part3_from_json(json_data, filename, client, context)
-        part3_success = bool(part3_extracted)
-        print(f'  {cao_number}: Non-salary part 3 extraction {"completed" if part3_success else "failed"}')
-        
-        # Save each part separately (only if successful)
-        if salary_success:
+        # Save each part separately (only if extraction was attempted and successful)
+        if salary_success is True:
             save_extraction_json({'salary_information': salary_extracted}, filename, 'salary', cao_number)
-        else:
+        elif salary_success is False:
             print(f'  {cao_number}: Skipping salary file save due to extraction failure')
-        
-        if part1_success:
+
+        if part1_success is True:
             save_extraction_json(part1_extracted, filename, 'non_salary_part1', cao_number)
-        else:
+        elif part1_success is False:
             print(f'  {cao_number}: Skipping part 1 file save due to extraction failure')
-        
-        if part2_success:
+
+        if part2_success is True:
             save_extraction_json(part2_extracted, filename, 'non_salary_part2', cao_number)
-        else:
+        elif part2_success is False:
             print(f'  {cao_number}: Skipping part 2 file save due to extraction failure')
-        
-        if part3_success:
+
+        if part3_success is True:
             save_extraction_json(part3_extracted, filename, 'non_salary_part3', cao_number)
-        else:
+        elif part3_success is False:
             print(f'  {cao_number}: Skipping part 3 file save due to extraction failure')
         
-        # If all 4 succeed, log combined entry to analysis_performance.jsonl
-        all_successful = all([salary_success, part1_success, part2_success, part3_success])
-        
-        if all_successful and context and 'performance_monitor' in context:
+        # Log to analysis_performance.jsonl only when ALL 4 parts are complete
+        # (either newly extracted successfully OR already existed)
+        all_parts_complete = all([
+            salary_success is not False,  # True (succeeded) or None (skipped/already exists)
+            part1_success is not False,
+            part2_success is not False,
+            part3_success is not False
+        ])
+
+        # Only log if at least one part was newly extracted successfully
+        any_newly_extracted = any([
+            salary_success is True,
+            part1_success is True,
+            part2_success is True,
+            part3_success is True
+        ])
+
+        if all_parts_complete and any_newly_extracted and context and 'performance_monitor' in context:
             # Log combined success
             file_size_mb = len(str(json_data)) / (1024 * 1024)
             context['performance_monitor'].log_analysis(
@@ -4032,28 +4185,22 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
             print(f'  {cao_number}: Combined analysis logged successfully')
         else:
             failed_parts = []
-            if not salary_success:
+            if salary_success is False:
                 failed_parts.append("salary")
-            if not part1_success:
+            if part1_success is False:
                 failed_parts.append("part1")
-            if not part2_success:
+            if part2_success is False:
                 failed_parts.append("part2")
-            if not part3_success:
+            if part3_success is False:
                 failed_parts.append("part3")
-            print(f'  {cao_number}: Combined analysis not logged - failed parts: {failed_parts}')
+            if failed_parts:
+                print(f'  {cao_number}: Combined analysis not logged - failed parts: {failed_parts}')
+            else:
+                print(f'  {cao_number}: Combined analysis not logged - no new extractions performed')
 
-        # Check if we got any data
-        has_data = (salary_extracted or 
-                   part1_extracted or 
-                   part2_extracted or 
-                   part3_extracted)
-        
-        if not has_data:
-            print(f'  {cao_number}: No data extracted from {filename}')
-            return False
-        
+        # Return success if all parts that were attempted succeeded or already existed
         print(f'  {cao_number}: Successfully processed {filename}')
-        return True
+        return all_parts_complete
         
     except Exception as e:
         print(f'  {cao_number}: Error processing {filename}: {e}')
@@ -4108,8 +4255,8 @@ def main():
         
         for cao_folder, json_file in process_files:
             # Check for quota exhaustion flag before processing each file
-            global quota_exhausted_flag
-            if quota_exhausted_flag:
+            global process_quota_flags
+            if args.process_id in process_quota_flags and process_quota_flags[args.process_id]:
                 print(f'🚨 QUOTA EXHAUSTED - Process {args.process_id + 1} (API key {args.key_number}) shutting down gracefully')
                 print(f'📊 Partial results: {successful_analyses} successful, {len(failed_files)} failed before shutdown')
                 print(f'🧹 Cleaning up and exiting...')
@@ -4126,25 +4273,29 @@ def main():
                 if success:
                     successful_analyses += 1
                 else:
-                    failed_files.append(json_file.name)
-                    
-                # Check quota flag again after processing (in case it was set during processing)
-                if quota_exhausted_flag:
-                    print(f'🚨 QUOTA EXHAUSTED during processing - Process {args.process_id + 1} shutting down gracefully')
-                    break
+                    # Check if this was due to quota exhaustion
+                    if args.process_id in process_quota_flags and process_quota_flags[args.process_id]:
+                        print(f'🚨 QUOTA EXHAUSTED during processing - Process {args.process_id + 1} shutting down gracefully')
+                        break
+                    else:
+                        failed_files.append(json_file.name)
                     
             finally:
                 release_file_lock(json_file)
         
         # Final summary with quota exhaustion indication
-        if quota_exhausted_flag:
+        if args.process_id in process_quota_flags and process_quota_flags[args.process_id]:
             print(f'Process {args.process_id + 1} completed with QUOTA EXHAUSTION: {successful_analyses} successful, {len(failed_files)} failed')
         else:
             print(f'Process {args.process_id + 1} completed: {successful_analyses} successful, {len(failed_files)} failed')
         
     except Exception as e:
-        print(f'Fatal error: {e}')
-        sys.exit(1)
+        # Check if this is a quota exhaustion error - if so, exit gracefully
+        if args.process_id in process_quota_flags and process_quota_flags[args.process_id]:
+            print(f'Process {args.process_id + 1} completed with QUOTA EXHAUSTION due to error: {e}')
+        else:
+            print(f'Fatal error: {e}')
+            sys.exit(1)
 
 
 def cli_test_fixture():

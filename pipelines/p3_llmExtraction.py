@@ -110,7 +110,7 @@ class CAOExtractionSchema(BaseModel):
         - general wage increases (periodic percentage or nominal increases applied sector-wide or by group),
         - all bonuses and allowances, including sign-on, 13th month, fixed lump sums, profit-sharing, performance bonuses, seniority/loyalty or jubilee bonuses, job-specific allowances, retirement gratuities, and insurance/savings benefits,
         - notes explaining how the wage system or tables operate (e.g., “scale applies to 36-h week”, “wages include 8% holiday allowance”, “conversion rules for youth to adult wage scale”).
-        SKIP: tables that are identical except for unit conversion (hourly vs monthly vs weekly vs 4 weeks for same data); 
+        SKIP: tables that are identical except for unit conversion (monthly vs hourly vs weekly vs 4 weeks for same data); 
         KEEP: tables or rules that differ by period, worker type, education level, job group/function scale, experience steps (periodieken/trede), age bands, or other substantive distinctions."""
         , default_factory=list)
     pension_information: List[List[str]] = Field(description=
@@ -806,7 +806,7 @@ def create_extraction_prompt(filename: str) -> str:
 
     WAGE TABLE DEDUP (IMPORTANT):
         - Keep tables that differ by period, worker type, education level, job group/function scale, experience steps (periodieken/trede), age bands, or other substantive distinctions.
-        - SKIP tables that are identical except for unit conversion (hourly vs monthly vs weekly vs 4-week vs yearly); keep ONE version (prefer hourly if present).
+        - SKIP tables that are identical except for unit conversion (monthly vs hourly vs weekly vs 4-week vs yearly); keep ONE version (prefer monthly if present).
 
     TABLE FORMAT:
         - Represent each table as a short list of strings like:
@@ -827,7 +827,7 @@ def create_extraction_prompt(filename: str) -> str:
         5) Extract, translate & build — DO NOT HALLUCINATE:
             - Build one JSON object with the exact keys in OUTPUT_JSON_TEMPLATE, in this order: general_information → wage_information → pension_information → leave_information → termination_information → overtime_information → training_information → homeoffice_information → contract_type_information → safety_information → childcare_information → AI_information → fringe_benefits_information.
             - COPY numbers/dates/%/names literally; TRANSLATE all other Dutch text (clauses, part of tables that are not numbers or names, titles, etc.) to clear English; leave blank if not stated.
-            - Tables: rebuild to TABLE FORMAT; apply WAGE TABLE DEDUP (remove pure unit-conversion duplicates; prefer hourly).
+            - Tables: rebuild to TABLE FORMAT; apply WAGE TABLE DEDUP (remove pure unit-conversion duplicates; prefer monthly).
             - Consolidate: keep related items adjacent.
             - If trimming per Step 4 is needed, shorten only narrative notes or minor wording not directly tied to field content, without changing legal meaning.
         6) Verify: confirm that every extracted fact, number, table, or clause is explicitly present in the document (allowing for shortening, restructuring, and translation to English) and that no important information is missing. Correct or remove anything not grounded in the source. Do not infer or guess.

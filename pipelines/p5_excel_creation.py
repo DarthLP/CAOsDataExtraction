@@ -18,9 +18,9 @@ INPUT:
     - CAO info from inputs/pdfs/extracted_cao_info.csv
 
 OUTPUT:
-    - Excel files in outputs/excel/new_results/
-      - extracted_data_salary.xlsx
-      - extracted_data_non_salary.xlsx
+    - CSV files in outputs/excel/new_results/
+      - extracted_data_salary.csv
+      - extracted_data_non_salary.csv
 """
 
 # =============================================================================
@@ -245,8 +245,28 @@ def discover_llm_files(llm_analysis_folder: Path) -> List[tuple]:
     
     return files
 
+def determine_max_timeline_length(files: List[tuple]) -> int:
+    """Determine the maximum timeline length across all salary files."""
+    max_timeline = 0
+    
+    print("Determining max timeline length...")
+    for cao_number, base_filename, salary_file in files:
+        try:
+            with open(salary_file, 'r', encoding='utf-8') as f:
+                salary_data = json.load(f)
+                salary_rows = salary_data.get('salary_information', [])
+                for salary_row in salary_rows:
+                    timeline = salary_row.get('timeline', [])
+                    max_timeline = max(max_timeline, len(timeline))
+        except Exception as e:
+            print(f"Warning: Could not read {salary_file} for timeline analysis: {e}")
+    
+    print(f"Max timeline length determined: {max_timeline}")
+    return max_timeline
+
 def process_salary_file(cao_number: str, base_filename: str, salary_file: Path, 
-                       cao_info_mapping: Dict[str, Dict[str, str]], config: ExcelConfig) -> List[dict]:
+                       cao_info_mapping: Dict[str, Dict[str, str]], config: ExcelConfig, 
+                       max_timeline_length: int) -> List[dict]:
     """Process a single salary file and return Excel rows."""
     # Load salary data
     with open(salary_file, 'r', encoding='utf-8') as f:
@@ -257,11 +277,11 @@ def process_salary_file(cao_number: str, base_filename: str, salary_file: Path,
     # Get CAO metadata
     cao_metadata = match_cao_info(cao_number, base_filename, cao_info_mapping)
     
-    # Convert to Excel rows
+    # Convert to Excel rows (wide format)
     excel_rows = []
     for salary_row in salary_rows:
-        rows = flatten_salary_row(salary_row, cao_metadata)
-        excel_rows.extend(rows)
+        row = flatten_salary_row(salary_row, cao_metadata, max_timeline_length)
+        excel_rows.append(row)
     
     print(f'  {cao_number}: Processed {len(excel_rows)} salary rows from {salary_file.name}')
     return excel_rows
@@ -310,6 +330,9 @@ def main():
             all_files = all_files[:max_files]
             print(f"  Limited to {len(all_files)} files due to max_files limit")
         
+        # Determine max timeline length dynamically
+        max_timeline_length = determine_max_timeline_length(all_files)
+        
         print(f'Processing {len(all_files)} files')
         
         # Process files
@@ -321,7 +344,7 @@ def main():
         for cao_number, base_filename, salary_file in all_files:
             try:
                 # Process salary data
-                salary_rows = process_salary_file(cao_number, base_filename, salary_file, cao_info_mapping, config)
+                salary_rows = process_salary_file(cao_number, base_filename, salary_file, cao_info_mapping, config, max_timeline_length)
                 salary_results.extend(salary_rows)
                 
                 # Process non-salary data
@@ -337,8 +360,8 @@ def main():
         # Create DataFrames and save Excel files
         if salary_results:
             try:
-                # Get column definitions
-                salary_columns = get_salary_columns()
+                # Get column definitions with dynamic max timeline length
+                salary_columns = get_salary_columns(max_timeline_length)
                 
                 # Create DataFrame
                 df_salary = pd.DataFrame(salary_results)
@@ -352,14 +375,15 @@ def main():
                 df_salary = df_salary[salary_columns]
                 
                 print(f'  Created salary DataFrame with {len(df_salary)} rows and {len(df_salary.columns)} columns')
+                print(f'  Max timeline length used: {max_timeline_length}')
                 
-                # Save salary Excel
-                salary_output_path = config.output_folder / "extracted_data_salary.xlsx"
-                df_salary.to_excel(salary_output_path, index=False, engine='openpyxl')
-                print(f'  Saved salary Excel file: {salary_output_path}')
+                # Save salary CSV
+                salary_output_path = config.output_folder / "extracted_data_salary.csv"
+                df_salary.to_csv(salary_output_path, index=False, encoding='utf-8', sep=';')
+                print(f'  Saved salary CSV file: {salary_output_path}')
                 
             except Exception as e:
-                print(f'  ERROR creating salary Excel file: {e}')
+                print(f'  ERROR creating salary CSV file: {e}')
         
         if non_salary_results:
             try:
@@ -374,18 +398,24 @@ def main():
                 if missing_cols:
                     df_non_salary = pd.concat([df_non_salary, pd.DataFrame(columns=missing_cols)], axis=1)
                 
+                # Add any additional columns that were created by flattening but not in the schema
+                additional_cols = [col for col in df_non_salary.columns if col not in non_salary_columns]
+                if additional_cols:
+                    print(f'  Adding {len(additional_cols)} additional columns from flattening (Amount/AmountRange)')
+                    non_salary_columns.extend(additional_cols)
+                
                 # Reorder columns
                 df_non_salary = df_non_salary[non_salary_columns]
-                
+            
                 print(f'  Created non-salary DataFrame with {len(df_non_salary)} rows and {len(df_non_salary.columns)} columns')
                 
-                # Save non-salary Excel
-                non_salary_output_path = config.output_folder / "extracted_data_non_salary.xlsx"
-                df_non_salary.to_excel(non_salary_output_path, index=False, engine='openpyxl')
-                print(f'  Saved non-salary Excel file: {non_salary_output_path}')
+                # Save non-salary CSV
+                non_salary_output_path = config.output_folder / "extracted_data_non_salary.csv"
+                df_non_salary.to_csv(non_salary_output_path, index=False, encoding='utf-8', sep=';')
+                print(f'  Saved non-salary CSV file: {non_salary_output_path}')
                 
             except Exception as e:
-                print(f'  ERROR creating non-salary Excel file: {e}')
+                print(f'  ERROR creating non-salary CSV file: {e}')
         
         print(f'Completed: {successful_files} successful, {len(failed_files)} failed')
         

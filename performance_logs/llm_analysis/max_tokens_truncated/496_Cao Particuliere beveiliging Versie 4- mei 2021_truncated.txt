@@ -1,0 +1,193 @@
+TRUNCATED RESPONSE DEBUG INFO
+Original filename: Cao Particuliere beveiliging Versie 4- mei 2021_extract.json
+Timestamp: 2025-10-17T16:57:22.112284
+Response length: 7263 characters
+Finish reason: MAX_TOKENS
+================================================================================
+
+{
+  "salary_information": [
+    {
+      "jobgroup": "Scale 2",
+      "step_label": "0 periodieken",
+      "is_entry": false,
+      "timeline": [
+        {
+          "start_date": "2017-01-01",
+          "amount": 1718.28,
+          "unit": "monthly",
+          "table_label": "per payroll period 1 2017",
+          "increase_percent": 2.5,
+          "hours_basis_ft_week": 38,
+          "note": "Includes a 2% increase and 0.5% additional increase."
+        },
+        {
+          "start_date": "2018-12-01",
+          "amount": 1744.05,
+          "unit": "monthly",
+          "table_label": "per payroll period 13 2018",
+          "increase_percent": 1.5,
+          "hours_basis_ft_week": 38,
+          "note": "Includes a 1.5% increase."
+        },
+        {
+          "start_date": "2019-05-01",
+          "amount": 1774.57,
+          "unit": "monthly",
+          "table_label": "per payroll period 5 2019",
+          "increase_percent": 1.75,
+          "hours_basis_ft_week": 38,
+          "note": "Includes a 1.75% increase."
+        },
+        {
+          "start_date": "2020-01-01",
+          "amount": 1820.71,
+          "unit": "monthly",
+          "table_label": "per payroll period 1 2020",
+          "increase_percent": 2.6,
+          "hours_basis_ft_week": 38,
+          "note": "Wages increased by 2.6% compared to payroll period 5 2019, as the CPI increase (Oct-Sep 2019) was 2.6%, higher than 2.5%."
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 1866.23,
+          "unit": "monthly",
+          "table_label": "per payroll period 1 2021",
+          "increase_percent": 2.5,
+          "hours_basis_ft_week": 38,
+          "note": "Wages increased by 2.5% compared to payroll period 1 2020. If the CPI increase (Oct-Sep 2020) is higher than 2.5%, wages will be increased by that higher percentage."
+        },
+        {
+          "start_date": "2022-01-01",
+          "amount": 1912.89,
+          "unit": "monthly",
+          "table_label": "per payroll period 1 2022",
+          "increase_percent": 2.5,
+          "hours_basis_ft_week": 38,
+          "note": "Wages increased by 2.5% compared to payroll period 1 2021. If the CPI increase (Oct-Sep 2021) is higher than 2.5%, wages will be increased by that higher percentage."
+        },
+        {
+          "start_date": "2023-01-01",
+          "amount": 1960.71,
+          "unit": "monthly",
+          "table_label": "per payroll period 1 2023",
+          "increase_percent": 2.5,
+          "hours_basis_ft_week": 36,
+          "note": "Wages increased by 2.5% compared to payroll period 1 2022. If the CPI increase (Oct-Sep 2022) is higher than 2.5%, wages will be increased by that higher percentage. Salary scales are based on 144 hours per payroll period. Hourly wages are based on 144 hours. Wages in scales 2.1 and 3.1 at the end of the CAO term are at least 125% of the then applicable statutory minimum wage."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step_label": "0 periodieken",
+      "is_entry": true,
+      "timeline": [
+        {
+          "start_date": "2017-01-01",
+          "amount": 1546.45,
+          "unit": "monthly",
+          "table_label": "Entry-level per payroll period 1 2017",
+          "increase_percent": 2.5,
+          "hours_basis_ft_week": 38,
+          "note": "Includes a 2% increase and 0.5% additional increase."
+        },
+        {
+          "start_date": "2018-12-01",
+          "end_date": "2018-12-31",
+          "amount": 1569.65,
+          "unit": "monthly",
+          "table_label": "Entry-level per payroll period 13 2018",
+          "increase_percent": 1.5,
+          "hours_basis_ft_week": 38,
+          "note": "Includes a 1.5% increase. This entry-level salary scale was abolished as of payroll period 1 2019."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step_label": "1 periodieken",
+      "is_entry": false,
+      "timeline": [
+        {
+          "start_date": "2017-01-01",
+          "amount": 1756.51,
+          "unit": "monthly",
+          "table_label": "per payroll period 1 2017",
+          "increase_percent": 2.5,
+          "hours_basis_ft_week": 38,
+          "note": "Includes a 2% increase and 0.5% additional increase."
+        },
+        {
+          "start_date": "2018-12-01",
+          "amount": 1782.86,
+          "unit": "monthly",
+          "table_label": "per payroll period 13 2018",
+          "increase_percent": 1.5,
+          "hours_basis_ft_week": 38,
+          "note": "Includes a 1.5% increase."
+        },
+        {
+          "start_date": "2019-05-01",
+          "amount": 1814.06,
+          "unit": "monthly",
+          "table_label": "per payroll period 5 2019",
+          "increase_percent": 1.75,
+          "hours_basis_ft_week": 38,
+          "note": "Includes a 1.75% increase."
+        },
+        {
+          "start_date": "2020-01-01",
+          "amount": 1861.23,
+          "unit": "monthly",
+          "table_label": "per payroll period 1 2020",
+          "increase_percent": 2.6,
+          "hours_basis_ft_week": 38,
+          "note": "Wages increased by 2.6% compared to payroll period 5 2019, as the CPI increase (Oct-Sep 2019) was 2.6%, higher than 2.5%."
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 1907.76,
+          "unit": "monthly",
+          "table_label": "per payroll period 1 2021",
+          "increase_percent": 2.5,
+          "hours_basis_ft_week": 38,
+          "note": "Wages increased by 2.5% compared to payroll period 1 2020. If the CPI increase (Oct-Sep 2020) is higher than 2.5%, wages will be increased by that higher percentage."
+        },
+        {
+          "start_date": "2022-01-01",
+          "amount": 1955.45,
+          "unit": "monthly",
+          "table_label": "per payroll period 1 2022",
+          "increase_percent": 2.5,
+          "hours_basis_ft_week": 38,
+          "note": "Wages increased by 2.5% compared to payroll period 1 2021. If the CPI increase (Oct-Sep 2021) is higher than 2.5%, wages will be increased by that higher percentage."
+        },
+        {
+          "start_date": "2023-01-01",
+          "amount": 2004.34,
+          "unit": "monthly",
+          "table_label": "per payroll period 1 2023",
+          "increase_percent": 2.5,
+          "hours_basis_ft_week": 36,
+          "note": "Wages increased by 2.5% compared to payroll period 1 2022. If the CPI increase (Oct-Sep 2022) is higher than 2.5%, wages will be increased by that higher percentage. Salary scales are based on 144 hours per payroll period. Hourly wages are based on 144 hours. Wages in scales 2.1 and 3.1 at the end of the CAO term are at least 125% of the then applicable statutory minimum wage."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step_label": "1 periodieken",
+      "is_entry": true,
+      "timeline": [
+        {
+          "start_date": "2017-01-01",
+          "amount": 1580.86,
+          "unit": "monthly",
+          "table_label": "Entry-level per payroll period 1 2017",
+          "increase_percent": 2.5,
+          "hours_basis_ft_week": 38,
+          "note": "Includes a 2% increase and 0.5% additional increase."
+        },
+        {
+          "start_date": "2018-12-01",
+          "end_date": "2018-12-31",
+          

@@ -113,6 +113,97 @@ from schema.non_salary_schema import (
 process_quota_flags = {}
 
 # =============================================================================
+# CONSTANTS
+# =============================================================================
+# Global configuration constants
+MODEL = 'gemini-2.5-flash'
+SKIP_TRUNCATED_SALARY_FILES = True  # Skip salary extraction for files with MAX_TOKENS truncation
+
+# =============================================================================
+# CONFIGURATION & SETUP FUNCTIONS
+# =============================================================================
+# Functions for loading configuration, setting up environment, and initializing components
+
+@dataclass
+class AnalysisConfig:
+    """Configuration for the analysis pipeline."""
+    input_folder: str
+    output_folder: Path
+    cao_info_path: str
+    max_processing_time_hours: int = 1
+    max_json_files: int = 1000000  # Default value for max files to process
+    token_limit: int = 900000  # 900K tokens safety limit
+
+
+def load_configuration() -> AnalysisConfig:
+    """Load and validate configuration from config.yaml."""
+    with open('conf/config.yaml', 'r') as f:
+        config_data = yaml.safe_load(f)
+    
+    # Resolve project root (two levels up from this file: pipelines/ -> repo root)
+    project_root = Path(__file__).resolve().parents[1]
+    output_base = project_root / 'outputs' / 'llm_analysis'
+    
+    return AnalysisConfig(
+        input_folder=config_data['paths']['outputs_json'] + "/new_flow",
+        output_folder=output_base,
+        cao_info_path=f"{config_data['paths']['inputs_pdfs']}/extracted_cao_info.csv"
+    )
+
+
+def setup_performance_monitor_p4() -> PerformanceMonitor:
+    """Setup performance monitoring for p4 analysis pipeline."""
+    return PerformanceMonitor(
+        log_file='performance_logs/llm_analysis/analysis_performance.jsonl',
+        summary_file='performance_logs/llm_analysis/analysis_summary.json'
+    )
+
+
+def setup_processing_context(config: AnalysisConfig, process_id: int, 
+                           total_processes: int, key_number: int) -> Dict[str, Any]:
+    """Setup complete processing context."""
+    api_key, actual_key_number = setup_environment(key_number)
+    client = setup_gemini_client(api_key)
+    performance_monitor = setup_performance_monitor_p4()
+    
+    return {
+        'config': config,
+        'process_id': process_id,
+        'total_processes': total_processes,
+        'api_key': api_key,
+        'key_number': actual_key_number,
+        'client': client,
+        'performance_monitor': performance_monitor
+    }
+
+
+def validate_input_paths(config: AnalysisConfig, process_id: int = 0):
+    """Validate that input/output paths exist and are accessible."""
+    if not os.path.exists(config.input_folder):
+        raise ValueError(f"Input folder does not exist: {config.input_folder}")
+    
+    # Ensure full directory tree exists (avoid race conditions across processes)
+    config.output_folder.mkdir(parents=True, exist_ok=True)
+    
+    # Check if we can write to output folder
+    # Use process_id to avoid race conditions when running parallel processes
+    test_file = config.output_folder / f".test_write_p{process_id}"
+    try:
+        test_file.write_text("test")
+        if not test_file.exists():
+            raise ValueError("Test file was not created")
+    except Exception as e:
+        raise ValueError(f"Cannot write to output folder: {config.output_folder}, Error: {e}")
+    finally:
+        # Clean up test file if it exists (do this separately from validation)
+        if test_file.exists():
+            try:
+                test_file.unlink(missing_ok=True)
+            except Exception:
+                # Ignore cleanup errors - write permission was already validated
+                pass
+
+# =============================================================================
 # LLM CLIENT FUNCTIONS
 # =============================================================================
 def setup_environment(key_number: int = 1) -> tuple[str, int]:
@@ -609,95 +700,27 @@ def save_truncated_response(response_text: str, filename: str, cao_number: str =
         print(f'  DEBUG: Failed to save truncated response: {e}')
 
 
-# =============================================================================
-# CONSTANTS
-# =============================================================================
-# Global configuration constants
-MODEL = 'gemini-2.5-flash'  
-
-# =============================================================================
-# CONFIGURATION & SETUP FUNCTIONS
-# =============================================================================
-# Functions for loading configuration, setting up environment, and initializing components
-
-@dataclass
-class AnalysisConfig:
-    """Configuration for the analysis pipeline."""
-    input_folder: str
-    output_folder: Path
-    cao_info_path: str
-    max_processing_time_hours: int = 1
-    max_json_files: int = 1000000  # Default value for max files to process
-    token_limit: int = 900000  # 900K tokens safety limit
-
-
-def load_configuration() -> AnalysisConfig:
-    """Load and validate configuration from config.yaml."""
-    with open('conf/config.yaml', 'r') as f:
-        config_data = yaml.safe_load(f)
+def is_file_in_truncated_folder(filename: str, cao_number: str) -> bool:
+    """
+    Check if a file exists in the max_tokens_truncated folder.
     
-    # Resolve project root (two levels up from this file: pipelines/ -> repo root)
-    project_root = Path(__file__).resolve().parents[1]
-    output_base = project_root / 'outputs' / 'llm_analysis'
+    Args:
+        filename: Original filename (e.g., "CAO_file_extract.json")
+        cao_number: CAO number for the file
+        
+    Returns:
+        bool: True if the file exists in truncated folder, False otherwise
+    """
+    truncated_dir = Path("performance_logs/llm_analysis/max_tokens_truncated")
     
-    return AnalysisConfig(
-        input_folder=config_data['paths']['outputs_json'] + "/new_flow",
-        output_folder=output_base,
-        cao_info_path=f"{config_data['paths']['inputs_pdfs']}/extracted_cao_info.csv"
-    )
-
-
-def setup_performance_monitor_p4() -> PerformanceMonitor:
-    """Setup performance monitoring for p4 analysis pipeline."""
-    return PerformanceMonitor(
-        log_file='performance_logs/llm_analysis/analysis_performance.jsonl',
-        summary_file='performance_logs/llm_analysis/analysis_summary.json'
-    )
-
-
-def setup_processing_context(config: AnalysisConfig, process_id: int, 
-                           total_processes: int, key_number: int) -> Dict[str, Any]:
-    """Setup complete processing context."""
-    api_key, actual_key_number = setup_environment(key_number)
-    client = setup_gemini_client(api_key)
-    performance_monitor = setup_performance_monitor_p4()
+    if not truncated_dir.exists():
+        return False
     
-    return {
-        'config': config,
-        'process_id': process_id,
-        'total_processes': total_processes,
-        'api_key': api_key,
-        'key_number': actual_key_number,
-        'client': client,
-        'performance_monitor': performance_monitor
-    }
-
-
-def validate_input_paths(config: AnalysisConfig, process_id: int = 0):
-    """Validate that input/output paths exist and are accessible."""
-    if not os.path.exists(config.input_folder):
-        raise ValueError(f"Input folder does not exist: {config.input_folder}")
+    # Build expected truncated filename: {cao_number}_{clean_filename}_truncated.txt
+    clean_filename = extract_clean_filename(filename)
+    expected_truncated_file = truncated_dir / f"{cao_number}_{clean_filename}_truncated.txt"
     
-    # Ensure full directory tree exists (avoid race conditions across processes)
-    config.output_folder.mkdir(parents=True, exist_ok=True)
-    
-    # Check if we can write to output folder
-    # Use process_id to avoid race conditions when running parallel processes
-    test_file = config.output_folder / f".test_write_p{process_id}"
-    try:
-        test_file.write_text("test")
-        if not test_file.exists():
-            raise ValueError("Test file was not created")
-    except Exception as e:
-        raise ValueError(f"Cannot write to output folder: {config.output_folder}, Error: {e}")
-    finally:
-        # Clean up test file if it exists (do this separately from validation)
-        if test_file.exists():
-            try:
-                test_file.unlink(missing_ok=True)
-            except Exception:
-                # Ignore cleanup errors - write permission was already validated
-                pass
+    return expected_truncated_file.exists()
 
 
 # =============================================================================
@@ -757,7 +780,7 @@ class ModelOutputParseError(Exception):
 # =============================================================================
 # Exact prompt templates for salary and non-salary extraction
 
-def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None, cao_number: str = None) -> List[dict]:
+def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None, cao_number: str = None) -> dict:
     """Extract salary information from JSON using LLM."""
     
     salary_text = ""
@@ -883,12 +906,12 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
         
         # Check if response has parsed attribute (structured output)
         if hasattr(response, 'parsed') and response.parsed is not None:
-            result = [row.model_dump() for row in response.parsed.salary_information]
+            result = {"salary_information": [row.model_dump() for row in response.parsed.salary_information]}
             
             # Validate schema - salary_information can be empty if no salary data exists
             # Empty array is valid - some CAOs may not have salary information
             
-            print(f'  Salary: Schema validation passed - {len(result)} salary entries')
+            print(f'  Salary: Schema validation passed - {len(result["salary_information"])} salary entries')
             
             # Log successful salary extraction
             if context and 'performance_monitor' in context:
@@ -1032,8 +1055,8 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                 # Check if response has parsed attribute (structured output)
                 if hasattr(response, 'parsed') and response.parsed is not None:
                     print(f'  DEBUG: Response has parsed attribute')
-                    result = [row.model_dump() for row in response.parsed.salary_information]
-                    print(f'  DEBUG: Parsed {len(result)} salary rows')
+                    result = response.parsed.model_dump()
+                    print(f'  DEBUG: Parsed salary structure with {len(result.get("salary_information", []))} salary rows')
                     
                     # Log successful salary extraction
                     if context and 'performance_monitor' in context:
@@ -1073,7 +1096,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                     break
                     
                 if attempt < 4:  # Not the last attempt
-                    if handle_llm_errors(e, attempt, 5, context=filename):
+                    if handle_llm_errors(e, attempt, 5, context=context):
                         continue  # Retry
                     else:
                         break  # Don't retry
@@ -1083,6 +1106,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                     break
         
         # If we get here, all attempts failed
+        print(f'  ⚠️ All {model_params["max_retries"]} retries failed, moving on to next part')
         log_analysis_error(filename, f"All retry attempts failed: {type(last_error).__name__}: {last_error}", "")
         
         # Log failed salary extraction
@@ -1111,7 +1135,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                 parameters=final_params
             )
         
-        return []
+        return None
 
 
 
@@ -1370,7 +1394,7 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
                     break
                     
                 if attempt < 4:  # Not the last attempt
-                    if handle_llm_errors(e, attempt, 5, context=filename):
+                    if handle_llm_errors(e, attempt, 5, context=context):
                         continue  # Retry
                     else:
                         break  # Don't retry
@@ -1408,8 +1432,8 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
                 parameters=final_params
             )
         
-        print(f'  Part 1 extraction failed')
-        return {}
+        print(f'  ⚠️ All {model_params["max_retries"]} retries failed for Part 1, moving on to next part')
+        return None
 
 
 def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None, cao_number: str = None) -> dict:
@@ -1662,7 +1686,7 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
                     break
                     
                 if attempt < 4:  # Not the last attempt
-                    if handle_llm_errors(e, attempt, 5, context=filename):
+                    if handle_llm_errors(e, attempt, 5, context=context):
                         continue  # Retry
                     else:
                         break  # Don't retry
@@ -1700,7 +1724,8 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
                 parameters=final_params
             )
         
-        return {}
+        print(f'  ⚠️ All {model_params["max_retries"]} retries failed for Part 2, moving on to next part')
+        return None
 
 
 def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None, cao_number: str = None) -> dict:
@@ -1961,7 +1986,7 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
                     break
                     
                 if attempt < 4:  # Not the last attempt
-                    if handle_llm_errors(e, attempt, 5, context=filename):
+                    if handle_llm_errors(e, attempt, 5, context=context):
                         continue  # Retry
                     else:
                         break  # Don't retry
@@ -1999,7 +2024,8 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
                 parameters=final_params
             )
         
-        return {}
+        print(f'  ⚠️ All {model_params["max_retries"]} retries failed for Part 3, moving on to next part')
+        return None
 
 
 # =============================================================================
@@ -2152,7 +2178,7 @@ def find_cao_info(pdf_name: str, cao_number: int, cao_info_mapping: dict) -> Opt
 # =============================================================================
 # Functions for creating Excel output and merging extracted data
 
-def save_extraction_json(data: dict, filename: str, extraction_type: str, cao_number: str = None):
+def save_extraction_json(data: dict, filename: str, extraction_type: str, cao_number: str = None) -> bool:
     """
     Save extracted JSON data to appropriate folders for analysis.
     
@@ -2161,8 +2187,18 @@ def save_extraction_json(data: dict, filename: str, extraction_type: str, cao_nu
         filename: Original filename
         extraction_type: 'salary', 'non_salary_part1', 'non_salary_part2', or 'non_salary_part3'
         cao_number: CAO number for folder organization
+        
+    Returns:
+        bool: True if saved successfully, False if validation failed or save failed
     """
     try:
+        # Validate data before saving
+        if not validate_extraction_data(data, extraction_type):
+            print(f'  ❌ Validation failed for {extraction_type}: missing required fields')
+            print(f'  Expected: {get_required_fields_for_extraction_type(extraction_type)}')
+            print(f'  Found: {list(data.keys())}')
+            return False
+        
         # Create base path
         base_path = Path('outputs/llm_analysis')
         if extraction_type == 'salary':
@@ -2193,13 +2229,49 @@ def save_extraction_json(data: dict, filename: str, extraction_type: str, cao_nu
         with open(file_path, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
         
+        return True
+        
     except Exception as e:
         print(f'  DEBUG: Failed to save {extraction_type} extraction: {e}')
+        return False
 
 
-def check_missing_extraction_parts(filename: str, cao_number: str) -> dict:
+def get_required_fields_for_extraction_type(extraction_type: str) -> List[str]:
+    """Dynamically get required fields from Pydantic schemas."""
+    from schema.salary_schema import SalaryExtractionSchema
+    from schema.non_salary_schema import NonSalaryPart1, NonSalaryPart2, NonSalaryPart3
+    
+    schema_map = {
+        'salary': SalaryExtractionSchema,
+        'non_salary_part1': NonSalaryPart1,
+        'non_salary_part2': NonSalaryPart2,
+        'non_salary_part3': NonSalaryPart3
+    }
+    
+    schema = schema_map.get(extraction_type)
+    if not schema:
+        return []
+    
+    return list(schema.model_fields.keys())
+
+
+def validate_extraction_data(data: dict, extraction_type: str) -> bool:
+    """Validate that extraction data contains required fields."""
+    if not data or not isinstance(data, dict):
+        return False
+    
+    required_fields = get_required_fields_for_extraction_type(extraction_type)
+    return all(field in data for field in required_fields)
+
+
+def check_missing_extraction_parts(filename: str, cao_number: str, skip_truncated_salary: bool = False) -> dict:
     """
     Check which extraction parts are missing for a given file.
+    
+    Args:
+        filename: The filename to check
+        cao_number: CAO number
+        skip_truncated_salary: If True, mark salary as not missing if file is in truncated folder
     
     Returns:
         dict with keys: 'salary', 'part1', 'part2', 'part3' 
@@ -2225,6 +2297,11 @@ def check_missing_extraction_parts(filename: str, cao_number: str) -> dict:
     missing['part2'] = not part2_file.exists()
     missing['part3'] = not part3_file.exists()
     
+    # If skip_truncated_salary is enabled and file is in truncated folder, mark salary as not missing
+    if skip_truncated_salary and missing['salary'] and is_file_in_truncated_folder(filename, cao_number):
+        missing['salary'] = False
+        print(f'  {cao_number}: Salary extraction skipped (file in truncated folder)')
+    
     return missing
 
 
@@ -2242,7 +2319,7 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
             json_data = json.load(f)
         
         # Check which parts are missing
-        missing_parts = check_missing_extraction_parts(filename, cao_number)
+        missing_parts = check_missing_extraction_parts(filename, cao_number, SKIP_TRUNCATED_SALARY_FILES)
 
         # If all parts exist, skip entirely
         if not any(missing_parts.values()):
@@ -2264,7 +2341,10 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
         if missing_parts['salary']:
             salary_extracted = extract_salary_from_json(json_data, filename, client, context, cao_number)
             salary_success = salary_extracted is not None
-            print(f'  {cao_number}: Salary extraction {"completed" if salary_success else "failed"}')
+            if salary_success:
+                print(f'  {cao_number}: Salary extraction completed')
+            else:
+                print(f'  {cao_number}: ⚠️ Salary extraction failed, moving to next part')
         else:
             salary_extracted = None
             salary_success = None  # Not run
@@ -2274,7 +2354,10 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
         if missing_parts['part1']:
             part1_extracted = extract_nonsalary_part1_from_json(json_data, filename, client, context, cao_number)
             part1_success = part1_extracted is not None
-            print(f'  {cao_number}: Non-salary part 1 extraction {"completed" if part1_success else "failed"}')
+            if part1_success:
+                print(f'  {cao_number}: Non-salary part 1 extraction completed')
+            else:
+                print(f'  {cao_number}: ⚠️ Non-salary part 1 extraction failed, moving to next part')
         else:
             part1_extracted = None
             part1_success = None
@@ -2284,7 +2367,10 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
         if missing_parts['part2']:
             part2_extracted = extract_nonsalary_part2_from_json(json_data, filename, client, context, cao_number)
             part2_success = part2_extracted is not None
-            print(f'  {cao_number}: Non-salary part 2 extraction {"completed" if part2_success else "failed"}')
+            if part2_success:
+                print(f'  {cao_number}: Non-salary part 2 extraction completed')
+            else:
+                print(f'  {cao_number}: ⚠️ Non-salary part 2 extraction failed, moving to next part')
         else:
             part2_extracted = None
             part2_success = None
@@ -2294,7 +2380,10 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
         if missing_parts['part3']:
             part3_extracted = extract_nonsalary_part3_from_json(json_data, filename, client, context, cao_number)
             part3_success = part3_extracted is not None
-            print(f'  {cao_number}: Non-salary part 3 extraction {"completed" if part3_success else "failed"}')
+            if part3_success:
+                print(f'  {cao_number}: Non-salary part 3 extraction completed')
+            else:
+                print(f'  {cao_number}: ⚠️ Non-salary part 3 extraction failed, moving to next part')
         else:
             part3_extracted = None
             part3_success = None
@@ -2302,22 +2391,30 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
         
         # Save each part separately (only if extraction was attempted and successful)
         if salary_success is True:
-            save_extraction_json({'salary_information': salary_extracted}, filename, 'salary', cao_number)
+            save_success = save_extraction_json(salary_extracted, filename, 'salary', cao_number)
+            if not save_success:
+                print(f'  {cao_number}: ⚠️ Salary file validation failed, not saved')
         elif salary_success is False:
             print(f'  {cao_number}: Skipping salary file save due to extraction failure')
 
         if part1_success is True:
-            save_extraction_json(part1_extracted, filename, 'non_salary_part1', cao_number)
+            save_success = save_extraction_json(part1_extracted, filename, 'non_salary_part1', cao_number)
+            if not save_success:
+                print(f'  {cao_number}: ⚠️ Part 1 file validation failed, not saved')
         elif part1_success is False:
             print(f'  {cao_number}: Skipping part 1 file save due to extraction failure')
 
         if part2_success is True:
-            save_extraction_json(part2_extracted, filename, 'non_salary_part2', cao_number)
+            save_success = save_extraction_json(part2_extracted, filename, 'non_salary_part2', cao_number)
+            if not save_success:
+                print(f'  {cao_number}: ⚠️ Part 2 file validation failed, not saved')
         elif part2_success is False:
             print(f'  {cao_number}: Skipping part 2 file save due to extraction failure')
 
         if part3_success is True:
-            save_extraction_json(part3_extracted, filename, 'non_salary_part3', cao_number)
+            save_success = save_extraction_json(part3_extracted, filename, 'non_salary_part3', cao_number)
+            if not save_success:
+                print(f'  {cao_number}: ⚠️ Part 3 file validation failed, not saved')
         elif part3_success is False:
             print(f'  {cao_number}: Skipping part 3 file save due to extraction failure')
         

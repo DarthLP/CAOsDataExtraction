@@ -130,7 +130,7 @@ class SalaryRow(BaseModel):
     # ---- Filters (only when printed) ----
     age_group: Optional[str] = Field(
         default=None,
-        description="Printed age band of the wage table (e.g., '23 jaar', '21+'). Consider only age bands capturing at least some workers aged between 23-65. Omit if not printed."
+        description="Printed age band of the wage table (e.g., '23 jaar', '21+', 'adult'). Consider only age bands capturing at least some workers aged between 23-65. Omit if not printed."
     )
 
     education: Optional[str] = Field(

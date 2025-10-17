@@ -92,10 +92,13 @@ def get_pydantic_fields(model_class: BaseModel) -> List[str]:
     else:
         return []
 
-def get_salary_columns() -> List[str]:
+def get_salary_columns(max_timeline_length: int = 3) -> List[str]:
     """
     Generate comprehensive column list for salary Excel output.
     
+    Args:
+        max_timeline_length: Maximum number of timeline points across all salary data
+        
     Returns:
         List of column names for salary Excel file
     """
@@ -107,9 +110,11 @@ def get_salary_columns() -> List[str]:
     salary_row_fields = [f for f in salary_row_fields if f != 'timeline']
     columns.extend(salary_row_fields)
     
-    # Add SalaryPoint fields (for timeline data)
+    # Add timeline columns for each point (up to max_timeline_length)
     salary_point_fields = get_pydantic_fields(SalaryPoint)
-    columns.extend(salary_point_fields)
+    for i in range(1, max_timeline_length + 1):
+        for field in salary_point_fields:
+            columns.append(f"salary_{i}_{field}")
     
     return columns
 
@@ -184,40 +189,39 @@ def get_non_salary_columns() -> List[str]:
     columns.extend(all_fields)
     return columns
 
-def flatten_salary_row(salary_row: Dict[str, Any], cao_metadata: Dict[str, str]) -> List[Dict[str, Any]]:
+def flatten_salary_row(salary_row: Dict[str, Any], cao_metadata: Dict[str, str], max_timeline_length: int = 3) -> Dict[str, Any]:
     """
-    Convert a SalaryRow to multiple Excel rows (one per timeline point).
+    Convert a SalaryRow to a single Excel row with timeline data spread across columns.
     
     Args:
         salary_row: SalaryRow data from JSON
         cao_metadata: CAO metadata (cao_number, id, TTW, etc.)
+        max_timeline_length: Maximum number of timeline points to create columns for
         
     Returns:
-        List of Excel row dictionaries
+        Excel row dictionary with timeline data in columns
     """
-    rows = []
+    row = cao_metadata.copy()
     timeline = salary_row.get('timeline', [])
     
-    # If no timeline, create one row with empty timeline data
-    if not timeline:
-        timeline = [{}]
+    # Add SalaryRow metadata fields
+    for field in ['worker_type', 'jobgroup', 'step_label', 'is_entry', 'age_group', 
+                 'education', 'ft_hours', 'permanency', 'hours_type', 'row_note']:
+        row[field] = salary_row.get(field)
     
-    for timeline_point in timeline:
-        row = cao_metadata.copy()
-        
-        # Add SalaryRow metadata fields
-        for field in ['worker_type', 'jobgroup', 'step_label', 'is_entry', 'age_group', 
-                     'education', 'ft_hours', 'permanency', 'hours_type', 'row_note']:
-            row[field] = salary_row.get(field)
-        
-        # Add timeline point fields
-        for field in ['start_date', 'end_date', 'amount', 'unit', 'table_label', 
-                     'increase_percent', 'holiday_in_amount', 'hours_basis_ft_week', 'note']:
-            row[field] = timeline_point.get(field)
-        
-        rows.append(row)
+    # Add timeline data as numbered columns
+    timeline_fields = ['start_date', 'end_date', 'amount', 'unit', 'table_label', 
+                      'increase_percent', 'holiday_in_amount', 'hours_basis_ft_week', 'note']
     
-    return rows
+    for i in range(1, max_timeline_length + 1):
+        for field in timeline_fields:
+            col_name = f"salary_{i}_{field}"
+            if i <= len(timeline):
+                row[col_name] = timeline[i-1].get(field)
+            else:
+                row[col_name] = None  # Empty for timeline points beyond available data
+    
+    return row
 
 def flatten_non_salary_data(non_salary_data: Dict[str, Any], cao_metadata: Dict[str, str]) -> Dict[str, Any]:
     """
@@ -240,13 +244,25 @@ def flatten_non_salary_data(non_salary_data: Dict[str, Any], cao_metadata: Dict[
                 if isinstance(value, dict):
                     # Handle Amount and AmountRange objects
                     if 'value' in value and 'unit' in value:
+                        # Amount object: {value: X, unit: Y}
                         row[f"{new_key}_value"] = value.get('value')
                         row[f"{new_key}_unit"] = value.get('unit')
                     elif 'min' in value and 'max' in value and 'unit' in value:
+                        # AmountRange object: {min: X, max: Y, unit: Z}
                         row[f"{new_key}_min"] = value.get('min')
                         row[f"{new_key}_max"] = value.get('max')
                         row[f"{new_key}_unit"] = value.get('unit')
+                    elif 'value' in value:
+                        # Amount object with only value (no unit)
+                        row[f"{new_key}_value"] = value.get('value')
+                        row[f"{new_key}_unit"] = None
+                    elif 'min' in value and 'max' in value:
+                        # AmountRange object with only min/max (no unit)
+                        row[f"{new_key}_min"] = value.get('min')
+                        row[f"{new_key}_max"] = value.get('max')
+                        row[f"{new_key}_unit"] = None
                     else:
+                        # Regular nested dict, continue flattening
                         flatten_nested(value, new_key)
                 else:
                     row[new_key] = value

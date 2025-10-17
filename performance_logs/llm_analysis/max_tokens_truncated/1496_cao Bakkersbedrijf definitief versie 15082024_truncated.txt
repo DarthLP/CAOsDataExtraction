@@ -1,0 +1,143 @@
+TRUNCATED RESPONSE DEBUG INFO
+Original filename: cao Bakkersbedrijf definitief versie 15082024_extract.json
+Timestamp: 2025-10-16T21:15:50.292952
+Response length: 7927 characters
+Finish reason: MAX_TOKENS
+================================================================================
+
+{
+  "salary_information": [
+    {
+      "jobgroup": "Scale 1",
+      "step_label": "1",
+      "worker_type": "Artisanal bakeries (Commercie)",
+      "is_entry": null,
+      "age_group": null,
+      "education": null,
+      "ft_hours": null,
+      "permanency": null,
+      "hours_type": null,
+      "timeline": [
+        {
+          "start_date": "2023-03-01",
+          "end_date": null,
+          "amount": 10.8,
+          "unit": "hourly",
+          "table_label": "Function-hourly wage table per March 1, 2023 / March 26, 2023 for Artisanal bakeries (Commercie) - including 3.55%",
+          "increase_percent": 3.55,
+          "holiday_in_amount": null,
+          "hours_basis_ft_week": null,
+          "note": "* Function-hourly wages adjusted to statutory minimum wage per July 1, 2022. The function-hourly wages to which collective wage increases are applied are €6.30 (19 years), €7.35 (20 years). If a function-hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "end_date": null,
+          "amount": 12.12,
+          "unit": "hourly",
+          "table_label": "Function-hourly wage table per December 1, 2023 / wage period 13 2023 for Artisanal bakeries (Commercie) - including 6%",
+          "increase_percent": 6,
+          "holiday_in_amount": null,
+          "hours_basis_ft_week": null,
+          "note": "* Function-hourly wages adjusted to statutory minimum wage per July 1, 2023. The function-hourly wages to which collective wage increases are applied are €5.78 (18 years), €6.68 (19 years), €7.79 (20 years), €11.45 (scale 2 function step 1), €11.77 (scale 2 function step 2), €12.38 (scale 2 function step 3). If a function-hourly wage is lower than the statutory minimum (youth) hourly wage, the statutory minimum (youth) hourly wage applies."
+        }
+      ],
+      "row_note": "Step 1 abolished per January 1, 2024."
+    },
+    {
+      "jobgroup": "Scale 1",
+      "step_label": "1",
+      "worker_type": "Artisanal bakeries (General, Financial Admin, ICT, Quality & Product Dev, Logistics, Production, Technical Service)",
+      "is_entry": null,
+      "age_group": null,
+      "education": null,
+      "ft_hours": null,
+      "permanency": null,
+      "hours_type": null,
+      "timeline": [
+        {
+          "start_date": "2023-03-01",
+          "end_date": null,
+          "amount": 11.59,
+          "unit": "hourly",
+          "table_label": "Function-hourly wage table per March 1, 2023 / March 26, 2023 for Artisanal bakeries (General, Financial Admin, ICT, Quality & Product Dev, Logistics, Production, Technical Service) - including 3.55%",
+          "increase_percent": 3.55,
+          "holiday_in_amount": null,
+          "hours_basis_ft_week": null,
+          "note": "If a function-hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "end_date": null,
+          "amount": 12.29,
+          "unit": "hourly",
+          "table_label": "Function-hourly wage table per December 1, 2023 / wage period 13 2023 for Artisanal bakeries (General, Financial Admin, ICT, Quality & Product Dev, Logistics, Production, Technical Service) - including 6%",
+          "increase_percent": 6,
+          "holiday_in_amount": null,
+          "hours_basis_ft_week": null,
+          "note": "If a function-hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+        }
+      ],
+      "row_note": "Step 1 abolished per January 1, 2024."
+    },
+    {
+      "jobgroup": "Scale 1",
+      "step_label": "0",
+      "worker_type": "Industrial bakeries (Commercie)",
+      "is_entry": true,
+      "age_group": null,
+      "education": null,
+      "ft_hours": null,
+      "permanency": null,
+      "hours_type": null,
+      "timeline": [
+        {
+          "start_date": "2023-03-01",
+          "end_date": null,
+          "amount": 10.9,
+          "unit": "hourly",
+          "table_label": "Function-hourly wage table per March 1, 2023 / March 26, 2023 for Industrial bakeries (Commercie) - including 3.4%",
+          "increase_percent": 3.4,
+          "holiday_in_amount": null,
+          "hours_basis_ft_week": null,
+          "note": "* Function-hourly wages adjusted to statutory minimum wage per July 1, 2022. The function-hourly wages to which collective wage increases are applied are in scale 1 €6.35 (19 years), €7.40 (20 years) and in scale 2 €8.10 (20 years). If a function-hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+        },
+        {
+          "start_date": "2023-07-01",
+          "end_date": null,
+          "amount": 12.12,
+          "unit": "hourly",
+          "table_label": "Function-hourly wage table per July 1, 2023 / July 16, 2023 for Industrial bakeries (Commercie) - including 3.4%",
+          "increase_percent": 3.4,
+          "holiday_in_amount": null,
+          "hours_basis_ft_week": null,
+          "note": "* Function-hourly wages adjusted to statutory minimum wage per July 1, 2023. The function-hourly wages to which collective wage increases are applied are in scale 1 €5.87 (18 years), €6.79 (19 years), €7.92 (20 years), €8.67 (20 years in scale 2), €9.18 (20 years in scale 3), €11.66 (scale 2, 0 function years), €11.97 (scale 2, 1 function year). If a function-hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+        },
+        {
+          "start_date": "2024-01-01",
+          "end_date": null,
+          "amount": 13.27,
+          "unit": "hourly",
+          "table_label": "Function-hourly wage table per January 1, 2024 / December 31, 2023 for Industrial bakeries (Commercie) - including 4.5%",
+          "increase_percent": 4.5,
+          "holiday_in_amount": null,
+          "hours_basis_ft_week": null,
+          "note": "* Function-hourly wages adjusted to statutory minimum wage per January 1, 2024. The function-hourly wages to which collective wage increases are applied are in scale 1 €6.13 (18 years), €7.10 (19 years), €8.28 (20 years), €7.71 (19 years in scale 2), €9.06 (20 years in scale 2), €9.59 (20 years in scale 3), €10.37 (20 years in scale 4), €12.18 (scale 2, 0 function years), €12.51 (scale 2, 1 function year), €12.83 (scale 2, 2 function years), €13.16 (scale 2, 3 function years), €12.84 (scale 3, 0 function years), €13.25 (scale 3, 1 function year). If a function-hourly wage is lower than the statutory minimum (youth) hourly wage, the statutory minimum (youth) hourly wage applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "end_date": null,
+          "amount": 13.68,
+          "unit": "hourly",
+          "table_label": "Function-hourly wage table per July 1, 2024 / July 14, 2024 for Industrial bakeries (Commercie) - including 4.5%",
+          "increase_percent": 4.5,
+          "holiday_in_amount": null,
+          "hours_basis_ft_week": null,
+          "note": "* Function-hourly wages adjusted to statutory minimum wage per July 1, 2024. The function-hourly wages to which collective wage increases are applied are in scale 1 €6.41 (18 years), €7.42 (19 years, scale 1), €8.06 (19 years, scale 2) €8.65 (20 years, scale 1), €9.47 (20 years in scale 2) €10.02 (20 years in scale 3), €10.84 (20 years scale 4), €12.73 (scale 2, 0 function years), €13.07 (scale 2, 1 function year), €13.42 (scale 3, 0 function years). If a function-hourly wage is lower than the statutory minimum (youth) hourly wage, the statutory minimum (youth) hourly wage applies."
+        }
+      ],
+      "row_note": null
+    },
+    {
+      "jobgroup": "Scale 1",
+      "step_label": "0",
+      "worker_type": "Industrial bakeries (General, Financial Admin, ICT, Quality & Product Dev, Logistics, Production

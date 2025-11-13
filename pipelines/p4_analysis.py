@@ -99,6 +99,9 @@ from monitoring.monitoring_3_1 import PerformanceMonitor
 from schema.salary_schema import (
     Amount, AmountRange, SalaryPoint, SalaryRow, SalaryExtractionSchema, SALARY_PROMPT
 )
+from schema.salary_schema_compact import (
+    SalaryPointCompact, SalaryRowCompact, SalaryExtractionSchemaCompact
+)
 from schema.non_salary_schema import (
     GeneralInfo, BonusesInfo, WageScalesInfo, PensionInfo, LeaveInfo, 
     TerminationInfo, OvertimeInfo, TrainingInfo, HomeofficeInfo, 
@@ -265,7 +268,7 @@ def get_model_parameters() -> dict:
     "candidate_count": 1,
     "seed": 42,
     "thinking_budget": -1,  # Dynamic thinking (like p3)
-    "max_retries": 0
+    "max_retries": 5
     }
 
 
@@ -447,6 +450,12 @@ def handle_llm_errors(error: Exception, attempt: int, max_retries: int,
         else:
             print(f'  All {max_retries} attempts failed with empty response errors')
             return False
+    elif 'too many states' in error_str or ('400' in error_str and 'invalid_argument' in error_str and 'constraint' in error_str):
+        # Schema complexity error - schema is too complex for Google's API
+        # This is not retryable - the schema itself needs to be simplified
+        print(f'  ⚠️ Schema complexity error: The schema is too complex for Google\'s structured output API.')
+        print(f'  ⚠️ This error is not retryable - the schema needs to be simplified or split further.')
+        return False  # Don't retry - schema issue, not transient error
     elif 'incomplete json' in error_str or 'json validation failed' in error_str or 'truncated' in error_str:
         if attempt < max_retries - 1:
             wait_time = 30 * 2 ** attempt
@@ -457,10 +466,23 @@ def handle_llm_errors(error: Exception, attempt: int, max_retries: int,
             print(f'  All {max_retries} attempts failed with incomplete JSON errors')
             return False
     elif any(keyword in error_str for keyword in ['quota', 'rate limit', 'too many requests', '429']):
-        # Check specifically for RESOURCE_EXHAUSTED (quota exceeded)
-        if 'resource_exhausted' in error_str and 'quota' in error_str:
-            print(f'  🚨 API QUOTA EXHAUSTED detected - Process will shutdown gracefully')
-            # Set per-process flag to trigger graceful shutdown
+        # First check if it's a DAILY quota limit (should stop process)
+        # Daily quota indicators:
+        # - "perday" or "daily" in error message
+        # - "GenerateRequestsPerDay" in quotaId
+        # - "free_tier_requests" with daily limit (250 requests)
+        # - Token limits like "3000000" (3M tokens per day)
+        is_daily_quota_limit = False
+        
+        if ('perday' in error_str or 'daily' in error_str or 
+            'generaterequestsperday' in error_str or 
+            '3000000' in error_str or
+            ('free_tier_requests' in error_str and ('limit: 250' in error_str or 'limit:250' in error_str))):
+            is_daily_quota_limit = True
+        
+        if is_daily_quota_limit:
+            print(f'  🚨 DAILY QUOTA LIMIT REACHED (429) - Process will shutdown gracefully')
+            # Set per-process flag to trigger graceful shutdown (only for this specific process)
             global process_quota_flags
             # Extract process_id from context if available, otherwise use 0
             process_id = 0
@@ -469,14 +491,19 @@ def handle_llm_errors(error: Exception, attempt: int, max_retries: int,
             elif context and isinstance(context, dict) and 'process_id' in context:
                 process_id = context['process_id']
             process_quota_flags[process_id] = True
-            return False  # Don't retry, trigger shutdown
-        elif attempt < max_retries - 1:
+            print(f'  🛑 Daily quota flag set for process {process_id} only - will stop this process after current attempt')
+            print(f'  💡 Other parallel processes will continue running')
+            return False  # Don't retry, trigger shutdown for this process only
+        
+        # Otherwise, it's a per-minute rate limit (should retry with delay)
+        print(f'  ⚠️ Per-minute rate limit hit (429) - Will retry with delay')
+        if attempt < max_retries - 1:
             wait_time = calculate_quota_retry_delay(file_size_mb, attempt)
-            print(f'  Attempt {attempt + 1} failed (rate limit), retrying in {wait_time // 60} minutes...')
+            print(f'  Attempt {attempt + 1} failed (per-minute rate limit), retrying in {wait_time // 60} minutes...')
             time.sleep(wait_time)
             return True
         else:
-            print(f'  All {max_retries} attempts failed with rate limiting')
+            print(f'  All {max_retries} attempts failed with per-minute rate limiting')
             return False
     elif attempt < max_retries - 1:
         wait_time = 60 * 2 ** attempt
@@ -723,6 +750,56 @@ def is_file_in_truncated_folder(filename: str, cao_number: str) -> bool:
     return expected_truncated_file.exists()
 
 
+def save_failed_attempt_8(response_text: str, error_message: str, filename: str, cao_number: str = None):
+    """
+    Save failed 8th attempt response to max_tokens_truncated_2 folder for debugging.
+    
+    Args:
+        response_text: The response text (if available)
+        error_message: The error message from the failed attempt
+        filename: Original filename for context
+        cao_number: CAO number for filename prefix
+    """
+    try:
+        import os
+        from datetime import datetime
+        
+        # Create the truncated responses directory
+        truncated_dir = Path("performance_logs/llm_analysis/max_tokens_truncated_2")
+        truncated_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Create clean filename without timestamp
+        clean_filename = extract_clean_filename(filename)
+        
+        # Add CAO number prefix if provided
+        if cao_number:
+            truncated_filename = f"{cao_number}_{clean_filename}_truncated.txt"
+        else:
+            truncated_filename = f"{clean_filename}_truncated.txt"
+        
+        truncated_file = truncated_dir / truncated_filename
+        
+        # Save the failed attempt response
+        with open(truncated_file, 'w', encoding='utf-8') as f:
+            f.write(f"FAILED 8TH ATTEMPT DEBUG INFO\n")
+            f.write(f"Original filename: {filename}\n")
+            f.write(f"Timestamp: {datetime.now().isoformat()}\n")
+            f.write(f"Attempt: 8th (final attempt with compact schema)\n")
+            f.write(f"Error: {error_message}\n")
+            if response_text:
+                f.write(f"Response length: {len(response_text)} characters\n")
+            f.write(f"{'='*80}\n\n")
+            if response_text:
+                f.write(response_text)
+            else:
+                f.write("No response text available\n")
+        
+        print(f'  DEBUG: Failed 8th attempt saved to: {truncated_file}')
+        
+    except Exception as e:
+        print(f'  DEBUG: Failed to save failed 8th attempt: {e}')
+
+
 # =============================================================================
 # TOKEN SAFETY & VALIDATION FUNCTIONS
 # =============================================================================
@@ -782,6 +859,11 @@ class ModelOutputParseError(Exception):
 
 def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None, cao_number: str = None) -> dict:
     """Extract salary information from JSON using LLM."""
+    
+    # Check if file is in truncated folder - if so, skip directly to compact schema attempts
+    use_compact_schema_from_start = is_file_in_truncated_folder(filename, cao_number) if cao_number else False
+    if use_compact_schema_from_start:
+        print(f'  DEBUG: File found in truncated folder, skipping to compact schema attempts (6th-8th attempts)')
     
     salary_text = ""
     wage_keys = ['wage_information', 'Wage information', 'wage information', 'WAGE_INFORMATION']
@@ -872,249 +954,395 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
         )
     ]
     
-    config = {
-        "temperature": model_params["temperature"],
-        "top_p": model_params["top_p"],
-        "top_k": model_params["top_k"],
-        "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
-        "candidate_count": model_params["candidate_count"],
-        "seed": model_params["seed"],
-        "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
-        "response_mime_type": "application/json",
-        "response_schema": SalaryExtractionSchema,
-        "safety_settings": safety_settings  # Include safety settings in config
-    }
+    # Skip initial attempt if using compact schema from start
+    last_error = None
+    last_error_message = None
+    truncation_error_after_attempt_4 = False
     
-    try:
-        print(f'  DEBUG: Making API call...')
-        start_time = time.time()
-        response = client.models.generate_content(
-            model=MODEL,
-            contents=base_prompt,
-            config=config
-        )
-        processing_time = time.time() - start_time
+    if not use_compact_schema_from_start:
+        # Normal flow: try initial attempt with regular schema
+        config = {
+            "temperature": model_params["temperature"],
+            "top_p": model_params["top_p"],
+            "top_k": model_params["top_k"],
+            "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
+            "candidate_count": model_params["candidate_count"],
+            "seed": model_params["seed"],
+            "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
+            "response_mime_type": "application/json",
+            "response_schema": SalaryExtractionSchema,
+            "safety_settings": safety_settings  # Include safety settings in config
+        }
         
-        
-        # Log detailed response information
-        log_api_response_details(response, filename, processing_time)
-        
-        
-        # Check for truncation
-        if check_response_truncation(response, filename, cao_number):
-            raise Exception("Response truncated - incomplete JSON")
-        
-        # Check if response has parsed attribute (structured output)
-        if hasattr(response, 'parsed') and response.parsed is not None:
-            result = {"salary_information": [row.model_dump() for row in response.parsed.salary_information]}
+        try:
+            print(f'  DEBUG: Making API call...')
+            start_time = time.time()
+            response = client.models.generate_content(
+                model=MODEL,
+                contents=base_prompt,
+                config=config
+            )
+            processing_time = time.time() - start_time
             
-            # Validate schema - salary_information can be empty if no salary data exists
-            # Empty array is valid - some CAOs may not have salary information
             
-            print(f'  Salary: Schema validation passed - {len(result["salary_information"])} salary entries')
+            # Log detailed response information
+            log_api_response_details(response, filename, processing_time)
             
-            # Log successful salary extraction
-            if context and 'performance_monitor' in context:
-                file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
-                context['performance_monitor'].log_analysis(
-                    filename=filename,
-                    file_size_mb=file_size_mb,
-                    processing_time=processing_time,
-                    usage_metadata=getattr(response, 'usage_metadata', None),
-                    success=True,
-                    analysis_type="salary",
-                    api_key_used=context.get('key_number', 1),
-                    process_id=context.get('process_id', 0),
-                    cao_number="",  # Will be extracted from file path if needed
-                    model="gemini-2.5-flash",
-                    parameters=model_params
-                )
             
-            return result
-        else:
-            if hasattr(response, 'text'):
-                # Try to parse the text manually with better error handling
-                try:
-                    cleaned_text = response.text.strip()
-                    
-                    # Remove markdown code fences if present
-                    if cleaned_text.startswith('```'):
-                        lines = cleaned_text.split('\n')
-                        cleaned_text = '\n'.join(lines[1:-1]).strip()
-                    
-                    parsed_json = json.loads(cleaned_text)
-                    # Validate against schema
-                    if 'salary_information' in parsed_json:
-                        salary_schema = SalaryExtractionSchema(**parsed_json)
-                        result = [row.model_dump() for row in salary_schema.salary_information]
-                        return result
-                    else:
-                        log_analysis_error(filename, f"No salary_information key in parsed JSON. Available keys: {list(parsed_json.keys())}", str(parsed_json))
-                except json.JSONDecodeError as e:
-                    # Try to extract partial data from the response
-                    try:
-                        # Look for salary_information array in the text
-                        import re
-                        salary_match = re.search(r'"salary_information":\s*\[(.*?)\]', response.text, re.DOTALL)
-                        if salary_match:
-                            salary_content = salary_match.group(1)
-                            # Try to parse individual salary objects
-                            # This is a simplified approach - in production you might want more sophisticated parsing
-                            log_analysis_error(filename, f"Partial salary data found but couldn't parse: {e}", response.text[:1000])
-                        else:
-                            log_analysis_error(filename, f"JSON parsing failed and no salary data found: {e}", response.text[:1000])
-                    except Exception as parse_error:
-                        log_analysis_error(filename, f"Complete parsing failure: {e}", response.text[:1000])
-                except Exception as e:
-                    log_analysis_error(filename, f"Schema validation failed: {e}", response.text[:1000])
-            else:
-                log_analysis_error(filename, "No structured output received from model", "")
-                return []
+            # Check for truncation
+            if check_response_truncation(response, filename, cao_number):
+                raise Exception("Response truncated - incomplete JSON")
             
-    except Exception as e:
-        last_error = e  # Capture the initial error
-        last_error_message = None  # Track error message for retry guidance
-        
-        # Retry logic with proper attempt tracking
-        for attempt in range(model_params["max_retries"] + 1):
-            try:
-                # Get adjusted parameters for this attempt
-                adjusted_params = get_adjusted_parameters(attempt)
+            # Check if response has parsed attribute (structured output)
+            if hasattr(response, 'parsed') and response.parsed is not None:
+                result = {"salary_information": [row.model_dump() for row in response.parsed.salary_information]}
                 
-                # Generate retry guidance (only if attempt >= 2)
-                retry_guidance = ""
-                error_type = ""
-                if attempt >= 2 and last_error_message:
-                    retry_guidance, error_type = get_retry_guidance(last_error_message)
-                    if retry_guidance:
-                        print(f'  INFO: Adding retry guidance for: {error_type}')
+                # Validate schema - salary_information can be empty if no salary data exists
+                # Empty array is valid - some CAOs may not have salary information
                 
-                # Recreate prompt with guidance if applicable
-                prompt = base_prompt  # Reset to original
-                if retry_guidance:
-                    prompt += f"\n\n{retry_guidance}"
+                print(f'  Salary: Schema validation passed - {len(result["salary_information"])} salary entries')
                 
-                # print(f'  DEBUG: Model params: {adjusted_params}')
-                
-                # Use proper safety settings format for newer google-genai API
-                safety_settings = [
-                    types.SafetySetting(
-                        category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
-                        threshold=types.HarmBlockThreshold.BLOCK_NONE
-                    ),
-                    types.SafetySetting(
-                        category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-                        threshold=types.HarmBlockThreshold.BLOCK_NONE
-                    ),
-                    types.SafetySetting(
-                        category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-                        threshold=types.HarmBlockThreshold.BLOCK_NONE
-                    ),
-                    types.SafetySetting(
-                        category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-                        threshold=types.HarmBlockThreshold.BLOCK_NONE
+                # Log successful salary extraction
+                if context and 'performance_monitor' in context:
+                    file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+                    log_params = model_params.copy()
+                    log_params['schema_type'] = 'regular'
+                    context['performance_monitor'].log_analysis(
+                        filename=filename,
+                        file_size_mb=file_size_mb,
+                        processing_time=processing_time,
+                        usage_metadata=getattr(response, 'usage_metadata', None),
+                        success=True,
+                        analysis_type="salary",
+                        api_key_used=context.get('key_number', 1),
+                        process_id=context.get('process_id', 0),
+                        cao_number=cao_number,
+                        model="gemini-2.5-flash",
+                        parameters=log_params,
+                        allow_duplicates=False
                     )
-                ]
                 
-                # Prepare API configuration
-                config = {
-                    "temperature": adjusted_params["temperature"],
-                    "top_p": adjusted_params["top_p"],
-                    "top_k": adjusted_params["top_k"],
-                    "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
-                    "candidate_count": adjusted_params["candidate_count"],
-                    "seed": adjusted_params["seed"],
-                    "thinking_config": types.ThinkingConfig(thinking_budget=adjusted_params["thinking_budget"]),
-                    "response_mime_type": "application/json",
-                    "response_schema": SalaryExtractionSchema,
-                    "safety_settings": safety_settings  # Include safety settings in config
-                }
+                return result
+            else:
+                if hasattr(response, 'text'):
+                    # Try to parse the text manually with better error handling
+                    try:
+                        cleaned_text = response.text.strip()
+                        
+                        # Remove markdown code fences if present
+                        if cleaned_text.startswith('```'):
+                            lines = cleaned_text.split('\n')
+                            cleaned_text = '\n'.join(lines[1:-1]).strip()
+                        
+                        parsed_json = json.loads(cleaned_text)
+                        # Validate against schema
+                        if 'salary_information' in parsed_json:
+                            salary_schema = SalaryExtractionSchema(**parsed_json)
+                            result = [row.model_dump() for row in salary_schema.salary_information]
+                            return result
+                        else:
+                            log_analysis_error(filename, f"No salary_information key in parsed JSON. Available keys: {list(parsed_json.keys())}", str(parsed_json))
+                    except json.JSONDecodeError as e:
+                        # Try to extract partial data from the response
+                        try:
+                            # Look for salary_information array in the text
+                            import re
+                            salary_match = re.search(r'"salary_information":\s*\[(.*?)\]', response.text, re.DOTALL)
+                            if salary_match:
+                                salary_content = salary_match.group(1)
+                                # Try to parse individual salary objects
+                                # This is a simplified approach - in production you might want more sophisticated parsing
+                                log_analysis_error(filename, f"Partial salary data found but couldn't parse: {e}", response.text[:1000])
+                            else:
+                                log_analysis_error(filename, f"JSON parsing failed and no salary data found: {e}", response.text[:1000])
+                        except Exception as parse_error:
+                            log_analysis_error(filename, f"Complete parsing failure: {e}", response.text[:1000])
+                    except Exception as e:
+                        log_analysis_error(filename, f"Schema validation failed: {e}", response.text[:1000])
+                else:
+                    log_analysis_error(filename, "No structured output received from model", "")
+                    return []
                 
-                print(f'  DEBUG: Making API call...')
-                
-                start_time = time.time()
-                response = client.models.generate_content(
-                    model=MODEL,
-                    contents=prompt,
-                    config=config
+        except Exception as e:
+            last_error = e  # Capture the initial error
+            last_error_message = str(e)  # Track error message for retry guidance
+    
+    # Retry logic with proper attempt tracking
+    # Determine attempt range based on whether we're starting with compact schema
+    if use_compact_schema_from_start:
+        # Skip to compact schema attempts (5-7)
+        attempts_to_try = [5, 6, 7]
+    else:
+        # Normal retry attempts (0-4), may extend to 5-7 if truncation error
+        attempts_to_try = [0, 1, 2, 3, 4]
+    
+    # Track if we need to extend to compact schema attempts
+    extended_to_compact = False
+    
+    attempt_index = 0
+    while attempt_index < len(attempts_to_try):
+        attempt = attempts_to_try[attempt_index]
+        try:
+            # Determine which schema to use: compact for attempts 5-7, regular for 0-4
+            use_compact_schema = (attempt >= 5)
+            schema_type = 'compact' if use_compact_schema else 'regular'
+            response_schema = SalaryExtractionSchemaCompact if use_compact_schema else SalaryExtractionSchema
+            
+            # Get adjusted parameters for this attempt
+            # For compact schema attempts, use specific parameter adjustments
+            if use_compact_schema:
+                if attempt == 5:
+                    # Attempt 5 (6th overall): Original parameters (temp=0.0, top_p=0.1)
+                    adjusted_params = get_model_parameters()
+                elif attempt == 6:
+                    # Attempt 6 (7th overall): Like attempt 4 (temp=0.3, top_p=0.4)
+                    adjusted_params = get_adjusted_parameters(4)
+                else:  # attempt == 7
+                    # Attempt 7 (8th overall): Like attempt 4 (temp=0.3, top_p=0.4)
+                    # Note: Plan says "like attempt 5" but attempt 5 uses original params
+                    # Using attempt 4 params (temp=0.3, top_p=0.4) for consistency
+                    adjusted_params = get_adjusted_parameters(4)
+            else:
+                adjusted_params = get_adjusted_parameters(attempt)
+            
+            # Generate retry guidance (only if attempt >= 2)
+            retry_guidance = ""
+            error_type = ""
+            if attempt >= 2 and last_error_message:
+                retry_guidance, error_type = get_retry_guidance(last_error_message)
+                if retry_guidance:
+                    print(f'  INFO: Adding retry guidance for: {error_type}')
+            
+            # Recreate prompt with guidance if applicable
+            prompt = base_prompt  # Reset to original
+            if retry_guidance:
+                prompt += f"\n\n{retry_guidance}"
+            
+            # print(f'  DEBUG: Model params: {adjusted_params}')
+            
+            # Use proper safety settings format for newer google-genai API
+            safety_settings = [
+                types.SafetySetting(
+                    category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
+                    threshold=types.HarmBlockThreshold.BLOCK_NONE
+                ),
+                types.SafetySetting(
+                    category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+                    threshold=types.HarmBlockThreshold.BLOCK_NONE
+                ),
+                types.SafetySetting(
+                    category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+                    threshold=types.HarmBlockThreshold.BLOCK_NONE
+                ),
+                types.SafetySetting(
+                    category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+                    threshold=types.HarmBlockThreshold.BLOCK_NONE
                 )
-                processing_time = time.time() - start_time
+            ]
+            
+            # Prepare API configuration
+            config = {
+                "temperature": adjusted_params["temperature"],
+                "top_p": adjusted_params["top_p"],
+                "top_k": adjusted_params["top_k"],
+                "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
+                "candidate_count": adjusted_params["candidate_count"],
+                "seed": adjusted_params["seed"],
+                "thinking_config": types.ThinkingConfig(thinking_budget=adjusted_params["thinking_budget"]),
+                "response_mime_type": "application/json",
+                "response_schema": response_schema,
+                "safety_settings": safety_settings  # Include safety settings in config
+            }
+            
+            if use_compact_schema:
+                print(f'  DEBUG: Using compact schema for attempt {attempt + 1} (schema_type: {schema_type})')
+            
+            print(f'  DEBUG: Making API call...')
+            
+            start_time = time.time()
+            response = client.models.generate_content(
+                model=MODEL,
+                contents=prompt,
+                config=config
+            )
+            processing_time = time.time() - start_time
+            
+            print(f'  DEBUG: API response received')
+            print(f'  DEBUG: Response type: {type(response)}')
+            # print(f'  DEBUG: Response attributes: {dir(response)}')
+            
+            # Log detailed response information
+            log_api_response_details(response, filename, processing_time)
+            
+            # Check for truncation
+            if check_response_truncation(response, filename, cao_number):
+                print(f'  DEBUG: Response appears to be truncated, will retry with different parameters')
+                raise Exception("Response truncated - incomplete JSON")
+            
+            # Check if response has parsed attribute (structured output)
+            if hasattr(response, 'parsed') and response.parsed is not None:
+                print(f'  DEBUG: Response has parsed attribute')
+                result = response.parsed.model_dump()
+                print(f'  DEBUG: Parsed salary structure with {len(result.get("salary_information", []))} salary rows')
                 
-                print(f'  DEBUG: API response received')
-                print(f'  DEBUG: Response type: {type(response)}')
-                # print(f'  DEBUG: Response attributes: {dir(response)}')
-                
-                # Log detailed response information
-                log_api_response_details(response, filename, processing_time)
-                
-                # Check for truncation
-                if check_response_truncation(response, filename, cao_number):
-                    print(f'  DEBUG: Response appears to be truncated, will retry with different parameters')
-                    raise Exception("Response truncated - incomplete JSON")
-                
-                # Check if response has parsed attribute (structured output)
-                if hasattr(response, 'parsed') and response.parsed is not None:
-                    print(f'  DEBUG: Response has parsed attribute')
-                    result = response.parsed.model_dump()
-                    print(f'  DEBUG: Parsed salary structure with {len(result.get("salary_information", []))} salary rows')
+                # Log successful salary extraction
+                if context and 'performance_monitor' in context:
+                    file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
                     
-                    # Log successful salary extraction
-                    if context and 'performance_monitor' in context:
-                        file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+                    # Add retry guidance info and schema type to parameters for logging
+                    log_params = adjusted_params.copy()
+                    log_params['schema_type'] = schema_type
+                    if retry_guidance:
+                        log_params['retry_guidance_used'] = error_type
+                    
+                    context['performance_monitor'].log_analysis(
+                        filename=filename,
+                        file_size_mb=file_size_mb,
+                        processing_time=processing_time,
+                        usage_metadata=getattr(response, 'usage_metadata', None),
+                        success=True,
+                        analysis_type="salary",
+                        api_key_used=context.get('key_number', 1),
+                        process_id=context.get('process_id', 0),
+                        cao_number=cao_number,
+                        model="gemini-2.5-flash",
+                        parameters=log_params,
+                        allow_duplicates=False
+                    )
+                
+                return result
+            else:
+                # Try to parse manually if parsed attribute not available
+                if hasattr(response, 'text'):
+                    try:
+                        cleaned_text = response.text.strip()
+                        if cleaned_text.startswith('```'):
+                            lines = cleaned_text.split('\n')
+                            cleaned_text = '\n'.join(lines[1:-1]).strip()
                         
-                        # Add retry guidance info to parameters for logging
-                        log_params = adjusted_params.copy()
-                        if retry_guidance:
-                            log_params['retry_guidance_used'] = error_type
-                        
-                        context['performance_monitor'].log_analysis(
-                            filename=filename,
-                            file_size_mb=file_size_mb,
-                            processing_time=processing_time,
-                            usage_metadata=getattr(response, 'usage_metadata', None),
-                            success=True,
-                            analysis_type="salary",
-                            api_key_used=context.get('key_number', 1),
-                            process_id=context.get('process_id', 0),
-                            cao_number="",  # Will be extracted from file path if needed
-                            model="gemini-2.5-flash",
-                            parameters=log_params
-                        )
+                        parsed_json = json.loads(cleaned_text)
+                        if 'salary_information' in parsed_json:
+                            if use_compact_schema:
+                                salary_schema = SalaryExtractionSchemaCompact(**parsed_json)
+                            else:
+                                salary_schema = SalaryExtractionSchema(**parsed_json)
+                            result = {"salary_information": [row.model_dump() for row in salary_schema.salary_information]}
+                            
+                            # Log successful extraction
+                            if context and 'performance_monitor' in context:
+                                file_size_mb = len(str(json_obj)) / (1024 * 1024)
+                                log_params = adjusted_params.copy()
+                                log_params['schema_type'] = schema_type
+                                if retry_guidance:
+                                    log_params['retry_guidance_used'] = error_type
+                                
+                                context['performance_monitor'].log_analysis(
+                                    filename=filename,
+                                    file_size_mb=file_size_mb,
+                                    processing_time=processing_time,
+                                    usage_metadata=getattr(response, 'usage_metadata', None),
+                                    success=True,
+                                    analysis_type="salary",
+                                    api_key_used=context.get('key_number', 1),
+                                    process_id=context.get('process_id', 0),
+                                    cao_number=cao_number,
+                                    model="gemini-2.5-flash",
+                                    parameters=log_params,
+                                    allow_duplicates=False
+                                )
+                            
+                            return result
+                    except Exception as parse_error:
+                        log_analysis_error(filename, f"Manual parsing failed ({schema_type} schema): {parse_error}", response.text[:1000] if hasattr(response, 'text') else "")
                     
-                    return result
-                    
-            except Exception as e:
-                last_error = e  # Update last error for each attempt
-                last_error_message = str(e)  # Capture error message for retry guidance
-                print(f'  DEBUG: Attempt {attempt + 1} failed: {type(e).__name__}: {e}')
-                
-                # Check if quota was exhausted during this attempt
-                global process_quota_flags
-                process_id = context.get('process_id', 0) if context else 0
-                if process_id in process_quota_flags and process_quota_flags[process_id]:
-                    print(f'  DEBUG: Quota exhausted during salary extraction, stopping retries')
-                    break
-                    
-                if attempt < 4:  # Not the last attempt
-                    if handle_llm_errors(e, attempt, 5, context=context):
+        except Exception as e:
+            last_error = e  # Update last error for each attempt
+            last_error_message = str(e)  # Capture error message for retry guidance
+            error_str = str(e)
+            print(f'  DEBUG: Attempt {attempt + 1} failed: {type(e).__name__}: {e}')
+            
+            # Check if quota was exhausted during this attempt (before calling handle_llm_errors)
+            global process_quota_flags
+            process_id = context.get('process_id', 0) if context else 0
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  🛑 Quota exhausted during salary extraction, stopping retries')
+                break
+            
+            # Check if attempt 4 failed with truncation error - if so, add attempts 5-7
+            if attempt == 4 and not use_compact_schema_from_start and not extended_to_compact:
+                if "Response truncated - incomplete JSON" in error_str or "Max tokens" in error_str:
+                    truncation_error_after_attempt_4 = True
+                    extended_to_compact = True
+                    print(f'  DEBUG: Truncation error detected after attempt 4, adding compact schema attempts (5-7)')
+                    # Extend attempts list to include 5-7
+                    attempts_to_try.extend([5, 6, 7])
+                    attempt_index += 1
+                    continue  # Continue to attempt 5
+            
+            # Handle retry logic
+            if attempt_index < len(attempts_to_try) - 1:
+                if attempt < 4:
+                    should_retry = handle_llm_errors(e, attempt, 5, context=context)
+                    # Check again after handle_llm_errors (it may have set the flag)
+                    if process_id in process_quota_flags and process_quota_flags[process_id]:
+                        print(f'  🛑 Quota exhausted detected by handle_llm_errors, stopping retries')
+                        break
+                    if should_retry:
+                        attempt_index += 1
                         continue  # Retry
                     else:
                         break  # Don't retry
                 else:
-                    # Last attempt failed
-                    print(f'  DEBUG: All attempts failed')
-                    break
+                    # For attempts 5-7, continue retrying (no handle_llm_errors call)
+                    # But check for quota exhaustion
+                    if process_id in process_quota_flags and process_quota_flags[process_id]:
+                        print(f'  🛑 Quota exhausted, stopping retries')
+                        break
+                    attempt_index += 1
+                    continue  # Continue to next attempt
+            else:
+                # Last attempt failed
+                if attempt == 7:
+                    # Save failed 8th attempt to max_tokens_truncated_2
+                    response_text = ""
+                    if hasattr(e, 'response') and hasattr(e.response, 'text'):
+                        response_text = e.response.text
+                    elif 'response' in locals() and hasattr(response, 'text'):
+                        response_text = response.text
+                    
+                    save_failed_attempt_8(response_text, error_str, filename, cao_number)
+                    log_analysis_error(filename, f"All retry attempts failed (8th attempt with compact schema): {type(e).__name__}: {e} (saved to max_tokens_truncated_2)", response_text[:1000] if response_text else "")
+                
+                print(f'  DEBUG: All attempts failed')
+                break
         
-        # If we get here, all attempts failed
-        print(f'  ⚠️ All {model_params["max_retries"]} retries failed, moving on to next part')
-        log_analysis_error(filename, f"All retry attempts failed: {type(last_error).__name__}: {last_error}", "")
+        # Increment attempt index for next iteration (only if we didn't break/continue)
+        attempt_index += 1
+    
+    # If we get here, all attempts failed
+    if last_error:
+        print(f'  ⚠️ All retry attempts failed, moving on to next part')
+        if attempt == 7:
+            # Already logged above
+            pass
+        else:
+            log_analysis_error(filename, f"All retry attempts failed: {type(last_error).__name__}: {last_error}", "")
         
         # Log failed salary extraction
         if context and 'performance_monitor' in context:
             file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
             
-            # Get final attempt parameters for logging (attempt 4 = 5th try)
-            final_params = get_adjusted_parameters(4)
+            # Get final attempt parameters for logging
+            # Determine which attempt was last
+            if extended_to_compact or use_compact_schema_from_start:
+                # Last attempt was 7 (8th overall) with compact schema
+                final_params = get_adjusted_parameters(4)  # Use attempt 4 params (same as attempt 6-7)
+                final_params['schema_type'] = 'compact'
+            else:
+                # Last attempt was 4 (5th overall) with regular schema
+                final_params = get_adjusted_parameters(4)
+                final_params['schema_type'] = 'regular'
+            
             if last_error_message:
                 final_guidance, final_error_type = get_retry_guidance(last_error_message)
                 if final_guidance:
@@ -1130,9 +1358,10 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                 error_message=f"All retry attempts failed: {type(last_error).__name__}: {last_error}",
                 api_key_used=context.get('key_number', 1),
                 process_id=context.get('process_id', 0),
-                cao_number="",
+                cao_number=cao_number or "",
                 model="gemini-2.5-flash",
-                parameters=final_params
+                parameters=final_params,
+                allow_duplicates=False
             )
         
         return None
@@ -1231,9 +1460,10 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
                     analysis_type="non_salary_part1",
                     api_key_used=context.get('key_number', 1),
                     process_id=context.get('process_id', 0),
-                    cao_number="",
+                    cao_number=cao_number,
                     model="gemini-2.5-flash",
-                    parameters=model_params
+                    parameters=model_params,
+                    allow_duplicates=False
                 )
             
             return result
@@ -1373,9 +1603,10 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
                             analysis_type="non_salary_part1",
                             api_key_used=context.get('key_number', 1),
                             process_id=context.get('process_id', 0),
-                            cao_number="",
+                            cao_number=cao_number,
                             model="gemini-2.5-flash",
-                            parameters=log_params
+                            parameters=log_params,
+                            allow_duplicates=False
                         )
                     
                     print(f'  Part 1 extraction completed successfully (attempt {attempt + 1})')
@@ -1386,15 +1617,20 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
                 last_error_message = str(e)
                 print(f'  Part 1: Attempt {attempt + 1} failed: {type(e).__name__}: {e}')
                 
-                # Check if quota was exhausted during this attempt
+                # Check if quota was exhausted during this attempt (before calling handle_llm_errors)
                 global process_quota_flags
                 process_id = context.get('process_id', 0) if context else 0
                 if process_id in process_quota_flags and process_quota_flags[process_id]:
-                    print(f'  Part 1: Quota exhausted, stopping retries')
+                    print(f'  🛑 Quota exhausted during part 1 extraction, stopping retries')
                     break
                     
                 if attempt < 4:  # Not the last attempt
-                    if handle_llm_errors(e, attempt, 5, context=context):
+                    should_retry = handle_llm_errors(e, attempt, 5, context=context)
+                    # Check again after handle_llm_errors (it may have set the flag)
+                    if process_id in process_quota_flags and process_quota_flags[process_id]:
+                        print(f'  🛑 Quota exhausted detected by handle_llm_errors, stopping retries')
+                        break
+                    if should_retry:
                         continue  # Retry
                     else:
                         break  # Don't retry
@@ -1427,9 +1663,10 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
                 error_message=f"All retry attempts failed: {type(last_error).__name__}: {last_error}",
                 api_key_used=context.get('key_number', 1),
                 process_id=context.get('process_id', 0),
-                cao_number="",
+                cao_number=cao_number or "",
                 model="gemini-2.5-flash",
-                parameters=final_params
+                parameters=final_params,
+                allow_duplicates=False
             )
         
         print(f'  ⚠️ All {model_params["max_retries"]} retries failed for Part 1, moving on to next part')
@@ -1529,9 +1766,10 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
                     analysis_type="non_salary_part2",
                     api_key_used=context.get('key_number', 1),
                     process_id=context.get('process_id', 0),
-                    cao_number="",
+                    cao_number=cao_number,
                     model="gemini-2.5-flash",
-                    parameters=model_params
+                    parameters=model_params,
+                    allow_duplicates=False
                 )
             
             return result
@@ -1666,9 +1904,10 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
                             analysis_type="non_salary_part2",
                             api_key_used=context.get('key_number', 1),
                             process_id=context.get('process_id', 0),
-                            cao_number="",
+                            cao_number=cao_number,
                             model="gemini-2.5-flash",
-                            parameters=log_params
+                            parameters=log_params,
+                            allow_duplicates=False
                         )
                     
                     return result
@@ -1678,15 +1917,20 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
                 last_error_message = str(e)
                 print(f'  DEBUG: Part 2 attempt {attempt + 1} failed: {type(e).__name__}: {e}')
                 
-                # Check if quota was exhausted during this attempt
+                # Check if quota was exhausted during this attempt (before calling handle_llm_errors)
                 global process_quota_flags
                 process_id = context.get('process_id', 0) if context else 0
                 if process_id in process_quota_flags and process_quota_flags[process_id]:
-                    print(f'  DEBUG: Quota exhausted during part 2 extraction, stopping retries')
+                    print(f'  🛑 Quota exhausted during part 2 extraction, stopping retries')
                     break
                     
                 if attempt < 4:  # Not the last attempt
-                    if handle_llm_errors(e, attempt, 5, context=context):
+                    should_retry = handle_llm_errors(e, attempt, 5, context=context)
+                    # Check again after handle_llm_errors (it may have set the flag)
+                    if process_id in process_quota_flags and process_quota_flags[process_id]:
+                        print(f'  🛑 Quota exhausted detected by handle_llm_errors, stopping retries')
+                        break
+                    if should_retry:
                         continue  # Retry
                     else:
                         break  # Don't retry
@@ -1719,9 +1963,10 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
                 error_message=f"All retry attempts failed: {type(last_error).__name__}: {last_error}",
                 api_key_used=context.get('key_number', 1),
                 process_id=context.get('process_id', 0),
-                cao_number="",
+                cao_number=cao_number or "",
                 model="gemini-2.5-flash",
-                parameters=final_params
+                parameters=final_params,
+                allow_duplicates=False
             )
         
         print(f'  ⚠️ All {model_params["max_retries"]} retries failed for Part 2, moving on to next part')
@@ -1822,9 +2067,10 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
                     analysis_type="non_salary_part3",
                     api_key_used=context.get('key_number', 1),
                     process_id=context.get('process_id', 0),
-                    cao_number="",
+                    cao_number=cao_number,
                     model="gemini-2.5-flash",
-                    parameters=model_params
+                    parameters=model_params,
+                    allow_duplicates=False
                 )
             
             return result
@@ -1966,9 +2212,10 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
                             analysis_type="non_salary_part3",
                             api_key_used=context.get('key_number', 1),
                             process_id=context.get('process_id', 0),
-                            cao_number="",
+                            cao_number=cao_number,
                             model="gemini-2.5-flash",
-                            parameters=log_params
+                            parameters=log_params,
+                            allow_duplicates=False
                         )
                     
                     return result
@@ -1978,15 +2225,20 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
                 last_error_message = str(e)
                 print(f'  DEBUG: Part 3 attempt {attempt + 1} failed: {type(e).__name__}: {e}')
                 
-                # Check if quota was exhausted during this attempt
+                # Check if quota was exhausted during this attempt (before calling handle_llm_errors)
                 global process_quota_flags
                 process_id = context.get('process_id', 0) if context else 0
                 if process_id in process_quota_flags and process_quota_flags[process_id]:
-                    print(f'  DEBUG: Quota exhausted during part 3 extraction, stopping retries')
+                    print(f'  🛑 Quota exhausted during part 3 extraction, stopping retries')
                     break
                     
                 if attempt < 4:  # Not the last attempt
-                    if handle_llm_errors(e, attempt, 5, context=context):
+                    should_retry = handle_llm_errors(e, attempt, 5, context=context)
+                    # Check again after handle_llm_errors (it may have set the flag)
+                    if process_id in process_quota_flags and process_quota_flags[process_id]:
+                        print(f'  🛑 Quota exhausted detected by handle_llm_errors, stopping retries')
+                        break
+                    if should_retry:
                         continue  # Retry
                     else:
                         break  # Don't retry
@@ -2019,9 +2271,10 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
                 error_message=f"All retry attempts failed: {type(last_error).__name__}: {last_error}",
                 api_key_used=context.get('key_number', 1),
                 process_id=context.get('process_id', 0),
-                cao_number="",
+                cao_number=cao_number or "",
                 model="gemini-2.5-flash",
-                parameters=final_params
+                parameters=final_params,
+                allow_duplicates=False
             )
         
         print(f'  ⚠️ All {model_params["max_retries"]} retries failed for Part 3, moving on to next part')
@@ -2448,7 +2701,8 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
                 api_key_used=context.get('key_number', 1),
                 process_id=context.get('process_id', 0),
                 cao_number=cao_number,
-                model="gemini-2.5-flash"
+                model="gemini-2.5-flash",
+                allow_duplicates=False
             )
             print(f'  {cao_number}: Combined analysis logged successfully')
         else:
@@ -2483,15 +2737,22 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
 
 def main():
     """Main entry point for the analysis pipeline."""
-    parser = argparse.ArgumentParser(description='CAO Data Analysis with Schema-Driven Extraction')
-    parser.add_argument('--key_number', type=int, default=7, help='API key number to use')
-    parser.add_argument('--process_id', type=int, default=0, help='Process ID for work distribution')
-    parser.add_argument('--total_processes', type=int, default=1, help='Total number of parallel processes')
-    parser.add_argument('--max_files', type=int, help='Maximum number of files to process')
-    
-    args = parser.parse_args()
+    global process_quota_flags
+    process_id = None  # Initialize for exception handling
+    current_file = None  # Track current file being processed
+    successful_analyses = 0
+    failed_files = []
+    total_files = 0
     
     try:
+        parser = argparse.ArgumentParser(description='CAO Data Analysis with Schema-Driven Extraction')
+        parser.add_argument('--key_number', type=int, default=7, help='API key number to use')
+        parser.add_argument('--process_id', type=int, default=0, help='Process ID for work distribution')
+        parser.add_argument('--total_processes', type=int, default=1, help='Total number of parallel processes')
+        parser.add_argument('--max_files', type=int, help='Maximum number of files to process')
+        
+        args = parser.parse_args()
+        process_id = args.process_id
         # Load configuration
         config = load_configuration()
         
@@ -2515,15 +2776,16 @@ def main():
         if max_files:
             process_files = process_files[:max_files]
         
-        print(f'Process {args.process_id + 1}: Processing {len(process_files)} files')
+        total_files = len(process_files)
+        print(f'Process {args.process_id + 1}: Processing {total_files} files')
         
         # Process files
         successful_analyses = 0
         failed_files = []
         
         for cao_folder, json_file in process_files:
+            current_file = f"{cao_folder.name}/{json_file.name}"  # Track current file
             # Check for quota exhaustion flag before processing each file
-            global process_quota_flags
             if args.process_id in process_quota_flags and process_quota_flags[args.process_id]:
                 print(f'🚨 QUOTA EXHAUSTED - Process {args.process_id + 1} (API key {args.key_number}) shutting down gracefully')
                 print(f'📊 Partial results: {successful_analyses} successful, {len(failed_files)} failed before shutdown')
@@ -2547,7 +2809,6 @@ def main():
                         break
                     else:
                         failed_files.append(json_file.name)
-                    
             finally:
                 release_file_lock(json_file)
         
@@ -2557,13 +2818,139 @@ def main():
         else:
             print(f'Process {args.process_id + 1} completed: {successful_analyses} successful, {len(failed_files)} failed')
         
+    except KeyboardInterrupt:
+        process_id_str = f"Process {process_id + 1}" if process_id is not None else "Process ?"
+        print(f'\n⚠️  {process_id_str} interrupted by user')
+        if current_file:
+            print(f'   📄 Was processing: {current_file}')
+        if total_files > 0:
+            print(f'   📊 Progress: {successful_analyses}/{total_files} successful, {len(failed_files)} failed')
+        sys.exit(0)
     except Exception as e:
+        import traceback
+        process_id_str = f"Process {process_id + 1}" if process_id is not None else "Process ?"
+        error_str = str(e).lower()
+        
         # Check if this is a quota exhaustion error - if so, exit gracefully
-        if args.process_id in process_quota_flags and process_quota_flags[args.process_id]:
-            print(f'Process {args.process_id + 1} completed with QUOTA EXHAUSTION due to error: {e}')
+        if process_id is not None and process_id in process_quota_flags and process_quota_flags[process_id]:
+            print(f'\n🚨 {process_id_str} completed with QUOTA EXHAUSTION due to error: {e}')
+            if current_file:
+                print(f'   📄 Was processing: {current_file}')
+            if total_files > 0:
+                print(f'   📊 Progress: {successful_analyses}/{total_files} successful, {len(failed_files)} failed')
+            sys.exit(0)
+        
+        # Check if it's a known retryable error that should NOT stop the process
+        # These errors are normally handled by retry logic, but if they escape, we should continue
+        is_retryable_error = (
+            ('429' in error_str and 'perday' not in error_str and 'daily' not in error_str and '3000000' not in error_str) or  # Per-minute quota (not daily)
+            ('503' in error_str or 'unavailable' in error_str or 'overloaded' in error_str) or  # Service unavailable
+            ('timeout' in error_str or 'deadline' in error_str) or  # Timeout
+            ('truncated' in error_str or 'incomplete json' in error_str or 'json validation failed' in error_str) or  # JSON issues
+            ('no content parts found' in error_str or 'no content' in error_str)  # Empty response
+        )
+        
+        # Check if it's a daily quota (should stop process)
+        is_daily_quota = (
+            ('429' in error_str or 'quota' in error_str) and 
+            ('perday' in error_str or 'daily' in error_str or '3000000' in error_str)
+        )
+        
+        # Check if it's a fatal error (configuration, file system, etc.)
+        is_fatal_error = (
+            'valueerror' in error_str and ('input folder' in error_str or 'output folder' in error_str or 'api key' in error_str) or
+            'filenotfounderror' in error_str or
+            'permissionerror' in error_str
+        )
+        
+        if is_retryable_error and not is_daily_quota:
+            # This is a retryable error that occurred during setup/configuration (not file processing)
+            # Since it's during setup, we can't continue - exit gracefully
+            print(f'\n⚠️  RETRYABLE ERROR during setup in {process_id_str}')
+            print(f'📋 Error Type: {type(e).__name__}')
+            print(f'📋 Error Message: {str(e)[:200]}...' if len(str(e)) > 200 else f'📋 Error Message: {e}')
+            
+            print(f'\n💡 This is a retryable error (API quota/timeout/service unavailable) that occurred during setup.')
+            print(f'   The process will exit, but you can restart it to continue processing.')
+            print(f'   Other parallel processes will continue running.')
+            
+            # Log the error as retryable
+            try:
+                error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+                Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                with open(error_log_path, 'a', encoding='utf-8') as f:
+                    f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {process_id_str} - RETRYABLE ERROR (during setup)\n")
+                    f.write(f"Error Type: {type(e).__name__}\n")
+                    f.write(f"Error Message: {e}\n")
+                    f.write(f"Note: This is a retryable error - process can be restarted\n\n")
+            except Exception:
+                pass
+            
+            # Exit gracefully with code 0 (not fatal)
+            sys.exit(0)
+        
+        # For daily quota or fatal errors, exit gracefully
+        print(f'\n{"="*80}')
+        print(f'❌ FATAL ERROR in {process_id_str}')
+        print(f'{"="*80}')
+        print(f'📋 Error Type: {type(e).__name__}')
+        print(f'📋 Error Message: {e}')
+        
+        if current_file:
+            print(f'\n📄 File being processed when error occurred: {current_file}')
+        
+        if total_files > 0:
+            print(f'\n📊 Progress Summary:')
+            print(f'   ✅ Successful: {successful_analyses}/{total_files} files')
+            print(f'   ❌ Failed: {len(failed_files)} files')
+            if failed_files:
+                print(f'   📝 Failed files: {failed_files[-5:]}')  # Show last 5 failed files
+            remaining = total_files - successful_analyses - len(failed_files)
+            if remaining > 0:
+                print(f'   ⏸️  Remaining: {remaining} files not processed')
+        
+        # Provide context about error type
+        if is_daily_quota:
+            print(f'\n💡 Error Type: Daily API Quota Limit Reached')
+            print(f'   This process has hit its daily quota limit and will stop.')
+            print(f'   Other parallel processes will continue running.')
+            print(f'   You can restart this process tomorrow when the quota resets.')
+        elif is_fatal_error:
+            print(f'\n💡 Error Type: Fatal Configuration/System Error')
+            print(f'   This is a system-level error that prevents processing.')
+            print(f'   Check configuration, file permissions, or API key setup.')
         else:
-            print(f'Fatal error: {e}')
-            sys.exit(1)
+            print(f'\n💡 This appears to be an unexpected fatal error. Check the traceback below for details.')
+        
+        print(f'\n📋 Full Traceback:')
+        print(f'{"-"*80}')
+        traceback.print_exc()
+        print(f'{"-"*80}')
+        
+        # Try to log the error
+        try:
+            error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+            Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+            with open(error_log_path, 'a', encoding='utf-8') as f:
+                f.write(f"{'='*80}\n")
+                f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {process_id_str} - FATAL ERROR\n")
+                f.write(f"{'='*80}\n")
+                f.write(f"Error Type: {type(e).__name__}\n")
+                f.write(f"Error Message: {e}\n")
+                if current_file:
+                    f.write(f"File being processed: {current_file}\n")
+                if total_files > 0:
+                    f.write(f"Progress: {successful_analyses}/{total_files} successful, {len(failed_files)} failed\n")
+                f.write(f"\nTraceback:\n")
+                f.write(f"{traceback.format_exc()}\n\n")
+        except Exception:
+            pass  # Don't fail on logging failure
+        
+        # Exit with code 0 instead of 1 to prevent all processes from stopping
+        # The error is logged, so we can investigate without crashing the entire pipeline
+        print(f'\n⚠️  {process_id_str} exiting gracefully (error logged to outputs/logs/fatal_errors_llm_analysis.txt)')
+        print(f'💡 Other parallel processes will continue running independently.')
+        sys.exit(0)
 
 
 def cli_test_fixture():

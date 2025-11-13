@@ -126,13 +126,13 @@ class CAOExtractionSchema(BaseModel):
         If the CAO explicitly states there is no occupational pension beyond AOW, note: 'no occupational pension (AOW only)'."""
         , default_factory=list)
     leave_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated leave information, including when present:
+        """Extract ALL explicitly stated leave information and conditions, including when present:
         - vacation entitlement and holiday allowance, 
         - maternity and paternity/partner leave, 
         - adoption and parental leave, 
         - sick leave and care leave (short- and long-term), 
         - special leaves including Liberation Day policy and senior days,
-        - any other leave-related information mentioned."""
+        - any other leave-related information mentioned and conditions."""
         , default_factory=list)
     termination_information: List[List[str]] = Field(description=
         """Extract ALL explicitly stated termination rules, including when present: 
@@ -172,11 +172,12 @@ class CAOExtractionSchema(BaseModel):
         - any other home office/remote work-related information mentioned."""
         , default_factory=list)
     contract_type_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated information about contract types, including when present:
+        """Extract ALL explicitly stated information and conditions about contract types, including when present:
         - rules on full-time and part-time work (standard hours, ranges, conditions),
         - provisions on min-max or zero-hour/on-call contracts,
         - deviations from the statutory fixed-term chain (ketenregeling),
         - rights to convert temporary to permanent contracts,
+        - rights to adjust working hours,
         - any other information and rules on contract forms (e.g., freelance, internships)."""
         , default_factory=list)
     childcare_information: List[List[str]] = Field(description=
@@ -653,11 +654,11 @@ def calculate_quota_retry_delay(file_size_mb: float, attempt: int) -> int:
     # Calculate minutes needed to process this file
     minutes_needed = estimated_tokens / 125000
     
-    # Add exponential backoff: 2^attempt
-    backoff_multiplier = 2 ** attempt
+    # Add exponential backoff: 2.1^attempt (slightly increased for more conservative retries)
+    backoff_multiplier = 2.1 ** attempt
     
-    # Add buffer time (1-2 minutes for safety)
-    buffer_minutes = 1 + attempt
+    # Add buffer time (2-3 minutes for safety)
+    buffer_minutes = 2 + attempt
     
     # Calculate total delay in seconds
     total_delay_seconds = int((minutes_needed * backoff_multiplier + buffer_minutes) * 60)
@@ -751,9 +752,9 @@ def get_retry_guidance(error_message: str) -> tuple[str, str]:
         guidance = """
     PREVIOUS ATTEMPT FAILED: Response was TRUNCATED (incomplete JSON).
     CRITICAL: Ensure your response ENDS with the closing }  
-        - Be more CONCISE in narrative descriptions while keeping all important data intact
+        - Be more CONCISE in narrative descriptions while keeping all important data intact!
         - Prioritize completing the JSON structure over verbose explanations
-        - Keep all numbers, dates, tables - compress only explanatory text
+        - Keep all numbers, dates, tables - compress only explanatory text!
     """
         return guidance, "truncated JSON"
     
@@ -762,9 +763,9 @@ def get_retry_guidance(error_message: str) -> tuple[str, str]:
         guidance = """
     PREVIOUS ATTEMPT FAILED: No valid output was generated.
     CRITICAL: Output ONLY the JSON object
-        - No markdown code fences (no ```json)
-        - Include ALL required fields (use empty [] if no data)
-        - Ensure final JSON output is generated, not just thinking tokens
+        - No markdown code fences (no ```json)!
+        - Include ALL required fields (use empty [] if no data)!
+        - Ensure final JSON output is generated, not just thinking tokens!
     """
         return guidance, "empty response"
     
@@ -1095,7 +1096,7 @@ def handle_llm_errors(error: Exception, attempt: int, max_retries: int, file_siz
             if file_size_mb > 0:
                 wait_time = calculate_quota_retry_delay(file_size_mb, attempt)
             else:
-                wait_time = 60 * 2 ** attempt  # Fallback for unknown file size
+                wait_time = 90 * 2 ** attempt  # Fallback for unknown file size
             print(f'  Attempt {attempt + 1} failed (per-minute quota), retrying in {wait_time // 60} minutes...')
             time.sleep(wait_time)
             return True
@@ -1652,7 +1653,10 @@ def display_final_results(context: ProcessingContext):
     print('\n' + '=' * 60)
     print('FINAL PERFORMANCE ANALYSIS')
     print('=' * 60)
-    context.performance_monitor.analyze_performance()
+    # Pass total input files count for comparison
+    all_markdown_files = discover_markdown_files(context.config.input_folder)
+    total_input_files = len(all_markdown_files)
+    context.performance_monitor.analyze_performance(total_input_files=total_input_files)
     context.performance_monitor.update_summary_file()
     print(f"""📁 Performance data saved to:""")
     print(f'   Detailed logs: {context.performance_monitor.log_file}')
@@ -1668,67 +1672,202 @@ def display_final_results(context: ProcessingContext):
 # Main function that orchestrates the entire extraction pipeline
 def run_extraction_pipeline():
     """Main pipeline orchestration."""
-    # Parse command line arguments
-    parser = argparse.ArgumentParser(description='CAO LLM Extraction Pipeline')
-    parser.add_argument('--key_number', type=int, default=1, help='API key number (1-3)')
-    parser.add_argument('--process_id', type=int, default=0, help='Process ID for parallel processing')
-    parser.add_argument('--total_processes', type=int, default=1, help='Total number of parallel processes')
-    parser.add_argument('--max_files', type=int, help='Maximum number of files to process')
-    parser.add_argument('--verbose', action='store_true', help='Stream debug output live')
-    parser.add_argument('--debug_on_failure', action='store_true', default=True, help='Flush debug buffer on failures')
-    parser.add_argument('--hang_threshold', type=int, default=600, help='Seconds before enabling live debug on long stages')
-    parser.add_argument('--heartbeat', type=int, default=90, help='Heartbeat interval in seconds for long stages')
+    process_id = None  # Initialize for exception handling
+    current_file = None  # Track current file being processed
+    total_files = 0
+    context = None  # Track context for stats
     
-    args = parser.parse_args()
-    
-    key_number = args.key_number
-    process_id = args.process_id
-    total_processes = args.total_processes
-    
-    # Load configuration
-    config = load_configuration()
-    
-    # Override max_files if provided as argument
-    if args.max_files is not None:
-        config.max_files = args.max_files
-    
-    # Validate paths (pass process_id to avoid race conditions in parallel execution)
-    validate_input_paths(config, process_id)
-    
-    # Setup processing context
-    context = setup_processing_context(config, process_id, total_processes, key_number, args.verbose)
-    
-    # Clean up announce files from previous runs at the beginning
-    cleanup_announce_files(context)
-    
-    # Discover files
-    all_markdown_files = discover_markdown_files(config.input_folder)
-    filtered_files = filter_files_for_processing(all_markdown_files, context)
-    
-    print(f"🎯 CAO Markdown Extraction Pipeline")
-    print(f"📊 Process: {process_id + 1}/{total_processes}")
-    print(f"🔑 API Key: {context.key_number}")
-    print(f"📁 Input: {config.input_folder}")
-    print(f"📁 Output: {config.output_folder}")
-    print(f"📄 Files to process: {len(filtered_files)}")
-    print()
-    
-    # Process files
-    for cao_folder, markdown_file in filtered_files:
-        cao_number = cao_folder.name
-        output_folder = config.output_folder / cao_number
-        output_folder.mkdir(exist_ok=True)
+    try:
+        # Parse command line arguments
+        parser = argparse.ArgumentParser(description='CAO LLM Extraction Pipeline')
+        parser.add_argument('--key_number', type=int, default=1, help='API key number (1-3)')
+        parser.add_argument('--process_id', type=int, default=0, help='Process ID for parallel processing')
+        parser.add_argument('--total_processes', type=int, default=1, help='Total number of parallel processes')
+        parser.add_argument('--max_files', type=int, help='Maximum number of files to process')
+        parser.add_argument('--verbose', action='store_true', help='Stream debug output live')
+        parser.add_argument('--debug_on_failure', action='store_true', default=True, help='Flush debug buffer on failures')
+        parser.add_argument('--hang_threshold', type=int, default=600, help='Seconds before enabling live debug on long stages')
+        parser.add_argument('--heartbeat', type=int, default=90, help='Heartbeat interval in seconds for long stages')
         
-        # Announce CAO once
-        announce_cao_once(cao_number, context)
+        args = parser.parse_args()
         
-        # Process file
-        should_continue = process_single_file(markdown_file, cao_number, output_folder, context, len(filtered_files), args.hang_threshold, args.heartbeat)
-        if not should_continue:
-            break
-    
-    # Display final results
-    display_final_results(context)
+        key_number = args.key_number
+        process_id = args.process_id
+        total_processes = args.total_processes
+        
+        # Load configuration
+        config = load_configuration()
+        
+        # Override max_files if provided as argument
+        if args.max_files is not None:
+            config.max_files = args.max_files
+        
+        # Validate paths (pass process_id to avoid race conditions in parallel execution)
+        validate_input_paths(config, process_id)
+        
+        # Setup processing context
+        context = setup_processing_context(config, process_id, total_processes, key_number, args.verbose)
+        
+        # Clean up announce files from previous runs at the beginning
+        cleanup_announce_files(context)
+        
+        # Discover files
+        all_markdown_files = discover_markdown_files(config.input_folder)
+        filtered_files = filter_files_for_processing(all_markdown_files, context)
+        total_files = len(filtered_files)
+        
+        print(f"🎯 CAO Markdown Extraction Pipeline")
+        print(f"📊 Process: {process_id + 1}/{total_processes}")
+        print(f"🔑 API Key: {context.key_number}")
+        print(f"📁 Input: {config.input_folder}")
+        print(f"📁 Output: {config.output_folder}")
+        print(f"📄 Files to process: {total_files}")
+        print()
+        
+        # Process files
+        for cao_folder, markdown_file in filtered_files:
+            cao_number = cao_folder.name
+            current_file = f"{cao_number}/{markdown_file.name}"  # Track current file
+            output_folder = config.output_folder / cao_number
+            output_folder.mkdir(exist_ok=True)
+            
+            # Announce CAO once
+            announce_cao_once(cao_number, context)
+            
+            # Process file (retry logic is handled inside process_single_file/extract_with_markdown_upload)
+            should_continue = process_single_file(markdown_file, cao_number, output_folder, context, total_files, args.hang_threshold, args.heartbeat)
+            if not should_continue:
+                break
+        
+        # Display final results
+        display_final_results(context)
+        
+    except KeyboardInterrupt:
+        process_id_str = f"Process {process_id + 1}" if process_id is not None else "Process ?"
+        print(f'\n⚠️  {process_id_str} interrupted by user')
+        if current_file:
+            print(f'   📄 Was processing: {current_file}')
+        if context and hasattr(context, 'stats'):
+            print(f'   📊 Progress: {context.stats.successful_extractions} successful, {len(context.stats.failed_files)} failed')
+        sys.exit(0)
+    except Exception as e:
+        import traceback
+        process_id_str = f"Process {process_id + 1}" if process_id is not None else "Process ?"
+        error_str = str(e).lower()
+        
+        # Check if it's a known retryable error that should NOT stop the process
+        # These errors are normally handled by retry logic, but if they escape, we should continue
+        is_retryable_error = (
+            ('429' in error_str and 'perday' not in error_str and 'daily' not in error_str and '3000000' not in error_str) or  # Per-minute quota (not daily)
+            ('503' in error_str or 'unavailable' in error_str or 'overloaded' in error_str) or  # Service unavailable
+            ('timeout' in error_str or 'deadline' in error_str) or  # Timeout
+            ('truncated' in error_str or 'incomplete json' in error_str or 'json validation failed' in error_str) or  # JSON issues
+            ('no content parts found' in error_str or 'no content' in error_str)  # Empty response
+        )
+        
+        # Check if it's a daily quota (should stop process)
+        is_daily_quota = (
+            ('429' in error_str or 'quota' in error_str) and 
+            ('perday' in error_str or 'daily' in error_str or '3000000' in error_str)
+        )
+        
+        # Check if it's a fatal error (configuration, file system, etc.)
+        is_fatal_error = (
+            'valueerror' in error_str and ('input folder' in error_str or 'output folder' in error_str or 'api key' in error_str) or
+            'filenotfounderror' in error_str or
+            'permissionerror' in error_str or
+            'keyboardinterrupt' in error_str
+        )
+        
+        if is_retryable_error and not is_daily_quota:
+            # This is a retryable error that occurred during setup/configuration (not file processing)
+            # Since it's during setup, we can't continue - exit gracefully
+            print(f'\n⚠️  RETRYABLE ERROR during setup in {process_id_str}')
+            print(f'📋 Error Type: {type(e).__name__}')
+            print(f'📋 Error Message: {str(e)[:200]}...' if len(str(e)) > 200 else f'📋 Error Message: {e}')
+            
+            print(f'\n💡 This is a retryable error (API quota/timeout/service unavailable) that occurred during setup.')
+            print(f'   The process will exit, but you can restart it to continue processing.')
+            print(f'   Other parallel processes will continue running.')
+            
+            # Log the error as retryable
+            try:
+                error_log_path = 'outputs/logs/fatal_errors_llm_extraction.txt'
+                Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                with open(error_log_path, 'a', encoding='utf-8') as f:
+                    f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {process_id_str} - RETRYABLE ERROR (during setup)\n")
+                    f.write(f"Error Type: {type(e).__name__}\n")
+                    f.write(f"Error Message: {e}\n")
+                    f.write(f"Note: This is a retryable error - process can be restarted\n\n")
+            except Exception:
+                pass
+            
+            # Exit gracefully with code 0 (not fatal)
+            sys.exit(0)
+        
+        # For daily quota or fatal errors, exit gracefully
+        print(f'\n{'='*80}')
+        print(f'❌ FATAL ERROR in {process_id_str}')
+        print(f'{'='*80}')
+        print(f'📋 Error Type: {type(e).__name__}')
+        print(f'📋 Error Message: {e}')
+        
+        if current_file:
+            print(f'\n📄 File being processed when error occurred: {current_file}')
+        
+        if context and hasattr(context, 'stats'):
+            print(f'\n📊 Progress Summary:')
+            print(f'   ✅ Successful: {context.stats.successful_extractions} files')
+            print(f'   ❌ Failed: {len(context.stats.failed_files)} files')
+            if context.stats.failed_files:
+                print(f'   📝 Failed files: {context.stats.failed_files[-5:]}')  # Show last 5 failed files
+            if total_files > 0:
+                remaining = total_files - context.stats.processed_files
+                if remaining > 0:
+                    print(f'   ⏸️  Remaining: {remaining} files not processed')
+        
+        # Provide context about error type
+        if is_daily_quota:
+            print(f'\n💡 Error Type: Daily API Quota Limit Reached')
+            print(f'   This process has hit its daily quota limit and will stop.')
+            print(f'   Other parallel processes will continue running.')
+            print(f'   You can restart this process tomorrow when the quota resets.')
+        elif is_fatal_error:
+            print(f'\n💡 Error Type: Fatal Configuration/System Error')
+            print(f'   This is a system-level error that prevents processing.')
+            print(f'   Check configuration, file permissions, or API key setup.')
+        else:
+            print(f'\n💡 This appears to be an unexpected fatal error. Check the traceback below for details.')
+        
+        print(f'\n📋 Full Traceback:')
+        print(f'{'─'*80}')
+        traceback.print_exc()
+        print(f'{'─'*80}')
+        
+        # Try to log the error
+        try:
+            error_log_path = 'outputs/logs/fatal_errors_llm_extraction.txt'
+            Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+            with open(error_log_path, 'a', encoding='utf-8') as f:
+                f.write(f"{'='*80}\n")
+                f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {process_id_str} - FATAL ERROR\n")
+                f.write(f"{'='*80}\n")
+                f.write(f"Error Type: {type(e).__name__}\n")
+                f.write(f"Error Message: {e}\n")
+                if current_file:
+                    f.write(f"File being processed: {current_file}\n")
+                if context and hasattr(context, 'stats'):
+                    f.write(f"Progress: {context.stats.successful_extractions} successful, {len(context.stats.failed_files)} failed\n")
+                f.write(f"\nTraceback:\n")
+                f.write(f"{traceback.format_exc()}\n\n")
+        except Exception:
+            pass  # Don't fail on logging failure
+        
+        # Exit with code 0 instead of 1 to prevent all processes from stopping
+        # The error is logged, so we can investigate without crashing the entire pipeline
+        print(f'\n⚠️  {process_id_str} exiting gracefully (error logged to outputs/logs/fatal_errors_llm_extraction.txt)')
+        print(f'💡 Other parallel processes will continue running independently.')
+        sys.exit(0)
 
 
 # =============================================================================

@@ -247,8 +247,12 @@ class PerformanceMonitor:
         if summary['requests_remaining_today'] == 0:
             print(f"   ⚠️  WARNING: Daily request limit reached! Wait until tomorrow to continue.")
     
-    def analyze_performance(self) -> None:
-        """Analyze performance data for insights and optimization"""
+    def analyze_performance(self, total_input_files: Optional[int] = None) -> None:
+        """Analyze performance data for insights and optimization
+        
+        Args:
+            total_input_files: Optional total number of input files to compare against
+        """
         data = self.get_performance_data()
         
         if not data:
@@ -258,6 +262,14 @@ class PerformanceMonitor:
         successful = [d for d in data if d["success"]]
         failed = [d for d in data if not d["success"]]
         
+        # Count unique files by CAO + filename
+        unique_files = set()
+        for d in data:
+            cao_num = d.get("cao_number", "unknown")
+            filename = d.get("filename", "unknown")
+            unique_files.add(f"{cao_num}/{filename}")
+        unique_count = len(unique_files)
+        
         print(f"\n🔍 PERFORMANCE ANALYSIS:")
         
         # Request usage analysis
@@ -265,6 +277,10 @@ class PerformanceMonitor:
         print(f"\n📊 REQUEST USAGE ANALYSIS:")
         print(f"   Total requests: {total_requests}/{self.free_tier_daily_limit}")
         print(f"   Requests remaining today: {max(0, self.free_tier_daily_limit - total_requests)}")
+        print(f"   Unique files processed: {unique_count}" + (f"/{total_input_files}" if total_input_files else ""))
+        if total_input_files and total_input_files > unique_count:
+            unprocessed = total_input_files - unique_count
+            print(f"   ⚠️  Unprocessed files: {unprocessed} (files not yet processed)")
         print(f"   Success rate: {len(successful)}/{total_requests} ({(len(successful)/total_requests)*100:.1f}%)" if total_requests > 0 else "   No requests made")
         
         # Token usage by file size

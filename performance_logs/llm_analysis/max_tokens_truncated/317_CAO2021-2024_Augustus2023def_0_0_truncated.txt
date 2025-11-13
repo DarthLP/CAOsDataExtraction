@@ -1,295 +1,2383 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: CAO2021-2024_Augustus2023def_0_0_extract.json
-Timestamp: 2025-10-17T11:08:43.569675
-Response length: 9509 characters
+Timestamp: 2025-10-19T19:05:28.364634
+Response length: 157890 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
 {
   "salary_information": [
     {
-      "jobgroup": "1st practical learning year",
-      "worker_type": "apprentice",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1430.0,
-          "unit": "monthly",
-          "table_label": "per June 1, 2021"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 1515.0,
-          "unit": "monthly",
-          "table_label": "per May 1, 2022",
-          "increase_percent": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 1563.0,
-          "unit": "monthly",
-          "table_label": "per May 1, 2023",
-          "increase_percent": 3.2
-        },
-        {
-          "start_date": "2023-09-01",
-          "amount": 1643.0,
-          "unit": "monthly",
-          "table_label": "per September 1, 2023",
-          "increase_percent": 3.0
-        },
-        {
-          "start_date": "2023-12-01",
-          "amount": 1723.0,
-          "unit": "monthly",
-          "table_label": "per December 1, 2023",
-          "increase_percent": 3.0
-        },
-        {
-          "start_date": "2024-06-01",
-          "amount": 1778.0,
-          "unit": "monthly",
-          "table_label": "per June 1, 2024",
-          "increase_percent": 2.0
-        },
-        {
-          "start_date": "2024-12-01",
-          "amount": 1833.0,
-          "unit": "monthly",
-          "table_label": "per December 1, 2024",
-          "increase_percent": 2.0
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
-    },
-    {
-      "jobgroup": "2nd practical learning year",
-      "worker_type": "apprentice",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1688.0,
-          "unit": "monthly",
-          "table_label": "per June 1, 2021"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 1773.0,
-          "unit": "monthly",
-          "table_label": "per May 1, 2022",
-          "increase_percent": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 1830.0,
-          "unit": "monthly",
-          "table_label": "per May 1, 2023",
-          "increase_percent": 3.2
-        },
-        {
-          "start_date": "2023-09-01",
-          "amount": 1910.0,
-          "unit": "monthly",
-          "table_label": "per September 1, 2023",
-          "increase_percent": 3.0
-        },
-        {
-          "start_date": "2023-12-01",
-          "amount": 1990.0,
-          "unit": "monthly",
-          "table_label": "per December 1, 2023",
-          "increase_percent": 3.0
-        },
-        {
-          "start_date": "2024-06-01",
-          "amount": 2045.0,
-          "unit": "monthly",
-          "table_label": "per June 1, 2024",
-          "increase_percent": 2.0
-        },
-        {
-          "start_date": "2024-12-01",
-          "amount": 2100.0,
-          "unit": "monthly",
-          "table_label": "per December 1, 2024",
-          "increase_percent": 2.0
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
-    },
-    {
-      "jobgroup": "3rd practical learning year",
-      "worker_type": "apprentice",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 2035.0,
-          "unit": "monthly",
-          "table_label": "per June 1, 2021"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 2120.0,
-          "unit": "monthly",
-          "table_label": "per May 1, 2022",
-          "increase_percent": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 2188.0,
-          "unit": "monthly",
-          "table_label": "per May 1, 2023",
-          "increase_percent": 3.2
-        },
-        {
-          "start_date": "2023-09-01",
-          "amount": 2268.0,
-          "unit": "monthly",
-          "table_label": "per September 1, 2023",
-          "increase_percent": 3.0
-        },
-        {
-          "start_date": "2023-12-01",
-          "amount": 2348.0,
-          "unit": "monthly",
-          "table_label": "per December 1, 2023",
-          "increase_percent": 3.0
-        },
-        {
-          "start_date": "2024-06-01",
-          "amount": 2403.0,
-          "unit": "monthly",
-          "table_label": "per June 1, 2024",
-          "increase_percent": 2.0
-        },
-        {
-          "start_date": "2024-12-01",
-          "amount": 2458.0,
-          "unit": "monthly",
-          "table_label": "per December 1, 2024",
-          "increase_percent": 2.0
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
-    },
-    {
-      "jobgroup": "4th practical learning year",
-      "worker_type": "apprentice",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 2099.0,
-          "unit": "monthly",
-          "table_label": "per June 1, 2021"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 2184.0,
-          "unit": "monthly",
-          "table_label": "per May 1, 2022",
-          "increase_percent": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 2254.0,
-          "unit": "monthly",
-          "table_label": "per May 1, 2023",
-          "increase_percent": 3.2
-        },
-        {
-          "start_date": "2023-09-01",
-          "amount": 2334.0,
-          "unit": "monthly",
-          "table_label": "per September 1, 2023",
-          "increase_percent": 3.0
-        },
-        {
-          "start_date": "2023-12-01",
-          "amount": 2414.0,
-          "unit": "monthly",
-          "table_label": "per December 1, 2023",
-          "increase_percent": 3.0
-        },
-        {
-          "start_date": "2024-06-01",
-          "amount": 2469.0,
-          "unit": "monthly",
-          "table_label": "per June 1, 2024",
-          "increase_percent": 2.0
-        },
-        {
-          "start_date": "2024-12-01",
-          "amount": 2524.0,
-          "unit": "monthly",
-          "table_label": "per December 1, 2024",
-          "increase_percent": 2.0
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
-    },
-    {
       "jobgroup": "Functiegroep 5",
       "step_label": "trede 0",
-      "age_group": "21 and over",
       "timeline": [
         {
           "start_date": "2021-06-01",
           "amount": 1601.0,
           "unit": "monthly",
-          "table_label": "per June 1, 2021"
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
         },
         {
           "start_date": "2022-05-01",
           "amount": 1686.0,
           "unit": "monthly",
           "table_label": "per May 1, 2022",
-          "increase_percent": 2.2
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
         },
         {
           "start_date": "2023-05-01",
           "amount": 1740.0,
           "unit": "monthly",
           "table_label": "per May 1, 2023",
-          "increase_percent": 3.2
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
         },
         {
           "start_date": "2023-09-01",
           "amount": 1820.0,
           "unit": "monthly",
           "table_label": "per September 1, 2023",
-          "increase_percent": 3.0
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
         },
         {
           "start_date": "2023-12-01",
           "amount": 1900.0,
           "unit": "monthly",
           "table_label": "per December 1, 2023",
-          "increase_percent": 3.0
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
         },
         {
           "start_date": "2024-06-01",
           "amount": 1955.0,
           "unit": "monthly",
           "table_label": "per June 1, 2024",
-          "increase_percent": 2.0
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
         },
         {
           "start_date": "2024-12-01",
           "amount": 2010.0,
           "unit": "monthly",
           "table_label": "per December 1, 2024",
-          "increase_percent": 2.0
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
         }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+      ]
     },
     {
       "jobgroup": "Functiegroep 5",
       "step_label": "trede 1",
-      "age_group": "21 and over",
       "timeline": [
         {
           "start_date": "2021-06-01",
           "amount": 1630.0,
           "unit": "monthly",
-          "table_label": "per June 1, 2021
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1715.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1770.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 1850.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 1930.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 1985.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2040.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step_label": "trede 2",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1660.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1745.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1801.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 1881.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 1961.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2016.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2071.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step_label": "trede 3",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1724.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1809.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1867.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 1947.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2027.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2082.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2137.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step_label": "trede 4",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1788.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1873.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1933.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2013.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2093.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2148.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2203.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step_label": "trede 5",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1821.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1906.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1967.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2047.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2127.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2182.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2237.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step_label": "trede 6",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1872.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1957.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2020.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2100.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2180.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2235.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2290.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step_label": "trede 7",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1920.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2005.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2069.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2149.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2229.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2284.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2339.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step_label": "trede 8",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1969.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2054.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2120.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2200.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2280.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2335.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2390.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step_label": "trede 9",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2025.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2110.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2178.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2258.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2338.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2393.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2448.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 10",
+      "step_label": "trede 0",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1630.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1715.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1770.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 1850.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 1930.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 1985.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2040.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 10",
+      "step_label": "trede 1",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1660.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1745.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1801.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 1881.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 1961.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2016.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2071.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 10",
+      "step_label": "trede 2",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1724.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1809.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1867.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 1947.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2027.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2082.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2137.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 10",
+      "step_label": "trede 3",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1788.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1873.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1933.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2013.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2093.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2148.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2203.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 10",
+      "step_label": "trede 4",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1821.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1906.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1967.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2047.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2127.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2182.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2237.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 10",
+      "step_label": "trede 5",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1872.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1957.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2020.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2100.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2180.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2235.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2290.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 10",
+      "step_label": "trede 6",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1920.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2005.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2069.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2149.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2229.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2284.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2339.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 10",
+      "step_label": "trede 7",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1969.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2054.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2120.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2200.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2280.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2335.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2390.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 10",
+      "step_label": "trede 8",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2025.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2110.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2178.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2258.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2338.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2393.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2448.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 10",
+      "step_label": "trede 9",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2087.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2172.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2242.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2322.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2402.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2457.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2512.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 10",
+      "step_label": "trede 10",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2151.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2236.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2308.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2388.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2468.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2523.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2578.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 15",
+      "step_label": "trede 0",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1660.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1745.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1801.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 1881.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 1961.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2016.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2071.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 15",
+      "step_label": "trede 1",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1724.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1809.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1867.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 1947.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2027.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2082.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2137.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 15",
+      "step_label": "trede 2",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1788.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1873.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1933.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2013.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2093.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2148.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2203.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 15",
+      "step_label": "trede 3",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1821.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1906.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1967.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2047.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2127.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2182.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2237.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 15",
+      "step_label": "trede 4",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1872.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1957.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2020.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2100.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2180.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2235.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2290.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 15",
+      "step_label": "trede 5",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1920.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2005.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2069.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2149.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2229.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2284.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2339.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 15",
+      "step_label": "trede 6",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1969.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2054.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2120.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2200.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2280.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2335.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2390.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 15",
+      "step_label": "trede 7",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2025.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2110.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2178.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2258.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2338.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2393.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2448.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 15",
+      "step_label": "trede 8",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2087.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2172.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2242.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2322.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2402.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2457.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2512.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 15",
+      "step_label": "trede 9",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2151.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2236.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2308.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2388.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2468.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2523.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2578.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 15",
+      "step_label": "trede 10",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2222.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2307.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2381.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2461.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2541.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2596.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2651.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 15",
+      "step_label": "trede 11",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2296.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2381.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2457.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2537.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2617.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2672.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2727.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 20",
+      "step_label": "trede 0",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1724.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1809.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1867.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 1947.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2027.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2082.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2137.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 20",
+      "step_label": "trede 1",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1821.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1906.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1967.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2047.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2127.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2182.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2237.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 20",
+      "step_label": "trede 2",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1872.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1957.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2020.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2100.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2180.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2235.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2290.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 20",
+      "step_label": "trede 3",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1920.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2005.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2069.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2149.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2229.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2284.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2339.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 20",
+      "step_label": "trede 4",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1969.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2054.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2120.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2200.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2280.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2335.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2390.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 20",
+      "step_label": "trede 5",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2025.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2021",
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2110.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2022",
+          "increase_percent": 2.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2178.0,
+          "unit": "monthly",
+          "table_label": "per May 1, 2023",
+          "increase_percent": 3.2,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2258.0,
+          "unit": "monthly",
+          "table_label": "per September 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2338.0,
+          "unit": "monthly",
+          "table_label": "per December 1, 2023",
+          "increase_percent": 3.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2393.0,
+          "unit": "monthly",
+          "table_label": "per June 1, 2024",
+          "increase_percent": 2.0,
+          "note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2448.0,
+          "unit": "monthly",
+          

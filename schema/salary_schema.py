@@ -69,27 +69,21 @@ class SalaryPoint(BaseModel):
         description="Concise identifier of the wage table or adjustment version (e.g., 'per 1 Nov 2023', 'Table A - 2024 rates')."
     )
 
-    increase_percent: Optional[float] = Field(
+    inc_pct: Optional[float] = Field(
         default=None,
         description="If the CAO specifies a general percentage increase for this table or time period (e.g., 3.00 for a +3% wage rise), record it here; otherwise omit."
     )
 
-    holiday_in_amount: Optional[bool] = Field(
+    holiday_incl: Optional[bool] = Field(
         default=None,
         description="True if the printed amount explicitly includes holiday allowance; "
                     "Omit if not stated or if false."
     )
 
-    hours_basis_ft_week: Optional[float] = Field(
-        default=None,
-        description="Full-time weekly hours underlying this amount (e.g., 36, 37, 38, 40), "
-                    "recorded only if explicitly for the table version; omit if not mentioned."
-    )
-
     note: Optional[str] = Field(
         default=None,
         description="Footnotes, exceptions, or remarks directly tied to this wage entry. "
-                    "Keep concise but faithful to the original text. Omit if not present."
+                    "Keep concise but faithful to the original text. If full-time hours per week deviate from the general CAO baseline, mention it here. Omit if not present."
     )
 
 
@@ -111,12 +105,12 @@ class SalaryRow(BaseModel):
         description="Job group or salary scale label/code. If a descriptive subtitle is given, append it in parentheses (e.g., 'F-45-9 (workers with high school diploma)')."
     )
 
-    step_label: Optional[str] = Field(
+    step: Optional[str] = Field(
         default=None,
         description="Printed label of the step/trede (e.g., 'trede 0', 'periodiek 3', 'aanloopschaal C'); omit if not printed."
     )
 
-    worker_type: Optional[str] = Field(
+    worker: Optional[str] = Field(
         default=None,
         description="Worker type or category. Omit if generic (e.g., 'employee', 'standard worker') AND only one worker type exists. Keep when meaningful (e.g., 'Construction worker', 'UTA employee')."
     )
@@ -222,7 +216,7 @@ SALARY_PROMPT = """Extract structured salary data from a JSON object derived fro
 
     TABLE AMOUNTS, PERCENTAGES, DATES
         - Salary amount: output as a number using a dot as the decimal separator (e.g., 2300.00). Do NOT use quotes, commas or thousands separators.
-        - increase_percent: include only if the table or a relating clause explicitly states a general % for that version.
+        - inc_pct: include only if the table or a relating clause explicitly states a general % for that version.
         - Dates: Use YYYY-MM-DD format (e.g., "2023-11-01"). Do NOT invent or infer dates.
     
     TABLE TIMELINE CONSTRUCTION

@@ -402,6 +402,16 @@ class LeaveInfo(BaseModel):
         description="Duration of unpaid parental leave as stated (e.g., value=26, unit='weeks')."
     )
 
+    # Parental leave eligibility
+    parental_leave_tenure_requirement_present: bool = Field(
+        default=False,
+        description="Set true only if the CAO explicitly requires minimum tenure with the employer before eligibility for parental leave."
+    )
+    parental_leave_tenure_requirement: Optional[Amount] = Field(
+        default=None,
+        description="Minimum tenure required for parental leave eligibility as stated (e.g., value=12, unit='months'). Omit if parental_leave_tenure_requirement_present = false."
+    )
+
     # Abortion
     abortion_leave_present: bool = Field(
         default=False,
@@ -782,10 +792,6 @@ class HomeofficeInfo(BaseModel):
         default=False,
         description="Set true if the employer reimburses home office-related costs."
     )
-    homeoffice_costs_note: str = Field(
-        default="",
-        description="Short note on reimbursed cost types. Leave empty if homeoffice_costs_reimbursed = false."
-    )
 
     homeoffice_agreement_required: bool = Field(
         default=False,
@@ -802,7 +808,7 @@ class HomeofficeInfo(BaseModel):
 
     homeoffice_note: str = Field(
         default="",
-        description="Other remarks (e.g., equipment provision, campaigns, stimulation-only, only statutory minimum provisions)."
+        description="Additional home office details exactly as stated, including: reimbursed cost types, equipment provision, campaigns, stimulation-only provisions, statutory minimum provisions, and any other home office-related remarks."
     )
 
 
@@ -867,6 +873,24 @@ class ContractTypeInfo(BaseModel):
         description="Exact rule text on conversion from fixed-term to indefinite contracts, as stated. Leave empty if conversion_rights_temp_to_perm_present = false."    
     )
 
+    # Work hours adjustment rights
+    workhours_adjustment_right_present: bool = Field(
+        default=False,
+        description="Set true only if the CAO explicitly mentions employees' right to request adjustment of working hours."
+    )
+    workhours_adjustment_tenure_requirement: Optional[Amount] = Field(
+        default=None,
+        description="Minimum tenure required before requesting adjustment of working hours, as stated (e.g., value=6, unit='months'). Omit if not specified."
+    )
+    workhours_adjustment_min_firm_size: Optional[Amount] = Field(
+        default=None,
+        description="Minimum employer size threshold for the right to apply, as stated (e.g., value=10, unit='employees'). Omit if not specified."
+    )
+    workhours_adjustment_note: str = Field(
+        default="",
+        description="Additional condition for work hours adjustment (e.g., 'subject to business needs', 'approval by supervisor required'). Leave empty if not stated."
+    )
+
 
 # ----------------------------
 # FRINGE BENEFITS INFORMATION
@@ -891,10 +915,6 @@ class FringeBenefitsInfo(BaseModel):
     bike_scheme_present: bool = Field(
         default=False,
         description="Set true if a bicycle/leasefiets scheme is present."
-    )
-    bike_scheme_note: str = Field(
-        default="",
-        description="Short note exactly as stated. Leave empty if bike_scheme_present = false."
     )
 
     internet_or_phone_reimbursement_present: bool = Field(
@@ -948,7 +968,7 @@ class FringeBenefitsInfo(BaseModel):
 
     other_fringe_benefits_note: str = Field(
         default="",
-        description="Concise catch-all for other benefits."
+        description="Additional fringe benefits exactly as stated, including: bicycle/leasefiets scheme details, and any other fringe benefits not covered by the specific fields above."
     )
 
 
@@ -961,10 +981,6 @@ class SafetyInfo(BaseModel):
     harassment_protocol_present: bool = Field(
         default=False,
         description="Set true if a sexual harassment/integrity protocol is included."
-    )
-    harassment_protocol_note: str = Field(
-        default="",
-        description="Short description of the harassment protocol exactly as stated. Leave empty if harassment_protocol_present = false."
     )
 
     integrity_protocol_present: bool = Field(
@@ -1028,7 +1044,7 @@ class SafetyInfo(BaseModel):
 
     safety_note: str = Field(
         default="",
-        description="Catch-all for unusual obligations."
+        description="Additional safety and integrity details exactly as stated, including: harassment protocol description, integrity protocol details, and any other unusual safety obligations or provisions."
     )
 
 
@@ -1074,10 +1090,6 @@ class ChildcareInfo(BaseModel):
         default=None,
         description="Maximum covered child age if stated (e.g., value=12, unit='years')."
     )
-    childcare_age_limit_note: str = Field(
-        default="",
-        description="Free-form age scope details."
-    )
 
     childcare_provider_scope: str = Field(
         default="unspecified",
@@ -1110,7 +1122,7 @@ class ChildcareInfo(BaseModel):
 
     childcare_benefit_eligibility_note: str = Field(
         default="",
-        description="Other eligibility limits or conditions exactly as stated."
+        description="Eligibility limits and conditions exactly as stated, including: age scope details, other eligibility limits, and any other conditions for childcare benefit eligibility."
     )
 
 
@@ -1130,33 +1142,19 @@ class AIInfo(BaseModel):
         description="Are automated AI decisions allowed (e.g., 'never', 'with_human_review', 'unspecified', 'other')."
     )
 
-    ai_transparency_requirements: str = Field(
-        default="",
-        description="Required disclosures (purpose, data, vendor, logic, worker information). Leave empty if ai_policy_exists = false."
-    )
-
-    ai_bias_audit: str = Field(
-        default="unspecified",
-        description="Frequency/requirement of bias audits (e.g., 'annual', '≥annual', 'none', 'unspecified', 'other')."
-    )
-
     ai_governance_body_present: bool = Field(
         default=False,
         description="Set true if a joint AI/Data/OR governance body/committee exists."
-    )
-
-    ai_dispute_rights_note: str = Field(
-        default="",
-        description="Summary of how workers can contest AI-based decisions. Leave empty if ai_policy_exists = false."
     )
 
     ai_training_rights_present: bool = Field(
         default=False,
         description="Set true if AI-literacy or upskilling provisions for affected roles are included."
     )
-    ai_training_rights_note: str = Field(
+
+    ai_policy_note: str = Field(
         default="",
-        description="Hours/budget or redeployment pathways exactly as stated. Leave empty if ai_policy_exists = false."
+        description="Additional AI policy details exactly as stated, including: transparency requirements (disclosures about purpose, data, vendor, logic, worker information), bias audit frequency/requirements (e.g., 'annual', '≥annual', 'none'), training details (hours/budget or redeployment pathways), dispute rights (how workers can contest AI-based decisions), and any other AI-related provisions. Leave empty if ai_policy_exists = false."
     )
 
 

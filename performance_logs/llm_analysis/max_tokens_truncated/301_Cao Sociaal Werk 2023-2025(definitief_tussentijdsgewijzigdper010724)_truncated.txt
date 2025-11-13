@@ -1,16 +1,15 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: Cao Sociaal Werk 2023-2025(definitief_tussentijdsgewijzigdper010724)_extract.json
-Timestamp: 2025-10-17T16:07:54.657175
-Response length: 102203 characters
+Timestamp: 2025-10-19T18:48:23.221995
+Response length: 89782 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
 {
   "salary_information": [
     {
-      "jobgroup": "0",
+      "jobgroup": "0 (Doorstroombaan)",
       "step_label": "0",
-      "worker_type": "Doorstroombaan",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -37,38 +36,8 @@ Finish reason: MAX_TOKENS
       ]
     },
     {
-      "jobgroup": "0",
-      "step_label": "0",
-      "worker_type": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 1995.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
-          "increase_percent": 7.0
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2076.76,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2150.50,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
+      "jobgroup": "0 (Doorstroombaan)",
       "step_label": "1",
-      "worker_type": "Doorstroombaan",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -82,8 +51,7 @@ Finish reason: MAX_TOKENS
           "amount": 2165.17,
           "unit": "monthly",
           "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
+          "increase_percent": 4.0
         },
         {
           "start_date": "2024-07-01",
@@ -95,154 +63,8 @@ Finish reason: MAX_TOKENS
       ]
     },
     {
-      "jobgroup": "0",
-      "step_label": "1",
-      "worker_type": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2086.91,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
-          "increase_percent": 7.0
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2165.17,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2232.08,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
-      "step_label": "10",
-      "worker_type": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2687.77,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
-          "increase_percent": 7.0
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2788.56,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2874.73,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
-      "step_label": "11",
-      "worker_type": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2784.58,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
-          "increase_percent": 7.0
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2889.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2978.27,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
-      "step_label": "12",
-      "worker_type": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2886.38,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
-          "increase_percent": 7.0
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2994.62,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 3087.15,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
-      "step_label": "13",
-      "worker_type": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2992.50,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
-          "increase_percent": 7.0
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 3115.13,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 3225.74,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
+      "jobgroup": "0 (Doorstroombaan)",
       "step_label": "2",
-      "worker_type": "Doorstroombaan",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -256,8 +78,7 @@ Finish reason: MAX_TOKENS
           "amount": 2216.03,
           "unit": "monthly",
           "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
+          "increase_percent": 4.0
         },
         {
           "start_date": "2024-07-01",
@@ -269,38 +90,8 @@ Finish reason: MAX_TOKENS
       ]
     },
     {
-      "jobgroup": "0",
-      "step_label": "2",
-      "worker_type": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2135.94,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
-          "increase_percent": 7.0
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2216.03,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2284.51,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
+      "jobgroup": "0 (Doorstroombaan)",
       "step_label": "3",
-      "worker_type": "Doorstroombaan",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -314,8 +105,7 @@ Finish reason: MAX_TOKENS
           "amount": 2269.17,
           "unit": "monthly",
           "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
+          "increase_percent": 4.0
         },
         {
           "start_date": "2024-07-01",
@@ -327,38 +117,8 @@ Finish reason: MAX_TOKENS
       ]
     },
     {
-      "jobgroup": "0",
-      "step_label": "3",
-      "worker_type": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2187.15,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
-          "increase_percent": 7.0
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2269.17,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2339.28,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
+      "jobgroup": "0 (Doorstroombaan)",
       "step_label": "4",
-      "worker_type": "Doorstroombaan",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -372,8 +132,7 @@ Finish reason: MAX_TOKENS
           "amount": 2326.95,
           "unit": "monthly",
           "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
+          "increase_percent": 4.0
         },
         {
           "start_date": "2024-07-01",
@@ -385,38 +144,8 @@ Finish reason: MAX_TOKENS
       ]
     },
     {
-      "jobgroup": "0",
-      "step_label": "4",
-      "worker_type": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2242.84,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
-          "increase_percent": 7.0
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2326.95,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2398.85,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
+      "jobgroup": "0 (Doorstroombaan)",
       "step_label": "5",
-      "worker_type": "Doorstroombaan",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -430,8 +159,7 @@ Finish reason: MAX_TOKENS
           "amount": 2393.91,
           "unit": "monthly",
           "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
+          "increase_percent": 4.0
         },
         {
           "start_date": "2024-07-01",
@@ -443,38 +171,8 @@ Finish reason: MAX_TOKENS
       ]
     },
     {
-      "jobgroup": "0",
-      "step_label": "5",
-      "worker_type": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2307.38,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
-          "increase_percent": 7.0
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2393.91,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2467.88,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
+      "jobgroup": "0 (Doorstroombaan)",
       "step_label": "6",
-      "worker_type": "Doorstroombaan",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -488,8 +186,7 @@ Finish reason: MAX_TOKENS
           "amount": 2464.55,
           "unit": "monthly",
           "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
+          "increase_percent": 4.0
         },
         {
           "start_date": "2024-07-01",
@@ -501,38 +198,8 @@ Finish reason: MAX_TOKENS
       ]
     },
     {
-      "jobgroup": "0",
-      "step_label": "6",
-      "worker_type": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2375.47,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
-          "increase_percent": 7.0
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2464.55,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2540.70,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
+      "jobgroup": "0 (Doorstroombaan)",
       "step_label": "7",
-      "worker_type": "Doorstroombaan",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -546,8 +213,7 @@ Finish reason: MAX_TOKENS
           "amount": 2537.26,
           "unit": "monthly",
           "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
+          "increase_percent": 4.0
         },
         {
           "start_date": "2024-07-01",
@@ -559,38 +225,8 @@ Finish reason: MAX_TOKENS
       ]
     },
     {
-      "jobgroup": "0",
-      "step_label": "7",
-      "worker_type": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2445.55,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
-          "increase_percent": 7.0
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2537.26,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2615.66,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
+      "jobgroup": "0 (Doorstroombaan)",
       "step_label": "8",
-      "worker_type": "Doorstroombaan",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -604,8 +240,7 @@ Finish reason: MAX_TOKENS
           "amount": 2612.09,
           "unit": "monthly",
           "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
+          "increase_percent": 4.0
         },
         {
           "start_date": "2024-07-01",
@@ -617,38 +252,8 @@ Finish reason: MAX_TOKENS
       ]
     },
     {
-      "jobgroup": "0",
-      "step_label": "8",
-      "worker_type": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2517.68,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
-          "increase_percent": 7.0
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2612.09,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2692.80,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
+      "jobgroup": "0 (Doorstroombaan)",
       "step_label": "9",
-      "worker_type": "Doorstroombaan",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -662,8 +267,7 @@ Finish reason: MAX_TOKENS
           "amount": 2687.84,
           "unit": "monthly",
           "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
+          "increase_percent": 4.0
         },
         {
           "start_date": "2024-07-01",
@@ -675,9 +279,360 @@ Finish reason: MAX_TOKENS
       ]
     },
     {
-      "jobgroup": "0",
+      "jobgroup": "0 (Doorstroombaan)",
+      "step_label": "10",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2687.77,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
+          "increase_percent": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2788.56,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2874.73,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "0 (Doorstroombaan)",
+      "step_label": "11",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2784.58,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
+          "increase_percent": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2889.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2978.27,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "0 (Doorstroombaan)",
+      "step_label": "12",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2886.38,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
+          "increase_percent": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2994.62,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3087.15,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "0 (Doorstroombaan)",
+      "step_label": "13",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2992.50,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
+          "increase_percent": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3115.13,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3225.74,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "0 (Instroombaan)",
+      "step_label": "0",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 1995.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
+          "increase_percent": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2076.76,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0,
+          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2150.50,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "0 (Instroombaan)",
+      "step_label": "1",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2086.91,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
+          "increase_percent": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2165.17,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2232.08,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "0 (Instroombaan)",
+      "step_label": "2",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2135.94,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
+          "increase_percent": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2216.03,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2284.51,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "0 (Instroombaan)",
+      "step_label": "3",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2187.15,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
+          "increase_percent": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2269.17,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2339.28,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "0 (Instroombaan)",
+      "step_label": "4",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2242.84,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
+          "increase_percent": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2326.95,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2398.85,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "0 (Instroombaan)",
+      "step_label": "5",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2307.38,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
+          "increase_percent": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2393.91,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2467.88,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "0 (Instroombaan)",
+      "step_label": "6",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2375.47,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
+          "increase_percent": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2464.55,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2540.70,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "0 (Instroombaan)",
+      "step_label": "7",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2445.55,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
+          "increase_percent": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2537.26,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2615.66,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "0 (Instroombaan)",
+      "step_label": "8",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2517.68,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
+          "increase_percent": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2612.09,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2692.80,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
+          "increase_percent": 4.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "0 (Instroombaan)",
       "step_label": "9",
-      "worker_type": "Instroombaan",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -691,8 +646,7 @@ Finish reason: MAX_TOKENS
           "amount": 2699.78,
           "unit": "monthly",
           "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
+          "increase_percent": 4.0
         },
         {
           "start_date": "2024-07-01",
@@ -700,486 +654,6 @@ Finish reason: MAX_TOKENS
           "unit": "monthly",
           "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
           "increase_percent": 4.0
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
-      "step_label": "Start",
-      "worker_type": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 1995.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
-          "increase_percent": 7.0
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2076.76,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2150.50,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
-      "step_label": "Start",
-      "worker_type": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 1995.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scale 0, I/D-jobs)",
-          "increase_percent": 7.0
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2076.76,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0,
-          "note": "A back payment of a total of €55.73 will be made on the minimum wage (periodic 0) for the period January 2024 to June 2024."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2150.50,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scale 0, I/D-jobs)",
-          "increase_percent": 4.0
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "0",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2043.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2184.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2210.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2210.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "1",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2092.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2184.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2263.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2263.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "10",
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 2829.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "11",
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 2908.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "14",
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 0.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "15",
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 0.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "2",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2142.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2228.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2317.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2317.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "3",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2196.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2284.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2375.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2375.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "4",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2246.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2336.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2429.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2429.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "5",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2297.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2389.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2485.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2485.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "6",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2354.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2448.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2546.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2546.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "7",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2413.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2510.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2610.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2610.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "8",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2468.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2567.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2670.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2670.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "9",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2531.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2632.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2737.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2737.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
@@ -1216,98 +690,50 @@ Finish reason: MAX_TOKENS
           "amount": 2184.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "U1",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2615.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2720.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2829.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
           "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
     {
       "jobgroup": "1",
-      "step_label": "U2",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2688.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2796.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2908.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "a",
-      "row_note": "Only for employees employed before 31 December 2003"
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "b",
-      "row_note": "Only for employees employed before 31 December 2003"
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "c",
-      "row_note": "Only for employees employed before 31 December 2003"
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "d",
-      "row_note": "Only for employees employed before 31 December 2003"
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "e",
-      "row_note": "Only for employees employed before 31 December 2003"
-    },
-    {
-      "jobgroup": "2",
       "step_label": "0",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2043.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2184.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2210.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2210.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "1",
+      "step_label": "1",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -1338,13 +764,13 @@ Finish reason: MAX_TOKENS
           "amount": 2263.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
     {
-      "jobgroup": "2",
-      "step_label": "1",
+      "jobgroup": "1",
+      "step_label": "2",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -1375,102 +801,13 @@ Finish reason: MAX_TOKENS
           "amount": 2317.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "2",
-      "step_label": "10",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2688.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2796.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
           "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2908.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2908.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
     {
-      "jobgroup": "2",
-      "step_label": "11",
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 3002.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "2",
-      "step_label": "12",
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 3086.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "2",
-      "step_label": "14",
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 0.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "2",
-      "step_label": "15",
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 0.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "2",
-      "step_label": "2",
+      "jobgroup": "1",
+      "step_label": "3",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -1501,13 +838,13 @@ Finish reason: MAX_TOKENS
           "amount": 2375.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
     {
-      "jobgroup": "2",
-      "step_label": "3",
+      "jobgroup": "1",
+      "step_label": "4",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -1538,13 +875,13 @@ Finish reason: MAX_TOKENS
           "amount": 2429.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
     {
-      "jobgroup": "2",
-      "step_label": "4",
+      "jobgroup": "1",
+      "step_label": "5",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -1575,13 +912,13 @@ Finish reason: MAX_TOKENS
           "amount": 2485.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
     {
-      "jobgroup": "2",
-      "step_label": "5",
+      "jobgroup": "1",
+      "step_label": "6",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -1612,13 +949,13 @@ Finish reason: MAX_TOKENS
           "amount": 2546.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
     {
-      "jobgroup": "2",
-      "step_label": "6",
+      "jobgroup": "1",
+      "step_label": "7",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -1649,13 +986,13 @@ Finish reason: MAX_TOKENS
           "amount": 2610.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
     {
-      "jobgroup": "2",
-      "step_label": "7",
+      "jobgroup": "1",
+      "step_label": "8",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -1686,13 +1023,13 @@ Finish reason: MAX_TOKENS
           "amount": 2670.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
     {
-      "jobgroup": "2",
-      "step_label": "8",
+      "jobgroup": "1",
+      "step_label": "9",
       "timeline": [
         {
           "start_date": "2023-07-01",
@@ -1723,46 +1060,70 @@ Finish reason: MAX_TOKENS
           "amount": 2737.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
     {
-      "jobgroup": "2",
-      "step_label": "9",
+      "jobgroup": "1",
+      "step_label": "10",
       "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2615.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2720.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2829.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
         {
           "start_date": "2025-01-01",
           "amount": 2829.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
+    },
+    {
+      "jobgroup": "1",
+      "step_label": "11",
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 2908.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "1",
+      "step_label": "U1",
+      "row_note": "U1 and U2 are out-of-scale periodic numbers until 31 December 2024, becoming consecutive periodic numbers within the scale from 1 January 2025. (U1 is step 14 from 2025-01-01.)"
+    },
+    {
+      "jobgroup": "1",
+      "step_label": "U2",
+      "row_note": "U1 and U2 are out-of-scale periodic numbers until 31 December 2024, becoming consecutive periodic numbers within the scale from 1 January 2025. (U2 is step 15 from 2025-01-01.)"
+    },
+    {
+      "jobgroup": "1",
+      "step_label": "a",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "1",
+      "step_label": "b",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "1",
+      "step_label": "c",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "1",
+      "step_label": "d",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "1",
+      "step_label": "e",
+      "row_note": "only for employees employed before 31 December 2003"
     },
     {
       "jobgroup": "2",
@@ -1797,47 +1158,485 @@ Finish reason: MAX_TOKENS
           "amount": 2214.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step_label": "0",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2092.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2184.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2263.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2263.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step_label": "1",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2142.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2228.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2317.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2317.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step_label": "2",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2196.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2284.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2375.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2375.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step_label": "3",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2246.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2336.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2429.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2429.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step_label": "4",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2297.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2389.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2485.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2485.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step_label": "5",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2354.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2448.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2546.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2546.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step_label": "6",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2413.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2510.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2610.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2610.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step_label": "7",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2468.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2567.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2670.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2670.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step_label": "8",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2531.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2632.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2737.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2737.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step_label": "9",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2615.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2720.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2829.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2829.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step_label": "10",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2688.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2796.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2908.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2908.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step_label": "11",
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 3002.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step_label": "12",
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 3086.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
     {
       "jobgroup": "2",
       "step_label": "U1",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2776.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2887.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 3002.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
+      "row_note": "U1 and U2 are out-of-scale periodic numbers until 31 December 2024, becoming consecutive periodic numbers within the scale from 1 January 2025. (U1 is step 14 from 2025-01-01.)"
     },
     {
       "jobgroup": "2",
       "step_label": "U2",
+      "row_note": "U1 and U2 are out-of-scale periodic numbers until 31 December 2024, becoming consecutive periodic numbers within the scale from 1 January 2025. (U2 is step 15 from 2025-01-01.)"
+    },
+    {
+      "jobgroup": "2",
+      "step_label": "a",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "2",
+      "step_label": "b",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "2",
+      "step_label": "c",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "2",
+      "step_label": "d",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "2",
+      "step_label": "e",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "3",
+      "step_label": "Start",
       "timeline": [
         {
           "start_date": "2023-07-01",
-          "amount": 2853.00,
+          "amount": 2095.00,
           "unit": "monthly",
           "table_label": "per 1 July 2023 (Scales 1-8)",
           "increase_percent": 7.0,
@@ -1845,7 +1644,7 @@ Finish reason: MAX_TOKENS
         },
         {
           "start_date": "2024-01-01",
-          "amount": 2967.00,
+          "amount": 2184.00,
           "unit": "monthly",
           "table_label": "per 1 January 2024 (Scales 1-8)",
           "increase_percent": 4.0,
@@ -1853,38 +1652,20 @@ Finish reason: MAX_TOKENS
         },
         {
           "start_date": "2024-07-01",
-          "amount": 3086.00,
+          "amount": 2266.00,
           "unit": "monthly",
           "table_label": "per 1 July 2024 (Scales 1-8)",
           "increase_percent": 4.0,
           "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2266.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
-    },
-    {
-      "jobgroup": "2",
-      "step_label": "a",
-      "row_note": "Only for employees employed before 31 December 2003"
-    },
-    {
-      "jobgroup": "2",
-      "step_label": "b",
-      "row_note": "Only for employees employed before 31 December 2003"
-    },
-    {
-      "jobgroup": "2",
-      "step_label": "c",
-      "row_note": "Only for employees employed before 31 December 2003"
-    },
-    {
-      "jobgroup": "2",
-      "step_label": "d",
-      "row_note": "Only for employees employed before 31 December 2003"
-    },
-    {
-      "jobgroup": "2",
-      "step_label": "e",
-      "row_note": "Only for employees employed before 31 December 2003"
     },
     {
       "jobgroup": "3",
@@ -1919,7 +1700,7 @@ Finish reason: MAX_TOKENS
           "amount": 2317.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
@@ -1956,120 +1737,7 @@ Finish reason: MAX_TOKENS
           "amount": 2375.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "3",
-      "step_label": "10",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2776.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2887.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
           "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 3002.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 3002.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "3",
-      "step_label": "11",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2853.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2967.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 3086.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 3086.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "3",
-      "step_label": "13",
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 3259.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "3",
-      "step_label": "14",
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 0.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "3",
-      "step_label": "15",
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 0.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
@@ -2106,7 +1774,7 @@ Finish reason: MAX_TOKENS
           "amount": 2429.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
@@ -2143,7 +1811,7 @@ Finish reason: MAX_TOKENS
           "amount": 2485.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
@@ -2180,7 +1848,7 @@ Finish reason: MAX_TOKENS
           "amount": 2546.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
@@ -2217,7 +1885,7 @@ Finish reason: MAX_TOKENS
           "amount": 2610.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
@@ -2254,7 +1922,7 @@ Finish reason: MAX_TOKENS
           "amount": 2670.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
@@ -2291,7 +1959,7 @@ Finish reason: MAX_TOKENS
           "amount": 2737.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
@@ -2328,7 +1996,7 @@ Finish reason: MAX_TOKENS
           "amount": 2829.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
@@ -2365,17 +2033,17 @@ Finish reason: MAX_TOKENS
           "amount": 2908.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
     {
       "jobgroup": "3",
-      "step_label": "Start",
+      "step_label": "10",
       "timeline": [
         {
           "start_date": "2023-07-01",
-          "amount": 2095.00,
+          "amount": 2776.00,
           "unit": "monthly",
           "table_label": "per 1 July 2023 (Scales 1-8)",
           "increase_percent": 7.0,
@@ -2383,7 +2051,7 @@ Finish reason: MAX_TOKENS
         },
         {
           "start_date": "2024-01-01",
-          "amount": 2184.00,
+          "amount": 2887.00,
           "unit": "monthly",
           "table_label": "per 1 January 2024 (Scales 1-8)",
           "increase_percent": 4.0,
@@ -2391,7 +2059,7 @@ Finish reason: MAX_TOKENS
         },
         {
           "start_date": "2024-07-01",
-          "amount": 2266.00,
+          "amount": 3002.00,
           "unit": "monthly",
           "table_label": "per 1 July 2024 (Scales 1-8)",
           "increase_percent": 4.0,
@@ -2399,50 +2067,118 @@ Finish reason: MAX_TOKENS
         },
         {
           "start_date": "2025-01-01",
-          "amount": 2266.00,
+          "amount": 3002.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "3",
+      "step_label": "11",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2853.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2967.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3086.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3086.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "3",
+      "step_label": "12",
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 3179.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "3",
+      "step_label": "13",
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 3259.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
     {
       "jobgroup": "3",
       "step_label": "U1",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2939.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 3057.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 3179.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
+      "row_note": "U1 and U2 are out-of-scale periodic numbers until 31 December 2024, becoming consecutive periodic numbers within the scale from 1 January 2025. (U1 is step 14 from 2025-01-01.)"
     },
     {
       "jobgroup": "3",
       "step_label": "U2",
+      "row_note": "U1 and U2 are out-of-scale periodic numbers until 31 December 2024, becoming consecutive periodic numbers within the scale from 1 January 2025. (U2 is step 15 from 2025-01-01.)"
+    },
+    {
+      "jobgroup": "3",
+      "step_label": "a",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "3",
+      "step_label": "b",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "3",
+      "step_label": "c",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "3",
+      "step_label": "d",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "3",
+      "step_label": "e",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "4",
+      "step_label": "Start",
       "timeline": [
         {
           "start_date": "2023-07-01",
-          "amount": 3013.00,
+          "amount": 2247.00,
           "unit": "monthly",
           "table_label": "per 1 July 2023 (Scales 1-8)",
           "increase_percent": 7.0,
@@ -2450,7 +2186,7 @@ Finish reason: MAX_TOKENS
         },
         {
           "start_date": "2024-01-01",
-          "amount": 3134.00,
+          "amount": 2337.00,
           "unit": "monthly",
           "table_label": "per 1 January 2024 (Scales 1-8)",
           "increase_percent": 4.0,
@@ -2458,38 +2194,20 @@ Finish reason: MAX_TOKENS
         },
         {
           "start_date": "2024-07-01",
-          "amount": 3259.00,
+          "amount": 2430.00,
           "unit": "monthly",
           "table_label": "per 1 July 2024 (Scales 1-8)",
           "increase_percent": 4.0,
           "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2430.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
-    },
-    {
-      "jobgroup": "3",
-      "step_label": "a",
-      "row_note": "Only for employees employed before 31 December 2003"
-    },
-    {
-      "jobgroup": "3",
-      "step_label": "b",
-      "row_note": "Only for employees employed before 31 December 2003"
-    },
-    {
-      "jobgroup": "3",
-      "step_label": "c",
-      "row_note": "Only for employees employed before 31 December 2003"
-    },
-    {
-      "jobgroup": "3",
-      "step_label": "d",
-      "row_note": "Only for employees employed before 31 December 2003"
-    },
-    {
-      "jobgroup": "3",
-      "step_label": "e",
-      "row_note": "Only for employees employed before 31 December 2003"
     },
     {
       "jobgroup": "4",
@@ -2524,45 +2242,7 @@ Finish reason: MAX_TOKENS
           "amount": 2485.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "4",
-      "step_label": "0",
-      "worker_type": "primary process (including labor market allowance for middle incomes)",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2324.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 4-9, including labor market allowance)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2417.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 4-9, including labor market allowance)",
-          "increase_percent": 4.0,
           "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2514.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 4-9, including labor market allowance)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2514.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 4-9, including labor market allowance)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
@@ -2599,45 +2279,303 @@ Finish reason: MAX_TOKENS
           "amount": 2546.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
     {
       "jobgroup": "4",
-      "step_label": "1",
-      "worker_type": "primary process (including labor market allowance for middle incomes)",
+      "step_label": "2",
       "timeline": [
         {
           "start_date": "2023-07-01",
-          "amount": 2381.00,
+          "amount": 2413.00,
           "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 4-9, including labor market allowance)",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
           "increase_percent": 7.0,
           "note": "Salary cannot be lower than the WML."
         },
         {
           "start_date": "2024-01-01",
-          "amount": 2476.00,
+          "amount": 2510.00,
           "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 4-9, including labor market allowance)",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
           "increase_percent": 4.0,
           "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         },
         {
           "start_date": "2024-07-01",
-          "amount": 2575.00,
+          "amount": 2610.00,
           "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 4-9, including labor market allowance)",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
           "increase_percent": 4.0,
           "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         },
         {
           "start_date": "2025-01-01",
-          "amount": 2575.00,
+          "amount": 2610.00,
           "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 4-9, including labor market allowance)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step_label": "3",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2468.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2567.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2670.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2670.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step_label": "4",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2531.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2632.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2737.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2737.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step_label": "5",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2615.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2720.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2829.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2829.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step_label": "6",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2688.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2796.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2908.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2908.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step_label": "7",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2776.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2887.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3002.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3002.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step_label": "8",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2853.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2967.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3086.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3086.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step_label": "9",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2939.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2023 (Scales 1-8)",
+          "increase_percent": 7.0,
+          "note": "Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3057.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3179.00,
+          "unit": "monthly",
+          "table_label": "per 1 July 2024 (Scales 1-8)",
+          "increase_percent": 4.0,
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3179.00,
+          "unit": "monthly",
+          "table_label": "per 1 January 2025 (Scales 1-8)",
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
@@ -2674,45 +2612,7 @@ Finish reason: MAX_TOKENS
           "amount": 3259.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "4",
-      "step_label": "10",
-      "worker_type": "primary process (including labor market allowance for middle incomes)",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 3047.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 4-9, including labor market allowance)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 3169.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 4-9, including labor market allowance)",
-          "increase_percent": 4.0,
           "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 3296.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 4-9, including labor market allowance)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 3296.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 4-9, including labor market allowance)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
@@ -2749,45 +2649,7 @@ Finish reason: MAX_TOKENS
           "amount": 3344.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "4",
-      "step_label": "11",
-      "worker_type": "primary process (including labor market allowance for middle incomes)",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 3125.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 4-9, including labor market allowance)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 3250.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 4-9, including labor market allowance)",
-          "increase_percent": 4.0,
           "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 3380.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 4-9, including labor market allowance)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 3380.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 4-9, including labor market allowance)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
@@ -2800,45 +2662,7 @@ Finish reason: MAX_TOKENS
           "amount": 3409.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "4",
-      "step_label": "12",
-      "worker_type": "primary process (including labor market allowance for middle incomes)",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 0.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 4-9, including labor market allowance)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 0.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 4-9, including labor market allowance)",
-          "increase_percent": 4.0,
           "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 0.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 4-9, including labor market allowance)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 3449.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 4-9, including labor market allowance)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
@@ -2846,47 +2670,93 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step_label": "13",
       "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 0.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 0.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 0.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
         {
           "start_date": "2025-01-01",
           "amount": 3485.00,
           "unit": "monthly",
           "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
+          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
         }
       ]
     },
     {
       "jobgroup": "4",
-      "step_label": "13",
-      "worker_type": "primary process (including labor market allowance for middle incomes)",
+      "step_label": "U1",
+      "row_note": "U1 and U2 are out-of-scale periodic numbers until 31 December 2024, becoming consecutive periodic numbers within the scale from 1 January 2025. (U1 is step 14 from 2025-01-01.)"
+    },
+    {
+      "jobgroup": "4",
+      "step_label": "U2",
+      "row_note": "U1 and U2 are out-of-scale periodic numbers until 31 December 2024, becoming consecutive periodic numbers within the scale from 1 January 2025. (U2 is step 15 from 2025-01-01.)"
+    },
+    {
+      "jobgroup": "4",
+      "step_label": "a",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "4",
+      "step_label": "b",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "4",
+      "step_label": "c",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "4",
+      "step_label": "d",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "4",
+      "step_label": "e",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "4",
+      "worker_type": "Employee in primary process (including labor market allowance for middle incomes)",
+      "row_note": "U1 and U2 are out-of-scale periodic numbers until 31 December 2024, becoming consecutive periodic numbers within the scale from 1 January 2025. (U1 is step 14 from 2025-01-01.)"
+    },
+    {
+      "jobgroup": "4",
+      "worker_type": "Employee in primary process (including labor market allowance for middle incomes)",
+      "row_note": "U1 and U2 are out-of-scale periodic numbers until 31 December 2024, becoming consecutive periodic numbers within the scale from 1 January 2025. (U2 is step 15 from 2025-01-01.)"
+    },
+    {
+      "jobgroup": "4",
+      "worker_type": "Employee in primary process (including labor market allowance for middle incomes)",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "4",
+      "worker_type": "Employee in primary process (including labor market allowance for middle incomes)",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "4",
+      "worker_type": "Employee in primary process (including labor market allowance for middle incomes)",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "4",
+      "worker_type": "Employee in primary process (including labor market allowance for middle incomes)",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "4",
+      "worker_type": "Employee in primary process (including labor market allowance for middle incomes)",
+      "row_note": "only for employees employed before 31 December 2003"
+    },
+    {
+      "jobgroup": "4",
+      "step_label": "Start",
+      "worker_type": "Employee in primary process (including labor market allowance for middle incomes)",
       "timeline": [
         {
           "start_date": "2023-07-01",
-          "amount": 0.00,
+          "amount": 2273.00,
           "unit": "monthly",
           "table_label": "per 1 July 2023 (Scales 4-9, including labor market allowance)",
           "increase_percent": 7.0,
@@ -2894,127 +2764,6 @@ Finish reason: MAX_TOKENS
         },
         {
           "start_date": "2024-01-01",
-          "amount": 0.00,
+          "amount": 2364.00,
           "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 4-9, including labor market allowance)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 0.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 4-9, including labor market allowance)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 3524.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 4-9, including labor market allowance)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "4",
-      "step_label": "14",
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 0.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "4",
-      "step_label": "14",
-      "worker_type": "primary process (including labor market allowance for middle incomes)",
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 0.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 4-9, including labor market allowance)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "4",
-      "step_label": "15",
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 0.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "4",
-      "step_label": "15",
-      "worker_type": "primary process (including labor market allowance for middle incomes)",
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 0.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 4-9, including labor market allowance)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "4",
-      "step_label": "2",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2413.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 1-8)",
-          "increase_percent": 7.0,
-          "note": "Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2510.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2610.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2024 (Scales 1-8)",
-          "increase_percent": 4.0,
-          "note": "Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2610.00,
-          "unit": "monthly",
-          "table_label": "per 1 January 2025 (Scales 1-8)",
-          "note": "U1 and U2 are added to regular scales. Floor of €14 per hour or €2,184 per month. Salary cannot be lower than the WML."
-        }
-      ]
-    },
-    {
-      "jobgroup": "4",
-      "step_label": "2",
-      "worker_type": "primary process (including labor market allowance for middle incomes)",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2441.00,
-          "unit": "monthly",
-          "table_label": "per 1 July 2023 (Scales 4-9, including labor market allowance)",
+          "table_label": "per 1 January 2

@@ -1,2030 +1,815 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: NVB_CAO-boekje_2025_digitaal__redacted_extract.json
-Timestamp: 2025-10-16T23:21:40.902848
-Response length: 59737 characters
+Timestamp: 2025-10-20T17:52:00.692593
+Response length: 112908 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
-{
-  "salary_information": [
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functieaanvangsalaris",
-      "ft_hours": 36,
-      "timeline": []
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 1",
-      "ft_hours": 36,
-      "timeline": []
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 10",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 28268.77,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 28551.45,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 29550.76,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 10",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 11",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 28985.85,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 29275.71,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 30300.36,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 11",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 2",
-      "ft_hours": 36,
-      "timeline": []
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 2",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 3",
-      "ft_hours": 36,
-      "timeline": []
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 3",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 4",
-      "ft_hours": 36,
-      "timeline": []
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 4",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 5",
-      "ft_hours": 36,
-      "timeline": []
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 5",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 6",
-      "ft_hours": 36,
-      "timeline": []
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 6",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 7",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 26107.04,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 26368.11,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 27290.99,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 7",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 8",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 26827.38,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 27095.66,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 28044.00,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 8",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 9",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 27546.46,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 27821.92,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 28795.69,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functiejaar 9",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functie-eindsalaris 12",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 29708.18,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 30005.26,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 31055.44,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 3",
-      "step_label": "Functie-eindsalaris 12",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functieaanvangsalaris",
-      "ft_hours": 36,
-      "timeline": []
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functieaanvangsalaris",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 1",
-      "ft_hours": 36,
-      "timeline": []
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 1",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 10",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 30466.15,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 30770.82,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 31847.79,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 10",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 11",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 31246.54,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 31559.01,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 32663.57,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 11",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 2",
-      "ft_hours": 36,
-      "timeline": []
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 2",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 3",
-      "ft_hours": 36,
-      "timeline": []
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 3",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 4",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 25804.92,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 26062.97,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 26975.17,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 4",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 5",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 26581.34,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 26847.16,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 27786.81,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 5",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 6",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 27357.78,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 27631.36,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 28598.46,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 6",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 7",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 28134.23,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 28415.57,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 29410.12,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 7",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 8",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 28913.95,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 29203.09,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 30225.20,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 8",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 9",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 29691.68,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 29988.60,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 31038.20,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functiejaar 9",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functie-eindsalaris 12",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 32022.99,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 32343.22,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 33475.23,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 4",
-      "step_label": "Functie-eindsalaris 12",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functieaanvangsalaris",
-      "ft_hours": 36,
-      "timeline": []
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functieaanvangsalaris",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 1",
-      "ft_hours": 36,
-      "timeline": []
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 1",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 10",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 34004.64,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 34344.68,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 35546.75,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 10",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 11",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 34877.39,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 35226.16,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 36459.08,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 11",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 2",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 27043.12,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 27313.55,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 28269.53,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 2",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 3",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 27913.23,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 28192.36,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 29179.09,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 3",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 4",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 28783.99,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 29071.83,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 30089.35,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 4",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 5",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 29654.78,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 29951.33,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 30999.62,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 5",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 6",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 30524.21,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 30829.45,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 31908.48,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 6",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 7",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 31396.96,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 31710.93,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 32820.81,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 7",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 8",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 32265.74,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 32588.40,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 33729.00,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 8",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 9",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 33135.21,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 33466.56,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 34637.89,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functiejaar 9",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functie-eindsalaris 12",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 35746.19,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 36103.65,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 37367.28,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 5",
-      "step_label": "Functie-eindsalaris 12",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functieaanvangsalaris",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 28229.88,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 28512.17,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 29510.10,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functieaanvangsalaris",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 1",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 29208.19,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 29500.27,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 30532.78,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 1",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 10",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 37984.59,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 38364.44,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 39707.19,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 10",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 11",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 38971.32,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 39361.03,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 40738.67,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 11",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 2",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 30181.86,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 30483.67,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 31550.60,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 2",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 3",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 31159.49,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 31471.08,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 32572.57,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 3",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 4",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 32133.81,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 32455.15,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 33591.08,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 4",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 5",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 33108.12,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 33439.20,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 34609.57,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 5",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 6",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 34083.82,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 34424.65,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 35629.52,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 6",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 7",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 35060.77,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 35411.38,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 36650.77,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 7",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 8",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 36032.46,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 36392.79,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 37666.53,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 8",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 9",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 37010.77,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 37380.88,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 38689.21,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functiejaar 9",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functie-eindsalaris 12",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 39955.40,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 40354.95,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 41767.37,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 6",
-      "step_label": "Functie-eindsalaris 12",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functieaanvangsalaris",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 31615.33,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 31931.48,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 33049.08,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functieaanvangsalaris",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 1",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 32711.67,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 33038.79,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 34195.14,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 1",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 10",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 42626.49,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 43052.75,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 44559.60,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 10",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 11",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 43733.84,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 44171.18,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 45717.17,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 11",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 2",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 33808.71,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 34146.80,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 35341.94,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 2",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 3",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 34905.77,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 35254.83,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 36488.75,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 3",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 4",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 36002.13,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 36362.15,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 37634.82,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 4",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 5",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 37099.16,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 37470.15,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 38781.61,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 5",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 6",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 38195.11,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 38577.06,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 39927.25,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 6",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 7",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 39303.81,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 39696.85,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 41086.23,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 7",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 8",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 40413.80,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 40817.94,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 42246.57,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_percent": 3.50,
-          "hours_basis_ft_week": 36
-        }
-      ]
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 8",
-      "ft_hours": 36,
-      "row_note": "After conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"
-    },
-    {
-      "jobgroup": "Salarisschaal 7",
-      "step_label": "Functiejaar 9",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 41521.12,
-          "unit": "annual",
-          "table_label": "Table 1a per 1 January 2025",
-          "increase_percent": 4.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2025-07-01",
-          "amount": 41936.33,
-          "unit": "annual",
-          "table_label": "Table 2a per 1 July 2025",
-          "increase_percent": 1.00,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2026-01-01",
-          "amount": 43404.11,
-          "unit": "annual",
-          "table_label": "Table 3a per 1 January 2026",
-          "increase_
+{"salary_information": [
+{"jobgroup": "Salarisschaal 3", "step_label": "Functieaanvangsalaris", "ft_hours": 36, "timeline": []},
+{"jobgroup": "Salarisschaal 3", "step_label": "Functiejaar 1", "ft_hours": 36, "timeline": []},
+{"jobgroup": "Salarisschaal 3", "step_label": "Functiejaar 10", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 28268.77, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 28551.45, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 29550.76, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 3", "step_label": "Functiejaar 10", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 30388.92, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 30692.81, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 31767.06, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 3", "step_label": "Functiejaar 11", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 28985.85, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 29275.71, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 30300.36, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 3", "step_label": "Functiejaar 11", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 31159.79, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 31471.39, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 32572.89, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 3", "step_label": "Functiejaar 2", "ft_hours": 36, "timeline": []},
+{"jobgroup": "Salarisschaal 3", "step_label": "Functiejaar 3", "ft_hours": 36, "timeline": []},
+{"jobgroup": "Salarisschaal 3", "step_label": "Functiejaar 4", "ft_hours": 36, "timeline": []},
+{"jobgroup": "Salarisschaal 3", "step_label": "Functiejaar 5", "ft_hours": 36, "timeline": []},
+{"jobgroup": "Salarisschaal 3", "step_label": "Functiejaar 6", "ft_hours": 36, "timeline": []},
+{"jobgroup": "Salarisschaal 3", "step_label": "Functiejaar 7", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 26107.04, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 26368.11, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 27290.99, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 3", "step_label": "Functiejaar 7", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 28065.06, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 28345.71, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 29337.81, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 3", "step_label": "Functiejaar 8", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 26827.38, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 27095.66, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 28044.00, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 3", "step_label": "Functiejaar 8", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 28839.44, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 29127.83, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 30147.30, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 3", "step_label": "Functiejaar 9", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 27546.46, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 27821.92, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 28795.69, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 3", "step_label": "Functiejaar 9", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 29612.44, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 29908.57, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 30955.37, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 3", "step_label": "Functie-eindsalaris 12", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 29708.18, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 30005.26, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 31055.44, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 3", "step_label": "Functie-eindsalaris 12", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 31936.29, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 32255.65, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 33384.60, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functieaanvangsalaris", "ft_hours": 36, "timeline": []},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 1", "ft_hours": 36, "timeline": []},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 10", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 30466.15, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 30770.82, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 31847.79, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 10", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 32751.12, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 33078.63, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 34236.38, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 11", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 31246.54, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 31559.01, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 32663.57, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 11", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 33590.03, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 33925.93, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 35113.34, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 2", "ft_hours": 36, "timeline": []},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 3", "ft_hours": 36, "timeline": []},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 4", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 25804.92, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 26062.97, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 26975.17, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 4", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 27740.29, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 28017.69, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 28998.31, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 5", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 26581.34, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 26847.16, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 27786.81, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 5", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 28574.95, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 28860.69, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 29870.82, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 6", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 27357.78, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 27631.36, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 28598.46, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 6", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 29409.61, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 29703.71, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 30743.34, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 7", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 28134.23, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 28415.57, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 29410.12, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 7", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 30244.30, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 30546.74, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 31615.87, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 8", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 28913.95, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 29203.09, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 30225.20, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 8", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 31082.50, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 31393.32, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 32492.09, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 9", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 29691.68, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 29988.60, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 31038.20, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functiejaar 9", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 31918.56, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 32237.74, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 33366.06, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functie-eindsalaris 12", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 32022.99, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 32343.22, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 33475.23, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 4", "step_label": "Functie-eindsalaris 12", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 34424.71, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 34768.96, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 35985.88, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functieaanvangsalaris", "ft_hours": 36, "timeline": []},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 1", "ft_hours": 36, "timeline": []},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 10", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 34004.64, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 34344.68, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 35546.75, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 10", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 36554.99, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 36920.54, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 38212.75, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 11", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 34877.39, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 35226.16, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 36459.08, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 11", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 37493.19, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 37868.12, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 39193.51, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 2", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 27043.12, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 27313.55, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 28269.53, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 2", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 29071.36, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 29362.07, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 30389.74, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 3", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 27913.23, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 28192.36, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 29179.09, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 3", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 30006.72, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 30306.79, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 31367.53, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 4", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 28783.99, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 29071.83, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 30089.35, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 4", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 30942.79, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 31252.22, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 32346.05, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 5", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 29654.78, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 29951.33, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 30999.62, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 5", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 31878.89, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 32197.68, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 33324.59, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 6", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 30524.21, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 30829.45, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 31908.48, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 6", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 32813.52, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 33141.66, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 34301.62, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 7", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 31396.96, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 31710.93, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 32820.81, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 7", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 33751.73, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 34089.25, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 35282.37, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 8", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 32265.74, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 32588.40, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 33729.00, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 8", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 34685.67, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 35032.53, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 36258.67, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 9", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 33135.21, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 33466.56, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 34637.89, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functiejaar 9", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 35620.35, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 35976.55, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 37235.73, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functie-eindsalaris 12", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 35746.19, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 36103.65, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 37367.28, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 5", "step_label": "Functie-eindsalaris 12", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 38427.15, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 38811.42, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 40169.82, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functieaanvangsalaris", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 28229.88, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 28512.17, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 29510.10, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functieaanvangsalaris", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 30347.12, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 30650.59, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 31723.36, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 1", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 29208.19, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 29500.27, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 30532.78, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 1", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 31398.80, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 31712.79, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 32822.74, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 10", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 37984.59, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 38364.44, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 39707.19, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 10", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 40833.43, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 41241.77, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 42685.23, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 11", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 38971.32, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 39361.03, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 40738.67, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 11", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 41894.17, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 42313.11, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 43794.07, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 2", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 30181.86, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 30483.67, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 31550.60, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 2", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 32445.49, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 32769.95, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 33916.90, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 3", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 31159.49, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 31471.08, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 32572.57, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 3", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 33496.45, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 33831.41, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 35015.51, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 4", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 32133.81, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 32455.15, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 33591.08, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 4", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 34543.85, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 34889.29, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 36110.41, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 5", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 33108.12, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 33439.20, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 34609.57, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 5", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 35591.23, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 35947.14, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 37205.29, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 6", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 34083.82, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 34424.65, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 35629.52, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 6", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 36640.10, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 37006.50, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 38301.73, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 7", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 35060.77, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 35411.38, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 36650.77, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 7", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 37690.33, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 38067.23, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 39399.58, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 8", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 36032.46, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 36392.79, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 37666.53, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 8", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 38734.90, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 39122.25, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 40491.52, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 9", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 37010.77, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 37380.88, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 38689.21, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functiejaar 9", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 39786.58, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 40184.45, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 41590.90, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functie-eindsalaris 12", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 39955.40, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 40354.95, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 41767.37, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 6", "step_label": "Functie-eindsalaris 12", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 42952.05, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 43381.57, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 44899.93, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functieaanvangsalaris", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 31615.33, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 31931.48, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 33049.08, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functieaanvangsalaris", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 33986.48, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 34326.34, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 35527.76, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 1", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 32711.67, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 33038.79, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 34195.14, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 1", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 35165.04, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 35516.69, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 36759.78, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 10", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 42626.49, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 43052.75, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 44559.60, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 10", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 45823.48, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 46281.71, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 47901.57, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 11", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 43733.84, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 44171.18, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 45717.17, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 11", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 47013.88, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 47484.02, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 49145.96, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 2", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 33808.71, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 34146.80, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 35341.94, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 2", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 36344.37, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 36707.81, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 37992.58, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 3", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 34905.77, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 35254.83, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 36488.75, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 3", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 37523.71, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 37898.94, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 39225.41, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 4", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 36002.13, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 36362.15, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 37634.82, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 4", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 38702.29, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 39089.31, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 40457.43, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 5", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 37099.16, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 37470.15, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 38781.61, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 5", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 39881.60, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 40280.41, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 41690.23, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 6", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 38195.11, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 38577.06, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 39927.25, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 6", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 41059.74, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 41470.34, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 42921.80, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 7", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 39303.81, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 39696.85, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 41086.23, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 7", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 42251.59, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 42674.11, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 44167.70, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 8", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 40413.80, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 40817.94, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 42246.57, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 8", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 43444.84, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 43879.29, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 45415.06, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 9", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 41521.12, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 41936.33, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 43404.11, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functiejaar 9", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 44635.21, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 45081.56, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 46659.41, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functie-eindsalaris 12", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 44841.83, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 45290.25, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 46875.41, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 7", "step_label": "Functie-eindsalaris 12", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 48204.97, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 48687.02, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 50391.06, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functieaanvangsalaris", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 35480.33, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 35835.14, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 37089.37, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functieaanvangsalaris", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 38141.36, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 38522.77, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 39871.07, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 1", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 36716.56, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 37083.72, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 38381.66, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 1", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 39470.30, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 39865.00, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 41260.28, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 10", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 47926.00, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 48405.26, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 50099.45, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 10", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 51520.45, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 52035.66, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 53856.91, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 11", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 49173.23, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 49664.96, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 51403.24, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 11", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 52861.22, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 53389.84, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 55258.48, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 2", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 37950.81, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 38330.32, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 39671.88, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 2", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 40797.12, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 41205.09, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 42647.27, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 3", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 39196.54, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 39588.51, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 40974.11, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 3", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 42136.28, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 42557.65, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 44047.16, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 4", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 40443.14, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 40847.57, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 42277.24, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 4", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 43476.37, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 43911.14, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 45448.03, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 5", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 41691.72, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 42108.64, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 43582.44, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 5", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 44818.60, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 45266.79, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 46851.13, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 6", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 42938.30, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 43367.68, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 44885.55, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 6", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 46158.67, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 46620.25, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 48251.96, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 7", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 44184.21, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 44626.06, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 46187.97, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 7", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 47498.03, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 47973.01, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 49652.07, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 8", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 45432.80, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 45887.13, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 47493.18, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 8", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 48840.26, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 49328.66, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 51055.16, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 9", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 46678.73, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 47145.52, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 48795.61, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functiejaar 9", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 50179.63, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 50681.43, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 52455.28, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functie-eindsalaris 12", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 50420.51, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 50924.71, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 52707.08, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 8", "step_label": "Functie-eindsalaris 12", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 54202.04, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 54744.06, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 56660.11, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functieaanvangsalaris", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 39928.09, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 40327.37, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 41738.83, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functieaanvangsalaris", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 42922.69, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 43351.92, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 44869.24, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 1", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 41334.61, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 41747.95, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 43209.13, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 1", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 44434.70, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 44879.05, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 46449.82, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 10", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 53989.72, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 54529.62, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 56438.15, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 10", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 58038.95, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 58619.34, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 60671.02, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 11", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 55402.49, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 55956.51, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 57914.99, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 11", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 59557.67, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 60153.25, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 62258.61, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 2", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 42739.08, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 43166.47, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 44677.29, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 2", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 45944.51, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 46403.95, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 48028.09, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 3", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 44146.22, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 44587.69, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 46148.26, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 3", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 47457.19, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 47931.76, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 49609.37, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 4", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 45554.06, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 46009.60, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 47619.94, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 4", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 48970.62, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 49460.32, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 51191.44, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 5", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 46959.22, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 47428.82, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 49088.83, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 5", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 50481.17, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 50985.98, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 52770.49, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 6", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 48367.74, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 48851.42, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 50561.22, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 6", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 51995.32, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 52515.28, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 54353.31, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 7", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 49773.56, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 50271.29, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 52030.79, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 7", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 53506.58, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 54041.64, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 55933.10, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 8", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 51177.37, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 51689.15, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 53498.27, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 8", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 55015.68, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 55565.83, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 57510.64, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 9", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 52583.88, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 53109.72, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 54968.56, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functiejaar 9", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 56527.67, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 57092.95, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 59091.20, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functie-eindsalaris 12", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 56813.62, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 57381.76, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 59390.12, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 9", "step_label": "Functie-eindsalaris 12", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 61074.64, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 61685.39, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 63844.38, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 10", "step_label": "Functieaanvangsalaris", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 45704.68, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 46161.72, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 47777.38, "unit": "monthly", "table_label": "Table 3a per 1 January 2026", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+]},
+{"jobgroup": "Salarisschaal 10", "step_label": "Functieaanvangsalaris", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 49132.53, "unit": "monthly", "table_label": "Table 1b per 1 January 2025 (assessment allowance converted)", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 49623.85, "unit": "monthly", "table_label": "Table 2b per 1 July 2025 (assessment allowance converted)", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 51360.69, "unit": "monthly", "table_label": "Table 3b per 1 January 2026 (assessment allowance converted)", "increase_percent": 3.50, "hours_basis_ft_week": 36}
+], "row_note": "after conversion of the assessment allowance to functional salary conform Article 6.4 (+ 7.5%)"},
+{"jobgroup": "Salarisschaal 10", "step_label": "Functiejaar 1", "ft_hours": 36, "timeline": [
+{"start_date": "2025-01-01", "amount": 47368.33, "unit": "monthly", "table_label": "Table 1a per 1 January 2025", "increase_percent": 4.00, "hours_basis_ft_week": 36},
+{"start_date": "2025-07-01", "amount": 47842.02, "unit": "monthly", "table_label": "Table 2a per 1 July 2025", "increase_percent": 1.00, "hours_basis_ft_week": 36},
+{"start_date": "2026-01-01", "amount": 49516.49, "unit": "monthly", "table_label": "Table 3a per 1 January 2026

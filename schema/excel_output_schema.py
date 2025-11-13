@@ -96,24 +96,55 @@ def get_salary_columns(max_timeline_length: int = 3) -> List[str]:
     """
     Generate comprehensive column list for salary Excel output.
     
+    Maps new schema field names to old Excel column names for backward compatibility.
+    
     Args:
         max_timeline_length: Maximum number of timeline points across all salary data
         
     Returns:
-        List of column names for salary Excel file
+        List of column names for salary Excel file (using old field names for backward compatibility)
     """
     columns = CAO_METADATA_COLUMNS.copy()
     
-    # Add SalaryRow metadata fields
+    # Add SalaryRow metadata fields - map new names to old names
     salary_row_fields = get_pydantic_fields(SalaryRow)
     # Remove 'timeline' as it will be handled separately
     salary_row_fields = [f for f in salary_row_fields if f != 'timeline']
-    columns.extend(salary_row_fields)
+    
+    # Map new field names to old names for Excel columns
+    field_mapping = {
+        'step': 'step_label',
+        'worker': 'worker_type'
+    }
+    
+    mapped_fields = []
+    for field in salary_row_fields:
+        mapped_fields.append(field_mapping.get(field, field))
+    
+    columns.extend(mapped_fields)
     
     # Add timeline columns for each point (up to max_timeline_length)
+    # Map new field names to old names, and include hours_basis_ft_week even though removed from schema
     salary_point_fields = get_pydantic_fields(SalaryPoint)
+    
+    # Map new field names to old names
+    timeline_field_mapping = {
+        'inc_pct': 'increase_percent',
+        'holiday_incl': 'holiday_in_amount'
+    }
+    
+    # Create list of timeline fields with old names
+    timeline_fields = []
+    for field in salary_point_fields:
+        mapped_field = timeline_field_mapping.get(field, field)
+        timeline_fields.append(mapped_field)
+    
+    # Add hours_basis_ft_week even though removed from schema (for backward compatibility)
+    if 'hours_basis_ft_week' not in timeline_fields:
+        timeline_fields.append('hours_basis_ft_week')
+    
     for i in range(1, max_timeline_length + 1):
-        for field in salary_point_fields:
+        for field in timeline_fields:
             columns.append(f"salary_{i}_{field}")
     
     return columns
@@ -193,23 +224,52 @@ def flatten_salary_row(salary_row: Dict[str, Any], cao_metadata: Dict[str, str],
     """
     Convert a SalaryRow to a single Excel row with timeline data spread across columns.
     
+    Maps new schema field names to old Excel column names for backward compatibility:
+    - step → step_label
+    - worker → worker_type
+    - inc_pct → increase_percent
+    - holiday_incl → holiday_in_amount
+    
     Args:
-        salary_row: SalaryRow data from JSON
+        salary_row: SalaryRow data from JSON (may use new or old field names)
         cao_metadata: CAO metadata (cao_number, id, TTW, etc.)
         max_timeline_length: Maximum number of timeline points to create columns for
         
     Returns:
-        Excel row dictionary with timeline data in columns
+        Excel row dictionary with timeline data in columns (using old field names)
     """
     row = cao_metadata.copy()
     timeline = salary_row.get('timeline', [])
     
-    # Add SalaryRow metadata fields
-    for field in ['worker_type', 'jobgroup', 'step_label', 'is_entry', 'age_group', 
-                 'education', 'ft_hours', 'permanency', 'hours_type', 'row_note']:
-        row[field] = salary_row.get(field)
+    # Map new field names to old names for Excel output (backward compatibility)
+    field_mapping = {
+        'step': 'step_label',
+        'worker': 'worker_type',
+        'inc_pct': 'increase_percent',
+        'holiday_incl': 'holiday_in_amount'
+    }
+    
+    # Add SalaryRow metadata fields - map new names to old names for Excel
+    # Check for both new and old field names for compatibility
+    row['worker_type'] = salary_row.get('worker') or salary_row.get('worker_type')
+    row['step_label'] = salary_row.get('step') or salary_row.get('step_label')
+    row['jobgroup'] = salary_row.get('jobgroup')
+    row['is_entry'] = salary_row.get('is_entry')
+    row['age_group'] = salary_row.get('age_group')
+    row['education'] = salary_row.get('education')
+    row['ft_hours'] = salary_row.get('ft_hours')
+    row['permanency'] = salary_row.get('permanency')
+    row['hours_type'] = salary_row.get('hours_type')
+    row['row_note'] = salary_row.get('row_note')
     
     # Add timeline data as numbered columns
+    # Map new field names to old names, keep hours_basis_ft_week even though removed from schema
+    timeline_field_mapping = {
+        'inc_pct': 'increase_percent',
+        'holiday_incl': 'holiday_in_amount'
+    }
+    
+    # Timeline fields in Excel (old names for backward compatibility)
     timeline_fields = ['start_date', 'end_date', 'amount', 'unit', 'table_label', 
                       'increase_percent', 'holiday_in_amount', 'hours_basis_ft_week', 'note']
     
@@ -217,7 +277,18 @@ def flatten_salary_row(salary_row: Dict[str, Any], cao_metadata: Dict[str, str],
         for field in timeline_fields:
             col_name = f"salary_{i}_{field}"
             if i <= len(timeline):
-                row[col_name] = timeline[i-1].get(field)
+                timeline_point = timeline[i-1]
+                # Map new field names to old names
+                if field == 'increase_percent':
+                    value = timeline_point.get('inc_pct') or timeline_point.get('increase_percent')
+                elif field == 'holiday_in_amount':
+                    value = timeline_point.get('holiday_incl') or timeline_point.get('holiday_in_amount')
+                elif field == 'hours_basis_ft_week':
+                    # This field was removed from schema, always use None
+                    value = None
+                else:
+                    value = timeline_point.get(field)
+                row[col_name] = value
             else:
                 row[col_name] = None  # Empty for timeline points beyond available data
     

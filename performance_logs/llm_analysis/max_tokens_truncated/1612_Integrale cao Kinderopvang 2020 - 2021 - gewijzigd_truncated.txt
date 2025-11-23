@@ -1,12 +1,26 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: Integrale cao Kinderopvang 2020 - 2021 - gewijzigd_extract.json
-Timestamp: 2025-11-18T13:00:03.805829
-Response length: 23301 characters
+Timestamp: 2025-11-23T20:03:23.079040
+Response length: 46631 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
 {
   "salary_information": [
+    {
+      "jobgroup": "Participatiewet employees",
+      "worker": "Participatiewet employees",
+      "age_group": "21 and older",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 1654,
+          "unit": "m",
+          "note": "Statutory minimum wage (WML)"
+        }
+      ]
+    },
     {
       "jobgroup": "Scale 1",
       "step": "1",
@@ -15,23 +29,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1654,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020",
-          "note": "Salary amount can never be lower than WML. Calculated salary was €1,651, WML €1,654."
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 1710,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 1722,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -43,22 +52,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1697,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 1754,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 1766,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -70,22 +75,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1743,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 1802,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 1814,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -97,22 +98,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1790,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 1850,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 1862,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -124,22 +121,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1840,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 1902,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 1914,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -151,22 +144,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1889,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 1952,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 1964,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -178,22 +167,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1939,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2004,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2016,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -205,22 +190,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1697,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 1754,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 1766,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -232,22 +213,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1743,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 1802,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 1814,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -259,22 +236,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1790,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 1850,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 1862,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -286,22 +259,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1840,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 1902,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 1914,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -313,22 +282,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1889,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 1952,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 1964,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -340,22 +305,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1939,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2004,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2016,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -367,22 +328,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1993,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2060,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2072,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -394,22 +351,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 2047,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2116,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2128,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -421,22 +374,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1790,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 1850,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 1862,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -448,22 +397,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1840,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 1902,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 1914,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -475,22 +420,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1889,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 1952,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 1964,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -502,22 +443,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1939,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2004,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2016,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -529,22 +466,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1993,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2060,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2072,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -556,22 +489,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 2047,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2116,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2128,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -583,22 +512,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 2099,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2170,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2182,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -610,22 +535,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 2157,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2229,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2241,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -637,22 +558,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 2216,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2290,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2302,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -664,22 +581,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1889,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 1952,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 1964,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -691,22 +604,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1939,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2004,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2016,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -718,22 +627,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1993,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2060,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2072,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -745,22 +650,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 2047,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2116,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2128,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -772,22 +673,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 2099,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2170,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2182,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -799,22 +696,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 2157,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2229,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2241,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -826,22 +719,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 2216,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2290,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2302,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -853,22 +742,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 2273,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2349,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2361,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -880,22 +765,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 2333,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2411,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2423,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -907,22 +788,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 2397,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2478,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2490,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -934,22 +811,18 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1939,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2020"
+          "unit": "m"
         },
         {
           "start_date": "2020-07-01",
           "amount": 2004,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2020",
+          "unit": "m",
           "inc_pct": 3.36
         },
         {
           "start_date": "2021-01-01",
           "amount": 2016,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021",
-          "note": "Salary increased by €12 gross"
+          "unit": "m"
         }
       ]
     },
@@ -961,4 +834,1508 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2020-01-01",
           "amount": 1993,
-          "unit": "monthly",
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2060,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2072,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "9",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2047,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2116,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2128,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "10",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2099,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2170,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2182,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "11",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2157,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2229,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2241,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "12",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2216,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2290,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2302,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "13",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2273,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2349,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2361,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "14",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2333,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2411,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2423,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "15",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2397,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2478,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2490,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "16",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2459,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2542,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2554,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "17",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2522,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2607,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2619,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "18",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2588,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2675,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2687,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "9",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2047,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2116,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2128,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "10",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2099,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2170,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2182,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "11",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2157,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2229,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2241,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "12",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2216,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2290,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2302,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "13",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2273,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2349,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2361,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "14",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2333,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2411,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2423,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "15",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2397,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2478,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2490,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "16",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2459,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2542,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2554,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "17",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2522,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2607,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2619,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "18",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2588,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2675,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2687,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "19",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2653,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2742,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2754,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "20",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2724,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2816,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2828,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "21",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2793,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2887,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2899,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "14",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2333,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2411,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2423,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "15",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2397,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2478,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2490,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "16",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2459,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2542,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2554,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "17",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2522,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2607,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2619,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "18",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2588,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2675,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2687,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "19",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2653,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2742,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2754,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "20",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2724,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2816,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2828,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "21",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2793,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2887,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2899,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "22",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2863,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2959,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2971,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "23",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2942,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3041,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3053,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "24",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3014,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3115,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3127,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "25",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3089,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3193,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3205,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "17",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2522,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2607,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2619,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "18",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2588,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2675,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2687,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "19",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2653,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2742,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2754,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "20",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2724,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2816,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2828,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "21",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2793,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2887,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2899,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "22",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2863,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2959,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2971,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "23",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2942,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3041,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3053,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "24",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3014,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3115,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3127,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "25",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3089,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3193,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3205,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "26",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3168,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3274,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3286,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "27",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3252,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3361,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3373,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "28",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3331,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3443,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3455,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "29",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3417,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3532,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3544,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "21",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2793,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2887,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2899,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "22",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2863,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 2959,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 2971,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "23",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 2942,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3041,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3053,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "24",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3014,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3115,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3127,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "25",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3089,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3193,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3205,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "26",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3168,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3274,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3286,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "27",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3252,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3361,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3373,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "28",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3331,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3443,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3455,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "29",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3417,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3532,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3544,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "30",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3502,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3620,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3632,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "31",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3589,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3710,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3722,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "32",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3680,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3804,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3816,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "33",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3771,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3898,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3910,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "25",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3089,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3193,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3205,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "26",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3168,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3274,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3286,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "27",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3252,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3361,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-01",
+          "amount": 3373,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "28",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2020-01-01",
+          "amount": 3331,
+          "unit": "m"
+        },
+        {
+          "start_date": "2020-07-01",
+          "amount": 3443,
+          "unit": "m",
+          "inc_pct": 3.36
+        },
+        {
+          "start_date": "2021-01-0

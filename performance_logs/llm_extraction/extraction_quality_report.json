@@ -1,73 +1,73 @@
 {
   "summary": {
-    "total_files": 1577,
+    "total_files": 1579,
     "files_with_errors": 0,
     "files_needing_reextraction": 3,
-    "average_content_length": 58407.79010779962
+    "average_content_length": 58383.92463584547
   },
   "section_stats": {
     "general_information": {
-      "present": 1577,
+      "present": 1579,
       "empty": 0,
       "missing": 0
     },
     "wage_information": {
-      "present": 1575,
+      "present": 1577,
       "empty": 2,
       "missing": 0
     },
     "pension_information": {
-      "present": 1569,
+      "present": 1571,
       "empty": 8,
       "missing": 0
     },
     "leave_information": {
-      "present": 1574,
+      "present": 1576,
       "empty": 3,
       "missing": 0
     },
     "termination_information": {
-      "present": 1568,
+      "present": 1570,
       "empty": 9,
       "missing": 0
     },
     "overtime_information": {
-      "present": 1571,
+      "present": 1573,
       "empty": 6,
       "missing": 0
     },
     "training_information": {
-      "present": 1538,
+      "present": 1540,
       "empty": 39,
       "missing": 0
     },
     "homeoffice_information": {
-      "present": 475,
-      "empty": 1102,
+      "present": 476,
+      "empty": 1103,
       "missing": 0
     },
     "contract_type_information": {
-      "present": 1539,
+      "present": 1541,
       "empty": 38,
       "missing": 0
     },
     "childcare_information": {
       "present": 231,
-      "empty": 1346,
+      "empty": 1348,
       "missing": 0
     },
     "safety_information": {
-      "present": 1529,
+      "present": 1531,
       "empty": 48,
       "missing": 0
     },
     "AI_information": {
       "present": 15,
-      "empty": 1562,
+      "empty": 1564,
       "missing": 0
     },
     "fringe_benefits_information": {
-      "present": 1563,
+      "present": 1565,
       "empty": 14,
       "missing": 0
     }
@@ -22978,6 +22978,94 @@
       "has_fringe_benefits_info": true
     },
     {
+      "file": "CAO VVT 2022-2024 verlengde cao ttw_1_extract.json",
+      "file_size": 41356,
+      "sections": {
+        "general_information": {
+          "content_length": 979,
+          "item_count": 4,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 19155,
+          "item_count": 20,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 1004,
+          "item_count": 5,
+          "is_empty": false
+        },
+        "leave_information": {
+          "content_length": 3459,
+          "item_count": 10,
+          "is_empty": false
+        },
+        "termination_information": {
+          "content_length": 1612,
+          "item_count": 5,
+          "is_empty": false
+        },
+        "overtime_information": {
+          "content_length": 3938,
+          "item_count": 9,
+          "is_empty": false
+        },
+        "training_information": {
+          "content_length": 1180,
+          "item_count": 4,
+          "is_empty": false
+        },
+        "homeoffice_information": {
+          "content_length": 216,
+          "item_count": 1,
+          "is_empty": false
+        },
+        "contract_type_information": {
+          "content_length": 2525,
+          "item_count": 7,
+          "is_empty": false
+        },
+        "childcare_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        },
+        "safety_information": {
+          "content_length": 1827,
+          "item_count": 6,
+          "is_empty": false
+        },
+        "AI_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        },
+        "fringe_benefits_information": {
+          "content_length": 2314,
+          "item_count": 5,
+          "is_empty": false
+        }
+      },
+      "empty_sections": [
+        "childcare_information",
+        "AI_information"
+      ],
+      "total_content_length": 38209,
+      "has_wage_info": true,
+      "has_pension_info": true,
+      "has_leave_info": true,
+      "has_termination_info": true,
+      "has_overtime_info": true,
+      "has_training_info": true,
+      "has_homeoffice_info": true,
+      "has_contract_type_info": true,
+      "has_childcare_info": false,
+      "has_safety_info": true,
+      "has_AI_info": false,
+      "has_fringe_benefits_info": true
+    },
+    {
       "file": "20240725 CAO Particulier Kaaspakhuis 01-01-2024- 1-05-2025 wijzigingen bijgehouden_extract.json",
       "file_size": 41281,
       "sections": {
@@ -30240,6 +30328,95 @@
       "has_overtime_info": true,
       "has_training_info": true,
       "has_homeoffice_info": true,
+      "has_contract_type_info": true,
+      "has_childcare_info": false,
+      "has_safety_info": true,
+      "has_AI_info": false,
+      "has_fringe_benefits_info": true
+    },
+    {
+      "file": "M_T_Totaal_tekst_extract.json",
+      "file_size": 43774,
+      "sections": {
+        "general_information": {
+          "content_length": 349,
+          "item_count": 3,
+          "is_empty": false
+        },
+        "wage_information": {
+          "content_length": 13891,
+          "item_count": 21,
+          "is_empty": false
+        },
+        "pension_information": {
+          "content_length": 1249,
+          "item_count": 6,
+          "is_empty": false
+        },
+        "leave_information": {
+          "content_length": 7556,
+          "item_count": 18,
+          "is_empty": false
+        },
+        "termination_information": {
+          "content_length": 3199,
+          "item_count": 10,
+          "is_empty": false
+        },
+        "overtime_information": {
+          "content_length": 4316,
+          "item_count": 12,
+          "is_empty": false
+        },
+        "training_information": {
+          "content_length": 3611,
+          "item_count": 7,
+          "is_empty": false
+        },
+        "homeoffice_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        },
+        "contract_type_information": {
+          "content_length": 1774,
+          "item_count": 4,
+          "is_empty": false
+        },
+        "childcare_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        },
+        "safety_information": {
+          "content_length": 3265,
+          "item_count": 7,
+          "is_empty": false
+        },
+        "AI_information": {
+          "content_length": 0,
+          "item_count": 0,
+          "is_empty": true
+        },
+        "fringe_benefits_information": {
+          "content_length": 1713,
+          "item_count": 5,
+          "is_empty": false
+        }
+      },
+      "empty_sections": [
+        "homeoffice_information",
+        "childcare_information",
+        "AI_information"
+      ],
+      "total_content_length": 40923,
+      "has_wage_info": true,
+      "has_pension_info": true,
+      "has_leave_info": true,
+      "has_termination_info": true,
+      "has_overtime_info": true,
+      "has_training_info": true,
+      "has_homeoffice_info": false,
       "has_contract_type_info": true,
       "has_childcare_info": false,
       "has_safety_info": true,

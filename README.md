@@ -70,11 +70,16 @@ CAOsDataExtraction/
 │   ├── p4_analysis.py           # Data analysis
 │   └── p5_excel_creation.py     # Excel creation
 ├── schema/
-│   ├── salary_schema.py         # Salary data schema (Pydantic models)
+│   ├── salary_schema.py         # Salary data schema (Pydantic models) - regular schema
+│   ├── salary_schema_compact.py # Compact salary schema (no table_label) - for attempts 6-8
+│   ├── salary_schema_split.py   # Split salary schema - for attempts 9-10
+│   ├── salary_prompt_split.py   # Split extraction prompts - for attempts 9-10
 │   ├── non_salary_schema.py     # Non-salary data schema (Pydantic models)
 │   └── excel_output_schema.py   # Excel output column definitions
 ├── scripts/                     # Utility and analysis scripts
 ├── utils/                       # Helper utilities (input/output management)
+│   ├── input_utils/             # Input utilities including merge_split_salary.py
+│   └── output_utils/            # Output utilities
 └── run_pipeline.py              # Main entry point
 ```
 
@@ -126,7 +131,7 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
 - **Unicode Processing**: Automatic conversion of /uniXXXX and /GXXX patterns to readable text
 - **Schema Validation**: Pydantic-based schemas ensure data quality and structure
 - **Parallel Processing**: Multi-process support with file locking to prevent duplicate processing
-- **Robust Error Handling**: Exponential backoff, adaptive retry strategies, and comprehensive error recovery
+- **Robust Error Handling**: Exponential backoff, adaptive retry strategies (attempts 1-5), compact schema retries (attempts 6-8), split extraction retries (attempts 9-10), and comprehensive error recovery
 - **Performance Monitoring**: Real-time tracking of processing time, token usage, costs, and quality metrics
 - **Scalable Architecture**: Designed for processing 1,580+ PDF documents efficiently
 
@@ -155,7 +160,11 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
 - Direct markdown upload for optimal accuracy
 - Context-preserving extraction (keeps related information together)
 - **Parallel processing**: Multi-process support with different API keys
-- **Robust error handling**: Exponential backoff, adaptive retry, and file locking
+- **Robust error handling**: 
+  - **Attempts 1-5**: Unified extraction with adaptive retry (exponential backoff, parameter adjustments)
+  - **Attempts 6-8**: Split extraction (salary and non-salary separately) with partial success caching
+  - File locking to prevent duplicate processing
+- **Split extraction strategy**: For files with very large outputs, splits extraction into salary-only and non-salary-only schemas, then merges results. Successful partial extractions are cached to avoid re-extraction on retries.
 
 ### Stage 4: Analysis (p4_analysis.py)
 - Schema-driven structured extraction using Pydantic models
@@ -163,6 +172,14 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
 - Non-salary schema split into 3 parts for better performance
 - **Multi-process parallel processing** with independent error handling
 - **Performance monitoring** and quality tracking
+- **Advanced retry strategy for large files**:
+  - **Attempts 1-5**: Regular extraction with adaptive parameter adjustment
+  - **Attempts 6-8**: Compact schema extraction (reduced output size) - triggered if truncation occurs after attempt 4, or if file is in truncated folder
+  - **Attempts 9-10**: Split extraction (first half/second half by jobgroup boundaries) - triggered if truncation occurs after attempt 7, or if file is in truncated_2 folder
+  - **File handling**:
+    - Files in truncated folder → retry with attempts 6-8 (compact), extend to 9-10 (split) if needed
+    - Files in truncated_2 folder → retry with attempts 9-10 (split extraction)
+    - Files in truncated_3 folder → skipped (all attempts exhausted)
 
 ### Stage 5: Excel Creation (p5_excel_creation.py)
 - Merges salary and non-salary extraction results

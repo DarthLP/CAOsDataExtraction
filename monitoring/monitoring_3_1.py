@@ -188,11 +188,27 @@ class PerformanceMonitor:
                 "largest_file_mb": 0,
                 "slowest_file_seconds": 0,
                 "daily_request_limit": self.free_tier_daily_limit,
+                "requests_remaining_today": self.free_tier_daily_limit,
                 "last_updated": datetime.now().isoformat()
             }
         
         successful = [d for d in data if d["success"]]
         failed = [d for d in data if not d["success"]]
+        
+        # Filter to only today's requests for daily quota calculation
+        today = datetime.now().date()
+        today_requests = []
+        for d in data:
+            if "timestamp" in d:
+                try:
+                    # Parse timestamp and check if it's from today
+                    timestamp = datetime.fromisoformat(d["timestamp"])
+                    if timestamp.date() == today:
+                        today_requests.append(d)
+                except (ValueError, TypeError):
+                    # Skip entries with invalid timestamps
+                    pass
+        requests_today = len(today_requests)
         
         summary = {
             "total_files_processed": len(data),
@@ -200,7 +216,8 @@ class PerformanceMonitor:
             "failed_extractions": len(failed),
             "total_processing_time_hours": sum(d["processing_time_seconds"] for d in data) / 3600,
             "total_tokens_used": sum(d["total_tokens"] for d in data),
-            "total_requests_used": len(data),  # Each file = 1 request
+            "total_requests_used": len(data),  # Each file = 1 request (all time)
+            "requests_used_today": requests_today,  # Only today's requests
             "avg_processing_time_seconds": sum(d["processing_time_seconds"] for d in data) / len(data),
             "avg_tokens_per_file": sum(d["total_tokens"] for d in data) / len(data),
             "largest_file_mb": max(d["file_size_mb"] for d in data),
@@ -208,7 +225,7 @@ class PerformanceMonitor:
             "most_tokens_used": max(d["total_tokens"] for d in data),
             "success_rate_percent": (len(successful) / len(data)) * 100 if data else 0,
             "daily_request_limit": self.free_tier_daily_limit,
-            "requests_remaining_today": max(0, self.free_tier_daily_limit - len(data)),
+            "requests_remaining_today": max(0, self.free_tier_daily_limit - requests_today),
             "last_updated": datetime.now().isoformat()
         }
         
@@ -273,10 +290,26 @@ class PerformanceMonitor:
         print(f"\n🔍 PERFORMANCE ANALYSIS:")
         
         # Request usage analysis
-        total_requests = len(data)
+        # Filter to only today's requests for daily quota calculation
+        today = datetime.now().date()
+        today_requests = []
+        for d in data:
+            if "timestamp" in d:
+                try:
+                    # Parse timestamp and check if it's from today
+                    timestamp = datetime.fromisoformat(d["timestamp"])
+                    if timestamp.date() == today:
+                        today_requests.append(d)
+                except (ValueError, TypeError):
+                    # Skip entries with invalid timestamps
+                    pass
+        requests_today = len(today_requests)
+        total_requests = len(data)  # All-time total
+        
         print(f"\n📊 REQUEST USAGE ANALYSIS:")
-        print(f"   Total requests: {total_requests}/{self.free_tier_daily_limit}")
-        print(f"   Requests remaining today: {max(0, self.free_tier_daily_limit - total_requests)}")
+        print(f"   Total requests (all time): {total_requests}")
+        print(f"   Requests today: {requests_today}/{self.free_tier_daily_limit}")
+        print(f"   Requests remaining today: {max(0, self.free_tier_daily_limit - requests_today)}")
         print(f"   Unique files processed: {unique_count}" + (f"/{total_input_files}" if total_input_files else ""))
         if total_input_files and total_input_files > unique_count:
             unprocessed = total_input_files - unique_count
@@ -460,13 +493,14 @@ class PerformanceMonitor:
         if not allow_duplicates:
             try:
                 # Use file locking for read-modify-write to prevent race conditions
-                with open(log_file, "r+", encoding="utf-8") as f:
-                    try:
-                        fcntl.flock(f.fileno(), fcntl.LOCK_EX)
-                        lines = f.readlines()
-                        
-                        if lines:
-                            existing_data = []
+                # Read all existing entries, filter out duplicates, then write back with new entry
+                existing_data = []
+                if Path(log_file).exists():
+                    with open(log_file, "r", encoding="utf-8") as f:
+                        try:
+                            fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+                            lines = f.readlines()
+                            
                             for line in lines:
                                 line = line.strip()
                                 if line:
@@ -475,32 +509,51 @@ class PerformanceMonitor:
                                     except json.JSONDecodeError:
                                         # Skip corrupted lines
                                         continue
-                            
-                            # Filter out existing entry for this file/cao/analysis_type
-                            filtered_data = []
-                            for entry in existing_data:
-                                if not (entry.get('filename') == filename and 
-                                        entry.get('cao_number') == cao_number and
-                                        entry.get('analysis_type') == analysis_type):
-                                    filtered_data.append(entry)
-                            
-                            # Write back the filtered data (removing the old entry)
-                            f.seek(0)
-                            f.truncate()
-                            for entry in filtered_data:
-                                f.write(json.dumps(entry, ensure_ascii=False) + "\n")
-                            f.flush()
+                            fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+                        except Exception as e:
+                            try:
+                                fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+                            except:
+                                pass
+                            raise
+                
+                # Filter out existing entry for this file/cao/analysis_type
+                filtered_data = []
+                for entry in existing_data:
+                    if not (entry.get('filename') == filename and 
+                            entry.get('cao_number') == cao_number and
+                            entry.get('analysis_type') == analysis_type):
+                        filtered_data.append(entry)
+                
+                # Write back all entries (filtered + new) atomically
+                Path(log_file).parent.mkdir(parents=True, exist_ok=True)
+                with open(log_file, "w", encoding="utf-8") as f:
+                    try:
+                        fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+                        # Write all existing entries (without duplicates)
+                        for entry in filtered_data:
+                            f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+                        # Write the new entry
+                        f.write(json.dumps(log_entry, ensure_ascii=False) + "\n")
+                        f.flush()
                         fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+                        return  # Entry written, exit early
                     except Exception as e:
-                        fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+                        try:
+                            fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+                        except:
+                            pass
                         raise
             except FileNotFoundError:
                 pass  # File doesn't exist yet, no duplicates to check
+            except Exception as e:
+                # If deduplication fails, log warning but continue with append
+                print(f"Warning: Deduplication failed for {filename}: {e}")
         
         # Ensure log directory exists
         Path(log_file).parent.mkdir(parents=True, exist_ok=True)
         
-        # Write to log file with file locking
+        # Write new entry to log file with file locking (fallback if deduplication didn't write)
         with open(log_file, 'a', encoding='utf-8') as f:
             try:
                 fcntl.flock(f.fileno(), fcntl.LOCK_EX)

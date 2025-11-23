@@ -88,8 +88,54 @@ p0_webscraping → p1_inputExcel → p2_extract → p3_llmExtraction → p4_anal
 
 ### Error Handling Strategy
 **Why**: API failures, timeouts, JSON parsing errors are common at scale
-**Approach**: Exponential backoff, adaptive retry (adjust temp/top_p/top_k on attempts 4-5), file locking, comprehensive logging
+**Approach**: Exponential backoff, adaptive retry (adjust temp/top_p/top_k on attempts 4-5), compact schema retries (p4 attempts 6-8), split extraction retries (p3 attempts 6-8, p4 attempts 9-10), file locking, comprehensive logging
 **Rationale**: Robust recovery from transient failures, prevents data loss
+
+### Split Extraction Retry Strategy (p3, attempts 6-8)
+**Why**: Some files produce outputs too long for single API call, causing truncation after all regular retries fail
+**Approach**: 
+- Attempts 1-5: Unified extraction with single schema (all fields together)
+- Attempts 6-8: Split extraction into two separate calls:
+  - Salary-only extraction (wage_information field only)
+  - Non-salary extraction (all other fields)
+  - Results merged back into unified format matching original schema
+- Partial success caching: If salary succeeds but non-salary fails (or vice versa), successful part is cached and only failed part is retried on next attempt
+**Parameters**: 
+- Attempt 6: Same parameters as attempt 1 (original settings)
+- Attempt 7: Same parameters as attempt 3 (original settings)
+- Attempt 8: Same parameters as attempt 4 (+0.1 adjustment)
+**Rationale**: Smaller schemas reduce output length, allowing extraction of large files that would otherwise fail. Caching prevents re-extracting successful parts.
+
+### Salary Extraction Retry Strategy (p4, attempts 1-10)
+**Why**: Large CAO files with extensive salary tables can exceed max_output_tokens (65536), causing truncation even with compact schema
+**Approach**:
+- **Attempts 1-5**: Regular extraction with SalaryExtractionSchema (full schema with table_label)
+  - Attempt 1-2: Original parameters (temp=0.0, top_p=0.1, top_k=1)
+  - Attempt 3: Adjusted parameters (temp=0.1, top_p=0.2, top_k=0.9)
+  - Attempt 4: Adjusted parameters (temp=0.2, top_p=0.3, top_k=0.8)
+  - Attempt 5: Adjusted parameters (temp=0.3, top_p=0.4, top_k=0.7)
+  - If truncation occurs after attempt 4 → extends to attempts 6-8 (compact schema)
+- **Attempts 6-8**: Compact schema extraction (SalaryExtractionSchemaCompact)
+  - Removes table_label, uses abbreviated unit field to reduce output size
+  - Attempt 6: Original parameters (temp=0.0, top_p=0.1, top_k=1)
+  - Attempt 7: Adjusted parameters (temp=0.3, top_p=0.4, top_k=0.7)
+  - Attempt 8: Adjusted parameters (temp=0.3, top_p=0.4, top_k=0.7)
+  - If truncation occurs after attempt 7 → extends to attempts 9-10 (split extraction)
+  - Files in truncated folder → automatically start at attempt 6, extend to 9-10 if needed
+- **Attempts 9-10**: Split extraction by jobgroup boundaries
+  - Attempt 9 (first half): Extract approximately first 50% of salary rows, completing any jobgroup that is started (jobgroups not split)
+  - Attempt 10 (second half): Extract remaining jobgroups with first half results as context, merge results
+  - Uses SalaryExtractionSchemaSplit (same as compact but optimized for split extraction)
+  - Prompt for attempt 10 includes anti-repetition rules: notes shared across jobgroups use reference format instead of repetition
+  - Files in truncated_2 folder → automatically start at attempt 9
+- **File handling**:
+  - Files in truncated folder → retry with attempts 6-8 (compact), automatically extend to 9-10 (split) if attempt 7 fails
+  - Files in truncated_2 folder → retry with attempts 9-10 (split extraction) directly
+  - Files in truncated_3 folder → skipped (all attempts exhausted including split extraction)
+**Parameters**:
+- Attempt 9: Adjusted parameters (temp=0.3, top_p=0.4, top_k=0.7)
+- Attempt 10: Adjusted parameters (temp=0.3, top_p=0.4, top_k=0.7)
+**Rationale**: Graduated approach - first try with full schema, then reduce schema size (compact), finally split extraction to handle extremely large files. Jobgroup boundary preservation ensures data integrity when splitting.
 
 ### Unicode/Encoding Handling (p2)
 **Why**: PDFs contain /uniXXXX and /GXXX patterns that break text extraction
@@ -104,6 +150,11 @@ p0_webscraping → p1_inputExcel → p2_extract → p3_llmExtraction → p4_anal
 - **SalaryPoint**: One effective salary value with start_date, end_date, amount, context
 - **SalaryRow**: Collection of SalaryPoints for one job group/worker type
 - **SalaryExtractionSchema**: Root schema containing list of SalaryRows
+
+**Schema Variants**:
+- **Regular schema** (`salary_schema.py`): Full schema with table_label, used for attempts 1-5
+- **Compact schema** (`salary_schema_compact.py`): Reduced schema (no table_label, abbreviated units), used for attempts 6-8
+- **Split schema** (`salary_schema_split.py`): Same as compact, optimized for split extraction, used for attempts 9-10
 
 ### Non-Salary Schema (`schema/non_salary_schema.py`)
 Split into 3 parts for performance:
@@ -133,9 +184,29 @@ Each info class contains structured fields (Amount, AmountRange, booleans, strin
 - Parallel processes use different keys to distribute load
 
 ### Error Handling & Retry
-- Exponential backoff: 2^attempt seconds
-- Adaptive retry: Adjust temperature/top_p/top_k on attempts 4-5
-- Failure-aware guidance: Detect LLM-controllable errors (truncated JSON, empty responses), provide retry instructions
+
+**p3 (LLM Extraction)**:
+- **Unified extraction (attempts 1-5)**: Single schema extraction with all fields
+  - Exponential backoff: 2^attempt seconds
+  - Adaptive retry: Adjust temperature/top_p/top_k on attempts 4-5
+  - Failure-aware guidance: Detect LLM-controllable errors (truncated JSON, empty responses), provide retry instructions
+- **Split extraction (attempts 6-8)**: Two separate extractions for salary and non-salary
+  - Only triggered after attempts 1-5 fail
+  - Partial success caching: Successful parts cached, only failed parts retried
+  - Results merged back into unified format matching original schema
+
+**p4 (Analysis)**:
+- **Regular extraction (attempts 1-5)**: Full schema with all fields including table_label
+  - Adaptive parameter adjustment on attempts 3-5
+  - Extends to compact schema if truncation occurs after attempt 4
+- **Compact schema (attempts 6-8)**: Reduced schema (no table_label, abbreviated units)
+  - Files in truncated folder automatically start here
+  - Extends to split extraction if truncation occurs after attempt 7
+- **Split extraction (attempts 9-10)**: Extract in two halves by jobgroup boundaries
+  - Attempt 9: First half (complete jobgroups, don't split them)
+  - Attempt 10: Second half (skip already-extracted jobgroups, merge with first half)
+  - Files in truncated_2 folder automatically start here
+  - Files in truncated_3 folder are skipped (all attempts exhausted)
 - File locking: Prevents duplicate processing across parallel processes
 
 ### Cost Optimization
@@ -238,14 +309,21 @@ with open(lock_file, 'w') as lock:
 - Parallel processing support (p2, p3, p4)
 - Performance monitoring and cost tracking
 - Comprehensive error handling and retry logic
+  - **p3**: Unified extraction retries (attempts 1-5) with adaptive parameter adjustment, split extraction retries (attempts 6-8) with partial success caching
+  - **p4**: Regular extraction (attempts 1-5), compact schema retries (attempts 6-8), split extraction retries (attempts 9-10) by jobgroup boundaries with merge
 - Unicode/encoding issue handling
 - Excel output generation with proper formatting
+- Intelligent file handling: truncated folder files retry with compact schema, truncated_2 folder files retry with split extraction, truncated_3 folder files skipped
 
 ### Known Limitations
-- Non-salary schema split into 3 parts (by design for performance)
+- Non-salary schema split into 3 parts in p4 (by design for performance)
+- p3 uses split extraction (salary vs non-salary) for attempts 6-8 when unified extraction fails
+- p4 uses split extraction (first half/second half by jobgroups) for attempts 9-10 when compact schema fails
+- Files in truncated_3 folder are skipped (all retry attempts exhausted, including split extraction)
 - Excel cell size limit (32,767 chars) requires truncation
 - API rate limits require multiple keys for large batches
 - OCR quality varies by document quality
+- Max output tokens (65536) for Gemini 2.5 Flash limits single-response extraction size
 
 ### Active Development Areas
 - Performance optimization

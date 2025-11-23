@@ -101,7 +101,7 @@ class CAOExtractionSchema(BaseModel):
         , default_factory=list)
     wage_information: List[List[str]] = Field(description=
         """Extract wage and salary information explicitly stated in the CAO: 
-        - all wage tables (that are not identical except for unit conversion) and salary scales, 
+        - all wage tables (that are not identical except for unit conversion) and salary scales - make sure to check the entire document, also the appendices, 
         - job classifications, function groups, and pay groups/grades,
         - age-related or service-year/experience-based pay steps (trede/periodieken), including any transitions between age bands and experience steps,
         - rules governing progression within scales (e.g., annual increments, step frequency, performance-based step changes, freeze/unfreeze conditions),
@@ -231,6 +231,156 @@ class CAOExtractionSchema(BaseModel):
         'childcare_information', 'AI_information', 'fringe_benefits_information']})
 
 
+# Split schemas for retries 6-8 (salary and non-salary extraction)
+class CAOSalaryOnlySchema(BaseModel):
+    """Schema for extracting only wage/salary information from Dutch CAO documents."""
+    wage_information: List[List[str]] = Field(description=
+        """Extract wage and salary information explicitly stated in the CAO: 
+        - all wage tables (that are not identical except for unit conversion) and salary scales, 
+        - job classifications, function groups, and pay groups/grades,
+        - age-related or service-year/experience-based pay steps (trede/periodieken), including any transitions between age bands and experience steps,
+        - rules governing progression within scales (e.g., annual increments, step frequency, performance-based step changes, freeze/unfreeze conditions),
+        - entry-placement rules (e.g., starting above step 0 for prior relevant experience or competence),
+        - personal allowances at the maximum of a scale ("persoonlijke toeslag") and their conditions (basis, %/amount, pensionability, duration, phase-out),
+        - general wage increases (periodic percentage or nominal increases applied sector-wide or by group),
+        - all bonuses and allowances, including sign-on, 13th month, fixed lump sums, profit-sharing, performance bonuses, seniority/loyalty or jubilee bonuses, job-specific allowances, retirement gratuities, and insurance/savings benefits,
+        - notes explaining how the wage system or tables operate (e.g., "scale applies to 36-h week", "wages include 8% holiday allowance", "conversion rules for youth to adult wage scale").
+        SKIP: tables that are identical except for unit conversion (monthly vs hourly vs weekly vs 4 weeks for same data); 
+        KEEP: tables or rules that differ by period, worker type, education level, job group/function scale, experience steps (periodieken/trede), age bands, or other substantive distinctions."""
+        , default_factory=list)
+    model_config = ConfigDict(title='CAO Salary Only Schema')
+
+
+class CAONonSalarySchema(BaseModel):
+    """Schema for extracting all non-salary information from Dutch CAO documents."""
+    general_information: List[List[str]] = Field(description=
+        """Extract the following basic CAO contract information if present in the CAO: 
+        - start, end and signing date, 
+        - retroactive application (applies?, period, scope, exclusions, back-pay terms, interest/surcharge), 
+        - scope type of the CAO itself (sectoral, firm, group, niche),
+        - company name and scope if single-firm,  
+        - SBI codes and version that define the scope of this CAO, 
+        - whether deviations are explicitly allowed at company-agreement level (yes/no, with topics if mentioned), 
+        - AVV status (algemeen verbindend verklaard) with start and end dates if specified."""
+        , default_factory=list)
+    pension_information: List[List[str]] = Field(description=
+        """Extract ALL explicitly stated pension scheme information, including when present: 
+        - type of scheme (DB, DC, hybrid), 
+        - contribution percentages, employer/employee splits and premiums, 
+        - accrual rules and franchise values, 
+        - retirement ages, 
+        - eligibility rules and accrual during leave/illness, 
+        - special provisions (e.g. excedentregeling, premium change rules, group differences), 
+        - pension fund name/abbreviation,
+        - any other pension-related information mentioned.
+        If the CAO explicitly states there is no occupational pension beyond AOW, note: 'no occupational pension (AOW only)'."""
+        , default_factory=list)
+    leave_information: List[List[str]] = Field(description=
+        """Extract ALL explicitly stated leave information and conditions, including when present:
+        - vacation entitlement and holiday allowance, 
+        - maternity and paternity/partner leave, 
+        - adoption and parental leave, 
+        - sick leave and care leave (short- and long-term), 
+        - special leaves including Liberation Day policy and senior days,
+        - any other leave-related information mentioned and conditions."""
+        , default_factory=list)
+    termination_information: List[List[str]] = Field(description=
+        """Extract ALL explicitly stated termination rules, including when present: 
+        - notice periods for employers and employees (include full tables by age/service year if provided), 
+        - rules on shortening, floors, and approval paths (UWV/judge), 
+        - dismissal protections and conditions (e.g. during sickness), 
+        - automatic end of employment at AOW age or other exit conditions, 
+        - probation periods and maximum durations, 
+        - severance pay and WW supplements beyond statutory transition pay,
+        - any other termination-related information mentioned."""        
+        , default_factory=list)
+    overtime_information: List[List[str]] = Field(description=
+        """Extract ALL explicitly stated information about overtime, shift and atypical hours, including when present:
+        - overtime thresholds and compensation rules,
+        - overtime rates and surcharges (including how they are applied or stacked),
+        - shift, night, weekend, and holiday allowances,
+        - rest periods and weekends-off guarantees,
+        - maximum working hours or limits on compulsory overtime,
+        - any other overtime/shift/atypical hours-related information mentioned (e.g. TOIL)."""
+        , default_factory=list)
+    training_information: List[List[str]] = Field(description=
+        """Extract ALL explicitly stated information about training, including when present:
+        - paid study and training time, budgets and reimbursements,
+        - career scans or employability assessments,
+        - sectoral/CAO training funds,
+        - employer obligations for mandatory training,
+        - reclaim clauses if employees leave,
+        - any other training-related information mentioned."""
+        , default_factory=list)
+    homeoffice_information: List[List[str]] = Field(description=
+        """Extract ALL explicitly stated information about home office and remote work, including when present:
+        - entitlement to work from home (time and conditions),
+        - fixed allowances or reimbursements (e.g. stipend, internet/phone, equipment),
+        - decision rules or agreements required,
+        - health and safety obligations at home,
+        - travel time compensation for home-worksite arrangements,
+        - any other home office/remote work-related information mentioned."""
+        , default_factory=list)
+    contract_type_information: List[List[str]] = Field(description=
+        """Extract ALL explicitly stated information and conditions about contract types, including when present:
+        - rules on full-time and part-time work (standard hours, ranges, conditions),
+        - provisions on min-max or zero-hour/on-call contracts,
+        - deviations from the statutory fixed-term chain (ketenregeling),
+        - rights to convert temporary to permanent contracts,
+        - rights to adjust working hours,
+        - any other information and rules on contract forms (e.g., freelance, internships)."""
+        , default_factory=list)
+    childcare_information: List[List[str]] = Field(description=
+        """Extract ALL explicitly stated childcare information in the CAO, including when present:
+        - allowances or subsidies,
+        - in-house or employer/sector-arranged childcare,
+        - discounts or priority access,
+        - age limits and scope (e.g., after-school care),
+        - provider rules and interaction with public benefits,
+        - eligibility conditions (e.g. tenure, FTE),
+        - sector fund financing,
+        - other childcare-related provisions."""
+        , default_factory=list)
+    safety_information: List[List[str]] = Field(description=
+        """Extract ALL explicitly stated safety and integrity provisions, including when present:
+        - harassment, bullying, discrimination, aggression, or integrity protocols,
+        - prevention of psychosocial risks (PSA) such as stress, burnout, or workload pressure,
+        - RI&E requirements covering PSA,
+        - confidential counsellors or internal/external contact points,
+        - training or awareness on wellbeing and respectful behaviour,
+        - reporting procedures and follow-up in PSA/integrity cases,
+        - joint safety/health committees or sectoral Arbo arrangements,
+        - mandatory safety or risk-prevention training,
+        - other safety, health, or integrity-related measures or obligations."""
+        , default_factory=list)
+    AI_information: List[List[str]] = Field(description=
+        """Extract ALL explicitly stated information about AI and algorithmic management, including when present:
+        - rules on automated decisions and human review,
+        - transparency, disclosure and audit obligations,
+        - governance bodies or committees,
+        - worker rights to contest AI-based decisions,
+        - training or upskilling provisions related to AI,
+        - any other AI and algorithmic management-related information mentioned."""
+        , default_factory=list)
+    fringe_benefits_information: List[List[str]] = Field(description=
+        """Extract ALL explicitly stated fringe benefits, including when present:
+        - commuting or travel allowances,
+        - bicycle/leasefiets or mobility schemes,
+        - meal benefits (meals, vouchers, allowances, canteen subsidies),
+        - health insurance contributions or discounts,
+        - relocation or housing allowances,
+        - costs of mandatory certifications,
+        - other non-cash benefits (e.g., wellbeing, gym, ergonomics)."""
+        , default_factory=list)
+    model_config = ConfigDict(title='CAO Non-Salary Schema',
+        json_schema_extra={'propertyOrdering': ['general_information',
+        'pension_information', 'leave_information',
+        'termination_information', 'overtime_information',
+        'training_information', 'homeoffice_information',
+        'contract_type_information', 'safety_information',
+        'childcare_information', 'AI_information', 'fringe_benefits_information']})
+
+
 # =============================================================================
 # GLOBAL STATE
 # =============================================================================
@@ -293,7 +443,7 @@ class ExtractionConfig:
     presence_penalty: float = 0
     frequency_penalty: float = 0
     thinking_budget: int = -1
-    max_retries: int = 5
+    max_retries: int = 8
     delay_between_files: int = 150  # about 150 seconds between files to avoid rate limits
 
 
@@ -393,9 +543,12 @@ def setup_gemini_client(api_key: str):
 
 def setup_performance_monitor() -> PerformanceMonitor:
     """Setup performance monitoring."""
+    # Use a high limit (10000) since we're using paid API keys with token-based quota (3M tokens/day)
+    # The actual quota is token-based, not request-based, so this is just for display purposes
     return PerformanceMonitor(
         log_file='performance_logs/llm_extraction/extraction_performance.jsonl',
-        summary_file='performance_logs/llm_extraction/extraction_summary.json'
+        summary_file='performance_logs/llm_extraction/extraction_summary.json',
+        free_tier_daily_limit=10000  # High limit for paid tier (actual limit is 3M tokens/day, not requests)
     )
 
 
@@ -691,7 +844,10 @@ def get_adjusted_parameters(config, attempt: int) -> Dict[str, Any]:
     
     - Attempts 0-2 (1st-3rd tries): original parameters
     - Attempt 3 (4th try): temperature +0.1, top_p +0.1, top_k -0.1
-    - Attempt 4+ (5th+ try): temperature +0.2, top_p +0.2, top_k -0.2
+    - Attempt 4 (5th try): temperature +0.2, top_p +0.2, top_k -0.2
+    - Attempt 5 (6th try, split extraction): same as attempt 0 → original parameters
+    - Attempt 6 (7th try, split extraction): same as attempt 2 → original parameters
+    - Attempt 7 (8th try, split extraction): same as attempt 3 → +0.1 adjustment
     
     Returns:
         dict: Model parameters with attempt-based adjustments
@@ -702,8 +858,20 @@ def get_adjusted_parameters(config, attempt: int) -> Dict[str, Any]:
     elif attempt == 3:
         # 4th attempt: +0.1 adjustment
         adjustment = 0.1
+    elif attempt == 4:
+        # 5th attempt: +0.2 adjustment
+        adjustment = 0.2
+    elif attempt == 5:
+        # 6th attempt (split extraction): same as attempt 0 → original parameters
+        adjustment = 0.0
+    elif attempt == 6:
+        # 7th attempt (split extraction): same as attempt 2 → original parameters
+        adjustment = 0.0
+    elif attempt == 7:
+        # 8th attempt (split extraction): same as attempt 3 → +0.1 adjustment
+        adjustment = 0.1
     else:
-        # 5th+ attempt: +0.2 adjustment
+        # Fallback for any higher attempts (shouldn't happen with max_retries=8)
         adjustment = 0.2
     
     # Calculate adjusted values
@@ -787,6 +955,7 @@ def create_extraction_prompt(filename: str) -> str:
         - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
         - Be precise: NO paraphrasing, NO interpretation, NO added explanations, NO decorative elements, NO unnecessary separator lines or formatting characters.
         - IMPORTANT: Translate all Dutch text (clauses, tables, titles, etc.) into clear and precise English but keep names in Dutch. For legal clauses, preserve the exact legal meaning without simplification.
+        - IMPORTANT: Check the appendix if it exists in the document. Salary tables and important information are sometimes located in appendices and should not be skipped.
     
     INSIDE SECTION RULES: Order does not matter within a section - keep related items together (e.g., a table followed by its note/explanation).
     
@@ -822,7 +991,7 @@ def create_extraction_prompt(filename: str) -> str:
 
     EXTRACTION STEPS (INTERNAL - DO NOT OUTPUT):
         1) Read & anchor: read all instructions and section descriptions.
-        2) Sweep & mark: scan the whole document; mark every clause/table/text that matches any section description; ignore text/sentences/clasues/passages that matches none.
+        2) Sweep & mark: scan the whole document including any appendices; mark every clause/table/text that matches any section description; ignore text/sentences/clasues/passages that matches none.
         3) Route: apply the ROUTING RULES to decide the correct section when overlaps occur.
         4) Length pre-check: if the marked set, when extracted verbatim, would likely exceed ~262,144 characters, plan to trim narrative/boilerplate in step 5.
         5) Extract, translate & build — DO NOT HALLUCINATE:
@@ -857,6 +1026,226 @@ def create_extraction_prompt(filename: str) -> str:
 
     Document: {filename}
     """
+
+
+def create_salary_extraction_prompt(filename: str) -> str:
+    """Create the extraction prompt for salary/wage information only."""
+    return f"""
+    Extract ONLY wage and salary information from the Dutch CAO Markdown document parsed from a PDF. Pages are marked ## Page X _native_ (text-based) or ## Page X  _OCR_ (image-based); use these labels to interpret the layout correctly.
+
+    GOAL: Produce one JSON object with ONLY the "wage_information" key mapping to a List[List[str]]. If nothing is found, return an empty list.
+
+    THINKING & OUTPUT: Think step by step INTERNALLY to locate and clean the data, but OUTPUT ONLY the final JSON (no explanations, no notes, no chain-of-thought).
+        
+    CRITICAL RULES:
+        - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess any information. Always VERIFY the extracted information with the document.
+        - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
+        - Be precise: NO paraphrasing, NO interpretation, NO added explanations, NO decorative elements, NO unnecessary separator lines or formatting characters.
+        - IMPORTANT: Translate all Dutch text (clauses, tables, titles, etc.) into clear and precise English but keep names in Dutch. For legal clauses, preserve the exact legal meaning without simplification.
+        - IMPORTANT: Check the appendix if it exists in the document. Salary tables and important information are sometimes located in appendices and should not be skipped.
+    
+    WHAT TO INCLUDE:
+        - all wage tables (that are not identical except for unit conversion) and salary scales, 
+        - job classifications, function groups, and pay groups/grades,
+        - age-related or service-year/experience-based pay steps (trede/periodieken), including any transitions between age bands and experience steps,
+        - rules governing progression within scales (e.g., annual increments, step frequency, performance-based step changes, freeze/unfreeze conditions),
+        - entry-placement rules (e.g., starting above step 0 for prior relevant experience or competence),
+        - personal allowances at the maximum of a scale ("persoonlijke toeslag") and their conditions (basis, %/amount, pensionability, duration, phase-out),
+        - general wage increases (periodic percentage or nominal increases applied sector-wide or by group),
+        - all bonuses and allowances, including sign-on, 13th month, fixed lump sums, profit-sharing, performance bonuses, seniority/loyalty or jubilee bonuses, job-specific allowances, retirement gratuities, and insurance/savings benefits,
+        - notes explaining how the wage system or tables operate (e.g., "scale applies to 36-h week", "wages include 8% holiday allowance", "conversion rules for youth to adult wage scale").
+    
+    WAGE TABLE DEDUP (IMPORTANT):
+        - Keep tables that differ by period, worker type, education level, job group/function scale, experience steps (periodieken/trede), age bands, or other substantive distinctions.
+        - SKIP tables that are identical except for unit conversion (monthly vs hourly vs weekly vs 4-week vs yearly); keep ONE version (prefer monthly if present).
+
+    TABLE FORMAT:
+        - Represent each table as a short list of strings like:
+            [
+                "Table title with context and units",
+                "Columns: <Row label (if present)> | <Col 1 label> | <Col 2 label> | <Col 3 label> | ...",
+                "<Row 1 label (if present)> | <v1> | <v2> | <v3> | ... ",
+                "<Row 2 label (if present)> | <v1> | <v2> | <v3> | ... ",
+                "... (one string per row)",
+                "Additional notes or clarifying information if any"
+            ]
+
+    EXTRACTION STEPS (INTERNAL - DO NOT OUTPUT):
+        1) Read & anchor: read all instructions and focus ONLY on wage/salary information.
+        2) Sweep & mark: scan the whole document including any appendices; mark every clause/table/text that relates to wages/salaries.
+        3) Extract, translate & build — DO NOT HALLUCINATE:
+            - Build one JSON object with ONLY the "wage_information" key.
+            - COPY numbers/dates/%/names literally; TRANSLATE all other Dutch text (clauses, part of tables that are not numbers or names, titles, etc.) to clear English.
+            - Tables: rebuild to TABLE FORMAT; apply WAGE TABLE DEDUP (remove pure unit-conversion duplicates; prefer monthly).
+            - Consolidate: keep related items adjacent.
+        4) Verify: confirm that every extracted fact, number, table, or clause is explicitly present in the document and that no important wage/salary information is missing. Correct or remove anything not grounded in the source.
+        5) Validate: output one JSON object only; UTF-8 only; valid JSON (balanced brackets, no trailing commas); the "wage_information" key must be present (empty list if none).
+
+    JSON OUTPUT REQUIREMENTS:
+        - Output ONLY valid JSON (no markdown fences, no extra text). JSON must be UTF-8.
+        - Ensure brackets/commas are correct; no trailing commas.
+
+    OUTPUT_JSON_TEMPLATE:
+        {{
+            "wage_information": []
+        }}
+
+    Document: {filename}
+    """
+
+
+def create_nonsalary_extraction_prompt(filename: str) -> str:
+    """Create the extraction prompt for all non-salary information."""
+    return f"""
+    Extract information from the Dutch CAO Markdown document parsed from a PDF. Pages are marked ## Page X _native_ (text-based) or ## Page X  _OCR_ (image-based); use these labels to interpret the layout correctly.
+
+    GOAL: Produce one JSON object with the exact keys in OUTPUT_JSON_TEMPLATE, each mapping to a List[List[str]]. If nothing is found for a key, return an empty list.
+    IMPORTANT: The field "wage_information" (Wage table and salary scales) is excluded and will be handled separately.
+
+    THINKING & OUTPUT: Think step by step INTERNALLY to locate, route, and clean the data, but OUTPUT ONLY the final JSON (no explanations, no notes, no chain-of-thought).
+        
+    CRITICAL RULES:
+        - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess any information. Always VERIFY the extracted information with the document.
+        - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
+        - Be precise: NO paraphrasing, NO interpretation, NO added explanations, NO decorative elements, NO unnecessary separator lines or formatting characters.
+        - IMPORTANT: Translate all Dutch text (clauses, tables, titles, etc.) into clear and precise English but keep names in Dutch. For legal clauses, preserve the exact legal meaning without simplification.
+        - IMPORTANT: Check the appendix if it exists in the document. Salary tables and important information are sometimes located in appendices and should not be skipped.
+    
+    INSIDE SECTION RULES: Order does not matter within a section - keep related items together (e.g., a table followed by its note/explanation).
+    
+    ROUTING RULES (Use to avoid duplicates across sections):
+        - Wage vs Overtime: atypical hours pay → overtime_information; structural bonuses → EXCLUDE (wage information, handled separately).
+        - Wage vs Fringe: cash wages → EXCLUDE (wage information, handled separately); non-cash perks/reimbursements → fringe_benefits_information.
+        - Homeoffice vs Fringe: WFH-specific (stipend, equipment, internet) → homeoffice_information; general perks → fringe_benefits_information.
+        - Childcare vs Leave: time off/pay during leave → leave_information; childcare services/subsidies/discounts → childcare_information.
+        - Training vs Safety vs AI: safety/Arbo training → safety_information; AI-related training → AI_information; all other training → training_information.
+        - Safety vs Homeoffice: safety/Arbo for home working → homeoffice_information; general safety/integrity → safety_information.
+        - Pension vs Wage vs Fringe: pension schemes/funds → pension_information; wages/bonuses → EXCLUDE (wage information, handled separately); non-pension perks → fringe_benefits_information.
+        - Contract vs Termination: contract forms/ketenregeling/conversion → contract_type_information; notice/dismissal/severance/WW supplements → termination_information.
+        - Holidays: pay/allowance for working on holidays → overtime_information; days off/policies → leave_information.
+    
+    WHAT TO INCLUDE:
+        - Numbers, amounts, percentages, dates, periods, conditions, eligibility rules, procedures, entitlements, allowances (but NOT wage/salary amounts).
+        - Tables: include a compact structure (see TABLE FORMAT) with headers and all data rows and columns plus any short note that explains the table.
+
+    TABLE FORMAT:
+        - Represent each table as a short list of strings like:
+            [
+                "Table title with context and units",
+                "Columns: <Row label (if present)> | <Col 1 label> | <Col 2 label> | <Col 3 label> | ...",
+                "<Row 1 label (if present)> | <v1> | <v2> | <v3> | ... ",
+                "<Row 2 label (if present)> | <v1> | <v2> | <v3> | ... ",
+                "... (one string per row)",
+                "Additional notes or clarifying information if any"
+            ]
+
+    EXTRACTION STEPS (INTERNAL - DO NOT OUTPUT):
+        1) Read & anchor: read all instructions and section descriptions.
+        2) Sweep & mark: scan the whole document including any appendices; mark every clause/table/text that matches any section description EXCEPT wage/salary information; ignore text/sentences/clauses/passages that match none.
+        3) Route: apply the ROUTING RULES to decide the correct section when overlaps occur. SKIP all wage/salary information.
+        4) Length pre-check: if the marked set, when extracted verbatim, would likely exceed ~262,144 characters, plan to trim narrative/boilerplate in step 5.
+        5) Extract, translate & build — DO NOT HALLUCINATE:
+            - Build one JSON object with the exact keys in OUTPUT_JSON_TEMPLATE, in this order: general_information → pension_information → leave_information → termination_information → overtime_information → training_information → homeoffice_information → contract_type_information → safety_information → childcare_information → AI_information → fringe_benefits_information.
+            - DO NOT include "wage_information" key.
+            - COPY numbers/dates/%/names literally; TRANSLATE all other Dutch text (clauses, part of tables that are not numbers or names, titles, etc.) to clear English; leave blank if not stated.
+            - Tables: rebuild to TABLE FORMAT.
+            - Consolidate: keep related items adjacent.
+            - If trimming per Step 4 is needed, shorten only narrative notes or minor wording not directly tied to field content, without changing legal meaning.
+        6) Verify: confirm that every extracted fact, number, table, or clause is explicitly present in the document (allowing for shortening, restructuring, and translation to English) and that no important information is missing. Correct or remove anything not grounded in the source. Do not infer or guess. Ensure NO wage/salary information is included.
+        7) Validate: output one JSON object only; UTF-8 only; valid JSON (balanced brackets, no trailing commas); all template keys present (empty list if none); "wage_information" must NOT be present.
+
+    JSON OUTPUT REQUIREMENTS:
+        - Output ONLY valid JSON (no markdown fences, no extra text). JSON must be UTF-8.
+        - Ensure brackets/commas are correct; no trailing commas; all top-level keys present.
+        - DO NOT include "wage_information" in the output.
+
+    OUTPUT_JSON_TEMPLATE:
+        {{
+            "general_information": [],
+            "pension_information": [],
+            "leave_information": [],
+            "termination_information": [],
+            "overtime_information": [],
+            "training_information": [],
+            "homeoffice_information": [],
+            "contract_type_information": [],
+            "safety_information": [],
+            "childcare_information": [],
+            "AI_information": [],
+            "fringe_benefits_information": []
+        }}
+
+    Document: {filename}
+    """
+
+
+def merge_split_extractions(salary_json: str, nonsalary_json: str, filename: str) -> Optional[str]:
+    """
+    Merge salary and non-salary extraction results into unified format.
+    
+    Args:
+        salary_json: JSON string from salary-only extraction (wage_information)
+        nonsalary_json: JSON string from non-salary extraction (all other fields)
+        filename: Filename for error reporting
+        
+    Returns:
+        Merged JSON string matching CAOExtractionSchema format, or None if merge fails
+    """
+    try:
+        # Parse both JSON strings
+        salary_data = json.loads(salary_json) if isinstance(salary_json, str) else salary_json
+        nonsalary_data = json.loads(nonsalary_json) if isinstance(nonsalary_json, str) else nonsalary_json
+        
+        # Build unified structure matching CAOExtractionSchema
+        merged = {
+            "general_information": nonsalary_data.get("general_information", []),
+            "wage_information": salary_data.get("wage_information", []),
+            "pension_information": nonsalary_data.get("pension_information", []),
+            "leave_information": nonsalary_data.get("leave_information", []),
+            "termination_information": nonsalary_data.get("termination_information", []),
+            "overtime_information": nonsalary_data.get("overtime_information", []),
+            "training_information": nonsalary_data.get("training_information", []),
+            "homeoffice_information": nonsalary_data.get("homeoffice_information", []),
+            "contract_type_information": nonsalary_data.get("contract_type_information", []),
+            "safety_information": nonsalary_data.get("safety_information", []),
+            "childcare_information": nonsalary_data.get("childcare_information", []),
+            "AI_information": nonsalary_data.get("AI_information", []),
+            "fringe_benefits_information": nonsalary_data.get("fringe_benefits_information", [])
+        }
+        
+        # Ensure all fields are lists of lists (List[List[str]])
+        for key, value in merged.items():
+            if not isinstance(value, list):
+                merged[key] = []
+            else:
+                # Ensure nested lists are properly formatted
+                normalized = []
+                for item in value:
+                    if isinstance(item, list):
+                        normalized.append(item)
+                    elif isinstance(item, str):
+                        normalized.append([item])
+                    else:
+                        normalized.append([str(item)])
+                merged[key] = normalized
+        
+        # Convert back to JSON string
+        merged_json = json.dumps(merged, ensure_ascii=False, indent=2)
+        
+        # Validate the merged JSON matches the expected schema structure
+        validation_result = validate_json_completeness(merged_json, filename)
+        if not validation_result['is_valid']:
+            print(f'  WARNING: Merged JSON validation failed: {validation_result["error"]}')
+            return None
+        
+        return merged_json
+        
+    except json.JSONDecodeError as e:
+        print(f'  ERROR: Failed to parse JSON during merge for {filename}: {e}')
+        return None
+    except Exception as e:
+        print(f'  ERROR: Failed to merge split extractions for {filename}: {e}')
+        return None
 
 
 def validate_uploaded_file(client, uploaded_file, filename: str, original_size_mb: float):
@@ -1163,6 +1552,197 @@ def validate_response_schema(content: str, filename: str) -> bool:
 # CORE EXTRACTION FUNCTION
 # =============================================================================
 # Main function for extracting content from markdown files using Gemini API
+def extract_split_extraction(markdown_path: str, filename: str, cao_number: str,
+                            uploaded_file, context: ProcessingContext, attempt: int,
+                            timeout_seconds: int, adjusted_params: Dict[str, Any],
+                            cached_salary: Optional[str] = None,
+                            cached_nonsalary: Optional[str] = None,
+                            remaining_budget_s: Optional[int] = None) -> Tuple[Optional[str], Optional[str], Optional[str]]:
+    """
+    Perform split extraction (salary and non-salary) for attempts 5-7.
+    
+    Args:
+        markdown_path: Path to markdown file
+        filename: Name of file being processed
+        cao_number: CAO number
+        uploaded_file: Already uploaded file resource
+        context: Processing context
+        attempt: Current attempt number (5, 6, or 7)
+        timeout_seconds: Timeout in seconds
+        adjusted_params: Adjusted parameters for this attempt
+        cached_salary: Previously successful salary extraction (optional)
+        cached_nonsalary: Previously successful non-salary extraction (optional)
+        remaining_budget_s: Remaining time budget in seconds
+        
+    Returns:
+        Tuple of (merged_content, salary_content, nonsalary_content):
+        - merged_content: Merged JSON string if both succeeded, None otherwise
+        - salary_content: Salary JSON string (new or cached)
+        - nonsalary_content: Non-salary JSON string (new or cached)
+    """
+    print(f'  INFO: Attempt {attempt + 1} - Using split extraction (salary + non-salary)')
+    
+    # Use cached results if available
+    salary_content = cached_salary
+    nonsalary_content = cached_nonsalary
+    
+    if cached_salary:
+        print(f'  INFO: Using cached salary extraction from previous attempt')
+    if cached_nonsalary:
+        print(f'  INFO: Using cached non-salary extraction from previous attempt')
+    
+    # Safety settings
+    safety_settings = [
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        )
+    ]
+    
+    salary_response_info = None
+    nonsalary_response_info = None
+    
+    # Extract salary information (only if not cached)
+    if not salary_content:
+        print(f'  INFO: Extracting salary information (attempt {attempt + 1})...')
+        try:
+            context.current_stage = "generating_content_salary"
+            context.stage_start_ts = time.time()
+            
+            salary_prompt = create_salary_extraction_prompt(filename)
+            salary_safe_content = safe_contents(salary_prompt, uploaded_file)
+            
+            salary_response = context.client.models.generate_content(
+                model=context.config.model,
+                contents=salary_safe_content,
+                config={
+                    'temperature': adjusted_params['temperature'],
+                    'top_p': adjusted_params['top_p'],
+                    'top_k': adjusted_params['top_k'],
+                    'max_output_tokens': context.config.max_tokens,
+                    'candidate_count': context.config.candidate_count,
+                    'seed': context.config.seed,
+                    'presence_penalty': context.config.presence_penalty,
+                    'frequency_penalty': context.config.frequency_penalty,
+                    'response_mime_type': 'application/json',
+                    'response_schema': CAOSalaryOnlySchema,
+                    'thinking_config': types.ThinkingConfig(thinking_budget=context.config.thinking_budget),
+                    'http_options': types.HttpOptions(timeout=timeout_seconds * 1000),
+                    'safety_settings': safety_settings
+                }
+            )
+            
+            salary_content, salary_response_info = extract_text_safely(salary_response, filename, context)
+            print(f'  INFO: Salary extraction completed: {len(salary_content) if salary_content else 0} chars')
+            
+        except Exception as e:
+            print(f'  ERROR: Salary extraction failed: {e}')
+            salary_response_info = {"finish": "ERROR", "error": str(e)}
+    else:
+        print(f'  INFO: Skipping salary extraction (using cached result)')
+    
+    # Extract non-salary information (only if not cached)
+    if not nonsalary_content:
+        print(f'  INFO: Extracting non-salary information (attempt {attempt + 1})...')
+        try:
+            context.current_stage = "generating_content_nonsalary"
+            context.stage_start_ts = time.time()
+            
+            nonsalary_prompt = create_nonsalary_extraction_prompt(filename)
+            nonsalary_safe_content = safe_contents(nonsalary_prompt, uploaded_file)
+            
+            nonsalary_response = context.client.models.generate_content(
+                model=context.config.model,
+                contents=nonsalary_safe_content,
+                config={
+                    'temperature': adjusted_params['temperature'],
+                    'top_p': adjusted_params['top_p'],
+                    'top_k': adjusted_params['top_k'],
+                    'max_output_tokens': context.config.max_tokens,
+                    'candidate_count': context.config.candidate_count,
+                    'seed': context.config.seed,
+                    'presence_penalty': context.config.presence_penalty,
+                    'frequency_penalty': context.config.frequency_penalty,
+                    'response_mime_type': 'application/json',
+                    'response_schema': CAONonSalarySchema,
+                    'thinking_config': types.ThinkingConfig(thinking_budget=context.config.thinking_budget),
+                    'http_options': types.HttpOptions(timeout=timeout_seconds * 1000),
+                    'safety_settings': safety_settings
+                }
+            )
+            
+            nonsalary_content, nonsalary_response_info = extract_text_safely(nonsalary_response, filename, context)
+            print(f'  INFO: Non-salary extraction completed: {len(nonsalary_content) if nonsalary_content else 0} chars')
+            
+        except Exception as e:
+            print(f'  ERROR: Non-salary extraction failed: {e}')
+            nonsalary_response_info = {"finish": "ERROR", "error": str(e)}
+    else:
+        print(f'  INFO: Skipping non-salary extraction (using cached result)')
+    
+    # Check if both extractions succeeded (either from this attempt or cached)
+    if not salary_content or not nonsalary_content:
+        error_parts = []
+        if not salary_content:
+            error_parts.append("salary")
+        if not nonsalary_content:
+            error_parts.append("non-salary")
+        error_msg = f"Split extraction incomplete: {' and '.join(error_parts)} extraction not available"
+        print(f'  INFO: {error_msg} - will retry failed part on next attempt')
+        # Return None for merged content, but return individual results for caching
+        return None, salary_content, nonsalary_content
+    
+    # Validate individual extractions
+    if salary_content:
+        salary_validation = validate_json_completeness(salary_content, filename)
+        if not salary_validation['is_valid']:
+            print(f'  ERROR: Salary JSON validation failed: {salary_validation.get("error", "Unknown error")}')
+            return None, None, nonsalary_content  # Clear invalid salary, keep valid nonsalary
+    
+    if nonsalary_content:
+        nonsalary_validation = validate_json_completeness(nonsalary_content, filename)
+        if not nonsalary_validation['is_valid']:
+            print(f'  ERROR: Non-salary JSON validation failed: {nonsalary_validation.get("error", "Unknown error")}')
+            return None, salary_content, None  # Keep valid salary, clear invalid nonsalary
+    
+    # If we don't have both, return partial results for next attempt
+    if not salary_content or not nonsalary_content:
+        return None, salary_content, nonsalary_content
+    
+    # Merge the results
+    print(f'  INFO: Merging salary and non-salary results...')
+    merged_content = merge_split_extractions(salary_content, nonsalary_content, filename)
+    
+    if not merged_content:
+        print(f'  ERROR: Failed to merge split extractions')
+        return None, salary_content, nonsalary_content
+    
+    # Validate merged result
+    merged_validation = validate_json_completeness(merged_content, filename)
+    if not merged_validation['is_valid']:
+        print(f'  ERROR: Merged JSON validation failed: {merged_validation.get("error", "Unknown error")}')
+        return None, salary_content, nonsalary_content
+    
+    # Validate merged schema
+    if not validate_response_schema(merged_content, filename):
+        print(f'  WARNING: Merged response schema validation failed for {filename}')
+    
+    print(f'  INFO: Split extraction and merge completed successfully')
+    return merged_content, salary_content, nonsalary_content
+
+
 def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: str, 
                                context: ProcessingContext, remaining_budget_s: Optional[int] = None) -> Optional[str]:
     """Extract using Files API approach - upload markdown file to Gemini."""
@@ -1201,6 +1781,10 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
     # Track last error message for retry guidance
     last_error_message = None
     
+    # Cache for partial split extraction results (attempts 5-7)
+    cached_salary = None
+    cached_nonsalary = None
+    
     for attempt in range(context.config.max_retries):
         # Check quota exhaustion at START of each retry attempt (before API call)
         if context.process_id in process_quota_flags and process_quota_flags[context.process_id]:
@@ -1224,10 +1808,19 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
             context.current_stage = "uploading"
             context.stage_start_ts = time.time()
             
-            # Log parameter adjustments if this is attempt 3 or 4 (4th or 5th try)
+            # Log parameter adjustments if this is attempt 3, 4, or 5-7 (4th, 5th, or 6th-8th try)
             if attempt >= 3:
-                boost = 0.1 if attempt == 3 else 0.2
-                print(f'  INFO: Attempt {attempt + 1} - Adjusting parameters: temp={adjusted_params["temperature"]:.1f}, top_p={adjusted_params["top_p"]:.1f}, top_k={adjusted_params["top_k"]} (boost +{boost})')
+                if attempt <= 4:
+                    boost = 0.1 if attempt == 3 else 0.2
+                    print(f'  INFO: Attempt {attempt + 1} - Adjusting parameters: temp={adjusted_params["temperature"]:.1f}, top_p={adjusted_params["top_p"]:.1f}, top_k={adjusted_params["top_k"]} (boost +{boost})')
+                elif attempt >= 5:
+                    # Attempts 5-7 use split extraction
+                    if attempt == 5:
+                        print(f'  INFO: Attempt {attempt + 1} - Split extraction with original parameters (temp={adjusted_params["temperature"]:.1f}, top_p={adjusted_params["top_p"]:.1f}, top_k={adjusted_params["top_k"]})')
+                    elif attempt == 6:
+                        print(f'  INFO: Attempt {attempt + 1} - Split extraction with original parameters (temp={adjusted_params["temperature"]:.1f}, top_p={adjusted_params["top_p"]:.1f}, top_k={adjusted_params["top_k"]})')
+                    else:  # attempt == 7
+                        print(f'  INFO: Attempt {attempt + 1} - Split extraction with +0.1 adjustment (temp={adjusted_params["temperature"]:.1f}, top_p={adjusted_params["top_p"]:.1f}, top_k={adjusted_params["top_k"]})')
             
             print(f'  INFO: Uploading markdown file to Gemini...')
             try:
@@ -1271,6 +1864,107 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
             # Validate uploaded file with comprehensive checks
             validate_uploaded_file(context.client, uploaded_file, filename, file_size_mb)
             
+            # Check if we should use split extraction (attempts 5-7)
+            if attempt >= 5:
+                # Use split extraction for attempts 6-8
+                merged_content, salary_result, nonsalary_result = extract_split_extraction(
+                    markdown_path, filename, cao_number, uploaded_file,
+                    context, attempt, timeout_seconds, adjusted_params,
+                    cached_salary, cached_nonsalary, remaining_budget_s
+                )
+                
+                # Update cache with successful results (keep valid cached values if new attempt failed)
+                if salary_result:
+                    cached_salary = salary_result
+                    print(f'  INFO: Cached salary extraction for future attempts')
+                if nonsalary_result:
+                    cached_nonsalary = nonsalary_result
+                    print(f'  INFO: Cached non-salary extraction for future attempts')
+                
+                content = merged_content
+                
+                if content:
+                    # Split extraction succeeded
+                    processing_time = time.time() - start_time
+                    content_length = len(content)
+                    estimated_tokens = content_length // 4
+                    print(f'  INFO: Successfully completed split extraction (time: {processing_time:.1f}s)')
+                    print(f'  INFO: Merged response size: {content_length:,} chars (~{estimated_tokens:,} tokens)')
+                    
+                    # Validate merged result
+                    validation_result = validate_json_completeness(content, filename)
+                    if not validation_result['is_valid']:
+                        error_msg = f"Merged JSON validation failed: {validation_result.get('error', 'Unknown error')}"
+                        print(f'  WARNING: {error_msg} - retrying...')
+                        last_error_message = error_msg
+                        cleanup_uploaded_file(context.client, uploaded_file)
+                        if attempt == context.config.max_retries - 1:
+                            error_msg = f"Merged JSON validation failed after {context.config.max_retries} attempts"
+                            print(f'  ERROR: {error_msg}')
+                            context.performance_monitor.log_extraction(
+                                filename=filename, file_size_mb=file_size_mb, processing_time=processing_time,
+                                usage_metadata=None, success=False, error_message=error_msg,
+                                api_key_used=context.key_number, process_id=context.process_id, cao_number=cao_number,
+                                model=context.config.model, parameters=adjusted_params
+                            )
+                            return None
+                        continue
+                    
+                    # Validate response schema
+                    if not validate_response_schema(content, filename):
+                        print(f'  WARNING: Merged response schema validation failed for {filename}')
+                    
+                    # Log successful split extraction
+                    log_params = adjusted_params.copy()
+                    log_params['split_extraction'] = True
+                    log_params['attempt'] = attempt + 1
+                    
+                    context.performance_monitor.log_extraction(
+                        filename=filename, file_size_mb=file_size_mb, processing_time=processing_time,
+                        usage_metadata=None, success=True, api_key_used=context.key_number,
+                        process_id=context.process_id, cao_number=cao_number,
+                        model=context.config.model, parameters=log_params
+                    )
+                    
+                    cleanup_uploaded_file(context.client, uploaded_file)
+                    return content
+                else:
+                    # Split extraction incomplete - check which parts failed
+                    missing_parts = []
+                    if not cached_salary:
+                        missing_parts.append("salary")
+                    if not cached_nonsalary:
+                        missing_parts.append("non-salary")
+                    
+                    if missing_parts:
+                        error_msg = f"Split extraction incomplete on attempt {attempt + 1}: {' and '.join(missing_parts)} extraction not available"
+                        print(f'  INFO: {error_msg} - will retry failed part(s) on next attempt')
+                    else:
+                        error_msg = f"Split extraction failed on attempt {attempt + 1}"
+                        print(f'  WARNING: {error_msg} - retrying...')
+                    
+                    last_error_message = error_msg
+                    cleanup_uploaded_file(context.client, uploaded_file)
+                    if attempt == context.config.max_retries - 1:
+                        final_error_msg = f"Split extraction incomplete after {context.config.max_retries} attempts"
+                        if missing_parts:
+                            final_error_msg += f" - missing: {', '.join(missing_parts)}"
+                        print(f'  ERROR: {final_error_msg}')
+                        processing_time = time.time() - start_time
+                        log_params = adjusted_params.copy()
+                        log_params['split_extraction'] = True
+                        if missing_parts:
+                            log_params['missing_parts'] = missing_parts
+                        context.performance_monitor.log_extraction(
+                            filename=filename, file_size_mb=file_size_mb, processing_time=processing_time,
+                            usage_metadata=None, success=False, error_message=final_error_msg,
+                            api_key_used=context.key_number, process_id=context.process_id, cao_number=cao_number,
+                            model=context.config.model, parameters=log_params
+                        )
+                        return None
+                    continue
+            
+            # Regular unified extraction for attempts 0-4
             # Create and validate extraction prompt
             extraction_prompt = create_extraction_prompt(filename)
             
@@ -1665,9 +2359,16 @@ def cleanup_announce_files(context: ProcessingContext):
         print(f'  ⚠️  Warning: Failed to clean up files: {e}')
 
 
-def display_final_results(context: ProcessingContext):
+def display_final_results(context: ProcessingContext, quota_exhausted: bool = False):
     """Display final processing results."""
-    print(f'Process {context.process_id + 1} completed:')
+    if quota_exhausted:
+        print(f'\n⚠️  Process {context.process_id + 1} STOPPED due to DAILY QUOTA EXHAUSTION:')
+        print(f'   💡 Daily limit: 3,000,000 tokens per day')
+        print(f'   💡 Quota resets at midnight (Google timezone)')
+        print(f'   💡 Process will need to be restarted tomorrow to continue')
+    else:
+        print(f'Process {context.process_id + 1} completed:')
+    
     print(f'  📊 Files processed: {context.stats.processed_files}')
     print(f'  ✅ Successful extractions: {context.stats.successful_extractions}')
     print(f'  ❌ Failed extractions: {len(context.stats.failed_files)}')
@@ -1679,7 +2380,10 @@ def display_final_results(context: ProcessingContext):
         print(f'  📝 Timed out files: {context.stats.timed_out_files}')
     
     print('\n' + '=' * 60)
-    print('FINAL PERFORMANCE ANALYSIS')
+    if quota_exhausted:
+        print('FINAL PERFORMANCE ANALYSIS (QUOTA EXHAUSTED - INCOMPLETE)')
+    else:
+        print('FINAL PERFORMANCE ANALYSIS')
     print('=' * 60)
     # Pass total input files count for comparison
     all_markdown_files = discover_markdown_files(context.config.input_folder)
@@ -1753,11 +2457,19 @@ def run_extraction_pipeline():
         print()
         
         # Process files
+        quota_exhausted = False
         for cao_folder, markdown_file in filtered_files:
             cao_number = cao_folder.name
             current_file = f"{cao_number}/{markdown_file.name}"  # Track current file
             output_folder = config.output_folder / cao_number
             output_folder.mkdir(exist_ok=True)
+            
+            # Check if quota was exhausted before processing this file
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                quota_exhausted = True
+                print(f'\n🛑 DAILY QUOTA LIMIT REACHED for Process {process_id + 1} - Stopping before processing remaining files')
+                print(f'   📄 Next file would have been: {current_file}')
+                break
             
             # Announce CAO once
             announce_cao_once(cao_number, context)
@@ -1765,10 +2477,13 @@ def run_extraction_pipeline():
             # Process file (retry logic is handled inside process_single_file/extract_with_markdown_upload)
             should_continue = process_single_file(markdown_file, cao_number, output_folder, context, total_files, args.hang_threshold, args.heartbeat)
             if not should_continue:
+                # Check if it stopped due to quota exhaustion
+                if process_id in process_quota_flags and process_quota_flags[process_id]:
+                    quota_exhausted = True
                 break
         
         # Display final results
-        display_final_results(context)
+        display_final_results(context, quota_exhausted=quota_exhausted)
         
     except KeyboardInterrupt:
         process_id_str = f"Process {process_id + 1}" if process_id is not None else "Process ?"
@@ -1834,9 +2549,9 @@ def run_extraction_pipeline():
             sys.exit(0)
         
         # For daily quota or fatal errors, exit gracefully
-        print(f'\n{'='*80}')
+        print(f'\n{"="*80}')
         print(f'❌ FATAL ERROR in {process_id_str}')
-        print(f'{'='*80}')
+        print(f'{"="*80}')
         print(f'📋 Error Type: {type(e).__name__}')
         print(f'📋 Error Message: {e}')
         
@@ -1868,9 +2583,9 @@ def run_extraction_pipeline():
             print(f'\n💡 This appears to be an unexpected fatal error. Check the traceback below for details.')
         
         print(f'\n📋 Full Traceback:')
-        print(f'{'─'*80}')
+        print(f"{'-'*80}")
         traceback.print_exc()
-        print(f'{'─'*80}')
+        print(f"{'-'*80}")
         
         # Try to log the error
         try:

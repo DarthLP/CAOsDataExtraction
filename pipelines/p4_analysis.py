@@ -73,11 +73,9 @@ import time
 import argparse
 import fcntl
 import re
-from enum import Enum
 from pathlib import Path
-from types import NoneType
 from typing import List, Optional, Tuple, Dict, Any, Literal
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 # Add the parent directory to Python path so we can import utils
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -85,7 +83,6 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # Third-party imports for environment variables, file locking, and data validation
 import pandas as pd
 import yaml
-from pydantic import BaseModel, Field, ConfigDict, conint, constr
 from dotenv import load_dotenv
 
 # Google Gemini API imports
@@ -97,10 +94,10 @@ from monitoring.monitoring_3_1 import PerformanceMonitor
 
 # Import schema definitions
 from schema.salary_schema import (
-    Amount, AmountRange, SalaryPoint, SalaryRow, SalaryExtractionSchema, SALARY_PROMPT
+    SalaryRow, SalaryExtractionSchema, SALARY_PROMPT
 )
 from schema.salary_schema_compact import (
-    SalaryPointCompact, SalaryRowCompact, SalaryExtractionSchemaCompact
+    SalaryExtractionSchemaCompact
 )
 from schema.non_salary_schema import (
     GeneralInfo, BonusesInfo, WageScalesInfo, PensionInfo, LeaveInfo, 
@@ -209,6 +206,30 @@ def validate_input_paths(config: AnalysisConfig, process_id: int = 0):
 # =============================================================================
 # LLM CLIENT FUNCTIONS
 # =============================================================================
+
+def get_safety_settings():
+    """
+    Get safety settings for Gemini API calls.
+    Returns a list of SafetySetting objects with all categories set to BLOCK_NONE.
+    """
+    return [
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        )
+    ]
 def setup_environment(key_number: int = 1) -> tuple[str, int]:
     """
     Setup environment variables and API key.
@@ -750,6 +771,29 @@ def is_file_in_truncated_folder(filename: str, cao_number: str) -> bool:
     return expected_truncated_file.exists()
 
 
+def is_file_in_truncated_2_folder(filename: str, cao_number: str) -> bool:
+    """
+    Check if a file exists in the max_tokens_truncated_2 folder.
+    
+    Args:
+        filename: Original filename (e.g., "CAO_file_extract.json")
+        cao_number: CAO number for the file
+        
+    Returns:
+        bool: True if the file exists in truncated_2 folder, False otherwise
+    """
+    truncated_dir = Path("performance_logs/llm_analysis/max_tokens_truncated_2")
+    
+    if not truncated_dir.exists():
+        return False
+    
+    # Build expected truncated filename: {cao_number}_{clean_filename}_truncated.txt
+    clean_filename = extract_clean_filename(filename)
+    expected_truncated_file = truncated_dir / f"{cao_number}_{clean_filename}_truncated.txt"
+    
+    return expected_truncated_file.exists()
+
+
 def save_failed_attempt_8(response_text: str, error_message: str, filename: str, cao_number: str = None):
     """
     Save failed 8th attempt response to max_tokens_truncated_2 folder for debugging.
@@ -847,11 +891,6 @@ def log_analysis_error(filename: str, error: str, raw_output: str = None):
         f.write("-" * 80 + "\n")
 
 
-class ModelOutputParseError(Exception):
-    """Custom exception for model output parsing errors."""
-    pass
-
-
 # =============================================================================
 # LLM PROMPT TEMPLATES
 # =============================================================================
@@ -859,6 +898,7 @@ class ModelOutputParseError(Exception):
 
 def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None, cao_number: str = None) -> dict:
     """Extract salary information from JSON using LLM."""
+    global process_quota_flags
     
     # Check if file is in truncated folder - if so, skip directly to compact schema attempts
     use_compact_schema_from_start = is_file_in_truncated_folder(filename, cao_number) if cao_number else False
@@ -921,10 +961,48 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
     
     if not salary_text.strip():
         print(f'  DEBUG: No salary text found!')
-        return []
+        # Log that no salary information was found in the source JSON
+        if context and 'performance_monitor' in context:
+            file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+            context['performance_monitor'].log_analysis(
+                filename=filename,
+                file_size_mb=file_size_mb,
+                processing_time=0.0,  # No API call made
+                usage_metadata=None,  # No API call made
+                success=True,  # Not a failure, just no salary data available
+                analysis_type="salary",
+                error_message="No salary information found in source JSON",
+                api_key_used=context.get('key_number', 1),
+                process_id=context.get('process_id', 0),
+                cao_number=cao_number,
+                model="gemini-2.5-flash",
+                parameters={"no_salary_data": True},
+                allow_duplicates=False
+            )
+        # Return empty dict structure for "no salary data" case - this is valid and should be saved
+        return {"salary_information": []}
     
     if not check_token_limit(salary_text, filename):
-        return []
+        # Log token limit failure to performance monitor
+        if context and 'performance_monitor' in context:
+            file_size_mb = len(str(json_obj)) / (1024 * 1024)
+            context['performance_monitor'].log_analysis(
+                filename=filename,
+                file_size_mb=file_size_mb,
+                processing_time=0.0,
+                usage_metadata=None,
+                success=False,
+                analysis_type="salary",
+                error_message="Token limit check failed - file too large",
+                api_key_used=context.get('key_number', 1),
+                process_id=context.get('process_id', 0),
+                cao_number=cao_number,
+                model="gemini-2.5-flash",
+                parameters={"token_limit_exceeded": True},
+                allow_duplicates=False
+            )
+        # Return None for token limit failure - don't save this
+        return None
     
     try:
         base_prompt = SALARY_PROMPT.format(filename=filename, source_json=salary_text)
@@ -935,24 +1013,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
     
     
     # Use proper safety settings format for newer google-genai API
-    safety_settings = [
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
-            threshold=types.HarmBlockThreshold.BLOCK_NONE
-        ),
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-            threshold=types.HarmBlockThreshold.BLOCK_NONE
-        ),
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-            threshold=types.HarmBlockThreshold.BLOCK_NONE
-        ),
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-            threshold=types.HarmBlockThreshold.BLOCK_NONE
-        )
-    ]
+    safety_settings = get_safety_settings()
     
     # Skip initial attempt if using compact schema from start
     last_error = None
@@ -977,11 +1038,33 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
         try:
             print(f'  DEBUG: Making API call...')
             start_time = time.time()
-            response = client.models.generate_content(
-                model=MODEL,
-                contents=base_prompt,
-                config=config
-            )
+            try:
+                response = client.models.generate_content(
+                    model=MODEL,
+                    contents=base_prompt,
+                    config=config
+                )
+            except Exception as api_error:
+                # Defensive exception handling for API calls that escape retry loops
+                import traceback
+                error_type = type(api_error).__name__
+                error_msg = str(api_error)
+                print(f'  🚨 UNEXPECTED API ERROR during salary extraction (attempt {attempt_index + 1}): {error_type}: {error_msg}')
+                print(f'  📋 This error occurred during the API call itself and will be handled by retry logic')
+                # Log to file for debugging
+                try:
+                    error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+                    Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                    with open(error_log_path, 'a', encoding='utf-8') as f:
+                        f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Process {context.get('process_id', 0) if context else 0} - API ERROR (salary extraction)\n")
+                        f.write(f"File: {filename}\n")
+                        f.write(f"Error Type: {error_type}\n")
+                        f.write(f"Error Message: {error_msg}\n")
+                        f.write(f"Traceback:\n{traceback.format_exc()}\n\n")
+                except Exception:
+                    pass  # Don't fail on logging failure
+                # Re-raise so existing retry logic can handle it
+                raise
             processing_time = time.time() - start_time
             
             
@@ -1038,7 +1121,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                         # Validate against schema
                         if 'salary_information' in parsed_json:
                             salary_schema = SalaryExtractionSchema(**parsed_json)
-                            result = [row.model_dump() for row in salary_schema.salary_information]
+                            result = {"salary_information": [row.model_dump() for row in salary_schema.salary_information]}
                             return result
                         else:
                             log_analysis_error(filename, f"No salary_information key in parsed JSON. Available keys: {list(parsed_json.keys())}", str(parsed_json))
@@ -1049,19 +1132,36 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                             import re
                             salary_match = re.search(r'"salary_information":\s*\[(.*?)\]', response.text, re.DOTALL)
                             if salary_match:
-                                salary_content = salary_match.group(1)
-                                # Try to parse individual salary objects
-                                # This is a simplified approach - in production you might want more sophisticated parsing
+                                # Partial salary data found but couldn't parse - log error
                                 log_analysis_error(filename, f"Partial salary data found but couldn't parse: {e}", response.text[:1000])
                             else:
                                 log_analysis_error(filename, f"JSON parsing failed and no salary data found: {e}", response.text[:1000])
                         except Exception as parse_error:
-                            log_analysis_error(filename, f"Complete parsing failure: {e}", response.text[:1000])
+                            log_analysis_error(filename, f"Complete parsing failure: {parse_error}", response.text[:1000])
                     except Exception as e:
                         log_analysis_error(filename, f"Schema validation failed: {e}", response.text[:1000])
                 else:
                     log_analysis_error(filename, "No structured output received from model", "")
-                    return []
+                    # Log to performance monitor before returning
+                    if context and 'performance_monitor' in context:
+                        file_size_mb = len(str(json_obj)) / (1024 * 1024)
+                        context['performance_monitor'].log_analysis(
+                            filename=filename,
+                            file_size_mb=file_size_mb,
+                            processing_time=processing_time if 'processing_time' in locals() else 0.0,
+                            usage_metadata=getattr(response, 'usage_metadata', None) if 'response' in locals() else None,
+                            success=False,
+                            analysis_type="salary",
+                            error_message="No structured output received from model",
+                            api_key_used=context.get('key_number', 1),
+                            process_id=context.get('process_id', 0),
+                            cao_number=cao_number,
+                            model="gemini-2.5-flash",
+                            parameters={"no_structured_output": True},
+                            allow_duplicates=False
+                        )
+                    # Return None for no structured output - don't save this
+                    return None
                 
         except Exception as e:
             last_error = e  # Capture the initial error
@@ -1081,6 +1181,12 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
     
     attempt_index = 0
     while attempt_index < len(attempts_to_try):
+        # Check quota exhaustion at START of each retry attempt (before API call)
+        process_id = context.get('process_id', 0) if context else 0
+        if process_id in process_quota_flags and process_quota_flags[process_id]:
+            print(f'  🛑 Quota exhausted detected at start of retry loop, stopping retries')
+            break
+        
         attempt = attempts_to_try[attempt_index]
         try:
             # Determine which schema to use: compact for attempts 5-7, regular for 0-4
@@ -1121,24 +1227,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
             # print(f'  DEBUG: Model params: {adjusted_params}')
             
             # Use proper safety settings format for newer google-genai API
-            safety_settings = [
-                types.SafetySetting(
-                    category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
-                    threshold=types.HarmBlockThreshold.BLOCK_NONE
-                ),
-                types.SafetySetting(
-                    category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-                    threshold=types.HarmBlockThreshold.BLOCK_NONE
-                ),
-                types.SafetySetting(
-                    category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-                    threshold=types.HarmBlockThreshold.BLOCK_NONE
-                ),
-                types.SafetySetting(
-                    category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-                    threshold=types.HarmBlockThreshold.BLOCK_NONE
-                )
-            ]
+            safety_settings = get_safety_settings()
             
             # Prepare API configuration
             config = {
@@ -1160,11 +1249,33 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
             print(f'  DEBUG: Making API call...')
             
             start_time = time.time()
-            response = client.models.generate_content(
-                model=MODEL,
-                contents=prompt,
-                config=config
-            )
+            try:
+                response = client.models.generate_content(
+                    model=MODEL,
+                    contents=prompt,
+                    config=config
+                )
+            except Exception as api_error:
+                # Defensive exception handling for API calls that escape retry loops
+                import traceback
+                error_type = type(api_error).__name__
+                error_msg = str(api_error)
+                print(f'  🚨 UNEXPECTED API ERROR during salary extraction (attempt {attempt_index + 1}): {error_type}: {error_msg}')
+                print(f'  📋 This error occurred during the API call itself and will be handled by retry logic')
+                # Log to file for debugging
+                try:
+                    error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+                    Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                    with open(error_log_path, 'a', encoding='utf-8') as f:
+                        f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Process {context.get('process_id', 0) if context else 0} - API ERROR (salary extraction)\n")
+                        f.write(f"File: {filename}\n")
+                        f.write(f"Error Type: {error_type}\n")
+                        f.write(f"Error Message: {error_msg}\n")
+                        f.write(f"Traceback:\n{traceback.format_exc()}\n\n")
+                except Exception:
+                    pass  # Don't fail on logging failure
+                # Re-raise so existing retry logic can handle it
+                raise
             processing_time = time.time() - start_time
             
             print(f'  DEBUG: API response received')
@@ -1254,6 +1365,8 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                             return result
                     except Exception as parse_error:
                         log_analysis_error(filename, f"Manual parsing failed ({schema_type} schema): {parse_error}", response.text[:1000] if hasattr(response, 'text') else "")
+                        # Re-raise to trigger retry logic
+                        raise
                     
         except Exception as e:
             last_error = e  # Update last error for each attempt
@@ -1262,7 +1375,6 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
             print(f'  DEBUG: Attempt {attempt + 1} failed: {type(e).__name__}: {e}')
             
             # Check if quota was exhausted during this attempt (before calling handle_llm_errors)
-            global process_quota_flags
             process_id = context.get('process_id', 0) if context else 0
             if process_id in process_quota_flags and process_quota_flags[process_id]:
                 print(f'  🛑 Quota exhausted during salary extraction, stopping retries')
@@ -1293,8 +1405,22 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                     else:
                         break  # Don't retry
                 else:
-                    # For attempts 5-7, continue retrying (no handle_llm_errors call)
-                    # But check for quota exhaustion
+                    # For attempts 5-7, check for quota errors and set flag if needed
+                    # (handle_llm_errors is not called for these attempts, so we need to check manually)
+                    if any(keyword in error_str.lower() for keyword in ['quota', 'rate limit', 'too many requests', '429', 'resource_exhausted']):
+                        # Check if it's a daily quota limit
+                        is_daily_quota_limit = (
+                            'perday' in error_str.lower() or 'daily' in error_str.lower() or 
+                            'generaterequestsperday' in error_str.lower() or 
+                            '3000000' in error_str or
+                            ('free_tier_requests' in error_str.lower() and ('limit: 250' in error_str or 'limit:250' in error_str))
+                        )
+                        if is_daily_quota_limit:
+                            print(f'  🚨 DAILY QUOTA LIMIT REACHED (429) on attempt {attempt + 1} - Process will shutdown gracefully')
+                            process_quota_flags[process_id] = True
+                            print(f'  🛑 Daily quota flag set for process {process_id} - will stop this process')
+                    
+                    # Check for quota exhaustion
                     if process_id in process_quota_flags and process_quota_flags[process_id]:
                         print(f'  🛑 Quota exhausted, stopping retries')
                         break
@@ -1303,15 +1429,46 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
             else:
                 # Last attempt failed
                 if attempt == 7:
-                    # Save failed 8th attempt to max_tokens_truncated_2
-                    response_text = ""
-                    if hasattr(e, 'response') and hasattr(e.response, 'text'):
-                        response_text = e.response.text
-                    elif 'response' in locals() and hasattr(response, 'text'):
-                        response_text = response.text
+                    # Check if quota was exhausted (don't save quota errors)
+                    process_id = context.get('process_id', 0) if context else 0
+                    quota_exhausted = process_id in process_quota_flags and process_quota_flags[process_id]
                     
-                    save_failed_attempt_8(response_text, error_str, filename, cao_number)
-                    log_analysis_error(filename, f"All retry attempts failed (8th attempt with compact schema): {type(e).__name__}: {e} (saved to max_tokens_truncated_2)", response_text[:1000] if response_text else "")
+                    # Only save to max_tokens_truncated_2 if it's actually a truncation error
+                    # Skip saving if it's a 503 error (overloaded model), 429 error (quota), or other non-truncation errors
+                    is_truncation_error = (
+                        "Response truncated - incomplete JSON" in error_str or 
+                        "Max tokens" in error_str or
+                        "truncated" in error_str.lower() or
+                        "max_tokens" in error_str.lower()
+                    )
+                    is_503_error = (
+                        "503" in error_str or 
+                        "UNAVAILABLE" in error_str or 
+                        "overloaded" in error_str.lower()
+                    )
+                    is_429_error = (
+                        "429" in error_str or 
+                        "RESOURCE_EXHAUSTED" in error_str or 
+                        "resource_exhausted" in error_str.lower() or
+                        "quota" in error_str.lower() and ("exceeded" in error_str.lower() or "limit" in error_str.lower())
+                    )
+                    
+                    if is_truncation_error and not is_503_error and not is_429_error and not quota_exhausted:
+                        # Save failed 8th attempt to max_tokens_truncated_2 (only for truncation errors)
+                        response_text = ""
+                        if hasattr(e, 'response') and hasattr(e.response, 'text'):
+                            response_text = e.response.text
+                        elif 'response' in locals() and hasattr(response, 'text'):
+                            response_text = response.text
+                        
+                        save_failed_attempt_8(response_text, error_str, filename, cao_number)
+                        log_analysis_error(filename, f"All retry attempts failed (8th attempt with compact schema): {type(e).__name__}: {e} (saved to max_tokens_truncated_2)", response_text[:1000] if response_text else "")
+                    else:
+                        # Don't save 503 errors, 429 errors, quota exhaustion, or other non-truncation errors to max_tokens_truncated_2
+                        if quota_exhausted or is_429_error:
+                            log_analysis_error(filename, f"All retry attempts failed (8th attempt with compact schema) - QUOTA EXHAUSTED: {type(e).__name__}: {e}", "")
+                        else:
+                            log_analysis_error(filename, f"All retry attempts failed (8th attempt with compact schema): {type(e).__name__}: {e}", "")
                 
                 print(f'  DEBUG: All attempts failed')
                 break
@@ -1371,6 +1528,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
 
 def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None, cao_number: str = None) -> dict:
     """Extract non-salary part 1 information (General, Bonuses, Wage Scales, Pension, Termination) from JSON using LLM."""
+    global process_quota_flags
     
     print(f'  Part 1 extraction starting for {filename}')
     
@@ -1391,24 +1549,7 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
     model_params = get_model_parameters()
     
     # Use proper safety settings format for newer google-genai API
-    safety_settings = [
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
-            threshold=types.HarmBlockThreshold.BLOCK_NONE
-        ),
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-            threshold=types.HarmBlockThreshold.BLOCK_NONE
-        ),
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-            threshold=types.HarmBlockThreshold.BLOCK_NONE
-        ),
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-            threshold=types.HarmBlockThreshold.BLOCK_NONE
-        )
-    ]
+    safety_settings = get_safety_settings()
     
     config = {
         "temperature": model_params["temperature"],
@@ -1425,11 +1566,33 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
     
     try:
         start_time = time.time()
-        response = client.models.generate_content(
-            model=MODEL,
-            contents=base_prompt,
-            config=config
-        )
+        try:
+            response = client.models.generate_content(
+                model=MODEL,
+                contents=base_prompt,
+                config=config
+            )
+        except Exception as api_error:
+            # Defensive exception handling for API calls that escape retry loops
+            import traceback
+            error_type = type(api_error).__name__
+            error_msg = str(api_error)
+            print(f'  🚨 UNEXPECTED API ERROR during part 1 extraction: {error_type}: {error_msg}')
+            print(f'  📋 This error occurred during the API call itself and will be handled by retry logic')
+            # Log to file for debugging
+            try:
+                error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+                Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                with open(error_log_path, 'a', encoding='utf-8') as f:
+                    f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Process {context.get('process_id', 0) if context else 0} - API ERROR (part 1 extraction)\n")
+                    f.write(f"File: {filename}\n")
+                    f.write(f"Error Type: {error_type}\n")
+                    f.write(f"Error Message: {error_msg}\n")
+                    f.write(f"Traceback:\n{traceback.format_exc()}\n\n")
+            except Exception:
+                pass  # Don't fail on logging failure
+            # Re-raise so existing retry logic can handle it
+            raise
         processing_time = time.time() - start_time
         
         # Check for truncation
@@ -1510,6 +1673,12 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
         
         # Retry logic with proper attempt tracking
         for attempt in range(model_params["max_retries"] + 1):
+            # Check quota exhaustion at START of each retry attempt (before API call)
+            process_id = context.get('process_id', 0) if context else 0
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  🛑 Quota exhausted detected at start of part 1 retry loop, stopping retries')
+                break
+            
             try:
                 # Get adjusted parameters for this attempt
                 adjusted_params = get_adjusted_parameters(attempt)
@@ -1528,24 +1697,7 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
                     prompt += f"\n\n{retry_guidance}"
                                 
                 # Use proper safety settings format for newer google-genai API
-                safety_settings = [
-                    types.SafetySetting(
-                        category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
-                        threshold=types.HarmBlockThreshold.BLOCK_NONE
-                    ),
-                    types.SafetySetting(
-                        category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-                        threshold=types.HarmBlockThreshold.BLOCK_NONE
-                    ),
-                    types.SafetySetting(
-                        category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-                        threshold=types.HarmBlockThreshold.BLOCK_NONE
-                    ),
-                    types.SafetySetting(
-                        category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-                        threshold=types.HarmBlockThreshold.BLOCK_NONE
-                    )
-                ]
+                safety_settings = get_safety_settings()
                 
                 # Prepare API configuration
                 config = {
@@ -1562,11 +1714,33 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
                 }
                 
                 start_time = time.time()
-                response = client.models.generate_content(
-                    model=MODEL,
-                    contents=prompt,
-                    config=config
-                )
+                try:
+                    response = client.models.generate_content(
+                        model=MODEL,
+                        contents=prompt,
+                        config=config
+                    )
+                except Exception as api_error:
+                    # Defensive exception handling for API calls that escape retry loops
+                    import traceback
+                    error_type = type(api_error).__name__
+                    error_msg = str(api_error)
+                    print(f'  🚨 UNEXPECTED API ERROR during part 1 extraction (attempt {attempt + 1}): {error_type}: {error_msg}')
+                    print(f'  📋 This error occurred during the API call itself and will be handled by retry logic')
+                    # Log to file for debugging
+                    try:
+                        error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+                        Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                        with open(error_log_path, 'a', encoding='utf-8') as f:
+                            f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Process {context.get('process_id', 0) if context else 0} - API ERROR (part 1 extraction)\n")
+                            f.write(f"File: {filename}\n")
+                            f.write(f"Error Type: {error_type}\n")
+                            f.write(f"Error Message: {error_msg}\n")
+                            f.write(f"Traceback:\n{traceback.format_exc()}\n\n")
+                    except Exception:
+                        pass  # Don't fail on logging failure
+                    # Re-raise so existing retry logic can handle it
+                    raise
                 processing_time = time.time() - start_time
                 
                 # Check for truncation
@@ -1618,7 +1792,6 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
                 print(f'  Part 1: Attempt {attempt + 1} failed: {type(e).__name__}: {e}')
                 
                 # Check if quota was exhausted during this attempt (before calling handle_llm_errors)
-                global process_quota_flags
                 process_id = context.get('process_id', 0) if context else 0
                 if process_id in process_quota_flags and process_quota_flags[process_id]:
                     print(f'  🛑 Quota exhausted during part 1 extraction, stopping retries')
@@ -1675,6 +1848,7 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
 
 def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None, cao_number: str = None) -> dict:
     """Extract non-salary part 2 information (Leave, Overtime, Training) from JSON using LLM."""
+    global process_quota_flags
     
     print(f'  Part 2 extraction starting for {filename}')
     
@@ -1695,24 +1869,7 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
     model_params = get_model_parameters()
     
     # Use proper safety settings format for newer google-genai API
-    safety_settings = [
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
-            threshold=types.HarmBlockThreshold.BLOCK_NONE
-        ),
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-            threshold=types.HarmBlockThreshold.BLOCK_NONE
-        ),
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-            threshold=types.HarmBlockThreshold.BLOCK_NONE
-        ),
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-            threshold=types.HarmBlockThreshold.BLOCK_NONE
-        )
-    ]
+    safety_settings = get_safety_settings()
     
     config = {
         "temperature": model_params["temperature"],
@@ -1729,11 +1886,33 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
     
     try:
         start_time = time.time()
-        response = client.models.generate_content(
-            model=MODEL,
-            contents=base_prompt,
-            config=config
-        )
+        try:
+            response = client.models.generate_content(
+                model=MODEL,
+                contents=base_prompt,
+                config=config
+            )
+        except Exception as api_error:
+            # Defensive exception handling for API calls that escape retry loops
+            import traceback
+            error_type = type(api_error).__name__
+            error_msg = str(api_error)
+            print(f'  🚨 UNEXPECTED API ERROR during part 2 extraction: {error_type}: {error_msg}')
+            print(f'  📋 This error occurred during the API call itself and will be handled by retry logic')
+            # Log to file for debugging
+            try:
+                error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+                Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                with open(error_log_path, 'a', encoding='utf-8') as f:
+                    f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Process {context.get('process_id', 0) if context else 0} - API ERROR (part 2 extraction)\n")
+                    f.write(f"File: {filename}\n")
+                    f.write(f"Error Type: {error_type}\n")
+                    f.write(f"Error Message: {error_msg}\n")
+                    f.write(f"Traceback:\n{traceback.format_exc()}\n\n")
+            except Exception:
+                pass  # Don't fail on logging failure
+            # Re-raise so existing retry logic can handle it
+            raise
         processing_time = time.time() - start_time
         
         # Log detailed response information
@@ -1809,6 +1988,12 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
         
         # Retry logic with proper attempt tracking
         for attempt in range(model_params["max_retries"] + 1):
+            # Check quota exhaustion at START of each retry attempt (before API call)
+            process_id = context.get('process_id', 0) if context else 0
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  🛑 Quota exhausted detected at start of part 2 retry loop, stopping retries')
+                break
+            
             try:
                 # Get adjusted parameters for this attempt
                 adjusted_params = get_adjusted_parameters(attempt)
@@ -1827,24 +2012,7 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
                     prompt += f"\n\n{retry_guidance}"
                                 
                 # Use proper safety settings format for newer google-genai API
-                safety_settings = [
-                    types.SafetySetting(
-                        category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
-                        threshold=types.HarmBlockThreshold.BLOCK_NONE
-                    ),
-                    types.SafetySetting(
-                        category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-                        threshold=types.HarmBlockThreshold.BLOCK_NONE
-                    ),
-                    types.SafetySetting(
-                        category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-                        threshold=types.HarmBlockThreshold.BLOCK_NONE
-                    ),
-                    types.SafetySetting(
-                        category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-                        threshold=types.HarmBlockThreshold.BLOCK_NONE
-                    )
-                ]
+                safety_settings = get_safety_settings()
                 
                 # Prepare API configuration
                 config = {
@@ -1863,11 +2031,33 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
                 print(f'  DEBUG: Making part 2 API call...')
                 
                 start_time = time.time()
-                response = client.models.generate_content(
-                    model=MODEL,
-                    contents=prompt,
-                    config=config
-                )
+                try:
+                    response = client.models.generate_content(
+                        model=MODEL,
+                        contents=prompt,
+                        config=config
+                    )
+                except Exception as api_error:
+                    # Defensive exception handling for API calls that escape retry loops
+                    import traceback
+                    error_type = type(api_error).__name__
+                    error_msg = str(api_error)
+                    print(f'  🚨 UNEXPECTED API ERROR during part 2 extraction (attempt {attempt + 1}): {error_type}: {error_msg}')
+                    print(f'  📋 This error occurred during the API call itself and will be handled by retry logic')
+                    # Log to file for debugging
+                    try:
+                        error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+                        Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                        with open(error_log_path, 'a', encoding='utf-8') as f:
+                            f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Process {context.get('process_id', 0) if context else 0} - API ERROR (part 2 extraction)\n")
+                            f.write(f"File: {filename}\n")
+                            f.write(f"Error Type: {error_type}\n")
+                            f.write(f"Error Message: {error_msg}\n")
+                            f.write(f"Traceback:\n{traceback.format_exc()}\n\n")
+                    except Exception:
+                        pass  # Don't fail on logging failure
+                    # Re-raise so existing retry logic can handle it
+                    raise
                 processing_time = time.time() - start_time
                 
                 print(f'  DEBUG: Part 2 API response received')
@@ -1918,7 +2108,6 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
                 print(f'  DEBUG: Part 2 attempt {attempt + 1} failed: {type(e).__name__}: {e}')
                 
                 # Check if quota was exhausted during this attempt (before calling handle_llm_errors)
-                global process_quota_flags
                 process_id = context.get('process_id', 0) if context else 0
                 if process_id in process_quota_flags and process_quota_flags[process_id]:
                     print(f'  🛑 Quota exhausted during part 2 extraction, stopping retries')
@@ -1975,6 +2164,7 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
 
 def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None, cao_number: str = None) -> dict:
     """Extract non-salary part 3 information (Homeoffice, Contract Type, Safety, Childcare, AI, Fringe Benefits) from JSON using LLM."""
+    global process_quota_flags
     
     print(f'  Part 3 extraction starting for {filename}')
     
@@ -1995,24 +2185,7 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
     model_params = get_model_parameters()
     
     # Use proper safety settings format for newer google-genai API
-    safety_settings = [
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
-            threshold=types.HarmBlockThreshold.BLOCK_NONE
-        ),
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-            threshold=types.HarmBlockThreshold.BLOCK_NONE
-        ),
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-            threshold=types.HarmBlockThreshold.BLOCK_NONE
-        ),
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-            threshold=types.HarmBlockThreshold.BLOCK_NONE
-        )
-    ]
+    safety_settings = get_safety_settings()
     
     config = {
         "temperature": model_params["temperature"],
@@ -2029,11 +2202,33 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
     
     try:
         start_time = time.time()
-        response = client.models.generate_content(
-            model=MODEL,
-            contents=base_prompt,
-            config=config
-        )
+        try:
+            response = client.models.generate_content(
+                model=MODEL,
+                contents=base_prompt,
+                config=config
+            )
+        except Exception as api_error:
+            # Defensive exception handling for API calls that escape retry loops
+            import traceback
+            error_type = type(api_error).__name__
+            error_msg = str(api_error)
+            print(f'  🚨 UNEXPECTED API ERROR during part 3 extraction: {error_type}: {error_msg}')
+            print(f'  📋 This error occurred during the API call itself and will be handled by retry logic')
+            # Log to file for debugging
+            try:
+                error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+                Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                with open(error_log_path, 'a', encoding='utf-8') as f:
+                    f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Process {context.get('process_id', 0) if context else 0} - API ERROR (part 3 extraction)\n")
+                    f.write(f"File: {filename}\n")
+                    f.write(f"Error Type: {error_type}\n")
+                    f.write(f"Error Message: {error_msg}\n")
+                    f.write(f"Traceback:\n{traceback.format_exc()}\n\n")
+            except Exception:
+                pass  # Don't fail on logging failure
+            # Re-raise so existing retry logic can handle it
+            raise
         processing_time = time.time() - start_time
         
         # Log detailed response information
@@ -2117,6 +2312,12 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
         
         # Retry logic with proper attempt tracking
         for attempt in range(model_params["max_retries"] + 1):
+            # Check quota exhaustion at START of each retry attempt (before API call)
+            process_id = context.get('process_id', 0) if context else 0
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  🛑 Quota exhausted detected at start of part 3 retry loop, stopping retries')
+                break
+            
             try:
                 # Get adjusted parameters for this attempt
                 adjusted_params = get_adjusted_parameters(attempt)
@@ -2135,24 +2336,7 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
                     prompt += f"\n\n{retry_guidance}"
                                 
                 # Use proper safety settings format for newer google-genai API
-                safety_settings = [
-                    types.SafetySetting(
-                        category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
-                        threshold=types.HarmBlockThreshold.BLOCK_NONE
-                    ),
-                    types.SafetySetting(
-                        category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-                        threshold=types.HarmBlockThreshold.BLOCK_NONE
-                    ),
-                    types.SafetySetting(
-                        category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-                        threshold=types.HarmBlockThreshold.BLOCK_NONE
-                    ),
-                    types.SafetySetting(
-                        category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-                        threshold=types.HarmBlockThreshold.BLOCK_NONE
-                    )
-                ]
+                safety_settings = get_safety_settings()
                 
                 # Prepare API configuration
                 config = {
@@ -2171,11 +2355,33 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
                 print(f'  DEBUG: Making part 3 API call...')
                 
                 start_time = time.time()
-                response = client.models.generate_content(
-                    model=MODEL,
-                    contents=prompt,
-                    config=config
-                )
+                try:
+                    response = client.models.generate_content(
+                        model=MODEL,
+                        contents=prompt,
+                        config=config
+                    )
+                except Exception as api_error:
+                    # Defensive exception handling for API calls that escape retry loops
+                    import traceback
+                    error_type = type(api_error).__name__
+                    error_msg = str(api_error)
+                    print(f'  🚨 UNEXPECTED API ERROR during part 3 extraction (attempt {attempt + 1}): {error_type}: {error_msg}')
+                    print(f'  📋 This error occurred during the API call itself and will be handled by retry logic')
+                    # Log to file for debugging
+                    try:
+                        error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+                        Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                        with open(error_log_path, 'a', encoding='utf-8') as f:
+                            f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Process {context.get('process_id', 0) if context else 0} - API ERROR (part 3 extraction)\n")
+                            f.write(f"File: {filename}\n")
+                            f.write(f"Error Type: {error_type}\n")
+                            f.write(f"Error Message: {error_msg}\n")
+                            f.write(f"Traceback:\n{traceback.format_exc()}\n\n")
+                    except Exception:
+                        pass  # Don't fail on logging failure
+                    # Re-raise so existing retry logic can handle it
+                    raise
                 processing_time = time.time() - start_time
                 
                 print(f'  DEBUG: Part 3 API response received')
@@ -2226,7 +2432,6 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
                 print(f'  DEBUG: Part 3 attempt {attempt + 1} failed: {type(e).__name__}: {e}')
                 
                 # Check if quota was exhausted during this attempt (before calling handle_llm_errors)
-                global process_quota_flags
                 process_id = context.get('process_id', 0) if context else 0
                 if process_id in process_quota_flags and process_quota_flags[process_id]:
                     print(f'  🛑 Quota exhausted during part 3 extraction, stopping retries')
@@ -2445,11 +2650,29 @@ def save_extraction_json(data: dict, filename: str, extraction_type: str, cao_nu
         bool: True if saved successfully, False if validation failed or save failed
     """
     try:
+        # For salary extraction, check if salary_information is empty
+        # Only allow empty arrays if it's a legitimate "no salary data" case
+        # Error cases (token limit, no structured output) now return None, so they won't reach here
+        if extraction_type == 'salary':
+            if isinstance(data, dict) and 'salary_information' in data:
+                if isinstance(data['salary_information'], list) and len(data['salary_information']) == 0:
+                    # Empty array - this is allowed for legitimate "no salary data" cases
+                    # Error cases now return None, so any empty array reaching here is legitimate
+                    pass  # Allow empty arrays for salary (legitimate "no salary data" case)
+            elif isinstance(data, list) and len(data) == 0:
+                # Old format - empty list, don't save (should be dict format)
+                print(f'  ❌ Skipping save: Empty list format not allowed (should be dict with salary_information key)')
+                return False
+            elif data is None:
+                # None means error case - don't save
+                print(f'  ❌ Skipping save: None data indicates error case')
+                return False
+        
         # Validate data before saving
         if not validate_extraction_data(data, extraction_type):
             print(f'  ❌ Validation failed for {extraction_type}: missing required fields')
             print(f'  Expected: {get_required_fields_for_extraction_type(extraction_type)}')
-            print(f'  Found: {list(data.keys())}')
+            print(f'  Found: {list(data.keys()) if isinstance(data, dict) else type(data).__name__}')
             return False
         
         # Create base path
@@ -2550,10 +2773,12 @@ def check_missing_extraction_parts(filename: str, cao_number: str, skip_truncate
     missing['part2'] = not part2_file.exists()
     missing['part3'] = not part3_file.exists()
     
-    # If skip_truncated_salary is enabled and file is in truncated folder, mark salary as not missing
-    if skip_truncated_salary and missing['salary'] and is_file_in_truncated_folder(filename, cao_number):
-        missing['salary'] = False
-        print(f'  {cao_number}: Salary extraction skipped (file in truncated folder)')
+    # If skip_truncated_salary is enabled and file is in truncated folder(s), mark salary as not missing
+    if skip_truncated_salary and missing['salary']:
+        if is_file_in_truncated_folder(filename, cao_number) or is_file_in_truncated_2_folder(filename, cao_number):
+            missing['salary'] = False
+            folder_name = "max_tokens_truncated_2" if is_file_in_truncated_2_folder(filename, cao_number) else "max_tokens_truncated"
+            print(f'  {cao_number}: Salary extraction skipped (file in {folder_name} folder)')
     
     return missing
 
@@ -2561,6 +2786,7 @@ def check_missing_extraction_parts(filename: str, cao_number: str, skip_truncate
 def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapping: dict, 
                        config: AnalysisConfig, context: Dict[str, Any]) -> bool:
     """Process a single JSON file and save LLM extraction results."""
+    global process_quota_flags
     filename = json_file.name
     cao_number = cao_folder.name
     
@@ -2584,7 +2810,6 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
         print(f'  {cao_number}: Processing missing parts: {", ".join(parts_to_process)}')
 
         # Check if quota was exhausted for this process
-        global process_quota_flags
         process_id = context.get('process_id', 0) if context else 0
         if process_id in process_quota_flags and process_quota_flags[process_id]:
             print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
@@ -2592,7 +2817,15 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
 
         # Extract salary information (only if missing)
         if missing_parts['salary']:
+            # Check quota before starting
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
+                return False
             salary_extracted = extract_salary_from_json(json_data, filename, client, context, cao_number)
+            # Check quota after extraction
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
+                return False
             salary_success = salary_extracted is not None
             if salary_success:
                 print(f'  {cao_number}: Salary extraction completed')
@@ -2605,7 +2838,15 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
 
         # Extract non-salary part 1 (only if missing)
         if missing_parts['part1']:
+            # Check quota before starting
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
+                return False
             part1_extracted = extract_nonsalary_part1_from_json(json_data, filename, client, context, cao_number)
+            # Check quota after extraction
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
+                return False
             part1_success = part1_extracted is not None
             if part1_success:
                 print(f'  {cao_number}: Non-salary part 1 extraction completed')
@@ -2618,7 +2859,15 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
 
         # Extract non-salary part 2 (only if missing)
         if missing_parts['part2']:
+            # Check quota before starting
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
+                return False
             part2_extracted = extract_nonsalary_part2_from_json(json_data, filename, client, context, cao_number)
+            # Check quota after extraction
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
+                return False
             part2_success = part2_extracted is not None
             if part2_success:
                 print(f'  {cao_number}: Non-salary part 2 extraction completed')
@@ -2631,7 +2880,15 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
 
         # Extract non-salary part 3 (only if missing)
         if missing_parts['part3']:
+            # Check quota before starting
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
+                return False
             part3_extracted = extract_nonsalary_part3_from_json(json_data, filename, client, context, cao_number)
+            # Check quota after extraction
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
+                return False
             part3_success = part3_extracted is not None
             if part3_success:
                 print(f'  {cao_number}: Non-salary part 3 extraction completed')
@@ -2953,94 +3210,5 @@ def main():
         sys.exit(0)
 
 
-def cli_test_fixture():
-    """
-    CLI helper for testing with fixture files.
-    Usage: python -m p4_analysis --fixture tests/fixtures/example_salary.json
-    """
-    import argparse
-    
-    parser = argparse.ArgumentParser(description='Test p4_analysis with fixture files')
-    parser.add_argument('--fixture', type=str, help='Path to fixture JSON file')
-    parser.add_argument('--key_number', type=int, default=7, help='API key number to use')
-    parser.add_argument('--process_id', type=int, default=0, help='Process ID')
-    parser.add_argument('--total_processes', type=int, default=1, help='Total number of processes')
-    parser.add_argument('--max_files', type=int, help='Maximum number of files to process')
-    
-    args = parser.parse_args()
-    
-    if args.fixture:
-        # Test with fixture file
-        try:
-            with open(args.fixture, 'r', encoding='utf-8') as f:
-                json_text = f.read()
-            
-            print(f"Testing with fixture: {args.fixture}")
-            print("Fixture testing is no longer supported. The old single-pass extraction functions have been removed.")
-            return 1
-            
-            # Save extracted JSON data for analysis
-            base_name = Path(args.fixture).stem
-            save_extraction_json(result['salary_extraction'], base_name, 'salary')
-            save_extraction_json(result['non_salary_extraction'], base_name, 'non_salary')
-            
-            print("\n=== EXTRACTION RESULTS ===")
-            salary_count = len(result['salary_extraction'])
-            # Count only non-empty values in non-salary extraction
-            nonsalary_count = 0
-            for key, value in result['non_salary_extraction'].items():
-                if isinstance(value, dict):
-                    for subkey, subvalue in value.items():
-                        if subvalue and subvalue != "":  # Only count non-empty values
-                            nonsalary_count += 1
-                elif value and value != "":  # Only count non-empty values
-                    nonsalary_count += 1
-            print(f"Salary rows: {salary_count}")
-            print(f"Non-salary fields with data: {nonsalary_count}")
-            
-            print("\n=== SALARY EXTRACTION ===")
-            if salary_count > 0:
-                for i, row in enumerate(result['salary_extraction']):
-                    print(f"Row {i+1}: {row.get('jobgroup', 'N/A')} - {row.get('salary_1', 'N/A')} {row.get('salary_1_unit', '')}")
-            else:
-                print("No salary data extracted")
-            
-            print("\n=== NON-SALARY EXTRACTION ===")
-            has_nonsalary_data = False
-            for key, value in result['non_salary_extraction'].items():
-                if isinstance(value, dict):
-                    has_data = False
-                    for subkey, subvalue in value.items():
-                        if subvalue:  # Only show non-empty values
-                            if not has_data:
-                                print(f"{key}:")
-                                has_data = True
-                                has_nonsalary_data = True
-                            print(f"  {subkey}: {subvalue}")
-                elif value:  # Only show non-empty values
-                    print(f"{key}: {value}")
-                    has_nonsalary_data = True
-            
-            if not has_nonsalary_data:
-                print("No non-salary data extracted")
-            
-            # Determine if extraction was successful
-            total_extracted = salary_count + nonsalary_count
-            if total_extracted > 0:
-                print(f"\n✓ Fixture test completed successfully! Extracted {total_extracted} data points.")
-            else:
-                print(f"\n⚠ Fixture test completed but no data was extracted. Check API quota and retry.")
-                return 1
-            
-        except Exception as e:
-            print(f"✗ Fixture test failed: {e}")
-            return 1
-    else:
-        # Run normal main function
-        main()
-    
-    return 0
-
-
 if __name__ == "__main__":
-    exit(cli_test_fixture())
+    main()

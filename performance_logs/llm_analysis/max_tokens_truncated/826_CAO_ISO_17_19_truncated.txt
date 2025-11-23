@@ -1,0 +1,2671 @@
+TRUNCATED RESPONSE DEBUG INFO
+Original filename: CAO_ISO_17_19_extract.json
+Timestamp: 2025-11-16T21:20:07.832112
+Response length: 116643 characters
+Finish reason: MAX_TOKENS
+================================================================================
+
+{
+  "salary_information": [
+    {
+      "jobgroup": "A",
+      "step": "0",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 1551.6,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 1565.4,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017",
+          "note": "WML amounts and A 0 function years adjusted to WML amounts valid as of July 1, 2017."
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 1565.4,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "note": "WML amounts and A 0 conform to WML amounts valid as of July 1, 2017."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 1565.4,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "note": "WML amounts and A 0 conform to WML amounts valid as of July 1, 2017."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 1565.4,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "note": "WML amounts and A 0 conform to WML amounts valid as of July 1, 2017."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 1565.4,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "note": "WML amounts and A 0 conform to WML amounts valid as of July 1, 2017."
+        }
+      ]
+    },
+    {
+      "jobgroup": "A",
+      "step": "1",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 1846.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 1846.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 1878.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 1885.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 1918.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 1924.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "A",
+      "step": "2",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 1860.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 1860.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 1893.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 1900.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 1933.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 1939.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "A",
+      "step": "3",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 1879.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 1879.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 1912.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 1919.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 1953.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 1959.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Age-based",
+      "age_group": "22 years",
+      "education": "Advanced Vocational Diploma (MBO 3/4)",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2019.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2019.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017",
+          "note": "Age for Statutory Minimum Wage lowered from 23 to 22 years as of July 1, 2017."
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 1881.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 1888.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 1921.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 1927.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Age-based",
+      "age_group": "22 years",
+      "education": "VBO/MAVO/VMBO",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 1765.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 1765.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017",
+          "note": "Age for Statutory Minimum Wage lowered from 23 to 22 years as of July 1, 2017."
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 1453.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 1458.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 1484.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 1489.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "Age-based",
+      "age_group": "22 years",
+      "education": "Vocational Diploma (MBO 2)",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 1939.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 1939.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017",
+          "note": "Age for Statutory Minimum Wage lowered from 23 to 22 years as of July 1, 2017."
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 1676.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 1682.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 1711.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 1716.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "B",
+      "step": "0",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 1898.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 1898.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 1931.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 1938.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 1972.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 1978.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "B",
+      "step": "1",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 1959.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 1959.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 1993.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2000.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2035.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2041.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "B",
+      "step": "2",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 1975.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 1975.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2010.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2017.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2052.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2058.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "B",
+      "step": "3",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 1988.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 1988.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2023.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2030.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2066.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2072.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "B",
+      "step": "4",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2003.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2003.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2038.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2045.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2081.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2087.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "C",
+      "step": "0",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 1977.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 1977.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2012.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2019.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2054.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2060.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "C",
+      "step": "1",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 1994.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 1994.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2029.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2036.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2072.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2078.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "C",
+      "step": "2",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2009.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2009.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2044.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2051.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2087.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2093.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "C",
+      "step": "3",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2025.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2025.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2060.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2067.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2103.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2110.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "C",
+      "step": "4",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2038.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2038.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2074.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2081.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2117.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2124.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "C",
+      "step": "5",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2024.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2024.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2059.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2066.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2102.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2109.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "D",
+      "step": "0",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2019.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2019.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2054.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2061.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2097.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2104.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "D",
+      "step": "1",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2038.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2038.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2074.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2081.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2117.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2124.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "D",
+      "step": "2",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2062.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2062.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2098.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2105.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2142.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2149.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "D",
+      "step": "3",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2079.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2079.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2115.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2122.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2159.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2166.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "D",
+      "step": "4",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2103.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2103.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2140.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2147.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2185.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2192.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "D",
+      "step": "5",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2059.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2059.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2095.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2102.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2139.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2146.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "D",
+      "step": "6",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2043.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2043.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2079.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2086.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2123.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2130.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "E",
+      "step": "0",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2083.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2083.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2119.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2126.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2163.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2170.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "E",
+      "step": "1",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2122.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2122.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2159.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2167.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2205.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2212.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "E",
+      "step": "2",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2162.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2162.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2200.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2208.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2247.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2254.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "E",
+      "step": "3",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2195.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2195.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2233.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2241.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2280.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2287.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "E",
+      "step": "4",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2238.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2238.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2277.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2285.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2325.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2332.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "E",
+      "step": "5",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2121.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2121.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2158.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2166.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2204.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2211.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "E",
+      "step": "6",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2080.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2080.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2116.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2123.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2160.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2167.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "E",
+      "step": "7",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2064.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2064.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2100.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2107.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2144.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2151.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "F",
+      "step": "0",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2188.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2188.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2226.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2234.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2273.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2280.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "F",
+      "step": "1",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2239.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2239.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2278.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2286.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2326.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2333.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "F",
+      "step": "2",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2287.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2287.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2327.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2335.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2376.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2383.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "F",
+      "step": "3",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2336.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2336.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2377.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2385.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2427.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2435.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "F",
+      "step": "4",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2384.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2384.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2426.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2434.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2477.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2485.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "F",
+      "step": "5",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2273.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2273.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2313.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2321.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2362.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2369.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "F",
+      "step": "6",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2155.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2155.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2193.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2201.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2240.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2247.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "F",
+      "step": "7",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2100.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2100.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2137.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2144.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2182.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2189.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "G",
+      "step": "0",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2368.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2368.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2409.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2417.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2459.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2467.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "G",
+      "step": "1",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2417.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2417.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2459.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2468.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2511.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2519.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "G",
+      "step": "2",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2468.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2468.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2511.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2520.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2564.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2572.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "G",
+      "step": "3",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2526.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2526.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2570.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2579.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2624.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2632.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "G",
+      "step": "4",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2574.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2574.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2619.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2628.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2674.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2682.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "G",
+      "step": "5",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2433.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2433.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2476.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-07-01",
+          "amount": 2485.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2018, to July 1, 2018",
+          "inc_pct": 0.35,
+          "note": "Wage increase of January 1, 2018 (0.35%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2018-07-01",
+          "end_date": "2019-01-01",
+          "amount": 2528.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2018, to January 1, 2019",
+          "inc_pct": 1.75,
+          "note": "Wage increase of July 1, 2018 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        },
+        {
+          "start_date": "2019-01-01",
+          "amount": 2536.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from January 1, 2019",
+          "inc_pct": 0.31,
+          "note": "Wage increase of January 1, 2019 (0.31%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years and salary groups B to J."
+        }
+      ]
+    },
+    {
+      "jobgroup": "G",
+      "step": "6",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-05-01",
+          "end_date": "2017-07-01",
+          "amount": 2314.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from May 1, 2017, to July 1, 2017"
+        },
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-01",
+          "amount": 2314.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from July 1, 2017, to August 1, 2017"
+        },
+        {
+          "start_date": "2017-08-01",
+          "end_date": "2018-01-01",
+          "amount": 2355.0,
+          "unit": "monthly",
+          "table_label": "Monthly Salary Table from August 1, 2017, to January 1, 2018",
+          "inc_pct": 1.75,
+          "note": "Wage increase of August 1, 2017 (1.75%) processed in VBO/MAVO/VMBO, vocational diploma, advanced vocational diploma tables, as well as salary group A 1 to 3 function years

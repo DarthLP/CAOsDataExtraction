@@ -1,545 +1,3403 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: Cao Sociaal Werk 2023-2025(gewijzigdper091023)def_extract.json
-Timestamp: 2025-10-19T16:56:28.059580
-Response length: 52847 characters
+Timestamp: 2025-11-15T01:19:55.002738
+Response length: 107574 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
 {
   "salary_information": [
     {
-      "jobgroup": "1",
-      "step_label": "Start",
-      "worker_type": null,
+      "jobgroup": "I/D-job",
+      "step": "0",
+      "worker": "Inflow Job",
       "timeline": [
         {
           "start_date": "2023-07-01",
-          "amount": 1998.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2023",
-          "increase_percent": 7.00,
-          "note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2184.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2024",
-          "increase_percent": 4.00,
-          "note": "From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2184.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2024",
-          "increase_percent": 4.00,
-          "note": "A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2184.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2025",
-          "increase_percent": null,
-          "note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "amount": 1995.00,
+          "unit": "m"
         }
-      ]
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "0",
+      "worker": "Outflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 1995.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "1",
+      "worker": "Inflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2086.91,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "1",
+      "worker": "Outflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2086.91,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "10",
+      "worker": "Outflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2687.77,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "11",
+      "worker": "Outflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2784.58,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "12",
+      "worker": "Outflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2886.38,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "13",
+      "worker": "Outflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2992.50,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "2",
+      "worker": "Inflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2135.94,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "2",
+      "worker": "Outflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2135.94,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "3",
+      "worker": "Inflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2187.15,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "3",
+      "worker": "Outflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2187.15,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "4",
+      "worker": "Inflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2242.84,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "4",
+      "worker": "Outflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2242.84,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "5",
+      "worker": "Inflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2307.38,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "5",
+      "worker": "Outflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2307.38,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "6",
+      "worker": "Inflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2375.47,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "6",
+      "worker": "Outflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2375.47,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "7",
+      "worker": "Inflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2445.55,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "7",
+      "worker": "Outflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2445.55,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "8",
+      "worker": "Inflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2517.68,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "8",
+      "worker": "Outflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2517.68,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "9",
+      "worker": "Inflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2593.50,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
+    },
+    {
+      "jobgroup": "I/D-job",
+      "step": "9",
+      "worker": "Outflow Job",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2590.69,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Employees in inflow/outflow jobs are placed in salary scale 0, which is linked to the statutory minimum wage. The minimum of the scale is 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% for outflow jobs. Amounts are increased annually on January 1 and July 1 with the increase of the statutory minimum wage. Employees in inflow jobs can progress up to periodic number 9. Employees in outflow jobs can progress up to periodic number 13."
     },
     {
       "jobgroup": "1",
-      "step_label": "0",
-      "worker_type": null,
+      "step": "0",
       "timeline": [
         {
           "start_date": "2023-07-01",
           "amount": 2043.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2023",
-          "increase_percent": 7.00,
-          "note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 7.0
         },
         {
           "start_date": "2024-01-01",
           "amount": 2184.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2024",
-          "increase_percent": 4.00,
-          "note": "From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2024-07-01",
           "amount": 2210.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2024",
-          "increase_percent": 4.00,
-          "note": "A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2025-01-01",
           "amount": 2210.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2025",
-          "increase_percent": null,
-          "note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m"
         }
-      ]
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
     },
     {
       "jobgroup": "1",
-      "step_label": "1",
-      "worker_type": null,
+      "step": "1",
       "timeline": [
         {
           "start_date": "2023-07-01",
           "amount": 2092.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2023",
-          "increase_percent": 7.00,
-          "note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 7.0
         },
         {
           "start_date": "2024-01-01",
           "amount": 2184.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2024",
-          "increase_percent": 4.00,
-          "note": "From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2024-07-01",
           "amount": 2263.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2024",
-          "increase_percent": 4.00,
-          "note": "A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2025-01-01",
           "amount": 2263.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2025",
-          "increase_percent": null,
-          "note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m"
         }
-      ]
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
     },
     {
       "jobgroup": "1",
-      "step_label": "2",
-      "worker_type": null,
+      "step": "10",
+      "timeline": [
+        {
+          "start_date": "2024-01-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2829.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "1",
+      "step": "11",
+      "timeline": [
+        {
+          "start_date": "2024-01-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2908.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "1",
+      "step": "12",
+      "timeline": [
+        {
+          "start_date": "2024-01-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 0.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "1",
+      "step": "13",
+      "timeline": [
+        {
+          "start_date": "2024-01-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 0.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "1",
+      "step": "14",
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 0.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "1",
+      "step": "15",
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 0.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "1",
+      "step": "2",
       "timeline": [
         {
           "start_date": "2023-07-01",
           "amount": 2142.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2023",
-          "increase_percent": 7.00,
-          "note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 7.0
         },
         {
           "start_date": "2024-01-01",
           "amount": 2228.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2024",
-          "increase_percent": 4.00,
-          "note": "From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2024-07-01",
           "amount": 2317.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2024",
-          "increase_percent": 4.00,
-          "note": "A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2025-01-01",
           "amount": 2317.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2025",
-          "increase_percent": null,
-          "note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m"
         }
-      ]
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
     },
     {
       "jobgroup": "1",
-      "step_label": "3",
-      "worker_type": null,
+      "step": "3",
       "timeline": [
         {
           "start_date": "2023-07-01",
           "amount": 2196.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2023",
-          "increase_percent": 7.00,
-          "note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 7.0
         },
         {
           "start_date": "2024-01-01",
           "amount": 2284.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2024",
-          "increase_percent": 4.00,
-          "note": "From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2024-07-01",
           "amount": 2375.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2024",
-          "increase_percent": 4.00,
-          "note": "A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2025-01-01",
           "amount": 2375.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2025",
-          "increase_percent": null,
-          "note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m"
         }
-      ]
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
     },
     {
       "jobgroup": "1",
-      "step_label": "4",
-      "worker_type": null,
+      "step": "4",
       "timeline": [
         {
           "start_date": "2023-07-01",
           "amount": 2246.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2023",
-          "increase_percent": 7.00,
-          "note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 7.0
         },
         {
           "start_date": "2024-01-01",
           "amount": 2336.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2024",
-          "increase_percent": 4.00,
-          "note": "From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2024-07-01",
           "amount": 2429.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2024",
-          "increase_percent": 4.00,
-          "note": "A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2025-01-01",
           "amount": 2429.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2025",
-          "increase_percent": null,
-          "note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m"
         }
-      ]
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
     },
     {
       "jobgroup": "1",
-      "step_label": "5",
-      "worker_type": null,
+      "step": "5",
       "timeline": [
         {
           "start_date": "2023-07-01",
           "amount": 2297.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2023",
-          "increase_percent": 7.00,
-          "note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 7.0
         },
         {
           "start_date": "2024-01-01",
           "amount": 2389.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2024",
-          "increase_percent": 4.00,
-          "note": "From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2024-07-01",
           "amount": 2485.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2024",
-          "increase_percent": 4.00,
-          "note": "A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2025-01-01",
           "amount": 2485.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2025",
-          "increase_percent": null,
-          "note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m"
         }
-      ]
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
     },
     {
       "jobgroup": "1",
-      "step_label": "6",
-      "worker_type": null,
+      "step": "6",
       "timeline": [
         {
           "start_date": "2023-07-01",
           "amount": 2354.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2023",
-          "increase_percent": 7.00,
-          "note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 7.0
         },
         {
           "start_date": "2024-01-01",
           "amount": 2448.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2024",
-          "increase_percent": 4.00,
-          "note": "From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2024-07-01",
           "amount": 2546.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2024",
-          "increase_percent": 4.00,
-          "note": "A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2025-01-01",
           "amount": 2546.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2025",
-          "increase_percent": null,
-          "note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m"
         }
-      ]
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
     },
     {
       "jobgroup": "1",
-      "step_label": "7",
-      "worker_type": null,
+      "step": "7",
       "timeline": [
         {
           "start_date": "2023-07-01",
           "amount": 2413.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2023",
-          "increase_percent": 7.00,
-          "note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 7.0
         },
         {
           "start_date": "2024-01-01",
           "amount": 2510.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2024",
-          "increase_percent": 4.00,
-          "note": "From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2024-07-01",
           "amount": 2610.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2024",
-          "increase_percent": 4.00,
-          "note": "A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2025-01-01",
           "amount": 2610.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2025",
-          "increase_percent": null,
-          "note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m"
         }
-      ]
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
     },
     {
       "jobgroup": "1",
-      "step_label": "8",
-      "worker_type": null,
+      "step": "8",
       "timeline": [
         {
           "start_date": "2023-07-01",
           "amount": 2468.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2023",
-          "increase_percent": 7.00,
-          "note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 7.0
         },
         {
           "start_date": "2024-01-01",
           "amount": 2567.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2024",
-          "increase_percent": 4.00,
-          "note": "From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2024-07-01",
           "amount": 2670.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2024",
-          "increase_percent": 4.00,
-          "note": "A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2025-01-01",
           "amount": 2670.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2025",
-          "increase_percent": null,
-          "note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m"
         }
-      ]
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
     },
     {
       "jobgroup": "1",
-      "step_label": "9",
-      "worker_type": null,
+      "step": "9",
       "timeline": [
         {
           "start_date": "2023-07-01",
           "amount": 2531.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2023",
-          "increase_percent": 7.00,
-          "note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 7.0
         },
         {
           "start_date": "2024-01-01",
           "amount": 2632.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2024",
-          "increase_percent": 4.00,
-          "note": "From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2024-07-01",
           "amount": 2737.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2024",
-          "increase_percent": 4.00,
-          "note": "A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2025-01-01",
           "amount": 2737.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2025",
-          "increase_percent": null,
-          "note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m"
         }
-      ]
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
     },
     {
       "jobgroup": "1",
-      "step_label": "10",
-      "worker_type": null,
+      "step": "Start",
       "timeline": [
         {
+          "start_date": "2023-07-01",
+          "amount": 1998.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2184.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
           "start_date": "2024-07-01",
-          "amount": 2829.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2024",
-          "increase_percent": 4.00,
-          "note": "A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "amount": 2184.00,
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2025-01-01",
-          "amount": 2829.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2025",
-          "increase_percent": null,
-          "note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "amount": 2184.00,
+          "unit": "m"
         }
-      ]
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
     },
     {
       "jobgroup": "1",
-      "step_label": "11",
-      "worker_type": null,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 2908.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2025",
-          "increase_percent": null,
-          "note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step_label": "U1",
-      "worker_type": null,
+      "step": "U1",
       "timeline": [
         {
           "start_date": "2023-07-01",
           "amount": 2615.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2023",
-          "increase_percent": 7.00,
-          "note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 7.0
         },
         {
           "start_date": "2024-01-01",
           "amount": 2720.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2024",
-          "increase_percent": 4.00,
-          "note": "From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2024-07-01",
-          "end_date": "2024-12-31",
           "amount": 2829.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2024",
-          "increase_percent": 4.00,
-          "note": "A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         }
-      ]
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
     },
     {
       "jobgroup": "1",
-      "step_label": "U2",
-      "worker_type": null,
+      "step": "U2",
       "timeline": [
         {
           "start_date": "2023-07-01",
           "amount": 2688.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2023",
-          "increase_percent": 7.00,
-          "note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 7.0
         },
         {
           "start_date": "2024-01-01",
           "amount": 2796.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per January 1, 2024",
-          "increase_percent": 4.00,
-          "note": "From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         },
         {
           "start_date": "2024-07-01",
-          "end_date": "2024-12-31",
           "amount": 2908.00,
-          "unit": "monthly",
-          "table_label": "Salary Table per July 1, 2024",
-          "increase_percent": 4.00,
-          "note": "A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+          "unit": "m",
+          "inc_pct": 4.0
         }
-      ]
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
     },
     {
-      "jobgroup": "1",
-      "step_label": "a",
-      "worker_type": "Guarantee (employed before 2003-12-31)",
-      "row_note": "Guarantee periodic numbers (only for employees employed before December 31, 2003). The salary amounts of the guarantee periodic numbers are indexed with wage increases in the CAO. Employees whose salary on December 31, 2003, was higher than the maximum of the new salary scale retain the right to be placed in this guarantee periodic number as long as they continue to perform the function with the employer or its legal successor. Employees who received a guarantee for progression to a guarantee periodic number belonging to the new salary scale retain this right as long as they continue to perform the same function with the employer or its legal successor. The salary amounts of the guarantee periodic numbers are indexed with wage increases in the CAO. From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2024, a minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML). From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 
+      "jobgroup": "2",
+      "step": "0",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2092.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2184.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2263.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2263.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "2",
+      "step": "1",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2142.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2228.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2317.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2317.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "2",
+      "step": "10",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2688.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2796.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2908.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2908.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "2",
+      "step": "11",
+      "timeline": [
+        {
+          "start_date": "2024-01-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3002.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "2",
+      "step": "12",
+      "timeline": [
+        {
+          "start_date": "2024-01-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3086.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "2",
+      "step": "13",
+      "timeline": [
+        {
+          "start_date": "2024-01-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 0.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "2",
+      "step": "14",
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 0.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "2",
+      "step": "15",
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 0.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "2",
+      "step": "2",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2196.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2284.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2375.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2375.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "2",
+      "step": "3",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2246.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2336.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2429.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2429.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "2",
+      "step": "4",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2297.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2389.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2485.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2485.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "2",
+      "step": "5",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2354.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2448.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2546.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2546.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "2",
+      "step": "6",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2413.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2510.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2610.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2610.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "2",
+      "step": "7",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2468.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2567.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2670.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2670.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "2",
+      "step": "8",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2531.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2632.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2737.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2737.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "2",
+      "step": "9",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2615.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2720.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2829.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2829.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "2",
+      "step": "Start",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2047.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2184.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2214.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2214.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "2",
+      "step": "U1",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2776.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2887.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3002.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "2",
+      "step": "U2",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2853.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2967.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3086.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "0",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2142.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2228.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2317.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2317.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "1",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2196.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2284.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2375.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2375.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "10",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2776.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2887.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3002.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3002.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "11",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2853.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2967.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3086.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3086.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "12",
+      "timeline": [
+        {
+          "start_date": "2024-01-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3179.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "13",
+      "timeline": [
+        {
+          "start_date": "2024-01-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3259.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "14",
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 0.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "15",
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 0.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "2",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2246.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2336.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2429.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2429.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "3",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2297.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2389.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2485.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2485.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "4",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2354.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2448.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2546.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2546.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "5",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2413.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2510.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2610.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2610.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "6",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2468.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2567.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2670.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2670.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "7",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2531.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2632.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2737.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2737.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "8",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2615.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2720.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2829.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2829.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "9",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2688.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2796.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2908.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2908.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "Start",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2095.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2184.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2266.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2266.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "U1",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2939.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3057.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3179.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "3",
+      "step": "U2",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3013.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3134.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3259.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "0",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2297.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2389.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2485.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2485.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "0",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2324.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2417.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2514.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2514.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "1",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2354.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2448.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2546.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2546.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "1",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2381.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2476.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2575.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2575.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "10",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3013.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3134.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3259.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3259.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "10",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3047.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3169.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3296.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3296.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "11",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3091.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3215.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3344.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3344.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "11",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3125.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3250.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3380.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3380.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "12",
+      "timeline": [
+        {
+          "start_date": "2024-01-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3449.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "12",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3449.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "13",
+      "timeline": [
+        {
+          "start_date": "2024-01-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3524.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "13",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 0.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3524.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "14",
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 0.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "14",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 0.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "15",
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 0.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "15",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 0.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. From January 1, 2025, the U1 and U2 scales are added to the regular scales, meaning 2 periodic numbers are added per scale and U1 and U2 expire. A minimum of €14 per hour, or €2,184 per month, applies to salaries. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "2",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2413.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2510.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2610.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2610.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "2",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2441.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2539.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2641.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2641.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "3",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2468.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2567.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2670.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2670.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "3",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2497.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2597.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2701.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2701.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "4",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2531.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2632.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2737.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2737.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "4",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2559.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2661.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2767.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2767.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "5",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2615.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2720.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2829.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2829.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "5",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2644.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2750.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2860.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2860.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "6",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2688.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2796.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2908.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2908.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "6",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2719.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2828.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2941.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2941.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "7",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2776.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2887.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3002.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3002.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "7",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2807.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2919.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3036.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3036.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "8",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2853.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2967.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3086.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3086.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "8",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2886.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3001.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3121.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3121.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "9",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2939.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3057.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3179.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3179.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "9",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2971.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3090.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3214.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3214.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "Start",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2247.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2337.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2430.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2430.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "Start",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2273.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2364.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2459.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2459.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "U1",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3152.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3278.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3409.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "U1",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3188.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3316.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3449.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "U2",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3222.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3351.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3485.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "U2",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3258.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3388.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3524.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "4",
+      "step": "a",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3152.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3278.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3409.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3409.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Guarantee periodic numbers (only for employees employed before December 31, 2003)"
+    },
+    {
+      "jobgroup": "4",
+      "step": "a",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3188.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3316.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3449.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3449.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Guarantee periodic numbers (only for employees employed before December 31, 2003)"
+    },
+    {
+      "jobgroup": "4",
+      "step": "b",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3222.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3351.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3485.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3485.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Guarantee periodic numbers (only for employees employed before December 31, 2003)"
+    },
+    {
+      "jobgroup": "4",
+      "step": "b",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3258.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3388.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3524.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3524.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Guarantee periodic numbers (only for employees employed before December 31, 2003)"
+    },
+    {
+      "jobgroup": "4",
+      "step": "c",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3284.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3415.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3552.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3552.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Guarantee periodic numbers (only for employees employed before December 31, 2003)"
+    },
+    {
+      "jobgroup": "4",
+      "step": "c",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3321.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3454.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3592.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3592.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Guarantee periodic numbers (only for employees employed before December 31, 2003)"
+    },
+    {
+      "jobgroup": "4",
+      "step": "d",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3408.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3544.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3686.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3686.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Guarantee periodic numbers (only for employees employed before December 31, 2003)"
+    },
+    {
+      "jobgroup": "4",
+      "step": "d",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3446.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3584.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3727.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3727.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Guarantee periodic numbers (only for employees employed before December 31, 2003)"
+    },
+    {
+      "jobgroup": "4",
+      "step": "e",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3489.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3629.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3774.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3774.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Guarantee periodic numbers (only for employees employed before December 31, 2003)"
+    },
+    {
+      "jobgroup": "4",
+      "step": "e",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3529.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3670.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3817.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3817.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Guarantee periodic numbers (only for employees employed before December 31, 2003)"
+    },
+    {
+      "jobgroup": "5",
+      "step": "0",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2354.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2448.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2546.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2546.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "5",
+      "step": "0",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2381.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2476.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2575.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2575.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "5",
+      "step": "1",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2413.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2510.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2610.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2610.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "5",
+      "step": "1",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2441.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2539.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2641.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2641.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "5",
+      "step": "10",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3125.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3250.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3380.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3380.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "5",
+      "step": "10",
+      "worker": "Middle Income (Market Allowance)",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3125.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3250.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3380.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3380.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Applies to functions and activities in the primary process in scales 4 to 9. It amounts to 1.13% of the salary, on which holiday allowance, end-of-year bonus, and Career Budget are built. It affects salary-related allowances and reimbursements and counts towards the basis for pension accrual. Organizations financed by other funding streams than Wmo or Jeugdwet may request a lower percentage from the CAO table if 1.13% is unfeasible, with OR/PVT consent and proof of feasibility. The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+    },
+    {
+      "jobgroup": "5",
+      "step": "11",
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3152.00,
+          "unit": "m",
+          "inc_pct": 7.0
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3278.00,
+          "unit": "m",
+          "inc_pct": 4.0
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3409.00,
+          "unit": "m",
+          "inc_pct": 4.0

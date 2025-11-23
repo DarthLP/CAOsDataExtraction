@@ -1,0 +1,4786 @@
+TRUNCATED RESPONSE DEBUG INFO
+Original filename: GGZ1504_01_binnenwerkCAOgids_extract.json
+Timestamp: 2025-11-18T16:13:11.640826
+Response length: 161952 characters
+Finish reason: MAX_TOKENS
+================================================================================
+
+{"salary_information": [
+  {
+    "jobgroup": "Medical Specialists",
+    "worker": "Medical Specialist",
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4808,
+        "unit": "monthly",
+        "table_label": "Salary Scale for Medical Specialists per July 1, 2015",
+        "inc_pct": 1.75
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Medical Specialists",
+    "worker": "Medical Specialist",
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 5408,
+        "unit": "monthly",
+        "table_label": "Salary Scale for Medical Specialists per July 1, 2015",
+        "inc_pct": 1.75
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Medical Specialists",
+    "worker": "Medical Specialist",
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 6007,
+        "unit": "monthly",
+        "table_label": "Salary Scale for Medical Specialists per July 1, 2015",
+        "inc_pct": 1.75
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Medical Specialists",
+    "worker": "Medical Specialist",
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 6604,
+        "unit": "monthly",
+        "table_label": "Salary Scale for Medical Specialists per July 1, 2015",
+        "inc_pct": 1.75
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Medical Specialists",
+    "worker": "Medical Specialist",
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 7205,
+        "unit": "monthly",
+        "table_label": "Salary Scale for Medical Specialists per July 1, 2015",
+        "inc_pct": 1.75
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Medical Specialists",
+    "worker": "Medical Specialist",
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 7804,
+        "unit": "monthly",
+        "table_label": "Salary Scale for Medical Specialists per July 1, 2015",
+        "inc_pct": 1.75
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Medical Specialists",
+    "worker": "Medical Specialist",
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 8402,
+        "unit": "monthly",
+        "table_label": "Salary Scale for Medical Specialists per July 1, 2015",
+        "inc_pct": 1.75
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "AIOS Salary Scale",
+    "step": "0",
+    "worker": "AIOS (Doctors in Training to become Specialists)",
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3048,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2015"
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3079,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2016"
+      }
+    ]
+  },
+  {
+    "jobgroup": "AIOS Salary Scale",
+    "step": "1",
+    "worker": "AIOS (Doctors in Training to become Specialists)",
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3176,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2015"
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3208,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2016"
+      }
+    ]
+  },
+  {
+    "jobgroup": "AIOS Salary Scale",
+    "step": "2",
+    "worker": "AIOS (Doctors in Training to become Specialists)",
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3297,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2015"
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3330,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2016"
+      }
+    ]
+  },
+  {
+    "jobgroup": "AIOS Salary Scale",
+    "step": "3",
+    "worker": "AIOS (Doctors in Training to become Specialists)",
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3435,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2015"
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3469,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2016"
+      }
+    ]
+  },
+  {
+    "jobgroup": "AIOS Salary Scale",
+    "step": "4",
+    "worker": "AIOS (Doctors in Training to become Specialists)",
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3565,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2015"
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3601,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2016"
+      }
+    ]
+  },
+  {
+    "jobgroup": "AIOS Salary Scale",
+    "step": "5",
+    "worker": "AIOS (Doctors in Training to become Specialists)",
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3701,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2015"
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3738,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2016"
+      }
+    ]
+  },
+  {
+    "jobgroup": "AIOS Salary Scale",
+    "step": "6",
+    "worker": "AIOS (Doctors in Training to become Specialists)",
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3830,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2015"
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3868,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2016"
+      }
+    ]
+  },
+  {
+    "jobgroup": "AIOS Salary Scale",
+    "step": "7",
+    "worker": "AIOS (Doctors in Training to become Specialists)",
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3946,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2015"
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3985,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2016"
+      }
+    ]
+  },
+  {
+    "jobgroup": "AIOS Salary Scale",
+    "step": "8",
+    "worker": "AIOS (Doctors in Training to become Specialists)",
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4065,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2015"
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4105,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2016"
+      }
+    ]
+  },
+  {
+    "jobgroup": "AIOS Salary Scale",
+    "step": "9",
+    "worker": "AIOS (Doctors in Training to become Specialists)",
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4186,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2015"
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4227,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2016"
+      }
+    ]
+  },
+  {
+    "jobgroup": "AIOS Salary Scale",
+    "step": "10",
+    "worker": "AIOS (Doctors in Training to become Specialists)",
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4305,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2015"
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4348,
+        "unit": "monthly",
+        "table_label": "Salary Scale AIOS per July 1, 2016"
+      }
+    ]
+  },
+  {
+    "jobgroup": "Functiegroep 10 (aanloopschaal 09)",
+    "step": "0",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1389,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75,
+        "note": "if necessary, apply the statutory minimum (youth) wage"
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1389,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25,
+        "note": "if necessary, apply the statutory minimum (youth) wage"
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 10 (aanloopschaal 09)",
+    "step": "1",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1450,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1450,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 10 (aanloopschaal 09)",
+    "step": "2",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1507,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1507,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 10 (aanloopschaal 09)",
+    "step": "3",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1562,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1562,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 10 (funct.schaal 10a)",
+    "step": "0",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1507,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1507,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 10 (funct.schaal 10a)",
+    "step": "1",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1562,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1562,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 10 (funct.schaal 10a)",
+    "step": "2",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1593,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1593,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 10 (funct.schaal 10a)",
+    "step": "3",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1635,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1635,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 10 (funct.schaal 10b)",
+    "step": "4",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1676,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1676,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 10 (funct.schaal 10b)",
+    "step": "5",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1720,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1720,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 10 (funct.schaal 10b)",
+    "step": "6",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1768,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1768,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 10 (funct.schaal 10b)",
+    "step": "7",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1822,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1822,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 10 (funct.schaal 10b)",
+    "step": "8",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1878,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1878,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 15 (aanloopschaal 14)",
+    "step": "0",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1424,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75,
+        "note": "if necessary, apply the statutory minimum (youth) wage"
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1424,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25,
+        "note": "if necessary, apply the statutory minimum (youth) wage"
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 15 (aanloopschaal 14)",
+    "step": "1",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1450,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1450,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 15 (aanloopschaal 14)",
+    "step": "2",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1507,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1507,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 15 (aanloopschaal 14)",
+    "step": "3",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1562,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1562,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 15 (aanloopschaal 14)",
+    "step": "4",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1593,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1593,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 15 (funct.schaal 15a)",
+    "step": "0",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1562,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1562,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 15 (funct.schaal 15a)",
+    "step": "1",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1593,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1593,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 15 (funct.schaal 15a)",
+    "step": "2",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1635,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1635,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 15 (funct.schaal 15a)",
+    "step": "3",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1676,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1676,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 15 (funct.schaal 15a)",
+    "step": "4",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1720,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1720,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 15 (funct.schaal 15b)",
+    "step": "5",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1768,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1768,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 15 (funct.schaal 15b)",
+    "step": "6",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1822,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1822,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 15 (funct.schaal 15b)",
+    "step": "7",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1878,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1878,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 15 (funct.schaal 15b)",
+    "step": "8",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1941,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1941,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 15 (funct.schaal 15b)",
+    "step": "9",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2005,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2005,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 20 (aanloopschaal 19)",
+    "step": "0",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1450,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1450,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 20 (aanloopschaal 19)",
+    "step": "1",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1507,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1507,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 20 (aanloopschaal 19)",
+    "step": "2",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1562,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1562,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 20 (funct.schaal 20a)",
+    "step": "0",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1593,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1593,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 20 (funct.schaal 20a)",
+    "step": "1",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1635,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1635,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 20 (funct.schaal 20a)",
+    "step": "2",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1676,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1676,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 20 (funct.schaal 20a)",
+    "step": "3",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1720,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1720,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 20 (funct.schaal 20a)",
+    "step": "4",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1768,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1768,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 20 (funct.schaal 20b)",
+    "step": "5",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1822,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1822,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 20 (funct.schaal 20b)",
+    "step": "6",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1878,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1878,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 20 (funct.schaal 20b)",
+    "step": "7",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1941,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1941,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 20 (funct.schaal 20b)",
+    "step": "8",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2005,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2005,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 20 (funct.schaal 20b)",
+    "step": "9",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2064,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2064,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 20 (funct.schaal 20b)",
+    "step": "10",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2131,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2131,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 25 (aanloopschaal 24)",
+    "step": "0",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1507,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1507,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 25 (aanloopschaal 24)",
+    "step": "1",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1562,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1562,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 25 (aanloopschaal 24)",
+    "step": "2",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1593,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1593,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 25 (funct.schaal 25a)",
+    "step": "0",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1635,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1635,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 25 (funct.schaal 25a)",
+    "step": "1",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1720,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1720,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 25 (funct.schaal 25a)",
+    "step": "2",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1768,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1768,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 25 (funct.schaal 25a)",
+    "step": "3",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1822,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1822,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 25 (funct.schaal 25a)",
+    "step": "4",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1878,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1878,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 25 (funct.schaal 25b)",
+    "step": "5",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1941,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1941,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 25 (funct.schaal 25b)",
+    "step": "6",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2005,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2005,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 25 (funct.schaal 25b)",
+    "step": "7",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2064,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2064,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 25 (funct.schaal 25b)",
+    "step": "8",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2131,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2131,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 25 (funct.schaal 25b)",
+    "step": "9",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2185,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2185,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 25 (funct.schaal 25b)",
+    "step": "10",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2249,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2249,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 30 (aanloopschaal 29)",
+    "step": "0",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1593,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1593,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 30 (aanloopschaal 29)",
+    "step": "1",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1635,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1635,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 30 (funct.schaal 30a)",
+    "step": "0",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1676,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1676,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 30 (funct.schaal 30a)",
+    "step": "1",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1768,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1768,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 30 (funct.schaal 30a)",
+    "step": "2",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1878,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1878,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 30 (funct.schaal 30a)",
+    "step": "3",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1941,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1941,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 30 (funct.schaal 30a)",
+    "step": "4",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2005,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2005,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 30 (funct.schaal 30b)",
+    "step": "5",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2064,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2064,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 30 (funct.schaal 30b)",
+    "step": "6",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2131,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2131,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 30 (funct.schaal 30b)",
+    "step": "7",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2185,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2185,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 30 (funct.schaal 30b)",
+    "step": "8",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2249,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2249,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 30 (funct.schaal 30b)",
+    "step": "9",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2309,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2309,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 30 (funct.schaal 30b)",
+    "step": "10",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2370,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2370,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 35 (aanloopschaal 34)",
+    "step": "0",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1676,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1676,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 35 (aanloopschaal 34)",
+    "step": "1",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1720,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1720,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 35 (funct.schaal 35a)",
+    "step": "0",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1768,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1768,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 35 (funct.schaal 35a)",
+    "step": "1",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1878,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1878,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 35 (funct.schaal 35a)",
+    "step": "2",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2005,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2005,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 35 (funct.schaal 35a)",
+    "step": "3",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2064,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2064,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 35 (funct.schaal 35a)",
+    "step": "4",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2131,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2131,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 35 (funct.schaal 35b)",
+    "step": "5",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2185,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2185,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 35 (funct.schaal 35b)",
+    "step": "6",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2249,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2249,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 35 (funct.schaal 35b)",
+    "step": "7",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2309,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2309,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 35 (funct.schaal 35b)",
+    "step": "8",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2370,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2370,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 35 (funct.schaal 35b)",
+    "step": "9",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2431,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2431,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 35 (funct.schaal 35b)",
+    "step": "10",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2492,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2492,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 40 (aanloopschaal 39)",
+    "step": "0",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1768,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1768,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 40 (aanloopschaal 39)",
+    "step": "1",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1822,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1822,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 40 (funct.schaal 40a)",
+    "step": "0",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1878,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1878,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 40 (funct.schaal 40a)",
+    "step": "1",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2005,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2005,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 40 (funct.schaal 40a)",
+    "step": "2",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2131,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2131,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 40 (funct.schaal 40a)",
+    "step": "3",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2185,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2185,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 40 (funct.schaal 40a)",
+    "step": "4",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2249,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2249,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 40 (funct.schaal 40a)",
+    "step": "5",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2309,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2309,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 40 (funct.schaal 40b)",
+    "step": "6",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2370,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2370,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 40 (funct.schaal 40b)",
+    "step": "7",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2431,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2431,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 40 (funct.schaal 40b)",
+    "step": "8",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2492,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2492,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 40 (funct.schaal 40b)",
+    "step": "9",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2554,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2554,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 40 (funct.schaal 40b)",
+    "step": "10",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2616,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2616,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 40 (funct.schaal 40b)",
+    "step": "11",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2679,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2679,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 40 (funct.schaal 40b)",
+    "step": "12",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2746,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2746,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 45 (aanloopschaal 44)",
+    "step": "0",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1768,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1768,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 45 (aanloopschaal 44)",
+    "step": "1",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 1878,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 1878,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 45 (aanloopschaal 44)",
+    "step": "2",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2005,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2005,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 45 (funct.schaal 45a)",
+    "step": "0",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2131,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2131,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 45 (funct.schaal 45a)",
+    "step": "1",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2249,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2249,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 45 (funct.schaal 45a)",
+    "step": "2",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2370,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2370,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 45 (funct.schaal 45a)",
+    "step": "3",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2431,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2431,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 45 (funct.schaal 45a)",
+    "step": "4",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2492,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2492,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 45 (funct.schaal 45a)",
+    "step": "5",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2554,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2554,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 45 (funct.schaal 45b)",
+    "step": "6",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2616,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2616,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 45 (funct.schaal 45b)",
+    "step": "7",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2679,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2679,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 45 (funct.schaal 45b)",
+    "step": "8",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2746,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2746,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 45 (funct.schaal 45b)",
+    "step": "9",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2814,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2814,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 45 (funct.schaal 45b)",
+    "step": "10",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2873,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2873,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 45 (funct.schaal 45b)",
+    "step": "11",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2941,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2941,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 45 (funct.schaal 45b)",
+    "step": "12",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3007,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3007,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 50 (aanloopschaal 49)",
+    "step": "0",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2005,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2005,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 50 (aanloopschaal 49)",
+    "step": "1",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2131,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2131,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 50 (aanloopschaal 49)",
+    "step": "2",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2249,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2249,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 50 (aanloopschaal 49)",
+    "step": "3",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2370,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2370,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 50 (funct.schaal 50a)",
+    "step": "0",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2431,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2431,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 50 (funct.schaal 50a)",
+    "step": "1",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2554,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2554,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 50 (funct.schaal 50a)",
+    "step": "2",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2679,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2679,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 50 (funct.schaal 50a)",
+    "step": "3",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2814,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2814,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 50 (funct.schaal 50a)",
+    "step": "4",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2873,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2873,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 50 (funct.schaal 50a)",
+    "step": "5",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2941,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2941,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 50 (funct.schaal 50b)",
+    "step": "6",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3007,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3007,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 50 (funct.schaal 50b)",
+    "step": "7",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3070,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3070,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 50 (funct.schaal 50b)",
+    "step": "8",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3133,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3133,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 50 (funct.schaal 50b)",
+    "step": "9",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3198,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3198,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 50 (funct.schaal 50b)",
+    "step": "10",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3264,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3264,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 50 (funct.schaal 50b)",
+    "step": "11",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3325,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3325,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 55 (aanloopschaal 54)",
+    "step": "0",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2309,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2309,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 55 (aanloopschaal 54)",
+    "step": "1",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2431,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2431,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 55 (aanloopschaal 54)",
+    "step": "2",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2554,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2554,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 55 (aanloopschaal 54)",
+    "step": "3",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2679,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2679,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 55 (funct.schaal 55a)",
+    "step": "0",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2746,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2746,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 55 (funct.schaal 55a)",
+    "step": "1",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2873,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2873,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 55 (funct.schaal 55a)",
+    "step": "2",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3007,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3007,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 55 (funct.schaal 55a)",
+    "step": "3",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3133,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3133,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 55 (funct.schaal 55a)",
+    "step": "4",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3264,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3264,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 55 (funct.schaal 55a)",
+    "step": "5",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3325,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3325,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 55 (funct.schaal 55b)",
+    "step": "6",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3388,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3388,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 55 (funct.schaal 55b)",
+    "step": "7",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3458,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3458,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 55 (funct.schaal 55b)",
+    "step": "8",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3530,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3530,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 55 (funct.schaal 55b)",
+    "step": "9",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3601,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3601,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 55 (funct.schaal 55b)",
+    "step": "10",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3664,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3664,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 55 (funct.schaal 55b)",
+    "step": "11",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3735,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3735,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 60 (aanloopschaal 59)",
+    "step": "0",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2679,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2679,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 60 (aanloopschaal 59)",
+    "step": "1",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2814,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2814,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 60 (aanloopschaal 59)",
+    "step": "2",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 2941,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 2941,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 60 (aanloopschaal 59)",
+    "step": "3",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3070,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3070,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 60 (funct.schaal 60a)",
+    "step": "0",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3133,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3133,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 60 (funct.schaal 60a)",
+    "step": "1",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3264,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3264,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 60 (funct.schaal 60a)",
+    "step": "2",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3388,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3388,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 60 (funct.schaal 60a)",
+    "step": "3",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3530,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3530,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 60 (funct.schaal 60a)",
+    "step": "4",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3664,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3664,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 60 (funct.schaal 60b)",
+    "step": "5",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3803,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3803,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 60 (funct.schaal 60b)",
+    "step": "6",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3936,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3936,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 60 (funct.schaal 60b)",
+    "step": "7",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3995,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3995,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 60 (funct.schaal 60b)",
+    "step": "8",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4055,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4055,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 60 (funct.schaal 60b)",
+    "step": "9",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4117,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4117,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 60 (funct.schaal 60b)",
+    "step": "10",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4177,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4177,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 65 (aanloopschaal 64)",
+    "step": "0",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3133,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3133,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 65 (aanloopschaal 64)",
+    "step": "1",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3264,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3264,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 65 (aanloopschaal 64)",
+    "step": "2",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3388,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3388,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 65 (aanloopschaal 64)",
+    "step": "3",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3530,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3530,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 65 (funct.schaal 65a)",
+    "step": "0",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3664,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3664,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 65 (funct.schaal 65a)",
+    "step": "1",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3803,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3803,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 65 (funct.schaal 65a)",
+    "step": "2",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3936,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3936,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 65 (funct.schaal 65a)",
+    "step": "3",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4055,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4055,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 65 (funct.schaal 65a)",
+    "step": "4",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4177,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4177,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 65 (funct.schaal 65a)",
+    "step": "5",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4301,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4301,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 65 (funct.schaal 65b)",
+    "step": "6",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4424,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4424,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 65 (funct.schaal 65b)",
+    "step": "7",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4548,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4548,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 65 (funct.schaal 65b)",
+    "step": "8",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4672,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4672,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 65 (funct.schaal 65b)",
+    "step": "9",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4732,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4732,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 65 (funct.schaal 65b)",
+    "step": "10",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4793,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4793,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 65 (funct.schaal 65b)",
+    "step": "11",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4856,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4856,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 65 (funct.schaal 65b)",
+    "step": "12",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4917,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4917,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 70 (aanloopschaal 69)",
+    "step": "0",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3803,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3803,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 70 (aanloopschaal 69)",
+    "step": "1",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 3936,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 3936,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 70 (aanloopschaal 69)",
+    "step": "2",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4055,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4055,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 70 (aanloopschaal 69)",
+    "step": "3",
+    "is_entry": true,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4177,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4177,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 70 (funct.schaal 70a)",
+    "step": "0",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4301,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4301,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 70 (funct.schaal 70a)",
+    "step": "1",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4488,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4488,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 70 (funct.schaal 70a)",
+    "step": "2",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4672,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4672,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 70 (funct.schaal 70a)",
+    "step": "3",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 4856,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 4856,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 70 (funct.schaal 70a)",
+    "step": "4",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 5040,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 5040,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 70 (funct.schaal 70a)",
+    "step": "5",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 5165,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 5165,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 70 (funct.schaal 70b)",
+    "step": "6",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 5318,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 5318,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 70 (funct.schaal 70b)",
+    "step": "7",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 5472,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 5472,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 70 (funct.schaal 70b)",
+    "step": "8",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 5625,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 5625,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 70 (funct.schaal 70b)",
+    "step": "9",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 5702,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 5702,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 70 (funct.schaal 70b)",
+    "step": "10",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 5781,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 5781,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 70 (funct.schaal 70b)",
+    "step": "11",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 5858,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2015",
+        "inc_pct": 1.75
+      },
+      {
+        "start_date": "2016-07-01",
+        "amount": 5858,
+        "unit": "monthly",
+        "table_label": "Salary Scales per Functional Group, effective July 1, 2016",
+        "inc_pct": 1.25
+      }
+    ],
+    "row_note": "The salary of an employee with a working week deviating from the full-time average of 36 hours per week is determined pro-rata to the amount corresponding to the applicable placement table number."
+  },
+  {
+    "jobgroup": "Functiegroep 70 (funct.schaal 70b)",
+    "step": "12",
+    "is_entry": false,
+    "ft_hours": 36,
+    "timeline": [
+      {
+        "start_date": "2015-07-01",
+        "amount": 5935,
+        

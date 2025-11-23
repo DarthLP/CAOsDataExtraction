@@ -1,0 +1,2415 @@
+TRUNCATED RESPONSE DEBUG INFO
+Original filename: cao_2010_2012_definitieve_versie_april_2012_extract.json
+Timestamp: 2025-11-18T05:21:56.892426
+Response length: 77974 characters
+Finish reason: MAX_TOKENS
+================================================================================
+
+{
+  "salary_information": [
+    {
+      "jobgroup": "Statutory Minimum Wage",
+      "age_group": "23 years or older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2010-07-01",
+          "amount": 326.75,
+          "unit": "weekly",
+          "table_label": "Statutory Minimum Wage per July 1, 2010"
+        }
+      ],
+      "row_note": "In case of adjustment of the statutory minimum wage during the term of this CAO, the new statutory amounts apply."
+    },
+    {
+      "jobgroup": "Scale 1",
+      "step": "0",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 343.87,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 347.31,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 352.52,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 1",
+      "step": "1",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 354.28,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 357.82,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 363.19,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "0",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 353.54,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 357.08,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 362.44,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "1",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 362.71,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 366.34,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 371.84,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "2",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 371.87,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 375.59,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 381.22,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "3",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 381.06,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 384.87,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 390.64,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "4",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 390.21,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 394.11,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 400.02,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "5",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 399.40,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 403.39,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 409.44,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "6",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 408.56,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 412.65,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 418.84,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "7",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 417.75,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 421.93,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 428.26,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "0",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 369.28,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 372.97,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 378.56,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "1",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 378.45,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 382.23,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 387.96,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "2",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 387.61,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 391.49,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 397.36,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "3",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 396.77,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 400.74,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 406.75,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "4",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 405.91,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 409.97,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 416.12,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "5",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 415.08,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 419.23,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 425.52,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "6",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 424.24,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 428.48,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 434.91,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "7",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 433.39,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 437.72,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 444.29,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "8",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 442.56,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 446.99,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 453.69,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "0",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 385.63,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 389.49,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 395.33,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "1",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 394.45,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 398.39,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 404.37,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "2",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 403.23,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 407.26,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 413.37,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "3",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 412.04,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 416.16,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 422.40,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "4",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 420.84,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 425.05,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 431.43,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "5",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 429.64,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 433.94,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 440.45,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "6",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 438.43,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 442.81,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 449.45,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "7",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 447.23,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 451.70,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 458.48,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "8",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 456.04,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 460.60,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 467.51,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "9",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 464.84,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 469.49,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 476.53,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "0",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 417.75,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 421.93,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 428.26,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "1",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 426.84,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 431.11,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 437.58,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "2",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 435.95,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 440.31,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 446.91,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "3",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 445.07,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 449.52,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 456.26,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "4",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 454.16,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 458.70,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 465.58,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "5",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 463.27,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 467.90,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 474.92,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "6",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 472.38,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 477.10,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 484.26,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "7",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 481.50,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 486.32,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 493.61,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "8",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 490.62,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 495.53,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 502.96,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "9",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 499.72,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 504.72,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 512.29,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "10",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 508.83,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 513.92,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 521.63,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "0",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 449.97,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 454.47,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 461.29,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "1",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 460.57,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 465.18,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 472.16,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "2",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 471.16,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 475.87,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 483.01,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "3",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 481.76,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 486.58,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 493.88,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "4",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 492.35,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 497.27,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 504.73,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "5",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 502.95,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 507.98,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 515.60,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "6",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 513.53,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 518.67,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 526.45,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "7",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 524.12,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 529.36,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 537.30,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "8",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 534.71,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 540.06,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 548.16,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "9",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 545.30,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 550.75,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 559.01,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "10",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 555.90,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 561.46,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 569.88,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "11",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 566.48,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 572.14,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 580.72,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "0",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 514.33,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 519.47,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 527.26,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "1",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 525.59,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 530.85,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 538.81,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "2",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 536.85,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 542.22,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 550.35,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "3",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 548.12,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 553.60,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 561.90,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "4",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 559.40,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 564.99,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 573.46,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "5",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 570.66,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 576.37,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 585.02,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "6",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 581.92,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 587.74,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 596.56,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "7",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 593.20,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 599.13,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 608.12,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "8",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 604.47,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 610.51,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 619.67,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "9",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 615.73,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 621.89,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 631.22,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "10",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 626.99,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 633.26,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 642.76,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "11",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 638.25,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 644.63,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 654.30,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "0",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 578.51,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 584.30,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 593.06,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "1",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 589.39,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 595.28,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 604.21,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "2",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 599.63,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 605.63,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 614.71,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "3",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 611.14,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 617.25,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 626.51,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "4",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 622.04,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 628.26,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 637.68,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "5",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 632.89,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 639.22,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 648.81,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "6",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 643.78,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 650.22,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 659.97,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "7",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 654.66,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 661.21,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 671.13,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "8",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 665.51,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 672.17,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 682.25,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "9",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 676.41,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 683.17,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 693.42,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "10",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 687.26,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 694.13,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 704.54,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "11",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 698.15,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 705.13,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 715.71,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "0",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 642.87,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 649.30,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 659.04,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "1",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 655.05,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 661.60,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 671.52,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "2",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 667.24,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 673.91,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 684.02,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2011",
+          "inc_pct": 1.50
+        }
+      ],
+      "row_note": "Annual increment on Jan 1 until max reached, if classified for full year. Entry generally at increment 0, higher possible based on knowledge/experience."
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "3",
+      "worker": "Adult Employee",
+      "age_group": "22.5 years and older",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2009-10-01",
+          "amount": 679.43,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2009"
+        },
+        {
+          "start_date": "2010-10-01",
+          "amount": 686.22,
+          "unit": "weekly",
+          "table_label": "Adult Employee Salaries per October 1, 2010",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "20

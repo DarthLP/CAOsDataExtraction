@@ -1,0 +1,491 @@
+TRUNCATED RESPONSE DEBUG INFO
+Original filename: CAO_nw_2011_2013_boekje_extract.json
+Timestamp: 2025-11-14T00:46:45.671971
+Response length: 12588 characters
+Finish reason: MAX_TOKENS
+================================================================================
+
+{
+  "salary_information": [
+    {
+      "jobgroup": "B",
+      "step": "0",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "end_date": "2011-06-30",
+          "amount": 1497,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-04-01)"
+        },
+        {
+          "start_date": "2011-07-01",
+          "end_date": "2012-06-30",
+          "amount": 1527,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-07-01, +2%)",
+          "inc_pct": 2.00
+        },
+        {
+          "start_date": "2012-07-01",
+          "amount": 1558,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2012-07-01, +2%)",
+          "inc_pct": 2.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "B",
+      "step": "1",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "end_date": "2011-06-30",
+          "amount": 1547,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-04-01)"
+        },
+        {
+          "start_date": "2011-07-01",
+          "end_date": "2012-06-30",
+          "amount": 1578,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-07-01, +2%)",
+          "inc_pct": 2.00
+        },
+        {
+          "start_date": "2012-07-01",
+          "amount": 1609,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2012-07-01, +2%)",
+          "inc_pct": 2.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "B",
+      "step": "2",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "end_date": "2011-06-30",
+          "amount": 1597,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-04-01)"
+        },
+        {
+          "start_date": "2011-07-01",
+          "end_date": "2012-06-30",
+          "amount": 1629,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-07-01, +2%)",
+          "inc_pct": 2.00
+        },
+        {
+          "start_date": "2012-07-01",
+          "amount": 1660,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2012-07-01, +2%)",
+          "inc_pct": 2.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "B",
+      "step": "3",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "end_date": "2011-06-30",
+          "amount": 1647,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-04-01)"
+        },
+        {
+          "start_date": "2011-07-01",
+          "end_date": "2012-06-30",
+          "amount": 1680,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-07-01, +2%)",
+          "inc_pct": 2.00
+        },
+        {
+          "start_date": "2012-07-01",
+          "amount": 1711,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2012-07-01, +2%)",
+          "inc_pct": 2.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "B",
+      "step": "4",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "end_date": "2011-06-30",
+          "amount": 1697,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-04-01)"
+        },
+        {
+          "start_date": "2011-07-01",
+          "end_date": "2012-06-30",
+          "amount": 1731,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-07-01, +2%)",
+          "inc_pct": 2.00
+        },
+        {
+          "start_date": "2012-07-01",
+          "amount": 1762,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2012-07-01, +2%)",
+          "inc_pct": 2.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "B",
+      "step": "5",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "end_date": "2011-06-30",
+          "amount": 1747,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-04-01)"
+        },
+        {
+          "start_date": "2011-07-01",
+          "end_date": "2012-06-30",
+          "amount": 1782,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-07-01, +2%)",
+          "inc_pct": 2.00
+        },
+        {
+          "start_date": "2012-07-01",
+          "amount": 1813,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2012-07-01, +2%)",
+          "inc_pct": 2.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "B",
+      "step": "6",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "end_date": "2011-06-30",
+          "amount": 1798,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-04-01)"
+        },
+        {
+          "start_date": "2011-07-01",
+          "end_date": "2012-06-30",
+          "amount": 1833,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-07-01, +2%)",
+          "inc_pct": 2.00
+        },
+        {
+          "start_date": "2012-07-01",
+          "amount": 1870,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2012-07-01, +2%)",
+          "inc_pct": 2.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "B",
+      "step": "7",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "end_date": "2011-06-30",
+          "amount": 1848,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-04-01)"
+        },
+        {
+          "start_date": "2011-07-01",
+          "end_date": "2012-06-30",
+          "amount": 1884,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-07-01, +2%)",
+          "inc_pct": 2.00
+        },
+        {
+          "start_date": "2012-07-01",
+          "amount": 1921,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2012-07-01, +2%)",
+          "inc_pct": 2.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "B",
+      "step": "8",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "end_date": "2011-06-30",
+          "amount": 1898,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-04-01)"
+        },
+        {
+          "start_date": "2011-07-01",
+          "end_date": "2012-06-30",
+          "amount": 1935,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-07-01, +2%)",
+          "inc_pct": 2.00
+        },
+        {
+          "start_date": "2012-07-01",
+          "amount": 1972,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2012-07-01, +2%)",
+          "inc_pct": 2.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "B",
+      "step": "Maximum",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "end_date": "2011-06-30",
+          "amount": 1948,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-04-01)"
+        },
+        {
+          "start_date": "2011-07-01",
+          "end_date": "2012-06-30",
+          "amount": 1986,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-07-01, +2%)",
+          "inc_pct": 2.00
+        },
+        {
+          "start_date": "2012-07-01",
+          "amount": 2023,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2012-07-01, +2%)",
+          "inc_pct": 2.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "B",
+      "step": "Outflow",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "end_date": "2011-06-30",
+          "amount": 1978,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-04-01)"
+        },
+        {
+          "start_date": "2011-07-01",
+          "end_date": "2012-06-30",
+          "amount": 2016,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-07-01, +2%)",
+          "inc_pct": 2.00
+        },
+        {
+          "start_date": "2012-07-01",
+          "amount": 2057,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2012-07-01, +2%)",
+          "inc_pct": 2.00
+        }
+      ],
+      "row_note": "Max. 10% above scale maximum, see Article 9"
+    },
+    {
+      "jobgroup": "C",
+      "step": "0",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "end_date": "2011-06-30",
+          "amount": 1550,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-04-01)"
+        },
+        {
+          "start_date": "2011-07-01",
+          "end_date": "2012-06-30",
+          "amount": 1581,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-07-01, +2%)",
+          "inc_pct": 2.00
+        },
+        {
+          "start_date": "2012-07-01",
+          "amount": 1613,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2012-07-01, +2%)",
+          "inc_pct": 2.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "C",
+      "step": "1",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "end_date": "2011-06-30",
+          "amount": 1603,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-04-01)"
+        },
+        {
+          "start_date": "2011-07-01",
+          "end_date": "2012-06-30",
+          "amount": 1635,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-07-01, +2%)",
+          "inc_pct": 2.00
+        },
+        {
+          "start_date": "2012-07-01",
+          "amount": 1668,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2012-07-01, +2%)",
+          "inc_pct": 2.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "C",
+      "step": "2",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "end_date": "2011-06-30",
+          "amount": 1658,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-04-01)"
+        },
+        {
+          "start_date": "2011-07-01",
+          "end_date": "2012-06-30",
+          "amount": 1691,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-07-01, +2%)",
+          "inc_pct": 2.00
+        },
+        {
+          "start_date": "2012-07-01",
+          "amount": 1725,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2012-07-01, +2%)",
+          "inc_pct": 2.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "C",
+      "step": "3",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "end_date": "2011-06-30",
+          "amount": 1711,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-04-01)"
+        },
+        {
+          "start_date": "2011-07-01",
+          "end_date": "2012-06-30",
+          "amount": 1745,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-07-01, +2%)",
+          "inc_pct": 2.00
+        },
+        {
+          "start_date": "2012-07-01",
+          "amount": 1780,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2012-07-01, +2%)",
+          "inc_pct": 2.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "C",
+      "step": "4",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "end_date": "2011-06-30",
+          "amount": 1764,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-04-01)"
+        },
+        {
+          "start_date": "2011-07-01",
+          "end_date": "2012-06-30",
+          "amount": 1799,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-07-01, +2%)",
+          "inc_pct": 2.00
+        },
+        {
+          "start_date": "2012-07-01",
+          "amount": 1835,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2012-07-01, +2%)",
+          "inc_pct": 2.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "C",
+      "step": "5",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "end_date": "2011-06-30",
+          "amount": 1817,
+          "unit": "monthly",
+          "table_label": "Fixed Increments (2011-04-01)"
+        },
+        {
+          "start_date": "2011-07-01",
+          "end_date": "2012-06-30",
+          "amount": 1853,
+          "unit": "monthly",

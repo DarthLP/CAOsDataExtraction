@@ -1,7 +1,7 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: CAOWMD1213__270213__definitief_extract.json
-Timestamp: 2025-10-19T16:57:02.178733
-Response length: 134146 characters
+Timestamp: 2025-11-14T22:33:02.720122
+Response length: 108116 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
@@ -9,4787 +9,4989 @@ Finish reason: MAX_TOKENS
   "salary_information": [
     {
       "jobgroup": "Scale 1",
-      "step_label": "0",
-      "ft_hours": 36,
+      "step": "0",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1545.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1560.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1583.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 1",
-      "step_label": "1",
-      "ft_hours": 36,
+      "step": "1",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1582.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1598.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1622.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 1",
-      "step_label": "2",
-      "ft_hours": 36,
+      "step": "2",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1620.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1636.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1661.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 1",
-      "step_label": "3",
-      "ft_hours": 36,
+      "step": "3",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1661.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1678.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1703.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 1",
-      "step_label": "4",
-      "ft_hours": 36,
+      "step": "4",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1700.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1717.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1743.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 1",
-      "step_label": "5",
-      "ft_hours": 36,
+      "step": "5",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1739.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1756.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1782.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 1",
-      "step_label": "6",
-      "ft_hours": 36,
+      "step": "6",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1783.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1801.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1828.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 1",
-      "step_label": "7",
-      "ft_hours": 36,
+      "step": "7",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1827.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1845.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1873.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 1",
-      "step_label": "8",
-      "ft_hours": 36,
+      "step": "8",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1871.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1890.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1918.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 1",
-      "step_label": "9",
-      "ft_hours": 36,
+      "step": "9",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1917.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1936.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1965.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 1",
-      "step_label": "u1",
-      "ft_hours": 36,
+      "step": "u1",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1982.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2002.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2032.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
     },
     {
       "jobgroup": "Scale 1",
-      "step_label": "u2",
-      "ft_hours": 36,
+      "step": "u2",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2038.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2058.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2089.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
     },
     {
       "jobgroup": "Scale 1",
-      "step_label": "a",
-      "ft_hours": 36,
+      "step": "a",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1982.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2002.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2032.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 1",
-      "step_label": "b",
-      "ft_hours": 36,
+      "step": "b",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2038.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2058.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2089.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 1",
-      "step_label": "c",
-      "ft_hours": 36,
+      "step": "c",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2104.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2125.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2157.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 1",
-      "step_label": "d",
-      "ft_hours": 36,
+      "step": "d",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2164.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2186.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2219.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 1",
-      "step_label": "e",
-      "ft_hours": 36,
+      "step": "e",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2230.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2252.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2286.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 2",
-      "step_label": "0",
-      "ft_hours": 36,
+      "step": "0",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1582.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1598.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1622.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 2",
-      "step_label": "1",
-      "ft_hours": 36,
+      "step": "1",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1620.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1636.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1661.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 2",
-      "step_label": "2",
-      "ft_hours": 36,
+      "step": "2",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1661.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1678.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1703.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 2",
-      "step_label": "3",
-      "ft_hours": 36,
+      "step": "3",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1700.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1717.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1743.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 2",
-      "step_label": "4",
-      "ft_hours": 36,
+      "step": "4",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1739.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1756.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1782.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 2",
-      "step_label": "5",
-      "ft_hours": 36,
+      "step": "5",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1783.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1801.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1828.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 2",
-      "step_label": "6",
-      "ft_hours": 36,
+      "step": "6",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1827.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1845.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1873.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 2",
-      "step_label": "7",
-      "ft_hours": 36,
+      "step": "7",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1871.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1890.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1918.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 2",
-      "step_label": "8",
-      "ft_hours": 36,
+      "step": "8",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1917.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1936.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1965.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 2",
-      "step_label": "9",
-      "ft_hours": 36,
+      "step": "9",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1982.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2002.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2032.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 2",
-      "step_label": "10",
-      "ft_hours": 36,
+      "step": "10",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2038.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2058.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2089.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 2",
-      "step_label": "u1",
-      "ft_hours": 36,
+      "step": "u1",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2104.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2125.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2157.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
     },
     {
       "jobgroup": "Scale 2",
-      "step_label": "u2",
-      "ft_hours": 36,
+      "step": "u2",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2164.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2186.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2219.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
     },
     {
       "jobgroup": "Scale 2",
-      "step_label": "a",
-      "ft_hours": 36,
+      "step": "a",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2104.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2125.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2157.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 2",
-      "step_label": "b",
-      "ft_hours": 36,
+      "step": "b",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2164.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2186.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2219.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 2",
-      "step_label": "c",
-      "ft_hours": 36,
+      "step": "c",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2230.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2252.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2286.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 2",
-      "step_label": "d",
-      "ft_hours": 36,
+      "step": "d",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2287.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2310.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2345.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 2",
-      "step_label": "e",
-      "ft_hours": 36,
+      "step": "e",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2347.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2370.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2406.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "0",
-      "ft_hours": 36,
+      "step": "0",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1620.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1636.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1661.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "1",
-      "ft_hours": 36,
+      "step": "1",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1661.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1678.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1703.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "2",
-      "ft_hours": 36,
+      "step": "2",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1700.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1717.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1743.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "3",
-      "ft_hours": 36,
+      "step": "3",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1739.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1756.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1782.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "4",
-      "ft_hours": 36,
+      "step": "4",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1783.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1801.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1828.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "5",
-      "ft_hours": 36,
+      "step": "5",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1827.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1845.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1873.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "6",
-      "ft_hours": 36,
+      "step": "6",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1871.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1890.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1918.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "7",
-      "ft_hours": 36,
+      "step": "7",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1917.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1936.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1965.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "8",
-      "ft_hours": 36,
+      "step": "8",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1982.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2002.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2032.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "9",
-      "ft_hours": 36,
+      "step": "9",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2038.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2058.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2089.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "10",
-      "ft_hours": 36,
+      "step": "10",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2104.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2125.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2157.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "11",
-      "ft_hours": 36,
+      "step": "11",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2164.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2186.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2219.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "u1",
-      "ft_hours": 36,
+      "step": "u1",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2230.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2252.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2286.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "u2",
-      "ft_hours": 36,
+      "step": "u2",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2287.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2310.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2345.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "a",
-      "ft_hours": 36,
+      "step": "a",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2230.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2252.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2286.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "b",
-      "ft_hours": 36,
+      "step": "b",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2287.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2310.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2345.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "c",
-      "ft_hours": 36,
+      "step": "c",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2347.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2370.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2406.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "d",
-      "ft_hours": 36,
+      "step": "d",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2393.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2417.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2453.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 3",
-      "step_label": "e",
-      "ft_hours": 36,
+      "step": "e",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2447.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2471.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2508.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "0",
-      "ft_hours": 36,
+      "step": "0",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1739.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1756.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1782.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "1",
-      "ft_hours": 36,
+      "step": "1",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1783.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1801.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1828.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "2",
-      "ft_hours": 36,
+      "step": "2",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1827.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1845.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1873.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "3",
-      "ft_hours": 36,
+      "step": "3",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1871.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1890.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1918.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "4",
-      "ft_hours": 36,
+      "step": "4",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1917.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1936.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1965.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "5",
-      "ft_hours": 36,
+      "step": "5",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1982.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2002.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2032.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "6",
-      "ft_hours": 36,
+      "step": "6",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2038.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2058.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2089.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "7",
-      "ft_hours": 36,
+      "step": "7",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2104.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2125.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2157.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "8",
-      "ft_hours": 36,
+      "step": "8",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2164.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2186.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2219.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "9",
-      "ft_hours": 36,
+      "step": "9",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2230.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2252.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2286.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "10",
-      "ft_hours": 36,
+      "step": "10",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2287.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2310.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2345.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "11",
-      "ft_hours": 36,
+      "step": "11",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2347.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2370.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2406.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "u1",
-      "ft_hours": 36,
+      "step": "u1",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2393.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2417.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2453.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "u2",
-      "ft_hours": 36,
+      "step": "u2",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2447.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2471.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2508.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "a",
-      "ft_hours": 36,
+      "step": "a",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2393.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2417.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2453.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "b",
-      "ft_hours": 36,
+      "step": "b",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2447.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2471.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2508.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "c",
-      "ft_hours": 36,
+      "step": "c",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2494.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2519.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2557.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "d",
-      "ft_hours": 36,
+      "step": "d",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2590.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2616.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2655.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 4",
-      "step_label": "e",
-      "ft_hours": 36,
+      "step": "e",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2652.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2679.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2719.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 5",
-      "step_label": "0",
-      "ft_hours": 36,
+      "step": "0",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1783.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1801.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1828.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 5",
-      "step_label": "1",
-      "ft_hours": 36,
+      "step": "1",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1827.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1845.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1873.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 5",
-      "step_label": "2",
-      "ft_hours": 36,
+      "step": "2",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1871.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1890.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1918.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 5",
-      "step_label": "3",
-      "ft_hours": 36,
+      "step": "3",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1917.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 1936.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 1965.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 5",
-      "step_label": "4",
-      "ft_hours": 36,
+      "step": "4",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1982.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2002.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2032.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 5",
-      "step_label": "5",
-      "ft_hours": 36,
+      "step": "5",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2038.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2058.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2089.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 5",
-      "step_label": "6",
-      "ft_hours": 36,
+      "step": "6",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2104.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2125.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2157.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 5",
-      "step_label": "7",
-      "ft_hours": 36,
+      "step": "7",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2164.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2186.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2219.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 5",
-      "step_label": "8",
-      "ft_hours": 36,
+      "step": "8",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2230.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2252.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2286.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 5",
-      "step_label": "9",
-      "ft_hours": 36,
+      "step": "9",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2287.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2310.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2345.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 5",
-      "step_label": "10",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2010-05-01",
-          "amount": 2347.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2012-12-01",
-          "amount": 2370.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2013-02-01",
-          "amount": 2406.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
-        }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
-    },
-    {
-      "jobgroup": "Scale 5",
-      "step_label": "11",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2010-05-01",
-          "amount": 2393.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2012-12-01",
-          "amount": 2417.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
-        },
-        {
-          "start_date": "2013-02-01",
-          "amount": 2453.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
-        }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
-    },
-    {
-      "jobgroup": "Scale 5",
-      "step_label": "12",
-      "ft_hours": 36,
+      "step": "12",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2447.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2471.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2508.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 5",
-      "step_label": "u1",
-      "ft_hours": 36,
+      "step": "u1",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2590.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2616.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2655.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
     },
     {
       "jobgroup": "Scale 5",
-      "step_label": "u2",
-      "ft_hours": 36,
+      "step": "u2",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2652.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2679.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2719.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
     },
     {
       "jobgroup": "Scale 5",
-      "step_label": "a",
-      "ft_hours": 36,
+      "step": "a",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2590.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2616.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2655.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 5",
-      "step_label": "b",
-      "ft_hours": 36,
+      "step": "b",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2652.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2679.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2719.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 5",
-      "step_label": "c",
-      "ft_hours": 36,
+      "step": "c",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2718.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2745.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2786.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 5",
-      "step_label": "d",
-      "ft_hours": 36,
+      "step": "d",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2789.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2817.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2859.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 5",
-      "step_label": "e",
-      "ft_hours": 36,
+      "step": "e",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2848.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2876.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2919.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "0",
-      "ft_hours": 36,
+      "step": "0",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 1982.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2002.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2032.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "1",
-      "ft_hours": 36,
+      "step": "1",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2038.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2058.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2089.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "2",
-      "ft_hours": 36,
+      "step": "2",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2104.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2125.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2157.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "3",
-      "ft_hours": 36,
+      "step": "3",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2164.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2186.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2219.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "4",
-      "ft_hours": 36,
+      "step": "4",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2230.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2252.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2286.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "5",
-      "ft_hours": 36,
+      "step": "5",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2287.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2310.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2345.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "6",
-      "ft_hours": 36,
+      "step": "6",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2347.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2370.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2406.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "7",
-      "ft_hours": 36,
+      "step": "7",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2393.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2417.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2453.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "8",
-      "ft_hours": 36,
+      "step": "8",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2447.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2471.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2508.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "9",
-      "ft_hours": 36,
+      "step": "9",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2494.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2519.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2557.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "10",
-      "ft_hours": 36,
+      "step": "10",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2590.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2616.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2655.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "11",
-      "ft_hours": 36,
+      "step": "11",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2652.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2679.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2719.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "12",
-      "ft_hours": 36,
+      "step": "12",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2718.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2745.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2786.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "13",
-      "ft_hours": 36,
+      "step": "13",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2494.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2519.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2557.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "u1",
-      "ft_hours": 36,
+      "step": "u1",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2848.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2876.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2919.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "u2",
-      "ft_hours": 36,
+      "step": "u2",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2911.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2940.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2984.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "a",
-      "ft_hours": 36,
+      "step": "a",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2848.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2876.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2919.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "b",
-      "ft_hours": 36,
+      "step": "b",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2911.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2940.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2984.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "c",
-      "ft_hours": 36,
+      "step": "c",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2973.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 3003.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 3048.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "d",
-      "ft_hours": 36,
+      "step": "d",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 3074.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 3105.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 3152.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 6",
-      "step_label": "e",
-      "ft_hours": 36,
+      "step": "e",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 3181.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 3213.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 3261.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "0",
-      "ft_hours": 36,
+      "step": "0",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2164.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2186.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2219.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "1",
-      "ft_hours": 36,
+      "step": "1",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2230.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2252.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2286.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "2",
-      "ft_hours": 36,
+      "step": "2",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2287.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2310.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2345.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "3",
-      "ft_hours": 36,
+      "step": "3",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2347.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2370.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2406.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "4",
-      "ft_hours": 36,
+      "step": "4",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2393.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2417.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2453.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "5",
-      "ft_hours": 36,
+      "step": "5",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2447.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2471.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2508.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "6",
-      "ft_hours": 36,
+      "step": "6",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2494.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2519.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2557.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "7",
-      "ft_hours": 36,
+      "step": "7",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2590.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2616.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2655.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "8",
-      "ft_hours": 36,
+      "step": "8",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2652.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2679.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2719.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "9",
-      "ft_hours": 36,
+      "step": "9",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2718.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2745.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2786.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "10",
-      "ft_hours": 36,
+      "step": "10",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2789.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2817.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2859.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "11",
-      "ft_hours": 36,
+      "step": "11",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2848.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2876.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2919.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "12",
-      "ft_hours": 36,
+      "step": "12",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2911.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2940.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2984.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "13",
-      "ft_hours": 36,
+      "step": "13",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2789.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2817.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2859.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "u1",
-      "ft_hours": 36,
+      "step": "u1",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 3074.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 3105.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 3152.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "u2",
-      "ft_hours": 36,
+      "step": "u2",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 3181.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 3213.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 3261.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "a",
-      "ft_hours": 36,
+      "step": "a",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 3074.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 3105.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 3152.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "b",
-      "ft_hours": 36,
+      "step": "b",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 3181.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 3213.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 3261.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "c",
-      "ft_hours": 36,
+      "step": "c",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 3288.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 3321.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 3371.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "d",
-      "ft_hours": 36,
+      "step": "d",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 3397.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 3431.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 3482.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 7",
-      "step_label": "e",
-      "ft_hours": 36,
+      "step": "e",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 3508.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 3543.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 3596.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
       ],
       "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
     },
     {
       "jobgroup": "Scale 8",
-      "step_label": "0",
-      "ft_hours": 36,
+      "step": "0",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2347.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2370.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2406.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 8",
-      "step_label": "1",
-      "ft_hours": 36,
+      "step": "1",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2393.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2417.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2453.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 8",
-      "step_label": "2",
-      "ft_hours": 36,
+      "step": "2",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2447.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2471.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2508.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 8",
-      "step_label": "3",
-      "ft_hours": 36,
+      "step": "3",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2494.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2519.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2557.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 8",
-      "step_label": "4",
-      "ft_hours": 36,
+      "step": "4",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2590.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2616.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2655.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 8",
-      "step_label": "5",
-      "ft_hours": 36,
+      "step": "5",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2652.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2679.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2719.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 8",
-      "step_label": "6",
-      "ft_hours": 36,
+      "step": "6",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2718.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2745.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2786.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 8",
-      "step_label": "7",
-      "ft_hours": 36,
+      "step": "7",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2789.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2817.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2859.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 8",
-      "step_label": "8",
-      "ft_hours": 36,
+      "step": "8",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2848.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2876.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2919.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 8",
-      "step_label": "9",
-      "ft_hours": 36,
+      "step": "9",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2911.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 2940.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 2984.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 8",
-      "step_label": "10",
-      "ft_hours": 36,
+      "step": "10",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2973.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 3003.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 3048.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 8",
-      "step_label": "11",
-      "ft_hours": 36,
+      "step": "11",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 3074.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 3105.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 3152.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 8",
-      "step_label": "12",
-      "ft_hours": 36,
+      "step": "12",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 3181.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 3213.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 3261.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 8",
-      "step_label": "13",
-      "ft_hours": 36,
+      "step": "13",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 2973.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 3003.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec 2012",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.0
         },
         {
           "start_date": "2013-02-01",
           "amount": 3048.0,
-          "unit": "monthly",
-          "table_label": "per 1 Feb 2013",
-          "increase_percent": 1.5,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 1.5
         }
-      ],
-      "row_note": "Periodiek numbers 0 to 13 correspond to the initial salary placement."
+      ]
     },
     {
       "jobgroup": "Scale 8",
-      "step_label": "u1",
-      "ft_hours": 36,
+      "step": "u1",
+      "ft_hours": 36.0,
       "timeline": [
         {
           "start_date": "2010-05-01",
           "amount": 3397.0,
-          "unit": "monthly",
-          "table_label": "per 1 May 2010",
-          "increase_percent": 2.0,
-          "hours_basis_ft_week": 36
+          "unit": "m",
+          "inc_pct": 2.0
         },
         {
           "start_date": "2012-12-01",
           "amount": 3431.0,
-          "unit": "monthly",
-          "table_label": "per 1 Dec
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3482.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "u2",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3508.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3543.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3596.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "a",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3397.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3431.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3482.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "b",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3508.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3543.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3596.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "c",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3622.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3658.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3713.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "d",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3749.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3786.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3843.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "e",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3882.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3921.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3980.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "0",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 2494.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 2519.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 2557.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "1",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 2590.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 2616.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 2655.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "2",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 2652.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 2679.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 2719.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "3",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 2718.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 2745.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 2786.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "4",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 2789.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 2817.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 2859.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "5",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 2848.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 2876.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 2919.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "6",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 2911.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 2940.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 2984.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "7",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 2973.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3003.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3048.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "8",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3074.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3105.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3152.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "9",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3181.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3213.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3261.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "10",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3288.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3321.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3371.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "11",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3397.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3431.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3482.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "12",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3508.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3543.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3596.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "13",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3288.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3321.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3371.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "u1",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3749.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3786.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3843.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "u2",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3882.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3921.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3980.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "a",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3749.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3786.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3843.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "b",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3882.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3921.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3980.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "c",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 4016.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 4056.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 4117.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "d",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 4159.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 4201.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 4264.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "e",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 4304.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 4347.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 4412.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "0",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 2718.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 2745.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 2786.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "1",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 2789.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 2817.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 2859.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "2",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 2848.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 2876.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 2919.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "3",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 2911.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 2940.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 2984.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "4",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 2973.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3003.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3048.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "5",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3074.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3105.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3152.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "6",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3181.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3213.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3261.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "7",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3288.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3321.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3371.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "8",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3397.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3431.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3482.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "9",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3508.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3543.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3596.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "10",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3622.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3658.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3713.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "11",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3749.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3786.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3843.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "12",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3882.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3921.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3980.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "13",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 3622.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 3658.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 3713.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "u1",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 4159.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 4201.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 4264.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "u2",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 4304.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 4347.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 4412.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Outflow periodiek numbers U1 and U2 are subject to Article 4.4, paragraph 4."
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "a",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 4159.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 4201.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 4264.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "b",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 4304.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 4347.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 4412.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "c",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 4455.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 4500.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 4568.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "d",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 4617.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 4663.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 4733.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "e",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 4780.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 4828.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {
+          "start_date": "2013-02-01",
+          "amount": 4900.0,
+          "unit": "m",
+          "inc_pct": 1.5
+        }
+      ],
+      "row_note": "Guarantee numbers a to e are subject to Article A of Bijlage 9.3."
+    },
+    {
+      "jobgroup": "Scale 11",
+      "step": "0",
+      "ft_hours": 36.0,
+      "timeline": [
+        {
+          "start_date": "2010-05-01",
+          "amount": 2911.0,
+          "unit": "m",
+          "inc_pct": 2.0
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 2940.0,
+          "unit": "m",
+          "inc_pct": 1.0
+        },
+        {

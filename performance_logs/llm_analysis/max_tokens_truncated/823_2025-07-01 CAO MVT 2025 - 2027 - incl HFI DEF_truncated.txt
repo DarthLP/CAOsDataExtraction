@@ -1,0 +1,667 @@
+TRUNCATED RESPONSE DEBUG INFO
+Original filename: 2025-07-01 CAO MVT 2025 - 2027 - incl HFI DEF_extract.json
+Timestamp: 2025-11-16T23:36:57.514401
+Response length: 92431 characters
+Finish reason: MAX_TOKENS
+================================================================================
+
+{"salary_information": [
+{"jobgroup": "A", "step": "functional year 0", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2324.12, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025", "note": "For salary group A (21)0, the amount is based on the hourly wage from the Wet minimumloon (WML) as of 1 January 2025."},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2324.12, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2, "note": "For salary group A (21)0, the amount is based on the hourly wage from the Wet minimumloon (WML) as of 1 January 2025."},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2380.32, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025", "note": "For salary group A (21)0, the amount is based on the hourly wage from the Wet minimumloon (WML) as of 1 July 2025."},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2380.32, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3, "note": "For salary group A (21)0, the amount is based on the hourly wage from the Wet minimumloon (WML) as of 1 July 2025."},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2380.32, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross. For salary group A (21)0, the amount is based on the hourly wage from the Wet minimumloon (WML) as of 1 July 2025."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 2380.32, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5, "note": "For salary group A (21)0, the amount is based on the hourly wage from the Wet minimumloon (WML) as of 1 July 2025."},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 2380.32, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3, "note": "For salary group A (21)0, the amount is based on the hourly wage from the Wet minimumloon (WML) as of 1 July 2025."}
+], "row_note": null},
+{"jobgroup": "A", "step": "functional year 1", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2453.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2507.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2507.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2540.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2668.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 2735.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 2771.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "A", "step": "functional year 2", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2469.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2523.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2523.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2556.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2684.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 2751.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 2787.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "A", "step": "functional year 3", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2491.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2546.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2546.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2579.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2707.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 2775.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 2811.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "B", "step": "functional year 0", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2512.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2567.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2567.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2600.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2728.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 2796.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 2832.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "B", "step": "functional year 1", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2576.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2633.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2633.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2667.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2795.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 2865.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 2902.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "B", "step": "functional year 2", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2621.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2679.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2679.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2714.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2842.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 2913.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 2951.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "B", "step": "functional year 3", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2659.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2717.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2717.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2752.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2880.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 2952.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 2990.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "B", "step": "functional year 4", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2692.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2751.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2751.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2787.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2915.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 2988.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3027.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "C", "step": "functional year 0", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2597.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2654.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2654.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2689.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2817.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 2887.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 2925.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "C", "step": "functional year 1", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2634.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2692.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2692.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2727.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2855.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 2926.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 2964.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "C", "step": "functional year 2", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2668.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2727.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2727.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2762.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2890.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 2962.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3001.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "C", "step": "functional year 3", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2701.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2760.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2760.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2796.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2924.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 2997.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3036.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "C", "step": "functional year 4", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2732.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2792.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2792.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2828.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2956.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3030.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3069.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "C", "step": "functional year 5", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2829.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2891.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2891.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2929.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3057.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3133.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3174.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "D", "step": "functional year 0", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2643.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2701.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2701.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2736.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2864.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 2936.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 2974.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "D", "step": "functional year 1", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2685.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2744.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2744.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2780.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2908.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 2981.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3020.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "D", "step": "functional year 2", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2724.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2784.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2784.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2820.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2948.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3022.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3061.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "D", "step": "functional year 3", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2762.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2823.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2823.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2860.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2988.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3063.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3103.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "D", "step": "functional year 4", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2796.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2858.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2858.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2895.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3023.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3099.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3139.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "D", "step": "functional year 5", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2994.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3060.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3060.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3100.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3228.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3309.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3352.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "D", "step": "functional year 6", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3044.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3111.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3111.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3151.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3279.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3361.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3405.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "E", "step": "functional year 0", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2713.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2773.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2773.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2809.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 2937.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3010.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3049.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "E", "step": "functional year 1", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2774.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2835.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2835.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2872.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3000.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3075.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3115.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "E", "step": "functional year 2", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2833.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2895.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2895.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2933.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3061.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3138.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3179.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "E", "step": "functional year 3", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2889.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2953.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2953.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2991.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3119.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3197.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3239.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "E", "step": "functional year 4", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2942.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3007.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3007.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3046.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3174.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3253.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3295.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "E", "step": "functional year 5", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3134.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3203.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3203.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3245.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3373.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3457.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3502.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "E", "step": "functional year 6", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3186.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3256.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3256.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3298.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3426.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3512.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3558.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "E", "step": "functional year 7", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3234.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3305.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3305.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3348.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3476.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3563.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3609.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "F", "step": "functional year 0", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2831.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2893.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2893.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 2931.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3059.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3135.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3176.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "F", "step": "functional year 1", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2898.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 2962.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 2962.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3001.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3129.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3207.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3249.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "F", "step": "functional year 2", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 2962.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3027.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3027.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3066.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3194.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3274.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3317.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "F", "step": "functional year 3", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3023.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3090.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3090.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3130.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3258.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3339.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3382.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "F", "step": "functional year 4", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3081.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3149.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3149.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3190.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3318.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3401.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3445.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "F", "step": "functional year 5", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3327.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3400.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3400.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3444.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3572.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3661.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3709.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "F", "step": "functional year 6", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3377.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3451.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3451.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3496.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3624.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3715.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3763.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "F", "step": "functional year 7", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3424.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3499.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3499.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3544.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3672.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3764.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3813.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "F", "step": "functional year 8", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3727.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3809.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3809.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3859.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3987.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4087.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4140.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "G", "step": "functional year 0", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3025.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3092.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3092.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3132.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3260.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3342.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3385.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "G", "step": "functional year 1", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3094.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3162.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3162.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3203.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3331.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3414.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3458.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "G", "step": "functional year 2", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3157.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3226.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3226.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3268.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3396.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3481.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3526.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "G", "step": "functional year 3", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3217.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3288.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3288.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3331.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3459.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3545.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3591.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "G", "step": "functional year 4", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3273.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3345.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3345.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3388.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3516.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3604.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3651.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "G", "step": "functional year 5", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3574.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3653.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3653.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3700.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3828.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3924.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3975.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "G", "step": "functional year 6", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3629.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3709.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3709.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3757.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3885.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3982.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4034.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "G", "step": "functional year 7", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3679.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3760.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3760.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3809.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3937.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4035.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4087.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "G", "step": "functional year 8", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 4060.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 4149.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 4149.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 4203.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 4331.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4439.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4497.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "G", "step": "functional year 9", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 4111.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 4201.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 4201.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 4256.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 4384.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4494.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4552.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "H", "step": "functional year 0", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3246.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3317.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3317.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3360.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3488.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3575.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3621.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "H", "step": "functional year 1", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3319.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3392.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3392.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3436.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3564.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3653.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3700.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "H", "step": "functional year 2", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3388.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3463.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3463.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3508.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3636.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3727.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3775.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "H", "step": "functional year 3", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3454.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3530.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3530.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3576.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3704.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3797.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3846.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "H", "step": "functional year 4", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3516.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3593.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3593.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3640.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3768.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3862.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3912.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "H", "step": "functional year 5", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3885.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3970.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3970.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 4022.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 4150.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4254.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4309.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "H", "step": "functional year 6", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3947.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 4034.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 4034.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 4086.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 4214.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4319.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4375.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "H", "step": "functional year 7", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 4006.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 4094.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 4094.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 4147.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 4275.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4382.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4439.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "H", "step": "functional year 8", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 4060.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 4149.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 4149.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 4203.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 4331.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4439.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4497.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "H", "step": "functional year 9", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 4111.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 4201.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 4201.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 4256.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 4384.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4494.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4552.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "H", "step": "functional year 10", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 4554.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 4654.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 4654.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 4715.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 4843.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4964.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 5029.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "I", "step": "functional year 0", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3512.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3589.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3589.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3636.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3764.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3858.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3908.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "I", "step": "functional year 1", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3595.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3674.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3674.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3722.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3850.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 3946.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 3997.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "I", "step": "functional year 2", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3673.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3754.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3754.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3803.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 3931.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4029.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4081.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "I", "step": "functional year 3", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3748.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3830.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3830.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3880.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 4008.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4108.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4161.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "I", "step": "functional year 4", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3818.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3902.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3902.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3953.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 4081.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4183.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4237.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "I", "step": "functional year 5", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3885.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3970.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3970.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 4022.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 4150.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4254.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4309.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "I", "step": "functional year 6", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3947.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 4034.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 4034.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 4086.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 4214.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4319.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4375.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "I", "step": "functional year 7", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 4006.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 4094.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 4094.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 4147.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 4275.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4382.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4439.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "I", "step": "functional year 8", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 4440.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 4538.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 4538.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 4597.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 4725.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4843.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4906.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "I", "step": "functional year 9", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 4498.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 4597.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 4597.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 4657.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 4785.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4905.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4969.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "I", "step": "functional year 10", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 4554.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 4654.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 4654.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 4715.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 4843.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4964.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 5029.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "J", "step": "functional year 0", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3833.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 3917.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 3917.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 3968.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 4096.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4198.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4253.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "J", "step": "functional year 1", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 3920.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2025"},
+{"start_date": "2025-06-01", "end_date": "2025-06-30", "amount": 4006.0, "unit": "monthly", "table_label": "Monthly per 1 Jun 2025", "inc_pct": 2.2},
+{"start_date": "2025-07-01", "end_date": "2025-09-30", "amount": 4006.0, "unit": "monthly", "table_label": "Monthly per 1 Jul 2025"},
+{"start_date": "2025-10-01", "end_date": "2026-01-31", "amount": 4058.0, "unit": "monthly", "table_label": "Monthly per 1 Oct 2025", "inc_pct": 1.3},
+{"start_date": "2026-02-01", "end_date": "2026-12-31", "amount": 4186.0, "unit": "monthly", "table_label": "Monthly per 1 Feb 2026", "note": "Increased by € 128 gross."},
+{"start_date": "2027-01-01", "end_date": "2027-04-30", "amount": 4291.0, "unit": "monthly", "table_label": "Monthly per 1 Jan 2027", "inc_pct": 2.5},
+{"start_date": "2027-05-01", "end_date": "2027-10-31", "amount": 4347.0, "unit": "monthly", "table_label": "Monthly per 1 May 2027", "inc_pct": 1.3}
+], "row_note": null},
+{"jobgroup": "J", "step": "functional year 2", "worker": null, "is_entry": null, "age_group": "21+", "education": null, "ft_hours": 38, "permanency": null, "hours_type": null, "timeline": [
+{"start_date": "2025-02-01", "end_date": "2025-05-31", "amount": 4004.0, "unit":

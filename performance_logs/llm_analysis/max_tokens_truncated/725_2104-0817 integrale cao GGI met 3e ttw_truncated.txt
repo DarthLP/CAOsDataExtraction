@@ -1,7 +1,7 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: 2104-0817 integrale cao GGI met 3e ttw_extract.json
-Timestamp: 2025-10-20T14:11:47.042127
-Response length: 7250 characters
+Timestamp: 2025-11-15T17:18:55.595156
+Response length: 6373 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
@@ -9,214 +9,297 @@ Finish reason: MAX_TOKENS
   "salary_information": [
     {
       "jobgroup": "Function group B",
-      "step_label": "0",
-      "worker_type": "employee",
+      "step": "0",
       "age_group": "21 until AOW age",
+      "ft_hours": 38,
       "timeline": [
         {
           "start_date": "2021-01-01",
           "amount": 1777.60,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021 (38-hour)",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 38
+          "unit": "m",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2021-07-01",
           "amount": 1786.50,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2021 (38-hour)",
-          "increase_percent": 0.5,
-          "hours_basis_ft_week": 38
+          "unit": "m",
+          "inc_pct": 0.50
         }
-      ],
-      "row_note": "Hourly wage is obtained by dividing the actual monthly wage by 165.3 or the actual weekly wage by 38. This may differ for employees in function group F or higher (Article 22 Lid 7)."
+      ]
     },
     {
       "jobgroup": "Function group B",
-      "step_label": "0",
-      "worker_type": "employee",
+      "step": "0",
       "age_group": "21 until AOW age",
+      "ft_hours": 40,
       "timeline": [
         {
           "start_date": "2021-01-01",
           "amount": 1871.20,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021 (40-hour)",
-          "hours_basis_ft_week": 40
+          "unit": "m"
         },
         {
           "start_date": "2021-07-01",
           "amount": 1880.50,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2021 (40-hour)",
-          "hours_basis_ft_week": 40
+          "unit": "m"
         }
-      ],
-      "row_note": "Hourly wage is obtained by dividing the actual monthly wage by 174 or the actual weekly wage by 40. This may differ for employees in function group F or higher (Article 22 Lid 7)."
+      ]
     },
     {
       "jobgroup": "Function group B",
-      "step_label": "1",
-      "worker_type": "employee",
+      "step": "1",
       "age_group": "21 until AOW age",
+      "ft_hours": 38,
       "timeline": [
         {
           "start_date": "2021-01-01",
           "amount": 1835.00,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021 (38-hour)",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 38
+          "unit": "m",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2021-07-01",
           "amount": 1844.20,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2021 (38-hour)",
-          "increase_percent": 0.5,
-          "hours_basis_ft_week": 38
+          "unit": "m",
+          "inc_pct": 0.50
         }
-      ],
-      "row_note": "Hourly wage is obtained by dividing the actual monthly wage by 165.3 or the actual weekly wage by 38. This may differ for employees in function group F or higher (Article 22 Lid 7)."
+      ]
     },
     {
       "jobgroup": "Function group B",
-      "step_label": "1",
-      "worker_type": "employee",
+      "step": "1",
       "age_group": "21 until AOW age",
+      "ft_hours": 40,
       "timeline": [
         {
           "start_date": "2021-01-01",
           "amount": 1931.40,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021 (40-hour)",
-          "hours_basis_ft_week": 40
+          "unit": "m"
         },
         {
           "start_date": "2021-07-01",
           "amount": 1941.00,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2021 (40-hour)",
-          "hours_basis_ft_week": 40
+          "unit": "m"
         }
-      ],
-      "row_note": "Hourly wage is obtained by dividing the actual monthly wage by 174 or the actual weekly wage by 40. This may differ for employees in function group F or higher (Article 22 Lid 7)."
+      ]
     },
     {
       "jobgroup": "Function group B",
-      "step_label": "2",
-      "worker_type": "employee",
+      "step": "2",
       "age_group": "21 until AOW age",
+      "ft_hours": 38,
       "timeline": [
         {
           "start_date": "2021-01-01",
           "amount": 1893.10,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021 (38-hour)",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 38
+          "unit": "m",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2021-07-01",
           "amount": 1902.70,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2021 (38-hour)",
-          "increase_percent": 0.5,
-          "hours_basis_ft_week": 38
+          "unit": "m",
+          "inc_pct": 0.50
         }
-      ],
-      "row_note": "Hourly wage is obtained by dividing the actual monthly wage by 165.3 or the actual weekly wage by 38. This may differ for employees in function group F or higher (Article 22 Lid 7)."
+      ]
     },
     {
       "jobgroup": "Function group B",
-      "step_label": "2",
-      "worker_type": "employee",
+      "step": "2",
       "age_group": "21 until AOW age",
+      "ft_hours": 40,
       "timeline": [
         {
           "start_date": "2021-01-01",
           "amount": 1992.70,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021 (40-hour)",
-          "hours_basis_ft_week": 40
+          "unit": "m"
         },
         {
           "start_date": "2021-07-01",
           "amount": 2002.70,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2021 (40-hour)",
-          "hours_basis_ft_week": 40
+          "unit": "m"
         }
-      ],
-      "row_note": "Hourly wage is obtained by dividing the actual monthly wage by 174 or the actual weekly wage by 40. This may differ for employees in function group F or higher (Article 22 Lid 7)."
+      ]
     },
     {
       "jobgroup": "Function group B",
-      "step_label": "3",
-      "worker_type": "employee",
+      "step": "3",
       "age_group": "21 until AOW age",
+      "ft_hours": 38,
       "timeline": [
         {
           "start_date": "2021-01-01",
           "amount": 1949.90,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021 (38-hour)",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 38
+          "unit": "m",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2021-07-01",
           "amount": 1959.70,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2021 (38-hour)",
-          "increase_percent": 0.5,
-          "hours_basis_ft_week": 38
+          "unit": "m",
+          "inc_pct": 0.50
         }
-      ],
-      "row_note": "Hourly wage is obtained by dividing the actual monthly wage by 165.3 or the actual weekly wage by 38. This may differ for employees in function group F or higher (Article 22 Lid 7)."
+      ]
     },
     {
       "jobgroup": "Function group B",
-      "step_label": "3",
-      "worker_type": "employee",
+      "step": "3",
       "age_group": "21 until AOW age",
+      "ft_hours": 40,
       "timeline": [
         {
           "start_date": "2021-01-01",
           "amount": 2052.30,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021 (40-hour)",
-          "hours_basis_ft_week": 40
+          "unit": "m"
         },
         {
           "start_date": "2021-07-01",
           "amount": 2062.60,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2021 (40-hour)",
-          "hours_basis_ft_week": 40
+          "unit": "m"
         }
-      ],
-      "row_note": "Hourly wage is obtained by dividing the actual monthly wage by 174 or the actual weekly wage by 40. This may differ for employees in function group F or higher (Article 22 Lid 7)."
+      ]
     },
     {
       "jobgroup": "Function group B",
-      "step_label": "4",
-      "worker_type": "employee",
+      "step": "4",
       "age_group": "21 until AOW age",
+      "ft_hours": 38,
       "timeline": [
         {
           "start_date": "2021-01-01",
           "amount": 2006.90,
-          "unit": "monthly",
-          "table_label": "per 1 Jan 2021 (38-hour)",
-          "increase_percent": 1.0,
-          "hours_basis_ft_week": 38
+          "unit": "m",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2021-07-01",
           "amount": 2016.90,
-          "unit": "monthly",
-          "table_label": "per 1 Jul 2021 (38-hour)",
-          "increase_percent": 0.5,
-          "hours_basis_ft_week": 3
+          "unit": "m",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Function group B",
+      "step": "4",
+      "age_group": "21 until AOW age",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2021-01-01",
+          "amount": 2112.60,
+          "unit": "m"
+        },
+        {
+          "start_date": "2021-07-01",
+          "amount": 2123.20,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Function group B",
+      "step": "5",
+      "age_group": "21 until AOW age",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2021-01-01",
+          "amount": 2064.70,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2021-07-01",
+          "amount": 2075.00,
+          "unit": "m",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Function group B",
+      "step": "5",
+      "age_group": "21 until AOW age",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2021-01-01",
+          "amount": 2173.30,
+          "unit": "m"
+        },
+        {
+          "start_date": "2021-07-01",
+          "amount": 2184.10,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Function group B",
+      "step": "6",
+      "age_group": "21 until AOW age",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2021-01-01",
+          "amount": 2121.50,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2021-07-01",
+          "amount": 2132.20,
+          "unit": "m",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Function group B",
+      "step": "6",
+      "age_group": "21 until AOW age",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2021-01-01",
+          "amount": 2233.30,
+          "unit": "m"
+        },
+        {
+          "start_date": "2021-07-01",
+          "amount": 2244.40,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Function group B",
+      "step": "7",
+      "age_group": "21 until AOW age",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2021-01-01",
+          "amount": 2178.90,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2021-07-01",
+          "amount": 2189.80,
+          "unit": "m",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Function group B",
+      "step": "7",
+      "age_group": "21 until AOW age",
+      "ft_hours": 40,
+      "timeline": [
+        {
+          "start_date": "2021-01-01",
+          "amount": 2293.50,
+          "unit": "m"

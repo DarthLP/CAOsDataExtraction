@@ -459,23 +459,41 @@ class PerformanceMonitor:
         # Check for duplicates if needed and remove existing entry
         if not allow_duplicates:
             try:
-                with open(log_file, "r", encoding="utf-8") as f:
-                    lines = f.readlines()
-                
-                if lines:
-                    existing_data = [json.loads(line) for line in lines if line.strip()]
-                    # Filter out existing entry for this file/cao/analysis_type
-                    filtered_data = []
-                    for entry in existing_data:
-                        if not (entry.get('filename') == filename and 
-                                entry.get('cao_number') == cao_number and
-                                entry.get('analysis_type') == analysis_type):
-                            filtered_data.append(entry)
-                    
-                    # Write back the filtered data (removing the old entry)
-                    with open(log_file, "w", encoding="utf-8") as f:
-                        for entry in filtered_data:
-                            f.write(json.dumps(entry) + "\n")
+                # Use file locking for read-modify-write to prevent race conditions
+                with open(log_file, "r+", encoding="utf-8") as f:
+                    try:
+                        fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+                        lines = f.readlines()
+                        
+                        if lines:
+                            existing_data = []
+                            for line in lines:
+                                line = line.strip()
+                                if line:
+                                    try:
+                                        existing_data.append(json.loads(line))
+                                    except json.JSONDecodeError:
+                                        # Skip corrupted lines
+                                        continue
+                            
+                            # Filter out existing entry for this file/cao/analysis_type
+                            filtered_data = []
+                            for entry in existing_data:
+                                if not (entry.get('filename') == filename and 
+                                        entry.get('cao_number') == cao_number and
+                                        entry.get('analysis_type') == analysis_type):
+                                    filtered_data.append(entry)
+                            
+                            # Write back the filtered data (removing the old entry)
+                            f.seek(0)
+                            f.truncate()
+                            for entry in filtered_data:
+                                f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+                            f.flush()
+                        fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+                    except Exception as e:
+                        fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+                        raise
             except FileNotFoundError:
                 pass  # File doesn't exist yet, no duplicates to check
         
@@ -486,11 +504,20 @@ class PerformanceMonitor:
         with open(log_file, 'a', encoding='utf-8') as f:
             try:
                 fcntl.flock(f.fileno(), fcntl.LOCK_EX)
-                f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
+                json_line = json.dumps(log_entry, ensure_ascii=False) + '\n'
+                f.write(json_line)
+                f.flush()  # Ensure data is written to disk before releasing lock
                 fcntl.flock(f.fileno(), fcntl.LOCK_UN)
             except Exception as e:
+                # If lock fails, still try to write but log the warning
                 print(f"Warning: Could not acquire file lock for logging: {e}")
-                f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
+                try:
+                    fcntl.flock(f.fileno(), fcntl.LOCK_UN)  # Try to unlock if locked
+                except:
+                    pass
+                json_line = json.dumps(log_entry, ensure_ascii=False) + '\n'
+                f.write(json_line)
+                f.flush()
 
     def log_combined_analysis(self,
                              filename: str,
@@ -546,11 +573,20 @@ class PerformanceMonitor:
         with open(log_file, 'a', encoding='utf-8') as f:
             try:
                 fcntl.flock(f.fileno(), fcntl.LOCK_EX)
-                f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
+                json_line = json.dumps(log_entry, ensure_ascii=False) + '\n'
+                f.write(json_line)
+                f.flush()  # Ensure data is written to disk before releasing lock
                 fcntl.flock(f.fileno(), fcntl.LOCK_UN)
             except Exception as e:
+                # If lock fails, still try to write but log the warning
                 print(f"Warning: Could not acquire file lock for combined logging: {e}")
-                f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
+                try:
+                    fcntl.flock(f.fileno(), fcntl.LOCK_UN)  # Try to unlock if locked
+                except:
+                    pass
+                json_line = json.dumps(log_entry, ensure_ascii=False) + '\n'
+                f.write(json_line)
+                f.flush()
 
 # Convenience functions for easy integration
 def create_monitor() -> PerformanceMonitor:

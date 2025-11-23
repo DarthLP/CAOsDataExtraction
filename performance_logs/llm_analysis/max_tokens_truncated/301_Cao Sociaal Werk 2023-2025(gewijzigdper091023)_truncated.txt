@@ -1,82 +1,170 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: Cao Sociaal Werk 2023-2025(gewijzigdper091023)_extract.json
-Timestamp: 2025-10-19T16:58:24.325951
-Response length: 9371 characters
+Timestamp: 2025-11-15T01:58:04.118699
+Response length: 7886 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
 {
   "salary_information": [
     {
-      "jobgroup": "0",
-      "step_label": "0",
-      "worker_type": "Doorstroombaan",
-      "row_note": "Employees on an inflow or through-flow job are classified in salary scale 0. This scale is linked to the statutory minimum wage. From 1 January 2024, this means 156 times the statutory minimum hourly wage. The minimum of the scale is equal to 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% of the statutory minimum wage for through-flow jobs.  For 'Instroombaan', is_entry is true. For 'Doorstroombaan', is_entry is null as it's not explicitly entry-level but part of the same special scale 0 structure. Only 2023-07-01 amounts are explicitly printed for Scale 0 in the document, so no later timeline points are extracted for this scale."
+      "jobgroup": "1",
+      "step": "Start",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 1998.0,
+          "unit": "m",
+          "inc_pct": 7.0,
+          "note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2184.0,
+          "unit": "m",
+          "inc_pct": 4.0,
+          "note": "As of 1 January 2024, a floor of €14 per hour applies to salaries, or €2,184 per month. The salary amount can also never be lower than 156 times the amount as hourly wage based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2184.0,
+          "unit": "m",
+          "inc_pct": 4.0,
+          "note": "A floor of €14 per hour applies to salaries, or €2,184 per month. The salary amount can also never be lower than 156 times the amount as hourly wage based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2184.0,
+          "unit": "m",
+          "note": "The salary amounts are equal to those from 1 July 2024. From 1 January 2025, the outflow scales U1 and U2 are added to the regular scales. This means that 2 periodic numbers are added per scale and U1 and U2 expire. A floor of €14 per hour applies to salaries, or €2,184 per month. The salary amount can also never be lower than 156 times the amount as hourly wage based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+        }
+      ]
     },
     {
-      "jobgroup": "0",
-      "step_label": "0",
-      "worker_type": "Instroombaan",
-      "is_entry": true,
-      "row_note": "Employees on an inflow or through-flow job are classified in salary scale 0. This scale is linked to the statutory minimum wage. From 1 January 2024, this means 156 times the statutory minimum hourly wage. The minimum of the scale is equal to 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% of the statutory minimum wage for through-flow jobs.  For 'Instroombaan', is_entry is true. For 'Doorstroombaan', is_entry is null as it's not explicitly entry-level but part of the same special scale 0 structure. Only 2023-07-01 amounts are explicitly printed for Scale 0 in the document, so no later timeline points are extracted for this scale."
+      "jobgroup": "1",
+      "step": "0",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2043.0,
+          "unit": "m",
+          "inc_pct": 7.0,
+          "note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2184.0,
+          "unit": "m",
+          "inc_pct": 4.0,
+          "note": "As of 1 January 2024, a floor of €14 per hour applies to salaries, or €2,184 per month. The salary amount can also never be lower than 156 times the amount as hourly wage based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2210.0,
+          "unit": "m",
+          "inc_pct": 4.0,
+          "note": "A floor of €14 per hour applies to salaries, or €2,184 per month. The salary amount can also never be lower than 156 times the amount as hourly wage based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2210.0,
+          "unit": "m",
+          "note": "The salary amounts are equal to those from 1 July 2024. From 1 January 2025, the outflow scales U1 and U2 are added to the regular scales. This means that 2 periodic numbers are added per scale and U1 and U2 expire. A floor of €14 per hour applies to salaries, or €2,184 per month. The salary amount can also never be lower than 156 times the amount as hourly wage based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+        }
+      ]
     },
     {
-      "jobgroup": "0",
-      "step_label": "1",
-      "worker_type": "Doorstroombaan",
-      "row_note": "Employees on an inflow or through-flow job are classified in salary scale 0. This scale is linked to the statutory minimum wage. From 1 January 2024, this means 156 times the statutory minimum hourly wage. The minimum of the scale is equal to 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% of the statutory minimum wage for through-flow jobs.  For 'Instroombaan', is_entry is true. For 'Doorstroombaan', is_entry is null as it's not explicitly entry-level but part of the same special scale 0 structure. Only 2023-07-01 amounts are explicitly printed for Scale 0 in the document, so no later timeline points are extracted for this scale."
+      "jobgroup": "1",
+      "step": "1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2092.0,
+          "unit": "m",
+          "inc_pct": 7.0,
+          "note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2184.0,
+          "unit": "m",
+          "inc_pct": 4.0,
+          "note": "As of 1 January 2024, a floor of €14 per hour applies to salaries, or €2,184 per month. The salary amount can also never be lower than 156 times the amount as hourly wage based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2263.0,
+          "unit": "m",
+          "inc_pct": 4.0,
+          "note": "A floor of €14 per hour applies to salaries, or €2,184 per month. The salary amount can also never be lower than 156 times the amount as hourly wage based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2263.0,
+          "unit": "m",
+          "note": "The salary amounts are equal to those from 1 July 2024. From 1 January 2025, the outflow scales U1 and U2 are added to the regular scales. This means that 2 periodic numbers are added per scale and U1 and U2 expire. A floor of €14 per hour applies to salaries, or €2,184 per month. The salary amount can also never be lower than 156 times the amount as hourly wage based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+        }
+      ]
     },
     {
-      "jobgroup": "0",
-      "step_label": "1",
-      "worker_type": "Instroombaan",
-      "is_entry": true,
-      "row_note": "Employees on an inflow or through-flow job are classified in salary scale 0. This scale is linked to the statutory minimum wage. From 1 January 2024, this means 156 times the statutory minimum hourly wage. The minimum of the scale is equal to 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% of the statutory minimum wage for through-flow jobs.  For 'Instroombaan', is_entry is true. For 'Doorstroombaan', is_entry is null as it's not explicitly entry-level but part of the same special scale 0 structure. Only 2023-07-01 amounts are explicitly printed for Scale 0 in the document, so no later timeline points are extracted for this scale."
+      "jobgroup": "1",
+      "step": "2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2142.0,
+          "unit": "m",
+          "inc_pct": 7.0,
+          "note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2228.0,
+          "unit": "m",
+          "inc_pct": 4.0,
+          "note": "As of 1 January 2024, a floor of €14 per hour applies to salaries, or €2,184 per month. The salary amount can also never be lower than 156 times the amount as hourly wage based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2317.0,
+          "unit": "m",
+          "inc_pct": 4.0,
+          "note": "A floor of €14 per hour applies to salaries, or €2,184 per month. The salary amount can also never be lower than 156 times the amount as hourly wage based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2317.0,
+          "unit": "m",
+          "note": "The salary amounts are equal to those from 1 July 2024. From 1 January 2025, the outflow scales U1 and U2 are added to the regular scales. This means that 2 periodic numbers are added per scale and U1 and U2 expire. A floor of €14 per hour applies to salaries, or €2,184 per month. The salary amount can also never be lower than 156 times the amount as hourly wage based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+        }
+      ]
     },
     {
-      "jobgroup": "0",
-      "step_label": "10",
-      "worker_type": "Doorstroombaan",
-      "row_note": "Employees on an inflow or through-flow job are classified in salary scale 0. This scale is linked to the statutory minimum wage. From 1 January 2024, this means 156 times the statutory minimum hourly wage. The minimum of the scale is equal to 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% of the statutory minimum wage for through-flow jobs.  For 'Instroombaan', is_entry is true. For 'Doorstroombaan', is_entry is null as it's not explicitly entry-level but part of the same special scale 0 structure. Only 2023-07-01 amounts are explicitly printed for Scale 0 in the document, so no later timeline points are extracted for this scale."
-    },
-    {
-      "jobgroup": "0",
-      "step_label": "11",
-      "worker_type": "Doorstroombaan",
-      "row_note": "Employees on an inflow or through-flow job are classified in salary scale 0. This scale is linked to the statutory minimum wage. From 1 January 2024, this means 156 times the statutory minimum hourly wage. The minimum of the scale is equal to 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% of the statutory minimum wage for through-flow jobs.  For 'Instroombaan', is_entry is true. For 'Doorstroombaan', is_entry is null as it's not explicitly entry-level but part of the same special scale 0 structure. Only 2023-07-01 amounts are explicitly printed for Scale 0 in the document, so no later timeline points are extracted for this scale."
-    },
-    {
-      "jobgroup": "0",
-      "step_label": "12",
-      "worker_type": "Doorstroombaan",
-      "row_note": "Employees on an inflow or through-flow job are classified in salary scale 0. This scale is linked to the statutory minimum wage. From 1 January 2024, this means 156 times the statutory minimum hourly wage. The minimum of the scale is equal to 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% of the statutory minimum wage for through-flow jobs.  For 'Instroombaan', is_entry is true. For 'Doorstroombaan', is_entry is null as it's not explicitly entry-level but part of the same special scale 0 structure. Only 2023-07-01 amounts are explicitly printed for Scale 0 in the document, so no later timeline points are extracted for this scale."
-    },
-    {
-      "jobgroup": "0",
-      "step_label": "13",
-      "worker_type": "Doorstroombaan",
-      "row_note": "Employees on an inflow or through-flow job are classified in salary scale 0. This scale is linked to the statutory minimum wage. From 1 January 2024, this means 156 times the statutory minimum hourly wage. The minimum of the scale is equal to 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% of the statutory minimum wage for through-flow jobs.  For 'Instroombaan', is_entry is true. For 'Doorstroombaan', is_entry is null as it's not explicitly entry-level but part of the same special scale 0 structure. Only 2023-07-01 amounts are explicitly printed for Scale 0 in the document, so no later timeline points are extracted for this scale."
-    },
-    {
-      "jobgroup": "0",
-      "step_label": "2",
-      "worker_type": "Doorstroombaan",
-      "row_note": "Employees on an inflow or through-flow job are classified in salary scale 0. This scale is linked to the statutory minimum wage. From 1 January 2024, this means 156 times the statutory minimum hourly wage. The minimum of the scale is equal to 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% of the statutory minimum wage for through-flow jobs.  For 'Instroombaan', is_entry is true. For 'Doorstroombaan', is_entry is null as it's not explicitly entry-level but part of the same special scale 0 structure. Only 2023-07-01 amounts are explicitly printed for Scale 0 in the document, so no later timeline points are extracted for this scale."
-    },
-    {
-      "jobgroup": "0",
-      "step_label": "2",
-      "worker_type": "Instroombaan",
-      "is_entry": true,
-      "row_note": "Employees on an inflow or through-flow job are classified in salary scale 0. This scale is linked to the statutory minimum wage. From 1 January 2024, this means 156 times the statutory minimum hourly wage. The minimum of the scale is equal to 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% of the statutory minimum wage for through-flow jobs.  For 'Instroombaan', is_entry is true. For 'Doorstroombaan', is_entry is null as it's not explicitly entry-level but part of the same special scale 0 structure. Only 2023-07-01 amounts are explicitly printed for Scale 0 in the document, so no later timeline points are extracted for this scale."
-    },
-    {
-      "jobgroup": "0",
-      "step_label": "3",
-      "worker_type": "Doorstroombaan",
-      "row_note": "Employees on an inflow or through-flow job are classified in salary scale 0. This scale is linked to the statutory minimum wage. From 1 January 2024, this means 156 times the statutory minimum hourly wage. The minimum of the scale is equal to 100% of the statutory minimum wage. The maximum of the scale is 130% of the statutory minimum wage for inflow jobs and 150% of the statutory minimum wage for through-flow jobs.  For 'Instroombaan', is_entry is true. For 'Doorstroombaan', is_entry is null as it's not explicitly entry-level but part of the same special scale 0 structure. Only 2023-07-01 amounts are explicitly printed for Scale 0 in the document, so no later timeline points are extracted for this scale."
-    },
-    {
-      "jobgroup": "0",
-      "step_label": "3",
-      "worker_type": "Instroombaan
+      "jobgroup": "1",
+      "step": "3",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2196.0,
+          "unit": "m",
+          "inc_pct": 7.0,
+          "note": "The salary amount can never be lower than the amount based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2284.0,
+          "unit": "m",
+          "inc_pct": 4.0,
+          "note": "As of 1 January 2024, a floor of €14 per hour applies to salaries, or €2,184 per month. The salary amount can also never be lower than 156 times the amount as hourly wage based on the Wet Minimumloon en Minimumvakantiebijslag (WML)."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2375.0,
+          "unit": "m",
+          "inc_pct": 4.0,
+          "note": "A floor of €14 per hour applies to salaries, or €2,184 per month. The salary amount can also never be lower than 156 times the amount as hourly wage based on the Wet Minimumloon en Minimumvakantiebijslag (WML

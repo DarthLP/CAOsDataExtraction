@@ -1,3238 +1,875 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: Plantum___CAO_2011____2014_extract.json
-Timestamp: 2025-10-19T11:58:49.958536
-Response length: 93381 characters
+Timestamp: 2025-11-14T20:57:56.691972
+Response length: 23314 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
 {
   "salary_information": [
     {
-      "jobgroup": "Group A",
-      "step_label": "0 functiejr.",
+      "jobgroup": "Entry Scale",
+      "step": "0 functiejr.",
+      "is_entry": true,
       "timeline": [
         {
           "start_date": "2011-04-01",
-          "amount": 1665.5,
+          "amount": 1665.50,
           "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
+          "table_label": "as of April 1, 2011",
+          "inc_pct": 0.50
         },
         {
           "start_date": "2011-10-01",
-          "amount": 1678.0,
+          "amount": 1678.00,
           "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
+          "table_label": "as of October 1, 2011",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2012-01-01",
-          "amount": 1694.8,
+          "amount": 1694.80,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2012",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2012-07-01",
-          "amount": 1707.5,
+          "amount": 1707.50,
           "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
+          "table_label": "as of July 1, 2012",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2013-01-01",
-          "amount": 1724.6,
+          "amount": 1724.60,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2013",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2013-09-01",
-          "amount": 1746.2,
+          "amount": 1746.20,
           "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
+          "table_label": "as of September 1, 2013",
+          "inc_pct": 1.25
         }
-      ]
+      ],
+      "row_note": "All amounts exclude 8.33% holiday allowance"
+    },
+    {
+      "jobgroup": "Entry Scale",
+      "step": "1 functiejr.",
+      "is_entry": true,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "amount": 1699.00,
+          "unit": "monthly",
+          "table_label": "as of April 1, 2011",
+          "inc_pct": 0.50
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 1711.70,
+          "unit": "monthly",
+          "table_label": "as of October 1, 2011",
+          "inc_pct": 0.75
+        },
+        {
+          "start_date": "2012-01-01",
+          "amount": 1728.80,
+          "unit": "monthly",
+          "table_label": "as of January 1, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-07-01",
+          "amount": 1741.80,
+          "unit": "monthly",
+          "table_label": "as of July 1, 2012",
+          "inc_pct": 0.75
+        },
+        {
+          "start_date": "2013-01-01",
+          "amount": 1759.20,
+          "unit": "monthly",
+          "table_label": "as of January 1, 2013",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2013-09-01",
+          "amount": 1781.20,
+          "unit": "monthly",
+          "table_label": "as of September 1, 2013",
+          "inc_pct": 1.25
+        }
+      ],
+      "row_note": "All amounts exclude 8.33% holiday allowance"
+    },
+    {
+      "jobgroup": "Entry Scale",
+      "step": "2 functiejr.",
+      "is_entry": true,
+      "timeline": [
+        {
+          "start_date": "2011-04-01",
+          "amount": 1732.90,
+          "unit": "monthly",
+          "table_label": "as of April 1, 2011",
+          "inc_pct": 0.50
+        },
+        {
+          "start_date": "2011-10-01",
+          "amount": 1745.90,
+          "unit": "monthly",
+          "table_label": "as of October 1, 2011",
+          "inc_pct": 0.75
+        },
+        {
+          "start_date": "2012-01-01",
+          "amount": 1763.40,
+          "unit": "monthly",
+          "table_label": "as of January 1, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-07-01",
+          "amount": 1776.60,
+          "unit": "monthly",
+          "table_label": "as of July 1, 2012",
+          "inc_pct": 0.75
+        },
+        {
+          "start_date": "2013-01-01",
+          "amount": 1794.40,
+          "unit": "monthly",
+          "table_label": "as of January 1, 2013",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2013-09-01",
+          "amount": 1816.80,
+          "unit": "monthly",
+          "table_label": "as of September 1, 2013",
+          "inc_pct": 1.25
+        }
+      ],
+      "row_note": "All amounts exclude 8.33% holiday allowance"
     },
     {
       "jobgroup": "Group A",
-      "step_label": "1 functiejr.",
+      "step": "0 functiejr.",
       "timeline": [
         {
           "start_date": "2011-04-01",
-          "amount": 1699.0,
+          "amount": 1665.50,
           "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
+          "table_label": "as of April 1, 2011",
+          "inc_pct": 0.50
         },
         {
           "start_date": "2011-10-01",
-          "amount": 1711.7,
+          "amount": 1678.00,
           "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
+          "table_label": "as of October 1, 2011",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2012-01-01",
-          "amount": 1728.8,
+          "amount": 1694.80,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2012",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2012-07-01",
-          "amount": 1741.8,
+          "amount": 1707.50,
           "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
+          "table_label": "as of July 1, 2012",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2013-01-01",
-          "amount": 1759.2,
+          "amount": 1724.60,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2013",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2013-09-01",
-          "amount": 1781.2,
+          "amount": 1746.20,
           "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
+          "table_label": "as of September 1, 2013",
+          "inc_pct": 1.25
         }
-      ]
+      ],
+      "row_note": "All amounts exclude 8.33% holiday allowance"
     },
     {
       "jobgroup": "Group A",
-      "step_label": "2 functiejr.",
+      "step": "1 functiejr.",
       "timeline": [
         {
           "start_date": "2011-04-01",
-          "amount": 1732.9,
+          "amount": 1699.00,
           "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
+          "table_label": "as of April 1, 2011",
+          "inc_pct": 0.50
         },
         {
           "start_date": "2011-10-01",
-          "amount": 1745.9,
+          "amount": 1711.70,
           "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
+          "table_label": "as of October 1, 2011",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2012-01-01",
-          "amount": 1763.4,
+          "amount": 1728.80,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2012",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2012-07-01",
-          "amount": 1776.6,
+          "amount": 1741.80,
           "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
+          "table_label": "as of July 1, 2012",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2013-01-01",
-          "amount": 1794.4,
+          "amount": 1759.20,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2013",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2013-09-01",
-          "amount": 1816.8,
+          "amount": 1781.20,
           "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
+          "table_label": "as of September 1, 2013",
+          "inc_pct": 1.25
         }
-      ]
+      ],
+      "row_note": "All amounts exclude 8.33% holiday allowance"
     },
     {
       "jobgroup": "Group A",
-      "step_label": "3 functiejr.",
+      "step": "2 functiejr.",
       "timeline": [
         {
           "start_date": "2011-04-01",
-          "amount": 1767.3,
+          "amount": 1732.90,
           "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
+          "table_label": "as of April 1, 2011",
+          "inc_pct": 0.50
         },
         {
           "start_date": "2011-10-01",
-          "amount": 1780.6,
+          "amount": 1745.90,
           "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
+          "table_label": "as of October 1, 2011",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2012-01-01",
-          "amount": 1798.4,
+          "amount": 1763.40,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2012",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2012-07-01",
-          "amount": 1811.9,
+          "amount": 1776.60,
           "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
+          "table_label": "as of July 1, 2012",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2013-01-01",
-          "amount": 1830.0,
+          "amount": 1794.40,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2013",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2013-09-01",
-          "amount": 1852.9,
+          "amount": 1816.80,
           "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
+          "table_label": "as of September 1, 2013",
+          "inc_pct": 1.25
         }
-      ]
+      ],
+      "row_note": "All amounts exclude 8.33% holiday allowance"
     },
     {
       "jobgroup": "Group A",
-      "step_label": "4 functiejr.",
+      "step": "3 functiejr.",
       "timeline": [
         {
           "start_date": "2011-04-01",
-          "amount": 1802.9,
+          "amount": 1767.30,
           "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
+          "table_label": "as of April 1, 2011",
+          "inc_pct": 0.50
         },
         {
           "start_date": "2011-10-01",
-          "amount": 1816.4,
+          "amount": 1780.60,
           "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
+          "table_label": "as of October 1, 2011",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2012-01-01",
-          "amount": 1834.6,
+          "amount": 1798.40,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2012",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2012-07-01",
-          "amount": 1848.4,
+          "amount": 1811.90,
           "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
+          "table_label": "as of July 1, 2012",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2013-01-01",
-          "amount": 1866.9,
+          "amount": 1830.00,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2013",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2013-09-01",
-          "amount": 1890.2,
+          "amount": 1852.90,
           "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
+          "table_label": "as of September 1, 2013",
+          "inc_pct": 1.25
         }
-      ]
+      ],
+      "row_note": "All amounts exclude 8.33% holiday allowance"
     },
     {
       "jobgroup": "Group A",
-      "step_label": "5 functiejr.",
+      "step": "4 functiejr.",
       "timeline": [
         {
           "start_date": "2011-04-01",
-          "amount": 1839.0,
+          "amount": 1802.90,
           "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
+          "table_label": "as of April 1, 2011",
+          "inc_pct": 0.50
         },
         {
           "start_date": "2011-10-01",
-          "amount": 1852.8,
+          "amount": 1816.40,
           "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
+          "table_label": "as of October 1, 2011",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2012-01-01",
-          "amount": 1871.3,
+          "amount": 1834.60,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2012",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2012-07-01",
-          "amount": 1885.3,
+          "amount": 1848.40,
           "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
+          "table_label": "as of July 1, 2012",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2013-01-01",
-          "amount": 1904.2,
+          "amount": 1866.90,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2013",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2013-09-01",
-          "amount": 1928.0,
+          "amount": 1890.20,
           "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
+          "table_label": "as of September 1, 2013",
+          "inc_pct": 1.25
         }
-      ]
+      ],
+      "row_note": "All amounts exclude 8.33% holiday allowance"
     },
     {
       "jobgroup": "Group A",
-      "step_label": "6 functiejr.",
+      "step": "5 functiejr.",
       "timeline": [
         {
           "start_date": "2011-04-01",
-          "amount": 1875.7,
+          "amount": 1839.00,
           "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
+          "table_label": "as of April 1, 2011",
+          "inc_pct": 0.50
         },
         {
           "start_date": "2011-10-01",
-          "amount": 1889.8,
+          "amount": 1852.80,
           "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
+          "table_label": "as of October 1, 2011",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2012-01-01",
-          "amount": 1908.7,
+          "amount": 1871.30,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2012",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2012-07-01",
-          "amount": 1923.0,
+          "amount": 1885.30,
           "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
+          "table_label": "as of July 1, 2012",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2013-01-01",
-          "amount": 1942.2,
+          "amount": 1904.20,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2013",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2013-09-01",
-          "amount": 1966.5,
+          "amount": 1928.00,
           "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
+          "table_label": "as of September 1, 2013",
+          "inc_pct": 1.25
         }
-      ]
+      ],
+      "row_note": "All amounts exclude 8.33% holiday allowance"
     },
     {
       "jobgroup": "Group A",
-      "step_label": "7 functiejr.",
+      "step": "6 functiejr.",
       "timeline": [
         {
           "start_date": "2011-04-01",
-          "amount": 1913.2,
+          "amount": 1875.70,
           "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
+          "table_label": "as of April 1, 2011",
+          "inc_pct": 0.50
         },
         {
           "start_date": "2011-10-01",
-          "amount": 1927.5,
+          "amount": 1889.80,
           "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
+          "table_label": "as of October 1, 2011",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2012-01-01",
-          "amount": 1946.8,
+          "amount": 1908.70,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2012",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2012-07-01",
-          "amount": 1961.4,
+          "amount": 1923.00,
           "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
+          "table_label": "as of July 1, 2012",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2013-01-01",
-          "amount": 1981.0,
+          "amount": 1942.20,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2013",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2013-09-01",
-          "amount": 2005.8,
+          "amount": 1966.50,
           "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
+          "table_label": "as of September 1, 2013",
+          "inc_pct": 1.25
         }
-      ]
+      ],
+      "row_note": "All amounts exclude 8.33% holiday allowance"
     },
     {
       "jobgroup": "Group A",
-      "step_label": "Maximum",
+      "step": "7 functiejr.",
       "timeline": [
         {
           "start_date": "2011-04-01",
-          "amount": 1913.2,
+          "amount": 1913.20,
           "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
+          "table_label": "as of April 1, 2011",
+          "inc_pct": 0.50
         },
         {
           "start_date": "2011-10-01",
-          "amount": 1927.5,
+          "amount": 1927.50,
           "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
+          "table_label": "as of October 1, 2011",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2012-01-01",
-          "amount": 1946.8,
+          "amount": 1946.80,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2012",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2012-07-01",
-          "amount": 1961.4,
+          "amount": 1961.40,
           "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
+          "table_label": "as of July 1, 2012",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2013-01-01",
-          "amount": 1981.0,
+          "amount": 1981.00,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2013",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2013-09-01",
-          "amount": 2005.8,
+          "amount": 2005.80,
           "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
+          "table_label": "as of September 1, 2013",
+          "inc_pct": 1.25
         }
-      ]
-    },
-    {
-      "jobgroup": "Group A",
-      "step_label": "Minimum",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 1665.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1678.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 1694.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1707.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 1724.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 1746.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
+      ],
+      "row_note": "All amounts exclude 8.33% holiday allowance"
     },
     {
       "jobgroup": "Group B",
-      "step_label": "0 functiejr.",
+      "step": "0 functiejr.",
       "timeline": [
         {
           "start_date": "2011-04-01",
-          "amount": 1750.6,
+          "amount": 1750.60,
           "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
+          "table_label": "as of April 1, 2011",
+          "inc_pct": 0.50
         },
         {
           "start_date": "2011-10-01",
-          "amount": 1763.7,
+          "amount": 1763.70,
           "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
+          "table_label": "as of October 1, 2011",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2012-01-01",
-          "amount": 1781.3,
+          "amount": 1781.30,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2012",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2012-07-01",
-          "amount": 1794.7,
+          "amount": 1794.70,
           "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
+          "table_label": "as of July 1, 2012",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2013-01-01",
-          "amount": 1812.6,
+          "amount": 1812.60,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2013",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2013-09-01",
-          "amount": 1835.3,
+          "amount": 1835.30,
           "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
+          "table_label": "as of September 1, 2013",
+          "inc_pct": 1.25
         }
-      ]
+      ],
+      "row_note": "All amounts exclude 8.33% holiday allowance"
     },
     {
       "jobgroup": "Group B",
-      "step_label": "1 functiejr.",
+      "step": "1 functiejr.",
       "timeline": [
         {
           "start_date": "2011-04-01",
-          "amount": 1787.2,
+          "amount": 1787.20,
           "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
+          "table_label": "as of April 1, 2011",
+          "inc_pct": 0.50
         },
         {
           "start_date": "2011-10-01",
-          "amount": 1800.6,
+          "amount": 1800.60,
           "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
+          "table_label": "as of October 1, 2011",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2012-01-01",
-          "amount": 1818.6,
+          "amount": 1818.60,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2012",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2012-07-01",
-          "amount": 1832.2,
+          "amount": 1832.20,
           "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
+          "table_label": "as of July 1, 2012",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2013-01-01",
-          "amount": 1850.5,
+          "amount": 1850.50,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2013",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2013-09-01",
-          "amount": 1873.6,
+          "amount": 1873.60,
           "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
+          "table_label": "as of September 1, 2013",
+          "inc_pct": 1.25
         }
-      ]
+      ],
+      "row_note": "All amounts exclude 8.33% holiday allowance"
     },
     {
       "jobgroup": "Group B",
-      "step_label": "2 functiejr.",
+      "step": "2 functiejr.",
       "timeline": [
         {
           "start_date": "2011-04-01",
-          "amount": 1824.7,
+          "amount": 1824.70,
           "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
+          "table_label": "as of April 1, 2011",
+          "inc_pct": 0.50
         },
         {
           "start_date": "2011-10-01",
-          "amount": 1838.4,
+          "amount": 1838.40,
           "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
+          "table_label": "as of October 1, 2011",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2012-01-01",
-          "amount": 1856.8,
+          "amount": 1856.80,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2012",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2012-07-01",
-          "amount": 1870.7,
+          "amount": 1870.70,
           "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
+          "table_label": "as of July 1, 2012",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2013-01-01",
-          "amount": 1889.4,
+          "amount": 1889.40,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2013",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2013-09-01",
-          "amount": 1913.0,
+          "amount": 1913.00,
           "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
+          "table_label": "as of September 1, 2013",
+          "inc_pct": 1.25
         }
-      ]
+      ],
+      "row_note": "All amounts exclude 8.33% holiday allowance"
     },
     {
       "jobgroup": "Group B",
-      "step_label": "3 functiejr.",
+      "step": "3 functiejr.",
       "timeline": [
         {
           "start_date": "2011-04-01",
-          "amount": 1863.2,
+          "amount": 1863.20,
           "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
+          "table_label": "as of April 1, 2011",
+          "inc_pct": 0.50
         },
         {
           "start_date": "2011-10-01",
-          "amount": 1877.2,
+          "amount": 1877.20,
           "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
+          "table_label": "as of October 1, 2011",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2012-01-01",
-          "amount": 1896.0,
+          "amount": 1896.00,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2012",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2012-07-01",
-          "amount": 1910.2,
+          "amount": 1910.20,
           "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
+          "table_label": "as of July 1, 2012",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2013-01-01",
-          "amount": 1929.3,
+          "amount": 1929.30,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2013",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2013-09-01",
-          "amount": 1953.4,
+          "amount": 1953.40,
           "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
+          "table_label": "as of September 1, 2013",
+          "inc_pct": 1.25
         }
-      ]
+      ],
+      "row_note": "All amounts exclude 8.33% holiday allowance"
     },
     {
       "jobgroup": "Group B",
-      "step_label": "4 functiejr.",
+      "step": "4 functiejr.",
       "timeline": [
         {
           "start_date": "2011-04-01",
-          "amount": 1902.4,
+          "amount": 1902.40,
           "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
+          "table_label": "as of April 1, 2011",
+          "inc_pct": 0.50
         },
         {
           "start_date": "2011-10-01",
-          "amount": 1916.7,
+          "amount": 1916.70,
           "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
+          "table_label": "as of October 1, 2011",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2012-01-01",
-          "amount": 1935.9,
+          "amount": 1935.90,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2012",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2012-07-01",
-          "amount": 1950.4,
+          "amount": 1950.40,
           "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
+          "table_label": "as of July 1, 2012",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2013-01-01",
-          "amount": 1969.9,
+          "amount": 1969.90,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2013",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2013-09-01",
-          "amount": 1994.5,
+          "amount": 1994.50,
           "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
+          "table_label": "as of September 1, 2013",
+          "inc_pct": 1.25
         }
-      ]
+      ],
+      "row_note": "All amounts exclude 8.33% holiday allowance"
     },
     {
       "jobgroup": "Group B",
-      "step_label": "5 functiejr.",
+      "step": "5 functiejr.",
       "timeline": [
         {
           "start_date": "2011-04-01",
-          "amount": 1942.2,
+          "amount": 1942.20,
           "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
+          "table_label": "as of April 1, 2011",
+          "inc_pct": 0.50
         },
         {
           "start_date": "2011-10-01",
-          "amount": 1956.8,
+          "amount": 1956.80,
           "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
+          "table_label": "as of October 1, 2011",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2012-01-01",
-          "amount": 1976.4,
+          "amount": 1976.40,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2012",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2012-07-01",
-          "amount": 1991.2,
+          "amount": 1991.20,
           "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
+          "table_label": "as of July 1, 2012",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2013-01-01",
-          "amount": 2011.1,
+          "amount": 2011.10,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2013",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2013-09-01",
-          "amount": 2036.2,
+          "amount": 2036.20,
           "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
+          "table_label": "as of September 1, 2013",
+          "inc_pct": 1.25
         }
-      ]
+      ],
+      "row_note": "All amounts exclude 8.33% holiday allowance"
     },
     {
       "jobgroup": "Group B",
-      "step_label": "6 functiejr.",
+      "step": "6 functiejr.",
       "timeline": [
         {
           "start_date": "2011-04-01",
-          "amount": 1983.1,
+          "amount": 1983.10,
           "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
+          "table_label": "as of April 1, 2011",
+          "inc_pct": 0.50
         },
         {
           "start_date": "2011-10-01",
-          "amount": 1998.0,
+          "amount": 1998.00,
           "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
+          "table_label": "as of October 1, 2011",
+          "inc_pct": 0.75
         },
         {
           "start_date": "2012-01-01",
-          "amount": 2018.0,
+          "amount": 2018.00,
           "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
+          "table_label": "as of January 1, 2012",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2012-07-01",
-          "amount": 2033.1,
+          "amount": 2033.10,
           "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2053.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2079.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group B",
-      "step_label": "7 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2024.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2039.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2060.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2075.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2096.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2122.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group B",
-      "step_label": "8 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2067.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2082.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2103.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2119.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2140.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2167.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group B",
-      "step_label": "Maximum",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2067.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2082.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2103.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2119.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2140.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2167.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group B",
-      "step_label": "Minimum",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 1750.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1763.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 1781.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1794.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 1812.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 1835.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group C",
-      "step_label": "0 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 1840.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1853.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 1872.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1886.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 1905.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 1929.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group C",
-      "step_label": "1 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 1880.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1894.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 1913.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1927.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 1947.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 1971.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group C",
-      "step_label": "2 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 1921.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1936.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 1955.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1970.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 1990.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2015.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group C",
-      "step_label": "3 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 1964.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1978.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 1998.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2013.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2033.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2059.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group C",
-      "step_label": "4 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2007.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2022.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2042.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2057.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2078.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2104.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group C",
-      "step_label": "5 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2051.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2066.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2087.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2103.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2124.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2150.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group C",
-      "step_label": "6 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2096.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2112.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2133.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2149.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2170.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2197.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group C",
-      "step_label": "7 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2142.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2158.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2180.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2196.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2218.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2246.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group C",
-      "step_label": "8 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2189.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2206.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2228.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2245.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2267.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2295.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group C",
-      "step_label": "9 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2237.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2254.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2277.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2294.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2317.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2346.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group C",
-      "step_label": "Maximum",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2237.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2254.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2277.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2294.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2317.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2346.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group C",
-      "step_label": "Minimum",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 1840.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1853.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 1872.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1886.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 1905.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 1929.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group D",
-      "step_label": "0 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 1942.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1957.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 1977.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1991.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2011.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2036.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group D",
-      "step_label": "1 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 1987.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2002.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2022.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2037.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2058.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2083.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group D",
-      "step_label": "2 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2033.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2048.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2069.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2084.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2105.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2131.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group D",
-      "step_label": "3 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2079.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2095.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2116.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2132.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2153.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2180.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group D",
-      "step_label": "4 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2127.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2143.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2165.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2181.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2203.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2230.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group D",
-      "step_label": "5 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2176.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2193.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2215.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2231.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2253.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2282.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group D",
-      "step_label": "6 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2226.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2243.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2265.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2282.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2305.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2334.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group D",
-      "step_label": "7 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2277.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2295.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2318.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2335.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2358.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2388.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group D",
-      "step_label": "8 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2330.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2347.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2371.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2389.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2413.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2443.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group D",
-      "step_label": "9 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2384.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2402.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2426.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2444.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2468.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2499.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group D",
-      "step_label": "Maximum",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2384.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2402.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2426.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2444.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2468.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2499.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group D",
-      "step_label": "Minimum",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 1942.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1957.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 1977.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1991.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2011.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2036.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group E",
-      "step_label": "0 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2062.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2078.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2098.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2114.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2135.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2162.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group E",
-      "step_label": "1 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2111.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2127.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2148.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2165.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2186.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2214.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group E",
-      "step_label": "2 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2162.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2178.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2200.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2217.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2239.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2267.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group E",
-      "step_label": "3 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2214.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2230.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2253.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2270.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2292.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2321.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group E",
-      "step_label": "4 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2267.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2284.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2307.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2324.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2347.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2377.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group E",
-      "step_label": "5 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2322.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2339.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2362.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2380.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2404.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2434.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group E",
-      "step_label": "6 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2377.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2395.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2419.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2437.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2462.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2492.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group E",
-      "step_label": "7 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2434.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2453.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2477.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2496.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2521.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2552.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group E",
-      "step_label": "8 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2493.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2511.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2537.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2556.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2581.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2613.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group E",
-      "step_label": "9 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2553.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2572.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2597.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2617.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2643.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2676.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group E",
-      "step_label": "10 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2614.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2633.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2660.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2680.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2707.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2740.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group E",
-      "step_label": "Maximum",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2614.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2633.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2660.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2680.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2707.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2740.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group E",
-      "step_label": "Minimum",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2062.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2078.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2098.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2114.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2135.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2162.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group F",
-      "step_label": "0 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2218.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2234.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2256.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2273.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2296.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2325.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group F",
-      "step_label": "1 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2273.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2290.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2312.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2330.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2353.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2382.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group F",
-      "step_label": "2 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2328.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2346.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2369.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2387.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2411.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2441.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group F",
-      "step_label": "3 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2386.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2404.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2428.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2446.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2471.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2502.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group F",
-      "step_label": "4 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2445.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2463.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2488.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2507.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2532.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2563.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group F",
-      "step_label": "5 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2505.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2524.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2549.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2568.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2594.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2627.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group F",
-      "step_label": "6 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2567.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2587.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2612.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2632.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2658.8,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2692.0,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group F",
-      "step_label": "7 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2631.2,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2650.9,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2677.4,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2697.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2724.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2758.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group F",
-      "step_label": "8 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2696.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2716.3,
-          "unit": "monthly",
-          "table_label": "Salary scales as of October 1, 2011",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2012-01-01",
-          "amount": 2743.5,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2012",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2764.1,
-          "unit": "monthly",
-          "table_label": "Salary scales as of July 1, 2012",
-          "increase_percent": 0.75
-        },
-        {
-          "start_date": "2013-01-01",
-          "amount": 2791.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of January 1, 2013",
-          "increase_percent": 1.0
-        },
-        {
-          "start_date": "2013-09-01",
-          "amount": 2826.6,
-          "unit": "monthly",
-          "table_label": "Salary scales as of September 1, 2013",
-          "increase_percent": 1.25
-        }
-      ]
-    },
-    {
-      "jobgroup": "Group F",
-      "step_label": "9 functiejr.",
-      "timeline": [
-        {
-          "start_date": "2011-04-01",
-          "amount": 2762.7,
-          "unit": "monthly",
-          "table_label": "Salary scales as of April 1, 2011",
-          "increase_percent": 0.5
-        },
-        {
-          "start_date": "2
+          "

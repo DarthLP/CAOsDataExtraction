@@ -1,262 +1,4484 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: CAO_OV_tekst_2014_en_2015_DEFINITIEF_extract.json
-Timestamp: 2025-10-19T12:08:48.866928
-Response length: 6823 characters
+Timestamp: 2025-11-14T03:03:52.279345
+Response length: 97671 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
 {
   "salary_information": [
     {
-      "jobgroup": "Scale 2",
-      "step_label": "06",
-      "age_group": "21 years",
+      "jobgroup": "A",
+      "step": "+/- 100% norm salary",
       "timeline": [
         {
           "start_date": "2014-01-01",
-          "amount": 1805.76,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2014"
+          "amount": 5844.5,
+          "unit": "m"
         },
         {
           "start_date": "2014-07-01",
-          "amount": 1823.82,
-          "unit": "monthly",
-          "table_label": "Wage Scales per July 1, 2014",
-          "increase_percent": 1.00
+          "amount": 5902.95,
+          "unit": "m",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2015-01-01",
-          "amount": 1842.06,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2015",
-          "increase_percent": 1.00
+          "amount": 5961.98,
+          "unit": "m",
+          "inc_pct": 1.00
         }
-      ]
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
     },
     {
-      "jobgroup": "Scale 3",
-      "step_label": "06",
-      "age_group": "21 years",
+      "jobgroup": "A",
+      "step": "+/- 110%",
       "timeline": [
         {
           "start_date": "2014-01-01",
-          "amount": 1842.79,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2014"
+          "amount": 6420.94,
+          "unit": "m"
         },
         {
           "start_date": "2014-07-01",
-          "amount": 1861.22,
-          "unit": "monthly",
-          "table_label": "Wage Scales per July 1, 2014",
-          "increase_percent": 1.00
+          "amount": 6485.15,
+          "unit": "m",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2015-01-01",
-          "amount": 1879.83,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2015",
-          "increase_percent": 1.00
+          "amount": 6550.00,
+          "unit": "m",
+          "inc_pct": 1.00
         }
-      ]
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
     },
     {
-      "jobgroup": "Scale 4",
-      "step_label": "06",
-      "age_group": "21 years",
+      "jobgroup": "A",
+      "step": "+/- 70%",
       "timeline": [
         {
           "start_date": "2014-01-01",
-          "amount": 1875.23,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2014"
+          "amount": 4115.15,
+          "unit": "m"
         },
         {
           "start_date": "2014-07-01",
-          "amount": 1893.98,
-          "unit": "monthly",
-          "table_label": "Wage Scales per July 1, 2014",
-          "increase_percent": 1.00
+          "amount": 4156.30,
+          "unit": "m",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2015-01-01",
-          "amount": 1912.92,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2015",
-          "increase_percent": 1.00
+          "amount": 4197.86,
+          "unit": "m",
+          "inc_pct": 1.00
         }
-      ]
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
     },
     {
-      "jobgroup": "Scale 5",
-      "step_label": "06",
-      "age_group": "21 years",
+      "jobgroup": "A",
+      "step": "+/- 80%",
       "timeline": [
         {
           "start_date": "2014-01-01",
-          "amount": 1944.73,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2014"
+          "amount": 4691.60,
+          "unit": "m"
         },
         {
           "start_date": "2014-07-01",
-          "amount": 1964.18,
-          "unit": "monthly",
-          "table_label": "Wage Scales per July 1, 2014",
-          "increase_percent": 1.00
+          "amount": 4738.52,
+          "unit": "m",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2015-01-01",
-          "amount": 1983.82,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2015",
-          "increase_percent": 1.00
+          "amount": 4785.91,
+          "unit": "m",
+          "inc_pct": 1.00
         }
-      ]
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
     },
     {
-      "jobgroup": "Scale 6",
-      "step_label": "06",
-      "age_group": "21 years",
+      "jobgroup": "A",
+      "step": "+/- 90%",
       "timeline": [
         {
           "start_date": "2014-01-01",
-          "amount": 2132.12,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2011"
+          "amount": 5268.04,
+          "unit": "m"
         },
         {
           "start_date": "2014-07-01",
-          "amount": 2153.44,
-          "unit": "monthly",
-          "table_label": "Wage Scales per July 1, 2014",
-          "increase_percent": 1.00
+          "amount": 5320.72,
+          "unit": "m",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2015-01-01",
-          "amount": 2174.97,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2015",
-          "increase_percent": 1.00
+          "amount": 5373.93,
+          "unit": "m",
+          "inc_pct": 1.00
         }
-      ]
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
     },
     {
-      "jobgroup": "Scale 7",
-      "step_label": "06",
-      "age_group": "21 years",
+      "jobgroup": "B",
+      "step": "+/- 100% norm salary",
       "timeline": [
         {
           "start_date": "2014-01-01",
-          "amount": 2324.07,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2014"
+          "amount": 6549.60,
+          "unit": "m"
         },
         {
           "start_date": "2014-07-01",
-          "amount": 2347.31,
-          "unit": "monthly",
-          "table_label": "Wage Scales per July 1, 2014",
-          "increase_percent": 1.00
+          "amount": 6615.10,
+          "unit": "m",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2015-01-01",
-          "amount": 2370.78,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2015",
-          "increase_percent": 1.00
+          "amount": 6681.25,
+          "unit": "m",
+          "inc_pct": 1.00
         }
-      ]
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
     },
     {
-      "jobgroup": "Scale 8",
-      "step_label": "06",
-      "age_group": "21 years",
+      "jobgroup": "B",
+      "step": "+/- 110%",
       "timeline": [
         {
           "start_date": "2014-01-01",
-          "amount": 2633.90,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2014"
+          "amount": 7196.55,
+          "unit": "m"
         },
         {
           "start_date": "2014-07-01",
-          "amount": 2660.24,
-          "unit": "monthly",
-          "table_label": "Wage Scales per July 1, 2014",
-          "increase_percent": 1.00
+          "amount": 7268.52,
+          "unit": "m",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2015-01-01",
-          "amount": 2686.84,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2015",
-          "increase_percent": 1.00
+          "amount": 7341.21,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "B",
+      "step": "+/- 70%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4608.74,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4654.83,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4701.38,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "B",
+      "step": "+/- 80%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5255.67,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 5308.23,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 5361.31,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "B",
+      "step": "+/- 90%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5902.63,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 5961.66,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 6021.28,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "C",
+      "step": "+/- 100% norm salary",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 7341.86,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 7415.28,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 7489.43,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "C",
+      "step": "+/- 110%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 8068.04,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 8148.72,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 8230.21,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "C",
+      "step": "+/- 70%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5163.31,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 5214.94,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 5267.09,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "C",
+      "step": "+/- 80%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5889.49,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 5948.38,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 6007.86,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "C",
+      "step": "+/- 90%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 6615.66,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 6681.82,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 6748.64,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "D",
+      "step": "+/- 100% norm salary",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 8232.65,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 8314.98,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 8398.13,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "D",
+      "step": "+/- 110%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 9047.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 9138.39,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 9229.77,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "D",
+      "step": "+/- 70%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5786.85,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 5844.72,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 5903.17,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "D",
+      "step": "+/- 80%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 6602.14,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 6668.16,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 6734.84,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "D",
+      "step": "+/- 90%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 7417.39,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 7491.56,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 7566.48,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "Driver's Wage Scale",
+      "step": "01",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1983.45,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2003.28,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2023.31,
+          "unit": "m",
+          "inc_pct": 1.00
         }
       ]
     },
     {
       "jobgroup": "Driver's Wage Scale",
-      "step_label": "06",
+      "step": "02",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2021.62,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2041.84,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2062.26,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Driver's Wage Scale",
+      "step": "03",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2072.88,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2093.61,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2114.55,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Driver's Wage Scale",
+      "step": "04",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2200.47,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2222.47,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2244.69,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Driver's Wage Scale",
+      "step": "05",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2265.39,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2288.04,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2310.92,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Driver's Wage Scale",
+      "step": "06",
       "age_group": "21 years",
       "timeline": [
         {
           "start_date": "2014-01-01",
           "amount": 1944.73,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2014"
+          "unit": "m"
         },
         {
           "start_date": "2014-07-01",
           "amount": 1964.18,
-          "unit": "monthly",
-          "table_label": "Wage Scales per July 1, 2014",
-          "increase_percent": 1.00
+          "unit": "m",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2015-01-01",
           "amount": 1983.82,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2015",
-          "increase_percent": 1.00
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Driver's Wage Scale",
+      "step": "06",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2324.07,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2347.31,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2370.78,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Driver's Wage Scale",
+      "step": "07",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2390.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2414.02,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2438.16,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Driver's Wage Scale",
+      "step": "08",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2452.78,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2477.31,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2502.08,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Driver's Wage Scale",
+      "step": "09",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2518.27,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2543.45,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2568.88,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Driver's Wage Scale",
+      "step": "12",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2584.92,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2610.77,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2636.88,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Driver's Wage Scale",
+      "step": "14",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2648.69,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2675.18,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2701.93,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Driver's Wage Scale",
+      "step": "16",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2713.05,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2740.18,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2767.58,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "E",
+      "step": "+/- 100% norm salary",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 9233.93,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 9326.27,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 9419.53,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "E",
+      "step": "+/- 110%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 10149.33,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 10250.82,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 10353.33,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "E",
+      "step": "+/- 70%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 6487.74,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 6552.62,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 6618.15,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "E",
+      "step": "+/- 80%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 7403.14,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 7477.17,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 7551.94,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "E",
+      "step": "+/- 90%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 8318.53,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 8401.72,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 8485.74,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "F",
+      "step": "+/- 100% norm salary",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 10358.80,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 10462.39,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 10567.01,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "F",
+      "step": "+/- 110%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 11386.67,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 11500.54,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 11615.55,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "F",
+      "step": "+/- 70%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 7275.15,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 7347.90,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 7421.38,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "F",
+      "step": "+/- 80%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 8303.04,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 8386.07,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 8469.93,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "F",
+      "step": "+/- 90%",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 9330.92,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 9424.23,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 9518.47,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ],
+      "row_note": "For these employees, functional wage increases can occur based on an employer's assessment and according to the salary growth table in Bijlage 12B."
+    },
+    {
+      "jobgroup": "Passenger Car Driver",
+      "worker": "Passenger Car Driver",
+      "age_group": "21 years",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1542.37,
+          "unit": "m",
+          "holiday_incl": false
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1557.79,
+          "unit": "m",
+          "inc_pct": 1.00,
+          "holiday_incl": false
+        }
+      ]
+    },
+    {
+      "jobgroup": "Passenger Car Driver",
+      "worker": "Passenger Car Driver",
+      "age_group": "22 years",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1633.10,
+          "unit": "m",
+          "holiday_incl": false
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1649.43,
+          "unit": "m",
+          "inc_pct": 1.00,
+          "holiday_incl": false
+        }
+      ]
+    },
+    {
+      "jobgroup": "Passenger Car Driver",
+      "step": "10",
+      "worker": "Passenger Car Driver",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2142.34,
+          "unit": "m",
+          "holiday_incl": false,
+          "note": "maximum step for limited contract transport drivers"
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2163.76,
+          "unit": "m",
+          "inc_pct": 1.00,
+          "holiday_incl": false,
+          "note": "maximum step for limited contract transport drivers"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Passenger Car Driver",
+      "step": "11",
+      "worker": "Passenger Car Driver",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2183.32,
+          "unit": "m",
+          "holiday_incl": false
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2205.15,
+          "unit": "m",
+          "inc_pct": 1.00,
+          "holiday_incl": false
+        }
+      ]
+    },
+    {
+      "jobgroup": "Passenger Car Driver",
+      "step": "12",
+      "worker": "Passenger Car Driver",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2224.29,
+          "unit": "m",
+          "holiday_incl": false
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2246.53,
+          "unit": "m",
+          "inc_pct": 1.00,
+          "holiday_incl": false
+        }
+      ]
+    },
+    {
+      "jobgroup": "Passenger Car Driver",
+      "step": "2",
+      "worker": "Passenger Car Driver",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1814.55,
+          "unit": "m",
+          "holiday_incl": false
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1832.70,
+          "unit": "m",
+          "inc_pct": 1.00,
+          "holiday_incl": false
+        }
+      ]
+    },
+    {
+      "jobgroup": "Passenger Car Driver",
+      "step": "3",
+      "worker": "Passenger Car Driver",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1855.53,
+          "unit": "m",
+          "holiday_incl": false
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1874.09,
+          "unit": "m",
+          "inc_pct": 1.00,
+          "holiday_incl": false
+        }
+      ]
+    },
+    {
+      "jobgroup": "Passenger Car Driver",
+      "step": "4",
+      "worker": "Passenger Car Driver",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1896.50,
+          "unit": "m",
+          "holiday_incl": false
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1915.47,
+          "unit": "m",
+          "inc_pct": 1.00,
+          "holiday_incl": false
+        }
+      ]
+    },
+    {
+      "jobgroup": "Passenger Car Driver",
+      "step": "5",
+      "worker": "Passenger Car Driver",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1937.47,
+          "unit": "m",
+          "holiday_incl": false
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1956.84,
+          "unit": "m",
+          "inc_pct": 1.00,
+          "holiday_incl": false
+        }
+      ]
+    },
+    {
+      "jobgroup": "Passenger Car Driver",
+      "step": "6",
+      "worker": "Passenger Car Driver",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1978.45,
+          "unit": "m",
+          "holiday_incl": false
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1998.23,
+          "unit": "m",
+          "inc_pct": 1.00,
+          "holiday_incl": false
+        }
+      ]
+    },
+    {
+      "jobgroup": "Passenger Car Driver",
+      "step": "7",
+      "worker": "Passenger Car Driver",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2019.42,
+          "unit": "m",
+          "holiday_incl": false
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2039.61,
+          "unit": "m",
+          "inc_pct": 1.00,
+          "holiday_incl": false
+        }
+      ]
+    },
+    {
+      "jobgroup": "Passenger Car Driver",
+      "step": "8",
+      "worker": "Passenger Car Driver",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2060.40,
+          "unit": "m",
+          "holiday_incl": false,
+          "note": "maximum step for street taxi drivers"
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2081.00,
+          "unit": "m",
+          "inc_pct": 1.00,
+          "holiday_incl": false,
+          "note": "maximum step for street taxi drivers"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Passenger Car Driver",
+      "step": "9",
+      "worker": "Passenger Car Driver",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2101.37,
+          "unit": "m",
+          "holiday_incl": false
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2122.38,
+          "unit": "m",
+          "inc_pct": 1.00,
+          "holiday_incl": false
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 1",
+      "step": "03",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1593.32,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 1609.25,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1625.34,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 1",
+      "step": "04",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1651.41,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 1667.92,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1684.60,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 1",
+      "step": "05",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1710.07,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 1727.17,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1744.44,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 1",
+      "step": "06",
+      "age_group": "21 years",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1805.76,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 1823.82,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1842.06,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 1",
+      "step": "06",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1769.31,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 1787.00,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1804.87,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 1",
+      "step": "07",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1825.69,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 1843.95,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1862.39,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "01",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1875.23,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 1893.98,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1912.92,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "02",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1944.73,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 1964.18,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1983.82,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "03",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2021.62,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2041.84,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2062.26,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "04",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2072.88,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2093.61,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2114.55,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "05",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2132.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2153.44,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2174.97,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "06",
+      "age_group": "21 years",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1805.76,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 1823.82,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1842.06,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "11",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2200.47,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2222.47,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2244.69,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "13",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2265.39,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2288.04,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2310.92,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "15",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2324.07,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2347.31,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2370.78,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "17",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2390.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2414.02,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2438.16,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "19",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2452.78,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2477.31,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2502.08,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "01",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1909.99,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 1929.09,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1948.38,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "02",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1983.45,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2003.28,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2023.31,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "03",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2072.88,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2093.61,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2114.55,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "04",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2132.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2153.44,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2174.97,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "05",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2265.39,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2288.04,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2310.92,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "06",
+      "age_group": "21 years",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1842.79,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 1861.22,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1879.83,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "11",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2324.07,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2347.31,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2370.78,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "13",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2390.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2414.02,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2438.16,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "15",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2452.78,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2477.31,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2502.08,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "17",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2514.28,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2539.42,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2564.81,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "19",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2572.96,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2598.69,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2624.68,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "01",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1944.73,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 1964.18,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1983.82,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "02",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2021.62,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2041.84,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2062.26,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "03",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2132.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2153.44,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2174.97,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "04",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2200.47,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2222.47,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2244.69,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "05",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2324.07,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2347.31,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2370.78,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "06",
+      "age_group": "21 years",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1875.23,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 1893.98,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1912.92,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "06",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2390.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2414.02,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2438.16,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "12",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2452.78,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2477.31,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2502.08,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "14",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2514.28,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2539.42,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2564.81,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "16",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2572.96,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2598.69,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2624.68,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "18",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2633.90,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2660.24,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2686.84,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "20",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2697.11,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2724.08,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2751.32,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "01",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2021.62,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2041.84,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2062.26,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "02",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2132.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2153.44,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2174.97,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "03",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2265.39,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2288.04,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2310.92,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "04",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2390.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2414.02,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2438.16,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "05",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2452.78,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2477.31,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2502.08,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "06",
+      "age_group": "21 years",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1944.73,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 1964.18,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 1983.82,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "07",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2572.96,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2598.69,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2624.68,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "12",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2633.90,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2660.24,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2686.84,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "14",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2697.11,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2724.08,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2751.32,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "16",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2760.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2788.52,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2816.41,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "18",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2820.72,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2848.93,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2877.42,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "01",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2265.39,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2288.04,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2310.92,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "02",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2390.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2414.02,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2438.16,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "03",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2452.78,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2477.31,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2502.08,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "04",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2514.28,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2539.42,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2564.81,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "05",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2572.96,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2598.69,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2624.68,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "06",
+      "age_group": "21 years",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2132.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2153.44,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2174.97,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "06",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2697.11,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2724.08,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2751.32,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "07",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2760.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2788.52,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2816.41,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "14",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2886.21,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2915.07,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2944.22,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "16",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2952.84,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2982.37,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3012.19,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "01",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2390.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2414.02,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2438.16,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "02",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2514.28,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2539.42,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2564.81,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "03",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2633.90,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2660.24,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2686.84,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "04",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2760.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2788.52,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2816.41,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "05",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2886.21,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2915.07,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2944.22,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "06",
+      "age_group": "21 years",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2324.07,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2347.31,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2370.78,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "06",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3023.47,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3053.70,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3084.24,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "07",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3100.92,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3131.93,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3163.25,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "08",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3169.27,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3200.96,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3232.97,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "14",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3231.35,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3263.66,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3296.30,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "16",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3299.70,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3332.70,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3366.03,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "01",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2760.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2788.52,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2816.41,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "02",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2886.21,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2915.07,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2944.22,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "03",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3023.47,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3053.70,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3084.24,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "04",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3169.27,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3200.96,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3232.97,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "05",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3299.70,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3332.70,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3366.03,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "06",
+      "age_group": "21 years",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2633.90,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 2660.24,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 2686.84,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "06",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3368.04,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3401.72,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3435.74,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "07",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3433.55,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3467.89,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3502.57,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "08",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3492.79,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3527.72,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3563.00,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "14",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3554.30,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3589.84,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3625.74,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "16",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3679.62,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3716.42,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3753.58,
+          "unit": "m",
+          "inc_pct": 1.00
         }
       ]
     },
     {
       "jobgroup": "Scale 9",
-      "step_label": "06",
+      "step": "01",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3023.47,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3053.70,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3084.24,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "02",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3169.27,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3200.96,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3232.97,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "03",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3299.70,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3332.70,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3366.03,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "04",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3433.55,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3467.89,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3502.57,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "05",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3554.30,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3589.84,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3625.74,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "06",
       "age_group": "21 years",
       "timeline": [
         {
           "start_date": "2014-01-01",
           "amount": 2952.84,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2014"
+          "unit": "m"
         },
         {
           "start_date": "2014-07-01",
           "amount": 2982.37,
-          "unit": "monthly",
-          "table_label": "Wage Scales per July 1, 2014",
-          "increase_percent": 1.00
+          "unit": "m",
+          "inc_pct": 1.00
         },
         {
           "start_date": "2015-01-01",
           "amount": 3012.19,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2015",
-          "increase_percent": 1.00
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "06",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3679.62,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3716.42,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3753.58,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "07",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3814.60,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3852.75,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3891.28,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "08",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3941.02,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3980.43,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4020.23,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "14",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4054.36,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4094.90,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4135.85,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 9",
+      "step": "16",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4171.13,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4212.84,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4254.97,
+          "unit": "m",
+          "inc_pct": 1.00
         }
       ]
     },
     {
       "jobgroup": "Scale 10",
-      "step_label": "06",
+      "step": "01",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3433.55,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3467.89,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3502.57,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "02",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3554.30,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3589.84,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3625.74,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "03",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3679.62,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3716.42,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3753.58,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "04",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3814.60,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3852.75,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3891.28,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "05",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3941.02,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3980.43,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4020.23,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "06",
       "age_group": "21 years",
       "timeline": [
         {
           "start_date": "2014-01-01",
           "amount": 3299.70,
-          "unit": "monthly",
-          "table_label": "Wage Scales per January 1, 2014
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3332.70,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3366.03,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "06",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4054.36,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4094.90,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4135.85,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "07",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4171.13,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4212.84,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4254.97,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "08",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4300.99,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4344.00,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4387.44,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "14",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4433.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4477.45,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4522.22,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 10",
+      "step": "16",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4558.44,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4604.02,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4650.06,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 11",
+      "step": "01",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3941.02,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3980.43,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4020.23,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 11",
+      "step": "02",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4054.36,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4094.90,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4135.85,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 11",
+      "step": "03",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4171.13,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4212.84,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4254.97,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 11",
+      "step": "04",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4300.99,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4344.00,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4387.44,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 11",
+      "step": "05",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4433.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4477.45,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4522.22,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 11",
+      "step": "06",
+      "age_group": "21 years",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3814.60,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 3852.75,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 3891.28,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 11",
+      "step": "06",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4558.44,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4604.02,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4650.06,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 11",
+      "step": "07",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4684.31,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4731.15,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4778.46,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 11",
+      "step": "08",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4809.61,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4857.71,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4906.29,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 11",
+      "step": "14",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4929.78,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4979.08,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 5028.87,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 11",
+      "step": "16",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5054.50,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 5105.05,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 5156.10,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 12",
+      "step": "01",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4433.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4477.45,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4522.22,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 12",
+      "step": "02",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4558.44,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4604.02,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4650.06,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 12",
+      "step": "03",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4684.31,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4731.15,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4778.46,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 12",
+      "step": "04",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4809.61,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4857.71,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4906.29,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 12",
+      "step": "05",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4929.78,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4979.08,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 5028.87,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 12",
+      "step": "06",
+      "age_group": "21 years",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4300.99,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4344.00,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4387.44,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 12",
+      "step": "06",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5054.50,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 5105.05,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 5156.10,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 12",
+      "step": "07",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5179.81,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 5231.61,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 5283.93,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 12",
+      "step": "08",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5300.58,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 5353.59,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 5407.13,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 12",
+      "step": "14",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5425.29,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 5479.54,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 5534.34,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 12",
+      "step": "16",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5582.50,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 5638.33,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 5694.71,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 13",
+      "step": "01",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4809.61,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4857.71,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4906.29,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 13",
+      "step": "02",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4929.78,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4979.08,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 5028.87,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 13",
+      "step": "03",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5054.50,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 5105.05,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 5156.10,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 13",
+      "step": "04",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5179.81,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 5231.61,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 5283.93,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 13",
+      "step": "05",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5300.58,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 5353.59,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 5407.13,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 13",
+      "step": "06",
+      "age_group": "21 years",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4684.31,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 4731.15,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 4778.46,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 13",
+      "step": "06",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5425.29,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 5479.54,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 5534.34,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 13",
+      "step": "07",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5582.50,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 5638.33,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 5694.71,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 13",
+      "step": "08",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5733.41,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 5790.74,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 5848.65,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 13",
+      "step": "14",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5890.05,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 5948.95,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 6008.44,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 13",
+      "step": "16",
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 6045.54,
+          "unit": "m"
+        },
+        {
+          "start_date": "2014-07-01",
+          "amount": 6106.00,
+          "unit": "m",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2015-01-01",
+          "amount": 6167.06,
+          "unit": "m",
+          "inc_pct": 1.00
+        }
+      ]
+    },
+    {
+      "jobgroup": "Scale 14",
+      "step": "01",
+      "timeline":

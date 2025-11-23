@@ -1,7 +1,7 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: cao_tekst_JZ_2017_2019__23_8_17_extract.json
-Timestamp: 2025-10-19T13:10:27.724716
-Response length: 6631 characters
+Timestamp: 2025-11-14T20:43:00.177336
+Response length: 128821 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
@@ -9,251 +9,5403 @@ Finish reason: MAX_TOKENS
   "salary_information": [
     {
       "jobgroup": "Schaal 1",
-      "step_label": "0",
+      "step": "0",
       "ft_hours": 36,
       "timeline": [
         {
           "start_date": "2016-01-01",
           "amount": 1569.29,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 januari 2016"
+          "table_label": "per 1 januari 2016"
         },
         {
           "start_date": "2017-07-01",
           "amount": 1595.18,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 juli 2017",
-          "increase_percent": 1.65
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
         },
         {
           "start_date": "2018-07-01",
           "amount": 1627.08,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 juli 2018",
-          "increase_percent": 2.00
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
         }
       ]
     },
     {
       "jobgroup": "Schaal 1",
-      "step_label": "1",
+      "step": "1",
       "ft_hours": 36,
       "timeline": [
         {
           "start_date": "2016-01-01",
           "amount": 1616.57,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 januari 2016"
+          "table_label": "per 1 januari 2016"
         },
         {
           "start_date": "2017-07-01",
           "amount": 1643.25,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 juli 2017",
-          "increase_percent": 1.65
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
         },
         {
           "start_date": "2018-07-01",
           "amount": 1676.11,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 juli 2018",
-          "increase_percent": 2.00
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
         }
       ]
     },
     {
       "jobgroup": "Schaal 1",
-      "step_label": "2",
+      "step": "2",
       "ft_hours": 36,
       "timeline": [
         {
           "start_date": "2016-01-01",
           "amount": 1665.01,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 januari 2016"
+          "table_label": "per 1 januari 2016"
         },
         {
           "start_date": "2017-07-01",
           "amount": 1692.49,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 juli 2017",
-          "increase_percent": 1.65
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
         },
         {
           "start_date": "2018-07-01",
           "amount": 1726.34,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 juli 2018",
-          "increase_percent": 2.00
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
         }
       ]
     },
     {
       "jobgroup": "Schaal 1",
-      "step_label": "3",
+      "step": "3",
       "ft_hours": 36,
       "timeline": [
         {
           "start_date": "2016-01-01",
           "amount": 1714.59,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 januari 2016"
+          "table_label": "per 1 januari 2016"
         },
         {
           "start_date": "2017-07-01",
           "amount": 1742.88,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 juli 2017",
-          "increase_percent": 1.65
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
         },
         {
           "start_date": "2018-07-01",
           "amount": 1777.74,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 juli 2018",
-          "increase_percent": 2.00
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
         }
       ]
     },
     {
       "jobgroup": "Schaal 1",
-      "step_label": "4",
+      "step": "4",
       "ft_hours": 36,
       "timeline": [
         {
           "start_date": "2016-01-01",
           "amount": 1766.46,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 januari 2016"
+          "table_label": "per 1 januari 2016"
         },
         {
           "start_date": "2017-07-01",
           "amount": 1795.60,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 juli 2017",
-          "increase_percent": 1.65
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
         },
         {
           "start_date": "2018-07-01",
           "amount": 1831.51,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 juli 2018",
-          "increase_percent": 2.00
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
         }
       ]
     },
     {
       "jobgroup": "Schaal 1",
-      "step_label": "5",
+      "step": "5",
       "ft_hours": 36,
       "timeline": [
         {
           "start_date": "2016-01-01",
           "amount": 1819.51,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 januari 2016"
+          "table_label": "per 1 januari 2016"
         },
         {
           "start_date": "2017-07-01",
           "amount": 1849.53,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 juli 2017",
-          "increase_percent": 1.65
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
         },
         {
           "start_date": "2018-07-01",
           "amount": 1886.52,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 juli 2018",
-          "increase_percent": 2.00
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
         }
       ]
     },
     {
       "jobgroup": "Schaal 1",
-      "step_label": "6",
+      "step": "6",
       "ft_hours": 36,
       "timeline": [
         {
           "start_date": "2016-01-01",
           "amount": 1873.69,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 januari 2016"
+          "table_label": "per 1 januari 2016"
         },
         {
           "start_date": "2017-07-01",
           "amount": 1904.61,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 juli 2017",
-          "increase_percent": 1.65
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
         },
         {
           "start_date": "2018-07-01",
           "amount": 1942.70,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 juli 2018",
-          "increase_percent": 2.00
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
         }
       ]
     },
     {
       "jobgroup": "Schaal 1",
-      "step_label": "7",
+      "step": "7",
       "ft_hours": 36,
       "timeline": [
         {
           "start_date": "2016-01-01",
           "amount": 1930.22,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 januari 2016"
+          "table_label": "per 1 januari 2016"
         },
         {
           "start_date": "2017-07-01",
           "amount": 1962.07,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 juli 2017",
-          "increase_percent": 1.65
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
         },
         {
           "start_date": "2018-07-01",
           "amount": 2001.31,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 juli 2018",
-          "increase_percent": 2.00
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
         }
       ]
     },
     {
       "jobgroup": "Schaal 1",
-      "step_label": "8",
+      "step": "8",
       "ft_hours": 36,
       "timeline": [
         {
           "start_date": "2016-01-01",
           "amount": 1987.86,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 januari 2016"
+          "table_label": "per 1 januari 2016"
         },
         {
           "start_date": "2017-07-01",
           "amount": 2020.66,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 juli 2017",
-          "increase_percent": 1.65
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
         },
         {
           "start_date": "2018-07-01",
           "amount": 2061.07,
           "unit": "monthly",
-          "table_label": "Salarisschalen per 1 juli 2018",
-          "increase_percent": 2.00
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
         }
       ]
     },
     {
       "jobgroup": "Schaal 1",
-      "step_label": "9",
+      "step": "9",
       "ft_hours": 36,
       "timeline": [
         {
           "start_date": "2016-01-01",
+          "amount": 2047.81,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2081.60,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2123.23,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 1",
+      "step": "10",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 1",
+      "step": "11",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 1",
+      "step": "12",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 1",
+      "step": "13",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 1",
+      "step": "Max 1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2108.93,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2143.73,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2186.60,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 1",
+      "step": "Max 2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2172.34,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2208.18,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2252.35,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 2",
+      "step": "0",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1595.23,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1621.55,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 1653.99,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 2",
+      "step": "1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1643.67,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1670.79,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 1704.21,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 2",
+      "step": "2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1693.86,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1721.80,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 1756.24,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 2",
+      "step": "3",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1745.72,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1774.52,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 1810.01,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 2",
+      "step": "4",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1798.75,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1828.43,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 1865.00,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 2",
+      "step": "5",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1854.11,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1884.70,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 1922.40,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 2",
+      "step": "6",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1910.60,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1942.13,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 1980.97,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 2",
+      "step": "7",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1968.85,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2001.33,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2041.36,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 2",
+      "step": "8",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2028.80,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2062.27,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2103.52,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 2",
+      "step": "9",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2090.50,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2125.00,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2167.50,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 2",
+      "step": "10",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2154.50,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2190.05,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2233.85,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 2",
+      "step": "11",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 2",
+      "step": "12",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 2",
+      "step": "13",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 2",
+      "step": "Max 1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2220.19,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2256.82,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2301.96,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 2",
+      "step": "Max 2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2287.67,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2325.42,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2371.93,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 3",
+      "step": "0",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1675.96,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1703.61,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 1737.69,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 3",
+      "step": "1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1727.86,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1756.37,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 1791.49,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 3",
+      "step": "2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1781.48,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1810.87,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 1847.09,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 3",
+      "step": "3",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1836.82,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1867.13,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 1904.47,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 3",
+      "step": "4",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1893.91,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1925.16,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 1963.66,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 3",
+      "step": "5",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1952.12,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1984.33,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2024.02,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 3",
+      "step": "6",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2012.66,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2045.87,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2086.79,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 3",
+      "step": "7",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2075.48,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2109.73,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2151.92,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 3",
+      "step": "8",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2139.50,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2174.80,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2218.29,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 3",
+      "step": "9",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2205.79,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2242.18,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2287.03,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 3",
+      "step": "10",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2274.39,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2311.91,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2358.15,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 3",
+      "step": "11",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 3",
+      "step": "12",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 3",
+      "step": "13",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 3",
+      "step": "Max 1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2344.74,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2383.43,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2431.10,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 3",
+      "step": "Max 2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2417.36,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2457.25,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2506.39,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 4",
+      "step": "0",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1784.37,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1813.81,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 1850.09,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 4",
+      "step": "1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1840.28,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1870.64,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 1908.06,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 4",
+      "step": "2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1898.53,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1929.85,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 1968.45,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 4",
+      "step": "3",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1958.44,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1990.76,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2030.57,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 4",
+      "step": "4",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2020.13,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2053.46,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2094.53,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 4",
+      "step": "5",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2083.55,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2117.92,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2160.28,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 4",
+      "step": "6",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2149.27,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2184.74,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2228.43,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 4",
+      "step": "7",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2216.72,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2253.30,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2298.37,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 4",
+      "step": "8",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2287.10,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2324.84,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2371.33,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 4",
+      "step": "9",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2359.14,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2398.06,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2446.02,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 4",
+      "step": "10",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2432.93,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2473.07,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2522.53,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 4",
+      "step": "11",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 4",
+      "step": "12",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 4",
+      "step": "13",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 4",
+      "step": "Max 1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2509.63,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2551.04,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2602.06,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 4",
+      "step": "Max 2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2588.60,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2631.32,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2683.94,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 5",
+      "step": "0",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1847.17,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1877.65,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 1915.20,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 5",
+      "step": "1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1906.57,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1938.03,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 1976.79,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 5",
+      "step": "2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1967.11,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 1999.57,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2039.56,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 5",
+      "step": "3",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2030.52,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2064.03,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2105.31,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 5",
+      "step": "4",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2095.12,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2129.69,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2172.28,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 5",
+      "step": "5",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2162.53,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2198.21,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2242.18,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 5",
+      "step": "6",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2231.73,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2268.56,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2313.93,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 5",
+      "step": "7",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2302.65,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2340.65,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2387.46,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 5",
+      "step": "8",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2376.46,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2415.67,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2463.98,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 5",
+      "step": "9",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2452.53,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2493.00,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2542.86,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 5",
+      "step": "10",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2530.97,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2572.74,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2624.19,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 5",
+      "step": "11",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2612.22,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2655.32,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2708.43,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 5",
+      "step": "12",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 5",
+      "step": "13",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 5",
+      "step": "Max 1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2695.84,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2740.33,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2795.13,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 5",
+      "step": "Max 2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2781.72,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2827.62,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2884.17,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 6",
+      "step": "0",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 1980.96,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2013.64,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2053.91,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 6",
+      "step": "1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2045.49,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2079.24,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2120.83,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 6",
+      "step": "2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2111.82,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2146.67,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2189.60,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 6",
+      "step": "3",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2180.43,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2216.41,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2260.74,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 6",
+      "step": "4",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2251.33,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2288.48,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2334.25,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 6",
+      "step": "5",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2324.53,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2362.88,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2410.14,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 6",
+      "step": "6",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2400.08,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2439.69,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2488.48,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 6",
+      "step": "7",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2477.91,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2518.79,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2569.17,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 6",
+      "step": "8",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2558.62,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2600.84,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2652.86,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 6",
+      "step": "9",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2641.62,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2685.20,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2738.91,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 6",
+      "step": "10",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2727.54,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2772.54,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2827.99,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 6",
+      "step": "11",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2816.34,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2862.81,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2920.07,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 6",
+      "step": "12",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 6",
+      "step": "13",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 6",
+      "step": "Max 1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2908,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2955.99,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3015.11,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 6",
+      "step": "Max 2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3001.98,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3051.51,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3112.54,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 7",
+      "step": "0",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2132,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2167.17,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2210.52,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 7",
+      "step": "1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2202.33,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2238.67,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2283.44,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 7",
+      "step": "2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2274.97,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2312.51,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2358.76,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 7",
+      "step": "3",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2349.93,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2388.71,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2436.48,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 7",
+      "step": "4",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2427.76,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2467.81,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2517.17,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 7",
+      "step": "5",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2507.88,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2549.26,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2600.24,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 7",
+      "step": "6",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2590.32,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2633.06,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2685.72,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 7",
+      "step": "7",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2676.24,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2720.40,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2774.80,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 7",
+      "step": "8",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2764.45,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2810.07,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2866.27,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 7",
+      "step": "9",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2855.53,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2902.65,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2960.70,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 7",
+      "step": "10",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2949.52,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2998.18,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3058.15,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 7",
+      "step": "11",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3046.94,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3097.21,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3159.16,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 7",
+      "step": "12",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 7",
+      "step": "13",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 7",
+      "step": "Max 1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3147.82,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3199.75,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3263.75,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 7",
+      "step": "Max 2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3251.62,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3305.27,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3371.38,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 8",
+      "step": "0",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2228.84,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2265.62,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2310.93,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 8",
+      "step": "1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2303.78,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2341.79,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2388.63,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 8",
+      "step": "2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2380.46,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2419.73,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2468.13,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 8",
+      "step": "3",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2460.60,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2501.20,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2551.22,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 8",
+      "step": "4",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2543.06,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2585.02,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2636.72,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 8",
+      "step": "5",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2627.80,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2671.16,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2724.58,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 8",
+      "step": "6",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2716.02,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2760.83,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2816.05,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 8",
+      "step": "7",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2807.11,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2853.42,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2910.49,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 8",
+      "step": "8",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2901.08,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2948.95,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3007.93,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 8",
+      "step": "9",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2998.50,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3047.97,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3108.93,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 8",
+      "step": "10",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3098.83,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3149.96,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3212.96,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 8",
+      "step": "11",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3202.59,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3255.44,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3320.55,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 8",
+      "step": "12",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3309.81,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3364.43,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3431.71,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 8",
+      "step": "13",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 8",
+      "step": "Max 1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3420.53,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3476.97,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3546.51,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 8",
+      "step": "Max 2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3535.25,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3593.58,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3665.45,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 9",
+      "step": "0",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2414.50,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2454.34,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2503.43,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 9",
+      "step": "1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2496.37,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2537.56,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2588.31,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 9",
+      "step": "2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2581.71,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2624.31,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2676.80,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 9",
+      "step": "3",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2669.31,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2713.35,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2767.62,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 9",
+      "step": "4",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2759.84,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2805.37,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2861.48,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 9",
+      "step": "5",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2853.80,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2900.89,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2958.91,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 9",
+      "step": "6",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2950.65,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2999.33,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3059.32,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 9",
+      "step": "7",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3050.98,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3101.32,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3163.35,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 9",
+      "step": "8",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3154.74,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3206.79,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3270.93,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 9",
+      "step": "9",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3261.97,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3315.79,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3382.11,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 9",
+      "step": "10",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3373.24,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3428.90,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3497.48,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 9",
+      "step": "11",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3487.98,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3545.53,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3616.44,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 9",
+      "step": "12",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3606.18,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3665.68,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3739.00,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 9",
+      "step": "13",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 9",
+      "step": "Max 1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3728.97,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3790.50,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3866.31,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 9",
+      "step": "Max 2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3855.80,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3919.42,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3997.81,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 10",
+      "step": "0",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2627.23,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2670.58,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2724.00,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 10",
+      "step": "1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2717.74,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2762.58,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2817.83,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 10",
+      "step": "2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2811.73,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2858.13,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 2915.29,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 10",
+      "step": "3",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 2908.57,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 2956.56,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3015.69,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 10",
+      "step": "4",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3008.91,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3058.56,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3119.73,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 10",
+      "step": "5",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3112.66,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3164.02,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3227.30,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 10",
+      "step": "6",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3219.88,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3273.01,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3338.47,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 10",
+      "step": "7",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3331.17,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3386.13,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3453.85,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 10",
+      "step": "8",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3446.48,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3503.35,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3573.41,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 10",
+      "step": "9",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3565.23,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3624.06,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3696.54,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 10",
+      "step": "10",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3688.04,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3748.89,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3823.87,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 10",
+      "step": "11",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3815.45,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3878.40,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3955.97,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 10",
+      "step": "12",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3946.90,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4012.02,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4092.26,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 10",
+      "step": "13",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 10",
+      "step": "Max 1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4082.96,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4150.33,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4233.34,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 10",
+      "step": "Max 2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4224.22,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4293.92,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4379.80,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 11",
+      "step": "0",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3004.84,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3054.42,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3115.51,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 11",
+      "step": "1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3110.37,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3161.69,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3224.92,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 11",
+      "step": "2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3219.34,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3272.46,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3337.91,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 11",
+      "step": "3",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3331.75,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3386.72,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3454.46,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 11",
+      "step": "4",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3448.21,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3505.11,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3575.21,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 11",
+      "step": "5",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3569.26,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3628.16,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3700.72,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 11",
+      "step": "6",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3693.79,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3754.74,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3829.83,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 11",
+      "step": "7",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3822.95,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3886.03,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3963.75,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 11",
+      "step": "8",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3957.26,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4022.56,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4103.01,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 11",
+      "step": "9",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4095.64,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4163.22,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4246.48,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 11",
+      "step": "10",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4238.62,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4308.55,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4394.73,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 11",
+      "step": "11",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4387.36,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4459.75,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4548.95,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 11",
+      "step": "12",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4540.71,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4615.63,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4707.94,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 11",
+      "step": "13",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 0,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 11",
+      "step": "Max 1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4699.85,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4777.40,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4872.95,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 11",
+      "step": "Max 2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4864.12,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4944.38,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 5043.26,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 12",
+      "step": "0",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3309.81,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3364.43,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3431.71,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 12",
+      "step": "1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3427.44,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3483.99,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3553.67,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 12",
+      "step": "2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3549.09,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3607.65,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3679.80,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 12",
+      "step": "3",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3674.76,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3735.39,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3810.10,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 12",
+      "step": "4",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3805.65,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3868.44,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3945.81,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 12",
+      "step": "5",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3940.57,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4005.59,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4085.70,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 12",
+      "step": "6",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4080.65,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4147.98,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4230.94,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 12",
+      "step": "7",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4225.38,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4295.10,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4381.00,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 12",
+      "step": "8",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4375.26,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4447.45,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4536.40,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 12",
+      "step": "9",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4530.35,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4605.10,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4697.20,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 12",
+      "step": "10",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4691.19,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4768.60,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4863.97,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 12",
+      "step": "11",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4857.79,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4937.94,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 5036.70,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 12",
+      "step": "12",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 5030.17,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 5113.17,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 5215.43,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 12",
+      "step": "13",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 5208.90,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 5294.85,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 5400.75,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 12",
+      "step": "Max 1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 5393.98,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 5482.98,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 5592.64,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 12",
+      "step": "Max 2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 5585.37,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 5677.53,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 5791.08,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 13",
+      "step": "0",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3773.36,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3835.62,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 3912.33,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 13",
+      "step": "1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 3909.43,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 3973.94,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4053.41,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 13",
+      "step": "2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4050.11,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4116.93,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4199.27,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 13",
+      "step": "3",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4195.96,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4265.19,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4350.49,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 13",
+      "step": "4",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4347.00,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4418.72,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4507.10,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 13",
+      "step": "5",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4503.24,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4577.54,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4669.09,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 13",
+      "step": "6",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4665.24,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4742.21,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 4837.06,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "jobgroup": "Schaal 13",
+      "step": "7",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2016-01-01",
+          "amount": 4833.60,
+          "unit": "monthly",
+          "table_label": "per 1 januari 2016"
+        },
+        {
+          "start_date": "2017-07-01",
+          "amount": 4913.35,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2017",
+          "inc_pct": 1.65
+        },
+        {
+          "start_date": "2018-07-01",
+          "amount": 5011.62,
+          "unit": "monthly",
+          "table_label": "per 1 juli 2018",
+          "inc_pct": 2
+        }
+      ]
+    },
+    {
+      "

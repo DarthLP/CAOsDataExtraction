@@ -1,0 +1,2251 @@
+TRUNCATED RESPONSE DEBUG INFO
+Original filename: 01_CAO_BAKKERSBEDRIJF_1_MAART_2012_extract.json
+Timestamp: 2025-11-18T10:40:29.748887
+Response length: 74054 characters
+Finish reason: MAX_TOKENS
+================================================================================
+
+{
+  "salary_information": [
+    {
+      "jobgroup": "Group 3",
+      "worker": "Administrative Personnel",
+      "age_group": "23 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.28,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.41,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per June 1, 2012 (monthly pay), per June 17, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.48,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per December 1, 2012 (monthly pay), per December 2, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Group 4",
+      "worker": "Administrative Personnel",
+      "age_group": "23 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.95,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.09,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per June 1, 2012 (monthly pay), per June 17, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.16,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per December 1, 2012 (monthly pay), per December 2, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Group 4",
+      "worker": "Administrative Personnel",
+      "age_group": "24 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.84,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.99,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per June 1, 2012 (monthly pay), per June 17, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.06,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per December 1, 2012 (monthly pay), per December 2, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Group 5",
+      "worker": "Administrative Personnel",
+      "age_group": "23 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.68,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.83,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per June 1, 2012 (monthly pay), per June 17, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.90,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per December 1, 2012 (monthly pay), per December 2, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Group 5",
+      "worker": "Administrative Personnel",
+      "age_group": "24 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.56,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.72,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per June 1, 2012 (monthly pay), per June 17, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.80,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per December 1, 2012 (monthly pay), per December 2, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Group 5",
+      "worker": "Administrative Personnel",
+      "age_group": "25 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 16.47,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 16.63,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per June 1, 2012 (monthly pay), per June 17, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 16.71,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per December 1, 2012 (monthly pay), per December 2, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Group 6",
+      "worker": "Administrative Personnel",
+      "age_group": "23 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.42,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.57,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per June 1, 2012 (monthly pay), per June 17, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.56,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per December 1, 2012 (monthly pay), per December 2, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Group 6",
+      "worker": "Administrative Personnel",
+      "age_group": "24 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 16.31,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 16.47,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per June 1, 2012 (monthly pay), per June 17, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 16.55,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per December 1, 2012 (monthly pay), per December 2, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Group 6",
+      "worker": "Administrative Personnel",
+      "age_group": "25 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 17.18,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 17.35,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per June 1, 2012 (monthly pay), per June 17, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 17.44,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per December 1, 2012 (monthly pay), per December 2, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Group 6",
+      "worker": "Administrative Personnel",
+      "age_group": "26 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 18.06,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 18.24,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per June 1, 2012 (monthly pay), per June 17, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 18.33,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for administrative personnel per December 1, 2012 (monthly pay), per December 2, 2012 (4-weekly/weekly pay)",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Klasse A",
+      "worker": "Production Personnel",
+      "age_group": "22 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.33,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 12.45,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.51,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Klasse A",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.33,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 12.45,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.51,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 0 years"
+    },
+    {
+      "jobgroup": "Klasse A",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.45,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 12.57,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.63,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 1 year"
+    },
+    {
+      "jobgroup": "Klasse A",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.59,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 12.72,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.78,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 2 years"
+    },
+    {
+      "jobgroup": "Klasse A",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.71,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 12.84,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.90,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 3 years"
+    },
+    {
+      "jobgroup": "Klasse A",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.81,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 12.94,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.00,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 4 years"
+    },
+    {
+      "jobgroup": "Klasse B",
+      "worker": "Production Personnel",
+      "age_group": "22 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.55,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 12.68,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.74,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Klasse B",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.55,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 12.68,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.74,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 0 years"
+    },
+    {
+      "jobgroup": "Klasse B",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.69,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 12.82,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.88,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 1 year"
+    },
+    {
+      "jobgroup": "Klasse B",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.79,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 12.92,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.98,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 2 years"
+    },
+    {
+      "jobgroup": "Klasse B",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.96,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.09,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.16,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 3 years"
+    },
+    {
+      "jobgroup": "Klasse B",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.09,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.22,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.29,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 4 years"
+    },
+    {
+      "jobgroup": "Klasse C",
+      "worker": "Production Personnel",
+      "age_group": "22 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.75,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 12.88,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.94,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Klasse C",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.75,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 12.88,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.94,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 0 years"
+    },
+    {
+      "jobgroup": "Klasse C",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.90,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.03,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.10,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 1 year"
+    },
+    {
+      "jobgroup": "Klasse C",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.05,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.18,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.25,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 2 years"
+    },
+    {
+      "jobgroup": "Klasse C",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.17,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.30,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.37,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 3 years"
+    },
+    {
+      "jobgroup": "Klasse C",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.37,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.50,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.57,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 4 years"
+    },
+    {
+      "jobgroup": "Klasse D",
+      "worker": "Production Personnel",
+      "age_group": "22 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.97,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.10,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.17,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Klasse D",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.97,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.10,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.17,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 0 years"
+    },
+    {
+      "jobgroup": "Klasse D",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.11,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.24,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.31,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 1 year"
+    },
+    {
+      "jobgroup": "Klasse D",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.28,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.41,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.48,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 2 years"
+    },
+    {
+      "jobgroup": "Klasse D",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.44,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.57,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.64,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 3 years"
+    },
+    {
+      "jobgroup": "Klasse D",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.59,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.73,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.80,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 4 years"
+    },
+    {
+      "jobgroup": "Klasse D",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.76,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.90,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.97,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 5 years"
+    },
+    {
+      "jobgroup": "Klasse E",
+      "worker": "Production Personnel",
+      "age_group": "22 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.24,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.37,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.44,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Klasse E",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.24,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.37,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.44,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 0 years"
+    },
+    {
+      "jobgroup": "Klasse E",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.42,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.55,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.62,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 1 year"
+    },
+    {
+      "jobgroup": "Klasse E",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.58,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.72,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.79,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 2 years"
+    },
+    {
+      "jobgroup": "Klasse E",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.75,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.89,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.96,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 3 years"
+    },
+    {
+      "jobgroup": "Klasse E",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.94,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.08,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.15,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 4 years"
+    },
+    {
+      "jobgroup": "Klasse E",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.13,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.27,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.34,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 5 years"
+    },
+    {
+      "jobgroup": "Klasse E",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.29,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.43,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.50,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 6 years"
+    },
+    {
+      "jobgroup": "Klasse F1",
+      "worker": "Production Personnel",
+      "age_group": "22 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.53,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.67,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.74,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Klasse F1",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.53,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.67,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.74,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 0 years"
+    },
+    {
+      "jobgroup": "Klasse F1",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.70,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.84,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.91,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 1 year"
+    },
+    {
+      "jobgroup": "Klasse F1",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.88,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.02,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.09,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 2 years"
+    },
+    {
+      "jobgroup": "Klasse F1",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.07,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.21,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.28,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 3 years"
+    },
+    {
+      "jobgroup": "Klasse F1",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.26,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.40,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.47,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 4 years"
+    },
+    {
+      "jobgroup": "Klasse F1",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.47,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.61,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.68,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 5 years"
+    },
+    {
+      "jobgroup": "Klasse F1",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.65,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.80,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.87,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 6 years"
+    },
+    {
+      "jobgroup": "Klasse F1",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.86,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.01,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.09,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 7 years"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "worker": "Production Personnel",
+      "age_group": "22 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.76,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.90,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.97,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.76,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.90,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.97,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 0 years"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.95,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.09,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.16,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 1 year"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.16,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.30,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.37,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 2 years"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.36,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.50,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.57,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 3 years"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.58,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.73,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.80,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 4 years"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.76,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.91,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.98,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 5 years"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.97,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.12,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.20,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 6 years"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.19,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.34,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.42,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 7 years"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.68,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.84,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.92,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 8 years"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "worker": "Production Personnel",
+      "age_group": "22 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.95,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.09,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.16,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Klasse G",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.95,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.09,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.16,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 0 years"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.17,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.31,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.38,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 1 year"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.37,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.51,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.58,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 2 years"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.59,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.74,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.81,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 3 years"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.78,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.93,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.00,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 4 years"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.01,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.16,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.24,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 5 years"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.24,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.39,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.47,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 6 years"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.45,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.60,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.68,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 7 years"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 16.35,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 16.51,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 16.59,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 8 years"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 16.58,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 16.75,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 16.83,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 9 years"
+    },
+    {
+      "jobgroup": "Klasse H",
+      "worker": "Production Personnel",
+      "age_group": "22 years",
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.51,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.66,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.73,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ]
+    },
+    {
+      "jobgroup": "Klasse H",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.51,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.66,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.73,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 0 years"
+    },
+    {
+      "jobgroup": "Klasse H",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.70,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.85,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.92,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 1 year"
+    },
+    {
+      "jobgroup": "Klasse H",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.93,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.08,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.16,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 2 years"
+    },
+    {
+      "jobgroup": "Klasse H",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.18,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.33,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.41,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 3 years"
+    },
+    {
+      "jobgroup": "Klasse H",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.39,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.54,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.62,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 4 years"
+    },
+    {
+      "jobgroup": "Klasse H",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.60,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.76,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.84,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per December 1, 2012 / December 2, 2012",
+          "inc_pct": 0.50
+        }
+      ],
+      "row_note": "Functional years: 5 years"
+    },
+    {
+      "jobgroup": "Klasse H",
+      "worker": "Production Personnel",
+      "age_group": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.85,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per March 1, 2012"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 16.01,
+          "unit": "hourly",
+          "table_label": "Functional hourly wage tables for production personnel per June 1, 2012 / June 17, 2012",
+          "inc_pct": 1.00
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 16.09,

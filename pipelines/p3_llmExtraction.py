@@ -1166,6 +1166,7 @@ def validate_response_schema(content: str, filename: str) -> bool:
 def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: str, 
                                context: ProcessingContext, remaining_budget_s: Optional[int] = None) -> Optional[str]:
     """Extract using Files API approach - upload markdown file to Gemini."""
+    global process_quota_flags
     print(f'  INFO: Using Files API approach for {filename}')
     start_time = time.time()
     file_size_mb = os.path.getsize(markdown_path) / (1024 * 1024)
@@ -1201,6 +1202,11 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
     last_error_message = None
     
     for attempt in range(context.config.max_retries):
+        # Check quota exhaustion at START of each retry attempt (before API call)
+        if context.process_id in process_quota_flags and process_quota_flags[context.process_id]:
+            print(f'  🛑 Quota exhausted detected at start of retry loop, stopping retries')
+            break
+        
         # Get adjusted parameters for this attempt (needed for logging even on errors)
         adjusted_params = get_adjusted_parameters(context.config, attempt)
         
@@ -1300,25 +1306,47 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
             context.stage_start_ts = time.time()
             
             # Use the original working approach with response_schema
-            response = context.client.models.generate_content(
-                model=context.config.model,
-                contents=safe_content,
-                config={
-                    'temperature': adjusted_params['temperature'],
-                    'top_p': adjusted_params['top_p'],
-                    'top_k': adjusted_params['top_k'],
-                    'max_output_tokens': context.config.max_tokens,
-                    'candidate_count': context.config.candidate_count,
-                    'seed': context.config.seed,
-                    'presence_penalty': context.config.presence_penalty,
-                    'frequency_penalty': context.config.frequency_penalty,
-                    'response_mime_type': 'application/json',
-                    'response_schema': CAOExtractionSchema,
-                    'thinking_config': types.ThinkingConfig(thinking_budget=context.config.thinking_budget),
-                    'http_options': types.HttpOptions(timeout=timeout_seconds * 1000),
-                    'safety_settings': safety_settings
-                }
-            )
+            try:
+                response = context.client.models.generate_content(
+                    model=context.config.model,
+                    contents=safe_content,
+                    config={
+                        'temperature': adjusted_params['temperature'],
+                        'top_p': adjusted_params['top_p'],
+                        'top_k': adjusted_params['top_k'],
+                        'max_output_tokens': context.config.max_tokens,
+                        'candidate_count': context.config.candidate_count,
+                        'seed': context.config.seed,
+                        'presence_penalty': context.config.presence_penalty,
+                        'frequency_penalty': context.config.frequency_penalty,
+                        'response_mime_type': 'application/json',
+                        'response_schema': CAOExtractionSchema,
+                        'thinking_config': types.ThinkingConfig(thinking_budget=context.config.thinking_budget),
+                        'http_options': types.HttpOptions(timeout=timeout_seconds * 1000),
+                        'safety_settings': safety_settings
+                    }
+                )
+            except Exception as api_error:
+                # Defensive exception handling for API calls that escape retry loops
+                import traceback
+                error_type = type(api_error).__name__
+                error_msg = str(api_error)
+                print(f'  🚨 UNEXPECTED API ERROR during markdown extraction (attempt {attempt + 1}): {error_type}: {error_msg}')
+                print(f'  📋 This error occurred during the API call itself and will be handled by retry logic')
+                # Log to file for debugging
+                try:
+                    error_log_path = 'outputs/logs/fatal_errors_llm_extraction.txt'
+                    Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                    with open(error_log_path, 'a', encoding='utf-8') as f:
+                        f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Process {context.process_id} - API ERROR (markdown extraction)\n")
+                        f.write(f"File: {filename}\n")
+                        f.write(f"Error Type: {error_type}\n")
+                        f.write(f"Error Message: {error_msg}\n")
+                        f.write(f"Traceback:\n{traceback.format_exc()}\n\n")
+                except Exception:
+                    pass  # Don't fail on logging failure
+                # Re-raise so existing retry logic can handle it
+                raise
             
             content, extraction_info = extract_text_safely(response, filename, context)
             

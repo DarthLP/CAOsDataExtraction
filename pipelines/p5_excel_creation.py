@@ -61,13 +61,16 @@ class ExcelConfig:
 
 def load_configuration() -> ExcelConfig:
     """Load and validate configuration from config.yaml."""
-    with open('conf/config.yaml', 'r') as f:
+    # Resolve project root (two levels up from this file: pipelines/ -> repo root)
+    project_root = Path(__file__).resolve().parents[1]
+    
+    with open(project_root / 'conf/config.yaml', 'r') as f:
         config_data = yaml.safe_load(f)
     
     return ExcelConfig(
-        llm_analysis_folder=Path('outputs/llm_analysis'),
-        cao_info_path="pdfs/input_pdfs/extracted_cao_info.csv",  # Fixed path
-        output_folder=Path(config_data['paths']['outputs_excel']) / "new_results"
+        llm_analysis_folder=project_root / 'outputs/llm_analysis',
+        cao_info_path=str(project_root / f"{config_data['paths']['inputs_pdfs']}/extracted_cao_info.csv"),
+        output_folder=project_root / config_data['paths']['outputs_excel'] / "new_results"
     )
 
 # =============================================================================
@@ -97,19 +100,26 @@ def normalize_filename(filename: str) -> str:
     """
     Normalize filename by removing common suffixes for matching.
     
+    Handles double extensions (e.g., .pdf.pdf) by removing all instances.
+    
     Args:
         filename: Original filename
         
     Returns:
         str: Normalized filename for matching
     """
-    # Remove common suffixes
+    # Remove common suffixes (handle multiple occurrences, e.g., .pdf.pdf)
     suffixes_to_remove = ['.pdf', '.md', '_analysis', '_extract']
     
     normalized = filename
-    for suffix in suffixes_to_remove:
-        if normalized.endswith(suffix):
-            normalized = normalized[:-len(suffix)]
+    # Keep removing suffixes until no more are found (handles .pdf.pdf cases)
+    changed = True
+    while changed:
+        changed = False
+        for suffix in suffixes_to_remove:
+            if normalized.endswith(suffix):
+                normalized = normalized[:-len(suffix)]
+                changed = True
     
     return normalized
 
@@ -129,8 +139,11 @@ def load_cao_info(cao_info_path: str) -> Dict[str, Dict[str, str]]:
                 cao_number = str(row.get('cao_number', ''))
                 pdf_name = str(row.get('pdf_name', ''))
                 if cao_number and pdf_name:
-                    # Create key as "cao_number:pdf_name" for unique identification
-                    key = f"{cao_number}:{pdf_name}"
+                    # Normalize pdf_name to handle double extensions (.pdf.pdf) and match with analysis filenames
+                    normalized_pdf_name = normalize_filename(pdf_name)
+                    # Create key as "cao_number:normalized_pdf_name.pdf" for matching
+                    # Add .pdf back since match_cao_info adds it to the normalized filename
+                    key = f"{cao_number}:{normalized_pdf_name}.pdf"
                     cao_info_mapping[key] = {
                         'cao_number': cao_number,
                         'id': str(row.get('id', '')),
@@ -229,19 +242,45 @@ def load_non_salary_data(cao_number: str, filename: str, llm_analysis_folder: Pa
 # FILE PROCESSING FUNCTIONS
 # =============================================================================
 def discover_llm_files(llm_analysis_folder: Path) -> List[tuple]:
-    """Discover all LLM analysis files."""
-    files = []
+    """
+    Discover all LLM analysis files.
     
-    # Look for salary files
+    Uses non-salary folders as source of truth to ensure all files are discovered,
+    even if salary extraction failed for some files. For each file found in non-salary
+    folders, looks for corresponding salary file (which may or may not exist).
+    """
+    files = []
+    discovered_files = set()  # Track (cao_number, base_filename) to avoid duplicates
+    
+    # Use non-salary folders as source of truth (they have all 1580 files)
+    # Check the first non-salary folder to discover all files
+    non_salary_folder = llm_analysis_folder / 'non_salary' / 'gen_bon_wag_pen_ter'
     salary_folder = llm_analysis_folder / 'salary'
-    if salary_folder.exists():
-        for cao_folder in salary_folder.iterdir():
+    
+    if non_salary_folder.exists():
+        for cao_folder in non_salary_folder.iterdir():
             if cao_folder.is_dir():
                 cao_number = cao_folder.name
                 for json_file in cao_folder.glob('*_analysis.json'):
                     # Extract base filename
                     base_filename = json_file.stem.replace('_analysis', '')
-                    files.append((cao_number, base_filename, json_file))
+                    
+                    # Avoid duplicates
+                    file_key = (cao_number, base_filename)
+                    if file_key in discovered_files:
+                        continue
+                    discovered_files.add(file_key)
+                    
+                    # Look for corresponding salary file (may not exist)
+                    salary_file = salary_folder / cao_number / f"{base_filename}_analysis.json"
+                    
+                    # Use salary file if it exists, otherwise use non-salary file as placeholder
+                    # (process_non_salary_file will handle missing salary gracefully)
+                    if salary_file.exists():
+                        files.append((cao_number, base_filename, salary_file))
+                    else:
+                        # File has non-salary but no salary - still process it
+                        files.append((cao_number, base_filename, None))
     
     return files
 
@@ -251,12 +290,16 @@ def determine_max_timeline_length(files: List[tuple]) -> int:
     
     print("Determining max timeline length...")
     for cao_number, base_filename, salary_file in files:
+        if salary_file is None:
+            continue  # Skip files without salary data
         try:
             with open(salary_file, 'r', encoding='utf-8') as f:
                 salary_data = json.load(f)
-                salary_rows = salary_data.get('salary_information', [])
+                # Handle both 'salary_information' (regular) and 'si' (compact/split)
+                salary_rows = salary_data.get('salary_information') or salary_data.get('si', [])
                 for salary_row in salary_rows:
-                    timeline = salary_row.get('timeline', [])
+                    # Handle both 'timeline' (regular) and 'tl' (compact/split)
+                    timeline = salary_row.get('timeline') or salary_row.get('tl', [])
                     max_timeline = max(max_timeline, len(timeline))
         except Exception as e:
             print(f"Warning: Could not read {salary_file} for timeline analysis: {e}")
@@ -264,21 +307,32 @@ def determine_max_timeline_length(files: List[tuple]) -> int:
     print(f"Max timeline length determined: {max_timeline}")
     return max_timeline
 
-def process_salary_file(cao_number: str, base_filename: str, salary_file: Path, 
+def process_salary_file(cao_number: str, base_filename: str, salary_file: Optional[Path], 
                        cao_info_mapping: Dict[str, Dict[str, str]], config: ExcelConfig, 
                        max_timeline_length: int) -> List[dict]:
-    """Process a single salary file and return Excel rows."""
+    """
+    Process a single salary file and return Excel rows.
+    
+    Args:
+        salary_file: Path to salary file, or None if file doesn't exist (has non-salary but no salary)
+    """
+    excel_rows = []
+    
+    if salary_file is None or not salary_file.exists():
+        # File has non-salary data but no salary data - return empty list
+        return excel_rows
+    
     # Load salary data
     with open(salary_file, 'r', encoding='utf-8') as f:
         salary_data = json.load(f)
     
-    salary_rows = salary_data.get('salary_information', [])
+    # Handle both 'salary_information' (regular) and 'si' (compact/split)
+    salary_rows = salary_data.get('salary_information') or salary_data.get('si', [])
     
     # Get CAO metadata
     cao_metadata = match_cao_info(cao_number, base_filename, cao_info_mapping)
     
     # Convert to Excel rows (wide format)
-    excel_rows = []
     for salary_row in salary_rows:
         row = flatten_salary_row(salary_row, cao_metadata, max_timeline_length)
         excel_rows.append(row)
@@ -343,7 +397,7 @@ def main():
         
         for cao_number, base_filename, salary_file in all_files:
             try:
-                # Process salary data
+                # Process salary data (may be None if file doesn't exist)
                 salary_rows = process_salary_file(cao_number, base_filename, salary_file, cao_info_mapping, config, max_timeline_length)
                 salary_results.extend(salary_rows)
                 
@@ -352,10 +406,12 @@ def main():
                 non_salary_results.append(non_salary_row)
                 
                 successful_files += 1
-                print(f'  {cao_number}: Processed {salary_file.name}')
+                file_name = salary_file.name if salary_file else f"{base_filename}_analysis.json (no salary)"
+                print(f'  {cao_number}: Processed {file_name}')
             except Exception as e:
-                print(f'  {cao_number}: Error processing {salary_file.name}: {e}')
-                failed_files.append(salary_file.name)
+                file_name = salary_file.name if salary_file else f"{base_filename}_analysis.json (no salary)"
+                print(f'  {cao_number}: Error processing {file_name}: {e}')
+                failed_files.append(file_name)
         
         # Create DataFrames and save Excel files
         if salary_results:

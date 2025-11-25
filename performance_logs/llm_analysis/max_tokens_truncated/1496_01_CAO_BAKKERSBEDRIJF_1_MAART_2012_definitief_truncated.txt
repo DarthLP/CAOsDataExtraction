@@ -1,7 +1,7 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: 01_CAO_BAKKERSBEDRIJF_1_MAART_2012___definitief_extract.json
-Timestamp: 2025-11-18T08:55:58.068086
-Response length: 6548 characters
+Timestamp: 2025-11-25T03:27:50.017198
+Response length: 127767 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
@@ -9,245 +9,4342 @@ Finish reason: MAX_TOKENS
   "salary_information": [
     {
       "jobgroup": "Klasse A",
+      "step": null,
       "worker": "production personnel",
       "age_group": "22 years",
+      "holiday_incl": null,
       "timeline": [
         {
           "start_date": "2012-03-01",
           "amount": 12.33,
-          "unit": "hourly",
-          "table_label": "as of March 1, 2012"
+          "unit": "h"
         },
         {
           "start_date": "2012-06-01",
           "amount": 12.45,
-          "unit": "hourly",
-          "table_label": "as of June 1, 2012 / June 17, 2012",
-          "inc_pct": 1.00
+          "unit": "h"
         },
         {
           "start_date": "2012-12-01",
           "amount": 12.51,
-          "unit": "hourly",
-          "table_label": "as of December 1, 2012 / December 2, 2012",
-          "inc_pct": 0.50
+          "unit": "h"
         }
-      ]
+      ],
+      "row_note": "Functional hourly wage for Class A1 is equal to the statutory minimum (youth) hourly wage. NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
     },
     {
       "jobgroup": "Klasse A",
+      "step": "0 years",
       "worker": "production personnel",
-      "age_group": "22 years and older",
+      "age_group": null,
+      "holiday_incl": null,
       "timeline": [
         {
           "start_date": "2012-03-01",
           "amount": 12.33,
-          "unit": "hourly",
-          "table_label": "as of March 1, 2012"
+          "unit": "h"
         },
         {
           "start_date": "2012-06-01",
           "amount": 12.45,
-          "unit": "hourly",
-          "table_label": "as of June 1, 2012 / June 17, 2012",
-          "inc_pct": 1.00
+          "unit": "h"
         },
         {
           "start_date": "2012-12-01",
           "amount": 12.51,
-          "unit": "hourly",
-          "table_label": "as of December 1, 2012 / December 2, 2012",
-          "inc_pct": 0.50
+          "unit": "h"
         }
-      ]
+      ],
+      "row_note": "Functional hourly wage for Class A1 is equal to the statutory minimum (youth) hourly wage. NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
     },
     {
       "jobgroup": "Klasse A",
+      "step": "1 year",
       "worker": "production personnel",
-      "age_group": "22 years and older",
+      "age_group": null,
+      "holiday_incl": null,
       "timeline": [
         {
           "start_date": "2012-03-01",
-          "amount": 12.33,
-          "unit": "hourly",
-          "table_label": "as of March 1, 2012"
+          "amount": 12.45,
+          "unit": "h"
         },
         {
           "start_date": "2012-06-01",
-          "amount": 12.45,
-          "unit": "hourly",
-          "table_label": "as of June 1, 2012 / June 17, 2012",
-          "inc_pct": 1.00
+          "amount": 12.57,
+          "unit": "h"
         },
         {
           "start_date": "2012-12-01",
-          "amount": 12.51,
-          "unit": "hourly",
-          "table_label": "as of December 1, 2012 / December 2, 2012",
-          "inc_pct": 0.50
+          "amount": 12.63,
+          "unit": "h"
         }
-      ]
+      ],
+      "row_note": "Functional hourly wage for Class A1 is equal to the statutory minimum (youth) hourly wage. NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
     },
     {
       "jobgroup": "Klasse A",
+      "step": "2 years",
       "worker": "production personnel",
-      "age_group": "22 years and older",
+      "age_group": null,
+      "holiday_incl": null,
       "timeline": [
         {
           "start_date": "2012-03-01",
-          "amount": 12.33,
-          "unit": "hourly",
-          "table_label": "as of March 1, 2012"
+          "amount": 12.59,
+          "unit": "h"
         },
         {
           "start_date": "2012-06-01",
-          "amount": 12.45,
-          "unit": "hourly",
-          "table_label": "as of June 1, 2012 / June 17, 2012",
-          "inc_pct": 1.00
+          "amount": 12.72,
+          "unit": "h"
         },
         {
           "start_date": "2012-12-01",
-          "amount": 12.51,
-          "unit": "hourly",
-          "table_label": "as of December 1, 2012 / December 2, 2012",
-          "inc_pct": 0.50
+          "amount": 12.78,
+          "unit": "h"
         }
-      ]
+      ],
+      "row_note": "Functional hourly wage for Class A1 is equal to the statutory minimum (youth) hourly wage. NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
     },
     {
       "jobgroup": "Klasse A",
+      "step": "3 years",
       "worker": "production personnel",
-      "age_group": "22 years and older",
+      "age_group": null,
+      "holiday_incl": null,
       "timeline": [
         {
           "start_date": "2012-03-01",
-          "amount": 12.33,
-          "unit": "hourly",
-          "table_label": "as of March 1, 2012"
+          "amount": 12.71,
+          "unit": "h"
         },
         {
           "start_date": "2012-06-01",
-          "amount": 12.45,
-          "unit": "hourly",
-          "table_label": "as of June 1, 2012 / June 17, 2012",
-          "inc_pct": 1.00
+          "amount": 12.84,
+          "unit": "h"
         },
         {
           "start_date": "2012-12-01",
-          "amount": 12.51,
-          "unit": "hourly",
-          "table_label": "as of December 1, 2012 / December 2, 2012",
-          "inc_pct": 0.50
+          "amount": 12.90,
+          "unit": "h"
         }
-      ]
+      ],
+      "row_note": "Functional hourly wage for Class A1 is equal to the statutory minimum (youth) hourly wage. NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
     },
     {
       "jobgroup": "Klasse A",
+      "step": "4 years",
       "worker": "production personnel",
-      "age_group": "22 years and older",
+      "age_group": null,
+      "holiday_incl": null,
       "timeline": [
         {
           "start_date": "2012-03-01",
-          "amount": 12.33,
-          "unit": "hourly",
-          "table_label": "as of March 1, 2012"
+          "amount": 12.81,
+          "unit": "h"
         },
         {
           "start_date": "2012-06-01",
-          "amount": 12.45,
-          "unit": "hourly",
-          "table_label": "as of June 1, 2012 / June 17, 2012",
-          "inc_pct": 1.00
+          "amount": 12.94,
+          "unit": "h"
         },
         {
           "start_date": "2012-12-01",
-          "amount": 12.51,
-          "unit": "hourly",
-          "table_label": "as of December 1, 2012 / December 2, 2012",
-          "inc_pct": 0.50
+          "amount": 13.00,
+          "unit": "h"
         }
-      ]
+      ],
+      "row_note": "Functional hourly wage for Class A1 is equal to the statutory minimum (youth) hourly wage. NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
     },
     {
-      "jobgroup": "Klasse A",
+      "jobgroup": "Klasse B",
+      "step": null,
       "worker": "production personnel",
-      "age_group": "22 years and older",
+      "age_group": "22 years",
+      "holiday_incl": null,
       "timeline": [
         {
           "start_date": "2012-03-01",
-          "amount": 12.33,
-          "unit": "hourly",
-          "table_label": "as of March 1, 2012"
+          "amount": 12.55,
+          "unit": "h"
         },
         {
           "start_date": "2012-06-01",
-          "amount": 12.45,
-          "unit": "hourly",
-          "table_label": "as of June 1, 2012 / June 17, 2012",
-          "inc_pct": 1.00
+          "amount": 12.68,
+          "unit": "h"
         },
         {
           "start_date": "2012-12-01",
-          "amount": 12.51,
-          "unit": "hourly",
-          "table_label": "as of December 1, 2012 / December 2, 2012",
-          "inc_pct": 0.50
+          "amount": 12.74,
+          "unit": "h"
         }
-      ]
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
     },
     {
-      "jobgroup": "Klasse A",
+      "jobgroup": "Klasse B",
+      "step": "0 years",
       "worker": "production personnel",
-      "age_group": "22 years and older",
+      "age_group": null,
+      "holiday_incl": null,
       "timeline": [
         {
           "start_date": "2012-03-01",
-          "amount": 12.33,
-          "unit": "hourly",
-          "table_label": "as of March 1, 2012"
+          "amount": 12.55,
+          "unit": "h"
         },
         {
           "start_date": "2012-06-01",
-          "amount": 12.45,
-          "unit": "hourly",
-          "table_label": "as of June 1, 2012 / June 17, 2012",
-          "inc_pct": 1.00
+          "amount": 12.68,
+          "unit": "h"
         },
         {
           "start_date": "2012-12-01",
-          "amount": 12.51,
-          "unit": "hourly",
-          "table_label": "as of December 1, 2012 / December 2, 2012",
-          "inc_pct": 0.50
+          "amount": 12.74,
+          "unit": "h"
         }
-      ]
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
     },
     {
-      "jobgroup": "Klasse A",
+      "jobgroup": "Klasse B",
+      "step": "1 year",
       "worker": "production personnel",
-      "age_group": "22 years and older",
+      "age_group": null,
+      "holiday_incl": null,
       "timeline": [
         {
           "start_date": "2012-03-01",
-          "amount": 12.33,
-          "unit": "hourly",
-          "table_label": "as of March 1, 2012"
+          "amount": 12.69,
+          "unit": "h"
         },
         {
           "start_date": "2012-06-01",
-          "amount": 12.45,
-          "unit": "hourly",
-          "table_label": "as of June 1, 2012 / June 17, 2012",
-          "inc_pct": 1.00
+          "amount": 12.82,
+          "unit": "h"
         },
         {
           "start_date": "2012-12-01",
-          "amount": 12.51,
-          "unit": "hourly",
-          "table_label": "as of December 1, 2012 / December 2, 2012",
-          "inc_pct": 0.50
+          "amount": 12.88,
+          "unit": "h"
         }
-      ]
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
     },
     {
+      "jobgroup": "Klasse B",
+      "step": "2 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.79,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 12.92,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.98,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse B",
+      "step": "3 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.96,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.09,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.16,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse B",
+      "step": "4 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.09,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.22,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.29,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse B",
+      "step": "5 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.22,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.35,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.42,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse C",
+      "step": null,
+      "worker": "production personnel",
+      "age_group": "22 years",
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.75,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 12.88,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.94,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse C",
+      "step": "0 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.75,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 12.88,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.94,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse C",
+      "step": "1 year",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.90,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.03,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.10,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse C",
+      "step": "2 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.05,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.18,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.25,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse C",
+      "step": "3 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.17,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.30,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.37,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse C",
+      "step": "4 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.37,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.50,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.57,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse C",
+      "step": "5 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.50,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.63,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.70,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse D",
+      "step": null,
+      "worker": "production personnel",
+      "age_group": "22 years",
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.97,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.10,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.17,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse D",
+      "step": "0 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 12.97,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.10,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.17,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse D",
+      "step": "1 year",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.11,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.24,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.31,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse D",
+      "step": "2 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.28,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.41,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.48,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse D",
+      "step": "3 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.44,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.57,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.64,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse D",
+      "step": "4 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.59,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.73,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.80,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse D",
+      "step": "5 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.76,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.90,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.97,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse E",
+      "step": null,
+      "worker": "production personnel",
+      "age_group": "22 years",
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.24,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.37,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.44,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse E",
+      "step": "0 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.24,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.37,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.44,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse E",
+      "step": "1 year",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.42,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.55,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.62,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse E",
+      "step": "2 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.58,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.72,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.79,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse E",
+      "step": "3 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.75,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.89,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.96,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse E",
+      "step": "4 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.94,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.08,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.15,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse E",
+      "step": "5 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.13,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.27,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.34,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse E",
+      "step": "6 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.29,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.43,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.50,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F1",
+      "step": null,
+      "worker": "production personnel",
+      "age_group": "22 years",
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.53,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.67,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.74,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F1",
+      "step": "0 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.53,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.67,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.74,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F1",
+      "step": "1 year",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.70,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.84,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.91,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F1",
+      "step": "2 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.88,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.02,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.09,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F1",
+      "step": "3 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.07,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.21,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.28,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F1",
+      "step": "4 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.26,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.40,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.47,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F1",
+      "step": "5 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.47,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.61,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.68,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F1",
+      "step": "6 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.65,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.80,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.87,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F1",
+      "step": "7 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.86,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.01,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.09,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "step": null,
+      "worker": "production personnel",
+      "age_group": "22 years",
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.76,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.90,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.97,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "step": "0 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.76,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 13.90,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.97,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "step": "1 year",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.95,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.09,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.16,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "step": "2 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.16,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.30,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.37,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "step": "3 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.36,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.50,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.57,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "step": "4 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.58,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.73,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.80,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "step": "5 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.76,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.91,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.98,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "step": "6 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.97,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.12,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.20,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "step": "7 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.19,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.34,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.42,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse F2",
+      "step": "8 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.68,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.84,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.92,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "step": null,
+      "worker": "production personnel",
+      "age_group": "22 years",
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.95,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.09,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.16,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "step": "0 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 13.95,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.09,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.16,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "step": "1 year",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.17,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.31,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.38,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "step": "2 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.37,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.51,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.58,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "step": "3 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.59,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.74,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.81,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "step": "4 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.78,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.93,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.00,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "step": "5 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.01,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.16,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.24,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "step": "6 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.24,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.39,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.47,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "step": "7 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.45,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.60,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.68,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "step": "8 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 16.35,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 16.51,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 16.59,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse G",
+      "step": "9 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 16.58,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 16.75,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 16.83,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse H",
+      "step": null,
+      "worker": "production personnel",
+      "age_group": "22 years",
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.51,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.66,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.73,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse H",
+      "step": "0 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.51,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.66,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.73,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse H",
+      "step": "1 year",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.70,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 14.85,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.92,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse H",
+      "step": "2 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 14.93,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.08,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.16,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse H",
+      "step": "3 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.18,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.33,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.41,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse H",
+      "step": "4 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.39,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.54,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.62,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse H",
+      "step": "5 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.60,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 15.76,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.84,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse H",
+      "step": "6 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 15.85,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 16.01,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 16.09,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse H",
+      "step": "7 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 16.11,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 16.27,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 16.35,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "Klasse H",
+      "step": "8 years",
+      "worker": "production personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-03-01",
+          "amount": 16.35,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-06-01",
+          "amount": 16.51,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 16.59,
+          "unit": "h"
+        }
+      ],
+      "row_note": "NB: After reaching the age of 22, functional year 1 follows, not functional year 0 (see article 1.8.c)"
+    },
+    {
+      "jobgroup": "schaal 1",
+      "step": null,
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": "22",
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 10.10,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 10.15,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 1",
+      "step": "0",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 10.10,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 10.15,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 1",
+      "step": "1",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 10.42,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 10.47,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 1",
+      "step": "2",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 10.73,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 10.78,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 1",
+      "step": "3",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 11.05,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 11.11,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 1",
+      "step": "4",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 11.36,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 11.42,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 1",
+      "step": "5",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 11.68,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 11.74,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 1",
+      "step": "6",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 11.99,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.05,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 1",
+      "step": "7",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.31,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.37,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 1",
+      "step": "8",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.63,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.69,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 1",
+      "step": "9",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.94,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.00,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 2",
+      "step": null,
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": "22",
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 11.20,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 11.26,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 2",
+      "step": "0",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 11.20,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 11.26,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 2",
+      "step": "1",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 11.42,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 11.48,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 2",
+      "step": "2",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 11.65,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 11.71,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 2",
+      "step": "3",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 11.87,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 11.93,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 2",
+      "step": "4",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.10,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.16,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 2",
+      "step": "5",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.32,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.38,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 2",
+      "step": "6",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.54,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.60,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 2",
+      "step": "7",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.77,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.83,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 2",
+      "step": "8",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.99,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.05,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 2",
+      "step": "9",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.22,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.29,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 3",
+      "step": null,
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": "22",
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 11.39,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 11.45,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 3",
+      "step": "0",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 11.39,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 11.45,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 3",
+      "step": "1",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 11.65,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 11.71,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 3",
+      "step": "2",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 11.90,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 11.96,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 3",
+      "step": "3",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.16,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.22,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 3",
+      "step": "4",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.41,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.47,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 3",
+      "step": "5",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.67,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.73,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 3",
+      "step": "6",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.92,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.98,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 3",
+      "step": "7",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.18,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.25,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 3",
+      "step": "8",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.43,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.50,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 3",
+      "step": "9",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.69,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.76,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 3",
+      "step": "10",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 14.43,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.50,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 4",
+      "step": null,
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": "22",
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 11.58,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 11.64,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 4",
+      "step": "0",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 11.58,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 11.64,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 4",
+      "step": "1",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 11.86,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 11.92,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 4",
+      "step": "2",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.15,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.21,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 4",
+      "step": "3",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.43,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.49,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 4",
+      "step": "4",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.72,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.78,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 4",
+      "step": "5",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.00,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.07,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 4",
+      "step": "6",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.29,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.36,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 4",
+      "step": "7",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.57,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.64,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 4",
+      "step": "8",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.86,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.93,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 4",
+      "step": "9",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 14.14,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.21,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 4",
+      "step": "10",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 15.00,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.08,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 4",
+      "step": "11",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 15.32,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.40,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 5",
+      "step": null,
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": "22",
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 11.84,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 11.90,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 5",
+      "step": "0",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 11.84,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 11.90,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 5",
+      "step": "1",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.16,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.22,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 5",
+      "step": "2",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.47,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.53,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 5",
+      "step": "3",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.79,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.85,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 5",
+      "step": "4",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.11,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.18,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 5",
+      "step": "5",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.42,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.49,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 5",
+      "step": "6",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.74,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.81,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 5",
+      "step": "7",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 14.05,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.12,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 5",
+      "step": "8",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 14.37,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.44,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 5",
+      "step": "9",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 14.69,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.76,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 5",
+      "step": "10",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 15.87,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.95,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 5",
+      "step": "11",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 16.24,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 16.32,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 6",
+      "step": null,
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": "22",
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.10,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.16,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 6",
+      "step": "0",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.10,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.16,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 6",
+      "step": "1",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.47,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.53,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 6",
+      "step": "2",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.85,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.91,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 6",
+      "step": "3",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.23,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.30,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 6",
+      "step": "4",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.60,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.67,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 6",
+      "step": "5",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.98,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.05,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 6",
+      "step": "6",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 14.36,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.43,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 6",
+      "step": "7",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 14.74,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.81,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 6",
+      "step": "8",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 15.11,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.19,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 6",
+      "step": "9",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 15.49,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.57,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 6",
+      "step": "10",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 16.64,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 16.72,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 6",
+      "step": "11",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 17.08,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 17.17,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 6",
+      "step": "12",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 17.52,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 17.61,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 7",
+      "step": null,
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": "22",
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.26,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.32,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 7",
+      "step": "0",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.26,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.32,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 7",
+      "step": "1",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.70,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.76,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 7",
+      "step": "2",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.14,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.21,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 7",
+      "step": "3",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.57,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.64,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 7",
+      "step": "4",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 14.01,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.08,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 7",
+      "step": "5",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 14.45,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.52,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 7",
+      "step": "6",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 14.89,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.96,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 7",
+      "step": "7",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 15.33,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.41,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 7",
+      "step": "8",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 15.77,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.85,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 7",
+      "step": "9",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 16.20,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 16.28,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 7",
+      "step": "10",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 17.48,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 17.57,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 7",
+      "step": "11",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 17.97,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 18.06,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 7",
+      "step": "12",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 18.46,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 18.55,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 7",
+      "step": "13",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 18.94,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 19.03,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 8",
+      "step": null,
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": "22",
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.59,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.65,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 8",
+      "step": "0",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.59,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 12.65,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 8",
+      "step": "1",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.07,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.14,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 8",
+      "step": "2",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.56,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.63,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 8",
+      "step": "3",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 14.05,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.12,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 8",
+      "step": "4",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 14.54,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.61,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 8",
+      "step": "5",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 15.03,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.11,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 8",
+      "step": "6",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 15.52,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.60,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 8",
+      "step": "7",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 16.01,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 16.09,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 8",
+      "step": "8",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 16.50,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 16.58,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 8",
+      "step": "9",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 16.99,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 17.07,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 8",
+      "step": "10",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 18.55,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 18.64,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 8",
+      "step": "11",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 19.11,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 19.21,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 8",
+      "step": "12",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 19.67,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 19.77,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 8",
+      "step": "13",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 20.23,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 20.33,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 8",
+      "step": "14",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 20.79,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 20.89,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 9",
+      "step": null,
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": "22",
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.94,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.00,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 9",
+      "step": "0",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 12.94,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.00,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 9",
+      "step": "1",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.50,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.57,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 9",
+      "step": "2",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 14.06,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.13,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 9",
+      "step": "3",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 14.62,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 14.69,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 9",
+      "step": "4",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 15.18,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.26,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 9",
+      "step": "5",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 15.74,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 15.82,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 9",
+      "step": "6",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 16.31,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 16.39,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 9",
+      "step": "7",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 16.87,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 16.95,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 9",
+      "step": "8",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 17.43,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 17.52,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 9",
+      "step": "9",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 17.99,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 18.08,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 9",
+      "step": "10",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 20.09,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 20.19,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 9",
+      "step": "11",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 20.76,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 20.86,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 9",
+      "step": "12",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 21.43,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 21.54,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 9",
+      "step": "13",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 22.10,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 22.21,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 9",
+      "step": "14",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 22.78,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 22.89,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 10",
+      "step": null,
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": "22",
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.36,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.43,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 10",
+      "step": "0",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      "holiday_incl": null,
+      "timeline": [
+        {
+          "start_date": "2012-07-01",
+          "amount": 13.36,
+          "unit": "h"
+        },
+        {
+          "start_date": "2012-12-01",
+          "amount": 13.43,
+          "unit": "h"
+        }
+      ],
+      "row_note": "The shaded hourly wages in this table are functional years until January 1, 2014, and thereafter increments (article 2.24a)"
+    },
+    {
+      "jobgroup": "schaal 10",
+      "step": "1",
+      "worker": "General, Financial Administrative, ICT, Quality & Product Development, Logistics, Production, Technical Service personnel",
+      "age_group": null,
+      

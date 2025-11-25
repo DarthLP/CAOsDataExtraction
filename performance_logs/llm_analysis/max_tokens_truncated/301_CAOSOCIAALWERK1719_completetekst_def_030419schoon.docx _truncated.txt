@@ -1,7 +1,7 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: CAOSOCIAALWERK1719_completetekst_def_030419schoon.docx _extract.json
-Timestamp: 2025-11-14T22:49:10.267741
-Response length: 114926 characters
+Timestamp: 2025-11-24T14:26:26.003347
+Response length: 134598 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
@@ -10,26 +10,32 @@ Finish reason: MAX_TOKENS
     {
       "jobgroup": "1",
       "step": "Start",
+      "is_entry": true,
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1615.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1642.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1675.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -37,25 +43,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "1",
       "step": "0",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1652.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1679.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1713.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -63,25 +74,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "1",
       "step": "1",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1692.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1720.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1754.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -89,25 +105,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "1",
       "step": "2",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1733.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1762.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1797.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -115,25 +136,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "1",
       "step": "3",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1776.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1805.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1841.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -141,25 +167,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "1",
       "step": "4",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1817.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1847.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1884.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -167,25 +198,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "1",
       "step": "5",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1857.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1888.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1926.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -193,25 +229,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "1",
       "step": "6",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1904.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1935.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1974.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -219,25 +260,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "1",
       "step": "7",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1951.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1983.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2023.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -245,25 +291,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "1",
       "step": "8",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1997.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2030.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2071.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -271,25 +322,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "1",
       "step": "9",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2046.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2080.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2122.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -297,25 +353,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "1",
       "step": "U1",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2115.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2150.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2193.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -323,25 +384,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "1",
       "step": "U2",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2174.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2210.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2254.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -349,25 +415,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "1",
       "step": "a",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2115.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2150.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2193.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -375,25 +446,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "1",
       "step": "b",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2174.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2210.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2254.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -401,25 +477,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "1",
       "step": "c",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2244.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2281.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2327.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -427,25 +508,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "1",
       "step": "d",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2307.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2345.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2392.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -453,51 +539,62 @@ Finish reason: MAX_TOKENS
       "jobgroup": "1",
       "step": "e",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2377.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2416.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2464.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
     {
       "jobgroup": "2",
       "step": "Start",
+      "is_entry": true,
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1654.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1681.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1715.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -505,25 +602,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "2",
       "step": "0",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1692.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1720.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1754.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -531,25 +633,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "2",
       "step": "1",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1733.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1762.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1797.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -557,25 +664,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "2",
       "step": "2",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1776.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1805.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1841.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -583,25 +695,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "2",
       "step": "3",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1817.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1847.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1884.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -609,25 +726,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "2",
       "step": "4",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1857.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1888.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1926.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -635,25 +757,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "2",
       "step": "5",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1904.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1935.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1974.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -661,25 +788,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "2",
       "step": "6",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1951.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1983.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2023.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -687,25 +819,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "2",
       "step": "7",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1997.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2030.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2071.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -713,25 +850,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "2",
       "step": "8",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2046.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2080.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2122.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -739,25 +881,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "2",
       "step": "9",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2115.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2150.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2193.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -765,25 +912,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "2",
       "step": "10",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2174.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2210.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2254.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -791,25 +943,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "2",
       "step": "U1",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2244.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2281.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2327.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -817,25 +974,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "2",
       "step": "U2",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2307.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2345.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2392.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -843,25 +1005,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "2",
       "step": "a",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2244.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2281.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2327.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -869,25 +1036,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "2",
       "step": "b",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2307.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2345.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2392.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -895,25 +1067,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "2",
       "step": "c",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2377.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2416.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2464.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -921,25 +1098,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "2",
       "step": "d",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2437.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2477.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2527.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -947,51 +1129,62 @@ Finish reason: MAX_TOKENS
       "jobgroup": "2",
       "step": "e",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2500.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2541.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2592.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
     {
       "jobgroup": "3",
       "step": "Start",
+      "is_entry": true,
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1695.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1723.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1757.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -999,25 +1192,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "0",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1733.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1762.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1797.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1025,25 +1223,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "1",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1776.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1805.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1841.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1051,25 +1254,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "2",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1817.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1847.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1884.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1077,25 +1285,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "3",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1857.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1888.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1926.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1103,25 +1316,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "4",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1904.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1935.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1974.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1129,25 +1347,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "5",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1951.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1983.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2023.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1155,25 +1378,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "6",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1997.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2030.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2071.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1181,25 +1409,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "7",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2046.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2080.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2122.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1207,25 +1440,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "8",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2115.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2150.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2193.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1233,25 +1471,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "9",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2174.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2210.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2254.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1259,25 +1502,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "10",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2244.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2281.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2327.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1285,25 +1533,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "11",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2307.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2345.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2392.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1311,25 +1564,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "U1",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2377.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2416.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2464.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1337,25 +1595,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "U2",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2437.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2477.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2527.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1363,25 +1626,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "a",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2377.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2416.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2464.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1389,25 +1657,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "b",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2437.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2477.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2527.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1415,25 +1688,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "c",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2500.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2541.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2592.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1441,25 +1719,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "d",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2549.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2591.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2643.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1467,51 +1750,62 @@ Finish reason: MAX_TOKENS
       "jobgroup": "3",
       "step": "e",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2605.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2648.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2701.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
     {
       "jobgroup": "4",
       "step": "Start",
+      "is_entry": true,
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1818.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1848.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1885.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1519,25 +1813,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "0",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1857.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1888.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1926.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1545,25 +1844,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "1",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1904.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1935.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1974.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1571,25 +1875,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "2",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1951.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1983.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2023.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1597,25 +1906,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "3",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1997.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2030.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2071.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1623,25 +1937,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "4",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2046.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2080.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2122.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1649,25 +1968,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "5",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2115.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2150.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2193.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1675,25 +1999,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "6",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2174.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2210.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2254.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1701,25 +2030,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "7",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2244.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2281.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2327.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1727,25 +2061,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "8",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2307.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2345.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2392.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1753,25 +2092,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "9",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2377.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2416.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2464.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1779,25 +2123,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "10",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2437.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2477.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2527.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1805,25 +2154,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "11",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2500.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2541.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2592.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1831,25 +2185,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "U1",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2549.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2591.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2643.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1857,25 +2216,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "U2",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2605.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2648.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2701.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1883,25 +2247,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "a",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2549.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2591.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2643.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1909,25 +2278,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "b",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2605.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2648.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2701.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1935,25 +2309,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "c",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2656.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2700.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2754.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1961,25 +2340,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "d",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2757.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2802.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2858.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -1987,51 +2371,62 @@ Finish reason: MAX_TOKENS
       "jobgroup": "4",
       "step": "e",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2822.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2869.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2926.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
     {
       "jobgroup": "5",
       "step": "Start",
+      "is_entry": true,
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1864.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1895.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1933.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2039,25 +2434,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "0",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1904.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1935.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 1974.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2065,25 +2465,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "1",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1951.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 1983.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2023.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2091,25 +2496,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "2",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 1997.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2030.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2071.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2117,25 +2527,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "3",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2046.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2080.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2122.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2143,25 +2558,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "4",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2115.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2150.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2193.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2169,25 +2589,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "5",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2174.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2210.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2254.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2195,25 +2620,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "6",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2244.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2281.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2327.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2221,25 +2651,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "7",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2307.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2345.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2392.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2247,25 +2682,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "8",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2377.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2416.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2464.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2273,25 +2713,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "9",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2437.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2477.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2527.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2299,25 +2744,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "10",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2500.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2541.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2592.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2325,25 +2775,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "11",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2549.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2591.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2643.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2351,25 +2806,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "12",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2605.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2648.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2701.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2377,25 +2837,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "U1",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2757.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2802.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2858.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2403,25 +2868,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "U2",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2822.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2869.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2926.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2429,25 +2899,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "a",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2757.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2802.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2858.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2455,25 +2930,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "b",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2869.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2869.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2926.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2481,25 +2961,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "c",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2892.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2940.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2999.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2507,25 +2992,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "d",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2967.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3016.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3076.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2533,51 +3023,62 @@ Finish reason: MAX_TOKENS
       "jobgroup": "5",
       "step": "e",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3028.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3078.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3140.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
     {
       "jobgroup": "6",
       "step": "Start",
+      "is_entry": true,
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2073.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2107.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2149.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2585,25 +3086,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "0",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2115.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2150.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2193.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2611,25 +3117,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "1",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2174.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2210.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2254.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2637,25 +3148,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "2",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2244.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2281.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2327.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2663,25 +3179,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "3",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2307.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2345.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2392.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2689,25 +3210,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "4",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2377.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2416.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2464.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2715,25 +3241,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "5",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2437.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2477.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2527.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2741,25 +3272,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "6",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2500.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2541.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2592.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2767,25 +3303,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "7",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2549.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2591.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2643.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2793,25 +3334,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "8",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2605.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2648.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2701.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2819,25 +3365,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "9",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2656.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2700.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2754.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2845,25 +3396,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "10",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2757.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2802.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2858.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2871,25 +3427,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "11",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2822.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2869.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2926.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2897,25 +3458,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "12",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2892.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2940.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2999.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2923,25 +3489,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "13",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2656.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2700.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2754.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2949,25 +3520,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "U1",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3028.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3078.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3140.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -2975,25 +3551,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "U2",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3096.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3147.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3210.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3001,25 +3582,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "a",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3028.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3078.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3140.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3027,25 +3613,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "b",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3096.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3147.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3210.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3053,25 +3644,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "c",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3161.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3213.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3277.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3079,25 +3675,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "d",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3269.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3323.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3389.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3105,51 +3706,62 @@ Finish reason: MAX_TOKENS
       "jobgroup": "6",
       "step": "e",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3381.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3437.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3506.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
     {
       "jobgroup": "7",
       "step": "Start",
+      "is_entry": true,
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2263.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2300.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2346.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3157,25 +3769,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "0",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2307.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2345.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2392.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3183,25 +3800,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "1",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2377.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2416.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2464.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3209,25 +3831,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "2",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2437.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2477.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2527.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3235,25 +3862,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "3",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2500.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2541.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2592.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3261,25 +3893,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "4",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2549.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2591.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2643.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3287,25 +3924,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "5",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2605.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2648.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2701.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3313,25 +3955,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "6",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2656.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2700.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2754.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3339,25 +3986,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "7",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2757.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2802.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2858.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3365,25 +4017,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "8",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2822.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2869.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2926.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3391,25 +4048,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "9",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2892.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2940.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2999.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3417,25 +4079,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "10",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2967.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3016.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3076.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3443,25 +4110,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "11",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3028.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3078.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3140.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3469,25 +4141,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "12",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3096.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3147.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3210.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3495,25 +4172,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "13",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2967.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3016.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3076.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3521,25 +4203,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "U1",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3269.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3323.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3389.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3547,25 +4234,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "U2",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3381.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3437.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3506.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3573,25 +4265,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "a",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3269.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3323.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3389.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3599,25 +4296,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "b",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3381.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3437.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3506.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3625,25 +4327,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "c",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3495.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3553.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3624.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3651,25 +4358,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "d",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3609.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3669.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3742.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3677,51 +4389,62 @@ Finish reason: MAX_TOKENS
       "jobgroup": "7",
       "step": "e",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3726.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3787.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3863.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
     {
       "jobgroup": "8",
       "step": "Start",
+      "is_entry": true,
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2454.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2494.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2544.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3729,25 +4452,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "0",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2500.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2541.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2592.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3755,25 +4483,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "1",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2549.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2591.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2643.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3781,25 +4514,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "2",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2605.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2648.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2701.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3807,25 +4545,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "3",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2656.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2700.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2754.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3833,25 +4576,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "4",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2757.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2802.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2858.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3859,25 +4607,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "5",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2822.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2869.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2926.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3885,25 +4638,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "6",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2892.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2940.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2999.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3911,25 +4669,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "7",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2967.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3016.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3076.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3937,25 +4700,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "8",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3028.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3078.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3140.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3963,25 +4731,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "9",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3096.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3147.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3210.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -3989,25 +4762,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "10",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3161.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3213.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3277.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4015,25 +4793,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "11",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3269.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3323.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3389.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4041,25 +4824,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "12",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3381.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3437.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3506.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4067,25 +4855,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "13",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3161.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3213.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3277.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4093,25 +4886,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "U1",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3609.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3669.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3742.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4119,25 +4917,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "U2",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3726.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3787.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3863.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4145,25 +4948,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "a",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3609.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3669.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3742.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4171,25 +4979,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "b",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3726.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3787.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3863.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4197,25 +5010,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "c",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3847.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3910.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3988.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4223,25 +5041,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "d",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3980.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 4046.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 4127.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4249,51 +5072,62 @@ Finish reason: MAX_TOKENS
       "jobgroup": "8",
       "step": "e",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 4122.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 4190.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 4274.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
     {
       "jobgroup": "9",
       "step": "Start",
+      "is_entry": true,
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2609.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2652.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2705.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4301,25 +5135,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "0",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2656.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2700.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2754.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4327,25 +5166,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "1",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2757.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2802.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2858.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4353,25 +5197,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "2",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2822.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2869.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2926.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4379,25 +5228,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "3",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2892.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2940.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2999.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4405,25 +5259,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "4",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2967.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3016.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3076.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4431,25 +5290,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "5",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3028.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3078.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3140.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4457,25 +5321,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "6",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3096.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3147.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3210.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4483,25 +5352,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "7",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3161.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3213.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3277.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4509,25 +5383,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "8",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3269.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3323.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3389.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4535,25 +5414,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "9",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3381.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3437.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3506.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4561,25 +5445,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "10",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3495.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3553.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3624.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4587,25 +5476,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "11",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3609.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3669.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3742.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4613,25 +5507,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "12",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3726.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3787.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3863.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4639,25 +5538,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "13",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3495.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 3553.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 3624.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4665,25 +5569,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "U1",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3980.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 4046.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 4127.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4691,25 +5600,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "U2",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 4122.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 4190.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 4274.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4717,25 +5631,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "a",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 3980.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 4046.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 4127.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4743,25 +5662,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "b",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 4122.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 4190.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 4274.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4769,25 +5693,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "c",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 4263.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 4333.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 4420.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4795,25 +5724,30 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "d",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 4415.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 4488.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 4578.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4821,51 +5755,62 @@ Finish reason: MAX_TOKENS
       "jobgroup": "9",
       "step": "e",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 4567.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 4642.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 4735.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
     {
       "jobgroup": "10",
       "step": "Start",
+      "is_entry": true,
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2842.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2889.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
           "start_date": "2018-07-01",
           "amount": 2947.00,
           "unit": "m",
-          "inc_pct": 2.00
+          "inc_pct": 2.00,
+          "holiday_incl": false
         }
       ]
     },
@@ -4873,466 +5818,22 @@ Finish reason: MAX_TOKENS
       "jobgroup": "10",
       "step": "0",
       "ft_hours": 36,
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2017-01-01",
           "end_date": "2017-06-30",
           "amount": 2892.00,
-          "unit": "m"
+          "unit": "m",
+          "inc_pct": null,
+          "holiday_incl": false
         },
         {
           "start_date": "2017-07-01",
           "end_date": "2018-06-30",
           "amount": 2940.00,
           "unit": "m",
-          "inc_pct": 1.65
+          "inc_pct": 1.65,
+          "holiday_incl": false
         },
         {
-          "start_date": "2018-07-01",
-          "amount": 2999.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "10",
-      "step": "1",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-01-01",
-          "end_date": "2017-06-30",
-          "amount": 2967.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2018-06-30",
-          "amount": 3016.00,
-          "unit": "m",
-          "inc_pct": 1.65
-        },
-        {
-          "start_date": "2018-07-01",
-          "amount": 3076.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "10",
-      "step": "2",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-01-01",
-          "end_date": "2017-06-30",
-          "amount": 3028.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2018-06-30",
-          "amount": 3078.00,
-          "unit": "m",
-          "inc_pct": 1.65
-        },
-        {
-          "start_date": "2018-07-01",
-          "amount": 3140.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "10",
-      "step": "3",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-01-01",
-          "end_date": "2017-06-30",
-          "amount": 3096.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2018-06-30",
-          "amount": 3147.00,
-          "unit": "m",
-          "inc_pct": 1.65
-        },
-        {
-          "start_date": "2018-07-01",
-          "amount": 3210.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "10",
-      "step": "4",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-01-01",
-          "end_date": "2017-06-30",
-          "amount": 3161.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2018-06-30",
-          "amount": 3213.00,
-          "unit": "m",
-          "inc_pct": 1.65
-        },
-        {
-          "start_date": "2018-07-01",
-          "amount": 3277.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "10",
-      "step": "5",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-01-01",
-          "end_date": "2017-06-30",
-          "amount": 3269.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2018-06-30",
-          "amount": 3323.00,
-          "unit": "m",
-          "inc_pct": 1.65
-        },
-        {
-          "start_date": "2018-07-01",
-          "amount": 3389.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "10",
-      "step": "6",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-01-01",
-          "end_date": "2017-06-30",
-          "amount": 3381.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2018-06-30",
-          "amount": 3437.00,
-          "unit": "m",
-          "inc_pct": 1.65
-        },
-        {
-          "start_date": "2018-07-01",
-          "amount": 3506.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "10",
-      "step": "7",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-01-01",
-          "end_date": "2017-06-30",
-          "amount": 3495.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2018-06-30",
-          "amount": 3553.00,
-          "unit": "m",
-          "inc_pct": 1.65
-        },
-        {
-          "start_date": "2018-07-01",
-          "amount": 3624.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "10",
-      "step": "8",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-01-01",
-          "end_date": "2017-06-30",
-          "amount": 3609.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2018-06-30",
-          "amount": 3669.00,
-          "unit": "m",
-          "inc_pct": 1.65
-        },
-        {
-          "start_date": "2018-07-01",
-          "amount": 3742.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "10",
-      "step": "9",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-01-01",
-          "end_date": "2017-06-30",
-          "amount": 3726.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2018-06-30",
-          "amount": 3787.00,
-          "unit": "m",
-          "inc_pct": 1.65
-        },
-        {
-          "start_date": "2018-07-01",
-          "amount": 3863.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "10",
-      "step": "10",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-01-01",
-          "end_date": "2017-06-30",
-          "amount": 3847.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2018-06-30",
-          "amount": 3910.00,
-          "unit": "m",
-          "inc_pct": 1.65
-        },
-        {
-          "start_date": "2018-07-01",
-          "amount": 3988.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "10",
-      "step": "11",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-01-01",
-          "end_date": "2017-06-30",
-          "amount": 3980.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2018-06-30",
-          "amount": 4046.00,
-          "unit": "m",
-          "inc_pct": 1.65
-        },
-        {
-          "start_date": "2018-07-01",
-          "amount": 4127.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "10",
-      "step": "12",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-01-01",
-          "end_date": "2017-06-30",
-          "amount": 4122.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2018-06-30",
-          "amount": 4190.00,
-          "unit": "m",
-          "inc_pct": 1.65
-        },
-        {
-          "start_date": "2018-07-01",
-          "amount": 4274.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "10",
-      "step": "13",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-01-01",
-          "end_date": "2017-06-30",
-          "amount": 3847.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2018-06-30",
-          "amount": 3910.00,
-          "unit": "m",
-          "inc_pct": 1.65
-        },
-        {
-          "start_date": "2018-07-01",
-          "amount": 3988.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "10",
-      "step": "U1",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-01-01",
-          "end_date": "2017-06-30",
-          "amount": 4415.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2018-06-30",
-          "amount": 4488.00,
-          "unit": "m",
-          "inc_pct": 1.65
-        },
-        {
-          "start_date": "2018-07-01",
-          "amount": 4578.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "10",
-      "step": "U2",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-01-01",
-          "end_date": "2017-06-30",
-          "amount": 4567.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2018-06-30",
-          "amount": 4642.00,
-          "unit": "m",
-          "inc_pct": 1.65
-        },
-        {
-          "start_date": "2018-07-01",
-          "amount": 4735.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "10",
-      "step": "a",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-01-01",
-          "end_date": "2017-06-30",
-          "amount": 4415.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2018-06-30",
-          "amount": 4488.00,
-          "unit": "m",
-          "inc_pct": 1.65
-        },
-        {
-          "start_date": "2018-07-01",
-          "amount": 4578.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "10",
-      "step": "b",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-01-01",
-          "end_date": "2017-06-30",
-          "amount": 4567.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2018-06-30",
-          "amount": 4642.00,
-          "unit": "m",
-          "inc_pct": 1.65
-        },
-        {
-          "start_date": "2018-07-01",
-          "amount": 4735.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      

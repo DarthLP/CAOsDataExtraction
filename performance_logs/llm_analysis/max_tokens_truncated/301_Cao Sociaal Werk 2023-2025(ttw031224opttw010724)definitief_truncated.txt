@@ -1,3949 +1,2622 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: Cao Sociaal Werk 2023-2025(ttw031224opttw010724)definitief_extract.json
-Timestamp: 2025-11-15T03:03:48.496010
-Response length: 103566 characters
+Timestamp: 2025-11-25T16:51:19.791299
+Response length: 53608 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
 {
-  "salary_information": [
+  "si": [
     {
-      "jobgroup": "0",
-      "step": "0",
-      "worker": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 1995.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2076.76,
-          "unit": "m",
-          "note": "For period January-June 2024, actual payment on minimum wage (periodic 0) is €55.73 higher due to actual workable hours."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2140.92,
-          "unit": "m",
-          "note": "For period July-December 2024, actual payment on minimum wage (periodic 0) is €57.48 higher due to actual workable hours."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2200.39,
-          "unit": "m",
-          "note": "For period January-June 2025, actual payment on minimum wage (periodic 0) is €8.44 higher due to actual workable hours."
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
-      "step": "0",
-      "worker": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 1995.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2076.76,
-          "unit": "m",
-          "note": "For period January-June 2024, actual payment on minimum wage (periodic 0) is €55.73 higher due to actual workable hours."
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2140.92,
-          "unit": "m",
-          "note": "For period July-December 2024, actual payment on minimum wage (periodic 0) is €57.48 higher due to actual workable hours."
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2200.39,
-          "unit": "m",
-          "note": "For period January-June 2025, actual payment on minimum wage (periodic 0) is €8.44 higher due to actual workable hours."
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
-      "step": "1",
-      "worker": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2086.91,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2165.17,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2232.08,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2294.13,
-          "unit": "m"
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
-      "step": "1",
-      "worker": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2086.91,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2165.17,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2232.08,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2294.13,
-          "unit": "m"
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
-      "step": "10",
-      "worker": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2687.77,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2788.56,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2874.73,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2954.64,
-          "unit": "m"
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
-      "step": "11",
-      "worker": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2784.58,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2889.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2978.27,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 3061.06,
-          "unit": "m"
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
-      "step": "12",
-      "worker": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2886.38,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2994.62,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 3087.15,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 3172.97,
-          "unit": "m"
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
-      "step": "13",
-      "worker": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2992.50,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 3115.13,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 3211.38,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 3300.59,
-          "unit": "m"
-        }
-      ]
-    },
-    {
-      "jobgroup": "0",
-      "step": "2",
-      "worker": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2135.94,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2216.03,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2284.51,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2348.02,
-          "unit": "m"
-        }
-      ]
+      "jg": "0",
+      "st": "0",
+      "wr": "Doorstroombaan",
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "0",
-      "step": "2",
-      "worker": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2135.94,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2216.03,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2284.51,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2348.02,
-          "unit": "m"
-        }
-      ]
+      "jg": "0",
+      "st": "0",
+      "wr": "Instroombaan",
+      "ie": true,
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "0",
-      "step": "3",
-      "worker": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2187.15,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2269.17,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2339.28,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2404.32,
-          "unit": "m"
-        }
-      ]
+      "jg": "0",
+      "st": "1",
+      "wr": "Doorstroombaan",
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "0",
-      "step": "3",
-      "worker": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2187.15,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2269.17,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2339.28,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2404.32,
-          "unit": "m"
-        }
-      ]
+      "jg": "0",
+      "st": "1",
+      "wr": "Instroombaan",
+      "ie": true,
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "0",
-      "step": "4",
-      "worker": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2242.84,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2326.95,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2398.85,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2465.54,
-          "unit": "m"
-        }
-      ]
+      "jg": "0",
+      "st": "10",
+      "wr": "Doorstroombaan",
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "0",
-      "step": "4",
-      "worker": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2242.84,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2326.95,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2398.85,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2465.54,
-          "unit": "m"
-        }
-      ]
+      "jg": "0",
+      "st": "11",
+      "wr": "Doorstroombaan",
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "0",
-      "step": "5",
-      "worker": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2307.38,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2393.91,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2467.88,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2536.48,
-          "unit": "m"
-        }
-      ]
+      "jg": "0",
+      "st": "12",
+      "wr": "Doorstroombaan",
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "0",
-      "step": "5",
-      "worker": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2307.38,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2393.91,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2467.88,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2536.48,
-          "unit": "m"
-        }
-      ]
+      "jg": "0",
+      "st": "13",
+      "wr": "Doorstroombaan",
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "0",
-      "step": "6",
-      "worker": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2375.47,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2464.55,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2540.70,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2611.33,
-          "unit": "m"
-        }
-      ]
+      "jg": "0",
+      "st": "2",
+      "wr": "Doorstroombaan",
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "0",
-      "step": "6",
-      "worker": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2375.47,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2464.55,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2540.70,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2611.33,
-          "unit": "m"
-        }
-      ]
+      "jg": "0",
+      "st": "2",
+      "wr": "Instroombaan",
+      "ie": true,
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "0",
-      "step": "7",
-      "worker": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2445.55,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2537.26,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2615.66,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2688.38,
-          "unit": "m"
-        }
-      ]
+      "jg": "0",
+      "st": "3",
+      "wr": "Doorstroombaan",
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "0",
-      "step": "7",
-      "worker": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2445.55,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2537.26,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2615.66,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2688.38,
-          "unit": "m"
-        }
-      ]
+      "jg": "0",
+      "st": "3",
+      "wr": "Instroombaan",
+      "ie": true,
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "0",
-      "step": "8",
-      "worker": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2517.68,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2612.09,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2692.80,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2767.66,
-          "unit": "m"
-        }
-      ]
+      "jg": "0",
+      "st": "4",
+      "wr": "Doorstroombaan",
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "0",
-      "step": "8",
-      "worker": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2517.68,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2612.09,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2692.80,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2767.66,
-          "unit": "m"
-        }
-      ]
+      "jg": "0",
+      "st": "4",
+      "wr": "Instroombaan",
+      "ie": true,
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "0",
-      "step": "9",
-      "worker": "Doorstroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2590.69,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2687.84,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2770.90,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2847.93,
-          "unit": "m"
-        }
-      ]
+      "jg": "0",
+      "st": "5",
+      "wr": "Doorstroombaan",
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "0",
-      "step": "9",
-      "worker": "Instroombaan",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2593.50,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2699.78,
-          "unit": "m"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2783.20,
-          "unit": "m"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2860.51,
-          "unit": "m"
-        }
-      ]
+      "jg": "0",
+      "st": "5",
+      "wr": "Instroombaan",
+      "ie": true,
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "1",
-      "step": "0",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2043.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2184.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2210.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2210.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
-        }
-      ]
+      "jg": "0",
+      "st": "6",
+      "wr": "Doorstroombaan",
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "1",
-      "step": "1",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2092.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2184.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2263.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2263.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
-        }
-      ]
+      "jg": "0",
+      "st": "6",
+      "wr": "Instroombaan",
+      "ie": true,
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "1",
-      "step": "2",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2142.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2228.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2317.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2317.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
-        }
-      ]
+      "jg": "0",
+      "st": "7",
+      "wr": "Doorstroombaan",
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "1",
-      "step": "3",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2196.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2284.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2375.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2375.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
-        }
-      ]
+      "jg": "0",
+      "st": "7",
+      "wr": "Instroombaan",
+      "ie": true,
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "1",
-      "step": "4",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2246.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2336.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2429.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2429.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
-        }
-      ]
+      "jg": "0",
+      "st": "8",
+      "wr": "Doorstroombaan",
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "1",
-      "step": "5",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2297.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2389.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2485.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2485.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
-        }
-      ]
+      "jg": "0",
+      "st": "8",
+      "wr": "Instroombaan",
+      "ie": true,
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "1",
-      "step": "6",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2354.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2448.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2546.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2546.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
-        }
-      ]
+      "jg": "0",
+      "st": "9",
+      "wr": "Doorstroombaan",
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "1",
-      "step": "7",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2413.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2510.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2610.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2610.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
-        }
-      ]
+      "jg": "0",
+      "st": "9",
+      "wr": "Instroombaan",
+      "ie": true,
+      "rn": "WMUL applies as floor."
     },
     {
-      "jobgroup": "1",
-      "step": "8",
-      "timeline": [
+      "jg": "1",
+      "st": "Start",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2468.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 1998,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2567.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2184,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2670.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2184,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2670.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2201,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "1",
-      "step": "9",
-      "timeline": [
+      "jg": "1",
+      "st": "0",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2531.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2043,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2632.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2184,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2737.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2210,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2737.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2210,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "1",
-      "step": "Start",
-      "timeline": [
+      "jg": "1",
+      "st": "1",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 1998.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2092,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2184.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2184,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2184.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2263,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2201.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2263,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "1",
-      "step": "U1",
-      "timeline": [
+      "jg": "1",
+      "st": "2",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2615.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2142,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2720.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2228,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2829.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2317,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2829.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2317,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "1",
-      "step": "U2",
-      "timeline": [
+      "jg": "1",
+      "st": "3",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2688.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2196,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2796.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2284,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2908.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2375,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2908.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2375,
+          "un": "m"
         }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step": "a",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "1",
-      "step": "b",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "1",
-      "step": "c",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "1",
-      "step": "d",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "1",
-      "step": "e",
-      "row_note": "Applies only to employees in service before 31 December 2003."
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "2",
-      "step": "0",
-      "timeline": [
+      "jg": "1",
+      "st": "4",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2092.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2246,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2184.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2336,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2263.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2429,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2263.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2429,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "2",
-      "step": "1",
-      "timeline": [
+      "jg": "1",
+      "st": "5",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2142.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2297,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2228.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2389,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2317.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2485,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2317.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2485,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "2",
-      "step": "10",
-      "timeline": [
+      "jg": "1",
+      "st": "6",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2688.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2354,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2796.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2448,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2908.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2546,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2908.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2546,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "2",
-      "step": "11",
-      "timeline": [
+      "jg": "1",
+      "st": "7",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2413,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2510,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2610,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3002.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2610,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "2",
-      "step": "12",
-      "timeline": [
+      "jg": "1",
+      "st": "8",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2468,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2567,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2670,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3086.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2670,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "2",
-      "step": "13",
-      "timeline": [
+      "jg": "1",
+      "st": "9",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2531,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2632,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2737,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 0.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2737,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "2",
-      "step": "2",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2196.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
-        },
+      "jg": "1",
+      "st": "U1",
+      "tl": [
         {
-          "start_date": "2024-01-01",
-          "amount": 2284.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2023-07-01",
+          "am": 2615,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2375.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2720,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2375.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2024-07-01",
+          "am": 2829,
+          "un": "m",
+          "ip": 4
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher."
     },
     {
-      "jobgroup": "2",
-      "step": "3",
-      "timeline": [
+      "jg": "1",
+      "st": "U2",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2246.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2688,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2336.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2796,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2429.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2429.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2024-07-01",
+          "am": 2908,
+          "un": "m",
+          "ip": 4
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher."
     },
     {
-      "jobgroup": "2",
-      "step": "4",
-      "timeline": [
+      "jg": "1",
+      "st": "a",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2297.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2615,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2389.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2720,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2485.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2829,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2485.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2829,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "2",
-      "step": "5",
-      "timeline": [
+      "jg": "1",
+      "st": "b",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2354.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2688,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2448.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2796,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2546.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2908,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2546.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2908,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "2",
-      "step": "6",
-      "timeline": [
+      "jg": "1",
+      "st": "c",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2413.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2776,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2510.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2887,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2610.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3002,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2610.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3002,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "2",
-      "step": "7",
-      "timeline": [
+      "jg": "1",
+      "st": "d",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2468.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2853,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2567.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2967,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2670.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3086,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2670.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3086,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "2",
-      "step": "8",
-      "timeline": [
+      "jg": "1",
+      "st": "e",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2531.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2939,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2632.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3057,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2737.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3179,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2737.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3179,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "2",
-      "step": "9",
-      "timeline": [
+      "jg": "2",
+      "st": "Start",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2615.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2047,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2720.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2184,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2829.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2214,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2829.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2214,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "2",
-      "step": "Start",
-      "timeline": [
+      "jg": "2",
+      "st": "0",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2047.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2092,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2184.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2184,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2214.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2263,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2214.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2263,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "2",
-      "step": "U1",
-      "timeline": [
+      "jg": "2",
+      "st": "1",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2776.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2142,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2887.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2228,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3002.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2317,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3002.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2317,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "2",
-      "step": "U2",
-      "timeline": [
+      "jg": "2",
+      "st": "2",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2853.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2196,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2967.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2284,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3086.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2375,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3086.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2375,
+          "un": "m"
         }
-      ]
-    },
-    {
-      "jobgroup": "2",
-      "step": "a",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "2",
-      "step": "b",
-      "row_note": "Applies only to employees in service before 31 December 2003."
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "2",
-      "step": "c",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "2",
-      "step": "d",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "2",
-      "step": "e",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "3",
-      "step": "0",
-      "timeline": [
+      "jg": "2",
+      "st": "3",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2142.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2246,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2228.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2336,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2317.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2429,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2317.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2429,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "3",
-      "step": "1",
-      "timeline": [
+      "jg": "2",
+      "st": "4",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2196.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2297,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2284.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2389,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2375.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2485,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2375.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2485,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "3",
-      "step": "10",
-      "timeline": [
+      "jg": "2",
+      "st": "5",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2776.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2354,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2887.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2448,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3002.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2546,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3002.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2546,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "3",
-      "step": "11",
-      "timeline": [
+      "jg": "2",
+      "st": "6",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2853.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2413,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2967.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2510,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3086.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2610,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3086.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2610,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "3",
-      "step": "12",
-      "timeline": [
+      "jg": "2",
+      "st": "7",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2468,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2567,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2670,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3179.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2670,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "3",
-      "step": "13",
-      "timeline": [
+      "jg": "2",
+      "st": "8",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2531,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2632,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2737,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3259.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2737,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "3",
-      "step": "2",
-      "timeline": [
+      "jg": "2",
+      "st": "9",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2246.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2615,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2336.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2720,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2429.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2829,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2429.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2829,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "3",
-      "step": "3",
-      "timeline": [
+      "jg": "2",
+      "st": "10",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2297.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2688,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2389.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2796,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2485.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2908,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2485.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2908,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "3",
-      "step": "4",
-      "timeline": [
+      "jg": "2",
+      "st": "11",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2354.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2776,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2448.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2887,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2546.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3002,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2546.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3002,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "3",
-      "step": "5",
-      "timeline": [
+      "jg": "2",
+      "st": "12",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2413.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2024-01-01",
+          "am": 3086,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2510.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3086,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2610.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2610.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3086,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "3",
-      "step": "6",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2468.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2567.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
+      "jg": "2",
+      "st": "13",
+      "tl": [
         {
-          "start_date": "2024-07-01",
-          "amount": 2670.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3259,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2670.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3259,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "3",
-      "step": "7",
-      "timeline": [
+      "jg": "2",
+      "st": "U1",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2531.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2776,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2632.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2887,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2737.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2737.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2024-07-01",
+          "am": 3002,
+          "un": "m",
+          "ip": 4
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher."
     },
     {
-      "jobgroup": "3",
-      "step": "8",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2615.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
-        },
+      "jg": "2",
+      "st": "U2",
+      "tl": [
         {
-          "start_date": "2024-01-01",
-          "amount": 2720.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2023-07-01",
+          "am": 2853,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2829.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2967,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2829.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2024-07-01",
+          "am": 3086,
+          "un": "m",
+          "ip": 4
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher."
     },
     {
-      "jobgroup": "3",
-      "step": "9",
-      "timeline": [
+      "jg": "2",
+      "st": "a",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2688.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2776,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2796.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2887,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2908.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3002,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2908.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3002,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "3",
-      "step": "Start",
-      "timeline": [
+      "jg": "2",
+      "st": "b",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2095.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2853,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2184.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2967,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2266.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3086,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2266.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3086,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "3",
-      "step": "U1",
-      "timeline": [
+      "jg": "2",
+      "st": "c",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2939.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2939,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 3057.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3057,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3179.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3179,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3179.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3179,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "3",
-      "step": "U2",
-      "timeline": [
+      "jg": "2",
+      "st": "d",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 3013.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 3013,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 3134.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3134,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3259.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3259,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3259.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3259,
+          "un": "m"
         }
-      ]
-    },
-    {
-      "jobgroup": "3",
-      "step": "a",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "3",
-      "step": "b",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "3",
-      "step": "c",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "3",
-      "step": "d",
-      "row_note": "Applies only to employees in service before 31 December 2003."
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "3",
-      "step": "e",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "4",
-      "step": "0",
-      "timeline": [
+      "jg": "2",
+      "st": "e",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2297.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 3091,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2389.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3215,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2485.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3344,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2485.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3344,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "4",
-      "step": "0",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "3",
+      "st": "Start",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2324.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2095,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2417.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2184,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2514.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2266,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2514.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2266,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "1",
-      "timeline": [
+      "jg": "3",
+      "st": "0",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2354.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2142,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2448.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2228,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2546.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2317,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2546.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2317,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "1",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "3",
+      "st": "1",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2381.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2196,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2476.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2284,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2575.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2375,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2575.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2375,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "10",
-      "timeline": [
+      "jg": "3",
+      "st": "2",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 3013.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2246,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 3134.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2336,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3259.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2429,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3259.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2429,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "10",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "3",
+      "st": "3",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 3047.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2297,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 3169.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2389,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3296.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2485,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3296.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2485,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "11",
-      "timeline": [
+      "jg": "3",
+      "st": "4",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 3091.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2354,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 3215.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2448,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3344.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2546,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3344.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2546,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "11",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "3",
+      "st": "5",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 3125.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2413,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 3250.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2510,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3380.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2610,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3380.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2610,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "12",
-      "timeline": [
+      "jg": "3",
+      "st": "6",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2468,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2567,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2670,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3409.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2670,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "12",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "3",
+      "st": "7",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2531,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2632,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2737,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3449.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2737,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "13",
-      "timeline": [
+      "jg": "3",
+      "st": "8",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2615,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2720,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2829,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3485.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2829,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "13",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "3",
+      "st": "9",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2688,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2796,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2908,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3524.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2908,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "2",
-      "timeline": [
+      "jg": "3",
+      "st": "10",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2413.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2776,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2510.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2887,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2610.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3002,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2610.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3002,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "2",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "3",
+      "st": "11",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2441.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2853,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2539.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2967,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2641.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3086,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2641.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3086,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "3",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2468.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2567.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
+      "jg": "3",
+      "st": "12",
+      "tl": [
         {
-          "start_date": "2024-07-01",
-          "amount": 2670.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3179,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2670.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3179,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "3",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "3",
+      "st": "13",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2497.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2024-07-01",
+          "am": 3259,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2597.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2701.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2701.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3259,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "4",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2531.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
-        },
+      "jg": "3",
+      "st": "U1",
+      "tl": [
         {
-          "start_date": "2024-01-01",
-          "amount": 2632.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2023-07-01",
+          "am": 2939,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2737.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3057,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2737.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2024-07-01",
+          "am": 3179,
+          "un": "m",
+          "ip": 4
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher."
     },
     {
-      "jobgroup": "4",
-      "step": "4",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "3",
+      "st": "U2",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2559.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 3013,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2661.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3134,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2767.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2767.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2024-07-01",
+          "am": 3259,
+          "un": "m",
+          "ip": 4
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher."
     },
     {
-      "jobgroup": "4",
-      "step": "5",
-      "timeline": [
+      "jg": "3",
+      "st": "a",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2615.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2939,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2720.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3057,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2829.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3179,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2829.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3179,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "4",
-      "step": "5",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "3",
+      "st": "b",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2644.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 3013,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2750.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3134,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2860.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3259,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2860.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3259,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "4",
-      "step": "6",
-      "timeline": [
+      "jg": "3",
+      "st": "c",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2688.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 3091,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2796.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3215,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2908.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3344,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2908.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3344,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "4",
-      "step": "6",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "3",
+      "st": "d",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2719.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 3152,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2828.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3278,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2941.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3409,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2941.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3409,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "4",
-      "step": "7",
-      "timeline": [
+      "jg": "3",
+      "st": "e",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2776.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 3222,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2887.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3351,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3002.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3485,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3002.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3485,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "4",
-      "step": "7",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "4",
+      "st": "Start",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2807.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2247,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2919.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2337,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3036.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2430,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3036.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2430,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "8",
-      "timeline": [
+      "jg": "4",
+      "st": "0",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2853.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2297,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2967.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2389,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3086.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2485,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3086.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2485,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "8",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "4",
+      "st": "1",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2886.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2354,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 3001.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2448,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3121.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2546,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3121.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2546,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "9",
-      "timeline": [
+      "jg": "4",
+      "st": "2",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2939.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2413,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 3057.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2510,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3179.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2610,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3179.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2610,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "9",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "4",
+      "st": "3",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2971.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2468,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 3090.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2567,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3214.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2670,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3214.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2670,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "Start",
-      "timeline": [
+      "jg": "4",
+      "st": "4",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2247.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2531,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2337.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2632,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2430.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2737,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2430.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2737,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "Start",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "4",
+      "st": "5",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2273.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2615,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2364.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2720,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2459.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2829,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2459.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2829,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "U1",
-      "timeline": [
+      "jg": "4",
+      "st": "6",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 3152.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2688,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 3278.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2796,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3409.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 2908,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3409.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 2908,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "U1",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "4",
+      "st": "7",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 3188.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2776,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 3316.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2887,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3449.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3002,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3449.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3002,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "U2",
-      "timeline": [
+      "jg": "4",
+      "st": "8",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 3222.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2853,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 3351.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 2967,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3485.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3086,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3485.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3086,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "U2",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "4",
+      "st": "9",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 3258.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 2939,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 3388.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3057,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3524.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3179,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3524.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3179,
+          "un": "m"
         }
-      ]
-    },
-    {
-      "jobgroup": "4",
-      "step": "a",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "4",
-      "step": "a",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "4",
-      "step": "b",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "4",
-      "step": "b",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "4",
-      "step": "c",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "4",
-      "step": "c",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "4",
-      "step": "d",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "4",
-      "step": "d",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "4",
-      "step": "e",
-      "row_note": "Applies only to employees in service before 31 December 2003."
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "4",
-      "step": "e",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "row_note": "Applies only to employees in service before 31 December 2003."
-    },
-    {
-      "jobgroup": "5",
-      "step": "0",
-      "timeline": [
+      "jg": "4",
+      "st": "10",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2354.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 3013,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2448.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3134,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2546.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3259,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2546.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3259,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "5",
-      "step": "0",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "4",
+      "st": "11",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2381.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 3091,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2476.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3215,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2575.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3344,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2575.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3344,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "5",
-      "step": "1",
-      "timeline": [
+      "jg": "4",
+      "st": "12",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2413.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 3222,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2510.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3351,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2610.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3485,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2610.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3485,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "5",
-      "step": "1",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "4",
+      "st": "13",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2441.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 3284,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2539.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3415,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2641.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3552,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2641.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3552,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "5",
-      "step": "10",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 3091.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 3215.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
+      "jg": "4",
+      "st": "14",
+      "tl": [
         {
-          "start_date": "2024-07-01",
-          "amount": 3344.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 3344.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3686,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "5",
-      "step": "10",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 3125.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 3250.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
+      "jg": "4",
+      "st": "15",
+      "tl": [
         {
-          "start_date": "2024-07-01",
-          "amount": 3380.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 3380.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3774,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201)."
     },
     {
-      "jobgroup": "5",
-      "step": "11",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 3152.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
-        },
+      "jg": "4",
+      "st": "U1",
+      "tl": [
         {
-          "start_date": "2024-01-01",
-          "amount": 3278.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2023-07-01",
+          "am": 3152,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3409.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3278,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3409.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2024-07-01",
+          "am": 3409,
+          "un": "m",
+          "ip": 4
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher."
     },
     {
-      "jobgroup": "5",
-      "step": "11",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 3188.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
-        },
+      "jg": "4",
+      "st": "U2",
+      "tl": [
         {
-          "start_date": "2024-01-01",
-          "amount": 3316.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2023-07-01",
+          "am": 3222,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3449.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3351,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3449.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2024-07-01",
+          "am": 3485,
+          "un": "m",
+          "ip": 4
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher."
     },
     {
-      "jobgroup": "5",
-      "step": "12",
-      "timeline": [
+      "jg": "4",
+      "st": "a",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 3222.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 3152,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 3351.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3278,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3485.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3409,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3485.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3409,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "5",
-      "step": "12",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "4",
+      "st": "b",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 3222,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 3388.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3351,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3524.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3485,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3524.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3485,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "5",
-      "step": "13",
-      "timeline": [
+      "jg": "4",
+      "st": "c",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 3284.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 3284,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 3415.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3415,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3552.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3552,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3552.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3552,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "5",
-      "step": "13",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
+      "jg": "4",
+      "st": "d",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 0.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 3408,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 3454.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3544,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 3592.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3686,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 3592.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3686,
+          "un": "m"
         }
-      ]
+      ],
+      "rn": "Floor of €2,184/month applies; WMUL applies if higher (from 1 Jan 2025 WMUL floor is €2,201). Applies only to employees in service before 31 December 2003."
     },
     {
-      "jobgroup": "5",
-      "step": "2",
-      "timeline": [
+      "jg": "4",
+      "st": "e",
+      "tl": [
         {
-          "start_date": "2023-07-01",
-          "amount": 2468.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
+          "sd": "2023-07-01",
+          "am": 3489,
+          "un": "m",
+          "ip": 7
         },
         {
-          "start_date": "2024-01-01",
-          "amount": 2567.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-01-01",
+          "am": 3629,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2024-07-01",
-          "amount": 2670.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
+          "sd": "2024-07-01",
+          "am": 3774,
+          "un": "m",
+          "ip": 4
         },
         {
-          "start_date": "2025-01-01",
-          "amount": 2670.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"
+          "sd": "2025-01-01",
+          "am": 3774,
+          "un": "m"
         }
-      ]
-    },
-    {
-      "jobgroup": "5",
-      "step": "2",
-      "worker": "Primary process functions (incl. labor market allowance)",
-      "timeline": [
-        {
-          "start_date": "2023-07-01",
-          "amount": 2497.00,
-          "unit": "m",
-          "inc_pct": 7.0,
-          "note": "WMUL applies as floor"
-        },
-        {
-          "start_date": "2024-01-01",
-          "amount": 2597.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2024-07-01",
-          "amount": 2701.00,
-          "unit": "m",
-          "inc_pct": 4.0,
-          "note": "Floor of €2,184/month, WMUL applies if higher"
-        },
-        {
-          "start_date": "2025-01-01",
-          "amount": 2701.00,
-          "unit": "m",
-          "note": "Floor of €2,184/month, WMUL applies if higher, from 1 Jan 2025 WMUL floor is €2,201"

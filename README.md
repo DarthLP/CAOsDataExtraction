@@ -22,10 +22,11 @@ An AI-powered pipeline for extracting structured data from Dutch Collective Labo
    # ... additional keys for parallel processing
    ```
 
-4. **Run the complete pipeline:**
+4. **Run the complete pipeline (if orchestrator is present):**
    ```bash
    python run_pipeline.py
    ```
+   Note: `run_pipeline.py` currently imports a non-existent `pipelines.p5_run`; until that orchestrator exists, run stages individually as shown below.
 
 ## Pipeline Overview
 
@@ -34,11 +35,11 @@ Web Scraping → Excel Processing → PDF Extraction → LLM Extraction → Anal
      p0              p1              p2              p3              p4          p5
 ```
 
-1. **p0_webscraping.py** - Downloads CAO PDFs from uitvoeringarbeidsvoorwaardenwetgeving.nl using Selenium
-2. **p1_inputExcel.py** - Converts Excel field definitions to markdown prompt templates
+1. **p0_webscraping.py** - Downloads CAO PDFs from uitvoeringarbeidsvoorwaardenwetgeving.nl using Selenium; uses `inputs/excel/CAO_Frequencies_2014.xlsx` to decide skips and defaults to writing into `inputs/pdfs/input_pdfs_extra/`.
+2. **p1_inputExcel.py** - (legacy/optional) Previously converted Excel field definitions to markdown prompt templates; prompts are now hardcoded in code/schemas and p2–p5 do not read the Excel or generated markdown.
 3. **p2_extract.py** - Multi-method PDF text extraction (PyPDF2 + pdfplumber + Tesseract OCR)
 4. **p3_llmExtraction.py** - Raw data extraction using Google Gemini API with context preservation
-5. **p4_analysis.py** - Schema-driven structured extraction (salary + non-salary) using Pydantic models
+5. **p4_analysis.py** - Schema-driven structured extraction (salary + non-salary) using Pydantic models; non-salary outputs go to `outputs/llm_analysis/non_salary/gen_bon_wag_pen_ter/`, `outputs/llm_analysis/non_salary/lea_ove_tra/`, and `outputs/llm_analysis/non_salary/hom_con_saf_chi_ai_fri/`
 6. **p5_excel_creation.py** - Merges results and creates final Excel outputs with proper formatting
 
 ## Folder Structure
@@ -64,15 +65,15 @@ CAOsDataExtraction/
 │   └── logs/                    # Processing logs and error reports
 ├── pipelines/
 │   ├── p0_webscraping.py        # Web scraping
-│   ├── p1_inputExcel.py         # Excel processing
+│   ├── p1_inputExcel.py         # Excel processing (legacy/optional; outputs unused by p2–p5)
 │   ├── p2_extract.py            # PDF extraction
 │   ├── p3_llmExtraction.py      # LLM extraction
 │   ├── p4_analysis.py           # Data analysis
 │   └── p5_excel_creation.py     # Excel creation
 ├── schema/
-│   ├── salary_schema.py         # Salary data schema (Pydantic models) - regular schema
-│   ├── salary_schema_compact.py # Compact salary schema (no table_label) - for attempts 6-8
-│   ├── salary_schema_split.py   # Split salary schema - for attempts 9-10
+│   ├── salary_schema.py         # Salary data schema (Pydantic models) - regular schema with full field names, for attempts 1-5
+│   ├── salary_schema_compact.py # Compact salary schema (no table_label, 2-letter field names) - for attempts 6-8. NOTE: holiday_incl moved from SalaryPoint to SalaryRow
+│   ├── salary_schema_split.py   # Split salary schema (same as compact) - for attempts 9-10
 │   ├── salary_prompt_split.py   # Split extraction prompts - for attempts 9-10
 │   ├── non_salary_schema.py     # Non-salary data schema (Pydantic models)
 │   └── excel_output_schema.py   # Excel output column definitions
@@ -143,10 +144,10 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
 - Supports primary and extra runs with duplicate prevention
 - Generates metadata CSV files for tracking
 
-### Stage 1: Excel Processing (p1_inputExcel.py)
-- Converts Excel field definitions to markdown prompt templates
-- Processes multiple worksheets for different extraction categories
-- Creates structured prompts for LLM processing
+### Stage 1: Excel Processing (p1_inputExcel.py) — legacy/optional
+- Historical step that converted Excel field definitions to markdown prompt templates
+- Current pipeline no longer consumes these templates; prompts live in code/schemas (p3 prompt builders and schema prompt strings)
+- Run only if you need to regenerate the docs/fields_prompt*.md artifacts for reference
 
 ### Stage 2: PDF Extraction (p2_extract.py)
 - **Multi-method extraction**: PyPDF2 + pdfplumber + Tesseract OCR

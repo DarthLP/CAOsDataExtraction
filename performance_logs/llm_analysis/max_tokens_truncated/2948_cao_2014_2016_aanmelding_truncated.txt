@@ -1,7 +1,7 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: cao_2014_2016_aanmelding_extract.json
-Timestamp: 2025-11-20T01:49:41.695500
-Response length: 6375 characters
+Timestamp: 2025-11-25T03:33:49.338972
+Response length: 134660 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
@@ -152,8 +152,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a."
     },
     {
-      "jobgroup": "5",
-      "step": "23 jaar e.o.",
+      "jobgroup": "FWG 5",
+      "step": "WMJL",
       "worker": "ActiZ employee",
       "is_entry": true,
       "age_group": "23 jaar e.o.",
@@ -162,20 +162,23 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2014-01-01",
           "amount": 1485.60,
-          "unit": "m",
-          "note": "WMJL = Wettelijk minimum (jeugd)loon per 1 januari 2014."
+          "unit": "m"
         },
         {
           "start_date": "2015-03-01",
           "amount": 1501.80,
-          "unit": "m",
-          "note": "WMJL = Wettelijk minimum (jeugd)loon per 1 januari 2014."
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1501.80,
+          "unit": "m"
         }
       ],
       "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
     },
     {
-      "jobgroup": "10",
+      "jobgroup": "FWG 10",
       "step": "Aanloopperiodiek 0",
       "worker": "ActiZ employee",
       "is_entry": true,
@@ -190,12 +193,17 @@ Finish reason: MAX_TOKENS
           "start_date": "2015-03-01",
           "amount": 1446.76,
           "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1451.10,
+          "unit": "m"
         }
       ],
       "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
     },
     {
-      "jobgroup": "10",
+      "jobgroup": "FWG 10",
       "step": "Aanloopperiodiek 1",
       "worker": "ActiZ employee",
       "is_entry": true,
@@ -210,12 +218,17 @@ Finish reason: MAX_TOKENS
           "start_date": "2015-03-01",
           "amount": 1474.10,
           "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1478.52,
+          "unit": "m"
         }
       ],
       "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
     },
     {
-      "jobgroup": "10",
+      "jobgroup": "FWG 10",
       "step": "2",
       "worker": "ActiZ employee",
       "ft_hours": 36,
@@ -229,12 +242,17 @@ Finish reason: MAX_TOKENS
           "start_date": "2015-03-01",
           "amount": 1501.42,
           "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1505.92,
+          "unit": "m"
         }
       ],
-      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a."
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
     },
     {
-      "jobgroup": "10",
+      "jobgroup": "FWG 10",
       "step": "3",
       "worker": "ActiZ employee",
       "ft_hours": 36,
@@ -248,15 +266,4821 @@ Finish reason: MAX_TOKENS
           "start_date": "2015-03-01",
           "amount": 1559.86,
           "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1564.54,
+          "unit": "m"
         }
       ],
-      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a."
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
     },
     {
-      "jobgroup": "10",
+      "jobgroup": "FWG 10",
       "step": "4",
       "worker": "ActiZ employee",
       "ft_hours": 36,
       "timeline": [
         {
-          "
+          "start_date": "2014-01-01",
+          "amount": 1593.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1617.02,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1621.87,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 15",
+      "step": "Aanloopperiodiek 0",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1479.23,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1501.42,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1505.92,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 15",
+      "step": "Aanloopperiodiek 1",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1536.81,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1559.86,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1564.54,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 15",
+      "step": "0",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1593.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1617.02,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1621.87,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 15",
+      "step": "1",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1623.76,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1648.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1653.06,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 15",
+      "step": "2",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1666.60,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1691.60,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1696.67,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 15",
+      "step": "3",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1708.25,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1733.87,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1739.07,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 15",
+      "step": "4",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1753.55,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1779.85,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1785.19,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 15",
+      "step": "5",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1802.52,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1829.56,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1835.05,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 15",
+      "step": "6",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1857.63,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1885.49,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1891.15,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 15",
+      "step": "7",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1915.18,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1943.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1949.74,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 15",
+      "step": "8",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1980.09,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2009.79,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2015.82,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 20",
+      "step": "Aanloopperiodiek 0",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1593.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1617.02,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1621.87,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 20",
+      "step": "Aanloopperiodiek 1",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1623.76,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1648.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1653.06,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 20",
+      "step": "0",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1666.60,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1691.60,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1696.67,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 20",
+      "step": "1",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1708.25,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1733.87,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1739.07,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 20",
+      "step": "2",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1753.55,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1779.85,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1785.19,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 20",
+      "step": "3",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1802.52,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1829.56,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1835.05,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 20",
+      "step": "4",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1857.63,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1885.49,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1891.15,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 20",
+      "step": "5",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1915.18,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1943.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1949.74,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 20",
+      "step": "6",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1980.09,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2009.79,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2015.82,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 20",
+      "step": "7",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2044.98,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2075.65,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2081.88,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 20",
+      "step": "8",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2105.00,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2136.58,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2142.99,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 25",
+      "step": "Aanloopperiodiek 0",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1623.76,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1648.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1653.06,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 25",
+      "step": "Aanloopperiodiek 1",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1666.60,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1691.60,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1696.67,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 25",
+      "step": "0",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1708.25,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1733.87,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1739.07,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 25",
+      "step": "1",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1753.55,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1779.85,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1785.19,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 25",
+      "step": "2",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1802.52,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1829.56,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1835.05,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 25",
+      "step": "3",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1857.63,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1885.49,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1891.15,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 25",
+      "step": "4",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1915.18,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1943.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1949.74,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 25",
+      "step": "5",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1980.09,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2009.79,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2015.82,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 25",
+      "step": "6",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2044.98,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2075.65,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2081.88,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 25",
+      "step": "7",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2105.00,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2136.58,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2142.99,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 25",
+      "step": "8",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2172.33,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2204.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2211.52,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 25",
+      "step": "9",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2227.43,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2260.84,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2267.62,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 25",
+      "step": "10",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2293.57,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2327.97,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2334.95,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 30",
+      "step": "Aanloopperiodiek 0",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1623.76,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1648.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1653.06,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 30",
+      "step": "Aanloopperiodiek 1",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1666.60,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1691.60,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1696.67,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 30",
+      "step": "0",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1708.25,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1733.87,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1739.07,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 30",
+      "step": "1",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1753.55,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1779.85,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1785.19,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 30",
+      "step": "2",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1802.52,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1829.56,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1835.05,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 30",
+      "step": "3",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1857.63,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1885.49,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1891.15,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 30",
+      "step": "4",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1915.18,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1943.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1949.74,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 30",
+      "step": "5",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1980.09,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2009.79,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2015.82,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 30",
+      "step": "6",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2044.98,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2075.65,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2081.88,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 30",
+      "step": "7",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2105.00,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2136.58,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2142.99,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 30",
+      "step": "8",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2172.33,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2204.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2211.52,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 30",
+      "step": "9",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2227.43,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2260.84,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2267.62,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 30",
+      "step": "10",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2293.57,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2327.97,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2334.95,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 35",
+      "step": "Aanloopperiodiek 0",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1708.25,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1733.87,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1739.07,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 35",
+      "step": "Aanloopperiodiek 1",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1753.55,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1779.85,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1785.19,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 35",
+      "step": "0",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1802.52,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1829.56,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1835.05,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 35",
+      "step": "1",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1857.63,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1885.49,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1891.15,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 35",
+      "step": "2",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1915.18,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1943.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1949.74,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 35",
+      "step": "3",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1980.09,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2009.79,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2015.82,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 35",
+      "step": "4",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2044.98,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2075.65,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2081.88,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 35",
+      "step": "5",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2105.00,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2136.58,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2142.99,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 35",
+      "step": "6",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2172.33,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2204.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2211.52,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 35",
+      "step": "7",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2227.43,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2260.84,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2267.62,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 35",
+      "step": "8",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2293.57,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2327.97,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2334.95,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 35",
+      "step": "9",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2353.56,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2388.86,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2396.03,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 35",
+      "step": "10",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2417.24,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2453.50,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2460.86,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 35",
+      "step": "11",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2479.71,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2516.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2524.46,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 40",
+      "step": "Aanloopperiodiek 0",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1802.52,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1829.56,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1835.05,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 40",
+      "step": "Aanloopperiodiek 1",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1857.63,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1885.49,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1891.15,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 40",
+      "step": "0",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 1915.18,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 1943.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 1949.74,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 40",
+      "step": "1",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2044.98,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2075.65,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2081.88,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 40",
+      "step": "2",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2172.33,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2204.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2211.52,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 40",
+      "step": "3",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2227.43,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2260.84,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2267.62,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 40",
+      "step": "4",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2293.57,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2327.97,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2334.95,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 40",
+      "step": "5",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2353.56,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2388.86,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2396.03,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 40",
+      "step": "6",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2417.24,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2453.50,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2460.86,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 40",
+      "step": "7",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2479.71,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2516.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2524.46,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 40",
+      "step": "8",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2540.93,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2579.04,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2586.78,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 40",
+      "step": "9",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2603.37,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2642.42,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2650.35,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 40",
+      "step": "10",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2667.06,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2707.07,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2715.19,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 45",
+      "step": "Aanloopperiodiek 0",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2172.33,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2204.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2211.52,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 45",
+      "step": "Aanloopperiodiek 1",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2293.57,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2327.97,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2334.95,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 45",
+      "step": "0",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2417.24,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2453.50,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2460.86,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 45",
+      "step": "1",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2479.71,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2516.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2524.46,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 45",
+      "step": "2",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2540.93,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2579.04,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2586.78,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 45",
+      "step": "3",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2603.37,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2642.42,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2650.35,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 45",
+      "step": "4",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2667.06,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2707.07,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2715.19,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 45",
+      "step": "5",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2731.95,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2772.93,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2781.25,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 45",
+      "step": "6",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2799.30,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2841.29,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2849.81,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 45",
+      "step": "7",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2869.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2912.16,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2920.90,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 45",
+      "step": "8",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2930.31,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2974.26,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2983.18,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 50",
+      "step": "Aanloopperiodiek 0",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2293.57,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2327.97,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2334.95,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 50",
+      "step": "Aanloopperiodiek 1",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2417.24,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2453.50,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2460.86,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 50",
+      "step": "0",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2479.71,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2516.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2524.46,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 50",
+      "step": "1",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2603.37,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2642.42,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2650.35,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 50",
+      "step": "2",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2731.95,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2772.93,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2781.25,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 50",
+      "step": "3",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2869.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2912.16,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2920.90,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 50",
+      "step": "4",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2930.31,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2974.26,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2983.18,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 50",
+      "step": "5",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2998.90,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3043.88,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3053.01,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 50",
+      "step": "6",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3066.27,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3112.26,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3121.60,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 50",
+      "step": "7",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3129.94,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3176.89,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3186.42,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 50",
+      "step": "8",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3193.60,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3241.50,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3251.22,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 50",
+      "step": "9",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3260.95,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3309.86,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3319.79,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 50",
+      "step": "10",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3328.31,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3378.23,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3388.36,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 55",
+      "step": "Aanloopperiodiek 0",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2353.56,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2388.86,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2396.03,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 55",
+      "step": "Aanloopperiodiek 1",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2479.71,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2516.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2524.46,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 55",
+      "step": "0",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2603.37,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2642.42,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2650.35,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 55",
+      "step": "1",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2799.30,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2841.29,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2849.81,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 55",
+      "step": "2",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2930.31,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2974.26,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2983.18,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 55",
+      "step": "3",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3066.27,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3112.26,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3121.60,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 55",
+      "step": "4",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3193.60,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3241.50,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3251.22,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 55",
+      "step": "5",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3328.31,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3378.23,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3388.36,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 55",
+      "step": "6",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3390.78,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3441.64,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3451.96,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 55",
+      "step": "7",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3453.21,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3505.01,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3515.53,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 55",
+      "step": "8",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3525.48,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3578.36,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3589.10,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 55",
+      "step": "9",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3598.94,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3652.92,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3663.88,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 55",
+      "step": "10",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3671.19,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3726.26,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3737.44,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 55",
+      "step": "11",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3736.10,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3792.14,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3803.52,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 60",
+      "step": "Aanloopperiodiek 0",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2869.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 2912.16,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 2920.90,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 60",
+      "step": "Aanloopperiodiek 1",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 2998.90,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3043.88,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3053.01,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 60",
+      "step": "0",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3193.60,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3241.50,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3251.22,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 60",
+      "step": "1",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3328.31,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3378.23,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3388.36,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 60",
+      "step": "2",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3453.21,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3505.01,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3515.53,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 60",
+      "step": "3",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3598.94,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3652.92,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3663.88,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 60",
+      "step": "4",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3736.10,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3792.14,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3803.52,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 60",
+      "step": "5",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3876.93,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3935.08,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3946.89,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 60",
+      "step": "6",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4012.82,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4073.01,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4085.23,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 60",
+      "step": "7",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4072.85,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4133.94,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4146.34,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 60",
+      "step": "8",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4134.06,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4196.07,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4208.66,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 60",
+      "step": "9",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4197.73,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4260.70,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4273.48,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 60",
+      "step": "10",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4258.98,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4322.86,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4335.83,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 65",
+      "step": "Aanloopperiodiek 0",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3328.31,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3378.23,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3388.36,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 65",
+      "step": "Aanloopperiodiek 1",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3453.21,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3505.01,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3515.53,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 65",
+      "step": "0",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3598.94,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3652.92,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3663.88,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 65",
+      "step": "1",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3736.10,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3792.14,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3803.52,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 65",
+      "step": "2",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3808.34,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3865.47,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3877.07,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 65",
+      "step": "3",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3876.93,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 3935.08,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 3946.89,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 65",
+      "step": "4",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 3946.72,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4005.92,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4017.94,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 65",
+      "step": "5",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4012.82,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4073.01,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4085.23,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 65",
+      "step": "6",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4134.06,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4196.07,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4208.66,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 65",
+      "step": "7",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4258.98,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4322.86,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4335.83,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 65",
+      "step": "8",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4385.10,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4450.88,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4464.23,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 65",
+      "step": "9",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4509.99,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4577.64,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4591.37,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 65",
+      "step": "10",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4636.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4705.66,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4719.78,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 65",
+      "step": "11",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4762.26,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4833.69,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4848.19,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 65",
+      "step": "12",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4823.49,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4895.84,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4910.53,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 65",
+      "step": "13",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4885.92,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4959.21,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4974.09,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 65",
+      "step": "14",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4950.83,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5025.09,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5040.17,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 65",
+      "step": "15",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5013.28,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5088.48,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5103.75,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 70",
+      "step": "Aanloopperiodiek 0",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4012.82,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4073.01,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4085.23,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 70",
+      "step": "Aanloopperiodiek 1",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4134.06,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4196.07,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4208.66,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 70",
+      "step": "0",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4258.98,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4322.86,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4335.83,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 70",
+      "step": "1",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4385.10,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4450.88,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4464.23,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 70",
+      "step": "2",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4448.77,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4515.50,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4529.05,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 70",
+      "step": "3",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4509.99,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4577.64,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4591.37,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 70",
+      "step": "4",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4574.90,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4643.52,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4657.45,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 70",
+      "step": "5",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4762.26,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4833.69,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4848.19,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 70",
+      "step": "6",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4950.83,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5025.09,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5040.17,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 70",
+      "step": "7",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5139.41,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5216.50,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5232.15,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 70",
+      "step": "8",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5265.54,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5344.52,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5360.55,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 70",
+      "step": "9",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5421.08,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5502.40,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5518.91,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 70",
+      "step": "10",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5579.01,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5662.70,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5679.69,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 70",
+      "step": "11",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5735.76,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5821.80,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5839.27,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 70",
+      "step": "12",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5812.92,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5900.11,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5917.81,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 70",
+      "step": "13",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5893.71,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5982.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 6000.07,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 70",
+      "step": "14",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5972.11,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 6061.69,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 6079.88,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 70",
+      "step": "15",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 6050.48,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 6141.24,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 6159.66,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "Aanloopperiodiek 0",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4636.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4705.66,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4719.78,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "Aanloopperiodiek 1",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4762.26,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4833.69,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4848.19,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "0",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 4885.92,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 4959.21,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 4974.09,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "1",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5013.28,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5088.48,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5103.75,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "2",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5139.41,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5216.50,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5232.15,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "3",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5200.64,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5278.65,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5294.49,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "4",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5265.54,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5344.52,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5360.55,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "5",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5342.68,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5422.82,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5439.09,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "6",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5579.01,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5662.70,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5679.69,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "7",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5812.92,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5900.11,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5917.81,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "8",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 6050.48,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 6141.24,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 6159.66,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "9",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 6208.44,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 6301.57,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 6320.47,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "10",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 6372.54,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 6468.13,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 6487.53,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "11",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 6547.63,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 6645.84,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 6665.78,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "12",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 6725.23,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 6826.11,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 6846.59,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "13",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 6810.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 6913.07,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 6933.81,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "14",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 6900.32,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 7003.82,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 7024.83,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "15",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 7003.16,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 7108.21,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 7129.53,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "16",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 7107.26,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 7213.87,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 7235.51,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "17",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 7208.88,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 7317.01,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 7338.96,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 75",
+      "step": "18",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 7312.98,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 7422.67,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 7444.94,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 80",
+      "step": "Aanloopperiodiek 0",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5421.08,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5502.40,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5518.91,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 80",
+      "step": "Aanloopperiodiek 1",
+      "worker": "ActiZ employee",
+      "is_entry": true,
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5579.01,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5662.70,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5679.69,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 80",
+      "step": "0",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5735.76,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5821.80,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 5839.27,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 80",
+      "step": "1",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 5893.71,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 5982.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 6000.07,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 80",
+      "step": "2",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 6050.48,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 6141.24,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 6159.66,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 80",
+      "step": "3",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 6128.84,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 6220.77,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 6239.43,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 80",
+      "step": "4",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 6208.44,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 6301.57,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 6320.47,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 80",
+      "step": "5",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 6285.58,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 6379.86,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 6399.00,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 80",
+      "step": "6",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 6547.63,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 6645.84,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 6665.78,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 80",
+      "step": "7",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 6810.91,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 6913.07,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 6933.81,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 80",
+      "step": "8",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 7107.26,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 7213.87,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 7235.51,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 80",
+      "step": "9",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 7312.98,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 7422.67,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 7444.94,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 80",
+      "step": "10",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 7516.24,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 7628.98,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 7651.87,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 80",
+      "step": "11",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 7721.98,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 7837.81,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 7861.32,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 80",
+      "step": "12",
+      "worker": "ActiZ employee",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2014-01-01",
+          "amount": 7930.17,
+          "unit": "m"
+        },
+        {
+          "start_date": "2015-03-01",
+          "amount": 8049.12,
+          "unit": "m"
+        },
+        {
+          "start_date": "2016-01-01",
+          "amount": 8073.27,
+          "unit": "m"
+        }
+      ],
+      "row_note": "Hourly wage is based on 1878 hours per Article 1.1.15a. Age-related entries for FWG 5, 10, 15, 20, 25, 30, 35 are valid until 1 January 2015."
+    },
+    {
+      "jobgroup": "FWG 80",
+      "step": "13",
+      "worker": "ActiZ employee",
+      "ft_hours": 36

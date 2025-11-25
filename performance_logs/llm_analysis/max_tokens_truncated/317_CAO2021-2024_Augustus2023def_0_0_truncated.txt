@@ -1,15 +1,16 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: CAO2021-2024_Augustus2023def_0_0_extract.json
-Timestamp: 2025-11-15T02:33:02.278546
-Response length: 7244 characters
+Timestamp: 2025-11-24T23:37:29.166160
+Response length: 108395 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
 {
   "salary_information": [
     {
-      "jobgroup": "Salarisschalen functiegroep 5*",
-      "step": "0",
+      "jobgroup": "functiegroep 5",
+      "step": "trede 0",
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -20,7 +21,8 @@ Finish reason: MAX_TOKENS
           "start_date": "2022-05-01",
           "amount": 1686,
           "unit": "m",
-          "inc_pct": 2.2
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
         },
         {
           "start_date": "2023-05-01",
@@ -32,32 +34,37 @@ Finish reason: MAX_TOKENS
           "start_date": "2023-09-01",
           "amount": 1820,
           "unit": "m",
-          "inc_pct": 3.0
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
         },
         {
           "start_date": "2023-12-01",
           "amount": 1900,
           "unit": "m",
-          "inc_pct": 3.0
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
         },
         {
           "start_date": "2024-06-01",
           "amount": 1955,
           "unit": "m",
-          "inc_pct": 2.0
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
         },
         {
           "start_date": "2024-12-01",
           "amount": 2010,
           "unit": "m",
-          "inc_pct": 2.0
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
         }
       ],
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
     },
     {
-      "jobgroup": "Salarisschalen functiegroep 5*",
-      "step": "1",
+      "jobgroup": "functiegroep 5",
+      "step": "trede 1",
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -68,7 +75,8 @@ Finish reason: MAX_TOKENS
           "start_date": "2022-05-01",
           "amount": 1715,
           "unit": "m",
-          "inc_pct": 2.2
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
         },
         {
           "start_date": "2023-05-01",
@@ -80,32 +88,37 @@ Finish reason: MAX_TOKENS
           "start_date": "2023-09-01",
           "amount": 1850,
           "unit": "m",
-          "inc_pct": 3.0
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
         },
         {
           "start_date": "2023-12-01",
           "amount": 1930,
           "unit": "m",
-          "inc_pct": 3.0
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
         },
         {
           "start_date": "2024-06-01",
           "amount": 1985,
           "unit": "m",
-          "inc_pct": 2.0
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
         },
         {
           "start_date": "2024-12-01",
           "amount": 2040,
           "unit": "m",
-          "inc_pct": 2.0
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
         }
       ],
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
     },
     {
-      "jobgroup": "Salarisschalen functiegroep 5*",
-      "step": "2",
+      "jobgroup": "functiegroep 5",
+      "step": "trede 2",
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -116,7 +129,8 @@ Finish reason: MAX_TOKENS
           "start_date": "2022-05-01",
           "amount": 1745,
           "unit": "m",
-          "inc_pct": 2.2
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
         },
         {
           "start_date": "2023-05-01",
@@ -128,32 +142,37 @@ Finish reason: MAX_TOKENS
           "start_date": "2023-09-01",
           "amount": 1881,
           "unit": "m",
-          "inc_pct": 3.0
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
         },
         {
           "start_date": "2023-12-01",
           "amount": 1961,
           "unit": "m",
-          "inc_pct": 3.0
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
         },
         {
           "start_date": "2024-06-01",
           "amount": 2016,
           "unit": "m",
-          "inc_pct": 2.0
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
         },
         {
           "start_date": "2024-12-01",
           "amount": 2071,
           "unit": "m",
-          "inc_pct": 2.0
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
         }
       ],
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
     },
     {
-      "jobgroup": "Salarisschalen functiegroep 5*",
-      "step": "3",
+      "jobgroup": "functiegroep 5",
+      "step": "trede 3",
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -164,7 +183,8 @@ Finish reason: MAX_TOKENS
           "start_date": "2022-05-01",
           "amount": 1809,
           "unit": "m",
-          "inc_pct": 2.2
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
         },
         {
           "start_date": "2023-05-01",
@@ -176,32 +196,37 @@ Finish reason: MAX_TOKENS
           "start_date": "2023-09-01",
           "amount": 1947,
           "unit": "m",
-          "inc_pct": 3.0
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
         },
         {
           "start_date": "2023-12-01",
           "amount": 2027,
           "unit": "m",
-          "inc_pct": 3.0
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
         },
         {
           "start_date": "2024-06-01",
           "amount": 2082,
           "unit": "m",
-          "inc_pct": 2.0
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
         },
         {
           "start_date": "2024-12-01",
           "amount": 2137,
           "unit": "m",
-          "inc_pct": 2.0
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
         }
       ],
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
     },
     {
-      "jobgroup": "Salarisschalen functiegroep 5*",
-      "step": "4",
+      "jobgroup": "functiegroep 5",
+      "step": "trede 4",
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -209,10 +234,11 @@ Finish reason: MAX_TOKENS
           "unit": "m"
         },
         {
-          "start_date": "2022-05-01",
+          "start_date": "2022-05-00",
           "amount": 1873,
           "unit": "m",
-          "inc_pct": 2.2
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
         },
         {
           "start_date": "2023-05-01",
@@ -224,32 +250,37 @@ Finish reason: MAX_TOKENS
           "start_date": "2023-09-01",
           "amount": 2013,
           "unit": "m",
-          "inc_pct": 3.0
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
         },
         {
           "start_date": "2023-12-01",
           "amount": 2093,
           "unit": "m",
-          "inc_pct": 3.0
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
         },
         {
           "start_date": "2024-06-01",
           "amount": 2148,
           "unit": "m",
-          "inc_pct": 2.0
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
         },
         {
           "start_date": "2024-12-01",
           "amount": 2203,
           "unit": "m",
-          "inc_pct": 2.0
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
         }
       ],
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
     },
     {
-      "jobgroup": "Salarisschalen functiegroep 5*",
-      "step": "5",
+      "jobgroup": "functiegroep 5",
+      "step": "trede 5",
+      "holiday_incl": false,
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -258,4 +289,3171 @@ Finish reason: MAX_TOKENS
         },
         {
           "start_date": "2022-05-01",
-          "amount":
+          "amount": 1906,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1967,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2047,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2127,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2182,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2237,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 5",
+      "step": "trede 6",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1872,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1957,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2020,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2100,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2180,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2235,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2290,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 5",
+      "step": "trede 7",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1920,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2005,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2069,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2149,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2229,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2284,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2339,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 5",
+      "step": "trede 8",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1969,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2054,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2120,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2200,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2280,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2335,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2390,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 5",
+      "step": "trede 9",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2025,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2110,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2178,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2258,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2338,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2393,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2448,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 10",
+      "step": "trede 0",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1630,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1715,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1770,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 1850,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 1930,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 1985,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2040,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 10",
+      "step": "trede 1",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1660,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1745,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1801,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 1881,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 1961,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2016,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2071,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 10",
+      "step": "trede 2",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1724,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1809,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1867,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 1947,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2027,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2082,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2137,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 10",
+      "step": "trede 3",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1788,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1873,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1933,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2013,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2093,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2148,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2203,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 10",
+      "step": "trede 4",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1821,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1906,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1967,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2047,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2127,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2182,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2237,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 10",
+      "step": "trede 5",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1872,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1957,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2020,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2100,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2180,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2235,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2290,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 10",
+      "step": "trede 6",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1920,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2005,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2069,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2149,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2229,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2284,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2339,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 10",
+      "step": "trede 7",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1969,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2054,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2120,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2200,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2280,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2335,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2390,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 10",
+      "step": "trede 8",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2025,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2110,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2178,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2258,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2338,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2393,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2448,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 10",
+      "step": "trede 9",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2087,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2172,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2242,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2322,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2402,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2457,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2512,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 10",
+      "step": "trede 10",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2151,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2236,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2308,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2388,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2468,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2523,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2578,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 15",
+      "step": "trede 0",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1660,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1745,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1801,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 1881,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 1961,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2016,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2071,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 15",
+      "step": "trede 1",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1724,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1809,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1867,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 1947,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2027,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2082,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2137,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 15",
+      "step": "trede 2",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1788,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1873,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1933,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2013,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2093,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2148,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2203,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 15",
+      "step": "trede 3",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1821,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1906,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1967,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2047,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2127,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2182,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2237,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 15",
+      "step": "trede 4",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1872,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1957,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2020,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2100,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2180,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2235,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2290,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 15",
+      "step": "trede 5",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1920,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2005,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2069,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2149,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2229,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2284,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2339,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 15",
+      "step": "trede 6",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1969,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2054,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2120,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2200,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2280,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2335,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2390,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 15",
+      "step": "trede 7",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2025,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2110,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2178,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2258,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2338,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2393,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2448,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 15",
+      "step": "trede 8",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2087,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2172,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2242,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2322,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2402,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2457,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2512,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 15",
+      "step": "trede 9",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2151,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2236,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2308,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2388,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2468,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2523,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2578,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 15",
+      "step": "trede 10",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2222,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2307,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2381,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2461,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2541,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2596,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2651,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 15",
+      "step": "trede 11",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2296,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2381,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2457,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2537,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2617,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2672,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2727,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 20",
+      "step": "trede 0",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1724,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1809,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1867,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 1947,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2027,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2082,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2137,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 20",
+      "step": "trede 1",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1821,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1906,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1967,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2047,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2127,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2182,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2237,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 20",
+      "step": "trede 2",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1872,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1957,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2020,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2100,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2180,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2235,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2290,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 20",
+      "step": "trede 3",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1920,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2005,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2069,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2149,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2229,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2284,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2339,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 20",
+      "step": "trede 4",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1969,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2054,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2120,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2200,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2280,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2335,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2390,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 20",
+      "step": "trede 5",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2025,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2110,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2178,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2258,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2338,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2393,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2448,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 20",
+      "step": "trede 6",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2087,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2172,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2242,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2322,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2402,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2457,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2512,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 20",
+      "step": "trede 7",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2151,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2236,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2308,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2388,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2468,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2523,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2578,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 20",
+      "step": "trede 8",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2222,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2307,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2381,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2461,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2541,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2596,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2651,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 20",
+      "step": "trede 9",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2296,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2381,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2457,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2537,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2617,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2672,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2727,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 20",
+      "step": "trede 10",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2363,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2448,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2526,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2606,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2686,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2741,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2796,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 20",
+      "step": "trede 11",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2439,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2524,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2605,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2685,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2766,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2821,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2877,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 25",
+      "step": "trede 0",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1788,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1873,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1933,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2013,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2093,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2148,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2203,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 25",
+      "step": "trede 1",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1872,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1957,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2020,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2100,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2180,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2235,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2290,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 25",
+      "step": "trede 2",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1969,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2054,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2120,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2200,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2280,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2335,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2390,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 25",
+      "step": "trede 3",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2025,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2110,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2178,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2258,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2338,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2393,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2448,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 25",
+      "step": "trede 4",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2087,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2172,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2242,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2322,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2402,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2457,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2512,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 25",
+      "step": "trede 5",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2151,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2236,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2308,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2388,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2468,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2523,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2578,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 25",
+      "step": "trede 6",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2222,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2307,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2381,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2461,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2541,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2596,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2651,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 25",
+      "step": "trede 7",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2296,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2381,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2457,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2537,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2617,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2672,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2727,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 25",
+      "step": "trede 8",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2363,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2448,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2526,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2606,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2686,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2741,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2796,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 25",
+      "step": "trede 9",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2439,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2524,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2605,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2685,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2766,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2821,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2877,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 25",
+      "step": "trede 10",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2501,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2586,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2669,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2749,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2831,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2888,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2946,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 25",
+      "step": "trede 11",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2574,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2659,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2744,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2826,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2911,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2969,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 3028,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 30",
+      "step": "trede 0",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1821,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1906,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1967,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2047,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2127,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2182,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2237,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 30",
+      "step": "trede 1",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1920,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2005,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2069,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2149,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2229,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2284,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2339,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 30",
+      "step": "trede 2",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2025,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2110,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2178,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2258,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2338,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2393,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2448,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 30",
+      "step": "trede 3",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2151,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2236,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2308,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2388,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2468,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2523,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2578,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 30",
+      "step": "trede 4",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2222,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2307,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2381,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2461,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2541,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2596,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2651,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 30",
+      "step": "trede 5",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2296,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2381,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2457,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2537,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2617,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2672,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2727,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. For young people under 21, for whom the statutory minimum (youth) wage is lower than the table salary, the table salary applies. For adults aged 21 and over, if the statutory minimum wage (for adults) is higher than the table salary, the statutory minimum wage applies."
+    },
+    {
+      "jobgroup": "functiegroep 30",
+      "step": "trede 6",
+      "holiday_incl": false,
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2363,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2448,
+          "unit": "m",
+          "inc_pct": 2.2,
+          "note": "minimum of €85 gross per month applied"
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2526,
+          "unit": "m",
+          "inc_pct": 3.2
+        },
+        {
+          "start_date": "2023-09-01",
+          "amount": 2606,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2023-12-01",
+          "amount": 2686,
+          "unit": "m",
+          "inc_pct": 3,
+          "note": "minimum of €80 gross per month applied"
+        },
+        {
+          "start_date": "2024-06-01",
+          "amount": 2741,
+          "unit": "m",
+          "inc_pct": 2,
+          "note": "minimum of €55 gross per month applied"
+        },
+        {
+          "start_date": "2024-12-01",
+          "amount": 2796,
+          

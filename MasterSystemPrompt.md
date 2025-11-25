@@ -17,8 +17,8 @@
 p0_webscraping → p1_inputExcel → p2_extract → p3_llmExtraction → p4_analysis → p5_excel_creation
 ```
 
-**Stage 0 (p0)**: Web scraping - Downloads PDFs using Selenium, organizes by CAO number
-**Stage 1 (p1)**: Excel processing - Converts field definitions to markdown prompts
+**Stage 0 (p0)**: Web scraping - Downloads PDFs using Selenium, organizes by CAO number; uses `inputs/excel/CAO_Frequencies_2014.xlsx` to skip already-handled CAOs and defaults to writing into `inputs/pdfs/input_pdfs_extra/`
+**Stage 1 (p1)**: Excel processing (legacy/optional) - Previously converted field definitions to markdown prompts; prompts now live directly in code/schemas and p2–p5 do not consume the Excel or generated markdown
 **Stage 2 (p2)**: PDF extraction - Multi-method text extraction (PyPDF2 + pdfplumber + OCR)
 **Stage 3 (p3)**: LLM extraction - Raw data extraction using Google Gemini API
 **Stage 4 (p4)**: Analysis - Schema-driven structured extraction (salary + non-salary)
@@ -27,7 +27,7 @@ p0_webscraping → p1_inputExcel → p2_extract → p3_llmExtraction → p4_anal
 ### Data Flow
 - **Input**: PDFs in `inputs/pdfs/input_pdfs/[CAO_NUMBER]/`
 - **Intermediate**: Parsed markdown/JSON in `outputs/parsed_pdfs/`, LLM extracted JSON in `outputs/llm_extracted/`
-- **Output**: Schema-validated JSON in `outputs/llm_analysis/`, Excel files in `outputs/excel/`
+- **Output**: Schema-validated JSON in `outputs/llm_analysis/` (salary + non-salary parts in `.../gen_bon_wag_pen_ter`, `.../lea_ove_tra`, `.../hom_con_saf_chi_ai_fri`), Excel files in `outputs/excel/`
 
 **Important**: Files are organized by CAO number folders. Multiple files can have the same filename but exist in different CAO folders (e.g., `10/file.pdf` and `1536/file.pdf`). File matching always requires both filename AND CAO number to uniquely identify a file.
 
@@ -116,7 +116,10 @@ p0_webscraping → p1_inputExcel → p2_extract → p3_llmExtraction → p4_anal
   - Attempt 5: Adjusted parameters (temp=0.3, top_p=0.4, top_k=0.7)
   - If truncation occurs after attempt 4 → extends to attempts 6-8 (compact schema)
 - **Attempts 6-8**: Compact schema extraction (SalaryExtractionSchemaCompact)
-  - Removes table_label, uses abbreviated unit field to reduce output size
+  - Removes table_label, uses abbreviated unit field, uses 2-letter field names to minimize JSON output size
+  - Field names: sd (start_date), ed (end_date), am (amount), un (unit), ip (inc_pct), hp (holiday_incl in point), nt (note), jg (jobgroup), st (step), wr (worker), ie (is_entry), ag (age_group), eu (education), fh (ft_hours), pe (permanency), ht (hours_type), hi (holiday_incl in row), tl (timeline), rn (row_note), si (salary_information)
+  - **IMPORTANT**: In compact schema, holiday_incl moved from SalaryPoint (hp) to SalaryRow (hi) - affects Excel output format
+  - Uses SALARY_PROMPT_COMPACT (same as SALARY_PROMPT but with field abbreviation section and "si" instead of "salary_information" in JSON output)
   - Attempt 6: Original parameters (temp=0.0, top_p=0.1, top_k=1)
   - Attempt 7: Adjusted parameters (temp=0.3, top_p=0.4, top_k=0.7)
   - Attempt 8: Adjusted parameters (temp=0.3, top_p=0.4, top_k=0.7)
@@ -152,9 +155,9 @@ p0_webscraping → p1_inputExcel → p2_extract → p3_llmExtraction → p4_anal
 - **SalaryExtractionSchema**: Root schema containing list of SalaryRows
 
 **Schema Variants**:
-- **Regular schema** (`salary_schema.py`): Full schema with table_label, used for attempts 1-5
-- **Compact schema** (`salary_schema_compact.py`): Reduced schema (no table_label, abbreviated units), used for attempts 6-8
-- **Split schema** (`salary_schema_split.py`): Same as compact, optimized for split extraction, used for attempts 9-10
+- **Regular schema** (`salary_schema.py`): Full schema with table_label, full field names, used for attempts 1-5. Uses SALARY_PROMPT.
+- **Compact schema** (`salary_schema_compact.py`): Reduced schema (no table_label, abbreviated units, 2-letter field names), used for attempts 6-8. **IMPORTANT**: holiday_incl moved from SalaryPoint to SalaryRow (hp in point, hi in row) - affects Excel format. Uses SALARY_PROMPT_COMPACT (identical to SALARY_PROMPT except: adds "FIELD NAME ABBREVIATIONS" section, uses "si" instead of "salary_information" in JSON output example).
+- **Split schema** (`salary_schema_split.py`): Same as compact, optimized for split extraction, used for attempts 9-10. Uses SALARY_PROMPT_SPLIT_ATTEMPT_9/10 (includes field abbreviations section, split extraction rules, anti-repetition rules for attempt 10).
 
 ### Non-Salary Schema (`schema/non_salary_schema.py`)
 Split into 3 parts for performance:
@@ -279,11 +282,11 @@ with open(lock_file, 'w') as lock:
 1. Create `pipelines/pX_stagename.py`
 2. Follow existing stage patterns (config loading, error handling, logging)
 3. Add to pipeline flow documentation
-4. Update `run_pipeline.py` if needed
+4. Update `run_pipeline.py` if needed (note: current file imports non-existent `pipelines.p5_run`; add that module or adjust import before using it as an orchestrator)
 
 ### Extending Schemas
 1. Add new fields to existing Pydantic models in `schema/`
-2. Update prompt templates in `docs/fields_prompt*.md` if needed
+2. Update prompt templates in `docs/fields_prompt*.md` if needed (legacy only; runtime prompts live in code/schemas)
 3. Update Excel output schema if new fields should appear in Excel
 4. Test with sample files before full run
 
@@ -361,4 +364,3 @@ with open(lock_file, 'w') as lock:
 - Monitor performance logs for bottlenecks
 - Adjust `total_processes` based on resources
 - Use multiple API keys to distribute load
-

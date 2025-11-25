@@ -36,6 +36,43 @@ CAO_METADATA_COLUMNS = [
     'file_name'
 ]
 
+# Field abbreviation mappings for compact/split schemas
+# Row level abbreviations: compact/split → regular schema
+ROW_ABBREVIATION_MAP = {
+    'jg': 'jobgroup',
+    'st': 'step',
+    'wr': 'worker',
+    'ie': 'is_entry',
+    'ag': 'age_group',
+    'eu': 'education',
+    'fh': 'ft_hours',
+    'pe': 'permanency',
+    'ht': 'hours_type',
+    'hi': 'holiday_incl',
+    'rn': 'row_note',
+    'tl': 'timeline'
+}
+
+# Point level abbreviations: compact/split → regular schema
+POINT_ABBREVIATION_MAP = {
+    'sd': 'start_date',
+    'ed': 'end_date',
+    'am': 'amount',
+    'un': 'unit',
+    'ip': 'inc_pct',
+    'hp': 'holiday_incl',
+    'nt': 'note'
+}
+
+# Unit abbreviation translation: compact/split → full names
+UNIT_ABBREVIATION_MAP = {
+    'm': 'monthly',
+    '4-w': '4-week',
+    'w': 'weekly',
+    'h': 'hourly',
+    'a': 'annual'
+}
+
 def flatten_amount_object(amount_obj: Optional[Dict[str, Any]], prefix: str) -> Dict[str, Any]:
     """
     Flatten an Amount object into separate value and unit columns.
@@ -74,6 +111,77 @@ def flatten_amount_range_object(amount_range_obj: Optional[Dict[str, Any]], pref
         f"{prefix}_max": amount_range_obj.get('max'),
         f"{prefix}_unit": amount_range_obj.get('unit')
     }
+
+def get_field_with_abbreviation(data: Dict[str, Any], field_name: str, abbreviation_map: Dict[str, str]) -> Any:
+    """
+    Get field value from data, checking both full name and abbreviation.
+    
+    Args:
+        data: Dictionary to get value from
+        field_name: Full field name (regular schema)
+        abbreviation_map: Mapping from abbreviations to full names
+        
+    Returns:
+        Field value or None if not found
+    """
+    # First try full name
+    if field_name in data:
+        return data[field_name]
+    
+    # Then try abbreviation (reverse lookup)
+    for abbrev, full_name in abbreviation_map.items():
+        if full_name == field_name and abbrev in data:
+            return data[abbrev]
+    
+    return None
+
+def translate_unit(unit: Optional[str]) -> Optional[str]:
+    """
+    Translate unit abbreviation to full name.
+    
+    Args:
+        unit: Unit value (may be abbreviation or full name)
+        
+    Returns:
+        Translated unit name, or original if not an abbreviation
+    """
+    if not unit:
+        return unit
+    
+    return UNIT_ABBREVIATION_MAP.get(unit, unit)
+
+def get_holiday_incl_value(timeline_point: Dict[str, Any], salary_row: Dict[str, Any]) -> Optional[bool]:
+    """
+    Get holiday_incl value with point level precedence, fallback to row level.
+    
+    Point level takes precedence. If point level value doesn't exist (None or missing),
+    fallback to row level. Handles both compact/split abbreviations (hp, hi) and 
+    regular schema (holiday_incl).
+    
+    Args:
+        timeline_point: Timeline point dictionary (may have hp or holiday_incl)
+        salary_row: Salary row dictionary (may have hi or holiday_incl)
+        
+    Returns:
+        holiday_incl value (bool or None)
+    """
+    # Check point level first (point takes precedence)
+    # Try compact abbreviation 'hp' first, then regular 'holiday_incl'
+    point_value = timeline_point.get('hp')
+    if point_value is None:
+        point_value = timeline_point.get('holiday_incl')
+    
+    # If point level has a value (including False), return it
+    if point_value is not None:
+        return point_value
+    
+    # Fallback to row level (point level was None or missing)
+    # Try compact abbreviation 'hi' first, then regular 'holiday_incl'
+    row_value = salary_row.get('hi')
+    if row_value is None:
+        row_value = salary_row.get('holiday_incl')
+    
+    return row_value
 
 def get_pydantic_fields(model_class: BaseModel) -> List[str]:
     """
@@ -230,8 +338,12 @@ def flatten_salary_row(salary_row: Dict[str, Any], cao_metadata: Dict[str, str],
     - inc_pct → increase_percent
     - holiday_incl → holiday_in_amount
     
+    Handles both compact/split schema abbreviations and regular schema field names.
+    Translates unit abbreviations to full names.
+    Implements holiday_incl merging with point level precedence, fallback to row level.
+    
     Args:
-        salary_row: SalaryRow data from JSON (may use new or old field names)
+        salary_row: SalaryRow data from JSON (may use abbreviations or full field names)
         cao_metadata: CAO metadata (cao_number, id, TTW, etc.)
         max_timeline_length: Maximum number of timeline points to create columns for
         
@@ -239,35 +351,22 @@ def flatten_salary_row(salary_row: Dict[str, Any], cao_metadata: Dict[str, str],
         Excel row dictionary with timeline data in columns (using old field names)
     """
     row = cao_metadata.copy()
-    timeline = salary_row.get('timeline', [])
     
-    # Map new field names to old names for Excel output (backward compatibility)
-    field_mapping = {
-        'step': 'step_label',
-        'worker': 'worker_type',
-        'inc_pct': 'increase_percent',
-        'holiday_incl': 'holiday_in_amount'
-    }
+    # Get timeline - handle both 'timeline' and 'tl' (compact abbreviation)
+    timeline = salary_row.get('timeline') or salary_row.get('tl', [])
     
-    # Add SalaryRow metadata fields - map new names to old names for Excel
-    # Check for both new and old field names for compatibility
-    row['worker_type'] = salary_row.get('worker') or salary_row.get('worker_type')
-    row['step_label'] = salary_row.get('step') or salary_row.get('step_label')
-    row['jobgroup'] = salary_row.get('jobgroup')
-    row['is_entry'] = salary_row.get('is_entry')
-    row['age_group'] = salary_row.get('age_group')
-    row['education'] = salary_row.get('education')
-    row['ft_hours'] = salary_row.get('ft_hours')
-    row['permanency'] = salary_row.get('permanency')
-    row['hours_type'] = salary_row.get('hours_type')
-    row['row_note'] = salary_row.get('row_note')
-    
-    # Add timeline data as numbered columns
-    # Map new field names to old names, keep hours_basis_ft_week even though removed from schema
-    timeline_field_mapping = {
-        'inc_pct': 'increase_percent',
-        'holiday_incl': 'holiday_in_amount'
-    }
+    # Add SalaryRow metadata fields - handle both abbreviations and full names
+    # Map to old Excel column names for backward compatibility
+    row['worker_type'] = get_field_with_abbreviation(salary_row, 'worker', ROW_ABBREVIATION_MAP) or salary_row.get('worker_type')
+    row['step_label'] = get_field_with_abbreviation(salary_row, 'step', ROW_ABBREVIATION_MAP) or salary_row.get('step_label')
+    row['jobgroup'] = get_field_with_abbreviation(salary_row, 'jobgroup', ROW_ABBREVIATION_MAP) or salary_row.get('jobgroup')
+    row['is_entry'] = get_field_with_abbreviation(salary_row, 'is_entry', ROW_ABBREVIATION_MAP) or salary_row.get('is_entry')
+    row['age_group'] = get_field_with_abbreviation(salary_row, 'age_group', ROW_ABBREVIATION_MAP) or salary_row.get('age_group')
+    row['education'] = get_field_with_abbreviation(salary_row, 'education', ROW_ABBREVIATION_MAP) or salary_row.get('education')
+    row['ft_hours'] = get_field_with_abbreviation(salary_row, 'ft_hours', ROW_ABBREVIATION_MAP) or salary_row.get('ft_hours')
+    row['permanency'] = get_field_with_abbreviation(salary_row, 'permanency', ROW_ABBREVIATION_MAP) or salary_row.get('permanency')
+    row['hours_type'] = get_field_with_abbreviation(salary_row, 'hours_type', ROW_ABBREVIATION_MAP) or salary_row.get('hours_type')
+    row['row_note'] = get_field_with_abbreviation(salary_row, 'row_note', ROW_ABBREVIATION_MAP) or salary_row.get('row_note')
     
     # Timeline fields in Excel (old names for backward compatibility)
     timeline_fields = ['start_date', 'end_date', 'amount', 'unit', 'table_label', 
@@ -278,16 +377,35 @@ def flatten_salary_row(salary_row: Dict[str, Any], cao_metadata: Dict[str, str],
             col_name = f"salary_{i}_{field}"
             if i <= len(timeline):
                 timeline_point = timeline[i-1]
-                # Map new field names to old names
+                
+                # Handle each field type
                 if field == 'increase_percent':
-                    value = timeline_point.get('inc_pct') or timeline_point.get('increase_percent')
+                    # Handle inc_pct with abbreviations
+                    value = get_field_with_abbreviation(timeline_point, 'inc_pct', POINT_ABBREVIATION_MAP)
+                    if value is None:
+                        value = timeline_point.get('increase_percent')
+                        
                 elif field == 'holiday_in_amount':
-                    value = timeline_point.get('holiday_incl') or timeline_point.get('holiday_in_amount')
+                    # Use helper function for holiday_incl with point/row precedence
+                    value = get_holiday_incl_value(timeline_point, salary_row)
+                    
+                elif field == 'unit':
+                    # Get unit value and translate abbreviation
+                    unit_value = get_field_with_abbreviation(timeline_point, 'unit', POINT_ABBREVIATION_MAP)
+                    if unit_value is None:
+                        unit_value = timeline_point.get('unit')
+                    value = translate_unit(unit_value)
+                    
                 elif field == 'hours_basis_ft_week':
                     # This field was removed from schema, always use None
                     value = None
+                    
                 else:
-                    value = timeline_point.get(field)
+                    # Handle other fields with abbreviations
+                    value = get_field_with_abbreviation(timeline_point, field, POINT_ABBREVIATION_MAP)
+                    if value is None:
+                        value = timeline_point.get(field)
+                
                 row[col_name] = value
             else:
                 row[col_name] = None  # Empty for timeline points beyond available data

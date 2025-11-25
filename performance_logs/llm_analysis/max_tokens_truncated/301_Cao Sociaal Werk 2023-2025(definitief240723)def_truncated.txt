@@ -1,7 +1,7 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: Cao Sociaal Werk 2023-2025(definitief240723)def_extract.json
-Timestamp: 2025-11-15T00:33:30.933822
-Response length: 6162 characters
+Timestamp: 2025-11-25T00:48:25.077443
+Response length: 114349 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
@@ -9,31 +9,67 @@ Finish reason: MAX_TOKENS
   "salary_information": [
     {
       "jobgroup": "1",
+      "step": "Start",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 1998,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2184,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2184,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2184,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "1",
       "step": "0",
       "ft_hours": 36,
       "timeline": [
         {
           "start_date": "2023-07-01",
-          "amount": 2043.00,
+          "amount": 2043,
           "unit": "m",
-          "inc_pct": 7.0
+          "inc_pct": 7
         },
         {
           "start_date": "2024-01-01",
-          "amount": 2184.00,
+          "amount": 2184,
           "unit": "m",
-          "inc_pct": 4.0
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         },
         {
           "start_date": "2024-07-01",
-          "amount": 2210.00,
+          "amount": 2210,
           "unit": "m",
-          "inc_pct": 4.0
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         },
         {
           "start_date": "2025-01-01",
-          "amount": 2210.00,
-          "unit": "m"
+          "amount": 2210,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         }
       ]
     },
@@ -44,74 +80,29 @@ Finish reason: MAX_TOKENS
       "timeline": [
         {
           "start_date": "2023-07-01",
-          "amount": 2092.00,
+          "amount": 2092,
           "unit": "m",
-          "inc_pct": 7.0
+          "inc_pct": 7
         },
         {
           "start_date": "2024-01-01",
-          "amount": 2184.00,
+          "amount": 2184,
           "unit": "m",
-          "inc_pct": 4.0
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         },
         {
           "start_date": "2024-07-01",
-          "amount": 2263.00,
+          "amount": 2263,
           "unit": "m",
-          "inc_pct": 4.0
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         },
         {
           "start_date": "2025-01-01",
-          "amount": 2263.00,
-          "unit": "m"
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step": "10",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 2829.00,
-          "unit": "m"
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step": "11",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 2908.00,
-          "unit": "m"
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step": "14",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 3449.00,
-          "unit": "m"
-        }
-      ]
-    },
-    {
-      "jobgroup": "1",
-      "step": "15",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2025-01-01",
-          "amount": 3524.00,
-          "unit": "m"
+          "amount": 2263,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         }
       ]
     },
@@ -122,26 +113,29 @@ Finish reason: MAX_TOKENS
       "timeline": [
         {
           "start_date": "2023-07-01",
-          "amount": 2142.00,
+          "amount": 2142,
           "unit": "m",
-          "inc_pct": 7.0
+          "inc_pct": 7
         },
         {
           "start_date": "2024-01-01",
-          "amount": 2228.00,
+          "amount": 2228,
           "unit": "m",
-          "inc_pct": 4.0
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         },
         {
           "start_date": "2024-07-01",
-          "amount": 2317.00,
+          "amount": 2317,
           "unit": "m",
-          "inc_pct": 4.0
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         },
         {
           "start_date": "2025-01-01",
-          "amount": 2317.00,
-          "unit": "m"
+          "amount": 2317,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         }
       ]
     },
@@ -152,26 +146,29 @@ Finish reason: MAX_TOKENS
       "timeline": [
         {
           "start_date": "2023-07-01",
-          "amount": 2196.00,
+          "amount": 2196,
           "unit": "m",
-          "inc_pct": 7.0
+          "inc_pct": 7
         },
         {
           "start_date": "2024-01-01",
-          "amount": 2284.00,
+          "amount": 2284,
           "unit": "m",
-          "inc_pct": 4.0
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         },
         {
           "start_date": "2024-07-01",
-          "amount": 2375.00,
+          "amount": 2375,
           "unit": "m",
-          "inc_pct": 4.0
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         },
         {
           "start_date": "2025-01-01",
-          "amount": 2375.00,
-          "unit": "m"
+          "amount": 2375,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         }
       ]
     },
@@ -182,26 +179,29 @@ Finish reason: MAX_TOKENS
       "timeline": [
         {
           "start_date": "2023-07-01",
-          "amount": 2246.00,
+          "amount": 2246,
           "unit": "m",
-          "inc_pct": 7.0
+          "inc_pct": 7
         },
         {
           "start_date": "2024-01-01",
-          "amount": 2336.00,
+          "amount": 2336,
           "unit": "m",
-          "inc_pct": 4.0
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         },
         {
           "start_date": "2024-07-01",
-          "amount": 2429.00,
+          "amount": 2429,
           "unit": "m",
-          "inc_pct": 4.0
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         },
         {
           "start_date": "2025-01-01",
-          "amount": 2429.00,
-          "unit": "m"
+          "amount": 2429,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         }
       ]
     },
@@ -212,26 +212,29 @@ Finish reason: MAX_TOKENS
       "timeline": [
         {
           "start_date": "2023-07-01",
-          "amount": 2297.00,
+          "amount": 2297,
           "unit": "m",
-          "inc_pct": 7.0
+          "inc_pct": 7
         },
         {
           "start_date": "2024-01-01",
-          "amount": 2389.00,
+          "amount": 2389,
           "unit": "m",
-          "inc_pct": 4.0
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         },
         {
           "start_date": "2024-07-01",
-          "amount": 2485.00,
+          "amount": 2485,
           "unit": "m",
-          "inc_pct": 4.0
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         },
         {
           "start_date": "2025-01-01",
-          "amount": 2485.00,
-          "unit": "m"
+          "amount": 2485,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         }
       ]
     },
@@ -242,26 +245,29 @@ Finish reason: MAX_TOKENS
       "timeline": [
         {
           "start_date": "2023-07-01",
-          "amount": 2354.00,
+          "amount": 2354,
           "unit": "m",
-          "inc_pct": 7.0
+          "inc_pct": 7
         },
         {
           "start_date": "2024-01-01",
-          "amount": 2448.00,
+          "amount": 2448,
           "unit": "m",
-          "inc_pct": 4.0
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         },
         {
           "start_date": "2024-07-01",
-          "amount": 2546.00,
+          "amount": 2546,
           "unit": "m",
-          "inc_pct": 4.0
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         },
         {
           "start_date": "2025-01-01",
-          "amount": 2546.00,
-          "unit": "m"
+          "amount": 2546,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         }
       ]
     },
@@ -272,26 +278,29 @@ Finish reason: MAX_TOKENS
       "timeline": [
         {
           "start_date": "2023-07-01",
-          "amount": 2413.00,
+          "amount": 2413,
           "unit": "m",
-          "inc_pct": 7.0
+          "inc_pct": 7
         },
         {
           "start_date": "2024-01-01",
-          "amount": 2510.00,
+          "amount": 2510,
           "unit": "m",
-          "inc_pct": 4.0
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         },
         {
           "start_date": "2024-07-01",
-          "amount": 2610.00,
+          "amount": 2610,
           "unit": "m",
-          "inc_pct": 4.0
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         },
         {
           "start_date": "2025-01-01",
-          "amount": 2610.00,
-          "unit": "m"
+          "amount": 2610,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
         }
       ]
     },
@@ -302,10 +311,3958 @@ Finish reason: MAX_TOKENS
       "timeline": [
         {
           "start_date": "2023-07-01",
-          "amount": 2468.00,
+          "amount": 2468,
           "unit": "m",
-          "inc_pct": 7.0
+          "inc_pct": 7
         },
         {
           "start_date": "2024-01-01",
-          "amount": 2567
+          "amount": 2567,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2670,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2670,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "1",
+      "step": "9",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2531,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2632,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2737,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2737,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "1",
+      "step": "10",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 2829,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "1",
+      "step": "11",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 2908,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "1",
+      "step": "14",
+      "ft_hours": 36,
+      "row_note": "From 2025-01-01, these periodieknummers replace the former outflow periodieknummers U1 and U2."
+    },
+    {
+      "jobgroup": "1",
+      "step": "15",
+      "ft_hours": 36,
+      "row_note": "From 2025-01-01, these periodieknummers replace the former outflow periodieknummers U1 and U2."
+    },
+    {
+      "jobgroup": "1",
+      "step": "u1",
+      "ft_hours": 36,
+      "row_note": "Outflow periodieknummer. Applicable until 2024-12-31. From 2025-01-01, these become regular periodieknummers 14 and 15."
+    },
+    {
+      "jobgroup": "1",
+      "step": "u2",
+      "ft_hours": 36,
+      "row_note": "Outflow periodieknummer. Applicable until 2024-12-31. From 2025-01-01, these become regular periodieknummers 14 and 15."
+    },
+    {
+      "jobgroup": "1",
+      "step": "a",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "1",
+      "step": "b",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "1",
+      "step": "c",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "1",
+      "step": "d",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "1",
+      "step": "e",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "2",
+      "step": "Start",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2047,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2184,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2214,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2214,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step": "0",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2092,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2184,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2263,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2263,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step": "1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2142,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2228,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2317,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2317,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step": "2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2196,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2284,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2375,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2375,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step": "3",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2246,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2336,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2429,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2429,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step": "4",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2297,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2389,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2485,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2485,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step": "5",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2354,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2448,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2546,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2546,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step": "6",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2413,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2510,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2610,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2610,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step": "7",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2468,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2567,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2670,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2670,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step": "8",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2531,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2632,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2737,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2737,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step": "9",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2615,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2720,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2829,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2829,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step": "10",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2688,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2796,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2908,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2908,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step": "11",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 3002,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step": "12",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 3086,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step": "13",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 3259,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "2",
+      "step": "14",
+      "ft_hours": 36,
+      "row_note": "From 2025-01-01, these periodieknummers replace the former outflow periodieknummers U1 and U2."
+    },
+    {
+      "jobgroup": "2",
+      "step": "15",
+      "ft_hours": 36,
+      "row_note": "From 2025-01-01, these periodieknummers replace the former outflow periodieknummers U1 and U2."
+    },
+    {
+      "jobgroup": "2",
+      "step": "u1",
+      "ft_hours": 36,
+      "row_note": "Outflow periodieknummer. Applicable until 2024-12-31. From 2025-01-01, these become regular periodieknummers 14 and 15."
+    },
+    {
+      "jobgroup": "2",
+      "step": "u2",
+      "ft_hours": 36,
+      "row_note": "Outflow periodieknummer. Applicable until 2024-12-31. From 2025-01-01, these become regular periodieknummers 14 and 15."
+    },
+    {
+      "jobgroup": "2",
+      "step": "a",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "2",
+      "step": "b",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "2",
+      "step": "c",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "2",
+      "step": "d",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "2",
+      "step": "e",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "3",
+      "step": "Start",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2095,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2184,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2266,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2266,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "3",
+      "step": "0",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2142,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2228,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2317,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2317,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "3",
+      "step": "1",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2196,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2284,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2375,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2375,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "3",
+      "step": "2",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2246,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2336,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2429,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2429,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "3",
+      "step": "3",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2297,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2389,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2485,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2485,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "3",
+      "step": "4",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2354,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2448,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2546,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2546,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "3",
+      "step": "5",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2413,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2510,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2610,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2610,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "3",
+      "step": "6",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2468,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2567,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2670,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2670,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "3",
+      "step": "7",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2531,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2632,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2737,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2737,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "3",
+      "step": "8",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2615,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2720,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2829,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2829,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "3",
+      "step": "9",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2688,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2796,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2908,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2908,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "3",
+      "step": "10",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2776,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2887,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3002,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3002,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "3",
+      "step": "11",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2853,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2967,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3086,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3086,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "3",
+      "step": "12",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 3179,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "3",
+      "step": "13",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 3485,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "3",
+      "step": "14",
+      "ft_hours": 36,
+      "row_note": "From 2025-01-01, these periodieknummers replace the former outflow periodieknummers U1 and U2."
+    },
+    {
+      "jobgroup": "3",
+      "step": "15",
+      "ft_hours": 36,
+      "row_note": "From 2025-01-01, these periodieknummers replace the former outflow periodieknummers U1 and U2."
+    },
+    {
+      "jobgroup": "3",
+      "step": "u1",
+      "ft_hours": 36,
+      "row_note": "Outflow periodieknummer. Applicable until 2024-12-31. From 2025-01-01, these become regular periodieknummers 14 and 15."
+    },
+    {
+      "jobgroup": "3",
+      "step": "u2",
+      "ft_hours": 36,
+      "row_note": "Outflow periodieknummer. Applicable until 2024-12-31. From 2025-01-01, these become regular periodieknummers 14 and 15."
+    },
+    {
+      "jobgroup": "3",
+      "step": "a",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "3",
+      "step": "b",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "3",
+      "step": "c",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "3",
+      "step": "d",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "3",
+      "step": "e",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "4",
+      "step": "Start",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2247,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2337,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2430,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2430,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "0",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2297,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2389,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2485,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2485,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "1",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2354,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2448,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2546,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2546,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "2",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2413,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2510,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2610,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2610,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "3",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2468,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2567,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2670,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2670,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "4",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2531,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2632,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2737,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2737,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "5",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2615,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2720,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2829,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2829,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "6",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2688,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2796,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2908,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2908,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "7",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2776,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2887,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3002,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3002,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "8",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2853,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2967,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3086,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3086,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "9",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2939,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3057,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3179,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3179,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "10",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3013,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3134,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3259,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3259,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "11",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3091,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3215,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3344,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3344,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "14",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 3449,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "From 2025-01-01, these periodieknummers replace the former outflow periodieknummers U1 and U2."
+    },
+    {
+      "jobgroup": "4",
+      "step": "15",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 3524,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "From 2025-01-01, these periodieknummers replace the former outflow periodieknummers U1 and U2."
+    },
+    {
+      "jobgroup": "4",
+      "step": "u1",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3152,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3278,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3409,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Outflow periodieknummer. Applicable until 2024-12-31. From 2025-01-01, these become regular periodieknummers 14 and 15."
+    },
+    {
+      "jobgroup": "4",
+      "step": "u2",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3222,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3351,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3485,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Outflow periodieknummer. Applicable until 2024-12-31. From 2025-01-01, these become regular periodieknummers 14 and 15."
+    },
+    {
+      "jobgroup": "4",
+      "step": "a",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3152,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3278,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3409,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3409,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "4",
+      "step": "b",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3222,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3351,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3485,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3485,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "4",
+      "step": "c",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3284,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3415,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3552,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3552,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "4",
+      "step": "d",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3408,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3544,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3686,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3686,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "4",
+      "step": "e",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3489,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3629,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3774,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3774,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "4",
+      "step": "Start",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2273,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2364,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2459,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2459,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "0",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2324,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2417,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2514,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2514,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "1",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2381,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2476,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2575,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2575,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "2",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2441,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2539,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2641,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2641,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "3",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2497,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2597,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2701,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2701,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "4",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2559,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2661,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2767,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2767,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "5",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2644,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2750,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2860,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2860,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "6",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2719,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2828,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2941,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2941,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "7",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2807,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2919,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3036,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3036,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "8",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2886,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3001,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3121,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3121,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "9",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2971,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3090,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3214,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3214,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "10",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3047,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3169,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3296,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3296,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "11",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3125,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3250,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3380,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3380,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "4",
+      "step": "14",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 3449,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "From 2025-01-01, these periodieknummers replace the former outflow periodieknummers U1 and U2."
+    },
+    {
+      "jobgroup": "4",
+      "step": "15",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 3524,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "From 2025-01-01, these periodieknummers replace the former outflow periodieknummers U1 and U2."
+    },
+    {
+      "jobgroup": "4",
+      "step": "u1",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3188,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3316,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3449,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Outflow periodieknummer. Applicable until 2024-12-31. From 2025-01-01, these become regular periodieknummers 14 and 15."
+    },
+    {
+      "jobgroup": "4",
+      "step": "u2",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3258,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3388,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3524,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Outflow periodieknummer. Applicable until 2024-12-31. From 2025-01-01, these become regular periodieknummers 14 and 15."
+    },
+    {
+      "jobgroup": "4",
+      "step": "a",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3188,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3316,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3449,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3449,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "4",
+      "step": "b",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3258,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3388,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3524,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3524,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "4",
+      "step": "c",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3321,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3454,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3592,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3592,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "4",
+      "step": "d",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3446,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3584,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3727,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3727,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "4",
+      "step": "e",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3529,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3670,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3817,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3817,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "5",
+      "step": "Start",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2306,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2398,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2494,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2494,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "0",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2354,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2448,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2546,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2546,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "1",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2413,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2510,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2610,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2610,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "2",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2468,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2567,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2670,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2670,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "3",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2531,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2632,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2737,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2737,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "4",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2615,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2720,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2829,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2829,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "5",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2688,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2796,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2908,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2908,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "6",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2776,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2887,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3002,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3002,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "7",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2853,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2967,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3086,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3086,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "8",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2939,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3057,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3179,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3179,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "9",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3013,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3134,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3259,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3259,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "10",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3091,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3215,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3344,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3344,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "11",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3152,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3278,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3409,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3409,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "12",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3222,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3351,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3485,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3485,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "13",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3284,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3415,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3552,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3552,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "14",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 3727,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "From 2025-01-01, these periodieknummers replace the former outflow periodieknummers U1 and U2."
+    },
+    {
+      "jobgroup": "5",
+      "step": "15",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 3817,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "From 2025-01-01, these periodieknummers replace the former outflow periodieknummers U1 and U2."
+    },
+    {
+      "jobgroup": "5",
+      "step": "u1",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3408,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3544,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3686,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Outflow periodieknummer. Applicable until 2024-12-31. From 2025-01-01, these become regular periodieknummers 14 and 15."
+    },
+    {
+      "jobgroup": "5",
+      "step": "u2",
+      "worker": "Standard",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3489,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3629,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3774,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Outflow periodieknummer. Applicable until 2024-12-31. From 2025-01-01, these become regular periodieknummers 14 and 15."
+    },
+    {
+      "jobgroup": "5",
+      "step": "a",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3408,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3544,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3686,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3686,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "5",
+      "step": "b",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3489,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3629,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3774,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3774,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "5",
+      "step": "c",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3577,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3720,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3869,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3869,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "5",
+      "step": "d",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3668,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3815,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3968,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3968,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "5",
+      "step": "e",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3745,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3895,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 4051,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 4051,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Only applicable to employees employed before December 31, 2003. Amounts are indexed with CAO wage increases."
+    },
+    {
+      "jobgroup": "5",
+      "step": "Start",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2333,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2426,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2523,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2523,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "0",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2381,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2476,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2575,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2575,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "1",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2441,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2539,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2641,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2641,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "2",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2497,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2597,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2701,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2701,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "3",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2559,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2661,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2767,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2767,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "4",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2644,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2750,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2860,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2860,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "5",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2719,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2828,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 2941,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 2941,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "6",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2807,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 2919,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3036,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3036,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "7",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2886,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3001,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3121,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3121,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "8",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 2971,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3090,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3214,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3214,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "9",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3047,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3169,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3296,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3296,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "10",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3125,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3250,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3380,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3380,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "11",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3188,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3316,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3449,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3449,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "12",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3258,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3388,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3524,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3524,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "13",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3321,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3454,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3592,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2025-01-01",
+          "amount": 3592,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ]
+    },
+    {
+      "jobgroup": "5",
+      "step": "14",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 3727,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "From 2025-01-01, these periodieknummers replace the former outflow periodieknummers U1 and U2."
+    },
+    {
+      "jobgroup": "5",
+      "step": "15",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2025-01-01",
+          "amount": 3817,
+          "unit": "m",
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "From 2025-01-01, these periodieknummers replace the former outflow periodieknummers U1 and U2."
+    },
+    {
+      "jobgroup": "5",
+      "step": "u1",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3446,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3584,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3727,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Outflow periodieknummer. Applicable until 2024-12-31. From 2025-01-01, these become regular periodieknummers 14 and 15."
+    },
+    {
+      "jobgroup": "5",
+      "step": "u2",
+      "worker": "Primary process (including labor market allowance)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3529,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3670,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount": 3817,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        }
+      ],
+      "row_note": "Outflow periodieknummer. Applicable until 2024-12-31. From 2025-01-01, these become regular periodieknummers 14 and 15."
+    },
+    {
+      "jobgroup": "5",
+      "step": "a",
+      "worker": "Guarantee (employed before 2003-12-31)",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2023-07-01",
+          "amount": 3446,
+          "unit": "m",
+          "inc_pct": 7
+        },
+        {
+          "start_date": "2024-01-01",
+          "amount": 3584,
+          "unit": "m",
+          "inc_pct": 4,
+          "note": "Minimum wage floor of €14/hour or €2,184/month applies."
+        },
+        {
+          "start_date": "2024-07-01",
+          "amount

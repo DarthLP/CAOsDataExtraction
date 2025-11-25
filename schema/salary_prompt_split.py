@@ -23,9 +23,13 @@ SALARY_PROMPT_SPLIT_ATTEMPT_9 = """Extract structured salary data from a JSON ob
     Filename: {filename}
     Source text: {source_json}
 
+    FIELD NAME ABBREVIATIONS
+    Field names are abbreviations to minimize JSON output size. Each field description follows this structure: original field name: description. Omit condition (if applicable): when to omit this field.
+
     CRITICAL RULES
         - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess.
         - Missing values: Omit optional fields entirely. Only include optional fields with actual values.
+        - DO NOT include null values in JSON output. If an optional field has no value, omit the entire field/key from the JSON object. Including null wastes tokens and may cause truncation.
         - Output ONLY valid JSON format matching the provided schema structure.
         - EXTRACT APPROXIMATELY FIRST 50% OF SALARY ROWS (by order encountered)
         - JOBGROUP BOUNDARY RULE: If you start extracting a jobgroup, you MUST complete ALL rows for that entire jobgroup (all steps, ages, education levels, worker types, contract types for that jobgroup). DO NOT split a jobgroup - finish it completely even if it means extracting slightly more than 50%.
@@ -78,7 +82,7 @@ SALARY_PROMPT_SPLIT_ATTEMPT_9 = """Extract structured salary data from a JSON ob
             7.1) Apply TABLE TIMELINE CONSTRUCTION rules to align job groups, steps, worker types, education levels, age bands, and contract types across table versions.
             7.2) Build one SalaryRow for every unique detected combination of (jobgroup × step × [worker type] × [age] × [education] × [contract type]) within the jobgroups you're extracting.
             7.3) Build timeline: For each SalaryRow, create one SalaryPoint per version/time period where that combination appears, then normalize labels (jobgroup/step/worker type/age/education/contract type), deduplicate identical periods, and align all points that refer to the same combination across versions (no imputation).
-        8) SORT & CLEAN each row's timeline chronologically by start_date. Omit or nullify any fields not explicitly printed in the source.
+        8) SORT & CLEAN each row's timeline chronologically by start_date. Omit if possible any fields not explicitly printed in the source.
         9) VERIFY (SOURCE-GROUNDED) that every extracted number/date/percentage/unit/clause is explicitly present in the input. Remove or correct anything not grounded.
         10) VALIDATE (SCHEMA & JSON) that the output is a valid JSON object that conforms exactly to the Pydantic schema (keys, types, null/""/omit conventions).
         11) OUTPUT only the final JSON.
@@ -89,7 +93,7 @@ SALARY_PROMPT_SPLIT_ATTEMPT_9 = """Extract structured salary data from a JSON ob
         - Schema summary (orientation only; responseSchema enforces structure):
             Output a single JSON object:
             {{
-            "salary_information": [ SalaryRow, ... ]
+            "si": [ SalaryRow, ... ]
             }}
         
     """
@@ -108,9 +112,13 @@ SALARY_PROMPT_SPLIT_ATTEMPT_10 = """Extract structured salary data from a JSON o
     Source text: {source_json}
     Already extracted (first half): {already_extracted_json}
 
+    FIELD NAME ABBREVIATIONS
+    Field names are abbreviations to minimize JSON output size. Each field description follows this structure: original field name: description. Omit condition (if applicable): when to omit this field.
+
     CRITICAL RULES
         - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess.
         - Missing values: Omit optional fields entirely. Only include optional fields with actual values.
+        - DO NOT include null values in JSON output. If an optional field has no value, omit the entire field/key from the JSON object. Including null wastes tokens and may cause truncation.
         - Output ONLY valid JSON format matching the provided schema structure.
         - EXTRACT ONLY REMAINING SALARY ROWS (jobgroups NOT in already_extracted)
         - SKIP all jobgroups that appear in the "already extracted" data - do not duplicate them
@@ -177,7 +185,7 @@ SALARY_PROMPT_SPLIT_ATTEMPT_10 = """Extract structured salary data from a JSON o
             - If same note appears for multiple rows with same jobgroup/step/age pattern: include once only
             - If same note applies to different jobgroups/steps/ages: use reference format "Note: [text] (applies to jobgroups A1-A10, steps 1-5)"
             - Keep all notes extremely concise (max 20 words, single sentence)
-        10) SORT & CLEAN each row's timeline chronologically by start_date. Omit or nullify any fields not explicitly printed in the source.
+        10) SORT & CLEAN each row's timeline chronologically by start_date. Omit if possible any fields not explicitly printed in the source.
         11) VERIFY (SOURCE-GROUNDED) that every extracted number/date/percentage/unit/clause is explicitly present in the input. Remove or correct anything not grounded.
         12) VALIDATE (SCHEMA & JSON) that the output is a valid JSON object that conforms exactly to the Pydantic schema (keys, types, null/""/omit conventions).
         13) OUTPUT only the final JSON.
@@ -189,7 +197,7 @@ SALARY_PROMPT_SPLIT_ATTEMPT_10 = """Extract structured salary data from a JSON o
         - Schema summary (orientation only; responseSchema enforces structure):
             Output a single JSON object:
             {{
-            "salary_information": [ SalaryRow, ... ]
+            "si": [ SalaryRow, ... ]
             }}
         
     """

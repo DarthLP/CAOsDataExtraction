@@ -192,6 +192,7 @@ SALARY_PROMPT = """Extract structured salary data from a JSON object derived fro
     CRITICAL RULES
         - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess.
         - Missing values: Omit optional fields entirely. Only include optional fields with actual values.
+        - DO NOT include null values in JSON output. If an optional field has no value, omit the entire field/key from the JSON object. Including null wastes tokens and may cause truncation.
         - Output ONLY valid JSON format matching the provided schema structure.
 
     TABLE SELECTION
@@ -236,7 +237,7 @@ SALARY_PROMPT = """Extract structured salary data from a JSON object derived fro
             5.1) Apply TABLE TIMELINE CONSTRUCTION rules to align job groups, steps, worker types, education levels, age bands, and contract types across table versions.
             5.2) Build one SalaryRow for every unique detected combination of (jobgroup × step × [worker type] × [age] × [education] × [contract type]).
             5.3) Build timeline: For each SalaryRow, create one SalaryPoint per version/time period where that combination appears, then normalize labels (jobgroup/step/worker type/age/education/contract type), deduplicate identical periods, and align all points that refer to the same combination across versions (no imputation).
-        6) SORT & CLEAN each row's timeline chronologically by start_date. Omit or nullify any fields not explicitly printed in the source.
+        6) SORT & CLEAN each row's timeline chronologically by start_date. Omit if possible any fields not explicitly printed in the source.
         7) VERIFY (SOURCE-GROUNDED) that every extracted number/date/percentage/unit/clause is explicitly present in the input. Remove or correct anything not grounded.
         8) VALIDATE (SCHEMA & JSON) that the output is a valid JSON object that conforms exactly to the Pydantic schema (keys, types, null/""/omit conventions).
         9) OUTPUT only the final JSON.

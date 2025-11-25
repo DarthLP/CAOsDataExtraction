@@ -1,7 +1,7 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: 01_CAO_BAKKERSBEDRIJF_1_OKTOBER_2016_extract.json
-Timestamp: 2025-11-18T06:56:44.715566
-Response length: 116626 characters
+Timestamp: 2025-11-24T03:04:29.801610
+Response length: 143463 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
@@ -11,6 +11,7 @@ Finish reason: MAX_TOKENS
       "jobgroup": "Scale 1",
       "step": "Functiejaren 0",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -34,8 +35,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 1",
+      "step": "Functiejaren 0",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 10.15,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 10.35,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 10.53,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 1",
       "step": "Functiejaren 1",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -59,8 +87,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 1",
+      "step": "Functiejaren 1",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 10.84,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 11.06,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 11.25,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 1",
       "step": "Functiejaren 2",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -84,8 +139,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 1",
+      "step": "Functiejaren 2",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 11.17,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 11.39,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 11.59,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 1",
       "step": "Functiejaren 3",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -109,8 +191,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 1",
+      "step": "Functiejaren 3",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 11.50,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 11.73,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 11.94,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 1",
       "step": "Functiejaren 4",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -134,8 +243,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 1",
+      "step": "Functiejaren 4",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 11.83,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 12.07,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 12.28,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 1",
       "step": "Functiejaren 5",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -159,8 +295,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 1",
+      "step": "Functiejaren 5",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.15,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 12.39,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 12.61,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 1",
       "step": "Functiejaren 6",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -184,8 +347,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 1",
+      "step": "Functiejaren 6",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.47,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 12.72,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 12.94,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 1",
       "step": "Functiejaren 7",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -209,8 +399,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 1",
+      "step": "Functiejaren 7",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.81,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.07,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.30,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 1",
       "step": "Functiejaren 8",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -234,8 +451,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 1",
+      "step": "Functiejaren 8",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.14,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.40,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.63,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 1",
       "step": "Functiejaren 9",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -259,412 +503,36 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 1",
-      "age_group": "22",
+      "step": "Functiejaren 9",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
-          "amount": 10.15,
+          "amount": 13.46,
           "unit": "h"
         },
         {
-          "start_date": "2017-08-13",
-          "amount": 10.30,
+          "start_date": "2017-06-18",
+          "amount": 13.73,
           "unit": "h",
-          "inc_pct": 1.5
+          "inc_pct": 2
         },
         {
           "start_date": "2018-06-17",
-          "amount": 10.43,
+          "amount": 13.97,
           "unit": "h",
-          "inc_pct": 1.25
+          "inc_pct": 1.75
         }
       ],
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
     },
     {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 0",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 13.91,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 14.12,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 14.30,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 1",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 14.59,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 14.81,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 15.00,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
+      "jobgroup": "Scale 1",
       "step": "Functiejaren 10",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 20.90,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 21.21,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 21.48,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 11",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 21.60,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 21.92,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 22.19,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 12",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 22.30,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 22.63,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 22.91,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 13",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 22.99,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 23.33,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 23.62,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 14",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 23.70,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 24.06,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 24.36,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 2",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 15.31,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 15.54,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 15.73,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 3",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 16.01,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 16.25,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 16.45,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 4",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 16.69,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 16.94,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 17.15,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 5",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 17.40,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 17.66,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 17.88,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 6",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 18.11,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 18.38,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 18.61,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 7",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 18.80,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 19.08,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 19.32,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 8",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 19.50,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 19.79,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 20.04,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 9",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 20.20,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 20.50,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 20.76,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "age_group": "22",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 13.91,
-          "unit": "h"
-        },
         {
           "start_date": "2017-08-13",
           "amount": 14.12,
@@ -681,15 +549,37 @@ Finish reason: MAX_TOKENS
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
     },
     {
-      "jobgroup": "Scale 11",
-      "step": "Functiejaren 0",
-      "worker": "Ambachtelijke bakkerij",
+      "jobgroup": "Scale 1",
+      "step": "Functiejaren 10",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
-          "amount": 14.48,
+          "amount": 13.91,
           "unit": "h"
         },
+        {
+          "start_date": "2017-06-18",
+          "amount": 14.19,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 14.44,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 1",
+      "step": "Functiejaren 11",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
         {
           "start_date": "2017-08-13",
           "amount": 14.70,
@@ -706,84 +596,57 @@ Finish reason: MAX_TOKENS
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
     },
     {
-      "jobgroup": "Scale 11",
-      "step": "Functiejaren 1",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 15.26,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 15.49,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 15.68,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 11",
-      "step": "Functiejaren 10",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 22.33,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 22.66,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 22.94,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 11",
+      "jobgroup": "Scale 1",
       "step": "Functiejaren 11",
-      "worker": "Ambachtelijke bakkerij",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
-          "amount": 23.13,
+          "amount": 14.48,
           "unit": "h"
         },
         {
-          "start_date": "2017-08-13",
-          "amount": 23.48,
+          "start_date": "2017-06-18",
+          "amount": 14.77,
           "unit": "h",
-          "inc_pct": 1.5
+          "inc_pct": 2
         },
         {
           "start_date": "2018-06-17",
-          "amount": 23.77,
+          "amount": 15.03,
           "unit": "h",
-          "inc_pct": 1.25
+          "inc_pct": 1.75
         }
       ],
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
     },
     {
-      "jobgroup": "Scale 11",
+      "jobgroup": "Scale 1",
       "step": "Functiejaren 12",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2017-08-13",
+          "amount": 18.50,
+          "unit": "h",
+          "inc_pct": 1.5
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 18.73,
+          "unit": "h",
+          "inc_pct": 1.25
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 1",
+      "step": "Functiejaren 12",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -791,14 +654,35 @@ Finish reason: MAX_TOKENS
           "unit": "h"
         },
         {
+          "start_date": "2017-06-18",
+          "amount": 24.38,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 24.81,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 1",
+      "step": "Functiejaren 13",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
           "start_date": "2017-08-13",
-          "amount": 24.26,
+          "amount": 20.00,
           "unit": "h",
           "inc_pct": 1.5
         },
         {
           "start_date": "2018-06-17",
-          "amount": 24.56,
+          "amount": 20.25,
           "unit": "h",
           "inc_pct": 1.25
         }
@@ -806,9 +690,10 @@ Finish reason: MAX_TOKENS
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
     },
     {
-      "jobgroup": "Scale 11",
+      "jobgroup": "Scale 1",
       "step": "Functiejaren 13",
-      "worker": "Ambachtelijke bakkerij",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -816,14 +701,35 @@ Finish reason: MAX_TOKENS
           "unit": "h"
         },
         {
+          "start_date": "2017-06-18",
+          "amount": 25.17,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 25.61,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 1",
+      "step": "Functiejaren 14",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
           "start_date": "2017-08-13",
-          "amount": 25.05,
+          "amount": 21.95,
           "unit": "h",
           "inc_pct": 1.5
         },
         {
           "start_date": "2018-06-17",
-          "amount": 25.36,
+          "amount": 22.22,
           "unit": "h",
           "inc_pct": 1.25
         }
@@ -831,9 +737,10 @@ Finish reason: MAX_TOKENS
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
     },
     {
-      "jobgroup": "Scale 11",
+      "jobgroup": "Scale 1",
       "step": "Functiejaren 14",
-      "worker": "Ambachtelijke bakkerij",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -841,30 +748,26 @@ Finish reason: MAX_TOKENS
           "unit": "h"
         },
         {
-          "start_date": "2017-08-13",
-          "amount": 25.85,
+          "start_date": "2017-06-18",
+          "amount": 25.98,
           "unit": "h",
-          "inc_pct": 1.5
+          "inc_pct": 2
         },
         {
           "start_date": "2018-06-17",
-          "amount": 26.17,
+          "amount": 26.43,
           "unit": "h",
-          "inc_pct": 1.25
+          "inc_pct": 1.75
         }
       ],
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
     },
     {
-      "jobgroup": "Scale 11",
+      "jobgroup": "Scale 1",
       "step": "Functiejaren 15",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 26.26,
-          "unit": "h"
-        },
         {
           "start_date": "2017-08-13",
           "amount": 26.65,
@@ -881,225 +784,27 @@ Finish reason: MAX_TOKENS
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
     },
     {
-      "jobgroup": "Scale 11",
-      "step": "Functiejaren 2",
-      "worker": "Ambachtelijke bakkerij",
+      "jobgroup": "Scale 1",
+      "step": "Functiejaren 15",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
-          "amount": 16.06,
+          "amount": 26.26,
           "unit": "h"
         },
         {
-          "start_date": "2017-08-13",
-          "amount": 16.30,
+          "start_date": "2017-06-18",
+          "amount": 26.79,
           "unit": "h",
-          "inc_pct": 1.5
+          "inc_pct": 2
         },
         {
           "start_date": "2018-06-17",
-          "amount": 16.50,
+          "amount": 27.26,
           "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 11",
-      "step": "Functiejaren 3",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 16.84,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 17.09,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 17.30,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 11",
-      "step": "Functiejaren 4",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 17.62,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 17.88,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 18.10,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 11",
-      "step": "Functiejaren 5",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 18.41,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 18.69,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 18.92,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 11",
-      "step": "Functiejaren 6",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 19.20,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 19.49,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 19.73,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 11",
-      "step": "Functiejaren 7",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 19.99,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 20.29,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 20.54,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 11",
-      "step": "Functiejaren 8",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 20.75,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 21.06,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 21.32,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 11",
-      "step": "Functiejaren 9",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 21.55,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 21.87,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 22.14,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 11",
-      "age_group": "22",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 14.48,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 14.70,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 14.88,
-          "unit": "h",
-          "inc_pct": 1.25
+          "inc_pct": 1.75
         }
       ],
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
@@ -1108,6 +813,7 @@ Finish reason: MAX_TOKENS
       "jobgroup": "Scale 2",
       "step": "Functiejaren 0",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1131,8 +837,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 2",
+      "step": "Functiejaren 0",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 11.66,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 11.89,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 12.10,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 2",
       "step": "Functiejaren 1",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1156,8 +889,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 2",
+      "step": "Functiejaren 1",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 11.89,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 12.13,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 12.34,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 2",
       "step": "Functiejaren 2",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1181,8 +941,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 2",
+      "step": "Functiejaren 2",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.12,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 12.36,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 12.58,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 2",
       "step": "Functiejaren 3",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1206,8 +993,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 2",
+      "step": "Functiejaren 3",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.35,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 12.60,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 12.82,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 2",
       "step": "Functiejaren 4",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1231,8 +1045,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 2",
+      "step": "Functiejaren 4",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.58,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 12.83,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.05,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 2",
       "step": "Functiejaren 5",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1256,8 +1097,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 2",
+      "step": "Functiejaren 5",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.82,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.08,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.31,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 2",
       "step": "Functiejaren 6",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1281,8 +1149,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 2",
+      "step": "Functiejaren 6",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.04,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.30,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.53,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 2",
       "step": "Functiejaren 7",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1306,8 +1201,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 2",
+      "step": "Functiejaren 7",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.29,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.56,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.80,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 2",
       "step": "Functiejaren 8",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1331,8 +1253,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 2",
+      "step": "Functiejaren 8",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.51,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.78,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 14.02,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 2",
       "step": "Functiejaren 9",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1356,24 +1305,120 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 2",
-      "age_group": "22",
+      "step": "Functiejaren 9",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
-          "amount": 11.66,
+          "amount": 13.77,
           "unit": "h"
         },
         {
+          "start_date": "2017-06-18",
+          "amount": 14.05,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 14.30,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "Functiejaren 10",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
           "start_date": "2017-08-13",
-          "amount": 11.83,
+          "amount": 14.81,
           "unit": "h",
           "inc_pct": 1.5
         },
         {
           "start_date": "2018-06-17",
-          "amount": 11.98,
+          "amount": 15.00,
           "unit": "h",
           "inc_pct": 1.25
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "Functiejaren 10",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 14.59,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 14.88,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 15.14,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "Functiejaren 11",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2017-08-13",
+          "amount": 15.49,
+          "unit": "h",
+          "inc_pct": 1.5
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 15.68,
+          "unit": "h",
+          "inc_pct": 1.25
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 2",
+      "step": "Functiejaren 11",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 15.26,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 15.57,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 15.84,
+          "unit": "h",
+          "inc_pct": 1.75
         }
       ],
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
@@ -1382,6 +1427,7 @@ Finish reason: MAX_TOKENS
       "jobgroup": "Scale 3",
       "step": "Functiejaren 0",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1405,8 +1451,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 3",
+      "step": "Functiejaren 0",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 11.86,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 12.10,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 12.31,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 3",
       "step": "Functiejaren 1",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1430,8 +1503,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 3",
+      "step": "Functiejaren 1",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.12,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 12.36,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 12.58,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 3",
       "step": "Functiejaren 2",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1455,8 +1555,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 3",
+      "step": "Functiejaren 2",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.38,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 12.63,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 12.85,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 3",
       "step": "Functiejaren 3",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1480,8 +1607,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 3",
+      "step": "Functiejaren 3",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.64,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 12.89,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.12,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 3",
       "step": "Functiejaren 4",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1505,8 +1659,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 3",
+      "step": "Functiejaren 4",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.91,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.17,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.40,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 3",
       "step": "Functiejaren 5",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1530,8 +1711,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 3",
+      "step": "Functiejaren 5",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.18,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.44,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.68,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 3",
       "step": "Functiejaren 6",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1555,8 +1763,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 3",
+      "step": "Functiejaren 6",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.44,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.71,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.95,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 3",
       "step": "Functiejaren 7",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1580,8 +1815,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 3",
+      "step": "Functiejaren 7",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.73,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 14.00,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 14.25,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 3",
       "step": "Functiejaren 8",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1605,8 +1867,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 3",
+      "step": "Functiejaren 8",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.98,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 14.26,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 14.51,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 3",
       "step": "Functiejaren 9",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1630,24 +1919,120 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 3",
-      "age_group": "22",
+      "step": "Functiejaren 9",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
-          "amount": 11.86,
+          "amount": 14.25,
           "unit": "h"
         },
         {
+          "start_date": "2017-06-18",
+          "amount": 14.54,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 14.79,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "Functiejaren 10",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
           "start_date": "2017-08-13",
-          "amount": 12.04,
+          "amount": 15.54,
           "unit": "h",
           "inc_pct": 1.5
         },
         {
           "start_date": "2018-06-17",
-          "amount": 12.19,
+          "amount": 15.73,
           "unit": "h",
           "inc_pct": 1.25
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "Functiejaren 10",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 15.31,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 15.62,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 15.89,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "Functiejaren 11",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2017-08-13",
+          "amount": 16.30,
+          "unit": "h",
+          "inc_pct": 1.5
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 16.50,
+          "unit": "h",
+          "inc_pct": 1.25
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 3",
+      "step": "Functiejaren 11",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 16.06,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 16.38,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 16.67,
+          "unit": "h",
+          "inc_pct": 1.75
         }
       ],
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
@@ -1656,6 +2041,7 @@ Finish reason: MAX_TOKENS
       "jobgroup": "Scale 4",
       "step": "Functiejaren 0",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1679,8 +2065,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 4",
+      "step": "Functiejaren 0",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.05,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 12.29,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 12.51,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 4",
       "step": "Functiejaren 1",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1704,25 +2117,26 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 4",
-      "step": "Functiejaren 10",
-      "worker": "Ambachtelijke bakkerij",
+      "step": "Functiejaren 1",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
-          "amount": 15.01,
+          "amount": 12.34,
           "unit": "h"
         },
         {
-          "start_date": "2017-08-13",
-          "amount": 15.24,
+          "start_date": "2017-06-18",
+          "amount": 12.59,
           "unit": "h",
-          "inc_pct": 1.5
+          "inc_pct": 2
         },
         {
           "start_date": "2018-06-17",
-          "amount": 15.43,
+          "amount": 12.81,
           "unit": "h",
-          "inc_pct": 1.25
+          "inc_pct": 1.75
         }
       ],
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
@@ -1731,6 +2145,7 @@ Finish reason: MAX_TOKENS
       "jobgroup": "Scale 4",
       "step": "Functiejaren 2",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1754,8 +2169,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 4",
+      "step": "Functiejaren 2",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.63,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 12.88,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.11,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 4",
       "step": "Functiejaren 3",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1779,8 +2221,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 4",
+      "step": "Functiejaren 3",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.93,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.19,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.42,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 4",
       "step": "Functiejaren 4",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1804,8 +2273,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 4",
+      "step": "Functiejaren 4",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.24,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.50,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.74,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 4",
       "step": "Functiejaren 5",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1829,8 +2325,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 4",
+      "step": "Functiejaren 5",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.53,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.80,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 14.04,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 4",
       "step": "Functiejaren 6",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1854,8 +2377,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 4",
+      "step": "Functiejaren 6",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.84,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 14.12,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 14.37,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 4",
       "step": "Functiejaren 7",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1879,8 +2429,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 4",
+      "step": "Functiejaren 7",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 14.12,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 14.40,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 14.65,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 4",
       "step": "Functiejaren 8",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1904,8 +2481,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 4",
+      "step": "Functiejaren 8",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 14.42,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 14.71,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 14.97,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 4",
       "step": "Functiejaren 9",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1929,24 +2533,125 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 4",
-      "age_group": "22",
+      "step": "Functiejaren 9",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
-          "amount": 12.05,
+          "amount": 14.70,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 14.99,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 15.25,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "Functiejaren 10",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 15.01,
           "unit": "h"
         },
         {
           "start_date": "2017-08-13",
-          "amount": 12.23,
+          "amount": 15.24,
           "unit": "h",
           "inc_pct": 1.5
         },
         {
           "start_date": "2018-06-17",
-          "amount": 12.38,
+          "amount": 15.43,
           "unit": "h",
           "inc_pct": 1.25
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "Functiejaren 10",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 15.01,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 15.31,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 15.58,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "Functiejaren 11",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2017-08-13",
+          "amount": 21.92,
+          "unit": "h",
+          "inc_pct": 1.5
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 22.19,
+          "unit": "h",
+          "inc_pct": 1.25
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 4",
+      "step": "Functiejaren 11",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 21.60,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 22.03,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 22.42,
+          "unit": "h",
+          "inc_pct": 1.75
         }
       ],
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
@@ -1955,6 +2660,7 @@ Finish reason: MAX_TOKENS
       "jobgroup": "Scale 5",
       "step": "Functiejaren 0",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -1978,8 +2684,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 5",
+      "step": "Functiejaren 0",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.32,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 12.57,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 12.79,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 5",
       "step": "Functiejaren 1",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2003,50 +2736,26 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 5",
-      "step": "Functiejaren 10",
-      "worker": "Ambachtelijke bakkerij",
+      "step": "Functiejaren 1",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
-          "amount": 15.61,
+          "amount": 12.64,
           "unit": "h"
         },
         {
-          "start_date": "2017-08-13",
-          "amount": 15.84,
+          "start_date": "2017-06-18",
+          "amount": 12.89,
           "unit": "h",
-          "inc_pct": 1.5
+          "inc_pct": 2
         },
         {
           "start_date": "2018-06-17",
-          "amount": 16.04,
+          "amount": 13.12,
           "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 5",
-      "step": "Functiejaren 11",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 15.95,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 16.19,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 16.39,
-          "unit": "h",
-          "inc_pct": 1.25
+          "inc_pct": 1.75
         }
       ],
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
@@ -2055,6 +2764,7 @@ Finish reason: MAX_TOKENS
       "jobgroup": "Scale 5",
       "step": "Functiejaren 2",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2078,8 +2788,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 5",
+      "step": "Functiejaren 2",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.97,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.23,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.46,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 5",
       "step": "Functiejaren 3",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2103,8 +2840,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 5",
+      "step": "Functiejaren 3",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.31,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.58,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.82,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 5",
       "step": "Functiejaren 4",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2128,8 +2892,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 5",
+      "step": "Functiejaren 4",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.64,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.91,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 14.15,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 5",
       "step": "Functiejaren 5",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2153,8 +2944,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 5",
+      "step": "Functiejaren 5",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.97,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 14.25,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 14.50,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 5",
       "step": "Functiejaren 6",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2178,8 +2996,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 5",
+      "step": "Functiejaren 6",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 14.30,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 14.59,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 14.85,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 5",
       "step": "Functiejaren 7",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2203,8 +3048,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 5",
+      "step": "Functiejaren 7",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 14.61,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 14.90,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 15.16,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 5",
       "step": "Functiejaren 8",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2228,8 +3100,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 5",
+      "step": "Functiejaren 8",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 14.95,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 15.25,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 15.52,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 5",
       "step": "Functiejaren 9",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2253,24 +3152,130 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 5",
-      "age_group": "22",
+      "step": "Functiejaren 9",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
-          "amount": 12.32,
+          "amount": 15.29,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 15.60,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 15.87,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "Functiejaren 10",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 15.61,
           "unit": "h"
         },
         {
           "start_date": "2017-08-13",
-          "amount": 12.50,
+          "amount": 15.84,
           "unit": "h",
           "inc_pct": 1.5
         },
         {
           "start_date": "2018-06-17",
-          "amount": 12.66,
+          "amount": 16.04,
           "unit": "h",
           "inc_pct": 1.25
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "Functiejaren 10",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 15.61,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 15.92,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 16.20,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "Functiejaren 11",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 15.95,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-08-13",
+          "amount": 16.19,
+          "unit": "h",
+          "inc_pct": 1.5
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 16.39,
+          "unit": "h",
+          "inc_pct": 1.25
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 5",
+      "step": "Functiejaren 11",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 15.95,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 16.27,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 16.55,
+          "unit": "h",
+          "inc_pct": 1.75
         }
       ],
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
@@ -2279,6 +3284,7 @@ Finish reason: MAX_TOKENS
       "jobgroup": "Scale 6",
       "step": "Functiejaren 0",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2302,8 +3308,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 6",
+      "step": "Functiejaren 0",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.58,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 12.83,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.05,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 6",
       "step": "Functiejaren 1",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2327,8 +3360,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 6",
+      "step": "Functiejaren 1",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.97,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.23,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.46,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 6",
       "step": "Functiejaren 2",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2352,8 +3412,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 6",
+      "step": "Functiejaren 2",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.37,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.64,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.88,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 6",
       "step": "Functiejaren 3",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2377,8 +3464,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 6",
+      "step": "Functiejaren 3",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.78,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 14.06,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 14.31,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 6",
       "step": "Functiejaren 4",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2402,8 +3516,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 6",
+      "step": "Functiejaren 4",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 14.15,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 14.43,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 14.68,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 6",
       "step": "Functiejaren 5",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2427,8 +3568,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 6",
+      "step": "Functiejaren 5",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 14.54,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 14.83,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 15.09,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 6",
       "step": "Functiejaren 6",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2452,8 +3620,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 6",
+      "step": "Functiejaren 6",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 14.94,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 15.24,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 15.51,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 6",
       "step": "Functiejaren 7",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2477,8 +3672,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 6",
+      "step": "Functiejaren 7",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 15.34,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 15.65,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 15.92,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 6",
       "step": "Functiejaren 8",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2502,8 +3724,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 6",
+      "step": "Functiejaren 8",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 15.72,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 16.03,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 16.31,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 6",
       "step": "Functiejaren 9",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2527,24 +3776,130 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 6",
-      "age_group": "22",
+      "step": "Functiejaren 9",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
-          "amount": 12.58,
+          "amount": 16.12,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 16.44,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 16.73,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "Functiejaren 10",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 16.51,
           "unit": "h"
         },
         {
           "start_date": "2017-08-13",
-          "amount": 12.77,
+          "amount": 16.76,
           "unit": "h",
           "inc_pct": 1.5
         },
         {
           "start_date": "2018-06-17",
-          "amount": 12.93,
+          "amount": 16.97,
           "unit": "h",
           "inc_pct": 1.25
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "Functiejaren 10",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 16.51,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 16.84,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 17.13,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "Functiejaren 11",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 16.90,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-08-13",
+          "amount": 17.15,
+          "unit": "h",
+          "inc_pct": 1.5
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 17.36,
+          "unit": "h",
+          "inc_pct": 1.25
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 6",
+      "step": "Functiejaren 11",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 16.90,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 17.24,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 17.54,
+          "unit": "h",
+          "inc_pct": 1.75
         }
       ],
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
@@ -2553,6 +3908,7 @@ Finish reason: MAX_TOKENS
       "jobgroup": "Scale 7",
       "step": "Functiejaren 0",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2576,8 +3932,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 7",
+      "step": "Functiejaren 0",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 12.76,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.02,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.25,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 7",
       "step": "Functiejaren 1",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2601,75 +3984,26 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 7",
-      "step": "Functiejaren 10",
-      "worker": "Ambachtelijke bakkerij",
+      "step": "Functiejaren 1",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
-          "amount": 17.31,
+          "amount": 13.22,
           "unit": "h"
         },
         {
-          "start_date": "2017-08-13",
-          "amount": 17.57,
+          "start_date": "2017-06-18",
+          "amount": 13.48,
           "unit": "h",
-          "inc_pct": 1.5
+          "inc_pct": 2
         },
         {
           "start_date": "2018-06-17",
-          "amount": 17.79,
+          "amount": 13.72,
           "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 7",
-      "step": "Functiejaren 11",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 17.78,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 18.05,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 18.28,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 7",
-      "step": "Functiejaren 12",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 18.23,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 18.50,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 18.73,
-          "unit": "h",
-          "inc_pct": 1.25
+          "inc_pct": 1.75
         }
       ],
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
@@ -2678,6 +4012,7 @@ Finish reason: MAX_TOKENS
       "jobgroup": "Scale 7",
       "step": "Functiejaren 2",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2701,8 +4036,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 7",
+      "step": "Functiejaren 2",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.67,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.94,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 14.18,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 7",
       "step": "Functiejaren 3",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2726,8 +4088,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 7",
+      "step": "Functiejaren 3",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 14.12,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 14.40,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 14.65,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 7",
       "step": "Functiejaren 4",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2751,8 +4140,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 7",
+      "step": "Functiejaren 4",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 14.57,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 14.86,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 15.12,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 7",
       "step": "Functiejaren 5",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2776,8 +4192,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 7",
+      "step": "Functiejaren 5",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 15.03,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 15.33,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 15.60,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 7",
       "step": "Functiejaren 6",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2801,8 +4244,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 7",
+      "step": "Functiejaren 6",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 15.49,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 15.80,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 16.08,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 7",
       "step": "Functiejaren 7",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2826,8 +4296,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 7",
+      "step": "Functiejaren 7",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 15.96,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 16.28,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 16.56,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 7",
       "step": "Functiejaren 8",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2851,8 +4348,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 7",
+      "step": "Functiejaren 8",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 16.41,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 16.74,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 17.03,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 7",
       "step": "Functiejaren 9",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2876,24 +4400,182 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 7",
-      "age_group": "22",
+      "step": "Functiejaren 9",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
-          "amount": 12.76,
+          "amount": 16.86,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 17.20,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 17.50,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "Functiejaren 10",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 17.31,
           "unit": "h"
         },
         {
           "start_date": "2017-08-13",
-          "amount": 12.95,
+          "amount": 17.57,
           "unit": "h",
           "inc_pct": 1.5
         },
         {
           "start_date": "2018-06-17",
-          "amount": 13.11,
+          "amount": 17.79,
           "unit": "h",
           "inc_pct": 1.25
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "Functiejaren 10",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 17.31,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 17.66,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 17.97,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "Functiejaren 11",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 17.78,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-08-13",
+          "amount": 18.05,
+          "unit": "h",
+          "inc_pct": 1.5
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 18.28,
+          "unit": "h",
+          "inc_pct": 1.25
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "Functiejaren 11",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 17.78,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 18.14,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 18.46,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "Functiejaren 12",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 18.23,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-08-13",
+          "amount": 18.50,
+          "unit": "h",
+          "inc_pct": 1.5
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 18.73,
+          "unit": "h",
+          "inc_pct": 1.25
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 7",
+      "step": "Functiejaren 12",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 18.23,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 18.59,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 18.92,
+          "unit": "h",
+          "inc_pct": 1.75
         }
       ],
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
@@ -2902,6 +4584,7 @@ Finish reason: MAX_TOKENS
       "jobgroup": "Scale 8",
       "step": "Functiejaren 0",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2925,8 +4608,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 8",
+      "step": "Functiejaren 0",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.10,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.36,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.59,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 8",
       "step": "Functiejaren 1",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -2950,100 +4660,26 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 8",
-      "step": "Functiejaren 10",
-      "worker": "Ambachtelijke bakkerij",
+      "step": "Functiejaren 1",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
-          "amount": 18.19,
+          "amount": 13.60,
           "unit": "h"
         },
         {
-          "start_date": "2017-08-13",
-          "amount": 18.46,
+          "start_date": "2017-06-18",
+          "amount": 13.87,
           "unit": "h",
-          "inc_pct": 1.5
+          "inc_pct": 2
         },
         {
           "start_date": "2018-06-17",
-          "amount": 18.69,
+          "amount": 14.11,
           "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 8",
-      "step": "Functiejaren 11",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 18.69,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 18.97,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 19.21,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 8",
-      "step": "Functiejaren 12",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 19.21,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 19.50,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 19.74,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 8",
-      "step": "Functiejaren 13",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 19.70,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 20.00,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 20.25,
-          "unit": "h",
-          "inc_pct": 1.25
+          "inc_pct": 1.75
         }
       ],
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
@@ -3052,6 +4688,7 @@ Finish reason: MAX_TOKENS
       "jobgroup": "Scale 8",
       "step": "Functiejaren 2",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -3075,8 +4712,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 8",
+      "step": "Functiejaren 2",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 14.11,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 14.39,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 14.64,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 8",
       "step": "Functiejaren 3",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -3100,8 +4764,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 8",
+      "step": "Functiejaren 3",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 14.61,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 14.90,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 15.16,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 8",
       "step": "Functiejaren 4",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -3125,8 +4816,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 8",
+      "step": "Functiejaren 4",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 15.13,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 15.43,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 15.70,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 8",
       "step": "Functiejaren 5",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -3150,8 +4868,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 8",
+      "step": "Functiejaren 5",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 15.64,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 15.95,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 16.23,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 8",
       "step": "Functiejaren 6",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -3175,8 +4920,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 8",
+      "step": "Functiejaren 6",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 16.15,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 16.47,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 16.76,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 8",
       "step": "Functiejaren 7",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -3200,8 +4972,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 8",
+      "step": "Functiejaren 7",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 16.65,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 16.98,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 17.28,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 8",
       "step": "Functiejaren 8",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -3225,8 +5024,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 8",
+      "step": "Functiejaren 8",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 17.17,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 17.51,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 17.82,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 8",
       "step": "Functiejaren 9",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -3250,24 +5076,235 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 8",
-      "age_group": "22",
+      "step": "Functiejaren 9",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
-          "amount": 13.10,
+          "amount": 17.67,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 18.02,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 18.34,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "Functiejaren 10",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 18.19,
           "unit": "h"
         },
         {
           "start_date": "2017-08-13",
-          "amount": 13.30,
+          "amount": 18.46,
           "unit": "h",
           "inc_pct": 1.5
         },
         {
           "start_date": "2018-06-17",
-          "amount": 13.47,
+          "amount": 18.69,
           "unit": "h",
           "inc_pct": 1.25
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "Functiejaren 10",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 18.19,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 18.55,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 18.87,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "Functiejaren 11",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 18.69,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-08-13",
+          "amount": 18.97,
+          "unit": "h",
+          "inc_pct": 1.5
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 19.21,
+          "unit": "h",
+          "inc_pct": 1.25
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "Functiejaren 11",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 18.69,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 19.06,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 19.39,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "Functiejaren 12",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 19.21,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-08-13",
+          "amount": 19.50,
+          "unit": "h",
+          "inc_pct": 1.5
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 19.74,
+          "unit": "h",
+          "inc_pct": 1.25
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "Functiejaren 12",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 19.21,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 19.59,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 19.93,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "Functiejaren 13",
+      "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 19.70,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-08-13",
+          "amount": 20.00,
+          "unit": "h",
+          "inc_pct": 1.5
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 20.25,
+          "unit": "h",
+          "inc_pct": 1.25
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 8",
+      "step": "Functiejaren 13",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 20.09,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 20.09,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 20.44,
+          "unit": "h",
+          "inc_pct": 1.75
         }
       ],
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
@@ -3276,6 +5313,7 @@ Finish reason: MAX_TOKENS
       "jobgroup": "Scale 9",
       "step": "Functiejaren 0",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -3299,8 +5337,35 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 9",
+      "step": "Functiejaren 0",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
+      "timeline": [
+        {
+          "start_date": "2016-10-01",
+          "amount": 13.46,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-06-18",
+          "amount": 13.73,
+          "unit": "h",
+          "inc_pct": 2
+        },
+        {
+          "start_date": "2018-06-17",
+          "amount": 13.97,
+          "unit": "h",
+          "inc_pct": 1.75
+        }
+      ],
+      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
+    },
+    {
+      "jobgroup": "Scale 9",
       "step": "Functiejaren 1",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -3324,125 +5389,26 @@ Finish reason: MAX_TOKENS
     },
     {
       "jobgroup": "Scale 9",
-      "step": "Functiejaren 10",
-      "worker": "Ambachtelijke bakkerij",
+      "step": "Functiejaren 1",
+      "worker": "Industriële bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
-          "amount": 19.30,
+          "amount": 14.05,
           "unit": "h"
         },
         {
-          "start_date": "2017-08-13",
-          "amount": 19.59,
+          "start_date": "2017-06-18",
+          "amount": 14.33,
           "unit": "h",
-          "inc_pct": 1.5
+          "inc_pct": 2
         },
         {
           "start_date": "2018-06-17",
-          "amount": 19.83,
+          "amount": 14.58,
           "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 9",
-      "step": "Functiejaren 11",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 19.89,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 20.19,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 20.44,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 9",
-      "step": "Functiejaren 12",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 20.47,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 20.78,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 21.04,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 9",
-      "step": "Functiejaren 13",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 21.05,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 21.37,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 21.64,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 9",
-      "step": "Functiejaren 14",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 21.63,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 21.95,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 22.22,
-          "unit": "h",
-          "inc_pct": 1.25
+          "inc_pct": 1.75
         }
       ],
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
@@ -3451,6 +5417,7 @@ Finish reason: MAX_TOKENS
       "jobgroup": "Scale 9",
       "step": "Functiejaren 2",
       "worker": "Ambachtelijke bakkerij",
+      "age_group": "22+",
       "timeline": [
         {
           "start_date": "2016-10-01",
@@ -3473,906 +5440,4 @@ Finish reason: MAX_TOKENS
       "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
     },
     {
-      "jobgroup": "Scale 9",
-      "step": "Functiejaren 3",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 15.21,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 15.44,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 15.63,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 9",
-      "step": "Functiejaren 4",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 15.81,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 16.05,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 16.25,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 9",
-      "step": "Functiejaren 5",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 16.38,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 16.63,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 16.84,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 9",
-      "step": "Functiejaren 6",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 16.97,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 17.22,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 17.44,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 9",
-      "step": "Functiejaren 7",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 17.55,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 17.81,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 18.03,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 9",
-      "step": "Functiejaren 8",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 18.14,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 18.41,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 18.64,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 9",
-      "step": "Functiejaren 9",
-      "worker": "Ambachtelijke bakkerij",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 18.71,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 18.99,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 19.23,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 9",
-      "age_group": "22",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 13.46,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 13.66,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 13.83,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 1",
-      "step": "Functiejaren 0",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 8.90,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 9.59,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "These function hourly wages have been adjusted to the statutory minimum wage as of January 1, 2018. The function hourly wages to which collective wage increases are applied are: € 9.03 (22 years)."
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 9.59,
-          "unit": "h",
-          "inc_pct": 1.25,
-          "note": "These function hourly wages have been adjusted to the statutory minimum wage as of January 1, 2018. The function hourly wages to which collective wage increases are applied are: € 9.14 (22 years)."
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 1",
-      "age_group": "22",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 8.90,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 9.59,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "These function hourly wages have been adjusted to the statutory minimum wage as of January 1, 2018. The function hourly wages to which collective wage increases are applied are: € 9.03 (22 years)."
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 9.59,
-          "unit": "h",
-          "inc_pct": 1.25,
-          "note": "These function hourly wages have been adjusted to the statutory minimum wage as of January 1, 2018. The function hourly wages to which collective wage increases are applied are: € 9.14 (22 years)."
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 0",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 13.60,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 13.80,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 13.97,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 1",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 14.16,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 14.37,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 14.55,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 10",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 19.27,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 19.56,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 19.80,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 11",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 19.84,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 20.14,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 20.39,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 2",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 14.73,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 14.95,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 15.14,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 3",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 15.30,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 15.53,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 15.72,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 4",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 15.88,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 16.12,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 16.32,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 5",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 16.43,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 16.68,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 16.89,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 6",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 17.00,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 17.26,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 17.48,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 7",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 17.56,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 17.82,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 18.04,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 8",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 18.14,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 18.41,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 18.64,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "step": "Functiejaren 9",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 18.69,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 18.97,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 19.21,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 10",
-      "age_group": "22",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 13.60,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 13.80,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 13.97,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 2",
-      "step": "Functiejaren 0",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 9.45,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 9.59,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 9.71,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 2",
-      "step": "Functiejaren 1",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 9.72,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 9.87,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 9.99,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 2",
-      "step": "Functiejaren 2",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 9.96,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 10.11,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 10.24,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 2",
-      "step": "Functiejaren 3",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 10.22,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 10.37,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 10.50,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 2",
-      "step": "Functiejaren 4",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 10.47,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 10.63,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 10.76,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 2",
-      "step": "Functiejaren 5",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 10.73,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 10.89,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 11.03,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 2",
-      "step": "Functiejaren 6",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 10.98,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 11.14,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 11.28,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 2",
-      "age_group": "22",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 9.45,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 9.59,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 9.71,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 3",
-      "step": "Functiejaren 0",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 9.97,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 10.12,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 10.25,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 3",
-      "step": "Functiejaren 1",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 10.27,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 10.42,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 10.55,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 3",
-      "step": "Functiejaren 2",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 10.56,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 10.72,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 10.85,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 3",
-      "step": "Functiejaren 3",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 10.87,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 11.03,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 11.17,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 3",
-      "step": "Functiejaren 4",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
-      "timeline": [
-        {
-          "start_date": "2016-10-01",
-          "amount": 11.18,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-08-13",
-          "amount": 11.35,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-06-17",
-          "amount": 11.49,
-          "unit": "h",
-          "inc_pct": 1.25
-        }
-      ],
-      "row_note": "If a function hourly wage is lower than the statutory minimum (youth) wage, the statutory minimum (youth) wage applies."
-    },
-    {
-      "jobgroup": "Scale 3",
-      "step": "Functiejaren 5",
-      "worker": "Commercie personnel (Ambachtelijke bakkerij)",
+      "job

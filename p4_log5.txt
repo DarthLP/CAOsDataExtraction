@@ -76,7 +76,6 @@ Process 5: Processing 263 files
   163: CAO OV 1 juli 2020 30 juni 2021 tekst aanmelding_extract.json
   163: Skipping CAO OV 1 juli 2020 30 juni 2021 tekst aanmelding_extract.json (all parts already processed)
   163: CAO_OV_tekst_2014_en_2015_DEFINITIEF_extract.json
-  163: Salary extraction skipped (file in max_tokens_truncated_2 folder)
   163: Skipping CAO_OV_tekst_2014_en_2015_DEFINITIEF_extract.json (all parts already processed)
   182: 20220101 cao_horeca_2022-2023 na 2020_wijziging_op_kvo_avv versie bronbestand.do_extract.json
   182: Skipping 20220101 cao_horeca_2022-2023 na 2020_wijziging_op_kvo_avv versie bronbestand.do_extract.json (all parts already processed)
@@ -105,21 +104,7 @@ Process 5: Processing 263 files
   234: Jeugdzorg_Cao_2011_2013_def_extract.json
   234: Skipping Jeugdzorg_Cao_2011_2013_def_extract.json (all parts already processed)
   234: cao_tekst_JZ_2017_2019__23_8_17_extract.json
-  234: Processing missing parts: salary
-  DEBUG: File found in truncated folder, skipping to compact schema attempts (6th-8th attempts)
-  DEBUG: Using compact schema for attempt 6 (schema_type: compact)
-  DEBUG: Making API call...
-  DEBUG: API response received
-  DEBUG: Response type: <class 'google.genai.types.GenerateContentResponse'>
-Processing time: 196.8s | Status: SUCCESS
-  DEBUG: Response has parsed attribute
-  DEBUG: Parsed salary structure with 187 salary rows
-  234: Salary extraction completed
-  234: Non-salary part 1 extraction skipped (already exists)
-  234: Non-salary part 2 extraction skipped (already exists)
-  234: Non-salary part 3 extraction skipped (already exists)
-  234: Combined analysis logged successfully
-  234: Successfully processed cao_tekst_JZ_2017_2019__23_8_17_extract.json
+  234: Skipping cao_tekst_JZ_2017_2019__23_8_17_extract.json (all parts already processed)
   243: CAO Hoveniers 6e ttw per 1 maart 2021.docx_extract.json
   243: Skipping CAO Hoveniers 6e ttw per 1 maart 2021.docx_extract.json (all parts already processed)
   243: Cao_Hov_ttw_27_2_2019_extract.json
@@ -141,415 +126,47 @@ Processing time: 196.8s | Status: SUCCESS
   254: cao 2024-2025, 30 januari 2024 integraal_extract.json
   254: Skipping cao 2024-2025, 30 januari 2024 integraal_extract.json (all parts already processed)
   301: CAOSOCIAALWERK1719_completetekst_def_030419schoon.docx _extract.json
-  301: Salary extraction skipped (file in max_tokens_truncated_2 folder)
   301: Skipping CAOSOCIAALWERK1719_completetekst_def_030419schoon.docx _extract.json (all parts already processed)
   301: CAOWMD20142016_ttw220615_definitiefgewijzigd_extract.json
   301: Skipping CAOWMD20142016_ttw220615_definitiefgewijzigd_extract.json (all parts already processed)
   301: Cao Sociaal Werk 2021 2023_280422definitief_extract.json
-  301: Salary extraction skipped (file in max_tokens_truncated_2 folder)
+  301: Salary extraction skipped (file in max_tokens_truncated_3 folder - all attempts exhausted)
   301: Skipping Cao Sociaal Werk 2021 2023_280422definitief_extract.json (all parts already processed)
   301: Cao Sociaal Werk 2023-2025(metcorrectie150224)_extract.json
-  301: Salary extraction skipped (file in max_tokens_truncated_2 folder)
-  301: Skipping Cao Sociaal Werk 2023-2025(metcorrectie150224)_extract.json (all parts already processed)
-  306: 20072021 CAO-boekje 2021-2022_extract.json
-  306: Skipping 20072021 CAO-boekje 2021-2022_extract.json (all parts already processed)
-  306: CAO-tekst 2021-2022 OKT schoon_extract.json
-  306: Skipping CAO-tekst 2021-2022 OKT schoon_extract.json (all parts already processed)
-  306: CAOtekst_AVV__integraal__extract.json
-  306: Skipping CAOtekst_AVV__integraal__extract.json (all parts already processed)
-  316: CAO LMB incl fuwa 2020 2023 schone versie feb 22_extract.json
-  316: Skipping CAO LMB incl fuwa 2020 2023 schone versie feb 22_extract.json (all parts already processed)
-  316: CAO_LMB_2017____2019_def_01_02_2018_schone_versie_extract.json
-  316: Skipping CAO_LMB_2017____2019_def_01_02_2018_schone_versie_extract.json (all parts already processed)
-  317: CAO2021-2024_Augustus2023def_0_0_extract.json
-  317: Salary extraction skipped (file in max_tokens_truncated_2 folder)
-  317: Skipping CAO2021-2024_Augustus2023def_0_0_extract.json (all parts already processed)
-  317: Tekst CAO GHZ 2021-2024 schone versie V2_extract.json
-  317: Salary extraction skipped (file in max_tokens_truncated_2 folder)
-  317: Skipping Tekst CAO GHZ 2021-2024 schone versie V2_extract.json (all parts already processed)
-  331: CAOGIL_2015___2016_def_schoon_extract.json
-  331: Skipping CAOGIL_2015___2016_def_schoon_extract.json (all parts already processed)
-  359: Cao Zoetwarenindustrie 2023-2024_extract.json
-  359: Skipping Cao Zoetwarenindustrie 2023-2024_extract.json (all parts already processed)
-  359: VBZ_cao_2015_2016_extract.json
-  359: Skipping VBZ_cao_2015_2016_extract.json (all parts already processed)
-  405: CAO Kappers 1 juli 2019 31 januari 2020 25072019.docx_extract.json
-  405: Skipping CAO Kappers 1 juli 2019 31 januari 2020 25072019.docx_extract.json (all parts already processed)
-  405: CAOKAP~2_extract.json
-  405: Skipping CAOKAP~2_extract.json (all parts already processed)
-  433: CAO 2019 2021 definitief.docx_extract.json
-  433: Skipping CAO 2019 2021 definitief.docx_extract.json (all parts already processed)
-  433: CAO 2021 definitief_extract.json
-  433: Skipping CAO 2021 definitief_extract.json (all parts already processed)
-  433: CAO 2024 (1-1-2024 tm 30-6-2024)_1_extract.json
-  433: Skipping CAO 2024 (1-1-2024 tm 30-6-2024)_1_extract.json (all parts already processed)
-  433: CAO_2014_2016_2_extract.json
-  433: Skipping CAO_2014_2016_2_extract.json (all parts already processed)
-  433: CAO_extract.json
-  433: Skipping CAO_extract.json (all parts already processed)
-  465: CAO Banden- en Wielenbranche 2024-2025 na ttw2 versie 26-6-2024_extract.json
-  465: Skipping CAO Banden- en Wielenbranche 2024-2025 na ttw2 versie 26-6-2024_extract.json (all parts already processed)
-  465: sociale afspraken 2019 - 2020 geschoond.docx_extract.json
-  465: Skipping sociale afspraken 2019 - 2020 geschoond.docx_extract.json (all parts already processed)
-  475: CAO Sport 2022-2023 2_extract.json
-  475: Skipping CAO Sport 2022-2023 2_extract.json (all parts already processed)
-  475: Sport cao 2024-2025_extract.json
-  475: Skipping Sport cao 2024-2025_extract.json (all parts already processed)
-  487: Basis-cao Metalektro aanmelding ttw 21-8-19.docx_extract.json
-  487: Skipping Basis-cao Metalektro aanmelding ttw 21-8-19.docx_extract.json (all parts already processed)
-  487: Basis_CAO_Metalektro_versie_voor_website_extract.json
-  487: Skipping Basis_CAO_Metalektro_versie_voor_website_extract.json (all parts already processed)
-  487: Cao Basis schone versie 09-12-2024 en statuten_extract.json
-  487: Skipping Cao Basis schone versie 09-12-2024 en statuten_extract.json (all parts already processed)
-  496: Cao Particuliere Beveiliging versie 7 juni 2023 ZONDER zichtbare wijzigingen_1_extract.json
-  496: Skipping Cao Particuliere Beveiliging versie 7 juni 2023 ZONDER zichtbare wijzigingen_1_extract.json (all parts already processed)
-  496: cao 1 juli 2018 - 30 juni 2023 definitief april 2020.docx_extract.json
-  496: Skipping cao 1 juli 2018 - 30 juni 2023 definitief april 2020.docx_extract.json (all parts already processed)
-  496: cao_1_juli_2012___30_september_2013_definitief_1_extract.json
-  496: Skipping cao_1_juli_2012___30_september_2013_definitief_1_extract.json (all parts already processed)
-  496: cao_2014_2015_definitief_part_beveilig_extract.json
-  496: Skipping cao_2014_2015_definitief_part_beveilig_extract.json (all parts already processed)
-  518: CAOVDB_tekst_def_met_dispensatieregeling_geschoond_extract.json
-  518: Skipping CAOVDB_tekst_def_met_dispensatieregeling_geschoond_extract.json (all parts already processed)
-  518: Cao boekje VDF-tekst geschoond_extract.json
-  518: Skipping Cao boekje VDF-tekst geschoond_extract.json (all parts already processed)
-  526: CAO meubelindustrie 2020-2021 def P_extract.json
-  526: Skipping CAO meubelindustrie 2020-2021 def P_extract.json (all parts already processed)
-  526: CAO_meubelindustrie_2018_2019_Def_1_extract.json
-  526: Skipping CAO_meubelindustrie_2018_2019_Def_1_extract.json (all parts already processed)
-  526: CAOtekst2017_extract.json
-  526: Skipping CAOtekst2017_extract.json (all parts already processed)
-  533: CAO VGL 2019-2020 definitief schoon 010420.docx_extract.json
-  533: Skipping CAO VGL 2019-2020 definitief schoon 010420.docx_extract.json (all parts already processed)
-  549: CAO AGF Detailhandel 2020-2021 volledig.docx_extract.json
-  549: Skipping CAO AGF Detailhandel 2020-2021 volledig.docx_extract.json (all parts already processed)
-  549: CAO_Aardapp__en_loont__extract.json
-  549: Skipping CAO_Aardapp__en_loont__extract.json (all parts already processed)
-  557: Slijterijen 2010-2011 integrale tekst definitief_extract.json
-  557: Skipping Slijterijen 2010-2011 integrale tekst definitief_extract.json (all parts already processed)
-  573: CAO_pluimvee_per_1_mei_2012_extract.json
-  573: Skipping CAO_pluimvee_per_1_mei_2012_extract.json (all parts already processed)
-  573: Cao pluimvee - cao 2020-2021 na ttw2 art 77 _extract.json
-  573: Skipping Cao pluimvee - cao 2020-2021 na ttw2 art 77 _extract.json (all parts already processed)
-  573: pluimvee - 2019 na ttw ivm wijziging art 55.pdf _extract.json
-  573: Skipping pluimvee - 2019 na ttw ivm wijziging art 55.pdf _extract.json (all parts already processed)
-  592: CAO_Gespec_Detailh_Bloemen_en_Planten_2018___2019_extract.json
-  592: Skipping CAO_Gespec_Detailh_Bloemen_en_Planten_2018___2019_extract.json (all parts already processed)
-  592: cao_Bloemenspeciaalzaken_16_8_2018_extract.json
-  592: Skipping cao_Bloemenspeciaalzaken_16_8_2018_extract.json (all parts already processed)
-  615: CAO Zorgverzekeraars 2019-2020_extract.json
-  615: Skipping CAO Zorgverzekeraars 2019-2020_extract.json (all parts already processed)
-  615: Cao voor de Zorgverzekeraars 2021-2022_extract.json
-  615: Skipping Cao voor de Zorgverzekeraars 2021-2022_extract.json (all parts already processed)
-  625: CAOHBO_2023_2024_extract.json
-  625: Skipping CAOHBO_2023_2024_extract.json (all parts already processed)
-  625: cao_hbo_2014_2016_extract.json
-  625: Skipping cao_hbo_2014_2016_extract.json (all parts already processed)
-  632: NVB CAO-boekje 2021_14-04_extract.json
-  632: Skipping NVB CAO-boekje 2021_14-04_extract.json (all parts already processed)
-  633: ABU CAO voor Uitzendkrachten 1-1-2021 wijz. bijhouden.doc_extract.json
-  633: Skipping ABU CAO voor Uitzendkrachten 1-1-2021 wijz. bijhouden.doc_extract.json (all parts already processed)
-  633: ABU CAO voor Uitzendkrachten 2023 integraal_1_extract.json
-  633: Skipping ABU CAO voor Uitzendkrachten 2023 integraal_1_extract.json (all parts already processed)
-  633: ABU CAO voor Uitzendkrachten 30-12-2019_extract.json
-  633: Skipping ABU CAO voor Uitzendkrachten 30-12-2019_extract.json (all parts already processed)
-  633: CAO_mei_2011_integraal_extract.json
-  633: Skipping CAO_mei_2011_integraal_extract.json (all parts already processed)
-  633: CAO_voor_Uitzendkrachten_juli_2013_integraal_extract.json
-  633: Skipping CAO_voor_Uitzendkrachten_juli_2013_integraal_extract.json (all parts already processed)
-  633: Cao 1-7-2019 integraal_extract.json
-  633: Skipping Cao 1-7-2019 integraal_extract.json (all parts already processed)
-  633: Cao_integraal_5_11_2017_extract.json
-  633: Skipping Cao_integraal_5_11_2017_extract.json (all parts already processed)
-  637: Cao Verzekeringsbedrijf 2020 - integrale tekst.docx_extract.json
-  637: Skipping Cao Verzekeringsbedrijf 2020 - integrale tekst.docx_extract.json (all parts already processed)
-  637: Cao_Binnendienst_2013_extract.json
-  637: Skipping Cao_Binnendienst_2013_extract.json (all parts already processed)
-  637: Verzekeringsbedrijf_2016_2017_schoon_1_extract.json
-  637: Skipping Verzekeringsbedrijf_2016_2017_schoon_1_extract.json (all parts already processed)
-  650: CAO Groothandel in Groenten en Fruit 1 juli 2024 tm 30 juni 2025 _extract.json
-  650: Skipping CAO Groothandel in Groenten en Fruit 1 juli 2024 tm 30 juni 2025 _extract.json (all parts already processed)
-  650: CAO_tekst_Groenten_en_Fruit_met_wijz__extract.json
-  650: Skipping CAO_tekst_Groenten_en_Fruit_met_wijz__extract.json (all parts already processed)
-  650: Groothandel in Groenten en Fruit CAO 2019-2020 na ttw ivm salaristabellen.docx_extract.json
-  650: Skipping Groothandel in Groenten en Fruit CAO 2019-2020 na ttw ivm salaristabellen.docx_extract.json (all parts already processed)
-  679: CAO Taxivervoer 2021 NET.docx_extract.json
-  679: Skipping CAO Taxivervoer 2021 NET.docx_extract.json (all parts already processed)
-  679: CAO Zorgvervoer en Taxi 2023-2024 180424 def. tekst_extract.json
-  679: Skipping CAO Zorgvervoer en Taxi 2023-2024 180424 def. tekst_extract.json (all parts already processed)
-  679: CAO_Taxivervoer_2019_2020_NET_extract.json
-  679: Skipping CAO_Taxivervoer_2019_2020_NET_extract.json (all parts already processed)
-  679: TTW CAO Taxivervoer 2019 2020 v260420 DEF.docx_extract.json
-  679: Skipping TTW CAO Taxivervoer 2019 2020 v260420 DEF.docx_extract.json (all parts already processed)
-  679: cao tekst Taxivervoer_extract.json
-  679: Skipping cao tekst Taxivervoer_extract.json (all parts already processed)
-  683: CAO ETD d.d. 27 februari 2023 (naar SZW)_extract.json
-  683: Skipping CAO ETD d.d. 27 februari 2023 (naar SZW)_extract.json (all parts already processed)
-  683: Elektro tekstCAO-2010-2011 (januari 2011)_extract.json
-  683: Skipping Elektro tekstCAO-2010-2011 (januari 2011)_extract.json (all parts already processed)
-  721: CAO_Huisartsenzorg_2013_W_versie_2_extract.json
-  721: Skipping CAO_Huisartsenzorg_2013_W_versie_2_extract.json (all parts already processed)
-  721: Cao-huisartsenzorg-2022-2023-incl-Handleiding.avv_extract.json
-  721: Skipping Cao-huisartsenzorg-2022-2023-incl-Handleiding.avv_extract.json (all parts already processed)
-  721: cao_HAZ_2014_2015_zwart_versie_II_extract.json
-  721: Skipping cao_HAZ_2014_2015_zwart_versie_II_extract.json (all parts already processed)
-  725: 2212-0813 defintieve tekst cao GGI met ttw per 1 januari 2023_extract.json
-  725: Skipping 2212-0813 defintieve tekst cao GGI met ttw per 1 januari 2023_extract.json (all parts already processed)
-  725: Integrale tekst cao Groen, Grond en Infrastructuur 1 januari 2024 - 31 december 2024_extract.json
-  725: Skipping Integrale tekst cao Groen, Grond en Infrastructuur 1 januari 2024 - 31 december 2024_extract.json (all parts already processed)
-  725: cao_leo_1_juli_2013_tm_30_juni_2014__20130716N__extract.json
-  725: Skipping cao_leo_1_juli_2013_tm_30_juni_2014__20130716N__extract.json (all parts already processed)
-  725: integrale_cao_Leo_2017_2019_a_extract.json
-  725: Skipping integrale_cao_Leo_2017_2019_a_extract.json (all parts already processed)
-  727: 161031_Cao_F_S__L_2016_2018_hvb_extract.json
-  727: Skipping 161031_Cao_F_S__L_2016_2018_hvb_extract.json (all parts already processed)
-  727: 171115_Cao_F_S__L_2016_2018_definitief_hvb_2_extract.json
-  727: Salary extraction skipped (file in max_tokens_truncated_2 folder)
-  727: Skipping 171115_Cao_F_S__L_2016_2018_definitief_hvb_2_extract.json (all parts already processed)
-  727: 191227 cao Retail Non-Food per 1 januari 2020 definitief.docx_extract.json
-  727: Skipping 191227 cao Retail Non-Food per 1 januari 2020 definitief.docx_extract.json (all parts already processed)
-  727: 220208 cao Retail Non-Food schone versie_extract.json
-  727: Skipping 220208 cao Retail Non-Food schone versie_extract.json (all parts already processed)
-  727: 240508 Cao Retail Non-Food definitief_extract.json
-  727: Skipping 240508 Cao Retail Non-Food definitief_extract.json (all parts already processed)
-  727: cao_Mode__Sport_1_7_2010_tot_1_7_2012_22_8_2011_extract.json
-  727: Skipping cao_Mode__Sport_1_7_2010_tot_1_7_2012_22_8_2011_extract.json (all parts already processed)
-  730: CAO TG 2023-2025_Versie 2024-12-11_extract.json
-  730: Skipping CAO TG 2023-2025_Versie 2024-12-11_extract.json (all parts already processed)
-  730: CAO Technische Groothandel 2023-2025_Versie 2024-04-11_extract.json
-  730: Skipping CAO Technische Groothandel 2023-2025_Versie 2024-04-11_extract.json (all parts already processed)
-  730: CAO_Technische_Groothandel_2014_2016_Formele_tekst_extract.json
-  730: Skipping CAO_Technische_Groothandel_2014_2016_Formele_tekst_extract.json (all parts already processed)
-  748: Cao voor het Slagersbedrijf_extract.json
-  748: Skipping Cao voor het Slagersbedrijf_extract.json (all parts already processed)
-  748: Cao_Slagersbedrijf__versie_1_7_17_extract.json
-  748: Skipping Cao_Slagersbedrijf__versie_1_7_17_extract.json (all parts already processed)
-  750: Contractcateringbranche__Arbeidsvoorw_cao_extract.json
-  750: Skipping Contractcateringbranche__Arbeidsvoorw_cao_extract.json (all parts already processed)
-  750: cao 1 april 2024 - 31 december 2025 18122024 opgeschoonde versie_extract.json
-  750: Salary extraction skipped (file in max_tokens_truncated_2 folder)
-  750: Skipping cao 1 april 2024 - 31 december 2025 18122024 opgeschoonde versie_extract.json (all parts already processed)
-  750: cao arbeidsvoorwaarden, definitief_extract.json
-  750: Skipping cao arbeidsvoorwaarden, definitief_extract.json (all parts already processed)
-  750: cao_avwd_1_april_2013_tot_1_april_2014_extract.json
-  750: Skipping cao_avwd_1_april_2013_tot_1_april_2014_extract.json (all parts already processed)
-  750: caotekst_cc_extract.json
-  750: Skipping caotekst_cc_extract.json (all parts already processed)
-  759: CAO SAG 2016 2021 ttw april 2021_extract.json
-  759: Skipping CAO SAG 2016 2021 ttw april 2021_extract.json (all parts already processed)
-  759: CAO SAVG 2021 2025 oktober 2021_extract.json
-  759: Skipping CAO SAVG 2021 2025 oktober 2021_extract.json (all parts already processed)
-  759: CAO_SAG_2016_2019_versie_22_12_2016_extract.json
-  759: Skipping CAO_SAG_2016_2019_versie_22_12_2016_extract.json (all parts already processed)
-  759: cao_Schilders_2013_2014_extract.json
-  759: Skipping cao_Schilders_2013_2014_extract.json (all parts already processed)
-  791: Textielgr__NVW_ttw_ivm_fkb_2012_2013_obv_1538864_extract.json
-  791: Skipping Textielgr__NVW_ttw_ivm_fkb_2012_2013_obv_1538864_extract.json (all parts already processed)
-  791: Textielgroothandel_cao_2018_2020_extract.json
-  791: Skipping Textielgroothandel_cao_2018_2020_extract.json (all parts already processed)
-  822: CAO Car 2021 2024_extract.json
-  822: Skipping CAO Car 2021 2024_extract.json (all parts already processed)
-  822: CAO_CAR__TTW_JULI_extract.json
-  822: Skipping CAO_CAR__TTW_JULI_extract.json (all parts already processed)
-  822: M_T_Totaal_tekst_extract.json
-  822: Skipping M_T_Totaal_tekst_extract.json (all parts already processed)
-  823: CAO MvT 2018-2020 DEF 29 mei19.docx _extract.json
-  823: Skipping CAO MvT 2018-2020 DEF 29 mei19.docx _extract.json (all parts already processed)
-  823: CAO_tekst_2011_2012_compleet_versie_28_juli_extract.json
-  823: Skipping CAO_tekst_2011_2012_compleet_versie_28_juli_extract.json (all parts already processed)
-  823: Concept cao MVT - incl HFI DEF_extract.json
-  823: Skipping Concept cao MVT - incl HFI DEF_extract.json (all parts already processed)
-  824: CAO_MB_17_19_extract.json
-  824: Skipping CAO_MB_17_19_extract.json (all parts already processed)
-  824: CAO_MB_extract.json
-  824: Skipping CAO_MB_extract.json (all parts already processed)
-  824: cao_mb_aangepast_n_a_v_bed_extract.json
-  824: Skipping cao_mb_aangepast_n_a_v_bed_extract.json (all parts already processed)
-  826: CAO_ISO_17_19_extract.json
-  826: Skipping CAO_ISO_17_19_extract.json (all parts already processed)
-  826: CAO_ISO_extract.json
-  826: Skipping CAO_ISO_extract.json (all parts already processed)
-  826: m_en_t_islollatiebedrijf_kvo_extract.json
-  826: Skipping m_en_t_islollatiebedrijf_kvo_extract.json (all parts already processed)
-  833: CAO_Woondiensten_2017_2018_extract.json
-  833: Skipping CAO_Woondiensten_2017_2018_extract.json (all parts already processed)
-  833: cao woondiensten en handboek_extract.json
-  833: Skipping cao woondiensten en handboek_extract.json (all parts already processed)
-  884: CAO_Kantoor_en_Boek_17_18_nw_def_extract.json
-  884: Skipping CAO_Kantoor_en_Boek_17_18_nw_def_extract.json (all parts already processed)
-  884: Tekst CAO Boek en Kantoor 21 23 def_extract.json
-  884: Skipping Tekst CAO Boek en Kantoor 21 23 def_extract.json (all parts already processed)
-  924: CAO_2015_2016_aanmelding_extract.json
-  924: Skipping CAO_2015_2016_aanmelding_extract.json (all parts already processed)
-  924: Tekst cao Reisbranche definitief.docx_extract.json
-  924: Skipping Tekst cao Reisbranche definitief.docx_extract.json (all parts already processed)
-  924: cao Reisbranche 1jul2024-1jul2026 def_extract.json
-  924: Skipping cao Reisbranche 1jul2024-1jul2026 def_extract.json (all parts already processed)
-  1022: CAO MBO 2021 - wijzigingen geaccepteerd 09072021_extract.json
-  1022: Skipping CAO MBO 2021 - wijzigingen geaccepteerd 09072021_extract.json (all parts already processed)
-  1022: CAO_MBO_2014_2015_in_Word___nieuwe_versie_extract.json
-  1022: Skipping CAO_MBO_2014_2015_in_Word___nieuwe_versie_extract.json (all parts already processed)
-  1060: 2180679_NBBU_CAO_Uitzendkrachten_2018_OTFp_extract.json
-  1060: Skipping 2180679_NBBU_CAO_Uitzendkrachten_2018_OTFp_extract.json (all parts already processed)
-  1060: NBBU cao tussentijdse wijzigingen januari 2023_extract.json
-  1060: Skipping NBBU cao tussentijdse wijzigingen januari 2023_extract.json (all parts already processed)
-  1060: NBBU_CAO_Uitzendkrachten-NL 2024.def_extract.json
-  1060: Skipping NBBU_CAO_Uitzendkrachten-NL 2024.def_extract.json (all parts already processed)
-  1060: NBBU_CAO_Uitzendkrachten_2015_per_1_juli_DEF_extract.json
-  1060: Skipping NBBU_CAO_Uitzendkrachten_2015_per_1_juli_DEF_extract.json (all parts already processed)
-  1060: definitieve_cao_tekst_extract.json
-  1060: Skipping definitieve_cao_tekst_extract.json (all parts already processed)
-  1165: cao 1 januari 2019 - 31 december 2020, definitief aangepast.docx _extract.json
-  1165: Skipping cao 1 januari 2019 - 31 december 2020, definitief aangepast.docx _extract.json (all parts already processed)
-  1165: cao 1 januari 2022 - 31 december 2023 definitief 23012023_extract.json
-  1165: Skipping cao 1 januari 2022 - 31 december 2023 definitief 23012023_extract.json (all parts already processed)
-  1165: cao_Recreatie_2013_2014_def__versie_extract.json
-  1165: Skipping cao_Recreatie_2013_2014_def__versie_extract.json (all parts already processed)
-  1165: cao_definitief_4_0_extract.json
-  1165: Skipping cao_definitief_4_0_extract.json (all parts already processed)
-  1165: recreatie_definitief_extract.json
-  1165: Skipping recreatie_definitief_extract.json (all parts already processed)
-  1188: CAO_VO_2014__2015_extract.json
-  1188: Skipping CAO_VO_2014__2015_extract.json (all parts already processed)
-  1285: CAO_tekst_2013_2015_def_extract.json
-  1285: Skipping CAO_tekst_2013_2015_def_extract.json (all parts already processed)
-  1285: cao tekst Tank Was 2020 2021 versie 22 juni.doc_extract.json
-  1285: Skipping cao tekst Tank Was 2020 2021 versie 22 juni.doc_extract.json (all parts already processed)
-  1285: cao_tekst_Tank_Was_2017_2019_def_extract.json
-  1285: Skipping cao_tekst_Tank_Was_2017_2019_def_extract.json (all parts already processed)
-  1287: DEF Grafimedia cao 2024-2025 TCC 09122024_extract.json
-  1287: Skipping DEF Grafimedia cao 2024-2025 TCC 09122024_extract.json (all parts already processed)
-  1287: Grafimedia cao 2020-2021 gewijzigde werkingssfeer_extract.json
-  1287: Skipping Grafimedia cao 2020-2021 gewijzigde werkingssfeer_extract.json (all parts already processed)
-  1287: Grafimedia_cao_2015_2018_def_incl_stat_regl_extract.json
-  1287: Skipping Grafimedia_cao_2015_2018_def_incl_stat_regl_extract.json (all parts already processed)
-  1291: NHG-CAO 2019 tm 2022- herziene uitg. conform WAB 1 jan 2020_extract.json
-  1291: Skipping NHG-CAO 2019 tm 2022- herziene uitg. conform WAB 1 jan 2020_extract.json (all parts already processed)
-  1296: Cdef_ ICK CAO 2022_extract.json
-  1296: Skipping Cdef_ ICK CAO 2022_extract.json (all parts already processed)
-  1296: ICK CAO 2021_extract.json
-  1296: Skipping ICK CAO 2021_extract.json (all parts already processed)
-  1296: ICK_CAO_2015___definitief_extract.json
-  1296: Skipping ICK_CAO_2015___definitief_extract.json (all parts already processed)
-  1345: 20211015__Tekst Cao SW 2021-2025_def_extract.json
-  1345: Skipping 20211015__Tekst Cao SW 2021-2025_def_extract.json (all parts already processed)
-  1393: Cao Railinfrastructuur - DEFINITIEF 21 maart 2024 (002)_extract.json
-  1393: Skipping Cao Railinfrastructuur - DEFINITIEF 21 maart 2024 (002)_extract.json (all parts already processed)
-  1393: Railinfra_CAO_2017_def_280917_1_extract.json
-  1393: Skipping Railinfra_CAO_2017_def_280917_1_extract.json (all parts already processed)
-  1393: versie 2 def Cao Railinfrastructuur - DEFINITIEF juni 2024 - versie voor AVV - kopie_extract.json
-  1393: Skipping versie 2 def Cao Railinfrastructuur - DEFINITIEF juni 2024 - versie voor AVV - kopie_extract.json (all parts already processed)
-  1471: Cao_Afval_en_Milieu_Proces_2016_2017_extract.json
-  1471: Skipping Cao_Afval_en_Milieu_Proces_2016_2017_extract.json (all parts already processed)
-  1471: cao_afval_en_milieu_proces_2013_2014_met_handtek_extract.json
-  1471: Skipping cao_afval_en_milieu_proces_2013_2014_met_handtek_extract.json (all parts already processed)
-  1494: 20180719_cao_po_2018_2019_def_getekend_extract.json
-  1494: Skipping 20180719_cao_po_2018_2019_def_getekend_extract.json (all parts already processed)
-  1494: Def cao po 2021 schoon 6dec2021_extract.json
-  1494: Skipping Def cao po 2021 schoon 6dec2021_extract.json (all parts already processed)
-  1494: caopo2013_verlngd_handtek_april2014_extract.json
-  1494: Salary extraction skipped (file in max_tokens_truncated_2 folder)
-  1494: Skipping caopo2013_verlngd_handtek_april2014_extract.json (all parts already processed)
-  1496: 01_CAO_BAKKERSBEDRIJF_1_AUGUSTUS_2011_1_extract.json
-  1496: Skipping 01_CAO_BAKKERSBEDRIJF_1_AUGUSTUS_2011_1_extract.json (all parts already processed)
-  1496: 01_CAO_BAKKERSBEDRIJF_1_OKTOBER_2016___def__extract.json
-  1496: Salary extraction skipped (file in max_tokens_truncated_2 folder)
-  1496: Skipping 01_CAO_BAKKERSBEDRIJF_1_OKTOBER_2016___def__extract.json (all parts already processed)
-  1496: CAO BAKKERSBEDRIJF 1 AUGUSTUS 2020 incl Bijlagen_1_extract.json
-  1496: Salary extraction skipped (file in max_tokens_truncated_2 folder)
-  1496: Skipping CAO BAKKERSBEDRIJF 1 AUGUSTUS 2020 incl Bijlagen_1_extract.json (all parts already processed)
-  1496: cao Bakkersbedrijf definitief versie 15082024_extract.json
-  1496: Salary extraction skipped (file in max_tokens_truncated_2 folder)
-  1496: Skipping cao Bakkersbedrijf definitief versie 15082024_extract.json (all parts already processed)
-  1504: CAO_BTU_2014_extract.json
-  1504: Skipping CAO_BTU_2014_extract.json (all parts already processed)
-  1536: CAONU_1_januari_2015___1_juli_2016_1_extract.json
-  1536: Skipping CAONU_1_januari_2015___1_juli_2016_1_extract.json (all parts already processed)
-  1536: Ned_Universiteiten_1536_extract.json
-  1536: Skipping Ned_Universiteiten_1536_extract.json (all parts already processed)
-  1547: Definitieve cao VGB 2021-2023_extract.json
-  1547: Skipping Definitieve cao VGB 2021-2023_extract.json (all parts already processed)
-  1547: VGB cao tekst_extract.json
-  1547: Skipping VGB cao tekst_extract.json (all parts already processed)
-  1574: Werkversie_CAO_GGZ_2011_extract.json
-  1574: Skipping Werkversie_CAO_GGZ_2011_extract.json (all parts already processed)
-  1612: CAOKINDEROPVANG 1011 (ttw160311)_extract.json
-  1612: Skipping CAOKINDEROPVANG 1011 (ttw160311)_extract.json (all parts already processed)
-  1612: CAO_Kinderopvang_2018_2019_extract.json
-  1612: Skipping CAO_Kinderopvang_2018_2019_extract.json (all parts already processed)
-  1612: Integrale Cao Kinderopvang 2023-2024_extract.json
-  1612: Skipping Integrale Cao Kinderopvang 2023-2024_extract.json (all parts already processed)
-  1612: Integrale cao Kinderopvang 2020 - 2021_extract.json
-  1612: Skipping Integrale cao Kinderopvang 2020 - 2021_extract.json (all parts already processed)
-  1618: Cao umc 2018-2020 def versie maart 2019.pdf _extract.json
-  1618: Skipping Cao umc 2018-2020 def versie maart 2019.pdf _extract.json (all parts already processed)
-  1618: SZW_15_14272_Cao_umc_2015_2017_extract.json
-  1618: Skipping SZW_15_14272_Cao_umc_2015_2017_extract.json (all parts already processed)
-  1639: Dhz_cao_2009_2011_def_extract.json
-  1639: Skipping Dhz_cao_2009_2011_def_extract.json (all parts already processed)
-  1639: cao DHZ 2024-2026_def_mei_2024_extract.json
-  1639: Skipping cao DHZ 2024-2026_def_mei_2024_extract.json (all parts already processed)
-  1869: Cao Glastuinbouw 1 januari 2020 tot en met 31 december 2022_extract.json
-  1869: Skipping Cao Glastuinbouw 1 januari 2020 tot en met 31 december 2022_extract.json (all parts already processed)
-  1869: Integrale tekst Cao Glastuinbouw 1 januari 2024 tot en met 31 maart 2025 (2404-2053)_extract.json
-  1869: Skipping Integrale tekst Cao Glastuinbouw 1 januari 2024 tot en met 31 maart 2025 (2404-2053)_extract.json (all parts already processed)
-  1869: cao_Glastuinbouw_2015____2018_extract.json
-  1869: Skipping cao_Glastuinbouw_2015____2018_extract.json (all parts already processed)
-  1944: CAO_OT_2017_2020_extract.json
-  1944: Skipping CAO_OT_2017_2020_extract.json (all parts already processed)
-  1944: Cao open teelten per 1 maart 2021 tot en met 28 februari 2023 2e TTW integraal.d_extract.json
-  1944: Skipping Cao open teelten per 1 maart 2021 tot en met 28 februari 2023 2e TTW integraal.d_extract.json (all parts already processed)
-  1944: Integrale tekst cao Open Teelten incl. 6e TTW per 1 januari 2023 - 2302-0811 v0._extract.json
-  1944: Skipping Integrale tekst cao Open Teelten incl. 6e TTW per 1 januari 2023 - 2302-0811 v0._extract.json (all parts already processed)
-  1944: cao Open Teelten met 5e ttw integraal per 1 november 2022 - 2210-1226 v0.1_extract.json
-  1944: Skipping cao Open Teelten met 5e ttw integraal per 1 november 2022 - 2210-1226 v0.1_extract.json (all parts already processed)
-  1944: cao_open_teelten_2016_2017_extract.json
-  1944: Skipping cao_open_teelten_2016_2017_extract.json (all parts already processed)
-  1945: Eindtekst cao Productiegerichte Dierhouderij 1 januari 2024 - 31 december 2025 incl. 1e ttw per 1 januari 2024_extract.json
-  1945: Skipping Eindtekst cao Productiegerichte Dierhouderij 1 januari 2024 - 31 december 2025 incl. 1e ttw per 1 januari 2024_extract.json (all parts already processed)
-  1945: cao Productiegerichte Dierhouderij 1 januari 2022 - 31 december 2023 inclusief T_1_extract.json
-  1945: Skipping cao Productiegerichte Dierhouderij 1 januari 2022 - 31 december 2023 inclusief T_1_extract.json (all parts already processed)
-  1945: cao_Pg_Dierhouderij_extract.json
-  1945: Skipping cao_Pg_Dierhouderij_extract.json (all parts already processed)
-  2070: CAO Facilitaire contactcenters 2022-2023 na ttw 23-6-2023_.getekend_extract.json
-  2070: Skipping CAO Facilitaire contactcenters 2022-2023 na ttw 23-6-2023_.getekend_extract.json (all parts already processed)
-  2266: CAO visdetailhandel 2021-2023 def voor ministerie na controle wg_extract.json
-  2266: Skipping CAO visdetailhandel 2021-2023 def voor ministerie na controle wg_extract.json (all parts already processed)
-  2266: Integrale cao-tekst visdetailhandel 2024 _extract.json
-  2266: Skipping Integrale cao-tekst visdetailhandel 2024 _extract.json (all parts already processed)
-  2297: CAO TI 2019 2021 TTW V2 Wagweu.docx_extract.json
-  2297: Skipping CAO TI 2019 2021 TTW V2 Wagweu.docx_extract.json (all parts already processed)
-  2297: CAO_TI_2017_2019_TTW_GP_nov_2017_extract.json
-  2297: Skipping CAO_TI_2017_2019_TTW_GP_nov_2017_extract.json (all parts already processed)
-  2297: HB 5e editie 2024_1_extract.json
-  2297: Skipping HB 5e editie 2024_1_extract.json (all parts already processed)
-  2535: CAO MITT 2010-2012 -melding sept 2010-schoon_extract.json
-  2535: Skipping CAO MITT 2010-2012 -melding sept 2010-schoon_extract.json (all parts already processed)
-  2535: CAO MITT 2023 versie 06072023_extract.json
-  2535: Skipping CAO MITT 2023 versie 06072023_extract.json (all parts already processed)
-  2535: Cao MITT 2024-2025 versie 18 06112024 (003)_extract.json
-  2535: Skipping Cao MITT 2024-2025 versie 18 06112024 (003)_extract.json (all parts already processed)
-  2535: SZW_CAO_MITT_2010_2012__wijziging_dec_2011_schoon_extract.json
-  2535: Skipping SZW_CAO_MITT_2010_2012__wijziging_dec_2011_schoon_extract.json (all parts already processed)
-  2948: CAO VVT 2022-2023 ttw april23_extract.json
-  2948: Skipping CAO VVT 2022-2023 ttw april23_extract.json (all parts already processed)
-  2948: CAO VVT 2022-2023 tussentijdse wijziging_extract.json
-  2948: Skipping CAO VVT 2022-2023 tussentijdse wijziging_extract.json (all parts already processed)
-  2948: CAO VVT 2025-2026_versie april 2025_extract.json
-  2948: Skipping CAO VVT 2025-2026_versie april 2025_extract.json (all parts already processed)
-  2948: cao 2019-2021 .docx_extract.json
-  2948: Skipping cao 2019-2021 .docx_extract.json (all parts already processed)
-  2948: cao_VVT_2018_2019_extract.json
-  2948: Skipping cao_VVT_2018_2019_extract.json (all parts already processed)
-  2948: gewijzigde_cao_2016_2018_artikel_1_1__extract.json
-  2948: Salary extraction skipped (file in max_tokens_truncated_2 folder)
-  2948: Skipping gewijzigde_cao_2016_2018_artikel_1_1__extract.json (all parts already processed)
-  3313: CAO_NWb_2011_def_extract.json
-  3313: Skipping CAO_NWb_2011_def_extract.json (all parts already processed)
-  3313: WEN25057_cao NWb-2026NL-FINAL zonder handtekening_extract.json
-  3313: Skipping WEN25057_cao NWb-2026NL-FINAL zonder handtekening_extract.json (all parts already processed)
-  3335: CAO PLb 2018 - 2020 ondertekend.pdf _extract.json
-  3335: Skipping CAO PLb 2018 - 2020 ondertekend.pdf _extract.json (all parts already processed)
-  3335: Cao PLb versie 5 juli 2021-signed_extract.json
-  3335: Skipping Cao PLb versie 5 juli 2021-signed_extract.json (all parts already processed)
-Process 5 completed: 263 successful, 0 failed
+  301: Processing missing parts: salary
+  DEBUG: File found in truncated folder, skipping to compact schema attempts (6th-8th attempts)
+  DEBUG: Using compact schema for attempt 6 (schema_type: compact)
+  DEBUG: Making API call for attempt 6...
+  DEBUG: API response received
+  DEBUG: Response type: <class 'google.genai.types.GenerateContentResponse'>
+Processing time: 276.7s | Status: SUCCESS
+  DEBUG: Response truncated due to MAX_TOKENS limit for Cao Sociaal Werk 2023-2025(metcorrectie150224)_extract.json
+  DEBUG: Truncated response saved to: performance_logs/llm_analysis/max_tokens_truncated/301_Cao Sociaal Werk 2023-2025(metcorrectie150224)_truncated.txt
+  DEBUG: Response appears to be truncated, will retry with different parameters
+  DEBUG: Attempt 6 failed: Exception: Response truncated - incomplete JSON
+  INFO: Adding retry guidance for: truncated JSON
+  DEBUG: Using compact schema for attempt 7 (schema_type: compact)
+  DEBUG: Making API call for attempt 7...
+  DEBUG: API response received
+  DEBUG: Response type: <class 'google.genai.types.GenerateContentResponse'>
+Processing time: 266.0s | Status: SUCCESS
+  DEBUG: Response truncated due to MAX_TOKENS limit for Cao Sociaal Werk 2023-2025(metcorrectie150224)_extract.json
+  DEBUG: Truncated response saved to: performance_logs/llm_analysis/max_tokens_truncated/301_Cao Sociaal Werk 2023-2025(metcorrectie150224)_truncated.txt
+  DEBUG: Response appears to be truncated, will retry with different parameters
+  DEBUG: Attempt 7 failed: Exception: Response truncated - incomplete JSON
+  INFO: Adding retry guidance for: truncated JSON
+  DEBUG: Using compact schema for attempt 8 (schema_type: compact)
+  DEBUG: Making API call for attempt 8...
+  DEBUG: API response received
+  DEBUG: Response type: <class 'google.genai.types.GenerateContentResponse'>
+Processing time: 274.7s | Status: SUCCESS
+  DEBUG: Response truncated due to MAX_TOKENS limit for Cao Sociaal Werk 2023-2025(metcorrectie150224)_extract.json
+  DEBUG: Truncated response saved to: performance_logs/llm_analysis/max_tokens_truncated/301_Cao Sociaal Werk 2023-2025(metcorrectie150224)_truncated.txt
+  DEBUG: Response appears to be truncated, will retry with different parameters
+  DEBUG: Attempt 8 failed: Exception: Response truncated - incomplete JSON
+  DEBUG: Truncation error detected after attempt 7, adding split extraction attempts (8-9, retries 9-10)
+  ========================================
+  Attempt 9 (9th/10th overall): Starting split extraction
+  ========================================
+  Part 1: Extracting first half of salary data...
+  DEBUG: Making API call for attempt 9, Part 1 (first half)...

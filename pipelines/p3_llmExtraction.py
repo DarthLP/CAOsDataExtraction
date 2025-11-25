@@ -28,12 +28,12 @@ USAGE:
         python pipelines/p3_llmExtraction.py --key_number 2 --process_id 1 --total_processes 2
 
     Bash script for parallel execution:
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 6 2>&1 | tee p3_log1.txt &
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --process_id 1 --total_processes 6 2>&1 | tee p3_log2.txt &
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 3 --process_id 2 --total_processes 6 2>&1 | tee p3_log3.txt &
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 4 --process_id 3 --total_processes 6 2>&1 | tee p3_log4.txt &
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 5 --process_id 4 --total_processes 6 2>&1 | tee p3_log5.txt &
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 6 --process_id 5 --total_processes 6 2>&1 | tee p3_log6.txt &
+        caffeinate python -u pipelines/p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 6 > p3_log1.txt 2>&1 &
+        caffeinate python -u pipelines/p3_llmExtraction.py --key_number 2 --process_id 1 --total_processes 6 > p3_log2.txt 2>&1 &
+        caffeinate python -u pipelines/p3_llmExtraction.py --key_number 3 --process_id 2 --total_processes 6 > p3_log3.txt 2>&1 &
+        caffeinate python -u pipelines/p3_llmExtraction.py --key_number 4 --process_id 3 --total_processes 6 > p3_log4.txt 2>&1 &
+        caffeinate python -u pipelines/p3_llmExtraction.py --key_number 5 --process_id 4 --total_processes 6 > p3_log5.txt 2>&1 &
+        caffeinate python -u pipelines/p3_llmExtraction.py --key_number 6 --process_id 5 --total_processes 6 > p3_log6.txt 2>&1 &
 
     With file limit:
         python p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 1 --max_files 10
@@ -65,6 +65,7 @@ import json
 import time
 import argparse
 import threading
+import signal
 from pathlib import Path
 from typing import List, Optional, Tuple, Dict, Any
 from dataclasses import dataclass, field
@@ -81,6 +82,40 @@ from monitoring.monitoring_3_1 import PerformanceMonitor
 # Google Gemini API imports
 from google import genai
 from google.genai import types
+
+
+# =============================================================================
+# SIGNAL HANDLING
+# =============================================================================
+# Handle signals gracefully to prevent unexpected exits when running with pipes/tee
+def setup_signal_handlers():
+    """Setup signal handlers to prevent unexpected process termination."""
+    def handle_sigpipe(signum, frame):
+        """Handle SIGPIPE (broken pipe) gracefully - ignore it to prevent exit code 1."""
+        # When writing to a pipe (e.g., tee) that closes, we get SIGPIPE
+        # Instead of crashing, we'll just ignore it and continue
+        pass
+    
+    def handle_sigterm(signum, frame):
+        """Handle SIGTERM gracefully - exit with code 0."""
+        print('\n⚠️  Received SIGTERM, exiting gracefully...')
+        sys.stdout.flush()
+        sys.stderr.flush()
+        sys.exit(0)
+    
+    # Register signal handlers
+    # SIGPIPE: Ignore broken pipes (common when using tee/unbuffer)
+    try:
+        signal.signal(signal.SIGPIPE, handle_sigpipe)
+    except (AttributeError, ValueError):
+        # SIGPIPE may not be available on all platforms (Windows)
+        pass
+    
+    # SIGTERM: Handle termination gracefully
+    try:
+        signal.signal(signal.SIGTERM, handle_sigterm)
+    except (AttributeError, ValueError):
+        pass
 
 
 # =============================================================================
@@ -798,7 +833,7 @@ def calculate_quota_retry_delay(file_size_mb: float, attempt: int) -> int:
     
     Formula: (estimated_tokens / 125000) * 60 seconds * (2^attempt) + buffer
     - 125,000 tokens per minute limit
-    - Exponential backoff: 2^attempt
+    - Exponential backoff: 2.1^attempt (capped at attempt 4 for steady delays after retry 5)
     - Buffer time for safety
     """
     # Estimate tokens: roughly 4 chars per token, file_size_mb * 1024 * 1024 / 4
@@ -807,11 +842,11 @@ def calculate_quota_retry_delay(file_size_mb: float, attempt: int) -> int:
     # Calculate minutes needed to process this file
     minutes_needed = estimated_tokens / 125000
     
-    # Add exponential backoff: 2.1^attempt (slightly increased for more conservative retries)
-    backoff_multiplier = 2.1 ** attempt
+    # Add exponential backoff: 2.1^attempt (capped at attempt 4 - keep steady after retry 5)
+    backoff_multiplier = 2.1 ** min(attempt, 4)
     
     # Add buffer time (2-3 minutes for safety)
-    buffer_minutes = 2 + attempt
+    buffer_minutes = 2 + min(attempt, 4)
     
     # Calculate total delay in seconds
     total_delay_seconds = int((minutes_needed * backoff_multiplier + buffer_minutes) * 60)
@@ -1340,6 +1375,14 @@ def extract_text_safely(response, filename: str, context: ProcessingContext = No
             context.debug.log(f'  DEBUG: Found structured output in response.parsed')
             context.debug.log(f'  DEBUG: response.parsed type: {type(response.parsed)}')
             context.debug.log(f'  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]')
+            # Check if response.text exists to see raw JSON from Gemini
+            if hasattr(response, 'text') and response.text:
+                # Sample first 500 chars to check for nulls in raw JSON
+                sample = response.text[:500]
+                null_count = sample.count(': null')
+                context.debug.log(f'  DEBUG: Raw JSON sample (first 500 chars) contains {null_count} null values')
+                if null_count > 0:
+                    context.debug.log(f'  DEBUG: Raw JSON sample: {sample}')
         # Convert structured output to JSON string
         content = response.parsed.model_dump_json()
         if context and context.debug:
@@ -1433,7 +1476,8 @@ def handle_llm_errors(error: Exception, attempt: int, max_retries: int, file_siz
     if ('deadlineexceeded' in error_str or '504' in error_str or 
         'timeout' in error_str or 'truncated' in error_str):
         if attempt < max_retries - 1:
-            wait_time = 120 * 2 ** attempt
+            # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
+            wait_time = 120 * 2 ** min(attempt, 4)
             if remaining_budget_s is not None:
                 wait_time = min(wait_time, max(0, int(remaining_budget_s) - 5))
             print(f'  Attempt {attempt + 1} failed (timeout/truncation), retrying in {wait_time // 60} minutes...')
@@ -1444,7 +1488,8 @@ def handle_llm_errors(error: Exception, attempt: int, max_retries: int, file_siz
             return False
     elif 'serviceunavailable' in error_str or '503' in error_str or 'connection reset' in error_str or '500' in error_str or 'internal' in error_str:
         if attempt < max_retries - 1:
-            wait_time = 60 * 2 ** attempt
+            # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
+            wait_time = 60 * 2 ** min(attempt, 4)
             print(f'  Attempt {attempt + 1} failed (service unavailable/internal error), retrying in {wait_time // 60} minutes...')
             time.sleep(wait_time)
             return True
@@ -1453,7 +1498,8 @@ def handle_llm_errors(error: Exception, attempt: int, max_retries: int, file_siz
             return False
     elif 'no content parts found' in error_str or 'no content' in error_str:
         if attempt < max_retries - 1:
-            wait_time = 60 * 2 ** attempt
+            # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
+            wait_time = 60 * 2 ** min(attempt, 4)
             print(f'  Attempt {attempt + 1} failed (empty response), retrying in {wait_time // 60} minutes...')
             time.sleep(wait_time)
             return True
@@ -1462,7 +1508,8 @@ def handle_llm_errors(error: Exception, attempt: int, max_retries: int, file_siz
             return False
     elif 'incomplete json' in error_str or 'json validation failed' in error_str or 'truncated' in error_str:
         if attempt < max_retries - 1:
-            wait_time = 30 * 2 ** attempt
+            # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
+            wait_time = 30 * 2 ** min(attempt, 4)
             print(f'  Attempt {attempt + 1} failed (incomplete JSON), retrying in {wait_time} seconds...')
             time.sleep(wait_time)
             return True
@@ -1482,18 +1529,62 @@ def handle_llm_errors(error: Exception, attempt: int, max_retries: int, file_siz
         
         # Regular per-minute quota limit (retryable)
         if attempt < max_retries - 1:
+            # Try to extract API's suggested retry delay from error details
+            api_retry_delay = None
+            try:
+                # Check if error has details with RetryInfo - try multiple ways to access it
+                # Method 1: Check if error has 'error' attribute (ClientError structure)
+                if hasattr(error, 'error') and isinstance(error.error, dict):
+                    details = error.error.get('details', [])
+                    for detail in details:
+                        if isinstance(detail, dict) and detail.get('@type') == 'type.googleapis.com/google.rpc.RetryInfo':
+                            retry_delay_str = detail.get('retryDelay', '')
+                            # Parse duration string (e.g., "8s" or "8.666s")
+                            if retry_delay_str.endswith('s'):
+                                api_retry_delay = float(retry_delay_str[:-1])
+                                break
+                # Method 2: Check error string representation for "Please retry in X.XXs"
+                if api_retry_delay is None:
+                    import re
+                    match = re.search(r'please retry in ([\d.]+)s', error_str, re.IGNORECASE)
+                    if match:
+                        api_retry_delay = float(match.group(1))
+                        print(f'  DEBUG: Extracted API retry delay from message: {api_retry_delay:.1f}s')
+            except Exception as e:
+                print(f'  DEBUG: Error extracting API retry delay: {e}')
+                pass  # If extraction fails, fall back to calculated delay
+            
+            # Calculate our delay
             if file_size_mb > 0:
                 wait_time = calculate_quota_retry_delay(file_size_mb, attempt)
             else:
-                wait_time = 90 * 2 ** attempt  # Fallback for unknown file size
-            print(f'  Attempt {attempt + 1} failed (per-minute quota), retrying in {wait_time // 60} minutes...')
+                # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
+                wait_time = 90 * 2 ** min(attempt, 4)  # Fallback for unknown file size
+            
+            # Always add 3 minutes (180 seconds) to quota retry delay
+            wait_time += 180
+            print(f'  DEBUG: Calculated wait time (before API delay check): {wait_time}s ({wait_time // 60} minutes)')
+            
+            # Use API's suggested delay if it's longer than our calculated delay (with 3 min buffer)
+            if api_retry_delay is not None:
+                # Add buffer to API delay (at least 10 seconds, or 20% more, whichever is larger)
+                api_delay_with_buffer = max(api_retry_delay + 10, api_retry_delay * 1.2)
+                # Ensure we always have at least 3 minutes total
+                api_delay_with_buffer = max(api_delay_with_buffer, 180)
+                wait_time = max(wait_time, int(api_delay_with_buffer))
+                print(f'  INFO: API suggested retry delay: {api_retry_delay:.1f}s, using {wait_time}s (with 3 min minimum)')
+            
+            print(f'  Attempt {attempt + 1} failed (per-minute quota), retrying in {wait_time // 60} minutes ({wait_time}s)...')
+            print(f'  INFO: Waiting {wait_time}s before retry...')
             time.sleep(wait_time)
+            print(f'  INFO: Wait complete, continuing with retry...')
             return True
         else:
             print(f'  All {max_retries} attempts failed with per-minute quota errors')
             return False
     elif attempt < max_retries - 1:
-        wait_time = 30 * 2 ** attempt
+        # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
+        wait_time = 30 * 2 ** min(attempt, 4)
         print(f'  Attempt {attempt + 1} failed ({type(error).__name__}), retrying in {wait_time} seconds...')
         time.sleep(wait_time)
         return True
@@ -1653,10 +1744,29 @@ def extract_split_extraction(markdown_path: str, filename: str, cao_number: str,
     else:
         print(f'  INFO: Skipping salary extraction (using cached result)')
     
+    # Add 3-minute delay between salary and non-salary extraction for retries 6-8
+    if not nonsalary_content:  # Only delay if we need to extract non-salary
+        delay_seconds = 180  # 3 minutes
+        print(f'  INFO: Waiting {delay_seconds // 60} minutes before non-salary extraction...')
+        time.sleep(delay_seconds)
+    
     # Extract non-salary information (only if not cached)
     if not nonsalary_content:
         print(f'  INFO: Extracting non-salary information (attempt {attempt + 1})...')
         try:
+            # Re-fetch and validate file resource before second API call
+            # The file resource may become stale after the first API call and 3-minute delay
+            try:
+                file_resource = context.client.files.get(name=uploaded_file.name)
+                if file_resource.state.name != 'ACTIVE':
+                    raise ValueError(f'Uploaded file not ACTIVE before non-salary extraction: {file_resource.state.name}')
+                # Update uploaded_file reference to ensure we have a fresh resource
+                uploaded_file = file_resource
+                print(f'  DEBUG: Re-validated file resource before non-salary extraction - state: {file_resource.state.name}')
+            except Exception as e:
+                print(f'  WARNING: Failed to re-validate file resource: {e}')
+                # Continue anyway - the original uploaded_file might still work
+            
             context.current_stage = "generating_content_nonsalary"
             context.stage_start_ts = time.time()
             
@@ -1687,8 +1797,24 @@ def extract_split_extraction(markdown_path: str, filename: str, cao_number: str,
             print(f'  INFO: Non-salary extraction completed: {len(nonsalary_content) if nonsalary_content else 0} chars')
             
         except Exception as e:
-            print(f'  ERROR: Non-salary extraction failed: {e}')
-            nonsalary_response_info = {"finish": "ERROR", "error": str(e)}
+            # Enhanced error logging for non-salary extraction failures
+            error_msg = str(e)
+            print(f'  ERROR: Non-salary extraction failed: {error_msg}')
+            
+            # Log additional diagnostic information if available
+            # Note: nonsalary_response might not be defined if error occurred before API call
+            try:
+                if 'nonsalary_response' in locals() and hasattr(nonsalary_response, 'candidates') and nonsalary_response.candidates:
+                    cand = nonsalary_response.candidates[0]
+                    finish_reason = getattr(cand, "finish_reason", None)
+                    print(f'  DEBUG: Non-salary response finish_reason: {finish_reason}')
+                    if hasattr(cand, "safety_ratings") and cand.safety_ratings:
+                        safety_info = [(r.category, r.probability) for r in cand.safety_ratings]
+                        print(f'  DEBUG: Non-salary safety ratings: {safety_info}')
+            except:
+                pass  # Ignore errors in diagnostic logging
+            
+            nonsalary_response_info = {"finish": "ERROR", "error": error_msg}
     else:
         print(f'  INFO: Skipping non-salary extraction (using cached result)')
     
@@ -2091,6 +2217,12 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                         )
                         return None
                     
+                    # Add delay before retrying incomplete JSON (same as handle_llm_errors logic)
+                    # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
+                    wait_time = 30 * 2 ** min(attempt, 4)
+                    print(f'  Attempt {attempt + 1} failed (incomplete JSON), retrying in {wait_time} seconds...')
+                    time.sleep(wait_time)
+                    
                     # Continue to next retry attempt
                     continue
                 
@@ -2197,13 +2329,23 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
 def process_single_file(markdown_file: Path, cao_number: str, output_folder: Path, 
                        context: ProcessingContext, total_files: int, hang_threshold: int = 1500, heartbeat_interval: int = 300) -> bool:
     """Process a single markdown file end-to-end."""
+    # Generate output filename
+    output_filename = f"{markdown_file.stem}_extract.json"
+    output_file = output_folder / output_filename
+    
+    # Check if already processed (do this BEFORE creating watchdog thread to avoid overhead)
+    if output_file.exists():
+        print(f'  {cao_number}: Skipping {markdown_file.name} (already processed)')
+        # Don't count already processed files toward the limit
+        return True
+    
     # Initialize file timing and debug
     file_start = time.time()
     context.file_start_ts = file_start
     context.debug.clear()
     context.live_escalated = False
     
-    # Start heartbeat watchdog
+    # Start heartbeat watchdog (only for files that will be processed)
     stop_event = threading.Event()
     watchdog_thread = threading.Thread(
         target=heartbeat_watchdog,
@@ -2211,17 +2353,6 @@ def process_single_file(markdown_file: Path, cao_number: str, output_folder: Pat
         daemon=True
     )
     watchdog_thread.start()
-    
-    # Generate output filename
-    output_filename = f"{markdown_file.stem}_extract.json"
-    output_file = output_folder / output_filename
-    
-    # Check if already processed
-    if output_file.exists():
-        print(f'  {cao_number}: Skipping {markdown_file.name} (already processed)')
-        time.sleep(5)
-        # Don't count already processed files toward the limit
-        return True
     
     # Check file limit (only count successful extractions)
     if context.stats.successful_extractions >= context.config.max_files:
@@ -2619,6 +2750,23 @@ def run_extraction_pipeline():
 # Main entry point for the script
 def main():
     """Main entry point for the LLM extraction pipeline (markdown version)."""
+    # Setup signal handlers first to prevent unexpected exits
+    setup_signal_handlers()
+    
+    # Ensure stdout/stderr are line-buffered when piped (not a TTY)
+    # This helps prevent issues when writing to tee/unbuffer
+    if not sys.stdout.isatty():
+        # When piped (e.g., to tee), set line buffering for better behavior
+        try:
+            sys.stdout.reconfigure(line_buffering=True)
+        except (AttributeError, ValueError):
+            # Python < 3.7 or reconfigure not available - use flush() calls instead
+            pass
+        try:
+            sys.stderr.reconfigure(line_buffering=True)
+        except (AttributeError, ValueError):
+            pass
+    
     run_extraction_pipeline()
 
 

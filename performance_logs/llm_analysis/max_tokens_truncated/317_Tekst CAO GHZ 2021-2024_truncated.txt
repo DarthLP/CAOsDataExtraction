@@ -1,39 +1,15 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: Tekst CAO GHZ 2021-2024_extract.json
-Timestamp: 2025-11-15T04:13:19.312714
-Response length: 52305 characters
+Timestamp: 2025-11-25T01:16:16.600436
+Response length: 109290 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
 {
   "salary_information": [
     {
-      "jobgroup": "FWG 5",
-      "step": "trede 0",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1601,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 1686,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 1740,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 5",
-      "step": "trede 1",
+      "jobgroup": "10",
+      "step": "0",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -56,8 +32,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 5",
-      "step": "trede 2",
+      "jobgroup": "10",
+      "step": "1",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -80,416 +56,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 5",
-      "step": "trede 3",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1724,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 1809,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 1867,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 5",
-      "step": "trede 4",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1788,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 1873,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 1933,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 5",
-      "step": "trede 5",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1821,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 1906,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 1967,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 5",
-      "step": "trede 6",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1872,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 1957,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 2020,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 5",
-      "step": "trede 7",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1920,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 2005,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 2069,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 5",
-      "step": "trede 8",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1969,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 2054,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 2120,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 5",
-      "step": "trede 9",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 2025,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 2110,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 2178,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 10",
-      "step": "trede 0",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1630,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 1715,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 1770,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 10",
-      "step": "trede 1",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1660,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 1745,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 1801,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 10",
-      "step": "trede 2",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1724,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 1809,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 1867,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 10",
-      "step": "trede 3",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1788,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 1873,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 1933,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 10",
-      "step": "trede 4",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1821,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 1906,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 1967,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 10",
-      "step": "trede 5",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1872,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 1957,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 2020,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 10",
-      "step": "trede 6",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1920,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 2005,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 2069,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 10",
-      "step": "trede 7",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1969,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 2054,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 2120,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 10",
-      "step": "trede 8",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 2025,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 2110,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 2178,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 10",
-      "step": "trede 9",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 2087,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 2172,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 2242,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 10",
-      "step": "trede 10",
+      "jobgroup": "10",
+      "step": "10",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -512,32 +80,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 15",
-      "step": "trede 0",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1660,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 1745,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 1801,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 15",
-      "step": "trede 1",
+      "jobgroup": "10",
+      "step": "2",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -560,8 +104,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 15",
-      "step": "trede 2",
+      "jobgroup": "10",
+      "step": "3",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -584,8 +128,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 15",
-      "step": "trede 3",
+      "jobgroup": "10",
+      "step": "4",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -608,8 +152,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 15",
-      "step": "trede 4",
+      "jobgroup": "10",
+      "step": "5",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -632,8 +176,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 15",
-      "step": "trede 5",
+      "jobgroup": "10",
+      "step": "6",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -656,8 +200,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 15",
-      "step": "trede 6",
+      "jobgroup": "10",
+      "step": "7",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -680,8 +224,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 15",
-      "step": "trede 7",
+      "jobgroup": "10",
+      "step": "8",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -704,8 +248,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 15",
-      "step": "trede 8",
+      "jobgroup": "10",
+      "step": "9",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -728,23 +272,1223 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 15",
-      "step": "trede 9",
+      "jobgroup": "11",
+      "step": "0",
       "timeline": [
         {
           "start_date": "2021-06-01",
-          "amount": 2151,
+          "amount": 3661,
           "unit": "m"
         },
         {
           "start_date": "2022-05-01",
-          "amount": 2236,
+          "amount": 3746,
           "unit": "m",
           "inc_pct": 2.2
         },
         {
           "start_date": "2023-05-01",
-          "amount": 2308,
+          "amount": 3866,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "11",
+      "step": "1",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3809,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3894,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4019,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "11",
+      "step": "10",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5085,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5197,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5363,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "11",
+      "step": "11",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5225,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5340,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5511,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "11",
+      "step": "12",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5369,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5487,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5663,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "11",
+      "step": "2",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3976,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4063,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4193,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "11",
+      "step": "3",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4137,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4228,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4363,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "11",
+      "step": "4",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4292,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4386,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4526,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "11",
+      "step": "5",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4450,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4548,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4694,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "11",
+      "step": "6",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4525,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4625,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4773,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "11",
+      "step": "7",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4660,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4763,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4915,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "11",
+      "step": "8",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4799,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4905,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5062,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "11",
+      "step": "9",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4944,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5053,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5215,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "12",
+      "step": "0",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4137,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4228,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4363,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "12",
+      "step": "1",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4292,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4386,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4526,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "12",
+      "step": "10",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5510,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5631,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5811,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "12",
+      "step": "2",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4450,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4548,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4694,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "12",
+      "step": "3",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4525,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4625,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4773,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "12",
+      "step": "4",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4660,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4763,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4915,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "12",
+      "step": "5",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4799,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4905,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5062,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "12",
+      "step": "6",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4944,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5053,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5215,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "12",
+      "step": "7",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5085,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5197,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5363,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "12",
+      "step": "8",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5225,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5340,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5511,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "12",
+      "step": "9",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5369,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5487,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5663,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "13",
+      "step": "0",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4525,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4625,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4773,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "13",
+      "step": "1",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4660,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4763,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4915,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "13",
+      "step": "10",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 6065,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 6259,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 6259,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "13",
+      "step": "11",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 6113,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 6247,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 6447,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "13",
+      "step": "12",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 6287,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 6425,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 6631,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "13",
+      "step": "2",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4799,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4905,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5062,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "13",
+      "step": "3",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4944,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5053,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5215,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "13",
+      "step": "4",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5085,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5197,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5363,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "13",
+      "step": "5",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5225,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5340,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5511,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "13",
+      "step": "6",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5369,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5487,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5663,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "13",
+      "step": "7",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5510,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5631,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5811,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "13",
+      "step": "8",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5648,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5772,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5957,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "13",
+      "step": "9",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5792,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5919,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 6108,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "14",
+      "step": "0",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5225,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5340,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5511,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "14",
+      "step": "1",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5369,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5487,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5663,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "14",
+      "step": "10",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 6821,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 6971,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 7194,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "14",
+      "step": "11",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 6997,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 7151,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 7380,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "14",
+      "step": "12",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 7184,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 7342,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 7577,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "14",
+      "step": "2",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5510,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5631,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5811,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "14",
+      "step": "3",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5648,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5772,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 5957,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "14",
+      "step": "4",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5792,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 5919,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 6108,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "14",
+      "step": "5",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 5934,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 6065,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 6259,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "14",
+      "step": "6",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 6113,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 6247,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 6447,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "14",
+      "step": "7",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 6287,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 6425,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 6631,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "14",
+      "step": "8",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 6464,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 6606,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 6817,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "14",
+      "step": "9",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 6644,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 6790,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 7007,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "15",
+      "step": "0",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1660,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1745,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1801,
           "unit": "m",
           "inc_pct": 3.2
         }
@@ -752,8 +1496,32 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 15",
-      "step": "trede 10",
+      "jobgroup": "15",
+      "step": "1",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1724,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1809,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1867,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "15",
+      "step": "10",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -776,23 +1544,47 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 20",
-      "step": "trede 0",
+      "jobgroup": "15",
+      "step": "11",
       "timeline": [
         {
           "start_date": "2021-06-01",
-          "amount": 1724,
+          "amount": 8643,
           "unit": "m"
         },
         {
           "start_date": "2022-05-01",
-          "amount": 1809,
+          "amount": 8833,
           "unit": "m",
           "inc_pct": 2.2
         },
         {
           "start_date": "2023-05-01",
-          "amount": 1867,
+          "amount": 9116,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "15",
+      "step": "2",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1788,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1873,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1933,
           "unit": "m",
           "inc_pct": 3.2
         }
@@ -800,8 +1592,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 20",
-      "step": "trede 1",
+      "jobgroup": "15",
+      "step": "3",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -824,8 +1616,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 20",
-      "step": "trede 2",
+      "jobgroup": "15",
+      "step": "4",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -848,8 +1640,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 20",
-      "step": "trede 3",
+      "jobgroup": "15",
+      "step": "5",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -872,8 +1664,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 20",
-      "step": "trede 4",
+      "jobgroup": "15",
+      "step": "6",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -896,8 +1688,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 20",
-      "step": "trede 5",
+      "jobgroup": "15",
+      "step": "7",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -920,8 +1712,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 20",
-      "step": "trede 6",
+      "jobgroup": "15",
+      "step": "8",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -944,8 +1736,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 20",
-      "step": "trede 7",
+      "jobgroup": "15",
+      "step": "9",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -968,23 +1760,47 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 20",
-      "step": "trede 8",
+      "jobgroup": "15",
+      "step": "9",
       "timeline": [
         {
           "start_date": "2021-06-01",
-          "amount": 2222,
+          "amount": 8011,
           "unit": "m"
         },
         {
           "start_date": "2022-05-01",
-          "amount": 2307,
+          "amount": 8187,
           "unit": "m",
           "inc_pct": 2.2
         },
         {
           "start_date": "2023-05-01",
-          "amount": 2381,
+          "amount": 8449,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of 1 January 2001. Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "20",
+      "step": "0",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1724,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1809,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1867,
           "unit": "m",
           "inc_pct": 3.2
         }
@@ -992,23 +1808,23 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 20",
-      "step": "trede 9",
+      "jobgroup": "20",
+      "step": "1",
       "timeline": [
         {
           "start_date": "2021-06-01",
-          "amount": 2296,
+          "amount": 1821,
           "unit": "m"
         },
         {
           "start_date": "2022-05-01",
-          "amount": 2381,
+          "amount": 1906,
           "unit": "m",
           "inc_pct": 2.2
         },
         {
           "start_date": "2023-05-01",
-          "amount": 2457,
+          "amount": 1967,
           "unit": "m",
           "inc_pct": 3.2
         }
@@ -1016,8 +1832,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 20",
-      "step": "trede 10",
+      "jobgroup": "20",
+      "step": "10",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1040,8 +1856,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 20",
-      "step": "trede 11",
+      "jobgroup": "20",
+      "step": "11",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1064,32 +1880,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 25",
-      "step": "trede 0",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1788,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 1873,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 1933,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 25",
-      "step": "trede 1",
+      "jobgroup": "20",
+      "step": "2",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1112,8 +1904,32 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 25",
-      "step": "trede 2",
+      "jobgroup": "20",
+      "step": "3",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1920,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2005,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2069,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "20",
+      "step": "4",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1136,8 +1952,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 25",
-      "step": "trede 3",
+      "jobgroup": "20",
+      "step": "5",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1160,8 +1976,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 25",
-      "step": "trede 4",
+      "jobgroup": "20",
+      "step": "6",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1184,8 +2000,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 25",
-      "step": "trede 5",
+      "jobgroup": "20",
+      "step": "7",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1208,8 +2024,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 25",
-      "step": "trede 6",
+      "jobgroup": "20",
+      "step": "8",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1232,8 +2048,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 25",
-      "step": "trede 7",
+      "jobgroup": "20",
+      "step": "9",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1256,23 +2072,23 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 25",
-      "step": "trede 8",
+      "jobgroup": "25",
+      "step": "0",
       "timeline": [
         {
           "start_date": "2021-06-01",
-          "amount": 2363,
+          "amount": 1788,
           "unit": "m"
         },
         {
           "start_date": "2022-05-01",
-          "amount": 2448,
+          "amount": 1873,
           "unit": "m",
           "inc_pct": 2.2
         },
         {
           "start_date": "2023-05-01",
-          "amount": 2526,
+          "amount": 1933,
           "unit": "m",
           "inc_pct": 3.2
         }
@@ -1280,23 +2096,23 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 25",
-      "step": "trede 9",
+      "jobgroup": "25",
+      "step": "1",
       "timeline": [
         {
           "start_date": "2021-06-01",
-          "amount": 2439,
+          "amount": 1872,
           "unit": "m"
         },
         {
           "start_date": "2022-05-01",
-          "amount": 2524,
+          "amount": 1957,
           "unit": "m",
           "inc_pct": 2.2
         },
         {
           "start_date": "2023-05-01",
-          "amount": 2605,
+          "amount": 2020,
           "unit": "m",
           "inc_pct": 3.2
         }
@@ -1304,8 +2120,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 25",
-      "step": "trede 10",
+      "jobgroup": "25",
+      "step": "10",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1328,8 +2144,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 25",
-      "step": "trede 11",
+      "jobgroup": "25",
+      "step": "11",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1352,23 +2168,23 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 30",
-      "step": "trede 0",
+      "jobgroup": "25",
+      "step": "2",
       "timeline": [
         {
           "start_date": "2021-06-01",
-          "amount": 1821,
+          "amount": 1969,
           "unit": "m"
         },
         {
           "start_date": "2022-05-01",
-          "amount": 1906,
+          "amount": 2054,
           "unit": "m",
           "inc_pct": 2.2
         },
         {
           "start_date": "2023-05-01",
-          "amount": 1967,
+          "amount": 2120,
           "unit": "m",
           "inc_pct": 3.2
         }
@@ -1376,32 +2192,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 30",
-      "step": "trede 1",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1920,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 2005,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 2069,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 30",
-      "step": "trede 2",
+      "jobgroup": "25",
+      "step": "3",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1424,8 +2216,32 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 30",
-      "step": "trede 3",
+      "jobgroup": "25",
+      "step": "4",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2087,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2172,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2242,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "25",
+      "step": "5",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1448,8 +2264,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 30",
-      "step": "trede 4",
+      "jobgroup": "25",
+      "step": "6",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1472,8 +2288,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 30",
-      "step": "trede 5",
+      "jobgroup": "25",
+      "step": "7",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1496,8 +2312,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 30",
-      "step": "trede 6",
+      "jobgroup": "25",
+      "step": "8",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1520,8 +2336,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 30",
-      "step": "trede 7",
+      "jobgroup": "25",
+      "step": "9",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1544,23 +2360,23 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 30",
-      "step": "trede 8",
+      "jobgroup": "30",
+      "step": "0",
       "timeline": [
         {
           "start_date": "2021-06-01",
-          "amount": 2501,
+          "amount": 1821,
           "unit": "m"
         },
         {
           "start_date": "2022-05-01",
-          "amount": 2586,
+          "amount": 1906,
           "unit": "m",
           "inc_pct": 2.2
         },
         {
           "start_date": "2023-05-01",
-          "amount": 2669,
+          "amount": 1967,
           "unit": "m",
           "inc_pct": 3.2
         }
@@ -1568,23 +2384,23 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 30",
-      "step": "trede 9",
+      "jobgroup": "30",
+      "step": "1",
       "timeline": [
         {
           "start_date": "2021-06-01",
-          "amount": 2574,
+          "amount": 1920,
           "unit": "m"
         },
         {
           "start_date": "2022-05-01",
-          "amount": 2659,
+          "amount": 2005,
           "unit": "m",
           "inc_pct": 2.2
         },
         {
           "start_date": "2023-05-01",
-          "amount": 2744,
+          "amount": 2069,
           "unit": "m",
           "inc_pct": 3.2
         }
@@ -1592,8 +2408,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 30",
-      "step": "trede 10",
+      "jobgroup": "30",
+      "step": "10",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1616,8 +2432,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 30",
-      "step": "trede 11",
+      "jobgroup": "30",
+      "step": "11",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1640,32 +2456,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 35",
-      "step": "trede 0",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 1920,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 2005,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 2069,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 35",
-      "step": "trede 1",
+      "jobgroup": "30",
+      "step": "2",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1688,8 +2480,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 35",
-      "step": "trede 2",
+      "jobgroup": "30",
+      "step": "3",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1712,8 +2504,32 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 35",
-      "step": "trede 3",
+      "jobgroup": "30",
+      "step": "4",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2222,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2307,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2381,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "30",
+      "step": "5",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1736,8 +2552,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 35",
-      "step": "trede 4",
+      "jobgroup": "30",
+      "step": "6",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1760,8 +2576,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 35",
-      "step": "trede 5",
+      "jobgroup": "30",
+      "step": "7",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1784,8 +2600,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 35",
-      "step": "trede 6",
+      "jobgroup": "30",
+      "step": "8",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1808,8 +2624,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 35",
-      "step": "trede 7",
+      "jobgroup": "30",
+      "step": "9",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1832,23 +2648,23 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 35",
-      "step": "trede 8",
+      "jobgroup": "35",
+      "step": "0",
       "timeline": [
         {
           "start_date": "2021-06-01",
-          "amount": 2643,
+          "amount": 1920,
           "unit": "m"
         },
         {
           "start_date": "2022-05-01",
-          "amount": 2728,
+          "amount": 2005,
           "unit": "m",
           "inc_pct": 2.2
         },
         {
           "start_date": "2023-05-01",
-          "amount": 2815,
+          "amount": 2069,
           "unit": "m",
           "inc_pct": 3.2
         }
@@ -1856,23 +2672,23 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 35",
-      "step": "trede 9",
+      "jobgroup": "35",
+      "step": "1",
       "timeline": [
         {
           "start_date": "2021-06-01",
-          "amount": 2716,
+          "amount": 2025,
           "unit": "m"
         },
         {
           "start_date": "2022-05-01",
-          "amount": 2801,
+          "amount": 2110,
           "unit": "m",
           "inc_pct": 2.2
         },
         {
           "start_date": "2023-05-01",
-          "amount": 2891,
+          "amount": 2178,
           "unit": "m",
           "inc_pct": 3.2
         }
@@ -1880,8 +2696,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 35",
-      "step": "trede 10",
+      "jobgroup": "35",
+      "step": "10",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1904,8 +2720,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 35",
-      "step": "trede 11",
+      "jobgroup": "35",
+      "step": "11",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1928,8 +2744,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 35",
-      "step": "trede 12",
+      "jobgroup": "35",
+      "step": "12",
       "timeline": [
         {
           "start_date": "2022-05-01",
@@ -1947,32 +2763,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 40",
-      "step": "trede 0",
-      "timeline": [
-        {
-          "start_date": "2021-06-01",
-          "amount": 2025,
-          "unit": "m"
-        },
-        {
-          "start_date": "2022-05-01",
-          "amount": 2110,
-          "unit": "m",
-          "inc_pct": 2.2
-        },
-        {
-          "start_date": "2023-05-01",
-          "amount": 2178,
-          "unit": "m",
-          "inc_pct": 3.2
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
-    },
-    {
-      "jobgroup": "FWG 40",
-      "step": "trede 1",
+      "jobgroup": "35",
+      "step": "2",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -1995,8 +2787,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 40",
-      "step": "trede 2",
+      "jobgroup": "35",
+      "step": "3",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -2019,8 +2811,32 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 40",
-      "step": "trede 3",
+      "jobgroup": "35",
+      "step": "4",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2363,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2448,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2526,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "35",
+      "step": "5",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -2043,8 +2859,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 40",
-      "step": "trede 4",
+      "jobgroup": "35",
+      "step": "6",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -2067,8 +2883,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 40",
-      "step": "trede 5",
+      "jobgroup": "35",
+      "step": "7",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -2091,8 +2907,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 40",
-      "step": "trede 6",
+      "jobgroup": "35",
+      "step": "8",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -2115,8 +2931,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 40",
-      "step": "trede 7",
+      "jobgroup": "35",
+      "step": "9",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -2139,23 +2955,23 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 40",
-      "step": "trede 8",
+      "jobgroup": "40",
+      "step": "0",
       "timeline": [
         {
           "start_date": "2021-06-01",
-          "amount": 2784,
+          "amount": 2025,
           "unit": "m"
         },
         {
           "start_date": "2022-05-01",
-          "amount": 2869,
+          "amount": 2110,
           "unit": "m",
           "inc_pct": 2.2
         },
         {
           "start_date": "2023-05-01",
-          "amount": 2961,
+          "amount": 2178,
           "unit": "m",
           "inc_pct": 3.2
         }
@@ -2163,23 +2979,23 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 40",
-      "step": "trede 9",
+      "jobgroup": "40",
+      "step": "1",
       "timeline": [
         {
           "start_date": "2021-06-01",
-          "amount": 2853,
+          "amount": 2151,
           "unit": "m"
         },
         {
           "start_date": "2022-05-01",
-          "amount": 2938,
+          "amount": 2236,
           "unit": "m",
           "inc_pct": 2.2
         },
         {
           "start_date": "2023-05-01",
-          "amount": 3032,
+          "amount": 2308,
           "unit": "m",
           "inc_pct": 3.2
         }
@@ -2187,8 +3003,8 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 40",
-      "step": "trede 10",
+      "jobgroup": "40",
+      "step": "10",
       "timeline": [
         {
           "start_date": "2021-06-01",
@@ -2211,4 +3027,1432 @@ Finish reason: MAX_TOKENS
       "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "FWG 40",
+      "jobgroup": "40",
+      "step": "11",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2993,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3078,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3176,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "40",
+      "step": "12",
+      "timeline": [
+        {
+          "start_date": "2022-05-01",
+          "amount": 3154,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3255,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "40",
+      "step": "13",
+      "timeline": [
+        {
+          "start_date": "2023-05-01",
+          "amount": 3332,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "40",
+      "step": "2",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2296,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2381,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2457,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "40",
+      "step": "3",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2439,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2524,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2605,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "40",
+      "step": "4",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2501,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2586,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2669,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "40",
+      "step": "5",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2574,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2659,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2744,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "40",
+      "step": "6",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2643,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2728,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2815,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "40",
+      "step": "7",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2716,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2801,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2891,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "40",
+      "step": "8",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2784,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2869,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2961,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "40",
+      "step": "9",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2853,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2938,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3032,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "45",
+      "step": "0",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2151,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2236,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2308,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "45",
+      "step": "1",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2296,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2381,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2457,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "45",
+      "step": "10",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3144,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3229,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3332,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "45",
+      "step": "11",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3222,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3307,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3413,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "45",
+      "step": "12",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3289,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3374,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3482,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "45",
+      "step": "13",
+      "timeline": [
+        {
+          "start_date": "2022-05-01",
+          "amount": 3452,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3562,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "45",
+      "step": "14",
+      "timeline": [
+        {
+          "start_date": "2023-05-01",
+          "amount": 3640,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "45",
+      "step": "2",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2439,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2524,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2605,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "45",
+      "step": "3",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2574,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2659,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2744,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "45",
+      "step": "4",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2716,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2801,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2891,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "45",
+      "step": "5",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2784,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2869,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2961,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "45",
+      "step": "6",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2853,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2938,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3032,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "45",
+      "step": "7",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2924,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3009,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3105,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "45",
+      "step": "8",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2993,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3078,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3176,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "45",
+      "step": "9",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3069,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3154,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3255,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "5",
+      "step": "0",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1601,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1686,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1740,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "5",
+      "step": "1",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1630,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1715,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1770,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "5",
+      "step": "2",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1660,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1745,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1801,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "5",
+      "step": "3",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1724,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1809,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1867,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "5",
+      "step": "4",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1788,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1873,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1933,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "5",
+      "step": "5",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1821,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1906,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 1967,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "5",
+      "step": "6",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1872,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 1957,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2020,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "5",
+      "step": "7",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1920,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2005,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2069,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "5",
+      "step": "8",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 1969,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2054,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2120,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "5",
+      "step": "9",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2025,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2110,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2178,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "50",
+      "step": "0",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2501,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2586,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2669,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "50",
+      "step": "1",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2643,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2728,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2815,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "50",
+      "step": "10",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3588,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3673,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3791,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "50",
+      "step": "11",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3661,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3746,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3866,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "50",
+      "step": "12",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3738,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3823,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3945,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "50",
+      "step": "13",
+      "timeline": [
+        {
+          "start_date": "2022-05-01",
+          "amount": 3894,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4019,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "50",
+      "step": "2",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2784,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2869,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 2961,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "50",
+      "step": "3",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2924,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3009,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3105,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "50",
+      "step": "4",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3069,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3154,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3255,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "50",
+      "step": "5",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3222,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3307,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3413,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "50",
+      "step": "6",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3289,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3374,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3482,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "50",
+      "step": "7",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3367,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3452,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3562,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "50",
+      "step": "8",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3442,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3527,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3640,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "50",
+      "step": "9",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3513,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3598,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3713,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "55",
+      "step": "0",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2853,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 2938,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3032,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "55",
+      "step": "1",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 2993,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3078,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3176,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "55",
+      "step": "10",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4059,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4148,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4281,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "55",
+      "step": "11",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4137,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4228,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4363,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "55",
+      "step": "12",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 4211,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 4304,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4442,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "55",
+      "step": "2",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3144,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3229,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3332,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "55",
+      "step": "3",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3289,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3374,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3482,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "55",
+      "step": "4",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3442,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3527,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3640,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "55",
+      "step": "5",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3588,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3673,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3791,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "55",
+      "step": "6",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3738,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3823,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 3945,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "55",
+      "step": "7",
+      "timeline": [
+        {
+          "start_date": "2021-06-01",
+          "amount": 3809,
+          "unit": "m"
+        },
+        {
+          "start_date": "2022-05-01",
+          "amount": 3894,
+          "unit": "m",
+          "inc_pct": 2.2
+        },
+        {
+          "start_date": "2023-05-01",
+          "amount": 4019,
+          "unit": "m",
+          "inc_pct": 3.2
+        }
+      ],
+      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
+    },
+    {
+      "jobgroup": "55",
+      "step": "

@@ -19,19 +19,22 @@ def get_row_key(row: Dict[str, Any]) -> str:
     """
     Generate a unique key for a salary row based on jobgroup, step, worker, age, education, contract.
     
+    Supports both regular schema (full field names) and compact/split schema (2-letter abbreviations).
+    
     Args:
-        row: Salary row dictionary
+        row: Salary row dictionary (can use either full names or 2-letter abbreviations)
         
     Returns:
         str: Unique key for deduplication
     """
-    jobgroup = row.get('jobgroup', '')
-    step = row.get('step', '') or ''
-    worker = row.get('worker', '') or ''
-    age_group = row.get('age_group', '') or ''
-    education = row.get('education', '') or ''
-    permanency = row.get('permanency', '') or ''
-    hours_type = row.get('hours_type', '') or ''
+    # Support both regular schema (full names) and compact/split schema (2-letter abbreviations)
+    jobgroup = row.get('jg', row.get('jobgroup', ''))
+    step = row.get('st', row.get('step', '')) or ''
+    worker = row.get('wr', row.get('worker', '')) or ''
+    age_group = row.get('ag', row.get('age_group', '')) or ''
+    education = row.get('eu', row.get('education', '')) or ''
+    permanency = row.get('pe', row.get('permanency', '')) or ''
+    hours_type = row.get('ht', row.get('hours_type', '')) or ''
     
     # Create composite key
     key_parts = [jobgroup, step, worker, age_group, education, permanency, hours_type]
@@ -47,27 +50,38 @@ def merge_split_salary_results(first_half: Dict[str, Any], second_half: Dict[str
     - Deduplicates rows based on jobgroup+step+worker+age+education+contract
     - Consolidates shared notes where appropriate
     - Validates the merged result
+    - Supports both regular schema (full field names) and compact/split schema (2-letter abbreviations)
     
     Args:
-        first_half: First extraction result (dict with 'salary_information' key)
-        second_half: Second extraction result (dict with 'salary_information' key)
+        first_half: First extraction result (dict with 'salary_information' or 'si' key)
+        second_half: Second extraction result (dict with 'salary_information' or 'si' key)
         filename: Filename for error reporting (optional)
         
     Returns:
         dict: Merged result with 'salary_information' key, or None if merge fails
     """
     try:
-        # Validate inputs
-        if not isinstance(first_half, dict) or 'salary_information' not in first_half:
+        # Validate inputs - support both 'salary_information' (regular) and 'si' (compact/split)
+        if not isinstance(first_half, dict):
             print(f'  ERROR: Invalid first_half structure for {filename}')
             return None
         
-        if not isinstance(second_half, dict) or 'salary_information' not in second_half:
+        if not isinstance(second_half, dict):
             print(f'  ERROR: Invalid second_half structure for {filename}')
             return None
         
-        first_rows = first_half.get('salary_information', [])
-        second_rows = second_half.get('salary_information', [])
+        # Get salary data - support both 'si' (compact/split) and 'salary_information' (regular)
+        first_rows = first_half.get('si', first_half.get('salary_information', []))
+        second_rows = second_half.get('si', second_half.get('salary_information', []))
+        
+        # Validate that we found salary data
+        if 'si' not in first_half and 'salary_information' not in first_half:
+            print(f'  ERROR: Invalid first_half structure for {filename} - missing salary_information or si key')
+            return None
+        
+        if 'si' not in second_half and 'salary_information' not in second_half:
+            print(f'  ERROR: Invalid second_half structure for {filename} - missing salary_information or si key')
+            return None
         
         if not isinstance(first_rows, list):
             first_rows = []
@@ -90,7 +104,9 @@ def merge_split_salary_results(first_half: Dict[str, Any], second_half: Dict[str
                 merged_rows[key] = row
                 seen_keys.add(key)
             else:
-                print(f'  WARNING: Duplicate row in first half (jobgroup: {row.get("jobgroup", "unknown")}), keeping first occurrence')
+                # Support both field name formats for logging
+                jobgroup_val = row.get('jg', row.get('jobgroup', 'unknown'))
+                print(f'  WARNING: Duplicate row in first half (jobgroup: {jobgroup_val}), keeping first occurrence')
         
         # Add second half rows (skip duplicates)
         duplicate_count = 0
@@ -104,7 +120,9 @@ def merge_split_salary_results(first_half: Dict[str, Any], second_half: Dict[str
                 seen_keys.add(key)
             else:
                 duplicate_count += 1
-                print(f'  WARNING: Duplicate row in second half (jobgroup: {row.get("jobgroup", "unknown")}), skipping')
+                # Support both field name formats for logging
+                jobgroup_val = row.get('jg', row.get('jobgroup', 'unknown'))
+                print(f'  WARNING: Duplicate row in second half (jobgroup: {jobgroup_val}), skipping')
         
         if duplicate_count > 0:
             print(f'  INFO: Skipped {duplicate_count} duplicate rows during merge')

@@ -1,7 +1,7 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: SZW_CAOMITT2016_19_meld_3e_tussent__wijz__sch__extract.json
-Timestamp: 2025-11-18T18:51:40.962990
-Response length: 55989 characters
+Timestamp: 2025-11-25T03:53:04.397074
+Response length: 78550 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
@@ -9,238 +9,27 @@ Finish reason: MAX_TOKENS
   "salary_information": [
     {
       "jobgroup": "Functiegroep 1",
-      "age_group": "21",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 8.53,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 8.53,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 8.6,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 8.6,
-          "unit": "h",
-          "inc_pct": 2.0,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 1",
-      "age_group": "21",
-      "ft_hours": 37,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 8.3,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 8.3,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 8.37,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 8.42,
-          "unit": "h",
-          "inc_pct": 2.0
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 1",
-      "age_group": "21",
-      "ft_hours": 38,
+      "worker": "Carpet and Textile Industry",
+      "age_group": "23",
       "timeline": [
         {
           "start_date": "2016-07-01",
           "end_date": "2017-06-30",
-          "amount": 8.21,
+          "amount": 11.32,
           "unit": "h"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 8.21,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
         },
         {
           "start_date": "2017-09-01",
           "end_date": "2017-12-31",
-          "amount": 8.33,
+          "amount": 11.49,
           "unit": "h",
           "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 8.25,
-          "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 8.42,
-          "unit": "h",
-          "inc_pct": 2.0
         }
-      ],
-      "row_note": null
+      ]
     },
     {
       "jobgroup": "Functiegroep 1",
-      "age_group": "22",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 10.04,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 10.04,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 10.12,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 10.12,
-          "unit": "h",
-          "inc_pct": 2.0,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 1",
-      "age_group": "22",
-      "ft_hours": 37,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 9.77,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 9.77,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 9.85,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 9.87,
-          "unit": "h",
-          "inc_pct": 2.0
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 1",
-      "age_group": "22",
-      "ft_hours": 38,
-      "timeline": [
-        {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 9.62,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 9.62,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 9.77,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 9.67,
-          "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 9.87,
-          "unit": "h",
-          "inc_pct": 2.0
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 1",
+      "worker": "Carpet and Textile Industry",
       "age_group": "23",
       "ft_hours": 36,
       "timeline": [
@@ -256,25 +45,12 @@ Finish reason: MAX_TOKENS
           "amount": 11.49,
           "unit": "h",
           "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 11.38,
-          "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 11.61,
-          "unit": "h",
-          "inc_pct": 2.0
         }
-      ],
-      "row_note": null
+      ]
     },
     {
       "jobgroup": "Functiegroep 1",
+      "worker": "Carpet and Textile Industry",
       "age_group": "23",
       "ft_hours": 37,
       "timeline": [
@@ -283,73 +59,47 @@ Finish reason: MAX_TOKENS
           "end_date": "2017-08-31",
           "amount": 11.32,
           "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.49,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 11.38,
-          "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 11.61,
-          "unit": "h",
-          "inc_pct": 2.0
         }
-      ],
-      "row_note": null
+      ]
     },
     {
       "jobgroup": "Functiegroep 1",
+      "worker": "Carpet and Textile Industry",
       "age_group": "23",
       "ft_hours": 38,
       "timeline": [
-        {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 11.32,
-          "unit": "h"
-        },
         {
           "start_date": "2017-07-01",
           "end_date": "2017-08-31",
           "amount": 11.32,
           "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.49,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 11.38,
-          "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 11.61,
-          "unit": "h",
-          "inc_pct": 2.0
         }
-      ],
-      "row_note": null
+      ]
     },
     {
       "jobgroup": "Functiegroep 1",
       "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 11.44,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.61,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
       "ft_hours": 36,
       "timeline": [
         {
@@ -364,7 +114,417 @@ Finish reason: MAX_TOKENS
           "amount": 11.61,
           "unit": "h",
           "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.44,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.44,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 11.32,
+          "unit": "h"
         },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.49,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.32,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.49,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.32,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.32,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "worker": "Fashion and Interior Industry",
+      "age_group": "23",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 11.21,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "worker": "Fashion and Interior Industry",
+      "age_group": "23",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.21,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.38,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "worker": "Fashion and Interior Industry",
+      "age_group": "23",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.21,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.38,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "worker": "Fashion and Interior Industry",
+      "age_group": "23",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.21,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.38,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 11.33,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.33,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.50,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.33,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.50,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.33,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.50,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 11.21,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.21,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.38,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.21,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.38,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.21,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.38,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "age_group": "23",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.38,
+          "unit": "h"
+        },
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 11.61,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "age_group": "23",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.38,
+          "unit": "h"
+        },
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 11.61,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "age_group": "23",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.38,
+          "unit": "h"
+        },
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 11.61,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 11.84,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
         {
           "start_date": "2018-01-01",
           "end_date": "2018-03-31",
@@ -378,101 +538,56 @@ Finish reason: MAX_TOKENS
           "unit": "h",
           "inc_pct": 2.0
         }
-      ],
-      "row_note": "Number of periodieken: 4, Periodic increase percentage: 0.50%"
+      ]
     },
     {
       "jobgroup": "Functiegroep 1",
       "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
       "ft_hours": 37,
       "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 11.44,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.61,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
         {
           "start_date": "2018-01-01",
           "end_date": "2018-03-31",
           "amount": 11.61,
           "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 11.84,
-          "unit": "h",
-          "inc_pct": 2.0
         }
-      ],
-      "row_note": "Number of periodieken: 4, Periodic increase percentage: 0.50%"
+      ]
     },
     {
       "jobgroup": "Functiegroep 1",
       "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
       "ft_hours": 38,
       "timeline": [
-        {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 11.44,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 11.44,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.61,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
         {
           "start_date": "2018-01-01",
           "end_date": "2018-03-31",
           "amount": 11.61,
           "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 11.84,
-          "unit": "h",
-          "inc_pct": 2.0
         }
-      ],
-      "row_note": "Number of periodieken: 4, Periodic increase percentage: 0.50%"
+      ]
     },
     {
       "jobgroup": "Functiegroep 1",
       "step": "Minimum hourly wage",
-      "ft_hours": 36,
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
       "timeline": [
         {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 11.32,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.49,
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 11.61,
           "unit": "h",
-          "inc_pct": 1.5
-        },
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 1",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
         {
           "start_date": "2018-01-01",
           "end_date": "2018-03-31",
@@ -486,684 +601,59 @@ Finish reason: MAX_TOKENS
           "unit": "h",
           "inc_pct": 2.0
         }
-      ],
-      "row_note": "Number of periodieken: 4, Periodic increase percentage: 0.51%"
+      ]
     },
     {
       "jobgroup": "Functiegroep 1",
       "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
       "ft_hours": 37,
       "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 11.32,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.49,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
         {
           "start_date": "2018-01-01",
           "end_date": "2018-03-31",
           "amount": 11.38,
           "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 11.61,
-          "unit": "h",
-          "inc_pct": 2.0
         }
-      ],
-      "row_note": "Number of periodieken: 4, Periodic increase percentage: 0.51%"
+      ]
     },
     {
       "jobgroup": "Functiegroep 1",
       "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
       "ft_hours": 38,
       "timeline": [
-        {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 11.32,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 11.32,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.49,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
         {
           "start_date": "2018-01-01",
           "end_date": "2018-03-31",
           "amount": 11.38,
           "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 11.61,
-          "unit": "h",
-          "inc_pct": 2.0
         }
-      ],
-      "row_note": "Number of periodieken: 4, Periodic increase percentage: 0.51%"
+      ]
     },
     {
-      "jobgroup": "Functiegroep 1",
-      "worker": "Fashion and Interior Industry",
-      "age_group": "21",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 8.53,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 8.53,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 1",
-      "worker": "Fashion and Interior Industry",
-      "age_group": "21",
-      "ft_hours": 37,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 8.3,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 8.3,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 1",
-      "worker": "Fashion and Interior Industry",
-      "age_group": "21",
-      "ft_hours": 38,
-      "timeline": [
-        {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 8.13,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 8.13,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 8.25,
-          "unit": "h",
-          "inc_pct": 1.5
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 1",
-      "worker": "Fashion and Interior Industry",
-      "age_group": "22",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 10.04,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 10.04,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 1",
-      "worker": "Fashion and Interior Industry",
-      "age_group": "22",
-      "ft_hours": 37,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 9.77,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 9.77,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 1",
-      "worker": "Fashion and Interior Industry",
-      "age_group": "22",
-      "ft_hours": 38,
-      "timeline": [
-        {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 9.53,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 9.53,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 9.67,
-          "unit": "h",
-          "inc_pct": 1.5
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 1",
-      "worker": "Fashion and Interior Industry",
+      "jobgroup": "Functiegroep 2",
+      "worker": "Carpet and Textile Industry",
       "age_group": "23",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 11.21,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.38,
-          "unit": "h",
-          "inc_pct": 1.5
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 1",
-      "worker": "Fashion and Interior Industry",
-      "age_group": "23",
-      "ft_hours": 37,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 11.21,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.38,
-          "unit": "h",
-          "inc_pct": 1.5
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 1",
-      "worker": "Fashion and Interior Industry",
-      "age_group": "23",
-      "ft_hours": 38,
       "timeline": [
         {
           "start_date": "2016-07-01",
           "end_date": "2017-06-30",
-          "amount": 11.21,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 11.21,
+          "amount": 11.42,
           "unit": "h"
         },
         {
           "start_date": "2017-09-01",
           "end_date": "2017-12-31",
-          "amount": 11.38,
+          "amount": 11.59,
           "unit": "h",
           "inc_pct": 1.5
         }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 1",
-      "worker": "Fashion and Interior Industry",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 11.33,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.5,
-          "unit": "h",
-          "inc_pct": 1.5
-        }
-      ],
-      "row_note": "Number of periodieken: 2, Periodic increase percentage: 0.54%"
-    },
-    {
-      "jobgroup": "Functiegroep 1",
-      "worker": "Fashion and Interior Industry",
-      "ft_hours": 37,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 11.33,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.5,
-          "unit": "h",
-          "inc_pct": 1.5
-        }
-      ],
-      "row_note": "Number of periodieken: 2, Periodic increase percentage: 0.54%"
-    },
-    {
-      "jobgroup": "Functiegroep 1",
-      "worker": "Fashion and Interior Industry",
-      "ft_hours": 38,
-      "timeline": [
-        {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 11.33,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 11.33,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.5,
-          "unit": "h",
-          "inc_pct": 1.5
-        }
-      ],
-      "row_note": "Number of periodieken: 2, Periodic increase percentage: 0.54%"
-    },
-    {
-      "jobgroup": "Functiegroep 1",
-      "step": "Minimum hourly wage",
-      "worker": "Fashion and Interior Industry",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 11.21,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.38,
-          "unit": "h",
-          "inc_pct": 1.5
-        }
-      ],
-      "row_note": "Number of periodieken: 2, Periodic increase percentage: 0.54%"
-    },
-    {
-      "jobgroup": "Functiegroep 1",
-      "step": "Minimum hourly wage",
-      "worker": "Fashion and Interior Industry",
-      "ft_hours": 37,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 11.21,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.38,
-          "unit": "h",
-          "inc_pct": 1.5
-        }
-      ],
-      "row_note": "Number of periodieken: 2, Periodic increase percentage: 0.54%"
-    },
-    {
-      "jobgroup": "Functiegroep 1",
-      "step": "Minimum hourly wage",
-      "worker": "Fashion and Interior Industry",
-      "ft_hours": 38,
-      "timeline": [
-        {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 11.21,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 11.21,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.38,
-          "unit": "h",
-          "inc_pct": 1.5
-        }
-      ],
-      "row_note": "Number of periodieken: 2, Periodic increase percentage: 0.54%"
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
-      "age_group": "21",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 8.53,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 8.53,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 8.6,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 8.6,
-          "unit": "h",
-          "inc_pct": 2.0,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 2",
-      "age_group": "21",
-      "ft_hours": 37,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 8.3,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 8.32,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 8.37,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 8.49,
-          "unit": "h",
-          "inc_pct": 2.0
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 2",
-      "age_group": "21",
-      "ft_hours": 38,
-      "timeline": [
-        {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 8.28,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 8.28,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 8.4,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 8.32,
-          "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 8.49,
-          "unit": "h",
-          "inc_pct": 2.0
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 2",
-      "age_group": "22",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 10.04,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 10.04,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 10.12,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 10.12,
-          "unit": "h",
-          "inc_pct": 2.0,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 2",
-      "age_group": "22",
-      "ft_hours": 37,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 9.77,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 9.77,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 9.85,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 9.95,
-          "unit": "h",
-          "inc_pct": 2.0
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 2",
-      "age_group": "22",
-      "ft_hours": 38,
-      "timeline": [
-        {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 9.71,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 9.71,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 9.85,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 9.76,
-          "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 9.95,
-          "unit": "h",
-          "inc_pct": 2.0
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 2",
+      "worker": "Carpet and Textile Industry",
       "age_group": "23",
       "ft_hours": 36,
       "timeline": [
@@ -1179,25 +669,12 @@ Finish reason: MAX_TOKENS
           "amount": 11.59,
           "unit": "h",
           "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 11.48,
-          "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 11.71,
-          "unit": "h",
-          "inc_pct": 2.0
         }
-      ],
-      "row_note": null
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
+      "worker": "Carpet and Textile Industry",
       "age_group": "23",
       "ft_hours": 37,
       "timeline": [
@@ -1206,73 +683,47 @@ Finish reason: MAX_TOKENS
           "end_date": "2017-08-31",
           "amount": 11.42,
           "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.59,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 11.48,
-          "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 11.71,
-          "unit": "h",
-          "inc_pct": 2.0
         }
-      ],
-      "row_note": null
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
+      "worker": "Carpet and Textile Industry",
       "age_group": "23",
       "ft_hours": 38,
       "timeline": [
-        {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 11.42,
-          "unit": "h"
-        },
         {
           "start_date": "2017-07-01",
           "end_date": "2017-08-31",
           "amount": 11.42,
           "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.59,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 11.48,
-          "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 11.71,
-          "unit": "h",
-          "inc_pct": 2.0
         }
-      ],
-      "row_note": null
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
       "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 11.63,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.80,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 2",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
       "ft_hours": 36,
       "timeline": [
         {
@@ -1284,29 +735,16 @@ Finish reason: MAX_TOKENS
         {
           "start_date": "2017-09-01",
           "end_date": "2017-12-31",
-          "amount": 11.8,
+          "amount": 11.80,
           "unit": "h",
           "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 11.8,
-          "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 12.04,
-          "unit": "h",
-          "inc_pct": 2.0
         }
-      ],
-      "row_note": "Number of periodieken: 4, Periodic increase percentage: 0.70%"
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
       "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
       "ft_hours": 37,
       "timeline": [
         {
@@ -1314,73 +752,47 @@ Finish reason: MAX_TOKENS
           "end_date": "2017-08-31",
           "amount": 11.63,
           "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.8,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 11.8,
-          "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 12.04,
-          "unit": "h",
-          "inc_pct": 2.0
         }
-      ],
-      "row_note": "Number of periodieken: 4, Periodic increase percentage: 0.70%"
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
       "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
       "ft_hours": 38,
       "timeline": [
-        {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 11.63,
-          "unit": "h"
-        },
         {
           "start_date": "2017-07-01",
           "end_date": "2017-08-31",
           "amount": 11.63,
           "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.8,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 11.8,
-          "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 12.04,
-          "unit": "h",
-          "inc_pct": 2.0
         }
-      ],
-      "row_note": "Number of periodieken: 4, Periodic increase percentage: 0.70%"
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
       "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 11.42,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.59,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 2",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
       "ft_hours": 36,
       "timeline": [
         {
@@ -1395,26 +807,13 @@ Finish reason: MAX_TOKENS
           "amount": 11.59,
           "unit": "h",
           "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 11.48,
-          "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 11.71,
-          "unit": "h",
-          "inc_pct": 2.0
         }
-      ],
-      "row_note": "Number of periodieken: 4, Periodic increase percentage: 0.70%"
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
       "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
       "ft_hours": 37,
       "timeline": [
         {
@@ -1422,223 +821,35 @@ Finish reason: MAX_TOKENS
           "end_date": "2017-08-31",
           "amount": 11.42,
           "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.59,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 11.48,
-          "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 11.71,
-          "unit": "h",
-          "inc_pct": 2.0
         }
-      ],
-      "row_note": "Number of periodieken: 4, Periodic increase percentage: 0.70%"
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
       "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
       "ft_hours": 38,
       "timeline": [
-        {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 11.42,
-          "unit": "h"
-        },
         {
           "start_date": "2017-07-01",
           "end_date": "2017-08-31",
           "amount": 11.42,
           "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.59,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 11.48,
-          "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 11.71,
-          "unit": "h",
-          "inc_pct": 2.0
         }
-      ],
-      "row_note": "Number of periodieken: 4, Periodic increase percentage: 0.70%"
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
       "worker": "Fashion and Interior Industry",
-      "age_group": "21",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 8.53,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 8.53,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 2",
-      "worker": "Fashion and Interior Industry",
-      "age_group": "21",
-      "ft_hours": 37,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 8.3,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 8.32,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 2",
-      "worker": "Fashion and Interior Industry",
-      "age_group": "21",
-      "ft_hours": 38,
+      "age_group": "23",
       "timeline": [
         {
           "start_date": "2016-07-01",
           "end_date": "2017-06-30",
-          "amount": 8.2,
+          "amount": 11.31,
           "unit": "h"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 8.2,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 8.32,
-          "unit": "h",
-          "inc_pct": 1.5
         }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 2",
-      "worker": "Fashion and Interior Industry",
-      "age_group": "22",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 10.04,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 10.04,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 2",
-      "worker": "Fashion and Interior Industry",
-      "age_group": "22",
-      "ft_hours": 37,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 9.77,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 9.77,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 2",
-      "worker": "Fashion and Interior Industry",
-      "age_group": "22",
-      "ft_hours": 38,
-      "timeline": [
-        {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 9.61,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 9.61,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 9.76,
-          "unit": "h",
-          "inc_pct": 1.5
-        }
-      ],
-      "row_note": null
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
@@ -1659,8 +870,7 @@ Finish reason: MAX_TOKENS
           "unit": "h",
           "inc_pct": 1.5
         }
-      ],
-      "row_note": null
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
@@ -1681,8 +891,7 @@ Finish reason: MAX_TOKENS
           "unit": "h",
           "inc_pct": 1.5
         }
-      ],
-      "row_note": null
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
@@ -1690,12 +899,6 @@ Finish reason: MAX_TOKENS
       "age_group": "23",
       "ft_hours": 38,
       "timeline": [
-        {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 11.31,
-          "unit": "h"
-        },
         {
           "start_date": "2017-07-01",
           "end_date": "2017-08-31",
@@ -1709,12 +912,24 @@ Finish reason: MAX_TOKENS
           "unit": "h",
           "inc_pct": 1.5
         }
-      ],
-      "row_note": null
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
-      "step": "Maximum hourly wage",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 11.52,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 2",
+      "step": "Maximum hourly wage (theoretical)",
       "worker": "Fashion and Interior Industry",
       "ft_hours": 36,
       "timeline": [
@@ -1731,12 +946,11 @@ Finish reason: MAX_TOKENS
           "unit": "h",
           "inc_pct": 1.5
         }
-      ],
-      "row_note": "Number of periodieken: 2, Periodic increase percentage: 0.93%"
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
-      "step": "Maximum hourly wage",
+      "step": "Maximum hourly wage (theoretical)",
       "worker": "Fashion and Interior Industry",
       "ft_hours": 37,
       "timeline": [
@@ -1753,21 +967,14 @@ Finish reason: MAX_TOKENS
           "unit": "h",
           "inc_pct": 1.5
         }
-      ],
-      "row_note": "Number of periodieken: 2, Periodic increase percentage: 0.93%"
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
-      "step": "Maximum hourly wage",
+      "step": "Maximum hourly wage (theoretical)",
       "worker": "Fashion and Interior Industry",
       "ft_hours": 38,
       "timeline": [
-        {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 11.52,
-          "unit": "h"
-        },
         {
           "start_date": "2017-07-01",
           "end_date": "2017-08-31",
@@ -1781,8 +988,20 @@ Finish reason: MAX_TOKENS
           "unit": "h",
           "inc_pct": 1.5
         }
-      ],
-      "row_note": "Number of periodieken: 2, Periodic increase percentage: 0.93%"
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 2",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 11.31,
+          "unit": "h"
+        }
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
@@ -1803,8 +1022,7 @@ Finish reason: MAX_TOKENS
           "unit": "h",
           "inc_pct": 1.5
         }
-      ],
-      "row_note": "Number of periodieken: 2, Periodic increase percentage: 0.93%"
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
@@ -1825,8 +1043,7 @@ Finish reason: MAX_TOKENS
           "unit": "h",
           "inc_pct": 1.5
         }
-      ],
-      "row_note": "Number of periodieken: 2, Periodic increase percentage: 0.93%"
+      ]
     },
     {
       "jobgroup": "Functiegroep 2",
@@ -1834,12 +1051,6 @@ Finish reason: MAX_TOKENS
       "worker": "Fashion and Interior Industry",
       "ft_hours": 38,
       "timeline": [
-        {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 11.31,
-          "unit": "h"
-        },
         {
           "start_date": "2017-07-01",
           "end_date": "2017-08-31",
@@ -1853,243 +1064,220 @@ Finish reason: MAX_TOKENS
           "unit": "h",
           "inc_pct": 1.5
         }
-      ],
-      "row_note": "Number of periodieken: 2, Periodic increase percentage: 0.93%"
+      ]
     },
     {
-      "jobgroup": "Functiegroep 3",
-      "age_group": "21",
+      "jobgroup": "Functiegroep 2",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "age_group": "23",
       "ft_hours": 36,
       "timeline": [
         {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 8.53,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 8.53,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
           "start_date": "2018-01-01",
           "end_date": "2018-03-31",
-          "amount": 8.6,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
+          "amount": 11.48,
+          "unit": "h"
         },
         {
           "start_date": "2018-04-01",
           "end_date": "2018-12-31",
-          "amount": 8.6,
-          "unit": "h",
-          "inc_pct": 2.0,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 3",
-      "age_group": "21",
-      "ft_hours": 37,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 8.37,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 8.41,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 8.41,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 8.58,
+          "amount": 11.71,
           "unit": "h",
           "inc_pct": 2.0
         }
-      ],
-      "row_note": null
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 2",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "age_group": "23",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.48,
+          "unit": "h"
+        },
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 11.71,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 2",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "age_group": "23",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.48,
+          "unit": "h"
+        },
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 11.71,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 2",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 12.04,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 2",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.80,
+          "unit": "h"
+        },
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 12.04,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 2",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.80,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 2",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.80,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 2",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 11.71,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 2",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.48,
+          "unit": "h"
+        },
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 11.71,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 2",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.48,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 2",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.48,
+          "unit": "h"
+        }
+      ]
     },
     {
       "jobgroup": "Functiegroep 3",
-      "age_group": "21",
-      "ft_hours": 38,
+      "worker": "Carpet and Textile Industry",
+      "age_group": "23",
       "timeline": [
         {
           "start_date": "2016-07-01",
           "end_date": "2017-06-30",
-          "amount": 8.37,
+          "amount": 11.54,
           "unit": "h"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 8.37,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
         },
         {
           "start_date": "2017-09-01",
           "end_date": "2017-12-31",
-          "amount": 8.49,
+          "amount": 11.71,
           "unit": "h",
           "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 8.41,
-          "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 8.58,
-          "unit": "h",
-          "inc_pct": 2.0
         }
-      ],
-      "row_note": null
+      ]
     },
     {
       "jobgroup": "Functiegroep 3",
-      "age_group": "22",
-      "ft_hours": 36,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 10.04,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 10.04,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 10.12,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 10.12,
-          "unit": "h",
-          "inc_pct": 2.0,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 3",
-      "age_group": "22",
-      "ft_hours": 37,
-      "timeline": [
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 9.81,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 9.86,
-          "unit": "h",
-          "inc_pct": 1.5,
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 9.86,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 10.06,
-          "unit": "h",
-          "inc_pct": 2.0
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 3",
-      "age_group": "22",
-      "ft_hours": 38,
-      "timeline": [
-        {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 9.81,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 9.81,
-          "unit": "h",
-          "note": "* mentioned %, but at least the statutory minimum (youth) wage"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 9.95,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
-          "start_date": "2018-01-01",
-          "end_date": "2018-03-31",
-          "amount": 9.86,
-          "unit": "h"
-        },
-        {
-          "start_date": "2018-04-01",
-          "end_date": "2018-12-31",
-          "amount": 10.06,
-          "unit": "h",
-          "inc_pct": 2.0
-        }
-      ],
-      "row_note": null
-    },
-    {
-      "jobgroup": "Functiegroep 3",
+      "worker": "Carpet and Textile Industry",
       "age_group": "23",
       "ft_hours": 36,
       "timeline": [
@@ -2105,11 +1293,413 @@ Finish reason: MAX_TOKENS
           "amount": 11.71,
           "unit": "h",
           "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "worker": "Carpet and Textile Industry",
+      "age_group": "23",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.54,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "worker": "Carpet and Textile Industry",
+      "age_group": "23",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.54,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 12.03,
+          "unit": "h"
         },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.21,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.03,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.21,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.03,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.03,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 11.54,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.71,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.54,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.71,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.54,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.54,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "worker": "Fashion and Interior Industry",
+      "age_group": "23",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 11.43,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "worker": "Fashion and Interior Industry",
+      "age_group": "23",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.43,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.60,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "worker": "Fashion and Interior Industry",
+      "age_group": "23",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.43,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.60,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "worker": "Fashion and Interior Industry",
+      "age_group": "23",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.43,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.60,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 11.91,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.91,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.09,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.91,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.09,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.91,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.09,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 11.43,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.43,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.60,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.43,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.60,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.43,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.60,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "age_group": "23",
+      "ft_hours": 36,
+      "timeline": [
         {
           "start_date": "2018-01-01",
           "end_date": "2018-03-31",
-          "amount": 11.6,
+          "amount": 11.60,
           "unit": "h"
         },
         {
@@ -2119,31 +1709,18 @@ Finish reason: MAX_TOKENS
           "unit": "h",
           "inc_pct": 2.0
         }
-      ],
-      "row_note": null
+      ]
     },
     {
       "jobgroup": "Functiegroep 3",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
       "age_group": "23",
       "ft_hours": 37,
       "timeline": [
         {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 11.54,
-          "unit": "h"
-        },
-        {
-          "start_date": "2017-09-01",
-          "end_date": "2017-12-31",
-          "amount": 11.71,
-          "unit": "h",
-          "inc_pct": 1.5
-        },
-        {
           "start_date": "2018-01-01",
           "end_date": "2018-03-31",
-          "amount": 11.6,
+          "amount": 11.60,
           "unit": "h"
         },
         {
@@ -2153,39 +1730,1547 @@ Finish reason: MAX_TOKENS
           "unit": "h",
           "inc_pct": 2.0
         }
-      ],
-      "row_note": null
+      ]
     },
     {
       "jobgroup": "Functiegroep 3",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
       "age_group": "23",
       "ft_hours": 38,
       "timeline": [
         {
-          "start_date": "2016-07-01",
-          "end_date": "2017-06-30",
-          "amount": 11.54,
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.60,
           "unit": "h"
         },
         {
-          "start_date": "2017-07-01",
-          "end_date": "2017-08-31",
-          "amount": 11.54,
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 11.83,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 12.45,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 12.21,
+          "unit": "h"
+        },
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 12.45,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 12.21,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 12.21,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 11.83,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.60,
+          "unit": "h"
+        },
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 11.83,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.60,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 3",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.60,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "worker": "Carpet and Textile Industry",
+      "age_group": "23",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 11.71,
           "unit": "h"
         },
         {
           "start_date": "2017-09-01",
           "end_date": "2017-12-31",
-          "amount": 11.71,
+          "amount": 11.89,
           "unit": "h",
           "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "worker": "Carpet and Textile Industry",
+      "age_group": "23",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.71,
+          "unit": "h"
         },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.89,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "worker": "Carpet and Textile Industry",
+      "age_group": "23",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.71,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "worker": "Carpet and Textile Industry",
+      "age_group": "23",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.71,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 12.66,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.85,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.66,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.85,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.66,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.66,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 11.71,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.89,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.71,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.89,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.71,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.71,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "worker": "Fashion and Interior Industry",
+      "age_group": "23",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 11.60,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "worker": "Fashion and Interior Industry",
+      "age_group": "23",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.60,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.77,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "worker": "Fashion and Interior Industry",
+      "age_group": "23",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.60,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.77,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "worker": "Fashion and Interior Industry",
+      "age_group": "23",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.60,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.77,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 12.54,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.54,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.73,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.54,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.73,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.54,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.73,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 11.60,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.60,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.77,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.60,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.77,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 11.60,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 11.77,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "age_group": "23",
+      "ft_hours": 36,
+      "timeline": [
         {
           "start_date": "2018-01-01",
           "end_date": "2018-03-31",
-          "amount": 11.6,
+          "amount": 11.77,
           "unit": "h"
         },
         {
           "start_date": "2018-04-01",
-          
+          "end_date": "2018-12-31",
+          "amount": 12.01,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "age_group": "23",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.77,
+          "unit": "h"
+        },
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 12.01,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "age_group": "23",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.77,
+          "unit": "h"
+        },
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 12.01,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 13.11,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 12.85,
+          "unit": "h"
+        },
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 13.11,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 12.85,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 12.85,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 12.01,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.77,
+          "unit": "h"
+        },
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 12.01,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.77,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 4",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 11.77,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 13.57,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 13.77,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 13.57,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 13.77,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 13.57,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 13.57,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 12.20,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.38,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.20,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.38,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.20,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.20,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 13.44,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 13.44,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 13.64,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 13.44,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 13.64,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 13.44,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 13.64,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 12.08,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.08,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.26,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.08,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.26,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.08,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.26,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 14.05,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 13.77,
+          "unit": "h"
+        },
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 14.05,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 13.77,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 13.77,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 12.51,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 12.26,
+          "unit": "h"
+        },
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 12.51,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 12.26,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 5",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 12.26,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 14.88,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 15.10,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 14.88,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 15.10,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 14.88,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 14.88,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 12.78,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.97,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.78,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.97,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.78,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Minimum hourly wage",
+      "worker": "Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.78,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 14.73,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 14.73,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 14.95,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 14.73,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 14.95,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 14.73,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 14.95,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "timeline": [
+        {
+          "start_date": "2016-07-01",
+          "end_date": "2017-06-30",
+          "amount": 12.66,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.66,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.85,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.66,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.85,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Minimum hourly wage",
+      "worker": "Fashion and Interior Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2017-07-01",
+          "end_date": "2017-08-31",
+          "amount": 12.66,
+          "unit": "h"
+        },
+        {
+          "start_date": "2017-09-01",
+          "end_date": "2017-12-31",
+          "amount": 12.85,
+          "unit": "h",
+          "inc_pct": 1.5
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "timeline": [
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 15.40,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 36,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 15.10,
+          "unit": "h"
+        },
+        {
+          "start_date": "2018-04-01",
+          "end_date": "2018-12-31",
+          "amount": 15.40,
+          "unit": "h",
+          "inc_pct": 2.0
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 37,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 15.10,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "jobgroup": "Functiegroep 6",
+      "step": "Maximum hourly wage (theoretical)",
+      "worker": "Fashion, Interior, Carpet and Textile Industry",
+      "ft_hours": 38,
+      "timeline": [
+        {
+          "start_date": "2018-01-01",
+          "end_date": "2018-03-31",
+          "amount": 15.10,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "job

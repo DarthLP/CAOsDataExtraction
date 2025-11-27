@@ -107,6 +107,9 @@ from schema.salary_prompt_split import (
     SALARY_PROMPT_SPLIT_ATTEMPT_9,
     SALARY_PROMPT_SPLIT_ATTEMPT_10
 )
+from schema.salary_schema_super_compact import (
+    SalaryExtractionSchemaSuperCompact, SALARY_PROMPT_SUPER_COMPACT
+)
 from utils.input_utils.merge_split_salary import merge_split_salary_results
 from schema.non_salary_schema import (
     GeneralInfo, BonusesInfo, WageScalesInfo, PensionInfo, LeaveInfo, 
@@ -868,6 +871,29 @@ def is_file_in_truncated_3_folder(filename: str, cao_number: str) -> bool:
     return expected_truncated_file.exists()
 
 
+def is_file_in_truncated_4_folder(filename: str, cao_number: str) -> bool:
+    """
+    Check if a file exists in the max_tokens_truncated_4 folder.
+    
+    Args:
+        filename: Original filename (e.g., "CAO_file_extract.json")
+        cao_number: CAO number for the file
+        
+    Returns:
+        bool: True if the file exists in truncated_4 folder, False otherwise
+    """
+    truncated_dir = Path("performance_logs/llm_analysis/max_tokens_truncated_4")
+    
+    if not truncated_dir.exists():
+        return False
+    
+    # Build expected truncated filename: {cao_number}_{clean_filename}_truncated.txt
+    clean_filename = extract_clean_filename(filename)
+    expected_truncated_file = truncated_dir / f"{cao_number}_{clean_filename}_truncated.txt"
+    
+    return expected_truncated_file.exists()
+
+
 def save_failed_attempt_8(response_text: str, error_message: str, filename: str, cao_number: str = None):
     """
     Save failed 8th attempt response to max_tokens_truncated_2 folder for debugging.
@@ -976,6 +1002,56 @@ def save_failed_attempt_10(response_text: str, error_message: str, filename: str
         print(f'  DEBUG: Failed to save failed 10th attempt: {e}')
 
 
+def save_failed_attempt_11(response_text: str, error_message: str, filename: str, cao_number: str = None):
+    """
+    Save failed 11th attempt response to max_tokens_truncated_4 folder for debugging.
+    
+    Args:
+        response_text: The response text (if available)
+        error_message: The error message from the failed attempt
+        filename: Original filename for context
+        cao_number: CAO number for filename prefix
+    """
+    try:
+        import os
+        from datetime import datetime
+        
+        # Create the truncated responses directory
+        truncated_dir = Path("performance_logs/llm_analysis/max_tokens_truncated_4")
+        truncated_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Create clean filename without timestamp
+        clean_filename = extract_clean_filename(filename)
+        
+        # Add CAO number prefix if provided
+        if cao_number:
+            truncated_filename = f"{cao_number}_{clean_filename}_truncated.txt"
+        else:
+            truncated_filename = f"{clean_filename}_truncated.txt"
+        
+        truncated_file = truncated_dir / truncated_filename
+        
+        # Save the failed attempt response
+        with open(truncated_file, 'w', encoding='utf-8') as f:
+            f.write(f"FAILED 11TH ATTEMPT DEBUG INFO\n")
+            f.write(f"Original filename: {filename}\n")
+            f.write(f"Timestamp: {datetime.now().isoformat()}\n")
+            f.write(f"Attempt: 11th (final attempt with super compact schema)\n")
+            f.write(f"Error: {error_message}\n")
+            if response_text:
+                f.write(f"Response length: {len(response_text)} characters\n")
+            f.write(f"{'='*80}\n\n")
+            if response_text:
+                f.write(response_text)
+            else:
+                f.write("No response text available\n")
+        
+        print(f'  DEBUG: Failed 11th attempt saved to: {truncated_file}')
+        
+    except Exception as e:
+        print(f'  DEBUG: Failed to save failed 11th attempt: {e}')
+
+
 # =============================================================================
 # TOKEN SAFETY & VALIDATION FUNCTIONS
 # =============================================================================
@@ -1032,10 +1108,10 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
     """Extract salary information from JSON using LLM."""
     global process_quota_flags
     
-    # Check if file is in truncated_3 folder - if so, skip extraction entirely (all attempts exhausted)
-    if cao_number and is_file_in_truncated_3_folder(filename, cao_number):
-        print(f'  DEBUG: File found in truncated_3 folder - all attempts exhausted, skipping extraction')
-        # Log that file is skipped due to truncation_3
+    # Check if file is in truncated_4 folder - if so, skip extraction entirely (all attempts exhausted)
+    if cao_number and is_file_in_truncated_4_folder(filename, cao_number):
+        print(f'  DEBUG: File found in truncated_4 folder - all attempts exhausted, skipping extraction')
+        # Log that file is skipped due to truncation_4
         if context and 'performance_monitor' in context:
             file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
             context['performance_monitor'].log_analysis(
@@ -1045,24 +1121,29 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                 usage_metadata=None,
                 success=False,
                 analysis_type="salary",
-                error_message="File in truncated_3 folder - all attempts exhausted (skipped)",
+                error_message="File in truncated_4 folder - all attempts exhausted (skipped)",
                 api_key_used=context.get('key_number', 1),
                 process_id=context.get('process_id', 0),
                 cao_number=cao_number,
                 model="gemini-2.5-flash",
-                parameters={"skipped": True, "reason": "truncated_3"},
+                parameters={"skipped": True, "reason": "truncated_4"},
                 allow_duplicates=False
             )
-        return None  # Skip extraction - file failed all attempts including split extraction
+        return None  # Skip extraction - file failed all attempts including super compact
+    
+    # Check if file is in truncated_3 folder - if so, skip directly to super compact attempts (10-11)
+    use_super_compact_from_start = is_file_in_truncated_3_folder(filename, cao_number) if cao_number else False
+    if use_super_compact_from_start:
+        print(f'  DEBUG: File found in truncated_3 folder, skipping to super compact schema attempts (11th-12th attempts)')
     
     # Check if file is in truncated_2 folder - if so, skip directly to split extraction attempts (9-10)
     use_split_extraction_from_start = is_file_in_truncated_2_folder(filename, cao_number) if cao_number else False
-    if use_split_extraction_from_start:
+    if use_split_extraction_from_start and not use_super_compact_from_start:
         print(f'  DEBUG: File found in truncated_2 folder, skipping to split extraction attempts (9th-10th attempts)')
     
     # Check if file is in truncated folder - if so, skip directly to compact schema attempts
     use_compact_schema_from_start = is_file_in_truncated_folder(filename, cao_number) if cao_number else False
-    if use_compact_schema_from_start and not use_split_extraction_from_start:
+    if use_compact_schema_from_start and not use_split_extraction_from_start and not use_super_compact_from_start:
         print(f'  DEBUG: File found in truncated folder, skipping to compact schema attempts (6th-8th attempts)')
     
     salary_text = ""
@@ -1330,8 +1411,11 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
             last_error_message = str(e)  # Track error message for retry guidance
     
     # Retry logic with proper attempt tracking
-    # Determine attempt range based on whether we're starting with split extraction or compact schema
-    if use_split_extraction_from_start:
+    # Determine attempt range based on whether we're starting with super compact, split extraction, or compact schema
+    if use_super_compact_from_start:
+        # Skip directly to super compact schema attempts (10-11, which are retries 11-12)
+        attempts_to_try = [10, 11]
+    elif use_split_extraction_from_start:
         # Skip directly to split extraction attempts (8-9, which are retries 9-10)
         attempts_to_try = [8, 9]
     elif use_compact_schema_from_start:
@@ -1341,9 +1425,10 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
         # Normal retry attempts (0-4), may extend to 5-7 if truncation error
         attempts_to_try = [0, 1, 2, 3, 4]
     
-    # Track if we need to extend to compact schema attempts or split extraction attempts
+    # Track if we need to extend to compact schema attempts, split extraction attempts, or super compact attempts
     extended_to_compact = False
     extended_to_split = False
+    extended_to_super_compact = False
     
     attempt_index = 0
     while attempt_index < len(attempts_to_try):
@@ -1355,12 +1440,15 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
         
         attempt = attempts_to_try[attempt_index]
         try:
-            # Determine which schema to use: split for attempts 8-9, compact for attempts 5-7, regular for 0-4
-            use_split_schema = (attempt >= 8)
+            # Determine which schema to use: super compact for attempts 10-11, split for attempts 8-9, compact for attempts 5-7, regular for 0-4
+            use_super_compact_schema = (attempt >= 10)
+            use_split_schema = (attempt >= 8 and attempt < 10)
             use_compact_schema = (attempt >= 5 and attempt < 8)
-            schema_type = 'split' if use_split_schema else ('compact' if use_compact_schema else 'regular')
+            schema_type = 'super_compact' if use_super_compact_schema else ('split' if use_split_schema else ('compact' if use_compact_schema else 'regular'))
             
-            if use_split_schema:
+            if use_super_compact_schema:
+                response_schema = SalaryExtractionSchemaSuperCompact
+            elif use_split_schema:
                 response_schema = SalaryExtractionSchemaSplit
             elif use_compact_schema:
                 response_schema = SalaryExtractionSchemaCompact
@@ -1368,8 +1456,19 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                 response_schema = SalaryExtractionSchema
             
             # Get adjusted parameters for this attempt
+            # For super compact schema attempts (10-11), use specific parameter adjustments
+            # Note: Super compact is a single extraction (not split like attempts 8-9), so no delay between attempts
+            # For attempts 5-11 (including 10-11), there is NO delay between retries - they happen immediately
+            # Files in truncated_3 folder go directly to attempts 10-11
+            if use_super_compact_schema:
+                if attempt == 10:
+                    # Attempt 10 (11th overall, first super compact): temp=0.3, top_p=0.4, top_k=0.7 (same as attempt 4)
+                    adjusted_params = get_adjusted_parameters(4)
+                else:  # attempt == 11
+                    # Attempt 11 (12th overall, second super compact): temp=0.3, top_p=0.4, top_k=0.7 (same as attempt 4)
+                    adjusted_params = get_adjusted_parameters(4)
             # For split schema attempts (8-9), use specific parameter adjustments
-            if use_split_schema:
+            elif use_split_schema:
                 if attempt == 8:
                     # Attempt 8 (9th overall, first split): Use attempt 4 parameters (temp=0.3, top_p=0.4)
                     adjusted_params = get_adjusted_parameters(4)
@@ -1648,6 +1747,9 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
             if use_split_schema:
                 # Split extraction uses its own prompts (handled above)
                 prompt = base_prompt  # This shouldn't be reached for split schema
+            elif use_super_compact_schema:
+                print(f'  DEBUG: Using super compact schema for attempt {attempt + 1} (schema_type: {schema_type})')
+                prompt = SALARY_PROMPT_SUPER_COMPACT.format(filename=filename, source_json=salary_text)
             elif use_compact_schema:
                 print(f'  DEBUG: Using compact schema for attempt {attempt + 1} (schema_type: {schema_type})')
                 prompt = SALARY_PROMPT_COMPACT.format(filename=filename, source_json=salary_text)
@@ -1725,8 +1827,25 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
             if hasattr(response, 'parsed') and response.parsed is not None:
                 print(f'  DEBUG: Response has parsed attribute')
                 parsed_dump = response.parsed.model_dump()
-                # Compact/split schema uses 'si', regular uses 'salary_information'
-                salary_data = parsed_dump.get('si', parsed_dump.get('salary_information', []))
+                # Compact/split/super compact schema uses 'si', regular uses 'salary_information'
+                salary_data_raw = parsed_dump.get('si', parsed_dump.get('salary_information', []))
+                
+                # Convert to list of dicts for easier manipulation (in case they're Pydantic models)
+                salary_data = []
+                for row in salary_data_raw:
+                    if isinstance(row, dict):
+                        salary_data.append(row)
+                    else:
+                        # If it's a Pydantic model, convert to dict
+                        salary_data.append(row.model_dump() if hasattr(row, 'model_dump') else dict(row))
+                
+                # Add row note to each row if super compact schema was used (AFTER extraction, not part of LLM extraction)
+                if use_super_compact_schema:
+                    super_compact_note = "Note: This data was extracted using the super compact schema (minimal fields only) due to file size constraints. Extracted fields: jobgroup, step, worker, age_group, education, permanency, timeline as parallel arrays (sd: start dates, am: amounts, un: unit(s) - single value if all same, array if they differ)."
+                    for row in salary_data:
+                        if isinstance(row, dict):
+                            row['rn'] = super_compact_note
+                
                 result = {"salary_information": salary_data}
                 print(f'  DEBUG: Parsed salary structure with {len(salary_data)} salary rows')
                 
@@ -1768,9 +1887,13 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                             cleaned_text = '\n'.join(lines[1:-1]).strip()
                         
                         parsed_json = json.loads(cleaned_text)
-                        # Compact/split schema uses 'si', regular uses 'salary_information'
+                        # Compact/split/super compact schema uses 'si', regular uses 'salary_information'
                         if 'si' in parsed_json or 'salary_information' in parsed_json:
-                            if use_split_schema:
+                            if use_super_compact_schema:
+                                salary_schema = SalaryExtractionSchemaSuperCompact(**parsed_json)
+                                # Super compact schema uses 'si' field (2-letter field names)
+                                salary_data = salary_schema.si if hasattr(salary_schema, 'si') else salary_schema.salary_information
+                            elif use_split_schema:
                                 salary_schema = SalaryExtractionSchemaSplit(**parsed_json)
                                 # Compact/split schema uses 'si' field (2-letter field names)
                                 salary_data = salary_schema.si if hasattr(salary_schema, 'si') else salary_schema.salary_information
@@ -1781,7 +1904,18 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                             else:
                                 salary_schema = SalaryExtractionSchema(**parsed_json)
                                 salary_data = salary_schema.salary_information
-                            result = {"salary_information": [row.model_dump() for row in salary_data]}
+                            
+                            # Convert to list of dicts for easier manipulation
+                            salary_rows = [row.model_dump() for row in salary_data]
+                            
+                            # Add row note to each row if super compact schema was used (AFTER extraction, not part of LLM extraction)
+                            if use_super_compact_schema:
+                                super_compact_note = "Note: This data was extracted using the super compact schema (minimal fields only) due to file size constraints. Extracted fields: jobgroup, step, worker, age_group, education, permanency, timeline as parallel arrays (sd: start dates, am: amounts, un: unit(s) - single value if all same, array if they differ)."
+                                for row in salary_rows:
+                                    if isinstance(row, dict):
+                                        row['rn'] = super_compact_note
+                            
+                            result = {"salary_information": salary_rows}
                         else:
                             raise Exception("No 'si' or 'salary_information' key in parsed JSON")
                             
@@ -1861,6 +1995,16 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                     attempt_index += 1
                     continue  # Continue to attempt 8
             
+            # Check if attempt 9 failed with truncation error - if so, add attempts 10-11 (super compact schema)
+            if attempt == 9 and not use_super_compact_from_start and not extended_to_super_compact:
+                if "Response truncated - incomplete JSON" in error_str or "Max tokens" in error_str or "truncated" in error_str.lower():
+                    extended_to_super_compact = True
+                    print(f'  DEBUG: Truncation error detected after attempt 9, adding super compact schema attempts (10-11, retries 11-12)')
+                    # Extend attempts list to include 10-11 (super compact schema)
+                    attempts_to_try.extend([10, 11])
+                    attempt_index += 1
+                    continue  # Continue to attempt 10
+            
             # Handle retry logic
             if attempt_index < len(attempts_to_try) - 1:
                 if attempt < 4:
@@ -1875,7 +2019,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                     else:
                         break  # Don't retry
                 else:
-                    # For attempts 5-9, check for quota errors and set flag if needed
+                    # For attempts 5-11, check for quota errors and set flag if needed
                     # (handle_llm_errors is not called for these attempts, so we need to check manually)
                     if any(keyword in error_str.lower() for keyword in ['quota', 'rate limit', 'too many requests', '429', 'resource_exhausted']):
                         # Check if it's a daily quota limit
@@ -1956,6 +2100,24 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                             log_analysis_error(filename, f"All retry attempts failed (10th attempt with split extraction) - QUOTA EXHAUSTED: {type(e).__name__}: {e}", "")
                         else:
                             log_analysis_error(filename, f"All retry attempts failed (10th attempt with split extraction): {type(e).__name__}: {e}", "")
+                elif attempt == 11:
+                    # Failed attempt 11 (12th overall) - save to truncated_4
+                    if is_truncation_error and not is_503_error and not is_429_error and not quota_exhausted:
+                        # Save failed 12th attempt to max_tokens_truncated_4 (only for truncation errors)
+                        response_text = ""
+                        if hasattr(e, 'response') and hasattr(e.response, 'text'):
+                            response_text = e.response.text
+                        elif 'response' in locals() and hasattr(response, 'text'):
+                            response_text = response.text
+                        
+                        save_failed_attempt_11(response_text, error_str, filename, cao_number)
+                        log_analysis_error(filename, f"All retry attempts failed (12th attempt with super compact schema): {type(e).__name__}: {e} (saved to max_tokens_truncated_4)", response_text[:1000] if response_text else "")
+                    else:
+                        # Don't save 503 errors, 429 errors, quota exhaustion, or other non-truncation errors to max_tokens_truncated_4
+                        if quota_exhausted or is_429_error:
+                            log_analysis_error(filename, f"All retry attempts failed (12th attempt with super compact schema) - QUOTA EXHAUSTED: {type(e).__name__}: {e}", "")
+                        else:
+                            log_analysis_error(filename, f"All retry attempts failed (12th attempt with super compact schema): {type(e).__name__}: {e}", "")
                 
                 print(f'  DEBUG: All attempts failed')
                 break
@@ -1966,7 +2128,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
     # If we get here, all attempts failed
     if last_error:
         print(f'  ⚠️ All retry attempts failed, moving on to next part')
-        if attempt == 7 or attempt == 9:
+        if attempt == 7 or attempt == 9 or attempt == 11:
             # Already logged above
             pass
         else:
@@ -1978,7 +2140,12 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
             
             # Get final attempt parameters for logging
             # Determine which attempt was last
-            if extended_to_split or use_split_extraction_from_start:
+            if extended_to_super_compact or use_super_compact_from_start:
+                # Last attempt was 11 (12th overall) with super compact schema
+                final_params = get_adjusted_parameters(4)  # Use attempt 4 params (same as attempt 10-11)
+                final_params['schema_type'] = 'super_compact'
+                final_params['attempt'] = 12
+            elif extended_to_split or use_split_extraction_from_start:
                 # Last attempt was 9 (10th overall) with split schema
                 final_params = get_adjusted_parameters(4)  # Use attempt 4 params (same as attempt 8-9)
                 final_params['schema_type'] = 'split'
@@ -3268,13 +3435,15 @@ def check_missing_extraction_parts(filename: str, cao_number: str, skip_truncate
     missing['part3'] = not part3_file.exists()
     
     # If skip_truncated_salary is enabled:
-    # - Files in truncated_3 folder: skip (mark as not missing) - these failed all attempts including split extraction
+    # - Files in truncated_4 folder: skip (mark as not missing) - these failed all attempts including super compact schema
+    # - Files in truncated_3 folder: do NOT skip - they will be retried with attempts 10-11 (super compact schema)
     # - Files in truncated_2 folder: do NOT skip - they will be retried with attempts 9-10 (split extraction)
     # - Files in truncated folder: do NOT skip - they will be retried with attempts 6-8 (compact schema)
     if skip_truncated_salary and missing['salary']:
-        if is_file_in_truncated_3_folder(filename, cao_number):
+        if is_file_in_truncated_4_folder(filename, cao_number):
             missing['salary'] = False
-            print(f'  {cao_number}: Salary extraction skipped (file in max_tokens_truncated_3 folder - all attempts exhausted)')
+            print(f'  {cao_number}: Salary extraction skipped (file in max_tokens_truncated_4 folder - all attempts exhausted)')
+        # Note: Files in truncated_3 will be retried with super compact schema (attempts 10-11)
         # Note: Files in truncated_2 will be retried with split extraction (attempts 9-10)
         # Note: Files in truncated will be retried with compact schema (attempts 6-8)
     

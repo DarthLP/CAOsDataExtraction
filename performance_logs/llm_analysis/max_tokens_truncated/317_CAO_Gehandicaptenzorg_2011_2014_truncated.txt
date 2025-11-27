@@ -1,2094 +1,4069 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: CAO_Gehandicaptenzorg_2011_2014_extract.json
-Timestamp: 2025-11-25T01:08:24.655286
-Response length: 45806 characters
+Timestamp: 2025-11-27T00:08:06.848053
+Response length: 93785 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
-{
-  "salary_information": [
-    {
-      "jobgroup": "Student Salary Scale",
-      "step": "1st practice year",
-      "worker": "Student",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1134.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1148.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1165.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1188.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ],
-      "row_note": "Salary for full-time employment of 1878 hours per year, provided it is not lower than the minimum (youth) wage."
-    },
-    {
-      "jobgroup": "Student Salary Scale",
-      "step": "2nd practice year",
-      "worker": "Student",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1362.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1379.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1400.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1428.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ],
-      "row_note": "Salary for full-time employment of 1878 hours per year, provided it is not lower than the minimum (youth) wage."
-    },
-    {
-      "jobgroup": "Student Salary Scale",
-      "step": "3rd practice year",
-      "worker": "Student",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1585.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1605.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1629.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1662.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ],
-      "row_note": "Salary for full-time employment of 1878 hours per year, provided it is not lower than the minimum (youth) wage."
-    },
-    {
-      "jobgroup": "Student Salary Scale",
-      "step": "4th practice year",
-      "worker": "Student",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1680.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1701.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1727.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1762.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ],
-      "row_note": "Salary for full-time employment of 1878 hours per year, provided it is not lower than the minimum (youth) wage."
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "-2",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1254.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1270.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1289.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1315.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "-1",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1305.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1321.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1341.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1368.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "1",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1345.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1362.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1382.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1410.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "2",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1370.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1387.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1408.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1436.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "3",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1394.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1411.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1432.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1461.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "4",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1449.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1467.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1489.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1519.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "5",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1502.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1521.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1544.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1575.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "6",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1531.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1550.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1573.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1604.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "7",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1573.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1593.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1617.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1649.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "8",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1613.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1633.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1657.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1690.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "9",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1654.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1675.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1700.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1734.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "10",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1701.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1722.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1748.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1783.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "11",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1753.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1775.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1802.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1838.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "12",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1807.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1830.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1857.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1894.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "13",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1867.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1890.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1918.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 1956.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "14",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1929.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 1953.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 1982.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 2022.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "15",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 1986.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2011.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2041.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 2082.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "16",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 2050.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2076.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2107.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 2149.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "17",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 2102.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2128.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2160.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 2203.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "18",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 2163.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2190.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2223.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 2267.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "19",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 2220.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2248.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2282.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 2328.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "20",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 2280.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2309.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2344.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 2391.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "21",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 2338.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2367.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2403.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 2451.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "22",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 2398.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2428.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2464.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 2513.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "23",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 2457.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2488.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2525.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 2576.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "24",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 2517.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2548.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2586.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 2638.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "25",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 2579.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2611.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2650.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 2703.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "26",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 2642.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2675.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2715.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 2769.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "27",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 2707.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2741.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2782.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 2838.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "28",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 2763.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2798.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2840.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 2897.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "29",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 2829.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2864.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2907.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 2965.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "30",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 2893.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2929.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 2973.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 3032.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "31",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 2952.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 2989.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 3034.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 3095.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "32",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 3013.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 3051.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 3097.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 3159.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "33",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 3076.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 3114.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 3161.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 3224.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "34",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 3140.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 3179.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 3227.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 3292.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "35",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 3200.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 3240.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 3289.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 3355.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "36",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 3271.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 3312.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 3362.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 3429.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "37",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 3339.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 3381.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 3432.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 3501.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "38",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 3409.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 3452.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 3504.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 3574.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "39",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 3477.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 3520.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 3573.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 3644.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "40",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 3538.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 3582.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 3636.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 3709.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "41",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 3607.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 3652.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 3707.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 3781.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "42",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 3672.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 3718.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 3774.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 3849.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "43",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 3739.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 3786.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 3843.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 3920.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "44",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 3802.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 3850.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 3908.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 3986.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "45",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 3857.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 3905.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 3964.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 4043.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "46",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 3916.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 3965.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 4024.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 4104.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "47",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 3975.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 4025.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 4085.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 4167.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "48",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 4033.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 4083.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 4144.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 4227.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "49",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 4094.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 4145.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 4207.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 4291.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "50",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 4153.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 4205.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 4268.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 4353.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "51",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 4213.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 4266.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 4330.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 4417.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "52",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 4272.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 4325.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 4390.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 4478.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "53",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 4332.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 4386.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 4452.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 4541.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "54",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 4390.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 4445.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 4512.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 4602.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "55",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 4450.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 4506.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 4574.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 4665.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "56",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 4511.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 4567.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 4636.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 4729.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "57",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 4568.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 4625.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 4694.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 4788.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "58",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 4628.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 4686.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 4756.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 4851.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "59",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 4689.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 4748.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 4819.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 4915.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "60",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 4747.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 4806.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 4878.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 4976.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "61",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 4806.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 4866.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 4939.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 5038.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "62",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 4866.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 4927.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 5001.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 5101.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "63",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
-          "amount": 4925.00,
-          "unit": "m"
-        },
-        {
-          "start_date": "2011-10-01",
-          "amount": 4987.00,
-          "unit": "m",
-          "inc_pct": 1.25
-        },
-        {
-          "start_date": "2012-07-01",
-          "amount": 5062.00,
-          "unit": "m",
-          "inc_pct": 1.50
-        },
-        {
-          "start_date": "2013-07-01",
-          "amount": 5163.00,
-          "unit": "m",
-          "inc_pct": 2.00
-        }
-      ]
-    },
-    {
-      "jobgroup": "Integration Numbers",
-      "step": "64",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2010-07-01",
+{"si": [
+  {
+    "jg": "Student",
+    "st": "1st practice year",
+    "wr": "Student",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1134, 1148, 1165, 1188],
+    "un": "m"
+  },
+  {
+    "jg": "Student",
+    "st": "2nd practice year",
+    "wr": "Student",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1362, 1379, 1400, 1428],
+    "un": "m"
+  },
+  {
+    "jg": "Student",
+    "st": "3rd practice year",
+    "wr": "Student",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1585, 1605, 1629, 1662],
+    "un": "m"
+  },
+  {
+    "jg": "Student",
+    "st": "4th practice year",
+    "wr": "Student",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1680, 1701, 1727, 1762],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "-2",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1254, 1270, 1289, 1315],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "-1",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1305, 1321, 1341, 1368],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "1",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1345, 1362, 1382, 1410],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "2",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1370, 1387, 1408, 1436],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "3",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1394, 1411, 1432, 1461],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "4",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1449, 1467, 1489, 1519],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "5",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1502, 1521, 1544, 1575],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "6",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1531, 1550, 1573, 1604],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "7",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1573, 1593, 1617, 1649],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "8",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1613, 1633, 1657, 1690],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "9",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1654, 1675, 1700, 1734],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "10",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1701, 1722, 1748, 1783],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "11",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1753, 1775, 1802, 1838],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "12",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1807, 1830, 1857, 1894],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "13",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1867, 1890, 1918, 1956],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "14",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1929, 1953, 1982, 2022],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "15",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1986, 2011, 2041, 2082],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "16",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2050, 2076, 2107, 2149],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "17",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2102, 2128, 2160, 2203],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "18",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2163, 2190, 2223, 2267],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "19",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2220, 2248, 2282, 2328],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "20",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2280, 2309, 2344, 2391],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "21",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2338, 2367, 2403, 2451],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "22",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2398, 2428, 2464, 2513],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "23",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2457, 2488, 2525, 2576],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "24",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2517, 2548, 2586, 2638],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "25",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2579, 2611, 2650, 2703],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "26",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2642, 2675, 2715, 2769],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "27",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2707, 2741, 2782, 2838],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "28",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2763, 2798, 2840, 2897],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "29",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2829, 2864, 2907, 2965],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "30",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2893, 2929, 2973, 3032],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "31",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2952, 2989, 3034, 3095],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "32",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3013, 3051, 3097, 3159],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "33",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3076, 3114, 3161, 3224],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "34",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3140, 3179, 3227, 3292],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "35",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3200, 3240, 3289, 3355],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "36",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3271, 3312, 3362, 3429],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "37",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3339, 3381, 3432, 3501],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "38",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3409, 3452, 3504, 3574],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "39",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3477, 3520, 3573, 3644],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "40",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3538, 3582, 3636, 3709],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "41",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3607, 3652, 3707, 3781],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "42",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3672, 3718, 3774, 3849],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "43",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3739, 3786, 3843, 3920],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "44",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3802, 3850, 3908, 3986],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "45",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3857, 3905, 3964, 4043],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "46",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3916, 3965, 4024, 4104],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "47",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3975, 4025, 4085, 4167],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "48",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4033, 4083, 4144, 4227],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "49",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4094, 4145, 4207, 4291],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "50",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4153, 4205, 4268, 4353],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "51",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4213, 4266, 4330, 4417],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "52",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4272, 4325, 4390, 4478],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "53",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4332, 4386, 4452, 4541],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "54",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4390, 4445, 4512, 4602],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "55",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4450, 4506, 4574, 4665],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "56",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4511, 4567, 4636, 4729],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "57",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4568, 4625, 4694, 4788],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "58",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4628, 4686, 4756, 4851],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "59",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4689, 4748, 4819, 4915],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "60",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4747, 4806, 4878, 4976],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "61",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4806, 4866, 4939, 5038],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "62",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4866, 4927, 5001, 5101],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "63",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4925, 4987, 5062, 5163],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "64",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4986, 5048, 5124, 5226],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "65",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [5060, 5123, 5200, 5304],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "66",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [5135, 5199, 5277, 5383],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "67",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [5208, 5273, 5352, 5459],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "68",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [5283, 5349, 5429, 5538],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "69",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [5357, 5424, 5505, 5615],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "70",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [5431, 5499, 5581, 5693],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "71",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [5507, 5576, 5660, 5773],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "72",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [5581, 5651, 5736, 5851],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "73",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [5656, 5727, 5813, 5929],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "74",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [5731, 5803, 5890, 6008],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "75",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [5805, 5878, 5966, 6085],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "76",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [5879, 5952, 6041, 6162],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "77",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [5953, 6027, 6117, 6239],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "78",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [6037, 6112, 6204, 6328],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "79",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [6122, 6199, 6292, 6418],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "80",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [6202, 6280, 6374, 6501],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "81",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [6286, 6365, 6460, 6589],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "82",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [6369, 6449, 6546, 6677],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "83",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [6451, 6532, 6630, 6763],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "84",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [6537, 6619, 6718, 6852],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "85",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [6633, 6716, 6817, 6953],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "86",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [6731, 6815, 6917, 7055],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "87",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [6828, 6913, 7017, 7157],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "88",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [6926, 7013, 7118, 7260],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "89",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [7024, 7112, 7219, 7363],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "90",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [7119, 7208, 7316, 7462],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "91",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [7217, 7307, 7417, 7565],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "92",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [7314, 7405, 7516, 7666],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "93",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [7412, 7505, 7618, 7770],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "94",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [7511, 7605, 7719, 7873],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "95",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [7608, 7703, 7819, 7975],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "96",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [7707, 7803, 7920, 8078],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "97",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [7804, 7902, 8021, 8181],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "98",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [7902, 8001, 8121, 8283],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "99",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [8001, 8101, 8223, 8387],
+    "un": "m"
+  },
+  {
+    "jg": "Integration Number",
+    "st": "100",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [8100, 8201, 8324, 8490],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 5 (Entry Scale)",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1270, 1289],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 5 (Entry Scale)",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1321, 1341],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 5 (Entry Scale)",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1362, 1382],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 5 (Entry Scale)",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1387, 1408],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 5 (Entry Scale)",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1411, 1432],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 5 (Entry Scale)",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1467, 1489],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 5 (Entry Scale)",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1521, 1544],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 5 (Entry Scale)",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1550, 1573],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 5",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1411, 1432, 1382, 1410],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 5",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1467, 1489, 1408, 1436],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 5",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1521, 1544, 1432, 1461],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 5",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1550, 1573, 1489, 1519],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 5",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1593, 1617, 1544, 1575],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 5",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1633, 1657, 1573, 1604],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 5",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1675, 1700, 1617, 1649],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 5",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1722, 1748, 1657, 1690],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 5",
+    "st": "8",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [1700, 1734],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 5",
+    "st": "9",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [1748, 1783],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10 (Entry Scale)",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1270, 1289],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10 (Entry Scale)",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1321, 1341],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10 (Entry Scale)",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1362, 1382],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10 (Entry Scale)",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1387, 1408],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10 (Entry Scale)",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1411, 1432],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10 (Entry Scale)",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1467, 1489],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10 (Entry Scale)",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1521, 1544],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10 (Entry Scale)",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1550, 1573],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10 (Entry Scale)",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1593, 1617],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1467, 1489, 1408, 1436],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1521, 1544, 1432, 1461],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1550, 1573, 1489, 1519],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1593, 1617, 1544, 1575],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1633, 1657, 1573, 1604],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1675, 1700, 1617, 1649],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1722, 1748, 1657, 1690],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1775, 1802, 1700, 1734],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1830, 1857, 1748, 1783],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10",
+    "st": "9",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [1802, 1838],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 10",
+    "st": "10",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [1857, 1894],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15 (Entry Scale)",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1321, 1341],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15 (Entry Scale)",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1362, 1382],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15 (Entry Scale)",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1387, 1408],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15 (Entry Scale)",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1411, 1432],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15 (Entry Scale)",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1467, 1489],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15 (Entry Scale)",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1521, 1544],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15 (Entry Scale)",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1550, 1573],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15 (Entry Scale)",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1593, 1617],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15 (Entry Scale)",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1633, 1657],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15 (Entry Scale)",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1675, 1700],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1521, 1544, 1432, 1461],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1550, 1573, 1489, 1519],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1593, 1617, 1544, 1575],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1633, 1657, 1573, 1604],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1675, 1700, 1617, 1649],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1722, 1748, 1657, 1690],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1775, 1802, 1700, 1734],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1830, 1857, 1748, 1783],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1890, 1918, 1802, 1838],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1953, 1982, 1857, 1894],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15",
+    "st": "10",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [1918, 1956],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 15",
+    "st": "11",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [1982, 2022],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20 (Entry Scale)",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1362, 1382],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20 (Entry Scale)",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1387, 1408],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20 (Entry Scale)",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1411, 1432],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20 (Entry Scale)",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1467, 1489],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20 (Entry Scale)",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1521, 1544],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20 (Entry Scale)",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1550, 1573],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20 (Entry Scale)",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1593, 1617],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20 (Entry Scale)",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1633, 1657],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20 (Entry Scale)",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1675, 1700],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20 (Entry Scale)",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1722, 1748],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20 (Entry Scale)",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1775, 1802],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1550, 1573, 1489, 1519],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1593, 1617, 1573, 1604],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1633, 1657, 1617, 1649],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1675, 1700, 1657, 1690],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1722, 1748, 1700, 1734],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1775, 1802, 1748, 1783],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1830, 1857, 1802, 1838],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1890, 1918, 1857, 1894],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1953, 1982, 1918, 1956],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2011, 2041, 1982, 2022],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2076, 2107, 2041, 2082],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 20",
+    "st": "11",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [2107, 2149],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25 (Entry Scale)",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1387, 1408],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25 (Entry Scale)",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1411, 1432],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25 (Entry Scale)",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1467, 1489],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25 (Entry Scale)",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1521, 1544],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25 (Entry Scale)",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1550, 1573],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25 (Entry Scale)",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1593, 1617],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25 (Entry Scale)",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1633, 1657],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25 (Entry Scale)",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1675, 1700],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25 (Entry Scale)",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1722, 1748],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25 (Entry Scale)",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1775, 1802],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25 (Entry Scale)",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1830, 1857],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1593, 1617, 1544, 1575],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1675, 1700, 1617, 1649],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1722, 1748, 1700, 1734],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1775, 1802, 1748, 1783],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1830, 1857, 1802, 1838],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1890, 1918, 1857, 1894],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1953, 1982, 1918, 1956],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2011, 2041, 1982, 2022],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2076, 2107, 2041, 2082],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2128, 2160, 2107, 2149],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2190, 2223, 2160, 2203],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 25",
+    "st": "11",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [2223, 2267],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30 (Entry Scale)",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1467, 1489],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30 (Entry Scale)",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1521, 1544],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30 (Entry Scale)",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1550, 1573],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30 (Entry Scale)",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1593, 1617],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30 (Entry Scale)",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1633, 1657],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30 (Entry Scale)",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1675, 1700],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30 (Entry Scale)",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1722, 1748],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30 (Entry Scale)",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1775, 1802],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30 (Entry Scale)",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1830, 1857],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30 (Entry Scale)",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1890, 1918],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30 (Entry Scale)",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1953, 1982],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1633, 1657, 1573, 1604],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1722, 1748, 1657, 1690],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1830, 1857, 1748, 1783],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1890, 1918, 1857, 1894],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1953, 1982, 1918, 1956],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2011, 2041, 1982, 2022],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2076, 2107, 2041, 2082],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2128, 2160, 2107, 2149],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2190, 2223, 2160, 2203],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2248, 2282, 2223, 2267],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2309, 2344, 2282, 2328],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 30",
+    "st": "11",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [2344, 2391],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35 (Entry Scale)",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1550, 1573],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35 (Entry Scale)",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1593, 1617],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35 (Entry Scale)",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1633, 1657],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35 (Entry Scale)",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1675, 1700],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35 (Entry Scale)",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1722, 1748],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35 (Entry Scale)",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1775, 1802],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35 (Entry Scale)",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1830, 1857],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35 (Entry Scale)",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1890, 1918],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35 (Entry Scale)",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1953, 1982],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35 (Entry Scale)",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2011, 2041],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1722, 1748, 1657, 1690],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1830, 1857, 1748, 1783],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1953, 1982, 1857, 1894],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2011, 2041, 1982, 2022],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2076, 2107, 2041, 2082],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2128, 2160, 2107, 2149],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2190, 2223, 2160, 2203],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2248, 2282, 2223, 2267],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2309, 2344, 2282, 2328],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2367, 2403, 2344, 2391],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35",
+    "st": "10",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [2403, 2451],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 35",
+    "st": "11",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [2464, 2513],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40 (Entry Scale)",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1722, 1748],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40 (Entry Scale)",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1775, 1802],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40 (Entry Scale)",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1830, 1857],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40 (Entry Scale)",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1890, 1918],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40 (Entry Scale)",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1953, 1982],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40 (Entry Scale)",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2011, 2041],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40 (Entry Scale)",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2076, 2107],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40 (Entry Scale)",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2128, 2160],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40 (Entry Scale)",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2190, 2223],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40 (Entry Scale)",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2248, 2282],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40 (Entry Scale)",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2309, 2344],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1830, 1857, 1748, 1783],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [1953, 1982, 1857, 1894],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2076, 2107, 1982, 2022],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2108, 2160, 2107, 2149],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2190, 2223, 2160, 2203],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2248, 2282, 2223, 2267],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2309, 2344, 2282, 2328],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2367, 2403, 2344, 2391],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2428, 2464, 2403, 2451],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2488, 2525, 2464, 2513],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2548, 2586, 2525, 2576],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 40",
+    "st": "11",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [2586, 2638],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45 (Entry Scale)",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1722, 1748],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45 (Entry Scale)",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1830, 1857],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45 (Entry Scale)",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1953, 1982],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45 (Entry Scale)",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2076, 2107],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45 (Entry Scale)",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2128, 2160],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45 (Entry Scale)",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2190, 2223],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45 (Entry Scale)",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2248, 2282],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45 (Entry Scale)",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2309, 2344],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45 (Entry Scale)",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2367, 2403],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45 (Entry Scale)",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2428, 2464],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45 (Entry Scale)",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2488, 2525],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2076, 2107, 1857, 1894],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2190, 2223, 1982, 2022],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2309, 2344, 2107, 2149],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2367, 2403, 2223, 2267],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2428, 2464, 2344, 2391],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2488, 2525, 2403, 2451],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2548, 2586, 2464, 2513],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2611, 2650, 2525, 2576],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2675, 2715, 2586, 2638],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2741, 2782, 2650, 2703],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2798, 2840, 2715, 2769],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45",
+    "st": "11",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [2782, 2838],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 45",
+    "st": "12",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [2840, 2897],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50 (Entry Scale)",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [1953, 1982],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50 (Entry Scale)",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2076, 2107],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50 (Entry Scale)",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2190, 2223],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50 (Entry Scale)",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2309, 2344],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50 (Entry Scale)",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2367, 2403],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50 (Entry Scale)",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2428, 2464],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50 (Entry Scale)",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2488, 2525],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50 (Entry Scale)",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2548, 2586],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50 (Entry Scale)",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2611, 2650],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50 (Entry Scale)",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2675, 2715],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50 (Entry Scale)",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2741, 2782],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2367, 2403, 2107, 2203],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2488, 2525, 2223, 2328],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2611, 2650, 2344, 2451],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2741, 2782, 2451, 2576],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2798, 2840, 2576, 2703],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2864, 2907, 2703, 2838],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2929, 2973, 2782, 2897],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2989, 3034, 2840, 2965],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3051, 3097, 2907, 3032],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3114, 3161, 2973, 3095],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3179, 3227, 3034, 3159],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50",
+    "st": "11",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [3097, 3224],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50",
+    "st": "12",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [3161, 3292],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 50",
+    "st": "13",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [3227, 3292],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55 (Entry Scale)",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2248, 2282],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55 (Entry Scale)",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2367, 2403],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55 (Entry Scale)",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2488, 2525],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55 (Entry Scale)",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2611, 2650],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55 (Entry Scale)",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2675, 2715],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55 (Entry Scale)",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2741, 2782],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55 (Entry Scale)",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2798, 2840],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55 (Entry Scale)",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2864, 2907],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55 (Entry Scale)",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2929, 2973],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55 (Entry Scale)",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2989, 3034],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55 (Entry Scale)",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3051, 3097],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2675, 2715, 2464, 2513],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2798, 2840, 2586, 2638],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [2929, 2973, 2715, 2769],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3051, 3097, 2840, 2897],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3179, 3227, 2973, 3032],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3240, 3289, 3097, 3159],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3312, 3362, 3227, 3292],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3381, 3432, 3289, 3355],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3452, 3504, 3362, 3429],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3520, 3573, 3432, 3501],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3582, 3636, 3504, 3574],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55",
+    "st": "11",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [3573, 3644],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 55",
+    "st": "12",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [3636, 3709],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60 (Entry Scale)",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2611, 2650],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60 (Entry Scale)",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2741, 2782],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60 (Entry Scale)",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2864, 2907],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60 (Entry Scale)",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [2989, 3034],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60 (Entry Scale)",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3051, 3097],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60 (Entry Scale)",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3114, 3161],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60 (Entry Scale)",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3179, 3227],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60 (Entry Scale)",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3240, 3289],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60 (Entry Scale)",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3312, 3362],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60 (Entry Scale)",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3381, 3432],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60 (Entry Scale)",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3452, 3504],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3051, 3097, 2840, 2897],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3179, 3227, 2973, 3032],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3312, 3362, 3097, 3159],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3452, 3504, 3227, 3292],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3582, 3636, 3362, 3429],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3718, 3774, 3504, 3574],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3850, 3908, 3636, 3709],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3905, 3964, 3774, 3849],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3965, 4024, 3908, 3986],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [4025, 4085, 3964, 4043],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [4083, 4144, 4024, 4104],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60",
+    "st": "11",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [4085, 4167],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 60",
+    "st": "12",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [4144, 4227],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65 (Entry Scale)",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3051, 3097],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65 (Entry Scale)",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3179, 3227],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65 (Entry Scale)",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3312, 3362],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65 (Entry Scale)",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3452, 3504],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65 (Entry Scale)",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3582, 3636],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65 (Entry Scale)",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3652, 3707],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65 (Entry Scale)",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3718, 3774],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65 (Entry Scale)",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3786, 3843],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65 (Entry Scale)",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3850, 3908],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65 (Entry Scale)",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3905, 3964],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65 (Entry Scale)",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3965, 4024],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65 (Entry Scale)",
+    "st": "11",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [4025, 4085],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65 (Entry Scale)",
+    "st": "12",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [4083, 4144],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3582, 3636, 3227, 3292],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3718, 3774, 3432, 3501],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3850, 3908, 3636, 3709],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [3965, 4024, 3774, 3849],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [4083, 4144, 3908, 3986],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [4205, 4268, 4024, 4104],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [4325, 4390, 4144, 4227],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [4445, 4512, 4268, 4353],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [4567, 4636, 4390, 4478],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [4625, 4694, 4512, 4602],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [4686, 4756, 4636, 4729],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65",
+    "st": "11",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [4748, 4819, 4694, 4788],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65",
+    "st": "12",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [4806, 4878, 4756, 4851],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65",
+    "st": "13",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [4819, 4915],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 65",
+    "st": "14",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [4878, 4976],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70 (Entry Scale)",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3718, 3774],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70 (Entry Scale)",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3850, 3908],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70 (Entry Scale)",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [3965, 4024],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70 (Entry Scale)",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [4083, 4144],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70 (Entry Scale)",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [4205, 4268],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70 (Entry Scale)",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [4266, 4330],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70 (Entry Scale)",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [4325, 4390],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70 (Entry Scale)",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [4386, 4452],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70 (Entry Scale)",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [4445, 4512],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70 (Entry Scale)",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [4567, 4636],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70 (Entry Scale)",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [4625, 4694],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70 (Entry Scale)",
+    "st": "11",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [4686, 4756],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70 (Entry Scale)",
+    "st": "12",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [4748, 4819],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [4205, 4268, 3908, 3986],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [4386, 4452, 4085, 4167],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [4567, 4636, 4268, 4353],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [4748, 4819, 4452, 4541],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [4927, 5001, 4636, 4729],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [5048, 5124, 4819, 4915],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [5199, 5277, 5001, 5101],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [5349, 5429, 5124, 5226],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [5499, 5581, 5277, 5383],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [5576, 5660, 5429, 5538],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [5651, 5736, 5581, 5693],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70",
+    "st": "11",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [5727, 5813, 5660, 5773],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70",
+    "st": "12",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [5803, 5890, 5736, 5851],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70",
+    "st": "13",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [5813, 5929],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 70",
+    "st": "14",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [5890, 6008],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75 (Entry Scale)",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [4445, 4512],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75 (Entry Scale)",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [4567, 4636],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75 (Entry Scale)",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [4686, 4756],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75 (Entry Scale)",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [4806, 4878],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75 (Entry Scale)",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [4927, 5001],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75 (Entry Scale)",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [4987, 5062],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75 (Entry Scale)",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [5048, 5124],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75 (Entry Scale)",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [5123, 5200],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75 (Entry Scale)",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [5199, 5277],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75 (Entry Scale)",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [5349, 5429],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75 (Entry Scale)",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [5499, 5581],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75 (Entry Scale)",
+    "st": "11",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [5576, 5660],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75 (Entry Scale)",
+    "st": "12",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [5651, 5736],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75 (Entry Scale)",
+    "st": "13",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [5727, 5813],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75 (Entry Scale)",
+    "st": "14",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [5803, 5890],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [4927, 5001, 4636, 4729],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [5123, 5200, 4819, 4915],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [5349, 5429, 5001, 5101],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [5576, 5660, 5200, 5304],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [5803, 5890, 5429, 5538],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [5952, 6041, 5660, 5773],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [6112, 6204, 5890, 6008],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [6280, 6374, 6041, 6162],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [6449, 6546, 6204, 6328],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [6532, 6630, 6374, 6501],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [6619, 6718, 6546, 6677],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75",
+    "st": "11",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [6716, 6817, 6630, 6763],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75",
+    "st": "12",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [6815, 6917, 6718, 6852],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75",
+    "st": "13",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [6913, 7017, 6817, 6953],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75",
+    "st": "14",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [7013, 7118, 6917, 7055],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75",
+    "st": "15",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [7017, 7157],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 75",
+    "st": "16",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [7118, 7260],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80 (Entry Scale)",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [5199, 5277],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80 (Entry Scale)",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [5349, 5429],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80 (Entry Scale)",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [5499, 5581],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80 (Entry Scale)",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [5651, 5736],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80 (Entry Scale)",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [5803, 5890],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80 (Entry Scale)",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [5878, 5966],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80 (Entry Scale)",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [5952, 6041],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80 (Entry Scale)",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [6027, 6117],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80 (Entry Scale)",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [6112, 6204],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80 (Entry Scale)",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [6280, 6374],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80 (Entry Scale)",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [6449, 6546],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80 (Entry Scale)",
+    "st": "11",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [6532, 6630],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80 (Entry Scale)",
+    "st": "12",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [6619, 6718],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80 (Entry Scale)",
+    "st": "13",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [6716, 6817],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80 (Entry Scale)",
+    "st": "14",
+    "sd": ["2011-10-01", "2012-07-01"],
+    "am": [6815, 6917],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80",
+    "st": "0",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [5803, 5890, 5429, 5538],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80",
+    "st": "1",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [6027, 6117, 5660, 5773],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80",
+    "st": "2",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [6280, 6374, 5890, 6008],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80",
+    "st": "3",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [6532, 6630, 6117, 6239],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80",
+    "st": "4",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [6815, 6917, 6374, 6501],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80",
+    "st": "5",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [7013, 7118, 6630, 6763],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80",
+    "st": "6",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [7208, 7316, 6917, 7055],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80",
+    "st": "7",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [7405, 7516, 7118, 7260],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80",
+    "st": "8",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [7605, 7718, 7316, 7462],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80",
+    "st": "9",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [7703, 7819, 7516, 7666],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80",
+    "st": "10",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [7803, 7920, 7719, 7873],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80",
+    "st": "11",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [7902, 8021, 7819, 7975],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80",
+    "st": "12",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [8001, 8121, 7920, 8078],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80",
+    "st": "13",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [8101, 8223, 8021, 8181],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80",
+    "st": "14",
+    "sd": ["2011-10-01", "2012-07-01", "2013-01-01", "2013-07-01"],
+    "am": [8201, 8324, 8121, 8283],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80",
+    "st": "15",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [8223, 8387],
+    "un": "m"
+  },
+  {
+    "jg": "Function Group 80",
+    "st": "16",
+    "sd": ["2013-01-01", "2013-07-01"],
+    "am": [8324, 8490],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 6",
+    "st": "0",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1613, 1633, 1657, 1690],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 6",
+    "st": "1",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1654, 1675, 1700, 1734],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 6",
+    "st": "2",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1701, 1722, 1748, 1783],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 6",
+    "st": "3",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1867, 1890, 1918, 1956],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 6",
+    "st": "4",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1986, 2011, 2041, 2082],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 6",
+    "st": "5",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2102, 2128, 2160, 2203],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 6",
+    "st": "6",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2163, 2190, 2223, 2267],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 6",
+    "st": "7",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2220, 2248, 2282, 2328],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 6",
+    "st": "8",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2280, 2309, 2344, 2391],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 6",
+    "st": "9",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2338, 2367, 2403, 2451],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 6",
+    "st": "10",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2398, 2428, 2464, 2513],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 6",
+    "st": "11",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2457, 2488, 2525, 2576],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 6",
+    "st": "12",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2517, 2548, 2586, 2638],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 7",
+    "st": "0",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1701, 1722, 1748, 1783],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 7",
+    "st": "1",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1867, 1890, 1918, 1956],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 7",
+    "st": "2",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1929, 1953, 1982, 2022],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 7",
+    "st": "3",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1986, 2011, 2041, 2082],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 7",
+    "st": "4",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2102, 2128, 2160, 2203],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 7",
+    "st": "5",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2220, 2248, 2282, 2328],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 7",
+    "st": "6",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2338, 2367, 2403, 2451],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 7",
+    "st": "7",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2457, 2488, 2525, 2576],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 7",
+    "st": "8",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2579, 2611, 2650, 2703],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 7",
+    "st": "9",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2707, 2741, 2782, 2838],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 7",
+    "st": "10",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2763, 2798, 2840, 2897],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 1",
+    "st": "0",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1345, 1362, 1382, 1410],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 1",
+    "st": "1",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1449, 1467, 1489, 1519],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 1",
+    "st": "2",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1449, 1467, 1489, 1519],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 1",
+    "st": "3",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1502, 1521, 1544, 1575],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 1",
+    "st": "4",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1573, 1593, 1617, 1649],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 1",
+    "st": "5",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1613, 1633, 1657, 1690],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 2",
+    "st": "0",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1449, 1467, 1489, 1519],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 2",
+    "st": "1",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1502, 1521, 1544, 1575],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 2",
+    "st": "2",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1531, 1550, 1573, 1604],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 2",
+    "st": "3",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1573, 1593, 1617, 1649],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 2",
+    "st": "4",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1613, 1633, 1657, 1690],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 2",
+    "st": "5",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1654, 1675, 1700, 1734],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 2",
+    "st": "6",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1701, 1722, 1748, 1783],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 2",
+    "st": "7",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1753, 1775, 1802, 1838],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 3",
+    "st": "0",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1449, 1467, 1489, 1519],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 3",
+    "st": "1",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1502, 1521, 1544, 1575],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 3",
+    "st": "2",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1531, 1550, 1573, 1604],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 3",
+    "st": "3",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1573, 1593, 1617, 1649],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 3",
+    "st": "4",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1613, 1633, 1657, 1690],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 3",
+    "st": "5",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1654, 1675, 1700, 1734],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 3",
+    "st": "6",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1701, 1722, 1748, 1783],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 3",
+    "st": "7",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1753, 1775, 1802, 1838],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 3",
+    "st": "8",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1807, 1830, 1857, 1894],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 3",
+    "st": "9",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1867, 1890, 1918, 1956],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 3",
+    "st": "10",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1929, 1953, 1982, 2022],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 8",
+    "st": "0",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2220, 2248, 2282, 2328],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 8",
+    "st": "1",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2338, 2367, 2403, 2451],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 8",
+    "st": "2",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2457, 2488, 2525, 2576],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 8",
+    "st": "3",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2579, 2611, 2650, 2703],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 8",
+    "st": "4",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2707, 2741, 2782, 2838],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 8",
+    "st": "5",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2763, 2798, 2840, 2897],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 8",
+    "st": "6",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2829, 2864, 2907, 2965],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 8",
+    "st": "7",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2893, 2929, 2973, 3032],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 8",
+    "st": "8",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [2952, 2989, 3034, 3095],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 8",
+    "st": "9",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3013, 3051, 3097, 3159],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 8",
+    "st": "10",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3076, 3114, 3161, 3224],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 8",
+    "st": "11",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3140, 3179, 3227, 3292],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 13",
+    "st": "0",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3802, 3850, 3908, 3986],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 13",
+    "st": "1",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [3916, 3965, 4024, 4104],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 13",
+    "st": "2",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4033, 4083, 4144, 4227],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 13",
+    "st": "3",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4153, 4205, 4268, 4353],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 13",
+    "st": "4",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4272, 4325, 4390, 4478],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 13",
+    "st": "5",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4390, 4445, 4512, 4602],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 13",
+    "st": "6",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4511, 4567, 4636, 4729],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 13",
+    "st": "7",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4628, 4686, 4756, 4851],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 13",
+    "st": "8",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4747, 4806, 4878, 4976],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 13",
+    "st": "9",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4866, 4927, 5001, 5101],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 13",
+    "st": "10",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [4986, 5048, 5124, 5226],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 13",
+    "st": "11",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [5135, 5199, 5277, 5383],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 13",
+    "st": "12",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [5283, 5349, 5429, 5538],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 4",
+    "st": "0",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1531, 1550, 1573, 1604],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 4",
+    "st": "1",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1573, 1593, 1617, 1649],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 4",
+    "st": "2",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1573, 1593, 1617, 1649],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 4",
+    "st": "3",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1613, 1633, 1657, 1690],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 4",
+    "st": "4",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1654, 1675, 1700, 1734],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 4",
+    "st": "5",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1701, 1722, 1748, 1783],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 4",
+    "st": "6",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1753, 1775, 1802, 1838],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 4",
+    "st": "7",
+    "sd": ["2010-07-01", "2011-10-01", "2012-07-01", "2013-07-01"],
+    "am": [1807, 1830, 1857, 1894],
+    "un": "m"
+  },
+  {
+    "jg": "DTG 4",
+    "st": "8",
+    "sd": ["2010-07-01", "2011-10-01",

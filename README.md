@@ -75,6 +75,7 @@ CAOsDataExtraction/
 │   ├── salary_schema_compact.py # Compact salary schema (no table_label, 2-letter field names) - for attempts 6-8. NOTE: holiday_incl moved from SalaryPoint to SalaryRow
 │   ├── salary_schema_split.py   # Split salary schema (same as compact) - for attempts 9-10
 │   ├── salary_prompt_split.py   # Split extraction prompts - for attempts 9-10
+│   ├── salary_schema_super_compact.py  # Super compact salary schema (minimal fields) - for attempts 11-12
 │   ├── non_salary_schema.py     # Non-salary data schema (Pydantic models)
 │   └── excel_output_schema.py   # Excel output column definitions
 ├── scripts/                     # Utility and analysis scripts
@@ -132,7 +133,7 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
 - **Unicode Processing**: Automatic conversion of /uniXXXX and /GXXX patterns to readable text
 - **Schema Validation**: Pydantic-based schemas ensure data quality and structure
 - **Parallel Processing**: Multi-process support with file locking to prevent duplicate processing
-- **Robust Error Handling**: Exponential backoff, adaptive retry strategies (attempts 1-5), compact schema retries (attempts 6-8), split extraction retries (attempts 9-10), and comprehensive error recovery
+- **Robust Error Handling**: Exponential backoff, adaptive retry strategies (attempts 1-5), compact schema retries (attempts 6-8), split extraction retries (attempts 9-10), super compact schema retries (attempts 11-12), and comprehensive error recovery
 - **Performance Monitoring**: Real-time tracking of processing time, token usage, costs, and quality metrics
 - **Scalable Architecture**: Designed for processing 1,580+ PDF documents efficiently
 
@@ -177,10 +178,12 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
   - **Attempts 1-5**: Regular extraction with adaptive parameter adjustment
   - **Attempts 6-8**: Compact schema extraction (reduced output size) - triggered if truncation occurs after attempt 4, or if file is in truncated folder
   - **Attempts 9-10**: Split extraction (first half/second half by jobgroup boundaries) - triggered if truncation occurs after attempt 7, or if file is in truncated_2 folder
+  - **Attempts 11-12**: Super compact schema extraction (minimal fields only) - triggered if truncation occurs after attempt 9, or if file is in truncated_3 folder
   - **File handling**:
-    - Files in truncated folder → retry with attempts 6-8 (compact), extend to 9-10 (split) if needed
-    - Files in truncated_2 folder → retry with attempts 9-10 (split extraction)
-    - Files in truncated_3 folder → skipped (all attempts exhausted)
+    - Files in truncated folder → retry with attempts 6-8 (compact), extend to 9-10 (split), 11-12 (super compact) if needed
+    - Files in truncated_2 folder → retry with attempts 9-10 (split extraction), may extend to 11-12
+    - Files in truncated_3 folder → retry with attempts 11-12 (super compact schema)
+    - Files in truncated_4 folder → skipped (all attempts exhausted)
 
 ### Stage 5: Excel Creation (p5_excel_creation.py)
 - Merges salary and non-salary extraction results

@@ -285,7 +285,14 @@ def discover_llm_files(llm_analysis_folder: Path) -> List[tuple]:
     return files
 
 def determine_max_timeline_length(files: List[tuple]) -> int:
-    """Determine the maximum timeline length across all salary files."""
+    """
+    Determine the maximum timeline length across all salary files.
+    
+    Handles all schema variants:
+    - Regular schema: nested 'timeline' array
+    - Compact/split schema: nested 'tl' array
+    - Super compact schema: parallel 'sd' and 'am' arrays
+    """
     max_timeline = 0
     
     print("Determining max timeline length...")
@@ -295,12 +302,20 @@ def determine_max_timeline_length(files: List[tuple]) -> int:
         try:
             with open(salary_file, 'r', encoding='utf-8') as f:
                 salary_data = json.load(f)
-                # Handle both 'salary_information' (regular) and 'si' (compact/split)
+                # Handle both 'salary_information' (regular) and 'si' (compact/split/super compact)
                 salary_rows = salary_data.get('salary_information') or salary_data.get('si', [])
                 for salary_row in salary_rows:
-                    # Handle both 'timeline' (regular) and 'tl' (compact/split)
-                    timeline = salary_row.get('timeline') or salary_row.get('tl', [])
-                    max_timeline = max(max_timeline, len(timeline))
+                    # Check for super compact schema with parallel arrays (sd/am)
+                    if 'sd' in salary_row and 'am' in salary_row:
+                        # Super compact schema: use length of sd or am array
+                        sd_array = salary_row.get('sd', [])
+                        am_array = salary_row.get('am', [])
+                        timeline_length = max(len(sd_array), len(am_array))
+                        max_timeline = max(max_timeline, timeline_length)
+                    else:
+                        # Regular/compact/split schema: nested timeline format
+                        timeline = salary_row.get('timeline') or salary_row.get('tl', [])
+                        max_timeline = max(max_timeline, len(timeline))
         except Exception as e:
             print(f"Warning: Could not read {salary_file} for timeline analysis: {e}")
     
@@ -328,6 +343,24 @@ def process_salary_file(cao_number: str, base_filename: str, salary_file: Option
     
     # Handle both 'salary_information' (regular) and 'si' (compact/split)
     salary_rows = salary_data.get('salary_information') or salary_data.get('si', [])
+    
+    # If no salary rows found, create a placeholder row to track that this file was processed
+    if not salary_rows or len(salary_rows) == 0:
+        # Get CAO metadata
+        cao_metadata = match_cao_info(cao_number, base_filename, cao_info_mapping)
+        # Create a minimal row with just metadata to track this file
+        # This ensures files with empty salary_information arrays are still counted
+        placeholder_row = {
+            'cao_number': cao_number,
+            'file_name': base_filename,
+        }
+        # Add all metadata fields
+        if cao_metadata:
+            placeholder_row.update(cao_metadata)
+        # Note: Empty salary fields will be filled by DataFrame creation to maintain schema
+        excel_rows.append(placeholder_row)
+        print(f'  {cao_number}: No salary data found in {salary_file.name} (created placeholder row)')
+        return excel_rows
     
     # Get CAO metadata
     cao_metadata = match_cao_info(cao_number, base_filename, cao_info_mapping)

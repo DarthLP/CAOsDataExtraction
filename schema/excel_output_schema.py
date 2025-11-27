@@ -352,8 +352,37 @@ def flatten_salary_row(salary_row: Dict[str, Any], cao_metadata: Dict[str, str],
     """
     row = cao_metadata.copy()
     
-    # Get timeline - handle both 'timeline' and 'tl' (compact abbreviation)
-    timeline = salary_row.get('timeline') or salary_row.get('tl', [])
+    # Get timeline - handle both nested timeline format and parallel arrays format (super compact schema)
+    # Check if this is super compact schema format with parallel arrays
+    if 'sd' in salary_row and 'am' in salary_row and 'un' in salary_row:
+        # Super compact schema: convert parallel arrays to timeline structure
+        sd_array = salary_row.get('sd', [])
+        am_array = salary_row.get('am', [])
+        un_value = salary_row.get('un')
+        ip_array = salary_row.get('ip', [])  # Optional increase_percent array
+        
+        # Handle un field: can be single string or array
+        if isinstance(un_value, str):
+            # Single unit for all timeline points
+            un_array = [un_value] * len(sd_array) if sd_array else []
+        else:
+            # Array of units
+            un_array = un_value if isinstance(un_value, list) else []
+        
+        # Build timeline from parallel arrays
+        timeline = []
+        max_len = max(len(sd_array), len(am_array), len(un_array), len(ip_array) if ip_array else 0)
+        for i in range(max_len):
+            timeline_point = {
+                'sd': sd_array[i] if i < len(sd_array) else None,
+                'am': am_array[i] if i < len(am_array) else None,
+                'un': un_array[i] if i < len(un_array) else None,
+                'ip': ip_array[i] if ip_array and i < len(ip_array) else None  # Include increase_percent if present
+            }
+            timeline.append(timeline_point)
+    else:
+        # Regular/compact/split schema: nested timeline format
+        timeline = salary_row.get('timeline') or salary_row.get('tl', [])
     
     # Add SalaryRow metadata fields - handle both abbreviations and full names
     # Map to old Excel column names for backward compatibility
@@ -381,7 +410,10 @@ def flatten_salary_row(salary_row: Dict[str, Any], cao_metadata: Dict[str, str],
                 # Handle each field type
                 if field == 'increase_percent':
                     # Handle inc_pct with abbreviations
-                    value = get_field_with_abbreviation(timeline_point, 'inc_pct', POINT_ABBREVIATION_MAP)
+                    # Check for 'ip' (super compact parallel array), 'inc_pct' (compact/split), or 'increase_percent' (regular)
+                    value = timeline_point.get('ip')  # Super compact schema uses 'ip' in parallel arrays
+                    if value is None:
+                        value = get_field_with_abbreviation(timeline_point, 'inc_pct', POINT_ABBREVIATION_MAP)
                     if value is None:
                         value = timeline_point.get('increase_percent')
                         

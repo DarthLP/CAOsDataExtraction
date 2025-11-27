@@ -2,7 +2,7 @@
 
 ## Overview
 
-The salary extraction process uses a graduated retry strategy with 3 schema types and 4 different prompts to handle files of varying sizes and complexity.
+The salary extraction process uses a graduated retry strategy with 4 schema types and 5 different prompts to handle files of varying sizes and complexity.
 
 ## Attempt Mapping
 
@@ -11,6 +11,7 @@ The salary extraction process uses a graduated retry strategy with 3 schema type
 | 0-4 | 1st-5th | Regular | SALARY_PROMPT | Full names (salary_information, start_date, etc.) |
 | 5-7 | 6th-8th | Compact | SALARY_PROMPT_COMPACT | 2-letter (si, sd, am, etc.) |
 | 8-9 | 9th-10th | Split | SALARY_PROMPT_SPLIT_ATTEMPT_9 (part 1)<br>SALARY_PROMPT_SPLIT_ATTEMPT_10 (part 2) | 2-letter (si, sd, am, etc.) |
+| 10-11 | 11th-12th | Super Compact | SALARY_PROMPT_SUPER_COMPACT | Minimal 2-letter (si, sd, am, un, ip, jg, st, wr, ag, eu, pe, tl) |
 
 ## Prompt Usage Details
 
@@ -57,6 +58,20 @@ The salary extraction process uses a graduated retry strategy with 3 schema type
   - Includes anti-repetition rules for notes (max 20 words, reference format for shared notes)
 - **When to use**: Part 2 of split extraction (always after attempt 9 for part 1)
 
+### 5. SALARY_PROMPT_SUPER_COMPACT
+- **Used for**: Attempts 10-11 (11th-12th overall)
+- **Schema**: `SalaryExtractionSchemaSuperCompact`
+- **Field names**: Minimal 2-letter abbreviations (only essential fields)
+  - **SalaryPoint**: `sd` (start_date), `am` (amount), `un` (unit), `ip` (inc_pct)
+  - **SalaryRow**: `jg` (jobgroup), `st` (step), `wr` (worker), `ag` (age_group), `eu` (education), `pe` (permanency), `tl` (timeline)
+  - **Removed fields**: `ed` (end_date), `nt` (note), `ie` (is_entry), `fh` (ft_hours), `ht` (hours_type), `hi` (holiday_incl), `rn` (row_note)
+- **JSON output**: `{"si": [...]}`
+- **Differences from compact prompt**:
+  1. Removes all optional metadata fields (end_date, notes, is_entry, ft_hours, hours_type, holiday_incl, row_note)
+  2. Keeps only essential salary data to minimize JSON output size
+  3. Simplified timeline construction (no end_date or notes)
+- **When to use**: After truncation in attempts 8-9, or files in `truncated_3` folder
+
 ## Split Extraction Flow
 
 **Important**: Both attempt 8 (9th overall) AND attempt 9 (10th overall) use BOTH prompts:
@@ -83,29 +98,32 @@ The retry logic automatically extends to more aggressive strategies:
 
 1. **After attempt 4 (5th overall)**: If truncation error → extends to attempts 5-7 (compact schema)
 2. **After attempt 7 (8th overall)**: If truncation error → extends to attempts 8-9 (split extraction)
+3. **After attempt 9 (10th overall)**: If truncation error → extends to attempts 10-11 (super compact schema)
 
 ## File Folder Logic
 
 - **Normal files**: Start with attempts 0-4 (regular schema)
-- **Files in `truncated` folder**: Start with attempts 5-7 (compact schema), may extend to 8-9
-- **Files in `truncated_2` folder**: Start with attempts 8-9 (split extraction) directly
-- **Files in `truncated_3` folder**: Skipped entirely (all attempts exhausted)
+- **Files in `truncated` folder**: Start with attempts 5-7 (compact schema), may extend to 8-9, 10-11
+- **Files in `truncated_2` folder**: Start with attempts 8-9 (split extraction) directly, may extend to 10-11
+- **Files in `truncated_3` folder**: Start with attempts 10-11 (super compact schema) directly
+- **Files in `truncated_4` folder**: Skipped entirely (all attempts exhausted)
 
 ## Field Access in Code
 
-All code correctly handles both field name formats:
+All code correctly handles all field name formats:
 - Regular schema: `response.parsed.salary_information`
-- Compact/split schema: `parsed_dump.get('si', parsed_dump.get('salary_information', []))`
+- Compact/split/super compact schema: `parsed_dump.get('si', parsed_dump.get('salary_information', []))`
 - Manual parsing: `salary_schema.si if hasattr(salary_schema, 'si') else salary_schema.salary_information`
 
 ## Key Differences Summary
 
-| Aspect | Regular | Compact | Split |
-|--------|---------|---------|-------|
-| Field names | Full | 2-letter | 2-letter |
-| JSON top-level | `salary_information` | `si` | `si` |
-| `holiday_incl` location | SalaryPoint | SalaryRow (hi) | SalaryRow (hi) |
-| `table_label` | Yes | No | No |
-| Unit format | Full text | Abbreviated | Abbreviated |
-| Extraction method | Single | Single | Two parts |
+| Aspect | Regular | Compact | Split | Super Compact |
+|--------|---------|---------|-------|---------------|
+| Field names | Full | 2-letter | 2-letter | Minimal 2-letter |
+| JSON top-level | `salary_information` | `si` | `si` | `si` |
+| `holiday_incl` location | SalaryPoint | SalaryRow (hi) | SalaryRow (hi) | Removed |
+| `table_label` | Yes | No | No | No |
+| Unit format | Full text | Abbreviated | Abbreviated | Abbreviated |
+| Extraction method | Single | Single | Two parts | Single |
+| Removed fields | None | table_label | table_label | table_label, ed, nt, ie, fh, ht, hi, rn |
 

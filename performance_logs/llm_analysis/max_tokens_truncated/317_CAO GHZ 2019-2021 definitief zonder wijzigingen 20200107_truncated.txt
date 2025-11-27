@@ -1,1380 +1,1233 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: CAO GHZ 2019-2021 definitief zonder wijzigingen 20200107.docx_extract.json
-Timestamp: 2025-11-24T23:43:08.669111
-Response length: 56385 characters
+Timestamp: 2025-11-26T00:17:13.182222
+Response length: 41922 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
 {
-  "salary_information": [
+  "si": [
     {
-      "jobgroup": "Placement Number",
-      "step": "1",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 8",
+      "st": "Experience 0",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 1501,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 2478.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 1552,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 2562.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 1601,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 2643.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "2",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 8",
+      "st": "Experience 1",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 1528,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 2610.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 1580,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 2699.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 1630,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 2784.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "3",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 8",
+      "st": "Experience 2",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 1556,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 2742.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 1609,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 2835.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 1660,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 2924.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "4",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 8",
+      "st": "Experience 3",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 1616,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 2877.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 1671,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 2975.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 1724,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3069.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "5",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 8",
+      "st": "Experience 4",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 1676,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3021.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 1733,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3124.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 1788,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3222.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "6",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 8",
+      "st": "Experience 5",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 1707,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3084.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 1765,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3189.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 1821,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3289.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "7",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 8",
+      "st": "Experience 6",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 1755,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3157.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 1815,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3264.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 1872,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3367.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "8",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 8",
+      "st": "Experience 7",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 1800,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3227.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 1861,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3337.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 1920,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3442.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "9",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 8",
+      "st": "Experience 8",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 1846,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3294.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 1909,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3406.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 1969,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3513.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "10",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 8",
+      "st": "Experience 9",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 1898,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3364.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 1963,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3478.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 2025,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3588.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "11",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 8",
+      "st": "Experience 10",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 1956,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3432.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 2023,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3549.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 2087,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3661.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "12",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 8",
+      "st": "Experience 11",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 2016,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3505.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 2085,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3624.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 2151,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3738.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "13",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 9",
+      "st": "Experience 0",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 2083,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 2742.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 2154,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 2835.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 2222,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 2924.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "14",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 9",
+      "st": "Experience 1",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 2153,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 2877.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 2226,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 2975.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 2296,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3069.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "15",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 9",
+      "st": "Experience 2",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 2216,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3021.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 2291,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3124.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 2363,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3222.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "16",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 9",
+      "st": "Experience 3",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 2287,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3157.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 2365,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3264.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 2439,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3367.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "17",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 9",
+      "st": "Experience 4",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 2345,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3294.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 2425,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3406.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 2501,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3513.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "18",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 9",
+      "st": "Experience 5",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 2413,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3432.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 2495,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3549.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 2574,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3661.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "19",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 9",
+      "st": "Experience 6",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 2478,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3572.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 2562,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3693.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 2643,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3809.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "20",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 9",
+      "st": "Experience 7",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 2546,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3728.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 2633,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3855.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 2716,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3976.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "21",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 9",
+      "st": "Experience 8",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 2610,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3879.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 2699,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 4011.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 2784,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 4137.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "22",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 10",
+      "st": "Experience 0",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 2675,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3157.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 2766,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3264.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 2853,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3367.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "23",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 10",
+      "st": "Experience 1",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 2742,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3294.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 2835,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3406.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 2924,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3513.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "24",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 10",
+      "st": "Experience 2",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 2807,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3432.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 2902,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3549.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 2993,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3661.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "25",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 10",
+      "st": "Experience 3",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 2877,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3572.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 2975,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3693.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 3069,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3809.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "26",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 10",
+      "st": "Experience 4",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 2948,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3728.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 3048,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3855.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 3144,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3976.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "27",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 10",
+      "st": "Experience 5",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 3021,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3879.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 3124,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 4011.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 3222,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 4137.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "28",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 10",
+      "st": "Experience 6",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 3084,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 4024.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 3189,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 4161.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 3289,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 4292.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "29",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 10",
+      "st": "Experience 7",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 3157,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 4172.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 3264,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 4314.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 3367,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 4450.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "30",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 10",
+      "st": "Experience 8",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 3227,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 4243.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 3337,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 4387.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 3442,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 4525.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "31",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 11",
+      "st": "Experience 0",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 3294,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3432.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 3406,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3549.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 3513,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3661.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "32",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 11",
+      "st": "Experience 1",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 3364,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3572.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 3478,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3693.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 3588,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3809.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "33",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 11",
+      "st": "Experience 2",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 3432,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3728.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 3549,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 3855.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 3661,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 3976.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "34",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 11",
+      "st": "Experience 3",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 3505,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3879.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 3624,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 4011.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 3738,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 4137.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "35",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 11",
+      "st": "Experience 4",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 3572,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 4024.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 3693,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 4161.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 3809,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 4292.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "36",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 11",
+      "st": "Experience 5",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 3650,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 4172.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 3774,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 4314.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 3893,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 4450.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "37",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 11",
+      "st": "Experience 6",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 3728,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 4243.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 3855,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 4387.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 3976,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 4525.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "38",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 11",
+      "st": "Experience 7",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 3806,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 4369.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 3935,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 4518.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 4059,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 4660.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "39",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 11",
+      "st": "Experience 8",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 3879,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 4499.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 4011,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 4652.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 4137,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 4799.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "40",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 11",
+      "st": "Experience 9",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 3948,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 4635.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 4082,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 4793.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 4211,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 4944.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "41",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 11",
+      "st": "Experience 10",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 4024,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 4898.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 4161,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 5065.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 4292,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 5225.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "42",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 11",
+      "st": "Experience 11",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 4096,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 4898.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 4235,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 5065.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 4368,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 5225.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "43",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 11",
+      "st": "Experience 12",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 4172,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 5034.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 4314,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 5205.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 4450,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 5369.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "44",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 12",
+      "st": "Experience 0",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 4243,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 3879.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 4387,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 4011.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 4525,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 4137.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "45",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 12",
+      "st": "Experience 1",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 4303,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 4024.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 4449,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 4161.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 4589,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 4292.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "46",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 12",
+      "st": "Experience 2",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 4369,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 4172.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 4518,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 4314.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 4660,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 4450.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "47",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 12",
+      "st": "Experience 3",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 4436,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 4243.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 4587,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 4387.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 4731,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 4525.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "48",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 12",
+      "st": "Experience 4",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 4499,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 4369.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 4652,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 4518.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 4799,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 4660.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (contracted hours / 1878). Salary amounts apply insofar as the statutory minimum (youth) wage is not higher."
     },
     {
-      "jobgroup": "Placement Number",
-      "step": "49",
-      "holiday_incl": false,
-      "timeline": [
+      "jg": "DTG 12",
+      "st": "Experience 5",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2019-01-01",
-          "amount": 4568,
-          "unit": "m"
+          "sd": "2019-01-01",
+          "am": 4499.0,
+          "un": "m"
         },
         {
-          "start_date": "2020-06-01",
-          "amount": 4723,
-          "unit": "m",
-          "inc_pct": 3.4
+          "sd": "2020-06-01",
+          "am": 4652.0,
+          "un": "m",
+          "ip": 3.4
         },
         {
-          "start_date": "2021-06-01",
-          "amount": 4872,
-          "unit": "m",
-          "inc_pct": 3.15
+          "sd": "2021-06-01",
+          "am": 4799.0,
+          "un": "m",
+          "ip": 3.15
         }
       ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
-    },
-    {
-      "jobgroup": "Placement Number",
-      "step": "50",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2019-01-01",
-          "amount": 4635,
-          "unit": "m"
-        },
-        {
-          "start_date": "2020-06-01",
-          "amount": 4793,
-          "unit": "m",
-          "inc_pct": 3.4
-        },
-        {
-          "start_date": "2021-06-01",
-          "amount": 4944,
-          "unit": "m",
-          "inc_pct": 3.15
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
-    },
-    {
-      "jobgroup": "Placement Number",
-      "step": "51",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2019-01-01",
-          "amount": 4701,
-          "unit": "m"
-        },
-        {
-          "start_date": "2020-06-01",
-          "amount": 4861,
-          "unit": "m",
-          "inc_pct": 3.4
-        },
-        {
-          "start_date": "2021-06-01",
-          "amount": 5014,
-          "unit": "m",
-          "inc_pct": 3.15
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
-    },
-    {
-      "jobgroup": "Placement Number",
-      "step": "52",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2019-01-01",
-          "amount": 4768,
-          "unit": "m"
-        },
-        {
-          "start_date": "2020-06-01",
-          "amount": 4930,
-          "unit": "m",
-          "inc_pct": 3.4
-        },
-        {
-          "start_date": "2021-06-01",
-          "amount": 5085,
-          "unit": "m",
-          "inc_pct": 3.15
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
-    },
-    {
-      "jobgroup": "Placement Number",
-      "step": "53",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2019-01-01",
-          "amount": 4833,
-          "unit": "m"
-        },
-        {
-          "start_date": "2020-06-01",
-          "amount": 4997,
-          "unit": "m",
-          "inc_pct": 3.4
-        },
-        {
-          "start_date": "2021-06-01",
-          "amount": 5154,
-          "unit": "m",
-          "inc_pct": 3.15
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
-    },
-    {
-      "jobgroup": "Placement Number",
-      "step": "54",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2019-01-01",
-          "amount": 4898,
-          "unit": "m"
-        },
-        {
-          "start_date": "2020-06-01",
-          "amount": 5065,
-          "unit": "m",
-          "inc_pct": 3.4
-        },
-        {
-          "start_date": "2021-06-01",
-          "amount": 5225,
-          "unit": "m",
-          "inc_pct": 3.15
-        }
-      ],
-      "row_note": "Salary amounts apply insofar as the statutory minimum (youth) wage is not higher. The functional year (func. Jr.) in the functiegroep tables (Article 4:15) maps to these placement numbers. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata to their employment size (Article 4:2, lid 1). For employees with working hours exceeding 1878 hours per year, the salary amounts are adjusted by the factor (contracted hours / 1878) (e.g., 1983/1878 or 2087/1878) (Article 4:2, lid 2)."
-    },
-    {
-      "jobgroup": "Placement Number",
-      "step": "55",
-      "holiday_incl": false,
-      "timeline": [
-        {
-          "start_date": "2019-01-01",
-          "amount": 4967,
-          "unit": "m"
-        },
-        {
-          "start_date": "2020-06-01",
-          "amount": 5136,
-          "unit": "m",
-          "inc_pct": 3.4
-        },
-        {
-          "start_date": "2021-06-01",
-          "amount": 5298,
-          "unit": "m",
-          "inc_pct": 3.15
+      "rn": "Application of these scales is based on agreements about the introduction of FWG 3.0 as of January 1, 2001. Amounts apply to full-time employment; for part-time employees, salary is paid pro-rata. For employees with working hours exceeding 1878 hours per year, salary amounts are adjusted by the factor (

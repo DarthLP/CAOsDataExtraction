@@ -1,279 +1,146 @@
 FAILED 10TH ATTEMPT DEBUG INFO
 Original filename: CAO_Ziekenhuizen_totaal_extract.json
-Timestamp: 2025-11-25T16:43:27.835036
+Timestamp: 2025-11-25T23:24:27.757348
 Attempt: 10th (final attempt with split extraction)
-Error: Part 2 (second half) response truncated - incomplete JSON
-Response length: 114414 characters
+Error: Part 1 (first half) response truncated - incomplete JSON
+Response length: 62849 characters
 ================================================================================
 
 {
   "si": [
     {
-      "jg": "Functiegroep 5 (aanloopschaal 4)",
-      "st": "0",
-      "ie": true,
+      "jg": "1st practical training year",
+      "wr": "Werknemers opleiding niveau 1 en 2",
       "fh": 36,
+      "hi": false,
       "tl": [
         {
           "sd": "2011-07-01",
-          "am": 1347,
+          "am": 1010,
           "un": "m",
           "ip": 1.0
         },
         {
           "sd": "2011-10-01",
-          "am": 1350,
+          "am": 1012,
           "un": "m",
-          "ip": 0.55
+          "ip": 0.25
         },
         {
           "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1370,
+          "am": 1028,
           "un": "m",
           "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
-    },
-    {
-      "jg": "Functiegroep 5 (aanloopschaal 4)",
-      "st": "1",
-      "ie": true,
-      "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1372,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1375,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1396,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
-    },
-    {
-      "jg": "Functiegroep 5 (aanloopschaal 4)",
-      "st": "2",
-      "ie": true,
-      "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1397,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1400,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1421,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
-    },
-    {
-      "jg": "Functiegroep 5 (aanloopschaal 4)",
-      "st": "3",
-      "ie": true,
-      "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1452,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1455,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1477,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
-    },
-    {
-      "jg": "Functiegroep 5 (aanloopschaal 4)",
-      "st": "4",
-      "ie": true,
-      "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1575,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1579,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1602,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
-    },
-    {
-      "jg": "Functiegroep 5 (aanloopschaal 4)",
-      "st": "5",
-      "ie": true,
-      "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1615,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1619,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1643,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
-    },
-    {
-      "jg": "Functiegroep 5 (aanloopschaal 4)",
-      "st": "6",
-      "ie": true,
-      "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1657,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1661,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1686,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
-    },
-    {
-      "jg": "Functiegroep 5 (aanloopschaal 4)",
-      "st": "7",
-      "ie": true,
-      "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1703,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1707,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1733,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
-    },
-    {
-      "jg": "Functiegroep 5 (functional scale 05)",
-      "st": "0",
-      "ie": false,
-      "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1397,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1400,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1421,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1421,
-          "un": "m"
         },
         {
           "sd": "2013-07-01",
-          "am": 1450,
+          "am": 1048,
           "un": "m",
           "ip": 2.0
         }
       ]
     },
     {
-      "jg": "Functiegroep 5 (functional scale 05)",
-      "st": "1",
-      "ie": false,
+      "jg": "2nd practical training year",
+      "wr": "Werknemers opleiding niveau 1 en 2",
       "fh": 36,
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2011-07-01",
+          "am": 1145,
+          "un": "m",
+          "ip": 1.0
+        },
+        {
+          "sd": "2011-10-01",
+          "am": 1147,
+          "un": "m",
+          "ip": 0.25
+        },
+        {
+          "sd": "2012-07-01",
+          "am": 1165,
+          "un": "m",
+          "ip": 1.5
+        },
+        {
+          "sd": "2013-07-01",
+          "am": 1188,
+          "un": "m",
+          "ip": 2.0
+        }
+      ]
+    },
+    {
+      "jg": "1st practical training year",
+      "wr": "Werknemers opleiding niveau 3, 4 en 5",
+      "fh": 36,
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2011-07-01",
+          "am": 1145,
+          "un": "m",
+          "ip": 1.0
+        },
+        {
+          "sd": "2011-10-01",
+          "am": 1147,
+          "un": "m",
+          "ip": 0.25
+        },
+        {
+          "sd": "2012-07-01",
+          "am": 1165,
+          "un": "m",
+          "ip": 1.5
+        },
+        {
+          "sd": "2013-07-01",
+          "am": 1188,
+          "un": "m",
+          "ip": 2.0
+        }
+      ]
+    },
+    {
+      "jg": "2nd practical training year",
+      "wr": "Werknemers opleiding niveau 3, 4 en 5",
+      "fh": 36,
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2011-07-01",
+          "am": 1279,
+          "un": "m",
+          "ip": 1.0
+        },
+        {
+          "sd": "2011-10-01",
+          "am": 1282,
+          "un": "m",
+          "ip": 0.25
+        },
+        {
+          "sd": "2012-07-01",
+          "am": 1302,
+          "un": "m",
+          "ip": 1.5
+        },
+        {
+          "sd": "2013-07-01",
+          "am": 1328,
+          "un": "m",
+          "ip": 2.0
+        }
+      ]
+    },
+    {
+      "jg": "3rd practical training year",
+      "wr": "Werknemers opleiding niveau 3, 4 en 5",
+      "fh": 36,
+      "hi": false,
       "tl": [
         {
           "sd": "2011-07-01",
@@ -285,18 +152,13 @@ Response length: 114414 characters
           "sd": "2011-10-01",
           "am": 1455,
           "un": "m",
-          "ip": 0.55
+          "ip": 0.25
         },
         {
           "sd": "2012-07-01",
           "am": 1477,
           "un": "m",
           "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1477,
-          "un": "m"
         },
         {
           "sd": "2013-07-01",
@@ -307,5565 +169,2156 @@ Response length: 114414 characters
       ]
     },
     {
+      "jg": "4th practical training year",
+      "wr": "Werknemers opleiding niveau 3, 4 en 5",
+      "fh": 36,
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2011-07-01",
+          "am": 1615,
+          "un": "m",
+          "ip": 1.0
+        },
+        {
+          "sd": "2011-10-01",
+          "am": 1619,
+          "un": "m",
+          "ip": 0.25
+        },
+        {
+          "sd": "2012-07-01",
+          "am": 1643,
+          "un": "m",
+          "ip": 1.5
+        },
+        {
+          "sd": "2013-07-01",
+          "am": 1676,
+          "un": "m",
+          "ip": 2.0
+        }
+      ]
+    },
+    {
+      "jg": "Salary Scale for Specialists in Training",
+      "st": "0 year",
+      "wr": "aios, ziekenhuisapotheker, klinisch-chemicus of klinisch fysicus",
+      "fh": 36,
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2011-07-01",
+          "am": 3018,
+          "un": "m",
+          "ip": 1.0
+        },
+        {
+          "sd": "2011-10-01",
+          "am": 3026,
+          "un": "m",
+          "ip": 0.25
+        },
+        {
+          "sd": "2012-07-01",
+          "am": 3071,
+          "un": "m",
+          "ip": 1.5
+        },
+        {
+          "sd": "2013-07-01",
+          "am": 3132,
+          "un": "m",
+          "ip": 2.0
+        }
+      ]
+    },
+    {
+      "jg": "Salary Scale for Specialists in Training",
+      "st": "1 year",
+      "wr": "aios, ziekenhuisapotheker, klinisch-chemicus of klinisch fysicus",
+      "fh": 36,
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2011-07-01",
+          "am": 3145,
+          "un": "m",
+          "ip": 1.0
+        },
+        {
+          "sd": "2011-10-01",
+          "am": 3153,
+          "un": "m",
+          "ip": 0.25
+        },
+        {
+          "sd": "2012-07-01",
+          "am": 3200,
+          "un": "m",
+          "ip": 1.5
+        },
+        {
+          "sd": "2013-07-01",
+          "am": 3264,
+          "un": "m",
+          "ip": 2.0
+        }
+      ]
+    },
+    {
+      "jg": "Salary Scale for Specialists in Training",
+      "st": "2 year",
+      "wr": "aios, ziekenhuisapotheker, klinisch-chemicus of klinisch fysicus",
+      "fh": 36,
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2011-07-01",
+          "am": 3264,
+          "un": "m",
+          "ip": 1.0
+        },
+        {
+          "sd": "2011-10-01",
+          "am": 3272,
+          "un": "m",
+          "ip": 0.25
+        },
+        {
+          "sd": "2012-07-01",
+          "am": 3321,
+          "un": "m",
+          "ip": 1.5
+        },
+        {
+          "sd": "2013-07-01",
+          "am": 3387,
+          "un": "m",
+          "ip": 2.0
+        }
+      ]
+    },
+    {
+      "jg": "Salary Scale for Specialists in Training",
+      "st": "3 year",
+      "wr": "aios, ziekenhuisapotheker, klinisch-chemicus of klinisch fysicus",
+      "fh": 36,
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2011-07-01",
+          "am": 3400,
+          "un": "m",
+          "ip": 1.0
+        },
+        {
+          "sd": "2011-10-01",
+          "am": 3409,
+          "un": "m",
+          "ip": 0.25
+        },
+        {
+          "sd": "2012-07-01",
+          "am": 3460,
+          "un": "m",
+          "ip": 1.5
+        },
+        {
+          "sd": "2013-07-01",
+          "am": 3529,
+          "un": "m",
+          "ip": 2.0
+        }
+      ]
+    },
+    {
+      "jg": "Salary Scale for Specialists in Training",
+      "st": "4 year",
+      "wr": "aios, ziekenhuisapotheker, klinisch-chemicus of klinisch fysicus",
+      "fh": 36,
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2011-07-01",
+          "am": 3530,
+          "un": "m",
+          "ip": 1.0
+        },
+        {
+          "sd": "2011-10-01",
+          "am": 3539,
+          "un": "m",
+          "ip": 0.25
+        },
+        {
+          "sd": "2012-07-01",
+          "am": 3592,
+          "un": "m",
+          "ip": 1.5
+        },
+        {
+          "sd": "2013-07-01",
+          "am": 3664,
+          "un": "m",
+          "ip": 2.0
+        }
+      ]
+    },
+    {
+      "jg": "Salary Scale for Specialists in Training",
+      "st": "5 year",
+      "wr": "aios, ziekenhuisapotheker, klinisch-chemicus of klinisch fysicus",
+      "fh": 36,
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2011-07-01",
+          "am": 3664,
+          "un": "m",
+          "ip": 1.0
+        },
+        {
+          "sd": "2011-10-01",
+          "am": 3673,
+          "un": "m",
+          "ip": 0.25
+        },
+        {
+          "sd": "2012-07-01",
+          "am": 3728,
+          "un": "m",
+          "ip": 1.5
+        },
+        {
+          "sd": "2013-07-01",
+          "am": 3802,
+          "un": "m",
+          "ip": 2.0
+        }
+      ]
+    },
+    {
+      "jg": "Salary Scale for Specialists in Training",
+      "st": "6 year",
+      "wr": "aios, ziekenhuisapotheker, klinisch-chemicus of klinisch fysicus",
+      "fh": 36,
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2011-07-01",
+          "am": 3792,
+          "un": "m",
+          "ip": 1.0
+        },
+        {
+          "sd": "2011-10-01",
+          "am": 3801,
+          "un": "m",
+          "ip": 0.25
+        },
+        {
+          "sd": "2012-07-01",
+          "am": 3858,
+          "un": "m",
+          "ip": 1.5
+        },
+        {
+          "sd": "2013-07-01",
+          "am": 3935,
+          "un": "m",
+          "ip": 2.0
+        }
+      ]
+    },
+    {
+      "jg": "Salary Scale for Specialists in Training",
+      "st": "7 year",
+      "wr": "aios, ziekenhuisapotheker, klinisch-chemicus of klinisch fysicus",
+      "fh": 36,
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2011-07-01",
+          "am": 3907,
+          "un": "m",
+          "ip": 1.0
+        },
+        {
+          "sd": "2011-10-01",
+          "am": 3916,
+          "un": "m",
+          "ip": 0.25
+        },
+        {
+          "sd": "2012-07-01",
+          "am": 3975,
+          "un": "m",
+          "ip": 1.5
+        },
+        {
+          "sd": "2013-07-01",
+          "am": 4055,
+          "un": "m",
+          "ip": 2.0
+        }
+      ]
+    },
+    {
+      "jg": "Functiegroep 5 (aanloopschaal 4)",
+      "st": "step 0",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 5 (aanloopschaal 4)",
+      "st": "step 1",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 5 (aanloopschaal 4)",
+      "st": "step 2",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 5 (aanloopschaal 4)",
+      "st": "step 3",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 5 (aanloopschaal 4)",
+      "st": "step 4",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 5 (aanloopschaal 4)",
+      "st": "step 5",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 5 (aanloopschaal 4)",
+      "st": "step 6",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 5 (aanloopschaal 4)",
+      "st": "step 7",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
       "jg": "Functiegroep 5 (functional scale 05)",
-      "st": "2",
+      "st": "step 0",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1505,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1509,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1531,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1531,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1562,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 5 (functional scale 05)",
-      "st": "3",
+      "st": "step 1",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1534,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1538,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1561,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1561,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1592,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 5 (functional scale 05)",
-      "st": "4",
+      "st": "step 2",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1575,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1579,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1602,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1602,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1634,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 5 (functional scale 05)",
-      "st": "5",
+      "st": "step 3",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1615,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1619,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1643,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1643,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1676,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 5 (functional scale 05)",
-      "st": "6",
+      "st": "step 4",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1657,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1661,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1686,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1686,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1720,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 5 (functional scale 05)",
-      "st": "7",
+      "st": "step 5",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1703,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1707,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1733,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1733,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1767,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 5 (functional scale 05)",
+      "st": "step 6",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 5 (functional scale 05)",
+      "st": "step 7",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 5 (functional scale 05)",
+      "st": "step 8",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 5 (functional scale 05)",
+      "st": "step 9",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (aanloopschaal 9)",
-      "st": "0",
+      "st": "step 0",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1347,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1350,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1370,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (aanloopschaal 9)",
-      "st": "1",
+      "st": "step 1",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1372,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1375,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1396,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (aanloopschaal 9)",
-      "st": "2",
+      "st": "step 2",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1397,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1400,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1421,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (aanloopschaal 9)",
-      "st": "3",
+      "st": "step 3",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1452,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1455,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1477,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (aanloopschaal 9)",
-      "st": "4",
+      "st": "step 4",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1505,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1509,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1531,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (aanloopschaal 9)",
-      "st": "5",
+      "st": "step 5",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1657,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1661,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1686,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (aanloopschaal 9)",
-      "st": "6",
+      "st": "step 6",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1703,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1707,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1733,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (aanloopschaal 9)",
-      "st": "7",
+      "st": "step 7",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1755,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1759,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1786,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (aanloopschaal 9)",
-      "st": "8",
+      "st": "step 8",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1809,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1814,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1841,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (functional scale 10)",
-      "st": "0",
+      "st": "step 0",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1452,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1455,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1477,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1477,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1507,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (functional scale 10)",
-      "st": "1",
+      "st": "step 1",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1505,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1509,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1531,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1531,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1562,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (functional scale 10)",
-      "st": "2",
+      "st": "step 2",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1534,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1538,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1561,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1561,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1592,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (functional scale 10)",
-      "st": "3",
+      "st": "step 3",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1575,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1579,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1602,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1602,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1634,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (functional scale 10)",
-      "st": "4",
+      "st": "step 4",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1615,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1619,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1643,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1643,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1676,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (functional scale 10)",
-      "st": "5",
+      "st": "step 5",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1657,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1661,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1686,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1686,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1720,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (functional scale 10)",
-      "st": "6",
+      "st": "step 6",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1703,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1707,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1733,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1733,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1767,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (functional scale 10)",
-      "st": "7",
+      "st": "step 7",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1755,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1759,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1786,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1786,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1821,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (functional scale 10)",
-      "st": "8",
+      "st": "step 8",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1809,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1814,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1841,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1841,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1878,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (functional scale 10)",
-      "st": "9",
+      "st": "step 9",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2012-07-01",
-          "am": 1841,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1841,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1878,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 10 (functional scale 10)",
-      "st": "10",
+      "st": "step 10",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2012-07-01",
-          "am": 1841,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1841,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1878,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (aanloopschaal 14)",
-      "st": "0",
+      "st": "step 0",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1372,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1375,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1396,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (aanloopschaal 14)",
-      "st": "1",
+      "st": "step 1",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1397,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1400,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1421,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (aanloopschaal 14)",
-      "st": "2",
+      "st": "step 2",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1452,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1455,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1477,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (aanloopschaal 14)",
-      "st": "3",
+      "st": "step 3",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1505,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1509,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1531,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (aanloopschaal 14)",
-      "st": "4",
+      "st": "step 4",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1534,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1538,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1561,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (aanloopschaal 14)",
-      "st": "5",
+      "st": "step 5",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1703,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1707,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1733,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (aanloopschaal 14)",
-      "st": "6",
+      "st": "step 6",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1755,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1759,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1786,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (aanloopschaal 14)",
-      "st": "7",
+      "st": "step 7",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1809,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1814,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1841,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (aanloopschaal 14)",
-      "st": "8",
+      "st": "step 8",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1870,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1875,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1903,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (aanloopschaal 14)",
-      "st": "9",
+      "st": "step 9",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1932,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1937,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1966,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (functional scale 15)",
-      "st": "0",
+      "st": "step 0",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1505,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1509,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1531,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1531,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1562,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (functional scale 15)",
-      "st": "1",
+      "st": "step 1",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1534,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1538,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1561,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1561,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1592,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (functional scale 15)",
-      "st": "2",
+      "st": "step 2",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1575,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1579,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1602,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1602,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1634,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (functional scale 15)",
-      "st": "3",
+      "st": "step 3",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1615,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1619,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1643,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1643,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1676,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (functional scale 15)",
-      "st": "4",
+      "st": "step 4",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1657,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1661,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1686,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1686,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1720,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (functional scale 15)",
-      "st": "5",
+      "st": "step 5",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1703,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1707,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1733,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1733,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1767,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (functional scale 15)",
-      "st": "6",
+      "st": "step 6",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1755,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1759,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1786,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1786,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1821,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (functional scale 15)",
-      "st": "7",
+      "st": "step 7",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1809,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1814,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1841,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1841,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1878,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (functional scale 15)",
-      "st": "8",
+      "st": "step 8",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1870,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1875,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1903,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1903,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1941,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (functional scale 15)",
-      "st": "9",
+      "st": "step 9",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1932,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1937,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1966,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1966,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2005,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (functional scale 15)",
-      "st": "10",
+      "st": "step 10",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2012-07-01",
-          "am": 1903,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1903,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1941,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 15 (functional scale 15)",
-      "st": "11",
+      "st": "step 11",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2012-07-01",
-          "am": 1966,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1966,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2005,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (aanloopschaal 19)",
-      "st": "0",
+      "st": "step 0",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1397,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1400,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1421,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (aanloopschaal 19)",
-      "st": "1",
+      "st": "step 1",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1452,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1455,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1477,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (aanloopschaal 19)",
-      "st": "2",
+      "st": "step 2",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1505,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1509,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1531,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (aanloopschaal 19)",
-      "st": "3",
+      "st": "step 3",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1534,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1538,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1561,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (aanloopschaal 19)",
-      "st": "4",
+      "st": "step 4",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1575,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1579,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1602,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (aanloopschaal 19)",
-      "st": "5",
+      "st": "step 5",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1755,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1759,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1786,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (aanloopschaal 19)",
-      "st": "6",
+      "st": "step 6",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1809,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1814,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1841,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (aanloopschaal 19)",
-      "st": "7",
+      "st": "step 7",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1870,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1875,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1903,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (aanloopschaal 19)",
-      "st": "8",
+      "st": "step 8",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1932,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1937,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1966,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (aanloopschaal 19)",
-      "st": "9",
+      "st": "step 9",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1989,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1994,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 2024,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (aanloopschaal 19)",
-      "st": "10",
+      "st": "step 10",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2053,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2058,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 2089,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (functional scale 20)",
-      "st": "0",
+      "st": "step 0",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1534,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1538,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1561,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1531,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1562,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (functional scale 20)",
-      "st": "1",
+      "st": "step 1",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1575,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1579,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1602,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1561,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1592,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (functional scale 20)",
-      "st": "2",
+      "st": "step 2",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1615,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1619,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1643,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1602,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1634,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (functional scale 20)",
-      "st": "3",
+      "st": "step 3",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1657,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1661,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1686,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1643,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1676,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (functional scale 20)",
-      "st": "4",
+      "st": "step 4",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1703,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1707,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1733,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1686,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1720,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (functional scale 20)",
-      "st": "5",
+      "st": "step 5",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1755,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1759,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1786,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1733,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1767,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (functional scale 20)",
-      "st": "6",
+      "st": "step 6",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1809,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1814,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1841,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1786,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1821,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (functional scale 20)",
-      "st": "7",
+      "st": "step 7",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1870,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1875,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1903,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1841,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1878,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (functional scale 20)",
-      "st": "8",
+      "st": "step 8",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1932,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1937,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1966,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1903,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1941,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (functional scale 20)",
-      "st": "9",
+      "st": "step 9",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1989,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1994,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2024,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1966,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2005,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (functional scale 20)",
-      "st": "10",
+      "st": "step 10",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2053,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2058,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2089,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2024,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2064,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 20 (functional scale 20)",
-      "st": "11",
+      "st": "step 11",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2012-07-01",
-          "am": 2089,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2131,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2131,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (aanloopschaal 24)",
-      "st": "0",
+      "st": "step 0",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1452,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1455,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1477,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (aanloopschaal 24)",
-      "st": "1",
+      "st": "step 1",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1505,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1509,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1531,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (aanloopschaal 24)",
-      "st": "2",
+      "st": "step 2",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1534,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1538,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1561,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (aanloopschaal 24)",
-      "st": "3",
+      "st": "step 3",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1575,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1579,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1602,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (aanloopschaal 24)",
-      "st": "4",
+      "st": "step 4",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1615,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1619,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1643,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (aanloopschaal 24)",
-      "st": "5",
+      "st": "step 5",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1657,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1661,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1686,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (aanloopschaal 24)",
-      "st": "6",
+      "st": "step 6",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1932,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1937,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1966,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (aanloopschaal 24)",
-      "st": "7",
+      "st": "step 7",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1989,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1994,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 2024,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (aanloopschaal 24)",
-      "st": "8",
+      "st": "step 8",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2053,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2058,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 2089,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (aanloopschaal 24)",
-      "st": "9",
+      "st": "step 9",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2105,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2110,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 2142,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (aanloopschaal 24)",
-      "st": "10",
+      "st": "step 10",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2167,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2172,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 2205,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (functional scale 25)",
-      "st": "0",
+      "st": "step 0",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1575,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1579,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1602,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1531,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1562,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (functional scale 25)",
-      "st": "1",
+      "st": "step 1",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1657,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1661,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1686,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1634,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1676,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (functional scale 25)",
-      "st": "2",
+      "st": "step 2",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1703,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1707,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1733,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1720,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1767,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (functional scale 25)",
-      "st": "3",
+      "st": "step 3",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1755,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1759,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1786,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1767,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1821,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (functional scale 25)",
-      "st": "4",
+      "st": "step 4",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1809,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1814,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1841,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1821,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1878,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (functional scale 25)",
-      "st": "5",
+      "st": "step 5",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1870,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1875,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1903,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1878,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1941,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (functional scale 25)",
-      "st": "6",
+      "st": "step 6",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1932,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1937,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1966,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1941,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2005,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (functional scale 25)",
-      "st": "7",
+      "st": "step 7",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1989,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1994,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2024,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2005,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2064,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (functional scale 25)",
-      "st": "8",
+      "st": "step 8",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2053,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2058,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2089,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2064,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2131,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (functional scale 25)",
-      "st": "9",
+      "st": "step 9",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2105,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2110,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2142,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2131,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2185,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (functional scale 25)",
-      "st": "10",
+      "st": "step 10",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2167,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2172,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2205,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2185,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2249,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 25 (functional scale 25)",
-      "st": "11",
+      "st": "step 11",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2012-07-01",
-          "am": 2205,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2249,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2249,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (aanloopschaal 29)",
-      "st": "0",
+      "st": "step 0",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1534,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1538,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1561,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (aanloopschaal 29)",
-      "st": "1",
+      "st": "step 1",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1575,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1579,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1602,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (aanloopschaal 29)",
-      "st": "2",
+      "st": "step 2",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1615,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1619,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1643,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (aanloopschaal 29)",
-      "st": "3",
+      "st": "step 3",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1657,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1661,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1686,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (aanloopschaal 29)",
-      "st": "4",
+      "st": "step 4",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1703,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1707,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1733,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (aanloopschaal 29)",
-      "st": "5",
+      "st": "step 5",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1755,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1759,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1786,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (aanloopschaal 29)",
-      "st": "6",
+      "st": "step 6",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2053,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2058,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 2089,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (aanloopschaal 29)",
-      "st": "7",
+      "st": "step 7",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2105,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2110,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 2142,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (aanloopschaal 29)",
-      "st": "8",
+      "st": "step 8",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2205,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2172,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 2205,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (aanloopschaal 29)",
-      "st": "9",
+      "st": "step 9",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2224,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2230,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 2263,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (aanloopschaal 29)",
-      "st": "10",
+      "st": "step 10",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2283,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2289,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 2324,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (functional scale 30)",
-      "st": "0",
+      "st": "step 0",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1615,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1619,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1643,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1592,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1676,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (functional scale 30)",
-      "st": "1",
+      "st": "step 1",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1703,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1707,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1733,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1676,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1767,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (functional scale 30)",
-      "st": "2",
+      "st": "step 2",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1809,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1814,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1841,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1767,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1878,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (functional scale 30)",
-      "st": "3",
+      "st": "step 3",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1870,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1875,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1903,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1878,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1941,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (functional scale 30)",
-      "st": "4",
+      "st": "step 4",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1932,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1937,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1966,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1941,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2005,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (functional scale 30)",
-      "st": "5",
+      "st": "step 5",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1989,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1994,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2024,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2005,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2064,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (functional scale 30)",
-      "st": "6",
+      "st": "step 6",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2053,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2058,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2089,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2064,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2131,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (functional scale 30)",
-      "st": "7",
+      "st": "step 7",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2105,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2110,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2142,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2131,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2185,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (functional scale 30)",
-      "st": "8",
+      "st": "step 8",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2205,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2172,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2205,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2185,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2249,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (functional scale 30)",
-      "st": "9",
+      "st": "step 9",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2224,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2230,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2263,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2249,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2308,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (functional scale 30)",
-      "st": "10",
+      "st": "step 10",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2283,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2289,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2324,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2308,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2370,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 30 (functional scale 30)",
-      "st": "11",
+      "st": "step 11",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2012-07-01",
-          "am": 2324,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2370,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2370,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (aanloopschaal 34)",
-      "st": "0",
+      "st": "step 0",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1615,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1619,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1643,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (aanloopschaal 34)",
-      "st": "1",
+      "st": "step 1",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1657,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1661,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1686,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (aanloopschaal 34)",
-      "st": "2",
+      "st": "step 2",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1703,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1707,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1733,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (aanloopschaal 34)",
-      "st": "3",
+      "st": "step 3",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1755,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1759,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1786,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (aanloopschaal 34)",
-      "st": "4",
+      "st": "step 4",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1809,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1814,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1841,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (aanloopschaal 34)",
-      "st": "5",
+      "st": "step 5",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1870,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1875,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 1903,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (aanloopschaal 34)",
-      "st": "6",
+      "st": "step 6",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2167,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2172,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 2205,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (aanloopschaal 34)",
-      "st": "7",
+      "st": "step 7",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2224,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2230,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 2263,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (aanloopschaal 34)",
-      "st": "8",
+      "st": "step 8",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2283,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2289,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 2324,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (aanloopschaal 34)",
-      "st": "9",
+      "st": "step 9",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2342,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2348,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 2383,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (aanloopschaal 34)",
-      "st": "10",
+      "st": "step 10",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 4024,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2407,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "ed": "2012-12-31",
-          "am": 2443,
-          "un": "m",
-          "ip": 1.5
-        }
-      ],
-      "rn": "Entry scales abolished as of January 1, 2013, according to Article 7.1.5."
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (functional scale 35)",
-      "st": "0",
+      "st": "step 0",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1703,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1707,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1733,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1676,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1767,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (functional scale 35)",
-      "st": "1",
+      "st": "step 1",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1809,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1814,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1841,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1767,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1878,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (functional scale 35)",
-      "st": "2",
+      "st": "step 2",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1932,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1937,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1966,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1878,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1941,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (functional scale 35)",
-      "st": "3",
+      "st": "step 3",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1989,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1994,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2024,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2005,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2064,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (functional scale 35)",
-      "st": "4",
+      "st": "step 4",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2053,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2058,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2089,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2064,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2131,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (functional scale 35)",
-      "st": "5",
+      "st": "step 5",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2105,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2110,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2142,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2131,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2185,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (functional scale 35)",
-      "st": "6",
+      "st": "step 6",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2167,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2172,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2205,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2185,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2249,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (functional scale 35)",
-      "st": "7",
+      "st": "step 7",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2224,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2230,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2263,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2249,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2308,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (functional scale 35)",
-      "st": "8",
+      "st": "step 8",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2283,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2289,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2324,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2308,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2370,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (functional scale 35)",
-      "st": "9",
+      "st": "step 9",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2342,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2348,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2383,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2370,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2431,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (functional scale 35)",
-      "st": "10",
+      "st": "step 10",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 4024,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2407,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2443,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2431,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2492,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 35 (functional scale 35)",
-      "st": "11",
+      "st": "step 11",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2012-07-01",
-          "am": 2443,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2492,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2492,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (aanloopschaal 39)",
-      "st": "0",
+      "st": "step 0",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1703,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1707,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1733,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1767,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1767,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (aanloopschaal 39)",
-      "st": "1",
+      "st": "step 1",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1755,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1759,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1786,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1878,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1878,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (aanloopschaal 39)",
-      "st": "2",
+      "st": "step 2",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1809,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1814,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1841,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2005,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2005,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (aanloopschaal 39)",
-      "st": "3",
+      "st": "step 3",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1870,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1875,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1903,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2131,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2131,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (aanloopschaal 39)",
-      "st": "4",
+      "st": "step 4",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1932,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1937,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1966,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2185,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2185,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (aanloopschaal 39)",
-      "st": "5",
+      "st": "step 5",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1989,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1994,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2024,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2249,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2249,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (aanloopschaal 39)",
-      "st": "6",
+      "st": "step 6",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2283,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2289,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2324,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2308,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2308,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (aanloopschaal 39)",
-      "st": "7",
+      "st": "step 7",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2342,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2348,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2383,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2370,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2370,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (aanloopschaal 39)",
-      "st": "8",
+      "st": "step 8",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2401,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2407,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2443,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2431,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2431,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (aanloopschaal 39)",
-      "st": "9",
+      "st": "step 9",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2461,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2467,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2504,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2492,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2492,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (aanloopschaal 39)",
-      "st": "10",
+      "st": "step 10",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2520,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2526,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2564,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2554,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2554,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (functional scale 40)",
-      "st": "0",
+      "st": "step 0",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1809,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1814,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1733,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1767,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1767,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (functional scale 40)",
-      "st": "1",
+      "st": "step 1",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1932,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1937,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1841,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 1878,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 1878,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (functional scale 40)",
-      "st": "2",
+      "st": "step 2",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2053,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2058,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1966,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2005,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2005,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (functional scale 40)",
-      "st": "3",
+      "st": "step 3",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2105,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2110,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2089,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2131,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2131,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (functional scale 40)",
-      "st": "4",
+      "st": "step 4",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2167,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2172,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2142,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2185,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2185,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (functional scale 40)",
-      "st": "5",
+      "st": "step 5",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2224,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2230,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2205,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2249,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2249,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (functional scale 40)",
-      "st": "6",
+      "st": "step 6",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2283,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2289,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2263,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2308,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2308,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (functional scale 40)",
-      "st": "7",
+      "st": "step 7",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2342,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2348,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2324,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2370,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2370,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (functional scale 40)",
-      "st": "8",
+      "st": "step 8",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2401,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2407,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2383,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2431,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2431,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (functional scale 40)",
-      "st": "9",
+      "st": "step 9",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2461,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2467,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2504,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2492,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2492,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (functional scale 40)",
-      "st": "10",
+      "st": "step 10",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2520,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2526,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2564,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2554,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2554,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 40 (functional scale 40)",
-      "st": "11",
+      "st": "step 11",
       "ie": false,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2012-07-01",
-          "am": 2564,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2616,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2616,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 45 (aanloopschaal 44)",
-      "st": "0",
+      "st": "step 0",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1703,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1707,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1733,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2005,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2005,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 45 (aanloopschaal 44)",
-      "st": "1",
+      "st": "step 1",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1809,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1814,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1841,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2131,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2131,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 45 (aanloopschaal 44)",
-      "st": "2",
+      "st": "step 2",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 1932,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 1937,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 1966,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2249,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2249,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 45 (aanloopschaal 44)",
-      "st": "3",
+      "st": "step 3",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2053,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2058,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2089,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2308,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2308,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 45 (aanloopschaal 44)",
-      "st": "4",
+      "st": "step 4",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2105,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2110,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2142,
-          "un": "m",
-          "ip": 1.5
-        },
-        {
-          "sd": "2013-01-01",
-          "am": 2370,
-          "un": "m"
-        },
-        {
-          "sd": "2013-07-01",
-          "am": 2370,
-          "un": "m",
-          "ip": 2.0
-        }
-      ]
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
     },
     {
       "jg": "Functiegroep 45 (aanloopschaal 44)",
-      "st": "5",
+      "st": "step 5",
       "ie": true,
       "fh": 36,
-      "tl": [
-        {
-          "sd": "2011-07-01",
-          "am": 2167,
-          "un": "m",
-          "ip": 1.0
-        },
-        {
-          "sd": "2011-10-01",
-          "am": 2172,
-          "un": "m",
-          "ip": 0.55
-        },
-        {
-          "sd": "2012-07-01",
-          "am": 2205,
-          "un": "m",
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 45 (aanloopschaal 44)",
+      "st": "step 6",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 45 (aanloopschaal 44)",
+      "st": "step 7",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 45 (aanloopschaal 44)",
+      "st": "step 8",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 45 (aanloopschaal 44)",
+      "st": "step 9",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 45 (aanloopschaal 44)",
+      "st": "step 10",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 45 (functional scale 45)",
+      "st": "step 0",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 45 (functional scale 45)",
+      "st": "step 1",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 45 (functional scale 45)",
+      "st": "step 2",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 45 (functional scale 45)",
+      "st": "step 3",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 45 (functional scale 45)",
+      "st": "step 4",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 45 (functional scale 45)",
+      "st": "step 5",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 45 (functional scale 45)",
+      "st": "step 6",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 45 (functional scale 45)",
+      "st": "step 7",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 45 (functional scale 45)",
+      "st": "step 8",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 45 (functional scale 45)",
+      "st": "step 9",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 45 (functional scale 45)",
+      "st": "step 10",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 45 (functional scale 45)",
+      "st": "step 11",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 45 (functional scale 45)",
+      "st": "step 12",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (aanloopschaal 49)",
+      "st": "step 0",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (aanloopschaal 49)",
+      "st": "step 1",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (aanloopschaal 49)",
+      "st": "step 2",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (aanloopschaal 49)",
+      "st": "step 3",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (aanloopschaal 49)",
+      "st": "step 4",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (aanloopschaal 49)",
+      "st": "step 5",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (aanloopschaal 49)",
+      "st": "step 6",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (aanloopschaal 49)",
+      "st": "step 7",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (aanloopschaal 49)",
+      "st": "step 8",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (aanloopschaal 49)",
+      "st": "step 9",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (aanloopschaal 49)",
+      "st": "step 10",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (functional scale 50)",
+      "st": "step 0",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (functional scale 50)",
+      "st": "step 1",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (functional scale 50)",
+      "st": "step 2",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (functional scale 50)",
+      "st": "step 3",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (functional scale 50)",
+      "st": "step 4",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (functional scale 50)",
+      "st": "step 5",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (functional scale 50)",
+      "st": "step 6",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (functional scale 50)",
+      "st": "step 7",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (functional scale 50)",
+      "st": "step 8",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (functional scale 50)",
+      "st": "step 9",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (functional scale 50)",
+      "st": "step 10",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (functional scale 50)",
+      "st": "step 11",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 50 (functional scale 50)",
+      "st": "step 12",
+      "ie": false,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 55 (aanloopschaal 54)",
+      "st": "step 0",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 55 (aanloopschaal 54)",
+      "st": "step 1",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 55 (aanloopschaal 54)",
+      "st": "step 2",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 55 (aanloopschaal 54)",
+      "st": "step 3",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 55 (aanloopschaal 54)",
+      "st": "step 4",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 55 (aanloopschaal 54)",
+      "st": "step 5",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 55 (aanloopschaal 54)",
+      "st": "step 6",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 55 (aanloopschaal 54)",
+      "st": "step 7",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 55 (aanloopschaal 54)",
+      "st": "step 8",
+      "ie": true,
+      "fh": 36,
+      "hi": false,
+      "rn": "If the applicable minimum wage is higher, that minimum wage must be granted."
+    },
+    {
+      "jg": "Functiegroep 55 (aanloops

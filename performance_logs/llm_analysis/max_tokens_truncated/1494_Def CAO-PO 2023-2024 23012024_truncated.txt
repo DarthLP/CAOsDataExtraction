@@ -1,313 +1,479 @@
 TRUNCATED RESPONSE DEBUG INFO
 Original filename: Def CAO-PO 2023-2024 23012024_extract.json
-Timestamp: 2025-11-25T02:05:43.231142
-Response length: 7123 characters
+Timestamp: 2025-11-26T01:00:53.460891
+Response length: 8394 characters
 Finish reason: MAX_TOKENS
 ================================================================================
 
 {
-  "salary_information": [
+  "si": [
     {
-      "jobgroup": "1",
-      "step": "1",
-      "worker": "Support Staff (OOP)",
-      "is_entry": null,
-      "age_group": null,
-      "education": null,
-      "ft_hours": null,
-      "permanency": null,
-      "hours_type": null,
-      "holiday_incl": null,
-      "timeline": [
+      "jg": "D11",
+      "st": "1",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2023-05-01",
-          "end_date": "2023-06-30",
-          "amount": 1934.40,
-          "unit": "m",
-          "inc_pct": null,
-          "holiday_incl": null,
-          "note": null
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 2896,
+          "un": "m"
         },
         {
-          "start_date": "2023-07-01",
-          "end_date": null,
-          "amount": 2054.0,
-          "unit": "m",
-          "inc_pct": 10.0,
-          "holiday_incl": null,
-          "note": null
+          "sd": "2023-07-01",
+          "am": 3186,
+          "un": "m",
+          "ip": 10.00
         }
-      ],
-      "row_note": null
+      ]
     },
     {
-      "jobgroup": "1",
-      "step": "2",
-      "worker": "Support Staff (OOP)",
-      "is_entry": null,
-      "age_group": null,
-      "education": null,
-      "ft_hours": null,
-      "permanency": null,
-      "hours_type": null,
-      "holiday_incl": null,
-      "timeline": [
+      "jg": "D11",
+      "st": "2",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2023-05-01",
-          "end_date": "2023-06-30",
-          "amount": 1941.0,
-          "unit": "m",
-          "inc_pct": null,
-          "holiday_incl": null,
-          "note": null
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 3031,
+          "un": "m"
         },
         {
-          "start_date": "2023-07-01",
-          "end_date": null,
-          "amount": 2135.0,
-          "unit": "m",
-          "inc_pct": 10.0,
-          "holiday_incl": null,
-          "note": null
+          "sd": "2023-07-01",
+          "am": 3334,
+          "un": "m",
+          "ip": 10.00
         }
-      ],
-      "row_note": null
+      ]
     },
     {
-      "jobgroup": "1",
-      "step": "3",
-      "worker": "Support Staff (OOP)",
-      "is_entry": null,
-      "age_group": null,
-      "education": null,
-      "ft_hours": null,
-      "permanency": null,
-      "hours_type": null,
-      "holiday_incl": null,
-      "timeline": [
+      "jg": "D11",
+      "st": "3",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2023-05-01",
-          "end_date": "2023-06-30",
-          "amount": 2013.0,
-          "unit": "m",
-          "inc_pct": null,
-          "holiday_incl": null,
-          "note": null
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 3181,
+          "un": "m"
         },
         {
-          "start_date": "2023-07-01",
-          "end_date": null,
-          "amount": 2214.0,
-          "unit": "m",
-          "inc_pct": 10.0,
-          "holiday_incl": null,
-          "note": null
+          "sd": "2023-07-01",
+          "am": 3499,
+          "un": "m",
+          "ip": 10.00
         }
-      ],
-      "row_note": null
+      ]
     },
     {
-      "jobgroup": "1",
-      "step": "4",
-      "worker": "Support Staff (OOP)",
-      "is_entry": null,
-      "age_group": null,
-      "education": null,
-      "ft_hours": null,
-      "permanency": null,
-      "hours_type": null,
-      "holiday_incl": null,
-      "timeline": [
+      "jg": "D11",
+      "st": "4",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2023-05-01",
-          "end_date": "2023-06-30",
-          "amount": 2047.0,
-          "unit": "m",
-          "inc_pct": null,
-          "holiday_incl": null,
-          "note": null
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 3341,
+          "un": "m"
         },
         {
-          "start_date": "2023-07-01",
-          "end_date": null,
-          "amount": 2252.0,
-          "unit": "m",
-          "inc_pct": 10.0,
-          "holiday_incl": null,
-          "note": null
+          "sd": "2023-07-01",
+          "am": 3675,
+          "un": "m",
+          "ip": 10.00
         }
-      ],
-      "row_note": null
+      ]
     },
     {
-      "jobgroup": "1",
-      "step": "5",
-      "worker": "Support Staff (OOP)",
-      "is_entry": null,
-      "age_group": null,
-      "education": null,
-      "ft_hours": null,
-      "permanency": null,
-      "hours_type": null,
-      "holiday_incl": null,
-      "timeline": [
+      "jg": "D11",
+      "st": "5",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2023-05-01",
-          "end_date": "2023-06-30",
-          "amount": 2086.0,
-          "unit": "m",
-          "inc_pct": null,
-          "holiday_incl": null,
-          "note": null
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 3491,
+          "un": "m"
         },
         {
-          "start_date": "2023-07-01",
-          "end_date": null,
-          "amount": 2294.0,
-          "unit": "m",
-          "inc_pct": 10.0,
-          "holiday_incl": null,
-          "note": null
+          "sd": "2023-07-01",
+          "am": 3840,
+          "un": "m",
+          "ip": 10.00
         }
-      ],
-      "row_note": null
+      ]
     },
     {
-      "jobgroup": "1",
-      "step": "6",
-      "worker": "Support Staff (OOP)",
-      "is_entry": null,
-      "age_group": null,
-      "education": null,
-      "ft_hours": null,
-      "permanency": null,
-      "hours_type": null,
-      "holiday_incl": null,
-      "timeline": [
+      "jg": "D11",
+      "st": "6",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2023-05-01",
-          "end_date": "2023-06-30",
-          "amount": 2124.0,
-          "unit": "m",
-          "inc_pct": null,
-          "holiday_incl": null,
-          "note": null
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 3641,
+          "un": "m"
         },
         {
-          "start_date": "2023-07-01",
-          "end_date": null,
-          "amount": 2336.0,
-          "unit": "m",
-          "inc_pct": 10.0,
-          "holiday_incl": null,
-          "note": null
+          "sd": "2023-07-01",
+          "am": 4005,
+          "un": "m",
+          "ip": 10.00
         }
-      ],
-      "row_note": null
+      ]
     },
     {
-      "jobgroup": "1",
-      "step": "7",
-      "worker": "Support Staff (OOP)",
-      "is_entry": null,
-      "age_group": null,
-      "education": null,
-      "ft_hours": null,
-      "permanency": null,
-      "hours_type": null,
-      "holiday_incl": null,
-      "timeline": [
+      "jg": "D11",
+      "st": "7",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2023-05-01",
-          "end_date": "2023-06-30",
-          "amount": 2175.0,
-          "unit": "m",
-          "inc_pct": null,
-          "holiday_incl": null,
-          "note": null
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 3793,
+          "un": "m"
         },
         {
-          "start_date": "2023-07-01",
-          "end_date": null,
-          "amount": 2392.0,
-          "unit": "m",
-          "inc_pct": 10.0,
-          "holiday_incl": null,
-          "note": null
+          "sd": "2023-07-01",
+          "am": 4172,
+          "un": "m",
+          "ip": 10.00
         }
-      ],
-      "row_note": null
+      ]
     },
     {
-      "jobgroup": "2",
-      "step": "1",
-      "worker": "Support Staff (OOP)",
-      "is_entry": null,
-      "age_group": null,
-      "education": null,
-      "ft_hours": null,
-      "permanency": null,
-      "hours_type": null,
-      "holiday_incl": null,
-      "timeline": [
+      "jg": "D11",
+      "st": "8",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2023-05-01",
-          "end_date": "2023-06-30",
-          "amount": 1934.40,
-          "unit": "m",
-          "inc_pct": null,
-          "holiday_incl": null,
-          "note": null
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 4035,
+          "un": "m"
         },
         {
-          "start_date": "2023-07-01",
-          "end_date": null,
-          "amount": 2098.0,
-          "unit": "m",
-          "inc_pct": 10.0,
-          "holiday_incl": null,
-          "note": null
+          "sd": "2023-07-01",
+          "am": 4438,
+          "un": "m",
+          "ip": 10.00
         }
-      ],
-      "row_note": null
+      ]
     },
     {
-      "jobgroup": "2",
-      "step": "2",
-      "worker": "Support Staff (OOP)",
-      "is_entry": null,
-      "age_group": null,
-      "education": null,
-      "ft_hours": null,
-      "permanency": null,
-      "hours_type": null,
-      "holiday_incl": null,
-      "timeline": [
+      "jg": "D11",
+      "st": "9",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
         {
-          "start_date": "2023-05-01",
-          "end_date": "2023-06-30",
-          "amount": 1979.0,
-          "unit": "m",
-          "inc_pct": null,
-          "holiday_incl": null,
-          "note": null
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 4196,
+          "un": "m"
         },
         {
-          "start_date": "2023-07-01",
-          "end_date": null,
-          "amount": 2177.0,
-          "unit": "m",
-          "inc_pct": 10.0,
-          "holiday_incl": null,
-          "note": null
+          "sd": "2023-07-01",
+          "am": 4616,
+          "un": "m",
+          "ip": 10.00
         }
-      ],
-      "row_note": null
+      ]
     },
     {
-      "jobgroup": "2",
-      "step": "3",
-      "worker": "Support Staff (OOP)",
-      "is_entry": null,
-      "age_group": null,
-      "education":
+      "jg": "D11",
+      "st": "10",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 4358,
+          "un": "m"
+        },
+        {
+          "sd": "2023-07-01",
+          "am": 4794,
+          "un": "m",
+          "ip": 10.00
+        }
+      ]
+    },
+    {
+      "jg": "D11",
+      "st": "11",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 4520,
+          "un": "m"
+        },
+        {
+          "sd": "2023-07-01",
+          "am": 4972,
+          "un": "m",
+          "ip": 10.00
+        }
+      ]
+    },
+    {
+      "jg": "D11",
+      "st": "12",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 4682,
+          "un": "m"
+        },
+        {
+          "sd": "2023-07-01",
+          "am": 5151,
+          "un": "m",
+          "ip": 10.00
+        }
+      ]
+    },
+    {
+      "jg": "D11",
+      "st": "13",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 4844,
+          "un": "m"
+        },
+        {
+          "sd": "2023-07-01",
+          "am": 5328,
+          "un": "m",
+          "ip": 10.00
+        }
+      ]
+    },
+    {
+      "jg": "D11",
+      "st": "14",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 5006,
+          "un": "m"
+        },
+        {
+          "sd": "2023-07-01",
+          "am": 5506,
+          "un": "m",
+          "ip": 10.00
+        }
+      ]
+    },
+    {
+      "jg": "D11",
+      "st": "15",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 5169,
+          "un": "m"
+        },
+        {
+          "sd": "2023-07-01",
+          "am": 5685,
+          "un": "m",
+          "ip": 10.00
+        }
+      ]
+    },
+    {
+      "jg": "D11",
+      "st": "16",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 5329,
+          "un": "m"
+        },
+        {
+          "sd": "2023-07-01",
+          "am": 5862,
+          "un": "m",
+          "ip": 10.00
+        }
+      ]
+    },
+    {
+      "jg": "D12",
+      "st": "b",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 4415,
+          "un": "m",
+          "nt": "Temporary step, expires August 1, 2023"
+        },
+        {
+          "sd": "2023-07-01",
+          "ed": "2023-08-01",
+          "am": 4857,
+          "un": "m",
+          "ip": 10.00,
+          "nt": "Temporary step, expires August 1, 2023"
+        }
+      ]
+    },
+    {
+      "jg": "D12",
+      "st": "1",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 3031,
+          "un": "m"
+        },
+        {
+          "sd": "2023-07-01",
+          "am": 3334,
+          "un": "m",
+          "ip": 10.00
+        }
+      ]
+    },
+    {
+      "jg": "D12",
+      "st": "2",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 3210,
+          "un": "m"
+        },
+        {
+          "sd": "2023-07-01",
+          "am": 3531,
+          "un": "m",
+          "ip": 10.00
+        }
+      ]
+    },
+    {
+      "jg": "D12",
+      "st": "3",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 3417,
+          "un": "m"
+        },
+        {
+          "sd": "2023-07-01",
+          "am": 3759,
+          "un": "m",
+          "ip": 10.00
+        }
+      ]
+    },
+    {
+      "jg": "D12",
+      "st": "4",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 3626,
+          "un": "m"
+        },
+        {
+          "sd": "2023-07-01",
+          "am": 3988,
+          "un": "m",
+          "ip": 10.00
+        }
+      ]
+    },
+    {
+      "jg": "D12",
+      "st": "5",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 3833,
+          "un": "m"
+        },
+        {
+          "sd": "2023-07-01",
+          "am": 4216,
+          "un": "m",
+          "ip": 10.00
+        }
+      ]
+    },
+    {
+      "jg": "D12",
+      "st": "6",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
+        {
+          "sd": "2023-05-01",
+          "ed": "2023-06-30",
+          "am": 4068,
+          "un": "m"
+        },
+        {
+          "sd": "2023-07-01",
+          "am": 4475,
+          "un": "m",
+          "ip": 10.00
+        }
+      ]
+    },
+    {
+      "jg": "D12",
+      "st": "7",
+      "wr": "Directors",
+      "hi": false,
+      "tl": [
+        {

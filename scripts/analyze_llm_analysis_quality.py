@@ -19,6 +19,7 @@ import sys
 from collections import defaultdict
 import re
 import yaml
+import pandas as pd
 
 def analyze_salary_file(file_path: Path) -> dict:
     """
@@ -482,6 +483,35 @@ def check_extracted_file_has_salary_tables(extracted_file_path: Path) -> bool:
         # On any error, assume no tables (conservative approach)
         return False
 
+def load_expected_files(cao_info_path: str = "inputs/pdfs/extracted_cao_info.csv") -> set:
+    """
+    Load expected files from CAO info CSV.
+    
+    Returns:
+        Set of (cao_number, base_filename) tuples
+    """
+    expected_files = set()
+    
+    if not os.path.exists(cao_info_path):
+        print(f"  Warning: CAO info file not found: {cao_info_path}")
+        return expected_files
+    
+    try:
+        df = pd.read_csv(cao_info_path, sep=';', encoding='utf-8')
+        for _, row in df.iterrows():
+            cao_number = str(row.get('cao_number', ''))
+            pdf_name = str(row.get('pdf_name', ''))
+            if cao_number and pdf_name:
+                # Normalize filename (remove extensions)
+                base_filename = pdf_name.replace('_extract.json', '').replace('.json', '').replace('.pdf', '')
+                expected_files.add((cao_number, base_filename))
+        print(f"  Loaded {len(expected_files)} expected files from CAO info")
+    except Exception as e:
+        print(f"  Warning: Could not load CAO info: {e}")
+    
+    return expected_files
+
+
 def analyze_llm_analysis_quality(base_dir: str = "outputs/llm_analysis"):
     """
     Analyze all JSON analysis files for quality and completeness.
@@ -494,6 +524,10 @@ def analyze_llm_analysis_quality(base_dir: str = "outputs/llm_analysis"):
     
     print(f"🔍 Analyzing LLM analysis quality in: {base_dir}")
     print("=" * 80)
+    
+    # Load expected files from CAO info
+    print("\n📋 Loading expected files from CAO info...")
+    expected_files = load_expected_files()
     
     salary_path = base_path / "salary"
     non_salary_path = base_path / "non_salary"
@@ -577,31 +611,95 @@ def analyze_llm_analysis_quality(base_dir: str = "outputs/llm_analysis"):
     print("-" * 80)
     
     # Get all file names (both end with _analysis.json, so remove _analysis suffix)
+    # For non-salary, we need to group by base filename since each PDF has 3 non-salary files
     salary_files = {Path(f['file']).stem.replace('_analysis', '') for f in all_salary_analyses if 'error' not in f}
-    non_salary_files = {Path(f['file']).stem.replace('_analysis', '') for f in all_non_salary_analyses if 'error' not in f}
+    
+    # Group non-salary files by base filename (each PDF has 3 non-salary files: one per category)
+    non_salary_files_by_base = defaultdict(set)
+    for f in all_non_salary_analyses:
+        if 'error' not in f:
+            base_name = Path(f['file']).stem.replace('_analysis', '')
+            non_salary_files_by_base[base_name].add(f.get('category', 'unknown'))
+    
+    # A PDF has non-salary analysis if it has files in all 3 categories
+    non_salary_files = {base_name for base_name, categories in non_salary_files_by_base.items() 
+                       if len(categories) >= 3}  # At least 3 categories (some might have more if duplicates)
     
     files_in_both = salary_files.intersection(non_salary_files)
     files_only_salary = salary_files - non_salary_files
     files_only_non_salary = non_salary_files - salary_files
     
-    print(f"   PDF files processed: {len(files_in_both)}")
+    # Compare with expected files from CAO info
+    all_found_files = salary_files | non_salary_files
+    missing_files = expected_files - all_found_files
+    
+    # Total files found (union of salary and non-salary)
+    total_files_found = len(all_found_files)
+    
+    print(f"   Expected PDF files (from CAO info CSV): {len(expected_files)}")
+    print(f"   PDF files found in folders: {total_files_found}")
+    print(f"   PDF files MISSING: {len(missing_files)} (expected - found)")
     print(f"   PDF files with both salary and non-salary analysis: {len(files_in_both)}")
     print(f"   PDF files with only salary analysis: {len(files_only_salary)}")
     print(f"   PDF files with only non-salary analysis: {len(files_only_non_salary)}")
-    print(f"   Total JSON files created: {len(files_in_both) * 2} (salary + non-salary)")
+    print()
+    print(f"   NOTE: 'Expected' comes from CAO info CSV ({len(expected_files)} files).")
+    print(f"   'Found' is what's actually in the output folders ({total_files_found} files).")
+    
+    if missing_files:
+        print(f"\n   ⚠️  MISSING FILES (expected but not found in non-salary folders):")
+        # Group by CAO number
+        missing_by_cao = defaultdict(list)
+        for cao_number, filename in sorted(missing_files):
+            missing_by_cao[cao_number].append(filename)
+        
+        for cao_number in sorted(missing_by_cao.keys())[:20]:  # Show first 20 CAOs
+            files_list = missing_by_cao[cao_number]
+            print(f"      CAO {cao_number}: {len(files_list)} file(s) - {', '.join(files_list[:3])}{'...' if len(files_list) > 3 else ''}")
+        if len(missing_by_cao) > 20:
+            print(f"      ... and {len(missing_by_cao) - 20} more CAOs with missing files")
     
     if files_only_salary:
-        print(f"   PDF files missing non-salary analysis: {', '.join(sorted(list(files_only_salary)[:10]))}{'...' if len(files_only_salary) > 10 else ''}")
+        print(f"\n   PDF files missing non-salary analysis: {', '.join(sorted(list(files_only_salary)[:10]))}{'...' if len(files_only_salary) > 10 else ''}")
     if files_only_non_salary:
-        print(f"   PDF files missing salary analysis: {', '.join(sorted(list(files_only_non_salary)[:10]))}{'...' if len(files_only_non_salary) > 10 else ''}")
+        print(f"\n   PDF files missing salary analysis: {', '.join(sorted(list(files_only_non_salary)[:10]))}{'...' if len(files_only_non_salary) > 10 else ''}")
     print()
     
     # Summary statistics
+    # Count unique PDFs (base filenames) for accurate statistics
+    unique_salary_pdfs = len(salary_files)  # Unique PDFs with salary analysis
+    unique_non_salary_pdfs = len(non_salary_files)  # Unique PDFs with non-salary analysis (all 3 categories)
+    
+    # Count non-salary PDFs by counting unique base filenames (regardless of categories)
+    all_non_salary_base_names = {Path(f['file']).stem.replace('_analysis', '') 
+                                 for f in all_non_salary_analyses if 'error' not in f}
+    unique_non_salary_pdfs_all = len(all_non_salary_base_names)  # PDFs with ANY non-salary file
+    
     print(f"📊 SUMMARY STATISTICS:")
-    print(f"   Total PDF files processed: {len(files_in_both)}")
-    print(f"   Total salary JSON files analyzed: {total_salary_files}")
-    print(f"   Total non-salary JSON files analyzed: {total_non_salary_files}")
-    print(f"   Total JSON files created: {total_salary_files + total_non_salary_files}")
+    print(f"   Expected PDF files (from CAO info CSV): {len(expected_files)}")
+    print(f"   PDF files found in folders: {total_files_found}")
+    print(f"   PDF files missing: {len(missing_files)}")
+    print()
+    print(f"   UNIQUE PDF COUNTS (by base filename from folders):")
+    print(f"   - PDFs with salary analysis: {unique_salary_pdfs}")
+    print(f"   - PDFs with non-salary analysis (all 3 categories): {unique_non_salary_pdfs}")
+    print(f"   - PDFs with any non-salary file: {unique_non_salary_pdfs_all}")
+    print()
+    print(f"   RAW JSON FILE COUNTS (actual files in folders):")
+    print(f"   - Total salary JSON files found: {total_salary_files}")
+    print(f"   - Total non-salary JSON files found: {total_non_salary_files}")
+    print(f"   - Non-salary files / 3 = {total_non_salary_files // 3} (unique PDFs if all have 3 categories)")
+    print()
+    print(f"   COMPARISON (Expected from CAO info vs Found in folders):")
+    print(f"   - Expected PDFs: {len(expected_files)}")
+    print(f"   - Found PDFs: {total_files_found}")
+    print(f"   - Missing: {len(missing_files)}")
+    print(f"   - Expected salary JSON files: {len(expected_files)} (1 per expected PDF)")
+    print(f"   - Found salary JSON files: {total_salary_files} (difference: {total_salary_files - len(expected_files)})")
+    print(f"   - Expected non-salary JSON files: {len(expected_files) * 3} (3 per expected PDF)")
+    print(f"   - Found non-salary JSON files: {total_non_salary_files} (difference: {total_non_salary_files - (len(expected_files) * 3)})")
+    print(f"   - Total JSON files found: {total_salary_files + total_non_salary_files}")
+    print(f"   - Expected total JSON files: {len(expected_files) + (len(expected_files) * 3)} (1 salary + 3 non-salary per PDF)")
     print(f"   Salary JSON files with errors: {salary_files_with_errors}")
     print(f"   Non-salary JSON files with errors: {non_salary_files_with_errors}")
     

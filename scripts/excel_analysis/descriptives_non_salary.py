@@ -61,9 +61,9 @@ DOMAIN_FLAGS = {
     ],
     "childcare": [
         "childcare_childcare_support_present",
-        "childcare_childcare_inhouse_present",
-        "childcare_childcare_discount_present",
-        "childcare_childcare_priority_access",
+        "childcare_inhouse_present",
+        "childcare_discount_present",
+        "childcare_priority_access",
     ],
     "ai": "ai_ai_policy_exists",
 }
@@ -72,71 +72,71 @@ HEADLINE_FEATURES = {
     "bonus": [
         "bonus_has_bonus_schemes",
         "bonus_sign_on_bonus_present",
-        "bonus_thirteenth_month_present",
+        "bonus_thirteenth_month",
         "bonus_profit_sharing_present",
         "bonus_performance_bonus_present",
-        "bonus_job_specific_allowances_present",
-        "bonus_qualification_bonus_present",
-        "bonus_seniority_or_loyalty_bonus_present",
-        "bonus_retirement_gratuity_present",
+        "bonus_job_allowances_present",
+        "bonus_qual_bonus_present",
+        "bonus_seniority_loyalty_bonus",
+        "bonus_retire_gratuity_present",
     ],
     "wage_scales": [
-        "wage_entry_step_by_experience_present",
-        "wage_personal_allowance_at_max_scale_present",
-        "wage_performance_step_variation_present",
+        "wage_entry_step_exp_present",
+        "wage_pers_allow_max_scale",
+        "wage_perf_step_var_present",
     ],
     "pension": [
         "pension_has_pension_scheme",
         "pension_mandatory_participation",
-        "pension_accrual_during_statutory_leaves",
-        "pension_accrual_during_illness_year2",
-        "pension_excedentregeling_present",
-        "pension_premium_change_equal_split",
-        "pension_heterogeneity_present_pension",
+        "pension_accrual_stat_leaves",
+        "pension_accrual_illness_y2",
+        "pension_excedent_present",
+        "pension_premium_eq_split",
+        "pension_hetero_pension",
     ],
     "leave": [
         "leave_has_leave_enhancements",
         "leave_has_above_statutory_maternity",
         "leave_paternity_explicitly_above_statutory",
-        "leave_parental_leave_topup_present",
-        "leave_parental_leave_tenure_requirement_present",
-        "leave_abortion_leave_present",
-        "leave_sick_leave_topup_present",
+        "leave_parental_topup_present",
+        "leave_parental_tenure_req_present",
+        "leave_abortion_present",
+        "leave_sick_topup_present",
         "leave_sickpay_extra_insurance_present",
-        "leave_care_leave_topup_present",
-        "leave_heterogeneity_present_leave",
+        "leave_care_topup_present",
+        "leave_hetero_present",
         "leave_liberation_day_annual",
         "leave_liberation_day_lustrum",
-        "leave_extra_leave_seniority_present",
+        "leave_extra_seniority_present",
     ],
     "termination": [
         "term_has_termination_rules",
-        "term_heterogeneity_present_notice",
-        "term_notice_period_by_tenure_present",
-        "term_can_shorten_notice_with_uwv_permit",
-        "term_sickness_dismissal_protection",
-        "term_end_at_AOW_age_automatic",
+        "term_hetero_present",
+        "term_notice_tenure_present",
+        "term_shorten_notice_uwv",
+        "term_sick_dismissal_prot",
+        "term_end_at_AOW_auto",
         "term_probation_allowed",
-        "term_severance_or_ww_supplement_present",
+        "term_severance_ww_supplement",
     ],
     "overtime": [
         "overtime_has_overtime_rules",
-        "overtime_heterogeneity_present_overtime",
+        "overtime_hetero_present",
         "overtime_shift_allowance_present",
     ],
     "training": [
         "training_has_training_rights",
-        "training_training_fund_present",
+        "training_fund_present",
         "training_reclaim_clause_present",
         "training_mandatory_training_paid",
     ],
     "homeoffice": [
         "homeoffice_has_homeoffice_rights",
-        "homeoffice_homeoffice_stipend_present",
-        "homeoffice_homeoffice_costs_reimbursed",
-        "homeoffice_homeoffice_agreement_required",
-        "homeoffice_homeoffice_health_safety_guarantee",
-        "homeoffice_homeoffice_travel_time_compensation",
+        "homeoffice_stipend_present",
+        "homeoffice_costs_reimbursed",
+        "homeoffice_agreement_required",
+        "homeoffice_health_safety_guarantee",
+        "homeoffice_travel_time_compensation",
     ],
     "contract": [
         "contract_has_contract_type_rules",
@@ -174,10 +174,10 @@ HEADLINE_FEATURES = {
     ],
     "childcare": [
         "childcare_childcare_support_present",
-        "childcare_childcare_inhouse_present",
-        "childcare_childcare_discount_present",
-        "childcare_childcare_priority_access",
-        "childcare_childcare_funding_through_sector_fund",
+        "childcare_inhouse_present",
+        "childcare_discount_present",
+        "childcare_priority_access",
+        "childcare_funding_sector_fund",
     ],
     "ai": [
         "ai_ai_policy_exists",
@@ -195,18 +195,18 @@ HEADLINE_CATEGORICAL = {
         "term_dismissal_approval",
     ],
     "overtime": [
-        "overtime_overtime_compensation_mode",
+        "overtime_compensation_mode",
         "overtime_stacking_rule",
     ],
     "homeoffice": [
-        "homeoffice_homeoffice_discretion",
+        "homeoffice_discretion",
     ],
     "fringe": [
         "fringe_meal_benefit_type",
     ],
     "childcare": [
-        "childcare_childcare_provider_scope",
-        "childcare_childcare_public_coord",
+        "childcare_provider_scope",
+        "childcare_public_coord",
     ],
     "ai": [
         "ai_ai_automated_decisions",
@@ -219,48 +219,48 @@ NUMERIC_VARS = [
     "leave_vacation_bonus_value",
     "leave_sickpay_duration_value",
     "leave_sickpay_continuation_value",
-    "leave_paid_maternity_leave_value",
-    "leave_paid_paternity_leave_value",
-    "leave_parental_leave_topup_pay_value",
-    "leave_long_term_care_leave_value",
+    "leave_paid_maternity_value",
+    "leave_paid_paternity_value",
+    "leave_parental_topup_pay_value",
+    "leave_long_term_care_value",
     "leave_long_term_care_pay_value",
     "pension_employee_contrib_value",
     "pension_accrual_rate_value",
     "pension_franchise_value",
-    "pension_retirement_age_normal_value",
+    "pension_retire_age_normal_value",
     "term_employee_notice_value",
     "term_employer_notice_value",
     "term_probation_fixedterm_value",
-    "term_probation_indefinite_value",
-    "overtime_overtime_allowance_value",
+    "term_probation_indef_value",
+    "overtime_allowance_value",
     "overtime_shift_allowance_range_min",
     "overtime_shift_allowance_range_max",
     "overtime_min_rest_between_shifts_value",
     "overtime_max_hours_per_day_value",
     "overtime_max_hours_per_week_value",
-    "overtime_compulsory_overtime_annual_value",
-    "training_training_time_yearly_value",
-    "training_training_budget_value",
+    "overtime_compulsory_annual_value",
+    "training_time_yearly_value",
+    "training_budget_value",
     "training_cost_reimbursement_value",
     "fringe_commuting_allowance_value",
     "fringe_meal_benefit_amt_value",
     "fringe_relocation_allowance_value",
     "childcare_childcare_support_value",
     "childcare_childcare_support_cap_value",
-    "childcare_childcare_age_min_value",
-    "childcare_childcare_age_max_value",
-    "homeoffice_homeoffice_entitlement_value",
-    "homeoffice_homeoffice_stipend_value",
+    "childcare_age_min_value",
+    "childcare_age_max_value",
+    "homeoffice_entitlement_value",
+    "homeoffice_stipend_value",
 ]
 
 MODERN_FEATURES = [
     "homeoffice_has_homeoffice_rights",
-    "homeoffice_homeoffice_stipend_present",
+    "homeoffice_stipend_present",
     "ai_ai_policy_exists",
     "childcare_childcare_support_present",
-    "training_training_fund_present",
-    "leave_sick_leave_topup_present",
-    "leave_parental_leave_topup_present",
+    "training_fund_present",
+    "leave_sick_topup_present",
+    "leave_parental_topup_present",
     "safety_harassment_protocol_present",
     "safety_wellbeing_program_present",
 ]
@@ -472,9 +472,11 @@ def build_latest_cao_view(df: pd.DataFrame, cao_col: str = "cao_number",
         print(f"  Warning: Column '{date_col}' not found. Available columns: {list(df.columns[:10])}...")
         return pd.DataFrame()
     
-    # Parse date column
+    # Parse date column (CAO metadata dates are in DD/MM/YYYY format)
     df_copy = df.copy()
-    df_copy[date_col] = pd.to_datetime(df_copy[date_col], errors='coerce')
+    # CAO metadata dates (ingangsdatum, expiratiedatum, datum_kennisgeving) are in DD/MM/YYYY format
+    dayfirst = date_col in ['ingangsdatum', 'expiratiedatum', 'datum_kennisgeving']
+    df_copy[date_col] = pd.to_datetime(df_copy[date_col], errors='coerce', dayfirst=dayfirst)
     
     # Check if we have valid dates
     valid_dates = df_copy[date_col].notna()
@@ -638,7 +640,9 @@ def create_variable_health_sheet(df: pd.DataFrame) -> pd.DataFrame:
                 })
         
         elif var_type == "date":
-            date_series = pd.to_datetime(series, errors='coerce')
+            # Check if this is a CAO metadata date column (DD/MM/YYYY format)
+            dayfirst = series.name in ['ingangsdatum', 'expiratiedatum', 'datum_kennisgeving']
+            date_series = pd.to_datetime(series, errors='coerce', dayfirst=dayfirst)
             non_null_dates = date_series.dropna()
             if len(non_null_dates) > 0:
                 row.update({
@@ -732,7 +736,7 @@ def create_sample_overview_sheet(df: pd.DataFrame, df_latest: pd.DataFrame) -> p
     if "ingangsdatum" in df.columns:
         df_copy = df.copy()
         df_copy["ingangsdatum"] = pd.to_datetime(
-            df_copy["ingangsdatum"], errors='coerce'
+            df_copy["ingangsdatum"], errors='coerce', dayfirst=True
         )
         df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
         
@@ -793,8 +797,8 @@ def create_sample_overview_sheet(df: pd.DataFrame, df_latest: pd.DataFrame) -> p
             results.append(scope_row)
     
     # c) Retroactivity summary
-    if "general_retroactive_applies" in df.columns:
-        retro_bool = normalize_boolean(df["general_retroactive_applies"])
+    if "general_retro_applies" in df.columns:
+        retro_bool = normalize_boolean(df["general_retro_applies"])
         share_retroactive = (retro_bool == True).mean()
         
         retro_row = {
@@ -807,17 +811,17 @@ def create_sample_overview_sheet(df: pd.DataFrame, df_latest: pd.DataFrame) -> p
         retro_true_df = df[retro_true_mask]
         
         if len(retro_true_df) > 0:
-            if "general_retroactive_backpay_due" in retro_true_df.columns:
-                backpay_bool = normalize_boolean(retro_true_df["general_retroactive_backpay_due"])
+            if "general_retro_backpay_due" in retro_true_df.columns:
+                backpay_bool = normalize_boolean(retro_true_df["general_retro_backpay_due"])
                 retro_row['share_backpay_due'] = (backpay_bool == True).mean()
             else:
                 retro_row['share_backpay_due'] = np.nan
             
             # Retro length
-            if ("general_retroactive_start_date" in retro_true_df.columns and 
-                "general_retroactive_end_date" in retro_true_df.columns):
-                start_dates = pd.to_datetime(retro_true_df["general_retroactive_start_date"], errors='coerce')
-                end_dates = pd.to_datetime(retro_true_df["general_retroactive_end_date"], errors='coerce')
+            if ("general_retro_start_date" in retro_true_df.columns and 
+                "general_retro_end_date" in retro_true_df.columns):
+                start_dates = pd.to_datetime(retro_true_df["general_retro_start_date"], errors='coerce')
+                end_dates = pd.to_datetime(retro_true_df["general_retro_end_date"], errors='coerce')
                 retro_lengths = (end_dates - start_dates).dt.days
                 retro_lengths_clean = retro_lengths.dropna()
                 
@@ -834,8 +838,8 @@ def create_sample_overview_sheet(df: pd.DataFrame, df_latest: pd.DataFrame) -> p
                 retro_row['retro_length_p25'] = np.nan
                 retro_row['retro_length_p75'] = np.nan
             
-            if "general_retroactive_interest_or_surcharge" in retro_true_df.columns:
-                interest_col = retro_true_df["general_retroactive_interest_or_surcharge"]
+            if "general_retro_int_surcharge" in retro_true_df.columns:
+                interest_col = retro_true_df["general_retro_int_surcharge"]
                 retro_row['share_interest_or_surcharge'] = (interest_col.notna() & (interest_col != "")).mean()
             else:
                 retro_row['share_interest_or_surcharge'] = np.nan
@@ -848,21 +852,21 @@ def create_sample_overview_sheet(df: pd.DataFrame, df_latest: pd.DataFrame) -> p
         
         results.append(retro_row)
     
-    # d) Date comparison: ingangsdatum (website) vs general_start_date_contract (PDF)
-    if "ingangsdatum" in df.columns and "general_start_date_contract" in df.columns:
+    # d) Date comparison: ingangsdatum (website) vs general_start_date (PDF)
+    if "ingangsdatum" in df.columns and "general_start_date" in df.columns:
         df_dates = df.copy()
-        df_dates["ingangsdatum"] = pd.to_datetime(df_dates["ingangsdatum"], errors='coerce')
-        df_dates["general_start_date_contract"] = pd.to_datetime(
-            df_dates["general_start_date_contract"], errors='coerce'
+        df_dates["ingangsdatum"] = pd.to_datetime(df_dates["ingangsdatum"], errors='coerce', dayfirst=True)
+        df_dates["general_start_date"] = pd.to_datetime(
+            df_dates["general_start_date"], errors='coerce'
         )
         
         # Filter to rows with both dates
-        both_dates_mask = df_dates["ingangsdatum"].notna() & df_dates["general_start_date_contract"].notna()
+        both_dates_mask = df_dates["ingangsdatum"].notna() & df_dates["general_start_date"].notna()
         df_both_dates = df_dates[both_dates_mask]
         
         if len(df_both_dates) > 0:
             # Calculate date differences (PDF date - website date)
-            date_diff = (df_both_dates["general_start_date_contract"] - df_both_dates["ingangsdatum"]).dt.days
+            date_diff = (df_both_dates["general_start_date"] - df_both_dates["ingangsdatum"]).dt.days
             
             date_comp_row = {
                 'section': 'date_comparison',
@@ -956,7 +960,7 @@ def create_domain_coverage_by_year_sheet(df: pd.DataFrame) -> pd.DataFrame:
     
     df_copy = df.copy()
     df_copy["ingangsdatum"] = pd.to_datetime(
-        df_copy["ingangsdatum"], errors='coerce'
+        df_copy["ingangsdatum"], errors='coerce', dayfirst=True
     )
     df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
     
@@ -1076,7 +1080,7 @@ def create_headline_features_by_year_sheet(df: pd.DataFrame) -> pd.DataFrame:
     
     df_copy = df.copy()
     df_copy["ingangsdatum"] = pd.to_datetime(
-        df_copy["ingangsdatum"], errors='coerce'
+        df_copy["ingangsdatum"], errors='coerce', dayfirst=True
     )
     df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
     
@@ -1161,7 +1165,7 @@ def create_numeric_by_period_sheet(df: pd.DataFrame) -> pd.DataFrame:
     
     df_copy = df.copy()
     df_copy["ingangsdatum"] = pd.to_datetime(
-        df_copy["ingangsdatum"], errors='coerce'
+        df_copy["ingangsdatum"], errors='coerce', dayfirst=True
     )
     df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
     
@@ -1226,7 +1230,7 @@ def create_modern_before_after_sheet(df: pd.DataFrame) -> pd.DataFrame:
     
     df_copy = df.copy()
     df_copy["ingangsdatum"] = pd.to_datetime(
-        df_copy["ingangsdatum"], errors='coerce'
+        df_copy["ingangsdatum"], errors='coerce', dayfirst=True
     )
     df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
     
@@ -1283,14 +1287,14 @@ def create_missing_dates_overview_sheet(df: pd.DataFrame) -> pd.DataFrame:
     
     # Parse date columns
     df_copy = df.copy()
-    df_copy["ingangsdatum"] = pd.to_datetime(df_copy["ingangsdatum"], errors='coerce')
+    df_copy["ingangsdatum"] = pd.to_datetime(df_copy["ingangsdatum"], errors='coerce', dayfirst=True)
     
     # Try to find contract start date column
     contract_date_col = None
-    if "general_start_date_contract" in df_copy.columns:
-        contract_date_col = "general_start_date_contract"
-    elif "start_date_contract" in df_copy.columns:
-        contract_date_col = "start_date_contract"
+    if "general_start_date" in df_copy.columns:
+        contract_date_col = "general_start_date"
+    elif "start_date" in df_copy.columns:
+        contract_date_col = "start_date"
     else:
         return pd.DataFrame(columns=['metric', 'value'])
     
@@ -1343,14 +1347,14 @@ def create_missing_dates_details_sheet(df: pd.DataFrame, missing_type: str) -> p
         DataFrame with details of missing date rows
     """
     df_copy = df.copy()
-    df_copy["ingangsdatum"] = pd.to_datetime(df_copy["ingangsdatum"], errors='coerce')
+    df_copy["ingangsdatum"] = pd.to_datetime(df_copy["ingangsdatum"], errors='coerce', dayfirst=True)
     
     # Try to find contract start date column
     contract_date_col = None
-    if "general_start_date_contract" in df_copy.columns:
-        contract_date_col = "general_start_date_contract"
-    elif "start_date_contract" in df_copy.columns:
-        contract_date_col = "start_date_contract"
+    if "general_start_date" in df_copy.columns:
+        contract_date_col = "general_start_date"
+    elif "start_date" in df_copy.columns:
+        contract_date_col = "start_date"
     else:
         return pd.DataFrame()
     
@@ -1419,14 +1423,14 @@ def create_missing_dates_variable_fill_sheet(df: pd.DataFrame, missing_type: str
         DataFrame with variable fill statistics
     """
     df_copy = df.copy()
-    df_copy["ingangsdatum"] = pd.to_datetime(df_copy["ingangsdatum"], errors='coerce')
+    df_copy["ingangsdatum"] = pd.to_datetime(df_copy["ingangsdatum"], errors='coerce', dayfirst=True)
     
     # Try to find contract start date column
     contract_date_col = None
-    if "general_start_date_contract" in df_copy.columns:
-        contract_date_col = "general_start_date_contract"
-    elif "start_date_contract" in df_copy.columns:
-        contract_date_col = "start_date_contract"
+    if "general_start_date" in df_copy.columns:
+        contract_date_col = "general_start_date"
+    elif "start_date" in df_copy.columns:
+        contract_date_col = "start_date"
     else:
         return pd.DataFrame()
     
@@ -1535,6 +1539,129 @@ def create_missing_dates_variable_fill_sheet(df: pd.DataFrame, missing_type: str
     return result_df
 
 
+def create_cao_dates_timeline_sheet(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Create sheet with ordered list of file dates per CAO number with counts.
+    
+    For each CAO number, groups files by unique ingangsdatum date and shows
+    the date with the count of files for that date, in chronological order.
+    Format: CAO number, n_files (total), then file_1_date, file_1_count, 
+    file_2_date, file_2_count, etc.
+    
+    Args:
+        df: Input DataFrame with cao_number and ingangsdatum columns
+        
+    Returns:
+        DataFrame with CAO numbers, total file counts, and date-count pairs
+    """
+    if "cao_number" not in df.columns or "ingangsdatum" not in df.columns:
+        print(f"  Warning: Missing required columns. Available columns: {list(df.columns[:10])}")
+        return pd.DataFrame(columns=['cao_number', 'n_files'])
+    
+    df_copy = df.copy()
+    
+    # Parse date column (CAO metadata dates are in DD/MM/YYYY format)
+    df_copy["ingangsdatum"] = pd.to_datetime(
+        df_copy["ingangsdatum"], errors='coerce', dayfirst=True
+    )
+    
+    # Filter to rows with valid CAO number and date
+    valid_mask = df_copy["cao_number"].notna() & df_copy["ingangsdatum"].notna()
+    df_valid = df_copy[valid_mask].copy()
+    
+    if len(df_valid) == 0:
+        print(f"  Warning: No valid rows with both cao_number and ingangsdatum")
+        return pd.DataFrame(columns=['cao_number', 'n_files'])
+    
+    # Group by CAO number and collect dates
+    results = []
+    max_files = 0
+    
+    # Convert cao_number to string for consistent grouping
+    df_valid["cao_number"] = df_valid["cao_number"].astype(str)
+    
+    for cao_number, group in df_valid.groupby("cao_number"):
+        # Count occurrences of each unique date
+        dates = group["ingangsdatum"].dropna()
+        if len(dates) == 0:
+            continue  # Skip if no valid dates
+        
+        # Count files per unique date
+        date_counts = dates.value_counts().sort_index()  # Sort by date
+        
+        # Format dates as DD.MM.YYYY and create date-count pairs
+        date_count_pairs = []
+        total_files = 0
+        for date, count in date_counts.items():
+            try:
+                date_str = date.strftime('%d.%m.%Y')
+                date_count_pairs.append((date_str, int(count)))
+                total_files += count
+            except (AttributeError, ValueError):
+                # Skip invalid dates
+                continue
+        
+        if len(date_count_pairs) == 0:
+            continue  # Skip if no valid formatted dates
+        
+        max_files = max(max_files, len(date_count_pairs))
+        
+        # Create row with CAO number and date-count pairs
+        row = {
+            'cao_number': str(cao_number),
+            'n_files': total_files  # Sum of all counts
+        }
+        
+        # Add date and count columns in pairs
+        for i, (date_str, count) in enumerate(date_count_pairs, start=1):
+            row[f'file_{i}_date'] = date_str
+            row[f'file_{i}_count'] = count
+        
+        results.append(row)
+    
+    if len(results) == 0:
+        print(f"  Warning: No results generated")
+        return pd.DataFrame(columns=['cao_number', 'n_files'])
+    
+    # Create DataFrame
+    result_df = pd.DataFrame(results)
+    
+    # Ensure all date and count columns exist (fill missing with empty string or 0)
+    for i in range(1, max_files + 1):
+        date_col = f'file_{i}_date'
+        count_col = f'file_{i}_count'
+        if date_col not in result_df.columns:
+            result_df[date_col] = ''
+        if count_col not in result_df.columns:
+            result_df[count_col] = 0
+    
+    # Reorder columns: cao_number, n_files, then file_1_date, file_1_count, file_2_date, file_2_count, etc.
+    if max_files > 0:
+        # Create list of column pairs: date, count, date, count, ...
+        date_count_cols = []
+        for i in range(1, max_files + 1):
+            date_col = f'file_{i}_date'
+            count_col = f'file_{i}_count'
+            if date_col in result_df.columns:
+                date_count_cols.append(date_col)
+            if count_col in result_df.columns:
+                date_count_cols.append(count_col)
+        
+        # Only reorder if all columns exist
+        available_cols = ['cao_number', 'n_files'] + date_count_cols
+        result_df = result_df[available_cols]
+    else:
+        # If no files, just ensure basic columns
+        result_df = result_df[['cao_number', 'n_files']]
+    
+    # Sort by CAO number
+    result_df = result_df.sort_values('cao_number')
+    
+    print(f"  Created timeline sheet with {len(result_df)} CAOs, max {max_files} unique dates per CAO")
+    
+    return result_df
+
+
 # =============================================================================
 # MAIN EXECUTION
 # =============================================================================
@@ -1558,10 +1685,10 @@ def main():
         print("  ERROR: Input file is empty")
         return
     
-    # Parse date column
+    # Parse date column (CAO metadata dates are in DD/MM/YYYY format)
     if "ingangsdatum" in df.columns:
         df["ingangsdatum"] = pd.to_datetime(
-            df["ingangsdatum"], errors='coerce'
+            df["ingangsdatum"], errors='coerce', dayfirst=True
         )
         print(f"  Parsed ingangsdatum as datetime")
     else:
@@ -1605,6 +1732,13 @@ def main():
     except Exception as e:
         print(f"  Warning: Error creating sample_overview sheet: {e}")
         sheets["01_sample_overview"] = pd.DataFrame()
+    
+    try:
+        print("  Creating sheet: 01a_cao_dates_timeline")
+        sheets["01a_cao_dates_timeline"] = create_cao_dates_timeline_sheet(df)
+    except Exception as e:
+        print(f"  Warning: Error creating cao_dates_timeline sheet: {e}")
+        sheets["01a_cao_dates_timeline"] = pd.DataFrame()
     
     try:
         print("  Creating sheet: 02_domain_coverage_latest")
@@ -1768,12 +1902,36 @@ def main():
                 "   - share_interest_or_surcharge: Share of retroactive contracts with interest/surcharge on backpay",
                 "",
                 "5. Date comparison (section='date_comparison'):",
-                "   - Compares ingangsdatum (date from website) vs general_start_date_contract (date from PDF)",
+                "   - Compares ingangsdatum (date from website) vs general_start_date (date from PDF)",
                 "   - date_diff_days: PDF date - website date (positive = PDF later, negative = PDF earlier)",
                 "   - n_exact_match: Number of contracts where dates match exactly",
                 "   - n_pdf_later_than_website: PDF date is after website date",
                 "   - n_pdf_earlier_than_website: PDF date is before website date",
                 "   - Large discrepancy: Absolute difference > 30 days"
+            ],
+            "01a_cao_dates_timeline": [
+                "NOTES:",
+                "Timeline of file dates per CAO number with counts, ordered chronologically.",
+                "",
+                "For each CAO number, this sheet groups files by unique ingangsdatum date",
+                "and shows the date with the count of files for that date, in chronological order.",
+                "Dates are formatted as DD.MM.YYYY (e.g., 03.09.2010).",
+                "",
+                "Columns:",
+                "  - cao_number: The CAO number",
+                "  - n_files: Total number of files (sum of all file_x_count values)",
+                "  - file_1_date: First unique date (earliest date)",
+                "  - file_1_count: Number of files with file_1_date",
+                "  - file_2_date: Second unique date",
+                "  - file_2_count: Number of files with file_2_date",
+                "  - ... (additional date-count pairs as needed)",
+                "",
+                "Example:",
+                "  CAO number 10 might have:",
+                "    - file_1_date: 03.09.2010, file_1_count: 3",
+                "    - file_2_date: 03.11.2020, file_2_count: 2",
+                "    - file_3_date: 01.01.2025, file_3_count: 1",
+                "    - n_files: 6 (sum of all counts)"
             ],
             "02_domain_coverage_latest": [
                 "NOTES:",
@@ -1849,17 +2007,17 @@ def main():
             ],
             "09_missing_dates_overview": [
                 "NOTES:",
-                "Overview of missing date analysis for ingangsdatum and general_start_date_contract.",
+                "Overview of missing date analysis for ingangsdatum and general_start_date.",
                 "",
                 "Key findings:",
                 "  - Total rows: 1580",
                 "  - Rows missing ingangsdatum: 46 (2.9%)",
-                "  - Rows missing general_start_date_contract: 5 (0.3%)",
+                "  - Rows missing general_start_date: 5 (0.3%)",
                 "  - Rows missing both: 1 (0.06%)",
                 "",
                 "The sets are NOT disjoint - there is 1 overlapping row (CAO 1393).",
-                "Most rows missing ingangsdatum still have general_start_date_contract (45/46).",
-                "Most rows missing general_start_date_contract still have ingangsdatum (4/5)."
+                "Most rows missing ingangsdatum still have general_start_date (45/46).",
+                "Most rows missing general_start_date still have ingangsdatum (4/5)."
             ],
             "10_missing_ingangsdatum_details": [
                 "NOTES:",
@@ -1867,17 +2025,17 @@ def main():
                 "",
                 "Observations:",
                 "  - 46 rows across 12 unique CAOs",
-                "  - Most (45/46) have general_start_date_contract",
+                "  - Most (45/46) have general_start_date",
                 "  - All have expiratiedatum and datum_kennisgeving",
                 "  - Mostly ABU CAO files",
                 "  - High domain coverage (bonus, pension, leave, termination, etc.)",
                 "",
-                "has_other_date: Whether the row has general_start_date_contract",
-                "other_date_value: The value of general_start_date_contract if available"
+                "has_other_date: Whether the row has general_start_date",
+                "other_date_value: The value of general_start_date if available"
             ],
             "11_missing_contract_start_det": [
                 "NOTES:",
-                "Detailed list of rows missing general_start_date_contract (PDF date).",
+                "Detailed list of rows missing general_start_date (PDF date).",
                 "",
                 "Observations:",
                 "  - 5 rows across 5 unique CAOs",
@@ -1903,7 +2061,7 @@ def main():
             ],
             "13_missing_contract_var_fill": [
                 "NOTES:",
-                "Variable fill status for rows missing general_start_date_contract (5 rows).",
+                "Variable fill status for rows missing general_start_date (5 rows).",
                 "",
                 "Shows how well variables are filled for this subset:",
                 "  - Domain presence flags (bonus, pension, leave, etc.)",
@@ -1921,7 +2079,7 @@ def main():
                 "This single row has:",
                 "  - expiratiedatum and datum_kennisgeving",
                 "  - Domain information (bonus, pension, leave, termination, etc.)",
-                "  - Missing both start dates (ingangsdatum and general_start_date_contract)",
+                "  - Missing both start dates (ingangsdatum and general_start_date)",
                 "",
                 "n_nonmissing: Number of rows with non-missing values (should be 0 or 1)",
                 "share_nonmissing: Proportion of rows with non-missing values",

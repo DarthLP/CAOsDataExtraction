@@ -25,11 +25,13 @@ from .salary_schema import Amount, AmountRange
 # ----------------------------
 class GeneralInfo(BaseModel):
     """Schema for general contract information (record exactly as stated in the CAO)."""
-    start_date_contract: str = Field(
+
+    # Core CAO period dates
+    start_date: str = Field(
         default="",
         description="CAO validity start date (YYYY-MM-DD)."
     )
-    expiry_date_contract: str = Field(
+    expiry_date: str = Field(
         default="",
         description="CAO validity end date (YYYY-MM-DD)."
     )
@@ -38,38 +40,73 @@ class GeneralInfo(BaseModel):
         description="Date the CAO was signed by the parties (YYYY-MM-DD)."
     )
 
+        # ---- Document type / scope within this single PDF ----
+    document_type: str = Field(
+        default="",
+        description=(
+            "PDF classification. Use one of:\n"
+            "- 'full_cao_original': first full CAO text for this period.\n"
+            "- 'full_cao_update': full CAO text that updates/replaces earlier CAO (complete text printed, framed as updated version).\n"
+            "- 'partial_amendment_of_original': prints selected parts/clauses amending original/base CAO. PDF does NOT contain full CAO.\n"
+            "- 'partial_amendment_of_latest': prints selected parts/clauses amending most recent updated/consolidated CAO. PDF does NOT contain full CAO.\n"
+            "- 'annex': annex or appendix, not a main CAO text.\n"
+            "- 'protocol': protocol/agreement about negotiations/implementation, not the CAO text itself.\n"
+            "- 'other_supplement': other supplementary document (e.g. side agreement or information note).\n"
+            "- 'unspecified': document type not specified or cannot be determined."
+        )
+    )
+    updated_topics: list[str] = Field(
+        default_factory=list,
+        description=(
+            "Short labels of topics this document updates/introduces (especially for partial amendments). "
+            "Examples: 'wages', 'working hours', 'vacation', 'overtime', 'pension', 'allowances', 'training'. "
+            "Leave empty for full CAO texts with no specific focus."
+        )
+    )
+
+    # Effective date of the general change in this document
+    chg_eff_date: str = Field(
+        default="",
+        description="Overall effective date (YYYY-MM-DD) for the changes introduced by this document."
+    )
+    chg_eff_date_src: str = Field(
+        default="",
+        description="Source text snippet for the general effective date (chg_eff_date) for verification. Leave empty if chg_eff_date is empty."
+    )
+
+
     # Retroactivity — record only when explicitly stated
-    retroactive_applies: bool = Field(
+    retro_applies: bool = Field(
         default=False,
         description="Set true only if the CAO explicitly states that (some) terms apply retroactively."
     )
-    retroactive_start_date: str = Field(
+    retro_start_date: str = Field(
         default="",
-        description="Start date of retroactive application (YYYY-MM-DD). Leave empty if retroactive_applies = false."
+        description="Start date of retroactive application (YYYY-MM-DD). Leave empty if retro_applies = false."
     )
-    retroactive_end_date: str = Field(
+    retro_end_date: str = Field(
         default="",
-        description="End date of retroactive application (YYYY-MM-DD). Leave empty if retroactive_applies = false."
+        description="End date of retroactive application (YYYY-MM-DD). Leave empty if retro_applies = false."
     )
-    retroactive_scope_note: str = Field(
+    retro_scope_note: str = Field(
         default="",
-        description="What is retroactive (e.g., wage scales, allowances). Leave empty if retroactive_applies = false."
+        description="What is retroactive (e.g., wage scales, allowances). Leave empty if retro_applies = false."
     )
-    retroactive_backpay_due: Optional[bool] = Field(
+    retro_backpay_due: Optional[bool] = Field(
         default=None,
-        description="Set true only if back-pay for the retro period is explicitly required, false if not explicitly stated — Omit if retroactive_applies = false."
+        description="True if back-pay explicitly required, false if explicitly ruled out, null if unclear. Omit if retro_applies = false."
     )
-    retroactive_backpay_terms: str = Field(
+    retro_backpay_terms: str = Field(
         default="",
-        description="Back-pay rules as stated. Leave empty if retroactive_applies = false OR retroactive_backpay_due = false."
+        description="Back-pay rules for retroactive period. Leave empty if retro_applies = false OR retro_backpay_due = false."
     )
-    retroactive_exclusions_note: str = Field(
+    retro_excl_note: str = Field(
         default="",
-        description="Groups or items explicitly excluded from retroactivity. Leave empty if retroactive_applies = false."
+        description="Groups or items explicitly excluded from retroactivity. Leave empty if retro_applies = false."
     )
-    retroactive_interest_or_surcharge: str = Field(
+    retro_int_surcharge: str = Field(
         default="",
-        description="Interest/surcharge on late back-pay, if stated. Leave empty if retroactive_applies = false OR retroactive_backpay_due = false."
+        description="Interest or surcharge on late back-pay, if stated. Leave empty if retro_applies = false OR retro_backpay_due = false."
     )
 
     # Scope / classification
@@ -86,7 +123,7 @@ class GeneralInfo(BaseModel):
         description="Version of the SBI classification (e.g., 'SBI 2008')."
     )
 
-    deviation_allowed_company_level: bool = Field(
+    dev_company_level: bool = Field(
         default=False,
         description="Set true only if the CAO explicitly permits company-level deviations from CAO terms."
     )
@@ -98,9 +135,9 @@ class GeneralInfo(BaseModel):
         default="",
         description="Company name — ONLY if cao_scope_type = 'single_company'."
     )
-    firm_cao_scope_description: str = Field(
+    firm_scope_desc: str = Field(
         default="",
-        description="Brief description of firm-level scope, as stated."
+        description="Brief description of firm-level scope."
     )
 
     # AVV (generally binding)
@@ -136,13 +173,13 @@ class BonusesInfo(BaseModel):
         description="Sign-on bonus amount with unit (e.g., value=500, unit='EUR one-off') — Omit if sign_on_bonus_present = false."
     )
 
-    thirteenth_month_present: bool = Field(
+    thirteenth_month: bool = Field(
         default=False,
         description="Set true only if the CAO grants a 13th month of salary (or equivalent)."
     )
-    thirteenth_month: Optional[Amount] = Field(
+    thirteenth_month_amt: Optional[Amount] = Field(
         default=None,
-        description="13th-month value with unit (e.g., value=1.0, unit='monthly wage' or value=50, unit='% of annual salary') — Omit if thirteenth_month_present = false."
+        description="13th-month value with unit (e.g., value=1.0, unit='monthly wage' or value=50, unit='% of annual salary') — Omit if thirteenth_month = false."
     )
 
     fixed_annual_lump: Optional[Amount] = Field(
@@ -164,38 +201,36 @@ class BonusesInfo(BaseModel):
         description="Set true only if a performance/target-based bonus beyond base pay is explicitly stated."
     )
 
-    job_specific_allowances_present: bool = Field(
+    job_allowances_present: bool = Field(
         default=False,
         description="Set true only if role-linked allowances are explicitly stated (e.g., cashier allowance, driver's license allowance)."
     )
-    job_specific_allowances_note: str = Field(
+    job_allowances_note: str = Field(
         default="",
-        description="Short description of role-linked allowances as stated. Leave empty if job_specific_allowances_present = false."
+        description="Short description of role-linked allowances. Leave empty if job_allowances_present = false."
     )
 
-    qualification_bonus_present: bool = Field(
+    qual_bonus_present: bool = Field(
         default=False,
         description="Set true only if a monetary bonus for obtaining specific diplomas/certifications is explicitly stated."
     )
     qualification_bonus_note: str = Field(
         default="",
-        description=(
-            "Short note exactly as stated describing qualification-related bonuses — include whether it is one-off or recurring (e.g., monthly), the amount or percentage, eligible diplomas/certifications, and any other stated conditions (e.g., job relevance, repayment if leaving early). Leave empty if qualification_bonus_present = false."
-        )
+        description="Qualification-related bonuses: one-off/recurring (e.g., monthly), amount/percentage, eligible diplomas/certifications, conditions (e.g., job relevance, repayment if leaving early). Leave empty if qual_bonus_present = false."
     )
 
-    seniority_or_loyalty_bonus_present: bool = Field(
+    seniority_loyalty_bonus: bool = Field(
         default=False,
         description="Set true only if a bonus/gratuity for long service or seniority is explicitly stated."
     )
 
-    retirement_gratuity_present: bool = Field(
+    retire_gratuity_present: bool = Field(
         default=False,
         description="Set true only if a lump sum at retirement or long-service exit is explicitly stated."
     )
     retirement_gratuity_note: str = Field(
         default="",
-        description="Description/value of lump sum at retirement or long-service exit exactly as stated (e.g., '1 month salary after 25 years'). Leave empty if retirement_gratuity_present = false."
+        description="Description/value of lump sum at retirement or long-service exit (e.g., '1 month salary after 25 years'). Leave empty if retire_gratuity_present = false."
     )
 
 
@@ -203,31 +238,31 @@ class BonusesInfo(BaseModel):
 # WAGE SCALES & PROGRESSION
 # ----------------------------
 class WageScalesInfo(BaseModel):
-    entry_step_by_experience_present: bool = Field(
+    entry_step_exp_present: bool = Field(
         default=False,
         description="Set true only if the CAO allows a higher initial step/trede based on relevant experience/competence."
     )
-    entry_step_by_experience_rule: str = Field(
+    entry_step_exp_rule: str = Field(
         default="",
-        description="Short rule text exactly as stated (e.g., '≥3 yrs relevant exp → start ≥ Trede 3; manager discretion'). Leave empty if entry_step_by_experience_present = false."
+        description="Short rule text (e.g., '≥3 yrs relevant exp → start ≥ Trede 3; manager discretion'). Leave empty if entry_step_exp_present = false."
     )
 
-    personal_allowance_at_max_scale_present: bool = Field(
+    pers_allow_max_scale: bool = Field(
         default=False,
         description="Set true only if a personal pay supplement ('persoonlijke toeslag') is granted when an employee reaches the maximum of the wage scale or retains a higher wage after reclassification."
     )
-    personal_allowance_rule_text: str = Field(
+    pers_allow_rule: str = Field(
         default="",
-        description="Basis/%/amount, duration, pensionability, and any phase-out or indexation exactly as stated. Leave empty if personal_allowance_at_max_scale_present = false."
+        description="Basis/%/amount, duration, pensionability, phase-out or indexation. Leave empty if pers_allow_max_scale = false."
     )
 
-    performance_step_variation_present: bool = Field(
+    perf_step_var_present: bool = Field(
         default=False,
         description="Set true only if the employer may grant extra steps or withhold steps based on performance."
     )
-    performance_step_variation_rule: str = Field(
+    perf_step_var_rule: str = Field(
         default="",
-        description="Criteria/limits exactly as stated (e.g., 'max +2 steps after excellent rating; withholding requires PIP & OR notification'). Leave empty if performance_step_variation_present = false."
+        description="Criteria/limits (e.g., 'max +2 steps after excellent rating; withholding requires PIP & OR notification'). Leave empty if perf_step_var_present = false."
     )
 
 
@@ -252,9 +287,7 @@ class PensionInfo(BaseModel):
     # Selection rule for 'typical' group (if needed for single values)
     selection_rule_pension: str = Field(
         default="unspecified",
-        description=(
-            "How the 'typical' group was chosen when multiple rates exist (e.g., 'majority_headcount', 'office_vs_field_rule', 'base_tier', 'latest_year', 'other', 'unspecified')."
-        )
+        description="How 'typical' group was chosen when multiple rates exist: 'majority_headcount', 'office_vs_field_rule', 'base_tier', 'latest_year', 'other', 'unspecified'."
     )
 
     employee_contrib: Optional[Amount] = Field(
@@ -270,7 +303,7 @@ class PensionInfo(BaseModel):
         description="Franchise amount for the CAO period with unit (e.g., value=14400, unit='EUR per year')."
     )
 
-    retirement_age_normal: Optional[Amount] = Field(
+    retire_age_normal: Optional[Amount] = Field(
         default=None,
         description="Normal retirement age (e.g., value=67, unit='years')."
     )
@@ -278,40 +311,40 @@ class PensionInfo(BaseModel):
         default=None,
         description="Early retirement age (e.g., value=63, unit='years')."
     )
-    retirement_age_deferred: Optional[Amount] = Field(
+    retire_age_deferred: Optional[Amount] = Field(
         default=None,
         description="Deferred/postponed retirement age (e.g., value=70, unit='years')."
     )
 
-    accrual_during_statutory_leaves: bool = Field(
+    accrual_stat_leaves: bool = Field(
         default=False,
         description="Set true only if the CAO explicitly states accrual continues during statutory leaves."
     )
-    accrual_during_illness_year2: bool = Field(
+    accrual_illness_y2: bool = Field(
         default=False,
         description="Set true only if full accrual continues in the 2nd year of illness is explicitly stated."
     )
-    excedentregeling_present: bool = Field(
+    excedent_present: bool = Field(
         default=False,
         description="Set true if an 'excedentregeling' (accrual above wage cap) is explicitly offered."
     )
-    premium_change_equal_split: bool = Field(
+    premium_eq_split: bool = Field(
         default=False,
         description="Set true only if future premium changes are explicitly split equally between employer and employee."
     )
 
     # Heterogeneity (capture ranges; do not infer)
-    heterogeneity_present_pension: bool = Field(
+    hetero_pension: bool = Field(
         default=False,
         description="Set true if different pension rates are shown for major groups."
     )
     employee_contrib_range: Optional[AmountRange] = Field(
         default=None,
-        description="Employee contribution range among major groups (e.g., min=4.5, max=6.5, unit='% of salary') — Omit if heterogeneity_present_pension = false."
+        description="Employee contribution range among major groups (e.g., min=4.5, max=6.5, unit='% of salary') — Omit if hetero_pension = false."
     )
     premium_total_range: Optional[AmountRange] = Field(
         default=None,
-        description="Total pension premium range among major groups (e.g., min=15, max=25, unit='% of salary') — Omit if heterogeneity_present_pension = false."
+        description="Total pension premium range among major groups (e.g., min=15, max=25, unit='% of salary') — Omit if hetero_pension = false."
     )
 
 
@@ -335,25 +368,25 @@ class LeaveInfo(BaseModel):
         default=False,
         description="Set true only if the CAO explicitly states an enhancement above statutory for maternity."
     )
-    paid_maternity_leave: Optional[Amount] = Field(
+    paid_maternity: Optional[Amount] = Field(
         default=None,
-        description="Duration of fully paid maternity leave exactly as stated in the CAO (e.g., value=16, unit='weeks')."
+        description="Duration of fully paid maternity leave (e.g., value=16, unit='weeks')."
     )
-    partially_paid_maternity_leave: Optional[Amount] = Field(
+    partially_paid_maternity: Optional[Amount] = Field(
         default=None,
-        description="Duration of partially paid maternity leave as stated (e.g., value=10, unit='weeks')."
+        description="Duration of partially paid maternity leave (e.g., value=10, unit='weeks')."
     )
     partially_paid_maternity_pay: Optional[Amount] = Field(
         default=None,
         description="Pay level during partially paid maternity leave (e.g., value=70, unit='% of salary')."
     )
-    unpaid_maternity_leave: Optional[Amount] = Field(
+    unpaid_maternity: Optional[Amount] = Field(
         default=None,
-        description="Duration of additional unpaid maternity leave, as stated (e.g., value=6, unit='weeks')."
+        description="Duration of additional unpaid maternity leave (e.g., value=6, unit='weeks')."
     )
     maternity_note: str = Field(
         default="",
-        description="Maternity notes exactly as stated."
+        description="Maternity notes."
     )
 
     # Paternity / partner
@@ -361,27 +394,27 @@ class LeaveInfo(BaseModel):
         default=False,
         description="Set true only if the CAO explicitly states any improvement for paternity/partner leave."
     )
-    paid_paternity_leave: Optional[Amount] = Field(
+    paid_paternity: Optional[Amount] = Field(
         default=None,
-        description="Duration of fully paid paternity/partner leave as stated (e.g., value=6, unit='weeks')."
+        description="Duration of fully paid paternity/partner leave (e.g., value=6, unit='weeks')."
     )
-    partially_paid_paternity_leave: Optional[Amount] = Field(
+    partially_paid_paternity: Optional[Amount] = Field(
         default=None,
-        description="Duration of partially paid paternity/partner leave as stated (e.g., value=4, unit='weeks')."
+        description="Duration of partially paid paternity/partner leave (e.g., value=4, unit='weeks')."
     )
     partially_paid_paternity_pay: Optional[Amount] = Field(
         default=None,
         description="Pay level during partially paid paternity/partner leave (e.g., value=70, unit='% of salary')."
     )
-    unpaid_paternity_leave: Optional[Amount] = Field(
+    unpaid_paternity: Optional[Amount] = Field(
         default=None,
-        description="Duration of unpaid paternity/partner leave as stated (e.g., value=2, unit='weeks')."
+        description="Duration of unpaid paternity/partner leave (e.g., value=2, unit='weeks')."
     )
 
     # Adoption / foster
-    adoption_leave: Optional[Amount] = Field(
+    adoption: Optional[Amount] = Field(
         default=None,
-        description="Duration of adoption/foster leave as stated (e.g., value=10, unit='weeks')."
+        description="Duration of adoption/foster leave (e.g., value=10, unit='weeks')."
     )
     adoption_pay: Optional[Amount] = Field(
         default=None,
@@ -389,37 +422,37 @@ class LeaveInfo(BaseModel):
     )
 
     # Parental
-    parental_leave_topup_present: bool = Field(
+    parental_topup_present: bool = Field(
         default=False,
         description="Set true only if an employer top-up for parental leave is explicitly stated."
     )
-    parental_leave_topup_pay: Optional[Amount] = Field(
+    parental_topup_pay: Optional[Amount] = Field(
         default=None,
-        description="Top-up pay level during parental leave, as stated (e.g., value=70, unit='% of salary')."
+        description="Top-up pay level during parental leave (e.g., value=70, unit='% of salary')."
     )
-    parental_leave_unpaid: Optional[Amount] = Field(
+    parental_unpaid: Optional[Amount] = Field(
         default=None,
-        description="Duration of unpaid parental leave as stated (e.g., value=26, unit='weeks')."
+        description="Duration of unpaid parental leave (e.g., value=26, unit='weeks')."
     )
 
     # Parental leave eligibility
-    parental_leave_tenure_requirement_present: bool = Field(
+    parental_tenure_req_present: bool = Field(
         default=False,
         description="Set true only if the CAO explicitly requires minimum tenure with the employer before eligibility for parental leave."
     )
-    parental_leave_tenure_requirement: Optional[Amount] = Field(
+    parental_tenure_req: Optional[Amount] = Field(
         default=None,
-        description="Minimum tenure required for parental leave eligibility as stated (e.g., value=12, unit='months'). Omit if parental_leave_tenure_requirement_present = false."
+        description="Minimum tenure required for parental leave eligibility (e.g., value=12, unit='months'). Omit if parental_tenure_req_present = false."
     )
 
     # Abortion
-    abortion_leave_present: bool = Field(
+    abortion_present: bool = Field(
         default=False,
         description="Set true only if a specific abortion leave provision is explicitly mentioned."
     )
 
     # Sickness
-    sick_leave_topup_present: bool = Field(
+    sick_topup_present: bool = Field(
         default=False,
         description="Set true only if an employer sick-pay top-up is explicitly stated."
     )
@@ -429,7 +462,7 @@ class LeaveInfo(BaseModel):
     )
     sickpay_continuation: Optional[Amount] = Field(
         default=None,
-        description="Sick-pay continuation rate as stated (e.g., value=70, unit='% of salary')."
+        description="Sick-pay continuation rate (e.g., value=70, unit='% of salary')."
     )
     sickpay_extra_insurance_present: bool = Field(
         default=False,
@@ -437,11 +470,11 @@ class LeaveInfo(BaseModel):
     )
 
     # Care leave
-    care_leave_topup_present: bool = Field(
+    care_topup_present: bool = Field(
         default=False,
         description="Set true only if the CAO explicitly tops up short-/long-term care leave."
     )
-    short_term_care_leave: Optional[Amount] = Field(
+    short_term_care: Optional[Amount] = Field(
         default=None,
         description="Duration of short-term care leave (e.g., value=10, unit='days per year')."
     )
@@ -449,7 +482,7 @@ class LeaveInfo(BaseModel):
         default=None,
         description="Pay level during short-term care leave (e.g., value=100, unit='% of salary')."
     )
-    long_term_care_leave: Optional[Amount] = Field(
+    long_term_care: Optional[Amount] = Field(
         default=None,
         description="Duration of long-term care leave (e.g., value=6, unit='months')."
     )
@@ -469,35 +502,31 @@ class LeaveInfo(BaseModel):
     )
 
     # Heterogeneity & notes
-    heterogeneity_present_leave: bool = Field(
+    hetero_present: bool = Field(
         default=False,
         description="Set true if major groups have different leave entitlements or pay levels."
     )
     liberation_day_annual: bool = Field(
         default=False,
-        description="Set true if 5 May (Liberation Day) is a paid day off every year, as stated."
+        description="Set true if 5 May (Liberation Day) is a paid day off every year."
     )
     liberation_day_lustrum: bool = Field(
         default=False,
-        description="Set true if 5 May is a paid day off only in lustrum years (every 5 years), as stated."
+        description="Set true if 5 May is a paid day off only in lustrum years (every 5 years)."
     )
     liberation_day_comp_note: str = Field(
         default="",
         description="Compensation note if Liberation Day is not a day off."
     )
-    extra_leave_seniority_present: bool = Field(
+    extra_seniority_present: bool = Field(
         default=False,
-        description=(
-            "Set true only if the CAO explicitly grants extra vacation or leave entitlements based on years of service and/or age."
-        )
+        description="Set true only if the CAO explicitly grants extra vacation or leave entitlements based on years of service and/or age."
     )
-    extra_leave_seniority_schedule: str = Field(
+    extra_seniority_schedule: str = Field(
         default="",
-        description=(
-            "Compact schedule or rule exactly as stated, showing seniority- or age-based leave increments. Leave empty if extra_leave_seniority_present = false."
-        )
+        description="Schedule or rule showing seniority- or age-based leave/vacation increments. Leave empty if extra_seniority_present = false."
     )
-    leave_note: str = Field(
+    note: str = Field(
         default="",
         description="Any special leaves."
     )
@@ -516,9 +545,7 @@ class TerminationInfo(BaseModel):
 
     selection_rule_notice: str = Field(
         default="unspecified",
-        description=(
-            "How the 'typical' group for notice was chosen when multiple rules exist (e.g., 'majority_headcount', 'base_tier', 'office_vs_field_rule', 'latest_year', 'unspecified', 'other')."
-        )
+        description="How 'typical' group for notice was chosen when multiple rules exist: 'majority_headcount', 'base_tier', 'office_vs_field_rule', 'latest_year', 'unspecified', 'other'."
     )
 
     employer_notice: Optional[Amount] = Field(
@@ -531,55 +558,51 @@ class TerminationInfo(BaseModel):
         description="Typical employee notice period (employee resigning) (e.g., value=1, unit='months')."
     )
 
-    heterogeneity_present_notice: bool = Field(
+    hetero_present: bool = Field(
         default=False,
         description="Set true if major groups have different notice periods."
     )
 
     employer_notice_range: Optional[AmountRange] = Field(
         default=None,
-        description="Employer notice duration range across main groups (e.g., min=1, max=3, unit='months') — Omit if heterogeneity_present_notice = false."
+        description="Employer notice duration range across main groups (e.g., min=1, max=3, unit='months') — Omit if hetero_present = false."
     )
 
     employee_notice_range: Optional[AmountRange] = Field(
         default=None,
-        description="Employee notice duration range across main groups (e.g., min=1, max=2, unit='months') — Omit if heterogeneity_present_notice = false."
+        description="Employee notice duration range across main groups (e.g., min=1, max=2, unit='months') — Omit if hetero_present = false."
     )
 
-    notice_period_by_tenure_present: bool = Field(
+    notice_tenure_present: bool = Field(
         default=False,
-        description=(
-            "Set true only if notice periods vary explicitly by years of service (for employer and/or employee)."
-        )
+        description="Set true only if notice periods vary explicitly by years of service (for employer and/or employee)."
     )
 
-    notice_period_by_tenure_rule: str = Field(
+    notice_tenure_rule: str = Field(
         default="",
-        description=(
-            "Exact rule or schedule for tenure-based notice periods as stated. Leave empty if notice_period_by_tenure_present = false."
-        )
+        description="Rule or schedule for tenure-based notice periods. Leave empty if notice_tenure_present = false."
     )
 
-    can_shorten_notice_with_uwv_permit: bool = Field(
+    shorten_notice_uwv: bool = Field(
         default=False,
         description="Set true only if the CAO explicitly allows notice to be shortened with a UWV permit."
     )
     notice_min_floor: Optional[Amount] = Field(
         default=None,
-        description="Minimum notice duration that must remain after any shortening (e.g., value=1, unit='months') — Omit if can_shorten_notice_with_uwv_permit = false."
+        description="Minimum notice duration that must remain after any shortening (e.g., value=1, unit='months') — Omit if shorten_notice_uwv = false."
     )
 
     dismissal_approval: str = Field(
         default="unspecified",
-        description="Which approval or authorization route the CAO states is required for a standard dismissal (e.g., 'UWV', 'Judge', 'Both', 'None', 'Conditional', 'unspecified', 'other'). Use 'Conditional' if approval applies only in specific cases or time periods."
+        description="Approval route required for standard dismissal: 'UWV', 'Judge', 'Both', 'None', 'Conditional', 'unspecified', 'other'. Use 'Conditional' if approval applies only in specific cases/time periods."
     )
 
-    sickness_dismissal_protection: bool = Field(
+    sick_dismissal_prot: bool = Field(
         default=False,
         description="Set true if the CAO reiterates or extends the dismissal ban/protection during sickness."
     )
 
-    end_at_AOW_age_automatic: bool = Field(
+    end_at_AOW_auto: bool = Field(
         default=False,
         description="Set true only if the CAO states employment ends automatically at AOW (statutory pension) age."
     )
@@ -590,30 +613,28 @@ class TerminationInfo(BaseModel):
     )
     probation_fixedterm: Optional[Amount] = Field(
         default=None,
-        description="Maximum probation period for fixed-term contracts (e.g., value=2, unit='months'), exactly as stated."
+        description="Maximum probation period for fixed-term contracts (e.g., value=2, unit='months')."
     )
-    probation_indefinite: Optional[Amount] = Field(
+    probation_indef: Optional[Amount] = Field(
         default=None,
-        description="Maximum probation period for indefinite-term contracts (e.g., value=1, unit='months'), exactly as stated."
+        description="Maximum probation period for indefinite-term contracts (e.g., value=1, unit='months')."
     )
 
-    severance_or_ww_supplement_present: bool = Field(
+    severance_ww_supplement: bool = Field(
         default=False,
         description="Set true only if the CAO adds severance or WW (unemployment) supplements beyond statutory transition pay."
     )
     severance_extra: Optional[Amount] = Field(
         default=None,
-        description="Quantified extra severance if stated (e.g., value=5000, unit='EUR') — Omit if severance_or_ww_supplement_present = false."
+        description="Quantified extra severance if stated (e.g., value=5000, unit='EUR') — Omit if severance_ww_supplement = false."
     )
-    severance_extra_formula_note: str = Field(
+    severance_extra_formula: str = Field(
         default="",
-        description="Short formula or rule text for extra severance. Leave empty if severance_or_ww_supplement_present = false."
+        description="Short formula or rule text for extra severance. Leave empty if severance_ww_supplement = false."
     )
-    severance_by_tenure_rule_note: str = Field(
+    severance_tenure_note: str = Field(
         default="",
-        description=(
-            "Brief formula or schedule exactly as stated if the CAO adds tenure-based severance beyond statutory transition pay. Leave empty if not applicable."
-        )
+        description="Formula or schedule if CAO adds tenure-based severance beyond statutory transition pay. Leave empty if not applicable."
     )
 
 
@@ -628,24 +649,22 @@ class OvertimeInfo(BaseModel):
         description="Set true only if the CAO specifies overtime or allowance rules beyond statutory defaults."
     )
 
-    selection_rule_overtime: str = Field(
+    selection_rule: str = Field(
         default="unspecified",
-        description=(
-            "How the 'typical' group for overtime was chosen when multiple worker groups exist (e.g., 'majority_headcount', 'base_tier', 'office_vs_field_rule', 'latest_year', 'unspecified', 'other'). Use the same selection logic as in notice and pension fields."
-        )
+        description="How 'typical' group for overtime was chosen when multiple groups exist: 'majority_headcount', 'base_tier', 'office_vs_field_rule', 'latest_year', 'unspecified', 'other'. Use same logic as notice/pension."
     )
 
-    overtime_trigger_daily: Optional[Amount] = Field(
+    trigger_daily: Optional[Amount] = Field(
         default=None,
-        description="Daily threshold after which hours count as overtime, exactly as stated (e.g., value=8, unit='hours')."
+        description="Daily threshold after which hours count as overtime (e.g., value=8, unit='hours')."
     )
-    overtime_trigger_weekly: Optional[Amount] = Field(
+    trigger_weekly: Optional[Amount] = Field(
         default=None,
-        description="Weekly threshold after which hours count as overtime, exactly as stated (e.g., value=40, unit='hours')."
+        description="Weekly threshold after which hours count as overtime (e.g., value=40, unit='hours')."
     )
 
     # Surcharges
-    overtime_compensation_mode: str = Field(
+    compensation_mode: str = Field(
         default="unspecified",
         description="How overtime is compensated according to the CAO (e.g., 'monetary_pay', 'TOIL', 'both', 'unspecified', 'other')."
     )
@@ -653,17 +672,17 @@ class OvertimeInfo(BaseModel):
         default="unspecified",
         description="How surcharges (e.g., overtime, night, weekend) interact (e.g., 'highest_only', 'cumulative', 'unclear', 'unspecified', 'other')."
     )
-    overtime_allowance: Optional[Amount] = Field(
+    allowance: Optional[Amount] = Field(
         default=None,
         description="Typical overtime surcharge (e.g., value=150, unit='% of hourly rate')."
     )
-    heterogeneity_present_overtime: bool = Field(
+    hetero_present: bool = Field(
         default=False,
         description="Set true if different overtime rates are shown for major groups."
     )
-    overtime_allowance_range: Optional[AmountRange] = Field(
+    allowance_range: Optional[AmountRange] = Field(
         default=None,
-        description="Overtime surcharge range across main cases (e.g., min=125, max=175, unit='% of hourly rate') — Omit if heterogeneity_present_overtime = false."
+        description="Overtime surcharge range across main cases (e.g., min=125, max=175, unit='% of hourly rate') — Omit if hetero_present = false."
     )
 
     # Shift / unfavourable hours
@@ -684,7 +703,7 @@ class OvertimeInfo(BaseModel):
     # Working time bounds and rest
     min_rest_between_shifts: Optional[Amount] = Field(
         default=None,
-        description="Minimum rest required between shifts, exactly as stated (e.g., value=11, unit='hours')."
+        description="Minimum rest required between shifts (e.g., value=11, unit='hours')."
     )
 
     max_hours_per_day: Optional[Amount] = Field(
@@ -697,7 +716,7 @@ class OvertimeInfo(BaseModel):
         description="Maximum weekly working time set by the CAO (e.g., value=45, unit='hours')."
     )
 
-    compulsory_overtime_annual: Optional[Amount] = Field(
+    compulsory_annual: Optional[Amount] = Field(
         default=None,
         description="Maximum annual compulsory overtime if specified (e.g., value=200, unit='hours per year')."
     )
@@ -719,12 +738,12 @@ class TrainingInfo(BaseModel):
         description="Set true only if the CAO grants training/education rights."
     )
 
-    training_time_yearly: Optional[Amount] = Field(
+    time_yearly: Optional[Amount] = Field(
         default=None,
         description="Typical paid training time per year (e.g., value=40, unit='hours per year')."
     )
 
-    training_budget: Optional[Amount] = Field(
+    budget: Optional[Amount] = Field(
         default=None,
         description="Annual monetary training budget (e.g., value=2000, unit='EUR per year')."
     )
@@ -739,7 +758,7 @@ class TrainingInfo(BaseModel):
         description="Percentage or amount of training/study costs reimbursed by the employer or sector fund (e.g., value=100, unit='% of costs')."
     )
 
-    training_fund_present: bool = Field(
+    fund_present: bool = Field(
         default=False,
         description="Set true if a sectoral/CAO training fund finances training or subsidies."
     )
@@ -752,9 +771,9 @@ class TrainingInfo(BaseModel):
         description="Set true only if the CAO states employer pays 100% for mandatory/company-required training."
     )
 
-    training_note: str = Field(
+    note: str = Field(
         default="",
-        description="Concise verbatim summary of special rules."
+        description="Concise verbatim summary of special training rules."
     )
 
 
@@ -769,44 +788,44 @@ class HomeofficeInfo(BaseModel):
         description="Set true only if the CAO includes home office / telework provisions."
     )
 
-    homeoffice_entitlement: Optional[Amount] = Field(
+    entitlement: Optional[Amount] = Field(
         default=None,
-        description="Entitled amount of remote work allowed, as explicitly stated in the CAO (e.g., value=2, unit='days per week')."
+        description="Entitled amount of remote work (home office/telework) allowed, as explicitly stated in the CAO (e.g., value=2, unit='days per week')."
     )
 
-    homeoffice_stipend_present: bool = Field(
+    stipend_present: bool = Field(
         default=False,
         description="Set true only if a fixed home office allowance is stated."
     )
-    homeoffice_stipend: Optional[Amount] = Field(
+    stipend: Optional[Amount] = Field(
         default=None,
-        description="Home office allowance amount (e.g., value=50, unit='EUR per month') — Omit if homeoffice_stipend_present = false."
+        description="Home office allowance amount (e.g., value=50, unit='EUR per month') — Omit if stipend_present = false."
     )
 
-    homeoffice_discretion: str = Field(
+    discretion: str = Field(
         default="unspecified",
         description="Who decides on home office arrangements, as explicitly stated in the CAO (e.g., 'employer_only', 'joint_with_OR' = decision made jointly with the Works Council, 'employee_request' = employees may request or decide, 'unspecified', 'other')."
     )
 
-    homeoffice_costs_reimbursed: bool = Field(
+    costs_reimbursed: bool = Field(
         default=False,
         description="Set true if the employer reimburses home office-related costs."
     )
 
-    homeoffice_agreement_required: bool = Field(
+    agreement_required: bool = Field(
         default=False,
         description="Set true if a formal telework agreement/protocol is required."
     )
-    homeoffice_health_safety_guarantee: bool = Field(
+    health_safety_guarantee: bool = Field(
         default=False,
         description="Set true if the employer commits to meet OSH/Arbo obligations at the home office."
     )
-    homeoffice_travel_time_compensation: bool = Field(
+    travel_time_compensation: bool = Field(
         default=False,
         description="Set true only if the CAO explicitly states that additional commuting time arising from home-office or hybrid work is compensated."
     )
 
-    homeoffice_note: str = Field(
+    note: str = Field(
         default="",
         description="Additional home office details exactly as stated, including: reimbursed cost types, equipment provision, campaigns, stimulation-only provisions, statutory minimum provisions, and any other home office-related remarks."
     )
@@ -1059,39 +1078,39 @@ class ChildcareInfo(BaseModel):
         description="Set true if the employer provides any childcare benefit/support."
     )
 
-    childcare_support: Optional[Amount] = Field(
+    support: Optional[Amount] = Field(
         default=None,
         description="Monetary childcare support amount (e.g., value=200, unit='EUR per month')."
     )
 
-    childcare_support_cap: Optional[Amount] = Field(
+    support_cap: Optional[Amount] = Field(
         default=None,
-        description="Maximum employer/sector contribution if a cap is stated (e.g., value=400, unit='EUR per month')."
+        description="Maximum employer/sector contribution if a cap is stated for childcare support (e.g., value=400, unit='EUR per month')."
     )
 
-    childcare_inhouse_present: bool = Field(
+    inhouse_present: bool = Field(
         default=False,
         description="Set true if on-site or company-arranged childcare is provided/financed."
     )
-    childcare_discount_present: bool = Field(
+    discount_present: bool = Field(
         default=False,
         description="Set true if discounts at contracted childcare institutions are provided."
     )
-    childcare_priority_access: bool = Field(
+    priority_access: bool = Field(
         default=False,
-        description="Set true if priority access or reserved places are provided."
+        description="Set true if priority access or reserved places are provided for childcare."
     )
 
-    childcare_age_min: Optional[Amount] = Field(
+    age_min: Optional[Amount] = Field(
         default=None,
-        description="Minimum covered child age if stated (e.g., value=0, unit='years')."
+        description="Minimum covered child age for childcare support if stated (e.g., value=0, unit='years')."
     )
-    childcare_age_max: Optional[Amount] = Field(
+    age_max: Optional[Amount] = Field(
         default=None,
-        description="Maximum covered child age if stated (e.g., value=12, unit='years')."
+        description="Maximum covered child age for childcare support if stated (e.g., value=12, unit='years')."
     )
 
-    childcare_provider_scope: str = Field(
+    provider_scope: str = Field(
         default="unspecified",
         description="Which childcare providers qualify for the employer/sector childcare support, as explicitly stated (e.g., 'any', 'contracted_only', 'sector_only', 'company_only', 'unspecified', 'other'): "
         "'any' = all registered providers; "
@@ -1101,28 +1120,39 @@ class ChildcareInfo(BaseModel):
         "'unspecified' = not stated."
     )
 
-    childcare_public_coord: str = Field(
+    public_coord: str = Field(
         default="unspecified",
         description="How childcare benefits interact with public subsidies/fiscal rules (e.g., 'top_up_after_public_benefit', 'within_fiscal_max', 'gross_before_public_benefit', 'unspecified', 'other')."
     )
 
-    childcare_funding_through_sector_fund: bool = Field(
+    funding_sector_fund: bool = Field(
         default=False,
         description="Set true if childcare support is financed via a sector fund."
     )
 
-    childcare_min_tenure_months: Optional[float] = Field(
+    min_tenure_months: Optional[float] = Field(
         default=None,
-        description="Minimum tenure required to be eligible for the childcare benefit (months)."
+        description=(
+            "Minimum tenure with the same employer (in months) required before the worker becomes "
+            "eligible for childcare-related rights or benefits, if a tenure condition is stated. "
+            "This includes, for example, eligibility for childcare subsidies, childcare-related "
+            "leave (such as parental leave) or work-hours adjustments linked to care responsibilities. "
+            "By default, interpret tenure as time with the same employer. If the CAO explicitly defines "
+            "a tenure requirement at sector level rather than employer level, still record the required "
+            "duration in months here AND clearly describe that it is sector-level (not employer-level) "
+            "in the eligibility_note field. Set to 0 if the text explicitly grants "
+            "the right from the start of employment. Leave as null/None if no tenure requirement is mentioned."
+        ),
     )
-    childcare_min_fte: Optional[Amount] = Field(
+
+    min_fte: Optional[Amount] = Field(
         default=None,
         description="Minimum employment fraction (FTE) required for childcare benefit eligibility (e.g., value=0.5, unit='FTE')."
     )
 
-    childcare_benefit_eligibility_note: str = Field(
+    eligibility_note: str = Field(
         default="",
-        description="Eligibility limits and conditions exactly as stated, including: age scope details, other eligibility limits, and any other conditions for childcare benefit eligibility."
+        description="Eligibility limits and conditions for childcare benefits exactly as stated, including: age scope details, other eligibility limits, and any other conditions for childcare benefit eligibility."
     )
 
 
@@ -1163,29 +1193,97 @@ class AIInfo(BaseModel):
 # ----------------------------
 # Folder: non_salary/gen_bon_wag_pen_ter
 class NonSalaryPart1(BaseModel):
-    """Part 1: General, Bonuses, Wage Scales, Pension, Termination"""
-    general_information: GeneralInfo = Field(default_factory=GeneralInfo)
-    bonuses_info: BonusesInfo = Field(default_factory=BonusesInfo)
-    wage_scales_info: WageScalesInfo = Field(default_factory=WageScalesInfo)
-    pension_information: PensionInfo = Field(default_factory=PensionInfo)
-    termination_information: TerminationInfo = Field(default_factory=TerminationInfo)
+    """
+    Part 1: General contract information, bonuses, wage scales, pension, and termination rules.
+    
+    All fields record exactly as stated in the CAO. Extract:
+    - General: CAO dates, scope, retroactivity, AVV status, SBI codes, document type
+    - Bonuses: Sign-on, 13th month, profit sharing, performance, job allowances, qualification, seniority/loyalty, retirement gratuity
+    - Wage Scales: Entry step rules, personal allowances, performance step variations
+    - Pension: Scheme type, contributions, accrual rates, retirement ages, heterogeneity
+    - Termination: Notice periods, severance, dismissal rules, probation, tenure-based rules
+    """
+    general_information: GeneralInfo = Field(
+        default_factory=GeneralInfo,
+        description="General CAO contract information including dates, scope, retroactivity, and classification."
+    )
+    bonuses_info: BonusesInfo = Field(
+        default_factory=BonusesInfo,
+        description="Bonus and incentive schemes beyond base salary (sign-on, 13th month, profit sharing, etc.)."
+    )
+    wage_scales_info: WageScalesInfo = Field(
+        default_factory=WageScalesInfo,
+        description="Wage scale progression rules including entry steps, personal allowances, and performance variations."
+    )
+    pension_information: PensionInfo = Field(
+        default_factory=PensionInfo,
+        description="Pension scheme details including contributions, accrual rates, retirement ages, and heterogeneity."
+    )
+    termination_information: TerminationInfo = Field(
+        default_factory=TerminationInfo,
+        description="Termination and notice period rules including severance, dismissal protection, and probation periods."
+    )
 
 # Folder: non_salary/lea_ove_tra
 class NonSalaryPart2(BaseModel):
-    """Part 2: Leave, Overtime, Training"""
-    leave_information: LeaveInfo = Field(default_factory=LeaveInfo)
-    overtime_information: OvertimeInfo = Field(default_factory=OvertimeInfo)
-    training_information: TrainingInfo = Field(default_factory=TrainingInfo)
+    """
+    Part 2: Leave entitlements, overtime rules, and training provisions.
+    
+    All fields record exactly as stated in the CAO. Extract:
+    - Leave: Maternity, paternity, adoption, parental, sick, care, vacation, and special leave entitlements
+    - Overtime: Trigger thresholds, compensation modes, allowances, compulsory limits, rest requirements
+    - Training: Time allowances, budgets, funds, cost reimbursement, mandatory training provisions
+    """
+    leave_information: LeaveInfo = Field(
+        default_factory=LeaveInfo,
+        description="Leave entitlements including maternity, paternity, parental, sick, care, and vacation leave."
+    )
+    overtime_information: OvertimeInfo = Field(
+        default_factory=OvertimeInfo,
+        description="Overtime rules including triggers, compensation, allowances, and working time limits."
+    )
+    training_information: TrainingInfo = Field(
+        default_factory=TrainingInfo,
+        description="Training and education provisions including time allowances, budgets, and cost reimbursement."
+    )
 
 # Folder: non_salary/hom_con_saf_chi_ai_fri
 class NonSalaryPart3(BaseModel):
-    """Part 3: Homeoffice, Contract Type, Safety, Childcare, AI, Fringe Benefits"""
-    homeoffice_information: HomeofficeInfo = Field(default_factory=HomeofficeInfo)
-    contract_type_information: ContractTypeInfo = Field(default_factory=ContractTypeInfo)
-    safety_information: SafetyInfo = Field(default_factory=SafetyInfo)
-    childcare_information: ChildcareInfo = Field(default_factory=ChildcareInfo)
-    ai_information: AIInfo = Field(default_factory=AIInfo)
-    fringe_benefits_information: FringeBenefitsInfo = Field(default_factory=FringeBenefitsInfo)
+    """
+    Part 3: Home office/telework, contract types, safety/integrity, childcare, AI policies, and fringe benefits.
+    
+    All fields record exactly as stated in the CAO. Extract:
+    - Homeoffice: Remote work entitlements, stipends, cost reimbursement, agreements, health/safety guarantees
+    - Contract Types: Full-time hours, part-time, min-max contracts, ketenregeling, conversion rights, work hours adjustment
+    - Safety: Harassment/integrity protocols, confidential counsellors, reporting channels, safety training, wellbeing programs
+    - Childcare: Support amounts, in-house facilities, discounts, priority access, age limits, funding sources
+    - AI: Policy existence, automated decisions, governance bodies, training rights, transparency requirements
+    - Fringe Benefits: Commuting, bike schemes, meal benefits, health insurance, relocation, certifications
+    """
+    homeoffice_information: HomeofficeInfo = Field(
+        default_factory=HomeofficeInfo,
+        description="Home office/telework provisions including entitlements, stipends, and cost reimbursement."
+    )
+    contract_type_information: ContractTypeInfo = Field(
+        default_factory=ContractTypeInfo,
+        description="Contract type rules including full-time hours, part-time, min-max contracts, and conversion rights."
+    )
+    safety_information: SafetyInfo = Field(
+        default_factory=SafetyInfo,
+        description="Safety and integrity provisions including protocols, counsellors, reporting channels, and wellbeing programs."
+    )
+    childcare_information: ChildcareInfo = Field(
+        default_factory=ChildcareInfo,
+        description="Childcare support including monetary support, in-house facilities, discounts, and eligibility requirements."
+    )
+    ai_information: AIInfo = Field(
+        default_factory=AIInfo,
+        description="AI/algorithmic management policies including automated decisions, governance, and training rights."
+    )
+    fringe_benefits_information: FringeBenefitsInfo = Field(
+        default_factory=FringeBenefitsInfo,
+        description="Fringe benefits including commuting, meal benefits, health insurance, and other non-salary benefits."
+    )
 
 
 # ---------------------------------------------------------------------
@@ -1223,12 +1321,12 @@ NON_SALARY_PROMPT = """Extract structured information from a JSON object derived
 
     WORKER FOCUS & TYPICAL GROUP
         - Focus on "normal workers" (≈23-65 years, no small groups). If groups differ (e.g., Construction vs UTA) and a single typical cannot be clearly chosen, allow min/max ONLY for key metrics (e.g., notice periods, overtime allowances).
-        - When present set heterogeneity_present_* = true when major worker groups have any different terms.
-            - When heterogeneity_present_* = true: fill BOTH typical values AND min/max fields for key metrics. When false: fill typical values only; leave min/max as null. 
+        - When present set hetero_present (or hetero_* for specific sections) = true when major worker groups have any different terms.
+            - When hetero_present = true: fill BOTH typical values AND min/max fields for key metrics. When false: fill typical values only; leave min/max as null. 
         - If present in {sections}: in pension_information, termination_information or overtime_information, first choose the typical worker/group using selection_rule_*. Preference order: majority_headcount (largest group) > office_vs_field_rule (core group) > base_tier (lowest service band for ages 23-65) > latest_year (most recent values) > other > unspecified (could not determine).
-            - pension_information: From employee_contrib till premium_change_equal_split, populate data ONLY for this group.
-            - overtime_information: From overtime_trigger_daily till overtime_allowance, populate data ONLY for this group.
-            - termination_information: From employer_notice till heterogeneity_present_notice, populate data ONLY for this group.
+            - pension_information: From employee_contrib till premium_eq_split, populate data ONLY for this group.
+            - overtime_information: From trigger_daily till allowance, populate data ONLY for this group.
+            - termination_information: From employer_notice till hetero_present, populate data ONLY for this group.
 
     EXTRACTION STEPS (INTERNAL - DO NOT OUTPUT)
         1) READ & ANCHOR

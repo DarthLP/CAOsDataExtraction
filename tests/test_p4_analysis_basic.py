@@ -64,8 +64,8 @@ def test_merge_extraction_results():
     # Sample non-salary data
     rest_extracted = {
         "contract_information": {
-            "start_date_contract": "2023-01-01",
-            "expiry_date_contract": "2024-12-31"
+            "start_date": "2023-01-01",
+            "expiry_date": "2024-12-31"
         },
         "pension_information": {
             "pension_scheme_basic": "50% employee, 50% employer",

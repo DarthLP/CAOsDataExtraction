@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Script to analyze JSON files in llmExtracted_json folder and identify empty fields.
+Script to analyze JSON files in outputs/llm_extracted/new_flow folder and identify empty fields.
 
 This script:
-1. Scans all JSON files in llmExtracted_json folder
+1. Scans all JSON files in outputs/llm_extracted/new_flow folder
 2. Analyzes which fields are empty in each file
 3. Provides detailed statistics about missing data
 4. Saves results to empty_files_analysis.txt
@@ -91,12 +91,12 @@ def analyze_json_file(file_path):
 
 def analyze_all_json_files():
     """
-    Analyze all JSON files in the llmExtracted_json folder.
+    Analyze all JSON files in the outputs/llm_extracted/new_flow folder.
     
     Returns:
         list: List of analysis results for all files
     """
-    json_folder = Path("llmExtracted_json")
+    json_folder = Path("outputs/llm_extracted/new_flow")
     if not json_folder.exists():
         print(f"❌ JSON folder '{json_folder}' not found!")
         return []

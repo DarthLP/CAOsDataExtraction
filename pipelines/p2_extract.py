@@ -61,7 +61,7 @@ INPUT:
 OUTPUT:
     - JSON files in {config['paths']['parsed_pdfs']}/[CAO_NUMBER]/ (if enabled)
     - Markdown files in {config['paths']['parsed_pdfs_markdown']}/[CAO_NUMBER]/ (if enabled)
-    - Progress tracking in utils/OUTPUT_tracker
+    - Progress tracking via scripts_pipeline_helper.p1_p2.OUTPUT_tracker
     - Debug logs in extraction_debug.log (if DEBUG=True)
 
 OUTPUT STRUCTURE (JSON):
@@ -153,7 +153,7 @@ from PyPDF2 import PdfReader
 from pdf2image import convert_from_path
 import pytesseract
 import pdfplumber
-from utils.OUTPUT_tracker import update_progress
+from scripts_pipeline_helper.p1_p2.OUTPUT_tracker import update_progress
 import traceback
 DEBUG_LOG_FILE = 'extraction_debug.log'
 DEBUG = False

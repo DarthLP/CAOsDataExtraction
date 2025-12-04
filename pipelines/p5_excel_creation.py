@@ -5,8 +5,7 @@ This script creates separate Excel outputs for salary and non-salary data from L
 It merges data from three non-salary folders, adds CAO info, and creates final Excel files.
 
 USAGE:
-    python pipelines/p5_excel_creation.py
-
+    
     With file limit:
         python pipelines/p5_excel_creation.py --max_files 10
 
@@ -30,7 +29,6 @@ import os
 import sys
 import json
 import argparse
-import csv
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
@@ -96,33 +94,6 @@ def truncate_text_for_excel(text: str, max_length: int = 32000) -> str:
     # Truncate and add ellipsis
     return text[:max_length-3] + "..."
 
-def normalize_filename(filename: str) -> str:
-    """
-    Normalize filename by removing common suffixes for matching.
-    
-    Handles double extensions (e.g., .pdf.pdf) by removing all instances.
-    
-    Args:
-        filename: Original filename
-        
-    Returns:
-        str: Normalized filename for matching
-    """
-    # Remove common suffixes (handle multiple occurrences, e.g., .pdf.pdf)
-    suffixes_to_remove = ['.pdf', '.md', '_analysis', '_extract']
-    
-    normalized = filename
-    # Keep removing suffixes until no more are found (handles .pdf.pdf cases)
-    changed = True
-    while changed:
-        changed = False
-        for suffix in suffixes_to_remove:
-            if normalized.endswith(suffix):
-                normalized = normalized[:-len(suffix)]
-                changed = True
-    
-    return normalized
-
 def load_cao_info(cao_info_path: str) -> Dict[str, Dict[str, str]]:
     """Load CAO information from CSV file."""
     cao_info_mapping = {}
@@ -135,22 +106,29 @@ def load_cao_info(cao_info_path: str) -> Dict[str, Dict[str, str]]:
             print(f"  Loaded {len(df)} CAO info records")
             print(f"  Columns: {list(df.columns)}")
             
+            # Helper function to safely get string value, handling NaN
+            def safe_get_str(row, key, default=''):
+                """Get string value from row, converting NaN to empty string."""
+                value = row.get(key, default)
+                if pd.isna(value):
+                    return default
+                return str(value) if value != '' else default
+            
             for _, row in df.iterrows():
-                cao_number = str(row.get('cao_number', ''))
-                pdf_name = str(row.get('pdf_name', ''))
+                cao_number = safe_get_str(row, 'cao_number', '')
+                pdf_name = safe_get_str(row, 'pdf_name', '')
                 if cao_number and pdf_name:
-                    # Normalize pdf_name to handle double extensions (.pdf.pdf) and match with analysis filenames
-                    normalized_pdf_name = normalize_filename(pdf_name)
-                    # Create key as "cao_number:normalized_pdf_name.pdf" for matching
-                    # Add .pdf back since match_cao_info adds it to the normalized filename
-                    key = f"{cao_number}:{normalized_pdf_name}.pdf"
+                    # Index by cao_number:pdf_name directly (no normalization)
+                    # The base_filename from analysis files will be used to reconstruct the PDF name
+                    key = f"{cao_number}:{pdf_name}"
                     cao_info_mapping[key] = {
                         'cao_number': cao_number,
-                        'id': str(row.get('id', '')),
-                        'TTW': 'yes' if 'TTW' in str(row.get('pdf_name', '')).upper() else 'no',
-                        'ingangsdatum': str(row.get('ingangsdatum', '')),
-                        'expiratiedatum': str(row.get('expiratiedatum', '')),
-                        'datum_kennisgeving': str(row.get('datum_kennisgeving', ''))
+                        'id': safe_get_str(row, 'id', ''),
+                        'pdf_name': pdf_name,
+                        'TTW': 'yes' if 'TTW' in pdf_name.upper() else 'no',
+                        'ingangsdatum': safe_get_str(row, 'ingangsdatum', ''),
+                        'expiratiedatum': safe_get_str(row, 'expiratiedatum', ''),
+                        'datum_kennisgeving': safe_get_str(row, 'datum_kennisgeving', '')
                     }
             print(f"  Mapped {len(cao_info_mapping)} unique CAO entries")
         except Exception as e:
@@ -162,31 +140,41 @@ def load_cao_info(cao_info_path: str) -> Dict[str, Dict[str, str]]:
 
 def match_cao_info(cao_number: str, filename: str, cao_info_mapping: Dict[str, Dict[str, str]]) -> Dict[str, str]:
     """
-    Match CAO info using robust filename matching.
+    Match CAO info using direct filename matching.
+    
+    The base_filename from analysis files preserves the original PDF structure:
+    - If base_filename ends with .pdf, the original PDF was .pdf.pdf
+    - If base_filename doesn't end with .pdf, the original PDF was .pdf
+    
+    We reconstruct the PDF name by adding .pdf to base_filename and match directly.
     
     Args:
         cao_number: CAO number from folder name
-        filename: Original filename
-        cao_info_mapping: CAO info mapping from CSV
+        filename: Base filename from analysis file (e.g., "Cao Bouw en Infra 2025 - 2027.pdf" or "Cao Bouw en Infra 2025 - 2027")
+        cao_info_mapping: CAO info mapping from CSV (indexed by "cao_number:pdf_name")
         
     Returns:
         Dict with CAO metadata
     """
-    # Normalize filename for matching
-    normalized_filename = normalize_filename(filename)
+    cao_info = {}  # Initialize
     
-    # Try exact match first (with .pdf extension)
-    cao_info_key = f"{cao_number}:{normalized_filename}.pdf"
+    # Reconstruct the PDF name by adding .pdf to the base_filename
+    # The base_filename already preserves the structure from the original PDF
+    expected_pdf_name = filename + '.pdf'
+    
+    # Try exact match first: cao_number:expected_pdf_name
+    cao_info_key = f"{cao_number}:{expected_pdf_name}"
     cao_info = cao_info_mapping.get(cao_info_key, {})
     
-    # If no exact match, try to find by filename only (in case CAO number folder is wrong)
+    if cao_info:
+        print(f'    Found CAO info by direct match: {cao_info_key}')
+    
+    # If no exact match, try to find by PDF name only (in case CAO number folder is wrong)
     if not cao_info:
         for key, info in cao_info_mapping.items():
-            # Compare normalized filenames
-            csv_filename = normalize_filename(info.get('pdf_name', ''))
-            if csv_filename == normalized_filename:
+            if info.get('pdf_name', '') == expected_pdf_name:
                 cao_info = info
-                print(f'    Found CAO info by filename match: {key}')
+                print(f'    Found CAO info by PDF name match: {key}')
                 break
     
     # Create metadata dict
@@ -203,7 +191,7 @@ def match_cao_info(cao_number: str, filename: str, cao_info_mapping: Dict[str, D
     if cao_info:
         print(f'    Added CAO info: id={metadata["id"]}, TTW={metadata["TTW"]}')
     else:
-        print(f'    No CAO info found for CAO {cao_number}, filename {normalized_filename}')
+        print(f'    No CAO info found for CAO {cao_number}, filename {filename} (expected PDF: {expected_pdf_name})')
     
     return metadata
 

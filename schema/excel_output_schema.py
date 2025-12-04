@@ -12,12 +12,12 @@ USAGE:
     )
 """
 
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Union, get_origin, get_args
 from pydantic import BaseModel
 import inspect
 
 # Import the schemas
-from .salary_schema import SalaryExtractionSchema, SalaryRow, SalaryPoint
+from .salary_schema import SalaryExtractionSchema, SalaryRow, SalaryPoint, Amount, AmountRange
 from .non_salary_schema import (
     NonSalaryPart1, NonSalaryPart2, NonSalaryPart3,
     GeneralInfo, BonusesInfo, WageScalesInfo, PensionInfo, TerminationInfo,
@@ -200,6 +200,81 @@ def get_pydantic_fields(model_class: BaseModel) -> List[str]:
     else:
         return []
 
+def get_field_type(model_class: BaseModel, field_name: str) -> Optional[type]:
+    """
+    Get the type annotation for a field in a Pydantic model.
+    
+    Args:
+        model_class: Pydantic model class
+        field_name: Name of the field
+        
+    Returns:
+        Field type annotation, or None if not found
+    """
+    if hasattr(model_class, 'model_fields'):
+        field_info = model_class.model_fields.get(field_name)
+        if field_info:
+            return field_info.annotation
+    elif hasattr(model_class, '__fields__'):
+        field_info = model_class.__fields__.get(field_name)
+        if field_info:
+            return field_info.outer_type_
+    return None
+
+def is_amount_field(model_class: BaseModel, field_name: str) -> bool:
+    """
+    Check if a field is of type Amount (including Optional[Amount]).
+    
+    Args:
+        model_class: Pydantic model class
+        field_name: Name of the field
+        
+    Returns:
+        True if field is Amount type, False otherwise
+    """
+    field_type = get_field_type(model_class, field_name)
+    if field_type is None:
+        return False
+    
+    # Check if it's exactly Amount
+    if field_type == Amount:
+        return True
+    
+    # Handle Optional[Amount] which is Union[Amount, None]
+    origin = get_origin(field_type)
+    if origin is Union:
+        args = get_args(field_type)
+        return Amount in args
+    
+    return False
+
+def is_amount_range_field(model_class: BaseModel, field_name: str) -> bool:
+    """
+    Check if a field is of type AmountRange (including Optional[AmountRange]).
+    
+    Args:
+        model_class: Pydantic model class
+        field_name: Name of the field
+        
+    Returns:
+        True if field is AmountRange type, False otherwise
+    """
+    field_type = get_field_type(model_class, field_name)
+    if field_type is None:
+        return False
+    
+    # Check if it's exactly AmountRange
+    if field_type == AmountRange:
+        return True
+    
+    # Handle Optional[AmountRange] which is Union[AmountRange, None]
+    origin = get_origin(field_type)
+    if origin is Union:
+        args = get_args(field_type)
+        return AmountRange in args
+    
+    return False
+
 def get_salary_columns(max_timeline_length: int = 3) -> List[str]:
     """
     Generate comprehensive column list for salary Excel output.
@@ -261,6 +336,9 @@ def get_non_salary_columns() -> List[str]:
     """
     Generate comprehensive column list for non-salary Excel output.
     
+    For Amount fields: generates _value and _unit columns instead of base field.
+    For AmountRange fields: generates _min, _max, and _unit columns instead of base field.
+    
     Returns:
         List of column names for non-salary Excel file
     """
@@ -274,56 +352,61 @@ def get_non_salary_columns() -> List[str]:
     # Flatten nested structure - each part contains sub-models
     all_fields = []
     
+    # Helper function to process fields from a sub-model
+    def process_submodel_fields(submodel_class: BaseModel, prefix: str):
+        """Process fields from a sub-model, expanding Amount/AmountRange fields."""
+        submodel_fields = get_pydantic_fields(submodel_class)
+        for field_name in submodel_fields:
+            # Check if this is an Amount or AmountRange field
+            if is_amount_field(submodel_class, field_name):
+                # Generate _value and _unit columns instead of base field
+                all_fields.append(f"{prefix}_{field_name}_value")
+                all_fields.append(f"{prefix}_{field_name}_unit")
+            elif is_amount_range_field(submodel_class, field_name):
+                # Generate _min, _max, and _unit columns instead of base field
+                all_fields.append(f"{prefix}_{field_name}_min")
+                all_fields.append(f"{prefix}_{field_name}_max")
+                all_fields.append(f"{prefix}_{field_name}_unit")
+            else:
+                # Regular field - use as is
+                all_fields.append(f"{prefix}_{field_name}")
+    
     # Part 1: General, Bonuses, Wage Scales, Pension, Termination
     for field_name in part1_fields:
         if field_name == 'general_information':
-            general_fields = get_pydantic_fields(GeneralInfo)
-            all_fields.extend([f"general_{f}" for f in general_fields])
+            process_submodel_fields(GeneralInfo, 'general')
         elif field_name == 'bonuses_info':
-            bonus_fields = get_pydantic_fields(BonusesInfo)
-            all_fields.extend([f"bonus_{f}" for f in bonus_fields])
+            process_submodel_fields(BonusesInfo, 'bonus')
         elif field_name == 'wage_scales_info':
-            wage_fields = get_pydantic_fields(WageScalesInfo)
-            all_fields.extend([f"wage_{f}" for f in wage_fields])
+            process_submodel_fields(WageScalesInfo, 'wage')
         elif field_name == 'pension_information':
-            pension_fields = get_pydantic_fields(PensionInfo)
-            all_fields.extend([f"pension_{f}" for f in pension_fields])
+            process_submodel_fields(PensionInfo, 'pension')
         elif field_name == 'termination_information':
-            term_fields = get_pydantic_fields(TerminationInfo)
-            all_fields.extend([f"term_{f}" for f in term_fields])
+            process_submodel_fields(TerminationInfo, 'term')
     
     # Part 2: Leave, Overtime, Training
     for field_name in part2_fields:
         if field_name == 'leave_information':
-            leave_fields = get_pydantic_fields(LeaveInfo)
-            all_fields.extend([f"leave_{f}" for f in leave_fields])
+            process_submodel_fields(LeaveInfo, 'leave')
         elif field_name == 'overtime_information':
-            overtime_fields = get_pydantic_fields(OvertimeInfo)
-            all_fields.extend([f"overtime_{f}" for f in overtime_fields])
+            process_submodel_fields(OvertimeInfo, 'overtime')
         elif field_name == 'training_information':
-            training_fields = get_pydantic_fields(TrainingInfo)
-            all_fields.extend([f"training_{f}" for f in training_fields])
+            process_submodel_fields(TrainingInfo, 'training')
     
     # Part 3: Homeoffice, Contract Type, Safety, Childcare, AI, Fringe Benefits
     for field_name in part3_fields:
         if field_name == 'homeoffice_information':
-            homeoffice_fields = get_pydantic_fields(HomeofficeInfo)
-            all_fields.extend([f"homeoffice_{f}" for f in homeoffice_fields])
+            process_submodel_fields(HomeofficeInfo, 'homeoffice')
         elif field_name == 'contract_type_information':
-            contract_fields = get_pydantic_fields(ContractTypeInfo)
-            all_fields.extend([f"contract_{f}" for f in contract_fields])
+            process_submodel_fields(ContractTypeInfo, 'contract')
         elif field_name == 'safety_information':
-            safety_fields = get_pydantic_fields(SafetyInfo)
-            all_fields.extend([f"safety_{f}" for f in safety_fields])
+            process_submodel_fields(SafetyInfo, 'safety')
         elif field_name == 'childcare_information':
-            childcare_fields = get_pydantic_fields(ChildcareInfo)
-            all_fields.extend([f"childcare_{f}" for f in childcare_fields])
+            process_submodel_fields(ChildcareInfo, 'childcare')
         elif field_name == 'ai_information':
-            ai_fields = get_pydantic_fields(AIInfo)
-            all_fields.extend([f"ai_{f}" for f in ai_fields])
+            process_submodel_fields(AIInfo, 'ai')
         elif field_name == 'fringe_benefits_information':
-            fringe_fields = get_pydantic_fields(FringeBenefitsInfo)
-            all_fields.extend([f"fringe_{f}" for f in fringe_fields])
+            process_submodel_fields(FringeBenefitsInfo, 'fringe')
     
     columns.extend(all_fields)
     return columns
@@ -448,6 +531,9 @@ def flatten_non_salary_data(non_salary_data: Dict[str, Any], cao_metadata: Dict[
     """
     Convert merged non-salary data to Excel row format.
     
+    For Amount/AmountRange fields, only creates variant columns (_value/_unit or _min/_max/_unit),
+    never creates base fields.
+    
     Args:
         non_salary_data: Merged data from three non-salary folders
         cao_metadata: CAO metadata (cao_number, id, TTW, etc.)
@@ -456,6 +542,32 @@ def flatten_non_salary_data(non_salary_data: Dict[str, Any], cao_metadata: Dict[
         Excel row dictionary
     """
     row = cao_metadata.copy()
+    
+    # Map prefixes to their corresponding submodel classes for type checking
+    prefix_to_model = {
+        'general': GeneralInfo,
+        'bonus': BonusesInfo,
+        'wage': WageScalesInfo,
+        'pension': PensionInfo,
+        'term': TerminationInfo,
+        'leave': LeaveInfo,
+        'overtime': OvertimeInfo,
+        'training': TrainingInfo,
+        'homeoffice': HomeofficeInfo,
+        'contract': ContractTypeInfo,
+        'safety': SafetyInfo,
+        'childcare': ChildcareInfo,
+        'ai': AIInfo,
+        'fringe': FringeBenefitsInfo
+    }
+    
+    # Helper function to check if a field is Amount/AmountRange based on prefix and field name
+    def is_amount_or_range_field(prefix: str, field_name: str) -> bool:
+        """Check if a field is an Amount or AmountRange field."""
+        model_class = prefix_to_model.get(prefix)
+        if model_class is None:
+            return False
+        return is_amount_field(model_class, field_name) or is_amount_range_field(model_class, field_name)
     
     # Helper function to flatten nested objects
     def flatten_nested(obj, prefix=""):
@@ -468,25 +580,34 @@ def flatten_non_salary_data(non_salary_data: Dict[str, Any], cao_metadata: Dict[
                         # Amount object: {value: X, unit: Y}
                         row[f"{new_key}_value"] = value.get('value')
                         row[f"{new_key}_unit"] = value.get('unit')
+                        # Don't create base field for Amount objects
                     elif 'min' in value and 'max' in value and 'unit' in value:
                         # AmountRange object: {min: X, max: Y, unit: Z}
                         row[f"{new_key}_min"] = value.get('min')
                         row[f"{new_key}_max"] = value.get('max')
                         row[f"{new_key}_unit"] = value.get('unit')
+                        # Don't create base field for AmountRange objects
                     elif 'value' in value:
                         # Amount object with only value (no unit)
                         row[f"{new_key}_value"] = value.get('value')
                         row[f"{new_key}_unit"] = None
+                        # Don't create base field for Amount objects
                     elif 'min' in value and 'max' in value:
                         # AmountRange object with only min/max (no unit)
                         row[f"{new_key}_min"] = value.get('min')
                         row[f"{new_key}_max"] = value.get('max')
                         row[f"{new_key}_unit"] = None
+                        # Don't create base field for AmountRange objects
                     else:
                         # Regular nested dict, continue flattening
                         flatten_nested(value, new_key)
                 else:
-                    row[new_key] = value
+                    # For non-dict values, check if this is an Amount/AmountRange field
+                    # If so, skip creating the base field (only variant columns should exist)
+                    if prefix and not is_amount_or_range_field(prefix, key):
+                        # Only create base field if it's NOT an Amount/AmountRange field
+                        row[new_key] = value
+                    # If it IS an Amount/AmountRange field, skip it (variant columns will be created when value is a dict)
         else:
             row[prefix] = obj
     

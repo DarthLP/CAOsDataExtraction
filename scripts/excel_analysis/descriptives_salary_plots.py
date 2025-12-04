@@ -1083,11 +1083,11 @@ def main():
         print("  ERROR: Input file is empty")
         return
     
-    # Parse date columns
+    # Parse date columns (CAO metadata dates are in DD/MM/YYYY format)
     date_cols = ["ingangsdatum", "expiratiedatum", "datum_kennisgeving"]
     for col in date_cols:
         if col in df.columns:
-            df[col] = pd.to_datetime(df[col], errors='coerce')
+            df[col] = pd.to_datetime(df[col], errors='coerce', dayfirst=True)
     
     # Parse salary date columns
     SLOT_RANGE = range(1, 12)

@@ -4,7 +4,7 @@ Purpose-built notes to reproduce the full CAO extraction pipeline with minimal v
 
 ## Environment & Configuration
 - Python environment: activate `conda activate caos-extract` and install `pip install -r requirements.txt`.
-- System dependencies: Tesseract OCR (for p2), `poppler`/`pdf2image` helpers, Chrome + Selenium driver for p0 (if scraping).
+- System dependencies: Tesseract OCR (for p2), `poppler`/`pdf2image` helpers, Chrome + Selenium driver for p1 (if scraping).
 - Secrets: `.env` with `GOOGLE_API_KEY1`, `GOOGLE_API_KEY2`, ... (one per parallel p3/p4 process). p4 examples use keys 7/8 for testing, but any numbered keys work.
 - Config: `conf/config.yaml` centralizes paths. Key entries:  
   - Inputs: `inputs/pdfs/input_pdfs`, `inputs/pdfs/input_pdfs_extra`, `inputs/excel/inputExcel`  
@@ -12,23 +12,22 @@ Purpose-built notes to reproduce the full CAO extraction pipeline with minimal v
   - LLM outputs: `outputs/llm_extracted`, `outputs/llm_analysis`, `outputs/excel`
 - Folder conventions: PDFs live under CAO-number subfolders (`10/file.pdf`, `1536/file.pdf`), so always pair filename + CAO number.
 
-## Pipeline Execution (p0 → p5)
+## Pipeline Execution (p1 → p5)
 Run from repo root. Stages can be invoked individually (`python -m pipelines.pX_*`). The top-level `run_pipeline.py` currently imports a non-existent `pipelines.p5_run`; treat it as a placeholder until that orchestrator exists.
 
-1) `p0_webscraping.py` (optional if PDFs already present) – downloads CAO PDFs with Selenium; uses `inputs/excel/CAO_Frequencies_2014.xlsx` to decide skips and defaults to writing into `inputs/pdfs/input_pdfs_extra/`.  
-2) `p1_inputExcel.py` – **legacy/optional**; historically generated `docs/fields_prompt*.md` from Excel, but runtime prompts are now hardcoded in code/schemas. Skip unless you need those markdown artifacts for reference.  
-3) `p2_extract.py` – PDF → Markdown/JSON extraction. Key options:  
+1) `p1_webscraping.py` (optional if PDFs already present) – downloads CAO PDFs with Selenium; uses `inputs/excel/CAO_Frequencies_2014.xlsx` to decide skips and defaults to writing into `inputs/pdfs/input_pdfs_extra/`.  
+2) `p2_extract.py` – PDF → Markdown/JSON extraction. Key options:  
    - Parallel: `python pipelines/p2_extract.py --process_id 0 --total_processes 4` (modulo distribution).  
    - Flags in code: `OUTPUT_FORMAT` (`markdown`/`json`/`both`), `AUTO_FIX_UNICODE`, `AUTO_FIX_POSTSCRIPT`, `DEBUG`.  
    - Output: Markdown to `outputs/parsed_pdfs/parsed_pdfs_markdown/[CAO]/`.  
-4) `p3_llmExtraction.py` – Gemini raw extraction from Markdown to JSON (`outputs/llm_extracted/new_flow/[CAO]/`).  
+3) `p3_llmExtraction.py` – Gemini raw extraction from Markdown to JSON (`outputs/llm_extracted/new_flow/[CAO]/`).  
    - Parallel: `--key_number N --process_id i --total_processes P [--max_files K]`.  
    - Delay between files: 150s; file locking prevents duplicates.  
-5) `p4_analysis.py` – schema-driven Gemini analysis/validation.  
+4) `p4_analysis.py` – schema-driven Gemini analysis/validation.  
    - Input: `outputs/llm_extracted/new_flow/[CAO]/`.  
    - Output: `outputs/llm_analysis/salary/[CAO]/` and `outputs/llm_analysis/non_salary/gen_bon_wag_pen_ter/[CAO]/`, `.../lea_ove_tra/[CAO]/`, `.../hom_con_saf_chi_ai_fri/[CAO]/`.  
    - Parallel options mirror p3.  
-6) `p5_excel_creation.py` – merges analysis outputs + `inputs/pdfs/extracted_cao_info.csv` → CSVs in `outputs/excel/new_results/` (`extracted_data_salary.csv`, `extracted_data_non_salary.csv`).  
+5) `p5_excel_creation.py` – merges analysis outputs + `inputs/pdfs/extracted_cao_info.csv` → CSVs in `outputs/excel/new_results/` (`extracted_data_salary.csv`, `extracted_data_non_salary.csv`).  
    - Optional `--max_files` to cap processing.
 
 ## LLM Settings & Retry Logic (for reproducibility)

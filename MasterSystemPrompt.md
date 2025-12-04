@@ -14,15 +14,14 @@
 
 ### Pipeline Flow
 ```
-p0_webscraping → p1_inputExcel → p2_extract → p3_llmExtraction → p4_analysis → p5_excel_creation
+p1_webscraping → p2_extract → p3_llmExtraction → p4_analysis → p5_excel_creation
 ```
 
-**Stage 0 (p0)**: Web scraping - Downloads PDFs using Selenium, organizes by CAO number; uses `inputs/excel/CAO_Frequencies_2014.xlsx` to skip already-handled CAOs and defaults to writing into `inputs/pdfs/input_pdfs_extra/`
-**Stage 1 (p1)**: Excel processing (legacy/optional) - Previously converted field definitions to markdown prompts; prompts now live directly in code/schemas and p2–p5 do not consume the Excel or generated markdown
+**Stage 1 (p1)**: Web scraping - Downloads PDFs using Selenium, organizes by CAO number; uses `inputs/excel/CAO_Frequencies_2014.xlsx` to skip already-handled CAOs and defaults to writing into `inputs/pdfs/input_pdfs_extra/`
 **Stage 2 (p2)**: PDF extraction - Multi-method text extraction (PyPDF2 + pdfplumber + OCR)
 **Stage 3 (p3)**: LLM extraction - Raw data extraction using Google Gemini API
 **Stage 4 (p4)**: Analysis - Schema-driven structured extraction (salary + non-salary)
-**Stage 5 (p5)**: Excel creation - Merges results and creates final Excel outputs
+**Stage 5 (p5)**: Excel creation - Merges results and creates final Excel outputs; adds CAO metadata and dates from `extracted_cao_info.csv`; properly handles NaN values in date fields
 
 ### Data Flow
 - **Input**: PDFs in `inputs/pdfs/input_pdfs/[CAO_NUMBER]/`
@@ -40,9 +39,12 @@ p0_webscraping → p1_inputExcel → p2_extract → p3_llmExtraction → p4_anal
 ## Code Structure
 
 ### Directory Organization
-- **pipelines/**: Main pipeline stages (p0-p5)
+- **pipelines/**: Main pipeline stages (p1-p5)
+- **scripts_pipeline_helper/**: Helper scripts directly used by pipeline stages
+  - **p1_p2/**: Helpers used by p1_webscraping.py and p2_extract.py (OUTPUT_tracker.py)
+  - **p4/**: Stage 4 specific helpers (merge_split_salary.py)
 - **schema/**: Pydantic data models and validation schemas
-- **utils/**: Helper utilities (input_utils/, output_utils/)
+- **utils/**: Standalone utility scripts (not directly used by pipeline)
 - **scripts/**: Analysis and utility scripts
 - **monitoring/**: Performance monitoring and logging
 - **conf/**: Configuration files (config.yaml)
@@ -55,7 +57,8 @@ p0_webscraping → p1_inputExcel → p2_extract → p3_llmExtraction → p4_anal
 - Schema imports: `from schema.salary_schema import ...`
 
 ### File Naming Conventions
-- Pipeline stages: `p0_webscraping.py`, `p1_inputExcel.py`, etc.
+- Pipeline stages: `p1_webscraping.py`, `p2_extract.py`, `p3_llmExtraction.py`, `p4_analysis.py`, `p5_excel_creation.py`
+- Pipeline helpers: `scripts_pipeline_helper/p1_p2/OUTPUT_tracker.py`, `scripts_pipeline_helper/p4/merge_split_salary.py`
 - Utility scripts: `INPUT_*.py` (input utils), `OUTPUT_*.py` (output utils)
 - Schema files: `salary_schema.py`, `non_salary_schema.py`, `excel_output_schema.py`
 
@@ -185,6 +188,23 @@ Each info class contains structured fields (Amount, AmountRange, booleans, strin
 - Handles Amount/AmountRange flattening (value + unit columns)
 - Generates column lists automatically from schema definitions
 - Adds CAO metadata columns (cao_number, id, TTW, dates, file_name)
+
+### Date Format Handling
+**Critical**: Different date fields use different formats and require different parsing:
+- **CAO metadata dates (DD/MM/YYYY format)**: `ingangsdatum`, `expiratiedatum`, `datum_kennisgeving`
+  - Format: `'01/01/2014'`, `'31/12/2014'`
+  - Parsing: Must use `pd.to_datetime(..., dayfirst=True)` to correctly parse DD/MM/YYYY format
+  - Source: Extracted from website metadata CSV (`extracted_cao_info.csv`)
+- **Contract dates (YYYY-MM-DD format)**: `general_start_date`, `general_expiry_date`, `general_retro_start_date`, `general_retro_end_date`, `general_avv_start_date`, `general_avv_end_date`, `general_signing_date`
+  - Format: `'2014-01-01'`, `'2014-12-31'` (ISO format)
+  - Parsing: Use default `pd.to_datetime()` (no `dayfirst` parameter needed)
+  - Source: Extracted from PDF documents by LLM
+- **Salary timeline dates (YYYY-MM-DD format)**: `salary_1_start_date`, `salary_1_end_date`, etc.
+  - Format: `'2014-01-01'`, `'2014-12-31'` (ISO format)
+  - Parsing: Use default `pd.to_datetime()` (no `dayfirst` parameter needed)
+  - Source: Extracted from PDF documents by LLM
+
+**All descriptives and analysis scripts** (`scripts/excel_analysis/*.py`) have been updated to correctly parse dates based on their format. Generic date parsing functions check if the column is a CAO metadata date and apply `dayfirst=True` accordingly.
 
 ## API Integration
 
@@ -319,7 +339,7 @@ with open(lock_file, 'w') as lock:
 ## Current Status
 
 ### Completed Features
-- Full pipeline (p0-p5) operational
+- Full pipeline (p1-p5) operational
 - Multi-method PDF extraction with intelligent OCR
 - Schema-driven LLM extraction with validation
 - Parallel processing support (p2, p3, p4)
@@ -330,6 +350,7 @@ with open(lock_file, 'w') as lock:
 - Unicode/encoding issue handling
 - Excel output generation with proper formatting
 - Intelligent file handling: truncated folder files retry with compact schema, truncated_2 folder files retry with split extraction, truncated_3 folder files retry with super compact schema, truncated_4 folder files skipped
+- **Date format handling**: Correct parsing of DD/MM/YYYY (CAO metadata dates) and YYYY-MM-DD (contract/salary timeline dates) in all descriptives and analysis scripts
 
 ### Known Limitations
 - Non-salary schema split into 3 parts in p4 (by design for performance)
@@ -354,7 +375,7 @@ with open(lock_file, 'w') as lock:
 ## Common Tasks
 
 ### Processing New CAOs
-1. Run p0_webscraping.py to download PDFs
+1. Run p1_webscraping.py to download PDFs
 2. Run p2_extract.py to extract text
 3. Run p3_llmExtraction.py for raw extraction
 4. Run p4_analysis.py for schema validation

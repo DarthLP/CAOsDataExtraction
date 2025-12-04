@@ -83,6 +83,14 @@ from monitoring.monitoring_3_1 import PerformanceMonitor
 from google import genai
 from google.genai import types
 
+# Import retry logic helpers
+from scripts_pipeline_helper.p3.retry_logic import (
+    handle_llm_errors as handle_llm_errors_p3,
+    calculate_quota_retry_delay as calculate_quota_retry_delay_p3,
+    get_adjusted_parameters as get_adjusted_parameters_p3,
+    get_retry_guidance as get_retry_guidance_p3
+)
+
 
 # =============================================================================
 # SIGNAL HANDLING
@@ -945,33 +953,7 @@ def cleanup_uploaded_file(client, uploaded_file):
 # LLM RESPONSE VALIDATION & ERROR HANDLING
 # =============================================================================
 # Functions for validating LLM responses and handling various error types
-def calculate_quota_retry_delay(file_size_mb: float, attempt: int) -> int:
-    """
-    Calculate quota retry delay based on file size and attempt number.
-    
-    Formula: (estimated_tokens / 125000) * 60 seconds * (2^attempt) + buffer
-    - 125,000 tokens per minute limit
-    - Exponential backoff: 2.1^attempt (capped at attempt 4 for steady delays after retry 5)
-    - Buffer time for safety
-    """
-    # Estimate tokens: roughly 4 chars per token, file_size_mb * 1024 * 1024 / 4
-    estimated_tokens = int(file_size_mb * 1024 * 1024 / 4)
-    
-    # Calculate minutes needed to process this file
-    minutes_needed = estimated_tokens / 125000
-    
-    # Add exponential backoff: 2.1^attempt (capped at attempt 4 - keep steady after retry 5)
-    backoff_multiplier = 2.1 ** min(attempt, 4)
-    
-    # Add buffer time (2-3 minutes for safety)
-    buffer_minutes = 2 + min(attempt, 4)
-    
-    # Calculate total delay in seconds
-    total_delay_seconds = int((minutes_needed * backoff_multiplier + buffer_minutes) * 60)
-    
-    # Debug logging moved to context.debug.log() calls in calling functions
-    
-    return total_delay_seconds
+# calculate_quota_retry_delay moved to scripts_pipeline_helper.p3.retry_logic
 
 
 def get_model_parameters(config) -> Dict[str, Any]:
@@ -991,107 +973,10 @@ def get_model_parameters(config) -> Dict[str, Any]:
     }
 
 
-def get_adjusted_parameters(config, attempt: int) -> Dict[str, Any]:
-    """
-    Get adjusted model parameters based on retry attempt.
-    
-    - Attempts 0-2 (1st-3rd tries): original parameters
-    - Attempt 3 (4th try): temperature +0.1, top_p +0.1, top_k -0.1
-    - Attempt 4 (5th try): temperature +0.2, top_p +0.2, top_k -0.2
-    - Attempt 5 (6th try, split extraction): same as attempt 0 → original parameters
-    - Attempt 6 (7th try, split extraction): same as attempt 2 → original parameters
-    - Attempt 7 (8th try, split extraction): same as attempt 3 → +0.1 adjustment
-    
-    Returns:
-        dict: Model parameters with attempt-based adjustments
-    """
-    if attempt <= 2:
-        # First 3 attempts: use original parameters
-        adjustment = 0.0
-    elif attempt == 3:
-        # 4th attempt: +0.1 adjustment
-        adjustment = 0.1
-    elif attempt == 4:
-        # 5th attempt: +0.2 adjustment
-        adjustment = 0.2
-    elif attempt == 5:
-        # 6th attempt (split extraction): same as attempt 0 → original parameters
-        adjustment = 0.0
-    elif attempt == 6:
-        # 7th attempt (split extraction): same as attempt 2 → original parameters
-        adjustment = 0.0
-    elif attempt == 7:
-        # 8th attempt (split extraction): same as attempt 3 → +0.1 adjustment
-        adjustment = 0.1
-    else:
-        # Fallback for any higher attempts (shouldn't happen with max_retries=8)
-        adjustment = 0.2
-    
-    # Calculate adjusted values
-    adjusted_temp = config.temperature + adjustment
-    adjusted_top_p = min(1.0, config.top_p + adjustment)  # Cap at 1.0
-    adjusted_top_k = max(1, int(config.top_k - adjustment * config.top_k))  # Reduce by percentage, min 1
-    
-    return {
-        "model": config.model,
-        "temperature": adjusted_temp,
-        "top_p": adjusted_top_p,
-        "top_k": adjusted_top_k,
-        "max_tokens": config.max_tokens,
-        "candidate_count": config.candidate_count,
-        "seed": config.seed,
-        "presence_penalty": config.presence_penalty,
-        "frequency_penalty": config.frequency_penalty,
-        "thinking_budget": config.thinking_budget,
-        "max_retries": config.max_retries
-    }
+# get_adjusted_parameters moved to scripts_pipeline_helper.p3.retry_logic
 
 
-def get_retry_guidance(error_message: str) -> tuple[str, str]:
-    """
-    Get retry guidance based on previous failure for LLM-controllable errors.
-    
-    Only provides guidance for the 2 most common LLM-controllable errors:
-    1. Truncated JSON (incomplete response)
-    2. Empty/no text response
-    
-    For all other errors (timeouts, 504, etc.), returns empty string.
-    
-    Args:
-        error_message: The error message from the previous attempt
-        
-    Returns:
-        tuple: (guidance_text, error_type) where error_type is "" if no guidance
-    """
-    if not error_message:
-        return "", ""
-    
-    error_lower = error_message.lower()
-    
-    # Check for truncated JSON error
-    if "does not end with }" in error_lower or "truncated" in error_lower:
-        guidance = """
-    PREVIOUS ATTEMPT FAILED: Response was TRUNCATED (incomplete JSON).
-    CRITICAL: Ensure your response ENDS with the closing }  
-        - Be more CONCISE in narrative descriptions while keeping all important data intact!
-        - Prioritize completing the JSON structure over verbose explanations
-        - Keep all numbers, dates, tables - compress only explanatory text!
-    """
-        return guidance, "truncated JSON"
-    
-    # Check for empty response error
-    if "no text parts" in error_lower or "no content" in error_lower:
-        guidance = """
-    PREVIOUS ATTEMPT FAILED: No valid output was generated.
-    CRITICAL: Output ONLY the JSON object
-        - No markdown code fences (no ```json)!
-        - Include ALL required fields (use empty [] if no data)!
-        - Ensure final JSON output is generated, not just thinking tokens!
-    """
-        return guidance, "empty response"
-    
-    # For all other errors, return empty string (no guidance)
-    return "", ""
+# get_retry_guidance moved to scripts_pipeline_helper.p3.retry_logic
 
 
 def create_extraction_prompt(filename: str) -> str:
@@ -1587,127 +1472,7 @@ def extract_text_safely(response, filename: str, context: ProcessingContext = No
     return content, {"finish": fr or "STOP", "filename": filename}
 
 
-def handle_llm_errors(error: Exception, attempt: int, max_retries: int, file_size_mb: float = 0, context=None, remaining_budget_s: Optional[int] = None) -> bool:
-    """Handle different types of LLM errors with appropriate retry logic."""
-    error_str = str(error).lower()
-    
-    if ('deadlineexceeded' in error_str or '504' in error_str or 
-        'timeout' in error_str or 'truncated' in error_str):
-        if attempt < max_retries - 1:
-            # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
-            wait_time = 120 * 2 ** min(attempt, 4)
-            if remaining_budget_s is not None:
-                wait_time = min(wait_time, max(0, int(remaining_budget_s) - 5))
-            print(f'  Attempt {attempt + 1} failed (timeout/truncation), retrying in {wait_time // 60} minutes...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with timeout/truncation errors')
-            return False
-    elif 'serviceunavailable' in error_str or '503' in error_str or 'connection reset' in error_str or '500' in error_str or 'internal' in error_str:
-        if attempt < max_retries - 1:
-            # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
-            wait_time = 60 * 2 ** min(attempt, 4)
-            print(f'  Attempt {attempt + 1} failed (service unavailable/internal error), retrying in {wait_time // 60} minutes...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with service unavailable/internal errors')
-            return False
-    elif 'no content parts found' in error_str or 'no content' in error_str:
-        if attempt < max_retries - 1:
-            # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
-            wait_time = 60 * 2 ** min(attempt, 4)
-            print(f'  Attempt {attempt + 1} failed (empty response), retrying in {wait_time // 60} minutes...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with empty response errors')
-            return False
-    elif 'incomplete json' in error_str or 'json validation failed' in error_str or 'truncated' in error_str:
-        if attempt < max_retries - 1:
-            # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
-            wait_time = 30 * 2 ** min(attempt, 4)
-            print(f'  Attempt {attempt + 1} failed (incomplete JSON), retrying in {wait_time} seconds...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with incomplete JSON errors')
-            return False
-    elif 'quota' in error_str or '429' in error_str:
-        # Check if it's a daily quota limit (not retryable)
-        if 'perday' in error_str or 'daily' in error_str or '3000000' in error_str:
-            global process_quota_flags
-            process_quota_flags[context.process_id] = True
-            print(f'  ❌ DAILY QUOTA LIMIT REACHED for Process {context.process_id} - Cannot retry until tomorrow')
-            print(f'  💡 Daily limit: 3,000,000 tokens per day')
-            print(f'  💡 Quota resets at midnight (Google timezone)')
-            print(f'  🛑 Stopping this process to avoid infinite retries')
-            return False  # Stop immediately, don't retry
-        
-        # Regular per-minute quota limit (retryable)
-        if attempt < max_retries - 1:
-            # Try to extract API's suggested retry delay from error details
-            api_retry_delay = None
-            try:
-                # Check if error has details with RetryInfo - try multiple ways to access it
-                # Method 1: Check if error has 'error' attribute (ClientError structure)
-                if hasattr(error, 'error') and isinstance(error.error, dict):
-                    details = error.error.get('details', [])
-                    for detail in details:
-                        if isinstance(detail, dict) and detail.get('@type') == 'type.googleapis.com/google.rpc.RetryInfo':
-                            retry_delay_str = detail.get('retryDelay', '')
-                            # Parse duration string (e.g., "8s" or "8.666s")
-                            if retry_delay_str.endswith('s'):
-                                api_retry_delay = float(retry_delay_str[:-1])
-                                break
-                # Method 2: Check error string representation for "Please retry in X.XXs"
-                if api_retry_delay is None:
-                    import re
-                    match = re.search(r'please retry in ([\d.]+)s', error_str, re.IGNORECASE)
-                    if match:
-                        api_retry_delay = float(match.group(1))
-                        print(f'  DEBUG: Extracted API retry delay from message: {api_retry_delay:.1f}s')
-            except Exception as e:
-                print(f'  DEBUG: Error extracting API retry delay: {e}')
-                pass  # If extraction fails, fall back to calculated delay
-            
-            # Calculate our delay
-            if file_size_mb > 0:
-                wait_time = calculate_quota_retry_delay(file_size_mb, attempt)
-            else:
-                # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
-                wait_time = 90 * 2 ** min(attempt, 4)  # Fallback for unknown file size
-            
-            # Always add 3 minutes (180 seconds) to quota retry delay
-            wait_time += 180
-            print(f'  DEBUG: Calculated wait time (before API delay check): {wait_time}s ({wait_time // 60} minutes)')
-            
-            # Use API's suggested delay if it's longer than our calculated delay (with 3 min buffer)
-            if api_retry_delay is not None:
-                # Add buffer to API delay (at least 10 seconds, or 20% more, whichever is larger)
-                api_delay_with_buffer = max(api_retry_delay + 10, api_retry_delay * 1.2)
-                # Ensure we always have at least 3 minutes total
-                api_delay_with_buffer = max(api_delay_with_buffer, 180)
-                wait_time = max(wait_time, int(api_delay_with_buffer))
-                print(f'  INFO: API suggested retry delay: {api_retry_delay:.1f}s, using {wait_time}s (with 3 min minimum)')
-            
-            print(f'  Attempt {attempt + 1} failed (per-minute quota), retrying in {wait_time // 60} minutes ({wait_time}s)...')
-            print(f'  INFO: Waiting {wait_time}s before retry...')
-            time.sleep(wait_time)
-            print(f'  INFO: Wait complete, continuing with retry...')
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with per-minute quota errors')
-            return False
-    elif attempt < max_retries - 1:
-        # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
-        wait_time = 30 * 2 ** min(attempt, 4)
-        print(f'  Attempt {attempt + 1} failed ({type(error).__name__}), retrying in {wait_time} seconds...')
-        time.sleep(wait_time)
-        return True
-    else:
-        return False
+# handle_llm_errors moved to scripts_pipeline_helper.p3.retry_logic
 
 
 # =============================================================================
@@ -2029,20 +1794,24 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
     cached_salary = None
     cached_nonsalary = None
     
-    for attempt in range(context.config.max_retries):
+    # Retry loop with manual attempt tracking to handle increment_attempt flag
+    attempt = 0  # Current attempt number (for parameters)
+    total_attempts = 0  # Total retry attempts (for max_retries limit)
+    
+    while total_attempts < context.config.max_retries:
         # Check quota exhaustion at START of each retry attempt (before API call)
         if context.process_id in process_quota_flags and process_quota_flags[context.process_id]:
             print(f'  🛑 Quota exhausted detected at start of retry loop, stopping retries')
             break
         
         # Get adjusted parameters for this attempt (needed for logging even on errors)
-        adjusted_params = get_adjusted_parameters(context.config, attempt)
+        adjusted_params = get_adjusted_parameters_p3(context.config, attempt)
         
         # Generate retry guidance for LLM-controllable errors (only after 2nd attempt)
         retry_guidance = ""
         error_type = ""
         if attempt >= 2 and last_error_message:
-            retry_guidance, error_type = get_retry_guidance(last_error_message)
+            retry_guidance, error_type = get_retry_guidance_p3(last_error_message)
             if retry_guidance:
                 print(f'  INFO: Adding retry guidance for: {error_type}')
         
@@ -2418,11 +2187,27 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
             last_error_message = str(e)
             
             # Handle retry logic
-            if handle_llm_errors(e, attempt, context.config.max_retries, file_size_mb, context, remaining_budget_s):
-                        continue
+            should_retry, increment_attempt, wait_time = handle_llm_errors_p3(
+                e, attempt, context.config.max_retries, file_size_mb, context, remaining_budget_s, process_quota_flags
+            )
+            
+            if should_retry:
+                # Wait before retrying
+                if wait_time > 0:
+                    print(f'  INFO: Waiting {wait_time // 60 if wait_time >= 60 else wait_time} {"minutes" if wait_time >= 60 else "seconds"} before retry...')
+                    time.sleep(wait_time)
+                    if wait_time >= 60:
+                        print(f'  INFO: Wait complete, continuing with retry...')
+                
+                # Increment attempt counters
+                total_attempts += 1
+                if increment_attempt:
+                    attempt += 1
+                # Continue to retry (with same attempt number if increment_attempt is False)
+                continue
             else:
                 processing_time = time.time() - start_time
-                print(f'  Markdown upload failed after {context.config.max_retries} attempts')
+                print(f'  Markdown upload failed after {total_attempts} total attempts')
                 
                 # Add retry guidance info to parameters for logging
                 log_params = adjusted_params.copy()
@@ -2431,12 +2216,13 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                 
                 context.performance_monitor.log_extraction(
                     filename=filename, file_size_mb=file_size_mb, processing_time=processing_time,
-                    usage_metadata=None, success=False, error_message=f'Failed after {context.config.max_retries} attempts: {str(e)}',
+                    usage_metadata=None, success=False, error_message=f'Failed after {total_attempts} total attempts: {str(e)}',
                     api_key_used=context.key_number, process_id=context.process_id, cao_number=cao_number,
                     model=context.config.model, parameters=log_params
                 )
                 return None
     
+    # If we exit the loop without returning, all retries were exhausted
     return None
 
 

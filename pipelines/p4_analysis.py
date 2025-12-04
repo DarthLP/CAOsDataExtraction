@@ -111,6 +111,13 @@ from schema.salary_schema_super_compact import (
     SalaryExtractionSchemaSuperCompact, SALARY_PROMPT_SUPER_COMPACT
 )
 from scripts_pipeline_helper.p4.merge_split_salary import merge_split_salary_results
+from scripts_pipeline_helper.p4.retry_logic import (
+    handle_llm_errors as handle_llm_errors_p4,
+    calculate_quota_retry_delay as calculate_quota_retry_delay_p4,
+    get_adjusted_parameters as get_adjusted_parameters_p4,
+    get_retry_guidance as get_retry_guidance_p4,
+    get_model_parameters as get_model_parameters_p4
+)
 from schema.non_salary_schema import (
     GeneralInfo, BonusesInfo, WageScalesInfo, PensionInfo, LeaveInfo, 
     TerminationInfo, OvertimeInfo, TrainingInfo, HomeofficeInfo, 
@@ -319,275 +326,15 @@ def setup_gemini_client(api_key: str):
     return genai.Client(api_key=api_key)
 
 
+# get_model_parameters moved to scripts_pipeline_helper.p4.retry_logic
+
+# get_adjusted_parameters, get_retry_guidance, calculate_quota_retry_delay, handle_llm_errors
+# moved to scripts_pipeline_helper.p4.retry_logic
+
+# Temporary wrapper for backward compatibility during transition
 def get_model_parameters() -> dict:
-    """
-    Get model parameters for LLM calls.
-    
-    Returns:
-        dict: Model parameters
-    """
-    return {
-    "model": MODEL,
-    "temperature": 0.0,
-    "top_p": 0.1,
-    "top_k": 1,
-    "max_tokens": 65536,
-    "candidate_count": 1,
-    "seed": 42,
-    "thinking_budget": -1,  # Dynamic thinking (like p3)
-    "max_retries": 5
-    }
-
-
-def get_adjusted_parameters(attempt: int) -> dict:
-    """
-    Get adjusted model parameters based on retry attempt.
-    
-    - Attempt 0 (1st try): original parameters
-    - Attempt 1 (2nd try): original parameters  
-    - Attempt 2 (3rd try): temperature +0.1, top_p +0.1, top_k -10%
-    - Attempt 3 (4th try): temperature +0.2, top_p +0.2, top_k -20%
-    - Attempt 4+ (5th+ try): temperature +0.3, top_p +0.3, top_k -30%
-    
-    Args:
-        attempt: Current retry attempt number (0-based)
-        
-    Returns:
-        dict: Model parameters with attempt-based adjustments
-    """
-    # Get base parameters
-    base_params = get_model_parameters()
-    
-    # Calculate adjustment based on attempt (0.1 steps starting from attempt 2)
-    if attempt <= 1:
-        # First 2 attempts: use original parameters
-        adjustment = 0.0
-    else:
-        # Starting from 3rd attempt: +0.1 per step
-        adjustment = 0.1 * (attempt - 1)
-    
-    # Calculate adjusted values
-    adjusted_temp = base_params["temperature"] + adjustment
-    adjusted_top_p = min(1.0, base_params["top_p"] + adjustment)  # Cap at 1.0
-    adjusted_top_k = max(1, int(base_params["top_k"] - adjustment * base_params["top_k"]))  # Reduce by percentage, min 1
-    
-    return {
-        "model": base_params["model"],
-        "temperature": adjusted_temp,
-        "top_p": adjusted_top_p,
-        "top_k": adjusted_top_k,
-        "max_tokens": base_params["max_tokens"],
-        "candidate_count": base_params["candidate_count"],
-        "seed": base_params["seed"],
-        "thinking_budget": base_params["thinking_budget"],
-        "max_retries": base_params["max_retries"]
-    }
-
-
-def get_retry_guidance(error_message: str) -> tuple[str, str]:
-    """
-    Get retry guidance based on previous failure for LLM-controllable errors.
-    
-    Only provides guidance for the 2 most common LLM-controllable errors:
-    1. Truncated JSON (incomplete response)
-    2. Empty/no text response
-    
-    For all other errors (timeouts, 504, etc.), returns empty string.
-    
-    Args:
-        error_message: The error message from the previous attempt
-        
-    Returns:
-        tuple: (guidance_text, error_type) where error_type is "" if no guidance
-    """
-    if not error_message:
-        return "", ""
-    
-    error_lower = error_message.lower()
-    
-    # Check for truncated JSON error
-    if "does not end with }" in error_lower or "truncated" in error_lower:
-        guidance = """
-    PREVIOUS ATTEMPT FAILED: Response was TRUNCATED (incomplete JSON).
-    CRITICAL: Ensure your response ENDS with the closing }  
-        - Be more CONCISE in narrative descriptions while keeping all important data intact
-        - Prioritize completing the JSON structure over verbose explanations
-        - Keep all numbers, dates, tables - compress only explanatory text
-    """
-        return guidance, "truncated JSON"
-    
-    # Check for empty response error
-    if "no text parts" in error_lower or "no content" in error_lower:
-        guidance = """
-    PREVIOUS ATTEMPT FAILED: No valid output was generated.
-    CRITICAL: Output ONLY the JSON object
-        - No markdown code fences (no ```json)
-        - Include ALL required fields (use empty [] if no data)
-        - Ensure final JSON output is generated, not just thinking tokens
-    """
-        return guidance, "empty response"
-    
-    # For all other errors, return empty string (no guidance)
-    return "", ""
-
-
-def calculate_quota_retry_delay(file_size_mb: float, attempt: int) -> int:
-    """
-    Calculate quota retry delay based on file size and attempt number.
-    
-    Formula: (estimated_tokens / 125000) * 60 seconds * (2^attempt) + buffer
-    - 125,000 tokens per minute limit
-    - Exponential backoff: 2^attempt
-    - Buffer time for safety
-    
-    Args:
-        file_size_mb: Size of file in MB
-        attempt: Current attempt number (0-based)
-        
-    Returns:
-        int: Delay in seconds
-    """
-    # Estimate tokens: roughly 4 chars per token, file_size_mb * 1024 * 1024 / 4
-    estimated_tokens = int(file_size_mb * 1024 * 1024 / 4)
-    
-    # Calculate minutes needed to process this file
-    minutes_needed = estimated_tokens / 125000
-    
-    # Add exponential backoff: 2^attempt (capped at attempt 4 - keep steady after retry 5)
-    backoff_multiplier = 2 ** min(attempt, 4)
-    
-    # Add buffer time (1-2 minutes for safety, capped at attempt 4)
-    buffer_minutes = 1 + min(attempt, 4)
-    
-    # Calculate total delay in seconds
-    total_delay_seconds = int((minutes_needed * backoff_multiplier + buffer_minutes) * 60)
-    
-    print(f'  DEBUG: File size: {file_size_mb:.2f}MB, Estimated tokens: {estimated_tokens:,}')
-    print(f'  DEBUG: Minutes needed: {minutes_needed:.1f}, Backoff: {backoff_multiplier}x, Buffer: {buffer_minutes}min')
-    print(f'  DEBUG: Total delay: {total_delay_seconds // 60} minutes ({total_delay_seconds} seconds)')
-    
-    return total_delay_seconds
-
-
-def handle_llm_errors(error: Exception, attempt: int, max_retries: int, 
-                     file_size_mb: float = 0, context: Optional[str] = None) -> bool:
-    """
-    Handle different types of LLM errors with appropriate retry logic.
-    
-    Args:
-        error: The exception that occurred
-        attempt: Current attempt number (0-based)
-        max_retries: Maximum number of retry attempts
-        file_size_mb: Size of file in MB (for quota calculations)
-        context: Optional context string for logging
-        
-    Returns:
-        bool: True if should retry, False if should give up
-    """
-    error_str = str(error).lower()
-    
-    if ('deadlineexceeded' in error_str or '504' in error_str or 
-        'timeout' in error_str or 'truncated' in error_str):
-        if attempt < max_retries - 1:
-            # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
-            wait_time = 120 * 2 ** min(attempt, 4)
-            print(f'  Attempt {attempt + 1} failed (timeout/truncation), retrying in {wait_time // 60} minutes...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with timeout/truncation errors')
-            return False
-    elif 'serviceunavailable' in error_str or '503' in error_str or 'connection reset' in error_str or '500' in error_str or 'internal' in error_str:
-        if attempt < max_retries - 1:
-            # Custom wait times for 503 errors: 2, 4, 8, 12, 20 minutes (already capped)
-            wait_times = [2, 4, 8, 12, 20]  # minutes
-            wait_time_minutes = wait_times[min(attempt, len(wait_times) - 1)]
-            wait_time = wait_time_minutes * 60  # convert to seconds
-            print(f'  Attempt {attempt + 1} failed (service unavailable/internal error), retrying in {wait_time_minutes} minutes...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with service errors')
-            return False
-    elif 'no content parts found' in error_str or 'no content' in error_str:
-        if attempt < max_retries - 1:
-            # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
-            wait_time = 60 * 2 ** min(attempt, 4)
-            # Add 2 minutes to empty response errors
-            wait_time += 120
-            print(f'  Attempt {attempt + 1} failed (empty response), retrying in {wait_time // 60} minutes...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with empty response errors')
-            return False
-    elif 'too many states' in error_str or ('400' in error_str and 'invalid_argument' in error_str and 'constraint' in error_str):
-        # Schema complexity error - schema is too complex for Google's API
-        # This is not retryable - the schema itself needs to be simplified
-        print(f'  ⚠️ Schema complexity error: The schema is too complex for Google\'s structured output API.')
-        print(f'  ⚠️ This error is not retryable - the schema needs to be simplified or split further.')
-        return False  # Don't retry - schema issue, not transient error
-    elif 'incomplete json' in error_str or 'json validation failed' in error_str or 'truncated' in error_str:
-        if attempt < max_retries - 1:
-            # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
-            wait_time = 30 * 2 ** min(attempt, 4)
-            print(f'  Attempt {attempt + 1} failed (incomplete JSON), retrying in {wait_time} seconds...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with incomplete JSON errors')
-            return False
-    elif any(keyword in error_str for keyword in ['quota', 'rate limit', 'too many requests', '429']):
-        # First check if it's a DAILY quota limit (should stop process)
-        # Daily quota indicators:
-        # - "perday" or "daily" in error message
-        # - "GenerateRequestsPerDay" in quotaId
-        # - "free_tier_requests" with daily limit (250 requests)
-        # - Token limits like "3000000" (3M tokens per day)
-        is_daily_quota_limit = False
-        
-        if ('perday' in error_str or 'daily' in error_str or 
-            'generaterequestsperday' in error_str or 
-            '3000000' in error_str or
-            ('free_tier_requests' in error_str and ('limit: 250' in error_str or 'limit:250' in error_str))):
-            is_daily_quota_limit = True
-        
-        if is_daily_quota_limit:
-            print(f'  🚨 DAILY QUOTA LIMIT REACHED (429) - Process will shutdown gracefully')
-            # Set per-process flag to trigger graceful shutdown (only for this specific process)
-            global process_quota_flags
-            # Extract process_id from context if available, otherwise use 0
-            process_id = 0
-            if context and hasattr(context, 'process_id'):
-                process_id = context.process_id
-            elif context and isinstance(context, dict) and 'process_id' in context:
-                process_id = context['process_id']
-            process_quota_flags[process_id] = True
-            print(f'  🛑 Daily quota flag set for process {process_id} only - will stop this process after current attempt')
-            print(f'  💡 Other parallel processes will continue running')
-            return False  # Don't retry, trigger shutdown for this process only
-        
-        # Otherwise, it's a per-minute rate limit (should retry with delay)
-        print(f'  ⚠️ Per-minute rate limit hit (429) - Will retry with delay')
-        if attempt < max_retries - 1:
-            wait_time = calculate_quota_retry_delay(file_size_mb, attempt)
-            # Add 2 minutes to per-minute quota delays
-            wait_time += 120
-            print(f'  Attempt {attempt + 1} failed (per-minute rate limit), retrying in {wait_time // 60} minutes...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with per-minute rate limiting')
-            return False
-    elif attempt < max_retries - 1:
-        # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
-        wait_time = 60 * 2 ** min(attempt, 4)
-        print(f'  Attempt {attempt + 1} failed ({type(error).__name__}), retrying in {wait_time // 60} minutes...')
-        time.sleep(wait_time)
-        return True
-    else:
-        print(f'  All {max_retries} attempts failed with {type(error).__name__}: {error}')
-        return False
+    """Wrapper to get model parameters using MODEL constant."""
+    return get_model_parameters_p4(MODEL)
 
 
 def log_api_response_details(response, filename: str, processing_time: float = 0) -> None:
@@ -1431,7 +1178,10 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
     extended_to_super_compact = False
     
     attempt_index = 0
-    while attempt_index < len(attempts_to_try):
+    total_attempts = 0  # Total retry attempts (for max_retries limit)
+    max_total_attempts = 12  # Maximum total attempts across all retry strategies
+    
+    while attempt_index < len(attempts_to_try) and total_attempts < max_total_attempts:
         # Check quota exhaustion at START of each retry attempt (before API call)
         process_id = context.get('process_id', 0) if context else 0
         if process_id in process_quota_flags and process_quota_flags[process_id]:
@@ -1463,32 +1213,43 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
             if use_super_compact_schema:
                 if attempt == 10:
                     # Attempt 10 (11th overall, first super compact): temp=0.3, top_p=0.4, top_k=0.7 (same as attempt 4)
-                    adjusted_params = get_adjusted_parameters(4)
+                    adjusted_params = get_adjusted_parameters_p4(4, MODEL)
                 else:  # attempt == 11
                     # Attempt 11 (12th overall, second super compact): temp=0.3, top_p=0.4, top_k=0.7 (same as attempt 4)
-                    adjusted_params = get_adjusted_parameters(4)
+                    adjusted_params = get_adjusted_parameters_p4(4, MODEL)
             # For split schema attempts (8-9), use specific parameter adjustments
             elif use_split_schema:
                 if attempt == 8:
                     # Attempt 8 (9th overall, first split): Use attempt 4 parameters (temp=0.3, top_p=0.4)
-                    adjusted_params = get_adjusted_parameters(4)
+                    adjusted_params = get_adjusted_parameters_p4(4, MODEL)
                 else:  # attempt == 9
                     # Attempt 9 (10th overall, second split): Use attempt 4 parameters (temp=0.3, top_p=0.4)
-                    adjusted_params = get_adjusted_parameters(4)
+                    adjusted_params = get_adjusted_parameters_p4(4, MODEL)
             elif use_compact_schema:
                 if attempt == 5:
                     # Attempt 5 (6th overall): Original parameters (temp=0.0, top_p=0.1)
-                    adjusted_params = get_model_parameters()
+                    base_params = get_model_parameters_p4(MODEL)
+                    adjusted_params = {
+                        "model": base_params["model"],
+                        "temperature": base_params["temperature"],
+                        "top_p": base_params["top_p"],
+                        "top_k": base_params["top_k"],
+                        "max_tokens": base_params["max_tokens"],
+                        "candidate_count": base_params["candidate_count"],
+                        "seed": base_params["seed"],
+                        "thinking_budget": base_params["thinking_budget"],
+                        "max_retries": base_params["max_retries"]
+                    }
                 elif attempt == 6:
                     # Attempt 6 (7th overall): Like attempt 4 (temp=0.3, top_p=0.4)
-                    adjusted_params = get_adjusted_parameters(4)
+                    adjusted_params = get_adjusted_parameters_p4(4, MODEL)
                 else:  # attempt == 7
                     # Attempt 7 (8th overall): Like attempt 4 (temp=0.3, top_p=0.4)
                     # Note: Plan says "like attempt 5" but attempt 5 uses original params
                     # Using attempt 4 params (temp=0.3, top_p=0.4) for consistency
-                    adjusted_params = get_adjusted_parameters(4)
+                    adjusted_params = get_adjusted_parameters_p4(4, MODEL)
             else:
-                adjusted_params = get_adjusted_parameters(attempt)
+                adjusted_params = get_adjusted_parameters_p4(attempt, MODEL)
             
             # Handle split extraction separately - each attempt does both parts sequentially
             if use_split_schema:
@@ -1739,7 +1500,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
             retry_guidance = ""
             error_type = ""
             if attempt >= 2 and last_error_message:
-                retry_guidance, error_type = get_retry_guidance(last_error_message)
+                retry_guidance, error_type = get_retry_guidance_p4(last_error_message)
                 if retry_guidance:
                     print(f'  INFO: Adding retry guidance for: {error_type}')
             
@@ -2008,38 +1769,54 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
             # Handle retry logic
             if attempt_index < len(attempts_to_try) - 1:
                 if attempt < 4:
-                    should_retry = handle_llm_errors(e, attempt, 5, context=context)
+                    file_size_mb = len(str(json_obj)) / (1024 * 1024) if 'json_obj' in locals() else 0
+                    should_retry, increment_attempt, wait_time = handle_llm_errors_p4(
+                        e, attempt, 5, file_size_mb, context, process_quota_flags
+                    )
                     # Check again after handle_llm_errors (it may have set the flag)
                     if process_id in process_quota_flags and process_quota_flags[process_id]:
                         print(f'  🛑 Quota exhausted detected by handle_llm_errors, stopping retries')
                         break
                     if should_retry:
-                        attempt_index += 1
+                        # Wait before retrying
+                        if wait_time > 0:
+                            print(f'  INFO: Waiting {wait_time // 60 if wait_time >= 60 else wait_time} {"minutes" if wait_time >= 60 else "seconds"} before retry...')
+                            time.sleep(wait_time)
+                            if wait_time >= 60:
+                                print(f'  INFO: Wait complete, continuing with retry...')
+                        # Increment attempt counters
+                        total_attempts += 1
+                        if increment_attempt:
+                            attempt_index += 1
+                        # Continue to retry (with same attempt number if increment_attempt is False)
                         continue  # Retry
                     else:
                         break  # Don't retry
                 else:
-                    # For attempts 5-11, check for quota errors and set flag if needed
-                    # (handle_llm_errors is not called for these attempts, so we need to check manually)
-                    if any(keyword in error_str.lower() for keyword in ['quota', 'rate limit', 'too many requests', '429', 'resource_exhausted']):
-                        # Check if it's a daily quota limit
-                        is_daily_quota_limit = (
-                            'perday' in error_str.lower() or 'daily' in error_str.lower() or 
-                            'generaterequestsperday' in error_str.lower() or 
-                            '3000000' in error_str or
-                            ('free_tier_requests' in error_str.lower() and ('limit: 250' in error_str or 'limit:250' in error_str))
-                        )
-                        if is_daily_quota_limit:
-                            print(f'  🚨 DAILY QUOTA LIMIT REACHED (429) on attempt {attempt + 1} - Process will shutdown gracefully')
-                            process_quota_flags[process_id] = True
-                            print(f'  🛑 Daily quota flag set for process {process_id} - will stop this process')
-                    
-                    # Check for quota exhaustion
+                    # For attempts 5-11, also use handle_llm_errors to handle external errors properly
+                    file_size_mb = len(str(json_obj)) / (1024 * 1024) if 'json_obj' in locals() else 0
+                    should_retry, increment_attempt, wait_time = handle_llm_errors_p4(
+                        e, attempt, 5, file_size_mb, context, process_quota_flags
+                    )
+                    # Check again after handle_llm_errors (it may have set the flag)
                     if process_id in process_quota_flags and process_quota_flags[process_id]:
-                        print(f'  🛑 Quota exhausted, stopping retries')
+                        print(f'  🛑 Quota exhausted detected by handle_llm_errors, stopping retries')
                         break
-                    attempt_index += 1
-                    continue  # Continue to next attempt
+                    if should_retry:
+                        # Wait before retrying
+                        if wait_time > 0:
+                            print(f'  INFO: Waiting {wait_time // 60 if wait_time >= 60 else wait_time} {"minutes" if wait_time >= 60 else "seconds"} before retry...')
+                            time.sleep(wait_time)
+                            if wait_time >= 60:
+                                print(f'  INFO: Wait complete, continuing with retry...')
+                        # Increment attempt counters
+                        total_attempts += 1
+                        if increment_attempt:
+                            attempt_index += 1
+                        # Continue to retry (with same attempt number if increment_attempt is False)
+                        continue  # Retry
+                    else:
+                        break  # Don't retry
             else:
                 # Last attempt failed
                 process_id = context.get('process_id', 0) if context else 0
@@ -2142,27 +1919,27 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
             # Determine which attempt was last
             if extended_to_super_compact or use_super_compact_from_start:
                 # Last attempt was 11 (12th overall) with super compact schema
-                final_params = get_adjusted_parameters(4)  # Use attempt 4 params (same as attempt 10-11)
+                final_params = get_adjusted_parameters_p4(4, MODEL)  # Use attempt 4 params (same as attempt 10-11)
                 final_params['schema_type'] = 'super_compact'
                 final_params['attempt'] = 12
             elif extended_to_split or use_split_extraction_from_start:
                 # Last attempt was 9 (10th overall) with split schema
-                final_params = get_adjusted_parameters(4)  # Use attempt 4 params (same as attempt 8-9)
+                final_params = get_adjusted_parameters_p4(4, MODEL)  # Use attempt 4 params (same as attempt 8-9)
                 final_params['schema_type'] = 'split'
                 final_params['attempt'] = 10
             elif extended_to_compact or use_compact_schema_from_start:
                 # Last attempt was 7 (8th overall) with compact schema
-                final_params = get_adjusted_parameters(4)  # Use attempt 4 params (same as attempt 6-7)
+                final_params = get_adjusted_parameters_p4(4, MODEL)  # Use attempt 4 params (same as attempt 6-7)
                 final_params['schema_type'] = 'compact'
                 final_params['attempt'] = 8
             else:
                 # Last attempt was 4 (5th overall) with regular schema
-                final_params = get_adjusted_parameters(4)
+                final_params = get_adjusted_parameters_p4(4, MODEL)
                 final_params['schema_type'] = 'regular'
                 final_params['attempt'] = 5
             
             if last_error_message:
-                final_guidance, final_error_type = get_retry_guidance(last_error_message)
+                final_guidance, final_error_type = get_retry_guidance_p4(last_error_message)
                 if final_guidance:
                     final_params['retry_guidance_used'] = final_error_type
             
@@ -2333,7 +2110,10 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
         last_error_message = None
         
         # Retry logic with proper attempt tracking
-        for attempt in range(model_params["max_retries"] + 1):
+        attempt = 0  # Current attempt number (for parameters)
+        total_attempts = 0  # Total retry attempts (for max_retries limit)
+        
+        while total_attempts < model_params["max_retries"] + 1:
             # Check quota exhaustion at START of each retry attempt (before API call)
             process_id = context.get('process_id', 0) if context else 0
             if process_id in process_quota_flags and process_quota_flags[process_id]:
@@ -2342,13 +2122,13 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
             
             try:
                 # Get adjusted parameters for this attempt
-                adjusted_params = get_adjusted_parameters(attempt)
+                adjusted_params = get_adjusted_parameters_p4(attempt, MODEL)
                 
                 # Generate retry guidance (only if attempt >= 2)
                 retry_guidance = ""
                 error_type = ""
                 if attempt >= 2 and last_error_message:
-                    retry_guidance, error_type = get_retry_guidance(last_error_message)
+                    retry_guidance, error_type = get_retry_guidance_p4(last_error_message)
                     if retry_guidance:
                         print(f'  Part 1: Adding retry guidance for: {error_type}')
                 
@@ -2459,12 +2239,26 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
                     break
                     
                 if attempt < 4:  # Not the last attempt
-                    should_retry = handle_llm_errors(e, attempt, 5, context=context)
+                    file_size_mb = len(str(json_obj)) / (1024 * 1024)
+                    should_retry, increment_attempt, wait_time = handle_llm_errors_p4(
+                        e, attempt, 5, file_size_mb, context, process_quota_flags
+                    )
                     # Check again after handle_llm_errors (it may have set the flag)
                     if process_id in process_quota_flags and process_quota_flags[process_id]:
                         print(f'  🛑 Quota exhausted detected by handle_llm_errors, stopping retries')
                         break
                     if should_retry:
+                        # Wait before retrying
+                        if wait_time > 0:
+                            print(f'  INFO: Waiting {wait_time // 60 if wait_time >= 60 else wait_time} {"minutes" if wait_time >= 60 else "seconds"} before retry...')
+                            time.sleep(wait_time)
+                            if wait_time >= 60:
+                                print(f'  INFO: Wait complete, continuing with retry...')
+                        # Increment attempt counters
+                        total_attempts += 1
+                        if increment_attempt:
+                            attempt += 1
+                        # Continue to retry (with same attempt number if increment_attempt is False)
                         continue  # Retry
                     else:
                         break  # Don't retry
@@ -2472,6 +2266,10 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
                     # Last attempt failed
                     print(f'  Part 1: All attempts failed')
                     break
+            
+            # If we get here, the attempt was successful, increment total_attempts
+            total_attempts += 1
+            break  # Exit loop on success
         
         # If we get here, all attempts failed
         log_analysis_error(filename, f"All part 1 retry attempts failed: {type(last_error).__name__}: {last_error}", "")
@@ -2481,9 +2279,9 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
             file_size_mb = len(str(json_obj)) / (1024 * 1024)
             
             # Get final attempt parameters for logging (attempt 4 = 5th try)
-            final_params = get_adjusted_parameters(4)
+            final_params = get_adjusted_parameters_p4(4, MODEL)
             if last_error_message:
-                final_guidance, final_error_type = get_retry_guidance(last_error_message)
+                final_guidance, final_error_type = get_retry_guidance_p4(last_error_message)
                 if final_guidance:
                     final_params['retry_guidance_used'] = final_error_type
             
@@ -2657,13 +2455,13 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
             
             try:
                 # Get adjusted parameters for this attempt
-                adjusted_params = get_adjusted_parameters(attempt)
+                adjusted_params = get_adjusted_parameters_p4(attempt, MODEL)
                 
                 # Generate retry guidance (only if attempt >= 2)
                 retry_guidance = ""
                 error_type = ""
                 if attempt >= 2 and last_error_message:
-                    retry_guidance, error_type = get_retry_guidance(last_error_message)
+                    retry_guidance, error_type = get_retry_guidance_p4(last_error_message)
                     if retry_guidance:
                         print(f'  INFO: Adding retry guidance for part 2: {error_type}')
                 
@@ -2775,12 +2573,26 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
                     break
                     
                 if attempt < 4:  # Not the last attempt
-                    should_retry = handle_llm_errors(e, attempt, 5, context=context)
+                    file_size_mb = len(str(json_obj)) / (1024 * 1024)
+                    should_retry, increment_attempt, wait_time = handle_llm_errors_p4(
+                        e, attempt, 5, file_size_mb, context, process_quota_flags
+                    )
                     # Check again after handle_llm_errors (it may have set the flag)
                     if process_id in process_quota_flags and process_quota_flags[process_id]:
                         print(f'  🛑 Quota exhausted detected by handle_llm_errors, stopping retries')
                         break
                     if should_retry:
+                        # Wait before retrying
+                        if wait_time > 0:
+                            print(f'  INFO: Waiting {wait_time // 60 if wait_time >= 60 else wait_time} {"minutes" if wait_time >= 60 else "seconds"} before retry...')
+                            time.sleep(wait_time)
+                            if wait_time >= 60:
+                                print(f'  INFO: Wait complete, continuing with retry...')
+                        # Increment attempt counters
+                        total_attempts += 1
+                        if increment_attempt:
+                            attempt += 1
+                        # Continue to retry (with same attempt number if increment_attempt is False)
                         continue  # Retry
                     else:
                         break  # Don't retry
@@ -2788,6 +2600,10 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
                     # Last attempt failed
                     print(f'  DEBUG: All part 2 attempts failed')
                     break
+            
+            # If we get here, the attempt was successful, increment total_attempts
+            total_attempts += 1
+            break  # Exit loop on success
         
         # If we get here, all attempts failed
         log_analysis_error(filename, f"All part 2 retry attempts failed: {type(last_error).__name__}: {last_error}", "")
@@ -2797,9 +2613,9 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
             file_size_mb = len(str(json_obj)) / (1024 * 1024)
             
             # Get final attempt parameters for logging (attempt 4 = 5th try)
-            final_params = get_adjusted_parameters(4)
+            final_params = get_adjusted_parameters_p4(4, MODEL)
             if last_error_message:
-                final_guidance, final_error_type = get_retry_guidance(last_error_message)
+                final_guidance, final_error_type = get_retry_guidance_p4(last_error_message)
                 if final_guidance:
                     final_params['retry_guidance_used'] = final_error_type
             
@@ -2981,13 +2797,13 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
             
             try:
                 # Get adjusted parameters for this attempt
-                adjusted_params = get_adjusted_parameters(attempt)
+                adjusted_params = get_adjusted_parameters_p4(attempt, MODEL)
                 
                 # Generate retry guidance (only if attempt >= 2)
                 retry_guidance = ""
                 error_type = ""
                 if attempt >= 2 and last_error_message:
-                    retry_guidance, error_type = get_retry_guidance(last_error_message)
+                    retry_guidance, error_type = get_retry_guidance_p4(last_error_message)
                     if retry_guidance:
                         print(f'  INFO: Adding retry guidance for part 3: {error_type}')
                 
@@ -3099,12 +2915,26 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
                     break
                     
                 if attempt < 4:  # Not the last attempt
-                    should_retry = handle_llm_errors(e, attempt, 5, context=context)
+                    file_size_mb = len(str(json_obj)) / (1024 * 1024)
+                    should_retry, increment_attempt, wait_time = handle_llm_errors_p4(
+                        e, attempt, 5, file_size_mb, context, process_quota_flags
+                    )
                     # Check again after handle_llm_errors (it may have set the flag)
                     if process_id in process_quota_flags and process_quota_flags[process_id]:
                         print(f'  🛑 Quota exhausted detected by handle_llm_errors, stopping retries')
                         break
                     if should_retry:
+                        # Wait before retrying
+                        if wait_time > 0:
+                            print(f'  INFO: Waiting {wait_time // 60 if wait_time >= 60 else wait_time} {"minutes" if wait_time >= 60 else "seconds"} before retry...')
+                            time.sleep(wait_time)
+                            if wait_time >= 60:
+                                print(f'  INFO: Wait complete, continuing with retry...')
+                        # Increment attempt counters
+                        total_attempts += 1
+                        if increment_attempt:
+                            attempt += 1
+                        # Continue to retry (with same attempt number if increment_attempt is False)
                         continue  # Retry
                     else:
                         break  # Don't retry
@@ -3112,6 +2942,10 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
                     # Last attempt failed
                     print(f'  DEBUG: All part 3 attempts failed')
                     break
+            
+            # If we get here, the attempt was successful, increment total_attempts
+            total_attempts += 1
+            break  # Exit loop on success
         
         # If we get here, all attempts failed
         log_analysis_error(filename, f"All part 3 retry attempts failed: {type(last_error).__name__}: {last_error}", "")
@@ -3121,9 +2955,9 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
             file_size_mb = len(str(json_obj)) / (1024 * 1024)
             
             # Get final attempt parameters for logging (attempt 4 = 5th try)
-            final_params = get_adjusted_parameters(4)
+            final_params = get_adjusted_parameters_p4(4, MODEL)
             if last_error_message:
-                final_guidance, final_error_type = get_retry_guidance(last_error_message)
+                final_guidance, final_error_type = get_retry_guidance_p4(last_error_message)
                 if final_guidance:
                     final_params['retry_guidance_used'] = final_error_type
             

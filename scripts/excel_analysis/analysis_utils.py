@@ -213,9 +213,11 @@ def group_cao_timeline(df: pd.DataFrame, cao_number_col: str = 'cao_number',
     cao_groups = {}
     
     for cao_num, group in df.groupby(cao_number_col):
-        # Convert date column to datetime for sorting
+        # Convert date column to datetime for sorting (CAO metadata dates are in DD/MM/YYYY format)
         group_copy = group.copy()
-        group_copy[date_col] = pd.to_datetime(group_copy[date_col], errors='coerce')
+        # CAO metadata dates (ingangsdatum, expiratiedatum, datum_kennisgeving) are in DD/MM/YYYY format
+        dayfirst = date_col in ['ingangsdatum', 'expiratiedatum', 'datum_kennisgeving']
+        group_copy[date_col] = pd.to_datetime(group_copy[date_col], errors='coerce', dayfirst=dayfirst)
         
         # Sort by date
         group_copy = group_copy.sort_values(date_col)
@@ -382,17 +384,18 @@ def create_crosstab_summary(df: pd.DataFrame, bool_col: str,
     }
 
 
-def extract_year_from_date(date_series: pd.Series) -> pd.Series:
+def extract_year_from_date(date_series: pd.Series, dayfirst: bool = True) -> pd.Series:
     """
     Extract year from date series for temporal analysis.
     
     Args:
-        date_series: Series with date values
+        date_series: Series with date values (CAO metadata dates are in DD/MM/YYYY format)
+        dayfirst: Whether to interpret dates as DD/MM/YYYY format (default True for CAO dates)
         
     Returns:
         Series with years
     """
-    return pd.to_datetime(date_series, errors='coerce').dt.year
+    return pd.to_datetime(date_series, errors='coerce', dayfirst=dayfirst).dt.year
 
 
 def analyze_amount_ranges(df: pd.DataFrame, min_col: str, max_col: str, 

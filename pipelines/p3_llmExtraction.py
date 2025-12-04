@@ -124,139 +124,198 @@ def setup_signal_handlers():
 # Pydantic schema for structured extraction of CAO document information
 class CAOExtractionSchema(BaseModel):
     """Schema for extracting structured data from Dutch CAO documents."""
-    general_information: List[List[str]] = Field(description=
-        """Extract the following basic CAO contract information if present in the CAO: 
-        - start, end and signing date, 
-        - retroactive application (applies?, period, scope, exclusions, back-pay terms, interest/surcharge), 
-        - scope type of the CAO itself (sectoral, firm, group, niche),
-        - company name and scope if single-firm,  
-        - SBI codes and version that define the scope of this CAO, 
-        - whether deviations are explicitly allowed at company-agreement level (yes/no, with topics if mentioned), 
-        - AVV status (algemeen verbindend verklaard) with start and end dates if specified."""
-        , default_factory=list)
-    wage_information: List[List[str]] = Field(description=
-        """Extract wage and salary information explicitly stated in the CAO: 
-        - all wage tables (that are not identical except for unit conversion) and salary scales - make sure to check the entire document, also the appendices, 
-        - job classifications, function groups, and pay groups/grades,
-        - age-related or service-year/experience-based pay steps (trede/periodieken), including any transitions between age bands and experience steps,
-        - rules governing progression within scales (e.g., annual increments, step frequency, performance-based step changes, freeze/unfreeze conditions),
-        - entry-placement rules (e.g., starting above step 0 for prior relevant experience or competence),
-        - personal allowances at the maximum of a scale (“persoonlijke toeslag”) and their conditions (basis, %/amount, pensionability, duration, phase-out),
-        - general wage increases (periodic percentage or nominal increases applied sector-wide or by group),
-        - all bonuses and allowances, including sign-on, 13th month, fixed lump sums, profit-sharing, performance bonuses, seniority/loyalty or jubilee bonuses, job-specific allowances, retirement gratuities, and insurance/savings benefits,
-        - notes explaining how the wage system or tables operate (e.g., “scale applies to 36-h week”, “wages include 8% holiday allowance”, “conversion rules for youth to adult wage scale”).
-        SKIP: tables that are identical except for unit conversion (monthly vs hourly vs weekly vs 4 weeks for same data); 
-        KEEP: tables or rules that differ by period, worker type, education level, job group/function scale, experience steps (periodieken/trede), age bands, or other substantive distinctions."""
-        , default_factory=list)
-    pension_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated pension scheme information, including when present: 
-        - type of scheme (DB, DC, hybrid), 
-        - contribution percentages, employer/employee splits and premiums, 
-        - accrual rules and franchise values, 
-        - retirement ages, 
-        - eligibility rules and accrual during leave/illness, 
-        - special provisions (e.g. excedentregeling, premium change rules, group differences), 
-        - pension fund name/abbreviation,
-        - any other pension-related information mentioned.
-        If the CAO explicitly states there is no occupational pension beyond AOW, note: 'no occupational pension (AOW only)'."""
-        , default_factory=list)
-    leave_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated leave information and conditions, including when present:
-        - vacation entitlement and holiday allowance, 
-        - maternity and paternity/partner leave, 
-        - adoption and parental leave, 
-        - sick leave and care leave (short- and long-term), 
-        - special leaves including Liberation Day policy and senior days,
-        - any other leave-related information mentioned and conditions."""
-        , default_factory=list)
-    termination_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated termination rules, including when present: 
-        - notice periods for employers and employees (include full tables by age/service year if provided), 
-        - rules on shortening, floors, and approval paths (UWV/judge), 
-        - dismissal protections and conditions (e.g. during sickness), 
-        - automatic end of employment at AOW age or other exit conditions, 
-        - probation periods and maximum durations, 
-        - severance pay and WW supplements beyond statutory transition pay,
-        - any other termination-related information mentioned."""        
-        , default_factory=list)
-    overtime_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated information about overtime, shift and atypical hours, including when present:
-        - overtime thresholds and compensation rules,
-        - overtime rates and surcharges (including how they are applied or stacked),
-        - shift, night, weekend, and holiday allowances,
-        - rest periods and weekends-off guarantees,
-        - maximum working hours or limits on compulsory overtime,
-        - any other overtime/shift/atypical hours-related information mentioned (e.g. TOIL)."""
-        , default_factory=list)
-    training_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated information about training, including when present:
-        - paid study and training time, budgets and reimbursements,
-        - career scans or employability assessments,
-        - sectoral/CAO training funds,
-        - employer obligations for mandatory training,
-        - reclaim clauses if employees leave,
-        - any other training-related information mentioned."""
-        , default_factory=list)
-    homeoffice_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated information about home office and remote work, including when present:
-        - entitlement to work from home (time and conditions),
-        - fixed allowances or reimbursements (e.g. stipend, internet/phone, equipment),
-        - decision rules or agreements required,
-        - health and safety obligations at home,
-        - travel time compensation for home-worksite arrangements,
-        - any other home office/remote work-related information mentioned."""
-        , default_factory=list)
-    contract_type_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated information and conditions about contract types, including when present:
-        - rules on full-time and part-time work (standard hours, ranges, conditions),
-        - provisions on min-max or zero-hour/on-call contracts,
-        - deviations from the statutory fixed-term chain (ketenregeling),
-        - rights to convert temporary to permanent contracts,
-        - rights to adjust working hours,
-        - any other information and rules on contract forms (e.g., freelance, internships)."""
-        , default_factory=list)
-    childcare_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated childcare information in the CAO, including when present:
-        - allowances or subsidies,
-        - in-house or employer/sector-arranged childcare,
-        - discounts or priority access,
-        - age limits and scope (e.g., after-school care),
-        - provider rules and interaction with public benefits,
-        - eligibility conditions (e.g. tenure, FTE),
-        - sector fund financing,
-        - other childcare-related provisions."""
-        , default_factory=list)
-    safety_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated safety and integrity provisions, including when present:
-        - harassment, bullying, discrimination, aggression, or integrity protocols,
-        - prevention of psychosocial risks (PSA) such as stress, burnout, or workload pressure,
-        - RI&E requirements covering PSA,
-        - confidential counsellors or internal/external contact points,
-        - training or awareness on wellbeing and respectful behaviour,
-        - reporting procedures and follow-up in PSA/integrity cases,
-        - joint safety/health committees or sectoral Arbo arrangements,
-        - mandatory safety or risk-prevention training,
-        - other safety, health, or integrity-related measures or obligations."""
-        , default_factory=list)
-    AI_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated information about AI and algorithmic management, including when present:
-        - rules on automated decisions and human review,
-        - transparency, disclosure and audit obligations,
-        - governance bodies or committees,
-        - worker rights to contest AI-based decisions,
-        - training or upskilling provisions related to AI,
-        - any other AI and algorithmic management-related information mentioned."""
-        , default_factory=list)
-    fringe_benefits_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated fringe benefits, including when present:
-        - commuting or travel allowances,
-        - bicycle/leasefiets or mobility schemes,
-        - meal benefits (meals, vouchers, allowances, canteen subsidies),
-        - health insurance contributions or discounts,
-        - relocation or housing allowances,
-        - costs of mandatory certifications,
-        - other non-cash benefits (e.g., wellbeing, gym, ergonomics)."""
-        , default_factory=list)
+    general_information: List[List[str]] = Field(
+        description=
+            """Extract the following basic CAO contract information if present in the CAO, and ALWAYS check every bullet point carefully:
+            - contract period: validity start date, end date, and signing date,
+            - document type and role (full CAO original/update vs partial amendment/annex/protocol/other_supplement, and whether it clearly replaces the whole CAO for this period or only works together with an earlier text),
+            - if the document is an update or amendment, the broad topics or parts of the CAO that are changed (for example wages, working hours, leave, pension, allowances, training),
+            - general effective date of the change if this CAO updates an earlier one (plus a short quote of the sentence stating it and any extra timing information),
+            - retroactive application (does retroactivity apply?, retroactive period, what is retroactive, explicit exclusions, back-pay rules and any interest/surcharge),
+            - scope type of the CAO itself (for example sectoral, single_company, group, association_limited, occupational_niche, other, unspecified),
+            - company name and scope description if the CAO is single-firm or for a defined group of firms,
+            - SBI codes and SBI version that define or describe the scope of this CAO (primary and any secondary codes),
+            - whether deviations at company-agreement level are explicitly allowed or restricted (yes/no, with topics and conditions if mentioned),
+            - AVV status (whether the CAO is declared generally binding) with AVV start and end dates if specified.""",
+        default_factory=list,
+    )
+    wage_information: List[List[str]] = Field(
+        description=
+            """Extract all wage, salary and bonus information explicitly stated in the CAO, and ALWAYS check every bullet point carefully:
+            - all wage tables and salary scales that are not identical except for unit conversion - IMPORTANT: make sure to check the entire document, including appendices,
+            - job classifications, function groups, pay groups/grades and how they link to wage scales,
+            - age-related or service-year/experience-based pay steps (trede/periodieken), including any transitions between age bands and experience steps,
+            - rules governing progression within scales (e.g., annual increments, frequency of steps, freeze/unfreeze conditions, performance-based extra or withheld steps),
+            - rules on entry placement in the wage scale (e.g., higher starting step based on prior relevant experience or competence),
+            - rules on personal allowances when the maximum of a wage scale is reached or when an employee keeps a higher wage after reclassification (basis, amount/percentage, pensionability, duration, phase-out, indexation),
+            - general wage increases (periodic percentage or nominal increases applied sector-wide or by group, including effective dates),
+            - all bonuses and incentive schemes beyond base pay: sign-on bonuses (with amounts and conditions), 13th month or equivalent payments, fixed recurring annual lump sums, profit-sharing schemes, performance/target-based bonuses, seniority or loyalty/jubilee bonuses, retirement gratuities, qualification or diploma bonuses, and job-specific allowances (e.g., cashier allowance, driver’s license allowance),
+            - any insurance, savings or similar schemes that function as wage-related bonuses or profit-sharing,
+            - notes explaining how the wage system or tables operate (e.g., 'scale applies to 36-hour week', 'wages include 8% holiday allowance', 'conversion rules between youth and adult wage scales').
+            SKIP: tables that are identical except for unit conversion (monthly vs hourly vs weekly vs 4 weeks for the same underlying data).
+            KEEP: tables or rules that differ by period, worker type, education level, job group/function scale, experience steps (periodieken/trede), age bands, region or other substantive distinctions.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    pension_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated pension scheme information, and ALWAYS check every bullet point carefully:
+            - whether there is an occupational pension beyond AOW, and if the CAO explicitly states there is none (record 'no occupational pension (AOW only)'),
+            - type of scheme (e.g., DB, DC, hybrid, other) and whether participation in a sector or company pension fund is mandatory or optional,
+            - contribution levels for employees and, if given, total and/or employer contributions (percentages, bases, units). If different rates apply to different groups (e.g., age, salary band, job group, full-time/part-time), list ALL variants and indicate which group each rate applies to,
+            - accrual rules and key parameters: annual accrual rates, franchise amounts and any other accrual-related parameters, again listing all variants across groups and which group each applies to,
+            - retirement ages: normal, early and deferred/postponed retirement ages, including any differences across groups,
+            - rules on pension accrual during statutory leaves and during the second year of illness, including whether accrual continues fully or partly and for which groups,
+            - special provisions such as excedentregeling (accrual above a wage cap) or other higher-tier arrangements, including any group-specific differences,
+            - name and abbreviation of the pension fund or provider, if mentioned,
+            - any other pension-related provisions or conditions that affect benefits, accrual or contributions.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    leave_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated leave information and conditions, and ALWAYS check every bullet point carefully:
+            - general leave enhancements: any explicit statement that CAO leave rights are better or topped up relative to statutory rules, and for which groups this applies,
+            - maternity leave: duration of fully paid, partially paid and unpaid periods, pay levels during partially paid periods, and any specific notes, including group-specific differences,
+            - paternity/partner leave: duration of fully paid, partially paid and unpaid periods, pay levels during partially paid periods, and any explicit statement that it is above statutory, including group-specific differences,
+            - adoption and foster leave: duration and pay level, including any group differences,
+            - parental leave: existence and level of employer top-ups, duration of unpaid parental leave, and any explicit tenure requirements (with duration and unit), clearly indicating any group differences,
+            - sickness: sick-pay continuation/top-up rules, duration of sick-pay, pay percentage during sick leave, and whether additional disability or WGA-gap insurance is included, for all groups where differences are stated,
+            - care leave: short-term and long-term care leave durations and pay levels, and any explicit top-up rules, including differences by group, seniority or contract type,
+            - vacation and holiday allowance: vacation entitlement(s) and holiday allowance (vakantiegeld) percentages or amounts, including variation by age, seniority, hours worked or contract type as stated,
+            - special leaves: Liberation Day policy (annual vs lustrum vs compensation), seniority- or age-based extra leave days, abortion leave and any other special leaves, with conditions and target groups,
+            - any other leave-related provisions or conditions that affect leave duration, pay level, eligibility or special rights.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    termination_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated termination rules and conditions, and ALWAYS check every bullet point carefully:
+            - whether the CAO contains termination rules beyond statutory defaults, as described in the text,
+            - notice periods for employers and employees, including ALL stated variants: full schedules or tables by age, tenure, job group or contract type, plus any stated minimum or maximum ranges,
+            - tenure-based variation in notice periods (where notice changes with years of service, for employer and/or employee), and any explicit rules on shortening notice (e.g., with UWV permit), including any minimum notice floor that must remain,
+            - dismissal approval routes: which authority or path is required or default for dismissal (e.g., UWV, judge, both, none, conditional), and any differences by dismissal type or group,
+            - dismissal protection and conditions, in particular any reiterated or extended protection during sickness or other protected situations, and to which groups it applies,
+            - automatic end-of-employment rules at AOW (statutory pension) age or other ages/events at which employment can or must end automatically, including any exceptions or group-specific rules,
+            - probationary periods: whether a probation period is allowed at all, and the maximum probation duration for fixed-term and indefinite contracts, including any variation by contract length or type,
+            - severance pay and unemployment (WW) supplements beyond statutory transition pay, including stated amounts, formulas or tenure-based schedules for extra severance, and any differences by group,
+            - any other termination-related provisions or conditions that affect notice, dismissal, end of contract, probation, severance or WW supplements.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    overtime_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information about overtime, shift work and atypical hours, and ALWAYS check every bullet point carefully:
+            - general overtime rules: whether the CAO contains overtime/allowance rules beyond statutory defaults, and any distinctions between worker groups (e.g., job group, function, full-time/part-time, segment),
+            - overtime thresholds and triggers: daily and weekly thresholds after which hours count as overtime, exactly as stated, including any differences by group or schedule,
+            - overtime compensation mode: how overtime is compensated (e.g., monetary pay, time off in lieu (TOIL), or both), and rules on how surcharges (overtime, night, weekend, holiday) interact or are stacked (e.g., highest only vs cumulative),
+            - overtime rates and surcharges: all overtime surcharges and cases (e.g., weekday, Saturday, Sunday, night, holiday rates), including differences across worker groups and any stated ranges,
+            - shift and unfavourable hours: separate shift allowances for regular shift work (including any ranges or tiers) and allowances for work during unfavourable hours (night, weekend, holiday) that are distinct from overtime pay, for all groups where they apply,
+            - working time bounds and rest: minimum rest periods between shifts, maximum daily and weekly working hours, and any explicit limits on compulsory overtime (e.g., maximum hours per week or year), including any differences by group or schedule,
+            - weekends-off guarantees: any rules guaranteeing a minimum number or pattern of weekends off (e.g., at least 1 in 2, 1 in 3, or a fixed number per year), and how these guarantees are formulated,
+            - any other overtime, shift or atypical-hours-related provisions (including TOIL rules, special treatment for particular groups or schedules, or exceptions) that affect thresholds, compensation, working time or rest.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    training_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information about training and education, and ALWAYS check every bullet point carefully:
+            - existence of training or education rights, including which workers are covered,
+            - paid study and training time (typical yearly entitlement, units and any differences by group),
+            - monetary training budgets (annual amounts, units and any group-specific differences),
+            - career or employability scans (frequency and any conditions),
+            - reimbursement of training/study costs (percentages, amounts, covered cost types, caps, and whether paid by employer or sector fund),
+            - sectoral/CAO training funds and what they finance (rights, subsidies, target groups),
+            - employer obligations for mandatory/company-required training, including whether these must be fully paid by the employer,
+            - reclaim clauses allowing employers to recover training costs if employees leave, including the conditions and any repayment schedules,
+            - any other training- or education-related provisions or conditions (for example links to tenure, job group, contract type or development plans).
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    homeoffice_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information about home office / telework / remote work, and ALWAYS check every bullet point carefully:
+            - existence of home office or telework rights and which workers they apply to,
+            - entitlement to work from home (amount of remote work allowed, units such as days per week, and any conditions or limits),
+            - fixed home office allowances or reimbursements (stipends, and any reimbursement of internet/phone, equipment or other costs, with amounts and units),
+            - decision rules on home office arrangements (who decides, whether formal agreements or protocols are required, and any role of the Works Council),
+            - employer obligations regarding health and safety/OSH at the home workplace, and any related guarantees,
+            - rules on travel time or commuting compensation that specifically arise from home-office or hybrid work arrangements,
+            - any other home office or remote-work-related provisions (for example equipment provision, encouragement or campaigns, or references to statutory minimums).
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    contract_type_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information and conditions about contract types, and ALWAYS check every bullet point carefully:
+            - rules on full-time and part-time work: standard full-time hours, allowed part-time work, typical part-time ranges (fractions or hours) and any conditions or target groups,
+            - provisions on min-max (bandwidth) contracts and zero-hour/on-call contracts, including allowed ranges and any conditions or restrictions,
+            - deviations from the statutory fixed-term chain (ketenregeling), including maximum number of successive fixed-term contracts and maximum total duration of the chain, exactly as stated,
+            - rights to convert temporary/fixed-term contracts to permanent/indefinite contracts, including the exact rule text and any conditions (e.g., tenure, performance, number of renewals),
+            - rights to request adjustment of working hours, including any minimum tenure requirement, minimum employer size threshold and additional conditions (e.g., subject to business needs, employer response deadlines),
+            - any other explicit information and rules on contract forms (e.g., seasonal, project, freelance, internships, trainee contracts) that affect contract type, duration or hours.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+
+    fringe_benefits_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated fringe benefits, and ALWAYS check every bullet point carefully:
+            - commuting or travel allowances (including amounts, units and distance/zone rules),
+            - bicycle/leasefiets or other mobility schemes and their main conditions,
+            - meal benefits (free or subsidised meals, canteen subsidies, meal vouchers or meal allowances) including type, amounts and frequency,
+            - internet and/or phone reimbursements or allowances and any conditions,
+            - health insurance contributions or discounts (employer contributions, collective contracts, conditions) and any other insurance or savings-type benefits funded or arranged by the employer,
+            - relocation or housing allowances (including one-off or recurring amounts and eligibility conditions),
+            - coverage of costs for mandatory licenses/certifications required for the job,
+            - any other non-cash or in-kind benefits (e.g., wellbeing programmes, gym membership, ergonomics support, company products/discounts) that go beyond base pay.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    safety_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated safety and integrity provisions, and ALWAYS check every bullet point carefully:
+            - protocols or policies on harassment, bullying, discrimination, aggression or integrity (including separate sexual-harassment or broader integrity protocols),
+            - confidential counsellors or internal/external contact points, and any external reporting channels that are guaranteed,
+            - prevention of psychosocial risks (PSA) such as stress, burnout or workload pressure, including explicit PSA wellbeing measures and programmes,
+            - RI&E requirements that must cover psychosocial risks (PSA),
+            - training or awareness on wellbeing, respectful behaviour, psychosocial risks or safety, including who funds or organises it,
+            - joint safety/health committees or sectoral Arbo/occupational-health arrangements, and any guaranteed access to occupational health services (arbodienst/bedrijfsarts or prevention services),
+            - preventive medical examinations or health checks (PMO/PAGO) and any conditions,
+            - rules on monitoring workload or stress, and any wider wellbeing or vitality programmes,
+            - any other safety, health or integrity-related measures, obligations or special rules that go beyond statutory baselines.
+            Always record ALL explicitly stated provisions and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    childcare_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated childcare information in the CAO, and ALWAYS check every bullet point carefully:
+            - childcare allowances or subsidies (including conditions, basis, percentage/amount, caps, duration, pensionability and any phase-out rules),
+            - in-house, on-site or employer/sector-arranged childcare and whether places are reserved or prioritised for employees,
+            - discounts or priority access / reserved places at contracted childcare institutions,
+            - age limits and scope of covered childcare (e.g., nursery, after-school care, minimum and maximum child age),
+            - rules on which providers qualify for support and how the benefit interacts with public childcare subsidies or fiscal rules,
+            - eligibility conditions: minimum tenure with the employer (state in months, including 0 if rights start from entry), minimum FTE or working hours and any other eligibility limits or conditions,
+            - any childcare-related rights (e.g., leave or work-hours adjustment linked to care responsibilities) that explicitly deviate from national tenure rules, and how,
+            - whether childcare support is financed via a sector fund or similar collective funding structure,
+            - any other childcare-related provisions or conditions that affect childcare benefits, access or eligibility.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    AI_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information about AI and algorithmic management, and ALWAYS check every bullet point carefully:
+            - whether the CAO contains AI or algorithmic-management provisions at all, and which workers or processes they apply to,
+            - rules on automated decisions,
+            - transparency and disclosure obligations,
+            - audit, review or monitoring requirements for AI systems,
+            - governance bodies or committees related to AI, data or algorithmic systems (composition, role and powers, if stated),
+            - worker rights to contest or appeal AI-based or algorithmically supported decisions and the procedures to do so,
+            - training or upskilling provisions related to AI or algorithmic tools,
+            - any other AI- or algorithmic-management-related provisions, safeguards or obligations mentioned in the CAO.
+            Always record ALL explicitly stated groups, systems and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
     model_config = ConfigDict(title='CAO Extraction Schema',
         json_schema_extra={'propertyOrdering': ['general_information',
         'wage_information', 'pension_information', 'leave_information',
@@ -269,144 +328,203 @@ class CAOExtractionSchema(BaseModel):
 # Split schemas for retries 6-8 (salary and non-salary extraction)
 class CAOSalaryOnlySchema(BaseModel):
     """Schema for extracting only wage/salary information from Dutch CAO documents."""
-    wage_information: List[List[str]] = Field(description=
-        """Extract wage and salary information explicitly stated in the CAO: 
-        - all wage tables (that are not identical except for unit conversion) and salary scales, 
-        - job classifications, function groups, and pay groups/grades,
-        - age-related or service-year/experience-based pay steps (trede/periodieken), including any transitions between age bands and experience steps,
-        - rules governing progression within scales (e.g., annual increments, step frequency, performance-based step changes, freeze/unfreeze conditions),
-        - entry-placement rules (e.g., starting above step 0 for prior relevant experience or competence),
-        - personal allowances at the maximum of a scale ("persoonlijke toeslag") and their conditions (basis, %/amount, pensionability, duration, phase-out),
-        - general wage increases (periodic percentage or nominal increases applied sector-wide or by group),
-        - all bonuses and allowances, including sign-on, 13th month, fixed lump sums, profit-sharing, performance bonuses, seniority/loyalty or jubilee bonuses, job-specific allowances, retirement gratuities, and insurance/savings benefits,
-        - notes explaining how the wage system or tables operate (e.g., "scale applies to 36-h week", "wages include 8% holiday allowance", "conversion rules for youth to adult wage scale").
-        SKIP: tables that are identical except for unit conversion (monthly vs hourly vs weekly vs 4 weeks for same data); 
-        KEEP: tables or rules that differ by period, worker type, education level, job group/function scale, experience steps (periodieken/trede), age bands, or other substantive distinctions."""
-        , default_factory=list)
+    wage_information: List[List[str]] = Field(
+        description=
+            """Extract all wage, salary and bonus information explicitly stated in the CAO, and ALWAYS check every bullet point carefully:
+            - all wage tables and salary scales that are not identical except for unit conversion - IMPORTANT: make sure to check the entire document, including appendices,
+            - job classifications, function groups, pay groups/grades and how they link to wage scales,
+            - age-related or service-year/experience-based pay steps (trede/periodieken), including any transitions between age bands and experience steps,
+            - rules governing progression within scales (e.g., annual increments, frequency of steps, freeze/unfreeze conditions, performance-based extra or withheld steps),
+            - rules on entry placement in the wage scale (e.g., higher starting step based on prior relevant experience or competence),
+            - rules on personal allowances when the maximum of a wage scale is reached or when an employee keeps a higher wage after reclassification (basis, amount/percentage, pensionability, duration, phase-out, indexation),
+            - general wage increases (periodic percentage or nominal increases applied sector-wide or by group, including effective dates),
+            - all bonuses and incentive schemes beyond base pay: sign-on bonuses (with amounts and conditions), 13th month or equivalent payments, fixed recurring annual lump sums, profit-sharing schemes, performance/target-based bonuses, seniority or loyalty/jubilee bonuses, retirement gratuities, qualification or diploma bonuses, and job-specific allowances (e.g., cashier allowance, driver’s license allowance),
+            - any insurance, savings or similar schemes that function as wage-related bonuses or profit-sharing,
+            - notes explaining how the wage system or tables operate (e.g., 'scale applies to 36-hour week', 'wages include 8% holiday allowance', 'conversion rules between youth and adult wage scales').
+            SKIP: tables that are identical except for unit conversion (monthly vs hourly vs weekly vs 4 weeks for the same underlying data).
+            KEEP: tables or rules that differ by period, worker type, education level, job group/function scale, experience steps (periodieken/trede), age bands, region or other substantive distinctions.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
     model_config = ConfigDict(title='CAO Salary Only Schema')
 
 
 class CAONonSalarySchema(BaseModel):
     """Schema for extracting all non-salary information from Dutch CAO documents."""
-    general_information: List[List[str]] = Field(description=
-        """Extract the following basic CAO contract information if present in the CAO: 
-        - start, end and signing date, 
-        - retroactive application (applies?, period, scope, exclusions, back-pay terms, interest/surcharge), 
-        - scope type of the CAO itself (sectoral, firm, group, niche),
-        - company name and scope if single-firm,  
-        - SBI codes and version that define the scope of this CAO, 
-        - whether deviations are explicitly allowed at company-agreement level (yes/no, with topics if mentioned), 
-        - AVV status (algemeen verbindend verklaard) with start and end dates if specified."""
-        , default_factory=list)
-    pension_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated pension scheme information, including when present: 
-        - type of scheme (DB, DC, hybrid), 
-        - contribution percentages, employer/employee splits and premiums, 
-        - accrual rules and franchise values, 
-        - retirement ages, 
-        - eligibility rules and accrual during leave/illness, 
-        - special provisions (e.g. excedentregeling, premium change rules, group differences), 
-        - pension fund name/abbreviation,
-        - any other pension-related information mentioned.
-        If the CAO explicitly states there is no occupational pension beyond AOW, note: 'no occupational pension (AOW only)'."""
-        , default_factory=list)
-    leave_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated leave information and conditions, including when present:
-        - vacation entitlement and holiday allowance, 
-        - maternity and paternity/partner leave, 
-        - adoption and parental leave, 
-        - sick leave and care leave (short- and long-term), 
-        - special leaves including Liberation Day policy and senior days,
-        - any other leave-related information mentioned and conditions."""
-        , default_factory=list)
-    termination_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated termination rules, including when present: 
-        - notice periods for employers and employees (include full tables by age/service year if provided), 
-        - rules on shortening, floors, and approval paths (UWV/judge), 
-        - dismissal protections and conditions (e.g. during sickness), 
-        - automatic end of employment at AOW age or other exit conditions, 
-        - probation periods and maximum durations, 
-        - severance pay and WW supplements beyond statutory transition pay,
-        - any other termination-related information mentioned."""        
-        , default_factory=list)
-    overtime_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated information about overtime, shift and atypical hours, including when present:
-        - overtime thresholds and compensation rules,
-        - overtime rates and surcharges (including how they are applied or stacked),
-        - shift, night, weekend, and holiday allowances,
-        - rest periods and weekends-off guarantees,
-        - maximum working hours or limits on compulsory overtime,
-        - any other overtime/shift/atypical hours-related information mentioned (e.g. TOIL)."""
-        , default_factory=list)
-    training_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated information about training, including when present:
-        - paid study and training time, budgets and reimbursements,
-        - career scans or employability assessments,
-        - sectoral/CAO training funds,
-        - employer obligations for mandatory training,
-        - reclaim clauses if employees leave,
-        - any other training-related information mentioned."""
-        , default_factory=list)
-    homeoffice_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated information about home office and remote work, including when present:
-        - entitlement to work from home (time and conditions),
-        - fixed allowances or reimbursements (e.g. stipend, internet/phone, equipment),
-        - decision rules or agreements required,
-        - health and safety obligations at home,
-        - travel time compensation for home-worksite arrangements,
-        - any other home office/remote work-related information mentioned."""
-        , default_factory=list)
-    contract_type_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated information and conditions about contract types, including when present:
-        - rules on full-time and part-time work (standard hours, ranges, conditions),
-        - provisions on min-max or zero-hour/on-call contracts,
-        - deviations from the statutory fixed-term chain (ketenregeling),
-        - rights to convert temporary to permanent contracts,
-        - rights to adjust working hours,
-        - any other information and rules on contract forms (e.g., freelance, internships)."""
-        , default_factory=list)
-    childcare_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated childcare information in the CAO, including when present:
-        - allowances or subsidies,
-        - in-house or employer/sector-arranged childcare,
-        - discounts or priority access,
-        - age limits and scope (e.g., after-school care),
-        - provider rules and interaction with public benefits,
-        - eligibility conditions (e.g. tenure, FTE),
-        - sector fund financing,
-        - other childcare-related provisions."""
-        , default_factory=list)
-    safety_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated safety and integrity provisions, including when present:
-        - harassment, bullying, discrimination, aggression, or integrity protocols,
-        - prevention of psychosocial risks (PSA) such as stress, burnout, or workload pressure,
-        - RI&E requirements covering PSA,
-        - confidential counsellors or internal/external contact points,
-        - training or awareness on wellbeing and respectful behaviour,
-        - reporting procedures and follow-up in PSA/integrity cases,
-        - joint safety/health committees or sectoral Arbo arrangements,
-        - mandatory safety or risk-prevention training,
-        - other safety, health, or integrity-related measures or obligations."""
-        , default_factory=list)
-    AI_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated information about AI and algorithmic management, including when present:
-        - rules on automated decisions and human review,
-        - transparency, disclosure and audit obligations,
-        - governance bodies or committees,
-        - worker rights to contest AI-based decisions,
-        - training or upskilling provisions related to AI,
-        - any other AI and algorithmic management-related information mentioned."""
-        , default_factory=list)
-    fringe_benefits_information: List[List[str]] = Field(description=
-        """Extract ALL explicitly stated fringe benefits, including when present:
-        - commuting or travel allowances,
-        - bicycle/leasefiets or mobility schemes,
-        - meal benefits (meals, vouchers, allowances, canteen subsidies),
-        - health insurance contributions or discounts,
-        - relocation or housing allowances,
-        - costs of mandatory certifications,
-        - other non-cash benefits (e.g., wellbeing, gym, ergonomics)."""
-        , default_factory=list)
+    general_information: List[List[str]] = Field(
+        description=
+            """Extract the following basic CAO contract information if present in the CAO, and ALWAYS check every bullet point carefully:
+            - contract period: validity start date, end date, and signing date,
+            - document type and role (full CAO original/update vs partial amendment/annex/protocol/other_supplement, and whether it clearly replaces the whole CAO for this period or only works together with an earlier text),
+            - if the document is an update or amendment, the broad topics or parts of the CAO that are changed (for example wages, working hours, leave, pension, allowances, training),
+            - general effective date of the change if this CAO updates an earlier one (plus a short quote of the sentence stating it and any extra timing information),
+            - retroactive application (does retroactivity apply?, retroactive period, what is retroactive, explicit exclusions, back-pay rules and any interest/surcharge),
+            - scope type of the CAO itself (for example sectoral, single_company, group, association_limited, occupational_niche, other, unspecified),
+            - company name and scope description if the CAO is single-firm or for a defined group of firms,
+            - SBI codes and SBI version that define or describe the scope of this CAO (primary and any secondary codes),
+            - whether deviations at company-agreement level are explicitly allowed or restricted (yes/no, with topics and conditions if mentioned),
+            - AVV status (whether the CAO is declared generally binding) with AVV start and end dates if specified.""",
+        default_factory=list,
+    )
+    pension_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated pension scheme information, and ALWAYS check every bullet point carefully:
+            - whether there is an occupational pension beyond AOW, and if the CAO explicitly states there is none (record 'no occupational pension (AOW only)'),
+            - type of scheme (e.g., DB, DC, hybrid, other) and whether participation in a sector or company pension fund is mandatory or optional,
+            - contribution levels for employees and, if given, total and/or employer contributions (percentages, bases, units). If different rates apply to different groups (e.g., age, salary band, job group, full-time/part-time), list ALL variants and indicate which group each rate applies to,
+            - accrual rules and key parameters: annual accrual rates, franchise amounts and any other accrual-related parameters, again listing all variants across groups and which group each applies to,
+            - retirement ages: normal, early and deferred/postponed retirement ages, including any differences across groups,
+            - rules on pension accrual during statutory leaves and during the second year of illness, including whether accrual continues fully or partly and for which groups,
+            - special provisions such as excedentregeling (accrual above a wage cap) or other higher-tier arrangements, including any group-specific differences,
+            - name and abbreviation of the pension fund or provider, if mentioned,
+            - any other pension-related provisions or conditions that affect benefits, accrual or contributions.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    leave_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated leave information and conditions, and ALWAYS check every bullet point carefully:
+            - general leave enhancements: any explicit statement that CAO leave rights are better or topped up relative to statutory rules, and for which groups this applies,
+            - maternity leave: duration of fully paid, partially paid and unpaid periods, pay levels during partially paid periods, and any specific notes, including group-specific differences,
+            - paternity/partner leave: duration of fully paid, partially paid and unpaid periods, pay levels during partially paid periods, and any explicit statement that it is above statutory, including group-specific differences,
+            - adoption and foster leave: duration and pay level, including any group differences,
+            - parental leave: existence and level of employer top-ups, duration of unpaid parental leave, and any explicit tenure requirements (with duration and unit), clearly indicating any group differences,
+            - sickness: sick-pay continuation/top-up rules, duration of sick-pay, pay percentage during sick leave, and whether additional disability or WGA-gap insurance is included, for all groups where differences are stated,
+            - care leave: short-term and long-term care leave durations and pay levels, and any explicit top-up rules, including differences by group, seniority or contract type,
+            - vacation and holiday allowance: vacation entitlement(s) and holiday allowance (vakantiegeld) percentages or amounts, including variation by age, seniority, hours worked or contract type as stated,
+            - special leaves: Liberation Day policy (annual vs lustrum vs compensation), seniority- or age-based extra leave days, abortion leave and any other special leaves, with conditions and target groups,
+            - any other leave-related provisions or conditions that affect leave duration, pay level, eligibility or special rights.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    termination_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated termination rules and conditions, and ALWAYS check every bullet point carefully:
+            - whether the CAO contains termination rules beyond statutory defaults, as described in the text,
+            - notice periods for employers and employees, including ALL stated variants: full schedules or tables by age, tenure, job group or contract type, plus any stated minimum or maximum ranges,
+            - tenure-based variation in notice periods (where notice changes with years of service, for employer and/or employee), and any explicit rules on shortening notice (e.g., with UWV permit), including any minimum notice floor that must remain,
+            - dismissal approval routes: which authority or path is required or default for dismissal (e.g., UWV, judge, both, none, conditional), and any differences by dismissal type or group,
+            - dismissal protection and conditions, in particular any reiterated or extended protection during sickness or other protected situations, and to which groups it applies,
+            - automatic end-of-employment rules at AOW (statutory pension) age or other ages/events at which employment can or must end automatically, including any exceptions or group-specific rules,
+            - probationary periods: whether a probation period is allowed at all, and the maximum probation duration for fixed-term and indefinite contracts, including any variation by contract length or type,
+            - severance pay and unemployment (WW) supplements beyond statutory transition pay, including stated amounts, formulas or tenure-based schedules for extra severance, and any differences by group,
+            - any other termination-related provisions or conditions that affect notice, dismissal, end of contract, probation, severance or WW supplements.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    overtime_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information about overtime, shift work and atypical hours, and ALWAYS check every bullet point carefully:
+            - general overtime rules: whether the CAO contains overtime/allowance rules beyond statutory defaults, and any distinctions between worker groups (e.g., job group, function, full-time/part-time, segment),
+            - overtime thresholds and triggers: daily and weekly thresholds after which hours count as overtime, exactly as stated, including any differences by group or schedule,
+            - overtime compensation mode: how overtime is compensated (e.g., monetary pay, time off in lieu (TOIL), or both), and rules on how surcharges (overtime, night, weekend, holiday) interact or are stacked (e.g., highest only vs cumulative),
+            - overtime rates and surcharges: all overtime surcharges and cases (e.g., weekday, Saturday, Sunday, night, holiday rates), including differences across worker groups and any stated ranges,
+            - shift and unfavourable hours: separate shift allowances for regular shift work (including any ranges or tiers) and allowances for work during unfavourable hours (night, weekend, holiday) that are distinct from overtime pay, for all groups where they apply,
+            - working time bounds and rest: minimum rest periods between shifts, maximum daily and weekly working hours, and any explicit limits on compulsory overtime (e.g., maximum hours per week or year), including any differences by group or schedule,
+            - weekends-off guarantees: any rules guaranteeing a minimum number or pattern of weekends off (e.g., at least 1 in 2, 1 in 3, or a fixed number per year), and how these guarantees are formulated,
+            - any other overtime, shift or atypical-hours-related provisions (including TOIL rules, special treatment for particular groups or schedules, or exceptions) that affect thresholds, compensation, working time or rest.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    training_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information about training and education, and ALWAYS check every bullet point carefully:
+            - existence of training or education rights, including which workers are covered,
+            - paid study and training time (typical yearly entitlement, units and any differences by group),
+            - monetary training budgets (annual amounts, units and any group-specific differences),
+            - career or employability scans (frequency and any conditions),
+            - reimbursement of training/study costs (percentages, amounts, covered cost types, caps, and whether paid by employer or sector fund),
+            - sectoral/CAO training funds and what they finance (rights, subsidies, target groups),
+            - employer obligations for mandatory/company-required training, including whether these must be fully paid by the employer,
+            - reclaim clauses allowing employers to recover training costs if employees leave, including the conditions and any repayment schedules,
+            - any other training- or education-related provisions or conditions (for example links to tenure, job group, contract type or development plans).
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    homeoffice_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information about home office / telework / remote work, and ALWAYS check every bullet point carefully:
+            - existence of home office or telework rights and which workers they apply to,
+            - entitlement to work from home (amount of remote work allowed, units such as days per week, and any conditions or limits),
+            - fixed home office allowances or reimbursements (stipends, and any reimbursement of internet/phone, equipment or other costs, with amounts and units),
+            - decision rules on home office arrangements (who decides, whether formal agreements or protocols are required, and any role of the Works Council),
+            - employer obligations regarding health and safety/OSH at the home workplace, and any related guarantees,
+            - rules on travel time or commuting compensation that specifically arise from home-office or hybrid work arrangements,
+            - any other home office or remote-work-related provisions (for example equipment provision, encouragement or campaigns, or references to statutory minimums).
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    contract_type_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information and conditions about contract types, and ALWAYS check every bullet point carefully:
+            - rules on full-time and part-time work: standard full-time hours, allowed part-time work, typical part-time ranges (fractions or hours) and any conditions or target groups,
+            - provisions on min-max (bandwidth) contracts and zero-hour/on-call contracts, including allowed ranges and any conditions or restrictions,
+            - deviations from the statutory fixed-term chain (ketenregeling), including maximum number of successive fixed-term contracts and maximum total duration of the chain, exactly as stated,
+            - rights to convert temporary/fixed-term contracts to permanent/indefinite contracts, including the exact rule text and any conditions (e.g., tenure, performance, number of renewals),
+            - rights to request adjustment of working hours, including any minimum tenure requirement, minimum employer size threshold and additional conditions (e.g., subject to business needs, employer response deadlines),
+            - any other explicit information and rules on contract forms (e.g., seasonal, project, freelance, internships, trainee contracts) that affect contract type, duration or hours.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+
+    fringe_benefits_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated fringe benefits, and ALWAYS check every bullet point carefully:
+            - commuting or travel allowances (including amounts, units and distance/zone rules),
+            - bicycle/leasefiets or other mobility schemes and their main conditions,
+            - meal benefits (free or subsidised meals, canteen subsidies, meal vouchers or meal allowances) including type, amounts and frequency,
+            - internet and/or phone reimbursements or allowances and any conditions,
+            - health insurance contributions or discounts (employer contributions, collective contracts, conditions) and any other insurance or savings-type benefits funded or arranged by the employer,
+            - relocation or housing allowances (including one-off or recurring amounts and eligibility conditions),
+            - coverage of costs for mandatory licenses/certifications required for the job,
+            - any other non-cash or in-kind benefits (e.g., wellbeing programmes, gym membership, ergonomics support, company products/discounts) that go beyond base pay.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    safety_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated safety and integrity provisions, and ALWAYS check every bullet point carefully:
+            - protocols or policies on harassment, bullying, discrimination, aggression or integrity (including separate sexual-harassment or broader integrity protocols),
+            - confidential counsellors or internal/external contact points, and any external reporting channels that are guaranteed,
+            - prevention of psychosocial risks (PSA) such as stress, burnout or workload pressure, including explicit PSA wellbeing measures and programmes,
+            - RI&E requirements that must cover psychosocial risks (PSA),
+            - training or awareness on wellbeing, respectful behaviour, psychosocial risks or safety, including who funds or organises it,
+            - joint safety/health committees or sectoral Arbo/occupational-health arrangements, and any guaranteed access to occupational health services (arbodienst/bedrijfsarts or prevention services),
+            - preventive medical examinations or health checks (PMO/PAGO) and any conditions,
+            - rules on monitoring workload or stress, and any wider wellbeing or vitality programmes,
+            - any other safety, health or integrity-related measures, obligations or special rules that go beyond statutory baselines.
+            Always record ALL explicitly stated provisions and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    childcare_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated childcare information in the CAO, and ALWAYS check every bullet point carefully:
+            - childcare allowances or subsidies (including conditions, basis, percentage/amount, caps, duration, pensionability and any phase-out rules),
+            - in-house, on-site or employer/sector-arranged childcare and whether places are reserved or prioritised for employees,
+            - discounts or priority access / reserved places at contracted childcare institutions,
+            - age limits and scope of covered childcare (e.g., nursery, after-school care, minimum and maximum child age),
+            - rules on which providers qualify for support and how the benefit interacts with public childcare subsidies or fiscal rules,
+            - eligibility conditions: minimum tenure with the employer (state in months, including 0 if rights start from entry), minimum FTE or working hours and any other eligibility limits or conditions,
+            - any childcare-related rights (e.g., leave or work-hours adjustment linked to care responsibilities) that explicitly deviate from national tenure rules, and how,
+            - whether childcare support is financed via a sector fund or similar collective funding structure,
+            - any other childcare-related provisions or conditions that affect childcare benefits, access or eligibility.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    AI_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information about AI and algorithmic management, and ALWAYS check every bullet point carefully:
+            - whether the CAO contains AI or algorithmic-management provisions at all, and which workers or processes they apply to,
+            - rules on automated decisions,
+            - transparency and disclosure obligations,
+            - audit, review or monitoring requirements for AI systems,
+            - governance bodies or committees related to AI, data or algorithmic systems (composition, role and powers, if stated),
+            - worker rights to contest or appeal AI-based or algorithmically supported decisions and the procedures to do so,
+            - training or upskilling provisions related to AI or algorithmic tools,
+            - any other AI- or algorithmic-management-related provisions, safeguards or obligations mentioned in the CAO.
+            Always record ALL explicitly stated groups, systems and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
     model_config = ConfigDict(title='CAO Non-Salary Schema',
         json_schema_extra={'propertyOrdering': ['general_information',
         'pension_information', 'leave_information',

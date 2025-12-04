@@ -64,9 +64,9 @@ NUMERIC_TREND_VARS = [
     "leave_sickpay_duration_value",
     "leave_sickpay_continuation_value",
     "pension_employee_contrib_value",
-    "pension_retirement_age_normal_value",
+    "pension_retire_age_normal_value",
     "overtime_max_hours_per_week_value",
-    "training_training_time_yearly_value",
+    "training_time_yearly_value",
 ]
 
 # Boolean variable groupings by domain
@@ -76,9 +76,9 @@ BOOLEAN_DOMAIN_GROUPS = {
         "title": "General CAO Provisions",
         "vars": [
             "general_avv_applies",
-            "general_retroactive_applies",
-            "general_retroactive_backpay_due",
-            "general_deviation_allowed_company_level",
+            "general_retro_applies",
+            "general_retro_backpay_due",
+            "general_dev_company_level",
             "TTW",
         ]
     },
@@ -88,15 +88,15 @@ BOOLEAN_DOMAIN_GROUPS = {
         "vars": [
             "bonus_has_bonus_schemes",
             "bonus_sign_on_bonus_present",
-            "bonus_thirteenth_month_present",
+            "bonus_thirteenth_month",
             "bonus_profit_sharing_present",
             "bonus_performance_bonus_present",
-            "bonus_job_specific_allowances_present",
-            "bonus_qualification_bonus_present",
-            "bonus_seniority_or_loyalty_bonus_present",
-            "bonus_retirement_gratuity_present",
-            "wage_entry_step_by_experience_present",
-            "wage_personal_allowance_at_max_scale_present",
+            "bonus_job_allowances_present",
+            "bonus_qual_bonus_present",
+            "bonus_seniority_loyalty_bonus",
+            "bonus_retire_gratuity_present",
+            "wage_entry_step_exp_present",
+            "wage_pers_allow_max_scale",
         ]
     },
     "03_pension": {
@@ -105,10 +105,10 @@ BOOLEAN_DOMAIN_GROUPS = {
         "vars": [
             "pension_has_pension_scheme",
             "pension_mandatory_participation",
-            "pension_accrual_during_statutory_leaves",
-            "pension_accrual_during_illness_year2",
-            "pension_excedentregeling_present",
-            "pension_premium_change_equal_split",
+            "pension_accrual_stat_leaves",
+            "pension_accrual_illness_y2",
+            "pension_excedent_present",
+            "pension_premium_eq_split",
         ]
     },
     "04_termination": {
@@ -116,12 +116,12 @@ BOOLEAN_DOMAIN_GROUPS = {
         "title": "Termination Rules",
         "vars": [
             "term_has_termination_rules",
-            "term_notice_period_by_tenure_present",
-            "term_can_shorten_notice_with_uwv_permit",
-            "term_sickness_dismissal_protection",
-            "term_end_at_AOW_age_automatic",
+            "term_notice_tenure_present",
+            "term_shorten_notice_uwv",
+            "term_sick_dismissal_prot",
+            "term_end_at_AOW_auto",
             "term_probation_allowed",
-            "term_severance_or_ww_supplement_present",
+            "term_severance_ww_supplement",
         ]
     },
     "05_leave": {
@@ -131,15 +131,15 @@ BOOLEAN_DOMAIN_GROUPS = {
             "leave_has_leave_enhancements",
             "leave_has_above_statutory_maternity",
             "leave_paternity_explicitly_above_statutory",
-            "leave_parental_leave_topup_present",
-            "leave_parental_leave_tenure_requirement_present",
-            "leave_abortion_leave_present",
-            "leave_sick_leave_topup_present",
+            "leave_parental_topup_present",
+            "leave_parental_tenure_req_present",
+            "leave_abortion_present",
+            "leave_sick_topup_present",
             "leave_sickpay_extra_insurance_present",
-            "leave_care_leave_topup_present",
+            "leave_care_topup_present",
             "leave_liberation_day_annual",
             "leave_liberation_day_lustrum",
-            "leave_extra_leave_seniority_present",
+            "leave_extra_seniority_present",
         ]
     },
     "06_overtime": {
@@ -155,7 +155,7 @@ BOOLEAN_DOMAIN_GROUPS = {
         "title": "Training Rights",
         "vars": [
             "training_has_training_rights",
-            "training_training_fund_present",
+            "training_fund_present",
             "training_reclaim_clause_present",
             "training_mandatory_training_paid",
         ]
@@ -165,11 +165,11 @@ BOOLEAN_DOMAIN_GROUPS = {
         "title": "Homeoffice Provisions",
         "vars": [
             "homeoffice_has_homeoffice_rights",
-            "homeoffice_homeoffice_stipend_present",
-            "homeoffice_homeoffice_costs_reimbursed",
-            "homeoffice_homeoffice_agreement_required",
-            "homeoffice_homeoffice_health_safety_guarantee",
-            "homeoffice_homeoffice_travel_time_compensation",
+            "homeoffice_stipend_present",
+            "homeoffice_costs_reimbursed",
+            "homeoffice_agreement_required",
+            "homeoffice_health_safety_guarantee",
+            "homeoffice_travel_time_compensation",
         ]
     },
     "09_contract_type": {
@@ -208,10 +208,10 @@ BOOLEAN_DOMAIN_GROUPS = {
         "title": "Childcare Support",
         "vars": [
             "childcare_childcare_support_present",
-            "childcare_childcare_inhouse_present",
-            "childcare_childcare_discount_present",
-            "childcare_childcare_priority_access",
-            "childcare_childcare_funding_through_sector_fund",
+            "childcare_inhouse_present",
+            "childcare_discount_present",
+            "childcare_priority_access",
+            "childcare_funding_sector_fund",
         ]
     },
     "12_ai": {
@@ -258,54 +258,54 @@ BOOLEAN_DOMAIN_GROUPS = {
 BOOLEAN_LABELS = {
     # General
     "general_avv_applies": "AVV applies (binding declaration)",
-    "general_retroactive_applies": "Retroactive application applies",
-    "general_retroactive_backpay_due": "Retroactive backpay due",
-    "general_deviation_allowed_company_level": "Company-level deviation allowed",
+    "general_retro_applies": "Retroactive application applies",
+    "general_retro_backpay_due": "Retroactive backpay due",
+    "general_dev_company_level": "Company-level deviation allowed",
     "TTW": "TTW (Tussentijdse Wijziging / Interim amendment)",
     
     # Bonuses and wages
     "bonus_has_bonus_schemes": "Has bonus schemes",
     "bonus_sign_on_bonus_present": "Sign-on bonus present",
-    "bonus_thirteenth_month_present": "13th month bonus present",
+    "bonus_thirteenth_month": "13th month bonus present",
     "bonus_profit_sharing_present": "Profit sharing present",
     "bonus_performance_bonus_present": "Performance bonus present",
-    "bonus_job_specific_allowances_present": "Job-specific allowances present",
-    "bonus_qualification_bonus_present": "Qualification bonus present",
-    "bonus_seniority_or_loyalty_bonus_present": "Seniority/loyalty bonus present",
-    "bonus_retirement_gratuity_present": "Retirement gratuity present",
-    "wage_entry_step_by_experience_present": "Entry step by experience present",
-    "wage_personal_allowance_at_max_scale_present": "Personal allowance at max scale present",
+    "bonus_job_allowances_present": "Job-specific allowances present",
+    "bonus_qual_bonus_present": "Qualification bonus present",
+    "bonus_seniority_loyalty_bonus": "Seniority/loyalty bonus present",
+    "bonus_retire_gratuity_present": "Retirement gratuity present",
+    "wage_entry_step_exp_present": "Entry step by experience present",
+    "wage_pers_allow_max_scale": "Personal allowance at max scale present",
     
     # Pension
     "pension_has_pension_scheme": "Has pension scheme",
     "pension_mandatory_participation": "Mandatory participation in pension",
-    "pension_accrual_during_statutory_leaves": "Pension accrual during statutory leaves",
-    "pension_accrual_during_illness_year2": "Pension accrual during illness (year 2+)",
-    "pension_excedentregeling_present": "Excedentregeling present",
-    "pension_premium_change_equal_split": "Premium change equal split between parties",
+    "pension_accrual_stat_leaves": "Pension accrual during statutory leaves",
+    "pension_accrual_illness_y2": "Pension accrual during illness (year 2+)",
+    "pension_excedent_present": "Excedentregeling present",
+    "pension_premium_eq_split": "Premium change equal split between parties",
     
     # Termination
     "term_has_termination_rules": "Has termination rules",
-    "term_notice_period_by_tenure_present": "Notice period varies by tenure",
-    "term_can_shorten_notice_with_uwv_permit": "Can shorten notice with UWV permit",
-    "term_sickness_dismissal_protection": "Sickness dismissal protection present",
-    "term_end_at_AOW_age_automatic": "Automatic end at AOW age",
+    "term_notice_tenure_present": "Notice period varies by tenure",
+    "term_shorten_notice_uwv": "Can shorten notice with UWV permit",
+    "term_sick_dismissal_prot": "Sickness dismissal protection present",
+    "term_end_at_AOW_auto": "Automatic end at AOW age",
     "term_probation_allowed": "Probation period allowed",
-    "term_severance_or_ww_supplement_present": "Severance or WW supplement present",
+    "term_severance_ww_supplement": "Severance or WW supplement present",
     
     # Leave
     "leave_has_leave_enhancements": "Has leave enhancements",
     "leave_has_above_statutory_maternity": "Above-statutory maternity leave",
     "leave_paternity_explicitly_above_statutory": "Above-statutory paternity leave",
-    "leave_parental_leave_topup_present": "Parental leave topup present",
-    "leave_parental_leave_tenure_requirement_present": "Parental leave tenure requirement present",
-    "leave_abortion_leave_present": "Abortion leave present",
-    "leave_sick_leave_topup_present": "Sick leave topup present",
+    "leave_parental_topup_present": "Parental leave topup present",
+    "leave_parental_tenure_req_present": "Parental leave tenure requirement present",
+    "leave_abortion_present": "Abortion leave present",
+    "leave_sick_topup_present": "Sick leave topup present",
     "leave_sickpay_extra_insurance_present": "Sickpay extra insurance present",
-    "leave_care_leave_topup_present": "Care leave topup present",
+    "leave_care_topup_present": "Care leave topup present",
     "leave_liberation_day_annual": "Liberation day (annual)",
     "leave_liberation_day_lustrum": "Liberation day (lustrum)",
-    "leave_extra_leave_seniority_present": "Extra leave by seniority present",
+    "leave_extra_seniority_present": "Extra leave by seniority present",
     
     # Overtime
     "overtime_has_overtime_rules": "Has overtime rules",
@@ -313,17 +313,17 @@ BOOLEAN_LABELS = {
     
     # Training
     "training_has_training_rights": "Has training rights",
-    "training_training_fund_present": "Training fund present",
+    "training_fund_present": "Training fund present",
     "training_reclaim_clause_present": "Training reclaim clause present",
     "training_mandatory_training_paid": "Mandatory training paid by employer",
     
     # Homeoffice
     "homeoffice_has_homeoffice_rights": "Has homeoffice rights",
-    "homeoffice_homeoffice_stipend_present": "Homeoffice stipend present",
-    "homeoffice_homeoffice_costs_reimbursed": "Homeoffice costs reimbursed",
-    "homeoffice_homeoffice_agreement_required": "Homeoffice agreement required",
-    "homeoffice_homeoffice_health_safety_guarantee": "Homeoffice health/safety guarantee present",
-    "homeoffice_homeoffice_travel_time_compensation": "Homeoffice travel time compensation present",
+    "homeoffice_stipend_present": "Homeoffice stipend present",
+    "homeoffice_costs_reimbursed": "Homeoffice costs reimbursed",
+    "homeoffice_agreement_required": "Homeoffice agreement required",
+    "homeoffice_health_safety_guarantee": "Homeoffice health/safety guarantee present",
+    "homeoffice_travel_time_compensation": "Homeoffice travel time compensation present",
     
     # Contract type
     "contract_has_contract_type_rules": "Has contract type rules",
@@ -350,10 +350,10 @@ BOOLEAN_LABELS = {
     
     # Childcare
     "childcare_childcare_support_present": "Childcare support present",
-    "childcare_childcare_inhouse_present": "In-house childcare present",
-    "childcare_childcare_discount_present": "Childcare discount present",
-    "childcare_childcare_priority_access": "Childcare priority access present",
-    "childcare_childcare_funding_through_sector_fund": "Childcare funding through sector fund present",
+    "childcare_inhouse_present": "In-house childcare present",
+    "childcare_discount_present": "Childcare discount present",
+    "childcare_priority_access": "Childcare priority access present",
+    "childcare_funding_sector_fund": "Childcare funding through sector fund present",
     
     # AI
     "ai_ai_policy_exists": "AI policy exists",
@@ -385,8 +385,8 @@ NUMERIC_FIGURE_GROUPS = {
     ],
     "non_salary_numeric_pension_training_trends.png": [
         "pension_employee_contrib_value",
-        "pension_retirement_age_normal_value",
-        "training_training_time_yearly_value",
+        "pension_retire_age_normal_value",
+        "training_time_yearly_value",
     ],
 }
 
@@ -808,7 +808,9 @@ def build_latest_cao_forward_fill(df: pd.DataFrame, cao_col: str = "cao_number",
         if date_col not in df_copy.columns:
             print(f"  Warning: Neither 'start_year' nor '{date_col}' found")
             return pd.DataFrame()
-        df_copy[date_col] = pd.to_datetime(df_copy[date_col], errors='coerce')
+        # CAO metadata dates (ingangsdatum, expiratiedatum, datum_kennisgeving) are in DD/MM/YYYY format
+        dayfirst = date_col in ['ingangsdatum', 'expiratiedatum', 'datum_kennisgeving']
+        df_copy[date_col] = pd.to_datetime(df_copy[date_col], errors='coerce', dayfirst=dayfirst)
         df_copy["start_year"] = df_copy[date_col].dt.year
     else:
         # Ensure start_year is numeric
@@ -872,9 +874,9 @@ def prepare_year_column(df: pd.DataFrame) -> pd.DataFrame:
     if "ingangsdatum" not in df.columns:
         raise ValueError("Column 'ingangsdatum' not found in data")
     
-    # Parse date column
+    # Parse date column (CAO metadata dates are in DD/MM/YYYY format)
     df["ingangsdatum"] = pd.to_datetime(
-        df["ingangsdatum"], errors='coerce'
+        df["ingangsdatum"], errors='coerce', dayfirst=True
     )
     
     # Create start_year column
@@ -1078,8 +1080,8 @@ def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
                                           "leave_sickpay_duration_value",
                                           "leave_sickpay_continuation_value",
                                           "pension_employee_contrib_value",
-                                          "training_training_time_yearly_value"]
-            # Note: pension_retirement_age_normal_value is in years (age), no normalization needed
+                                          "training_time_yearly_value"]
+            # Note: pension_retire_age_normal_value is in years (age), no normalization needed
             
             means, counts = compute_numeric_trends(df_plot, var_name, start_year_col, min_obs, 
                                                    normalize_hours=normalize_hours,
@@ -1344,7 +1346,7 @@ def plot_boolean_trends_by_domain(df: pd.DataFrame, start_year_col: str, output_
 
 def plot_contract_counts_comparison(df: pd.DataFrame, output_dir: Path) -> None:
     """
-    Plot comparison of contract counts per year for ingangsdatum vs general_start_date_contract.
+    Plot comparison of contract counts per year for ingangsdatum vs general_start_date.
     
     Args:
         df: DataFrame with data
@@ -1360,19 +1362,19 @@ def plot_contract_counts_comparison(df: pd.DataFrame, output_dir: Path) -> None:
         print(f"  Available columns: {list(df_copy.columns[:20])}...")
         return
     
-    # Try to find the contract start date column (could be general_start_date_contract or start_date_contract)
+    # Try to find the contract start date column (could be general_start_date or start_date)
     contract_date_col = None
-    if "general_start_date_contract" in df_copy.columns:
-        contract_date_col = "general_start_date_contract"
-    elif "start_date_contract" in df_copy.columns:
-        contract_date_col = "start_date_contract"
+    if "general_start_date" in df_copy.columns:
+        contract_date_col = "general_start_date"
+    elif "start_date" in df_copy.columns:
+        contract_date_col = "start_date"
     else:
-        print(f"  [WARN] Column 'general_start_date_contract' or 'start_date_contract' not found; skipping contract counts comparison.")
+        print(f"  [WARN] Column 'general_start_date' or 'start_date' not found; skipping contract counts comparison.")
         print(f"  Available columns: {list(df_copy.columns[:20])}...")
         return
     
-    # Parse both date columns
-    df_copy["ingangsdatum"] = pd.to_datetime(df_copy["ingangsdatum"], errors='coerce')
+    # Parse both date columns (CAO metadata dates are in DD/MM/YYYY format)
+    df_copy["ingangsdatum"] = pd.to_datetime(df_copy["ingangsdatum"], errors='coerce', dayfirst=True)
     df_copy[contract_date_col] = pd.to_datetime(df_copy[contract_date_col], errors='coerce')
     
     # Extract years from both columns
@@ -1408,7 +1410,7 @@ def plot_contract_counts_comparison(df: pd.DataFrame, output_dir: Path) -> None:
     ingangsdatum_counts = df_copy[df_copy["year_ingangsdatum"].notna()].groupby("year_ingangsdatum").size()
     ingangsdatum_counts = ingangsdatum_counts.sort_index()
     
-    # Count contracts per year for general_start_date_contract (only rows with valid year)
+    # Count contracts per year for general_start_date (only rows with valid year)
     contract_start_counts = df_copy[df_copy["year_contract_start"].notna()].groupby("year_contract_start").size()
     contract_start_counts = contract_start_counts.sort_index()
     

@@ -692,9 +692,9 @@ def main():
         results['cross_sectional'] = perform_cross_sectional_analysis(df)
     except Exception as e:
         print(f"Error in cross-sectional analysis: {e}")
-        # Create basic cross-sectional results with just overview
+        # Create basic cross-sectional results with just overview (CAO metadata dates are in DD/MM/YYYY format)
         try:
-            df_dates = pd.to_datetime(df['ingangsdatum'], errors='coerce')
+            df_dates = pd.to_datetime(df['ingangsdatum'], errors='coerce', dayfirst=True)
             earliest = df_dates.min()
             latest = df_dates.max()
         except Exception:

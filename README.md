@@ -31,16 +31,15 @@ An AI-powered pipeline for extracting structured data from Dutch Collective Labo
 ## Pipeline Overview
 
 ```
-Web Scraping → Excel Processing → PDF Extraction → LLM Extraction → Analysis → Excel Creation
-     p0              p1              p2              p3              p4          p5
+Web Scraping → PDF Extraction → LLM Extraction → Analysis → Excel Creation
+     p1              p2              p3              p4          p5
 ```
 
-1. **p0_webscraping.py** - Downloads CAO PDFs from uitvoeringarbeidsvoorwaardenwetgeving.nl using Selenium; uses `inputs/excel/CAO_Frequencies_2014.xlsx` to decide skips and defaults to writing into `inputs/pdfs/input_pdfs_extra/`.
-2. **p1_inputExcel.py** - (legacy/optional) Previously converted Excel field definitions to markdown prompt templates; prompts are now hardcoded in code/schemas and p2–p5 do not read the Excel or generated markdown.
-3. **p2_extract.py** - Multi-method PDF text extraction (PyPDF2 + pdfplumber + Tesseract OCR)
-4. **p3_llmExtraction.py** - Raw data extraction using Google Gemini API with context preservation
-5. **p4_analysis.py** - Schema-driven structured extraction (salary + non-salary) using Pydantic models; non-salary outputs go to `outputs/llm_analysis/non_salary/gen_bon_wag_pen_ter/`, `outputs/llm_analysis/non_salary/lea_ove_tra/`, and `outputs/llm_analysis/non_salary/hom_con_saf_chi_ai_fri/`
-6. **p5_excel_creation.py** - Merges results and creates final Excel outputs with proper formatting
+1. **p1_webscraping.py** - Downloads CAO PDFs from uitvoeringarbeidsvoorwaardenwetgeving.nl using Selenium; uses `inputs/excel/CAO_Frequencies_2014.xlsx` to decide skips and defaults to writing into `inputs/pdfs/input_pdfs_extra/`.
+2. **p2_extract.py** - Multi-method PDF text extraction (PyPDF2 + pdfplumber + Tesseract OCR)
+3. **p3_llmExtraction.py** - Raw data extraction using Google Gemini API with context preservation
+4. **p4_analysis.py** - Schema-driven structured extraction (salary + non-salary) using Pydantic models; non-salary outputs go to `outputs/llm_analysis/non_salary/gen_bon_wag_pen_ter/`, `outputs/llm_analysis/non_salary/lea_ove_tra/`, and `outputs/llm_analysis/non_salary/hom_con_saf_chi_ai_fri/`
+5. **p5_excel_creation.py** - Merges results and creates final Excel outputs with proper formatting
 
 ## Folder Structure
 
@@ -64,12 +63,16 @@ CAOsDataExtraction/
 │   ├── excel/                   # Final Excel output files
 │   └── logs/                    # Processing logs and error reports
 ├── pipelines/
-│   ├── p0_webscraping.py        # Web scraping
-│   ├── p1_inputExcel.py         # Excel processing (legacy/optional; outputs unused by p2–p5)
+│   ├── p1_webscraping.py        # Web scraping
 │   ├── p2_extract.py            # PDF extraction
 │   ├── p3_llmExtraction.py      # LLM extraction
 │   ├── p4_analysis.py           # Data analysis
 │   └── p5_excel_creation.py     # Excel creation
+├── scripts_pipeline_helper/     # Helper scripts directly used by pipeline stages
+│   ├── p1_p2/                    # Helpers used by p1_webscraping.py and p2_extract.py
+│   │   └── OUTPUT_tracker.py    # Progress tracking
+│   └── p4/                      # Stage 4 specific helpers
+│       └── merge_split_salary.py # Merge split salary results
 ├── schema/
 │   ├── salary_schema.py         # Salary data schema (Pydantic models) - regular schema with full field names, for attempts 1-5
 │   ├── salary_schema_compact.py # Compact salary schema (no table_label, 2-letter field names) - for attempts 6-8. NOTE: holiday_incl moved from SalaryPoint to SalaryRow
@@ -79,8 +82,8 @@ CAOsDataExtraction/
 │   ├── non_salary_schema.py     # Non-salary data schema (Pydantic models)
 │   └── excel_output_schema.py   # Excel output column definitions
 ├── scripts/                     # Utility and analysis scripts
-├── utils/                       # Helper utilities (input/output management)
-│   ├── input_utils/             # Input utilities including merge_split_salary.py
+├── utils/                       # Standalone utility scripts (not directly used by pipeline)
+│   ├── input_utils/             # Input utilities
 │   └── output_utils/            # Output utilities
 └── run_pipeline.py              # Main entry point
 ```
@@ -99,8 +102,7 @@ All paths and settings are centralized in `conf/config.yaml`. Key paths include:
 
 ### Run Individual Stages
 ```bash
-python -m pipelines.p0_webscraping    # Web scraping
-python -m pipelines.p1_inputExcel     # Excel processing
+python -m pipelines.p1_webscraping    # Web scraping
 python -m pipelines.p2_extract        # PDF extraction
 python -m pipelines.p3_llmExtraction  # LLM extraction
 python -m pipelines.p4_analysis       # Data analysis
@@ -139,16 +141,11 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
 
 ## Pipeline Stage Details
 
-### Stage 0: Web Scraping (p0_webscraping.py)
+### Stage 1: Web Scraping (p1_webscraping.py)
 - Downloads CAO PDFs from uitvoeringarbeidsvoorwaardenwetgeving.nl
 - Uses Selenium with Chrome for robust scrolling and link discovery
 - Supports primary and extra runs with duplicate prevention
 - Generates metadata CSV files for tracking
-
-### Stage 1: Excel Processing (p1_inputExcel.py) — legacy/optional
-- Historical step that converted Excel field definitions to markdown prompt templates
-- Current pipeline no longer consumes these templates; prompts live in code/schemas (p3 prompt builders and schema prompt strings)
-- Run only if you need to regenerate the docs/fields_prompt*.md artifacts for reference
 
 ### Stage 2: PDF Extraction (p2_extract.py)
 - **Multi-method extraction**: PyPDF2 + pdfplumber + Tesseract OCR
@@ -187,9 +184,31 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
 
 ### Stage 5: Excel Creation (p5_excel_creation.py)
 - Merges salary and non-salary extraction results
-- Adds CAO metadata and dates
+- Adds CAO metadata and dates from `extracted_cao_info.csv`
 - Creates final Excel files with proper formatting
 - Handles Excel cell size limits (32,767 character limit)
+- Properly handles NaN values in date fields
+
+## Date Format Handling
+
+**Important**: Different date fields use different formats:
+
+- **CAO metadata dates (DD/MM/YYYY)**: `ingangsdatum`, `expiratiedatum`, `datum_kennisgeving`
+  - Format: `'01/01/2014'`, `'31/12/2014'`
+  - Source: Website metadata CSV
+  - Parsing: Requires `dayfirst=True` in `pd.to_datetime()`
+
+- **Contract dates (YYYY-MM-DD)**: `general_start_date`, `general_expiry_date`, etc.
+  - Format: `'2014-01-01'`, `'2014-12-31'` (ISO format)
+  - Source: Extracted from PDFs by LLM
+  - Parsing: Default `pd.to_datetime()` (no `dayfirst` needed)
+
+- **Salary timeline dates (YYYY-MM-DD)**: `salary_1_start_date`, `salary_1_end_date`, etc.
+  - Format: `'2014-01-01'`, `'2014-12-31'` (ISO format)
+  - Source: Extracted from PDFs by LLM
+  - Parsing: Default `pd.to_datetime()` (no `dayfirst` needed)
+
+All descriptives and analysis scripts correctly handle these format differences.
 
 ## Troubleshooting
 

@@ -110,7 +110,7 @@ from schema.salary_prompt_split import (
 from schema.salary_schema_super_compact import (
     SalaryExtractionSchemaSuperCompact, SALARY_PROMPT_SUPER_COMPACT
 )
-from utils.input_utils.merge_split_salary import merge_split_salary_results
+from scripts_pipeline_helper.p4.merge_split_salary import merge_split_salary_results
 from schema.non_salary_schema import (
     GeneralInfo, BonusesInfo, WageScalesInfo, PensionInfo, LeaveInfo, 
     TerminationInfo, OvertimeInfo, TrainingInfo, HomeofficeInfo, 

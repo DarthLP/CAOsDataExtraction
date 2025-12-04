@@ -770,9 +770,9 @@ def main():
             'column_analysis': {}
         }
     
-    # Convert dates to datetime to avoid comparison errors
+    # Convert dates to datetime to avoid comparison errors (CAO metadata dates are in DD/MM/YYYY format)
     try:
-        df_dates = pd.to_datetime(df['ingangsdatum'], errors='coerce')
+        df_dates = pd.to_datetime(df['ingangsdatum'], errors='coerce', dayfirst=True)
         earliest = df_dates.min()
         latest = df_dates.max()
     except Exception:

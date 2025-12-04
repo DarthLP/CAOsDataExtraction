@@ -295,7 +295,9 @@ def create_variable_health_sheet(df: pd.DataFrame) -> pd.DataFrame:
                 })
         
         elif var_type == "date":
-            date_series = pd.to_datetime(series, errors='coerce')
+            # Check if this is a CAO metadata date column (DD/MM/YYYY format)
+            dayfirst = series.name in ['ingangsdatum', 'expiratiedatum', 'datum_kennisgeving']
+            date_series = pd.to_datetime(series, errors='coerce', dayfirst=dayfirst)
             non_null_dates = date_series.dropna()
             if len(non_null_dates) > 0:
                 row.update({
@@ -1079,11 +1081,11 @@ def main():
         print("  ERROR: Input file is empty")
         return
     
-    # Parse date columns
+    # Parse date columns (CAO metadata dates are in DD/MM/YYYY format)
     date_cols = ["ingangsdatum", "expiratiedatum", "datum_kennisgeving"]
     for col in date_cols:
         if col in df.columns:
-            df[col] = pd.to_datetime(df[col], errors='coerce')
+            df[col] = pd.to_datetime(df[col], errors='coerce', dayfirst=True)
             print(f"  Parsed {col} as datetime")
         else:
             print(f"  Warning: {col} column not found")

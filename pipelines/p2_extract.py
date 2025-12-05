@@ -30,7 +30,7 @@ FEATURES:
 - Parallel processing support for large batches
 
 USAGE:
-    Single process:
+    Single Process:
         python pipelines/p2_extract.py
     
     Multi-process (recommended for large batches):
@@ -39,11 +39,11 @@ USAGE:
         python pipelines/p2_extract.py --process_id 2 --total_processes 4
         python pipelines/p2_extract.py --process_id 3 --total_processes 4
     
-    Using caffeinate and logging:
-        unbuffer caffeinate python pipelines/p2_extract.py --process_id 0 --total_processes 4 2>&1 | tee p2_log1.txt &
-        unbuffer caffeinate python pipelines/p2_extract.py --process_id 1 --total_processes 4 2>&1 | tee p2_log2.txt &
-        unbuffer caffeinate python pipelines/p2_extract.py --process_id 2 --total_processes 4 2>&1 | tee p2_log3.txt &
-        unbuffer caffeinate python pipelines/p2_extract.py --process_id 3 --total_processes 4 2>&1 | tee p2_log4.txt &
+    Bash script for parallel execution:
+        caffeinate python -u pipelines/p2_extract.py --process_id 0 --total_processes 4 > p2_log1.txt 2>&1 &
+        caffeinate python -u pipelines/p2_extract.py --process_id 1 --total_processes 4 > p2_log2.txt 2>&1 &
+        caffeinate python -u pipelines/p2_extract.py --process_id 2 --total_processes 4 > p2_log3.txt 2>&1 &
+        caffeinate python -u pipelines/p2_extract.py --process_id 3 --total_processes 4 > p2_log4.txt 2>&1 &
 
 ARGUMENTS:
     --process_id: Process ID for work distribution (0-based) - defaults to 0
@@ -167,7 +167,7 @@ OUTPUT_FOLDER_JSON = config['paths']['parsed_pdfs']  # JSON output (legacy)
 OUTPUT_FOLDER_MD = config['paths']['parsed_pdfs_markdown']  # Markdown output (primary)
 
 # Choose output format: 'markdown', 'json', or 'both'
-OUTPUT_FORMAT = 'both'  # Default to both for backwards compatibility
+OUTPUT_FORMAT = 'markdown'  # Default to both for backwards compatibility
 
 # Auto-fix unicode/postscript encoding issues during extraction
 AUTO_FIX_UNICODE = True  # Convert /uniXXXX/ patterns to readable text

@@ -35,7 +35,7 @@ Web Scraping → PDF Extraction → LLM Extraction → Analysis → Excel Creati
      p1              p2              p3              p4          p5
 ```
 
-1. **p1_webscraping.py** - Downloads CAO PDFs from uitvoeringarbeidsvoorwaardenwetgeving.nl using Selenium; uses `inputs/excel/CAO_Frequencies_2014.xlsx` to decide skips and defaults to writing into `inputs/pdfs/input_pdfs_extra/`.
+1. **p1_webscraping.py** - Downloads CAO PDFs from uitvoeringarbeidsvoorwaardenwetgeving.nl using Selenium; extracts every second PDF link (indices 0, 2, 4, 6...) and merges all PDFs from the same main link/page into a single file, saved with the name of the first PDF; uses `inputs/excel/CAO_Frequencies_2014.xlsx` to decide skips and defaults to writing into `inputs/pdfs/input_pdfs_extra/`.
 2. **p2_extract.py** - Multi-method PDF text extraction (PyPDF2 + pdfplumber + Tesseract OCR)
 3. **p3_llmExtraction.py** - Raw data extraction using Google Gemini API with context preservation
 4. **p4_analysis.py** - Schema-driven structured extraction (salary + non-salary) using Pydantic models; non-salary outputs go to `outputs/llm_analysis/non_salary/gen_bon_wag_pen_ter/`, `outputs/llm_analysis/non_salary/lea_ove_tra/`, and `outputs/llm_analysis/non_salary/hom_con_saf_chi_ai_fri/`
@@ -71,8 +71,13 @@ CAOsDataExtraction/
 ├── scripts_pipeline_helper/     # Helper scripts directly used by pipeline stages
 │   ├── p1_p2/                    # Helpers used by p1_webscraping.py and p2_extract.py
 │   │   └── OUTPUT_tracker.py    # Progress tracking
+│   ├── p3_p4/                    # Shared helpers for p3 and p4
+│   │   └── retry_error_classification.py # Error classification utilities (request problems, external errors, daily quota)
+│   ├── p3/                       # Stage 3 specific helpers
+│   │   └── retry_logic.py       # p3 retry logic (error handling, quota delays, parameter adjustments)
 │   └── p4/                      # Stage 4 specific helpers
-│       └── merge_split_salary.py # Merge split salary results
+│       ├── merge_split_salary.py # Merge split salary results
+│       └── retry_logic.py       # p4 retry logic (error handling, quota delays, parameter adjustments)
 ├── schema/
 │   ├── salary_schema.py         # Salary data schema (Pydantic models) - regular schema with full field names, for attempts 1-5
 │   ├── salary_schema_compact.py # Compact salary schema (no table_label, 2-letter field names) - for attempts 6-8. NOTE: holiday_incl moved from SalaryPoint to SalaryRow
@@ -135,7 +140,7 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
 - **Unicode Processing**: Automatic conversion of /uniXXXX and /GXXX patterns to readable text
 - **Schema Validation**: Pydantic-based schemas ensure data quality and structure
 - **Parallel Processing**: Multi-process support with file locking to prevent duplicate processing
-- **Robust Error Handling**: Exponential backoff, adaptive retry strategies (attempts 1-5), compact schema retries (attempts 6-8), split extraction retries (attempts 9-10), super compact schema retries (attempts 11-12), and comprehensive error recovery
+- **Robust Error Handling**: Intelligent error classification (request problems vs external errors), synchronized retry logic with exponential backoff (2.1^attempt), adaptive retry strategies (attempts 1-5), compact schema retries (attempts 6-8), split extraction retries (attempts 9-10), super compact schema retries (attempts 11-12), and comprehensive error recovery
 - **Performance Monitoring**: Real-time tracking of processing time, token usage, costs, and quality metrics
 - **Scalable Architecture**: Designed for processing 1,580+ PDF documents efficiently
 
@@ -144,6 +149,9 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
 ### Stage 1: Web Scraping (p1_webscraping.py)
 - Downloads CAO PDFs from uitvoeringarbeidsvoorwaardenwetgeving.nl
 - Uses Selenium with Chrome for robust scrolling and link discovery
+- **PDF Link Filtering**: Extracts every second PDF link (indices 0, 2, 4, 6...) since there are always 2 links per PDF file
+- **PDF Merging**: Merges all PDFs from the same main link/page into a single PDF file using PyPDF2
+- **File Naming**: Saves merged PDFs with the filename of the first PDF (link at index 0)
 - Supports primary and extra runs with duplicate prevention
 - Generates metadata CSV files for tracking
 
@@ -159,9 +167,14 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
 - Direct markdown upload for optimal accuracy
 - Context-preserving extraction (keeps related information together)
 - **Parallel processing**: Multi-process support with different API keys
-- **Robust error handling**: 
-  - **Attempts 1-5**: Unified extraction with adaptive retry (exponential backoff, parameter adjustments)
+- **Robust error handling with intelligent retry logic**: 
+  - **Error classification**: Distinguishes between request problems (truncated, incomplete JSON, empty response) and external errors (503, 500, connection reset, per-minute quota)
+  - **Request problems**: Increment to next attempt with parameter adjustments
+  - **External errors**: Retry with same attempt number, wait 15 minutes (unlimited retries until max_retries)
+  - **Daily quota errors**: Exit gracefully without retrying
+  - **Attempts 1-5**: Unified extraction with adaptive retry (exponential backoff 2.1^attempt, parameter adjustments)
   - **Attempts 6-8**: Split extraction (salary and non-salary separately) with partial success caching
+  - **Synchronized retry parameters**: Quota delay buffer (2-6 minutes), per-minute quota wait (150 seconds), empty response wait (+120 seconds), debug logging
   - File locking to prevent duplicate processing
 - **Split extraction strategy**: For files with very large outputs, splits extraction into salary-only and non-salary-only schemas, then merges results. Successful partial extractions are cached to avoid re-extraction on retries.
 
@@ -171,11 +184,17 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
 - Non-salary schema split into 3 parts for better performance
 - **Multi-process parallel processing** with independent error handling
 - **Performance monitoring** and quality tracking
-- **Advanced retry strategy for large files**:
+- **Advanced retry strategy with intelligent error handling**:
+  - **Error classification**: Distinguishes between request problems (truncated, incomplete JSON, empty response), external errors (503, 500, connection reset, per-minute quota), and schema complexity errors
+  - **Request problems**: Increment to next attempt with parameter adjustments
+  - **External errors**: Retry with same attempt number, wait 15 minutes (unlimited retries until max_retries)
+  - **Daily quota errors**: Exit gracefully without retrying
+  - **Schema complexity errors**: Fatal error, don't retry (schema needs simplification)
   - **Attempts 1-5**: Regular extraction with adaptive parameter adjustment
   - **Attempts 6-8**: Compact schema extraction (reduced output size) - triggered if truncation occurs after attempt 4, or if file is in truncated folder
   - **Attempts 9-10**: Split extraction (first half/second half by jobgroup boundaries) - triggered if truncation occurs after attempt 7, or if file is in truncated_2 folder
   - **Attempts 11-12**: Super compact schema extraction (minimal fields only) - triggered if truncation occurs after attempt 9, or if file is in truncated_3 folder
+  - **Synchronized retry parameters**: Quota delay buffer (2-6 minutes), per-minute quota wait (150 seconds), empty response wait (+120 seconds), debug logging
   - **File handling**:
     - Files in truncated folder → retry with attempts 6-8 (compact), extend to 9-10 (split), 11-12 (super compact) if needed
     - Files in truncated_2 folder → retry with attempts 9-10 (split extraction), may extend to 11-12

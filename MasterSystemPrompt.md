@@ -17,7 +17,7 @@
 p1_webscraping → p2_extract → p3_llmExtraction → p4_analysis → p5_excel_creation
 ```
 
-**Stage 1 (p1)**: Web scraping - Downloads PDFs using Selenium, organizes by CAO number; uses `inputs/excel/CAO_Frequencies_2014.xlsx` to skip already-handled CAOs and defaults to writing into `inputs/pdfs/input_pdfs_extra/`
+**Stage 1 (p1)**: Web scraping - Downloads PDFs using Selenium, extracts every second PDF link (indices 0, 2, 4, 6...) and merges all PDFs from the same main link/page into a single file (saved with the first PDF's name), organizes by CAO number; uses `inputs/excel/CAO_Frequencies_2014.xlsx` to skip already-handled CAOs and defaults to writing into `inputs/pdfs/input_pdfs_extra/`
 **Stage 2 (p2)**: PDF extraction - Multi-method text extraction (PyPDF2 + pdfplumber + OCR)
 **Stage 3 (p3)**: LLM extraction - Raw data extraction using Google Gemini API
 **Stage 4 (p4)**: Analysis - Schema-driven structured extraction (salary + non-salary)
@@ -42,7 +42,9 @@ p1_webscraping → p2_extract → p3_llmExtraction → p4_analysis → p5_excel_
 - **pipelines/**: Main pipeline stages (p1-p5)
 - **scripts_pipeline_helper/**: Helper scripts directly used by pipeline stages
   - **p1_p2/**: Helpers used by p1_webscraping.py and p2_extract.py (OUTPUT_tracker.py)
-  - **p4/**: Stage 4 specific helpers (merge_split_salary.py)
+  - **p3_p4/**: Shared helpers for p3 and p4 (retry_error_classification.py - error classification utilities)
+  - **p3/**: Stage 3 specific helpers (retry_logic.py - p3 retry logic)
+  - **p4/**: Stage 4 specific helpers (merge_split_salary.py, retry_logic.py - p4 retry logic)
 - **schema/**: Pydantic data models and validation schemas
 - **utils/**: Standalone utility scripts (not directly used by pipeline)
 - **scripts/**: Analysis and utility scripts
@@ -58,11 +60,20 @@ p1_webscraping → p2_extract → p3_llmExtraction → p4_analysis → p5_excel_
 
 ### File Naming Conventions
 - Pipeline stages: `p1_webscraping.py`, `p2_extract.py`, `p3_llmExtraction.py`, `p4_analysis.py`, `p5_excel_creation.py`
-- Pipeline helpers: `scripts_pipeline_helper/p1_p2/OUTPUT_tracker.py`, `scripts_pipeline_helper/p4/merge_split_salary.py`
+- Pipeline helpers: 
+  - Shared: `scripts_pipeline_helper/p3_p4/retry_error_classification.py`
+  - p3-specific: `scripts_pipeline_helper/p3/retry_logic.py`
+  - p4-specific: `scripts_pipeline_helper/p4/retry_logic.py`, `scripts_pipeline_helper/p4/merge_split_salary.py`
+  - p1_p2: `scripts_pipeline_helper/p1_p2/OUTPUT_tracker.py`
 - Utility scripts: `INPUT_*.py` (input utils), `OUTPUT_*.py` (output utils)
 - Schema files: `salary_schema.py`, `non_salary_schema.py`, `excel_output_schema.py`
 
 ## Key Technical Decisions
+
+### PDF Link Filtering and Merging (p1)
+**Why**: Website contains duplicate PDF links (2 links per PDF file), and multiple PDFs per main link/page should be combined
+**Approach**: Extract every second PDF link (indices 0, 2, 4, 6...), group PDFs by main link URL, download to temporary files, merge using PyPDF2, save with first PDF's name
+**Rationale**: Avoids duplicate downloads, combines related PDFs from same page into single file for easier processing
 
 ### Multi-Method PDF Extraction (p2)
 **Why**: PDFs vary widely - native text, scanned images, embedded tables, encoding issues
@@ -91,8 +102,18 @@ p1_webscraping → p2_extract → p3_llmExtraction → p4_analysis → p5_excel_
 
 ### Error Handling Strategy
 **Why**: API failures, timeouts, JSON parsing errors are common at scale
-**Approach**: Exponential backoff, adaptive retry (adjust temp/top_p/top_k on attempts 4-5), compact schema retries (p4 attempts 6-8), split extraction retries (p3 attempts 6-8, p4 attempts 9-10), super compact schema retries (p4 attempts 11-12), file locking, comprehensive logging
-**Rationale**: Robust recovery from transient failures, prevents data loss
+**Approach**: Intelligent error classification, synchronized retry logic with exponential backoff (2.1^attempt), adaptive retry (adjust temp/top_p/top_k on attempts 4-5), compact schema retries (p4 attempts 6-8), split extraction retries (p3 attempts 6-8, p4 attempts 9-10), super compact schema retries (p4 attempts 11-12), file locking, comprehensive logging
+**Error Classification**:
+- **Request problems** (truncated, incomplete JSON, empty response): Increment to next attempt, potentially changing parameters
+- **External errors** (503, 500, connection reset, per-minute quota 429): Retry with same attempt number, wait 15 minutes each time, unlimited retries until max_retries
+- **Daily quota errors**: Exit gracefully without retrying
+- **Schema complexity errors** (p4 only): Fatal error, don't retry (schema needs simplification)
+**Synchronized Retry Parameters** (p3 and p4):
+- Quota delay buffer: 2-6 minutes (2 + min(attempt, 4))
+- Per-minute quota additional wait: 150 seconds
+- Empty response additional wait: +120 seconds
+- Debug logging: Enabled in calculate_quota_retry_delay
+**Rationale**: Robust recovery from transient failures, prevents data loss, intelligent handling of different error types
 
 ### Split Extraction Retry Strategy (p3, attempts 6-8)
 **Why**: Some files produce outputs too long for single API call, causing truncation after all regular retries fail
@@ -221,20 +242,28 @@ Each info class contains structured fields (Amount, AmountRange, booleans, strin
 
 ### Error Handling & Retry
 
-**p3 (LLM Extraction)**:
+**Shared Error Classification** (`scripts_pipeline_helper/p3_p4/retry_error_classification.py`):
+- **Request problems**: Timeout, truncation, incomplete JSON, empty response → Increment attempt, adjust parameters
+- **External errors**: Service unavailable (503), internal error (500), connection reset, per-minute quota (429) → Retry same attempt, wait 15 minutes
+- **Daily quota errors**: Per-day quota limit → Exit gracefully, no retry
+- **Schema complexity errors** (p4 only): Too many states, constraint violations → Fatal error, don't retry
+
+**p3 (LLM Extraction)** - `scripts_pipeline_helper/p3/retry_logic.py`:
 - **Unified extraction (attempts 1-5)**: Single schema extraction with all fields
-  - Exponential backoff: 2^attempt seconds
+  - Exponential backoff: 2.1^attempt (synchronized with p4)
   - Adaptive retry: Adjust temperature/top_p/top_k on attempts 4-5
   - Failure-aware guidance: Detect LLM-controllable errors (truncated JSON, empty responses), provide retry instructions
+  - Quota delay buffer: 2-6 minutes, per-minute quota wait: 150 seconds, empty response wait: +120 seconds
 - **Split extraction (attempts 6-8)**: Two separate extractions for salary and non-salary
   - Only triggered after attempts 1-5 fail
   - Partial success caching: Successful parts cached, only failed parts retried
   - Results merged back into unified format matching original schema
 
-**p4 (Analysis)**:
+**p4 (Analysis)** - `scripts_pipeline_helper/p4/retry_logic.py`:
 - **Regular extraction (attempts 1-5)**: Full schema with all fields including table_label
   - Adaptive parameter adjustment on attempts 3-5
   - Extends to compact schema if truncation occurs after attempt 4
+  - Quota delay buffer: 2-6 minutes, per-minute quota wait: 150 seconds, empty response wait: +120 seconds
 - **Compact schema (attempts 6-8)**: Reduced schema (no table_label, abbreviated units)
   - Files in truncated folder automatically start here
   - Extends to split extraction if truncation occurs after attempt 7
@@ -344,9 +373,11 @@ with open(lock_file, 'w') as lock:
 - Schema-driven LLM extraction with validation
 - Parallel processing support (p2, p3, p4)
 - Performance monitoring and cost tracking
-- Comprehensive error handling and retry logic
-  - **p3**: Unified extraction retries (attempts 1-5) with adaptive parameter adjustment, split extraction retries (attempts 6-8) with partial success caching
-  - **p4**: Regular extraction (attempts 1-5), compact schema retries (attempts 6-8), split extraction retries (attempts 9-10), super compact schema retries (attempts 11-12) by jobgroup boundaries with merge
+- Comprehensive error handling and retry logic with intelligent error classification
+  - **Shared error classification**: Request problems vs external errors vs daily quota vs schema complexity
+  - **Synchronized retry parameters**: Quota delay buffer (2-6 minutes), per-minute quota wait (150 seconds), empty response wait (+120 seconds), debug logging
+  - **p3**: Unified extraction retries (attempts 1-5) with adaptive parameter adjustment, split extraction retries (attempts 6-8) with partial success caching, exponential backoff (2.1^attempt)
+  - **p4**: Regular extraction (attempts 1-5), compact schema retries (attempts 6-8), split extraction retries (attempts 9-10), super compact schema retries (attempts 11-12) by jobgroup boundaries with merge, exponential backoff (2.1^attempt)
 - Unicode/encoding issue handling
 - Excel output generation with proper formatting
 - Intelligent file handling: truncated folder files retry with compact schema, truncated_2 folder files retry with split extraction, truncated_3 folder files retry with super compact schema, truncated_4 folder files skipped

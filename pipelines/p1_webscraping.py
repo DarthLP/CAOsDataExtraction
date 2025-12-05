@@ -72,6 +72,8 @@ import time
 import requests
 import pandas as pd
 from pathlib import Path
+import tempfile
+import shutil
 
 # Add the parent directory to Python path so we can import utils
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -91,6 +93,7 @@ import random
 from scripts_pipeline_helper.p1_p2.OUTPUT_tracker import update_progress
 import traceback
 import yaml
+from PyPDF2 import PdfReader, PdfWriter
 with open('conf/config.yaml', 'r') as f:
     config = yaml.safe_load(f)
 WEBSITE_URL = (
@@ -310,6 +313,70 @@ def download_pdf(pdf_url, filename, output_folder):
             return None
     except Exception as e:
         return None
+
+
+def download_pdf_to_path(pdf_url, file_path):
+    """
+    Download a PDF file from the given URL and save it to a specific file path.
+    Args:
+        pdf_url (str): URL of the PDF to download.
+        file_path (str): Full path where the PDF should be saved.
+    Returns:
+        bool: True if successful, False otherwise.
+    """
+    try:
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        response = requests.get(pdf_url, stream=True, timeout=30)
+        if response.status_code == 200:
+            with open(file_path, 'wb') as pdf_file:
+                for chunk in response.iter_content(chunk_size=8192):
+                    pdf_file.write(chunk)
+            return True
+        else:
+            return False
+    except Exception as e:
+        return False
+
+
+def merge_pdfs(pdf_paths, output_path):
+    """
+    Merge multiple PDF files into a single PDF.
+    Args:
+        pdf_paths: List of paths to PDF files to merge (in order)
+        output_path: Path where merged PDF will be saved
+    Returns:
+        bool: True if successful, False otherwise
+    """
+    try:
+        if not pdf_paths:
+            return False
+        
+        writer = PdfWriter()
+        total_pages_added = 0
+        
+        for pdf_path in pdf_paths:
+            if not os.path.exists(pdf_path):
+                continue
+            try:
+                reader = PdfReader(pdf_path)
+                for page in reader.pages:
+                    writer.add_page(page)
+                    total_pages_added += 1
+            except Exception as e:
+                print(f'    Warning: Failed to read PDF {pdf_path}: {e}')
+                continue
+        
+        if total_pages_added == 0:
+            return False
+        
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        with open(output_path, 'wb') as output_file:
+            writer.write(output_file)
+        
+        return True
+    except Exception as e:
+        print(f'    Error merging PDFs: {e}')
+        return False
 
 
 def search_cao_number(driver, cao_number):
@@ -644,38 +711,48 @@ def extract_pdf_links(driver, cao_number):
                         pass
                     nested_links = driver.find_elements(By.CSS_SELECTOR,
                         'a.link--nochevron')
-                    pdf_urls = set()
-                    for nl in nested_links:
-                        href = nl.get_attribute('href')
-                        if href and href.endswith('.pdf'):
-                            pdf_urls.add(href)
-                    pdfs_found_count = len(pdf_urls)
-                    for nested_link in nested_links:
-                        if MAX_PDFS_PER_CAO is not None and len(pdf_links
-                            ) >= MAX_PDFS_PER_CAO:
-                            break
+                    # Filter to only PDF links (every second link: indices 0, 2, 4, 6...)
+                    pdf_links_for_main = []
+                    for i, nested_link in enumerate(nested_links):
                         try:
                             href = nested_link.get_attribute('href')
                             if href and href.endswith('.pdf'):
-                                parsed_url = urllib.parse.urlparse(href)
-                                original_filename = os.path.basename(parsed_url
-                                    .path)
-                                original_filename = sanitize_filename(
-                                    original_filename)
-                                page_info = extract_page_info(driver,
-                                    cao_number, position)
-                                page_info['pdf_name'] = original_filename
-                                page_info['main_link_url'] = main_link_url
-                                pdf_links.append({'url': href,
-                                    'description': extracted_info,
-                                    'page_info': page_info})
-                                found_pdf_name = original_filename
-                                pdf_found = True
-                                id_value = f'{cao_number}{position:03d}'
-                                position += 1
-                                break
+                                # Only process every second PDF link (indices 0, 2, 4, 6...)
+                                if i % 2 == 0:
+                                    parsed_url = urllib.parse.urlparse(href)
+                                    original_filename = os.path.basename(parsed_url
+                                        .path)
+                                    original_filename = sanitize_filename(
+                                        original_filename)
+                                    pdf_links_for_main.append({
+                                        'url': href,
+                                        'filename': original_filename,
+                                        'index': i
+                                    })
                         except Exception as e:
                             pass
+                    
+                    pdfs_found_count = len(pdf_links_for_main)
+                    if pdf_links_for_main:
+                        pdf_found = True
+                        # Use the first PDF's name for the merged file
+                        found_pdf_name = pdf_links_for_main[0]['filename']
+                        id_value = f'{cao_number}{position:03d}'
+                        # Extract page info once for this main link (all PDFs share the same page)
+                        page_info = extract_page_info(driver, cao_number, position)
+                        page_info['main_link_url'] = main_link_url
+                        position += 1
+                        # Add all PDF links for this main link
+                        for pdf_info in pdf_links_for_main:
+                            if MAX_PDFS_PER_CAO is not None and len(pdf_links
+                                ) >= MAX_PDFS_PER_CAO:
+                                break
+                            # Create a copy of page_info for each PDF, but they'll be merged later
+                            pdf_page_info = page_info.copy()
+                            pdf_page_info['pdf_name'] = pdf_info['filename']
+                            pdf_links.append({'url': pdf_info['url'],
+                                'description': extracted_info,
+                                'page_info': pdf_page_info})
                     main_link_logs.append({'cao_number': cao_number,
                         'main_link_url': main_link_url, 'pdf_found':
                         pdf_found, 'pdf_name': found_pdf_name,
@@ -839,68 +916,116 @@ def process_cao_number(driver, cao_number, output_base_folder=None):
             except:
                 pass
     position = max_id_num + 1
+    # Group PDFs by main_link_url for merging
+    pdfs_by_main_link = {}
+    for link_info in unique_pdf_links:
+        main_link_url = link_info['page_info'].get('main_link_url', '')
+        if main_link_url not in pdfs_by_main_link:
+            pdfs_by_main_link[main_link_url] = []
+        pdfs_by_main_link[main_link_url].append(link_info)
+    
     # Filter main_link_logs to only include entries for PDFs we'll actually process
     filtered_main_link_logs = []
-    for link_info in unique_pdf_links:
+    
+    # Process each main link group: download all PDFs, merge them, and save
+    for main_link_url, link_group in pdfs_by_main_link.items():
         if (MAX_PDFS_PER_CAO is not None and downloaded_count >=
             MAX_PDFS_PER_CAO):
             break
-        pdf_name = link_info['page_info'].get('pdf_name')
-        if pdf_name is None:
+        
+        # Get the first PDF's name (index 0) for the merged file
+        first_link_info = link_group[0]
+        first_pdf_name = first_link_info['page_info'].get('pdf_name')
+        if first_pdf_name is None:
             print(
-                f"[FATAL] pdf_name is None for CAO {cao_number}, main_link_url: {link_info['page_info'].get('main_link_url', 'N/A')}"
+                f"[FATAL] pdf_name is None for CAO {cao_number}, main_link_url: {main_link_url}"
                 )
-            print(f'         link_info: {link_info}')
             continue
-        base_name, ext = os.path.splitext(pdf_name)
-        count = pdf_name_counts.get(pdf_name, 0)
-        if not isinstance(count, int) or count is None:
-            count = 0
-        pdf_name_counts[pdf_name] = count + 1
-        if count > 0:
-            new_pdf_name = f'{base_name}_{count}{ext}'
-        else:
-            new_pdf_name = pdf_name
-        link_info['page_info']['pdf_name'] = new_pdf_name
+        
         # Check if page_name was already processed (more reliable than URL)
-        page_name = link_info['page_info'].get('page_name', '')
+        page_name = first_link_info['page_info'].get('page_name', '')
         if page_name and page_name in existing_page_names_by_cao.get(cao_str, set()):
             skipped += 1
             continue
         
-        # Add to filtered main_link_logs only for PDFs we're processing
-        main_link_url = link_info['page_info'].get('main_link_url', '')
-        for log in main_link_logs:
-            if log.get('main_link_url') == main_link_url:
-                log['pdf_name'] = new_pdf_name
-                filtered_main_link_logs.append(log)
-                break
-        success = download_pdf(link_info['url'], link_info['description'],
-            cao_folder)
-        if success:
-            print(f'    ⬇️ Downloaded PDF: {new_pdf_name}')
-            downloaded_count += 1
-            existing_pdfs.add(new_pdf_name)
-            existing_pdf_names_by_cao.setdefault(cao_str, set()).add(
-                new_pdf_name)
-            # Track page_name for future duplicate detection
-            if page_name:
-                existing_page_names_by_cao.setdefault(cao_str, set()).add(page_name)
-            # Also track the URL for future duplicate detection
-            main_link_url = link_info['page_info'].get('main_link_url', '')
-            if main_link_url:
-                existing_urls_by_cao.setdefault(cao_str, set()).add(main_link_url)
-            new_id = f'{cao_str}{position:03d}'
-            while new_id in existing_ids:
-                position += 1
-                new_id = f'{cao_str}{position:03d}'
-            page_info = link_info['page_info']
-            page_info['id'] = new_id
-            existing_ids.add(new_id)
-            position += 1
-            downloaded_data.append(page_info)
+        # Check if main_link_url was already processed
+        if main_link_url in existing_urls_by_cao.get(cao_str, set()):
+            skipped += 1
+            continue
+        
+        # Handle filename deduplication
+        base_name, ext = os.path.splitext(first_pdf_name)
+        count = pdf_name_counts.get(first_pdf_name, 0)
+        if not isinstance(count, int) or count is None:
+            count = 0
+        pdf_name_counts[first_pdf_name] = count + 1
+        if count > 0:
+            merged_pdf_name = f'{base_name}_{count}{ext}'
         else:
-            print(f'    ✗ Failed to download PDF: {new_pdf_name}')
+            merged_pdf_name = first_pdf_name
+        
+        # Download all PDFs for this main link to temporary files
+        temp_dir = tempfile.mkdtemp()
+        temp_pdf_paths = []
+        download_success = True
+        
+        try:
+            for i, link_info in enumerate(link_group):
+                temp_pdf_path = os.path.join(temp_dir, f'temp_{i}.pdf')
+                if download_pdf_to_path(link_info['url'], temp_pdf_path):
+                    temp_pdf_paths.append(temp_pdf_path)
+                else:
+                    print(f'    ⚠️ Failed to download PDF {i+1}/{len(link_group)} for merging')
+                    download_success = False
+            
+            if not temp_pdf_paths:
+                print(f'    ✗ No PDFs downloaded for merging (main_link: {main_link_url[:50]}...)')
+                shutil.rmtree(temp_dir, ignore_errors=True)
+                continue
+            
+            # Merge all downloaded PDFs into one file
+            merged_pdf_path = os.path.join(cao_folder, merged_pdf_name)
+            if merge_pdfs(temp_pdf_paths, merged_pdf_path):
+                print(f'    ⬇️ Downloaded and merged {len(temp_pdf_paths)} PDFs into: {merged_pdf_name}')
+                downloaded_count += 1
+                existing_pdfs.add(merged_pdf_name)
+                existing_pdf_names_by_cao.setdefault(cao_str, set()).add(merged_pdf_name)
+                
+                # Track page_name for future duplicate detection
+                if page_name:
+                    existing_page_names_by_cao.setdefault(cao_str, set()).add(page_name)
+                
+                # Track the URL for future duplicate detection
+                if main_link_url:
+                    existing_urls_by_cao.setdefault(cao_str, set()).add(main_link_url)
+                
+                # Generate ID and create metadata entry
+                new_id = f'{cao_str}{position:03d}'
+                while new_id in existing_ids:
+                    position += 1
+                    new_id = f'{cao_str}{position:03d}'
+                
+                # Create page_info for the merged PDF (using first PDF's info)
+                page_info = first_link_info['page_info'].copy()
+                page_info['pdf_name'] = merged_pdf_name
+                page_info['id'] = new_id
+                existing_ids.add(new_id)
+                position += 1
+                downloaded_data.append(page_info)
+                
+                # Add to filtered main_link_logs
+                for log in main_link_logs:
+                    if log.get('main_link_url') == main_link_url:
+                        log['pdf_name'] = merged_pdf_name
+                        log['id'] = new_id
+                        filtered_main_link_logs.append(log)
+                        break
+            else:
+                print(f'    ✗ Failed to merge PDFs for: {merged_pdf_name}')
+        finally:
+            # Clean up temporary files
+            shutil.rmtree(temp_dir, ignore_errors=True)
+        
         time.sleep(DOWNLOAD_DELAY)
     total_found = len(unique_pdf_links)
     print(

@@ -56,6 +56,13 @@ CAOsDataExtraction/
 ├── monitoring/
 │   ├── monitoring_3_1.py        # Performance monitoring and cost tracking
 │   └── performance_logs/         # Performance log files
+│       ├── llm_extraction/       # p3 performance logs
+│       │   └── failed_cao_numbers/ # Failed CAO numbers (skipped in future runs)
+│       └── llm_analysis/          # p4 performance logs
+│           ├── max_tokens_truncated/      # Files that failed with truncation
+│           ├── max_tokens_truncated_2/    # Files that failed after compact schema
+│           ├── max_tokens_truncated_3/    # Files that failed after split extraction
+│           └── max_tokens_truncated_4/    # Files that failed all attempts
 ├── outputs/
 │   ├── llm_extracted/           # LLM extracted JSON files
 │   ├── llm_analysis/            # Schema-validated extraction results
@@ -79,11 +86,11 @@ CAOsDataExtraction/
 │       ├── merge_split_salary.py # Merge split salary results
 │       └── retry_logic.py       # p4 retry logic (error handling, quota delays, parameter adjustments)
 ├── schema/
-│   ├── salary_schema.py         # Salary data schema (Pydantic models) - regular schema with full field names, for attempts 1-5
-│   ├── salary_schema_compact.py # Compact salary schema (no table_label, 2-letter field names) - for attempts 6-8. NOTE: holiday_incl moved from SalaryPoint to SalaryRow
-│   ├── salary_schema_split.py   # Split salary schema (same as compact) - for attempts 9-10
-│   ├── salary_prompt_split.py   # Split extraction prompts - for attempts 9-10
-│   ├── salary_schema_super_compact.py  # Super compact salary schema (minimal fields) - for attempts 11-12
+│   ├── salary_schema.py         # Salary data schema (Pydantic models) - regular schema with full field names, for attempts 0, 2, 4
+│   ├── salary_schema_compact.py # Compact salary schema (no table_label, 2-letter field names) - for attempts 5-6. NOTE: holiday_incl moved from SalaryPoint to SalaryRow
+│   ├── salary_schema_split.py   # Split salary schema (same as compact) - for attempt 8
+│   ├── salary_prompt_split.py   # Split extraction prompts - for attempt 8
+│   ├── salary_schema_super_compact.py  # Super compact salary schema (minimal fields) - for attempt 10
 │   ├── non_salary_schema.py     # Non-salary data schema (Pydantic models)
 │   └── excel_output_schema.py   # Excel output column definitions
 ├── scripts/                     # Utility and analysis scripts
@@ -140,7 +147,7 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
 - **Unicode Processing**: Automatic conversion of /uniXXXX and /GXXX patterns to readable text
 - **Schema Validation**: Pydantic-based schemas ensure data quality and structure
 - **Parallel Processing**: Multi-process support with file locking to prevent duplicate processing
-- **Robust Error Handling**: Intelligent error classification (request problems vs external errors), synchronized retry logic with exponential backoff (2.1^attempt), adaptive retry strategies (attempts 1-5), compact schema retries (attempts 6-8), split extraction retries (attempts 9-10), super compact schema retries (attempts 11-12), and comprehensive error recovery
+- **Robust Error Handling**: Intelligent error classification (request problems vs external errors), synchronized retry logic with exponential backoff (2.1^attempt), adaptive retry strategies (p3: attempts 0,3,4,5,7; p4: attempts 0,2,4,5,6,8,10), compact schema retries (p4 attempts 5-6), split extraction retries (p3 attempts 5,7; p4 attempt 8), super compact schema retries (p4 attempt 10), and comprehensive error recovery
 - **Performance Monitoring**: Real-time tracking of processing time, token usage, costs, and quality metrics
 - **Scalable Architecture**: Designed for processing 1,580+ PDF documents efficiently
 
@@ -172,10 +179,11 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
   - **Request problems**: Increment to next attempt with parameter adjustments
   - **External errors**: Retry with same attempt number, wait 15 minutes (unlimited retries until max_retries)
   - **Daily quota errors**: Exit gracefully without retrying
-  - **Attempts 1-5**: Unified extraction with adaptive retry (exponential backoff 2.1^attempt, parameter adjustments)
-  - **Attempts 6-8**: Split extraction (salary and non-salary separately) with partial success caching
+  - **Attempts 0, 3, 4**: Unified extraction with adaptive retry (exponential backoff 2.1^attempt, parameter adjustments)
+  - **Attempts 5, 7**: Split extraction (salary and non-salary separately) with partial success caching (attempts 1, 2, 6 removed as duplicates)
   - **Synchronized retry parameters**: Quota delay buffer (2-6 minutes), per-minute quota wait (150 seconds), empty response wait (+120 seconds), debug logging
   - File locking to prevent duplicate processing
+  - **Failed CAO number saving**: Files that fail all retry attempts are saved to `performance_logs/llm_extraction/failed_cao_numbers/[cao_number]/` and automatically skipped in future runs
 - **Split extraction strategy**: For files with very large outputs, splits extraction into salary-only and non-salary-only schemas, then merges results. Successful partial extractions are cached to avoid re-extraction on retries.
 
 ### Stage 4: Analysis (p4_analysis.py)
@@ -190,15 +198,15 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
   - **External errors**: Retry with same attempt number, wait 15 minutes (unlimited retries until max_retries)
   - **Daily quota errors**: Exit gracefully without retrying
   - **Schema complexity errors**: Fatal error, don't retry (schema needs simplification)
-  - **Attempts 1-5**: Regular extraction with adaptive parameter adjustment
-  - **Attempts 6-8**: Compact schema extraction (reduced output size) - triggered if truncation occurs after attempt 4, or if file is in truncated folder
-  - **Attempts 9-10**: Split extraction (first half/second half by jobgroup boundaries) - triggered if truncation occurs after attempt 7, or if file is in truncated_2 folder
-  - **Attempts 11-12**: Super compact schema extraction (minimal fields only) - triggered if truncation occurs after attempt 9, or if file is in truncated_3 folder
+  - **Attempts 0, 2, 4**: Regular extraction with adaptive parameter adjustment (attempts 1, 3 removed as duplicates/user request)
+  - **Attempts 5-6**: Compact schema extraction (reduced output size) - triggered if truncation occurs after attempt 4, or if file is in truncated folder (attempt 7 removed as duplicate of 6)
+  - **Attempt 8**: Split extraction (first half/second half by jobgroup boundaries) - triggered if truncation occurs after attempt 6, or if file is in truncated_2 folder (attempt 9 removed as duplicate of 8)
+  - **Attempt 10**: Super compact schema extraction (minimal fields only) - triggered if truncation occurs after attempt 8, or if file is in truncated_3 folder (attempt 11 removed as duplicate of 10)
   - **Synchronized retry parameters**: Quota delay buffer (2-6 minutes), per-minute quota wait (150 seconds), empty response wait (+120 seconds), debug logging
   - **File handling**:
-    - Files in truncated folder → retry with attempts 6-8 (compact), extend to 9-10 (split), 11-12 (super compact) if needed
-    - Files in truncated_2 folder → retry with attempts 9-10 (split extraction), may extend to 11-12
-    - Files in truncated_3 folder → retry with attempts 11-12 (super compact schema)
+    - Files in truncated folder → retry with attempts 5-6 (compact), extend to 8 (split), 10 (super compact) if needed
+    - Files in truncated_2 folder → retry with attempt 8 (split extraction), may extend to 10
+    - Files in truncated_3 folder → retry with attempt 10 (super compact schema)
     - Files in truncated_4 folder → skipped (all attempts exhausted)
 
 ### Stage 5: Excel Creation (p5_excel_creation.py)

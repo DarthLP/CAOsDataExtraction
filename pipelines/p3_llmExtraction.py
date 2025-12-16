@@ -34,6 +34,9 @@ USAGE:
         caffeinate python -u pipelines/p3_llmExtraction.py --key_number 4 --process_id 3 --total_processes 6 > p3_log4.txt 2>&1 &
         caffeinate python -u pipelines/p3_llmExtraction.py --key_number 5 --process_id 4 --total_processes 6 > p3_log5.txt 2>&1 &
         caffeinate python -u pipelines/p3_llmExtraction.py --key_number 6 --process_id 5 --total_processes 6 > p3_log6.txt 2>&1 &
+        caffeinate python -u pipelines/p3_llmExtraction.py --key_number 7 --process_id 6 --total_processes 6 > p3_log7.txt 2>&1 &
+        caffeinate python -u pipelines/p3_llmExtraction.py --key_number 8 --process_id 7 --total_processes 6 > p3_log8.txt 2>&1 &
+        caffeinate python -u pipelines/p3_llmExtraction.py --key_number 9 --process_id 8 --total_processes 6 > p3_log69.txt 2>&1 &
 
     With file limit:
         python p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 1 --max_files 10
@@ -1506,6 +1509,107 @@ def log_detailed_failure(response_info: dict, filename: str, attempt: int):
     print(f'    🆔 Process ID: {response_info.get("process_id", "UNKNOWN")}')
 
 
+def extract_clean_filename(filename: str) -> str:
+    """
+    Extract a clean filename from the original filename for failed file naming.
+    
+    Args:
+        filename: Original filename (e.g., "CAO_file_extract.json")
+        
+    Returns:
+        Clean filename (e.g., "CAO_file")
+    """
+    import re
+    
+    # Remove _extract.json suffix if present
+    clean_name = filename
+    if clean_name.endswith('_extract.json'):
+        clean_name = clean_name[:-13]  # Remove '_extract.json'
+    elif clean_name.endswith('.json'):
+        clean_name = clean_name[:-5]   # Remove '.json'
+    
+    # Remove common file extensions
+    extensions_to_remove = ['.md', '.markdown', '.txt']
+    for ext in extensions_to_remove:
+        if clean_name.endswith(ext):
+            clean_name = clean_name[:-len(ext)]
+            break
+    
+    # Clean up the name - remove extra underscores and make it more readable
+    clean_name = re.sub(r'_+', '_', clean_name)  # Replace multiple underscores with single
+    clean_name = clean_name.strip('_')  # Remove leading/trailing underscores
+    
+    # Limit length to avoid overly long filenames
+    if len(clean_name) > 100:
+        clean_name = clean_name[:100].rstrip('_')
+    
+    return clean_name
+
+
+def save_failed_cao_number(filename: str, cao_number: str, error_message: str):
+    """
+    Save failed CAO number to file for skipping in future runs.
+    
+    Args:
+        filename: Original filename for context
+        cao_number: CAO number for filename prefix
+        error_message: The error message from the failed attempt
+    """
+    try:
+        from datetime import datetime
+        
+        # Create the failed CAO numbers directory
+        failed_dir = Path("performance_logs/llm_extraction/failed_cao_numbers") / str(cao_number)
+        failed_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Create clean filename without timestamp
+        clean_filename = extract_clean_filename(filename)
+        
+        # Add CAO number prefix if provided
+        failed_filename = f"{cao_number}_{clean_filename}_failed.txt"
+        
+        failed_file = failed_dir / failed_filename
+        
+        # Save the failed attempt info
+        with open(failed_file, 'w', encoding='utf-8') as f:
+            f.write(f"FAILED CAO NUMBER DEBUG INFO\n")
+            f.write(f"Original filename: {filename}\n")
+            f.write(f"CAO number: {cao_number}\n")
+            f.write(f"Timestamp: {datetime.now().isoformat()}\n")
+            f.write(f"Error: {error_message}\n")
+            f.write(f"{'='*80}\n\n")
+            f.write(f"All retry attempts exhausted for this file.\n")
+            f.write(f"This file will be skipped in future runs.\n")
+        
+        print(f'  DEBUG: Failed CAO number saved to: {failed_file}')
+        
+    except Exception as e:
+        print(f'  DEBUG: Failed to save failed CAO number: {e}')
+
+
+def is_file_in_failed_cao_folder(filename: str, cao_number: str) -> bool:
+    """
+    Check if a file exists in the failed_cao_numbers folder.
+    
+    Args:
+        filename: Original filename (e.g., "CAO_file.md")
+        cao_number: CAO number for the file
+        
+    Returns:
+        bool: True if the file exists in failed CAO folder, False otherwise
+    """
+    failed_dir = Path("performance_logs/llm_extraction/failed_cao_numbers") / str(cao_number)
+    
+    if not failed_dir.exists():
+        return False
+    
+    # Build expected failed filename: {cao_number}_{clean_filename}_failed.txt
+    clean_filename = extract_clean_filename(filename)
+    expected_failed_file = failed_dir / f"{cao_number}_{clean_filename}_failed.txt"
+    
+    return expected_failed_file.exists()
+
+
 def validate_response_schema(content: str, filename: str) -> bool:
     """Validate that response contains expected schema structure."""
     try:
@@ -1805,6 +1909,12 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
             print(f'  🛑 Quota exhausted detected at start of retry loop, stopping retries')
             break
         
+        # Skip duplicate attempts: 1 (same as 0), 2 (user request), and 6 (same as 5)
+        if attempt in [1, 2]:
+            print(f'  INFO: Skipping attempt {attempt + 1} (duplicate or removed by user request)')
+            attempt += 1
+            continue
+        
         # Get adjusted parameters for this attempt (needed for logging even on errors)
         adjusted_params = get_adjusted_parameters_p3(context.config, attempt)
         
@@ -1822,16 +1932,14 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
             context.current_stage = "uploading"
             context.stage_start_ts = time.time()
             
-            # Log parameter adjustments if this is attempt 3, 4, or 5-7 (4th, 5th, or 6th-8th try)
+            # Log parameter adjustments if this is attempt 3, 4, or 5/7 (4th, 5th, or 6th/8th try)
             if attempt >= 3:
                 if attempt <= 4:
                     boost = 0.1 if attempt == 3 else 0.2
                     print(f'  INFO: Attempt {attempt + 1} - Adjusting parameters: temp={adjusted_params["temperature"]:.1f}, top_p={adjusted_params["top_p"]:.1f}, top_k={adjusted_params["top_k"]} (boost +{boost})')
-                elif attempt >= 5:
-                    # Attempts 5-7 use split extraction
+                elif attempt == 5 or attempt == 7:
+                    # Attempts 5 and 7 use split extraction (skipping 6)
                     if attempt == 5:
-                        print(f'  INFO: Attempt {attempt + 1} - Split extraction with original parameters (temp={adjusted_params["temperature"]:.1f}, top_p={adjusted_params["top_p"]:.1f}, top_k={adjusted_params["top_k"]})')
-                    elif attempt == 6:
                         print(f'  INFO: Attempt {attempt + 1} - Split extraction with original parameters (temp={adjusted_params["temperature"]:.1f}, top_p={adjusted_params["top_p"]:.1f}, top_k={adjusted_params["top_k"]})')
                     else:  # attempt == 7
                         print(f'  INFO: Attempt {attempt + 1} - Split extraction with +0.1 adjustment (temp={adjusted_params["temperature"]:.1f}, top_p={adjusted_params["top_p"]:.1f}, top_k={adjusted_params["top_k"]})')
@@ -1878,9 +1986,9 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
             # Validate uploaded file with comprehensive checks
             validate_uploaded_file(context.client, uploaded_file, filename, file_size_mb)
             
-            # Check if we should use split extraction (attempts 5-7)
-            if attempt >= 5:
-                # Use split extraction for attempts 6-8
+            # Check if we should use split extraction (attempts 5 and 7, skipping 6)
+            if attempt == 5 or attempt == 7:
+                # Use split extraction for attempts 5 and 7 (skipping 6 as duplicate of 5)
                 merged_content, salary_result, nonsalary_result = extract_split_extraction(
                     markdown_path, filename, cao_number, uploaded_file,
                     context, attempt, timeout_seconds, adjusted_params,
@@ -1921,11 +2029,16 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                                 api_key_used=context.key_number, process_id=context.process_id, cao_number=cao_number,
                                 model=context.config.model, parameters=adjusted_params
                             )
+                            # Save failed CAO number for skipping in future runs
+                            save_failed_cao_number(filename, cao_number, error_msg)
                             return None
-                        # Increment attempt counters before retry (merged JSON validation failure is a request problem)
-                        total_attempts += 1
+                    # Increment attempt counters before retry (merged JSON validation failure is a request problem)
+                    total_attempts += 1
+                    attempt += 1
+                    # Skip attempt 6 (duplicate of 5)
+                    if attempt == 6:
                         attempt += 1
-                        continue
+                    continue
                     
                     # Validate response schema
                     if not validate_response_schema(content, filename):
@@ -1978,10 +2091,15 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                             api_key_used=context.key_number, process_id=context.process_id, cao_number=cao_number,
                             model=context.config.model, parameters=log_params
                         )
+                        # Save failed CAO number for skipping in future runs
+                        save_failed_cao_number(filename, cao_number, final_error_msg)
                         return None
                     # Increment attempt counters before retry (split extraction incomplete is a request problem)
                     total_attempts += 1
                     attempt += 1
+                    # Skip attempt 6 (duplicate of 5)
+                    if attempt == 6:
+                        attempt += 1
                     continue
             
             # Regular unified extraction for attempts 0-4
@@ -2109,6 +2227,8 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                             api_key_used=context.key_number, process_id=context.process_id, cao_number=cao_number,
                             model=context.config.model, parameters=log_params
                         )
+                        # Save failed CAO number for skipping in future runs
+                        save_failed_cao_number(filename, cao_number, error_msg)
                         return None
                     
                     # Add delay before retrying incomplete JSON/truncated response (same as handle_llm_errors logic)
@@ -2121,6 +2241,9 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                     # Increment attempt counters before retry (incomplete JSON/truncation is a request problem, so increment both)
                     total_attempts += 1
                     attempt += 1
+                    # Skip attempts 1, 2, and 6 (duplicates or removed by user request)
+                    while attempt in [1, 2, 6]:
+                        attempt += 1
                     
                     # Continue to next retry attempt
                     continue
@@ -2215,6 +2338,9 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                 total_attempts += 1
                 if increment_attempt:
                     attempt += 1
+                    # Skip attempts 1, 2, and 6 (duplicates or removed by user request)
+                    while attempt in [1, 2, 6]:
+                        attempt += 1
                 # Continue to retry (with same attempt number if increment_attempt is False)
                 continue
             else:
@@ -2232,9 +2358,13 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                     api_key_used=context.key_number, process_id=context.process_id, cao_number=cao_number,
                     model=context.config.model, parameters=log_params
                 )
+                # Save failed CAO number for skipping in future runs
+                save_failed_cao_number(filename, cao_number, f'Failed after {total_attempts} total attempts: {str(e)}')
                 return None
     
     # If we exit the loop without returning, all retries were exhausted
+    # Save failed CAO number for skipping in future runs
+    save_failed_cao_number(filename, cao_number, f'All {total_attempts} retry attempts exhausted')
     return None
 
 
@@ -2253,6 +2383,11 @@ def process_single_file(markdown_file: Path, cao_number: str, output_folder: Pat
     if output_file.exists():
         print(f'  {cao_number}: Skipping {markdown_file.name} (already processed)')
         # Don't count already processed files toward the limit
+        return True
+    
+    # Check if file is in failed CAO folder - if so, skip extraction entirely
+    if is_file_in_failed_cao_folder(markdown_file.name, cao_number):
+        print(f'  {cao_number}: Skipping {markdown_file.name} (file in failed_cao_numbers folder - all attempts exhausted)')
         return True
     
     # Initialize file timing and debug

@@ -1160,17 +1160,21 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
     # Retry logic with proper attempt tracking
     # Determine attempt range based on whether we're starting with super compact, split extraction, or compact schema
     if use_super_compact_from_start:
-        # Skip directly to super compact schema attempts (10-11, which are retries 11-12)
-        attempts_to_try = [10, 11]
+        # Skip directly to super compact schema attempts (10, which is retry 11)
+        # Removed attempt 11 (duplicate of 10)
+        attempts_to_try = [10]
     elif use_split_extraction_from_start:
-        # Skip directly to split extraction attempts (8-9, which are retries 9-10)
-        attempts_to_try = [8, 9]
+        # Skip directly to split extraction attempts (8, which is retry 9)
+        # Removed attempt 9 (duplicate of 8)
+        attempts_to_try = [8]
     elif use_compact_schema_from_start:
-        # Skip to compact schema attempts (5-7), may extend to 8-9 if truncation error
-        attempts_to_try = [5, 6, 7]
+        # Skip to compact schema attempts (5-6), may extend to 8 if truncation error
+        # Removed attempt 7 (duplicate of 6)
+        attempts_to_try = [5, 6]
     else:
-        # Normal retry attempts (0-4), may extend to 5-7 if truncation error
-        attempts_to_try = [0, 1, 2, 3, 4]
+        # Normal retry attempts (0, 2, 4), may extend to 5-6 if truncation error
+        # Removed attempts 1 (duplicate of 0) and 3 (user request)
+        attempts_to_try = [0, 2, 4]
     
     # Track if we need to extend to compact schema attempts, split extraction attempts, or super compact attempts
     extended_to_compact = False
@@ -1179,7 +1183,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
     
     attempt_index = 0
     total_attempts = 0  # Total retry attempts (for max_retries limit)
-    max_total_attempts = 12  # Maximum total attempts across all retry strategies
+    max_total_attempts = 7  # Maximum total attempts across all retry strategies (reduced from 12)
     
     while attempt_index < len(attempts_to_try) and total_attempts < max_total_attempts:
         # Check quota exhaustion at START of each retry attempt (before API call)
@@ -1190,9 +1194,9 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
         
         attempt = attempts_to_try[attempt_index]
         try:
-            # Determine which schema to use: super compact for attempts 10-11, split for attempts 8-9, compact for attempts 5-7, regular for 0-4
+            # Determine which schema to use: super compact for attempt 10, split for attempt 8, compact for attempts 5-6, regular for 0,2,4
             use_super_compact_schema = (attempt >= 10)
-            use_split_schema = (attempt >= 8 and attempt < 10)
+            use_split_schema = (attempt == 8)
             use_compact_schema = (attempt >= 5 and attempt < 8)
             schema_type = 'super_compact' if use_super_compact_schema else ('split' if use_split_schema else ('compact' if use_compact_schema else 'regular'))
             
@@ -1206,25 +1210,19 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                 response_schema = SalaryExtractionSchema
             
             # Get adjusted parameters for this attempt
-            # For super compact schema attempts (10-11), use specific parameter adjustments
-            # Note: Super compact is a single extraction (not split like attempts 8-9), so no delay between attempts
-            # For attempts 5-11 (including 10-11), there is NO delay between retries - they happen immediately
-            # Files in truncated_3 folder go directly to attempts 10-11
+            # For super compact schema attempts (10), use specific parameter adjustments
+            # Note: Super compact is a single extraction (not split like attempt 8), so no delay between attempts
+            # For attempts 5-10, there is NO delay between retries - they happen immediately
+            # Files in truncated_3 folder go directly to attempt 10
             if use_super_compact_schema:
-                if attempt == 10:
-                    # Attempt 10 (11th overall, first super compact): temp=0.3, top_p=0.4, top_k=0.7 (same as attempt 4)
-                    adjusted_params = get_adjusted_parameters_p4(4, MODEL)
-                else:  # attempt == 11
-                    # Attempt 11 (12th overall, second super compact): temp=0.3, top_p=0.4, top_k=0.7 (same as attempt 4)
-                    adjusted_params = get_adjusted_parameters_p4(4, MODEL)
-            # For split schema attempts (8-9), use specific parameter adjustments
+                # Attempt 10 (11th overall, super compact): temp=0.3, top_p=0.4, top_k=0.7 (same as attempt 4)
+                # Removed attempt 11 (duplicate of 10)
+                adjusted_params = get_adjusted_parameters_p4(4, MODEL)
+            # For split schema attempts (8), use specific parameter adjustments
             elif use_split_schema:
-                if attempt == 8:
-                    # Attempt 8 (9th overall, first split): Use attempt 4 parameters (temp=0.3, top_p=0.4)
-                    adjusted_params = get_adjusted_parameters_p4(4, MODEL)
-                else:  # attempt == 9
-                    # Attempt 9 (10th overall, second split): Use attempt 4 parameters (temp=0.3, top_p=0.4)
-                    adjusted_params = get_adjusted_parameters_p4(4, MODEL)
+                # Attempt 8 (9th overall, split): Use attempt 4 parameters (temp=0.3, top_p=0.4)
+                # Removed attempt 9 (duplicate of 8)
+                adjusted_params = get_adjusted_parameters_p4(4, MODEL)
             elif use_compact_schema:
                 if attempt == 5:
                     # Attempt 5 (6th overall): Original parameters (temp=0.0, top_p=0.1)
@@ -1240,24 +1238,21 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                         "thinking_budget": base_params["thinking_budget"],
                         "max_retries": base_params["max_retries"]
                     }
-                elif attempt == 6:
+                else:  # attempt == 6
                     # Attempt 6 (7th overall): Like attempt 4 (temp=0.3, top_p=0.4)
-                    adjusted_params = get_adjusted_parameters_p4(4, MODEL)
-                else:  # attempt == 7
-                    # Attempt 7 (8th overall): Like attempt 4 (temp=0.3, top_p=0.4)
-                    # Note: Plan says "like attempt 5" but attempt 5 uses original params
-                    # Using attempt 4 params (temp=0.3, top_p=0.4) for consistency
+                    # Removed attempt 7 (duplicate of 6)
                     adjusted_params = get_adjusted_parameters_p4(4, MODEL)
             else:
                 adjusted_params = get_adjusted_parameters_p4(attempt, MODEL)
             
             # Handle split extraction separately - each attempt does both parts sequentially
             if use_split_schema:
-                # Split extraction: attempt 8 (9th) or attempt 9 (10th) - both do part 1 then part 2
+                # Split extraction: attempt 8 (9th) - does part 1 then part 2
+                # Removed attempt 9 (duplicate of 8)
                 delay_seconds = 180  # 3 minutes delay between parts
                 
                 print(f'  ========================================')
-                print(f'  Attempt {attempt + 1} (9th/10th overall): Starting split extraction')
+                print(f'  Attempt {attempt + 1} (9th overall): Starting split extraction')
                 print(f'  ========================================')
                 
                 # ========== PART 1: First Half Extraction ==========
@@ -1740,31 +1735,31 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                 if "Response truncated - incomplete JSON" in error_str or "Max tokens" in error_str or "truncated" in error_str.lower():
                     truncation_error_after_attempt_4 = True
                     extended_to_compact = True
-                    print(f'  DEBUG: Truncation error detected after attempt 4, adding compact schema attempts (5-7)')
-                    # Extend attempts list to include 5-7
-                    attempts_to_try.extend([5, 6, 7])
+                    print(f'  DEBUG: Truncation error detected after attempt 4, adding compact schema attempts (5-6)')
+                    # Extend attempts list to include 5-6 (removed 7 as duplicate of 6)
+                    attempts_to_try.extend([5, 6])
                     total_attempts += 1  # Increment total attempts counter
                     attempt_index += 1
                     continue  # Continue to attempt 5
             
-            # Check if attempt 7 failed with truncation error - if so, add attempts 8-9 (split extraction)
-            if attempt == 7 and not use_split_extraction_from_start and not extended_to_split:
+            # Check if attempt 6 failed with truncation error - if so, add attempt 8 (split extraction)
+            if attempt == 6 and not use_split_extraction_from_start and not extended_to_split:
                 if "Response truncated - incomplete JSON" in error_str or "Max tokens" in error_str or "truncated" in error_str.lower():
                     extended_to_split = True
-                    print(f'  DEBUG: Truncation error detected after attempt 7, adding split extraction attempts (8-9, retries 9-10)')
-                    # Extend attempts list to include 8-9 (split extraction)
-                    attempts_to_try.extend([8, 9])
+                    print(f'  DEBUG: Truncation error detected after attempt 6, adding split extraction attempt (8, retry 9)')
+                    # Extend attempts list to include 8 (removed 9 as duplicate of 8)
+                    attempts_to_try.extend([8])
                     total_attempts += 1  # Increment total attempts counter
                     attempt_index += 1
                     continue  # Continue to attempt 8
             
-            # Check if attempt 9 failed with truncation error - if so, add attempts 10-11 (super compact schema)
-            if attempt == 9 and not use_super_compact_from_start and not extended_to_super_compact:
+            # Check if attempt 8 failed with truncation error - if so, add attempt 10 (super compact schema)
+            if attempt == 8 and not use_super_compact_from_start and not extended_to_super_compact:
                 if "Response truncated - incomplete JSON" in error_str or "Max tokens" in error_str or "truncated" in error_str.lower():
                     extended_to_super_compact = True
-                    print(f'  DEBUG: Truncation error detected after attempt 9, adding super compact schema attempts (10-11, retries 11-12)')
-                    # Extend attempts list to include 10-11 (super compact schema)
-                    attempts_to_try.extend([10, 11])
+                    print(f'  DEBUG: Truncation error detected after attempt 8, adding super compact schema attempt (10, retry 11)')
+                    # Extend attempts list to include 10 (removed 11 as duplicate of 10)
+                    attempts_to_try.extend([10])
                     total_attempts += 1  # Increment total attempts counter
                     attempt_index += 1
                     continue  # Continue to attempt 10
@@ -1921,20 +1916,20 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
             # Get final attempt parameters for logging
             # Determine which attempt was last
             if extended_to_super_compact or use_super_compact_from_start:
-                # Last attempt was 11 (12th overall) with super compact schema
-                final_params = get_adjusted_parameters_p4(4, MODEL)  # Use attempt 4 params (same as attempt 10-11)
+                # Last attempt was 10 (11th overall) with super compact schema
+                final_params = get_adjusted_parameters_p4(4, MODEL)  # Use attempt 4 params (same as attempt 10)
                 final_params['schema_type'] = 'super_compact'
-                final_params['attempt'] = 12
+                final_params['attempt'] = 11
             elif extended_to_split or use_split_extraction_from_start:
-                # Last attempt was 9 (10th overall) with split schema
-                final_params = get_adjusted_parameters_p4(4, MODEL)  # Use attempt 4 params (same as attempt 8-9)
+                # Last attempt was 8 (9th overall) with split schema
+                final_params = get_adjusted_parameters_p4(4, MODEL)  # Use attempt 4 params (same as attempt 8)
                 final_params['schema_type'] = 'split'
-                final_params['attempt'] = 10
+                final_params['attempt'] = 9
             elif extended_to_compact or use_compact_schema_from_start:
-                # Last attempt was 7 (8th overall) with compact schema
-                final_params = get_adjusted_parameters_p4(4, MODEL)  # Use attempt 4 params (same as attempt 6-7)
+                # Last attempt was 6 (7th overall) with compact schema
+                final_params = get_adjusted_parameters_p4(4, MODEL)  # Use attempt 4 params (same as attempt 6)
                 final_params['schema_type'] = 'compact'
-                final_params['attempt'] = 8
+                final_params['attempt'] = 7
             else:
                 # Last attempt was 4 (5th overall) with regular schema
                 final_params = get_adjusted_parameters_p4(4, MODEL)

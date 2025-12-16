@@ -11,7 +11,8 @@ from ..p3_p4.retry_error_classification import (
     is_request_problem,
     is_external_error,
     is_daily_quota,
-    extract_api_retry_delay
+    extract_api_retry_delay,
+    extract_quota_limit
 )
 
 
@@ -195,7 +196,19 @@ def handle_llm_errors(
         if context and hasattr(context, 'process_id') and process_quota_flags is not None:
             process_quota_flags[context.process_id] = True
             print(f'  ❌ DAILY QUOTA LIMIT REACHED for Process {context.process_id} - Cannot retry until tomorrow')
-            print(f'  💡 Daily limit: 3,000,000 tokens per day')
+            
+            # Extract actual limit from error message
+            quota_info = extract_quota_limit(str(error))
+            if quota_info:
+                limit_value, limit_type = quota_info
+                if limit_type == 'requests':
+                    print(f'  💡 Daily limit: {limit_value:,} requests per day (free tier - shared across all processes)')
+                else:
+                    print(f'  💡 Daily limit: {limit_value:,} {limit_type} per day')
+            else:
+                # Fallback to default message
+                print(f'  💡 Daily limit: 3,000,000 tokens per day')
+            
             print(f'  💡 Quota resets at midnight (Google timezone)')
             print(f'  🛑 Stopping this process to avoid infinite retries')
         return (False, False, 0)  # Don't retry

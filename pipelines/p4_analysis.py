@@ -1743,6 +1743,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                     print(f'  DEBUG: Truncation error detected after attempt 4, adding compact schema attempts (5-7)')
                     # Extend attempts list to include 5-7
                     attempts_to_try.extend([5, 6, 7])
+                    total_attempts += 1  # Increment total attempts counter
                     attempt_index += 1
                     continue  # Continue to attempt 5
             
@@ -1753,6 +1754,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                     print(f'  DEBUG: Truncation error detected after attempt 7, adding split extraction attempts (8-9, retries 9-10)')
                     # Extend attempts list to include 8-9 (split extraction)
                     attempts_to_try.extend([8, 9])
+                    total_attempts += 1  # Increment total attempts counter
                     attempt_index += 1
                     continue  # Continue to attempt 8
             
@@ -1763,6 +1765,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                     print(f'  DEBUG: Truncation error detected after attempt 9, adding super compact schema attempts (10-11, retries 11-12)')
                     # Extend attempts list to include 10-11 (super compact schema)
                     attempts_to_try.extend([10, 11])
+                    total_attempts += 1  # Increment total attempts counter
                     attempt_index += 1
                     continue  # Continue to attempt 10
             

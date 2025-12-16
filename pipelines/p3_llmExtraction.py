@@ -704,12 +704,13 @@ def setup_gemini_client(api_key: str):
 
 def setup_performance_monitor() -> PerformanceMonitor:
     """Setup performance monitoring."""
-    # Use a high limit (10000) since we're using paid API keys with token-based quota (3M tokens/day)
-    # The actual quota is token-based, not request-based, so this is just for display purposes
+    # Free tier limit: 20 requests per day per project (shared across all processes)
+    # Paid tier limit: 3M tokens per day (not request-based)
+    # Default to free tier limit - update this if using paid tier API keys
     return PerformanceMonitor(
         log_file='performance_logs/llm_extraction/extraction_performance.jsonl',
         summary_file='performance_logs/llm_extraction/extraction_summary.json',
-        free_tier_daily_limit=10000  # High limit for paid tier (actual limit is 3M tokens/day, not requests)
+        free_tier_daily_limit=20  # Free tier: 20 requests/day per project (shared across all processes)
     )
 
 
@@ -1911,7 +1912,7 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                         print(f'  WARNING: {error_msg} - retrying...')
                         last_error_message = error_msg
                         cleanup_uploaded_file(context.client, uploaded_file)
-                        if attempt == context.config.max_retries - 1:
+                        if total_attempts >= context.config.max_retries - 1:
                             error_msg = f"Merged JSON validation failed after {context.config.max_retries} attempts"
                             print(f'  ERROR: {error_msg}')
                             context.performance_monitor.log_extraction(
@@ -1921,6 +1922,9 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                                 model=context.config.model, parameters=adjusted_params
                             )
                             return None
+                        # Increment attempt counters before retry (merged JSON validation failure is a request problem)
+                        total_attempts += 1
+                        attempt += 1
                         continue
                     
                     # Validate response schema
@@ -1958,7 +1962,7 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                     
                     last_error_message = error_msg
                     cleanup_uploaded_file(context.client, uploaded_file)
-                    if attempt == context.config.max_retries - 1:
+                    if total_attempts >= context.config.max_retries - 1:
                         final_error_msg = f"Split extraction incomplete after {context.config.max_retries} attempts"
                         if missing_parts:
                             final_error_msg += f" - missing: {', '.join(missing_parts)}"
@@ -1975,6 +1979,9 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                             model=context.config.model, parameters=log_params
                         )
                         return None
+                    # Increment attempt counters before retry (split extraction incomplete is a request problem)
+                    total_attempts += 1
+                    attempt += 1
                     continue
             
             # Regular unified extraction for attempts 0-4
@@ -2087,7 +2094,7 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                     cleanup_uploaded_file(context.client, uploaded_file)
                     
                     # If this is the last attempt, log the failure and return None
-                    if attempt == context.config.max_retries - 1:
+                    if total_attempts >= context.config.max_retries - 1:
                         error_msg = f"JSON incomplete after {context.config.max_retries} attempts: {validation_result.get('error', 'Unknown error')}"
                         print(f'  ERROR: {error_msg}')
                         
@@ -2104,11 +2111,16 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                         )
                         return None
                     
-                    # Add delay before retrying incomplete JSON (same as handle_llm_errors logic)
+                    # Add delay before retrying incomplete JSON/truncated response (same as handle_llm_errors logic)
                     # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
                     wait_time = 30 * 2 ** min(attempt, 4)
-                    print(f'  Attempt {attempt + 1} failed (incomplete JSON), retrying in {wait_time} seconds...')
+                    failure_type = "truncated response" if is_truncated else "incomplete JSON"
+                    print(f'  Attempt {attempt + 1} failed ({failure_type}), retrying in {wait_time} seconds...')
                     time.sleep(wait_time)
+                    
+                    # Increment attempt counters before retry (incomplete JSON/truncation is a request problem, so increment both)
+                    total_attempts += 1
+                    attempt += 1
                     
                     # Continue to next retry attempt
                     continue
@@ -2398,7 +2410,12 @@ def display_final_results(context: ProcessingContext, quota_exhausted: bool = Fa
     """Display final processing results."""
     if quota_exhausted:
         print(f'\n⚠️  Process {context.process_id + 1} STOPPED due to DAILY QUOTA EXHAUSTION:')
-        print(f'   💡 Daily limit: 3,000,000 tokens per day')
+        # Display actual limit from performance monitor (20 for free tier, or higher for paid tier)
+        daily_limit = context.monitor.free_tier_daily_limit if hasattr(context, 'monitor') and hasattr(context.monitor, 'free_tier_daily_limit') else 20
+        if daily_limit <= 20:
+            print(f'   💡 Daily limit: {daily_limit} requests per day (free tier - shared across all processes)')
+        else:
+            print(f'   💡 Daily limit: 3,000,000 tokens per day')
         print(f'   💡 Quota resets at midnight (Google timezone)')
         print(f'   💡 Process will need to be restarted tomorrow to continue')
     else:

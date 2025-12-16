@@ -4,7 +4,7 @@ Shared error classification utilities for p3 and p4 retry logic.
 This module provides functions to classify different types of errors
 to determine appropriate retry behavior.
 """
-from typing import Optional
+from typing import Optional, Tuple
 import re
 
 
@@ -84,9 +84,12 @@ def is_daily_quota(error_str: str) -> bool:
     if any(keyword in error_lower for keyword in ['perday', 'daily', 'generaterequestsperday', '3000000']):
         return True
     
-    # Free tier daily limit
-    if 'free_tier_requests' in error_lower and ('limit: 250' in error_str or 'limit:250' in error_str):
-        return True
+    # Free tier daily limit - check for any limit value (20, 250, etc.)
+    if 'free_tier_requests' in error_lower:
+        # Extract limit value from error message (e.g., "limit: 20" or "limit: 250")
+        limit_match = re.search(r'limit:\s*(\d+)', error_str, re.IGNORECASE)
+        if limit_match:
+            return True
     
     return False
 
@@ -110,6 +113,38 @@ def is_schema_complexity_error(error_str: str) -> bool:
         return True
     
     return False
+
+
+def extract_quota_limit(error_str: str) -> Optional[Tuple[int, str]]:
+    """
+    Extract quota limit value and type from error message.
+    
+    Args:
+        error_str: Error message string
+        
+    Returns:
+        Optional[Tuple[int, str]]: (limit_value, limit_type) where limit_type is 'requests' or 'tokens', or None if not found
+    """
+    error_lower = error_str.lower()
+    
+    # Check for free tier requests limit (e.g., "limit: 20" or "limit: 250")
+    if 'free_tier_requests' in error_lower:
+        limit_match = re.search(r'limit:\s*(\d+)', error_str, re.IGNORECASE)
+        if limit_match:
+            return (int(limit_match.group(1)), 'requests')
+    
+    # Check for token-based limits (e.g., "3000000" tokens)
+    if '3000000' in error_str or '3,000,000' in error_str:
+        return (3000000, 'tokens')
+    
+    # Check for other per-day limits
+    perday_match = re.search(r'(\d+)\s*(?:requests?|tokens?)\s*per\s*day', error_lower)
+    if perday_match:
+        limit_value = int(perday_match.group(1))
+        limit_type = 'tokens' if 'token' in perday_match.group(0) else 'requests'
+        return (limit_value, limit_type)
+    
+    return None
 
 
 def extract_api_retry_delay(error: Exception) -> Optional[float]:

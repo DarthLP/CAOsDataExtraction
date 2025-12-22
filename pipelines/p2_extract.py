@@ -40,10 +40,10 @@ USAGE:
         python pipelines/p2_extract.py --process_id 3 --total_processes 4
     
     Bash script for parallel execution:
-        caffeinate python -u pipelines/p2_extract.py --process_id 0 --total_processes 4 > p2_log1.txt 2>&1 &
-        caffeinate python -u pipelines/p2_extract.py --process_id 1 --total_processes 4 > p2_log2.txt 2>&1 &
-        caffeinate python -u pipelines/p2_extract.py --process_id 2 --total_processes 4 > p2_log3.txt 2>&1 &
-        caffeinate python -u pipelines/p2_extract.py --process_id 3 --total_processes 4 > p2_log4.txt 2>&1 &
+        caffeinate python -u pipelines/p2_extract.py --process_id 0 --total_processes 4 > logs/p2_log1.txt 2>&1 &
+        caffeinate python -u pipelines/p2_extract.py --process_id 1 --total_processes 4 > logs/p2_log2.txt 2>&1 &
+        caffeinate python -u pipelines/p2_extract.py --process_id 2 --total_processes 4 > logs/p2_log3.txt 2>&1 &
+        caffeinate python -u pipelines/p2_extract.py --process_id 3 --total_processes 4 > logs/p2_log4.txt 2>&1 &
 
 ARGUMENTS:
     --process_id: Process ID for work distribution (0-based) - defaults to 0

@@ -1,7 +1,33 @@
 """
 CAO Data Analysis - LLM Extraction Pipeline (p4_analysis.py)
 
-This script performs schema-driven LLM extraction on CAO JSON files.
+This script performs schema-driven LLM extraction on CAO JSON files with:
+- Split non-salary schema into 3 independent parts for better performance and reliability
+- Adaptive retry strategy with parameter adjustment (temp/top_p/top_k on attempts 4-5)
+- Schema validation ensures each part returns expected sections
+- Failure-aware retry guidance for LLM-controllable errors (truncated JSON, empty responses)
+- Individual part retry logic with independent error handling
+- Robust error handling and performance monitoring across 5 separate log files
+
+Schema Structure:
+- Salary: Single extraction using SalaryExtractionSchema
+- Non-Salary Part 1: General, Bonuses, Wage Scales, Pension, Termination
+- Non-Salary Part 2: Leave, Overtime, Training  
+- Non-Salary Part 3: Homeoffice, Contract Type, Safety, Childcare, AI, Fringe Benefits
+
+Output Structure:
+- outputs/llm_analysis/salary/[cao_number]/
+- outputs/llm_analysis/non_salary/gen_bon_wag_pen_ter/[cao_number]/
+- outputs/llm_analysis/non_salary/lea_ove_tra/[cao_number]/
+- outputs/llm_analysis/non_salary/hom_con_saf_chi_ai_fri/[cao_number]/
+
+Logging Files:
+- analysis_performance_salary.jsonl
+- analysis_performance_non_salary1.jsonl
+- analysis_performance_non_salary2.jsonl
+- analysis_performance_non_salary3.jsonl
+- analysis_performance.jsonl (combined success only)
+
 It extracts salary and non-salary information using Google Gemini API.
 
 USAGE:
@@ -9,12 +35,12 @@ USAGE:
         python pipelines/p4_analysis.py --key_number 7 --process_id 0 --total_processes 1
 
     Multi-process:
-        unbuffer caffeinate python pipelines/p4_analysis.py --key_number 7 --process_id 0 --total_processes 6 2>&1 | tee log1.txt &
-        unbuffer caffeinate python pipelines/p4_analysis.py --key_number 2 --process_id 1 --total_processes 6 2>&1 | tee log2.txt &
-        unbuffer caffeinate python pipelines/p4_analysis.py --key_number 3 --process_id 2 --total_processes 6 2>&1 | tee log3.txt &
-        unbuffer caffeinate python pipelines/p4_analysis.py --key_number 4 --process_id 3 --total_processes 6 2>&1 | tee log4.txt &
-        unbuffer caffeinate python pipelines/p4_analysis.py --key_number 5 --process_id 4 --total_processes 6 2>&1 | tee log5.txt &
-        unbuffer caffeinate python pipelines/p4_analysis.py --key_number 6 --process_id 5 --total_processes 6 2>&1 | tee log6.txt &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 1 --process_id 0 --total_processes 6 > p4_log1.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 2 --process_id 1 --total_processes 6 > p4_log2.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 3 --process_id 2 --total_processes 6 > p4_log3.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 4 --process_id 3 --total_processes 6 > p4_log4.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 5 --process_id 4 --total_processes 6 > p4_log5.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 6 --process_id 5 --total_processes 6 > p4_log6.txt 2>&1 &
 
     With file limit:
         python pipelines/p4_analysis.py --key_number 7 --process_id 0 --total_processes 1 --max_files 10
@@ -47,9 +73,10 @@ import time
 import argparse
 import fcntl
 import re
+import signal
 from pathlib import Path
-from typing import List, Optional, Tuple, Dict, Any
-from dataclasses import dataclass, field
+from typing import List, Optional, Tuple, Dict, Any, Literal
+from dataclasses import dataclass
 
 # Add the parent directory to Python path so we can import utils
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -57,7 +84,6 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # Third-party imports for environment variables, file locking, and data validation
 import pandas as pd
 import yaml
-from pydantic import BaseModel, Field, ConfigDict
 from dotenv import load_dotenv
 
 # Google Gemini API imports
@@ -67,15 +93,196 @@ from google.genai import types
 # Import performance monitoring
 from monitoring.monitoring_3_1 import PerformanceMonitor
 
+# Import schema definitions
+from schema.salary_schema import (
+    SalaryRow, SalaryExtractionSchema, SALARY_PROMPT
+)
+from schema.salary_schema_compact import (
+    SalaryExtractionSchemaCompact, SALARY_PROMPT_COMPACT
+)
+from schema.salary_schema_split import (
+    SalaryExtractionSchemaSplit
+)
+from schema.salary_prompt_split import (
+    SALARY_PROMPT_SPLIT_ATTEMPT_9,
+    SALARY_PROMPT_SPLIT_ATTEMPT_10
+)
+from schema.salary_schema_super_compact import (
+    SalaryExtractionSchemaSuperCompact, SALARY_PROMPT_SUPER_COMPACT
+)
+from scripts_pipeline_helper.p4.merge_split_salary import merge_split_salary_results
+from scripts_pipeline_helper.p4.retry_logic import (
+    handle_llm_errors as handle_llm_errors_p4,
+    calculate_quota_retry_delay as calculate_quota_retry_delay_p4,
+    get_adjusted_parameters as get_adjusted_parameters_p4,
+    get_retry_guidance as get_retry_guidance_p4,
+    get_model_parameters as get_model_parameters_p4
+)
+from schema.non_salary_schema import (
+    GeneralInfo, BonusesInfo, WageScalesInfo, PensionInfo, LeaveInfo, 
+    TerminationInfo, OvertimeInfo, TrainingInfo, HomeofficeInfo, 
+    ContractTypeInfo, SafetyInfo, ChildcareInfo, AIInfo, FringeBenefitsInfo,
+    NonSalaryPart1, NonSalaryPart2, NonSalaryPart3, NON_SALARY_PROMPT
+)
+
+# =============================================================================
+# SIGNAL HANDLING
+# =============================================================================
+# Handle signals gracefully to prevent unexpected exits when running with pipes/tee
+def setup_signal_handlers():
+    """Setup signal handlers to prevent unexpected process termination."""
+    def handle_sigpipe(signum, frame):
+        """Handle SIGPIPE (broken pipe) gracefully - ignore it to prevent exit code 1."""
+        # When writing to a pipe (e.g., tee) that closes, we get SIGPIPE
+        # Instead of crashing, we'll just ignore it and continue
+        pass
+    
+    def handle_sigterm(signum, frame):
+        """Handle SIGTERM gracefully - exit with code 0."""
+        print('\n⚠️  Received SIGTERM, exiting gracefully...')
+        sys.stdout.flush()
+        sys.stderr.flush()
+        sys.exit(0)
+    
+    # Register signal handlers
+    # SIGPIPE: Ignore broken pipes (common when using tee/unbuffer)
+    try:
+        signal.signal(signal.SIGPIPE, handle_sigpipe)
+    except (AttributeError, ValueError):
+        # SIGPIPE may not be available on all platforms (Windows)
+        pass
+    
+    # SIGTERM: Handle termination gracefully
+    try:
+        signal.signal(signal.SIGTERM, handle_sigterm)
+    except (AttributeError, ValueError):
+        pass
+
+
 # =============================================================================
 # GLOBAL FLAGS
 # =============================================================================
-# Global flag to signal quota exhaustion for graceful shutdown
-quota_exhausted_flag = False
+# Process-specific quota flags to stop individual processes when quota is hit
+process_quota_flags = {}
+
+# =============================================================================
+# CONSTANTS
+# =============================================================================
+# Global configuration constants
+MODEL = 'gemini-2.5-flash'
+SKIP_TRUNCATED_SALARY_FILES = True  # Skip salary extraction for files with MAX_TOKENS truncation
+
+# =============================================================================
+# CONFIGURATION & SETUP FUNCTIONS
+# =============================================================================
+# Functions for loading configuration, setting up environment, and initializing components
+
+@dataclass
+class AnalysisConfig:
+    """Configuration for the analysis pipeline."""
+    input_folder: str
+    output_folder: Path
+    cao_info_path: str
+    max_processing_time_hours: int = 1
+    max_json_files: int = 1000000  # Default value for max files to process
+    token_limit: int = 900000  # 900K tokens safety limit
+
+
+def load_configuration() -> AnalysisConfig:
+    """Load and validate configuration from config.yaml."""
+    with open('conf/config.yaml', 'r') as f:
+        config_data = yaml.safe_load(f)
+    
+    # Resolve project root (two levels up from this file: pipelines/ -> repo root)
+    project_root = Path(__file__).resolve().parents[1]
+    output_base = project_root / 'outputs' / 'llm_analysis'
+    
+    return AnalysisConfig(
+        input_folder=config_data['paths']['outputs_json'] + "/new_flow",
+        output_folder=output_base,
+        cao_info_path=f"{config_data['paths']['inputs_pdfs']}/extracted_cao_info.csv"
+    )
+
+
+def setup_performance_monitor_p4() -> PerformanceMonitor:
+    """Setup performance monitoring for p4 analysis pipeline."""
+    return PerformanceMonitor(
+        log_file='performance_logs/llm_analysis/analysis_performance.jsonl',
+        summary_file='performance_logs/llm_analysis/analysis_summary.json'
+    )
+
+
+def setup_processing_context(config: AnalysisConfig, process_id: int, 
+                           total_processes: int, key_number: int) -> Dict[str, Any]:
+    """Setup complete processing context."""
+    api_key, actual_key_number = setup_environment(key_number)
+    client = setup_gemini_client(api_key)
+    performance_monitor = setup_performance_monitor_p4()
+    
+    return {
+        'config': config,
+        'process_id': process_id,
+        'total_processes': total_processes,
+        'api_key': api_key,
+        'key_number': actual_key_number,
+        'client': client,
+        'performance_monitor': performance_monitor
+    }
+
+
+def validate_input_paths(config: AnalysisConfig, process_id: int = 0):
+    """Validate that input/output paths exist and are accessible."""
+    if not os.path.exists(config.input_folder):
+        raise ValueError(f"Input folder does not exist: {config.input_folder}")
+    
+    # Ensure full directory tree exists (avoid race conditions across processes)
+    config.output_folder.mkdir(parents=True, exist_ok=True)
+    
+    # Check if we can write to output folder
+    # Use process_id to avoid race conditions when running parallel processes
+    test_file = config.output_folder / f".test_write_p{process_id}"
+    try:
+        test_file.write_text("test")
+        if not test_file.exists():
+            raise ValueError("Test file was not created")
+    except Exception as e:
+        raise ValueError(f"Cannot write to output folder: {config.output_folder}, Error: {e}")
+    finally:
+        # Clean up test file if it exists (do this separately from validation)
+        if test_file.exists():
+            try:
+                test_file.unlink(missing_ok=True)
+            except Exception:
+                # Ignore cleanup errors - write permission was already validated
+                pass
 
 # =============================================================================
 # LLM CLIENT FUNCTIONS
 # =============================================================================
+
+def get_safety_settings():
+    """
+    Get safety settings for Gemini API calls.
+    Returns a list of SafetySetting objects with all categories set to BLOCK_NONE.
+    """
+    return [
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        )
+    ]
 def setup_environment(key_number: int = 1) -> tuple[str, int]:
     """
     Setup environment variables and API key.
@@ -119,148 +326,15 @@ def setup_gemini_client(api_key: str):
     return genai.Client(api_key=api_key)
 
 
+# get_model_parameters moved to scripts_pipeline_helper.p4.retry_logic
+
+# get_adjusted_parameters, get_retry_guidance, calculate_quota_retry_delay, handle_llm_errors
+# moved to scripts_pipeline_helper.p4.retry_logic
+
+# Temporary wrapper for backward compatibility during transition
 def get_model_parameters() -> dict:
-    """
-    Get model parameters for LLM calls.
-    
-    Returns:
-        dict: Model parameters
-    """
-    return {
-        "model": MODEL,
-        "temperature": 0.0,
-        "top_p": 0.1,
-        "top_k": 1,
-        "max_tokens": None,
-        "candidate_count": 1,
-        "seed": 42,
-        "presence_penalty": 0.0,
-        "frequency_penalty": 0.0,
-        "thinking_budget": -1,  # Dynamic thinking (like p3)
-        "max_retries": 5
-    }
-
-
-
-def calculate_quota_retry_delay(file_size_mb: float, attempt: int) -> int:
-    """
-    Calculate quota retry delay based on file size and attempt number.
-    
-    Formula: (estimated_tokens / 125000) * 60 seconds * (2^attempt) + buffer
-    - 125,000 tokens per minute limit
-    - Exponential backoff: 2^attempt
-    - Buffer time for safety
-    
-    Args:
-        file_size_mb: Size of file in MB
-        attempt: Current attempt number (0-based)
-        
-    Returns:
-        int: Delay in seconds
-    """
-    # Estimate tokens: roughly 4 chars per token, file_size_mb * 1024 * 1024 / 4
-    estimated_tokens = int(file_size_mb * 1024 * 1024 / 4)
-    
-    # Calculate minutes needed to process this file
-    minutes_needed = estimated_tokens / 125000
-    
-    # Add exponential backoff: 2^attempt
-    backoff_multiplier = 2 ** attempt
-    
-    # Add buffer time (1-2 minutes for safety)
-    buffer_minutes = 1 + attempt
-    
-    # Calculate total delay in seconds
-    total_delay_seconds = int((minutes_needed * backoff_multiplier + buffer_minutes) * 60)
-    
-    print(f'  DEBUG: File size: {file_size_mb:.2f}MB, Estimated tokens: {estimated_tokens:,}')
-    print(f'  DEBUG: Minutes needed: {minutes_needed:.1f}, Backoff: {backoff_multiplier}x, Buffer: {buffer_minutes}min')
-    print(f'  DEBUG: Total delay: {total_delay_seconds // 60} minutes ({total_delay_seconds} seconds)')
-    
-    return total_delay_seconds
-
-
-def handle_llm_errors(error: Exception, attempt: int, max_retries: int, 
-                     file_size_mb: float = 0, context: Optional[str] = None) -> bool:
-    """
-    Handle different types of LLM errors with appropriate retry logic.
-    
-    Args:
-        error: The exception that occurred
-        attempt: Current attempt number (0-based)
-        max_retries: Maximum number of retry attempts
-        file_size_mb: Size of file in MB (for quota calculations)
-        context: Optional context string for logging
-        
-    Returns:
-        bool: True if should retry, False if should give up
-    """
-    error_str = str(error).lower()
-    
-    if ('deadlineexceeded' in error_str or '504' in error_str or 
-        'timeout' in error_str or 'truncated' in error_str):
-        if attempt < max_retries - 1:
-            wait_time = 120 * 2 ** attempt
-            print(f'  Attempt {attempt + 1} failed (timeout/truncation), retrying in {wait_time // 60} minutes...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with timeout/truncation errors')
-            return False
-    elif 'serviceunavailable' in error_str or '503' in error_str or 'connection reset' in error_str or '500' in error_str or 'internal' in error_str:
-        if attempt < max_retries - 1:
-            # Custom wait times for 503 errors: 2, 4, 8, 12, 20 minutes
-            wait_times = [2, 4, 8, 12, 20]  # minutes
-            wait_time_minutes = wait_times[min(attempt, len(wait_times) - 1)]
-            wait_time = wait_time_minutes * 60  # convert to seconds
-            print(f'  Attempt {attempt + 1} failed (service unavailable/internal error), retrying in {wait_time_minutes} minutes...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with service errors')
-            return False
-    elif 'no content parts found' in error_str or 'no content' in error_str:
-        if attempt < max_retries - 1:
-            wait_time = 60 * 2 ** attempt
-            print(f'  Attempt {attempt + 1} failed (empty response), retrying in {wait_time // 60} minutes...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with empty response errors')
-            return False
-    elif 'incomplete json' in error_str or 'json validation failed' in error_str or 'truncated' in error_str:
-        if attempt < max_retries - 1:
-            wait_time = 30 * 2 ** attempt
-            print(f'  Attempt {attempt + 1} failed (incomplete JSON), retrying in {wait_time} seconds...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with incomplete JSON errors')
-            return False
-    elif any(keyword in error_str for keyword in ['quota', 'rate limit', 'too many requests', '429']):
-        # Check specifically for RESOURCE_EXHAUSTED (quota exceeded)
-        if 'resource_exhausted' in error_str and 'quota' in error_str:
-            print(f'  🚨 API QUOTA EXHAUSTED detected - Process will shutdown gracefully')
-            # Set global flag to trigger graceful shutdown
-            global quota_exhausted_flag
-            quota_exhausted_flag = True
-            return False  # Don't retry, trigger shutdown
-        elif attempt < max_retries - 1:
-            wait_time = calculate_quota_retry_delay(file_size_mb, attempt)
-            print(f'  Attempt {attempt + 1} failed (rate limit), retrying in {wait_time // 60} minutes...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with rate limiting')
-            return False
-    elif attempt < max_retries - 1:
-        wait_time = 60 * 2 ** attempt
-        print(f'  Attempt {attempt + 1} failed ({type(error).__name__}), retrying in {wait_time // 60} minutes...')
-        time.sleep(wait_time)
-        return True
-    else:
-        print(f'  All {max_retries} attempts failed with {type(error).__name__}: {error}')
-        return False
+    """Wrapper to get model parameters using MODEL constant."""
+    return get_model_parameters_p4(MODEL)
 
 
 def log_api_response_details(response, filename: str, processing_time: float = 0) -> None:
@@ -297,22 +371,57 @@ def log_api_response_details(response, filename: str, processing_time: float = 0
                 finish_reason = str(candidate.finish_reason)
         
         # Log the comprehensive details
-        print(f"  📊 API Response Details for {filename}:")
-        print(f"    - Input tokens: {input_tokens} | Output tokens: {output_tokens} (max: 65536)")
-        print(f"    - Response size: {response_size} chars | Finish reason: {finish_reason}")
-        print(f"    - Processing time: {processing_time:.1f}s | Status: SUCCESS")
+        # print(f"  📊 API Response Details for {filename}:")
+        # print(f"    - Input tokens: {input_tokens} | Output tokens: {output_tokens} (max: 65536)")
+        # print(f"    - Response size: {response_size} chars | Finish reason: {finish_reason}")
+        print(f"Processing time: {processing_time:.1f}s | Status: SUCCESS")
         
     except Exception as e:
         print(f"  ⚠️  Failed to log response details for {filename}: {e}")
 
 
-def check_response_truncation(response, filename: str) -> bool:
+def validate_extraction_schema(extracted_data: dict, expected_sections: set, part_name: str) -> bool:
+    """
+    Validate that extracted data contains the expected top-level sections.
+    
+    Args:
+        extracted_data: The extracted data dictionary
+        expected_sections: Set of expected section names
+        part_name: Name of the part being validated (for error messages)
+        
+    Returns:
+        bool: True if validation passes, False otherwise
+    """
+    if not extracted_data:
+        print(f'  {part_name}: Validation failed - empty data')
+        return False
+    
+    actual_sections = set(extracted_data.keys())
+    
+    if actual_sections == expected_sections:
+        return True
+    else:
+        missing_sections = expected_sections - actual_sections
+        extra_sections = actual_sections - expected_sections
+        
+        error_msg = f'{part_name}: Schema validation failed'
+        if missing_sections:
+            error_msg += f' - missing sections: {missing_sections}'
+        if extra_sections:
+            error_msg += f' - unexpected sections: {extra_sections}'
+        
+        print(f'  {error_msg}')
+        return False
+
+
+def check_response_truncation(response, filename: str, cao_number: str = None) -> bool:
     """
     Check if the LLM response was truncated.
     
     Args:
         response: The LLM response object
         filename: Filename for context
+        cao_number: CAO number for filename prefix
         
     Returns:
         bool: True if response was truncated, False otherwise
@@ -323,246 +432,371 @@ def check_response_truncation(response, filename: str) -> bool:
         if hasattr(candidate, 'finish_reason'):
             if candidate.finish_reason == 'MAX_TOKENS':
                 print(f'  DEBUG: Response truncated due to MAX_TOKENS limit for {filename}')
+                save_truncated_response(response.text, filename, cao_number)
                 return True
     
     # Check if response text is empty or very short
     if hasattr(response, 'text') and response.text:
-        if len(response.text.strip()) < 50:  # Very short response
-            print(f'  DEBUG: Response text is very short ({len(response.text)} chars) for {filename}')
+        text = response.text.strip()
+        if len(text) < 10:  # Extremely short response (likely empty/invalid)
+            print(f'  DEBUG: Response text is extremely short ({len(text)} chars) for {filename}')
             return True
+        elif len(text) < 50:  # Short response - check if it's valid JSON
+            print(f'  DEBUG: Response text is short ({len(text)} chars) for {filename}')
+            # Check if it's valid JSON structure (starts with { and ends with })
+            if text.startswith('{') and text.endswith('}'):
+                try:
+                    import json
+                    json.loads(text)  # Try to parse it
+                    print(f'  DEBUG: Short response is valid JSON, not truncated')
+                    return False  # Valid short JSON, not truncated
+                except json.JSONDecodeError:
+                    print(f'  DEBUG: Short response is invalid JSON, likely truncated')
+                    return True
+            else:
+                print(f'  DEBUG: Short response does not look like JSON, likely truncated')
+                return True
     
     # Check if parsed attribute is empty when we expect structured output
     if hasattr(response, 'parsed') and response.parsed is None:
         print(f'  DEBUG: No parsed structured output for {filename}')
         return True
     
+    
     return False
 
 
-def validate_llm_response_json(content: str, filename: str) -> dict:
+
+
+def extract_clean_filename(filename: str) -> str:
     """
-    Validate LLM response JSON for completeness and validity.
+    Extract a clean filename from the original filename for truncated file naming.
     
     Args:
-        content: Raw response content from LLM
-        filename: Filename for context in error messages
+        filename: Original filename (e.g., "CAO_GHZ_2019-2021_definitief_zonder_wijzigingen_20200107.docx_extract.json")
         
     Returns:
-        dict: {'is_valid': bool, 'error': str or None}
+        Clean filename (e.g., "CAO_GHZ_2019-2021_definitief")
     """
-    # Check if content is empty
-    if not content or not content.strip():
-        return {'is_valid': False, 'error': 'Empty content'}
+    import re
     
-    # Check if content starts with {
-    if not content.strip().startswith('{'):
-        return {'is_valid': False, 'error': 'Content does not start with {'}
+    # Remove _extract.json suffix if present
+    clean_name = filename
+    if clean_name.endswith('_extract.json'):
+        clean_name = clean_name[:-13]  # Remove '_extract.json'
+    elif clean_name.endswith('.json'):
+        clean_name = clean_name[:-5]   # Remove '.json'
     
-    # Check if content ends with }
-    if not content.strip().endswith('}'):
-        return {'is_valid': False, 'error': 'Content does not end with } - JSON appears to be truncated'}
+    # Remove common file extensions
+    extensions_to_remove = ['.docx', '.pdf', '.doc']
+    for ext in extensions_to_remove:
+        if clean_name.endswith(ext):
+            clean_name = clean_name[:-len(ext)]
+            break
     
-    # Try to parse JSON to validate structure
+    # Clean up the name - remove extra underscores and make it more readable
+    clean_name = re.sub(r'_+', '_', clean_name)  # Replace multiple underscores with single
+    clean_name = clean_name.strip('_')  # Remove leading/trailing underscores
+    
+    # Limit length to avoid overly long filenames
+    if len(clean_name) > 100:
+        clean_name = clean_name[:100].rstrip('_')
+    
+    return clean_name
+
+
+def save_truncated_response(response_text: str, filename: str, cao_number: str = None):
+    """
+    Save truncated response to file for debugging analysis.
+    
+    Args:
+        response_text: The truncated response text
+        filename: Original filename for context
+        cao_number: CAO number for filename prefix
+    """
     try:
-        json.loads(content)
-        return {'is_valid': True, 'error': None}
-    except json.JSONDecodeError as e:
-        return {'is_valid': False, 'error': f'JSON parsing error: {str(e)}'}
-
-# =============================================================================
-# CONSTANTS
-# =============================================================================
-# Global configuration constants
-MODEL = 'gemini-2.5-flash'  
-
-
-# =============================================================================
-# DATA SCHEMAS
-# =============================================================================
-# Pydantic schemas for structured extraction of CAO document information
-
-class SalaryRow(BaseModel):
-    """Schema for a single salary row representing one job group."""
-    jobgroup: str = Field(default="", description="Job group code or position title - with descriptions in parentheses if explicitly mentioned (e.g., 'F-21-5 (workers with high school diploma)', 'I (Statutory minimum wage)')")    
-    salary_1: str = Field(default="", description="Salary of the first job group listed in the earliest wage table (numeric value as string; e.g. '13,17')")
-    salary_1_unit: str = Field(default="", description="Unit for first salary (e.g., 'hourly')")
-    salary_1_startdate: str = Field(default="", description="Start date for first salary (DD/MM/YYYY format)")
-    salary_increment_1: str = Field(default="", description="Percentage increase of first salary in the earliest wage table (e.g., '2%')")
-    
-    salary_2: str = Field(default="", description="Salary of the first job group listed in the second earliest wage table (numeric value as string; e.g. '13,17')")
-    salary_2_unit: str = Field(default="", description="Unit for second salary (e.g., 'hourly')")
-    salary_2_startdate: str = Field(default="", description="Start date for second salary (DD/MM/YYYY format)")
-    salary_increment_2: str = Field(default="", description="Percentage increase of second salary in the second earliest wage table (e.g., '2%')")
-    
-    salary_3: str = Field(default="", description="Salary of the first job group listed in the third earliest wage table (numeric value as string; e.g. '13,17')")
-    salary_3_unit: str = Field(default="", description="Unit for third salary (e.g., 'hourly')")
-    salary_3_startdate: str = Field(default="", description="Start date for third salary (DD/MM/YYYY format)")
-    salary_increment_3: str = Field(default="", description="Percentage increase of third salary in the third earliest wage table (e.g., '2%')")
-    
-    salary_4: str = Field(default="", description="Salary of the first job group listed in the fourth earliest wage table (numeric value as string; e.g. '21,59')")
-    salary_4_unit: str = Field(default="", description="Unit for fourth salary (e.g., 'hourly')")
-    salary_4_startdate: str = Field(default="", description="Start date for fourth salary (DD/MM/YYYY format)")
-    salary_increment_4: str = Field(default="", description="Percentage increase of fourth salary in the fourth earliest wage table (e.g., '2%')")
-    
-    salary_5: str = Field(default="", description="Salary of the first job group listed in the fifth earliest wage table (numeric value as string; e.g. '21,59')")
-    salary_5_unit: str = Field(default="", description="Unit for fifth salary (e.g., 'hourly')")
-    salary_5_startdate: str = Field(default="", description="Start date for fifth salary (DD/MM/YYYY format)")
-    salary_increment_5: str = Field(default="", description="Percentage increase of salaries in the fifth earliest wage table (e.g., '2%')")
-    
-    salary_6: str = Field(default="", description="Salary of the first job group listed in the sixth earliest wage table (numeric value as string; e.g. '13,17')")
-    salary_6_unit: str = Field(default="", description="Unit for sixth salary (e.g., 'hourly')")
-    salary_6_startdate: str = Field(default="", description="Start date for sixth salary (DD/MM/YYYY format)")
-    salary_increment_6: str = Field(default="", description="Percentage increase of sixth salary in the sixth earliest wage table (e.g., '2%')")
-    
-    salary_7: str = Field(default="", description="Salary of the first job group listed in the seventh earliest wage table (numeric value as string; e.g. '13,17')")
-    salary_7_unit: str = Field(default="", description="Unit for seventh salary (e.g., 'hourly')")
-    salary_7_startdate: str = Field(default="", description="Start date for seventh salary (DD/MM/YYYY format)")
-    salary_increment_7: str = Field(default="", description="Percentage increase of seventh salary in the seventh earliest wage table (e.g., '2%')")
-    
-    more_salaries: bool = Field(default=False, description="ONLY True if there are more than the 7 salary steps, salary_1,...,salary_7, in this job group. Hence, all salary fields salary_1,...,salary_7 must be filled.")
-    salary_note: str = Field(default="", description="Table-level salary context including calculation methods, effective dates and conditions")
-    salary_age_group: str = Field(default="", description="Age group the salary of the first job group applies to (e.g., '21+', 'all ages')")
-
-
-class SalaryExtractionSchema(BaseModel):
-    """Schema for salary extraction results."""
-    salary_information: List[SalaryRow] = Field(default_factory=list)
-
-
-class ContractInfo(BaseModel):
-    """Schema for contract information."""
-    start_date_contract: str = Field(default="", description="Contract start date (DD/MM/YYYY format)")
-    expiry_date_contract: str = Field(default="", description="Contract expiry/end date (DD/MM/YYYY format)")
-
-
-class PensionInfo(BaseModel):
-    """Schema for pension information."""
-    pension_scheme_basic: str = Field(default="", description="Basic pension scheme rules, premiums, development and structure (e.g., '50% pension premium paid by employee', 'Employees 21-68 eligible', 'follows rules of Stichting Bedrijfstakpensioenfonds')")
-    pension_scheme_plus: str = Field(default="", description="Additional or 'plus' pension scheme rules, premiums, development and structure (e.g., '2% additional premium', 'Generation Policy for 60+ between 2018 and 2023', '0.2% increase for employees offset on 1-6-2021')")
-    retire_age_basic: str = Field(default="", description="Retirement age for the basic pension scheme (e.g., '67', '65-67 years')")
-    retire_age_plus: str = Field(default="", description="Retirement age for the additional or 'plus' pension scheme (e.g., '62', '60 years')")
-    pension_age_group: str = Field(default="", description="Age group eligible for pension schemes (e.g., '21+', 'all employees')")
-
-
-class LeaveInfo(BaseModel):
-    """Schema for leave information."""
-    maternity_leave: str = Field(default="", description="Child-related (Maternity, adoption, etc.) leave duration (e.g., '5 days of paid maternity leave', 'Additional 4 weeks in multiple births', '5 weeks extra unpaid leave after birth')")
-    maternity_pay: str = Field(default="", description="Salary and benefits during child-related leave (e.g., '100% paid by employer', 'full salary', '70% UWV benefit')")
-    maternity_note: str = Field(default="", description="Additional child-related leave rules (e.g., 'Vacation accrues during leave', 'leave may be split between partners')")
-    vacation_time: str = Field(default="", description="Annual vacation time (e.g., '25', '0.0769')")
-    vacation_unit: str = Field(default="", description="Unit for vacation time (e.g., 'hours per vacation year', 'weeks')")
-    vacation_note: str = Field(default="", description="Additional vacation rules (e.g., 'plus public holidays for part time workers', '8% holiday allowance', '5 extra days after 4')")
-
-
-class TerminationInfo(BaseModel):
-    """Schema for termination information."""
-    term_period_employer: str = Field(default="", description="Notice period required from employer - include special rules based on age, start date, or contract length (e.g., '30 days', 'Statutory period applies if longer than agreed term')")
-    term_employer_note: str = Field(default="", description="Additional notes about employer termination (e.g., 'longer for senior positions', 'plus 1 month per year of service', 'Civil Code provisions apply')")
-    term_period_worker: str = Field(default="", description="Notice period required from worker - include special rules based on age, start date, or contract length (e.g., '1 week if less than 2 years employed', '30 days')")
-    term_worker_note: str = Field(default="", description="Additional notes about worker termination (e.g., 'Starting date for notice is always a Saturday', 'can be extended')")
-    probation_period: str = Field(default="", description="Probation period duration (e.g., '2 months for indefinite contracts', '60 days', 'No trial period if contract ≤ 6 months')")
-    probation_note: str = Field(default="", description="Additional notes about probation (e.g., 'Article 7:652 of the Civil Code applies', 'shorter notice period during probation')")
-
-
-class OvertimeInfo(BaseModel):
-    """Schema for overtime information."""
-    overtime_compensation: str = Field(default="", description="Overtime pay and compensation rate (e.g., '1:1 Time Off In Lieu', '100% of hourly wage plus overtime premium', '€25/hour')")
-    max_hrs: str = Field(default="", description="Maximum working and overtime time (e.g., '52-hour weekly average if salary exceeds IP number 74', '16 hours/month')")
-    min_hrs: str = Field(default="", description="Minimum working and overtime time (e.g., '8 hours per day', '96 hours/month')")
-    shift_compensation: str = Field(default="", description="Shift compensations (e.g., '25% surcharge 8pm–10pm', ' Night shift 00:00 and 06:00', 'Max 20 shifts per 4-weeks')")
-    overtime_allowance_min: str = Field(default="", description="Minimum overtime and shift allowance (e.g., 'min 4-hour shift to qualify for night compensation', '16 night shifts over 16 weeks triggers lower working hour threshold')")
-    overtime_allowance_max: str = Field(default="", description="Maximum overtime and shift allowance (e.g., 'Working time averaged over 13 weeks not to exceed 48 hours', 'max 10 hours a day')")
-
-
-class TrainingInfo(BaseModel):
-    """Schema for training information."""
-    training: str = Field(default="", description="Training rights, budgets and requirements (e.g., '€175 per year budget', '5 days training leave', 'mandatory safety training')")
-
-
-class HomeofficeInfo(BaseModel):
-    """Schema for homeoffice information."""
-    Homeoffice: str = Field(default="", description="Home office and remote work rules (e.g., 'up to 2 days/week', 'Home office allowance of €3 per day', 'equipment provided')")
-
-
-class NonSalaryExtractionSchema(BaseModel):
-    """Schema for non-salary extraction results."""
-    contract_information: ContractInfo = Field(default_factory=ContractInfo)
-    pension_information: PensionInfo = Field(default_factory=PensionInfo)
-    leave_information: LeaveInfo = Field(default_factory=LeaveInfo)
-    termination_information: TerminationInfo = Field(default_factory=TerminationInfo)
-    overtime_information: OvertimeInfo = Field(default_factory=OvertimeInfo)
-    training_information: TrainingInfo = Field(default_factory=TrainingInfo)
-    homeoffice_information: HomeofficeInfo = Field(default_factory=HomeofficeInfo)
-
-
-# =============================================================================
-# CONFIGURATION & SETUP FUNCTIONS
-# =============================================================================
-# Functions for loading configuration, setting up environment, and initializing components
-
-@dataclass
-class AnalysisConfig:
-    """Configuration for the analysis pipeline."""
-    input_folder: str
-    output_folder: Path
-    cao_info_path: str
-    max_processing_time_hours: int = 1
-    max_json_files: int = 1000000  # Default value for max files to process
-    token_limit: int = 900000  # 900K tokens safety limit
-
-
-def load_configuration() -> AnalysisConfig:
-    """Load and validate configuration from config.yaml."""
-    with open('conf/config.yaml', 'r') as f:
-        config_data = yaml.safe_load(f)
-    
-    return AnalysisConfig(
-        input_folder=config_data['paths']['outputs_json'] + "/new_flow",
-        output_folder=Path(config_data['paths']['outputs_json']) / "llm_analysis",
-        cao_info_path=f"{config_data['paths']['inputs_pdfs']}/extracted_cao_info.csv"
-    )
-
-
-def setup_performance_monitor_p4() -> PerformanceMonitor:
-    """Setup performance monitoring for p4 analysis pipeline."""
-    return PerformanceMonitor(
-        log_file='performance_logs/llm_analysis/analysis_performance.jsonl',
-        summary_file='performance_logs/llm_analysis/analysis_summary.json'
-    )
-
-
-def setup_processing_context(config: AnalysisConfig, process_id: int, 
-                           total_processes: int, key_number: int) -> Dict[str, Any]:
-    """Setup complete processing context."""
-    api_key, actual_key_number = setup_environment(key_number)
-    client = setup_gemini_client(api_key)
-    performance_monitor = setup_performance_monitor_p4()
-    
-    return {
-        'config': config,
-        'process_id': process_id,
-        'total_processes': total_processes,
-        'api_key': api_key,
-        'key_number': actual_key_number,
-        'client': client,
-        'performance_monitor': performance_monitor
-    }
-
-
-def validate_input_paths(config: AnalysisConfig):
-    """Validate that input/output paths exist and are accessible."""
-    if not os.path.exists(config.input_folder):
-        raise ValueError(f"Input folder does not exist: {config.input_folder}")
-    
-    config.output_folder.mkdir(exist_ok=True)
-    
-    # Check if we can write to output folder
-    test_file = config.output_folder / ".test_write"
-    try:
-        test_file.write_text("test")
-        test_file.unlink()
+        import os
+        from datetime import datetime
+        
+        # Create the truncated responses directory
+        truncated_dir = Path("performance_logs/llm_analysis/max_tokens_truncated")
+        truncated_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Create clean filename without timestamp
+        clean_filename = extract_clean_filename(filename)
+        
+        # Add CAO number prefix if provided
+        if cao_number:
+            truncated_filename = f"{cao_number}_{clean_filename}_truncated.txt"
+        else:
+            truncated_filename = f"{clean_filename}_truncated.txt"
+        
+        truncated_file = truncated_dir / truncated_filename
+        
+        # Save the truncated response
+        with open(truncated_file, 'w', encoding='utf-8') as f:
+            f.write(f"TRUNCATED RESPONSE DEBUG INFO\n")
+            f.write(f"Original filename: {filename}\n")
+            f.write(f"Timestamp: {datetime.now().isoformat()}\n")
+            f.write(f"Response length: {len(response_text)} characters\n")
+            f.write(f"Finish reason: MAX_TOKENS\n")
+            f.write(f"{'='*80}\n\n")
+            f.write(response_text)
+        
+        print(f'  DEBUG: Truncated response saved to: {truncated_file}')
+        
     except Exception as e:
-        raise ValueError(f"Cannot write to output folder: {config.output_folder}, Error: {e}")
+        print(f'  DEBUG: Failed to save truncated response: {e}')
+
+
+def is_file_in_truncated_folder(filename: str, cao_number: str) -> bool:
+    """
+    Check if a file exists in the max_tokens_truncated folder.
+    
+    Args:
+        filename: Original filename (e.g., "CAO_file_extract.json")
+        cao_number: CAO number for the file
+        
+    Returns:
+        bool: True if the file exists in truncated folder, False otherwise
+    """
+    truncated_dir = Path("performance_logs/llm_analysis/max_tokens_truncated")
+    
+    if not truncated_dir.exists():
+        return False
+    
+    # Build expected truncated filename: {cao_number}_{clean_filename}_truncated.txt
+    clean_filename = extract_clean_filename(filename)
+    expected_truncated_file = truncated_dir / f"{cao_number}_{clean_filename}_truncated.txt"
+    
+    return expected_truncated_file.exists()
+
+
+def is_file_in_truncated_2_folder(filename: str, cao_number: str) -> bool:
+    """
+    Check if a file exists in the max_tokens_truncated_2 folder.
+    
+    Args:
+        filename: Original filename (e.g., "CAO_file_extract.json")
+        cao_number: CAO number for the file
+        
+    Returns:
+        bool: True if the file exists in truncated_2 folder, False otherwise
+    """
+    truncated_dir = Path("performance_logs/llm_analysis/max_tokens_truncated_2")
+    
+    if not truncated_dir.exists():
+        return False
+    
+    # Build expected truncated filename: {cao_number}_{clean_filename}_truncated.txt
+    clean_filename = extract_clean_filename(filename)
+    expected_truncated_file = truncated_dir / f"{cao_number}_{clean_filename}_truncated.txt"
+    
+    return expected_truncated_file.exists()
+
+
+def is_file_in_truncated_3_folder(filename: str, cao_number: str) -> bool:
+    """
+    Check if a file exists in the max_tokens_truncated_3 folder.
+    
+    Args:
+        filename: Original filename (e.g., "CAO_file_extract.json")
+        cao_number: CAO number for the file
+        
+    Returns:
+        bool: True if the file exists in truncated_3 folder, False otherwise
+    """
+    truncated_dir = Path("performance_logs/llm_analysis/max_tokens_truncated_3")
+    
+    if not truncated_dir.exists():
+        return False
+    
+    # Build expected truncated filename: {cao_number}_{clean_filename}_truncated.txt
+    clean_filename = extract_clean_filename(filename)
+    expected_truncated_file = truncated_dir / f"{cao_number}_{clean_filename}_truncated.txt"
+    
+    return expected_truncated_file.exists()
+
+
+def is_file_in_truncated_4_folder(filename: str, cao_number: str) -> bool:
+    """
+    Check if a file exists in the max_tokens_truncated_4 folder.
+    
+    Args:
+        filename: Original filename (e.g., "CAO_file_extract.json")
+        cao_number: CAO number for the file
+        
+    Returns:
+        bool: True if the file exists in truncated_4 folder, False otherwise
+    """
+    truncated_dir = Path("performance_logs/llm_analysis/max_tokens_truncated_4")
+    
+    if not truncated_dir.exists():
+        return False
+    
+    # Build expected truncated filename: {cao_number}_{clean_filename}_truncated.txt
+    clean_filename = extract_clean_filename(filename)
+    expected_truncated_file = truncated_dir / f"{cao_number}_{clean_filename}_truncated.txt"
+    
+    return expected_truncated_file.exists()
+
+
+def save_failed_attempt_8(response_text: str, error_message: str, filename: str, cao_number: str = None):
+    """
+    Save failed 8th attempt response to max_tokens_truncated_2 folder for debugging.
+    
+    Args:
+        response_text: The response text (if available)
+        error_message: The error message from the failed attempt
+        filename: Original filename for context
+        cao_number: CAO number for filename prefix
+    """
+    try:
+        import os
+        from datetime import datetime
+        
+        # Create the truncated responses directory
+        truncated_dir = Path("performance_logs/llm_analysis/max_tokens_truncated_2")
+        truncated_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Create clean filename without timestamp
+        clean_filename = extract_clean_filename(filename)
+        
+        # Add CAO number prefix if provided
+        if cao_number:
+            truncated_filename = f"{cao_number}_{clean_filename}_truncated.txt"
+        else:
+            truncated_filename = f"{clean_filename}_truncated.txt"
+        
+        truncated_file = truncated_dir / truncated_filename
+        
+        # Save the failed attempt response
+        with open(truncated_file, 'w', encoding='utf-8') as f:
+            f.write(f"FAILED 8TH ATTEMPT DEBUG INFO\n")
+            f.write(f"Original filename: {filename}\n")
+            f.write(f"Timestamp: {datetime.now().isoformat()}\n")
+            f.write(f"Attempt: 8th (final attempt with compact schema)\n")
+            f.write(f"Error: {error_message}\n")
+            if response_text:
+                f.write(f"Response length: {len(response_text)} characters\n")
+            f.write(f"{'='*80}\n\n")
+            if response_text:
+                f.write(response_text)
+            else:
+                f.write("No response text available\n")
+        
+        print(f'  DEBUG: Failed 8th attempt saved to: {truncated_file}')
+        
+    except Exception as e:
+        print(f'  DEBUG: Failed to save failed 8th attempt: {e}')
+
+
+def save_failed_attempt_10(response_text: str, error_message: str, filename: str, cao_number: str = None, part: str = None):
+    """
+    Save failed 10th attempt response to max_tokens_truncated_3 folder for debugging.
+    Can save both Part 1 and Part 2 separately.
+    
+    Args:
+        response_text: The response text (if available)
+        error_message: The error message from the failed attempt
+        filename: Original filename for context
+        cao_number: CAO number for filename prefix
+        part: Optional part identifier ("Part1" or "Part2") to save separately
+    """
+    try:
+        import os
+        from datetime import datetime
+        
+        # Create the truncated responses directory
+        truncated_dir = Path("performance_logs/llm_analysis/max_tokens_truncated_3")
+        truncated_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Create clean filename without timestamp
+        clean_filename = extract_clean_filename(filename)
+        
+        # Add part identifier to filename if provided
+        part_suffix = f"_{part}" if part else ""
+        
+        # Add CAO number prefix if provided
+        if cao_number:
+            truncated_filename = f"{cao_number}_{clean_filename}{part_suffix}_truncated.txt"
+        else:
+            truncated_filename = f"{clean_filename}{part_suffix}_truncated.txt"
+        
+        truncated_file = truncated_dir / truncated_filename
+        
+        # Determine attempt number based on part
+        attempt_info = f"10th (final attempt with split extraction, {part})" if part else "10th (final attempt with split extraction)"
+        
+        # Save the failed attempt response
+        with open(truncated_file, 'w', encoding='utf-8') as f:
+            f.write(f"FAILED 10TH ATTEMPT DEBUG INFO\n")
+            f.write(f"Original filename: {filename}\n")
+            f.write(f"Timestamp: {datetime.now().isoformat()}\n")
+            f.write(f"Attempt: {attempt_info}\n")
+            f.write(f"Error: {error_message}\n")
+            if response_text:
+                f.write(f"Response length: {len(response_text)} characters\n")
+            f.write(f"{'='*80}\n\n")
+            if response_text:
+                f.write(response_text)
+            else:
+                f.write("No response text available\n")
+        
+        print(f'  DEBUG: Failed 10th attempt ({part if part else "both parts"}) saved to: {truncated_file}')
+        
+    except Exception as e:
+        print(f'  DEBUG: Failed to save failed 10th attempt: {e}')
+
+
+def save_failed_attempt_11(response_text: str, error_message: str, filename: str, cao_number: str = None):
+    """
+    Save failed 11th attempt response to max_tokens_truncated_4 folder for debugging.
+    
+    Args:
+        response_text: The response text (if available)
+        error_message: The error message from the failed attempt
+        filename: Original filename for context
+        cao_number: CAO number for filename prefix
+    """
+    try:
+        import os
+        from datetime import datetime
+        
+        # Create the truncated responses directory
+        truncated_dir = Path("performance_logs/llm_analysis/max_tokens_truncated_4")
+        truncated_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Create clean filename without timestamp
+        clean_filename = extract_clean_filename(filename)
+        
+        # Add CAO number prefix if provided
+        if cao_number:
+            truncated_filename = f"{cao_number}_{clean_filename}_truncated.txt"
+        else:
+            truncated_filename = f"{clean_filename}_truncated.txt"
+        
+        truncated_file = truncated_dir / truncated_filename
+        
+        # Save the failed attempt response
+        with open(truncated_file, 'w', encoding='utf-8') as f:
+            f.write(f"FAILED 11TH ATTEMPT DEBUG INFO\n")
+            f.write(f"Original filename: {filename}\n")
+            f.write(f"Timestamp: {datetime.now().isoformat()}\n")
+            f.write(f"Attempt: 11th (final attempt with super compact schema)\n")
+            f.write(f"Error: {error_message}\n")
+            if response_text:
+                f.write(f"Response length: {len(response_text)} characters\n")
+            f.write(f"{'='*80}\n\n")
+            if response_text:
+                f.write(response_text)
+            else:
+                f.write("No response text available\n")
+        
+        print(f'  DEBUG: Failed 11th attempt saved to: {truncated_file}')
+        
+    except Exception as e:
+        print(f'  DEBUG: Failed to save failed 11th attempt: {e}')
 
 
 # =============================================================================
@@ -612,240 +846,52 @@ def log_analysis_error(filename: str, error: str, raw_output: str = None):
         f.write("-" * 80 + "\n")
 
 
-class ModelOutputParseError(Exception):
-    """Custom exception for model output parsing errors."""
-    pass
-
-
 # =============================================================================
 # LLM PROMPT TEMPLATES
 # =============================================================================
 # Exact prompt templates for salary and non-salary extraction
 
-SALARY_PROMPT = """
-
-    You are an information-extraction assistant. Input: text derived from a Dutch CAO (collective labour agreement) that contains wage tables and related wage text.
-
-    TASK: Extract structured salary data from the provided text:
-    Filename: {filename}
-    Source text: {source_json}
-
-    CRITICAL RULES:
-        - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess.
-        - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
-        - For missing values: Use empty string "" for string fields and use null for numbers, dates, and boolean fields.
-        - Output ONLY valid JSON format matching the provided schema structure.
-
-    UNIT & TABLE SELECTION:
-        - Include ONLY standard/regular wage tables - EXCLUDE allowances, bonuses, overtime, reimbursements, and non-standard worker roles like apprentices or foremen.
-        - If multiple tables exist for different time periods under this standard wage type, include all of them. 
-        - Within standard wage tables extract salary information for each job group and include all job groups.
-        - Unit choice: if the same table exists in multiple units for the same workers/groups/periods/ages, choose the hourly version. Do NOT perform unit conversions. If hourly is absent, keep the original unit as-is.
-        - If salaries are presented as a range (e.g., "€2,000 – €2,400"), always extract the minimum value as the salary and state this in salary_note field.
-
-    AGE GROUP SELECTION:
-        - Select EXACTLY ONE age group per wage table, using this order of preference:
-            1. Open-ended groups (e.g., "22+"), preferring the lowest starting age if multiple exist.
-            2. If none exist, select the group that covers the widest span (e.g. '20 - 65' preferred over '20 - 50').
-            3. If tied, select the group with the highest maximum age (e.g. '20 - 65' preferred over '20 - 60' and '22' preferred over '21').
-        - IGNORE age and job groups limited to workers under 21 (e.g., "16-20", "20") unless the group is open-ended ("20+") or spans older ages ("18-65").
-        - Extract data only for the selected age group; do not output multiple age groups.
-        - NEVER borrow values across age groups. If a job group has no data for the chosen age group, leave its fields empty/null.
-        - Record the chosen age group in the age_group field. If the chosen group changes across different wage tables/periods, note this in salary_note.
-
-    NOTES & CONSISTENCY:
-        - Salary_note, salary_age_group and more_salaries fields should be consistent across all job groups since they usually apply to entire wage tables (if this is not the case mention it in the salary_note field). 
-        - The field more_salaries must be set to true ONLY IF all salary_1 through salary_7 are filled for the job group and there exists at least one additional salary value in a later period. Otherwise, more_salaries must be null.
-        - No Gaps Rule: When multiple salary values are present in a row, map them sequentially into salary_1, salary_2, salary_3, etc. without skipping any index.
-
-    PROCESS — FOLLOW IN THIS ORDER:
-        1. Filter tables: keep only eligible standard wage tables (apply UNIT & TABLE rules).
-        2. For each included table: extract all job groups present (do not omit).
-        3. For each table: select EXACTLY ONE age group using AGE GROUP rules.
-        4. Collect table versions for the same standard table and sort them EARLIEST→LATEST (per TIME-PERIOD ORDERING).
-        5. For each job group (aligned across versions as described): assign salary_1, salary_2, ... by chronological order of versions (observe NO GAPS rule), and for each salary_x also fill: salary_x_unit, salary_x_startdate and salary_increment_x.
-        6. Fill fields salary_note, salary_age_group and more_salaries
-
-    FINAL CHECK: Before producing output, verify that ALL above constraints are satisfied. Then output a single JSON object conforming exactly to the schema.
-    """
-
-
-NON_SALARY_PROMPT = """
-
-    You are an information-extraction assistant. Input: text derived from a Dutch CAO (collective labour agreement) that contains general contract info, pension, leave, termination, overtime, training and homeoffice sections.
-
-    TASK: Extract structured data from the provided text:
-    Filename: {filename}
-    Source text: {source_json}
-
-    CRITICAL RULES:
-        - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess.
-        - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
-        - Output ONLY valid JSON format matching the provided schema structure.
-
-    EXTRACTION GUIDELINES:
-        - Extract factual information for each field based on the schema descriptions. Be concise.
-        - Include relevant conditions, exceptions, and legal references in note fields.
-        - For missing values: Use empty string "" for string fields and use null for numbers, dates, and boolean fields.
-
-    FINAL CHECK: Before producing output, verify that ALL above constraints are satisfied. Then output a single JSON object conforming exactly to the schema.
-    """
-
-
-# =============================================================================
-# LLM EXTRACTION FUNCTIONS
-# =============================================================================
-# Functions for calling the LLM and processing responses
-
-def query_gemini_with_retry(client, prompt: str, filename: str, max_retries: int = 5) -> str:
-    """
-    Query Gemini model with retry logic and error handling.
-    
-    Args:
-        client: Gemini client instance
-        prompt: Prompt to send to the model
-        filename: Filename for context in error messages
-        max_retries: Maximum number of retry attempts
-        
-    Returns:
-        str: Raw model response text
-        
-    Raises:
-        Exception: If all retry attempts fail
-    """
-    model_params = get_model_parameters()
-    
-    # Define safety settings (same as p3)
-    safety_settings = [
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
-            threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-        ),
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-            threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-        ),
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-            threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-        ),
-        types.SafetySetting(
-            category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-            threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-        )
-    ]
-    
-    for attempt in range(max_retries):
-        try:
-            config = {
-                'temperature': model_params["temperature"],
-                'top_p': model_params["top_p"],
-                'top_k': model_params["top_k"],
-                'max_output_tokens': model_params["max_tokens"],
-                'candidate_count': model_params["candidate_count"],
-                'seed': model_params["seed"],
-                'presence_penalty': model_params["presence_penalty"],
-                'frequency_penalty': model_params["frequency_penalty"],
-                'thinking_config': types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
-                'http_options': types.HttpOptions(timeout=300000),  # 5 minutes timeout
-                'safety_settings': safety_settings
-            }
-            
-            response = client.models.generate_content(
-                model=model_params["model"],
-                contents=prompt,
-                config=config
-            )
-            
-            if hasattr(response, 'text') and response.text and response.text.strip():
-                return response.text
-            else:
-                raise ValueError('Empty or invalid model response')
-                
-        except Exception as e:
-            if not handle_llm_errors(e, attempt, max_retries, context=filename):
-                raise e
-    
-    raise ValueError(f'All {max_retries} retry attempts failed')
-
-
-def clean_gemini_output(output: str) -> str:
-    """
-    Clean the Gemini model output by removing markdown and trailing commas.
-    
-    Args:
-        output: Raw output from Gemini
-        
-    Returns:
-        str: Cleaned output string
-    """
-    if output.strip().startswith('```'):
-        lines = output.strip().splitlines()
-        content = '\n'.join(line for line in lines if not line.strip().startswith('```'))
-    else:
-        content = output.strip()
-    
-    # Remove trailing commas before closing braces/brackets
-    content = re.sub(r',\s*(?=[}\]])', '', content)
-    return content
-
-
-def parse_llm_response(response_text: str, filename: str, schema_type: str):
-    """
-    Parse and validate LLM response with cleanup and retry logic.
-    
-    Args:
-        response_text: Raw response from LLM
-        filename: Filename for context
-        schema_type: Type of schema ('salary' or 'nonsalary')
-        
-    Returns:
-        dict: Parsed and validated data
-        
-    Raises:
-        ModelOutputParseError: If parsing fails after cleanup attempts
-    """
-    # First validation attempt
-    validation_result = validate_llm_response_json(response_text, filename)
-    
-    if validation_result['is_valid']:
-        try:
-            return json.loads(response_text)
-        except json.JSONDecodeError as e:
-            # This shouldn't happen if validation passed, but handle it
-            raise ModelOutputParseError(f"JSON parsing failed despite validation: {e}")
-    
-    # Cleanup attempt
-    cleaned_output = clean_gemini_output(response_text)
-    validation_result = validate_llm_response_json(cleaned_output, filename)
-    
-    if validation_result['is_valid']:
-        try:
-            return json.loads(cleaned_output)
-        except json.JSONDecodeError as e:
-            log_analysis_error(filename, f"JSON parsing failed after cleanup: {e}", cleaned_output)
-            raise ModelOutputParseError(f"JSON parsing failed after cleanup: {e}")
-    
-    # Final attempt: strip everything before first { and after last }
-    try:
-        start_idx = cleaned_output.find('{')
-        end_idx = cleaned_output.rfind('}') + 1
-        if start_idx != -1 and end_idx > start_idx:
-            final_attempt = cleaned_output[start_idx:end_idx]
-            json.loads(final_attempt)  # Test if valid
-            return json.loads(final_attempt)
-    except (json.JSONDecodeError, ValueError):
-        pass
-    
-    # All attempts failed
-    log_analysis_error(filename, f"All parsing attempts failed for {schema_type} extraction", response_text)
-    raise ModelOutputParseError(f"Failed to parse {schema_type} extraction response")
-
-
-def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None) -> List[dict]:
+def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None, cao_number: str = None) -> dict:
     """Extract salary information from JSON using LLM."""
-    print(f'  DEBUG: Starting salary extraction for {filename}')
-    print(f'  DEBUG: Input JSON keys: {list(json_obj.keys())}')
+    global process_quota_flags
+    
+    # Check if file is in truncated_4 folder - if so, skip extraction entirely (all attempts exhausted)
+    if cao_number and is_file_in_truncated_4_folder(filename, cao_number):
+        print(f'  DEBUG: File found in truncated_4 folder - all attempts exhausted, skipping extraction')
+        # Log that file is skipped due to truncation_4
+        if context and 'performance_monitor' in context:
+            file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+            context['performance_monitor'].log_analysis(
+                filename=filename,
+                file_size_mb=file_size_mb,
+                processing_time=0.0,
+                usage_metadata=None,
+                success=False,
+                analysis_type="salary",
+                error_message="File in truncated_4 folder - all attempts exhausted (skipped)",
+                api_key_used=context.get('key_number', 1),
+                process_id=context.get('process_id', 0),
+                cao_number=cao_number,
+                model="gemini-2.5-flash",
+                parameters={"skipped": True, "reason": "truncated_4"},
+                allow_duplicates=False
+            )
+        return None  # Skip extraction - file failed all attempts including super compact
+    
+    # Check if file is in truncated_3 folder - if so, skip directly to super compact attempts (10-11)
+    use_super_compact_from_start = is_file_in_truncated_3_folder(filename, cao_number) if cao_number else False
+    if use_super_compact_from_start:
+        print(f'  DEBUG: File found in truncated_3 folder, skipping to super compact schema attempts (11th-12th attempts)')
+    
+    # Check if file is in truncated_2 folder - if so, skip directly to split extraction attempts (9-10)
+    use_split_extraction_from_start = is_file_in_truncated_2_folder(filename, cao_number) if cao_number else False
+    if use_split_extraction_from_start and not use_super_compact_from_start:
+        print(f'  DEBUG: File found in truncated_2 folder, skipping to split extraction attempts (9th-10th attempts)')
+    
+    # Check if file is in truncated folder - if so, skip directly to compact schema attempts
+    use_compact_schema_from_start = is_file_in_truncated_folder(filename, cao_number) if cao_number else False
+    if use_compact_schema_from_start and not use_split_extraction_from_start and not use_super_compact_from_start:
+        print(f'  DEBUG: File found in truncated folder, skipping to compact schema attempts (6th-8th attempts)')
     
     salary_text = ""
     wage_keys = ['wage_information', 'Wage information', 'wage information', 'WAGE_INFORMATION']
@@ -853,9 +899,6 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
     for key in wage_keys:
         if key in json_obj:
             value = json_obj[key]
-            print(f'  DEBUG: Found wage key: {key}')
-            print(f'  DEBUG: Wage value type: {type(value)}')
-            print(f'  DEBUG: Wage value length: {len(str(value)) if value else 0}')
             
             if isinstance(value, list):
                 flat_value = []
@@ -868,289 +911,1036 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                     else:
                         flat_value.append(str(item))
                 salary_text = f'== Wage information ==\n' + '\n'.join(flat_value)
-                print(f'  DEBUG: Created salary text from list, length: {len(salary_text)}')
             elif isinstance(value, str):
                 salary_text = f'== Wage information ==\n{value}'
-                print(f'  DEBUG: Created salary text from string, length: {len(salary_text)}')
             break
     
-    general_keys = ['general_information', 'General information', 'general information', 'GENERAL_INFORMATION']
-    for key in general_keys:
-        if key in json_obj:
-            value = json_obj[key]
-            print(f'  DEBUG: Found general key: {key}')
-            print(f'  DEBUG: General value type: {type(value)}')
-            
-            if isinstance(value, list):
-                for item in value:
-                    if isinstance(item, str):
-                        try:
-                            nested_data = json.loads(item)
-                            print(f'  DEBUG: Successfully parsed nested JSON from general info')
-                            wage_keys_nested = ['wage_information', 'Wage information', 'wage information', 'WAGE_INFORMATION']
-                            for wage_key in wage_keys_nested:
-                                if wage_key in nested_data and nested_data[wage_key]:
-                                    wage_data = nested_data[wage_key]
-                                    if isinstance(wage_data, list):
-                                        salary_text = f'== Wage information ==\n' + '\n'.join(wage_data)
-                                    else:
-                                        salary_text = f'== Wage information ==\n{wage_data}'
-                                    print(f'  DEBUG: Found wage data in nested JSON, length: {len(salary_text)}')
+    # Only process general_information if no wage information was found
+    if not salary_text.strip():
+        general_keys = ['general_information', 'General information', 'general information', 'GENERAL_INFORMATION']
+        for key in general_keys:
+            if key in json_obj:
+                value = json_obj[key]
+                
+                if isinstance(value, list):
+                    for item in value:
+                        if isinstance(item, str):
+                            try:
+                                nested_data = json.loads(item)
+                                wage_keys_nested = ['wage_information', 'Wage information', 'wage information', 'WAGE_INFORMATION']
+                                for wage_key in wage_keys_nested:
+                                    if wage_key in nested_data and nested_data[wage_key]:
+                                        wage_data = nested_data[wage_key]
+                                        if isinstance(wage_data, list):
+                                            salary_text = f'== Wage information ==\n' + '\n'.join(wage_data)
+                                        else:
+                                            salary_text = f'== Wage information ==\n{wage_data}'
+                                        break
+                                if salary_text.strip():
                                     break
-                            if salary_text.strip():
-                                break
-                        except json.JSONDecodeError:
-                            if 'wage' in item.lower() or 'salary' in item.lower() or 'salaris' in item.lower():
-                                salary_text = f'== Wage information ==\n{item}'
-                                print(f'  DEBUG: Found wage-related text in general info, length: {len(salary_text)}')
-                                break
-            elif isinstance(value, str):
-                if 'wage' in value.lower() or 'salary' in value.lower() or 'salaris' in value.lower():
-                    salary_text = f'== Wage information ==\n{value}'
-                    print(f'  DEBUG: Found wage-related text in general string, length: {len(salary_text)}')
-                    break
+                            except json.JSONDecodeError:
+                                if 'wage' in item.lower() or 'salary' in item.lower() or 'salaris' in item.lower():
+                                    salary_text = f'== Wage information ==\n{item}'
+                                    break
+                elif isinstance(value, str):
+                    if 'wage' in value.lower() or 'salary' in value.lower() or 'salaris' in value.lower():
+                        salary_text = f'== Wage information ==\n{value}'
+                        break
     
-    print(f'  DEBUG: Final salary text length: {len(salary_text)}')
-    if salary_text.strip():
-        print(f'  DEBUG: Salary text preview: {salary_text[:200]}...')
-    else:
+    if not salary_text.strip():
         print(f'  DEBUG: No salary text found!')
-        return []
+        # Log that no salary information was found in the source JSON
+        if context and 'performance_monitor' in context:
+            file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+            context['performance_monitor'].log_analysis(
+                filename=filename,
+                file_size_mb=file_size_mb,
+                processing_time=0.0,  # No API call made
+                usage_metadata=None,  # No API call made
+                success=True,  # Not a failure, just no salary data available
+                analysis_type="salary",
+                error_message="No salary information found in source JSON",
+                api_key_used=context.get('key_number', 1),
+                process_id=context.get('process_id', 0),
+                cao_number=cao_number,
+                model="gemini-2.5-flash",
+                parameters={"no_salary_data": True},
+                allow_duplicates=False
+            )
+        # Return empty dict structure for "no salary data" case - this is valid and should be saved
+        return {"salary_information": []}
     
     if not check_token_limit(salary_text, filename):
-        return []
+        # Log token limit failure to performance monitor
+        if context and 'performance_monitor' in context:
+            file_size_mb = len(str(json_obj)) / (1024 * 1024)
+            context['performance_monitor'].log_analysis(
+                filename=filename,
+                file_size_mb=file_size_mb,
+                processing_time=0.0,
+                usage_metadata=None,
+                success=False,
+                analysis_type="salary",
+                error_message="Token limit check failed - file too large",
+                api_key_used=context.get('key_number', 1),
+                process_id=context.get('process_id', 0),
+                cao_number=cao_number,
+                model="gemini-2.5-flash",
+                parameters={"token_limit_exceeded": True},
+                allow_duplicates=False
+            )
+        # Return None for token limit failure - don't save this
+        return None
     
-    prompt = SALARY_PROMPT.format(filename=filename, source_json=salary_text)
-    print(f'  DEBUG: Prompt length: {len(prompt)}')
-    print(f'  DEBUG: Prompt preview: {prompt[:300]}...')
+    # Set base prompt - will be overridden in retry loop based on schema type
+    try:
+        base_prompt = SALARY_PROMPT.format(filename=filename, source_json=salary_text)
+    except Exception as e:
+        raise
     
     model_params = get_model_parameters()
-    print(f'  DEBUG: Model params: {model_params}')
     
-    safety_settings = [
-        {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
-        {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
-        {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
-        {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"}
-    ]
     
-    config = {
-        "temperature": model_params["temperature"],
-        "top_p": model_params["top_p"],
-        "top_k": model_params["top_k"],
-        "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
-        "candidate_count": model_params["candidate_count"],
-        "seed": model_params["seed"],
-        "presence_penalty": model_params["presence_penalty"],
-        "frequency_penalty": model_params["frequency_penalty"],
-        "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
-        "response_mime_type": "application/json",
-        "response_schema": SalaryExtractionSchema
-    }
+    # Use proper safety settings format for newer google-genai API
+    safety_settings = get_safety_settings()
     
-    print(f'  DEBUG: API config: {config}')
+    # Skip initial attempt if using compact schema from start
+    last_error = None
+    last_error_message = None
+    truncation_error_after_attempt_4 = False
+    first_half_result = None  # Store first half result for split extraction attempt 9
     
-    try:
-        print(f'  DEBUG: Making API call...')
-        start_time = time.time()
-        response = client.models.generate_content(
-            model=MODEL,
-            contents=prompt,
-            config=config
-        )
-        processing_time = time.time() - start_time
+    if not use_compact_schema_from_start:
+        # Normal flow: try initial attempt with regular schema
+        config = {
+            "temperature": model_params["temperature"],
+            "top_p": model_params["top_p"],
+            "top_k": model_params["top_k"],
+            "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
+            "candidate_count": model_params["candidate_count"],
+            "seed": model_params["seed"],
+            "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
+            "response_mime_type": "application/json",
+            "response_schema": SalaryExtractionSchema,
+            "safety_settings": safety_settings  # Include safety settings in config
+        }
         
-        print(f'  DEBUG: API response received')
-        print(f'  DEBUG: Response type: {type(response)}')
-        print(f'  DEBUG: Response attributes: {dir(response)}')
-        
-        # Log detailed response information
-        log_api_response_details(response, filename, processing_time)
-        
-        # Check for truncation
-        if check_response_truncation(response, filename):
-            print(f'  DEBUG: Response appears to be truncated, will retry with different parameters')
-            raise Exception("Response truncated - incomplete JSON")
-        
-        # Check if response has parsed attribute (structured output)
-        if hasattr(response, 'parsed') and response.parsed is not None:
-            print(f'  DEBUG: Response has parsed attribute')
-            result = [row.model_dump() for row in response.parsed.salary_information]
-            print(f'  DEBUG: Parsed {len(result)} salary rows')
-            
-            # Log successful salary extraction
-            if context and 'performance_monitor' in context:
-                file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
-                context['performance_monitor'].log_analysis(
-                    filename=filename,
-                    file_size_mb=file_size_mb,
-                    processing_time=processing_time,
-                    usage_metadata=getattr(response, 'usage_metadata', None),
-                    success=True,
-                    analysis_type="salary",
-                    api_key_used=context.get('key_number', 1),
-                    process_id=context.get('process_id', 0),
-                    cao_number="",  # Will be extracted from file path if needed
-                    model="gemini-2.5-flash"
+        try:
+            print(f'  DEBUG: Making API call...')
+            start_time = time.time()
+            try:
+                response = client.models.generate_content(
+                    model=MODEL,
+                    contents=base_prompt,
+                    config=config
                 )
+            except Exception as api_error:
+                # Defensive exception handling for API calls that escape retry loops
+                import traceback
+                error_type = type(api_error).__name__
+                error_msg = str(api_error)
+                print(f'  🚨 UNEXPECTED API ERROR during salary extraction (attempt {attempt_index + 1}): {error_type}: {error_msg}')
+                print(f'  📋 This error occurred during the API call itself and will be handled by retry logic')
+                # Log to file for debugging
+                try:
+                    error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+                    Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                    with open(error_log_path, 'a', encoding='utf-8') as f:
+                        f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Process {context.get('process_id', 0) if context else 0} - API ERROR (salary extraction)\n")
+                        f.write(f"File: {filename}\n")
+                        f.write(f"Error Type: {error_type}\n")
+                        f.write(f"Error Message: {error_msg}\n")
+                        f.write(f"Traceback:\n{traceback.format_exc()}\n\n")
+                except Exception:
+                    pass  # Don't fail on logging failure
+                # Re-raise so existing retry logic can handle it
+                raise
+            processing_time = time.time() - start_time
             
-            return result
-        else:
-            print(f'  DEBUG: No parsed attribute in response')
-            if hasattr(response, 'text'):
-                print(f'  DEBUG: Response text length: {len(response.text) if response.text else 0}')
-                if response.text:
-                    print(f'  DEBUG: Response text preview: {response.text[:300]}...')
+            
+            # Log detailed response information
+            log_api_response_details(response, filename, processing_time)
+            
+            
+            # Check for truncation
+            if check_response_truncation(response, filename, cao_number):
+                raise Exception("Response truncated - incomplete JSON")
+            
+            # Check if response has parsed attribute (structured output)
+            if hasattr(response, 'parsed') and response.parsed is not None:
+                result = {"salary_information": [row.model_dump() for row in response.parsed.salary_information]}
+                
+                # Validate schema - salary_information can be empty if no salary data exists
+                # Empty array is valid - some CAOs may not have salary information
+                
+                print(f'  Salary: Schema validation passed - {len(result["salary_information"])} salary entries')
+                
+                # Log successful salary extraction
+                if context and 'performance_monitor' in context:
+                    file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+                    log_params = model_params.copy()
+                    log_params['schema_type'] = 'regular'
+                    context['performance_monitor'].log_analysis(
+                        filename=filename,
+                        file_size_mb=file_size_mb,
+                        processing_time=processing_time,
+                        usage_metadata=getattr(response, 'usage_metadata', None),
+                        success=True,
+                        analysis_type="salary",
+                        api_key_used=context.get('key_number', 1),
+                        process_id=context.get('process_id', 0),
+                        cao_number=cao_number,
+                        model="gemini-2.5-flash",
+                        parameters=log_params,
+                        allow_duplicates=False
+                    )
+                
+                return result
+            else:
+                if hasattr(response, 'text'):
                     # Try to parse the text manually with better error handling
                     try:
-                        # First, try to clean up the JSON if it's truncated
                         cleaned_text = response.text.strip()
-                        if cleaned_text.endswith(','):
-                            cleaned_text = cleaned_text[:-1]
-                        if not cleaned_text.endswith('}'):
-                            # Try to find the last complete object
-                            last_brace = cleaned_text.rfind('}')
-                            if last_brace > 0:
-                                cleaned_text = cleaned_text[:last_brace+1]
-                            else:
-                                # If no closing brace, try to add one
-                                cleaned_text += '}'
+                        
+                        # Remove markdown code fences if present
+                        if cleaned_text.startswith('```'):
+                            lines = cleaned_text.split('\n')
+                            cleaned_text = '\n'.join(lines[1:-1]).strip()
                         
                         parsed_json = json.loads(cleaned_text)
-                        print(f'  DEBUG: Successfully parsed response text manually')
                         # Validate against schema
                         if 'salary_information' in parsed_json:
                             salary_schema = SalaryExtractionSchema(**parsed_json)
-                            result = [row.model_dump() for row in salary_schema.salary_information]
-                            print(f'  DEBUG: Salary manual parse result: {len(result)} rows')
+                            result = {"salary_information": [row.model_dump() for row in salary_schema.salary_information]}
                             return result
                         else:
-                            print(f'  DEBUG: No salary_information key in parsed JSON')
+                            log_analysis_error(filename, f"No salary_information key in parsed JSON. Available keys: {list(parsed_json.keys())}", str(parsed_json))
                     except json.JSONDecodeError as e:
-                        print(f'  DEBUG: Failed to parse response text as JSON: {e}')
                         # Try to extract partial data from the response
                         try:
                             # Look for salary_information array in the text
                             import re
                             salary_match = re.search(r'"salary_information":\s*\[(.*?)\]', response.text, re.DOTALL)
                             if salary_match:
-                                salary_content = salary_match.group(1)
-                                print(f'  DEBUG: Found partial salary content, length: {len(salary_content)}')
-                                # Try to parse individual salary objects
-                                # This is a simplified approach - in production you might want more sophisticated parsing
+                                # Partial salary data found but couldn't parse - log error
                                 log_analysis_error(filename, f"Partial salary data found but couldn't parse: {e}", response.text[:1000])
                             else:
-                                print(f'  DEBUG: No salary_information found in response text')
                                 log_analysis_error(filename, f"JSON parsing failed and no salary data found: {e}", response.text[:1000])
                         except Exception as parse_error:
-                            print(f'  DEBUG: Failed to extract partial data: {parse_error}')
-                            log_analysis_error(filename, f"Complete parsing failure: {e}", response.text[:1000])
+                            log_analysis_error(filename, f"Complete parsing failure: {parse_error}", response.text[:1000])
                     except Exception as e:
-                        print(f'  DEBUG: Failed to validate parsed JSON against schema: {e}')
                         log_analysis_error(filename, f"Schema validation failed: {e}", response.text[:1000])
-                log_analysis_error(filename, "No structured output received from model", "")
-                return []
-            
-    except Exception as e:
-        print(f'  DEBUG: API call failed with error: {type(e).__name__}: {e}')
-        last_error = e  # Capture the initial error
+                else:
+                    log_analysis_error(filename, "No structured output received from model", "")
+                    # Log to performance monitor before returning
+                    if context and 'performance_monitor' in context:
+                        file_size_mb = len(str(json_obj)) / (1024 * 1024)
+                        context['performance_monitor'].log_analysis(
+                            filename=filename,
+                            file_size_mb=file_size_mb,
+                            processing_time=processing_time if 'processing_time' in locals() else 0.0,
+                            usage_metadata=getattr(response, 'usage_metadata', None) if 'response' in locals() else None,
+                            success=False,
+                            analysis_type="salary",
+                            error_message="No structured output received from model",
+                            api_key_used=context.get('key_number', 1),
+                            process_id=context.get('process_id', 0),
+                            cao_number=cao_number,
+                            model="gemini-2.5-flash",
+                            parameters={"no_structured_output": True},
+                            allow_duplicates=False
+                        )
+                    # Return None for no structured output - don't save this
+                    return None
+                
+        except Exception as e:
+            last_error = e  # Capture the initial error
+            last_error_message = str(e)  # Track error message for retry guidance
+    
+    # Retry logic with proper attempt tracking
+    # Determine attempt range based on whether we're starting with super compact, split extraction, or compact schema
+    if use_super_compact_from_start:
+        # Skip directly to super compact schema attempts (10, which is retry 11)
+        # Removed attempt 11 (duplicate of 10)
+        attempts_to_try = [10]
+    elif use_split_extraction_from_start:
+        # Skip directly to split extraction attempts (8, which is retry 9)
+        # Removed attempt 9 (duplicate of 8)
+        attempts_to_try = [8]
+    elif use_compact_schema_from_start:
+        # Skip to compact schema attempts (5-6), may extend to 8 if truncation error
+        # Removed attempt 7 (duplicate of 6)
+        attempts_to_try = [5, 6]
+    else:
+        # Normal retry attempts (0, 2, 4), may extend to 5-6 if truncation error
+        # Removed attempts 1 (duplicate of 0) and 3 (user request)
+        attempts_to_try = [0, 2, 4]
+    
+    # Track if we need to extend to compact schema attempts, split extraction attempts, or super compact attempts
+    extended_to_compact = False
+    extended_to_split = False
+    extended_to_super_compact = False
+    
+    attempt_index = 0
+    total_attempts = 0  # Total retry attempts (for max_retries limit)
+    max_total_attempts = 7  # Maximum total attempts across all retry strategies (reduced from 12)
+    
+    while attempt_index < len(attempts_to_try) and total_attempts < max_total_attempts:
+        # Check quota exhaustion at START of each retry attempt (before API call)
+        process_id = context.get('process_id', 0) if context else 0
+        if process_id in process_quota_flags and process_quota_flags[process_id]:
+            print(f'  🛑 Quota exhausted detected at start of retry loop, stopping retries')
+            break
         
-        # Retry logic with proper attempt tracking
-        for attempt in range(5):
-            try:
-                # Get model parameters (same for all attempts, like p3)
-                model_params = get_model_parameters()
+        attempt = attempts_to_try[attempt_index]
+        try:
+            # Determine which schema to use: super compact for attempt 10, split for attempt 8, compact for attempts 5-6, regular for 0,2,4
+            use_super_compact_schema = (attempt >= 10)
+            use_split_schema = (attempt == 8)
+            use_compact_schema = (attempt >= 5 and attempt < 8)
+            schema_type = 'super_compact' if use_super_compact_schema else ('split' if use_split_schema else ('compact' if use_compact_schema else 'regular'))
+            
+            if use_super_compact_schema:
+                response_schema = SalaryExtractionSchemaSuperCompact
+            elif use_split_schema:
+                response_schema = SalaryExtractionSchemaSplit
+            elif use_compact_schema:
+                response_schema = SalaryExtractionSchemaCompact
+            else:
+                response_schema = SalaryExtractionSchema
+            
+            # Get adjusted parameters for this attempt
+            # For super compact schema attempts (10), use specific parameter adjustments
+            # Note: Super compact is a single extraction (not split like attempt 8), so no delay between attempts
+            # For attempts 5-10, there is NO delay between retries - they happen immediately
+            # Files in truncated_3 folder go directly to attempt 10
+            if use_super_compact_schema:
+                # Attempt 10 (11th overall, super compact): temp=0.3, top_p=0.4, top_k=0.7 (same as attempt 4)
+                # Removed attempt 11 (duplicate of 10)
+                adjusted_params = get_adjusted_parameters_p4(4, MODEL)
+            # For split schema attempts (8), use specific parameter adjustments
+            elif use_split_schema:
+                # Attempt 8 (9th overall, split): Use attempt 4 parameters (temp=0.3, top_p=0.4)
+                # Removed attempt 9 (duplicate of 8)
+                adjusted_params = get_adjusted_parameters_p4(4, MODEL)
+            elif use_compact_schema:
+                if attempt == 5:
+                    # Attempt 5 (6th overall): Original parameters (temp=0.0, top_p=0.1)
+                    base_params = get_model_parameters_p4(MODEL)
+                    adjusted_params = {
+                        "model": base_params["model"],
+                        "temperature": base_params["temperature"],
+                        "top_p": base_params["top_p"],
+                        "top_k": base_params["top_k"],
+                        "max_tokens": base_params["max_tokens"],
+                        "candidate_count": base_params["candidate_count"],
+                        "seed": base_params["seed"],
+                        "thinking_budget": base_params["thinking_budget"],
+                        "max_retries": base_params["max_retries"]
+                    }
+                else:  # attempt == 6
+                    # Attempt 6 (7th overall): Like attempt 4 (temp=0.3, top_p=0.4)
+                    # Removed attempt 7 (duplicate of 6)
+                    adjusted_params = get_adjusted_parameters_p4(4, MODEL)
+            else:
+                adjusted_params = get_adjusted_parameters_p4(attempt, MODEL)
+            
+            # Handle split extraction separately - each attempt does both parts sequentially
+            if use_split_schema:
+                # Split extraction: attempt 8 (9th) - does part 1 then part 2
+                # Removed attempt 9 (duplicate of 8)
+                delay_seconds = 180  # 3 minutes delay between parts
                 
-                print(f'  DEBUG: Model params: {model_params}')
+                print(f'  ========================================')
+                print(f'  Attempt {attempt + 1} (9th overall): Starting split extraction')
+                print(f'  ========================================')
                 
-                # Prepare API configuration
-                config = {
-                    "temperature": model_params["temperature"],
-                    "top_p": model_params["top_p"],
-                    "top_k": model_params["top_k"],
-                    "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
-                    "candidate_count": model_params["candidate_count"],
-                    "seed": model_params["seed"],
-                    "presence_penalty": model_params["presence_penalty"],
-                    "frequency_penalty": model_params["frequency_penalty"],
-                    "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
+                # ========== PART 1: First Half Extraction ==========
+                print(f'  Part 1: Extracting first half of salary data...')
+                prompt_part1 = SALARY_PROMPT_SPLIT_ATTEMPT_9.format(filename=filename, source_json=salary_text)
+                
+                # Use proper safety settings format for newer google-genai API
+                safety_settings = get_safety_settings()
+                
+                # Prepare API configuration for part 1
+                config_part1 = {
+                    "temperature": adjusted_params["temperature"],
+                    "top_p": adjusted_params["top_p"],
+                    "top_k": adjusted_params["top_k"],
+                    "max_output_tokens": 65536,
+                    "candidate_count": adjusted_params["candidate_count"],
+                    "seed": adjusted_params["seed"],
+                    "thinking_config": types.ThinkingConfig(thinking_budget=adjusted_params["thinking_budget"]),
                     "response_mime_type": "application/json",
-                    "response_schema": SalaryExtractionSchema
+                    "response_schema": response_schema,
+                    "safety_settings": safety_settings
                 }
                 
-                print(f'  DEBUG: API config: {config}')
-                print(f'  DEBUG: Making API call...')
+                print(f'  DEBUG: Making API call for attempt {attempt + 1}, Part 1 (first half)...')
+                start_time_part1 = time.time()
+                try:
+                    response_part1 = client.models.generate_content(
+                        model=MODEL,
+                        contents=prompt_part1,
+                        config=config_part1
+                    )
+                except Exception as api_error:
+                    import traceback
+                    error_type = type(api_error).__name__
+                    error_msg = str(api_error)
+                    print(f'  ERROR: Part 1 failed - {error_type}: {error_msg}')
+                    print(f'  ERROR: Attempt {attempt + 1}, Part 1 (first half) extraction failed')
+                    # Save part 1 error to max_tokens_truncated_3 before raising
+                    save_failed_attempt_10("", f"Part 1 (first half) extraction failed: {error_msg}", filename, cao_number, part="Part1")
+                    raise Exception(f"Part 1 (first half) extraction failed: {error_msg}")
                 
-                start_time = time.time()
+                processing_time_part1 = time.time() - start_time_part1
+                print(f'  DEBUG: Part 1 API response received (processing time: {processing_time_part1:.1f}s)')
+                
+                # Check for truncation in part 1
+                if check_response_truncation(response_part1, filename, cao_number):
+                    print(f'  ERROR: Part 1 response truncated - incomplete JSON')
+                    # Save part 1 response to max_tokens_truncated_3 before raising
+                    response_text_part1 = response_part1.text if hasattr(response_part1, 'text') else ""
+                    save_failed_attempt_10(response_text_part1, "Part 1 (first half) response truncated - incomplete JSON", filename, cao_number, part="Part1")
+                    raise Exception("Part 1 (first half) response truncated - incomplete JSON")
+                
+                # Parse part 1 result
+                first_half_result = None
+                if hasattr(response_part1, 'parsed') and response_part1.parsed is not None:
+                    parsed_dump = response_part1.parsed.model_dump()
+                    # Compact/split schema uses 'si', regular uses 'salary_information'
+                    salary_data = parsed_dump.get('si', parsed_dump.get('salary_information', []))
+                    first_half_result = {"salary_information": salary_data}
+                    print(f'  SUCCESS: Part 1 extraction successful: {len(salary_data)} rows')
+                elif hasattr(response_part1, 'text'):
+                    try:
+                        cleaned_text = response_part1.text.strip()
+                        if cleaned_text.startswith('```'):
+                            lines = cleaned_text.split('\n')
+                            cleaned_text = '\n'.join(lines[1:-1]).strip()
+                        parsed_json = json.loads(cleaned_text)
+                        # Compact/split schema uses 'si', regular uses 'salary_information'
+                        if 'si' in parsed_json or 'salary_information' in parsed_json:
+                            salary_schema = SalaryExtractionSchemaSplit(**parsed_json)
+                            # Access 'si' field (compact schema uses 2-letter field names)
+                            salary_data = salary_schema.si if hasattr(salary_schema, 'si') else salary_schema.salary_information
+                            first_half_result = {"salary_information": [row.model_dump() for row in salary_data]}
+                            print(f'  SUCCESS: Part 1 extraction successful (manual parse): {len(first_half_result.get("salary_information", []))} rows')
+                        else:
+                            raise Exception("No 'si' or 'salary_information' key in Part 1 response")
+                    except Exception as parse_error:
+                        print(f'  ERROR: Part 1 parsing failed: {parse_error}')
+                        # Save part 1 response to max_tokens_truncated_3 before raising
+                        response_text_part1 = response_part1.text if hasattr(response_part1, 'text') else ""
+                        save_failed_attempt_10(response_text_part1, f"Part 1 (first half) parsing failed: {parse_error}", filename, cao_number, part="Part1")
+                        raise Exception(f"Part 1 (first half) parsing failed: {parse_error}")
+                else:
+                    # Save part 1 response to max_tokens_truncated_3 before raising
+                    response_text_part1 = response_part1.text if hasattr(response_part1, 'text') else ""
+                    save_failed_attempt_10(response_text_part1, "Part 1 (first half) - no structured output received", filename, cao_number, part="Part1")
+                    raise Exception("Part 1 (first half) - no structured output received")
+                
+                # ========== DELAY BETWEEN PARTS ==========
+                delay_minutes = delay_seconds // 60
+                delay_remaining_seconds = delay_seconds % 60
+                if delay_remaining_seconds > 0:
+                    print(f'  INFO: Waiting {delay_minutes} minutes {delay_remaining_seconds} seconds ({delay_seconds} seconds total) before Part 2 extraction...')
+                else:
+                    print(f'  INFO: Waiting {delay_minutes} minutes ({delay_seconds} seconds total) before Part 2 extraction...')
+                time.sleep(delay_seconds)
+                print(f'  INFO: Delay completed ({delay_seconds} seconds), proceeding to Part 2')
+                
+                # ========== PART 2: Second Half Extraction ==========
+                print(f'  Part 2: Extracting second half of salary data...')
+                already_extracted_json = json.dumps(first_half_result, ensure_ascii=False, indent=2)
+                prompt_part2 = SALARY_PROMPT_SPLIT_ATTEMPT_10.format(
+                    filename=filename,
+                    source_json=salary_text,
+                    already_extracted_json=already_extracted_json
+                )
+                
+                # Prepare API configuration for part 2
+                config_part2 = {
+                    "temperature": adjusted_params["temperature"],
+                    "top_p": adjusted_params["top_p"],
+                    "top_k": adjusted_params["top_k"],
+                    "max_output_tokens": 65536,
+                    "candidate_count": adjusted_params["candidate_count"],
+                    "seed": adjusted_params["seed"],
+                    "thinking_config": types.ThinkingConfig(thinking_budget=adjusted_params["thinking_budget"]),
+                    "response_mime_type": "application/json",
+                    "response_schema": response_schema,
+                    "safety_settings": safety_settings
+                }
+                
+                print(f'  DEBUG: Making API call for attempt {attempt + 1}, Part 2 (second half)...')
+                start_time_part2 = time.time()
+                try:
+                    response_part2 = client.models.generate_content(
+                        model=MODEL,
+                        contents=prompt_part2,
+                        config=config_part2
+                    )
+                except Exception as api_error:
+                    import traceback
+                    error_type = type(api_error).__name__
+                    error_msg = str(api_error)
+                    print(f'  ERROR: Part 2 failed - {error_type}: {error_msg}')
+                    print(f'  ERROR: Attempt {attempt + 1}, Part 2 (second half) extraction failed')
+                    # Save part 2 error to max_tokens_truncated_3 before raising
+                    save_failed_attempt_10("", f"Part 2 (second half) extraction failed: {error_msg}", filename, cao_number, part="Part2")
+                    raise Exception(f"Part 2 (second half) extraction failed: {error_msg}")
+                
+                processing_time_part2 = time.time() - start_time_part2
+                print(f'  DEBUG: Part 2 API response received (processing time: {processing_time_part2:.1f}s)')
+                
+                # Check for truncation in part 2
+                if check_response_truncation(response_part2, filename, cao_number):
+                    print(f'  ERROR: Part 2 response truncated - incomplete JSON')
+                    # Save part 2 response to max_tokens_truncated_3 before raising
+                    response_text_part2 = response_part2.text if hasattr(response_part2, 'text') else ""
+                    save_failed_attempt_10(response_text_part2, "Part 2 (second half) response truncated - incomplete JSON", filename, cao_number, part="Part2")
+                    raise Exception("Part 2 (second half) response truncated - incomplete JSON")
+                
+                # Parse part 2 result
+                second_half_result = None
+                if hasattr(response_part2, 'parsed') and response_part2.parsed is not None:
+                    parsed_dump = response_part2.parsed.model_dump()
+                    # Compact/split schema uses 'si', regular uses 'salary_information'
+                    salary_data = parsed_dump.get('si', parsed_dump.get('salary_information', []))
+                    second_half_result = {"salary_information": salary_data}
+                    print(f'  SUCCESS: Part 2 extraction successful: {len(salary_data)} rows')
+                elif hasattr(response_part2, 'text'):
+                    try:
+                        cleaned_text = response_part2.text.strip()
+                        if cleaned_text.startswith('```'):
+                            lines = cleaned_text.split('\n')
+                            cleaned_text = '\n'.join(lines[1:-1]).strip()
+                        parsed_json = json.loads(cleaned_text)
+                        # Compact/split schema uses 'si', regular uses 'salary_information'
+                        if 'si' in parsed_json or 'salary_information' in parsed_json:
+                            salary_schema = SalaryExtractionSchemaSplit(**parsed_json)
+                            # Access 'si' field (compact schema uses 2-letter field names)
+                            salary_data = salary_schema.si if hasattr(salary_schema, 'si') else salary_schema.salary_information
+                            second_half_result = {"salary_information": [row.model_dump() for row in salary_data]}
+                            print(f'  SUCCESS: Part 2 extraction successful (manual parse): {len(second_half_result.get("salary_information", []))} rows')
+                        else:
+                            raise Exception("No 'si' or 'salary_information' key in Part 2 response")
+                    except Exception as parse_error:
+                        print(f'  ERROR: Part 2 parsing failed: {parse_error}')
+                        # Save part 2 response to max_tokens_truncated_3 before raising
+                        response_text_part2 = response_part2.text if hasattr(response_part2, 'text') else ""
+                        save_failed_attempt_10(response_text_part2, f"Part 2 (second half) parsing failed: {parse_error}", filename, cao_number, part="Part2")
+                        raise Exception(f"Part 2 (second half) parsing failed: {parse_error}")
+                else:
+                    # Save part 2 response to max_tokens_truncated_3 before raising
+                    response_text_part2 = response_part2.text if hasattr(response_part2, 'text') else ""
+                    save_failed_attempt_10(response_text_part2, "Part 2 (second half) - no structured output received", filename, cao_number, part="Part2")
+                    raise Exception("Part 2 (second half) - no structured output received")
+                
+                # ========== MERGE BOTH PARTS ==========
+                print(f'  DEBUG: Merging Part 1 ({len(first_half_result.get("salary_information", []))} rows) and Part 2 ({len(second_half_result.get("salary_information", []))} rows)...')
+                merged_result = merge_split_salary_results(first_half_result, second_half_result, filename)
+                
+                if not merged_result:
+                    raise Exception("Failed to merge split extraction results")
+                
+                print(f'  SUCCESS: Merge successful: {len(merged_result.get("salary_information", []))} total rows')
+                print(f'  ========================================')
+                print(f'  Attempt {attempt + 1} completed successfully (both parts)')
+                print(f'  ========================================')
+                
+                result = merged_result
+                total_processing_time = processing_time_part1 + processing_time_part2
+                
+                # Log successful split extraction
+                if context and 'performance_monitor' in context:
+                    file_size_mb = len(str(json_obj)) / (1024 * 1024)
+                    log_params = adjusted_params.copy()
+                    log_params['schema_type'] = schema_type
+                    log_params['attempt'] = attempt + 1
+                    log_params['merged'] = True
+                    log_params['first_half_rows'] = len(first_half_result.get("salary_information", []))
+                    log_params['second_half_rows'] = len(second_half_result.get("salary_information", []))
+                    log_params['part1_processing_time'] = processing_time_part1
+                    log_params['part2_processing_time'] = processing_time_part2
+                    
+                    # Use combined usage metadata if available
+                    usage_metadata = None
+                    if hasattr(response_part1, 'usage_metadata') and hasattr(response_part2, 'usage_metadata'):
+                        # Combine usage metadata from both parts
+                        usage_metadata = response_part1.usage_metadata
+                        # Note: We can't easily combine usage metadata, so we'll use part 1's metadata
+                    
+                    context['performance_monitor'].log_analysis(
+                        filename=filename,
+                        file_size_mb=file_size_mb,
+                        processing_time=total_processing_time,
+                        usage_metadata=usage_metadata,
+                        success=True,
+                        analysis_type="salary",
+                        api_key_used=context.get('key_number', 1),
+                        process_id=context.get('process_id', 0),
+                        cao_number=cao_number,
+                        model="gemini-2.5-flash",
+                        parameters=log_params,
+                        allow_duplicates=False
+                    )
+                
+                return result
+            
+            # Non-split extraction: regular flow
+            # Generate retry guidance (only if attempt >= 2)
+            retry_guidance = ""
+            error_type = ""
+            if attempt >= 2 and last_error_message:
+                retry_guidance, error_type = get_retry_guidance_p4(last_error_message)
+                if retry_guidance:
+                    print(f'  INFO: Adding retry guidance for: {error_type}')
+            
+            # Select the correct prompt based on schema type
+            if use_split_schema:
+                # Split extraction uses its own prompts (handled above)
+                prompt = base_prompt  # This shouldn't be reached for split schema
+            elif use_super_compact_schema:
+                print(f'  DEBUG: Using super compact schema for attempt {attempt + 1} (schema_type: {schema_type})')
+                prompt = SALARY_PROMPT_SUPER_COMPACT.format(filename=filename, source_json=salary_text)
+            elif use_compact_schema:
+                print(f'  DEBUG: Using compact schema for attempt {attempt + 1} (schema_type: {schema_type})')
+                prompt = SALARY_PROMPT_COMPACT.format(filename=filename, source_json=salary_text)
+            else:
+                prompt = SALARY_PROMPT.format(filename=filename, source_json=salary_text)
+            
+            # Add retry guidance if applicable
+            if retry_guidance:
+                prompt += f"\n\n{retry_guidance}"
+            
+            # print(f'  DEBUG: Model params: {adjusted_params}')
+            
+            # Use proper safety settings format for newer google-genai API
+            safety_settings = get_safety_settings()
+            
+            # Prepare API configuration
+            config = {
+                "temperature": adjusted_params["temperature"],
+                "top_p": adjusted_params["top_p"],
+                "top_k": adjusted_params["top_k"],
+                "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
+                "candidate_count": adjusted_params["candidate_count"],
+                "seed": adjusted_params["seed"],
+                "thinking_config": types.ThinkingConfig(thinking_budget=adjusted_params["thinking_budget"]),
+                "response_mime_type": "application/json",
+                "response_schema": response_schema,
+                "safety_settings": safety_settings  # Include safety settings in config
+            }
+            
+            print(f'  DEBUG: Making API call for attempt {attempt + 1}...')
+            
+            start_time = time.time()
+            try:
                 response = client.models.generate_content(
                     model=MODEL,
                     contents=prompt,
                     config=config
                 )
-                processing_time = time.time() - start_time
+            except Exception as api_error:
+                # Defensive exception handling for API calls that escape retry loops
+                import traceback
+                error_type = type(api_error).__name__
+                error_msg = str(api_error)
+                print(f'  🚨 UNEXPECTED API ERROR during salary extraction (attempt {attempt_index + 1}): {error_type}: {error_msg}')
+                print(f'  📋 This error occurred during the API call itself and will be handled by retry logic')
+                # Log to file for debugging
+                try:
+                    error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+                    Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                    with open(error_log_path, 'a', encoding='utf-8') as f:
+                        f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Process {context.get('process_id', 0) if context else 0} - API ERROR (salary extraction)\n")
+                        f.write(f"File: {filename}\n")
+                        f.write(f"Error Type: {error_type}\n")
+                        f.write(f"Error Message: {error_msg}\n")
+                        f.write(f"Traceback:\n{traceback.format_exc()}\n\n")
+                except Exception:
+                    pass  # Don't fail on logging failure
+                # Re-raise so existing retry logic can handle it
+                raise
+            processing_time = time.time() - start_time
+            
+            print(f'  DEBUG: API response received')
+            print(f'  DEBUG: Response type: {type(response)}')
+            # print(f'  DEBUG: Response attributes: {dir(response)}')
+            
+            # Log detailed response information
+            log_api_response_details(response, filename, processing_time)
+            
+            # Check for truncation
+            if check_response_truncation(response, filename, cao_number):
+                print(f'  DEBUG: Response appears to be truncated, will retry with different parameters')
+                raise Exception("Response truncated - incomplete JSON")
+            
+            # Check if response has parsed attribute (structured output)
+            if hasattr(response, 'parsed') and response.parsed is not None:
+                print(f'  DEBUG: Response has parsed attribute')
+                parsed_dump = response.parsed.model_dump()
+                # Compact/split/super compact schema uses 'si', regular uses 'salary_information'
+                salary_data_raw = parsed_dump.get('si', parsed_dump.get('salary_information', []))
                 
-                print(f'  DEBUG: API response received')
-                print(f'  DEBUG: Response type: {type(response)}')
-                print(f'  DEBUG: Response attributes: {dir(response)}')
+                # Convert to list of dicts for easier manipulation (in case they're Pydantic models)
+                salary_data = []
+                for row in salary_data_raw:
+                    if isinstance(row, dict):
+                        salary_data.append(row)
+                    else:
+                        # If it's a Pydantic model, convert to dict
+                        salary_data.append(row.model_dump() if hasattr(row, 'model_dump') else dict(row))
                 
-                # Log detailed response information
-                log_api_response_details(response, filename, processing_time)
+                # Add row note to each row if super compact schema was used (AFTER extraction, not part of LLM extraction)
+                if use_super_compact_schema:
+                    super_compact_note = "Note: This data was extracted using the super compact schema (minimal fields only) due to file size constraints. Extracted fields: jobgroup, step, worker, age_group, education, permanency, timeline as parallel arrays (sd: start dates, am: amounts, un: unit(s) - single value if all same, array if they differ)."
+                    for row in salary_data:
+                        if isinstance(row, dict):
+                            row['rn'] = super_compact_note
                 
-                # Check for truncation
-                if check_response_truncation(response, filename):
-                    print(f'  DEBUG: Response appears to be truncated, will retry with different parameters')
-                    raise Exception("Response truncated - incomplete JSON")
+                result = {"salary_information": salary_data}
+                print(f'  DEBUG: Parsed salary structure with {len(salary_data)} salary rows')
                 
-                # Check if response has parsed attribute (structured output)
-                if hasattr(response, 'parsed') and response.parsed is not None:
-                    print(f'  DEBUG: Response has parsed attribute')
-                    result = [row.model_dump() for row in response.parsed.salary_information]
-                    print(f'  DEBUG: Parsed {len(result)} salary rows')
+                # Log successful salary extraction
+                if context and 'performance_monitor' in context:
+                    file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
                     
-                    # Log successful salary extraction
-                    if context and 'performance_monitor' in context:
-                        file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
-                        context['performance_monitor'].log_analysis(
-                            filename=filename,
-                            file_size_mb=file_size_mb,
-                            processing_time=processing_time,
-                            usage_metadata=getattr(response, 'usage_metadata', None),
-                            success=True,
-                            analysis_type="salary",
-                            api_key_used=context.get('key_number', 1),
-                            process_id=context.get('process_id', 0),
-                            cao_number="",  # Will be extracted from file path if needed
-                            model="gemini-2.5-flash"
-                        )
+                    # Add retry guidance info and schema type to parameters for logging
+                    log_params = adjusted_params.copy()
+                    log_params['schema_type'] = schema_type
+                    log_params['attempt'] = attempt + 1  # Log attempt number (1-indexed)
+                    # Note: Split extraction logging is handled in the split extraction block above
+                    if 'retry_guidance' in locals() and retry_guidance and 'error_type' in locals():
+                        log_params['retry_guidance_used'] = error_type
                     
-                    return result
+                    context['performance_monitor'].log_analysis(
+                        filename=filename,
+                        file_size_mb=file_size_mb,
+                        processing_time=processing_time,
+                        usage_metadata=getattr(response, 'usage_metadata', None),
+                        success=True,
+                        analysis_type="salary",
+                        api_key_used=context.get('key_number', 1),
+                        process_id=context.get('process_id', 0),
+                        cao_number=cao_number,
+                        model="gemini-2.5-flash",
+                        parameters=log_params,
+                        allow_duplicates=False
+                    )
+                
+                return result
+            else:
+                # Try to parse manually if parsed attribute not available
+                if hasattr(response, 'text'):
+                    try:
+                        cleaned_text = response.text.strip()
+                        if cleaned_text.startswith('```'):
+                            lines = cleaned_text.split('\n')
+                            cleaned_text = '\n'.join(lines[1:-1]).strip()
+                        
+                        parsed_json = json.loads(cleaned_text)
+                        # Compact/split/super compact schema uses 'si', regular uses 'salary_information'
+                        if 'si' in parsed_json or 'salary_information' in parsed_json:
+                            if use_super_compact_schema:
+                                salary_schema = SalaryExtractionSchemaSuperCompact(**parsed_json)
+                                # Super compact schema uses 'si' field (2-letter field names)
+                                salary_data = salary_schema.si if hasattr(salary_schema, 'si') else salary_schema.salary_information
+                            elif use_split_schema:
+                                salary_schema = SalaryExtractionSchemaSplit(**parsed_json)
+                                # Compact/split schema uses 'si' field (2-letter field names)
+                                salary_data = salary_schema.si if hasattr(salary_schema, 'si') else salary_schema.salary_information
+                            elif use_compact_schema:
+                                salary_schema = SalaryExtractionSchemaCompact(**parsed_json)
+                                # Compact schema uses 'si' field (2-letter field names)
+                                salary_data = salary_schema.si if hasattr(salary_schema, 'si') else salary_schema.salary_information
+                            else:
+                                salary_schema = SalaryExtractionSchema(**parsed_json)
+                                salary_data = salary_schema.salary_information
+                            
+                            # Convert to list of dicts for easier manipulation
+                            salary_rows = [row.model_dump() for row in salary_data]
+                            
+                            # Add row note to each row if super compact schema was used (AFTER extraction, not part of LLM extraction)
+                            if use_super_compact_schema:
+                                super_compact_note = "Note: This data was extracted using the super compact schema (minimal fields only) due to file size constraints. Extracted fields: jobgroup, step, worker, age_group, education, permanency, timeline as parallel arrays (sd: start dates, am: amounts, un: unit(s) - single value if all same, array if they differ)."
+                                for row in salary_rows:
+                                    if isinstance(row, dict):
+                                        row['rn'] = super_compact_note
+                            
+                            result = {"salary_information": salary_rows}
+                        else:
+                            raise Exception("No 'si' or 'salary_information' key in parsed JSON")
+                            
+                            # Note: Split extraction is handled above, so we don't need to handle it here
+                            
+                            # Log successful extraction
+                            if context and 'performance_monitor' in context:
+                                file_size_mb = len(str(json_obj)) / (1024 * 1024)
+                                log_params = adjusted_params.copy()
+                                log_params['schema_type'] = schema_type
+                                log_params['attempt'] = attempt + 1  # Log attempt number (1-indexed)
+                                # Note: Split extraction logging is handled in the split extraction block above
+                                if 'retry_guidance' in locals() and retry_guidance and 'error_type' in locals():
+                                    log_params['retry_guidance_used'] = error_type
+                                
+                                context['performance_monitor'].log_analysis(
+                                    filename=filename,
+                                    file_size_mb=file_size_mb,
+                                    processing_time=processing_time,
+                                    usage_metadata=getattr(response, 'usage_metadata', None),
+                                    success=True,
+                                    analysis_type="salary",
+                                    api_key_used=context.get('key_number', 1),
+                                    process_id=context.get('process_id', 0),
+                                    cao_number=cao_number,
+                                    model="gemini-2.5-flash",
+                                    parameters=log_params,
+                                    allow_duplicates=False
+                                )
+                            
+                            return result
+                    except Exception as parse_error:
+                        log_analysis_error(filename, f"Manual parsing failed ({schema_type} schema): {parse_error}", response.text[:1000] if hasattr(response, 'text') else "")
+                        # Re-raise to trigger retry logic
+                        raise
                     
-            except Exception as e:
-                last_error = e  # Update last error for each attempt
+        except Exception as e:
+            last_error = e  # Update last error for each attempt
+            last_error_message = str(e)  # Capture error message for retry guidance
+            error_str = str(e)
+            
+            # Enhanced error reporting for split extraction
+            if use_split_schema:
+                if "Part 1" in error_str or "first half" in error_str.lower():
+                    print(f'  ERROR: Attempt {attempt + 1} failed at Part 1 (first half): {type(e).__name__}: {e}')
+                elif "Part 2" in error_str or "second half" in error_str.lower():
+                    print(f'  ERROR: Attempt {attempt + 1} failed at Part 2 (second half): {type(e).__name__}: {e}')
+                else:
+                    print(f'  ERROR: Attempt {attempt + 1} failed (split extraction): {type(e).__name__}: {e}')
+            else:
                 print(f'  DEBUG: Attempt {attempt + 1} failed: {type(e).__name__}: {e}')
-                
-                # Check if quota was exhausted during this attempt
-                global quota_exhausted_flag
-                if quota_exhausted_flag:
-                    print(f'  DEBUG: Quota exhausted during salary extraction, stopping retries')
-                    break
-                    
-                if attempt < 4:  # Not the last attempt
-                    if handle_llm_errors(e, attempt, 5, context=filename):
+            
+            # Check if quota was exhausted during this attempt (before calling handle_llm_errors)
+            process_id = context.get('process_id', 0) if context else 0
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  🛑 Quota exhausted during salary extraction, stopping retries')
+                break
+            
+            # Check if attempt 4 failed with truncation error - if so, add attempts 5-7
+            if attempt == 4 and not use_compact_schema_from_start and not extended_to_compact:
+                if "Response truncated - incomplete JSON" in error_str or "Max tokens" in error_str or "truncated" in error_str.lower():
+                    truncation_error_after_attempt_4 = True
+                    extended_to_compact = True
+                    print(f'  DEBUG: Truncation error detected after attempt 4, adding compact schema attempts (5-6)')
+                    # Extend attempts list to include 5-6 (removed 7 as duplicate of 6)
+                    attempts_to_try.extend([5, 6])
+                    total_attempts += 1  # Increment total attempts counter
+                    attempt_index += 1
+                    continue  # Continue to attempt 5
+            
+            # Check if attempt 6 failed with truncation error - if so, add attempt 8 (split extraction)
+            if attempt == 6 and not use_split_extraction_from_start and not extended_to_split:
+                if "Response truncated - incomplete JSON" in error_str or "Max tokens" in error_str or "truncated" in error_str.lower():
+                    extended_to_split = True
+                    print(f'  DEBUG: Truncation error detected after attempt 6, adding split extraction attempt (8, retry 9)')
+                    # Extend attempts list to include 8 (removed 9 as duplicate of 8)
+                    attempts_to_try.extend([8])
+                    total_attempts += 1  # Increment total attempts counter
+                    attempt_index += 1
+                    continue  # Continue to attempt 8
+            
+            # Check if attempt 8 failed with truncation error - if so, add attempt 10 (super compact schema)
+            if attempt == 8 and not use_super_compact_from_start and not extended_to_super_compact:
+                if "Response truncated - incomplete JSON" in error_str or "Max tokens" in error_str or "truncated" in error_str.lower():
+                    extended_to_super_compact = True
+                    print(f'  DEBUG: Truncation error detected after attempt 8, adding super compact schema attempt (10, retry 11)')
+                    # Extend attempts list to include 10 (removed 11 as duplicate of 10)
+                    attempts_to_try.extend([10])
+                    total_attempts += 1  # Increment total attempts counter
+                    attempt_index += 1
+                    continue  # Continue to attempt 10
+            
+            # Handle retry logic
+            if attempt_index < len(attempts_to_try) - 1:
+                if attempt < 4:
+                    file_size_mb = len(str(json_obj)) / (1024 * 1024) if 'json_obj' in locals() else 0
+                    should_retry, increment_attempt, wait_time = handle_llm_errors_p4(
+                        e, attempt, 5, file_size_mb, context, process_quota_flags
+                    )
+                    # Check again after handle_llm_errors (it may have set the flag)
+                    if process_id in process_quota_flags and process_quota_flags[process_id]:
+                        print(f'  🛑 Quota exhausted detected by handle_llm_errors, stopping retries')
+                        break
+                    if should_retry:
+                        # Wait before retrying
+                        if wait_time > 0:
+                            print(f'  INFO: Waiting {wait_time // 60 if wait_time >= 60 else wait_time} {"minutes" if wait_time >= 60 else "seconds"} before retry...')
+                            time.sleep(wait_time)
+                            if wait_time >= 60:
+                                print(f'  INFO: Wait complete, continuing with retry...')
+                        # Increment attempt counters
+                        total_attempts += 1
+                        if increment_attempt:
+                            attempt_index += 1
+                        # Continue to retry (with same attempt number if increment_attempt is False)
                         continue  # Retry
                     else:
                         break  # Don't retry
                 else:
-                    # Last attempt failed
-                    print(f'  DEBUG: All attempts failed')
-                    break
+                    # For attempts 5-11, also use handle_llm_errors to handle external errors properly
+                    file_size_mb = len(str(json_obj)) / (1024 * 1024) if 'json_obj' in locals() else 0
+                    should_retry, increment_attempt, wait_time = handle_llm_errors_p4(
+                        e, attempt, 5, file_size_mb, context, process_quota_flags
+                    )
+                    # Check again after handle_llm_errors (it may have set the flag)
+                    if process_id in process_quota_flags and process_quota_flags[process_id]:
+                        print(f'  🛑 Quota exhausted detected by handle_llm_errors, stopping retries')
+                        break
+                    if should_retry:
+                        # Wait before retrying
+                        if wait_time > 0:
+                            print(f'  INFO: Waiting {wait_time // 60 if wait_time >= 60 else wait_time} {"minutes" if wait_time >= 60 else "seconds"} before retry...')
+                            time.sleep(wait_time)
+                            if wait_time >= 60:
+                                print(f'  INFO: Wait complete, continuing with retry...')
+                        # Increment attempt counters
+                        total_attempts += 1
+                        if increment_attempt:
+                            attempt_index += 1
+                        # Continue to retry (with same attempt number if increment_attempt is False)
+                        continue  # Retry
+                    else:
+                        break  # Don't retry
+            else:
+                # Last attempt failed
+                process_id = context.get('process_id', 0) if context else 0
+                quota_exhausted = process_id in process_quota_flags and process_quota_flags[process_id]
+                
+                # Check for truncation, 503, 429 errors
+                is_truncation_error = (
+                    "Response truncated - incomplete JSON" in error_str or 
+                    "Max tokens" in error_str or
+                    "truncated" in error_str.lower() or
+                    "max_tokens" in error_str.lower()
+                )
+                is_503_error = (
+                    "503" in error_str or 
+                    "UNAVAILABLE" in error_str or 
+                    "overloaded" in error_str.lower()
+                )
+                is_429_error = (
+                    "429" in error_str or 
+                    "RESOURCE_EXHAUSTED" in error_str or 
+                    "resource_exhausted" in error_str.lower() or
+                    "quota" in error_str.lower() and ("exceeded" in error_str.lower() or "limit" in error_str.lower())
+                )
+                
+                if attempt == 7:
+                    # Failed attempt 7 (8th overall) - save to truncated_2
+                    if is_truncation_error and not is_503_error and not is_429_error and not quota_exhausted:
+                        # Save failed 8th attempt to max_tokens_truncated_2 (only for truncation errors)
+                        response_text = ""
+                        if hasattr(e, 'response') and hasattr(e.response, 'text'):
+                            response_text = e.response.text
+                        elif 'response' in locals() and hasattr(response, 'text'):
+                            response_text = response.text
+                        
+                        save_failed_attempt_8(response_text, error_str, filename, cao_number)
+                        log_analysis_error(filename, f"All retry attempts failed (8th attempt with compact schema): {type(e).__name__}: {e} (saved to max_tokens_truncated_2)", response_text[:1000] if response_text else "")
+                    else:
+                        # Don't save 503 errors, 429 errors, quota exhaustion, or other non-truncation errors to max_tokens_truncated_2
+                        if quota_exhausted or is_429_error:
+                            log_analysis_error(filename, f"All retry attempts failed (8th attempt with compact schema) - QUOTA EXHAUSTED: {type(e).__name__}: {e}", "")
+                        else:
+                            log_analysis_error(filename, f"All retry attempts failed (8th attempt with compact schema): {type(e).__name__}: {e}", "")
+                elif attempt == 9:
+                    # Failed attempt 9 (10th overall) - save to truncated_3
+                    if is_truncation_error and not is_503_error and not is_429_error and not quota_exhausted:
+                        # Save failed 10th attempt to max_tokens_truncated_3 (only for truncation errors)
+                        response_text = ""
+                        if hasattr(e, 'response') and hasattr(e.response, 'text'):
+                            response_text = e.response.text
+                        elif 'response' in locals() and hasattr(response, 'text'):
+                            response_text = response.text
+                        
+                        save_failed_attempt_10(response_text, error_str, filename, cao_number)
+                        log_analysis_error(filename, f"All retry attempts failed (10th attempt with split extraction): {type(e).__name__}: {e} (saved to max_tokens_truncated_3)", response_text[:1000] if response_text else "")
+                    else:
+                        # Don't save 503 errors, 429 errors, quota exhaustion, or other non-truncation errors to max_tokens_truncated_3
+                        if quota_exhausted or is_429_error:
+                            log_analysis_error(filename, f"All retry attempts failed (10th attempt with split extraction) - QUOTA EXHAUSTED: {type(e).__name__}: {e}", "")
+                        else:
+                            log_analysis_error(filename, f"All retry attempts failed (10th attempt with split extraction): {type(e).__name__}: {e}", "")
+                elif attempt == 11:
+                    # Failed attempt 11 (12th overall) - save to truncated_4
+                    if is_truncation_error and not is_503_error and not is_429_error and not quota_exhausted:
+                        # Save failed 12th attempt to max_tokens_truncated_4 (only for truncation errors)
+                        response_text = ""
+                        if hasattr(e, 'response') and hasattr(e.response, 'text'):
+                            response_text = e.response.text
+                        elif 'response' in locals() and hasattr(response, 'text'):
+                            response_text = response.text
+                        
+                        save_failed_attempt_11(response_text, error_str, filename, cao_number)
+                        log_analysis_error(filename, f"All retry attempts failed (12th attempt with super compact schema): {type(e).__name__}: {e} (saved to max_tokens_truncated_4)", response_text[:1000] if response_text else "")
+                    else:
+                        # Don't save 503 errors, 429 errors, quota exhaustion, or other non-truncation errors to max_tokens_truncated_4
+                        if quota_exhausted or is_429_error:
+                            log_analysis_error(filename, f"All retry attempts failed (12th attempt with super compact schema) - QUOTA EXHAUSTED: {type(e).__name__}: {e}", "")
+                        else:
+                            log_analysis_error(filename, f"All retry attempts failed (12th attempt with super compact schema): {type(e).__name__}: {e}", "")
+                
+                print(f'  DEBUG: All attempts failed')
+                break
         
-        # If we get here, all attempts failed
-        log_analysis_error(filename, f"All retry attempts failed: {type(last_error).__name__}: {last_error}", "")
+        # Increment attempt index for next iteration (only if we didn't break/continue)
+        attempt_index += 1
+    
+    # If we get here, all attempts failed
+    if last_error:
+        print(f'  ⚠️ All retry attempts failed, moving on to next part')
+        if attempt == 7 or attempt == 9 or attempt == 11:
+            # Already logged above
+            pass
+        else:
+            log_analysis_error(filename, f"All retry attempts failed: {type(last_error).__name__}: {last_error}", "")
         
         # Log failed salary extraction
         if context and 'performance_monitor' in context:
             file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+            
+            # Get final attempt parameters for logging
+            # Determine which attempt was last
+            if extended_to_super_compact or use_super_compact_from_start:
+                # Last attempt was 10 (11th overall) with super compact schema
+                final_params = get_adjusted_parameters_p4(4, MODEL)  # Use attempt 4 params (same as attempt 10)
+                final_params['schema_type'] = 'super_compact'
+                final_params['attempt'] = 11
+            elif extended_to_split or use_split_extraction_from_start:
+                # Last attempt was 8 (9th overall) with split schema
+                final_params = get_adjusted_parameters_p4(4, MODEL)  # Use attempt 4 params (same as attempt 8)
+                final_params['schema_type'] = 'split'
+                final_params['attempt'] = 9
+            elif extended_to_compact or use_compact_schema_from_start:
+                # Last attempt was 6 (7th overall) with compact schema
+                final_params = get_adjusted_parameters_p4(4, MODEL)  # Use attempt 4 params (same as attempt 6)
+                final_params['schema_type'] = 'compact'
+                final_params['attempt'] = 7
+            else:
+                # Last attempt was 4 (5th overall) with regular schema
+                final_params = get_adjusted_parameters_p4(4, MODEL)
+                final_params['schema_type'] = 'regular'
+                final_params['attempt'] = 5
+            
+            if last_error_message:
+                final_guidance, final_error_type = get_retry_guidance_p4(last_error_message)
+                if final_guidance:
+                    final_params['retry_guidance_used'] = final_error_type
+            
             context['performance_monitor'].log_analysis(
                 filename=filename,
                 file_size_mb=file_size_mb,
@@ -1161,319 +1951,1032 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                 error_message=f"All retry attempts failed: {type(last_error).__name__}: {last_error}",
                 api_key_used=context.get('key_number', 1),
                 process_id=context.get('process_id', 0),
-                cao_number="",
-                model="gemini-2.5-flash"
+                cao_number=cao_number or "",
+                model="gemini-2.5-flash",
+                parameters=final_params,
+                allow_duplicates=False
             )
         
-        return []
+        return None
 
 
-def extract_nonsalary_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None) -> dict:
-    """Extract non-salary information from JSON using LLM."""
-    print(f'  DEBUG: Starting non-salary extraction for {filename}')
-    print(f'  DEBUG: Input JSON keys: {list(json_obj.keys())}')
+
+
+def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None, cao_number: str = None) -> dict:
+    """Extract non-salary part 1 information (General, Bonuses, Wage Scales, Pension, Termination) from JSON using LLM."""
+    global process_quota_flags
     
-    # Extract all non-wage sections
-    non_salary_text = ""
-    sections_to_extract = [
-        'general_information', 'General information', 'general information', 'GENERAL_INFORMATION',
-        'pension_information', 'Pension information', 'pension information', 'PENSION_INFORMATION',
-        'leave_information', 'Leave information', 'leave information', 'LEAVE_INFORMATION',
-        'termination_information', 'Termination information', 'termination information', 'TERMINATION_INFORMATION',
-        'overtime_information', 'Overtime information', 'overtime information', 'OVERTIME_INFORMATION',
-        'training_information', 'Training information', 'training information', 'TRAINING_INFORMATION',
-        'homeoffice_information', 'Homeoffice information', 'homeoffice information', 'HOMEOFFICE_INFORMATION'
-    ]
+    print(f'  Part 1 extraction starting for {filename}')
     
-    for key in sections_to_extract:
-        if key in json_obj:
-            value = json_obj[key]
-            print(f'  DEBUG: Found non-salary key: {key}')
-            print(f'  DEBUG: Value type: {type(value)}')
-            print(f'  DEBUG: Value length: {len(str(value)) if value else 0}')
-            
-            if isinstance(value, list):
-                flat_value = []
-                for item in value:
-                    if isinstance(item, list):
-                        flat_value.extend(item)
-                    elif isinstance(item, str):
-                        flat_value.append(item)
-                    else:
-                        flat_value.append(str(item))
-                non_salary_text += f'== {key} ==\n' + '\n'.join(flat_value) + '\n\n'
-                print(f'  DEBUG: Added section from list, total length now: {len(non_salary_text)}')
-            elif isinstance(value, str):
-                non_salary_text += f'== {key} ==\n{value}\n\n'
-                print(f'  DEBUG: Added section from string, total length now: {len(non_salary_text)}')
+    # Use full JSON input (no slicing)
+    non_salary_text = json.dumps(json_obj, ensure_ascii=False, indent=2)
     
-    print(f'  DEBUG: Final non-salary text length: {len(non_salary_text)}')
-    if non_salary_text.strip():
-        print(f'  DEBUG: Non-salary text preview: {non_salary_text[:200]}...')
-    else:
-        print(f'  DEBUG: No non-salary text found!')
-        return NonSalaryExtractionSchema().model_dump()
+    if not non_salary_text.strip():
+        print(f'  Part 1: No text found in input')
+        return NonSalaryPart1().model_dump()
     
     if not check_token_limit(non_salary_text, filename):
-        return NonSalaryExtractionSchema().model_dump()
+        return NonSalaryPart1().model_dump()
     
-    prompt = NON_SALARY_PROMPT.format(filename=filename, source_json=non_salary_text)
-    print(f'  DEBUG: Non-salary prompt length: {len(prompt)}')
-    print(f'  DEBUG: Non-salary prompt preview: {prompt[:300]}...')
+    # Define sections for Part 1
+    sections = "general_information, bonuses_info, wage_scales_info, pension_information, termination_information"
+    base_prompt = NON_SALARY_PROMPT.format(filename=filename, source_json=non_salary_text, sections=sections)
     
     model_params = get_model_parameters()
-    print(f'  DEBUG: Non-salary model params: {model_params}')
     
-    safety_settings = [
-        {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
-        {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
-        {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
-        {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"}
-    ]
+    # Use proper safety settings format for newer google-genai API
+    safety_settings = get_safety_settings()
     
     config = {
         "temperature": model_params["temperature"],
         "top_p": model_params["top_p"],
         "top_k": model_params["top_k"],
-        "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
+        "max_output_tokens": 65536,
         "candidate_count": model_params["candidate_count"],
         "seed": model_params["seed"],
-        "presence_penalty": model_params["presence_penalty"],
-        "frequency_penalty": model_params["frequency_penalty"],
         "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
         "response_mime_type": "application/json",
-        "response_schema": NonSalaryExtractionSchema
+        "response_schema": NonSalaryPart1,
+        "safety_settings": safety_settings
     }
     
-    print(f'  DEBUG: Non-salary API config: {config}')
-    
     try:
-        print(f'  DEBUG: Making non-salary API call...')
         start_time = time.time()
-        response = client.models.generate_content(
-            model=MODEL,
-            contents=prompt,
-            config=config
-        )
+        try:
+            response = client.models.generate_content(
+                model=MODEL,
+                contents=base_prompt,
+                config=config
+            )
+        except Exception as api_error:
+            # Defensive exception handling for API calls that escape retry loops
+            import traceback
+            error_type = type(api_error).__name__
+            error_msg = str(api_error)
+            print(f'  🚨 UNEXPECTED API ERROR during part 1 extraction: {error_type}: {error_msg}')
+            print(f'  📋 This error occurred during the API call itself and will be handled by retry logic')
+            # Log to file for debugging
+            try:
+                error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+                Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                with open(error_log_path, 'a', encoding='utf-8') as f:
+                    f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Process {context.get('process_id', 0) if context else 0} - API ERROR (part 1 extraction)\n")
+                    f.write(f"File: {filename}\n")
+                    f.write(f"Error Type: {error_type}\n")
+                    f.write(f"Error Message: {error_msg}\n")
+                    f.write(f"Traceback:\n{traceback.format_exc()}\n\n")
+            except Exception:
+                pass  # Don't fail on logging failure
+            # Re-raise so existing retry logic can handle it
+            raise
         processing_time = time.time() - start_time
         
-        print(f'  DEBUG: Non-salary API response received')
-        print(f'  DEBUG: Non-salary response type: {type(response)}')
-        print(f'  DEBUG: Non-salary response attributes: {dir(response)}')
-        
-        # Log detailed response information
-        log_api_response_details(response, f"{filename} (non-salary)", processing_time)
-        
         # Check for truncation
-        if check_response_truncation(response, filename):
-            print(f'  DEBUG: Non-salary response appears to be truncated, will retry with different parameters')
+        if check_response_truncation(response, filename, cao_number):
             raise Exception("Response truncated - incomplete JSON")
         
         # Check if response has parsed attribute (structured output)
         if hasattr(response, 'parsed') and response.parsed is not None:
-            print(f'  DEBUG: Non-salary response has parsed attribute')
             result = response.parsed.model_dump()
-            print(f'  DEBUG: Non-salary parsed result keys: {list(result.keys())}')
             
-            # Log successful non-salary extraction
+            # Validate schema
+            expected_sections = {
+                'general_information', 'bonuses_info', 'wage_scales_info', 
+                'pension_information', 'termination_information'
+            }
+            if not validate_extraction_schema(result, expected_sections, "Part 1"):
+                raise Exception("Schema validation failed")
+            
+            # Log successful part 1 extraction
             if context and 'performance_monitor' in context:
-                file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+                file_size_mb = len(str(json_obj)) / (1024 * 1024)
                 context['performance_monitor'].log_analysis(
                     filename=filename,
                     file_size_mb=file_size_mb,
                     processing_time=processing_time,
                     usage_metadata=getattr(response, 'usage_metadata', None),
                     success=True,
-                    analysis_type="non_salary",
+                    analysis_type="non_salary_part1",
                     api_key_used=context.get('key_number', 1),
                     process_id=context.get('process_id', 0),
-                    cao_number="",  # Will be extracted from file path if needed
-                    model="gemini-2.5-flash"
+                    cao_number=cao_number,
+                    model="gemini-2.5-flash",
+                    parameters=model_params,
+                    allow_duplicates=False
                 )
             
             return result
         else:
-            print(f'  DEBUG: No parsed attribute in non-salary response')
-            if hasattr(response, 'text'):
-                print(f'  DEBUG: Non-salary response text length: {len(response.text) if response.text else 0}')
-                if response.text:
-                    print(f'  DEBUG: Non-salary response text preview: {response.text[:300]}...')
-                    # Try to parse the text manually
-                    try:
-                        parsed_json = json.loads(response.text)
-                        print(f'  DEBUG: Successfully parsed response text manually')
-                        # Validate against schema
-                        schema = NonSalaryExtractionSchema(**parsed_json)
-                        result = schema.model_dump()
-                        print(f'  DEBUG: Non-salary manual parse result keys: {list(result.keys())}')
+            print(f'  Part 1: No structured output received from model')
+            if hasattr(response, 'text') and response.text:
+                # Try to parse the text manually
+                try:
+                    cleaned_text = response.text.strip()
+                    
+                    # Remove markdown code fences if present
+                    if cleaned_text.startswith('```'):
+                        lines = cleaned_text.split('\n')
+                        cleaned_text = '\n'.join(lines[1:-1]).strip()
+                    
+                    parsed_json = json.loads(cleaned_text)
+                    # Validate against schema
+                    schema = NonSalaryPart1(**parsed_json)
+                    result = schema.model_dump()
+                    
+                    # Validate schema
+                    expected_sections = {
+                        'general_information', 'bonuses_info', 'wage_scales_info', 
+                        'pension_information', 'termination_information'
+                    }
+                    if validate_extraction_schema(result, expected_sections, "Part 1"):
+                        print(f'  Part 1 extraction completed successfully (manual parse)')
                         return result
-                    except json.JSONDecodeError as e:
-                        print(f'  DEBUG: Failed to parse response text as JSON: {e}')
-                    except Exception as e:
-                        print(f'  DEBUG: Failed to validate parsed JSON against schema: {e}')
-            log_analysis_error(filename, "No structured output received from model for non-salary", "")
-            return NonSalaryExtractionSchema().model_dump()
+                    else:
+                        raise Exception("Manual parse schema validation failed")
+                        
+                except json.JSONDecodeError as e:
+                    print(f'  Part 1: Failed to parse response text as JSON: {e}')
+                except Exception as e:
+                    print(f'  Part 1: Failed to validate parsed JSON: {e}')
+            
+            log_analysis_error(filename, "No structured output received from model for non-salary part 1", "")
+            return NonSalaryPart1().model_dump()
             
     except Exception as e:
-        print(f'  DEBUG: Non-salary API call failed with error: {type(e).__name__}: {e}')
-        last_error = e  # Capture the initial error
+        print(f'  Part 1: API call failed with error: {type(e).__name__}: {e}')
+        last_error = e
+        last_error_message = None
         
         # Retry logic with proper attempt tracking
-        for attempt in range(5):
+        attempt = 0  # Current attempt number (for parameters)
+        total_attempts = 0  # Total retry attempts (for max_retries limit)
+        
+        while total_attempts < model_params["max_retries"] + 1:
+            # Check quota exhaustion at START of each retry attempt (before API call)
+            process_id = context.get('process_id', 0) if context else 0
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  🛑 Quota exhausted detected at start of part 1 retry loop, stopping retries')
+                break
+            
             try:
-                # Get model parameters (same for all attempts, like p3)
-                model_params = get_model_parameters()
+                # Get adjusted parameters for this attempt
+                adjusted_params = get_adjusted_parameters_p4(attempt, MODEL)
                 
-                print(f'  DEBUG: Non-salary model params: {model_params}')
+                # Generate retry guidance (only if attempt >= 2)
+                retry_guidance = ""
+                error_type = ""
+                if attempt >= 2 and last_error_message:
+                    retry_guidance, error_type = get_retry_guidance_p4(last_error_message)
+                    if retry_guidance:
+                        print(f'  Part 1: Adding retry guidance for: {error_type}')
+                
+                # Recreate prompt with guidance if applicable
+                prompt = base_prompt
+                if retry_guidance:
+                    prompt += f"\n\n{retry_guidance}"
+                                
+                # Use proper safety settings format for newer google-genai API
+                safety_settings = get_safety_settings()
                 
                 # Prepare API configuration
                 config = {
-                    "temperature": model_params["temperature"],
-                    "top_p": model_params["top_p"],
-                    "top_k": model_params["top_k"],
-                    "max_output_tokens": 65536,  # Increased to maximum for Gemini 2.5 Flash
-                    "candidate_count": model_params["candidate_count"],
-                    "seed": model_params["seed"],
-                    "presence_penalty": model_params["presence_penalty"],
-                    "frequency_penalty": model_params["frequency_penalty"],
-                    "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
+                    "temperature": adjusted_params["temperature"],
+                    "top_p": adjusted_params["top_p"],
+                    "top_k": adjusted_params["top_k"],
+                    "max_output_tokens": 65536,
+                    "candidate_count": adjusted_params["candidate_count"],
+                    "seed": adjusted_params["seed"],
+                    "thinking_config": types.ThinkingConfig(thinking_budget=adjusted_params["thinking_budget"]),
                     "response_mime_type": "application/json",
-                    "response_schema": NonSalaryExtractionSchema
+                    "response_schema": NonSalaryPart1,
+                    "safety_settings": safety_settings
                 }
                 
-                print(f'  DEBUG: Non-salary API config: {config}')
-                print(f'  DEBUG: Making non-salary API call...')
-                
                 start_time = time.time()
-                response = client.models.generate_content(
-                    model=MODEL,
-                    contents=prompt,
-                    config=config
-                )
+                try:
+                    response = client.models.generate_content(
+                        model=MODEL,
+                        contents=prompt,
+                        config=config
+                    )
+                except Exception as api_error:
+                    # Defensive exception handling for API calls that escape retry loops
+                    import traceback
+                    error_type = type(api_error).__name__
+                    error_msg = str(api_error)
+                    print(f'  🚨 UNEXPECTED API ERROR during part 1 extraction (attempt {attempt + 1}): {error_type}: {error_msg}')
+                    print(f'  📋 This error occurred during the API call itself and will be handled by retry logic')
+                    # Log to file for debugging
+                    try:
+                        error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+                        Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                        with open(error_log_path, 'a', encoding='utf-8') as f:
+                            f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Process {context.get('process_id', 0) if context else 0} - API ERROR (part 1 extraction)\n")
+                            f.write(f"File: {filename}\n")
+                            f.write(f"Error Type: {error_type}\n")
+                            f.write(f"Error Message: {error_msg}\n")
+                            f.write(f"Traceback:\n{traceback.format_exc()}\n\n")
+                    except Exception:
+                        pass  # Don't fail on logging failure
+                    # Re-raise so existing retry logic can handle it
+                    raise
                 processing_time = time.time() - start_time
                 
-                print(f'  DEBUG: Non-salary API response received')
-                print(f'  DEBUG: Non-salary response type: {type(response)}')
-                print(f'  DEBUG: Non-salary response attributes: {dir(response)}')
-                
-                # Log detailed response information
-                log_api_response_details(response, f"{filename} (non-salary)", processing_time)
-                
                 # Check for truncation
-                if check_response_truncation(response, filename):
-                    print(f'  DEBUG: Non-salary response appears to be truncated, will retry with different parameters')
+                if check_response_truncation(response, filename, cao_number):
                     raise Exception("Response truncated - incomplete JSON")
                 
                 # Check if response has parsed attribute (structured output)
                 if hasattr(response, 'parsed') and response.parsed is not None:
-                    print(f'  DEBUG: Non-salary response has parsed attribute')
                     result = response.parsed.model_dump()
-                    print(f'  DEBUG: Non-salary parsed result keys: {list(result.keys())}')
                     
-                    # Log successful non-salary extraction
+                    # Validate schema
+                    expected_sections = {
+                        'general_information', 'bonuses_info', 'wage_scales_info', 
+                        'pension_information', 'termination_information'
+                    }
+                    if not validate_extraction_schema(result, expected_sections, "Part 1"):
+                        raise Exception("Schema validation failed")
+                    
+                    # Log successful part 1 extraction
                     if context and 'performance_monitor' in context:
-                        file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+                        file_size_mb = len(str(json_obj)) / (1024 * 1024)
+                        
+                        # Add retry guidance info to parameters for logging
+                        log_params = adjusted_params.copy()
+                        if retry_guidance:
+                            log_params['retry_guidance_used'] = error_type
+                        
                         context['performance_monitor'].log_analysis(
                             filename=filename,
                             file_size_mb=file_size_mb,
                             processing_time=processing_time,
                             usage_metadata=getattr(response, 'usage_metadata', None),
                             success=True,
-                            analysis_type="non_salary",
+                            analysis_type="non_salary_part1",
                             api_key_used=context.get('key_number', 1),
                             process_id=context.get('process_id', 0),
-                            cao_number="",  # Will be extracted from file path if needed
-                            model="gemini-2.5-flash"
+                            cao_number=cao_number,
+                            model="gemini-2.5-flash",
+                            parameters=log_params,
+                            allow_duplicates=False
                         )
                     
+                    print(f'  Part 1 extraction completed successfully (attempt {attempt + 1})')
                     return result
                     
             except Exception as e:
-                last_error = e  # Update last error for each attempt
-                print(f'  DEBUG: Non-salary attempt {attempt + 1} failed: {type(e).__name__}: {e}')
+                last_error = e
+                last_error_message = str(e)
+                print(f'  Part 1: Attempt {attempt + 1} failed: {type(e).__name__}: {e}')
                 
-                # Check if quota was exhausted during this attempt
-                global quota_exhausted_flag
-                if quota_exhausted_flag:
-                    print(f'  DEBUG: Quota exhausted during non-salary extraction, stopping retries')
+                # Check if quota was exhausted during this attempt (before calling handle_llm_errors)
+                process_id = context.get('process_id', 0) if context else 0
+                if process_id in process_quota_flags and process_quota_flags[process_id]:
+                    print(f'  🛑 Quota exhausted during part 1 extraction, stopping retries')
                     break
                     
                 if attempt < 4:  # Not the last attempt
-                    if handle_llm_errors(e, attempt, 5, context=filename):
+                    file_size_mb = len(str(json_obj)) / (1024 * 1024)
+                    should_retry, increment_attempt, wait_time = handle_llm_errors_p4(
+                        e, attempt, 5, file_size_mb, context, process_quota_flags
+                    )
+                    # Check again after handle_llm_errors (it may have set the flag)
+                    if process_id in process_quota_flags and process_quota_flags[process_id]:
+                        print(f'  🛑 Quota exhausted detected by handle_llm_errors, stopping retries')
+                        break
+                    if should_retry:
+                        # Wait before retrying
+                        if wait_time > 0:
+                            print(f'  INFO: Waiting {wait_time // 60 if wait_time >= 60 else wait_time} {"minutes" if wait_time >= 60 else "seconds"} before retry...')
+                            time.sleep(wait_time)
+                            if wait_time >= 60:
+                                print(f'  INFO: Wait complete, continuing with retry...')
+                        # Increment attempt counters
+                        total_attempts += 1
+                        if increment_attempt:
+                            attempt += 1
+                        # Continue to retry (with same attempt number if increment_attempt is False)
                         continue  # Retry
                     else:
                         break  # Don't retry
                 else:
                     # Last attempt failed
-                    print(f'  DEBUG: All non-salary attempts failed')
+                    print(f'  Part 1: All attempts failed')
                     break
+            
+            # If we get here, the attempt was successful, increment total_attempts
+            total_attempts += 1
+            break  # Exit loop on success
         
         # If we get here, all attempts failed
-        log_analysis_error(filename, f"All non-salary retry attempts failed: {type(last_error).__name__}: {last_error}", "")
+        log_analysis_error(filename, f"All part 1 retry attempts failed: {type(last_error).__name__}: {last_error}", "")
         
-        # Log failed non-salary extraction
+        # Log failed part 1 extraction
         if context and 'performance_monitor' in context:
-            file_size_mb = len(str(json_obj)) / (1024 * 1024)  # Rough estimate
+            file_size_mb = len(str(json_obj)) / (1024 * 1024)
+            
+            # Get final attempt parameters for logging (attempt 4 = 5th try)
+            final_params = get_adjusted_parameters_p4(4, MODEL)
+            if last_error_message:
+                final_guidance, final_error_type = get_retry_guidance_p4(last_error_message)
+                if final_guidance:
+                    final_params['retry_guidance_used'] = final_error_type
+            
             context['performance_monitor'].log_analysis(
                 filename=filename,
                 file_size_mb=file_size_mb,
-                processing_time=0,  # No processing time available for failures
+                processing_time=0,
                 usage_metadata=None,
                 success=False,
-                analysis_type="non_salary",
+                analysis_type="non_salary_part1",
                 error_message=f"All retry attempts failed: {type(last_error).__name__}: {last_error}",
                 api_key_used=context.get('key_number', 1),
                 process_id=context.get('process_id', 0),
-                cao_number="",
-                model="gemini-2.5-flash"
+                cao_number=cao_number or "",
+                model="gemini-2.5-flash",
+                parameters=final_params,
+                allow_duplicates=False
             )
         
-        return {}
+        print(f'  ⚠️ All {model_params["max_retries"]} retries failed for Part 1, moving on to next part')
+        return None
 
 
-def analyze_cao_json(json_text: str, filename: str = None) -> dict:
-    """
-    Main analysis function that processes JSON text and returns structured data.
+def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None, cao_number: str = None) -> dict:
+    """Extract non-salary part 2 information (Leave, Overtime, Training) from JSON using LLM."""
+    global process_quota_flags
     
-    Args:
-        json_text: Raw JSON string content from llm_Extracted/new_flow
-        filename: Optional filename for context
-        
-    Returns:
-        dict: Combined extraction results with structure:
-              {"salary_extraction": List[dict], "non_salary_extraction": dict}
-    """
-    if not json_text or not json_text.strip():
-        return {
-            "salary_extraction": [],
-            "non_salary_extraction": NonSalaryExtractionSchema().model_dump()
-        }
+    print(f'  Part 2 extraction starting for {filename}')
+    
+    # Use full JSON input (no slicing)
+    non_salary_text = json.dumps(json_obj, ensure_ascii=False, indent=2)
+    
+    if not non_salary_text.strip():
+        print(f'  Part 2: No text found in input')
+        return NonSalaryPart2().model_dump()
+    
+    if not check_token_limit(non_salary_text, filename):
+        return NonSalaryPart2().model_dump()
+    
+    # Define sections for Part 2
+    sections = "leave_information, overtime_information, training_information"
+    base_prompt = NON_SALARY_PROMPT.format(filename=filename, source_json=non_salary_text, sections=sections)
+    
+    model_params = get_model_parameters()
+    
+    # Use proper safety settings format for newer google-genai API
+    safety_settings = get_safety_settings()
+    
+    config = {
+        "temperature": model_params["temperature"],
+        "top_p": model_params["top_p"],
+        "top_k": model_params["top_k"],
+        "max_output_tokens": 65536,
+        "candidate_count": model_params["candidate_count"],
+        "seed": model_params["seed"],
+        "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
+        "response_mime_type": "application/json",
+        "response_schema": NonSalaryPart2,
+        "safety_settings": safety_settings
+    }
     
     try:
-        # Parse JSON text
-        json_obj = json.loads(json_text)
+        start_time = time.time()
+        try:
+            response = client.models.generate_content(
+                model=MODEL,
+                contents=base_prompt,
+                config=config
+            )
+        except Exception as api_error:
+            # Defensive exception handling for API calls that escape retry loops
+            import traceback
+            error_type = type(api_error).__name__
+            error_msg = str(api_error)
+            print(f'  🚨 UNEXPECTED API ERROR during part 2 extraction: {error_type}: {error_msg}')
+            print(f'  📋 This error occurred during the API call itself and will be handled by retry logic')
+            # Log to file for debugging
+            try:
+                error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+                Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                with open(error_log_path, 'a', encoding='utf-8') as f:
+                    f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Process {context.get('process_id', 0) if context else 0} - API ERROR (part 2 extraction)\n")
+                    f.write(f"File: {filename}\n")
+                    f.write(f"Error Type: {error_type}\n")
+                    f.write(f"Error Message: {error_msg}\n")
+                    f.write(f"Traceback:\n{traceback.format_exc()}\n\n")
+            except Exception:
+                pass  # Don't fail on logging failure
+            # Re-raise so existing retry logic can handle it
+            raise
+        processing_time = time.time() - start_time
         
-        # Setup LLM client
-        api_key, key_number = setup_environment()
-        client = setup_gemini_client(api_key)
+        # Log detailed response information
+        log_api_response_details(response, f"{filename} (non-salary-part2)", processing_time)
         
-        # Extract salary information
-        salary_extracted = extract_salary_from_json(json_obj, filename or "unknown", client, None)
+        # Check for truncation
+        if check_response_truncation(response, filename, cao_number):
+            raise Exception("Response truncated - incomplete JSON")
         
-        # Extract non-salary information
-        nonsalary_extracted = extract_nonsalary_from_json(json_obj, filename or "unknown", client, None)
-        
-        return {
-            "salary_extraction": salary_extracted,
-            "non_salary_extraction": nonsalary_extracted
-        }
-        
-    except json.JSONDecodeError as e:
-        log_analysis_error(filename or "unknown", f"JSON parsing failed: {e}", json_text)
-        raise ModelOutputParseError(f"Invalid JSON input: {e}")
+        # Check if response has parsed attribute (structured output)
+        if hasattr(response, 'parsed') and response.parsed is not None:
+            result = response.parsed.model_dump()
+            
+            # Validate schema
+            expected_sections = {
+                'leave_information', 'overtime_information', 'training_information'
+            }
+            if not validate_extraction_schema(result, expected_sections, "Part 2"):
+                raise Exception("Schema validation failed")
+            
+            # Log successful part 2 extraction
+            if context and 'performance_monitor' in context:
+                file_size_mb = len(str(json_obj)) / (1024 * 1024)
+                context['performance_monitor'].log_analysis(
+                    filename=filename,
+                    file_size_mb=file_size_mb,
+                    processing_time=processing_time,
+                    usage_metadata=getattr(response, 'usage_metadata', None),
+                    success=True,
+                    analysis_type="non_salary_part2",
+                    api_key_used=context.get('key_number', 1),
+                    process_id=context.get('process_id', 0),
+                    cao_number=cao_number,
+                    model="gemini-2.5-flash",
+                    parameters=model_params,
+                    allow_duplicates=False
+                )
+            
+            return result
+        else:
+            print(f'  DEBUG: No parsed attribute in part 2 response')
+            if hasattr(response, 'text'):
+                print(f'  DEBUG: Part 2 response text length: {len(response.text) if response.text else 0}')
+                if response.text:
+                    print(f'  DEBUG: Part 2 response text preview: {response.text[:300]}...')
+                    # Try to parse the text manually
+                    try:
+                        cleaned_text = response.text.strip()
+                        
+                        # Remove markdown code fences if present
+                        if cleaned_text.startswith('```'):
+                            lines = cleaned_text.split('\n')
+                            cleaned_text = '\n'.join(lines[1:-1]).strip()
+                        
+                        parsed_json = json.loads(cleaned_text)
+                        print(f'  DEBUG: Successfully parsed part 2 response text manually')
+                        # Validate against schema
+                        schema = NonSalaryPart2(**parsed_json)
+                        result = schema.model_dump()
+                        print(f'  DEBUG: Part 2 manual parse result keys: {list(result.keys())}')
+                        return result
+                    except json.JSONDecodeError as e:
+                        print(f'  DEBUG: Failed to parse part 2 response text as JSON: {e}')
+                    except Exception as e:
+                        print(f'  DEBUG: Failed to validate parsed JSON against part 2 schema: {e}')
+            log_analysis_error(filename, "No structured output received from model for non-salary part 2", "")
+            return NonSalaryPart2().model_dump()
+            
     except Exception as e:
-        log_analysis_error(filename or "unknown", f"Analysis failed: {e}", json_text)
-        raise
+        print(f'  DEBUG: Part 2 API call failed with error: {type(e).__name__}: {e}')
+        last_error = e
+        last_error_message = None
+        
+        # Retry logic with proper attempt tracking
+        for attempt in range(model_params["max_retries"] + 1):
+            # Check quota exhaustion at START of each retry attempt (before API call)
+            process_id = context.get('process_id', 0) if context else 0
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  🛑 Quota exhausted detected at start of part 2 retry loop, stopping retries')
+                break
+            
+            try:
+                # Get adjusted parameters for this attempt
+                adjusted_params = get_adjusted_parameters_p4(attempt, MODEL)
+                
+                # Generate retry guidance (only if attempt >= 2)
+                retry_guidance = ""
+                error_type = ""
+                if attempt >= 2 and last_error_message:
+                    retry_guidance, error_type = get_retry_guidance_p4(last_error_message)
+                    if retry_guidance:
+                        print(f'  INFO: Adding retry guidance for part 2: {error_type}')
+                
+                # Recreate prompt with guidance if applicable
+                prompt = base_prompt
+                if retry_guidance:
+                    prompt += f"\n\n{retry_guidance}"
+                                
+                # Use proper safety settings format for newer google-genai API
+                safety_settings = get_safety_settings()
+                
+                # Prepare API configuration
+                config = {
+                    "temperature": adjusted_params["temperature"],
+                    "top_p": adjusted_params["top_p"],
+                    "top_k": adjusted_params["top_k"],
+                    "max_output_tokens": 65536,
+                    "candidate_count": adjusted_params["candidate_count"],
+                    "seed": adjusted_params["seed"],
+                    "thinking_config": types.ThinkingConfig(thinking_budget=adjusted_params["thinking_budget"]),
+                    "response_mime_type": "application/json",
+                    "response_schema": NonSalaryPart2,
+                    "safety_settings": safety_settings
+                }
+                
+                print(f'  DEBUG: Making part 2 API call...')
+                
+                start_time = time.time()
+                try:
+                    response = client.models.generate_content(
+                        model=MODEL,
+                        contents=prompt,
+                        config=config
+                    )
+                except Exception as api_error:
+                    # Defensive exception handling for API calls that escape retry loops
+                    import traceback
+                    error_type = type(api_error).__name__
+                    error_msg = str(api_error)
+                    print(f'  🚨 UNEXPECTED API ERROR during part 2 extraction (attempt {attempt + 1}): {error_type}: {error_msg}')
+                    print(f'  📋 This error occurred during the API call itself and will be handled by retry logic')
+                    # Log to file for debugging
+                    try:
+                        error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+                        Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                        with open(error_log_path, 'a', encoding='utf-8') as f:
+                            f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Process {context.get('process_id', 0) if context else 0} - API ERROR (part 2 extraction)\n")
+                            f.write(f"File: {filename}\n")
+                            f.write(f"Error Type: {error_type}\n")
+                            f.write(f"Error Message: {error_msg}\n")
+                            f.write(f"Traceback:\n{traceback.format_exc()}\n\n")
+                    except Exception:
+                        pass  # Don't fail on logging failure
+                    # Re-raise so existing retry logic can handle it
+                    raise
+                processing_time = time.time() - start_time
+                
+                print(f'  DEBUG: Part 2 API response received')
+                
+                # Log detailed response information
+                log_api_response_details(response, f"{filename} (non-salary-part2)", processing_time)
+                
+                # Check for truncation
+                if check_response_truncation(response, filename, cao_number):
+                    print(f'  DEBUG: Part 2 response appears to be truncated, will retry with different parameters')
+                    raise Exception("Response truncated - incomplete JSON")
+                
+                # Check if response has parsed attribute (structured output)
+                if hasattr(response, 'parsed') and response.parsed is not None:
+                    print(f'  DEBUG: Part 2 response has parsed attribute')
+                    result = response.parsed.model_dump()
+                    print(f'  DEBUG: Part 2 parsed result keys: {list(result.keys())}')
+                    
+                    # Log successful part 2 extraction
+                    if context and 'performance_monitor' in context:
+                        file_size_mb = len(str(json_obj)) / (1024 * 1024)
+                        
+                        # Add retry guidance info to parameters for logging
+                        log_params = adjusted_params.copy()
+                        if retry_guidance:
+                            log_params['retry_guidance_used'] = error_type
+                        
+                        context['performance_monitor'].log_analysis(
+                            filename=filename,
+                            file_size_mb=file_size_mb,
+                            processing_time=processing_time,
+                            usage_metadata=getattr(response, 'usage_metadata', None),
+                            success=True,
+                            analysis_type="non_salary_part2",
+                            api_key_used=context.get('key_number', 1),
+                            process_id=context.get('process_id', 0),
+                            cao_number=cao_number,
+                            model="gemini-2.5-flash",
+                            parameters=log_params,
+                            allow_duplicates=False
+                        )
+                    
+                    return result
+                    
+            except Exception as e:
+                last_error = e
+                last_error_message = str(e)
+                print(f'  DEBUG: Part 2 attempt {attempt + 1} failed: {type(e).__name__}: {e}')
+                
+                # Check if quota was exhausted during this attempt (before calling handle_llm_errors)
+                process_id = context.get('process_id', 0) if context else 0
+                if process_id in process_quota_flags and process_quota_flags[process_id]:
+                    print(f'  🛑 Quota exhausted during part 2 extraction, stopping retries')
+                    break
+                    
+                if attempt < 4:  # Not the last attempt
+                    file_size_mb = len(str(json_obj)) / (1024 * 1024)
+                    should_retry, increment_attempt, wait_time = handle_llm_errors_p4(
+                        e, attempt, 5, file_size_mb, context, process_quota_flags
+                    )
+                    # Check again after handle_llm_errors (it may have set the flag)
+                    if process_id in process_quota_flags and process_quota_flags[process_id]:
+                        print(f'  🛑 Quota exhausted detected by handle_llm_errors, stopping retries')
+                        break
+                    if should_retry:
+                        # Wait before retrying
+                        if wait_time > 0:
+                            print(f'  INFO: Waiting {wait_time // 60 if wait_time >= 60 else wait_time} {"minutes" if wait_time >= 60 else "seconds"} before retry...')
+                            time.sleep(wait_time)
+                            if wait_time >= 60:
+                                print(f'  INFO: Wait complete, continuing with retry...')
+                        # Increment attempt counters
+                        total_attempts += 1
+                        if increment_attempt:
+                            attempt += 1
+                        # Continue to retry (with same attempt number if increment_attempt is False)
+                        continue  # Retry
+                    else:
+                        break  # Don't retry
+                else:
+                    # Last attempt failed
+                    print(f'  DEBUG: All part 2 attempts failed')
+                    break
+            
+            # If we get here, the attempt was successful, increment total_attempts
+            total_attempts += 1
+            break  # Exit loop on success
+        
+        # If we get here, all attempts failed
+        log_analysis_error(filename, f"All part 2 retry attempts failed: {type(last_error).__name__}: {last_error}", "")
+        
+        # Log failed part 2 extraction
+        if context and 'performance_monitor' in context:
+            file_size_mb = len(str(json_obj)) / (1024 * 1024)
+            
+            # Get final attempt parameters for logging (attempt 4 = 5th try)
+            final_params = get_adjusted_parameters_p4(4, MODEL)
+            if last_error_message:
+                final_guidance, final_error_type = get_retry_guidance_p4(last_error_message)
+                if final_guidance:
+                    final_params['retry_guidance_used'] = final_error_type
+            
+            context['performance_monitor'].log_analysis(
+                filename=filename,
+                file_size_mb=file_size_mb,
+                processing_time=0,
+                usage_metadata=None,
+                success=False,
+                analysis_type="non_salary_part2",
+                error_message=f"All retry attempts failed: {type(last_error).__name__}: {last_error}",
+                api_key_used=context.get('key_number', 1),
+                process_id=context.get('process_id', 0),
+                cao_number=cao_number or "",
+                model="gemini-2.5-flash",
+                parameters=final_params,
+                allow_duplicates=False
+            )
+        
+        print(f'  ⚠️ All {model_params["max_retries"]} retries failed for Part 2, moving on to next part')
+        return None
+
+
+def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, context: Dict[str, Any] = None, cao_number: str = None) -> dict:
+    """Extract non-salary part 3 information (Homeoffice, Contract Type, Safety, Childcare, AI, Fringe Benefits) from JSON using LLM."""
+    global process_quota_flags
+    
+    print(f'  Part 3 extraction starting for {filename}')
+    
+    # Use full JSON input (no slicing)
+    non_salary_text = json.dumps(json_obj, ensure_ascii=False, indent=2)
+    
+    if not non_salary_text.strip():
+        print(f'  Part 3: No text found in input')
+        return NonSalaryPart3().model_dump()
+    
+    if not check_token_limit(non_salary_text, filename):
+        return NonSalaryPart3().model_dump()
+    
+    # Define sections for Part 3
+    sections = "homeoffice_information, contract_type_information, safety_information, childcare_information, ai_information, fringe_benefits_information"
+    base_prompt = NON_SALARY_PROMPT.format(filename=filename, source_json=non_salary_text, sections=sections)
+    
+    model_params = get_model_parameters()
+    
+    # Use proper safety settings format for newer google-genai API
+    safety_settings = get_safety_settings()
+    
+    config = {
+        "temperature": model_params["temperature"],
+        "top_p": model_params["top_p"],
+        "top_k": model_params["top_k"],
+        "max_output_tokens": 65536,
+        "candidate_count": model_params["candidate_count"],
+        "seed": model_params["seed"],
+        "thinking_config": types.ThinkingConfig(thinking_budget=model_params["thinking_budget"]),
+        "response_mime_type": "application/json",
+        "response_schema": NonSalaryPart3,
+        "safety_settings": safety_settings
+    }
+    
+    try:
+        start_time = time.time()
+        try:
+            response = client.models.generate_content(
+                model=MODEL,
+                contents=base_prompt,
+                config=config
+            )
+        except Exception as api_error:
+            # Defensive exception handling for API calls that escape retry loops
+            import traceback
+            error_type = type(api_error).__name__
+            error_msg = str(api_error)
+            print(f'  🚨 UNEXPECTED API ERROR during part 3 extraction: {error_type}: {error_msg}')
+            print(f'  📋 This error occurred during the API call itself and will be handled by retry logic')
+            # Log to file for debugging
+            try:
+                error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+                Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                with open(error_log_path, 'a', encoding='utf-8') as f:
+                    f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Process {context.get('process_id', 0) if context else 0} - API ERROR (part 3 extraction)\n")
+                    f.write(f"File: {filename}\n")
+                    f.write(f"Error Type: {error_type}\n")
+                    f.write(f"Error Message: {error_msg}\n")
+                    f.write(f"Traceback:\n{traceback.format_exc()}\n\n")
+            except Exception:
+                pass  # Don't fail on logging failure
+            # Re-raise so existing retry logic can handle it
+            raise
+        processing_time = time.time() - start_time
+        
+        # Log detailed response information
+        log_api_response_details(response, f"{filename} (non-salary-part3)", processing_time)
+        
+        # Check for truncation
+        if check_response_truncation(response, filename, cao_number):
+            raise Exception("Response truncated - incomplete JSON")
+        
+        # Check if response has parsed attribute (structured output)
+        if hasattr(response, 'parsed') and response.parsed is not None:
+            result = response.parsed.model_dump()
+            
+            # Validate schema
+            expected_sections = {
+                'homeoffice_information', 'contract_type_information', 'safety_information',
+                'childcare_information', 'ai_information', 'fringe_benefits_information'
+            }
+            if not validate_extraction_schema(result, expected_sections, "Part 3"):
+                raise Exception("Schema validation failed")
+            
+            # Log successful part 3 extraction
+            if context and 'performance_monitor' in context:
+                file_size_mb = len(str(json_obj)) / (1024 * 1024)
+                context['performance_monitor'].log_analysis(
+                    filename=filename,
+                    file_size_mb=file_size_mb,
+                    processing_time=processing_time,
+                    usage_metadata=getattr(response, 'usage_metadata', None),
+                    success=True,
+                    analysis_type="non_salary_part3",
+                    api_key_used=context.get('key_number', 1),
+                    process_id=context.get('process_id', 0),
+                    cao_number=cao_number,
+                    model="gemini-2.5-flash",
+                    parameters=model_params,
+                    allow_duplicates=False
+                )
+            
+            return result
+        else:
+            print(f'  Part 3: No structured output received from model')
+            if hasattr(response, 'text') and response.text:
+                # Try to parse the text manually
+                try:
+                    cleaned_text = response.text.strip()
+                    
+                    # Remove markdown code fences if present
+                    if cleaned_text.startswith('```'):
+                        lines = cleaned_text.split('\n')
+                        cleaned_text = '\n'.join(lines[1:-1]).strip()
+                    
+                    parsed_json = json.loads(cleaned_text)
+                    # Validate against schema
+                    schema = NonSalaryPart3(**parsed_json)
+                    result = schema.model_dump()
+                    
+                    # Validate schema
+                    expected_sections = {
+                        'homeoffice_information', 'contract_type_information', 'safety_information',
+                        'childcare_information', 'ai_information', 'fringe_benefits_information'
+                    }
+                    if validate_extraction_schema(result, expected_sections, "Part 3"):
+                        print(f'  Part 3 extraction completed successfully (manual parse)')
+                        return result
+                    else:
+                        raise Exception("Manual parse schema validation failed")
+                        
+                except json.JSONDecodeError as e:
+                    print(f'  Part 3: Failed to parse response text as JSON: {e}')
+                except Exception as e:
+                    print(f'  Part 3: Failed to validate parsed JSON: {e}')
+            
+            log_analysis_error(filename, "No structured output received from model for non-salary part 3", "")
+            return NonSalaryPart3().model_dump()
+            
+    except Exception as e:
+        print(f'  DEBUG: Part 3 API call failed with error: {type(e).__name__}: {e}')
+        last_error = e
+        last_error_message = None
+        
+        # Retry logic with proper attempt tracking
+        for attempt in range(model_params["max_retries"] + 1):
+            # Check quota exhaustion at START of each retry attempt (before API call)
+            process_id = context.get('process_id', 0) if context else 0
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  🛑 Quota exhausted detected at start of part 3 retry loop, stopping retries')
+                break
+            
+            try:
+                # Get adjusted parameters for this attempt
+                adjusted_params = get_adjusted_parameters_p4(attempt, MODEL)
+                
+                # Generate retry guidance (only if attempt >= 2)
+                retry_guidance = ""
+                error_type = ""
+                if attempt >= 2 and last_error_message:
+                    retry_guidance, error_type = get_retry_guidance_p4(last_error_message)
+                    if retry_guidance:
+                        print(f'  INFO: Adding retry guidance for part 3: {error_type}')
+                
+                # Recreate prompt with guidance if applicable
+                prompt = base_prompt
+                if retry_guidance:
+                    prompt += f"\n\n{retry_guidance}"
+                                
+                # Use proper safety settings format for newer google-genai API
+                safety_settings = get_safety_settings()
+                
+                # Prepare API configuration
+                config = {
+                    "temperature": adjusted_params["temperature"],
+                    "top_p": adjusted_params["top_p"],
+                    "top_k": adjusted_params["top_k"],
+                    "max_output_tokens": 65536,
+                    "candidate_count": adjusted_params["candidate_count"],
+                    "seed": adjusted_params["seed"],
+                    "thinking_config": types.ThinkingConfig(thinking_budget=adjusted_params["thinking_budget"]),
+                    "response_mime_type": "application/json",
+                    "response_schema": NonSalaryPart3,
+                    "safety_settings": safety_settings
+                }
+                
+                print(f'  DEBUG: Making part 3 API call...')
+                
+                start_time = time.time()
+                try:
+                    response = client.models.generate_content(
+                        model=MODEL,
+                        contents=prompt,
+                        config=config
+                    )
+                except Exception as api_error:
+                    # Defensive exception handling for API calls that escape retry loops
+                    import traceback
+                    error_type = type(api_error).__name__
+                    error_msg = str(api_error)
+                    print(f'  🚨 UNEXPECTED API ERROR during part 3 extraction (attempt {attempt + 1}): {error_type}: {error_msg}')
+                    print(f'  📋 This error occurred during the API call itself and will be handled by retry logic')
+                    # Log to file for debugging
+                    try:
+                        error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+                        Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                        with open(error_log_path, 'a', encoding='utf-8') as f:
+                            f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Process {context.get('process_id', 0) if context else 0} - API ERROR (part 3 extraction)\n")
+                            f.write(f"File: {filename}\n")
+                            f.write(f"Error Type: {error_type}\n")
+                            f.write(f"Error Message: {error_msg}\n")
+                            f.write(f"Traceback:\n{traceback.format_exc()}\n\n")
+                    except Exception:
+                        pass  # Don't fail on logging failure
+                    # Re-raise so existing retry logic can handle it
+                    raise
+                processing_time = time.time() - start_time
+                
+                print(f'  DEBUG: Part 3 API response received')
+                
+                # Log detailed response information
+                log_api_response_details(response, f"{filename} (non-salary-part3)", processing_time)
+                
+                # Check for truncation
+                if check_response_truncation(response, filename, cao_number):
+                    print(f'  DEBUG: Part 3 response appears to be truncated, will retry with different parameters')
+                    raise Exception("Response truncated - incomplete JSON")
+                
+                # Check if response has parsed attribute (structured output)
+                if hasattr(response, 'parsed') and response.parsed is not None:
+                    print(f'  DEBUG: Part 3 response has parsed attribute')
+                    result = response.parsed.model_dump()
+                    print(f'  DEBUG: Part 3 parsed result keys: {list(result.keys())}')
+                    
+                    # Log successful part 3 extraction
+                    if context and 'performance_monitor' in context:
+                        file_size_mb = len(str(json_obj)) / (1024 * 1024)
+                        
+                        # Add retry guidance info to parameters for logging
+                        log_params = adjusted_params.copy()
+                        if retry_guidance:
+                            log_params['retry_guidance_used'] = error_type
+                        
+                        context['performance_monitor'].log_analysis(
+                            filename=filename,
+                            file_size_mb=file_size_mb,
+                            processing_time=processing_time,
+                            usage_metadata=getattr(response, 'usage_metadata', None),
+                            success=True,
+                            analysis_type="non_salary_part3",
+                            api_key_used=context.get('key_number', 1),
+                            process_id=context.get('process_id', 0),
+                            cao_number=cao_number,
+                            model="gemini-2.5-flash",
+                            parameters=log_params,
+                            allow_duplicates=False
+                        )
+                    
+                    return result
+                    
+            except Exception as e:
+                last_error = e
+                last_error_message = str(e)
+                print(f'  DEBUG: Part 3 attempt {attempt + 1} failed: {type(e).__name__}: {e}')
+                
+                # Check if quota was exhausted during this attempt (before calling handle_llm_errors)
+                process_id = context.get('process_id', 0) if context else 0
+                if process_id in process_quota_flags and process_quota_flags[process_id]:
+                    print(f'  🛑 Quota exhausted during part 3 extraction, stopping retries')
+                    break
+                    
+                if attempt < 4:  # Not the last attempt
+                    file_size_mb = len(str(json_obj)) / (1024 * 1024)
+                    should_retry, increment_attempt, wait_time = handle_llm_errors_p4(
+                        e, attempt, 5, file_size_mb, context, process_quota_flags
+                    )
+                    # Check again after handle_llm_errors (it may have set the flag)
+                    if process_id in process_quota_flags and process_quota_flags[process_id]:
+                        print(f'  🛑 Quota exhausted detected by handle_llm_errors, stopping retries')
+                        break
+                    if should_retry:
+                        # Wait before retrying
+                        if wait_time > 0:
+                            print(f'  INFO: Waiting {wait_time // 60 if wait_time >= 60 else wait_time} {"minutes" if wait_time >= 60 else "seconds"} before retry...')
+                            time.sleep(wait_time)
+                            if wait_time >= 60:
+                                print(f'  INFO: Wait complete, continuing with retry...')
+                        # Increment attempt counters
+                        total_attempts += 1
+                        if increment_attempt:
+                            attempt += 1
+                        # Continue to retry (with same attempt number if increment_attempt is False)
+                        continue  # Retry
+                    else:
+                        break  # Don't retry
+                else:
+                    # Last attempt failed
+                    print(f'  DEBUG: All part 3 attempts failed')
+                    break
+            
+            # If we get here, the attempt was successful, increment total_attempts
+            total_attempts += 1
+            break  # Exit loop on success
+        
+        # If we get here, all attempts failed
+        log_analysis_error(filename, f"All part 3 retry attempts failed: {type(last_error).__name__}: {last_error}", "")
+        
+        # Log failed part 3 extraction
+        if context and 'performance_monitor' in context:
+            file_size_mb = len(str(json_obj)) / (1024 * 1024)
+            
+            # Get final attempt parameters for logging (attempt 4 = 5th try)
+            final_params = get_adjusted_parameters_p4(4, MODEL)
+            if last_error_message:
+                final_guidance, final_error_type = get_retry_guidance_p4(last_error_message)
+                if final_guidance:
+                    final_params['retry_guidance_used'] = final_error_type
+            
+            context['performance_monitor'].log_analysis(
+                filename=filename,
+                file_size_mb=file_size_mb,
+                processing_time=0,
+                usage_metadata=None,
+                success=False,
+                analysis_type="non_salary_part3",
+                error_message=f"All retry attempts failed: {type(last_error).__name__}: {last_error}",
+                api_key_used=context.get('key_number', 1),
+                process_id=context.get('process_id', 0),
+                cao_number=cao_number or "",
+                model="gemini-2.5-flash",
+                parameters=final_params,
+                allow_duplicates=False
+            )
+        
+        print(f'  ⚠️ All {model_params["max_retries"]} retries failed for Part 3, moving on to next part')
+        return None
 
 
 # =============================================================================
@@ -1506,9 +3009,9 @@ def release_file_lock(file_path: Path):
     lock_file = file_path.with_suffix('.analysis_lock')
     try:
         if lock_file.exists():
-            lock_file.unlink()
-    except:
-        pass
+            lock_file.unlink(missing_ok=True)
+    except Exception:
+        pass  # Ignore errors (file might be deleted by another process)
 
 
 def discover_json_files(input_folder: str) -> List[Tuple[Path, Path]]:
@@ -1536,10 +3039,22 @@ def discover_json_files(input_folder: str) -> List[Tuple[Path, Path]]:
 
 def is_file_already_processed(filename: str, cao_number: str) -> bool:
     """Check if a file has already been processed by looking for existing LLM analysis files."""
-    salary_file = Path('outputs/llm_analysis/salary') / cao_number / f"{Path(filename).stem}_salary.json"
-    non_salary_file = Path('outputs/llm_analysis/non_salary') / cao_number / f"{Path(filename).stem}_non_salary.json"
+    # Remove _extract from filename if present
+    base_name = Path(filename).stem
+    if base_name.endswith('_extract'):
+        base_name = base_name[:-8]  # Remove '_extract'
     
-    return salary_file.exists() and non_salary_file.exists()
+    # Check for all 4 required files in the new split structure
+    salary_file = Path('outputs/llm_analysis/salary') / cao_number / f"{base_name}_analysis.json"
+    part1_file = Path('outputs/llm_analysis/non_salary/gen_bon_wag_pen_ter') / cao_number / f"{base_name}_analysis.json"
+    part2_file = Path('outputs/llm_analysis/non_salary/lea_ove_tra') / cao_number / f"{base_name}_analysis.json"
+    part3_file = Path('outputs/llm_analysis/non_salary/hom_con_saf_chi_ai_fri') / cao_number / f"{base_name}_analysis.json"
+    
+    # File is considered processed only if ALL 4 parts exist
+    return (salary_file.exists() and 
+            part1_file.exists() and 
+            part2_file.exists() and 
+            part3_file.exists())
 
 
 # =============================================================================
@@ -1614,21 +3129,55 @@ def find_cao_info(pdf_name: str, cao_number: int, cao_info_mapping: dict) -> Opt
 # =============================================================================
 # Functions for creating Excel output and merging extracted data
 
-def save_extraction_json(data: dict, filename: str, extraction_type: str, cao_number: str = None):
+def save_extraction_json(data: dict, filename: str, extraction_type: str, cao_number: str = None) -> bool:
     """
     Save extracted JSON data to appropriate folders for analysis.
     
     Args:
         data: Extracted data to save
         filename: Original filename
-        extraction_type: 'salary' or 'non_salary'
+        extraction_type: 'salary', 'non_salary_part1', 'non_salary_part2', or 'non_salary_part3'
         cao_number: CAO number for folder organization
+        
+    Returns:
+        bool: True if saved successfully, False if validation failed or save failed
     """
     try:
+        # For salary extraction, check if salary_information is empty
+        # Only allow empty arrays if it's a legitimate "no salary data" case
+        # Error cases (token limit, no structured output) now return None, so they won't reach here
+        if extraction_type == 'salary':
+            if isinstance(data, dict) and 'salary_information' in data:
+                if isinstance(data['salary_information'], list) and len(data['salary_information']) == 0:
+                    # Empty array - this is allowed for legitimate "no salary data" cases
+                    # Error cases now return None, so any empty array reaching here is legitimate
+                    pass  # Allow empty arrays for salary (legitimate "no salary data" case)
+            elif isinstance(data, list) and len(data) == 0:
+                # Old format - empty list, don't save (should be dict format)
+                print(f'  ❌ Skipping save: Empty list format not allowed (should be dict with salary_information key)')
+                return False
+            elif data is None:
+                # None means error case - don't save
+                print(f'  ❌ Skipping save: None data indicates error case')
+                return False
+        
+        # Validate data before saving
+        if not validate_extraction_data(data, extraction_type):
+            print(f'  ❌ Validation failed for {extraction_type}: missing required fields')
+            print(f'  Expected: {get_required_fields_for_extraction_type(extraction_type)}')
+            print(f'  Found: {list(data.keys()) if isinstance(data, dict) else type(data).__name__}')
+            return False
+        
         # Create base path
         base_path = Path('outputs/llm_analysis')
         if extraction_type == 'salary':
             save_path = base_path / 'salary'
+        elif extraction_type == 'non_salary_part1':
+            save_path = base_path / 'non_salary' / 'gen_bon_wag_pen_ter'
+        elif extraction_type == 'non_salary_part2':
+            save_path = base_path / 'non_salary' / 'lea_ove_tra'
+        elif extraction_type == 'non_salary_part3':
+            save_path = base_path / 'non_salary' / 'hom_con_saf_chi_ai_fri'
         else:
             save_path = base_path / 'non_salary'
         
@@ -1638,22 +3187,105 @@ def save_extraction_json(data: dict, filename: str, extraction_type: str, cao_nu
         
         save_path.mkdir(parents=True, exist_ok=True)
         
-        # Create filename
+        # Create filename - remove _extract if present and use _analysis suffix
         base_name = Path(filename).stem
-        json_filename = f"{base_name}_{extraction_type}.json"
+        if base_name.endswith('_extract'):
+            base_name = base_name[:-8]  # Remove '_extract'
+        json_filename = f"{base_name}_analysis.json"
         file_path = save_path / json_filename
         
         # Save JSON data
         with open(file_path, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
         
+        return True
+        
     except Exception as e:
         print(f'  DEBUG: Failed to save {extraction_type} extraction: {e}')
+        return False
+
+
+def get_required_fields_for_extraction_type(extraction_type: str) -> List[str]:
+    """Dynamically get required fields from Pydantic schemas."""
+    from schema.salary_schema import SalaryExtractionSchema
+    from schema.non_salary_schema import NonSalaryPart1, NonSalaryPart2, NonSalaryPart3
+    
+    schema_map = {
+        'salary': SalaryExtractionSchema,
+        'non_salary_part1': NonSalaryPart1,
+        'non_salary_part2': NonSalaryPart2,
+        'non_salary_part3': NonSalaryPart3
+    }
+    
+    schema = schema_map.get(extraction_type)
+    if not schema:
+        return []
+    
+    return list(schema.model_fields.keys())
+
+
+def validate_extraction_data(data: dict, extraction_type: str) -> bool:
+    """Validate that extraction data contains required fields."""
+    if not data or not isinstance(data, dict):
+        return False
+    
+    required_fields = get_required_fields_for_extraction_type(extraction_type)
+    return all(field in data for field in required_fields)
+
+
+def check_missing_extraction_parts(filename: str, cao_number: str, skip_truncated_salary: bool = False) -> dict:
+    """
+    Check which extraction parts are missing for a given file.
+    
+    Args:
+        filename: The filename to check
+        cao_number: CAO number
+        skip_truncated_salary: If True, mark salary as not missing if file is in truncated folder
+    
+    Returns:
+        dict with keys: 'salary', 'part1', 'part2', 'part3' 
+        and boolean values indicating if that part is missing
+    """
+    base_dir = Path("outputs/llm_analysis")
+    
+    missing = {
+        'salary': True,
+        'part1': True, 
+        'part2': True,
+        'part3': True
+    }
+    
+    # Check each output file (using correct folder structure from save_extraction_json)
+    salary_file = base_dir / "salary" / cao_number / filename.replace("_extract.json", "_analysis.json")
+    part1_file = base_dir / "non_salary" / "gen_bon_wag_pen_ter" / cao_number / filename.replace("_extract.json", "_analysis.json")
+    part2_file = base_dir / "non_salary" / "lea_ove_tra" / cao_number / filename.replace("_extract.json", "_analysis.json")
+    part3_file = base_dir / "non_salary" / "hom_con_saf_chi_ai_fri" / cao_number / filename.replace("_extract.json", "_analysis.json")
+    
+    missing['salary'] = not salary_file.exists()
+    missing['part1'] = not part1_file.exists()
+    missing['part2'] = not part2_file.exists()
+    missing['part3'] = not part3_file.exists()
+    
+    # If skip_truncated_salary is enabled:
+    # - Files in truncated_4 folder: skip (mark as not missing) - these failed all attempts including super compact schema
+    # - Files in truncated_3 folder: do NOT skip - they will be retried with attempts 10-11 (super compact schema)
+    # - Files in truncated_2 folder: do NOT skip - they will be retried with attempts 9-10 (split extraction)
+    # - Files in truncated folder: do NOT skip - they will be retried with attempts 6-8 (compact schema)
+    if skip_truncated_salary and missing['salary']:
+        if is_file_in_truncated_4_folder(filename, cao_number):
+            missing['salary'] = False
+            print(f'  {cao_number}: Salary extraction skipped (file in max_tokens_truncated_4 folder - all attempts exhausted)')
+        # Note: Files in truncated_3 will be retried with super compact schema (attempts 10-11)
+        # Note: Files in truncated_2 will be retried with split extraction (attempts 9-10)
+        # Note: Files in truncated will be retried with compact schema (attempts 6-8)
+    
+    return missing
 
 
 def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapping: dict, 
                        config: AnalysisConfig, context: Dict[str, Any]) -> bool:
     """Process a single JSON file and save LLM extraction results."""
+    global process_quota_flags
     filename = json_file.name
     cao_number = cao_folder.name
     
@@ -1664,38 +3296,189 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
         with open(json_file, 'r', encoding='utf-8') as f:
             json_data = json.load(f)
         
-        # Check if file is already processed
-        if is_file_already_processed(filename, cao_number):
-            print(f'  {cao_number}: Skipping {filename} (already processed)')
-            return True  # Return True since we successfully skipped it
+        # Check which parts are missing
+        missing_parts = check_missing_extraction_parts(filename, cao_number, SKIP_TRUNCATED_SALARY_FILES)
 
-        # Extract salary information
-        salary_extracted = extract_salary_from_json(json_data, filename, client, context)
-        print(f'  {cao_number}: Salary extraction - {len(salary_extracted)} rows')
-        
-        # Extract non-salary information
-        rest_extracted = extract_nonsalary_from_json(json_data, filename, client, context)
-        
-        # Count non-salary data
-        non_salary_count = 0
-        for key, value in rest_extracted.items():
-            if isinstance(value, dict):
-                for subkey, subvalue in value.items():
-                    if subvalue and subvalue != "":
-                        non_salary_count += 1
-        print(f'  {cao_number}: Non-salary extraction - {non_salary_count} fields with data')
-        
-        # Save extracted JSON data
-        save_extraction_json({'salary_information': salary_extracted}, filename, 'salary', cao_number)
-        save_extraction_json(rest_extracted, filename, 'non_salary', cao_number)
+        # If all parts exist, skip entirely
+        if not any(missing_parts.values()):
+            print(f'  {cao_number}: Skipping {filename} (all parts already processed)')
+            return True
+            
+        # Print which parts need processing
+        parts_to_process = [k for k, v in missing_parts.items() if v]
+        print(f'  {cao_number}: Processing missing parts: {", ".join(parts_to_process)}')
 
-        # Check if we got any data
-        if not salary_extracted and not any(value for value in rest_extracted.values() if isinstance(value, dict) and any(v for v in value.values() if v)):
-            print(f'  {cao_number}: No data extracted from {filename}')
-            return False
+        # Check if quota was exhausted for this process
+        process_id = context.get('process_id', 0) if context else 0
+        if process_id in process_quota_flags and process_quota_flags[process_id]:
+            print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
+            return False  # Stop processing this process only
+
+        # Extract salary information (only if missing)
+        if missing_parts['salary']:
+            # Check quota before starting
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
+                return False
+            salary_extracted = extract_salary_from_json(json_data, filename, client, context, cao_number)
+            # Check quota after extraction
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
+                return False
+            salary_success = salary_extracted is not None
+            if salary_success:
+                print(f'  {cao_number}: Salary extraction completed')
+            else:
+                print(f'  {cao_number}: ⚠️ Salary extraction failed, moving to next part')
+        else:
+            salary_extracted = None
+            salary_success = None  # Not run
+            print(f'  {cao_number}: Salary extraction skipped (already exists)')
+
+        # Extract non-salary part 1 (only if missing)
+        if missing_parts['part1']:
+            # Check quota before starting
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
+                return False
+            part1_extracted = extract_nonsalary_part1_from_json(json_data, filename, client, context, cao_number)
+            # Check quota after extraction
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
+                return False
+            part1_success = part1_extracted is not None
+            if part1_success:
+                print(f'  {cao_number}: Non-salary part 1 extraction completed')
+            else:
+                print(f'  {cao_number}: ⚠️ Non-salary part 1 extraction failed, moving to next part')
+        else:
+            part1_extracted = None
+            part1_success = None
+            print(f'  {cao_number}: Non-salary part 1 extraction skipped (already exists)')
+
+        # Extract non-salary part 2 (only if missing)
+        if missing_parts['part2']:
+            # Check quota before starting
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
+                return False
+            part2_extracted = extract_nonsalary_part2_from_json(json_data, filename, client, context, cao_number)
+            # Check quota after extraction
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
+                return False
+            part2_success = part2_extracted is not None
+            if part2_success:
+                print(f'  {cao_number}: Non-salary part 2 extraction completed')
+            else:
+                print(f'  {cao_number}: ⚠️ Non-salary part 2 extraction failed, moving to next part')
+        else:
+            part2_extracted = None
+            part2_success = None
+            print(f'  {cao_number}: Non-salary part 2 extraction skipped (already exists)')
+
+        # Extract non-salary part 3 (only if missing)
+        if missing_parts['part3']:
+            # Check quota before starting
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
+                return False
+            part3_extracted = extract_nonsalary_part3_from_json(json_data, filename, client, context, cao_number)
+            # Check quota after extraction
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                print(f'  {cao_number}: 🛑 QUOTA EXHAUSTED for Process {process_id} - Stopping this process')
+                return False
+            part3_success = part3_extracted is not None
+            if part3_success:
+                print(f'  {cao_number}: Non-salary part 3 extraction completed')
+            else:
+                print(f'  {cao_number}: ⚠️ Non-salary part 3 extraction failed, moving to next part')
+        else:
+            part3_extracted = None
+            part3_success = None
+            print(f'  {cao_number}: Non-salary part 3 extraction skipped (already exists)')
         
+        # Save each part separately (only if extraction was attempted and successful)
+        if salary_success is True:
+            save_success = save_extraction_json(salary_extracted, filename, 'salary', cao_number)
+            if not save_success:
+                print(f'  {cao_number}: ⚠️ Salary file validation failed, not saved')
+        elif salary_success is False:
+            print(f'  {cao_number}: Skipping salary file save due to extraction failure')
+
+        if part1_success is True:
+            save_success = save_extraction_json(part1_extracted, filename, 'non_salary_part1', cao_number)
+            if not save_success:
+                print(f'  {cao_number}: ⚠️ Part 1 file validation failed, not saved')
+        elif part1_success is False:
+            print(f'  {cao_number}: Skipping part 1 file save due to extraction failure')
+
+        if part2_success is True:
+            save_success = save_extraction_json(part2_extracted, filename, 'non_salary_part2', cao_number)
+            if not save_success:
+                print(f'  {cao_number}: ⚠️ Part 2 file validation failed, not saved')
+        elif part2_success is False:
+            print(f'  {cao_number}: Skipping part 2 file save due to extraction failure')
+
+        if part3_success is True:
+            save_success = save_extraction_json(part3_extracted, filename, 'non_salary_part3', cao_number)
+            if not save_success:
+                print(f'  {cao_number}: ⚠️ Part 3 file validation failed, not saved')
+        elif part3_success is False:
+            print(f'  {cao_number}: Skipping part 3 file save due to extraction failure')
+        
+        # Log to analysis_performance.jsonl only when ALL 4 parts are complete
+        # (either newly extracted successfully OR already existed)
+        all_parts_complete = all([
+            salary_success is not False,  # True (succeeded) or None (skipped/already exists)
+            part1_success is not False,
+            part2_success is not False,
+            part3_success is not False
+        ])
+
+        # Only log if at least one part was newly extracted successfully
+        any_newly_extracted = any([
+            salary_success is True,
+            part1_success is True,
+            part2_success is True,
+            part3_success is True
+        ])
+
+        if all_parts_complete and any_newly_extracted and context and 'performance_monitor' in context:
+            # Log combined success
+            file_size_mb = len(str(json_data)) / (1024 * 1024)
+            context['performance_monitor'].log_analysis(
+                filename=filename,
+                file_size_mb=file_size_mb,
+                processing_time=0,  # Will be calculated from individual parts
+                usage_metadata=None,  # Will be aggregated from individual parts
+                success=True,
+                analysis_type="combined",
+                api_key_used=context.get('key_number', 1),
+                process_id=context.get('process_id', 0),
+                cao_number=cao_number,
+                model="gemini-2.5-flash",
+                allow_duplicates=False
+            )
+            print(f'  {cao_number}: Combined analysis logged successfully')
+        else:
+            failed_parts = []
+            if salary_success is False:
+                failed_parts.append("salary")
+            if part1_success is False:
+                failed_parts.append("part1")
+            if part2_success is False:
+                failed_parts.append("part2")
+            if part3_success is False:
+                failed_parts.append("part3")
+            if failed_parts:
+                print(f'  {cao_number}: Combined analysis not logged - failed parts: {failed_parts}')
+            else:
+                print(f'  {cao_number}: Combined analysis not logged - no new extractions performed')
+
+        # Return success if all parts that were attempted succeeded or already existed
         print(f'  {cao_number}: Successfully processed {filename}')
-        return True
+        return all_parts_complete
         
     except Exception as e:
         print(f'  {cao_number}: Error processing {filename}: {e}')
@@ -1710,18 +3493,27 @@ def process_single_file(json_file: Path, cao_folder: Path, client, cao_info_mapp
 
 def main():
     """Main entry point for the analysis pipeline."""
-    parser = argparse.ArgumentParser(description='CAO Data Analysis with Schema-Driven Extraction')
-    parser.add_argument('--key_number', type=int, default=7, help='API key number to use')
-    parser.add_argument('--process_id', type=int, default=0, help='Process ID for work distribution')
-    parser.add_argument('--total_processes', type=int, default=1, help='Total number of parallel processes')
-    parser.add_argument('--max_files', type=int, help='Maximum number of files to process')
-    
-    args = parser.parse_args()
+    global process_quota_flags
+    process_id = None  # Initialize for exception handling
+    current_file = None  # Track current file being processed
+    successful_analyses = 0
+    failed_files = []
+    total_files = 0
     
     try:
+        parser = argparse.ArgumentParser(description='CAO Data Analysis with Schema-Driven Extraction')
+        parser.add_argument('--key_number', type=int, default=7, help='API key number to use')
+        parser.add_argument('--process_id', type=int, default=0, help='Process ID for work distribution')
+        parser.add_argument('--total_processes', type=int, default=1, help='Total number of parallel processes')
+        parser.add_argument('--max_files', type=int, help='Maximum number of files to process')
+        
+        args = parser.parse_args()
+        process_id = args.process_id
         # Load configuration
         config = load_configuration()
-        validate_input_paths(config)
+        
+        # Validate paths (pass process_id to avoid race conditions in parallel execution)
+        validate_input_paths(config, args.process_id)
         
         # Setup processing context
         context = setup_processing_context(config, args.process_id, args.total_processes, args.key_number)
@@ -1740,16 +3532,17 @@ def main():
         if max_files:
             process_files = process_files[:max_files]
         
-        print(f'Process {args.process_id + 1}: Processing {len(process_files)} files')
+        total_files = len(process_files)
+        print(f'Process {args.process_id + 1}: Processing {total_files} files')
         
         # Process files
         successful_analyses = 0
         failed_files = []
         
         for cao_folder, json_file in process_files:
+            current_file = f"{cao_folder.name}/{json_file.name}"  # Track current file
             # Check for quota exhaustion flag before processing each file
-            global quota_exhausted_flag
-            if quota_exhausted_flag:
+            if args.process_id in process_quota_flags and process_quota_flags[args.process_id]:
                 print(f'🚨 QUOTA EXHAUSTED - Process {args.process_id + 1} (API key {args.key_number}) shutting down gracefully')
                 print(f'📊 Partial results: {successful_analyses} successful, {len(failed_files)} failed before shutdown')
                 print(f'🧹 Cleaning up and exiting...')
@@ -1766,114 +3559,172 @@ def main():
                 if success:
                     successful_analyses += 1
                 else:
-                    failed_files.append(json_file.name)
-                    
-                # Check quota flag again after processing (in case it was set during processing)
-                if quota_exhausted_flag:
-                    print(f'🚨 QUOTA EXHAUSTED during processing - Process {args.process_id + 1} shutting down gracefully')
-                    break
-                    
+                    # Check if this was due to quota exhaustion
+                    if args.process_id in process_quota_flags and process_quota_flags[args.process_id]:
+                        print(f'🚨 QUOTA EXHAUSTED during processing - Process {args.process_id + 1} shutting down gracefully')
+                        break
+                    else:
+                        failed_files.append(json_file.name)
             finally:
                 release_file_lock(json_file)
         
         # Final summary with quota exhaustion indication
-        if quota_exhausted_flag:
+        if args.process_id in process_quota_flags and process_quota_flags[args.process_id]:
             print(f'Process {args.process_id + 1} completed with QUOTA EXHAUSTION: {successful_analyses} successful, {len(failed_files)} failed')
         else:
             print(f'Process {args.process_id + 1} completed: {successful_analyses} successful, {len(failed_files)} failed')
         
+    except KeyboardInterrupt:
+        process_id_str = f"Process {process_id + 1}" if process_id is not None else "Process ?"
+        print(f'\n⚠️  {process_id_str} interrupted by user')
+        if current_file:
+            print(f'   📄 Was processing: {current_file}')
+        if total_files > 0:
+            print(f'   📊 Progress: {successful_analyses}/{total_files} successful, {len(failed_files)} failed')
+        sys.exit(0)
     except Exception as e:
-        print(f'Fatal error: {e}')
-        sys.exit(1)
-
-
-def cli_test_fixture():
-    """
-    CLI helper for testing with fixture files.
-    Usage: python -m p4_analysis --fixture tests/fixtures/example_salary.json
-    """
-    import argparse
-    
-    parser = argparse.ArgumentParser(description='Test p4_analysis with fixture files')
-    parser.add_argument('--fixture', type=str, help='Path to fixture JSON file')
-    parser.add_argument('--key_number', type=int, default=7, help='API key number to use')
-    parser.add_argument('--process_id', type=int, default=0, help='Process ID')
-    parser.add_argument('--total_processes', type=int, default=1, help='Total number of processes')
-    parser.add_argument('--max_files', type=int, help='Maximum number of files to process')
-    
-    args = parser.parse_args()
-    
-    if args.fixture:
-        # Test with fixture file
+        import traceback
+        process_id_str = f"Process {process_id + 1}" if process_id is not None else "Process ?"
+        error_str = str(e).lower()
+        
+        # Check if this is a quota exhaustion error - if so, exit gracefully
+        if process_id is not None and process_id in process_quota_flags and process_quota_flags[process_id]:
+            print(f'\n🚨 {process_id_str} completed with QUOTA EXHAUSTION due to error: {e}')
+            if current_file:
+                print(f'   📄 Was processing: {current_file}')
+            if total_files > 0:
+                print(f'   📊 Progress: {successful_analyses}/{total_files} successful, {len(failed_files)} failed')
+            sys.exit(0)
+        
+        # Check if it's a known retryable error that should NOT stop the process
+        # These errors are normally handled by retry logic, but if they escape, we should continue
+        is_retryable_error = (
+            ('429' in error_str and 'perday' not in error_str and 'daily' not in error_str and '3000000' not in error_str) or  # Per-minute quota (not daily)
+            ('503' in error_str or 'unavailable' in error_str or 'overloaded' in error_str) or  # Service unavailable
+            ('timeout' in error_str or 'deadline' in error_str) or  # Timeout
+            ('truncated' in error_str or 'incomplete json' in error_str or 'json validation failed' in error_str) or  # JSON issues
+            ('no content parts found' in error_str or 'no content' in error_str)  # Empty response
+        )
+        
+        # Check if it's a daily quota (should stop process)
+        is_daily_quota = (
+            ('429' in error_str or 'quota' in error_str) and 
+            ('perday' in error_str or 'daily' in error_str or '3000000' in error_str)
+        )
+        
+        # Check if it's a fatal error (configuration, file system, etc.)
+        is_fatal_error = (
+            'valueerror' in error_str and ('input folder' in error_str or 'output folder' in error_str or 'api key' in error_str) or
+            'filenotfounderror' in error_str or
+            'permissionerror' in error_str
+        )
+        
+        if is_retryable_error and not is_daily_quota:
+            # This is a retryable error that occurred during setup/configuration (not file processing)
+            # Since it's during setup, we can't continue - exit gracefully
+            print(f'\n⚠️  RETRYABLE ERROR during setup in {process_id_str}')
+            print(f'📋 Error Type: {type(e).__name__}')
+            print(f'📋 Error Message: {str(e)[:200]}...' if len(str(e)) > 200 else f'📋 Error Message: {e}')
+            
+            print(f'\n💡 This is a retryable error (API quota/timeout/service unavailable) that occurred during setup.')
+            print(f'   The process will exit, but you can restart it to continue processing.')
+            print(f'   Other parallel processes will continue running.')
+            
+            # Log the error as retryable
+            try:
+                error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+                Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                with open(error_log_path, 'a', encoding='utf-8') as f:
+                    f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {process_id_str} - RETRYABLE ERROR (during setup)\n")
+                    f.write(f"Error Type: {type(e).__name__}\n")
+                    f.write(f"Error Message: {e}\n")
+                    f.write(f"Note: This is a retryable error - process can be restarted\n\n")
+            except Exception:
+                pass
+            
+            # Exit gracefully with code 0 (not fatal)
+            sys.exit(0)
+        
+        # For daily quota or fatal errors, exit gracefully
+        print(f'\n{"="*80}')
+        print(f'❌ FATAL ERROR in {process_id_str}')
+        print(f'{"="*80}')
+        print(f'📋 Error Type: {type(e).__name__}')
+        print(f'📋 Error Message: {e}')
+        
+        if current_file:
+            print(f'\n📄 File being processed when error occurred: {current_file}')
+        
+        if total_files > 0:
+            print(f'\n📊 Progress Summary:')
+            print(f'   ✅ Successful: {successful_analyses}/{total_files} files')
+            print(f'   ❌ Failed: {len(failed_files)} files')
+            if failed_files:
+                print(f'   📝 Failed files: {failed_files[-5:]}')  # Show last 5 failed files
+            remaining = total_files - successful_analyses - len(failed_files)
+            if remaining > 0:
+                print(f'   ⏸️  Remaining: {remaining} files not processed')
+        
+        # Provide context about error type
+        if is_daily_quota:
+            print(f'\n💡 Error Type: Daily API Quota Limit Reached')
+            print(f'   This process has hit its daily quota limit and will stop.')
+            print(f'   Other parallel processes will continue running.')
+            print(f'   You can restart this process tomorrow when the quota resets.')
+        elif is_fatal_error:
+            print(f'\n💡 Error Type: Fatal Configuration/System Error')
+            print(f'   This is a system-level error that prevents processing.')
+            print(f'   Check configuration, file permissions, or API key setup.')
+        else:
+            print(f'\n💡 This appears to be an unexpected fatal error. Check the traceback below for details.')
+        
+        print(f'\n📋 Full Traceback:')
+        print(f'{"-"*80}')
+        traceback.print_exc()
+        print(f'{"-"*80}')
+        
+        # Try to log the error
         try:
-            with open(args.fixture, 'r', encoding='utf-8') as f:
-                json_text = f.read()
-            
-            print(f"Testing with fixture: {args.fixture}")
-            result = analyze_cao_json(json_text, args.fixture)
-            
-            # Save extracted JSON data for analysis
-            base_name = Path(args.fixture).stem
-            save_extraction_json(result['salary_extraction'], base_name, 'salary')
-            save_extraction_json(result['non_salary_extraction'], base_name, 'non_salary')
-            
-            print("\n=== EXTRACTION RESULTS ===")
-            salary_count = len(result['salary_extraction'])
-            # Count only non-empty values in non-salary extraction
-            nonsalary_count = 0
-            for key, value in result['non_salary_extraction'].items():
-                if isinstance(value, dict):
-                    for subkey, subvalue in value.items():
-                        if subvalue and subvalue != "":  # Only count non-empty values
-                            nonsalary_count += 1
-                elif value and value != "":  # Only count non-empty values
-                    nonsalary_count += 1
-            print(f"Salary rows: {salary_count}")
-            print(f"Non-salary fields with data: {nonsalary_count}")
-            
-            print("\n=== SALARY EXTRACTION ===")
-            if salary_count > 0:
-                for i, row in enumerate(result['salary_extraction']):
-                    print(f"Row {i+1}: {row.get('jobgroup', 'N/A')} - {row.get('salary_1', 'N/A')} {row.get('salary_1_unit', '')}")
-            else:
-                print("No salary data extracted")
-            
-            print("\n=== NON-SALARY EXTRACTION ===")
-            has_nonsalary_data = False
-            for key, value in result['non_salary_extraction'].items():
-                if isinstance(value, dict):
-                    has_data = False
-                    for subkey, subvalue in value.items():
-                        if subvalue:  # Only show non-empty values
-                            if not has_data:
-                                print(f"{key}:")
-                                has_data = True
-                                has_nonsalary_data = True
-                            print(f"  {subkey}: {subvalue}")
-                elif value:  # Only show non-empty values
-                    print(f"{key}: {value}")
-                    has_nonsalary_data = True
-            
-            if not has_nonsalary_data:
-                print("No non-salary data extracted")
-            
-            # Determine if extraction was successful
-            total_extracted = salary_count + nonsalary_count
-            if total_extracted > 0:
-                print(f"\n✓ Fixture test completed successfully! Extracted {total_extracted} data points.")
-            else:
-                print(f"\n⚠ Fixture test completed but no data was extracted. Check API quota and retry.")
-                return 1
-            
-        except Exception as e:
-            print(f"✗ Fixture test failed: {e}")
-            return 1
-    else:
-        # Run normal main function
-        main()
-    
-    return 0
+            error_log_path = 'outputs/logs/fatal_errors_llm_analysis.txt'
+            Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+            with open(error_log_path, 'a', encoding='utf-8') as f:
+                f.write(f"{'='*80}\n")
+                f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {process_id_str} - FATAL ERROR\n")
+                f.write(f"{'='*80}\n")
+                f.write(f"Error Type: {type(e).__name__}\n")
+                f.write(f"Error Message: {e}\n")
+                if current_file:
+                    f.write(f"File being processed: {current_file}\n")
+                if total_files > 0:
+                    f.write(f"Progress: {successful_analyses}/{total_files} successful, {len(failed_files)} failed\n")
+                f.write(f"\nTraceback:\n")
+                f.write(f"{traceback.format_exc()}\n\n")
+        except Exception:
+            pass  # Don't fail on logging failure
+        
+        # Exit with code 0 instead of 1 to prevent all processes from stopping
+        # The error is logged, so we can investigate without crashing the entire pipeline
+        print(f'\n⚠️  {process_id_str} exiting gracefully (error logged to outputs/logs/fatal_errors_llm_analysis.txt)')
+        print(f'💡 Other parallel processes will continue running independently.')
+        sys.exit(0)
 
 
 if __name__ == "__main__":
-    exit(cli_test_fixture())
+    # Setup signal handlers first to prevent unexpected exits
+    setup_signal_handlers()
+    
+    # Ensure stdout/stderr are line-buffered when piped (not a TTY)
+    # This helps prevent issues when writing to tee/unbuffer
+    if not sys.stdout.isatty():
+        # When piped (e.g., to tee), set line buffering for better behavior
+        try:
+            sys.stdout.reconfigure(line_buffering=True)
+        except (AttributeError, ValueError):
+            # Python < 3.7 or reconfigure not available - use flush() calls instead
+            pass
+        try:
+            sys.stderr.reconfigure(line_buffering=True)
+        except (AttributeError, ValueError):
+            pass
+    
+    main()

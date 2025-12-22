@@ -188,11 +188,27 @@ class PerformanceMonitor:
                 "largest_file_mb": 0,
                 "slowest_file_seconds": 0,
                 "daily_request_limit": self.free_tier_daily_limit,
+                "requests_remaining_today": self.free_tier_daily_limit,
                 "last_updated": datetime.now().isoformat()
             }
         
         successful = [d for d in data if d["success"]]
         failed = [d for d in data if not d["success"]]
+        
+        # Filter to only today's requests for daily quota calculation
+        today = datetime.now().date()
+        today_requests = []
+        for d in data:
+            if "timestamp" in d:
+                try:
+                    # Parse timestamp and check if it's from today
+                    timestamp = datetime.fromisoformat(d["timestamp"])
+                    if timestamp.date() == today:
+                        today_requests.append(d)
+                except (ValueError, TypeError):
+                    # Skip entries with invalid timestamps
+                    pass
+        requests_today = len(today_requests)
         
         summary = {
             "total_files_processed": len(data),
@@ -200,7 +216,8 @@ class PerformanceMonitor:
             "failed_extractions": len(failed),
             "total_processing_time_hours": sum(d["processing_time_seconds"] for d in data) / 3600,
             "total_tokens_used": sum(d["total_tokens"] for d in data),
-            "total_requests_used": len(data),  # Each file = 1 request
+            "total_requests_used": len(data),  # Each file = 1 request (all time)
+            "requests_used_today": requests_today,  # Only today's requests
             "avg_processing_time_seconds": sum(d["processing_time_seconds"] for d in data) / len(data),
             "avg_tokens_per_file": sum(d["total_tokens"] for d in data) / len(data),
             "largest_file_mb": max(d["file_size_mb"] for d in data),
@@ -208,7 +225,7 @@ class PerformanceMonitor:
             "most_tokens_used": max(d["total_tokens"] for d in data),
             "success_rate_percent": (len(successful) / len(data)) * 100 if data else 0,
             "daily_request_limit": self.free_tier_daily_limit,
-            "requests_remaining_today": max(0, self.free_tier_daily_limit - len(data)),
+            "requests_remaining_today": max(0, self.free_tier_daily_limit - requests_today),
             "last_updated": datetime.now().isoformat()
         }
         
@@ -247,8 +264,12 @@ class PerformanceMonitor:
         if summary['requests_remaining_today'] == 0:
             print(f"   ⚠️  WARNING: Daily request limit reached! Wait until tomorrow to continue.")
     
-    def analyze_performance(self) -> None:
-        """Analyze performance data for insights and optimization"""
+    def analyze_performance(self, total_input_files: Optional[int] = None) -> None:
+        """Analyze performance data for insights and optimization
+        
+        Args:
+            total_input_files: Optional total number of input files to compare against
+        """
         data = self.get_performance_data()
         
         if not data:
@@ -258,13 +279,41 @@ class PerformanceMonitor:
         successful = [d for d in data if d["success"]]
         failed = [d for d in data if not d["success"]]
         
+        # Count unique files by CAO + filename
+        unique_files = set()
+        for d in data:
+            cao_num = d.get("cao_number", "unknown")
+            filename = d.get("filename", "unknown")
+            unique_files.add(f"{cao_num}/{filename}")
+        unique_count = len(unique_files)
+        
         print(f"\n🔍 PERFORMANCE ANALYSIS:")
         
         # Request usage analysis
-        total_requests = len(data)
+        # Filter to only today's requests for daily quota calculation
+        today = datetime.now().date()
+        today_requests = []
+        for d in data:
+            if "timestamp" in d:
+                try:
+                    # Parse timestamp and check if it's from today
+                    timestamp = datetime.fromisoformat(d["timestamp"])
+                    if timestamp.date() == today:
+                        today_requests.append(d)
+                except (ValueError, TypeError):
+                    # Skip entries with invalid timestamps
+                    pass
+        requests_today = len(today_requests)
+        total_requests = len(data)  # All-time total
+        
         print(f"\n📊 REQUEST USAGE ANALYSIS:")
-        print(f"   Total requests: {total_requests}/{self.free_tier_daily_limit}")
-        print(f"   Requests remaining today: {max(0, self.free_tier_daily_limit - total_requests)}")
+        print(f"   Total requests (all time): {total_requests}")
+        print(f"   Requests today: {requests_today}/{self.free_tier_daily_limit}")
+        print(f"   Requests remaining today: {max(0, self.free_tier_daily_limit - requests_today)}")
+        print(f"   Unique files processed: {unique_count}" + (f"/{total_input_files}" if total_input_files else ""))
+        if total_input_files and total_input_files > unique_count:
+            unprocessed = total_input_files - unique_count
+            print(f"   ⚠️  Unprocessed files: {unprocessed} (files not yet processed)")
         print(f"   Success rate: {len(successful)}/{total_requests} ({(len(successful)/total_requests)*100:.1f}%)" if total_requests > 0 else "   No requests made")
         
         # Token usage by file size
@@ -364,14 +413,15 @@ class PerformanceMonitor:
                     processing_time: float,
                     usage_metadata: Optional[types.UsageMetadata],
                     success: bool,
-                    analysis_type: str = "combined",  # "salary", "non_salary", or "combined"
+                    analysis_type: str = "combined",  # "salary", "non_salary_part1", "non_salary_part2", "non_salary_part3", or "combined"
                     error_message: Optional[str] = None,
                     api_key_used: int = 1,
                     process_id: int = 0,
                     cao_number: str = "",
                     allow_duplicates: bool = True,  # Analysis can have multiple entries per file
                     model: str = "gemini-2.5-flash",
-                    parameters: Optional[Dict[str, Any]] = None) -> None:
+                    parameters: Optional[Dict[str, Any]] = None,
+                    log_file_suffix: Optional[str] = None) -> None:
         """
         Log detailed performance data for a single analysis (p4 pipeline)
         
@@ -423,24 +473,173 @@ class PerformanceMonitor:
             "parameters": parameters or {}
         }
         
-        # Check for duplicates if needed
-        if not allow_duplicates:
-            existing_data = self.get_performance_data()
-            for entry in existing_data:
-                if (entry.get('filename') == filename and 
-                    entry.get('cao_number') == cao_number and
-                    entry.get('analysis_type') == analysis_type):
-                    return  # Skip duplicate
+        # Determine log file based on analysis type or suffix
+        if log_file_suffix:
+            log_file = f"performance_logs/llm_analysis/analysis_performance_{log_file_suffix}.jsonl"
+        elif analysis_type == "salary":
+            log_file = "performance_logs/llm_analysis/analysis_performance_salary.jsonl"
+        elif analysis_type == "non_salary_part1":
+            log_file = "performance_logs/llm_analysis/analysis_performance_non_salary1.jsonl"
+        elif analysis_type == "non_salary_part2":
+            log_file = "performance_logs/llm_analysis/analysis_performance_non_salary2.jsonl"
+        elif analysis_type == "non_salary_part3":
+            log_file = "performance_logs/llm_analysis/analysis_performance_non_salary3.jsonl"
+        elif analysis_type == "combined":
+            log_file = "performance_logs/llm_analysis/analysis_performance.jsonl"
+        else:
+            log_file = self.log_file  # Default fallback
         
-        # Write to log file with file locking
-        with open(self.log_file, 'a', encoding='utf-8') as f:
+        # Check for duplicates if needed and remove existing entry
+        if not allow_duplicates:
+            try:
+                # Use file locking for read-modify-write to prevent race conditions
+                # Read all existing entries, filter out duplicates, then write back with new entry
+                existing_data = []
+                if Path(log_file).exists():
+                    with open(log_file, "r", encoding="utf-8") as f:
+                        try:
+                            fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+                            lines = f.readlines()
+                            
+                            for line in lines:
+                                line = line.strip()
+                                if line:
+                                    try:
+                                        existing_data.append(json.loads(line))
+                                    except json.JSONDecodeError:
+                                        # Skip corrupted lines
+                                        continue
+                            fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+                        except Exception as e:
+                            try:
+                                fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+                            except:
+                                pass
+                            raise
+                
+                # Filter out existing entry for this file/cao/analysis_type
+                filtered_data = []
+                for entry in existing_data:
+                    if not (entry.get('filename') == filename and 
+                            entry.get('cao_number') == cao_number and
+                            entry.get('analysis_type') == analysis_type):
+                        filtered_data.append(entry)
+                
+                # Write back all entries (filtered + new) atomically
+                Path(log_file).parent.mkdir(parents=True, exist_ok=True)
+                with open(log_file, "w", encoding="utf-8") as f:
+                    try:
+                        fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+                        # Write all existing entries (without duplicates)
+                        for entry in filtered_data:
+                            f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+                        # Write the new entry
+                        f.write(json.dumps(log_entry, ensure_ascii=False) + "\n")
+                        f.flush()
+                        fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+                        return  # Entry written, exit early
+                    except Exception as e:
+                        try:
+                            fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+                        except:
+                            pass
+                        raise
+            except FileNotFoundError:
+                pass  # File doesn't exist yet, no duplicates to check
+            except Exception as e:
+                # If deduplication fails, log warning but continue with append
+                print(f"Warning: Deduplication failed for {filename}: {e}")
+        
+        # Ensure log directory exists
+        Path(log_file).parent.mkdir(parents=True, exist_ok=True)
+        
+        # Write new entry to log file with file locking (fallback if deduplication didn't write)
+        with open(log_file, 'a', encoding='utf-8') as f:
             try:
                 fcntl.flock(f.fileno(), fcntl.LOCK_EX)
-                f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
+                json_line = json.dumps(log_entry, ensure_ascii=False) + '\n'
+                f.write(json_line)
+                f.flush()  # Ensure data is written to disk before releasing lock
                 fcntl.flock(f.fileno(), fcntl.LOCK_UN)
             except Exception as e:
+                # If lock fails, still try to write but log the warning
                 print(f"Warning: Could not acquire file lock for logging: {e}")
-                f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
+                try:
+                    fcntl.flock(f.fileno(), fcntl.LOCK_UN)  # Try to unlock if locked
+                except:
+                    pass
+                json_line = json.dumps(log_entry, ensure_ascii=False) + '\n'
+                f.write(json_line)
+                f.flush()
+
+    def log_combined_analysis(self,
+                             filename: str,
+                             file_size_mb: float,
+                             total_processing_time: float,
+                             total_input_tokens: int,
+                             total_output_tokens: int,
+                             all_successful: bool,
+                             api_key_used: int = 1,
+                             process_id: int = 0,
+                             cao_number: str = "",
+                             model: str = "gemini-2.5-flash") -> None:
+        """
+        Log combined analysis results when all 4 parts (salary + 3 non-salary parts) succeed
+        
+        Args:
+            filename: Name of the processed file
+            file_size_mb: File size in megabytes
+            total_processing_time: Sum of all processing times
+            total_input_tokens: Sum of all input tokens
+            total_output_tokens: Sum of all output tokens
+            all_successful: Whether all 4 parts succeeded
+            api_key_used: API key number used
+            process_id: Process ID for multi-processing
+            cao_number: CAO number for the file
+            model: Model name used
+        """
+        
+        # Create log entry for combined analysis
+        log_entry = {
+            "timestamp": datetime.now().isoformat(),
+            "filename": filename,
+            "cao_number": cao_number,
+            "analysis_type": "combined",
+            "file_size_mb": round(file_size_mb, 2),
+            "processing_time_seconds": round(total_processing_time, 2),
+            "input_tokens": total_input_tokens,
+            "output_tokens": total_output_tokens, 
+            "total_tokens": total_input_tokens + total_output_tokens,
+            "success": all_successful,
+            "error_message": None if all_successful else "One or more parts failed",
+            "api_key_used": api_key_used,
+            "process_id": process_id,
+            "free_tier_request": True,  # Assuming free tier for now
+            "model": model,
+            "parameters": {"combined": True}
+        }
+        
+        # Write to combined log file
+        log_file = "performance_logs/llm_analysis/analysis_performance.jsonl"
+        Path(log_file).parent.mkdir(parents=True, exist_ok=True)
+        
+        with open(log_file, 'a', encoding='utf-8') as f:
+            try:
+                fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+                json_line = json.dumps(log_entry, ensure_ascii=False) + '\n'
+                f.write(json_line)
+                f.flush()  # Ensure data is written to disk before releasing lock
+                fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+            except Exception as e:
+                # If lock fails, still try to write but log the warning
+                print(f"Warning: Could not acquire file lock for combined logging: {e}")
+                try:
+                    fcntl.flock(f.fileno(), fcntl.LOCK_UN)  # Try to unlock if locked
+                except:
+                    pass
+                json_line = json.dumps(log_entry, ensure_ascii=False) + '\n'
+                f.write(json_line)
+                f.flush()
 
 # Convenience functions for easy integration
 def create_monitor() -> PerformanceMonitor:

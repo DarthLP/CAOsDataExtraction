@@ -1,0 +1,1164 @@
+🎯 CAO Markdown Extraction Pipeline
+📊 Process: 3/6
+🔑 API Key: 3
+📁 Input: outputs/parsed_pdfs/parsed_pdfs_markdown
+📁 Output: outputs/llm_extracted/new_flow
+📄 Files to process: 458
+
+  10: Skipping CAO BOUW EN INFRA 2021-2022 INTERACTIEF.md (already processed)
+  10: Skipping Cao Bouw en Infra 2023.md (already processed)
+  10: Skipping TTW_CAO_1_5_2013.md (already processed)
+  10: Skipping TTW_cao_Bouw_en_Infra_10_2017.md (already processed)
+  10: Skipping cao Bouw en Infra 2021-2022_2.md (already processed)
+--- CAO 20 ---
+  20: Skipping CAO_KNV_1_januari_2014__1_januari_2017.md (already processed)
+  21: Skipping CAO tekst 2021-2022 basis_1.md (already processed)
+  21: Skipping CAO_tekst_2017_2020.md (already processed)
+  26: Skipping CAO_2017_2019_tekst_voor_boekje.md (already processed)
+  26: Skipping CAO_Vleessector_2024-2025 met wijzigingen geacepteerd voor ministerie.md (already processed)
+  26: Skipping cao 2021 compleetnav opmerkingen SZW.md (already processed)
+  35: Skipping CAO_Aanmelding.md (already processed)
+  35: Skipping Cao Textielverzorging integrale tekst 1-4.md (already processed)
+  35: Skipping Raltex_2018_2020_doorlopende_tekst.md (already processed)
+  41: Skipping CAO-tekst 2019.docx .md (already processed)
+  41: Skipping CAO-tekst 2021_2022_geschoond.md (already processed)
+  41: Skipping CAO-tekst 2024-2025 versie 2.0.md (already processed)
+  41: Skipping hibin_CAO_tekst_2017_2018.md (already processed)
+  43: Skipping 43 Cao voor architectenbureaus_schoon_1 mrt tm 31 dec 2023.md (already processed)
+  43: Skipping Cao Architectenbureaus 2021 2023 incl functiehandboek schoon.md (already processed)
+  43: Skipping cao_2015_2017_opmaak_A4.md (already processed)
+  50: Skipping Apotheken 2019-2021 na ttw.md (already processed)
+  50: Skipping CAO Apotheken 2021-2024 volledig met bijlagen 02-06-2022 def.md (already processed)
+  51: Skipping CAO_Timmer_aanp_avv_14_4_2014.md (already processed)
+  51: Skipping Cao_Timmer_apr__2017__apr__2018.md (already processed)
+  51: Skipping Int_2__caoTimmer_TTW_1_1_15_tm_31_3_17.md (already processed)
+  51: Skipping cao_nr__51_aug__18.md (already processed)
+  65: Skipping Remplacanten Nederlandse Orkesten cao 2025 2026.md (already processed)
+--- CAO 66 ---
+  66: Skipping HISWA CAO 2017 - 2020 definitief.docx.md (already processed)
+  80: Skipping CAO Waterbouw 2021-2022 Integraal 03.12.2021.md (already processed)
+  80: Skipping CAO_VVW12.md (already processed)
+  83: Skipping CAO_2017_2019.md (already processed)
+  83: Skipping Cao Betonproductenindustrie 2023 versie 13-3-2023.md (already processed)
+  83: Skipping cao voor de betonproductenindustrie.md (already processed)
+  118: Skipping CAO_2014_def.md (already processed)
+  118: Skipping CAO_BIKUDAK_2015_2017_def_5.md (already processed)
+  118: Skipping CAO_BIKUDAK_2019-2020_integraal.docx.md (already processed)
+  118: Skipping CAO_BIKUDAK_2022-2023_integraal.md (already processed)
+  118: Skipping CAO_BIKUDAK_2024_20240530_integraal schoon -2 def.md (already processed)
+  118: Skipping nieuw_CAO2013_def.md (already processed)
+--- CAO 125 ---
+  125: Skipping CAO_groenten_fruit_industrie_2014_2016_def_versie.md (already processed)
+  125: Skipping caotekst_wlv.md (already processed)
+  148: Skipping Cao Graanbe- en verwerkende bedrijven 2020 - 2022.md (already processed)
+  148: Skipping cao_arbeidsvoorwaarden_2018_2020_getekend_1.md (already processed)
+--- CAO 152 ---
+  152: Skipping Baksteen 1 mei 2023 tot 1 mei 2024 definitief_.md (already processed)
+  152: Skipping Definitieve_cao_Baksteen_Vereniging_KNB_2014_2015.md (already processed)
+  156: Skipping CAO_ziekenhuizen_2017_2019_FINALDEF.md (already processed)
+  156: Skipping Ziekenhuizen_2011_2014_zonder_renvooi.md (already processed)
+  157: Skipping Zuivel I 2018-2020.pdf .md (already processed)
+  157: Skipping Zuivel_2016_2018_cao_I.md (already processed)
+  163: Skipping CAO OV 01012018 30062020 definitief 160519.pdf .md (already processed)
+  163: Skipping CAO_OV_tekst_2013_DEFINITIEF_v2.md (already processed)
+  171: Skipping Cao 1 april 2024 - 28 februari 2025 definitief.md (already processed)
+  171: Skipping cao_orsima_2011_2012__definitief.md (already processed)
+  171: Skipping cao_orsima_2018_2020_definitief.md (already processed)
+  182: Skipping 20220520 cao_horeca_2022-2023 na 2020_wijziging mei-avv.md (already processed)
+  182: Skipping Horeca_CAO_.md (already processed)
+  187: Skipping Bos_en_Natuur_raam_cao_2012.md (already processed)
+  187: Skipping cao Bos en Natuur met looptijd 1 juli 2021 tot en met 30 juni 2023.md (already processed)
+  190: Skipping Drankenindustrie cao 2023 ttw.md (already processed)
+  190: Skipping Drankindustrie_cao_2016_2017_Def.md (already processed)
+  199: Skipping 221220 cao vlakglas 2020 2021 Definitief met opmaak.doc.md (already processed)
+  199: Skipping GBO___cao_2014.md (already processed)
+  199: Skipping cao vlakglas 2021 - 2022 definitief.md (already processed)
+  214: Skipping 241129 Cao OB 2024 2026 tussentijdse wijzigingen.md (already processed)
+  214: Skipping Cao OB 2024 2026_incl gewijz Ontheffingsregeling.md (already processed)
+  214: Skipping Cao_OB_2015_2019_invulling_loonruimte_2019.md (already processed)
+  218: Skipping CAO_20_11_2016_tm_31_12_2018_correctie.md (already processed)
+  218: Skipping Tekst_CAO_BB_1_april_2013_tm_31_decb_2014.md (already processed)
+  219: Skipping CAO_Gezondheidscentra_en_AHG__2013_2014.md (already processed)
+  227: Skipping CAO_Weefselkweek_2011_2013_schoon.md (already processed)
+  233: Skipping 2020feb3_PvL_CAOtekst_1apr2019-31mrt2020.md (already processed)
+  233: Skipping 2024_17dec_schone_tekstcaotbvavv_MvD4.md (already processed)
+  233: Skipping CAOtekst_1apr2019-31dec2019_PvL_6mei2019.pdf .md (already processed)
+  234: Skipping Bijlage 11 _ cao jz 21-23_B11_ Functieboek aanmeld.md (already processed)
+  234: Skipping CAO_Jeugdzorg_28_04_11verlengd_schoon.md (already processed)
+  234: Skipping cao_JZ_2015__2017_tm_B11.md (already processed)
+  234: Skipping cao_tekst_JZ_2017_2019_versie_TTW_18_5_2018.md (already processed)
+  243: Skipping Cao Hoveniers 1 juli 2021 - 30 juni 2023 integraal.md (already processed)
+  243: Skipping Cao_Hoveniers_integrale_tekst.md (already processed)
+  243: Skipping Integ_Cao_hov_incl_ttw_2018_2020.md (already processed)
+  243: Skipping TTW_Cao_hov_2_8_16.md (already processed)
+  245: Skipping CAO_Tuinzaden_2016_2017.md (already processed)
+  245: Skipping Tuinzaadbedrijven 1 januari 2023 - 31 december 2023 definitief.md (already processed)
+  249: Skipping CAO_DJ_2013___v1_21__opgemaakt.md (already processed)
+  253: Skipping Cao HVI 2022-2024 TTW doorlopende tekst.md (already processed)
+  253: Skipping HVI doorlopende tekst cao hvi 2020-2022.md (already processed)
+  254: Skipping CAO_2015_2017_TTW_integrale_tekst.md (already processed)
+  254: Skipping cao 2020-2021 integraal.docx.md (already processed)
+  254: Skipping cao 2024-2025, 18 april 2024 integraal.md (already processed)
+  279: Skipping CAOavSFG.md (already processed)
+  279: Skipping SFG CAO tekst 2020-2021 met wijzigingen.md (already processed)
+  279: Skipping SFG__CAO_tekst_2018_2020_2.md (already processed)
+  301: Skipping CAOSOCIAALWERK1719_completetekst_def_030419schoon.docx .md (already processed)
+  301: Skipping CAOWMD20142016_ttw220615_definitiefgewijzigd.md (already processed)
+  301: Skipping Cao Sociaal Werk 2021 2023_280422definitief.md (already processed)
+  301: Skipping Cao Sociaal Werk 2023-2025(metcorrectie150224).md (already processed)
+  306: Skipping 20072021 CAO-boekje 2021-2022.md (already processed)
+  306: Skipping CAO-tekst 2021-2022 OKT schoon.md (already processed)
+  306: Skipping CAOtekst_AVV__integraal_.md (already processed)
+  310: Skipping Margarine en Spijsvet cao 2020-2022 - def.md (already processed)
+  313: Skipping CAO_PU_2013_v1_2__geschoond_.md (already processed)
+  316: Skipping CAO LMB 2019 - 2020 V 210220 def .docx.md (already processed)
+  316: Skipping CAO LMB incl fuwa 2023 - schoon v 20231808 ongetekend.md (already processed)
+  316: Skipping levensmiddelensbedrijf_definitief.md (already processed)
+  317: Skipping CAO_Gehandicaptenzorg_2011_2014.md (already processed)
+  317: Skipping Tekst CAO GHZ 2021-2024_DEFGEW.md (already processed)
+  331: Skipping GIL_2010_2012_cao_tekst_en_handboek.md (already processed)
+  359: Skipping Herschreven cao Zoetwaren_finale versie (2 december 2024)_incl. IKB en akkoord cao-partijen (25 april 2025).md (already processed)
+  359: Skipping Zoetwaren_arbvoorw_CAO_2011_2012_.md (already processed)
+  397: Skipping CAO_VAK_2011_2012_1_33__def_.md (already processed)
+  405: Skipping CAO Kappers 1 juli 2023 30 juni 2024 geheel def.md (already processed)
+  405: Skipping CAO_Kappers_1_juli_2017_30_juni_2019__3105_.md (already processed)
+  408: Skipping Cao Schippersinternaten 2022-2023_Def_221117.md (already processed)
+  427: Skipping CAO_Tandtechniek_2011_2012.md (already processed)
+  427: Skipping cao TANDTECHNIEK 2022-2023 def.md (already processed)
+  429: Skipping CAO_KE_DEFINITIEF_TER_ONDERTEKENING_7_mei_2013.md (already processed)
+  429: Skipping Cao Kunsteducatie 1 januari 2023 - 31 december 2023.md (already processed)
+  429: Skipping Cao_KE_30_6_2016.md (already processed)
+  429: Skipping cao KE 1 januari 2019 tot en met 30 juni 2019 inclusief ttw per 27 juni 2019.doc .md (already processed)
+  429: Skipping cao_Kunsteducatie_2e_TTW.md (already processed)
+  433: Skipping CAO 2019-2021 definitief.docx.md (already processed)
+  433: Skipping CAO 2022-2024 defintief.md (already processed)
+  433: Skipping CAO 2024-2026 definitief met alle bijlagen cao.md (already processed)
+  433: Skipping CAO_2017_2018_definitief.md (already processed)
+  433: Skipping schoonmaak_en_glazenwassersbedrijf.md (already processed)
+  465: Skipping CAO Banden- en Wielenbranche 2023 na ttw 17-7-2023.md (already processed)
+  465: Skipping cao_2016_2017_geschoond_26_07_16.md (already processed)
+  475: Skipping CAO DEFINITIEF WOS.pdf .md (already processed)
+  475: Skipping Sport 2021 definitief.md (already processed)
+--- CAO 487 ---
+  487: Skipping Basis 20-22 aanmelding 18-1-22.md (already processed)
+  487: Skipping Basis_CAO_Metalektro_met_statutenfondsen.md (already processed)
+  487: Skipping Cao Basis def. versie 29-11-22 met statuten ROM en SSF.md (already processed)
+--- CAO 488 ---
+  488: Skipping CAO_HP.md (already processed)
+  488: Skipping Cao HP def. versie 29-11-22 met statuten ROM en SSF.md (already processed)
+  488: Skipping HP-cao Metalektro hertaald voor aanmelding 4-11-19.docx.md (already processed)
+  496: Skipping Cao Particuliere Beveiliging versie 7 juni 2023 ZONDER zichtbare wijzigingen.md (already processed)
+  496: Skipping cao 1 juli 2018 - 30 juni 2023 definitief april 2020.docx.md (already processed)
+  496: Skipping cao_1_juli_2012___30_september_2013_definitief.md (already processed)
+  496: Skipping cao_2014_2015_definitief_part_beveilig.md (already processed)
+  506: Skipping Cao 2024 Kalkzandsteen- en Cellenbetonindustrie na ttw 30-5-2024.md (already processed)
+  506: Skipping VNK cao 2021-2020 na ttw.md (already processed)
+  506: Skipping v1_VNK_CAO_09_11_definitief.md (already processed)
+  518: Skipping CAO_2017_2018_tekst_def_geschoond_per_april_2018.md (already processed)
+  526: Skipping CAO Interieurbouw en Meubelindustrie 2024 clean def.md (already processed)
+  526: Skipping CAO meubelindustrie 2022-2023 TTW nieuwe cao tekst.md (already processed)
+  526: Skipping CAO_tekst_2012_2014_1.md (already processed)
+  533: Skipping 211229 CAO VGL 2020 tot en met 2023 met aangepaste loonschalen - 23-12-2021 V.md (already processed)
+  533: Skipping VGL_cao_2011_2013_doorlopende_tekst_200212.md (already processed)
+--- CAO 549 ---
+  549: Skipping CAO AGF Detailhandel 2020-2021 volledig.docx.md (already processed)
+  549: Skipping CAO_Aardapp__en_loont_.md (already processed)
+--- CAO 557 ---
+  557: Skipping Slijterijen 2010-2011 integrale tekst definitief.md (already processed)
+  563: Skipping Zuivel I 2018-2020.docx .md (already processed)
+  563: Skipping Zuivel_CAO_HP_2012_2014_na_ttw_art_18.md (already processed)
+--- CAO 569 ---
+  569: Skipping KRI 2024-2025_def.md (already processed)
+  569: Skipping KRLI cao 2023-2024.md (already processed)
+  569: Skipping cao_KRI_2014_2016___definitief.md (already processed)
+  573: Skipping CAO_pluimvee_per_1_mei_2012.md (already processed)
+  573: Skipping Cao pluimvee - cao 2020-2021 na ttw2 art 77 .md (already processed)
+  573: Skipping pluimvee - 2019 na ttw ivm wijziging art 55.pdf .md (already processed)
+--- CAO 592 ---
+  592: Skipping CAO_Gespec_Detailh_Bloemen_en_Planten_2018___2019.md (already processed)
+  592: Skipping cao_Bloemenspeciaalzaken_16_8_2018.md (already processed)
+--- CAO 615 ---
+  615: Skipping CAO Zorgverzekeraars 2019-2020.md (already processed)
+  615: Skipping Cao voor de Zorgverzekeraars 2021-2022.md (already processed)
+--- CAO 621 ---
+  621: Skipping VON CAO 2024 2025 clean_1.md (already processed)
+  621: Skipping VON_cao_2015_2016_def_1.md (already processed)
+--- CAO 625 ---
+  625: Skipping CAOHBO_2023_2024.md (already processed)
+  625: Skipping cao_hbo_2014_2016_1.md (already processed)
+  630: Skipping contractspelers_2010_2014.md (already processed)
+--- CAO 632 ---
+  632: Skipping NVB CAO-boekje 2023_digitaal-NL.md (already processed)
+--- CAO 633 ---
+  633: Skipping ABU CAO voor Uitzendkrachten 2021 - 2023 versie januari 2023 met integraal.md (already processed)
+  633: Skipping ABU CAO voor Uitzendkrachten 2023 integraal_1.md (already processed)
+  633: Skipping ABU-LBV CAO voor Uitzendkrachten 2021 integraal 7-22.md (already processed)
+  633: Skipping CAO_voor_Uitzendkrachten_1_4__2012_integraal.md (already processed)
+  633: Skipping CAO_voor_Uitzendkrachten_maart_2013_integraal.md (already processed)
+  633: Skipping Cao voor Uitzendkrachten 2026-2028.md (already processed)
+  633: Skipping Cao_integraal_5_11_2017_1.md (already processed)
+--- CAO 634 ---
+  634: Skipping Bedrijfsverzorgingsdiensten 2024-2025.md (already processed)
+--- CAO 636 ---
+  636: Skipping Buitendienst_2015___2016_webversie.md (already processed)
+  636: Skipping Cao_Buitendienst_2015___2016_addendum.md (already processed)
+--- CAO 637 ---
+  637: Skipping CAO Binnendienst 2018-2019.pdf .md (already processed)
+  637: Skipping Cao voor het Verzekeringsbedrijf 2024.md (already processed)
+  637: Skipping Cao_Verzekeringsbedrijf_Binnendienst_2018_2019.md (already processed)
+--- CAO 645 ---
+  645: Skipping CAO voor het Zeevisbedrijf 2024 - 2025 (signed RvZ - NBH - CNV).md (already processed)
+--- CAO 650 ---
+  650: Skipping CAO Groothandel in Groenten en Fruit 1 jan. 2023 tm 30 juni 2024 versie 9-3-2023.md (already processed)
+  650: Skipping CAO_2010-2011_Groothandel_Groenten_Fruit_.md (already processed)
+  650: Skipping GGF_ttw_cao_2017_2018.md (already processed)
+  650: Skipping Groothandel_groenten_en_fruit_cao_2017_2018_na_ttw.md (already processed)
+--- CAO 679 ---
+  679: Skipping CAO Zorgvervoer en Taxi 2023 06012023.md (already processed)
+  679: Skipping CAO_Taxivervoer_2017_2018.md (already processed)
+  679: Skipping TTW CAO Taxivervoer 2019 2020 v050320 DEF NET.docx.md (already processed)
+  679: Skipping Taxivervoer_2009_2013_integrale_cao.md (already processed)
+  683: Skipping CAO ETD d.d. 17 mei 2023 (naar SZW, Aanmelding TTW).md (already processed)
+  683: Skipping CAO-2021-2022 ETD tekst TTW d.d. 20 juni 2023.md (already processed)
+  696: Skipping AZN CAO 2020 def.md (already processed)
+--- CAO 709 ---
+  709: Skipping CAO_Vleeswaren_ongerenvooieerd_2014.md (already processed)
+  709: Skipping CAO_Vleeswarenindustrie_2024 met wijzigingen geacepteerd met fonds cao 2024.md (already processed)
+  709: Skipping cao vleeswaren 2019-2021 met tussentijdse wijziging definitief.docx.md (already processed)
+  721: Skipping 12_01_25_CAO_tekst_definitief.md (already processed)
+  721: Skipping Cao-HZ 2019-2020 na ttw.docx.md (already processed)
+  721: Skipping Huisartsenzorg__cao_tekst__cao_721.md (already processed)
+--- CAO 725 ---
+  725: Skipping 2103-1098 cao GGI met 2e TTW.md (already processed)
+  725: Skipping Eindtekst cao Groen, Grond en Infrastructuur 1 januari 2025 - 30 september 2026 incl. 1e ttw per 1 januari 2025.md (already processed)
+  725: Skipping cao_LEO_1mei_2016_tot_en_met_30_juni_2017.md (already processed)
+  725: Skipping integrale cao LEO 1 juli 2020 tot en met 31 december 2020 def.docx.md (already processed)
+--- CAO 727 ---
+  727: Skipping 151020_Cao_Fashion__Sport___Lifestyle_hvb.md (already processed)
+  727: Skipping 170630_Cao_F_S__L_2016_2018_definitief_hvb.md (already processed)
+  727: Skipping 190730 cao Retail Non-Food per 1 juli 2019 definitief.docx.md (already processed)
+  727: Skipping 210811 Cao Retail Non-Food 1-7-21 def.md (already processed)
+  727: Skipping 230630 cao Retail Non-Food def.md (already processed)
+  727: Skipping Cao_Fashion_en_Sport_Inretail.md (already processed)
+  730: Skipping CAO TG 2023-2025_Tussentijdse AVV-aanpassing_Versie 2025-02-14.md (already processed)
+  730: Skipping CAO Technische Groothandel 2022-2023_Versie 2023-03-27.docx.md (already processed)
+  730: Skipping CAOTechnischeGroothandel20162018.md (already processed)
+--- CAO 748 ---
+  748: Skipping CAOVOO~1.md (already processed)
+  748: Skipping Cao_Slagersbedrijf_1_10_17_tm_31_12_18_na_ttw_1.md (already processed)
+  748: Skipping Cao_voor_het_Slagersbedrijf_1_4_14_tm_31_3_15_1.md (already processed)
+--- CAO 750 ---
+  750: Skipping cao 1 april 2022 - 31 maart 2024, definitief 18072023.md (already processed)
+  750: Skipping cao arbeidsvoorwaarden 1 april 2019 tot 1 april 2020, definitief.docx.md (already processed)
+  750: Skipping cao_2015_2016_wijziging_SKA_en_SUCON_I.md (already processed)
+  750: Skipping cao_definitief_2.md (already processed)
+  759: Skipping CAO SAG 2016 2021 ttw 3 april 2020.md (already processed)
+  759: Skipping CAO SAVG 2021 2025 TTW februari 2023.md (already processed)
+  759: Skipping CAO_SAG_2016_2019__ttw_29_september_2016_.md (already processed)
+  759: Skipping cao_2011_2013_ttw4_tijdelijke_maatr_aanmelding.md (already processed)
+  776: Skipping Papierindustrie cao 2021 - 2023.md (already processed)
+  776: Skipping Papierindustrie_cao_2016_2018.md (already processed)
+  791: Skipping Cao Textielgroothandel 2024-2026 versie 21-1-2025.md (already processed)
+  791: Skipping Textielgroothandel_cao_2017_2018.md (already processed)
+  819: Skipping 2020-2022 CAO-boekje_online.md (already processed)
+  819: Skipping CAO_2010___2012.md (already processed)
+--- CAO 822 ---
+  822: Skipping CAO CARR 2019 2021 SZW TTW V2 Wagweu.docx.md (already processed)
+  822: Skipping CAO_CAR_2017_2019_TTW_LL_nov_2018.md (already processed)
+  822: Skipping HB 5e editie 2024_1.md (already processed)
+  823: Skipping 2025-07-01 CAO MVT 2025 - 2027 - incl HFI DEF.md (already processed)
+  823: Skipping CAO_MvT_2014_2018_29_november_2016.md (already processed)
+  823: Skipping Cao MVT - incl HFI 8 juni 2022.md (already processed)
+  824: Skipping CAO MB 2021 2024_1.md (already processed)
+  824: Skipping CAO_MB_2017_2019_TTW_juli_2017.md (already processed)
+  824: Skipping MT_Metaalbew__CAO___handb_.md (already processed)
+--- CAO 826 ---
+  826: Skipping CAO ISO 2021 2024_1.md (already processed)
+  826: Skipping CAO_ISO_2017_2019__TTW_LL_nov_2018.md (already processed)
+  826: Skipping Isolatie_cao_en_handboek.md (already processed)
+--- CAO 827 ---
+  827: Skipping CAO_GZ.md (already processed)
+  827: Skipping CAO_GZ_TTW_JULI.md (already processed)
+  827: Skipping cao_M_T_goud_en_zilvernijverheid_827.md (already processed)
+--- CAO 830 ---
+  830: Skipping cao_Groenvoederdrogerijen_per_1_juli_2018.md (already processed)
+--- CAO 833 ---
+  833: Skipping CAO_Woondiensten_2014_2016_word.md (already processed)
+  833: cao tekst woondiensten.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for cao tekst woondiensten.md
+  INFO: Markdown file size: 0.14 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/oz0kx7rp7pxb
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.14MB
+  DEBUG: Constructed 2 content parts for API call
+  INFO: Successfully extracted structured data from markdown (time: 153.6s)
+  INFO: Response size: 41,971 chars (~10,492 tokens)
+  INFO: Cleaned up uploaded file: files/oz0kx7rp7pxb
+  ✅ JSON saved with proper formatting
+  833: LLM extraction completed in 154.66 seconds [API 3/6]
+  848: Kartoflex_cao_2016_2017_def.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for Kartoflex_cao_2016_2017_def.md
+  INFO: Markdown file size: 0.13 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/svooi1gvfpdr
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.13MB
+  DEBUG: Constructed 2 content parts for API call
+  INFO: Successfully extracted structured data from markdown (time: 81.0s)
+  INFO: Response size: 51,936 chars (~12,984 tokens)
+  INFO: Cleaned up uploaded file: files/svooi1gvfpdr
+  ✅ JSON saved with proper formatting
+  848: LLM extraction completed in 82.35 seconds [API 3/6]
+  848: NvW CAO 2025-2026 Kartoflex voor SZW schoon.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for NvW CAO 2025-2026 Kartoflex voor SZW schoon.md
+  INFO: Markdown file size: 0.13 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/fxoysh2aqoks
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.13MB
+  DEBUG: Constructed 2 content parts for API call
+  INFO: Successfully extracted structured data from markdown (time: 97.8s)
+  INFO: Response size: 38,321 chars (~9,580 tokens)
+  INFO: Cleaned up uploaded file: files/fxoysh2aqoks
+  ✅ JSON saved with proper formatting
+  848: LLM extraction completed in 99.02 seconds [API 3/6]
+--- CAO 880 ---
+  880: CAO SZS 2017 2020 Integrale tekst .docx.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for CAO SZS 2017 2020 Integrale tekst .docx.md
+  INFO: Markdown file size: 0.15 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/11vzutmaxwt3
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.15MB
+  DEBUG: Constructed 2 content parts for API call
+  INFO: Successfully extracted structured data from markdown (time: 129.3s)
+  INFO: Response size: 43,642 chars (~10,910 tokens)
+  INFO: Cleaned up uploaded file: files/11vzutmaxwt3
+  ✅ JSON saved with proper formatting
+  880: LLM extraction completed in 130.50 seconds [API 3/6]
+  880: integraledigitalecaoSZS.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for integraledigitalecaoSZS.md
+  INFO: Markdown file size: 0.15 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/77q6mrqqe8j0
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.15MB
+  DEBUG: Constructed 2 content parts for API call
+  INFO: Successfully extracted structured data from markdown (time: 124.7s)
+  INFO: Response size: 43,930 chars (~10,982 tokens)
+  INFO: Cleaned up uploaded file: files/77q6mrqqe8j0
+  ✅ JSON saved with proper formatting
+  880: LLM extraction completed in 125.99 seconds [API 3/6]
+--- CAO 884 ---
+  884: CAO_Kantoor_en_Boek_17_18_nw_def.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for CAO_Kantoor_en_Boek_17_18_nw_def.md
+  INFO: Markdown file size: 0.06 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/indkt3yhmxaf
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.06MB
+  DEBUG: Constructed 2 content parts for API call
+  🚨 UNEXPECTED API ERROR during markdown extraction (attempt 1): ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  📋 This error occurred during the API call itself and will be handled by retry logic
+  INFO: Cleaned up uploaded file: files/indkt3yhmxaf
+  DEBUG: Markdown upload error type: ServerError, Error message: 503 unavailable. {'error': {'code': 503, 'message': 'the model is overloaded. please try again later.', 'status': 'unavailable'}}
+  DEBUG: Full error details: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  🔍 DETAILED FAILURE ANALYSIS for CAO_Kantoor_en_Boek_17_18_nw_def.md (attempt 1):
+    📊 Finish reason: UNKNOWN
+    🛡️  Safety ratings: []
+    📄 Content length: 0 chars
+    ⏱️  Processing time: 83.6989917755127s
+    🔑 API key used: 3
+    🆔 Process ID: 2
+  DEBUG: Traceback: Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 2024, in extract_with_markdown_upload
+    response = context.client.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 6426, in generate_content
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 5164, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1266, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1086, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 378, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 420, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 187, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1063, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/errors.py", line 107, in raise_for_response
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+  Attempt 1 failed (service unavailable/internal error), retrying in 1 minutes...
+  INFO: Waiting 15 minutes before retry...
+[HEARTBEAT] long-running stage=generating_content elapsed=628s — enabling live debug
+[HEARTBEAT] stage=generating_content elapsed=718s (file 720s)
+[HEARTBEAT] stage=generating_content elapsed=808s (file 810s)
+[HEARTBEAT] stage=generating_content elapsed=898s (file 900s)
+  INFO: Wait complete, continuing with retry...
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/3fis2xh6bt66
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.06MB
+  DEBUG: Constructed 2 content parts for API call
+[HEARTBEAT] stage=generating_content elapsed=4s (file 990s)
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Raw JSON sample (first 500 chars) contains 0 null values
+  DEBUG: Converted structured output to JSON: 30326 chars
+  INFO: Successfully extracted structured data from markdown (time: 1068.3s)
+  INFO: Response size: 30,326 chars (~7,581 tokens)
+  INFO: Cleaned up uploaded file: files/3fis2xh6bt66
+  ✅ JSON saved with proper formatting
+  884: LLM extraction completed in 1069.26 seconds [API 3/6]
+[HEARTBEAT] stage=validating_saving elapsed=12s (file 1080s)
+[HEARTBEAT] stage=validating_saving elapsed=102s (file 1170s)
+  884: Tekst CAO Boek en Kantoor 21 23 def.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for Tekst CAO Boek en Kantoor 21 23 def.md
+  INFO: Markdown file size: 0.06 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/p8dqj30uafyc
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.06MB
+  DEBUG: Constructed 2 content parts for API call
+  🚨 UNEXPECTED API ERROR during markdown extraction (attempt 1): ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  📋 This error occurred during the API call itself and will be handled by retry logic
+  INFO: Cleaned up uploaded file: files/p8dqj30uafyc
+  DEBUG: Markdown upload error type: ServerError, Error message: 503 unavailable. {'error': {'code': 503, 'message': 'the model is overloaded. please try again later.', 'status': 'unavailable'}}
+  DEBUG: Full error details: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  🔍 DETAILED FAILURE ANALYSIS for Tekst CAO Boek en Kantoor 21 23 def.md (attempt 1):
+    📊 Finish reason: UNKNOWN
+    🛡️  Safety ratings: []
+    📄 Content length: 0 chars
+    ⏱️  Processing time: 7.512650966644287s
+    🔑 API key used: 3
+    🆔 Process ID: 2
+  DEBUG: Traceback: Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 2024, in extract_with_markdown_upload
+    response = context.client.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 6426, in generate_content
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 5164, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1266, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1086, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 378, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 420, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 187, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1063, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/errors.py", line 107, in raise_for_response
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+  Attempt 1 failed (service unavailable/internal error), retrying in 1 minutes...
+  INFO: Waiting 15 minutes before retry...
+[HEARTBEAT] long-running stage=generating_content elapsed=627s — enabling live debug
+[HEARTBEAT] stage=generating_content elapsed=717s (file 720s)
+[HEARTBEAT] stage=generating_content elapsed=807s (file 810s)
+[HEARTBEAT] stage=generating_content elapsed=897s (file 900s)
+  INFO: Wait complete, continuing with retry...
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/k0qf3f3ah3em
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.06MB
+  DEBUG: Constructed 2 content parts for API call
+  🚨 UNEXPECTED API ERROR during markdown extraction (attempt 1): ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  📋 This error occurred during the API call itself and will be handled by retry logic
+  INFO: Cleaned up uploaded file: files/k0qf3f3ah3em
+  DEBUG: Markdown upload error type: ServerError, Error message: 503 unavailable. {'error': {'code': 503, 'message': 'the model is overloaded. please try again later.', 'status': 'unavailable'}}
+  DEBUG: Full error details: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  🔍 DETAILED FAILURE ANALYSIS for Tekst CAO Boek en Kantoor 21 23 def.md (attempt 1):
+    📊 Finish reason: UNKNOWN
+    🛡️  Safety ratings: []
+    📄 Content length: 0 chars
+    ⏱️  Processing time: 913.67120885849s
+    🔑 API key used: 3
+    🆔 Process ID: 2
+  DEBUG: Traceback: Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 2024, in extract_with_markdown_upload
+    response = context.client.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 6426, in generate_content
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 5164, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1266, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1086, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 378, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 420, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 187, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1063, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/errors.py", line 107, in raise_for_response
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+  Attempt 1 failed (service unavailable/internal error), retrying in 1 minutes...
+  INFO: Waiting 15 minutes before retry...
+[HEARTBEAT] stage=generating_content elapsed=80s (file 990s)
+[HEARTBEAT] stage=generating_content elapsed=170s (file 1080s)
+[HEARTBEAT] stage=generating_content elapsed=260s (file 1170s)
+[HEARTBEAT] stage=generating_content elapsed=350s (file 1260s)
+[HEARTBEAT] stage=generating_content elapsed=440s (file 1350s)
+[HEARTBEAT] stage=generating_content elapsed=530s (file 1440s)
+[HEARTBEAT] stage=generating_content elapsed=620s (file 1530s)
+[HEARTBEAT] stage=generating_content elapsed=710s (file 1620s)
+[HEARTBEAT] stage=generating_content elapsed=800s (file 1710s)
+[HEARTBEAT] stage=generating_content elapsed=890s (file 1800s)
+  INFO: Wait complete, continuing with retry...
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/sc5i893ygz0t
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.06MB
+  DEBUG: Constructed 2 content parts for API call
+[HEARTBEAT] stage=generating_content elapsed=74s (file 1890s)
+  🚨 UNEXPECTED API ERROR during markdown extraction (attempt 1): ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  📋 This error occurred during the API call itself and will be handled by retry logic
+  INFO: Cleaned up uploaded file: files/sc5i893ygz0t
+  DEBUG: Markdown upload error type: ServerError, Error message: 503 unavailable. {'error': {'code': 503, 'message': 'the model is overloaded. please try again later.', 'status': 'unavailable'}}
+  DEBUG: Full error details: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  🔍 DETAILED FAILURE ANALYSIS for Tekst CAO Boek en Kantoor 21 23 def.md (attempt 1):
+    📊 Finish reason: UNKNOWN
+    🛡️  Safety ratings: []
+    📄 Content length: 0 chars
+    ⏱️  Processing time: 1941.2633357048035s
+    🔑 API key used: 3
+    🆔 Process ID: 2
+  DEBUG: Traceback: Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 2024, in extract_with_markdown_upload
+    response = context.client.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 6426, in generate_content
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 5164, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1266, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1086, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 378, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 420, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 187, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1063, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/errors.py", line 107, in raise_for_response
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+  Attempt 1 failed (service unavailable/internal error), retrying in 1 minutes...
+  INFO: Waiting 15 minutes before retry...
+[HEARTBEAT] stage=generating_content elapsed=164s (file 1980s)
+[HEARTBEAT] stage=generating_content elapsed=254s (file 2070s)
+[HEARTBEAT] stage=generating_content elapsed=344s (file 2160s)
+[HEARTBEAT] stage=generating_content elapsed=434s (file 2250s)
+[HEARTBEAT] stage=generating_content elapsed=524s (file 2340s)
+[HEARTBEAT] stage=generating_content elapsed=614s (file 2430s)
+[HEARTBEAT] stage=generating_content elapsed=704s (file 2520s)
+[HEARTBEAT] stage=generating_content elapsed=794s (file 2610s)
+[HEARTBEAT] stage=generating_content elapsed=884s (file 2700s)
+[HEARTBEAT] stage=generating_content elapsed=974s (file 2790s)
+  INFO: Wait complete, continuing with retry...
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/d2d4mbculcdj
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.06MB
+  DEBUG: Constructed 2 content parts for API call
+[HEARTBEAT] stage=generating_content elapsed=36s (file 2880s)
+  🚨 UNEXPECTED API ERROR during markdown extraction (attempt 1): ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  📋 This error occurred during the API call itself and will be handled by retry logic
+  INFO: Cleaned up uploaded file: files/d2d4mbculcdj
+  DEBUG: Markdown upload error type: ServerError, Error message: 503 unavailable. {'error': {'code': 503, 'message': 'the model is overloaded. please try again later.', 'status': 'unavailable'}}
+  DEBUG: Full error details: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  🔍 DETAILED FAILURE ANALYSIS for Tekst CAO Boek en Kantoor 21 23 def.md (attempt 1):
+    📊 Finish reason: UNKNOWN
+    🛡️  Safety ratings: []
+    📄 Content length: 0 chars
+    ⏱️  Processing time: 2882.7694640159607s
+    🔑 API key used: 3
+    🆔 Process ID: 2
+  DEBUG: Traceback: Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 2024, in extract_with_markdown_upload
+    response = context.client.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 6426, in generate_content
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 5164, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1266, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1086, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 378, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 420, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 187, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1063, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/errors.py", line 107, in raise_for_response
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+  Attempt 1 failed (service unavailable/internal error), retrying in 1 minutes...
+  INFO: Waiting 15 minutes before retry...
+[HEARTBEAT] stage=generating_content elapsed=126s (file 2970s)
+[HEARTBEAT] stage=generating_content elapsed=216s (file 3060s)
+[HEARTBEAT] stage=generating_content elapsed=306s (file 3150s)
+[HEARTBEAT] stage=generating_content elapsed=396s (file 3240s)
+[HEARTBEAT] stage=generating_content elapsed=486s (file 3330s)
+[HEARTBEAT] stage=generating_content elapsed=576s (file 3420s)
+[HEARTBEAT] stage=generating_content elapsed=666s (file 3510s)
+[HEARTBEAT] stage=generating_content elapsed=756s (file 3600s)
+[HEARTBEAT] stage=generating_content elapsed=846s (file 3690s)
+[HEARTBEAT] stage=generating_content elapsed=936s (file 3780s)
+  INFO: Wait complete, continuing with retry...
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/2yihgm3bzt4a
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.06MB
+  DEBUG: Constructed 2 content parts for API call
+  🚨 UNEXPECTED API ERROR during markdown extraction (attempt 1): ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  📋 This error occurred during the API call itself and will be handled by retry logic
+  INFO: Cleaned up uploaded file: files/2yihgm3bzt4a
+  DEBUG: Markdown upload error type: ServerError, Error message: 503 unavailable. {'error': {'code': 503, 'message': 'the model is overloaded. please try again later.', 'status': 'unavailable'}}
+  DEBUG: Full error details: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  🔍 DETAILED FAILURE ANALYSIS for Tekst CAO Boek en Kantoor 21 23 def.md (attempt 1):
+    📊 Finish reason: UNKNOWN
+    🛡️  Safety ratings: []
+    📄 Content length: 0 chars
+    ⏱️  Processing time: 3799.0079097747803s
+    🔑 API key used: 3
+    🆔 Process ID: 2
+  DEBUG: Traceback: Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 2024, in extract_with_markdown_upload
+    response = context.client.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 6426, in generate_content
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 5164, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1266, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1086, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 378, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 420, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 187, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1063, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/errors.py", line 107, in raise_for_response
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+  Attempt 1 failed (service unavailable/internal error), retrying in 1 minutes...
+  INFO: Waiting 15 minutes before retry...
+[HEARTBEAT] stage=generating_content elapsed=85s (file 3870s)
+[HEARTBEAT] stage=generating_content elapsed=175s (file 3960s)
+[HEARTBEAT] stage=generating_content elapsed=265s (file 4050s)
+[HEARTBEAT] stage=generating_content elapsed=355s (file 4140s)
+[HEARTBEAT] stage=generating_content elapsed=445s (file 4230s)
+[HEARTBEAT] stage=generating_content elapsed=535s (file 4320s)
+[HEARTBEAT] stage=generating_content elapsed=625s (file 4410s)
+[HEARTBEAT] stage=generating_content elapsed=715s (file 4500s)
+[HEARTBEAT] stage=generating_content elapsed=805s (file 4590s)
+[HEARTBEAT] stage=generating_content elapsed=895s (file 4680s)
+  INFO: Wait complete, continuing with retry...
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/1wofgn4f99ig
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.06MB
+  DEBUG: Constructed 2 content parts for API call
+  🚨 UNEXPECTED API ERROR during markdown extraction (attempt 1): ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  📋 This error occurred during the API call itself and will be handled by retry logic
+  INFO: Cleaned up uploaded file: files/1wofgn4f99ig
+  DEBUG: Markdown upload error type: ServerError, Error message: 503 unavailable. {'error': {'code': 503, 'message': 'the model is overloaded. please try again later.', 'status': 'unavailable'}}
+  DEBUG: Full error details: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  🔍 DETAILED FAILURE ANALYSIS for Tekst CAO Boek en Kantoor 21 23 def.md (attempt 1):
+    📊 Finish reason: UNKNOWN
+    🛡️  Safety ratings: []
+    📄 Content length: 0 chars
+    ⏱️  Processing time: 4704.044818878174s
+    🔑 API key used: 3
+    🆔 Process ID: 2
+  DEBUG: Traceback: Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 2024, in extract_with_markdown_upload
+    response = context.client.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 6426, in generate_content
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 5164, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1266, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1086, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 378, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 420, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 187, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1063, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/errors.py", line 107, in raise_for_response
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+  Attempt 1 failed (service unavailable/internal error), retrying in 1 minutes...
+  INFO: Waiting 15 minutes before retry...
+[HEARTBEAT] stage=generating_content elapsed=69s (file 4770s)
+[HEARTBEAT] stage=generating_content elapsed=159s (file 4860s)
+[HEARTBEAT] stage=generating_content elapsed=249s (file 4950s)
+[HEARTBEAT] stage=generating_content elapsed=339s (file 5040s)
+[HEARTBEAT] stage=generating_content elapsed=429s (file 5131s)
+[HEARTBEAT] stage=generating_content elapsed=519s (file 5221s)
+[HEARTBEAT] stage=generating_content elapsed=609s (file 5311s)
+[HEARTBEAT] stage=generating_content elapsed=699s (file 5401s)
+[HEARTBEAT] stage=generating_content elapsed=789s (file 5491s)
+[HEARTBEAT] stage=generating_content elapsed=879s (file 5581s)
+  INFO: Wait complete, continuing with retry...
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/7rwx6dqekz4n
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.06MB
+  DEBUG: Constructed 2 content parts for API call
+  🚨 UNEXPECTED API ERROR during markdown extraction (attempt 1): ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  📋 This error occurred during the API call itself and will be handled by retry logic
+  INFO: Cleaned up uploaded file: files/7rwx6dqekz4n
+  DEBUG: Markdown upload error type: ServerError, Error message: 503 unavailable. {'error': {'code': 503, 'message': 'the model is overloaded. please try again later.', 'status': 'unavailable'}}
+  DEBUG: Full error details: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  🔍 DETAILED FAILURE ANALYSIS for Tekst CAO Boek en Kantoor 21 23 def.md (attempt 1):
+    📊 Finish reason: UNKNOWN
+    🛡️  Safety ratings: []
+    📄 Content length: 0 chars
+    ⏱️  Processing time: 5610.487374782562s
+    🔑 API key used: 3
+    🆔 Process ID: 2
+  DEBUG: Traceback: Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 2024, in extract_with_markdown_upload
+    response = context.client.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 6426, in generate_content
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 5164, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1266, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1086, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 378, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 420, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 187, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1063, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/errors.py", line 107, in raise_for_response
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+  Attempt 1 failed (service unavailable/internal error), retrying in 1 minutes...
+  INFO: Waiting 15 minutes before retry...
+[HEARTBEAT] stage=generating_content elapsed=65s (file 5671s)
+[HEARTBEAT] stage=generating_content elapsed=155s (file 5761s)
+[HEARTBEAT] stage=generating_content elapsed=245s (file 5851s)
+[HEARTBEAT] stage=generating_content elapsed=335s (file 5941s)
+[HEARTBEAT] stage=generating_content elapsed=425s (file 6031s)
+[HEARTBEAT] stage=generating_content elapsed=515s (file 6121s)
+[HEARTBEAT] stage=generating_content elapsed=605s (file 6211s)
+[HEARTBEAT] stage=generating_content elapsed=695s (file 6301s)
+[HEARTBEAT] stage=generating_content elapsed=785s (file 6391s)
+[HEARTBEAT] stage=generating_content elapsed=875s (file 6481s)
+  INFO: Wait complete, continuing with retry...
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/oddd5yetzbys
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.06MB
+  DEBUG: Constructed 2 content parts for API call
+  🚨 UNEXPECTED API ERROR during markdown extraction (attempt 1): ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  📋 This error occurred during the API call itself and will be handled by retry logic
+  INFO: Cleaned up uploaded file: files/oddd5yetzbys
+  DEBUG: Markdown upload error type: ServerError, Error message: 503 unavailable. {'error': {'code': 503, 'message': 'the model is overloaded. please try again later.', 'status': 'unavailable'}}
+  DEBUG: Full error details: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  🔍 DETAILED FAILURE ANALYSIS for Tekst CAO Boek en Kantoor 21 23 def.md (attempt 1):
+    📊 Finish reason: UNKNOWN
+    🛡️  Safety ratings: []
+    📄 Content length: 0 chars
+    ⏱️  Processing time: 6529.010371685028s
+    🔑 API key used: 3
+    🆔 Process ID: 2
+  DEBUG: Traceback: Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 2024, in extract_with_markdown_upload
+    response = context.client.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 6426, in generate_content
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 5164, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1266, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1086, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 378, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 420, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 187, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1063, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/errors.py", line 107, in raise_for_response
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+  Attempt 1 failed (service unavailable/internal error), retrying in 1 minutes...
+  INFO: Waiting 15 minutes before retry...
+[HEARTBEAT] stage=generating_content elapsed=58s (file 6571s)
+[HEARTBEAT] stage=generating_content elapsed=148s (file 6661s)
+[HEARTBEAT] stage=generating_content elapsed=238s (file 6751s)
+[HEARTBEAT] stage=generating_content elapsed=328s (file 6841s)
+[HEARTBEAT] stage=generating_content elapsed=418s (file 6931s)
+[HEARTBEAT] stage=generating_content elapsed=508s (file 7021s)
+[HEARTBEAT] stage=generating_content elapsed=598s (file 7111s)
+[HEARTBEAT] stage=generating_content elapsed=688s (file 7201s)
+[HEARTBEAT] stage=generating_content elapsed=778s (file 7291s)
+[HEARTBEAT] stage=generating_content elapsed=868s (file 7381s)
+  INFO: Wait complete, continuing with retry...
+  884: ✗ LLM extraction failed for Tekst CAO Boek en Kantoor 21 23 def.md [API 3/6]
+--- CAO 892 ---
+[HEARTBEAT] long-running stage=generating_content elapsed=916s — enabling live debug
+  892: Varkensverbetering_2011_def_CAO.md (Markdown: 0.1MB) [API 3/6]
+  INFO: Using Files API approach for Varkensverbetering_2011_def_CAO.md
+  INFO: Markdown file size: 0.07 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/1ymv097f7w5h
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.07MB
+  DEBUG: Constructed 2 content parts for API call
+  🚨 UNEXPECTED API ERROR during markdown extraction (attempt 1): ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  📋 This error occurred during the API call itself and will be handled by retry logic
+  INFO: Cleaned up uploaded file: files/1ymv097f7w5h
+  DEBUG: Markdown upload error type: ServerError, Error message: 503 unavailable. {'error': {'code': 503, 'message': 'the model is overloaded. please try again later.', 'status': 'unavailable'}}
+  DEBUG: Full error details: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  🔍 DETAILED FAILURE ANALYSIS for Varkensverbetering_2011_def_CAO.md (attempt 1):
+    📊 Finish reason: UNKNOWN
+    🛡️  Safety ratings: []
+    📄 Content length: 0 chars
+    ⏱️  Processing time: 14.199390172958374s
+    🔑 API key used: 3
+    🆔 Process ID: 2
+  DEBUG: Traceback: Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 2024, in extract_with_markdown_upload
+    response = context.client.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 6426, in generate_content
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 5164, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1266, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1086, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 378, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 420, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 187, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1063, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/errors.py", line 107, in raise_for_response
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+  Attempt 1 failed (service unavailable/internal error), retrying in 1 minutes...
+  INFO: Waiting 15 minutes before retry...
+[HEARTBEAT] stage=generating_content elapsed=88s (file 90s)
+[HEARTBEAT] stage=generating_content elapsed=178s (file 180s)
+[HEARTBEAT] stage=generating_content elapsed=268s (file 270s)
+[HEARTBEAT] stage=generating_content elapsed=358s (file 360s)
+[HEARTBEAT] stage=generating_content elapsed=448s (file 450s)
+[HEARTBEAT] stage=generating_content elapsed=538s (file 540s)
+[HEARTBEAT] stage=generating_content elapsed=628s (file 630s)
+[HEARTBEAT] stage=generating_content elapsed=718s (file 720s)
+[HEARTBEAT] stage=generating_content elapsed=808s (file 810s)
+[HEARTBEAT] stage=generating_content elapsed=898s (file 900s)
+  INFO: Wait complete, continuing with retry...
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/aptxtfdjvbhx
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.07MB
+  DEBUG: Constructed 2 content parts for API call
+  🚨 UNEXPECTED API ERROR during markdown extraction (attempt 1): ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  📋 This error occurred during the API call itself and will be handled by retry logic
+  INFO: Cleaned up uploaded file: files/aptxtfdjvbhx
+  DEBUG: Markdown upload error type: ServerError, Error message: 503 unavailable. {'error': {'code': 503, 'message': 'the model is overloaded. please try again later.', 'status': 'unavailable'}}
+  DEBUG: Full error details: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+  🔍 DETAILED FAILURE ANALYSIS for Varkensverbetering_2011_def_CAO.md (attempt 1):
+    📊 Finish reason: UNKNOWN
+    🛡️  Safety ratings: []
+    📄 Content length: 0 chars
+    ⏱️  Processing time: 973.4827361106873s
+    🔑 API key used: 3
+    🆔 Process ID: 2
+  DEBUG: Traceback: Traceback (most recent call last):
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 2024, in extract_with_markdown_upload
+    response = context.client.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 6426, in generate_content
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 5164, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1266, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1086, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 378, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 420, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 187, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1063, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/errors.py", line 107, in raise_for_response
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+  Attempt 1 failed (service unavailable/internal error), retrying in 1 minutes...
+  INFO: Waiting 15 minutes before retry...
+[HEARTBEAT] stage=generating_content elapsed=74s (file 990s)
+[HEARTBEAT] stage=generating_content elapsed=164s (file 1080s)
+[HEARTBEAT] stage=generating_content elapsed=254s (file 1170s)
+[HEARTBEAT] stage=generating_content elapsed=344s (file 1260s)
+[HEARTBEAT] stage=generating_content elapsed=434s (file 1350s)
+
+⚠️  Received SIGTERM, exiting gracefully...

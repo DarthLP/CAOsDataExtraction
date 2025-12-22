@@ -40,14 +40,21 @@ def analyze_json_file(file_path: Path) -> dict:
             'has_termination_info': False,
             'has_overtime_info': False,
             'has_training_info': False,
-            'has_homeoffice_info': False
+            'has_homeoffice_info': False,
+            'has_contract_type_info': False,
+            'has_childcare_info': False,
+            'has_safety_info': False,
+            'has_AI_info': False,
+            'has_fringe_benefits_info': False
         }
         
         # Analyze each section
         expected_sections = [
             'general_information', 'wage_information', 'pension_information',
             'leave_information', 'termination_information', 'overtime_information',
-            'training_information', 'homeoffice_information'
+            'training_information', 'homeoffice_information', 'contract_type_information',
+            'childcare_information', 'safety_information', 'AI_information',
+            'fringe_benefits_information'
         ]
         
         for section in expected_sections:
@@ -83,6 +90,16 @@ def analyze_json_file(file_path: Path) -> dict:
                     analysis['has_training_info'] = True
                 elif section == 'homeoffice_information' and content_length > 0:
                     analysis['has_homeoffice_info'] = True
+                elif section == 'contract_type_information' and content_length > 0:
+                    analysis['has_contract_type_info'] = True
+                elif section == 'childcare_information' and content_length > 0:
+                    analysis['has_childcare_info'] = True
+                elif section == 'safety_information' and content_length > 0:
+                    analysis['has_safety_info'] = True
+                elif section == 'AI_information' and content_length > 0:
+                    analysis['has_AI_info'] = True
+                elif section == 'fringe_benefits_information' and content_length > 0:
+                    analysis['has_fringe_benefits_info'] = True
                 
                 if analysis['sections'][section]['is_empty']:
                     analysis['empty_sections'].append(section)
@@ -148,7 +165,7 @@ def analyze_extraction_quality(output_dir: str = "outputs/llm_extracted/new_flow
         else:
             empty_count = len(analysis['empty_sections'])
             print(f"{i+1:2d}. {analysis['file']}")
-            print(f"     Content: {analysis['total_content_length']} chars, Empty sections: {empty_count}/8")
+            print(f"     Content: {analysis['total_content_length']} chars, Empty sections: {empty_count}/13")
             print(f"     Missing: {', '.join(analysis['empty_sections'][:3])}{'...' if len(analysis['empty_sections']) > 3 else ''}")
     print()
     
@@ -159,7 +176,7 @@ def analyze_extraction_quality(output_dir: str = "outputs/llm_extracted/new_flow
         if 'error' not in analysis:
             empty_count = len(analysis['empty_sections'])
             print(f"{i+1:2d}. {analysis['file']}")
-            print(f"     Content: {analysis['total_content_length']} chars, Empty sections: {empty_count}/8")
+            print(f"     Content: {analysis['total_content_length']} chars, Empty sections: {empty_count}/13")
             if analysis['has_wage_info']:
                 print(f"     ✅ Has wage info")
             if analysis['has_pension_info']:
@@ -184,7 +201,9 @@ def analyze_extraction_quality(output_dir: str = "outputs/llm_extracted/new_flow
     
     for section in ['general_information', 'wage_information', 'pension_information', 
                    'leave_information', 'termination_information', 'overtime_information',
-                   'training_information', 'homeoffice_information']:
+                   'training_information', 'homeoffice_information', 'contract_type_information',
+                   'childcare_information', 'safety_information', 'AI_information',
+                   'fringe_benefits_information']:
         stats = section_stats[section]
         total = stats['present'] + stats['empty'] + stats['missing']
         if total > 0:
@@ -203,9 +222,21 @@ def analyze_extraction_quality(output_dir: str = "outputs/llm_extracted/new_flow
     
     # Count files that need re-extraction
     files_needing_reextraction = []
+    
+    # Define core (non-optional) and optional fields
+    core_fields = ['general_information', 'wage_information', 'pension_information', 
+                   'leave_information', 'termination_information']
+    optional_fields = ['overtime_information', 'training_information', 'homeoffice_information',
+                      'contract_type_information', 'childcare_information', 'safety_information',
+                      'AI_information', 'fringe_benefits_information']
+    
     for analysis in all_analyses:
         if 'error' not in analysis:
             reextraction_reason = None
+            
+            # Check if any core field is empty
+            empty_core_fields = [field for field in core_fields 
+                               if analysis['sections'][field]['is_empty']]
             
             # Check if wage information is empty
             if not analysis['has_wage_info']:
@@ -215,16 +246,16 @@ def analyze_extraction_quality(output_dir: str = "outputs/llm_extracted/new_flow
             elif analysis['sections']['general_information']['is_empty']:
                 reextraction_reason = "No general information"
             
-            # Check if more than 2 sections are empty (including homeoffice)
-            else:
-                if len(analysis['empty_sections']) > 2:
-                    reextraction_reason = f"Too many empty sections: {len(analysis['empty_sections'])} empty (including homeoffice)"
+            # Check if more than 2 core sections are empty
+            elif len(empty_core_fields) > 2:
+                reextraction_reason = f"Too many empty core sections: {len(empty_core_fields)}/5 core sections empty"
             
             if reextraction_reason:
                 files_needing_reextraction.append({
                     'file': analysis['file'],
                     'reason': reextraction_reason,
                     'empty_sections': analysis['empty_sections'],
+                    'empty_core_sections': empty_core_fields,
                     'content_length': analysis['total_content_length']
                 })
     
@@ -237,7 +268,7 @@ def analyze_extraction_quality(output_dir: str = "outputs/llm_extracted/new_flow
             print(f"   {i:2d}. {file_info['file']}")
             print(f"       Reason: {file_info['reason']}")
             print(f"       Content: {file_info['content_length']} chars")
-            print(f"       Empty sections: {len(file_info['empty_sections'])}/8")
+            print(f"       Empty sections: {len(file_info['empty_sections'])}/13")
             if len(file_info['empty_sections']) > 0:
                 empty_list = ', '.join(file_info['empty_sections'][:3])
                 if len(file_info['empty_sections']) > 3:
@@ -274,7 +305,7 @@ def analyze_extraction_quality(output_dir: str = "outputs/llm_extracted/new_flow
                     print(f"\n📄 File: {file_info['file']}")
                     print(f"   Reason: {file_info['reason']}")
                     print(f"   Content: {file_info['content_length']} chars")
-                    print(f"   Empty sections: {len(file_info['empty_sections'])}/8")
+                    print(f"   Empty sections: {len(file_info['empty_sections'])}/13")
                     
                     individual_response = input(f"   ❓ Delete this file? (y/N): ")
                     
@@ -311,11 +342,11 @@ def analyze_extraction_quality(output_dir: str = "outputs/llm_extracted/new_flow
     # Count files by empty section criteria
     files_no_wage = sum(1 for a in all_analyses if 'error' not in a and not a['has_wage_info'])
     files_no_general = sum(1 for a in all_analyses if 'error' not in a and a['sections']['general_information']['is_empty'])
-    files_many_empty = sum(1 for a in all_analyses if 'error' not in a and len(a['empty_sections']) > 2)
+    files_many_empty = sum(1 for a in all_analyses if 'error' not in a and len([field for field in core_fields if a['sections'][field]['is_empty']]) > 2)
     
     print(f"   Files with no wage info: {files_no_wage}")
     print(f"   Files with no general info: {files_no_general}")
-    print(f"   Files with >2 empty sections (including homeoffice): {files_many_empty}")
+    print(f"   Files with >2 empty core sections: {files_many_empty}")
     
     # Save detailed report
     report_file = "performance_logs/llm_extraction/extraction_quality_report.json"

@@ -1,108 +1,233 @@
-🎯 CAO Markdown Extraction Pipeline
-📊 Process: 20/17
-🔑 API Key: 20
-📁 Input: outputs/parsed_pdfs/parsed_pdfs_markdown
-📁 Output: outputs/llm_extracted/new_flow
-📄 Files to process: 0
-
-Process 20 completed:
-  📊 Files processed: 0
-  ✅ Successful extractions: 0
-  ❌ Failed extractions: 0
-  ⏰ Timed out: 0
-
-============================================================
-FINAL PERFORMANCE ANALYSIS
-============================================================
-
-🔍 PERFORMANCE ANALYSIS:
-
-📊 REQUEST USAGE ANALYSIS:
-   Total requests (all time): 1913
-   Requests today: 19/20
-   Requests remaining today: 1
-   Unique files processed: 1913/2746
-   ⚠️  Unprocessed files: 833 (files not yet processed)
-   Success rate: 1911/1913 (99.9%)
-   Token usage by file size:
-     0-1MB: 111,737 tokens avg (1879 files)
-     1-2MB: 516,486 tokens avg (34 files)
-
-⚡ PERFORMANCE INSIGHTS:
-   Slowest files:
-     cao 2022-2023 6 januari 2022 aanmelding.md: 12141.9s (0.3MB)
-     Orsima Cao 1 maart 2025 - 30 april 2026.md: 11042.9s (0.1MB)
-     CAO_tekst_integraal1.md: 5943.1s (0.2MB)
-     Cao Basis schone versie 09-12-2024 en statuten.md: 5162.0s (0.3MB)
-     VNK cao 2018-2020 ttw.pdf .md: 3852.2s (0.1MB)
-   Most token-intensive files:
-     HB 5e editie 2024.md: 629,007 tokens (1.9MB)
-     HB 5e editie 2024_2.md: 628,116 tokens (1.9MB)
-     HB 5e editie 2024_2.md: 625,477 tokens (1.9MB)
-     HB 5e editie 2024.md: 623,879 tokens (1.9MB)
-     HB 5e editie 2024_2.md: 620,257 tokens (1.9MB)
-
-❌ ERROR ANALYSIS:
-     Failed after 0 total attempts: 1 occurrences
-     Split extraction incomplete after 8 attempts - missing: 1 occurrences
-📁 Performance data saved to:
-   Detailed logs: performance_logs/llm_extraction/extraction_performance.jsonl
-   Summary: performance_logs/llm_extraction/extraction_summary.json
-  🧹 Cleaned up announce file: .cao_140_announced
-  🧹 Cleaned up announce file: .cao_66_announced
-  🧹 Cleaned up announce file: .cao_253_announced
-  🧹 Cleaned up announce file: .cao_190_announced
-  🧹 Cleaned up announce file: .cao_83_announced
-  🧹 Cleaned up announce file: .cao_301_announced
-  🧹 Cleaned up announce file: .cao_279_announced
-  🧹 Cleaned up announce file: .cao_152_announced
-  🧹 Cleaned up announce file: .cao_41_announced
-  🧹 Cleaned up announce file: .cao_125_announced
-  🧹 Cleaned up announce file: .cao_313_announced
-  🧹 Cleaned up announce file: .cao_85_announced
-  🧹 Cleaned up announce file: .cao_182_announced
-  🧹 Cleaned up announce file: .cao_405_announced
-  🧹 Cleaned up announce file: .cao_408_announced
-  🧹 Cleaned up announce file: .cao_314_announced
-  🧹 Cleaned up announce file: .cao_429_announced
-  🧹 Cleaned up announce file: .cao_10_announced
+  🧹 Cleaned up announce file: .cao_569_announced
+  🧹 Cleaned up announce file: .cao_488_announced
   🧹 Cleaned up announce file: .cao_306_announced
+  🧹 Cleaned up announce file: .cao_526_announced
   🧹 Cleaned up announce file: .cao_254_announced
   🧹 Cleaned up announce file: .cao_163_announced
   🧹 Cleaned up announce file: .cao_433_announced
   🧹 Cleaned up announce file: .cao_427_announced
   🧹 Cleaned up announce file: .cao_156_announced
   🧹 Cleaned up announce file: .cao_51_announced
-  🧹 Cleaned up announce file: .cao_391_announced
   🧹 Cleaned up announce file: .cao_317_announced
   🧹 Cleaned up announce file: .cao_26_announced
+  🧹 Cleaned up announce file: .cao_465_announced
   🧹 Cleaned up announce file: .cao_245_announced
   🧹 Cleaned up announce file: .cao_199_announced
   🧹 Cleaned up announce file: .cao_43_announced
   🧹 Cleaned up announce file: .cao_234_announced
+  🧹 Cleaned up announce file: .cao_573_announced
   🧹 Cleaned up announce file: .cao_171_announced
-  🧹 Cleaned up announce file: .cao_20_announced
   🧹 Cleaned up announce file: .cao_243_announced
   🧹 Cleaned up announce file: .cao_218_announced
   🧹 Cleaned up announce file: .cao_397_announced
   🧹 Cleaned up announce file: .cao_65_announced
   🧹 Cleaned up announce file: .cao_118_announced
   🧹 Cleaned up announce file: .cao_233_announced
-  🧹 Cleaned up announce file: .cao_249_announced
   🧹 Cleaned up announce file: .cao_50_announced
   🧹 Cleaned up announce file: .cao_227_announced
   🧹 Cleaned up announce file: .cao_157_announced
   🧹 Cleaned up announce file: .cao_359_announced
+  🧹 Cleaned up announce file: .cao_609_announced
   🧹 Cleaned up announce file: .cao_80_announced
   🧹 Cleaned up announce file: .cao_187_announced
-  🧹 Cleaned up announce file: .cao_27_announced
   🧹 Cleaned up announce file: .cao_316_announced
   🧹 Cleaned up announce file: .cao_214_announced
+  🧹 Cleaned up announce file: .cao_487_announced
   🧹 Cleaned up announce file: .cao_35_announced
   🧹 Cleaned up announce file: .cao_418_announced
   🧹 Cleaned up announce file: .cao_148_announced
   🧹 Cleaned up announce file: .cao_310_announced
   🧹 Cleaned up announce file: .cao_21_announced
   🧹 Cleaned up announce file: .cao_331_announced
-  🧹 Cleaned up announce file: .cao_219_announced
-  🧹 Cleaned up 57 announce files
+  🧹 Cleaned up 41 announce files
+🎯 CAO Markdown Extraction Pipeline
+📊 Process: 20/22
+🔑 API Key: 20
+📁 Input: outputs/parsed_pdfs/parsed_pdfs_markdown
+📁 Output: outputs/llm_extracted/new_flow
+📄 Files to process: 124
+
+  10: Skipping TTW_cao_Bouw___Infra_integraal.md (already processed)
+  21: Skipping CAO tekst 2024 basis_1.md (already processed)
+  26: Skipping cao 2021 definitief voor avv.md (already processed)
+  35: Skipping digitaleintegraletekstraltex.md (already processed)
+  43: Skipping 43 Cao voor architectenbureaus_ 1 jan tm 31 dec 2024_schone tekst - Kopie.md (already processed)
+  50: Skipping Apotheken 50.md (already processed)
+  51: Skipping INTEGRALE cao Timmerindustrie 1 dec 21 tt 1 mrt 2024.md (already processed)
+--- CAO 66 ---
+  66: Skipping HISWA_CAO_2014_Versie_def.md (already processed)
+  83: Skipping Cao Betonproductenindustrie 2024 versie 8-5-2024.md (already processed)
+  118: Skipping CAO_BIKUDAK_2018_oktober_2018_integraal.md (already processed)
+  125: Skipping CAO tekst 2021 2023 Groente en Fruit schone tekst.md (already processed)
+--- CAO 148 ---
+  148: Skipping cao_boekje_2015_2017.md (already processed)
+--- CAO 156 ---
+  156: Skipping Tekst_Cao_Ziekenhuizen_2011_2014_definitief.md (already processed)
+--- CAO 163 ---
+  163: Skipping CAO OV 1 juli 2021 31 december 2022 tekst aanmelding.md (already processed)
+--- CAO 171 ---
+  171: Skipping cao_orsima_2018_2020_definitief_13122018.md (already processed)
+--- CAO 187 ---
+  187: Skipping Raam CAO Bos en natuur.md (file in failed_cao_numbers folder - all attempts exhausted)
+--- CAO 199 ---
+  199: Skipping Cao Vlakglas 2023 versie 06-12-2022 def.md (already processed)
+--- CAO 214 ---
+  214: Skipping Cao OB_1.7.2019-1.7.2020.docx.md (already processed)
+--- CAO 219 ---
+  219: Skipping CAOGezondheidscentra2009-2011.md (already processed)
+--- CAO 233 ---
+  233: Skipping 2025_14jan_schone_tekstcaotbvavv_MvD.md (already processed)
+--- CAO 234 ---
+  234: Skipping cao_jeugdzorg_2014_2015_def.md (already processed)
+--- CAO 243 ---
+  243: Skipping Cao_hoveniers_tm_29_2_2016_TTW_15_7_2015.md (already processed)
+--- CAO 245 ---
+  245: Skipping Tuinzaden_cao_2014_2016.md (already processed)
+--- CAO 254 ---
+  254: Skipping CAO_2015_2017_TTW_integrale_tekst_1.md (already processed)
+--- CAO 279 ---
+  279: Skipping SFG CAO tekst 2020-2021 integrale tekst.md (already processed)
+--- CAO 301 ---
+  301: Skipping CAOWMD_aanmelding_VERLENGING_2012_ttw_ivm_avv.md (already processed)
+--- CAO 306 ---
+  306: Skipping CAO-tekst definitief.docx.md (already processed)
+--- CAO 314 ---
+  314: Skipping Opinieweekblad_314.md (already processed)
+  317: Skipping Definitieve_tekst_CAO_GHZ_2014_2015.md (already processed)
+  359: Skipping Zoetwarenindustrie 2019-2020 na ttw ivm artikel 14 en 25 lid 3.pdf .md (already processed)
+--- CAO 408 ---
+  408: Skipping CAO_Schippersinternaten_2017_2019___Definitief.md (already processed)
+  429: Skipping CAO_tekst_KE_20142015__vs_20140926.md (already processed)
+  429: Skipping cao_Kunsteducatie_incl_TTW_per_1_oktober_2016.md (already processed)
+  433: Skipping CAO_2014_2016_2.md (already processed)
+  465: Skipping sociale afspraken 2020 - 2023 geschoond_1.md (already processed)
+  487: Skipping Basis_CAO_Metalektro_versie_voor_website.md (already processed)
+--- CAO 488 ---
+  488: Skipping HP-cao Metalektro hertaald volledig - def versie 23-07-2019OB.docx.md (already processed)
+  496: Skipping cao_2012_definitief.md (already processed)
+--- CAO 509 ---
+  509: Skipping CAO_tekst_2011_2012_def_.md (already processed)
+  526: Skipping CAO_tekst_2012_2014.md (already processed)
+  549: Skipping CAO_2014_2016_AGF_Detailhandel_zonder_bijlagen.md (already processed)
+--- CAO 563 ---
+  563: Zuivel__CAO_HP_nieuw_2014_2016.md (Markdown: 0.1MB) [API 20/22]
+  INFO: Using Files API approach for Zuivel__CAO_HP_nieuw_2014_2016.md
+  INFO: Markdown file size: 0.09 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/j9u3gyiagfng
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.09MB
+  DEBUG: Constructed 2 content parts for API call
+  INFO: Successfully extracted structured data from markdown (time: 149.9s)
+  INFO: Response size: 27,839 chars (~6,959 tokens)
+  INFO: Cleaned up uploaded file: files/j9u3gyiagfng
+  ✅ JSON saved with proper formatting
+  563: LLM extraction completed in 151.40 seconds [API 20/22]
+  573: Skipping CAO_pluimvee_per_1_januari_2017_per_9_2_2017.md (already processed)
+  592: Skipping Gewijzigde tekst 14 mei 2020 2.1.c Cao Gespecialiseerde detailhandel in bloemen.md (already processed)
+  621: VON cao 2019-2021 def.doc .md (Markdown: 0.1MB) [API 20/22]
+  INFO: Using Files API approach for VON cao 2019-2021 def.doc .md
+  INFO: Markdown file size: 0.08 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/6x7zdxzk1z3r
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.08MB
+  DEBUG: Constructed 2 content parts for API call
+  INFO: Successfully extracted structured data from markdown (time: 64.7s)
+  INFO: Response size: 34,567 chars (~8,641 tokens)
+  INFO: Cleaned up uploaded file: files/6x7zdxzk1z3r
+  ✅ JSON saved with proper formatting
+  621: LLM extraction completed in 66.24 seconds [API 20/22]
+  630: CAO_contractspelers_seizoen_2014_2018.md (Markdown: 0.1MB) [API 20/22]
+  INFO: Using Files API approach for CAO_contractspelers_seizoen_2014_2018.md
+  INFO: Markdown file size: 0.07 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/xq541c37knbu
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.07MB
+  DEBUG: Constructed 2 content parts for API call
+  INFO: Successfully extracted structured data from markdown (time: 123.2s)
+  INFO: Response size: 21,780 chars (~5,445 tokens)
+  INFO: Cleaned up uploaded file: files/xq541c37knbu
+  ✅ JSON saved with proper formatting
+  630: LLM extraction completed in 124.73 seconds [API 20/22]
+  633: Skipping ABU CAO voor Uitzendkrachten 30-12-2019 integraal dec.md (already processed)
+  633: Cao_integraal.md (Markdown: 0.2MB) [API 20/22]
+  INFO: Using Files API approach for Cao_integraal.md
+  INFO: Markdown file size: 0.24 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/uw73ej43c1np
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.24MB
+  DEBUG: Constructed 2 content parts for API call
+  INFO: Successfully extracted structured data from markdown (time: 95.9s)
+  INFO: Response size: 29,437 chars (~7,359 tokens)
+  INFO: Cleaned up uploaded file: files/uw73ej43c1np
+  ✅ JSON saved with proper formatting
+  633: LLM extraction completed in 97.65 seconds [API 20/22]
+  636: Cao_Buitendienst_2013.md (Markdown: 0.1MB) [API 20/22]
+  INFO: Using Files API approach for Cao_Buitendienst_2013.md
+  INFO: Markdown file size: 0.12 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/ctwfsmbkdnkt
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.12MB
+  DEBUG: Constructed 2 content parts for API call
+  INFO: Successfully extracted structured data from markdown (time: 59.8s)
+  INFO: Response size: 32,358 chars (~8,089 tokens)
+  INFO: Cleaned up uploaded file: files/ctwfsmbkdnkt
+  ✅ JSON saved with proper formatting
+  636: LLM extraction completed in 60.72 seconds [API 20/22]
+  637: cao_binnendienst_2011_2012.md (Markdown: 0.1MB) [API 20/22]
+  INFO: Using Files API approach for cao_binnendienst_2011_2012.md
+  INFO: Markdown file size: 0.15 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/vxx8nd0axwpx
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.15MB
+  DEBUG: Constructed 2 content parts for API call
+  INFO: Successfully extracted structured data from markdown (time: 131.4s)
+  INFO: Response size: 35,365 chars (~8,841 tokens)
+  INFO: Cleaned up uploaded file: files/vxx8nd0axwpx
+  ✅ JSON saved with proper formatting
+  637: LLM extraction completed in 132.71 seconds [API 20/22]
+  650: Groothandel in Groenten en Fruit 2019-2020 definitief 03112019.md (Markdown: 0.2MB) [API 20/22]
+  INFO: Using Files API approach for Groothandel in Groenten en Fruit 2019-2020 definitief 03112019.md
+  INFO: Markdown file size: 0.15 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/93va6czjg11z
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.15MB
+  DEBUG: Constructed 2 content parts for API call
+  INFO: Successfully extracted structured data from markdown (time: 144.1s)
+  INFO: Response size: 51,266 chars (~12,816 tokens)
+  INFO: Cleaned up uploaded file: files/93va6czjg11z
+  ✅ JSON saved with proper formatting
+  650: LLM extraction completed in 145.22 seconds [API 20/22]
+  679: CAO_tekst_Taxivervoer_2014_2015_v5_nette_versie.md (Markdown: 0.2MB) [API 20/22]
+  INFO: Using Files API approach for CAO_tekst_Taxivervoer_2014_2015_v5_nette_versie.md
+  INFO: Markdown file size: 0.20 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/n4yhtvrejzgf
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.20MB
+  DEBUG: Constructed 2 content parts for API call
+  INFO: Successfully extracted structured data from markdown (time: 279.4s)
+  INFO: Response size: 11,666 chars (~2,916 tokens)
+  WARNING: JSON incomplete or truncated: Content does not end with } - JSON appears to be truncated - retrying...
+  INFO: Cleaned up uploaded file: files/n4yhtvrejzgf
+  Attempt 1 failed (truncated response), retrying in 30 seconds...
+  INFO: Adding retry guidance for: truncated JSON
+  INFO: Attempt 4 - Adjusting parameters: temp=0.1, top_p=0.2, top_k=1 (boost +0.1)
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/q9pti7xfzujt
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.20MB
+  DEBUG: Constructed 2 content parts for API call
+  INFO: Successfully extracted structured data from markdown (time: 434.9s)
+  INFO: Response size: 47,890 chars (~11,972 tokens)
+  INFO: Cleaned up uploaded file: files/q9pti7xfzujt
+  ✅ JSON saved with proper formatting
+  679: LLM extraction completed in 436.19 seconds [API 20/22]
+
+⚠️  Received SIGTERM, exiting gracefully...

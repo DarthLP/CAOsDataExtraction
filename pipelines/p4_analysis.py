@@ -34,39 +34,41 @@ USAGE:
     Single process:
         python pipelines/p4_analysis.py --key_number 7 --process_id 0 --total_processes 1
 
-    Multi-process (supports GOOGLE_API_KEY1 to GOOGLE_API_KEY20):
-        caffeinate python -u pipelines/p4_analysis.py --key_number 1 --process_id 0 --total_processes 20 > p4_log1.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 2 --process_id 1 --total_processes 20 > p4_log2.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 3 --process_id 2 --total_processes 20 > p4_log3.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 4 --process_id 3 --total_processes 20 > p4_log4.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 5 --process_id 4 --total_processes 20 > p4_log5.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 6 --process_id 5 --total_processes 20 > p4_log6.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 7 --process_id 6 --total_processes 20 > p4_log7.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 8 --process_id 7 --total_processes 20 > p4_log8.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 9 --process_id 8 --total_processes 20 > p4_log9.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 10 --process_id 9 --total_processes 20 > p4_log10.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 11 --process_id 10 --total_processes 20 > p4_log11.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 12 --process_id 11 --total_processes 20 > p4_log12.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 13 --process_id 12 --total_processes 20 > p4_log13.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 14 --process_id 13 --total_processes 20 > p4_log14.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 15 --process_id 14 --total_processes 20 > p4_log15.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 16 --process_id 15 --total_processes 20 > p4_log16.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 17 --process_id 16 --total_processes 20 > p4_log17.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 18 --process_id 17 --total_processes 20 > p4_log18.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 19 --process_id 18 --total_processes 20 > p4_log19.txt 2>&1 &
-        caffeinate python -u pipelines/p4_analysis.py --key_number 20 --process_id 19 --total_processes 20 > p4_log20.txt 2>&1 &
+    Multi-process (supports GOOGLE_API_KEY1 to GOOGLE_API_KEY22):
+        caffeinate python -u pipelines/p4_analysis.py --key_number 1 --process_id 0 --total_processes 22 > p4_log1.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 2 --process_id 1 --total_processes 22 > p4_log2.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 3 --process_id 2 --total_processes 22 > p4_log3.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 4 --process_id 3 --total_processes 22 > p4_log4.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 5 --process_id 4 --total_processes 22 > p4_log5.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 6 --process_id 5 --total_processes 22 > p4_log6.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 7 --process_id 6 --total_processes 22 > p4_log7.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 8 --process_id 7 --total_processes 22 > p4_log8.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 9 --process_id 8 --total_processes 22 > p4_log9.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 10 --process_id 9 --total_processes 22 > p4_log10.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 11 --process_id 10 --total_processes 22 > p4_log11.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 12 --process_id 11 --total_processes 22 > p4_log12.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 13 --process_id 12 --total_processes 22 > p4_log13.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 14 --process_id 13 --total_processes 22 > p4_log14.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 15 --process_id 14 --total_processes 22 > p4_log15.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 16 --process_id 15 --total_processes 22 > p4_log16.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 17 --process_id 16 --total_processes 22 > p4_log17.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 18 --process_id 17 --total_processes 22 > p4_log18.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 19 --process_id 18 --total_processes 22 > p4_log19.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 20 --process_id 19 --total_processes 22 > p4_log20.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 21 --process_id 20 --total_processes 22 > p4_log21.txt 2>&1 &
+        caffeinate python -u pipelines/p4_analysis.py --key_number 22 --process_id 21 --total_processes 22 > p4_log22.txt 2>&1 &
 
     With file limit:
         python pipelines/p4_analysis.py --key_number 7 --process_id 0 --total_processes 1 --max_files 10
 
 ARGUMENTS:
-    --key_number: Which API key to use (1-20) - defaults to 7
+    --key_number: Which API key to use (1-22) - defaults to 7
     --process_id: Process ID for work distribution (0-based) - defaults to 0
     --total_processes: Total number of parallel processes - defaults to 1
     --max_files: Maximum number of files to process (optional)
 
 ENVIRONMENT VARIABLES:
-    GOOGLE_API_KEY1 to GOOGLE_API_KEY20: Google Gemini API keys for parallel processing
+    GOOGLE_API_KEY1 to GOOGLE_API_KEY22: Google Gemini API keys for parallel processing
 
 INPUT:
     - JSON files in {config['paths']['outputs_json']}/new_flow/[CAO_NUMBER]/ folders

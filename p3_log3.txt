@@ -1,100 +1,141 @@
+  🧹 Cleaned up announce file: .cao_26_announced
+  🧹 Cleaned up announce file: .cao_465_announced
+  🧹 Cleaned up announce file: .cao_245_announced
+  🧹 Cleaned up announce file: .cao_199_announced
+  🧹 Cleaned up announce file: .cao_43_announced
+  🧹 Cleaned up announce file: .cao_234_announced
+  🧹 Cleaned up announce file: .cao_573_announced
+  🧹 Cleaned up announce file: .cao_171_announced
+  🧹 Cleaned up announce file: .cao_243_announced
+  🧹 Cleaned up announce file: .cao_218_announced
+  🧹 Cleaned up announce file: .cao_397_announced
+  🧹 Cleaned up announce file: .cao_65_announced
+  🧹 Cleaned up announce file: .cao_118_announced
+  🧹 Cleaned up announce file: .cao_233_announced
+  🧹 Cleaned up announce file: .cao_50_announced
+  🧹 Cleaned up announce file: .cao_227_announced
+  🧹 Cleaned up announce file: .cao_157_announced
+  🧹 Cleaned up announce file: .cao_359_announced
+  🧹 Cleaned up announce file: .cao_609_announced
+  🧹 Cleaned up announce file: .cao_80_announced
+  🧹 Cleaned up announce file: .cao_187_announced
+  🧹 Cleaned up announce file: .cao_316_announced
+  🧹 Cleaned up announce file: .cao_214_announced
+  🧹 Cleaned up announce file: .cao_487_announced
+  🧹 Cleaned up announce file: .cao_35_announced
+  🧹 Cleaned up announce file: .cao_418_announced
+  🧹 Cleaned up announce file: .cao_148_announced
+  🧹 Cleaned up announce file: .cao_310_announced
+  🧹 Cleaned up announce file: .cao_21_announced
+  🧹 Cleaned up announce file: .cao_331_announced
+  🧹 Cleaned up 30 announce files
 🎯 CAO Markdown Extraction Pipeline
-📊 Process: 3/17
+📊 Process: 3/22
 🔑 API Key: 3
 📁 Input: outputs/parsed_pdfs/parsed_pdfs_markdown
 📁 Output: outputs/llm_extracted/new_flow
-📄 Files to process: 162
+📄 Files to process: 125
 
   10: Skipping CAO BOUW EN INFRA 2021-2022 INTERACTIEF.md (already processed)
-  10: Skipping TTW_cao_Bouw___Infra_integraal.md (already processed)
-  21: Skipping CAO tekst 2020 basis.docx.md (already processed)
-  26: Skipping CAO_VLEESSECTOR_2014_volledige_tekst.md (already processed)
-  35: Skipping Cao Textielverzorging 2023-2024 doorlopende tekst def.md (already processed)
-  41: Skipping CAO-tekst 2019_vs2.docx .md (already processed)
-  41: Skipping hibin_CAO_tekst_2017_2018.md (already processed)
---- CAO 43 ---
-  43: Skipping cao tekst 2020, incl. functiehandboek TTW.docx.md (already processed)
+  10: Skipping cao Bouw en Infra 2021-2022.md (already processed)
+--- CAO 21 ---
+  21: Skipping CAO_tekst_2019_basis.md (already processed)
+  35: Skipping CAO_Aanmelding.md (already processed)
+  41: Skipping CAO-tekst 2020_def.docx.md (already processed)
+  43: Skipping CAO_2013_2015__2_.md (already processed)
+  50: Skipping CAO Apotheken 2021-2024 volledig met bijlagen 02-06-2022 def.md (already processed)
 --- CAO 51 ---
-  51: Skipping CAO Timmerindustrie 1 apr 2019 tm 31 juli 2020 wijzigingen sept.19.md (already processed)
-  51: Skipping cao Timmer nr 51 INTEGRAAL 1 aug 2020 - 30 nov 21.md (already processed)
---- CAO 66 ---
-  66: Skipping HISWA_CAO_2013_Versie_def.md (already processed)
+  51: Skipping cao Timmerindustrie 1 dec 21 tt 1 mrt 2024_1.md (already processed)
+  80: Skipping CAO Waterbouw 2022-2023_1.md (already processed)
 --- CAO 83 ---
-  83: Skipping CAO_voor_de_betonproductenindustrie_2011_2013.md (already processed)
---- CAO 118 ---
-  118: Skipping CAO_2014_def.md (already processed)
-  118: Skipping CAO_BIKUDAK_2021_ttw_juni 2021_integraal.md (already processed)
-  125: Skipping CAO tekst 2021 2023 Groente en Fruit voor registratie.md (already processed)
---- CAO 148 ---
-  148: Skipping Tekst_cao_graan_2017__2018_def_MET_handtekening.md (already processed)
---- CAO 152 ---
-  152: Skipping KNB_cao__2015_2017__def.md (already processed)
---- CAO 157 ---
-  157: Skipping Zuivel I 2020.md (already processed)
-  163: Skipping CAO_OV_tekst_2013_DEFINITIEF_v2.md (already processed)
-  171: Skipping cao_orsima_2016_2017.md (already processed)
-  187: Skipping Bos en Natuur 2023 - 2024.md (already processed)
-  190: Skipping Drankindustrie_cao_2012_definitieve_versie.md (already processed)
+  83: Skipping cao voor de betonproductenindustrie.md (already processed)
+  118: Skipping CAO_BIKUDAK_2021_integraal.md (already processed)
+  125: Skipping Groente- en fruitverwerkende industrie cao ttw sep 2024.md (already processed)
+  152: Skipping Baksteen 1 mei 2023 tot 1 mei 2024 definitief_.md (already processed)
+  157: Skipping DEF cao I zuivel 1 april 2024 tot 1 april 2025.md (already processed)
+--- CAO 163 ---
+  163: Skipping CAO_OV_tekst_2014_en_2015_DEFINITIEF_1.md (already processed)
+--- CAO 182 ---
+  182: Skipping 20220520 cao_horeca_2022-2023 na 2020_wijziging mei-avv.md (already processed)
+  190: Skipping CAO_Drankindustrie_2013_definitief.md (already processed)
   199: Skipping Vlakglas cao 2020 2021 juni 21 ttw.md (already processed)
-  214: Skipping Cao OB_1.7.2019-1.7.2020.docx.md (already processed)
-  218: Skipping Tekst_CAO_BB_1_april_2013_tm_31_decb_2014.md (already processed)
-  227: Skipping Cao weefselkweek 1 okt 2022 - 30 sept 2027_1.md (already processed)
-  233: Skipping CAOtekst_2015_31mrt2017_PvL_11sep2015.md (already processed)
-  234: Skipping cao_tekst_JZ_2015_2016_def_met_bijlagen_1_tm_10.md (already processed)
-  243: Skipping Cao_hoveniers_1_1_2014_tm_29_2_2016_20140383Na.md (already processed)
-  245: Skipping Cao_Tuinzaadbedrijven_20180101___20191231.md (already processed)
+  214: Skipping Cao_OB_2015_2019_invulling_loonruimte_2019.md (already processed)
+--- CAO 227 ---
+  227: Skipping CAO Weefselkweek 20190701 - 20200630 definitieve versie.docx.md (already processed)
+  233: Skipping CAOtekst_2012_2013_PvL_5jun2012.md (already processed)
+  234: Skipping cao_tekst_JZ_2017_2019_versie_TTW_18_5_2018.md (already processed)
+  243: Skipping Integrale tekst cao voor het Hoveniersbedrijf 1 oktober 2024 tm 30 juni 2026 incl. TTW per 1 juli 2025.md (already processed)
 --- CAO 253 ---
-  253: Skipping Cao HVI 2022-2024 TTW doorlopende tekst.md (already processed)
---- CAO 254 ---
-  254: Skipping CAO_2018_2019_integraal_versie_8.md (already processed)
-  279: Skipping Gemaksvoedingindustrie integrale cao.md (already processed)
-  301: Skipping CAOWMD1213__270213__definitief.md (already processed)
-  301: Skipping caosociaalwerk20172019_def191017_inclfuboek.md (already processed)
-  306: Skipping CAOtekst_AVV__integraal__verlenging.md (already processed)
-  316: Skipping CAO LMB 2019 - 2020 V 210220 def .docx.md (already processed)
-  317: CAO_GHZ_2016_def_29_2_2016.md (Markdown: 0.2MB) [API 3/17]
-  INFO: Using Files API approach for CAO_GHZ_2016_def_29_2_2016.md
-  INFO: Markdown file size: 0.25 MB
-  INFO: Uploading markdown file to Gemini...
-  INFO: File uploaded successfully: files/4dy8z09zq22w
-  INFO: File is ready for processing
-  DEBUG: File validation passed - size: 0.25MB
-  DEBUG: Constructed 2 content parts for API call
-  INFO: Successfully extracted structured data from markdown (time: 189.2s)
-  INFO: Response size: 63,037 chars (~15,759 tokens)
-  INFO: Cleaned up uploaded file: files/4dy8z09zq22w
-  ✅ JSON saved with proper formatting
-  317: LLM extraction completed in 190.67 seconds [API 3/17]
---- CAO 359 ---
-  359: Skipping Cao Zoetwarenindustrie 2023-2024.md (already processed)
---- CAO 405 ---
-  405: Skipping CAO Kappers 1 juli 2019 31 januari 2020 25072019.docx.md (already processed)
+  253: Skipping CAO_HVI_Integrale_tekst.md (already processed)
+  254: Skipping cao 2020-2021 integraal.docx.md (already processed)
+  279: Skipping SFG__CAO_tekst_2018_2020.md (already processed)
+  301: Skipping Cao Sociaal Werk 2023-2025(definitief240723)def.md (already processed)
+  306: Skipping CAOtekst_AVV__integraal_.md (already processed)
+--- CAO 316 ---
+  316: Skipping CAO LMB incl fuwa 2020 2023 schone versie feb 22.md (already processed)
+  317: Skipping gehandicaptenzorg integrale tekst.md (already processed)
+--- CAO 397 ---
+  397: Skipping CAO_VAK_2011_2012_1_33__def_.md (already processed)
 --- CAO 418 ---
-  418: Skipping CAO_Natuursteen_2011_2013_aanmeldingstekst.md (already processed)
-  429: Skipping CAO_Kunsteducatie_2010_2011.md (already processed)
-  429: Skipping cao KE 1 januari 2019 tot en met 30 juni 2019 inclusief ttw per 27 juni 2019.doc .md (already processed)
-  433: CAO 2022-2024 definitief 1 10 2022.md (Markdown: 0.3MB) [API 3/17]
-  INFO: Using Files API approach for CAO 2022-2024 definitief 1 10 2022.md
-  INFO: Markdown file size: 0.29 MB
+  418: Skipping aanmeldingstekst_cao_Natuursteen_2014_2015.md (already processed)
+  429: Skipping Cao Kunsteducatie 1 juli 2021 tm 1 november 2021 integraal.md (already processed)
+  433: Skipping CAO 2019-2021 definitief.docx.md (already processed)
+  433: Skipping RAS_caotekst_2010_2011_aanmelding_20072011.md (already processed)
+--- CAO 475 ---
+  475: Skipping CAO_Sport_2015.md (already processed)
+  487: Skipping Cao Basis def. versie 29-11-22 met statuten ROM en SSF.md (already processed)
+  496: Skipping CAO PB 18 dec 2024- 27 dec 2026.md (already processed)
+  496: Skipping cao_definitief_versie_2.md (already processed)
+--- CAO 518 ---
+  518: Skipping CAO_2017_2018_tekst_def_geschoond_per_april_2018.md (already processed)
+--- CAO 526 ---
+  526: Skipping Meubelindustrie__29_juli_2011.md (already processed)
+--- CAO 549 ---
+  549: Skipping Definitieve tekst CAO AGF Detailhandel 2024-2025_1.md (already processed)
+--- CAO 569 ---
+  569: Skipping KRI 2024-2025_def.md (already processed)
+--- CAO 573 ---
+  573: Cao pluimvee - cao 2020-2021 .md (Markdown: 0.1MB) [API 3/22]
+  INFO: Using Files API approach for Cao pluimvee - cao 2020-2021 .md
+  INFO: Markdown file size: 0.09 MB
   INFO: Uploading markdown file to Gemini...
-  INFO: File uploaded successfully: files/woz6d173dc6f
+  INFO: File uploaded successfully: files/vopdee6thq26
   INFO: File is ready for processing
-  DEBUG: File validation passed - size: 0.29MB
+  DEBUG: File validation passed - size: 0.09MB
   DEBUG: Constructed 2 content parts for API call
-  🚨 UNEXPECTED API ERROR during markdown extraction (attempt 1): ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 43.826514295s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '43s'}]}}
+  INFO: Successfully extracted structured data from markdown (time: 125.2s)
+  INFO: Response size: 43,807 chars (~10,951 tokens)
+  INFO: Cleaned up uploaded file: files/vopdee6thq26
+  ✅ JSON saved with proper formatting
+  573: LLM extraction completed in 126.60 seconds [API 3/22]
+  592: Skipping def. cao tekst Gespecialiseerde detailhandel in bloemen en planten 2023_1.md (already processed)
+  621: Skipping VON_cao_2015_2016_def_1.md (already processed)
+  632: Skipping CAO__01012014_tot_01072014__CAO_tekst_14_jan_2014.md (already processed)
+  633: Skipping CAO UZK januari 2011 integraal.md (already processed)
+  633: Skipping Cao_integraal_5_11_2017_1.md (already processed)
+--- CAO 636 ---
+  636: cao_buitendienst_2011_2012.md (Markdown: 0.1MB) [API 3/22]
+  INFO: Using Files API approach for cao_buitendienst_2011_2012.md
+  INFO: Markdown file size: 0.12 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/uikq3pd4jqlt
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.12MB
+  DEBUG: Constructed 2 content parts for API call
+  🚨 UNEXPECTED API ERROR during markdown extraction (attempt 1): ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}
   📋 This error occurred during the API call itself and will be handled by retry logic
-  INFO: Cleaned up uploaded file: files/woz6d173dc6f
-  DEBUG: Markdown upload error type: ClientError, Error message: 429 resource_exhausted. {'error': {'code': 429, 'message': 'you exceeded your current quota, please check your plan and billing details. for more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. to monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nplease retry in 43.826514295s.', 'status': 'resource_exhausted', 'details': [{'@type': 'type.googleapis.com/google.rpc.help', 'links': [{'description': 'learn more about gemini api quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.quotafailure', 'violations': [{'quotametric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaid': 'generaterequestsperdayperprojectpermodel-freetier', 'quotadimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotavalue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.retryinfo', 'retrydelay': '43s'}]}}
-  DEBUG: Full error details: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 43.826514295s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '43s'}]}}
-  🔍 DETAILED FAILURE ANALYSIS for CAO 2022-2024 definitief 1 10 2022.md (attempt 1):
+  INFO: Cleaned up uploaded file: files/uikq3pd4jqlt
+  DEBUG: Markdown upload error type: ClientError, Error message: 429 resource_exhausted. {'error': {'code': 429, 'message': 'resource has been exhausted (e.g. check quota).', 'status': 'resource_exhausted'}}
+  DEBUG: Full error details: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}
+  🔍 DETAILED FAILURE ANALYSIS for cao_buitendienst_2011_2012.md (attempt 1):
     📊 Finish reason: UNKNOWN
     🛡️  Safety ratings: []
     📄 Content length: 0 chars
-    ⏱️  Processing time: 5.646417856216431s
+    ⏱️  Processing time: 4.669840097427368s
     🔑 API key used: 3
     🆔 Process ID: 2
   DEBUG: Traceback: Traceback (most recent call last):
-  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 2153, in extract_with_markdown_upload
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 2155, in extract_with_markdown_upload
     response = context.client.models.generate_content(
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 6426, in generate_content
@@ -133,75 +174,118 @@
     errors.APIError.raise_for_response(response)
   File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/errors.py", line 105, in raise_for_response
     raise ClientError(status_code, response_json, response)
-google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 43.826514295s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '43s'}]}}
+google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}
 
-  ❌ DAILY QUOTA LIMIT REACHED for Process 2 - Cannot retry until tomorrow
-  💡 Daily limit: 20 requests per day (free tier - shared across all processes)
-  💡 Quota resets at midnight (Google timezone)
-  🛑 Stopping this process to avoid infinite retries
-  Markdown upload failed after 0 total attempts
-  DEBUG: Failed CAO number saved to: performance_logs/llm_extraction/failed_cao_numbers/433/433_CAO 2022-2024 definitief 1 10 2022_failed.txt
-  🛑 DAILY QUOTA LIMIT REACHED for Process 2 - Stopping this process
-  💡 Wait until tomorrow to continue
+  DEBUG: File size: 0.12MB, Estimated tokens: 30,972
+  DEBUG: Minutes needed: 0.2, Backoff: 1.0x, Buffer: 2min
+  DEBUG: Total delay: 2 minutes (134 seconds)
+  DEBUG: Calculated wait time (before API delay check): 284s (4 minutes)
+  Attempt 1 failed (per-minute quota), retrying in 4 minutes (284s)...
+  INFO: Waiting 15 minutes before retry...
+[HEARTBEAT] long-running stage=generating_content elapsed=627s — enabling live debug
+[HEARTBEAT] stage=generating_content elapsed=717s (file 720s)
+[HEARTBEAT] stage=generating_content elapsed=807s (file 810s)
+[HEARTBEAT] stage=generating_content elapsed=897s (file 900s)
+  INFO: Wait complete, continuing with retry...
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/8ikxyy2t8abk
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.12MB
+  DEBUG: Constructed 2 content parts for API call
+[HEARTBEAT] stage=generating_content elapsed=83s (file 990s)
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Raw JSON sample (first 500 chars) contains 0 null values
+  DEBUG: Converted structured output to JSON: 26867 chars
+  INFO: Successfully extracted structured data from markdown (time: 1000.5s)
+  INFO: Response size: 26,867 chars (~6,716 tokens)
+  INFO: Cleaned up uploaded file: files/8ikxyy2t8abk
+  ✅ JSON saved with proper formatting
+  636: LLM extraction completed in 1001.54 seconds [API 3/22]
+[HEARTBEAT] stage=validating_saving elapsed=80s (file 1080s)
+  645: Skipping CAO_voor_het_ZEEVISBEDRIJF_2015_2016___ondertekend.md (already processed)
+  650: Skipping Groothandel_groenten_en_fruit_cao_2017_2018_na_ttw.md (already processed)
+  679: TTW_CAO_Taxivervoer_2019_2020.md (Markdown: 0.3MB) [API 3/22]
+  INFO: Using Files API approach for TTW_CAO_Taxivervoer_2019_2020.md
+  INFO: Markdown file size: 0.26 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/m7jwzzkqkuqz
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.26MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Raw JSON sample (first 500 chars) contains 0 null values
+  DEBUG: Converted structured output to JSON: 35839 chars
+  INFO: Successfully extracted structured data from markdown (time: 182.6s)
+  INFO: Response size: 35,839 chars (~8,959 tokens)
+  INFO: Cleaned up uploaded file: files/m7jwzzkqkuqz
+  ✅ JSON saved with proper formatting
+  679: LLM extraction completed in 183.93 seconds [API 3/22]
+--- CAO 696 ---
+  696: Skipping AZN_CAO_2015_2019_def_met_opmaak.md (already processed)
+  721: Skipping 12_01_25_CAO_tekst_definitief.md (already processed)
+  725: CAO_LEO__1_april_2010_tot_en_met_1_januari_2012.md (Markdown: 0.2MB) [API 3/22]
+  INFO: Using Files API approach for CAO_LEO__1_april_2010_tot_en_met_1_januari_2012.md
+  INFO: Markdown file size: 0.18 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/wjurn9xe5thc
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.18MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Raw JSON sample (first 500 chars) contains 0 null values
+  DEBUG: Converted structured output to JSON: 57336 chars
+  INFO: Successfully extracted structured data from markdown (time: 160.5s)
+  INFO: Response size: 57,336 chars (~14,334 tokens)
+  INFO: Cleaned up uploaded file: files/wjurn9xe5thc
+  ✅ JSON saved with proper formatting
+  725: LLM extraction completed in 162.16 seconds [API 3/22]
+  727: Skipping 161031_Cao_F_S__L_2016_2018_hvb.md (already processed)
+  727: Skipping 230630 cao Retail Non-Food def.md (already processed)
+  730: CAOTG20162018Aanpassingen20170807.md (Markdown: 0.1MB) [API 3/22]
+  INFO: Using Files API approach for CAOTG20162018Aanpassingen20170807.md
+  INFO: Markdown file size: 0.13 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/kb47vrf9vojo
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.13MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Raw JSON sample (first 500 chars) contains 0 null values
+  DEBUG: Converted structured output to JSON: 39141 chars
+  INFO: Successfully extracted structured data from markdown (time: 134.6s)
+  INFO: Response size: 39,141 chars (~9,785 tokens)
+  INFO: Cleaned up uploaded file: files/kb47vrf9vojo
+  ✅ JSON saved with proper formatting
+  730: LLM extraction completed in 135.99 seconds [API 3/22]
+  750: Skipping Contractcateringbranche__Arbeidsvoorw_cao.md (already processed)
+  750: Skipping cao_definitief_2.md (already processed)
+  759: cao_2011_2013_ttw2_functieloon_aanmelding.md (Markdown: 0.3MB) [API 3/22]
+  INFO: Using Files API approach for cao_2011_2013_ttw2_functieloon_aanmelding.md
+  INFO: Markdown file size: 0.33 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/m3ng8htni4mh
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.33MB
+  DEBUG: Constructed 2 content parts for API call
 
-⚠️  Process 3 STOPPED due to DAILY QUOTA EXHAUSTION:
-   💡 Daily limit: 20 requests per day (free tier - shared across all processes)
-   💡 Quota resets at midnight (Google timezone)
-   💡 Process will need to be restarted tomorrow to continue
-  📊 Files processed: 1
-  ✅ Successful extractions: 1
-  ❌ Failed extractions: 0
-  ⏰ Timed out: 0
-
-============================================================
-FINAL PERFORMANCE ANALYSIS (QUOTA EXHAUSTED - INCOMPLETE)
-============================================================
-
-🔍 PERFORMANCE ANALYSIS:
-
-📊 REQUEST USAGE ANALYSIS:
-   Total requests (all time): 1921
-   Requests today: 36/20
-   Requests remaining today: 0
-   Unique files processed: 1921/2746
-   ⚠️  Unprocessed files: 825 (files not yet processed)
-   Success rate: 1918/1921 (99.8%)
-   Token usage by file size:
-     0-1MB: 111,526 tokens avg (1887 files)
-     1-2MB: 516,486 tokens avg (34 files)
-
-⚡ PERFORMANCE INSIGHTS:
-   Slowest files:
-     cao 2022-2023 6 januari 2022 aanmelding.md: 12141.9s (0.3MB)
-     Orsima Cao 1 maart 2025 - 30 april 2026.md: 11042.9s (0.1MB)
-     CAO_tekst_integraal1.md: 5943.1s (0.2MB)
-     Cao Basis schone versie 09-12-2024 en statuten.md: 5162.0s (0.3MB)
-     VNK cao 2018-2020 ttw.pdf .md: 3852.2s (0.1MB)
-   Most token-intensive files:
-     HB 5e editie 2024.md: 629,007 tokens (1.9MB)
-     HB 5e editie 2024_2.md: 628,116 tokens (1.9MB)
-     HB 5e editie 2024_2.md: 625,477 tokens (1.9MB)
-     HB 5e editie 2024.md: 623,879 tokens (1.9MB)
-     HB 5e editie 2024_2.md: 620,257 tokens (1.9MB)
-
-❌ ERROR ANALYSIS:
-     Failed after 0 total attempts: 2 occurrences
-     Split extraction incomplete after 8 attempts - missing: 1 occurrences
-📁 Performance data saved to:
-   Detailed logs: performance_logs/llm_extraction/extraction_performance.jsonl
-   Summary: performance_logs/llm_extraction/extraction_summary.json
-  🧹 Cleaned up announce file: .cao_496_announced
-  🧹 Cleaned up announce file: .cao_475_announced
-  🧹 Cleaned up announce file: .cao_405_announced
-  🧹 Cleaned up announce file: .cao_408_announced
-  🧹 Cleaned up announce file: .cao_429_announced
-  🧹 Cleaned up announce file: .cao_488_announced
-  🧹 Cleaned up announce file: .cao_449_announced
-  🧹 Cleaned up announce file: .cao_433_announced
-  🧹 Cleaned up announce file: .cao_427_announced
-  🧹 Cleaned up announce file: .cao_391_announced
-  🧹 Cleaned up announce file: .cao_465_announced
-  🧹 Cleaned up announce file: .cao_359_announced
-  🧹 Cleaned up announce file: .cao_487_announced
-  🧹 Cleaned up announce file: .cao_418_announced
-  🧹 Cleaned up 14 announce files
+⚠️  Received SIGTERM, exiting gracefully...

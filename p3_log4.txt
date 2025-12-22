@@ -1,1079 +1,151 @@
+  🧹 Cleaned up announce file: .cao_563_announced
+  🧹 Cleaned up announce file: .cao_253_announced
+  🧹 Cleaned up announce file: .cao_190_announced
+  🧹 Cleaned up announce file: .cao_645_announced
+  🧹 Cleaned up announce file: .cao_592_announced
+  🧹 Cleaned up announce file: .cao_301_announced
+  🧹 Cleaned up announce file: .cao_615_announced
+  🧹 Cleaned up announce file: .cao_279_announced
+  🧹 Cleaned up announce file: .cao_650_announced
+  🧹 Cleaned up announce file: .cao_569_announced
+  🧹 Cleaned up announce file: .cao_306_announced
+  🧹 Cleaned up announce file: .cao_254_announced
+  🧹 Cleaned up announce file: .cao_317_announced
+  🧹 Cleaned up announce file: .cao_245_announced
+  🧹 Cleaned up announce file: .cao_636_announced
+  🧹 Cleaned up announce file: .cao_234_announced
+  🧹 Cleaned up announce file: .cao_573_announced
+  🧹 Cleaned up announce file: .cao_243_announced
+  🧹 Cleaned up announce file: .cao_233_announced
+  🧹 Cleaned up announce file: .cao_359_announced
+  🧹 Cleaned up announce file: .cao_316_announced
+  🧹 Cleaned up announce file: .cao_214_announced
+  🧹 Cleaned up announce file: .cao_310_announced
+  🧹 Cleaned up announce file: .cao_219_announced
+  🧹 Cleaned up 24 announce files
+  🧹 Cleaned up 11 stale lock files
 🎯 CAO Markdown Extraction Pipeline
-📊 Process: 4/17
+📊 Process: 4/22
 🔑 API Key: 4
 📁 Input: outputs/parsed_pdfs/parsed_pdfs_markdown
 📁 Output: outputs/llm_extracted/new_flow
-📄 Files to process: 162
+📄 Files to process: 125
 
+--- CAO 10 ---
   10: Skipping CAO BOUW EN INFRA 2023 - INTERACTIEF DEF.md (already processed)
-  10: Skipping TTW_cao_Bouw_en_Infra_10_2017.md (already processed)
-  21: Skipping CAO tekst 2021-2022 basis.md (already processed)
-  26: Skipping CAO_Vlees_2011__ongerenvooieerd_.md (already processed)
-  35: Skipping Cao Textielverzorging 2024-2025 vs aug24.md (already processed)
-  41: Skipping CAO-tekst 2019_vs3.docx .md (already processed)
-  41: Skipping integrale CAO-tekst 2010-2012.md (already processed)
-  43: Skipping cao_2015_2017_opmaak_A4.md (already processed)
-  51: Skipping CAO_Timmer_1_apr___18_t_m__31_mrt__19_2e_vers_.md (already processed)
-  51: Skipping cao Timmerindustrie 1 dec 21 tt 1 mrt 2024_1.md (already processed)
-  66: Skipping HISWA_CAO_2014_Versie_def.md (already processed)
-  83: Skipping Cao Betonproductenindustrie 2019-2021 na ttw versie 25-05-2021.md (already processed)
-  118: Skipping CAO_2014_ttw_def.md (already processed)
-  118: Skipping CAO_BIKUDAK_2022-2023_integraal.md (already processed)
-  125: Skipping CAO_VIGEF_20142016_def_.md (already processed)
-  148: Skipping cao tekst 2010 - 2012 per 1-4-2011.md (already processed)
-  152: Skipping cao_Vereniging_KNB_2013_2014.md (already processed)
-  157: Skipping Zuivel cao I 1 januari 2023 tot en met 31 maart 2024.md (already processed)
-  163: Skipping CAO_OV_tekst_2014_en_2015_DEFINITIEF.md (already processed)
-  171: Skipping cao_orsima_2018_2020_definitief.md (already processed)
-  187: Skipping Bos_en_Natuur__raam_cao_2011_SZW__28_7_2011.md (already processed)
-  190: Skipping Drankindustrie_cao_2015_definitief.md (already processed)
+  10: Skipping cao Bouw en Infra 2021-2022_1.md (already processed)
+--- CAO 21 ---
+  21: Skipping CAO_tekst_2019_basis_1.md (already processed)
+--- CAO 35 ---
+  35: Skipping Cao Textielverzorging 2023-2024 TTW doorlopende tekst.md (already processed)
+--- CAO 41 ---
+  41: Skipping CAO-tekst 2021_2022_defV2_geschoond.md (already processed)
+--- CAO 43 ---
+  43: Skipping CAO_2015_2017.md (already processed)
+--- CAO 50 ---
+  50: Skipping Cao Apotheken 2024-2027 na ttw volledig met bijlagen 07-07-2025.md (already processed)
+--- CAO 51 ---
+  51: Skipping cao_Timmerindustrie_TTW_1_1_2015_tm_31_3_2017.md (already processed)
+--- CAO 80 ---
+  80: Skipping CAO Waterbouw 2023-2024 schoon.md (already processed)
+--- CAO 83 ---
+  83: Skipping cao_voor_de_betonproductenindustrie_2013__2014.md (already processed)
+--- CAO 118 ---
+  118: Skipping CAO_BIKUDAK_2021_ttw_juni 2021_integraal.md (already processed)
+--- CAO 125 ---
+  125: Skipping Groente- en fruitverwerkende industrie definitief cao aug 2023.md (already processed)
+--- CAO 152 ---
+  152: Skipping Baksteen 1 mei 2024 tot 1 oktober 2025.md (already processed)
+--- CAO 157 ---
+  157: Skipping Zuivel I 2018-2020.docx .md (already processed)
+--- CAO 163 ---
+  163: Skipping CAO_OV_tekst_2016_en_2017_DEFINITIEF.md (already processed)
+--- CAO 182 ---
+  182: Skipping 20220524 cao_horeca_2022-2023 na 2020_wijziging bijlage loontabellen schoon.md (already processed)
+--- CAO 190 ---
+  190: Skipping Cao 2022 drankindustrie definitief.md (already processed)
+--- CAO 199 ---
   199: Skipping Vlakglasbranche cao tekst .md (already processed)
-  214: Skipping Cao_OB_2015_2019_WML_2018.md (already processed)
-  218: Skipping cao bb 2023-2024 integrale tekst definitief 230106.md (already processed)
-  233: Skipping 2020feb3_PvL_CAOtekst_1apr2019-31mrt2020.md (already processed)
-  234: Skipping Aanmeldversie cao Jeugdzorg 19-20.docx.md (already processed)
-  234: Skipping cao_tekst_JZ_2017_2019__23_8_17.md (already processed)
-  243: Skipping Cao_hoveniers_1_3_2013_tm_31_12_2013_20130472N.md (already processed)
-  245: Skipping Plantum___CAO_2011____2014.md (already processed)
-  253: Skipping Cao HVI 2024 - 2025 doorlopende tekst.md (already processed)
-  254: Skipping cao 2020-2021 integraal.docx.md (already processed)
-  279: Skipping SFG CAO tekst 2020-2021 integrale tekst.md (already processed)
+--- CAO 214 ---
+  214: Skipping Cao_OB_2015_2019_salaristabel_1_juli_2017.md (already processed)
+--- CAO 227 ---
+  227: Skipping CAO Weefselkweek 20200701 - 20201231 versie SZW.md (already processed)
+--- CAO 233 ---
+  233: Skipping CAOtekst_2014_PvL_6mei2014.md (already processed)
+--- CAO 243 ---
+  243: Skipping 20110636N_Cao_hoveniers_01032011_tm_28022013.md (already processed)
+  243: Skipping Integrale_cao_Hov_2018_2020.md (already processed)
+--- CAO 253 ---
+  253: Skipping CAO_HVI_doorlopende_tekst.md (already processed)
+--- CAO 254 ---
+  254: Skipping cao 2020-2021 integraal2.docx.md (already processed)
+--- CAO 279 ---
+  279: Skipping SFG__CAO_tekst_2018_2020_1.md (already processed)
 --- CAO 301 ---
-  301: Skipping CAOWMD20082011aanmelding2012.md (already processed)
-  301: Skipping ttwnov15_CAOWMD1416_def_exb2b15_wijzws_151215_def.md (already processed)
-  310: Skipping AWVN__515845_Margarine__en_Spijsvetindustrie_11_12.md (already processed)
+  301: Skipping Cao Sociaal Werk 2023-2025(definitief_tussentijdsgewijzigdper010724).md (already processed)
+--- CAO 306 ---
+  306: Skipping CAOtekst_AVV__integraal__verlenging.md (already processed)
 --- CAO 316 ---
-  316: Skipping CAO LMB 2019 - 2020 V 210220 def.docx.md (already processed)
-  317: Skipping CAO_Gehandicaptenzorg_2011_2014.md (already processed)
-  359: Cao na ttw Zoetwaren looptijd 1 januari 2023 tm 30 september 2024 (6 november 2023).md (Markdown: 0.3MB) [API 4/17]
-  INFO: Using Files API approach for Cao na ttw Zoetwaren looptijd 1 januari 2023 tm 30 september 2024 (6 november 2023).md
-  INFO: Markdown file size: 0.26 MB
-  INFO: Uploading markdown file to Gemini...
-  INFO: File uploaded successfully: files/hybgnlz0ex1w
-  INFO: File is ready for processing
-  DEBUG: File validation passed - size: 0.26MB
-  DEBUG: Constructed 2 content parts for API call
-  🚨 UNEXPECTED API ERROR during markdown extraction (attempt 1): ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
-  📋 This error occurred during the API call itself and will be handled by retry logic
-  INFO: Cleaned up uploaded file: files/hybgnlz0ex1w
-  DEBUG: Markdown upload error type: ServerError, Error message: 503 unavailable. {'error': {'code': 503, 'message': 'the model is overloaded. please try again later.', 'status': 'unavailable'}}
-  DEBUG: Full error details: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
-  🔍 DETAILED FAILURE ANALYSIS for Cao na ttw Zoetwaren looptijd 1 januari 2023 tm 30 september 2024 (6 november 2023).md (attempt 1):
-    📊 Finish reason: UNKNOWN
-    🛡️  Safety ratings: []
-    📄 Content length: 0 chars
-    ⏱️  Processing time: 167.7012801170349s
-    🔑 API key used: 4
-    🆔 Process ID: 3
-  DEBUG: Traceback: Traceback (most recent call last):
-  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 2153, in extract_with_markdown_upload
-    response = context.client.models.generate_content(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 6426, in generate_content
-    response = self._generate_content(
-               ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 5164, in _generate_content
-    response = self._api_client.request(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1266, in request
-    response = self._request(http_request, http_options, stream=False)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1086, in _request
-    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 477, in __call__
-    do = self.iter(retry_state=retry_state)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 378, in iter
-    result = action(retry_state)
-             ^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 420, in exc_check
-    raise retry_exc.reraise()
-          ^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 187, in reraise
-    raise self.last_attempt.result()
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 449, in result
-    return self.__get_result()
-           ^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
-    raise self._exception
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 480, in __call__
-    result = fn(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1063, in _request_once
-    errors.APIError.raise_for_response(response)
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/errors.py", line 107, in raise_for_response
-    raise ServerError(status_code, response_json, response)
-google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
-
-  Attempt 1 failed (service unavailable/internal error), retrying in 1 minutes...
-  INFO: Waiting 15 minutes before retry...
-[HEARTBEAT] long-running stage=generating_content elapsed=628s — enabling live debug
-[HEARTBEAT] stage=generating_content elapsed=718s (file 720s)
-[HEARTBEAT] stage=generating_content elapsed=808s (file 810s)
-[HEARTBEAT] stage=generating_content elapsed=898s (file 900s)
-[HEARTBEAT] stage=generating_content elapsed=988s (file 991s)
-  INFO: Wait complete, continuing with retry...
-  INFO: Uploading markdown file to Gemini...
-  INFO: File uploaded successfully: files/7fc4x4n1rs1c
-  INFO: File is ready for processing
-  DEBUG: File validation passed - size: 0.26MB
-  DEBUG: Constructed 2 content parts for API call
-[HEARTBEAT] stage=generating_content elapsed=9s (file 1081s)
-[HEARTBEAT] stage=generating_content elapsed=99s (file 1171s)
-[HEARTBEAT] stage=generating_content elapsed=189s (file 1261s)
-[HEARTBEAT] stage=generating_content elapsed=279s (file 1351s)
-  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
-  DEBUG: Finish reason: FinishReason.MAX_TOKENS
-  DEBUG: Checking response.parsed: hasattr=True, value=NOT_FOUND
-  DEBUG: Checking response.text: hasattr=True, value={
-  "general_information": [
-    [
-      "contract period: 1 January 2023 to 30 September 2024"
-    ],
-    [
-      "document type and role: Full CAO (original)"
-    ],
-    [
-      "scope type: sectoral"
-    ],
-    [
-      "scope description: Any company in the Netherlands that exclusively or primarily: 1) factory-produces rusks, toast, crispbread, biscuits, cookies, pastries, cakes, and waffles from flour and/or other raw materials, or comparable products, sold primarily to resellers/business customers; 2) factory-produces products mentioned under 1 by assembling parts, with or without filling, or comparable products; 3) factory-produces rice cakes and waffles, or comparable products; 4) exclusively or primarily provides services (packaging, technical maintenance, sales, administration, management, cleaning, distribution) to one or more of the companies mentioned under 1 to 3, forming an economic unit; 5) factory-produces confectionery; 6) factory-produces liquorice articles; 7) factory-processes cocoa mass, cocoa powder, cocoa butter, chocolate mass, or couverture for filled or unfilled chocolate articles, including sandwich spreads and pastes."
-    ],
-    [
-      "company name and scope description: De Vereniging voor de Bakkerij- en Zoetwarenindustrie te Den Haag, acting for and on behalf of its members whose company falls under the definition of Article 1, paragraph 1 of this CAO."
-    ],
-    [
-      "whether deviations at company-agreement level are explicitly allowed or restricted: Yes, deviations are explicitly allowed if they are more favorable to the employee."
-    ],
-    [
-      "dispensed companies: Smilde Bakery B.V. (part of Koninklijke Smilde B.V.)"
-    ]
-  ],
-  "wage_information": [
-    [
-      "general wage increases: Effective 1 January 2023, a 4.25% indexation of scale salaries and salaries. Additionally, a fixed (nominal) increase of €50 per month and €46.15 per period for scale salaries in function groups 2 to 10. Minimum gross hourly wage of €14. Salary scales will be indexed before the nominal increase is applied."
-    ],
-    [
-      "general wage increases: Effective 1 July 2023, a fixed (nominal) increase of €100 per month and €92.31 per period for scale salaries in function groups 2 to 10."
-    ],
-    [
-      "general wage increases: Effective 1 January 2024, a 4.25% indexation of scale salaries and salaries."
-    ],
-    [
-      "rules on entry placement in the wage scale: For inexperienced workers in salary scale groups 2 to 7, an introductory periodic step is set at 93% of the 0-periodic step of the respective salary scale, with a minimum gross hourly wage of €14 (as per Article 15)."
-    ],
-    [
-      "job classifications, function groups, pay groups/grades and how they link to wage scales: The employee receives a copy of their job description and written notification of the function group their job is classified into."
-    ],
-    [
-      "job classifications, function groups, pay groups/grades and how they link to wage scales: The procedure for correct job classification is based on the ORBA®-PM job evaluation system."
-    ],
-    [
-      "job classifications, function groups, pay groups/grades and how they link to wage scales: Transitional arrangements for the introduction of the job evaluation system for the Confectionery Industry are regulated in the Confectionery Industry Job Book."
-    ],
-    [
-      "job classifications, function groups, pay groups/grades and how they link to wage scales: Deviating job evaluation systems combined with deviating remuneration systems can be introduced after prior consultation with employee unions and approval from the Appeals Committee. The employer using a deviating salary system must ensure that the remuneration level is not below that of comparable functions and function levels in the CAO's function group system."
-    ],
-    [
-      "job classifications, function groups, pay groups/grades and how they link to wage scales: Each function group has a corresponding scale salary. The salary scales are included in Appendix III of the CAO."
-    ],
-    [
-      "rules on entry placement in the wage scale: The employer is obliged to pay the employee the scale salary based on their job classification. The employee's scale salary is set at a minimum of the A-periodic step (function group 2 to 7) or 0-periodic step (function group 8 or higher) of the relevant salary scale upon commencement of employment."
-    ],
-    [
-      "rules on entry placement in the wage scale: An employee who does not yet possess the required knowledge, skills, and/or experience for a function can be classified in the A-periodic step (function group 2 to 7) as long as they do not have the correct function requirements. Classification in the A-periodic step is only possible at the start of employment or when the temporary agency worker starts working for the Confectionery employer."
-    ],
-    [
-      "rules on entry placement in the wage scale: The employer may only use the A-periodic step classification if they invest in the costs and time associated with education, training, and/or acquiring competencies and skills otherwise."
-    ],
-    [
-      "rules on entry placement in the wage scale: For employees or temporary agency workers in function groups 2 to 7, qualification progress must be evaluated periodically. Evaluation occurs at the latest after: 3 months for groups 2-3; 6 months for groups 4-5; 12 months for groups 6-7. If the evaluation is negative, the term can be extended by the same period with employee agreement. If no extension or a second negative evaluation occurs, the employee will be reclassified or terminated. If the employer decides to keep the employee in the same function after a second negative evaluation, the employee is scaled into the 0-periodic step. If no evaluation occurs or it is positive, the employee is scaled into the 0-periodic step."
-    ],
-    [
-      "rules on entry placement in the wage scale: The duration of classification in the A-periodic step, in addition to the terms in paragraph 5c (max. 6, 12, or 24 months), may not exceed the duration of the education/training, or the time required to achieve the desired competency/skills level."
-    ],
-    [
-      "rules on entry placement in the wage scale: Article 15, paragraph 6 of the CAO comes into effect on 1 August 2023. Rights from previous CAOs regarding Article 15 expire on this date and are replaced by the provisions of this CAO. The current CAO takes precedence over previous CAOs if it provides lesser entitlements."
-    ],
-    [
-      "notes explaining how the wage system or tables operate: A holiday worker can be paid according to the statutory minimum (youth) wage for a maximum of 1 month per year. After this, the holiday worker will be paid according to the CAO scale salary of their function group."
-    ],
-    [
-      "bonuses and incentive schemes: An employee temporarily fully performing a higher-classified function, by employer's order, remains in their own function group. If the temporary assignment lasts at least 5 consecutive shifts, the employee receives a supplement to their scale salary for the entire period. This supplement is 1/20th of the difference between the periodic scale salaries of the respective function groups at step 0, per full shift. Any placement allowance is offset against the temporary assignment allowance."
-    ],
-    [
-      "bonuses and incentive schemes: The temporary increased scale salary is used to calculate the shift allowance and overtime allowance, where applicable."
-    ],
-    [
-      "bonuses and incentive schemes: The temporary assignment allowance is not granted to employees whose job classification already accounts for potential temporary assignments."
-    ],
-    [
-      "bonuses and incentive schemes: Example calculation for temporary assignment allowance: An Operator B (function group 6) temporarily replaces a Team Leader B (function group 8) for 5 consecutive shifts. The difference in 0-periodic scale salaries (as of 1 July 2023) is €2,468 - €2,374 = €94. The Operator B receives an allowance of 5 x €4.70 (1/20th of €94) = €23.5."
-    ],
-    [
-      "rules governing progression within scales: Each year on 1 January, an employee (except those in the A-periodic step) is granted a periodic step until they reach the maximum of their function group, provided employment has lasted at least 22 weeks. Employees in the A-periodic step move to the 0-periodic step after a positive evaluation or reaching the maximum term in the A-periodic step as per Article 15."
-    ],
-    [
-      "rules governing progression within scales: Upon promotion to a higher function group, the scale salary increases by the difference between the 0-periodic function wages of the old and new function groups, or more if needed to match the next higher amount in the new function group's periodic scale. The employee is then granted the corresponding number of periodic steps, with subsequent steps on each following 1 January."
-    ],
-    [
-      "rules on personal allowances when the maximum of a wage scale is reached or when an employee keeps a higher wage after reclassification: If an employee is reclassified to a lower function group at their own request or fault, the new scale salary can be set to the next lower scale salary in the new function group. This reduction applies from the first day of the payment period following the reclassification."
-    ],
-    [
-      "rules on personal allowances when the maximum of a wage scale is reached or when an employee keeps a higher wage after reclassification: If an employee can no longer perform a function due to business circumstances, the employer will seek an equivalent function elsewhere in the company for them."
-    ],
-    [
-      "rules on personal allowances when the maximum of a wage scale is reached or when an employee keeps a higher wage after reclassification: If no equivalent function is available, the employee is reclassified to a new lower function group. The new scale salary is then equal to the next higher scale salary in the new function group. If the old scale salary exceeds the maximum of the new function group, the difference is converted into a personal allowance. This personal allowance is increased by the percentage of the general initial salary increase. Upon reclassification to a higher function group, the personal allowance is reduced by the same amount as the salary/scale salary increases."
-    ],
-    [
-      "rules on personal allowances when the maximum of a wage scale is reached or when an employee keeps a higher wage after reclassification: This change in scale salary applies from the first day of the payment period following the reclassification to a lower function group."
-    ],
-    [
-      "rules on personal allowances when the maximum of a wage scale is reached or when an employee keeps a higher wage after reclassification: If an employee aged 50 or older with 2 or more years of service is reclassified to a lower function group, the scale salary of the previous (higher) function group will be guaranteed. This guarantee does not apply if the transfer is at the employee's own request."
-    ],
-    [
-      "rules governing progression within scales: The performance-dependent remuneration system aims to link performance, development, and reward, promoting individual salary increases for positive outcomes and providing tools for job and career-oriented development within the confectionery industry."
-    ],
-    [
-      "rules governing progression within scales: The application of the performance-dependent remuneration system is not mandatory; it is for companies seeking to focus on employee development to better respond to future process and product innovations."
-    ],
-    [
-      "rules governing progression within scales: If a company adopts the system, it must meet conditions including: submitting an overview of evaluations to the Appeals Committee, ensuring an employee is not denied a salary step for more than two consecutive years, conducting evaluations before 1 January, and having a fixed appeal procedure. Appendix XI details these conditions."
-    ],
-    [
-      "notes explaining how the wage system or tables operate: Wage payment takes place before the end of each payment period."
-    ],
-    [
-      "notes explaining how the wage system or tables operate: The employer provides the employee with a payslip that meets legal requirements (see Appendix VI, Article 7:626 BW)."
-    ],
-    [
-      "bonuses and incentive schemes: Additional hours (meeruren) for part-time employees (between their schedule and a full-time schedule) count towards the calculation of allowances, benefits, reimbursements, gratuities, vacation, absence, leave, holidays, incapacity for work, and pension."
-    ],
-    [
-      "bonuses and incentive schemes: An employee regularly working in freezer cells receives a gross weekly supplement above their applicable scale salary: €7.54 as of 1 January 2023; €7.86 as of 1 January 2024."
-    ],
-    [
-      "bonuses and incentive schemes: An employee following a relevant vocational training via the vocational learning pathway (Wet educatie en beroepsonderwijs) receives an extra gross payment:",
-      "Apprentice and Diploma Allowances",
-      "Columns: Event | Per 1-1-2023 | Per 1-1-2024",
-      "a. after completion of the first year of training | €70.66 | €73.66",
-      "b. upon obtaining the diploma of basic vocational training and/or level 1 | €215.21 | €224.36",
-      "c. upon obtaining the diploma of basic vocational training and/or level 2 | €269.03 | €280.46",
-      "d. upon obtaining the diploma of vocational training and/or level 3 | €322.83 | €336.55",
-      "e. upon obtaining the diploma of vocational training and/or level 4 | €430.43 | €448.72"
-    ],
-    [
-      "bonuses and incentive schemes: An employee with 10 or more continuous years of service receives a gross payment from the employer equal to one payment period's income (4 weeks or one month) upon regular termination due to (pre)retirement or reaching AOW age. This payment is made only once."
-    ],
-    [
-      "Function Classification List (ORBA-score)",
-      "Columns: Group | Range | Function Name | ORBA-score",
-      "1 | 0-25 | |",
-      "2 | 26-40 | Packaging employee A |",
-      "| | Internal transport employee A |",
-      "| | Cleaner A |",
-      "3 | 41-55 | Canteen employee | 42",
-      "| | Cleaner B | 44",
-      "| | Packaging employee B | 48",
-      "4 | 56-70 | Internal transport employee B | 52",
-      "| | Production employee B | 61",
-      "| | Sales support assistant | 66",
-      "5 | 71-85 | Quality administrative employee | 72",
-      "| | Administrative assistant FA | 74",
-      "| | Packaging operator B | 76",
-      "| | QC assistant | 77",
-      "| | Warehouse employee B | 77",
-      "| | Telephonist/receptionist | 78",
-      "| | Porter | 78",
-      "| | Export administrative employee | 79",
-      "| | Customer service employee | 82",
-      "6 | 86-105 | Truck driver | 88",
-      "| | Warehouse team leader | 97",
-      "| | Production operator B | 98",
-      "7 | 106-125 | QA assistant | 110",
-      "| | FA employee | 112",
-      "| | Product development employee | 113",
-      "| | Sales support employee | 117",
-      "| | Secretary B | 119",
-      "8 | 126-150 | Quality controller/-analyst | 132",
-      "| | Warehouse/dispatch team leader | 134",
-      "| | Production planner | 135",
-      "| | Team leader B | 139",
-      "| | Mechanic B | 139",
-      "| | Payroll administration employee B | 139",
-      "9 | 151-175 | Marketing employee | 155",
-      "| | QA employee | 161",
-      "| | Demand planner | 162",
-      "| | System administrator | 165",
-      "| | Executive secretary B | 167",
-      "| | HR employee | 169",
-      "| | Technical specialist E&I | 170",
-      "10 | 176-200 | Head of technical department | 185",
-      "| | Head of quality department (QA/QC) | 189",
-      "| | Department head/production head B | 190",
-      "| | Product developer | 190",
-      "| | Packaging material buyer | 190",
-      "| | Head of FA/administrator B | 192",
-      "| | Account manager B | 195"
-    ],
-    [
-      "Monthly Salary Scale per 1 January 2023 (including a 4.25% increase + €50 nominal)",
-      "Columns: Group | A periodic | 0 periodic | 1 periodic | 2 periodic | 3 periodic | 4 periodic | 5 periodic | 6 periodic | 7 periodic | 8 periodic | 9 periodic | 10 periodic | 11 periodic | 12 periodic | 13 periodic",
-      "1 | | 2315 | 2412 | 2512 | 2548 | 2579 | 2610 | 2644 | | | | | | |",
-      "2 | 2191 | 2354 | 2459 | 2558 | 2595 | 2636 | 2674 | 2710 | | | | | | |",
-      "3 | 2191 | 2384 | 2584 | 2633 | 2676 | 2721 | 2772 | 2811 | 2962 | | | | | |",
-      "4 | 2217 | 2431 | 2640 | 2691 | 2742 | 2793 | 2852 | 2900 | 3074 | 3139 | | | | |",
-      "5 | 2261 | 2480 | 2693 | 2751 | 2809 | 2874 | 2937 | 3003 | 3173 | 3245 | 3322 | | | |",
-      "6 | 2306 | 2513 | 2729 | 2797 | 2870 | 2943 | 3019 | 3099 | 3318 | 3409 | 3494 | 3583 | | |",
-      "7 | 2337 | 2581 | 2801 | 2884 | 2971 | 3058 | 3144 | 3232 | 3479 | 3572 | 3676 | 3783 | 3871 | |",
-      "8 | | 2654 | 2882 | 2982 | 3080 | 3182 | 3280 | 3378 | 3634 | 3749 | 3858 | 3970 | 4080 | 4193 |",
-      "9 | | 2737 | 2971 | 3082 | 3193 | 3306 | 3415 | 3529 | 3634 | 3749 | 3858 | 3970 | 4080 | 4193 |",
-      "10 | | | | | | | | | | | 3583 | 3783 | 3970 | 4193 | 4303"
-    ],
-    [
-      "Bonus 2.5% (of the scale maximum) per 1 January 2023",
-      "Columns: Group | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9",
-      "Value | 66 | 68 | 70 | 74 | 78 | 83 | 90 | 97 | 108"
-    ],
-    [
-      "Monthly Salary Scale per 1 July 2023 (including a €100 nominal increase)",
-      "Columns: Group | A periodic | 0 periodic | 1 periodic | 2 periodic | 3 periodic | 4 periodic | 5 periodic | 6 periodic | 7 periodic | 8 periodic | 9 periodic | 10 periodic | 11 periodic | 12 periodic | 13 periodic",
-      "1 | | 2415 | 2512 | 2612 | 2648 | 2679 | 2710 | 2744 | | | | | | |",
-      "2 | 2246 | 2454 | 2559 | 2658 | 2695 | 2736 | 2774 | 2810 | | | | | | |",
-      "3 | 2282 | 2484 | 2684 | 2733 | 2776 | 2821 | 2872 | 2911 | 3062 | | | | | |",
-      "4 | 2310 | 2531 | 2740 | 2791 | 2842 | 2893 | 2952 | 3000 | 3174 | 3239 | | | | |",
-      "5 | 2354 | 2580 | 2793 | 2851 | 2909 | 2974 | 3037 | 3103 | 3273 | 3345 | 3422 | | | |",
-      "6 | 2399 | 2613 | 2829 | 2897 | 2970 | 3043 | 3119 | 3199 | 3418 | 3509 | 3594 | 3683 | | |",
-      "7 | 2430 | 2681 | 2901 | 2984 | 3071 | 3158 | 3244 | 3332 | 3579 | 3672 | 3776 | 3883 | 3971 | |",
-      "8 | | 2754 | 2982 | 3082 | 3180 | 3282 | 3380 | 3478 | 3734 | 3849 | 3958 | 4070 | 4180 | 4293 |",
-      "9 | | 2837 | 3071 | 3182 | 3293 | 3406 | 3515 | 3629 | 3734 | 3849 | 3958 | 4070 | 4180 | 4293 |",
-      "10 | | | | | | | | | | | 3683 | 3883 | 4070 | 4293 | 4403"
-    ],
-    [
-      "Bonus 2.5% (of the scale maximum) per 1 July 2023",
-      "Columns: Group | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9",
-      "Value | 69 | 70 | 73 | 77 | 81 | 86 | 92 | 99 | 110"
-    ],
-    [
-      "Monthly Salary Scale per 1 January 2024 (including a 4.25% increase)",
-      "Columns: Group | A periodic | 0 periodic | 1 periodic | 2 periodic | 3 periodic | 4 periodic | 5 periodic | 6 periodic | 7 periodic | 8 periodic | 9 periodic | 10 periodic | 11 periodic | 12 periodic | 13 periodic",
-      "1 | | 2518 | 2619 | 2723 | 2761 | 2793 | 2825 | 2861 | | | | | | |",
-      "2 | 2342 | 2558 | 2668 | 2771 | 2810 | 2852 | 2892 | 2929 | | | | | | |",
-      "3 | 2379 | 2590 | 2798 | 2849 | 2894 | 2941 | 2994 | 3035 | 3192 | | | | | |",
-      "4 | 2409 | 2639 | 2856 | 2910 | 2963 | 3016 | 3077 | 3128 | 3309 | 3377 | | | | |",
-      "5 | 2454 | 2690 | 2912 | 2972 | 3033 | 3100 | 3166 | 3235 | 3412 | 3487 | 3567 | | | |",
-      "6 | 2502 | 2724 | 2949 | 3020 | 3096 | 3172 | 3252 | 3335 | 3563 | 3658 | 3747 | 3840 | | |",
-      "7 | 2533 | 2795 | 3024 | 3111 | 3202 | 3292 | 3382 | 3474 | 3731 | 3828 | 3936 | 4048 | 4140 | |",
-      "8 | | 2871 | 3109 | 3213 | 3315 | 3421 | 3524 | 3626 | 3893 | 4013 | 4126 | 4243 | 4358 | 4475 |",
-      "9 | | 2958 | 3202 | 3317 | 3433 | 3551 | 3664 | 3783 | 3893 | 4013 | 4126 | 4243 | 4358 | 4475 |",
-      "10 | | | | | | | | | | | 3840 | 4048 | 4243 | 4475 | 4590"
-    ],
-    [
-      "Bonus 2.5% (of the scale maximum) per 1 January 2024",
-      "Columns: Group | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9",
-      "Value | 72 | 73 | 76 | 80 | 84 | 89 | 96 | 104 | 115"
-    ],
-    [
-      "Participation Scale per month",
-      "Columns: Level | per 1 January 2023 | Per 1 July 2023",
-      "WML* | €1,934.40 | €1,995.00",
-      "105% | €2,031.12 | €2,094.75",
-      "110% | €2,127.84 | €2,194.50",
-      "115% | €2,224.56 | €2,294.25",
-      "120% | €2,321.28 | €2,394.00",
-      "Notes: The Participation Scale will be increased on 1 January 2024 and 1 July 2024 with the increase of the statutory minimum wage applicable at that time. *Statutory minimum (youth) wage. For employees younger than 21 years, falling under the Participation Act, the amounts from the participation scales are multiplied by the following percentages: Age 20 years: 80%; 19 years: 60%; 18 years: 50%; 17 years: 39.5%; 16 years: 34.5%; 15 years: 30%."
-    ]
-  ],
-  "pension_information": [
-    [
-      "early retirement: Employees who have worked continuously for the same employer or its legal predecessor(s) for the last 8 years can, from 8 years before their AOW-eligible age, participate in the 80/90/100 scheme under certain conditions, thereby reducing working hours by 20% to maintain physical and mental employability."
-    ],
-    [
-      "early retirement: Conditions and requirements for participation in the 80/90/100 scheme are detailed in Appendix XII."
-    ],
-    [
-      "type of scheme and mandatory/optional participation: The employee is obliged to participate in the pension scheme of the Stichting Bedrijfspensioenfonds voor de Zoetwarenindustrie, unless the fund has granted an exemption to the employer. A summary of the current pension scheme is in Appendix X."
-    ],
-    [
-      "retirement ages: Older employees attending a course to prepare for (pre)retirement are entitled to leave with retention of income, provided their work can be arranged in consultation. This leave is limited to a maximum of 5 shifts over the last 3 years combined."
-    ],
-    [
-      "rules on pension accrual during statutory leaves: An employee taking parental leave under Article 6:1 of the Work and Care Act retains their pension entitlements (see Appendix VI, Articles 6:1 to 6:5 Work and Care Act for parental leave)."
-    ],
-    [
-      "retirement ages: The pension scheme for the Confectionery Industry, effective 1 January 2023, provides a lifelong old-age pension with a default retirement age of 68, but a flexible actual start date. Employees can start their pension from age 55."
-    ],
-    [
-      "contribution levels: The principle for premium distribution between employer and employees is a 2:1 ratio up to 30% (maximum premium). With a total premium of 30% (2023 level), the employer pays 20% and the employee pays 10%."
-    ],
-    [
-      "accrual rules and key parameters: The premium is levied on the pensionable basis, which is the pensionable wage – with a maximum of €70,100 – minus a franchise of €16,322 (2023 levels). Accrual in 2023 is 1.7% of the pensionable basis."
-    ],
-    [
-      "accrual rules and key parameters: The maximum pensionable wage is increased annually by the same percentage as the franchise."
-    ],
-    [
-      "contribution levels: The potential consequences for pension premium and accrual percentage for 2024 will be determined by CAO parties in the Organized Consultation in November. The starting point is maintaining the maximum premium of 30%."
-    ],
-    [
-      "name and abbreviation of the pension fund or provider: Stichting Bedrijfspensioenfonds voor de Zoetwarenindustrie (website: www.pensioenzoetwaren.nl)."
-    ],
-    [
-      "early retirement: The specific conditions and employment terms applicable at the employer are regulated in this scheme."
-    ],
-    [
-      "early retirement: For participation, the employee must have worked continuously for the last 8 years for the same employer or its legal predecessor(s) in an employment of at least 0.7 FTE."
-    ],
-    [
-      "early retirement: An employee with at least 0.7 FTE employment is given a one-time opportunity to reduce working hours by 20%, retaining 50% of the monthly income for this reduction and maintaining pension accrual over 100/90ths of the pensionable salary."
-    ],
-    [
-      "early retirement: Monthly income in this scheme refers to the salary as per Article 1, paragraph 9 CAO and the shift allowance, after applying this scheme."
-    ],
-    [
-      "early retirement: Further reduction of working hours is entirely at the employee's expense."
-    ],
-    [
-      "early retirement: For employees using this scheme, the relief provisions of the CAO, namely Article 35 (extra free hours), Article 36 (night work), and Article 41 (free hours for older employees), cease to apply."
-    ],
-    [
-      "early retirement: For employees using this scheme, the right to increase working hours ceases."
-    ],
-    [
-      "early retirement: The scheme ends upon reaching AOW-eligible age."
-    ],
-    [
-      "contribution levels: Pension premium distribution is 1/3 for the employee and 2/3 for the employer."
-    ],
-    [
-      "early retirement: After working hour reduction, other employment conditions linked to working hours apply pro-rata to the reduced working hours, and conditions linked to income apply pro-rata to the reduced income."
-    ],
-    [
-      "early retirement: An eligible employee must submit a written request to the employer at least 2 months before the intended start date of the working hour reduction."
-    ],
-    [
-      "early retirement: The determination of non-working hours will occur in consultation and considering business circumstances."
-    ],
-    [
-      "early retirement: Working hour reduction primarily occurs by working fewer hours per week or within the shift cycle. The employee can take the 20% reduction in full or half shifts."
-    ],
-    [
-      "early retirement: An employee using this scheme who subsequently works less than 50% of the normal working hours (Article 8, paragraph 1 CAO) is no longer eligible for this scheme from the date the shorter working hours commence."
-    ],
-    [
-      "early retirement: An employee using this scheme cannot claim overtime and cannot be obliged to work additional or overtime hours. If the employee does perform additional or overtime work, the normal remuneration for additional and overtime work under this CAO applies to those hours."
-    ],
-    [
-      "early retirement: Employee participation in this scheme is confirmed in writing by the employer."
-    ],
-    [
-      "early retirement: In case of relevant cost changes due to changes in AOW, fiscal, and/or insurance legislation, parties will consult on cost-neutral adjustments to the scheme."
-    ],
-    [
-      "early retirement: An employee using this scheme may not perform paid work for third parties, unless agreed upon with the employer."
-    ],
-    [
-      "early retirement: Participation in the scheme generally does not grant the right to restore original working hours or the relief provisions: Articles 35 (extra free hours), 36 (night work), and 41 (free hours for older employees) of the CAO."
-    ],
-    [
-      "early retirement: This scheme cannot be combined with other CAO facilities for working hour reduction or income supplementation for sustainable employability or relief provisions."
-    ],
-    [
-      "early retirement: At company level, the employer can deviate positively from this scheme, provided the employee continues to work at least 50% of the normal working hours as per Article 8, paragraph 1 CAO."
-    ],
-    [
-      "early retirement: Unlawful use of this scheme may lead to termination of participation."
-    ],
-    [
-      "early retirement: The scheme was last amended on 1 January 2021 and will be evaluated annually by CAO parties, who may decide on further expansion/earlier retirement."
-    ]
-  ],
-  "leave_information": [
-    [
-      "special leaves: On public holidays (New Year's Day, first and second Easter Day, Ascension Day, first and second Pentecost Day, first and second Christmas Day, King's Day, and Liberation Day (May 5th) in a lustrum year (once every 5 years)), work is generally not performed."
-    ],
-    [
-      "special leaves: A public holiday is assigned a value of 7.2 hours in work schedules. If an employee is scheduled for more than the annual number of weekday public holidays multiplied by 7.2 hours, the excess hours must be scheduled on other days that year. If fewer hours are scheduled, the difference must be rostered off on other days that year."
-    ],
-    [
-      "special leaves: For part-time employees, the above applies proportionally."
-    ],
-    [
-      "special leaves: Income for public holiday hours is paid as per Article 34, paragraph 2."
-    ],
-    [
-      "vacation and holiday allowance: The vacation year runs from 1 May of the preceding year to 1 May of the current year."
-    ],
-    [
-      "vacation and holiday allowance: The employee is entitled to a holiday allowance of 8% of their income over the vacation year. Article 16, paragraph 2 WML applies, meaning the employee always receives at least 108% of the statutory minimum wage for every hour worked (including overtime and/or additional hours) as holiday allowance."
-    ],
-    [
-      "vacation and holiday allowance: For an employee working the hours specified in Article 8, paragraph 1, and entitled to the full holiday allowance for the vacation year, a minimum holiday allowance applies. The minimum holiday allowance is €2,332 as of 1 May 2023, and €2,365 as of 1 May 2024."
-    ],
-    [
-      "vacation and holiday allowance: The holiday allowance for the past vacation year will be paid out no later than May."
-    ],
-    [
-      "vacation and holiday allowance: Normal vacation entitlement is 180 hours per year. Vacation hours are deducted according to the current work schedule in the company or department (see Appendix IX)."
-    ],
-    [
-      "vacation and holiday allowance: An employee working more than 36 hours per week must be enabled to take 5 weeks of vacation annually."
-    ],
-    [
-      "vacation and holiday allowance: An employee receives for a vacation hour the income (including shift allowance) they would have earned according to the current work schedule. Income for a public holiday or short absence is calculated similarly."
-    ],
-    [
-      "vacation and holiday allowance: If desired, and if vacation entitlement is sufficient, the employee takes 3 consecutive weeks of vacation."
-    ],
-    [
-      "vacation and holiday allowance: If the employer closes the company or part of it for collective vacation, affected employees must take vacation during that period. Collective vacation must be set before the calendar year in consultation with the Works Council, or employee representation/staff if no Works Council exists."
-    ],
-    [
-      "vacation and holiday allowance: The employer can designate up to 3 mandatory free days for the entire company or part thereof, with the consent of the Works Council, or employee representation/staff if no Works Council exists. These days must be set before the relevant calendar year."
-    ],
-    [
-      "vacation and holiday allowance: An employee under 18 years old on 1 May of any year, who has been employed for every consecutive 6-month period since 1 May of the preceding year, is entitled to 7.2 hours of extra vacation with retention of income."
-    ],
-    [
-      "vacation and holiday allowance: The limitation period for both statutory and extra-statutory vacation rights is five years. Statutory vacation rights are generally intended to be taken in the year of accrual. If not, employer and employee consult on how to proceed in the following year."
-    ],
-    [
-      "special leaves: To accommodate reduced workload capacity of older employees, they are entitled to extra vacation in addition to Article 34, paragraph 1 vacation hours, starting in the year they reach the age of: 46-50 years: 2 shifts; 51-55 years: 3 shifts; 56-60 years: 4 shifts; 61 years and older: 5 shifts."
-    ],
-    [
-      "special leaves: An employee with at least 25, 30, or 40 consecutive years of service receives annually 2, 3, or 4 extra vacation shifts, respectively, with retention of income (seniority vacation)."
-    ],
-    [
-      "special leaves: Cumulation of the provisions mentioned in paragraphs 1 and 2 is not possible."
-    ],
-    [
-      "special leaves: Extra free hours must be taken by 31 December of the year they are granted, unless a specific savings goal for recuperation is agreed upon, or the hours are exchanged via the CAO à la carte scheme (Article 18)."
-    ],
-    [
-      "special leaves: An employee working in a schedule with an average of 4 or more night shifts per 3 weeks per schedule cycle is entitled to 2 extra vacation shifts, in addition to Article 34, paragraph 1 vacation hours. These extra shifts must be taken by 31 December of the year they are granted, unless a specific savings goal for recuperation is agreed upon, or the shifts are exchanged via the CAO à la carte scheme (Article 18)."
-    ],
-    [
-      "care leave: To the extent necessary during working hours, an employee may take paid leave as per Article 4:1 of the Work and Care Act, provided timely notification is given to the employer."
-    ],
-    [
-      "care leave: The employee is entitled to leave with retention of income for a short, reasonably calculated period, if unable to work due to: a) very special personal circumstances; b) a legally or government-imposed obligation without financial compensation that cannot be fulfilled in free time; c) exercising active voting rights. Income is paid as per Article 34, paragraph 2."
-    ],
-    [
-      "care leave: In case of short absence leave, income will be paid during the very special circumstances and for the specified duration below. Income is paid as per Article 34, paragraph 2. Life partner refers to spouse, registered partner, or someone with whom the employee maintains a durable life relationship, previously disclosed by the employee."
-    ],
-    [
-      "special leaves: Marriage: a) 1 day for employee's marriage registration; b) 2 days for employee's marriage or registered partnership; c) 1 day, if attended, for marriage or registered partnership of parents, grandparents, child, foster/stepchild, grandchild, sibling of employee or life partner; or for employee's 25th or 40th wedding/partnership anniversary; or for parents' or grandparents' 25th, 40th, 50th, or 60th wedding/partnership anniversary."
-    ],
-    [
-      "special leaves: Death: d) 1 day, if attended, for death of grandparent, sibling, grandchild, brother-in-law, sister-in-law of employee or life partner; e) From day of death up to and including day of funeral/cremation, maximum 7 calendar days, for death of life partner, parent(s), parent(s)-in-law, own or adopted child, stepchild or foster child of employee or life partner."
-    ],
-    [
-      "paternity/partner leave: f) A short, reasonably calculated period for the life partner's childbirth. g) The employee is entitled to the statutory number of days of birth leave as per Article 4:2 of the Work and Care Act after the life partner's childbirth or recognition of the child."
-    ],
-    [
-      "adoption and foster leave: h) For adoption of a child into the employee's family, the employee is entitled to the statutory number of days as per Article 3:2 of the Work and Care Act. 2 days of this leave are paid."
-    ],
-    [
-      "special leaves: Moving: i) Maximum 1 day per calendar year for moving, if it occurs on a workday."
-    ],
-    [
-      "care leave: j) For doctor's visits (including dentist) necessary for the employee's health, which cannot occur outside working hours: for the time needed, up to 2 hours, provided prior employer permission is obtained. If the employee proves longer absence than 2 hours was necessary, the employer will pay income for this longer absence. The employer must allow more than 2 hours of absence with income retention for specialist visits if the employee provides a referral from their GP and reasonably demonstrates the necessity of the long absence."
-    ],
-    [
-      "special leaves: For 25-, 40-, or 50-year service anniversary (or 20-, 30-, 40-, and 50-year anniversaries in companies celebrating them): 1 shift."
-    ],
-    [
-      "special leaves: Employees may take 2 days of unpaid leave per year for religious or philosophical observances, unless compelling business interests prevent it. The employer must provide written reasons for any refusal."
-    ],
-    [
-      "special leaves: Employees aged 60 or older can take free hours per calendar quarter, subject to the following rules."
-    ],
-    [
-      "special leaves: Available free hours per calendar quarter for employees aged: 60 years: 13 hours; 61 years: 26 hours; 62-64 years: 39 hours; 65 years: 52 hours."
-    ],
-    [
-      "special leaves: Hours mentioned in paragraph 2 are accrued proportionally per week. No hours are accrued during absence due to vacation, incapacity for work, or leave under Article 39."
-    ],
-    [
-      "special leaves: The times for taking free hours are determined in consultation with the employer according to a schedule to be agreed upon before the start of each calendar quarter."
-    ],
-    [
-      "special leaves: Free hours mentioned in paragraph 2 can only be taken in the relevant calendar quarter. Untaken free hours expire at the end of the quarter."
-    ],
-    [
-      "special leaves: Notwithstanding paragraph 5a, accrued untaken free hours can be carried over to the next quarter in cases of vacation, incapacity for work, or leave under Article 39."
-    ],
-    [
-      "special leaves: An employee taking free hours as per paragraph 2 receives 85% of their applicable income for these hours."
-    ],
-    [
-      "special leaves: Free hours may not be replaced by a monetary payment."
-    ],
-    [
-      "special leaves: This scheme applies without prejudice to the extra vacation hours for older employees mentioned in Article 35."
-    ],
-    [
-      "special leaves: For pension schemes and other employment conditions, the taken free hours remain at 100% of the hourly income."
-    ],
-    [
-      "sickness: If an employee is unable to perform work due to illness, pregnancy, or childbirth, the provisions of Article 7:629 BW, the Sickness Benefits Act (ZW), the Work and Care Act for pregnancy and maternity leave, the Disability Insurance Act (WAO), and the Work and Income according to Work Capacity Act (WIA) apply, unless otherwise specified."
-    ],
-    [
-      "sickness: During the first year of illness, the employee receives a supplement to the statutory wage continuation up to 100% of income (including allowances), provided the employee adheres to company sickness absence rules. This 100% supplement also applies to early IVA benefits."
-    ],
-    [
-      "sickness: During the second year of illness, the employee receives a supplement to the statutory wage continuation up to 95% of income, provided the employee adheres to company sickness absence rules. Hours worked for reintegration (excluding occupational therapy) are considered normal working hours and compensated at 100%. Pension accrual is proportional to wage continuation. This 95% supplement also applies to early IVA benefits."
-    ],
-    [
-      "sickness: Third year and later: For incapacity for work < 35%, the employee will be offered adapted/other work by the employer, with earning capacity paid at a minimum of 70% of the last earned wage, with a floor at the minimum wage (pro-rata part-time). Dismissal will only be unavoidable in exceptional cases, for which CAO parties will establish a procedure. For incapacity between 35% and 80%, the employer will make maximum efforts to enable the employee to utilize their remaining earning capacity. A collective offer for supplementary WGA-gap insurance is arranged by CAO parties (see Appendix V)."
-    ],
-    [
-      "sickness: Income in this article also includes holiday allowance."
-    ],
-    [
-      "vacation and holiday allowance: If no 'à la Carte' scheme is offered, an employee can buy 10 vacation days per year if their vacation balance is insufficient. The value of a day is calculated as per paragraph 3 sub c."
-    ],
-    [
-      "vacation and holiday allowance: Purchased free days cannot be carried over to subsequent years or used for purposes other than vacation. If, by December 31st of the year of purchase, not all days/hours have been taken, remaining hours will be paid out at the same wage level as they were purchased."
-    ]
-  ],
-  "termination_information": [
-    [
-      "notice periods for employers and employees: Statutory regulations regarding notice periods apply (Article 7:672 BW, see Appendix VI), unless otherwise specified."
-    ],
-    [
-      "notice periods for employers and employees: An employer must inform the employee at least 1 month before the end of a fixed-term contract whether it will be continued or not."
-    ],
-    [
-      "automatic end-of-employment rules: The employment contract automatically ends when the employee reaches the AOW (state pension) age."
-    ],
-    [
-      "automatic end-of-employment rules: If the employee chooses to use the part-time (pre)pension scheme before reaching AOW age, the employment contract will be adjusted proportionally to the part of the working hours for which the employee takes part-time (pre)pension."
-    ],
-    [
-      "automatic end-of-employment rules: The employee must inform the employer in writing at least 4 months in advance of the date they intend to retire."
-    ],
-    [
-      "special leaves: For an interview for a job application, if not possible in free time and termination by the employer has been announced, or employment ends by mutual consent; as much time as circumstances require."
-    ],
-    [
-      "severance pay and unemployment (WW) supplements: If an employee dies, their surviving relatives receive a death benefit equal to the employee's last legally due income for the remainder of the month of death plus the two subsequent calendar months. Any amounts due to the relatives under the Sickness Benefits Act and/or WIA due to the employee's death are deducted from this amount by the employer."
-    ]
-  ],
-  "overtime_information": [
-    [
-      "pilot for healthier schedules: Employers can participate in a pilot for healthier schedules, allowing for adjusted schedule allowances as discussed in the working group (see Article 20a and Appendix XV), after consultation with CAO partners and OR approval."
-    ],
-    [
-      "working time bounds and rest: For full-time employees, work schedules must adhere to: a) maximum 9 hours per shift; b) maximum 48 and minimum 24 hours per week; c) average maximum 42 hours per week over any 16 consecutive weeks; d) maximum 6 and minimum 3 working days per week; e) maximum 5 consecutive working days with shifts of 8.5 hours or longer; f) unpaid break of maximum half an hour in a 9-hour shift. Deviations from these conditions require consultation with employee unions."
-    ],
-    [
-      "overtime compensation mode: Work schedules with an average working week higher than 36 hours are reduced to an average 36-hour week through compensatory hours. Conditions: a) Compensatory hours are designated by the employer in blocks of at least 4 hours. b) Compensatory hours are designated at least 4 weeks (one month) in advance. c) Individual absence (sickness, short leave) on a designated compensatory day does not grant a right to substitute roster-free time, unless 3 or more consecutive days of collective compensatory hours were scheduled and the employee could not take them due to illness, in which case half of those hours are granted later. d) During incapacity for work, the established schedule remains applicable. If compensatory days are freely available in the company, the accrual of compensatory hours during incapacity for work stops after 4 weeks. e) If, due to business circumstances, an employee must work on compensatory hours according to their normal schedule, this work is not considered overtime, and other compensatory hours are designated. f) Termination of employment before designated compensatory days does not grant a right to substitute roster-free time. g) Before an employee retires (pre-pension) or participates in the early retirement scheme, they will be given the opportunity to take any untaken compensatory hours in consultation with the employer."
-    ],
-    [
-      "working time bounds and rest: The norms of the Working Hours Act apply, unless otherwise specified, with the understanding that a maximum of 5 consecutive night shifts may be scheduled in work rosters."
-    ],
-    [
-      "general overtime rules: Overtime refers to hours worked by order of the employer beyond the established work schedule, except for part-time or partially compulsory education employees. For these categories, overtime refers to hours worked by order of the employer beyond the established work schedule for a full-time employee in the company/department, or for a full-time employee with a similar function."
-    ],
-    [
-      "overtime thresholds and triggers: Incidental exceeding of working hours by up to 15 minutes is considered part of normal daily working hours. Exceeding working hours by more than 15 minutes means the entire excess is considered overtime."
-    ],
-    [
-      "general overtime rules: Overtime is mandatory if the employer deems it necessary for business interests, unless it cannot reasonably be expected from the employee. Before mandating overtime, the employer will first check for volunteers, unless business circumstances prevent this."
-    ],
-    [
-      "overtime compensation mode: Unless business circumstances prevent it, the employer may allow employees to take compensatory time off for overtime instead of payment. Overtime allowance is paid every 4 weeks or monthly, or taken as time off, in accordance with Article 23, paragraphs 1 and 2. Company-level agreements can allow overtime allowance to be taken fully or partially as compensatory time off, preferably in blocks of 4 hours, by mutual agreement. In such cases, no overtime hours are paid out. This policy is subject to discussion with the Works Council."
-    ],
-    [
-      "shift and unfavourable hours: Shifting occurs when the start and end times of a shift are changed, without changing the shift length, and the original and shifted shifts overlap by more than half an hour. Shifted hours are not considered additional or overtime hours."
-    ],
-    [
-      "shift and unfavourable hours: Jumping occurs when one or more consecutive shifts of an employee are changed by the employer's request to one or more other consecutive shifts, and the old and new shifts do not overlap by more than half an hour."
-    ],
-    [
-      "shift and unfavourable hours: In a five-shift system, breaks will be paid."
-    ],
-    [
-      "weekends-off guarantees: When transitioning to a work schedule with Sunday work, employees will be scheduled on a voluntary basis as much as possible, especially if an employee has religious objections to working on Sundays."
-    ],
-    [
-      "shift and unfavourable hours: A day shift is a work system where work is performed Monday to Friday, other than in alternating morning, afternoon, or night shifts."
-    ],
-    [
-      "shift and unfavourable hours: A standard 2-shift system is a work system where two alternating shifts work Monday to Friday in a cycle of alternating morning and afternoon shifts, or night and morning shifts, or afternoon and night shifts, for at least 12 hours per 24-hour period."
-    ],
-    [
-      "shift and unfavourable hours: Employers can participate in a pilot for \"healthier schedules\" during the CAO's term. After consultation with CAO parties and Works Council approval, alternative schedules with adjusted shift allowances (as in Appendix XV) can be used."
-    ],
-    [
-      "overtime rates and surcharges: Further provisions regarding remuneration for working on a public holiday are included in Appendix XIII."
-    ],
-    [
-      "overtime rates and surcharges: An employee receives a supplement to their hourly wage for each hour or part thereof worked outside the day window (Monday-Friday 06:30-18:00) by order of the employer, based on the following matrix:",
-      "Clock Hour Matrix Allowance",
-      "Columns: From | To | Mon | Tue | Wed | Thu | Fri | Sat | Sun",
-      "00:00 | 03:00 | 38% | 38% | 38% | 38% | 38% | 38% | 110%",
-      "03:00 | 06:30 | 39% | 39% | 39% | 39% | 39% | 39% | 110%",
-      "06:30 | 07:30 | | | | | | 39% | 110%",
-      "07:30 | 15:00 | | | | | | 50% | 110%",
-      "15:00 | 18:00 | | | | | | 83% | 110%",
-      "18:00 | 22:00 | 38% | 38% | 38% | 38% | 38% | 83% | 110%",
-      "22:00 | 24:00 | 38% | 38% | 38% | 38% | 38% | 110% | 38%"
-    ],
-    [
-      "overtime rates and surcharges: The allowance in paragraph 1 also applies to additional hours, overtime, shifts, and jumps. For work in a schedule with hours outside the day window, an average shift allowance over the salary is calculated based on the allowances in paragraph 1, as specified in Article 20, paragraph 1."
-    ],
-    [
-      "shift and unfavourable hours: If an employee has a work schedule with work performed outside the day window, the average shift allowance over the salary is calculated based on the attendance hours (paid and unpaid hours between start and end of shift) in the employee's schedule cycle. The sum of allowance percentages from Article 19, paragraph 1 for all attendance hours per cycle is divided by total attendance hours to get the average hourly allowance. This, with the hourly wage, forms the hourly value. If total working hours in the cycle are greater than or equal to the working hours in Article 8, paragraph 1 (pro-rata part-time), the shift allowance equals this average allowance. Otherwise, the hourly value is multiplied by a factor of scheduled working hours divided by contractual working hours. The result is salary including shift allowance, with the allowance being this percentage minus 100%. The calculation is rounded to the nearest quarter percent. Example calculations are in Appendix VIII."
-    ],
-    [
-      "shift and unfavourable hours: If a shift allowance or overtime compensation has company-specific agreements that deviate favorably from this CAO, the allowance/compensation can only be adjusted with the agreement of the parties involved in that company-specific agreement."
-    ],
-    [
-      "shift and unfavourable hours: If an employee uses multiple schedules in a calendar year, with some involving work outside the day window, an annual shift allowance (jaarroostertoeslag) is paid, based on the weighted average of the shift allowances of those schedules, calculated as per paragraph 1. This annual allowance is recalculated at year-end based on actual schedule usage. If the pre-calculated allowance is lower than the actual weighted average, the difference is paid to the employee; otherwise, no adjustment occurs. Transitioning from a higher to a lower annual shift allowance in the next year triggers the phase-out scheme per Article 21, using the (recalculated) actual percentage from the preceding year as the reference point."
-    ],
-    [
-      "shift and unfavourable hours: For employers participating in the \"healthier schedules\" pilot, after Works Council approval and dispensation for Articles 19 and 20 (Article 53, paragraph 1 CAO), deviating shift allowances as in Appendix XV apply instead of the clock-hour matrix allowance (Article 19 CAO)."
-    ],
-    [
-      "shift and unfavourable hours: If an employer initiates a switch to a schedule with a lower or no shift allowance, a phase-out scheme applies to the difference between the original and new shift allowance for employees who worked continuously in a schedule with work outside the day window immediately prior to the change:",
-      "Phase-out Scheme for Shift Allowance Reduction",
-      "Columns: Years of continuous work outside day window | 100% (weeks) | 80% (weeks) | 60% (weeks) | 40% (weeks) | 20% (weeks)",
-      "1 to 2 years | 1st to 6th week | 7th to 18th week | 19th to 30th week | 31st to 42nd week | 43rd to 52nd week",
-      "2 to 5 years | 1st to 12th week | 13th to 36th week | 37th to 60th week | 61st to 84th week | 85th to 104th week",
-      "5 to 10 years | 1st to 18th week | 19th to 54th week | 55th to 90th week | 91st to 126th week | 127th to 156th week",
-      "More than 10 years | 1st to 24th week | 25th to 72nd week | 73rd to 120th week | 121st to 168th week | 169th to 208th week"
-    ],
-    [
-      "shift and unfavourable hours: Employees aged 45 or older in schedules with regular night shifts can request to work fewer night shifts by sacrificing vacation days and/or wages. This request will be granted unless compelling business interests oppose it. The request is handled according to the Flexible Working Act (request for part-time work)."
-    ],
-    [
-      "shift and unfavourable hours: An employee aged 55 or older cannot be forced to switch from day shifts to shift work."
-    ],
-    [
-      "shift and unfavourable hours: Notwithstanding paragraph 1, the old Articles 21 and 22 (as in the CAO until 1 January 2019, Appendix XIV) remain applicable to employees born before 1 January 1969."
-    ],
-    [
-      "shift and unfavourable hours: Rights from previous CAOs (Articles 21 and 22) for employees born after 1 January 1969 expire upon this CAO's entry into force if the phase-out scheme had not started before 1 April 2019. The provisions of this CAO apply instead, and the current CAO takes precedence if it provides lesser entitlements."
-    ],
-    [
-      "overtime rates and surcharges: Overtime hours (as per Article 10) are paid at the employee's hourly wage plus a 35% supplement. Overtime on Saturday between 7:00 and 15:00 is compensated at 40%."
-    ],
-    [
-      "overtime rates and surcharges: Paragraph 1 applies analogously to job-specific regularly worked overtime hours. For work in a schedule with hours outside the day window, each hourly wage is also increased by the shift allowance mentioned in Article 20, paragraph 1."
-    ],
-    [
-      "overtime rates and surcharges: Paragraph 1 applies analogously to compensatory hours not taken at year-end or upon termination of employment. For work in a schedule with hours outside the day window, each hourly wage is also increased by the shift allowance mentioned in Article 20, paragraph 1."
-    ],
-    [
-      "overtime compensation mode: If overtime is worked more than 6 hours after a shift ends, and the next shift starts within 16 hours of that overtime, it is considered \"sleep hours\" overtime. These sleep hours are compensated by starting the next shift an equal number of hours later. For these sleep hours, the employee receives the income they would have earned according to the current work schedule."
-    ],
-    [
-      "shift and unfavourable hours: A supplement of half an hourly wage is paid per shift change, unless the change is at the employee's explicit request."
-    ],
-    [
-      "shift and unfavourable hours: A supplement of one hourly wage is paid for jumping shifts, unless the jump is at the employee's explicit request. For jumping back, this supplement is only paid again if the employee has worked at least 3 consecutive shifts in the deviating shift."
-    ],
-    [
-      "shift and unfavourable hours: If, due to a shift or jump, an employee works hours with a higher allowance according to Article 19, paragraph 1 than their original schedule, they receive, in addition to the payment mentioned in 1 or 2, the difference between their schedule's allowance and the allowance for the deviating hours as an (additional) allowance over their income during those deviating hours."
-    ],
-    [
-      "shift and unfavourable hours: If, due to a shift or jump, an employee works hours with a lower allowance according to Article 19, paragraph 1 than their original schedule, the employee retains the allowance for that original schedule."
-    ],
-    [
-      "overtime compensation mode: An employee making an extra trip to the company for overtime work receives at least 2 hours of overtime pay. If the overtime with an extra trip exceeds 2 hours, only the actual hours worked are paid as overtime."
-    ],
-    [
-      "overtime rates and surcharges: If work is performed on a public holiday, these hours are paid at the employee's hourly wage, plus a 100% supplement on that hourly wage."
-    ],
-    [
-      "overtime rates and surcharges: Remuneration for Working on a Public Holiday Scenarios",
-      "Columns: Scenario | Salary per month or period (Art. 1, para 9) | Shift allowance per month or period (Art. 20) | Hourly wage x number of (extra) hours worked on public holiday (Art. 28) | Public holiday allowance (Art. 28) | Clock-hour matrix allowance (Art. 19) | Overtime (Art. 10+23)",
-      "1. Employee scheduled and free on public holiday | X | X | | | |",
-      "2. Employee works according to schedule on public holiday | X | X | X | X | |",
-      "3. Employee works extra on public holiday at own request | X | X | X | X | X |",
-      "4. Employee works extra on public holiday at employer's request | X | X | X | X | X | X"
-    ],
-    [
-      "overtime rates and surcharges: Article 13, paragraph 2a states that a public holiday is valued at 7.2 hours. Every employee (pro-rata for part-timers) is entitled to the number of weekday public holidays in a year x 7.2 hours. This aims for equality across all employees, regardless of their schedule. If the current schedule deviates from the 7.2-hour value, and at year-end, the employee was scheduled for too many or too few hours on a public holiday, the difference must be scheduled in or out elsewhere in the roster. Whether the employee was scheduled and free or worked on the public holiday is irrelevant; the hours in the schedule apply."
-    ],
-    [
-      "overtime rates and surcharges: Examples for public holiday hours: 1) Employee scheduled for 6 hours on a public holiday (free or worked); if annual public holiday hours are too low based on 7.2 hours/day, 1.2 hours must be rostered off. 2) Employee scheduled for 8 hours on a public holiday (free or worked); if annual public holiday hours are too high, 0.8 hours must be rostered in. 3) Employee not scheduled on a public holiday; if annual public holiday hours are too low, 7.2 hours must be rostered off."
-    ],
-    [
-      "shift and unfavourable hours: Phase-out scheme for employees born before 1 January 1969, when switching from a shift schedule (outside day window) to a day schedule (within day window), for employees who worked at least one continuous year in the shift schedule: a) 1st-12th week: 100% of original shift allowance; b) 13th-36th week: 80%; c) 37th-60th week: 60%; d) 61st-84th week: 40%; e) 85th-104th week: 20%."
-    ],
-    [
-      "shift and unfavourable hours: Phase-out scheme for employees born before 1 January 1969, when switching from a higher to a lower shift allowance schedule, for employees who worked at least one continuous year in the higher shift schedule: a) 1st-12th week: 100% of original higher shift allowance; b) 13th-36th week: 80%; c) 37th-60th week: 60%; d) 61st-84th week: 40%; e) 85th-104th week: 20%."
-    ],
-    [
-      "shift and unfavourable hours: Phase-out scheme for employees born before 1 January 1969, if the clock-hour matrix introduces a lower allowance than previously received: a) 1st-12th week: 100% of the difference; b) 13th-36th week: 80%; c) 37th-60th week: 60%; d) 61st-84th week: 40%; e) 85th-104th week: 20%. Additional company-level agreements will be made for unfair situations arising from the clock-hour matrix."
-    ],
-    [
-      "shift and unfavourable hours: This article applies only to employees born before 1 January 1969."
-    ],
-    [
-      "shift and unfavourable hours: For employees aged 55 or older who have worked at least 5 consecutive years in a night shift schedule (23:00-06:00), priority is given for placement in a vacant day shift position (can be placed on a waiting list). Upon starting a day shift, the following phase-out scheme applies to their shift allowance: a) 1st-36th week: 80% of original shift allowance; b) 37th-72nd week: 60%; c) 73rd-108th week: 40%; d) 109th-144th week: 20%."
-    ],
-    [
-      "shift and unfavourable hours: Notwithstanding paragraph 2, an employee aged 50 or older who has worked at least 25 consecutive years in a night shift schedule (23:00-06:00) retains their last received shift allowance fully if transferred to a day schedule at the employer's request and does not agree to a phase-out. If an employee aged 55 or older with at least 25 consecutive years in a night shift schedule agrees to a schedule change or is transferred at their own request to a day schedule, the shift allowance is phased out as follows: a) 1st-36th week: 80% of shift allowance; b) 37th-108th week: 60%; c) from 109th week: 50%."
-    ],
-    [
-      "shift and unfavourable hours: CAO parties, with scheduling specialists, developed three less burdensome schedules as alternatives to the standard 3-shift system for a pilot. Employers can participate with Works Council approval and dispensation for Articles 19 and 20 (Article 53, paragraph 1 CAO), using these alternative schedules with adjusted shift allowances. The goal is to permanently introduce less burdensome schedules into the CAO."
-    ],
-    [
-      "shift and unfavourable hours: Extended 2-shift system: Shift allowance 25%."
-    ],
-    [
-      "shift and unfavourable hours: 6-group system: Shift allowance 22%."
-    ],
-    [
-      "shift and unfavourable hours: 7-group system: Shift allowance 23%."
-    ],
-    [
-      "shift and unfavourable hours: The above schedule alternatives may vary slightly depending on whether breaks are paid or not."
-    ]
-  ],
-  "training_information": [
-    [
-      "any other training- or education-related provisions or conditions: A cafeteria-style employment conditions model can be established in consultation with the Works Council, or, if absent, with the employee representation or staff."
-    ],
-    [
-      "any other training- or education-related provisions or conditions: If no cafeteria-style model is established, the relevant articles elsewhere in the CAO apply to the subjects mentioned in paragraphs 2 and 3."
-    ],
-    [
-      "any other training- or education-related provisions or conditions: Sources are employment conditions that can be exchanged for other employment conditions within the cafeteria-style model."
-    ],
-    [
-      "any other training- or education-related provisions or conditions: Goals are employment conditions that can be realized by using the sources mentioned under a."
-    ],
-    [
-      "any other training- or education-related provisions or conditions: Sources and goals represent an entitlement in time or money."
-    ],
-    [
-      "reimbursement of training/study costs: Exchangeable employment conditions include: extra time off (max 10 vacation days/year if current days are insufficient) for saving vacation days for long-term leave or sustainable employability; reimbursement of study costs (if tax-exempt); personal budget for sustainable employability (e.g., training, care tasks, financial scan); gross wage; extra statutory vacation days; extra age-related free hours (Art. 35); extra night work free hours (Art. 36)."
-    ],
-    [
-      "any other training- or education-related provisions or conditions: Other monetary and time entitlements can be designated as sources and/or goals by employers and employees, but require prior approval from the Appeals Committee."
-    ],
-    [
-      "any other training- or education-related provisions or conditions: Gross wages paid under this cafeteria-style scheme will be paid subject to payroll taxes."
-    ],
-    [
-      "any other training- or education-related provisions or conditions
-  DEBUG: Found direct text response: 64481 chars
-  INFO: Successfully extracted structured data from markdown (time: 1354.4s)
-  INFO: Response size: 64,481 chars (~16,120 tokens)
-  WARNING: JSON incomplete or truncated: Content does not end with } - JSON appears to be truncated - retrying...
-  INFO: Cleaned up uploaded file: files/7fc4x4n1rs1c
-  Attempt 1 failed (truncated response), retrying in 30 seconds...
-  INFO: Adding retry guidance for: truncated JSON
-  INFO: Attempt 4 - Adjusting parameters: temp=0.1, top_p=0.2, top_k=1 (boost +0.1)
-  INFO: Uploading markdown file to Gemini...
-  INFO: File uploaded successfully: files/qanh5b1oocxh
-  INFO: File is ready for processing
-  DEBUG: File validation passed - size: 0.26MB
-  DEBUG: Constructed 2 content parts for API call
-  🚨 UNEXPECTED API ERROR during markdown extraction (attempt 4): ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
-  📋 This error occurred during the API call itself and will be handled by retry logic
-  INFO: Cleaned up uploaded file: files/qanh5b1oocxh
-  DEBUG: Markdown upload error type: ServerError, Error message: 503 unavailable. {'error': {'code': 503, 'message': 'the model is overloaded. please try again later.', 'status': 'unavailable'}}
-  DEBUG: Full error details: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
-  DEBUG: Token usage - Input: 92404, Output: 17573
-  🔍 DETAILED FAILURE ANALYSIS for Cao na ttw Zoetwaren looptijd 1 januari 2023 tm 30 september 2024 (6 november 2023).md (attempt 4):
-    📊 Finish reason: FinishReason.MAX_TOKENS
-    🛡️  Safety ratings: []
-    📄 Content length: 0 chars
-    ⏱️  Processing time: 1397.52383685112s
-    🔑 API key used: 4
-    🆔 Process ID: 3
-  DEBUG: Traceback: Traceback (most recent call last):
-  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 2153, in extract_with_markdown_upload
-    response = context.client.models.generate_content(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 6426, in generate_content
-    response = self._generate_content(
-               ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 5164, in _generate_content
-    response = self._api_client.request(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1266, in request
-    response = self._request(http_request, http_options, stream=False)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1086, in _request
-    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 477, in __call__
-    do = self.iter(retry_state=retry_state)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 378, in iter
-    result = action(retry_state)
-             ^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 420, in exc_check
-    raise retry_exc.reraise()
-          ^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 187, in reraise
-    raise self.last_attempt.result()
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 449, in result
-    return self.__get_result()
-           ^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
-    raise self._exception
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 480, in __call__
-    result = fn(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1063, in _request_once
-    errors.APIError.raise_for_response(response)
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/errors.py", line 107, in raise_for_response
-    raise ServerError(status_code, response_json, response)
-google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
-
-  Attempt 4 failed (service unavailable/internal error), retrying in 8 minutes...
-  INFO: Waiting 15 minutes before retry...
-[HEARTBEAT] stage=generating_content elapsed=52s (file 1441s)
-[HEARTBEAT] stage=generating_content elapsed=142s (file 1531s)
-[HEARTBEAT] stage=generating_content elapsed=232s (file 1621s)
-[HEARTBEAT] stage=generating_content elapsed=323s (file 1711s)
-[HEARTBEAT] stage=generating_content elapsed=413s (file 1802s)
-[HEARTBEAT] stage=generating_content elapsed=504s (file 1892s)
-[HEARTBEAT] stage=generating_content elapsed=594s (file 1983s)
-[HEARTBEAT] stage=generating_content elapsed=685s (file 2073s)
-[HEARTBEAT] stage=generating_content elapsed=775s (file 2163s)
-[HEARTBEAT] stage=generating_content elapsed=865s (file 2253s)
-  INFO: Wait complete, continuing with retry...
-  INFO: Attempt 4 - Adjusting parameters: temp=0.1, top_p=0.2, top_k=1 (boost +0.1)
-  INFO: Uploading markdown file to Gemini...
-  INFO: File uploaded successfully: files/kokjn6cpendi
-  INFO: File is ready for processing
-  DEBUG: File validation passed - size: 0.26MB
-  DEBUG: Constructed 2 content parts for API call
-  🚨 UNEXPECTED API ERROR during markdown extraction (attempt 4): ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
-  📋 This error occurred during the API call itself and will be handled by retry logic
-  INFO: Cleaned up uploaded file: files/kokjn6cpendi
-  DEBUG: Markdown upload error type: ServerError, Error message: 503 unavailable. {'error': {'code': 503, 'message': 'the model is overloaded. please try again later.', 'status': 'unavailable'}}
-  DEBUG: Full error details: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
-  DEBUG: Token usage - Input: 92404, Output: 17573
-  🔍 DETAILED FAILURE ANALYSIS for Cao na ttw Zoetwaren looptijd 1 januari 2023 tm 30 september 2024 (6 november 2023).md (attempt 4):
-    📊 Finish reason: FinishReason.MAX_TOKENS
-    🛡️  Safety ratings: []
-    📄 Content length: 0 chars
-    ⏱️  Processing time: 2321.9729537963867s
-    🔑 API key used: 4
-    🆔 Process ID: 3
-  DEBUG: Traceback: Traceback (most recent call last):
-  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 2153, in extract_with_markdown_upload
-    response = context.client.models.generate_content(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 6426, in generate_content
-    response = self._generate_content(
-               ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 5164, in _generate_content
-    response = self._api_client.request(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1266, in request
-    response = self._request(http_request, http_options, stream=False)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1086, in _request
-    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 477, in __call__
-    do = self.iter(retry_state=retry_state)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 378, in iter
-    result = action(retry_state)
-             ^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 420, in exc_check
-    raise retry_exc.reraise()
-          ^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 187, in reraise
-    raise self.last_attempt.result()
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 449, in result
-    return self.__get_result()
-           ^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
-    raise self._exception
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/tenacity/__init__.py", line 480, in __call__
-    result = fn(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/_api_client.py", line 1063, in _request_once
-    errors.APIError.raise_for_response(response)
-  File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/errors.py", line 107, in raise_for_response
-    raise ServerError(status_code, response_json, response)
-google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
-
-  Attempt 4 failed (service unavailable/internal error), retrying in 8 minutes...
-  INFO: Waiting 15 minutes before retry...
-[HEARTBEAT] stage=generating_content elapsed=42s (file 2345s)
-[HEARTBEAT] stage=generating_content elapsed=132s (file 2435s)
-[HEARTBEAT] stage=generating_content elapsed=223s (file 2526s)
-[HEARTBEAT] stage=generating_content elapsed=313s (file 2616s)
-[HEARTBEAT] stage=generating_content elapsed=403s (file 2706s)
-[HEARTBEAT] stage=generating_content elapsed=493s (file 2796s)
-[HEARTBEAT] stage=generating_content elapsed=583s (file 2886s)
-[HEARTBEAT] stage=generating_content elapsed=673s (file 2976s)
-[HEARTBEAT] stage=generating_content elapsed=764s (file 3067s)
-[HEARTBEAT] stage=generating_content elapsed=855s (file 3158s)
-  INFO: Wait complete, continuing with retry...
-  INFO: Attempt 4 - Adjusting parameters: temp=0.1, top_p=0.2, top_k=1 (boost +0.1)
-  INFO: Uploading markdown file to Gemini...
-  INFO: File uploaded successfully: files/i1lqyncbpbg9
-  INFO: File is ready for processing
-  DEBUG: File validation passed - size: 0.26MB
-  DEBUG: Constructed 2 content parts for API call
-[HEARTBEAT] stage=generating_content elapsed=5s (file 3249s)
-[HEARTBEAT] stage=generating_content elapsed=97s (file 3341s)
-[HEARTBEAT] stage=generating_content elapsed=189s (file 3433s)
-  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
-  DEBUG: Finish reason: FinishReason.STOP
-  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
-  DEBUG: Found structured output in response.parsed
-  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
-  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
-  DEBUG: Raw JSON sample (first 500 chars) contains 0 null values
-  DEBUG: Converted structured output to JSON: 63114 chars
-  INFO: Successfully extracted structured data from markdown (time: 3495.3s)
-  INFO: Response size: 63,114 chars (~15,778 tokens)
-  INFO: Cleaned up uploaded file: files/i1lqyncbpbg9
-  ✅ JSON saved with proper formatting
-  359: LLM extraction completed in 3505.69 seconds [API 4/17]
-[HEARTBEAT] stage=validating_saving elapsed=28s (file 3523s)
-[HEARTBEAT] stage=validating_saving elapsed=119s (file 3614s)
---- CAO 405 ---
-  405: Skipping CAO Kappers 1 juli 2019 31 januari 2020 renvooi 07102019.docx.md (already processed)
+  316: Skipping CAO LMB incl fuwa 2023 - schoon getekend.md (already processed)
+--- CAO 331 ---
+  331: Skipping CAOGIL_2012_2013_def_schoon.md (already processed)
+--- CAO 397 ---
+  397: Skipping CAO_VAK_2013_v1_4_schoon.md (already processed)
 --- CAO 418 ---
-  418: Skipping CAO_Natuursteen_2013_2014_aanmeldingstekst.md (already processed)
---- CAO 429 ---
-  429: Skipping CAO_Kunsteducatie_2015_2016.md (already processed)
-  429: Skipping caoKE2011.md (already processed)
+  418: Skipping aanmeldtekst_Cao_Natuursteen_2016_2017.md (already processed)
+  429: Skipping Cao Kunsteducatie 1 november 2021 - 31 december 2021 TTW integraal.md (already processed)
 --- CAO 433 ---
-  433: Skipping CAO 2022-2024 defintief.md (already processed)
-  433: Schoonmaak__en_Glazenwassers_cao_stat__en_regl_.md (Markdown: 0.2MB) [API 4/17]
-  INFO: Using Files API approach for Schoonmaak__en_Glazenwassers_cao_stat__en_regl_.md
-  INFO: Markdown file size: 0.17 MB
+  433: Skipping CAO 2019-2021 nota van wijziging 8-7-2019.docx.md (already processed)
+  433: Skipping Schoonmaak__en_Glazenwassers_cao_stat__en_regl_.md (file in failed_cao_numbers folder - all attempts exhausted)
+--- CAO 475 ---
+  475: Skipping CAO_Sport_2016_2018_DEF.md (already processed)
+  487: Skipping Cao Basis schone versie 09-12-2024 en statuten.md (already processed)
+  496: Skipping Cao Particuliere Beveiliging 2023-2024 versie 2- augustus 2023 ZONDER zichtbare wijzigingen.md (already processed)
+  496: Skipping definitief.md (already processed)
+--- CAO 518 ---
+  518: Skipping Cao boekje Drogisterijbranche VDF- schoon.md (already processed)
+--- CAO 526 ---
+  526: Skipping meubelindustrie_cao_tekst.md (already processed)
+--- CAO 549 ---
+  549: Skipping Nieuwe CAO 2018-2020 volledig.docx.md (already processed)
+  569: KRI cao met aanpassing doorwerken AOW 2.1 en 10.4.docx.md (Markdown: 0.2MB) [API 4/22]
+  INFO: Using Files API approach for KRI cao met aanpassing doorwerken AOW 2.1 en 10.4.docx.md
+  INFO: Markdown file size: 0.20 MB
   INFO: Uploading markdown file to Gemini...
-  INFO: File uploaded successfully: files/ewzprolja2b6
+  INFO: File uploaded successfully: files/5jmin4tn86dv
   INFO: File is ready for processing
-  DEBUG: File validation passed - size: 0.17MB
+  DEBUG: File validation passed - size: 0.20MB
   DEBUG: Constructed 2 content parts for API call
-  🚨 UNEXPECTED API ERROR during markdown extraction (attempt 1): ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 21.258107502s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '21s'}]}}
+  INFO: Successfully extracted structured data from markdown (time: 117.6s)
+  INFO: Response size: 38,834 chars (~9,708 tokens)
+  INFO: Cleaned up uploaded file: files/5jmin4tn86dv
+  ✅ JSON saved with proper formatting
+  569: LLM extraction completed in 119.04 seconds [API 4/22]
+  573: Skipping Cao pluimvee - cao 2020-2021 na ttw art 31 52 77 78 79 bijlage 3 .md (already processed)
+--- CAO 604 ---
+  604: Skipping CAO_Tekst___CAO_Vast_2011___2012.md (already processed)
+  621: VON_cao_2017_def.md (Markdown: 0.1MB) [API 4/22]
+  INFO: Using Files API approach for VON_cao_2017_def.md
+  INFO: Markdown file size: 0.08 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/cn9i21cb9vik
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.08MB
+  DEBUG: Constructed 2 content parts for API call
+  🚨 UNEXPECTED API ERROR during markdown extraction (attempt 1): ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}
   📋 This error occurred during the API call itself and will be handled by retry logic
-  INFO: Cleaned up uploaded file: files/ewzprolja2b6
-  DEBUG: Markdown upload error type: ClientError, Error message: 429 resource_exhausted. {'error': {'code': 429, 'message': 'you exceeded your current quota, please check your plan and billing details. for more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. to monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nplease retry in 21.258107502s.', 'status': 'resource_exhausted', 'details': [{'@type': 'type.googleapis.com/google.rpc.help', 'links': [{'description': 'learn more about gemini api quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.quotafailure', 'violations': [{'quotametric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaid': 'generaterequestsperdayperprojectpermodel-freetier', 'quotadimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotavalue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.retryinfo', 'retrydelay': '21s'}]}}
-  DEBUG: Full error details: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 21.258107502s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '21s'}]}}
-  🔍 DETAILED FAILURE ANALYSIS for Schoonmaak__en_Glazenwassers_cao_stat__en_regl_.md (attempt 1):
+  INFO: Cleaned up uploaded file: files/cn9i21cb9vik
+  DEBUG: Markdown upload error type: ClientError, Error message: 429 resource_exhausted. {'error': {'code': 429, 'message': 'resource has been exhausted (e.g. check quota).', 'status': 'resource_exhausted'}}
+  DEBUG: Full error details: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}
+  🔍 DETAILED FAILURE ANALYSIS for VON_cao_2017_def.md (attempt 1):
     📊 Finish reason: UNKNOWN
     🛡️  Safety ratings: []
     📄 Content length: 0 chars
-    ⏱️  Processing time: 11.925353050231934s
+    ⏱️  Processing time: 3.135650157928467s
     🔑 API key used: 4
     🆔 Process ID: 3
   DEBUG: Traceback: Traceback (most recent call last):
-  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 2153, in extract_with_markdown_upload
+  File "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/p3_llmExtraction.py", line 2155, in extract_with_markdown_upload
     response = context.client.models.generate_content(
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/models.py", line 6426, in generate_content
@@ -1112,76 +184,109 @@ google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'messa
     errors.APIError.raise_for_response(response)
   File "/opt/miniconda3/envs/caos-extract/lib/python3.11/site-packages/google/genai/errors.py", line 105, in raise_for_response
     raise ClientError(status_code, response_json, response)
-google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 21.258107502s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '21s'}]}}
+google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}
 
-  ❌ DAILY QUOTA LIMIT REACHED for Process 3 - Cannot retry until tomorrow
-  💡 Daily limit: 20 requests per day (free tier - shared across all processes)
-  💡 Quota resets at midnight (Google timezone)
-  🛑 Stopping this process to avoid infinite retries
-  Markdown upload failed after 0 total attempts
-  DEBUG: Failed CAO number saved to: performance_logs/llm_extraction/failed_cao_numbers/433/433_Schoonmaak_en_Glazenwassers_cao_stat_en_regl_failed.txt
-  🛑 DAILY QUOTA LIMIT REACHED for Process 3 - Stopping this process
-  💡 Wait until tomorrow to continue
+  DEBUG: File size: 0.08MB, Estimated tokens: 20,158
+  DEBUG: Minutes needed: 0.2, Backoff: 1.0x, Buffer: 2min
+  DEBUG: Total delay: 2 minutes (129 seconds)
+  DEBUG: Calculated wait time (before API delay check): 279s (4 minutes)
+  Attempt 1 failed (per-minute quota), retrying in 4 minutes (279s)...
+  INFO: Waiting 15 minutes before retry...
+[HEARTBEAT] long-running stage=generating_content elapsed=628s — enabling live debug
+[HEARTBEAT] stage=generating_content elapsed=718s (file 720s)
+[HEARTBEAT] stage=generating_content elapsed=808s (file 810s)
+[HEARTBEAT] stage=generating_content elapsed=898s (file 900s)
+  INFO: Wait complete, continuing with retry...
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/3xk3ln043to6
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.08MB
+  DEBUG: Constructed 2 content parts for API call
+[HEARTBEAT] stage=generating_content elapsed=84s (file 990s)
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Raw JSON sample (first 500 chars) contains 0 null values
+  DEBUG: Converted structured output to JSON: 30483 chars
+  INFO: Successfully extracted structured data from markdown (time: 1003.0s)
+  INFO: Response size: 30,483 chars (~7,620 tokens)
+  INFO: Cleaned up uploaded file: files/3xk3ln043to6
+  ✅ JSON saved with proper formatting
+  621: LLM extraction completed in 1004.51 seconds [API 4/22]
+[HEARTBEAT] stage=validating_saving elapsed=77s (file 1080s)
+  632: NVB CAO-boekje 2021_14-04.md (Markdown: 0.1MB) [API 4/22]
+  INFO: Using Files API approach for NVB CAO-boekje 2021_14-04.md
+  INFO: Markdown file size: 0.12 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/hr13cz461jbk
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.12MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Raw JSON sample (first 500 chars) contains 0 null values
+  DEBUG: Converted structured output to JSON: 54139 chars
+  INFO: Successfully extracted structured data from markdown (time: 231.0s)
+  INFO: Response size: 54,139 chars (~13,534 tokens)
+  INFO: Cleaned up uploaded file: files/hr13cz461jbk
+  ✅ JSON saved with proper formatting
+  632: LLM extraction completed in 232.62 seconds [API 4/22]
+  633: CAO_1_november_integraal.md (Markdown: 0.2MB) [API 4/22]
+  INFO: Using Files API approach for CAO_1_november_integraal.md
+  INFO: Markdown file size: 0.19 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/n7plj4h7ogn6
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.19MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Raw JSON sample (first 500 chars) contains 0 null values
+  DEBUG: Converted structured output to JSON: 44161 chars
+  INFO: Successfully extracted structured data from markdown (time: 174.5s)
+  INFO: Response size: 44,161 chars (~11,040 tokens)
+  INFO: Cleaned up uploaded file: files/n7plj4h7ogn6
+  ✅ JSON saved with proper formatting
+  633: LLM extraction completed in 175.99 seconds [API 4/22]
+  633: Uitzendkrachten_tekst.md (Markdown: 0.2MB) [API 4/22]
+  INFO: Using Files API approach for Uitzendkrachten_tekst.md
+  INFO: Markdown file size: 0.24 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/56d0wsmj7gje
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.24MB
+  DEBUG: Constructed 2 content parts for API call
+  DEBUG: Response object type: <class 'google.genai.types.GenerateContentResponse'>
+  DEBUG: Finish reason: FinishReason.STOP
+  DEBUG: Checking response.parsed: hasattr=True, value=FOUND
+  DEBUG: Found structured output in response.parsed
+  DEBUG: response.parsed type: <class '__main__.CAOExtractionSchema'>
+  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]
+  DEBUG: Raw JSON sample (first 500 chars) contains 0 null values
+  DEBUG: Converted structured output to JSON: 26694 chars
+  INFO: Successfully extracted structured data from markdown (time: 92.0s)
+  INFO: Response size: 26,694 chars (~6,673 tokens)
+  INFO: Cleaned up uploaded file: files/56d0wsmj7gje
+  ✅ JSON saved with proper formatting
+  633: LLM extraction completed in 93.21 seconds [API 4/22]
+  637: Binnendienst_2015___2016_webversie.md (Markdown: 0.2MB) [API 4/22]
+  INFO: Using Files API approach for Binnendienst_2015___2016_webversie.md
+  INFO: Markdown file size: 0.15 MB
+  INFO: Uploading markdown file to Gemini...
+  INFO: File uploaded successfully: files/z5drlmj70gog
+  INFO: File is ready for processing
+  DEBUG: File validation passed - size: 0.15MB
+  DEBUG: Constructed 2 content parts for API call
 
-⚠️  Process 4 STOPPED due to DAILY QUOTA EXHAUSTION:
-   💡 Daily limit: 20 requests per day (free tier - shared across all processes)
-   💡 Quota resets at midnight (Google timezone)
-   💡 Process will need to be restarted tomorrow to continue
-  📊 Files processed: 1
-  ✅ Successful extractions: 1
-  ❌ Failed extractions: 0
-  ⏰ Timed out: 0
-
-============================================================
-FINAL PERFORMANCE ANALYSIS (QUOTA EXHAUSTED - INCOMPLETE)
-============================================================
-
-🔍 PERFORMANCE ANALYSIS:
-
-📊 REQUEST USAGE ANALYSIS:
-   Total requests (all time): 1942
-   Requests today: 108/20
-   Requests remaining today: 0
-   Unique files processed: 1942/2746
-   ⚠️  Unprocessed files: 804 (files not yet processed)
-   Success rate: 1935/1942 (99.6%)
-   Token usage by file size:
-     0-1MB: 110,873 tokens avg (1908 files)
-     1-2MB: 516,486 tokens avg (34 files)
-
-⚡ PERFORMANCE INSIGHTS:
-   Slowest files:
-     cao 2022-2023 6 januari 2022 aanmelding.md: 12141.9s (0.3MB)
-     Orsima Cao 1 maart 2025 - 30 april 2026.md: 11042.9s (0.1MB)
-     CAO_tekst_integraal1.md: 5943.1s (0.2MB)
-     Cao Basis schone versie 09-12-2024 en statuten.md: 5162.0s (0.3MB)
-     VNK cao 2018-2020 ttw.pdf .md: 3852.2s (0.1MB)
-   Most token-intensive files:
-     HB 5e editie 2024.md: 629,007 tokens (1.9MB)
-     HB 5e editie 2024_2.md: 628,116 tokens (1.9MB)
-     HB 5e editie 2024_2.md: 625,477 tokens (1.9MB)
-     HB 5e editie 2024.md: 623,879 tokens (1.9MB)
-     HB 5e editie 2024_2.md: 620,257 tokens (1.9MB)
-
-❌ ERROR ANALYSIS:
-     Failed after 0 total attempts: 5 occurrences
-     Split extraction incomplete after 8 attempts - missing: 1 occurrences
-     Failed after 1 total attempts: 1 occurrences
-📁 Performance data saved to:
-   Detailed logs: performance_logs/llm_extraction/extraction_performance.jsonl
-   Summary: performance_logs/llm_extraction/extraction_summary.json
-  🧹 Cleaned up announce file: .cao_563_announced
-  🧹 Cleaned up announce file: .cao_645_announced
-  🧹 Cleaned up announce file: .cao_634_announced
-  🧹 Cleaned up announce file: .cao_506_announced
-  🧹 Cleaned up announce file: .cao_549_announced
-  🧹 Cleaned up announce file: .cao_557_announced
-  🧹 Cleaned up announce file: .cao_405_announced
-  🧹 Cleaned up announce file: .cao_518_announced
-  🧹 Cleaned up announce file: .cao_429_announced
-  🧹 Cleaned up announce file: .cao_569_announced
-  🧹 Cleaned up announce file: .cao_526_announced
-  🧹 Cleaned up announce file: .cao_433_announced
-  🧹 Cleaned up announce file: .cao_637_announced
-  🧹 Cleaned up announce file: .cao_418_announced
-  🧹 Cleaned up 14 announce files
+⚠️  Received SIGTERM, exiting gracefully...

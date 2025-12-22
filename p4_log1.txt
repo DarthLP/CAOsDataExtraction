@@ -1,0 +1,15 @@
+Process 1: Processing 264 files
+  10: Bouw CAO 2011 aanmelding TTW 1-2011_extract.json
+  10: Processing missing parts: salary, part1, part2, part3
+  DEBUG: Making API call...
+Processing time: 37.1s | Status: SUCCESS
+  Salary: Schema validation passed - 13 salary entries
+  10: Salary extraction completed
+  Part 1 extraction starting for Bouw CAO 2011 aanmelding TTW 1-2011_extract.json
+  10: Non-salary part 1 extraction completed
+  Part 2 extraction starting for Bouw CAO 2011 aanmelding TTW 1-2011_extract.json
+Processing time: 41.2s | Status: SUCCESS
+  10: Non-salary part 2 extraction completed
+  Part 3 extraction starting for Bouw CAO 2011 aanmelding TTW 1-2011_extract.json
+
+⚠️  Received SIGTERM, exiting gracefully...

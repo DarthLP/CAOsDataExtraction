@@ -12,6 +12,8 @@ FEATURES:
 - Context-preserving extraction (keeps related information together)
 - Multi-process support for parallel processing
 - Robust error handling with exponential backoff
+- Adaptive retry strategy with parameter adjustment (temp/top_p/top_k on attempts 4-5)
+- Failure-aware retry guidance for LLM-controllable errors (truncated JSON, empty responses)
 - Markdown quality validation and best practices enforcement
 - Dynamic timeouts based on file size
 - File locking to prevent duplicate processing
@@ -19,19 +21,22 @@ FEATURES:
 
 USAGE:
     Single Process:
-        python p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 1
+        python pipelines/p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 1
         
     Multi-Process (2 parallel processes):
-        python p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 2
-        python p3_llmExtraction.py --key_number 2 --process_id 1 --total_processes 2
+        python pipelines/p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 2
+        python pipelines/p3_llmExtraction.py --key_number 2 --process_id 1 --total_processes 2
 
     Bash script for parallel execution:
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 6 2>&1 | tee log1.txt &
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --process_id 1 --total_processes 6 2>&1 | tee log2.txt &
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 3 --process_id 2 --total_processes 6 2>&1 | tee log3.txt &
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 4 --process_id 3 --total_processes 6 2>&1 | tee log4.txt &
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 5 --process_id 4 --total_processes 6 2>&1 | tee log5.txt &
-        unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 6 --process_id 5 --total_processes 6 2>&1 | tee log6.txt &
+        caffeinate python -u pipelines/p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 6 > p3_log1.txt 2>&1 &
+        caffeinate python -u pipelines/p3_llmExtraction.py --key_number 2 --process_id 1 --total_processes 6 > p3_log2.txt 2>&1 &
+        caffeinate python -u pipelines/p3_llmExtraction.py --key_number 3 --process_id 2 --total_processes 6 > p3_log3.txt 2>&1 &
+        caffeinate python -u pipelines/p3_llmExtraction.py --key_number 4 --process_id 3 --total_processes 6 > p3_log4.txt 2>&1 &
+        caffeinate python -u pipelines/p3_llmExtraction.py --key_number 5 --process_id 4 --total_processes 6 > p3_log5.txt 2>&1 &
+        caffeinate python -u pipelines/p3_llmExtraction.py --key_number 6 --process_id 5 --total_processes 6 > p3_log6.txt 2>&1 &
+        caffeinate python -u pipelines/p3_llmExtraction.py --key_number 7 --process_id 6 --total_processes 6 > p3_log7.txt 2>&1 &
+        caffeinate python -u pipelines/p3_llmExtraction.py --key_number 8 --process_id 7 --total_processes 6 > p3_log8.txt 2>&1 &
+        caffeinate python -u pipelines/p3_llmExtraction.py --key_number 9 --process_id 8 --total_processes 6 > p3_log69.txt 2>&1 &
 
     With file limit:
         python p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 1 --max_files 10
@@ -62,6 +67,8 @@ import sys
 import json
 import time
 import argparse
+import threading
+import signal
 from pathlib import Path
 from typing import List, Optional, Tuple, Dict, Any
 from dataclasses import dataclass, field
@@ -71,7 +78,6 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Third-party imports for environment variables, file locking, and data validation
 from dotenv import load_dotenv
-import fcntl
 from pydantic import BaseModel, Field, ConfigDict
 import yaml
 from monitoring.monitoring_3_1 import PerformanceMonitor
@@ -80,6 +86,48 @@ from monitoring.monitoring_3_1 import PerformanceMonitor
 from google import genai
 from google.genai import types
 
+# Import retry logic helpers
+from scripts_pipeline_helper.p3.retry_logic import (
+    handle_llm_errors as handle_llm_errors_p3,
+    calculate_quota_retry_delay as calculate_quota_retry_delay_p3,
+    get_adjusted_parameters as get_adjusted_parameters_p3,
+    get_retry_guidance as get_retry_guidance_p3
+)
+
+
+# =============================================================================
+# SIGNAL HANDLING
+# =============================================================================
+# Handle signals gracefully to prevent unexpected exits when running with pipes/tee
+def setup_signal_handlers():
+    """Setup signal handlers to prevent unexpected process termination."""
+    def handle_sigpipe(signum, frame):
+        """Handle SIGPIPE (broken pipe) gracefully - ignore it to prevent exit code 1."""
+        # When writing to a pipe (e.g., tee) that closes, we get SIGPIPE
+        # Instead of crashing, we'll just ignore it and continue
+        pass
+    
+    def handle_sigterm(signum, frame):
+        """Handle SIGTERM gracefully - exit with code 0."""
+        print('\n⚠️  Received SIGTERM, exiting gracefully...')
+        sys.stdout.flush()
+        sys.stderr.flush()
+        sys.exit(0)
+    
+    # Register signal handlers
+    # SIGPIPE: Ignore broken pipes (common when using tee/unbuffer)
+    try:
+        signal.signal(signal.SIGPIPE, handle_sigpipe)
+    except (AttributeError, ValueError):
+        # SIGPIPE may not be available on all platforms (Windows)
+        pass
+    
+    # SIGTERM: Handle termination gracefully
+    try:
+        signal.signal(signal.SIGTERM, handle_sigterm)
+    except (AttributeError, ValueError):
+        pass
+
 
 # =============================================================================
 # DATA SCHEMAS
@@ -87,35 +135,414 @@ from google.genai import types
 # Pydantic schema for structured extraction of CAO document information
 class CAOExtractionSchema(BaseModel):
     """Schema for extracting structured data from Dutch CAO documents."""
-    general_information: List[List[str]] = Field(description=
-        'Extract: Document title, contract period dates, validity dates, parties involved, scope of agreement. Be concise and focus on essential contract basics only.'
-        , default_factory=list)
-    wage_information: List[List[str]] = Field(description=
-        'Extract: Wage tables and salary information, including job classifications, ages, increases, bonuses and short descriptions. SKIP: Tables identical except unit conversion (hourly vs monthly vs weekly vs 4 weeks for same data). KEEP: Tables with different periods, worker types, job categories, or other differences.'
-        , default_factory=list)
-    pension_information: List[List[str]] = Field(description=
-        'Extract: Pension scheme details, contribution percentages, employer/employee splits, retirement ages, eligibility requirements, pension fund information.'
-        , default_factory=list)
-    leave_information: List[List[str]] = Field(description=
-        'Extract: Vacation days/weeks, holiday allowances, maternity leave, paternity leave, sick leave policies, special leave types.'
-        , default_factory=list)
-    termination_information: List[List[str]] = Field(description=
-        'Extract: Notice periods, probation periods, termination procedures, dismissal rules, severance pay, exit requirements. Include complete termination notice period tables with all age/service year combinations.'
-        , default_factory=list)
-    overtime_information: List[List[str]] = Field(description=
-        'Extract: Overtime rates, shift differentials, weekend/holiday pay, night work compensation, maximum hours, overtime conditions.'
-        , default_factory=list)
-    training_information: List[List[str]] = Field(description=
-        'Extract: Training entitlements, education budgets, professional development programs, course allowances, study time, certification support.'
-        , default_factory=list)
-    homeoffice_information: List[List[str]] = Field(description=
-        'Extract: Remote work policies, home office allowances, equipment provisions, internet/phone reimbursements, work-from-home conditions, hybrid work arrangements.'
-        , default_factory=list)
+    general_information: List[List[str]] = Field(
+        description=
+            """Extract the following basic CAO contract information if present in the CAO, and ALWAYS check every bullet point carefully:
+            - contract period: validity start date, end date, and signing date,
+            - document type and role (full CAO original/update vs partial amendment/annex/protocol/other_supplement, and whether it clearly replaces the whole CAO for this period or only works together with an earlier text),
+            - if the document is an update or amendment, the broad topics or parts of the CAO that are changed (for example wages, working hours, leave, pension, allowances, training),
+            - general effective date of the change if this CAO updates an earlier one (plus a short quote of the sentence stating it and any extra timing information),
+            - retroactive application (does retroactivity apply?, retroactive period, what is retroactive, explicit exclusions, back-pay rules and any interest/surcharge),
+            - scope type of the CAO itself (for example sectoral, single_company, group, association_limited, occupational_niche, other, unspecified),
+            - company name and scope description if the CAO is single-firm or for a defined group of firms,
+            - SBI codes and SBI version that define or describe the scope of this CAO (primary and any secondary codes),
+            - whether deviations at company-agreement level are explicitly allowed or restricted (yes/no, with topics and conditions if mentioned),
+            - AVV status (whether the CAO is declared generally binding) with AVV start and end dates if specified.""",
+        default_factory=list,
+    )
+    wage_information: List[List[str]] = Field(
+        description=
+            """Extract all wage, salary and bonus information explicitly stated in the CAO, and ALWAYS check every bullet point carefully:
+            - all wage tables and salary scales that are not identical except for unit conversion - IMPORTANT: make sure to check the entire document, including appendices,
+            - job classifications, function groups, pay groups/grades and how they link to wage scales,
+            - age-related or service-year/experience-based pay steps (trede/periodieken), including any transitions between age bands and experience steps,
+            - rules governing progression within scales (e.g., annual increments, frequency of steps, freeze/unfreeze conditions, performance-based extra or withheld steps),
+            - rules on entry placement in the wage scale (e.g., higher starting step based on prior relevant experience or competence),
+            - rules on personal allowances when the maximum of a wage scale is reached or when an employee keeps a higher wage after reclassification (basis, amount/percentage, pensionability, duration, phase-out, indexation),
+            - general wage increases (periodic percentage or nominal increases applied sector-wide or by group, including effective dates),
+            - all bonuses and incentive schemes beyond base pay: sign-on bonuses (with amounts and conditions), 13th month or equivalent payments, fixed recurring annual lump sums, profit-sharing schemes, performance/target-based bonuses, seniority or loyalty/jubilee bonuses, retirement gratuities, qualification or diploma bonuses, and job-specific allowances (e.g., cashier allowance, driver’s license allowance),
+            - any insurance, savings or similar schemes that function as wage-related bonuses or profit-sharing,
+            - notes explaining how the wage system or tables operate (e.g., 'scale applies to 36-hour week', 'wages include 8% holiday allowance', 'conversion rules between youth and adult wage scales').
+            SKIP: tables that are identical except for unit conversion (monthly vs hourly vs weekly vs 4 weeks for the same underlying data).
+            KEEP: tables or rules that differ by period, worker type, education level, job group/function scale, experience steps (periodieken/trede), age bands, region or other substantive distinctions.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    pension_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated pension scheme information, and ALWAYS check every bullet point carefully:
+            - whether there is an occupational pension beyond AOW, and if the CAO explicitly states there is none (record 'no occupational pension (AOW only)'),
+            - type of scheme (e.g., DB, DC, hybrid, other) and whether participation in a sector or company pension fund is mandatory or optional,
+            - contribution levels for employees and, if given, total and/or employer contributions (percentages, bases, units). If different rates apply to different groups (e.g., age, salary band, job group, full-time/part-time), list ALL variants and indicate which group each rate applies to,
+            - accrual rules and key parameters: annual accrual rates, franchise amounts and any other accrual-related parameters, again listing all variants across groups and which group each applies to,
+            - retirement ages: normal, early and deferred/postponed retirement ages, including any differences across groups,
+            - rules on pension accrual during statutory leaves and during the second year of illness, including whether accrual continues fully or partly and for which groups,
+            - special provisions such as excedentregeling (accrual above a wage cap) or other higher-tier arrangements, including any group-specific differences,
+            - name and abbreviation of the pension fund or provider, if mentioned,
+            - any other pension-related provisions or conditions that affect benefits, accrual or contributions.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    leave_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated leave information and conditions, and ALWAYS check every bullet point carefully:
+            - general leave enhancements: any explicit statement that CAO leave rights are better or topped up relative to statutory rules, and for which groups this applies,
+            - maternity leave: duration of fully paid, partially paid and unpaid periods, pay levels during partially paid periods, and any specific notes, including group-specific differences,
+            - paternity/partner leave: duration of fully paid, partially paid and unpaid periods, pay levels during partially paid periods, and any explicit statement that it is above statutory, including group-specific differences,
+            - adoption and foster leave: duration and pay level, including any group differences,
+            - parental leave: existence and level of employer top-ups, duration of unpaid parental leave, and any explicit tenure requirements (with duration and unit), clearly indicating any group differences,
+            - sickness: sick-pay continuation/top-up rules, duration of sick-pay, pay percentage during sick leave, and whether additional disability or WGA-gap insurance is included, for all groups where differences are stated,
+            - care leave: short-term and long-term care leave durations and pay levels, and any explicit top-up rules, including differences by group, seniority or contract type,
+            - vacation and holiday allowance: vacation entitlement(s) and holiday allowance (vakantiegeld) percentages or amounts, including variation by age, seniority, hours worked or contract type as stated,
+            - special leaves: Liberation Day policy (annual vs lustrum vs compensation), seniority- or age-based extra leave days, abortion leave and any other special leaves, with conditions and target groups,
+            - any other leave-related provisions or conditions that affect leave duration, pay level, eligibility or special rights.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    termination_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated termination rules and conditions, and ALWAYS check every bullet point carefully:
+            - whether the CAO contains termination rules beyond statutory defaults, as described in the text,
+            - notice periods for employers and employees, including ALL stated variants: full schedules or tables by age, tenure, job group or contract type, plus any stated minimum or maximum ranges,
+            - tenure-based variation in notice periods (where notice changes with years of service, for employer and/or employee), and any explicit rules on shortening notice (e.g., with UWV permit), including any minimum notice floor that must remain,
+            - dismissal approval routes: which authority or path is required or default for dismissal (e.g., UWV, judge, both, none, conditional), and any differences by dismissal type or group,
+            - dismissal protection and conditions, in particular any reiterated or extended protection during sickness or other protected situations, and to which groups it applies,
+            - automatic end-of-employment rules at AOW (statutory pension) age or other ages/events at which employment can or must end automatically, including any exceptions or group-specific rules,
+            - probationary periods: whether a probation period is allowed at all, and the maximum probation duration for fixed-term and indefinite contracts, including any variation by contract length or type,
+            - severance pay and unemployment (WW) supplements beyond statutory transition pay, including stated amounts, formulas or tenure-based schedules for extra severance, and any differences by group,
+            - any other termination-related provisions or conditions that affect notice, dismissal, end of contract, probation, severance or WW supplements.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    overtime_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information about overtime, shift work and atypical hours, and ALWAYS check every bullet point carefully:
+            - general overtime rules: whether the CAO contains overtime/allowance rules beyond statutory defaults, and any distinctions between worker groups (e.g., job group, function, full-time/part-time, segment),
+            - overtime thresholds and triggers: daily and weekly thresholds after which hours count as overtime, exactly as stated, including any differences by group or schedule,
+            - overtime compensation mode: how overtime is compensated (e.g., monetary pay, time off in lieu (TOIL), or both), and rules on how surcharges (overtime, night, weekend, holiday) interact or are stacked (e.g., highest only vs cumulative),
+            - overtime rates and surcharges: all overtime surcharges and cases (e.g., weekday, Saturday, Sunday, night, holiday rates), including differences across worker groups and any stated ranges,
+            - shift and unfavourable hours: separate shift allowances for regular shift work (including any ranges or tiers) and allowances for work during unfavourable hours (night, weekend, holiday) that are distinct from overtime pay, for all groups where they apply,
+            - working time bounds and rest: minimum rest periods between shifts, maximum daily and weekly working hours, and any explicit limits on compulsory overtime (e.g., maximum hours per week or year), including any differences by group or schedule,
+            - weekends-off guarantees: any rules guaranteeing a minimum number or pattern of weekends off (e.g., at least 1 in 2, 1 in 3, or a fixed number per year), and how these guarantees are formulated,
+            - any other overtime, shift or atypical-hours-related provisions (including TOIL rules, special treatment for particular groups or schedules, or exceptions) that affect thresholds, compensation, working time or rest.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    training_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information about training and education, and ALWAYS check every bullet point carefully:
+            - existence of training or education rights, including which workers are covered,
+            - paid study and training time (typical yearly entitlement, units and any differences by group),
+            - monetary training budgets (annual amounts, units and any group-specific differences),
+            - career or employability scans (frequency and any conditions),
+            - reimbursement of training/study costs (percentages, amounts, covered cost types, caps, and whether paid by employer or sector fund),
+            - sectoral/CAO training funds and what they finance (rights, subsidies, target groups),
+            - employer obligations for mandatory/company-required training, including whether these must be fully paid by the employer,
+            - reclaim clauses allowing employers to recover training costs if employees leave, including the conditions and any repayment schedules,
+            - any other training- or education-related provisions or conditions (for example links to tenure, job group, contract type or development plans).
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    homeoffice_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information about home office / telework / remote work, and ALWAYS check every bullet point carefully:
+            - existence of home office or telework rights and which workers they apply to,
+            - entitlement to work from home (amount of remote work allowed, units such as days per week, and any conditions or limits),
+            - fixed home office allowances or reimbursements (stipends, and any reimbursement of internet/phone, equipment or other costs, with amounts and units),
+            - decision rules on home office arrangements (who decides, whether formal agreements or protocols are required, and any role of the Works Council),
+            - employer obligations regarding health and safety/OSH at the home workplace, and any related guarantees,
+            - rules on travel time or commuting compensation that specifically arise from home-office or hybrid work arrangements,
+            - any other home office or remote-work-related provisions (for example equipment provision, encouragement or campaigns, or references to statutory minimums).
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    contract_type_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information and conditions about contract types, and ALWAYS check every bullet point carefully:
+            - rules on full-time and part-time work: standard full-time hours, allowed part-time work, typical part-time ranges (fractions or hours) and any conditions or target groups,
+            - provisions on min-max (bandwidth) contracts and zero-hour/on-call contracts, including allowed ranges and any conditions or restrictions,
+            - deviations from the statutory fixed-term chain (ketenregeling), including maximum number of successive fixed-term contracts and maximum total duration of the chain, exactly as stated,
+            - rights to convert temporary/fixed-term contracts to permanent/indefinite contracts, including the exact rule text and any conditions (e.g., tenure, performance, number of renewals),
+            - rights to request adjustment of working hours, including any minimum tenure requirement, minimum employer size threshold and additional conditions (e.g., subject to business needs, employer response deadlines),
+            - any other explicit information and rules on contract forms (e.g., seasonal, project, freelance, internships, trainee contracts) that affect contract type, duration or hours.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+
+    fringe_benefits_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated fringe benefits, and ALWAYS check every bullet point carefully:
+            - commuting or travel allowances (including amounts, units and distance/zone rules),
+            - bicycle/leasefiets or other mobility schemes and their main conditions,
+            - meal benefits (free or subsidised meals, canteen subsidies, meal vouchers or meal allowances) including type, amounts and frequency,
+            - internet and/or phone reimbursements or allowances and any conditions,
+            - health insurance contributions or discounts (employer contributions, collective contracts, conditions) and any other insurance or savings-type benefits funded or arranged by the employer,
+            - relocation or housing allowances (including one-off or recurring amounts and eligibility conditions),
+            - coverage of costs for mandatory licenses/certifications required for the job,
+            - any other non-cash or in-kind benefits (e.g., wellbeing programmes, gym membership, ergonomics support, company products/discounts) that go beyond base pay.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    safety_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated safety and integrity provisions, and ALWAYS check every bullet point carefully:
+            - protocols or policies on harassment, bullying, discrimination, aggression or integrity (including separate sexual-harassment or broader integrity protocols),
+            - confidential counsellors or internal/external contact points, and any external reporting channels that are guaranteed,
+            - prevention of psychosocial risks (PSA) such as stress, burnout or workload pressure, including explicit PSA wellbeing measures and programmes,
+            - RI&E requirements that must cover psychosocial risks (PSA),
+            - training or awareness on wellbeing, respectful behaviour, psychosocial risks or safety, including who funds or organises it,
+            - joint safety/health committees or sectoral Arbo/occupational-health arrangements, and any guaranteed access to occupational health services (arbodienst/bedrijfsarts or prevention services),
+            - preventive medical examinations or health checks (PMO/PAGO) and any conditions,
+            - rules on monitoring workload or stress, and any wider wellbeing or vitality programmes,
+            - any other safety, health or integrity-related measures, obligations or special rules that go beyond statutory baselines.
+            Always record ALL explicitly stated provisions and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    childcare_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated childcare information in the CAO, and ALWAYS check every bullet point carefully:
+            - childcare allowances or subsidies (including conditions, basis, percentage/amount, caps, duration, pensionability and any phase-out rules),
+            - in-house, on-site or employer/sector-arranged childcare and whether places are reserved or prioritised for employees,
+            - discounts or priority access / reserved places at contracted childcare institutions,
+            - age limits and scope of covered childcare (e.g., nursery, after-school care, minimum and maximum child age),
+            - rules on which providers qualify for support and how the benefit interacts with public childcare subsidies or fiscal rules,
+            - eligibility conditions: minimum tenure with the employer (state in months, including 0 if rights start from entry), minimum FTE or working hours and any other eligibility limits or conditions,
+            - any childcare-related rights (e.g., leave or work-hours adjustment linked to care responsibilities) that explicitly deviate from national tenure rules, and how,
+            - whether childcare support is financed via a sector fund or similar collective funding structure,
+            - any other childcare-related provisions or conditions that affect childcare benefits, access or eligibility.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    AI_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information about AI and algorithmic management, and ALWAYS check every bullet point carefully:
+            - whether the CAO contains AI or algorithmic-management provisions at all, and which workers or processes they apply to,
+            - rules on automated decisions,
+            - transparency and disclosure obligations,
+            - audit, review or monitoring requirements for AI systems,
+            - governance bodies or committees related to AI, data or algorithmic systems (composition, role and powers, if stated),
+            - worker rights to contest or appeal AI-based or algorithmically supported decisions and the procedures to do so,
+            - training or upskilling provisions related to AI or algorithmic tools,
+            - any other AI- or algorithmic-management-related provisions, safeguards or obligations mentioned in the CAO.
+            Always record ALL explicitly stated groups, systems and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
     model_config = ConfigDict(title='CAO Extraction Schema',
         json_schema_extra={'propertyOrdering': ['general_information',
         'wage_information', 'pension_information', 'leave_information',
         'termination_information', 'overtime_information',
-        'training_information', 'homeoffice_information']})
+        'training_information', 'homeoffice_information',
+        'contract_type_information', 'safety_information',
+        'childcare_information', 'AI_information', 'fringe_benefits_information']})
+
+
+# Split schemas for retries 6-8 (salary and non-salary extraction)
+class CAOSalaryOnlySchema(BaseModel):
+    """Schema for extracting only wage/salary information from Dutch CAO documents."""
+    wage_information: List[List[str]] = Field(
+        description=
+            """Extract all wage, salary and bonus information explicitly stated in the CAO, and ALWAYS check every bullet point carefully:
+            - all wage tables and salary scales that are not identical except for unit conversion - IMPORTANT: make sure to check the entire document, including appendices,
+            - job classifications, function groups, pay groups/grades and how they link to wage scales,
+            - age-related or service-year/experience-based pay steps (trede/periodieken), including any transitions between age bands and experience steps,
+            - rules governing progression within scales (e.g., annual increments, frequency of steps, freeze/unfreeze conditions, performance-based extra or withheld steps),
+            - rules on entry placement in the wage scale (e.g., higher starting step based on prior relevant experience or competence),
+            - rules on personal allowances when the maximum of a wage scale is reached or when an employee keeps a higher wage after reclassification (basis, amount/percentage, pensionability, duration, phase-out, indexation),
+            - general wage increases (periodic percentage or nominal increases applied sector-wide or by group, including effective dates),
+            - all bonuses and incentive schemes beyond base pay: sign-on bonuses (with amounts and conditions), 13th month or equivalent payments, fixed recurring annual lump sums, profit-sharing schemes, performance/target-based bonuses, seniority or loyalty/jubilee bonuses, retirement gratuities, qualification or diploma bonuses, and job-specific allowances (e.g., cashier allowance, driver’s license allowance),
+            - any insurance, savings or similar schemes that function as wage-related bonuses or profit-sharing,
+            - notes explaining how the wage system or tables operate (e.g., 'scale applies to 36-hour week', 'wages include 8% holiday allowance', 'conversion rules between youth and adult wage scales').
+            SKIP: tables that are identical except for unit conversion (monthly vs hourly vs weekly vs 4 weeks for the same underlying data).
+            KEEP: tables or rules that differ by period, worker type, education level, job group/function scale, experience steps (periodieken/trede), age bands, region or other substantive distinctions.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    model_config = ConfigDict(title='CAO Salary Only Schema')
+
+
+class CAONonSalarySchema(BaseModel):
+    """Schema for extracting all non-salary information from Dutch CAO documents."""
+    general_information: List[List[str]] = Field(
+        description=
+            """Extract the following basic CAO contract information if present in the CAO, and ALWAYS check every bullet point carefully:
+            - contract period: validity start date, end date, and signing date,
+            - document type and role (full CAO original/update vs partial amendment/annex/protocol/other_supplement, and whether it clearly replaces the whole CAO for this period or only works together with an earlier text),
+            - if the document is an update or amendment, the broad topics or parts of the CAO that are changed (for example wages, working hours, leave, pension, allowances, training),
+            - general effective date of the change if this CAO updates an earlier one (plus a short quote of the sentence stating it and any extra timing information),
+            - retroactive application (does retroactivity apply?, retroactive period, what is retroactive, explicit exclusions, back-pay rules and any interest/surcharge),
+            - scope type of the CAO itself (for example sectoral, single_company, group, association_limited, occupational_niche, other, unspecified),
+            - company name and scope description if the CAO is single-firm or for a defined group of firms,
+            - SBI codes and SBI version that define or describe the scope of this CAO (primary and any secondary codes),
+            - whether deviations at company-agreement level are explicitly allowed or restricted (yes/no, with topics and conditions if mentioned),
+            - AVV status (whether the CAO is declared generally binding) with AVV start and end dates if specified.""",
+        default_factory=list,
+    )
+    pension_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated pension scheme information, and ALWAYS check every bullet point carefully:
+            - whether there is an occupational pension beyond AOW, and if the CAO explicitly states there is none (record 'no occupational pension (AOW only)'),
+            - type of scheme (e.g., DB, DC, hybrid, other) and whether participation in a sector or company pension fund is mandatory or optional,
+            - contribution levels for employees and, if given, total and/or employer contributions (percentages, bases, units). If different rates apply to different groups (e.g., age, salary band, job group, full-time/part-time), list ALL variants and indicate which group each rate applies to,
+            - accrual rules and key parameters: annual accrual rates, franchise amounts and any other accrual-related parameters, again listing all variants across groups and which group each applies to,
+            - retirement ages: normal, early and deferred/postponed retirement ages, including any differences across groups,
+            - rules on pension accrual during statutory leaves and during the second year of illness, including whether accrual continues fully or partly and for which groups,
+            - special provisions such as excedentregeling (accrual above a wage cap) or other higher-tier arrangements, including any group-specific differences,
+            - name and abbreviation of the pension fund or provider, if mentioned,
+            - any other pension-related provisions or conditions that affect benefits, accrual or contributions.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    leave_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated leave information and conditions, and ALWAYS check every bullet point carefully:
+            - general leave enhancements: any explicit statement that CAO leave rights are better or topped up relative to statutory rules, and for which groups this applies,
+            - maternity leave: duration of fully paid, partially paid and unpaid periods, pay levels during partially paid periods, and any specific notes, including group-specific differences,
+            - paternity/partner leave: duration of fully paid, partially paid and unpaid periods, pay levels during partially paid periods, and any explicit statement that it is above statutory, including group-specific differences,
+            - adoption and foster leave: duration and pay level, including any group differences,
+            - parental leave: existence and level of employer top-ups, duration of unpaid parental leave, and any explicit tenure requirements (with duration and unit), clearly indicating any group differences,
+            - sickness: sick-pay continuation/top-up rules, duration of sick-pay, pay percentage during sick leave, and whether additional disability or WGA-gap insurance is included, for all groups where differences are stated,
+            - care leave: short-term and long-term care leave durations and pay levels, and any explicit top-up rules, including differences by group, seniority or contract type,
+            - vacation and holiday allowance: vacation entitlement(s) and holiday allowance (vakantiegeld) percentages or amounts, including variation by age, seniority, hours worked or contract type as stated,
+            - special leaves: Liberation Day policy (annual vs lustrum vs compensation), seniority- or age-based extra leave days, abortion leave and any other special leaves, with conditions and target groups,
+            - any other leave-related provisions or conditions that affect leave duration, pay level, eligibility or special rights.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    termination_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated termination rules and conditions, and ALWAYS check every bullet point carefully:
+            - whether the CAO contains termination rules beyond statutory defaults, as described in the text,
+            - notice periods for employers and employees, including ALL stated variants: full schedules or tables by age, tenure, job group or contract type, plus any stated minimum or maximum ranges,
+            - tenure-based variation in notice periods (where notice changes with years of service, for employer and/or employee), and any explicit rules on shortening notice (e.g., with UWV permit), including any minimum notice floor that must remain,
+            - dismissal approval routes: which authority or path is required or default for dismissal (e.g., UWV, judge, both, none, conditional), and any differences by dismissal type or group,
+            - dismissal protection and conditions, in particular any reiterated or extended protection during sickness or other protected situations, and to which groups it applies,
+            - automatic end-of-employment rules at AOW (statutory pension) age or other ages/events at which employment can or must end automatically, including any exceptions or group-specific rules,
+            - probationary periods: whether a probation period is allowed at all, and the maximum probation duration for fixed-term and indefinite contracts, including any variation by contract length or type,
+            - severance pay and unemployment (WW) supplements beyond statutory transition pay, including stated amounts, formulas or tenure-based schedules for extra severance, and any differences by group,
+            - any other termination-related provisions or conditions that affect notice, dismissal, end of contract, probation, severance or WW supplements.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    overtime_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information about overtime, shift work and atypical hours, and ALWAYS check every bullet point carefully:
+            - general overtime rules: whether the CAO contains overtime/allowance rules beyond statutory defaults, and any distinctions between worker groups (e.g., job group, function, full-time/part-time, segment),
+            - overtime thresholds and triggers: daily and weekly thresholds after which hours count as overtime, exactly as stated, including any differences by group or schedule,
+            - overtime compensation mode: how overtime is compensated (e.g., monetary pay, time off in lieu (TOIL), or both), and rules on how surcharges (overtime, night, weekend, holiday) interact or are stacked (e.g., highest only vs cumulative),
+            - overtime rates and surcharges: all overtime surcharges and cases (e.g., weekday, Saturday, Sunday, night, holiday rates), including differences across worker groups and any stated ranges,
+            - shift and unfavourable hours: separate shift allowances for regular shift work (including any ranges or tiers) and allowances for work during unfavourable hours (night, weekend, holiday) that are distinct from overtime pay, for all groups where they apply,
+            - working time bounds and rest: minimum rest periods between shifts, maximum daily and weekly working hours, and any explicit limits on compulsory overtime (e.g., maximum hours per week or year), including any differences by group or schedule,
+            - weekends-off guarantees: any rules guaranteeing a minimum number or pattern of weekends off (e.g., at least 1 in 2, 1 in 3, or a fixed number per year), and how these guarantees are formulated,
+            - any other overtime, shift or atypical-hours-related provisions (including TOIL rules, special treatment for particular groups or schedules, or exceptions) that affect thresholds, compensation, working time or rest.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    training_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information about training and education, and ALWAYS check every bullet point carefully:
+            - existence of training or education rights, including which workers are covered,
+            - paid study and training time (typical yearly entitlement, units and any differences by group),
+            - monetary training budgets (annual amounts, units and any group-specific differences),
+            - career or employability scans (frequency and any conditions),
+            - reimbursement of training/study costs (percentages, amounts, covered cost types, caps, and whether paid by employer or sector fund),
+            - sectoral/CAO training funds and what they finance (rights, subsidies, target groups),
+            - employer obligations for mandatory/company-required training, including whether these must be fully paid by the employer,
+            - reclaim clauses allowing employers to recover training costs if employees leave, including the conditions and any repayment schedules,
+            - any other training- or education-related provisions or conditions (for example links to tenure, job group, contract type or development plans).
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    homeoffice_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information about home office / telework / remote work, and ALWAYS check every bullet point carefully:
+            - existence of home office or telework rights and which workers they apply to,
+            - entitlement to work from home (amount of remote work allowed, units such as days per week, and any conditions or limits),
+            - fixed home office allowances or reimbursements (stipends, and any reimbursement of internet/phone, equipment or other costs, with amounts and units),
+            - decision rules on home office arrangements (who decides, whether formal agreements or protocols are required, and any role of the Works Council),
+            - employer obligations regarding health and safety/OSH at the home workplace, and any related guarantees,
+            - rules on travel time or commuting compensation that specifically arise from home-office or hybrid work arrangements,
+            - any other home office or remote-work-related provisions (for example equipment provision, encouragement or campaigns, or references to statutory minimums).
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    contract_type_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information and conditions about contract types, and ALWAYS check every bullet point carefully:
+            - rules on full-time and part-time work: standard full-time hours, allowed part-time work, typical part-time ranges (fractions or hours) and any conditions or target groups,
+            - provisions on min-max (bandwidth) contracts and zero-hour/on-call contracts, including allowed ranges and any conditions or restrictions,
+            - deviations from the statutory fixed-term chain (ketenregeling), including maximum number of successive fixed-term contracts and maximum total duration of the chain, exactly as stated,
+            - rights to convert temporary/fixed-term contracts to permanent/indefinite contracts, including the exact rule text and any conditions (e.g., tenure, performance, number of renewals),
+            - rights to request adjustment of working hours, including any minimum tenure requirement, minimum employer size threshold and additional conditions (e.g., subject to business needs, employer response deadlines),
+            - any other explicit information and rules on contract forms (e.g., seasonal, project, freelance, internships, trainee contracts) that affect contract type, duration or hours.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+
+    fringe_benefits_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated fringe benefits, and ALWAYS check every bullet point carefully:
+            - commuting or travel allowances (including amounts, units and distance/zone rules),
+            - bicycle/leasefiets or other mobility schemes and their main conditions,
+            - meal benefits (free or subsidised meals, canteen subsidies, meal vouchers or meal allowances) including type, amounts and frequency,
+            - internet and/or phone reimbursements or allowances and any conditions,
+            - health insurance contributions or discounts (employer contributions, collective contracts, conditions) and any other insurance or savings-type benefits funded or arranged by the employer,
+            - relocation or housing allowances (including one-off or recurring amounts and eligibility conditions),
+            - coverage of costs for mandatory licenses/certifications required for the job,
+            - any other non-cash or in-kind benefits (e.g., wellbeing programmes, gym membership, ergonomics support, company products/discounts) that go beyond base pay.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    safety_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated safety and integrity provisions, and ALWAYS check every bullet point carefully:
+            - protocols or policies on harassment, bullying, discrimination, aggression or integrity (including separate sexual-harassment or broader integrity protocols),
+            - confidential counsellors or internal/external contact points, and any external reporting channels that are guaranteed,
+            - prevention of psychosocial risks (PSA) such as stress, burnout or workload pressure, including explicit PSA wellbeing measures and programmes,
+            - RI&E requirements that must cover psychosocial risks (PSA),
+            - training or awareness on wellbeing, respectful behaviour, psychosocial risks or safety, including who funds or organises it,
+            - joint safety/health committees or sectoral Arbo/occupational-health arrangements, and any guaranteed access to occupational health services (arbodienst/bedrijfsarts or prevention services),
+            - preventive medical examinations or health checks (PMO/PAGO) and any conditions,
+            - rules on monitoring workload or stress, and any wider wellbeing or vitality programmes,
+            - any other safety, health or integrity-related measures, obligations or special rules that go beyond statutory baselines.
+            Always record ALL explicitly stated provisions and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    childcare_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated childcare information in the CAO, and ALWAYS check every bullet point carefully:
+            - childcare allowances or subsidies (including conditions, basis, percentage/amount, caps, duration, pensionability and any phase-out rules),
+            - in-house, on-site or employer/sector-arranged childcare and whether places are reserved or prioritised for employees,
+            - discounts or priority access / reserved places at contracted childcare institutions,
+            - age limits and scope of covered childcare (e.g., nursery, after-school care, minimum and maximum child age),
+            - rules on which providers qualify for support and how the benefit interacts with public childcare subsidies or fiscal rules,
+            - eligibility conditions: minimum tenure with the employer (state in months, including 0 if rights start from entry), minimum FTE or working hours and any other eligibility limits or conditions,
+            - any childcare-related rights (e.g., leave or work-hours adjustment linked to care responsibilities) that explicitly deviate from national tenure rules, and how,
+            - whether childcare support is financed via a sector fund or similar collective funding structure,
+            - any other childcare-related provisions or conditions that affect childcare benefits, access or eligibility.
+            Always record ALL explicitly stated groups and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    AI_information: List[List[str]] = Field(
+        description=
+            """Extract ALL explicitly stated information about AI and algorithmic management, and ALWAYS check every bullet point carefully:
+            - whether the CAO contains AI or algorithmic-management provisions at all, and which workers or processes they apply to,
+            - rules on automated decisions,
+            - transparency and disclosure obligations,
+            - audit, review or monitoring requirements for AI systems,
+            - governance bodies or committees related to AI, data or algorithmic systems (composition, role and powers, if stated),
+            - worker rights to contest or appeal AI-based or algorithmically supported decisions and the procedures to do so,
+            - training or upskilling provisions related to AI or algorithmic tools,
+            - any other AI- or algorithmic-management-related provisions, safeguards or obligations mentioned in the CAO.
+            Always record ALL explicitly stated groups, systems and variants as they appear in the CAO text.""",
+        default_factory=list,
+    )
+    model_config = ConfigDict(title='CAO Non-Salary Schema',
+        json_schema_extra={'propertyOrdering': ['general_information',
+        'pension_information', 'leave_information',
+        'termination_information', 'overtime_information',
+        'training_information', 'homeoffice_information',
+        'contract_type_information', 'safety_information',
+        'childcare_information', 'AI_information', 'fringe_benefits_information']})
 
 
 # =============================================================================
@@ -123,6 +550,40 @@ class CAOExtractionSchema(BaseModel):
 # =============================================================================
 # Process-specific quota flags to stop individual processes when daily quota is hit
 process_quota_flags = {}
+
+# Lock TTL for cleanup
+LOCK_TTL_HOURS = 24
+
+
+# =============================================================================
+# DEBUG BUFFER CLASS
+# =============================================================================
+class DebugBuffer:
+    """Buffer for debug messages that can be flushed on failure or streamed live."""
+    def __init__(self, live: bool = False, max_lines: int = 1000):
+        self.live = live
+        self.max_lines = max_lines
+        self.lines: list[str] = []
+    
+    def log(self, msg: str):
+        if self.live:
+            print(msg)
+        elif len(self.lines) < self.max_lines:
+            self.lines.append(msg)
+    
+    def flush(self):
+        for line in self.lines:
+            print(line)
+        self.lines.clear()
+    
+    def clear(self):
+        self.lines.clear()
+    
+    def enable_live(self):
+        self.live = True
+    
+    def snapshot(self, last_n: int = 200) -> list[str]:
+        return self.lines[-last_n:]
 
 # =============================================================================
 # CONFIGURATION CLASSES
@@ -146,8 +607,8 @@ class ExtractionConfig:
     presence_penalty: float = 0
     frequency_penalty: float = 0
     thinking_budget: int = -1
-    max_retries: int = 5
-    delay_between_files: int = 200  # about 5 minutes between files to avoid rate limits
+    max_retries: int = 8
+    delay_between_files: int = 150  # about 150 seconds between files to avoid rate limits
 
 
 @dataclass
@@ -197,6 +658,11 @@ class ProcessingContext:
     client: Any  # Gemini client
     performance_monitor: PerformanceMonitor
     stats: ExtractionStats = field(default_factory=ExtractionStats)
+    debug: Any = None  # DebugBuffer
+    current_stage: str = ""
+    stage_start_ts: float = 0.0
+    file_start_ts: float = 0.0
+    live_escalated: bool = False
 
 
 # =============================================================================
@@ -241,18 +707,23 @@ def setup_gemini_client(api_key: str):
 
 def setup_performance_monitor() -> PerformanceMonitor:
     """Setup performance monitoring."""
+    # Free tier limit: 20 requests per day per project (shared across all processes)
+    # Paid tier limit: 3M tokens per day (not request-based)
+    # Default to free tier limit - update this if using paid tier API keys
     return PerformanceMonitor(
         log_file='performance_logs/llm_extraction/extraction_performance.jsonl',
-        summary_file='performance_logs/llm_extraction/extraction_summary.json'
+        summary_file='performance_logs/llm_extraction/extraction_summary.json',
+        free_tier_daily_limit=20  # Free tier: 20 requests/day per project (shared across all processes)
     )
 
 
 def setup_processing_context(config: ExtractionConfig, process_id: int, 
-                           total_processes: int, key_number: int) -> ProcessingContext:
+                           total_processes: int, key_number: int, verbose: bool = False) -> ProcessingContext:
     """Setup complete processing context."""
     api_key, actual_key_number = setup_environment(key_number)
     client = setup_gemini_client(api_key)
     performance_monitor = setup_performance_monitor()
+    debug_buffer = DebugBuffer(live=verbose)
     
     return ProcessingContext(
         config=config,
@@ -261,24 +732,35 @@ def setup_processing_context(config: ExtractionConfig, process_id: int,
         api_key=api_key,
         key_number=actual_key_number,
         client=client,
-        performance_monitor=performance_monitor
+        performance_monitor=performance_monitor,
+        debug=debug_buffer
     )
 
 
-def validate_input_paths(config: ExtractionConfig):
+def validate_input_paths(config: ExtractionConfig, process_id: int = 0):
     """Validate that input/output paths exist and are accessible."""
     if not os.path.exists(config.input_folder):
         raise ValueError(f"Input folder does not exist: {config.input_folder}")
     
-    config.output_folder.mkdir(exist_ok=True)
+    config.output_folder.mkdir(parents=True, exist_ok=True)
     
     # Check if we can write to output folder
-    test_file = config.output_folder / ".test_write"
+    # Use process_id to avoid race conditions when running parallel processes
+    test_file = config.output_folder / f".test_write_p{process_id}"
     try:
         test_file.write_text("test")
-        test_file.unlink()
+        if not test_file.exists():
+            raise ValueError("Test file was not created")
     except Exception as e:
         raise ValueError(f"Cannot write to output folder: {config.output_folder}, Error: {e}")
+    finally:
+        # Clean up test file if it exists (do this separately from validation)
+        if test_file.exists():
+            try:
+                test_file.unlink()
+            except Exception:
+                # Ignore cleanup errors - write permission was already validated
+                pass
 
 
 # =============================================================================
@@ -340,29 +822,63 @@ def validate_markdown_file(markdown_path: str) -> Tuple[bool, str]:
 
 
 # =============================================================================
+# HEARTBEAT WATCHDOG FUNCTIONS
+# =============================================================================
+# Functions for monitoring long-running stages and escalating debug output
+def heartbeat_watchdog(context: ProcessingContext, hang_threshold: int, heartbeat_interval: int, stop_event: threading.Event):
+    """Watchdog thread that monitors stage duration and escalates debug output on long stages."""
+    while not stop_event.is_set():
+        try:
+            if context.current_stage and context.stage_start_ts > 0:
+                elapsed = time.time() - context.stage_start_ts
+                
+                # Check if we should escalate to live debug
+                if elapsed >= hang_threshold and not context.live_escalated:
+                    print(f'[HEARTBEAT] long-running stage={context.current_stage} elapsed={elapsed:.0f}s — enabling live debug')
+                    # Flush buffered debug once
+                    for line in context.debug.snapshot():
+                        print(line)
+                    context.debug.enable_live()
+                    context.live_escalated = True
+                
+                # Continue heartbeats if already escalated
+                elif context.live_escalated:
+                    file_elapsed = time.time() - context.file_start_ts
+                    print(f'[HEARTBEAT] stage={context.current_stage} elapsed={elapsed:.0f}s (file {file_elapsed:.0f}s)')
+            
+            # Wait for next heartbeat or stop signal
+            if stop_event.wait(heartbeat_interval):
+                break
+                
+        except Exception as e:
+            # Don't let watchdog errors crash the main process
+            print(f'[HEARTBEAT] Watchdog error: {e}')
+            break
+
+
+# =============================================================================
 # FILE LOCKING & MANAGEMENT FUNCTIONS
 # =============================================================================
 # Functions for file locking, cleanup, and result saving
 def acquire_file_lock(file_path: Path, context: ProcessingContext) -> bool:
-    """Try to acquire a lock for processing a file."""
-    lock_file = file_path.with_suffix('.lock')
+    """Try to acquire a lock for processing a file using atomic file creation."""
+    lock_path = Path(str(file_path) + '.lock')
     try:
-        with open(lock_file, 'w') as f:
-            fcntl.flock(f.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
-            f.write(f'Process {context.process_id + 1} using API key {context.key_number}\n')
-            f.write(f'Timestamp: {time.time()}\n')
+        fd = os.open(str(lock_path), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        with os.fdopen(fd, 'w') as f:
+            f.write(f'pid={context.process_id} key={context.key_number} ts={time.time()}\n')
         return True
-    except (IOError, OSError):
+    except FileExistsError:
         return False
 
 
 def release_file_lock(file_path: Path):
     """Release the lock for a file."""
-    lock_file = file_path.with_suffix('.lock')
+    lock_path = Path(str(file_path) + '.lock')
     try:
-        if lock_file.exists():
-            lock_file.unlink()
-    except:
+        if lock_path.exists():
+            lock_path.unlink()
+    except Exception:
         pass
 
 
@@ -441,35 +957,7 @@ def cleanup_uploaded_file(client, uploaded_file):
 # LLM RESPONSE VALIDATION & ERROR HANDLING
 # =============================================================================
 # Functions for validating LLM responses and handling various error types
-def calculate_quota_retry_delay(file_size_mb: float, attempt: int) -> int:
-    """
-    Calculate quota retry delay based on file size and attempt number.
-    
-    Formula: (estimated_tokens / 125000) * 60 seconds * (2^attempt) + buffer
-    - 125,000 tokens per minute limit
-    - Exponential backoff: 2^attempt
-    - Buffer time for safety
-    """
-    # Estimate tokens: roughly 4 chars per token, file_size_mb * 1024 * 1024 / 4
-    estimated_tokens = int(file_size_mb * 1024 * 1024 / 4)
-    
-    # Calculate minutes needed to process this file
-    minutes_needed = estimated_tokens / 125000
-    
-    # Add exponential backoff: 2^attempt
-    backoff_multiplier = 2 ** attempt
-    
-    # Add buffer time (1-2 minutes for safety)
-    buffer_minutes = 1 + attempt
-    
-    # Calculate total delay in seconds
-    total_delay_seconds = int((minutes_needed * backoff_multiplier + buffer_minutes) * 60)
-    
-    print(f'  DEBUG: File size: {file_size_mb:.2f}MB, Estimated tokens: {estimated_tokens:,}')
-    print(f'  DEBUG: Minutes needed: {minutes_needed:.1f}, Backoff: {backoff_multiplier}x, Buffer: {buffer_minutes}min')
-    print(f'  DEBUG: Total delay: {total_delay_seconds // 60} minutes ({total_delay_seconds} seconds)')
-    
-    return total_delay_seconds
+# calculate_quota_retry_delay moved to scripts_pipeline_helper.p3.retry_logic
 
 
 def get_model_parameters(config) -> Dict[str, Any]:
@@ -489,43 +977,317 @@ def get_model_parameters(config) -> Dict[str, Any]:
     }
 
 
+# get_adjusted_parameters moved to scripts_pipeline_helper.p3.retry_logic
+
+
+# get_retry_guidance moved to scripts_pipeline_helper.p3.retry_logic
+
+
 def create_extraction_prompt(filename: str) -> str:
     """Create the extraction prompt for CAO document processing."""
     return f"""
-    Extract information from this Dutch CAO (Collective Labor Agreement) Markdown document, which is a parsed version of the original PDF.
-   
-    TASK: Categorize and extract relevant information into the specified fields based on the document content.
-    
+    Extract information from the Dutch CAO Markdown document parsed from a PDF. Pages are marked ## Page X _native_ (text-based) or ## Page X  _OCR_ (image-based); use these labels to interpret the layout correctly.
+
+    GOAL: Produce one JSON object with the exact keys in OUTPUT_JSON_TEMPLATE, each mapping to a List[List[str]]. If nothing is found for a key, return an empty list.
+
+    THINKING & OUTPUT: Think step by step INTERNALLY to locate, route, and clean the data, but OUTPUT ONLY the final JSON (no explanations, no notes, no chain-of-thought).
+        
     CRITICAL RULES:
-        - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess any information.
+        - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess any information. Always VERIFY the extracted information with the document.
         - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
         - Be precise: NO paraphrasing, NO interpretation, NO added explanations, NO decorative elements, NO unnecessary separator lines or formatting characters.
-        - IMPORTANT: Translate all Dutch text into clear and precise English but keep names, organizations, and abbreviations in Dutch. For legal clauses, preserve the exact legal meaning without simplification.
+        - IMPORTANT: Translate all Dutch text (clauses, tables, titles, etc.) into clear and precise English but keep names in Dutch. For legal clauses, preserve the exact legal meaning without simplification.
+        - IMPORTANT: Check the appendix if it exists in the document. Salary tables and important information are sometimes located in appendices and should not be skipped.
     
-    CONTENT INCLUSION RULES:
-        - Include relevant numerical values, percentages, amounts, and time periods.
-        - Include conditions, requirements, procedural steps, entitlements, allowances, and eligibility criteria.
-        - For tables, include short descriptions and table structure with headers and all data rows and columns.
-        - WAGE TABLES: Extract wage tables that differ in time periods, worker types, job categories, age groups, or other meaningful differences. For unit conversions (hourly vs monthly vs weekly vs 4 weeks vs yearly for same workers/periods/jobs/ages/others) extract only one version, preferably hourly.
+    INSIDE SECTION RULES: Order does not matter within a section - keep related items together (e.g., a table followed by its note/explanation).
     
-    TABLE FORMATTING:
-        - Structure tables as below, including headers, descriptions, and footnotes: 
+    ROUTING RULES (Use to avoid duplicates across sections):
+        - Wage vs Overtime: atypical hours pay → overtime_information; structural bonuses → wage_information.  
+        - Wage vs Fringe: cash → wage_information; non-cash perks/reimbursements → fringe_benefits_information.  
+        - Homeoffice vs Fringe: WFH-specific (stipend, equipment, internet) → homeoffice_information; general perks → fringe_benefits_information.  
+        - Childcare vs Leave: time off/pay during leave → leave_information; childcare services/subsidies/discounts → childcare_information.  
+        - Training vs Safety vs AI: safety/Arbo training → safety_information; AI-related training → AI_information; all other training → training_information.  
+        - Safety vs Homeoffice: safety/Arbo for home working → homeoffice_information; general safety/integrity → safety_information.  
+        - Pension vs Wage vs Fringe: pension schemes/funds → pension_information; wages/bonuses → wage_information; non-pension perks → fringe_benefits_information.  
+        - Contract vs Termination: contract forms/ketenregeling/conversion → contract_type_information; notice/dismissal/severance/WW supplements → termination_information.  
+        - Holidays: pay/allowance for working on holidays → overtime_information; days off/policies → leave_information.  
+    
+    WHAT TO INCLUDE:
+        - Numbers, amounts, percentages, dates, periods, conditions, eligibility rules, procedures, entitlements, allowances.
+        - Tables: include a compact structure (see TABLE FORMAT) with headers and all data rows and columns plus any short note that explains the table.
+
+    WAGE TABLE DEDUP (IMPORTANT):
+        - Keep tables that differ by period, worker type, education level, job group/function scale, experience steps (periodieken/trede), age bands, or other substantive distinctions.
+        - SKIP tables that are identical except for unit conversion (monthly vs hourly vs weekly vs 4-week vs yearly); keep ONE version (prefer monthly if present).
+
+    TABLE FORMAT:
+        - Represent each table as a short list of strings like:
             [
-                "Table title with context and units", 
-                "column headers with descriptions", 
-                "row data with values", 
-                "additional rows as needed (for example for footnotes and further descriptions)"
+                "Table title with context and units",
+                "Columns: <Row label (if present)> | <Col 1 label> | <Col 2 label> | <Col 3 label> | ...",
+                "<Row 1 label (if present)> | <v1> | <v2> | <v3> | ... ",
+                "<Row 2 label (if present)> | <v1> | <v2> | <v3> | ... ",
+                "... (one string per row)",
+                "Additional notes or clarifying information if any"
             ]
-        - If the original table structure is unclear or messy (missing headers, empty cells, broken formatting), reorganize it into a logical structure like the example above.
-    
+
+    EXTRACTION STEPS (INTERNAL - DO NOT OUTPUT):
+        1) Read & anchor: read all instructions and section descriptions.
+        2) Sweep & mark: scan the whole document including any appendices; mark every clause/table/text that matches any section description; ignore text/sentences/clasues/passages that matches none.
+        3) Route: apply the ROUTING RULES to decide the correct section when overlaps occur.
+        4) Length pre-check: if the marked set, when extracted verbatim, would likely exceed ~262,144 characters, plan to trim narrative/boilerplate in step 5.
+        5) Extract, translate & build — DO NOT HALLUCINATE:
+            - Build one JSON object with the exact keys in OUTPUT_JSON_TEMPLATE, in this order: general_information → wage_information → pension_information → leave_information → termination_information → overtime_information → training_information → homeoffice_information → contract_type_information → safety_information → childcare_information → AI_information → fringe_benefits_information.
+            - COPY numbers/dates/%/names literally; TRANSLATE all other Dutch text (clauses, part of tables that are not numbers or names, titles, etc.) to clear English; leave blank if not stated.
+            - Tables: rebuild to TABLE FORMAT; apply WAGE TABLE DEDUP (remove pure unit-conversion duplicates; prefer monthly).
+            - Consolidate: keep related items adjacent.
+            - If trimming per Step 4 is needed, shorten only narrative notes or minor wording not directly tied to field content, without changing legal meaning.
+        6) Verify: confirm that every extracted fact, number, table, or clause is explicitly present in the document (allowing for shortening, restructuring, and translation to English) and that no important information is missing. Correct or remove anything not grounded in the source. Do not infer or guess.
+        7) Validate: output one JSON object only; UTF-8 only; valid JSON (balanced brackets, no trailing commas); all template keys present (empty list if none).
+
     JSON OUTPUT REQUIREMENTS:
-        - Output ONLY valid JSON format.
-        - Use ONLY standard ASCII characters (no special/control characters).
-        - Replace any special characters with standard equivalents.
-        - Ensure the JSON response is complete and properly closed with all necessary braces.
+        - Output ONLY valid JSON (no markdown fences, no extra text). JSON must be UTF-8.
+        - Ensure brackets/commas are correct; no trailing commas; all top-level keys present.
+
+    OUTPUT_JSON_TEMPLATE:
+        {{
+            "general_information": [],
+            "wage_information": [],
+            "pension_information": [],
+            "leave_information": [],
+            "termination_information": [],
+            "overtime_information": [],
+            "training_information": [],
+            "homeoffice_information": [],
+            "contract_type_information": [],
+            "safety_information": [],
+            "childcare_information": [],
+            "AI_information": [],
+            "fringe_benefits_information": []
+        }}
 
     Document: {filename}
     """
+
+
+def create_salary_extraction_prompt(filename: str) -> str:
+    """Create the extraction prompt for salary/wage information only."""
+    return f"""
+    Extract ONLY wage and salary information from the Dutch CAO Markdown document parsed from a PDF. Pages are marked ## Page X _native_ (text-based) or ## Page X  _OCR_ (image-based); use these labels to interpret the layout correctly.
+
+    GOAL: Produce one JSON object with ONLY the "wage_information" key mapping to a List[List[str]]. If nothing is found, return an empty list.
+
+    THINKING & OUTPUT: Think step by step INTERNALLY to locate and clean the data, but OUTPUT ONLY the final JSON (no explanations, no notes, no chain-of-thought).
+        
+    CRITICAL RULES:
+        - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess any information. Always VERIFY the extracted information with the document.
+        - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
+        - Be precise: NO paraphrasing, NO interpretation, NO added explanations, NO decorative elements, NO unnecessary separator lines or formatting characters.
+        - IMPORTANT: Translate all Dutch text (clauses, tables, titles, etc.) into clear and precise English but keep names in Dutch. For legal clauses, preserve the exact legal meaning without simplification.
+        - IMPORTANT: Check the appendix if it exists in the document. Salary tables and important information are sometimes located in appendices and should not be skipped.
+    
+    WHAT TO INCLUDE:
+        - all wage tables (that are not identical except for unit conversion) and salary scales, 
+        - job classifications, function groups, and pay groups/grades,
+        - age-related or service-year/experience-based pay steps (trede/periodieken), including any transitions between age bands and experience steps,
+        - rules governing progression within scales (e.g., annual increments, step frequency, performance-based step changes, freeze/unfreeze conditions),
+        - entry-placement rules (e.g., starting above step 0 for prior relevant experience or competence),
+        - personal allowances at the maximum of a scale ("persoonlijke toeslag") and their conditions (basis, %/amount, pensionability, duration, phase-out),
+        - general wage increases (periodic percentage or nominal increases applied sector-wide or by group),
+        - all bonuses and allowances, including sign-on, 13th month, fixed lump sums, profit-sharing, performance bonuses, seniority/loyalty or jubilee bonuses, job-specific allowances, retirement gratuities, and insurance/savings benefits,
+        - notes explaining how the wage system or tables operate (e.g., "scale applies to 36-h week", "wages include 8% holiday allowance", "conversion rules for youth to adult wage scale").
+    
+    WAGE TABLE DEDUP (IMPORTANT):
+        - Keep tables that differ by period, worker type, education level, job group/function scale, experience steps (periodieken/trede), age bands, or other substantive distinctions.
+        - SKIP tables that are identical except for unit conversion (monthly vs hourly vs weekly vs 4-week vs yearly); keep ONE version (prefer monthly if present).
+
+    TABLE FORMAT:
+        - Represent each table as a short list of strings like:
+            [
+                "Table title with context and units",
+                "Columns: <Row label (if present)> | <Col 1 label> | <Col 2 label> | <Col 3 label> | ...",
+                "<Row 1 label (if present)> | <v1> | <v2> | <v3> | ... ",
+                "<Row 2 label (if present)> | <v1> | <v2> | <v3> | ... ",
+                "... (one string per row)",
+                "Additional notes or clarifying information if any"
+            ]
+
+    EXTRACTION STEPS (INTERNAL - DO NOT OUTPUT):
+        1) Read & anchor: read all instructions and focus ONLY on wage/salary information.
+        2) Sweep & mark: scan the whole document including any appendices; mark every clause/table/text that relates to wages/salaries.
+        3) Extract, translate & build — DO NOT HALLUCINATE:
+            - Build one JSON object with ONLY the "wage_information" key.
+            - COPY numbers/dates/%/names literally; TRANSLATE all other Dutch text (clauses, part of tables that are not numbers or names, titles, etc.) to clear English.
+            - Tables: rebuild to TABLE FORMAT; apply WAGE TABLE DEDUP (remove pure unit-conversion duplicates; prefer monthly).
+            - Consolidate: keep related items adjacent.
+        4) Verify: confirm that every extracted fact, number, table, or clause is explicitly present in the document and that no important wage/salary information is missing. Correct or remove anything not grounded in the source.
+        5) Validate: output one JSON object only; UTF-8 only; valid JSON (balanced brackets, no trailing commas); the "wage_information" key must be present (empty list if none).
+
+    JSON OUTPUT REQUIREMENTS:
+        - Output ONLY valid JSON (no markdown fences, no extra text). JSON must be UTF-8.
+        - Ensure brackets/commas are correct; no trailing commas.
+
+    OUTPUT_JSON_TEMPLATE:
+        {{
+            "wage_information": []
+        }}
+
+    Document: {filename}
+    """
+
+
+def create_nonsalary_extraction_prompt(filename: str) -> str:
+    """Create the extraction prompt for all non-salary information."""
+    return f"""
+    Extract information from the Dutch CAO Markdown document parsed from a PDF. Pages are marked ## Page X _native_ (text-based) or ## Page X  _OCR_ (image-based); use these labels to interpret the layout correctly.
+
+    GOAL: Produce one JSON object with the exact keys in OUTPUT_JSON_TEMPLATE, each mapping to a List[List[str]]. If nothing is found for a key, return an empty list.
+    IMPORTANT: The field "wage_information" (Wage table and salary scales) is excluded and will be handled separately.
+
+    THINKING & OUTPUT: Think step by step INTERNALLY to locate, route, and clean the data, but OUTPUT ONLY the final JSON (no explanations, no notes, no chain-of-thought).
+        
+    CRITICAL RULES:
+        - Extract ONLY information explicitly present in the document. Do NOT hallucinate, infer, or guess any information. Always VERIFY the extracted information with the document.
+        - Copy text literally (dates, numbers, percentages, units) - preserve exact values.
+        - Be precise: NO paraphrasing, NO interpretation, NO added explanations, NO decorative elements, NO unnecessary separator lines or formatting characters.
+        - IMPORTANT: Translate all Dutch text (clauses, tables, titles, etc.) into clear and precise English but keep names in Dutch. For legal clauses, preserve the exact legal meaning without simplification.
+        - IMPORTANT: Check the appendix if it exists in the document. Salary tables and important information are sometimes located in appendices and should not be skipped.
+    
+    INSIDE SECTION RULES: Order does not matter within a section - keep related items together (e.g., a table followed by its note/explanation).
+    
+    ROUTING RULES (Use to avoid duplicates across sections):
+        - Wage vs Overtime: atypical hours pay → overtime_information; structural bonuses → EXCLUDE (wage information, handled separately).
+        - Wage vs Fringe: cash wages → EXCLUDE (wage information, handled separately); non-cash perks/reimbursements → fringe_benefits_information.
+        - Homeoffice vs Fringe: WFH-specific (stipend, equipment, internet) → homeoffice_information; general perks → fringe_benefits_information.
+        - Childcare vs Leave: time off/pay during leave → leave_information; childcare services/subsidies/discounts → childcare_information.
+        - Training vs Safety vs AI: safety/Arbo training → safety_information; AI-related training → AI_information; all other training → training_information.
+        - Safety vs Homeoffice: safety/Arbo for home working → homeoffice_information; general safety/integrity → safety_information.
+        - Pension vs Wage vs Fringe: pension schemes/funds → pension_information; wages/bonuses → EXCLUDE (wage information, handled separately); non-pension perks → fringe_benefits_information.
+        - Contract vs Termination: contract forms/ketenregeling/conversion → contract_type_information; notice/dismissal/severance/WW supplements → termination_information.
+        - Holidays: pay/allowance for working on holidays → overtime_information; days off/policies → leave_information.
+    
+    WHAT TO INCLUDE:
+        - Numbers, amounts, percentages, dates, periods, conditions, eligibility rules, procedures, entitlements, allowances (but NOT wage/salary amounts).
+        - Tables: include a compact structure (see TABLE FORMAT) with headers and all data rows and columns plus any short note that explains the table.
+
+    TABLE FORMAT:
+        - Represent each table as a short list of strings like:
+            [
+                "Table title with context and units",
+                "Columns: <Row label (if present)> | <Col 1 label> | <Col 2 label> | <Col 3 label> | ...",
+                "<Row 1 label (if present)> | <v1> | <v2> | <v3> | ... ",
+                "<Row 2 label (if present)> | <v1> | <v2> | <v3> | ... ",
+                "... (one string per row)",
+                "Additional notes or clarifying information if any"
+            ]
+
+    EXTRACTION STEPS (INTERNAL - DO NOT OUTPUT):
+        1) Read & anchor: read all instructions and section descriptions.
+        2) Sweep & mark: scan the whole document including any appendices; mark every clause/table/text that matches any section description EXCEPT wage/salary information; ignore text/sentences/clauses/passages that match none.
+        3) Route: apply the ROUTING RULES to decide the correct section when overlaps occur. SKIP all wage/salary information.
+        4) Length pre-check: if the marked set, when extracted verbatim, would likely exceed ~262,144 characters, plan to trim narrative/boilerplate in step 5.
+        5) Extract, translate & build — DO NOT HALLUCINATE:
+            - Build one JSON object with the exact keys in OUTPUT_JSON_TEMPLATE, in this order: general_information → pension_information → leave_information → termination_information → overtime_information → training_information → homeoffice_information → contract_type_information → safety_information → childcare_information → AI_information → fringe_benefits_information.
+            - DO NOT include "wage_information" key.
+            - COPY numbers/dates/%/names literally; TRANSLATE all other Dutch text (clauses, part of tables that are not numbers or names, titles, etc.) to clear English; leave blank if not stated.
+            - Tables: rebuild to TABLE FORMAT.
+            - Consolidate: keep related items adjacent.
+            - If trimming per Step 4 is needed, shorten only narrative notes or minor wording not directly tied to field content, without changing legal meaning.
+        6) Verify: confirm that every extracted fact, number, table, or clause is explicitly present in the document (allowing for shortening, restructuring, and translation to English) and that no important information is missing. Correct or remove anything not grounded in the source. Do not infer or guess. Ensure NO wage/salary information is included.
+        7) Validate: output one JSON object only; UTF-8 only; valid JSON (balanced brackets, no trailing commas); all template keys present (empty list if none); "wage_information" must NOT be present.
+
+    JSON OUTPUT REQUIREMENTS:
+        - Output ONLY valid JSON (no markdown fences, no extra text). JSON must be UTF-8.
+        - Ensure brackets/commas are correct; no trailing commas; all top-level keys present.
+        - DO NOT include "wage_information" in the output.
+
+    OUTPUT_JSON_TEMPLATE:
+        {{
+            "general_information": [],
+            "pension_information": [],
+            "leave_information": [],
+            "termination_information": [],
+            "overtime_information": [],
+            "training_information": [],
+            "homeoffice_information": [],
+            "contract_type_information": [],
+            "safety_information": [],
+            "childcare_information": [],
+            "AI_information": [],
+            "fringe_benefits_information": []
+        }}
+
+    Document: {filename}
+    """
+
+
+def merge_split_extractions(salary_json: str, nonsalary_json: str, filename: str) -> Optional[str]:
+    """
+    Merge salary and non-salary extraction results into unified format.
+    
+    Args:
+        salary_json: JSON string from salary-only extraction (wage_information)
+        nonsalary_json: JSON string from non-salary extraction (all other fields)
+        filename: Filename for error reporting
+        
+    Returns:
+        Merged JSON string matching CAOExtractionSchema format, or None if merge fails
+    """
+    try:
+        # Parse both JSON strings
+        salary_data = json.loads(salary_json) if isinstance(salary_json, str) else salary_json
+        nonsalary_data = json.loads(nonsalary_json) if isinstance(nonsalary_json, str) else nonsalary_json
+        
+        # Build unified structure matching CAOExtractionSchema
+        merged = {
+            "general_information": nonsalary_data.get("general_information", []),
+            "wage_information": salary_data.get("wage_information", []),
+            "pension_information": nonsalary_data.get("pension_information", []),
+            "leave_information": nonsalary_data.get("leave_information", []),
+            "termination_information": nonsalary_data.get("termination_information", []),
+            "overtime_information": nonsalary_data.get("overtime_information", []),
+            "training_information": nonsalary_data.get("training_information", []),
+            "homeoffice_information": nonsalary_data.get("homeoffice_information", []),
+            "contract_type_information": nonsalary_data.get("contract_type_information", []),
+            "safety_information": nonsalary_data.get("safety_information", []),
+            "childcare_information": nonsalary_data.get("childcare_information", []),
+            "AI_information": nonsalary_data.get("AI_information", []),
+            "fringe_benefits_information": nonsalary_data.get("fringe_benefits_information", [])
+        }
+        
+        # Ensure all fields are lists of lists (List[List[str]])
+        for key, value in merged.items():
+            if not isinstance(value, list):
+                merged[key] = []
+            else:
+                # Ensure nested lists are properly formatted
+                normalized = []
+                for item in value:
+                    if isinstance(item, list):
+                        normalized.append(item)
+                    elif isinstance(item, str):
+                        normalized.append([item])
+                    else:
+                        normalized.append([str(item)])
+                merged[key] = normalized
+        
+        # Convert back to JSON string
+        merged_json = json.dumps(merged, ensure_ascii=False, indent=2)
+        
+        # Validate the merged JSON matches the expected schema structure
+        validation_result = validate_json_completeness(merged_json, filename)
+        if not validation_result['is_valid']:
+            print(f'  WARNING: Merged JSON validation failed: {validation_result["error"]}')
+            return None
+        
+        return merged_json
+        
+    except json.JSONDecodeError as e:
+        print(f'  ERROR: Failed to parse JSON during merge for {filename}: {e}')
+        return None
+    except Exception as e:
+        print(f'  ERROR: Failed to merge split extractions for {filename}: {e}')
+        return None
 
 
 def validate_uploaded_file(client, uploaded_file, filename: str, original_size_mb: float):
@@ -584,12 +1346,13 @@ def safe_contents(prompt: str, uploaded_file=None):
     return contents
 
 
-def extract_text_safely(response, filename: str):
+def extract_text_safely(response, filename: str, context: ProcessingContext = None):
     """Safely extract text from response with proper error handling and JSON cleanup."""
     if response is None:
         raise ValueError('No response received from model')
     
-    print(f'  DEBUG: Response object type: {type(response)}')
+    if context and context.debug:
+        context.debug.log(f'  DEBUG: Response object type: {type(response)}')
     
     # Check if we have candidates
     if not getattr(response, "candidates", None):
@@ -599,31 +1362,46 @@ def extract_text_safely(response, filename: str):
     
     # Check finish reason first - this is critical for understanding failures
     fr = getattr(cand, "finish_reason", None)
-    print(f'  DEBUG: Finish reason: {fr}')
+    if context and context.debug:
+        context.debug.log(f'  DEBUG: Finish reason: {fr}')
     
     # If filtered or blocked, don't try to access text
     if fr and fr not in ["STOP", "MAX_TOKENS"]:
         safety_info = []
         if hasattr(cand, "safety_ratings") and cand.safety_ratings is not None:
             safety_info = [(r.category, r.probability) for r in cand.safety_ratings]
-        print(f'  DEBUG: Response blocked - Finish reason: {fr}, Safety ratings: {safety_info}')
+        if context and context.debug:
+            context.debug.log(f'  DEBUG: Response blocked - Finish reason: {fr}, Safety ratings: {safety_info}')
         return "", {"finish": fr, "safety": safety_info, "filename": filename}
     
     # Check for structured output first (when using response_schema)
-    print(f'  DEBUG: Checking response.parsed: hasattr={hasattr(response, "parsed")}, value={"FOUND" if hasattr(response, "parsed") and response.parsed else "NOT_FOUND"}')
+    if context and context.debug:
+        context.debug.log(f'  DEBUG: Checking response.parsed: hasattr={hasattr(response, "parsed")}, value={"FOUND" if hasattr(response, "parsed") and response.parsed else "NOT_FOUND"}')
     if hasattr(response, 'parsed') and response.parsed:
-        print(f'  DEBUG: Found structured output in response.parsed')
-        print(f'  DEBUG: response.parsed type: {type(response.parsed)}')
-        print(f'  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]')
+        if context and context.debug:
+            context.debug.log(f'  DEBUG: Found structured output in response.parsed')
+            context.debug.log(f'  DEBUG: response.parsed type: {type(response.parsed)}')
+            context.debug.log(f'  DEBUG: response.parsed content: [STRUCTURED DATA - SUPPRESSED FOR CLARITY]')
+            # Check if response.text exists to see raw JSON from Gemini
+            if hasattr(response, 'text') and response.text:
+                # Sample first 500 chars to check for nulls in raw JSON
+                sample = response.text[:500]
+                null_count = sample.count(': null')
+                context.debug.log(f'  DEBUG: Raw JSON sample (first 500 chars) contains {null_count} null values')
+                if null_count > 0:
+                    context.debug.log(f'  DEBUG: Raw JSON sample: {sample}')
         # Convert structured output to JSON string
         content = response.parsed.model_dump_json()
-        print(f'  DEBUG: Converted structured output to JSON: {len(content)} chars')
+        if context and context.debug:
+            context.debug.log(f'  DEBUG: Converted structured output to JSON: {len(content)} chars')
         return content, {"finish": fr or "STOP", "filename": filename}
     
     # Check for direct text response (when not using response_schema)
-    print(f'  DEBUG: Checking response.text: hasattr={hasattr(response, "text")}, value={getattr(response, "text", "NOT_FOUND")}')
+    if context and context.debug:
+        context.debug.log(f'  DEBUG: Checking response.text: hasattr={hasattr(response, "text")}, value={getattr(response, "text", "NOT_FOUND")}')
     if hasattr(response, 'text') and response.text:
-        print(f'  DEBUG: Found direct text response: {len(response.text)} chars')
+        if context and context.debug:
+            context.debug.log(f'  DEBUG: Found direct text response: {len(response.text)} chars')
         content = response.text
         return content, {"finish": fr or "STOP", "filename": filename}
     
@@ -636,39 +1414,50 @@ def extract_text_safely(response, filename: str):
         raise ValueError('No content in response candidate')
     
     parts = getattr(content, "parts", []) or []
-    print(f'  DEBUG: Found {len(parts)} content parts')
+    if context and context.debug:
+        context.debug.log(f'  DEBUG: Found {len(parts)} content parts')
     
     # Debug: Print all part types to understand what we're getting
     for i, part in enumerate(parts):
-        print(f'  DEBUG: Part {i}: type={type(part).__name__}, attributes={dir(part)}')
+        if context and context.debug:
+            context.debug.log(f'  DEBUG: Part {i}: type={type(part).__name__}, attributes={dir(part)}')
         if hasattr(part, "text") and part.text:
             text_chunks.append(part.text)
-            print(f'  DEBUG: Part {i}: text length = {len(part.text)}')
+            if context and context.debug:
+                context.debug.log(f'  DEBUG: Part {i}: text length = {len(part.text)}')
         elif hasattr(part, "function_call"):
-            print(f'  DEBUG: Part {i}: function_call found')
+            if context and context.debug:
+                context.debug.log(f'  DEBUG: Part {i}: function_call found')
         elif hasattr(part, "inline_data"):
-            print(f'  DEBUG: Part {i}: inline_data found')
+            if context and context.debug:
+                context.debug.log(f'  DEBUG: Part {i}: inline_data found')
         else:
-            print(f'  DEBUG: Part {i}: no text content, no function_call, no inline_data')
+            if context and context.debug:
+                context.debug.log(f'  DEBUG: Part {i}: no text content, no function_call, no inline_data')
     
     if not text_chunks:
         # Try fallback: check if response has direct text attribute
-        print(f'  DEBUG: No text parts found, trying fallback methods...')
+        if context and context.debug:
+            context.debug.log(f'  DEBUG: No text parts found, trying fallback methods...')
         
         # Try direct response attributes (but we already checked for parsed and text above)
-        print(f'  DEBUG: No fallback text found in response')
+        if context and context.debug:
+            context.debug.log(f'  DEBUG: No fallback text found in response')
         raise ValueError('No text parts found in response')
     else:
         content = "".join(text_chunks)
-        print(f'  DEBUG: Total extracted text length: {len(content)}')
+        if context and context.debug:
+            context.debug.log(f'  DEBUG: Total extracted text length: {len(content)}')
     
     # Apply JSON cleanup (integrated from original validate_llm_response)
     if content.strip().startswith('{') and content.strip().endswith('}'):
         try:
             json.loads(content)
-            print(f'  DEBUG: JSON is valid without cleanup')
+            if context and context.debug:
+                context.debug.log(f'  DEBUG: JSON is valid without cleanup')
         except json.JSONDecodeError as e:
-            print(f'  WARNING: JSON parsing failed, attempting cleanup: {str(e)}')
+            if context and context.debug:
+                context.debug.log(f'  WARNING: JSON parsing failed, attempting cleanup: {str(e)}')
             
             # Remove problematic control characters (but keep \n, \t, \r)
             import re
@@ -676,86 +1465,18 @@ def extract_text_safely(response, filename: str):
             
             try:
                 json.loads(cleaned_content)
-                print(f'  INFO: JSON cleanup successful, using cleaned content')
+                if context and context.debug:
+                    context.debug.log(f'  INFO: JSON cleanup successful, using cleaned content')
                 content = cleaned_content
             except json.JSONDecodeError as e2:
-                print(f'  WARNING: JSON cleanup failed: {str(e2)}')
-                print(f'  INFO: Using raw text content as fallback')
+                if context and context.debug:
+                    context.debug.log(f'  WARNING: JSON cleanup failed: {str(e2)}')
+                    context.debug.log(f'  INFO: Using raw text content as fallback')
     
     return content, {"finish": fr or "STOP", "filename": filename}
 
 
-def handle_llm_errors(error: Exception, attempt: int, max_retries: int, file_size_mb: float = 0, context=None) -> bool:
-    """Handle different types of LLM errors with appropriate retry logic."""
-    error_str = str(error).lower()
-    
-    if ('deadlineexceeded' in error_str or '504' in error_str or 
-        'timeout' in error_str or 'truncated' in error_str):
-        if attempt < max_retries - 1:
-            wait_time = 120 * 2 ** attempt
-            print(f'  Attempt {attempt + 1} failed (timeout/truncation), retrying in {wait_time // 60} minutes...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with timeout/truncation errors')
-            return False
-    elif 'serviceunavailable' in error_str or '503' in error_str or 'connection reset' in error_str or '500' in error_str or 'internal' in error_str:
-        if attempt < max_retries - 1:
-            wait_time = 60 * 2 ** attempt
-            print(f'  Attempt {attempt + 1} failed (service unavailable/internal error), retrying in {wait_time // 60} minutes...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with service unavailable/internal errors')
-            return False
-    elif 'no content parts found' in error_str or 'no content' in error_str:
-        if attempt < max_retries - 1:
-            wait_time = 60 * 2 ** attempt
-            print(f'  Attempt {attempt + 1} failed (empty response), retrying in {wait_time // 60} minutes...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with empty response errors')
-            return False
-    elif 'incomplete json' in error_str or 'json validation failed' in error_str or 'truncated' in error_str:
-        if attempt < max_retries - 1:
-            wait_time = 30 * 2 ** attempt
-            print(f'  Attempt {attempt + 1} failed (incomplete JSON), retrying in {wait_time} seconds...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with incomplete JSON errors')
-            return False
-    elif 'quota' in error_str or '429' in error_str:
-        # Check if it's a daily quota limit (not retryable)
-        if 'perday' in error_str or 'daily' in error_str or '3000000' in error_str:
-            global process_quota_flags
-            process_quota_flags[context.process_id] = True
-            print(f'  ❌ DAILY QUOTA LIMIT REACHED for Process {context.process_id} - Cannot retry until tomorrow')
-            print(f'  💡 Daily limit: 3,000,000 tokens per day')
-            print(f'  💡 Quota resets at midnight (Google timezone)')
-            print(f'  🛑 Stopping this process to avoid infinite retries')
-            return False  # Stop immediately, don't retry
-        
-        # Regular per-minute quota limit (retryable)
-        if attempt < max_retries - 1:
-            if file_size_mb > 0:
-                wait_time = calculate_quota_retry_delay(file_size_mb, attempt)
-            else:
-                wait_time = 60 * 2 ** attempt  # Fallback for unknown file size
-            print(f'  Attempt {attempt + 1} failed (per-minute quota), retrying in {wait_time // 60} minutes...')
-            time.sleep(wait_time)
-            return True
-        else:
-            print(f'  All {max_retries} attempts failed with per-minute quota errors')
-            return False
-    elif attempt < max_retries - 1:
-        wait_time = 30 * 2 ** attempt
-        print(f'  Attempt {attempt + 1} failed ({type(error).__name__}), retrying in {wait_time} seconds...')
-        time.sleep(wait_time)
-        return True
-    else:
-        return False
+# handle_llm_errors moved to scripts_pipeline_helper.p3.retry_logic
 
 
 # =============================================================================
@@ -788,11 +1509,112 @@ def log_detailed_failure(response_info: dict, filename: str, attempt: int):
     print(f'    🆔 Process ID: {response_info.get("process_id", "UNKNOWN")}')
 
 
+def extract_clean_filename(filename: str) -> str:
+    """
+    Extract a clean filename from the original filename for failed file naming.
+    
+    Args:
+        filename: Original filename (e.g., "CAO_file_extract.json")
+        
+    Returns:
+        Clean filename (e.g., "CAO_file")
+    """
+    import re
+    
+    # Remove _extract.json suffix if present
+    clean_name = filename
+    if clean_name.endswith('_extract.json'):
+        clean_name = clean_name[:-13]  # Remove '_extract.json'
+    elif clean_name.endswith('.json'):
+        clean_name = clean_name[:-5]   # Remove '.json'
+    
+    # Remove common file extensions
+    extensions_to_remove = ['.md', '.markdown', '.txt']
+    for ext in extensions_to_remove:
+        if clean_name.endswith(ext):
+            clean_name = clean_name[:-len(ext)]
+            break
+    
+    # Clean up the name - remove extra underscores and make it more readable
+    clean_name = re.sub(r'_+', '_', clean_name)  # Replace multiple underscores with single
+    clean_name = clean_name.strip('_')  # Remove leading/trailing underscores
+    
+    # Limit length to avoid overly long filenames
+    if len(clean_name) > 100:
+        clean_name = clean_name[:100].rstrip('_')
+    
+    return clean_name
+
+
+def save_failed_cao_number(filename: str, cao_number: str, error_message: str):
+    """
+    Save failed CAO number to file for skipping in future runs.
+    
+    Args:
+        filename: Original filename for context
+        cao_number: CAO number for filename prefix
+        error_message: The error message from the failed attempt
+    """
+    try:
+        from datetime import datetime
+        
+        # Create the failed CAO numbers directory
+        failed_dir = Path("performance_logs/llm_extraction/failed_cao_numbers") / str(cao_number)
+        failed_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Create clean filename without timestamp
+        clean_filename = extract_clean_filename(filename)
+        
+        # Add CAO number prefix if provided
+        failed_filename = f"{cao_number}_{clean_filename}_failed.txt"
+        
+        failed_file = failed_dir / failed_filename
+        
+        # Save the failed attempt info
+        with open(failed_file, 'w', encoding='utf-8') as f:
+            f.write(f"FAILED CAO NUMBER DEBUG INFO\n")
+            f.write(f"Original filename: {filename}\n")
+            f.write(f"CAO number: {cao_number}\n")
+            f.write(f"Timestamp: {datetime.now().isoformat()}\n")
+            f.write(f"Error: {error_message}\n")
+            f.write(f"{'='*80}\n\n")
+            f.write(f"All retry attempts exhausted for this file.\n")
+            f.write(f"This file will be skipped in future runs.\n")
+        
+        print(f'  DEBUG: Failed CAO number saved to: {failed_file}')
+        
+    except Exception as e:
+        print(f'  DEBUG: Failed to save failed CAO number: {e}')
+
+
+def is_file_in_failed_cao_folder(filename: str, cao_number: str) -> bool:
+    """
+    Check if a file exists in the failed_cao_numbers folder.
+    
+    Args:
+        filename: Original filename (e.g., "CAO_file.md")
+        cao_number: CAO number for the file
+        
+    Returns:
+        bool: True if the file exists in failed CAO folder, False otherwise
+    """
+    failed_dir = Path("performance_logs/llm_extraction/failed_cao_numbers") / str(cao_number)
+    
+    if not failed_dir.exists():
+        return False
+    
+    # Build expected failed filename: {cao_number}_{clean_filename}_failed.txt
+    clean_filename = extract_clean_filename(filename)
+    expected_failed_file = failed_dir / f"{cao_number}_{clean_filename}_failed.txt"
+    
+    return expected_failed_file.exists()
+
+
 def validate_response_schema(content: str, filename: str) -> bool:
     """Validate that response contains expected schema structure."""
     try:
         data = json.loads(content)
-        required_fields = ['general_information', 'wage_information', 'pension_information']
+        required_fields = ['general_information', 'wage_information', 'pension_information', 'leave_information']
         missing_fields = [field for field in required_fields if field not in data]
         
         if missing_fields:
@@ -809,9 +1631,236 @@ def validate_response_schema(content: str, filename: str) -> bool:
 # CORE EXTRACTION FUNCTION
 # =============================================================================
 # Main function for extracting content from markdown files using Gemini API
+def extract_split_extraction(markdown_path: str, filename: str, cao_number: str,
+                            uploaded_file, context: ProcessingContext, attempt: int,
+                            timeout_seconds: int, adjusted_params: Dict[str, Any],
+                            cached_salary: Optional[str] = None,
+                            cached_nonsalary: Optional[str] = None,
+                            remaining_budget_s: Optional[int] = None) -> Tuple[Optional[str], Optional[str], Optional[str]]:
+    """
+    Perform split extraction (salary and non-salary) for attempts 5-7.
+    
+    Args:
+        markdown_path: Path to markdown file
+        filename: Name of file being processed
+        cao_number: CAO number
+        uploaded_file: Already uploaded file resource
+        context: Processing context
+        attempt: Current attempt number (5, 6, or 7)
+        timeout_seconds: Timeout in seconds
+        adjusted_params: Adjusted parameters for this attempt
+        cached_salary: Previously successful salary extraction (optional)
+        cached_nonsalary: Previously successful non-salary extraction (optional)
+        remaining_budget_s: Remaining time budget in seconds
+        
+    Returns:
+        Tuple of (merged_content, salary_content, nonsalary_content):
+        - merged_content: Merged JSON string if both succeeded, None otherwise
+        - salary_content: Salary JSON string (new or cached)
+        - nonsalary_content: Non-salary JSON string (new or cached)
+    """
+    print(f'  INFO: Attempt {attempt + 1} - Using split extraction (salary + non-salary)')
+    
+    # Use cached results if available
+    salary_content = cached_salary
+    nonsalary_content = cached_nonsalary
+    
+    if cached_salary:
+        print(f'  INFO: Using cached salary extraction from previous attempt')
+    if cached_nonsalary:
+        print(f'  INFO: Using cached non-salary extraction from previous attempt')
+    
+    # Safety settings
+    safety_settings = [
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE
+        )
+    ]
+    
+    salary_response_info = None
+    nonsalary_response_info = None
+    
+    # Extract salary information (only if not cached)
+    if not salary_content:
+        print(f'  INFO: Extracting salary information (attempt {attempt + 1})...')
+        try:
+            context.current_stage = "generating_content_salary"
+            context.stage_start_ts = time.time()
+            
+            salary_prompt = create_salary_extraction_prompt(filename)
+            salary_safe_content = safe_contents(salary_prompt, uploaded_file)
+            
+            salary_response = context.client.models.generate_content(
+                model=context.config.model,
+                contents=salary_safe_content,
+                config={
+                    'temperature': adjusted_params['temperature'],
+                    'top_p': adjusted_params['top_p'],
+                    'top_k': adjusted_params['top_k'],
+                    'max_output_tokens': context.config.max_tokens,
+                    'candidate_count': context.config.candidate_count,
+                    'seed': context.config.seed,
+                    'presence_penalty': context.config.presence_penalty,
+                    'frequency_penalty': context.config.frequency_penalty,
+                    'response_mime_type': 'application/json',
+                    'response_schema': CAOSalaryOnlySchema,
+                    'thinking_config': types.ThinkingConfig(thinking_budget=context.config.thinking_budget),
+                    'http_options': types.HttpOptions(timeout=timeout_seconds * 1000),
+                    'safety_settings': safety_settings
+                }
+            )
+            
+            salary_content, salary_response_info = extract_text_safely(salary_response, filename, context)
+            print(f'  INFO: Salary extraction completed: {len(salary_content) if salary_content else 0} chars')
+            
+        except Exception as e:
+            print(f'  ERROR: Salary extraction failed: {e}')
+            salary_response_info = {"finish": "ERROR", "error": str(e)}
+    else:
+        print(f'  INFO: Skipping salary extraction (using cached result)')
+    
+    # Add 3-minute delay between salary and non-salary extraction for retries 6-8
+    if not nonsalary_content:  # Only delay if we need to extract non-salary
+        delay_seconds = 180  # 3 minutes
+        print(f'  INFO: Waiting {delay_seconds // 60} minutes before non-salary extraction...')
+        time.sleep(delay_seconds)
+    
+    # Extract non-salary information (only if not cached)
+    if not nonsalary_content:
+        print(f'  INFO: Extracting non-salary information (attempt {attempt + 1})...')
+        try:
+            # Re-fetch and validate file resource before second API call
+            # The file resource may become stale after the first API call and 3-minute delay
+            try:
+                file_resource = context.client.files.get(name=uploaded_file.name)
+                if file_resource.state.name != 'ACTIVE':
+                    raise ValueError(f'Uploaded file not ACTIVE before non-salary extraction: {file_resource.state.name}')
+                # Update uploaded_file reference to ensure we have a fresh resource
+                uploaded_file = file_resource
+                print(f'  DEBUG: Re-validated file resource before non-salary extraction - state: {file_resource.state.name}')
+            except Exception as e:
+                print(f'  WARNING: Failed to re-validate file resource: {e}')
+                # Continue anyway - the original uploaded_file might still work
+            
+            context.current_stage = "generating_content_nonsalary"
+            context.stage_start_ts = time.time()
+            
+            nonsalary_prompt = create_nonsalary_extraction_prompt(filename)
+            nonsalary_safe_content = safe_contents(nonsalary_prompt, uploaded_file)
+            
+            nonsalary_response = context.client.models.generate_content(
+                model=context.config.model,
+                contents=nonsalary_safe_content,
+                config={
+                    'temperature': adjusted_params['temperature'],
+                    'top_p': adjusted_params['top_p'],
+                    'top_k': adjusted_params['top_k'],
+                    'max_output_tokens': context.config.max_tokens,
+                    'candidate_count': context.config.candidate_count,
+                    'seed': context.config.seed,
+                    'presence_penalty': context.config.presence_penalty,
+                    'frequency_penalty': context.config.frequency_penalty,
+                    'response_mime_type': 'application/json',
+                    'response_schema': CAONonSalarySchema,
+                    'thinking_config': types.ThinkingConfig(thinking_budget=context.config.thinking_budget),
+                    'http_options': types.HttpOptions(timeout=timeout_seconds * 1000),
+                    'safety_settings': safety_settings
+                }
+            )
+            
+            nonsalary_content, nonsalary_response_info = extract_text_safely(nonsalary_response, filename, context)
+            print(f'  INFO: Non-salary extraction completed: {len(nonsalary_content) if nonsalary_content else 0} chars')
+            
+        except Exception as e:
+            # Enhanced error logging for non-salary extraction failures
+            error_msg = str(e)
+            print(f'  ERROR: Non-salary extraction failed: {error_msg}')
+            
+            # Log additional diagnostic information if available
+            # Note: nonsalary_response might not be defined if error occurred before API call
+            try:
+                if 'nonsalary_response' in locals() and hasattr(nonsalary_response, 'candidates') and nonsalary_response.candidates:
+                    cand = nonsalary_response.candidates[0]
+                    finish_reason = getattr(cand, "finish_reason", None)
+                    print(f'  DEBUG: Non-salary response finish_reason: {finish_reason}')
+                    if hasattr(cand, "safety_ratings") and cand.safety_ratings:
+                        safety_info = [(r.category, r.probability) for r in cand.safety_ratings]
+                        print(f'  DEBUG: Non-salary safety ratings: {safety_info}')
+            except:
+                pass  # Ignore errors in diagnostic logging
+            
+            nonsalary_response_info = {"finish": "ERROR", "error": error_msg}
+    else:
+        print(f'  INFO: Skipping non-salary extraction (using cached result)')
+    
+    # Check if both extractions succeeded (either from this attempt or cached)
+    if not salary_content or not nonsalary_content:
+        error_parts = []
+        if not salary_content:
+            error_parts.append("salary")
+        if not nonsalary_content:
+            error_parts.append("non-salary")
+        error_msg = f"Split extraction incomplete: {' and '.join(error_parts)} extraction not available"
+        print(f'  INFO: {error_msg} - will retry failed part on next attempt')
+        # Return None for merged content, but return individual results for caching
+        return None, salary_content, nonsalary_content
+    
+    # Validate individual extractions
+    if salary_content:
+        salary_validation = validate_json_completeness(salary_content, filename)
+        if not salary_validation['is_valid']:
+            print(f'  ERROR: Salary JSON validation failed: {salary_validation.get("error", "Unknown error")}')
+            return None, None, nonsalary_content  # Clear invalid salary, keep valid nonsalary
+    
+    if nonsalary_content:
+        nonsalary_validation = validate_json_completeness(nonsalary_content, filename)
+        if not nonsalary_validation['is_valid']:
+            print(f'  ERROR: Non-salary JSON validation failed: {nonsalary_validation.get("error", "Unknown error")}')
+            return None, salary_content, None  # Keep valid salary, clear invalid nonsalary
+    
+    # If we don't have both, return partial results for next attempt
+    if not salary_content or not nonsalary_content:
+        return None, salary_content, nonsalary_content
+    
+    # Merge the results
+    print(f'  INFO: Merging salary and non-salary results...')
+    merged_content = merge_split_extractions(salary_content, nonsalary_content, filename)
+    
+    if not merged_content:
+        print(f'  ERROR: Failed to merge split extractions')
+        return None, salary_content, nonsalary_content
+    
+    # Validate merged result
+    merged_validation = validate_json_completeness(merged_content, filename)
+    if not merged_validation['is_valid']:
+        print(f'  ERROR: Merged JSON validation failed: {merged_validation.get("error", "Unknown error")}')
+        return None, salary_content, nonsalary_content
+    
+    # Validate merged schema
+    if not validate_response_schema(merged_content, filename):
+        print(f'  WARNING: Merged response schema validation failed for {filename}')
+    
+    print(f'  INFO: Split extraction and merge completed successfully')
+    return merged_content, salary_content, nonsalary_content
+
+
 def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: str, 
-                               context: ProcessingContext) -> Optional[str]:
+                               context: ProcessingContext, remaining_budget_s: Optional[int] = None) -> Optional[str]:
     """Extract using Files API approach - upload markdown file to Gemini."""
+    global process_quota_flags
     print(f'  INFO: Using Files API approach for {filename}')
     start_time = time.time()
     file_size_mb = os.path.getsize(markdown_path) / (1024 * 1024)
@@ -836,9 +1885,65 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
     else:
         timeout_seconds = 600
     
-    for attempt in range(context.config.max_retries):
+    # Cap timeout by remaining budget if provided
+    if remaining_budget_s is not None:
+        per_call_cap = max(15, int(remaining_budget_s) - 5)
+        timeout_seconds = min(timeout_seconds, per_call_cap)
+        if remaining_budget_s <= 0:
+            raise TimeoutError(f'No remaining budget for {filename}')
+    
+    # Track last error message for retry guidance
+    last_error_message = None
+    
+    # Cache for partial split extraction results (attempts 5-7)
+    cached_salary = None
+    cached_nonsalary = None
+    
+    # Retry loop with manual attempt tracking to handle increment_attempt flag
+    attempt = 0  # Current attempt number (for parameters)
+    total_attempts = 0  # Total retry attempts (for max_retries limit)
+    
+    while total_attempts < context.config.max_retries:
+        # Check quota exhaustion at START of each retry attempt (before API call)
+        if context.process_id in process_quota_flags and process_quota_flags[context.process_id]:
+            print(f'  🛑 Quota exhausted detected at start of retry loop, stopping retries')
+            break
+        
+        # Skip duplicate attempts: 1 (same as 0), 2 (user request), and 6 (same as 5)
+        if attempt in [1, 2]:
+            print(f'  INFO: Skipping attempt {attempt + 1} (duplicate or removed by user request)')
+            attempt += 1
+            continue
+        
+        # Get adjusted parameters for this attempt (needed for logging even on errors)
+        adjusted_params = get_adjusted_parameters_p3(context.config, attempt)
+        
+        # Generate retry guidance for LLM-controllable errors (only after 2nd attempt)
+        retry_guidance = ""
+        error_type = ""
+        if attempt >= 2 and last_error_message:
+            retry_guidance, error_type = get_retry_guidance_p3(last_error_message)
+            if retry_guidance:
+                print(f'  INFO: Adding retry guidance for: {error_type}')
+        
         uploaded_file = None
         try:
+            # Stage marker: uploading
+            context.current_stage = "uploading"
+            context.stage_start_ts = time.time()
+            
+            # Log parameter adjustments if this is attempt 3, 4, or 5/7 (4th, 5th, or 6th/8th try)
+            if attempt >= 3:
+                if attempt <= 4:
+                    boost = 0.1 if attempt == 3 else 0.2
+                    print(f'  INFO: Attempt {attempt + 1} - Adjusting parameters: temp={adjusted_params["temperature"]:.1f}, top_p={adjusted_params["top_p"]:.1f}, top_k={adjusted_params["top_k"]} (boost +{boost})')
+                elif attempt == 5 or attempt == 7:
+                    # Attempts 5 and 7 use split extraction (skipping 6)
+                    if attempt == 5:
+                        print(f'  INFO: Attempt {attempt + 1} - Split extraction with original parameters (temp={adjusted_params["temperature"]:.1f}, top_p={adjusted_params["top_p"]:.1f}, top_k={adjusted_params["top_k"]})')
+                    else:  # attempt == 7
+                        print(f'  INFO: Attempt {attempt + 1} - Split extraction with +0.1 adjustment (temp={adjusted_params["temperature"]:.1f}, top_p={adjusted_params["top_p"]:.1f}, top_k={adjusted_params["top_k"]})')
+            
             print(f'  INFO: Uploading markdown file to Gemini...')
             try:
                 uploaded_file = context.client.files.upload(
@@ -851,6 +1956,7 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                 raise ValueError(f'Failed to upload file {filename}: {e}')
             
             # Check file state and wait for processing
+            context.current_stage = "file_state_polling"
             max_wait_seconds = (300 if file_size_mb <= 5.0 else 600 if file_size_mb <= 10.0 else 900)
             poll_interval_seconds = 2
             waited = 0
@@ -880,8 +1986,129 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
             # Validate uploaded file with comprehensive checks
             validate_uploaded_file(context.client, uploaded_file, filename, file_size_mb)
             
+            # Check if we should use split extraction (attempts 5 and 7, skipping 6)
+            if attempt == 5 or attempt == 7:
+                # Use split extraction for attempts 5 and 7 (skipping 6 as duplicate of 5)
+                merged_content, salary_result, nonsalary_result = extract_split_extraction(
+                    markdown_path, filename, cao_number, uploaded_file,
+                    context, attempt, timeout_seconds, adjusted_params,
+                    cached_salary, cached_nonsalary, remaining_budget_s
+                )
+                
+                # Update cache with successful results (keep valid cached values if new attempt failed)
+                if salary_result:
+                    cached_salary = salary_result
+                    print(f'  INFO: Cached salary extraction for future attempts')
+                if nonsalary_result:
+                    cached_nonsalary = nonsalary_result
+                    print(f'  INFO: Cached non-salary extraction for future attempts')
+                
+                content = merged_content
+                
+                if content:
+                    # Split extraction succeeded
+                    processing_time = time.time() - start_time
+                    content_length = len(content)
+                    estimated_tokens = content_length // 4
+                    print(f'  INFO: Successfully completed split extraction (time: {processing_time:.1f}s)')
+                    print(f'  INFO: Merged response size: {content_length:,} chars (~{estimated_tokens:,} tokens)')
+                    
+                    # Validate merged result
+                    validation_result = validate_json_completeness(content, filename)
+                    if not validation_result['is_valid']:
+                        error_msg = f"Merged JSON validation failed: {validation_result.get('error', 'Unknown error')}"
+                        print(f'  WARNING: {error_msg} - retrying...')
+                        last_error_message = error_msg
+                        cleanup_uploaded_file(context.client, uploaded_file)
+                        if total_attempts >= context.config.max_retries - 1:
+                            error_msg = f"Merged JSON validation failed after {context.config.max_retries} attempts"
+                            print(f'  ERROR: {error_msg}')
+                            context.performance_monitor.log_extraction(
+                                filename=filename, file_size_mb=file_size_mb, processing_time=processing_time,
+                                usage_metadata=None, success=False, error_message=error_msg,
+                                api_key_used=context.key_number, process_id=context.process_id, cao_number=cao_number,
+                                model=context.config.model, parameters=adjusted_params
+                            )
+                            # Save failed CAO number for skipping in future runs
+                            save_failed_cao_number(filename, cao_number, error_msg)
+                            return None
+                    # Increment attempt counters before retry (merged JSON validation failure is a request problem)
+                    total_attempts += 1
+                    attempt += 1
+                    # Skip attempt 6 (duplicate of 5)
+                    if attempt == 6:
+                        attempt += 1
+                    continue
+                    
+                    # Validate response schema
+                    if not validate_response_schema(content, filename):
+                        print(f'  WARNING: Merged response schema validation failed for {filename}')
+                    
+                    # Log successful split extraction
+                    log_params = adjusted_params.copy()
+                    log_params['split_extraction'] = True
+                    log_params['attempt'] = attempt + 1
+                    
+                    context.performance_monitor.log_extraction(
+                        filename=filename, file_size_mb=file_size_mb, processing_time=processing_time,
+                        usage_metadata=None, success=True, api_key_used=context.key_number,
+                        process_id=context.process_id, cao_number=cao_number,
+                        model=context.config.model, parameters=log_params
+                    )
+                    
+                    cleanup_uploaded_file(context.client, uploaded_file)
+                    return content
+                else:
+                    # Split extraction incomplete - check which parts failed
+                    missing_parts = []
+                    if not cached_salary:
+                        missing_parts.append("salary")
+                    if not cached_nonsalary:
+                        missing_parts.append("non-salary")
+                    
+                    if missing_parts:
+                        error_msg = f"Split extraction incomplete on attempt {attempt + 1}: {' and '.join(missing_parts)} extraction not available"
+                        print(f'  INFO: {error_msg} - will retry failed part(s) on next attempt')
+                    else:
+                        error_msg = f"Split extraction failed on attempt {attempt + 1}"
+                        print(f'  WARNING: {error_msg} - retrying...')
+                    
+                    last_error_message = error_msg
+                    cleanup_uploaded_file(context.client, uploaded_file)
+                    if total_attempts >= context.config.max_retries - 1:
+                        final_error_msg = f"Split extraction incomplete after {context.config.max_retries} attempts"
+                        if missing_parts:
+                            final_error_msg += f" - missing: {', '.join(missing_parts)}"
+                        print(f'  ERROR: {final_error_msg}')
+                        processing_time = time.time() - start_time
+                        log_params = adjusted_params.copy()
+                        log_params['split_extraction'] = True
+                        if missing_parts:
+                            log_params['missing_parts'] = missing_parts
+                        context.performance_monitor.log_extraction(
+                            filename=filename, file_size_mb=file_size_mb, processing_time=processing_time,
+                            usage_metadata=None, success=False, error_message=final_error_msg,
+                            api_key_used=context.key_number, process_id=context.process_id, cao_number=cao_number,
+                            model=context.config.model, parameters=log_params
+                        )
+                        # Save failed CAO number for skipping in future runs
+                        save_failed_cao_number(filename, cao_number, final_error_msg)
+                        return None
+                    # Increment attempt counters before retry (split extraction incomplete is a request problem)
+                    total_attempts += 1
+                    attempt += 1
+                    # Skip attempt 6 (duplicate of 5)
+                    if attempt == 6:
+                        attempt += 1
+                    continue
+            
+            # Regular unified extraction for attempts 0-4
             # Create and validate extraction prompt
             extraction_prompt = create_extraction_prompt(filename)
+            
+            # Add retry guidance if applicable (only for LLM-controllable errors after 2nd attempt)
+            if retry_guidance:
+                extraction_prompt += f"\n\n{retry_guidance}"
             
             # Disable safety settings to prevent content filtering
             safety_settings = [
@@ -906,28 +2133,58 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
             # Safely construct contents for API call
             safe_content = safe_contents(extraction_prompt, uploaded_file)
             
-            # Use the original working approach with response_schema
-            response = context.client.models.generate_content(
-                model=context.config.model,
-                contents=safe_content,
-                config={
-                    'temperature': context.config.temperature,
-                    'top_p': context.config.top_p,
-                    'top_k': context.config.top_k,
-                    'max_output_tokens': context.config.max_tokens,
-                    'candidate_count': context.config.candidate_count,
-                    'seed': context.config.seed,
-                    'presence_penalty': context.config.presence_penalty,
-                    'frequency_penalty': context.config.frequency_penalty,
-                    'response_mime_type': 'application/json',
-                    'response_schema': CAOExtractionSchema,
-                    'thinking_config': types.ThinkingConfig(thinking_budget=context.config.thinking_budget),
-                    'http_options': types.HttpOptions(timeout=timeout_seconds * 1000),
-                    'safety_settings': safety_settings
-                }
-            )
+            # Stage marker: generating content
+            context.current_stage = "generating_content"
+            context.stage_start_ts = time.time()
             
-            content, extraction_info = extract_text_safely(response, filename)
+            # Use the original working approach with response_schema
+            try:
+                response = context.client.models.generate_content(
+                    model=context.config.model,
+                    contents=safe_content,
+                    config={
+                        'temperature': adjusted_params['temperature'],
+                        'top_p': adjusted_params['top_p'],
+                        'top_k': adjusted_params['top_k'],
+                        'max_output_tokens': context.config.max_tokens,
+                        'candidate_count': context.config.candidate_count,
+                        'seed': context.config.seed,
+                        'presence_penalty': context.config.presence_penalty,
+                        'frequency_penalty': context.config.frequency_penalty,
+                        'response_mime_type': 'application/json',
+                        'response_schema': CAOExtractionSchema,
+                        'thinking_config': types.ThinkingConfig(thinking_budget=context.config.thinking_budget),
+                        'http_options': types.HttpOptions(timeout=timeout_seconds * 1000),
+                        'safety_settings': safety_settings
+                    }
+                )
+            except Exception as api_error:
+                # Defensive exception handling for API calls that escape retry loops
+                import traceback
+                error_type = type(api_error).__name__
+                error_msg = str(api_error)
+                print(f'  🚨 UNEXPECTED API ERROR during markdown extraction (attempt {attempt + 1}): {error_type}: {error_msg}')
+                print(f'  📋 This error occurred during the API call itself and will be handled by retry logic')
+                # Log to file for debugging
+                try:
+                    error_log_path = 'outputs/logs/fatal_errors_llm_extraction.txt'
+                    Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                    with open(error_log_path, 'a', encoding='utf-8') as f:
+                        f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Process {context.process_id} - API ERROR (markdown extraction)\n")
+                        f.write(f"File: {filename}\n")
+                        f.write(f"Error Type: {error_type}\n")
+                        f.write(f"Error Message: {error_msg}\n")
+                        f.write(f"Traceback:\n{traceback.format_exc()}\n\n")
+                except Exception:
+                    pass  # Don't fail on logging failure
+                # Re-raise so existing retry logic can handle it
+                raise
+            
+            content, extraction_info = extract_text_safely(response, filename, context)
+            
+            # Stage marker: validating and saving
+            context.current_stage = "validating_saving"
+            context.stage_start_ts = time.time()
             
             if content:
                 processing_time = time.time() - start_time
@@ -946,20 +2203,47 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                 
                 # If JSON is incomplete or response was truncated, retry
                 if not is_json_complete or is_truncated:
-                    print(f'  WARNING: JSON incomplete or truncated (finish_reason: {finish_reason}) - retrying...')
+                    error_msg = f"JSON incomplete or truncated: {validation_result.get('error', 'Unknown error')}"
+                    print(f'  WARNING: {error_msg} - retrying...')
+                    
+                    # Store error message for retry guidance
+                    last_error_message = error_msg
+                    
                     cleanup_uploaded_file(context.client, uploaded_file)
                     
                     # If this is the last attempt, log the failure and return None
-                    if attempt == context.config.max_retries - 1:
+                    if total_attempts >= context.config.max_retries - 1:
                         error_msg = f"JSON incomplete after {context.config.max_retries} attempts: {validation_result.get('error', 'Unknown error')}"
                         print(f'  ERROR: {error_msg}')
+                        
+                        # Add retry guidance info to parameters for logging
+                        log_params = adjusted_params.copy()
+                        if retry_guidance:
+                            log_params['retry_guidance_used'] = error_type
+                        
                         context.performance_monitor.log_extraction(
                             filename=filename, file_size_mb=file_size_mb, processing_time=processing_time,
                             usage_metadata=response.usage_metadata, success=False, error_message=error_msg,
                             api_key_used=context.key_number, process_id=context.process_id, cao_number=cao_number,
-                            model=context.config.model, parameters=get_model_parameters(context.config)
+                            model=context.config.model, parameters=log_params
                         )
+                        # Save failed CAO number for skipping in future runs
+                        save_failed_cao_number(filename, cao_number, error_msg)
                         return None
+                    
+                    # Add delay before retrying incomplete JSON/truncated response (same as handle_llm_errors logic)
+                    # Cap delay at attempt 4 (retry 5) - keep steady after retry 5
+                    wait_time = 30 * 2 ** min(attempt, 4)
+                    failure_type = "truncated response" if is_truncated else "incomplete JSON"
+                    print(f'  Attempt {attempt + 1} failed ({failure_type}), retrying in {wait_time} seconds...')
+                    time.sleep(wait_time)
+                    
+                    # Increment attempt counters before retry (incomplete JSON/truncation is a request problem, so increment both)
+                    total_attempts += 1
+                    attempt += 1
+                    # Skip attempts 1, 2, and 6 (duplicates or removed by user request)
+                    while attempt in [1, 2, 6]:
+                        attempt += 1
                     
                     # Continue to next retry attempt
                     continue
@@ -968,11 +2252,16 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                 if not validate_response_schema(content, filename):
                     print(f'  WARNING: Response schema validation failed for {filename}')
                 
+                # Add retry guidance info to parameters for logging
+                log_params = adjusted_params.copy()
+                if retry_guidance:
+                    log_params['retry_guidance_used'] = error_type
+                
                 context.performance_monitor.log_extraction(
                     filename=filename, file_size_mb=file_size_mb, processing_time=processing_time,
                     usage_metadata=response.usage_metadata, success=True, api_key_used=context.key_number,
                     process_id=context.process_id, cao_number=cao_number,
-                    model=context.config.model, parameters=get_model_parameters(context.config)
+                    model=context.config.model, parameters=log_params
                 )
                 
                 cleanup_uploaded_file(context.client, uploaded_file)
@@ -1029,20 +2318,53 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                 import traceback
                 print(f'  DEBUG: Traceback: {traceback.format_exc()}')
             
+            # Store error message for retry guidance
+            last_error_message = str(e)
+            
             # Handle retry logic
-            if handle_llm_errors(e, attempt, context.config.max_retries, file_size_mb, context):
-                        continue
+            should_retry, increment_attempt, wait_time = handle_llm_errors_p3(
+                e, attempt, context.config.max_retries, file_size_mb, context, remaining_budget_s, process_quota_flags
+            )
+            
+            if should_retry:
+                # Wait before retrying
+                if wait_time > 0:
+                    print(f'  INFO: Waiting {wait_time // 60 if wait_time >= 60 else wait_time} {"minutes" if wait_time >= 60 else "seconds"} before retry...')
+                    time.sleep(wait_time)
+                    if wait_time >= 60:
+                        print(f'  INFO: Wait complete, continuing with retry...')
+                
+                # Increment attempt counters
+                total_attempts += 1
+                if increment_attempt:
+                    attempt += 1
+                    # Skip attempts 1, 2, and 6 (duplicates or removed by user request)
+                    while attempt in [1, 2, 6]:
+                        attempt += 1
+                # Continue to retry (with same attempt number if increment_attempt is False)
+                continue
             else:
                 processing_time = time.time() - start_time
-                print(f'  Markdown upload failed after {context.config.max_retries} attempts')
+                print(f'  Markdown upload failed after {total_attempts} total attempts')
+                
+                # Add retry guidance info to parameters for logging
+                log_params = adjusted_params.copy()
+                if retry_guidance:
+                    log_params['retry_guidance_used'] = error_type
+                
                 context.performance_monitor.log_extraction(
                     filename=filename, file_size_mb=file_size_mb, processing_time=processing_time,
-                    usage_metadata=None, success=False, error_message=f'Failed after {context.config.max_retries} attempts: {str(e)}',
+                    usage_metadata=None, success=False, error_message=f'Failed after {total_attempts} total attempts: {str(e)}',
                     api_key_used=context.key_number, process_id=context.process_id, cao_number=cao_number,
-                    model=context.config.model, parameters=get_model_parameters(context.config)
+                    model=context.config.model, parameters=log_params
                 )
+                # Save failed CAO number for skipping in future runs
+                save_failed_cao_number(filename, cao_number, f'Failed after {total_attempts} total attempts: {str(e)}')
                 return None
     
+    # If we exit the loop without returning, all retries were exhausted
+    # Save failed CAO number for skipping in future runs
+    save_failed_cao_number(filename, cao_number, f'All {total_attempts} retry attempts exhausted')
     return None
 
 
@@ -1051,21 +2373,37 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
 # =============================================================================
 # Functions for processing individual files and managing the processing workflow
 def process_single_file(markdown_file: Path, cao_number: str, output_folder: Path, 
-                       context: ProcessingContext, total_files: int) -> bool:
+                       context: ProcessingContext, total_files: int, hang_threshold: int = 1500, heartbeat_interval: int = 300) -> bool:
     """Process a single markdown file end-to-end."""
     # Generate output filename
-    output_filename = markdown_file.name
-    if not output_filename.endswith('.json'):
-        output_filename += '.json'
-    
+    output_filename = f"{markdown_file.stem}_extract.json"
     output_file = output_folder / output_filename
     
-    # Check if already processed
+    # Check if already processed (do this BEFORE creating watchdog thread to avoid overhead)
     if output_file.exists():
         print(f'  {cao_number}: Skipping {markdown_file.name} (already processed)')
-        time.sleep(5)
         # Don't count already processed files toward the limit
         return True
+    
+    # Check if file is in failed CAO folder - if so, skip extraction entirely
+    if is_file_in_failed_cao_folder(markdown_file.name, cao_number):
+        print(f'  {cao_number}: Skipping {markdown_file.name} (file in failed_cao_numbers folder - all attempts exhausted)')
+        return True
+    
+    # Initialize file timing and debug
+    file_start = time.time()
+    context.file_start_ts = file_start
+    context.debug.clear()
+    context.live_escalated = False
+    
+    # Start heartbeat watchdog (only for files that will be processed)
+    stop_event = threading.Event()
+    watchdog_thread = threading.Thread(
+        target=heartbeat_watchdog,
+        args=(context, hang_threshold, heartbeat_interval, stop_event),
+        daemon=True
+    )
+    watchdog_thread.start()
     
     # Check file limit (only count successful extractions)
     if context.stats.successful_extractions >= context.config.max_files:
@@ -1094,19 +2432,25 @@ def process_single_file(markdown_file: Path, cao_number: str, output_folder: Pat
         
         print(f'  {cao_number}: {markdown_file.name} (Markdown: {file_size_mb:.1f}MB) [API {context.key_number}/{context.total_processes}]')
         
-        # Check timeout
-        extraction_start = time.time()
-        max_processing_time = context.config.max_processing_hours * 3600
-        if time.time() - extraction_start > max_processing_time:
-            print(f'  {cao_number}: ⏰ Timeout after {context.config.max_processing_hours} hours for {markdown_file.name} [API {context.key_number}/{context.total_processes}]')
-            context.stats.add_timeout(markdown_file.name)
-            timeout_log_path = 'outputs/logs/timed_out_files_llm_extraction.txt'
-            with open(timeout_log_path, 'a', encoding='utf-8') as f:
-                f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - API {context.key_number}: {markdown_file.name}\n")
-            return True
+        # Check per-file deadline (skip for first processed file)
+        deadline_s = int(context.config.max_processing_hours * 3600)
+        enforce_deadline = (context.stats.processed_files > 0)
+        
+        if enforce_deadline:
+            remaining = deadline_s - (time.time() - file_start)
+            if remaining <= 0:
+                print(f'  {cao_number}: ⏰ Timeout after {context.config.max_processing_hours} hours for {markdown_file.name} [API {context.key_number}/{context.total_processes}]')
+                context.stats.add_timeout(markdown_file.name)
+                timeout_log_path = 'outputs/logs/timed_out_files_llm_extraction.txt'
+                with open(timeout_log_path, 'a', encoding='utf-8') as f:
+                    f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - API {context.key_number}: {markdown_file.name}\n")
+                return True
+        else:
+            remaining = None
         
         # Extract content
-        raw_output = extract_with_markdown_upload(str(markdown_file), markdown_file.name, cao_number, context)
+        extraction_start = time.time()
+        raw_output = extract_with_markdown_upload(str(markdown_file), markdown_file.name, cao_number, context, remaining)
         extraction_time = time.time() - extraction_start
         
         # Check if daily quota was hit during extraction
@@ -1117,6 +2461,7 @@ def process_single_file(markdown_file: Path, cao_number: str, output_folder: Pat
         
         if not raw_output:
             print(f'  {cao_number}: ✗ LLM extraction failed for {markdown_file.name} [API {context.key_number}/{context.total_processes}]')
+            context.debug.flush()  # Show debug info on failure
             log_processing_result(markdown_file.name, False, context)
             return True
         
@@ -1128,6 +2473,7 @@ def process_single_file(markdown_file: Path, cao_number: str, output_folder: Pat
             context.stats.add_success(markdown_file.name)
         else:
             print(f'  {cao_number}: ✗ JSON validation failed, extraction not saved for {markdown_file.name} [API {context.key_number}/{context.total_processes}]')
+            context.debug.flush()  # Show debug info on failure
             log_processing_result(markdown_file.name, False, context, "JSON validation failed - incomplete or invalid JSON")
             return True
         
@@ -1143,10 +2489,14 @@ def process_single_file(markdown_file: Path, cao_number: str, output_folder: Pat
     except Exception as e:
         import traceback
         print(f'  {cao_number}: Error with {markdown_file.name}: {e} [API {context.key_number}/{context.total_processes}]')
+        context.debug.flush()  # Show debug info on failure
         traceback.print_exc()
         log_processing_result(markdown_file.name, False, context, str(e))
         return True
     finally:
+        # Stop the heartbeat watchdog
+        stop_event.set()
+        watchdog_thread.join(timeout=1)  # Give it 1 second to stop gracefully
         release_file_lock(output_file)
 
 
@@ -1159,32 +2509,53 @@ def cleanup_announce_files(context: ProcessingContext):
     try:
         # Clean up announce files
         announce_files = list(context.config.output_folder.glob('.cao_*_announced'))
+        cleaned_count = 0
         for announce_file in announce_files:
-            announce_file.unlink()
-            print(f'  🧹 Cleaned up announce file: {announce_file.name}')
-        if announce_files:
-            print(f'  🧹 Cleaned up {len(announce_files)} announce files')
+            try:
+                announce_file.unlink(missing_ok=True)
+                cleaned_count += 1
+                print(f'  🧹 Cleaned up announce file: {announce_file.name}')
+            except Exception as e:
+                # Ignore errors (file might have been deleted by another process)
+                pass
+        if cleaned_count > 0:
+            print(f'  🧹 Cleaned up {cleaned_count} announce files')
         
-        # Clean up lock files in all CAO folders
+        # Clean up stale lock files
         lock_files_found = 0
-        for cao_folder in context.config.output_folder.iterdir():
-            if cao_folder.is_dir() and cao_folder.name.isdigit():
-                lock_files = list(cao_folder.glob('.cao_*_processing'))
-                for lock_file in lock_files:
-                    lock_file.unlink()
-                    print(f'  🧹 Cleaned up lock file: {cao_folder.name}/{lock_file.name}')
+        current_time = time.time()
+        ttl_seconds = LOCK_TTL_HOURS * 3600
+        
+        for lock_file in context.config.output_folder.rglob('*.json.lock'):
+            try:
+                if current_time - lock_file.stat().st_mtime > ttl_seconds:
+                    lock_file.unlink(missing_ok=True)
                     lock_files_found += 1
+            except Exception:
+                pass  # Ignore errors on individual files (file might be deleted by another process)
         
         if lock_files_found > 0:
-            print(f'  🧹 Cleaned up {lock_files_found} lock files')
+            print(f'  🧹 Cleaned up {lock_files_found} stale lock files')
             
     except Exception as e:
         print(f'  ⚠️  Warning: Failed to clean up files: {e}')
 
 
-def display_final_results(context: ProcessingContext):
+def display_final_results(context: ProcessingContext, quota_exhausted: bool = False):
     """Display final processing results."""
-    print(f'Process {context.process_id + 1} completed:')
+    if quota_exhausted:
+        print(f'\n⚠️  Process {context.process_id + 1} STOPPED due to DAILY QUOTA EXHAUSTION:')
+        # Display actual limit from performance monitor (20 for free tier, or higher for paid tier)
+        daily_limit = context.monitor.free_tier_daily_limit if hasattr(context, 'monitor') and hasattr(context.monitor, 'free_tier_daily_limit') else 20
+        if daily_limit <= 20:
+            print(f'   💡 Daily limit: {daily_limit} requests per day (free tier - shared across all processes)')
+        else:
+            print(f'   💡 Daily limit: 3,000,000 tokens per day')
+        print(f'   💡 Quota resets at midnight (Google timezone)')
+        print(f'   💡 Process will need to be restarted tomorrow to continue')
+    else:
+        print(f'Process {context.process_id + 1} completed:')
+    
     print(f'  📊 Files processed: {context.stats.processed_files}')
     print(f'  ✅ Successful extractions: {context.stats.successful_extractions}')
     print(f'  ❌ Failed extractions: {len(context.stats.failed_files)}')
@@ -1196,9 +2567,15 @@ def display_final_results(context: ProcessingContext):
         print(f'  📝 Timed out files: {context.stats.timed_out_files}')
     
     print('\n' + '=' * 60)
-    print('FINAL PERFORMANCE ANALYSIS')
+    if quota_exhausted:
+        print('FINAL PERFORMANCE ANALYSIS (QUOTA EXHAUSTED - INCOMPLETE)')
+    else:
+        print('FINAL PERFORMANCE ANALYSIS')
     print('=' * 60)
-    context.performance_monitor.analyze_performance()
+    # Pass total input files count for comparison
+    all_markdown_files = discover_markdown_files(context.config.input_folder)
+    total_input_files = len(all_markdown_files)
+    context.performance_monitor.analyze_performance(total_input_files=total_input_files)
     context.performance_monitor.update_summary_file()
     print(f"""📁 Performance data saved to:""")
     print(f'   Detailed logs: {context.performance_monitor.log_file}')
@@ -1214,63 +2591,213 @@ def display_final_results(context: ProcessingContext):
 # Main function that orchestrates the entire extraction pipeline
 def run_extraction_pipeline():
     """Main pipeline orchestration."""
-    # Parse command line arguments
-    parser = argparse.ArgumentParser(description='CAO LLM Extraction Pipeline')
-    parser.add_argument('--key_number', type=int, default=1, help='API key number (1-3)')
-    parser.add_argument('--process_id', type=int, default=0, help='Process ID for parallel processing')
-    parser.add_argument('--total_processes', type=int, default=1, help='Total number of parallel processes')
-    parser.add_argument('--max_files', type=int, help='Maximum number of files to process')
+    process_id = None  # Initialize for exception handling
+    current_file = None  # Track current file being processed
+    total_files = 0
+    context = None  # Track context for stats
     
-    args = parser.parse_args()
-    
-    key_number = args.key_number
-    process_id = args.process_id
-    total_processes = args.total_processes
-    
-    # Load configuration
-    config = load_configuration()
-    
-    # Override max_files if provided as argument
-    if args.max_files is not None:
-        config.max_files = args.max_files
-    
-    # Validate paths
-    validate_input_paths(config)
-    
-    # Setup processing context
-    context = setup_processing_context(config, process_id, total_processes, key_number)
-    
-    # Clean up announce files from previous runs at the beginning
-    cleanup_announce_files(context)
-    
-    # Discover files
-    all_markdown_files = discover_markdown_files(config.input_folder)
-    filtered_files = filter_files_for_processing(all_markdown_files, context)
-    
-    print(f"🎯 CAO Markdown Extraction Pipeline")
-    print(f"📊 Process: {process_id + 1}/{total_processes}")
-    print(f"🔑 API Key: {context.key_number}")
-    print(f"📁 Input: {config.input_folder}")
-    print(f"📁 Output: {config.output_folder}")
-    print(f"📄 Files to process: {len(filtered_files)}")
-    print()
-    
-    # Process files
-    for cao_folder, markdown_file in filtered_files:
-        cao_number = cao_folder.name
-        output_folder = config.output_folder / cao_number
-        output_folder.mkdir(exist_ok=True)
+    try:
+        # Parse command line arguments
+        parser = argparse.ArgumentParser(description='CAO LLM Extraction Pipeline')
+        parser.add_argument('--key_number', type=int, default=1, help='API key number (1-3)')
+        parser.add_argument('--process_id', type=int, default=0, help='Process ID for parallel processing')
+        parser.add_argument('--total_processes', type=int, default=1, help='Total number of parallel processes')
+        parser.add_argument('--max_files', type=int, help='Maximum number of files to process')
+        parser.add_argument('--verbose', action='store_true', help='Stream debug output live')
+        parser.add_argument('--debug_on_failure', action='store_true', default=True, help='Flush debug buffer on failures')
+        parser.add_argument('--hang_threshold', type=int, default=600, help='Seconds before enabling live debug on long stages')
+        parser.add_argument('--heartbeat', type=int, default=90, help='Heartbeat interval in seconds for long stages')
         
-        # Announce CAO once
-        announce_cao_once(cao_number, context)
+        args = parser.parse_args()
         
-        # Process file
-        should_continue = process_single_file(markdown_file, cao_number, output_folder, context, len(filtered_files))
-        if not should_continue:
-            break
-    
-    # Display final results
-    display_final_results(context)
+        key_number = args.key_number
+        process_id = args.process_id
+        total_processes = args.total_processes
+        
+        # Load configuration
+        config = load_configuration()
+        
+        # Override max_files if provided as argument
+        if args.max_files is not None:
+            config.max_files = args.max_files
+        
+        # Validate paths (pass process_id to avoid race conditions in parallel execution)
+        validate_input_paths(config, process_id)
+        
+        # Setup processing context
+        context = setup_processing_context(config, process_id, total_processes, key_number, args.verbose)
+        
+        # Clean up announce files from previous runs at the beginning
+        cleanup_announce_files(context)
+        
+        # Discover files
+        all_markdown_files = discover_markdown_files(config.input_folder)
+        filtered_files = filter_files_for_processing(all_markdown_files, context)
+        total_files = len(filtered_files)
+        
+        print(f"🎯 CAO Markdown Extraction Pipeline")
+        print(f"📊 Process: {process_id + 1}/{total_processes}")
+        print(f"🔑 API Key: {context.key_number}")
+        print(f"📁 Input: {config.input_folder}")
+        print(f"📁 Output: {config.output_folder}")
+        print(f"📄 Files to process: {total_files}")
+        print()
+        
+        # Process files
+        quota_exhausted = False
+        for cao_folder, markdown_file in filtered_files:
+            cao_number = cao_folder.name
+            current_file = f"{cao_number}/{markdown_file.name}"  # Track current file
+            output_folder = config.output_folder / cao_number
+            output_folder.mkdir(exist_ok=True)
+            
+            # Check if quota was exhausted before processing this file
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                quota_exhausted = True
+                print(f'\n🛑 DAILY QUOTA LIMIT REACHED for Process {process_id + 1} - Stopping before processing remaining files')
+                print(f'   📄 Next file would have been: {current_file}')
+                break
+            
+            # Announce CAO once
+            announce_cao_once(cao_number, context)
+            
+            # Process file (retry logic is handled inside process_single_file/extract_with_markdown_upload)
+            should_continue = process_single_file(markdown_file, cao_number, output_folder, context, total_files, args.hang_threshold, args.heartbeat)
+            if not should_continue:
+                # Check if it stopped due to quota exhaustion
+                if process_id in process_quota_flags and process_quota_flags[process_id]:
+                    quota_exhausted = True
+                break
+        
+        # Display final results
+        display_final_results(context, quota_exhausted=quota_exhausted)
+        
+    except KeyboardInterrupt:
+        process_id_str = f"Process {process_id + 1}" if process_id is not None else "Process ?"
+        print(f'\n⚠️  {process_id_str} interrupted by user')
+        if current_file:
+            print(f'   📄 Was processing: {current_file}')
+        if context and hasattr(context, 'stats'):
+            print(f'   📊 Progress: {context.stats.successful_extractions} successful, {len(context.stats.failed_files)} failed')
+        sys.exit(0)
+    except Exception as e:
+        import traceback
+        process_id_str = f"Process {process_id + 1}" if process_id is not None else "Process ?"
+        error_str = str(e).lower()
+        
+        # Check if it's a known retryable error that should NOT stop the process
+        # These errors are normally handled by retry logic, but if they escape, we should continue
+        is_retryable_error = (
+            ('429' in error_str and 'perday' not in error_str and 'daily' not in error_str and '3000000' not in error_str) or  # Per-minute quota (not daily)
+            ('503' in error_str or 'unavailable' in error_str or 'overloaded' in error_str) or  # Service unavailable
+            ('timeout' in error_str or 'deadline' in error_str) or  # Timeout
+            ('truncated' in error_str or 'incomplete json' in error_str or 'json validation failed' in error_str) or  # JSON issues
+            ('no content parts found' in error_str or 'no content' in error_str)  # Empty response
+        )
+        
+        # Check if it's a daily quota (should stop process)
+        is_daily_quota = (
+            ('429' in error_str or 'quota' in error_str) and 
+            ('perday' in error_str or 'daily' in error_str or '3000000' in error_str)
+        )
+        
+        # Check if it's a fatal error (configuration, file system, etc.)
+        is_fatal_error = (
+            'valueerror' in error_str and ('input folder' in error_str or 'output folder' in error_str or 'api key' in error_str) or
+            'filenotfounderror' in error_str or
+            'permissionerror' in error_str or
+            'keyboardinterrupt' in error_str
+        )
+        
+        if is_retryable_error and not is_daily_quota:
+            # This is a retryable error that occurred during setup/configuration (not file processing)
+            # Since it's during setup, we can't continue - exit gracefully
+            print(f'\n⚠️  RETRYABLE ERROR during setup in {process_id_str}')
+            print(f'📋 Error Type: {type(e).__name__}')
+            print(f'📋 Error Message: {str(e)[:200]}...' if len(str(e)) > 200 else f'📋 Error Message: {e}')
+            
+            print(f'\n💡 This is a retryable error (API quota/timeout/service unavailable) that occurred during setup.')
+            print(f'   The process will exit, but you can restart it to continue processing.')
+            print(f'   Other parallel processes will continue running.')
+            
+            # Log the error as retryable
+            try:
+                error_log_path = 'outputs/logs/fatal_errors_llm_extraction.txt'
+                Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+                with open(error_log_path, 'a', encoding='utf-8') as f:
+                    f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {process_id_str} - RETRYABLE ERROR (during setup)\n")
+                    f.write(f"Error Type: {type(e).__name__}\n")
+                    f.write(f"Error Message: {e}\n")
+                    f.write(f"Note: This is a retryable error - process can be restarted\n\n")
+            except Exception:
+                pass
+            
+            # Exit gracefully with code 0 (not fatal)
+            sys.exit(0)
+        
+        # For daily quota or fatal errors, exit gracefully
+        print(f'\n{"="*80}')
+        print(f'❌ FATAL ERROR in {process_id_str}')
+        print(f'{"="*80}')
+        print(f'📋 Error Type: {type(e).__name__}')
+        print(f'📋 Error Message: {e}')
+        
+        if current_file:
+            print(f'\n📄 File being processed when error occurred: {current_file}')
+        
+        if context and hasattr(context, 'stats'):
+            print(f'\n📊 Progress Summary:')
+            print(f'   ✅ Successful: {context.stats.successful_extractions} files')
+            print(f'   ❌ Failed: {len(context.stats.failed_files)} files')
+            if context.stats.failed_files:
+                print(f'   📝 Failed files: {context.stats.failed_files[-5:]}')  # Show last 5 failed files
+            if total_files > 0:
+                remaining = total_files - context.stats.processed_files
+                if remaining > 0:
+                    print(f'   ⏸️  Remaining: {remaining} files not processed')
+        
+        # Provide context about error type
+        if is_daily_quota:
+            print(f'\n💡 Error Type: Daily API Quota Limit Reached')
+            print(f'   This process has hit its daily quota limit and will stop.')
+            print(f'   Other parallel processes will continue running.')
+            print(f'   You can restart this process tomorrow when the quota resets.')
+        elif is_fatal_error:
+            print(f'\n💡 Error Type: Fatal Configuration/System Error')
+            print(f'   This is a system-level error that prevents processing.')
+            print(f'   Check configuration, file permissions, or API key setup.')
+        else:
+            print(f'\n💡 This appears to be an unexpected fatal error. Check the traceback below for details.')
+        
+        print(f'\n📋 Full Traceback:')
+        print(f"{'-'*80}")
+        traceback.print_exc()
+        print(f"{'-'*80}")
+        
+        # Try to log the error
+        try:
+            error_log_path = 'outputs/logs/fatal_errors_llm_extraction.txt'
+            Path(error_log_path).parent.mkdir(parents=True, exist_ok=True)
+            with open(error_log_path, 'a', encoding='utf-8') as f:
+                f.write(f"{'='*80}\n")
+                f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {process_id_str} - FATAL ERROR\n")
+                f.write(f"{'='*80}\n")
+                f.write(f"Error Type: {type(e).__name__}\n")
+                f.write(f"Error Message: {e}\n")
+                if current_file:
+                    f.write(f"File being processed: {current_file}\n")
+                if context and hasattr(context, 'stats'):
+                    f.write(f"Progress: {context.stats.successful_extractions} successful, {len(context.stats.failed_files)} failed\n")
+                f.write(f"\nTraceback:\n")
+                f.write(f"{traceback.format_exc()}\n\n")
+        except Exception:
+            pass  # Don't fail on logging failure
+        
+        # Exit with code 0 instead of 1 to prevent all processes from stopping
+        # The error is logged, so we can investigate without crashing the entire pipeline
+        print(f'\n⚠️  {process_id_str} exiting gracefully (error logged to outputs/logs/fatal_errors_llm_extraction.txt)')
+        print(f'💡 Other parallel processes will continue running independently.')
+        sys.exit(0)
 
 
 # =============================================================================
@@ -1279,6 +2806,23 @@ def run_extraction_pipeline():
 # Main entry point for the script
 def main():
     """Main entry point for the LLM extraction pipeline (markdown version)."""
+    # Setup signal handlers first to prevent unexpected exits
+    setup_signal_handlers()
+    
+    # Ensure stdout/stderr are line-buffered when piped (not a TTY)
+    # This helps prevent issues when writing to tee/unbuffer
+    if not sys.stdout.isatty():
+        # When piped (e.g., to tee), set line buffering for better behavior
+        try:
+            sys.stdout.reconfigure(line_buffering=True)
+        except (AttributeError, ValueError):
+            # Python < 3.7 or reconfigure not available - use flush() calls instead
+            pass
+        try:
+            sys.stderr.reconfigure(line_buffering=True)
+        except (AttributeError, ValueError):
+            pass
+    
     run_extraction_pipeline()
 
 

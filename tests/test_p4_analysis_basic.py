@@ -13,7 +13,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from pipelines.p4_analysis import (
     SalaryRow, SalaryExtractionSchema,
     ContractInfo, PensionInfo, LeaveInfo, TerminationInfo, 
-    OvertimeInfo, TrainingInfo, HomeofficeInfo, NonSalaryExtractionSchema,
+    OvertimeInfo, TrainingInfo, HomeofficeInfo,
     merge_extraction_results
 )
 
@@ -46,34 +46,6 @@ def test_salary_schema():
     print("✓ Salary schema test passed")
 
 
-def test_nonsalary_schema():
-    """Test that non-salary schema works correctly."""
-    # Create sample data
-    contract_info = ContractInfo(
-        start_date_contract="2023-01-01",
-        expiry_date_contract="2024-12-31"
-    )
-    
-    pension_info = PensionInfo(
-        pension_scheme_basic="50% employee, 50% employer",
-        retire_age_basic="67"
-    )
-    
-    # Create schema
-    schema = NonSalaryExtractionSchema(
-        contract_information=contract_info,
-        pension_information=pension_info
-    )
-    
-    # Convert to dict
-    result = schema.model_dump()
-    
-    assert "contract_information" in result
-    assert "pension_information" in result
-    assert result["contract_information"]["start_date_contract"] == "2023-01-01"
-    assert result["pension_information"]["pension_scheme_basic"] == "50% employee, 50% employer"
-    
-    print("✓ Non-salary schema test passed")
 
 
 def test_merge_extraction_results():
@@ -92,8 +64,8 @@ def test_merge_extraction_results():
     # Sample non-salary data
     rest_extracted = {
         "contract_information": {
-            "start_date_contract": "2023-01-01",
-            "expiry_date_contract": "2024-12-31"
+            "start_date": "2023-01-01",
+            "expiry_date": "2024-12-31"
         },
         "pension_information": {
             "pension_scheme_basic": "50% employee, 50% employer",

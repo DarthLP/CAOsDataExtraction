@@ -93,6 +93,8 @@ import signal
 from pathlib import Path
 from typing import List, Optional, Tuple, Dict, Any, Literal
 from dataclasses import dataclass
+from datetime import datetime
+import pytz
 
 # Add the parent directory to Python path so we can import utils
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -134,6 +136,13 @@ from scripts_pipeline_helper.p4.retry_logic import (
     get_retry_guidance as get_retry_guidance_p4,
     get_model_parameters as get_model_parameters_p4
 )
+
+# Import quota resume utilities
+from utils.quota_resume import (
+    get_batch_for_key, calculate_reset_time, save_resume_state,
+    load_resume_state, clear_resume_state, wait_until_reset
+)
+from utils.batch_logger import update_batch_summary, initialize_batch_summary, mark_key_completed
 from schema.non_salary_schema import (
     GeneralInfo, BonusesInfo, WageScalesInfo, PensionInfo, LeaveInfo, 
     TerminationInfo, OvertimeInfo, TrainingInfo, HomeofficeInfo, 
@@ -202,6 +211,7 @@ class AnalysisConfig:
     max_processing_time_hours: int = 1
     max_json_files: int = 1000000  # Default value for max files to process
     token_limit: int = 900000  # 900K tokens safety limit
+    resume_on_quota: bool = True  # Enable automatic resume after quota reset
 
 
 def load_configuration() -> AnalysisConfig:
@@ -213,10 +223,14 @@ def load_configuration() -> AnalysisConfig:
     project_root = Path(__file__).resolve().parents[1]
     output_base = project_root / 'outputs' / 'llm_analysis'
     
+    # Get resume_on_quota setting (default to True if not specified)
+    resume_on_quota = config_data.get('resume_on_quota', True)
+    
     return AnalysisConfig(
         input_folder=config_data['paths']['outputs_json'] + "/new_flow",
         output_folder=output_base,
-        cao_info_path=f"{config_data['paths']['inputs_pdfs']}/extracted_cao_info.csv"
+        cao_info_path=f"{config_data['paths']['inputs_pdfs']}/extracted_cao_info.csv",
+        resume_on_quota=resume_on_quota
     )
 
 
@@ -3522,17 +3536,46 @@ def main():
         parser.add_argument('--process_id', type=int, default=0, help='Process ID for work distribution')
         parser.add_argument('--total_processes', type=int, default=1, help='Total number of parallel processes')
         parser.add_argument('--max_files', type=int, help='Maximum number of files to process')
+        parser.add_argument('--resume_on_quota', type=lambda x: (str(x).lower() == 'true'), default=None,
+                           help='Enable/disable automatic resume after quota (overrides config)')
         
         args = parser.parse_args()
         process_id = args.process_id
+        key_number = args.key_number
+        
         # Load configuration
         config = load_configuration()
+        
+        # Override resume_on_quota if provided as argument
+        resume_on_quota = config.resume_on_quota
+        if args.resume_on_quota is not None:
+            resume_on_quota = args.resume_on_quota
         
         # Validate paths (pass process_id to avoid race conditions in parallel execution)
         validate_input_paths(config, args.process_id)
         
         # Setup processing context
         context = setup_processing_context(config, args.process_id, args.total_processes, args.key_number)
+        
+        # Initialize resume system if enabled
+        resume_state = None
+        start_file_index = 0
+        
+        if resume_on_quota:
+            # Initialize batch summary
+            initialize_batch_summary()
+            
+            # Load resume state if exists and valid
+            resume_state = load_resume_state(key_number)
+            if resume_state:
+                print(f"📋 Resume state found for API key {key_number}")
+                print(f"   Quota exhausted at: {resume_state.get('quota_exhausted_at', 'unknown')}")
+                print(f"   Reset time: {resume_state.get('reset_time', 'unknown')}")
+                
+                # Extract file info for resuming
+                if "current_file" in resume_state:
+                    resume_file_info = resume_state["current_file"]
+                    print(f"   Will resume from file: {resume_file_info.get('cao_number', '')}/{resume_file_info.get('filename', '')}")
         
         # Load CAO info
         cao_info_mapping = load_cao_info(config.cao_info_path)
@@ -3542,6 +3585,23 @@ def main():
         
         # Filter files for this process
         process_files = [f for i, f in enumerate(all_files) if i % args.total_processes == args.process_id]
+        
+        # If resuming, skip files up to the resume point
+        if resume_state and "current_file" in resume_state:
+            resume_file_info = resume_state["current_file"]
+            resume_cao = resume_file_info.get("cao_number")
+            resume_filename = resume_file_info.get("filename")
+            
+            # Find the index of the file we need to resume from
+            for idx, (cao_folder, json_file) in enumerate(process_files):
+                if cao_folder.name == resume_cao and json_file.name == resume_filename:
+                    start_file_index = idx
+                    print(f"   Resuming from file index {idx}: {resume_cao}/{resume_filename}")
+                    break
+            else:
+                # Resume file not found, start from beginning
+                print(f"   Warning: Resume file {resume_cao}/{resume_filename} not found, starting from beginning")
+                start_file_index = 0
         
         # Apply file limit from config or command line
         max_files = args.max_files if args.max_files is not None else config.max_json_files
@@ -3554,38 +3614,103 @@ def main():
         # Process files
         successful_analyses = 0
         failed_files = []
+        current_file_index = start_file_index
         
-        for cao_folder, json_file in process_files:
+        # Main processing loop with resume support
+        while current_file_index < len(process_files):
+            cao_folder, json_file = process_files[current_file_index]
             current_file = f"{cao_folder.name}/{json_file.name}"  # Track current file
+            
             # Check for quota exhaustion flag before processing each file
             if args.process_id in process_quota_flags and process_quota_flags[args.process_id]:
-                print(f'🚨 QUOTA EXHAUSTED - Process {args.process_id + 1} (API key {args.key_number}) shutting down gracefully')
-                print(f'📊 Partial results: {successful_analyses} successful, {len(failed_files)} failed before shutdown')
-                print(f'🧹 Cleaning up and exiting...')
-                break
+                print(f'\n🛑 DAILY QUOTA LIMIT REACHED for Process {args.process_id + 1}')
+                print(f'   📄 Current file: {current_file}')
+                
+                if resume_on_quota:
+                    # Save resume state
+                    batch_number = get_batch_for_key(key_number)
+                    reset_time = calculate_reset_time(batch_number)
+                    
+                    resume_state_data = {
+                        "pipeline": "p4",  # Track which script was running
+                        "batch_number": batch_number,
+                        "quota_exhausted_at": datetime.now(pytz.UTC).isoformat(),
+                        "reset_time": reset_time.isoformat(),
+                        "current_file": {
+                            "cao_number": cao_folder.name,
+                            "filename": json_file.name,
+                            "file_path": str(json_file)
+                            # Note: No last_attempt - p4 always resumes from attempt 0
+                        },
+                        "statistics": {
+                            "successful_files": successful_analyses,
+                            "failed_files": len(failed_files),
+                            "processed_before_quota": successful_analyses + len(failed_files)
+                        },
+                        "total_processes": args.total_processes,
+                        "process_id": args.process_id
+                    }
+                    
+                    save_resume_state(key_number, resume_state_data)
+                    
+                    # Update batch summary
+                    update_batch_summary(key_number, {
+                        "batch": batch_number,
+                        "last_status": "quota_exhausted",
+                        "quota_exhausted_at": resume_state_data["quota_exhausted_at"],
+                        "next_reset": reset_time.isoformat(),
+                        "successful_files": successful_analyses,
+                        "failed_files": len(failed_files),
+                        "resume_file": f"logs/resume_state_key{key_number}.json"
+                    })
+                    
+                    # Wait until reset time
+                    wait_until_reset(reset_time)
+                    
+                    # Clear quota flag and continue
+                    process_quota_flags[args.process_id] = False
+                    
+                    # Continue loop (process this file from start)
+                    continue
+                else:
+                    # Resume disabled, exit
+                    print(f'   Stopping before processing remaining files')
+                    break
             
             if not acquire_file_lock(json_file):
                 print(f'  Skipping {json_file.name} (being processed by another process)')
                 time.sleep(2)
+                current_file_index += 1
                 continue
             
             try:
                 success = process_single_file(json_file, cao_folder, context['client'], 
                                             cao_info_mapping, config, context)
+                
+                # Check if quota was hit during processing
+                if args.process_id in process_quota_flags and process_quota_flags[args.process_id]:
+                    # Quota hit during processing - handled at start of next loop iteration
+                    # Release lock before continuing (will be handled in next iteration)
+                    continue
+                
                 if success:
                     successful_analyses += 1
                 else:
-                    # Check if this was due to quota exhaustion
-                    if args.process_id in process_quota_flags and process_quota_flags[args.process_id]:
-                        print(f'🚨 QUOTA EXHAUSTED during processing - Process {args.process_id + 1} shutting down gracefully')
-                        break
-                    else:
-                        failed_files.append(json_file.name)
+                    failed_files.append(json_file.name)
             finally:
                 release_file_lock(json_file)
+            
+            # Move to next file
+            current_file_index += 1
+        
+        # If we completed all files and resume was enabled, clear resume state
+        if resume_on_quota and current_file_index >= len(process_files):
+            clear_resume_state(key_number)
+            mark_key_completed(key_number)
         
         # Final summary with quota exhaustion indication
-        if args.process_id in process_quota_flags and process_quota_flags[args.process_id]:
+        quota_exhausted_final = args.process_id in process_quota_flags and process_quota_flags[args.process_id]
+        if quota_exhausted_final and not resume_on_quota:
             print(f'Process {args.process_id + 1} completed with QUOTA EXHAUSTION: {successful_analyses} successful, {len(failed_files)} failed')
         else:
             print(f'Process {args.process_id + 1} completed: {successful_analyses} successful, {len(failed_files)} failed')

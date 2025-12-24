@@ -85,6 +85,8 @@ import signal
 from pathlib import Path
 from typing import List, Optional, Tuple, Dict, Any
 from dataclasses import dataclass, field
+from datetime import datetime
+import pytz
 
 # Add the parent directory to Python path so we can import monitoring
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -106,6 +108,13 @@ from scripts_pipeline_helper.p3.retry_logic import (
     get_adjusted_parameters as get_adjusted_parameters_p3,
     get_retry_guidance as get_retry_guidance_p3
 )
+
+# Import quota resume utilities
+from utils.quota_resume import (
+    get_batch_for_key, calculate_reset_time, save_resume_state,
+    load_resume_state, clear_resume_state, wait_until_reset
+)
+from utils.batch_logger import update_batch_summary, initialize_batch_summary, mark_key_completed
 
 
 # =============================================================================
@@ -621,6 +630,7 @@ class ExtractionConfig:
     frequency_penalty: float = 0
     thinking_budget: int = -1
     max_retries: int = 8
+    resume_on_quota: bool = True  # Enable automatic resume after quota reset
     delay_between_files: int = 150  # about 150 seconds between files to avoid rate limits
 
 
@@ -676,6 +686,7 @@ class ProcessingContext:
     stage_start_ts: float = 0.0
     file_start_ts: float = 0.0
     live_escalated: bool = False
+    last_attempt_on_quota: Optional[int] = None  # Track attempt number when quota is hit
 
 
 # =============================================================================
@@ -687,9 +698,13 @@ def load_configuration() -> ExtractionConfig:
     with open('conf/config.yaml', 'r') as f:
         config_data = yaml.safe_load(f)
     
+    # Get resume_on_quota setting (default to True if not specified)
+    resume_on_quota = config_data.get('resume_on_quota', True)
+    
     return ExtractionConfig(
         input_folder=config_data['paths']['parsed_pdfs_markdown'],
-        output_folder=Path(config_data['paths']['outputs_json']) / "new_flow"
+        output_folder=Path(config_data['paths']['outputs_json']) / "new_flow",
+        resume_on_quota=resume_on_quota
     )
 
 
@@ -1871,7 +1886,8 @@ def extract_split_extraction(markdown_path: str, filename: str, cao_number: str,
 
 
 def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: str, 
-                               context: ProcessingContext, remaining_budget_s: Optional[int] = None) -> Optional[str]:
+                               context: ProcessingContext, remaining_budget_s: Optional[int] = None,
+                               resume_from_attempt: Optional[int] = None) -> Optional[str]:
     """Extract using Files API approach - upload markdown file to Gemini."""
     global process_quota_flags
     print(f'  INFO: Using Files API approach for {filename}')
@@ -1913,8 +1929,11 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
     cached_nonsalary = None
     
     # Retry loop with manual attempt tracking to handle increment_attempt flag
-    attempt = 0  # Current attempt number (for parameters)
-    total_attempts = 0  # Total retry attempts (for max_retries limit)
+    attempt = resume_from_attempt if resume_from_attempt is not None else 0  # Current attempt number (for parameters)
+    total_attempts = resume_from_attempt if resume_from_attempt is not None else 0  # Total retry attempts (for max_retries limit)
+    
+    if resume_from_attempt is not None:
+        print(f'  📋 Resuming from attempt {resume_from_attempt}')
     
     while total_attempts < context.config.max_retries:
         # Check quota exhaustion at START of each retry attempt (before API call)
@@ -2339,6 +2358,10 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
                 e, attempt, context.config.max_retries, file_size_mb, context, remaining_budget_s, process_quota_flags
             )
             
+            # If quota was hit, store the current attempt for resume
+            if context.process_id in process_quota_flags and process_quota_flags[context.process_id]:
+                context.last_attempt_on_quota = attempt
+            
             if should_retry:
                 # Wait before retrying
                 if wait_time > 0:
@@ -2386,7 +2409,8 @@ def extract_with_markdown_upload(markdown_path: str, filename: str, cao_number: 
 # =============================================================================
 # Functions for processing individual files and managing the processing workflow
 def process_single_file(markdown_file: Path, cao_number: str, output_folder: Path, 
-                       context: ProcessingContext, total_files: int, hang_threshold: int = 1500, heartbeat_interval: int = 300) -> bool:
+                       context: ProcessingContext, total_files: int, hang_threshold: int = 1500, heartbeat_interval: int = 300,
+                       resume_from_attempt: Optional[int] = None) -> bool:
     """Process a single markdown file end-to-end."""
     # Generate output filename
     output_filename = f"{markdown_file.stem}_extract.json"
@@ -2463,14 +2487,13 @@ def process_single_file(markdown_file: Path, cao_number: str, output_folder: Pat
         
         # Extract content
         extraction_start = time.time()
-        raw_output = extract_with_markdown_upload(str(markdown_file), markdown_file.name, cao_number, context, remaining)
+        raw_output = extract_with_markdown_upload(str(markdown_file), markdown_file.name, cao_number, context, remaining, resume_from_attempt=resume_from_attempt)
         extraction_time = time.time() - extraction_start
         
-        # Check if daily quota was hit during extraction
+        # Check if quota was hit during extraction (attempt stored in context)
         if context.process_id in process_quota_flags and process_quota_flags[context.process_id]:
-            print(f'  🛑 DAILY QUOTA LIMIT REACHED for Process {context.process_id} - Stopping this process')
-            print(f'  💡 Wait until tomorrow to continue')
-            return False  # Stop processing this process only
+            # Attempt number is stored in context.last_attempt_on_quota
+            return False  # Signal to stop processing (resume logic will handle state saving)
         
         if not raw_output:
             print(f'  {cao_number}: ✗ LLM extraction failed for {markdown_file.name} [API {context.key_number}/{context.total_processes}]')
@@ -2620,6 +2643,8 @@ def run_extraction_pipeline():
         parser.add_argument('--debug_on_failure', action='store_true', default=True, help='Flush debug buffer on failures')
         parser.add_argument('--hang_threshold', type=int, default=600, help='Seconds before enabling live debug on long stages')
         parser.add_argument('--heartbeat', type=int, default=90, help='Heartbeat interval in seconds for long stages')
+        parser.add_argument('--resume_on_quota', type=lambda x: (str(x).lower() == 'true'), default=None,
+                           help='Enable/disable automatic resume after quota (overrides config)')
         
         args = parser.parse_args()
         
@@ -2634,6 +2659,11 @@ def run_extraction_pipeline():
         if args.max_files is not None:
             config.max_files = args.max_files
         
+        # Override resume_on_quota if provided as argument
+        resume_on_quota = config.resume_on_quota
+        if args.resume_on_quota is not None:
+            resume_on_quota = args.resume_on_quota
+        
         # Validate paths (pass process_id to avoid race conditions in parallel execution)
         validate_input_paths(config, process_id)
         
@@ -2643,9 +2673,51 @@ def run_extraction_pipeline():
         # Clean up announce files from previous runs at the beginning
         cleanup_announce_files(context)
         
+        # Initialize resume system if enabled
+        resume_state = None
+        start_file_index = 0
+        resume_from_attempt = None
+        
+        if resume_on_quota:
+            # Initialize batch summary
+            initialize_batch_summary()
+            
+            # Load resume state if exists and valid
+            resume_state = load_resume_state(key_number)
+            if resume_state:
+                print(f"📋 Resume state found for API key {key_number}")
+                print(f"   Quota exhausted at: {resume_state.get('quota_exhausted_at', 'unknown')}")
+                print(f"   Reset time: {resume_state.get('reset_time', 'unknown')}")
+                
+                # Extract file info for resuming
+                if "current_file" in resume_state:
+                    resume_file_info = resume_state["current_file"]
+                    resume_from_attempt = resume_file_info.get("last_attempt")
+                    print(f"   Will resume from file: {resume_file_info.get('cao_number', '')}/{resume_file_info.get('filename', '')}")
+                    if resume_from_attempt is not None:
+                        print(f"   Will resume from attempt: {resume_from_attempt}")
+        
         # Discover files
         all_markdown_files = discover_markdown_files(config.input_folder)
         filtered_files = filter_files_for_processing(all_markdown_files, context)
+        
+        # If resuming, skip files up to the resume point
+        if resume_state and "current_file" in resume_state:
+            resume_file_info = resume_state["current_file"]
+            resume_cao = resume_file_info.get("cao_number")
+            resume_filename = resume_file_info.get("filename")
+            
+            # Find the index of the file we need to resume from
+            for idx, (cao_folder, markdown_file) in enumerate(filtered_files):
+                if cao_folder.name == resume_cao and markdown_file.name == resume_filename:
+                    start_file_index = idx
+                    print(f"   Resuming from file index {idx}: {resume_cao}/{resume_filename}")
+                    break
+            else:
+                # Resume file not found, start from beginning
+                print(f"   Warning: Resume file {resume_cao}/{resume_filename} not found, starting from beginning")
+                start_file_index = 0
+        
         total_files = len(filtered_files)
         
         print(f"🎯 CAO Markdown Extraction Pipeline")
@@ -2658,7 +2730,12 @@ def run_extraction_pipeline():
         
         # Process files
         quota_exhausted = False
-        for cao_folder, markdown_file in filtered_files:
+        current_file_index = start_file_index
+        current_attempt = resume_from_attempt  # Track current retry attempt for state saving
+        
+        # Main processing loop with resume support
+        while current_file_index < len(filtered_files):
+            cao_folder, markdown_file = filtered_files[current_file_index]
             cao_number = cao_folder.name
             current_file = f"{cao_number}/{markdown_file.name}"  # Track current file
             output_folder = config.output_folder / cao_number
@@ -2667,20 +2744,157 @@ def run_extraction_pipeline():
             # Check if quota was exhausted before processing this file
             if process_id in process_quota_flags and process_quota_flags[process_id]:
                 quota_exhausted = True
-                print(f'\n🛑 DAILY QUOTA LIMIT REACHED for Process {process_id + 1} - Stopping before processing remaining files')
-                print(f'   📄 Next file would have been: {current_file}')
-                break
+                print(f'\n🛑 DAILY QUOTA LIMIT REACHED for Process {process_id + 1}')
+                print(f'   📄 Current file: {current_file}')
+                
+                if resume_on_quota:
+                    # Save resume state (before processing, so no attempt number yet)
+                    batch_number = get_batch_for_key(key_number)
+                    reset_time = calculate_reset_time(batch_number)
+                    
+                    resume_state_data = {
+                        "pipeline": "p3",  # Track which script was running
+                        "batch_number": batch_number,
+                        "quota_exhausted_at": datetime.now(pytz.UTC).isoformat(),
+                        "reset_time": reset_time.isoformat(),
+                        "current_file": {
+                            "cao_number": cao_number,
+                            "filename": markdown_file.name,
+                            "file_path": str(markdown_file),
+                            "last_attempt": None,  # No attempt yet
+                            "max_retries": config.max_retries
+                        },
+                        "statistics": {
+                            "successful_files": context.stats.successful_extractions,
+                            "failed_files": len(context.stats.failed_files),
+                            "processed_before_quota": context.stats.processed_files
+                        },
+                        "total_processes": total_processes,
+                        "process_id": process_id
+                    }
+                    
+                    save_resume_state(key_number, resume_state_data)
+                    
+                    # Update batch summary
+                    update_batch_summary(key_number, {
+                        "batch": batch_number,
+                        "last_status": "quota_exhausted",
+                        "quota_exhausted_at": resume_state_data["quota_exhausted_at"],
+                        "next_reset": reset_time.isoformat(),
+                        "successful_files": context.stats.successful_extractions,
+                        "failed_files": len(context.stats.failed_files),
+                        "resume_file": f"logs/resume_state_key{key_number}.json"
+                    })
+                    
+                    # Wait until reset time
+                    wait_until_reset(reset_time)
+                    
+                    # Clear quota flag and continue
+                    process_quota_flags[process_id] = False
+                    quota_exhausted = False
+                    current_attempt = None
+                    
+                    # Continue loop (process this file from start)
+                    continue
+                else:
+                    # Resume disabled, exit
+                    print(f'   Stopping before processing remaining files')
+                    break
+            
+            # Reset attempt tracking for new file (unless resuming on this file)
+            # Only keep resume attempt if we're on the resume file (current_file_index == start_file_index)
+            if current_file_index > start_file_index:
+                current_attempt = None
             
             # Announce CAO once
             announce_cao_once(cao_number, context)
             
-            # Process file (retry logic is handled inside process_single_file/extract_with_markdown_upload)
-            should_continue = process_single_file(markdown_file, cao_number, output_folder, context, total_files, args.hang_threshold, args.heartbeat)
-            if not should_continue:
-                # Check if it stopped due to quota exhaustion
-                if process_id in process_quota_flags and process_quota_flags[process_id]:
-                    quota_exhausted = True
+            # Process file with resume attempt support
+            should_continue = process_single_file(
+                markdown_file, cao_number, output_folder, context, total_files,
+                args.hang_threshold, args.heartbeat, resume_from_attempt=current_attempt
+            )
+            
+            # Check if quota was hit during processing
+            if process_id in process_quota_flags and process_quota_flags[process_id]:
+                quota_exhausted = True
+                # Use attempt from context if available, otherwise use current_attempt
+                attempt_for_state = context.last_attempt_on_quota if context.last_attempt_on_quota is not None else current_attempt
+                
+                if resume_on_quota:
+                    # Save resume state
+                    batch_number = get_batch_for_key(key_number)
+                    reset_time = calculate_reset_time(batch_number)
+                    
+                    resume_state_data = {
+                        "pipeline": "p3",  # Track which script was running
+                        "batch_number": batch_number,
+                        "quota_exhausted_at": datetime.now(pytz.UTC).isoformat(),
+                        "reset_time": reset_time.isoformat(),
+                        "current_file": {
+                            "cao_number": cao_number,
+                            "filename": markdown_file.name,
+                            "file_path": str(markdown_file),
+                            "last_attempt": attempt_for_state,
+                            "max_retries": config.max_retries
+                        },
+                        "statistics": {
+                            "successful_files": context.stats.successful_extractions,
+                            "failed_files": len(context.stats.failed_files),
+                            "processed_before_quota": context.stats.processed_files
+                        },
+                        "total_processes": total_processes,
+                        "process_id": process_id
+                    }
+                    
+                    save_resume_state(key_number, resume_state_data)
+                    
+                    # Update batch summary
+                    update_batch_summary(key_number, {
+                        "batch": batch_number,
+                        "last_status": "quota_exhausted",
+                        "quota_exhausted_at": resume_state_data["quota_exhausted_at"],
+                        "next_reset": reset_time.isoformat(),
+                        "successful_files": context.stats.successful_extractions,
+                        "failed_files": len(context.stats.failed_files),
+                        "resume_file": f"logs/resume_state_key{key_number}.json"
+                    })
+                    
+                    # Wait until reset time
+                    wait_until_reset(reset_time)
+                    
+                    # Clear quota flag and reset context attempt tracking
+                    process_quota_flags[process_id] = False
+                    quota_exhausted = False
+                    context.last_attempt_on_quota = None
+                    
+                    # Reload resume state to get the attempt number
+                    resume_state = load_resume_state(key_number)
+                    if resume_state and "current_file" in resume_state:
+                        resume_file_info = resume_state["current_file"]
+                        current_attempt = resume_file_info.get("last_attempt")
+                        print(f"   Resuming from attempt: {current_attempt}")
+                    
+                    # Continue loop (don't increment index, retry current file)
+                    continue
+                else:
+                    # Resume disabled, exit
+                    break
+            
+            # Reset attempt after file is processed (success or failure)
+            current_attempt = None
+            
+            if not should_continue and not quota_exhausted:
+                # Stopped for non-quota reason
                 break
+            
+            # Move to next file
+            current_file_index += 1
+        
+        # If we completed all files and resume was enabled, clear resume state
+        if resume_on_quota and current_file_index >= len(filtered_files) and not quota_exhausted:
+            clear_resume_state(key_number)
+            mark_key_completed(key_number)
         
         # Display final results
         display_final_results(context, quota_exhausted=quota_exhausted)

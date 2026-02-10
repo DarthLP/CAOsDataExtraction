@@ -15,6 +15,8 @@
 ### Pipeline Flow
 ```
 p1_webscraping → p2_extract → p3_llmExtraction → p4_analysis → p5_excel_creation
+                                                     ↑
+                                    [optional] scripts/validation/validate_extraction.py
 ```
 
 **Stage 1 (p1)**: Web scraping - Downloads PDFs using Selenium, extracts every second PDF link (indices 0, 2, 4, 6...) and merges all PDFs from the same main link/page into a single file (saved with the first PDF's name), organizes by CAO number; uses `inputs/excel/CAO_Frequencies_2014.xlsx` to skip already-handled CAOs and defaults to writing into `inputs/pdfs/input_pdfs_extra/`
@@ -35,6 +37,7 @@ p1_webscraping → p2_extract → p3_llmExtraction → p4_analysis → p5_excel_
 - **Schemas**: Pydantic models in `schema/` for validation (salary_schema.py, non_salary_schema.py, excel_output_schema.py)
 - **Monitoring**: Performance tracking in `monitoring/monitoring_3_1.py`
 - **Utilities**: Input/output management in `utils/`, analysis scripts in `scripts/`
+- **Validation**: `scripts/validation/validate_extraction.py` — LLM-based validation of extraction outputs (hallucination, completeness, accuracy)
 
 ## Code Structure
 
@@ -63,7 +66,7 @@ p1_webscraping → p2_extract → p3_llmExtraction → p4_analysis → p5_excel_
 - Pipeline helpers: 
   - Shared: `scripts_pipeline_helper/p3_p4/retry_error_classification.py`
   - p3-specific: `scripts_pipeline_helper/p3/retry_logic.py`
-  - p4-specific: `scripts_pipeline_helper/p4/retry_logic.py`, `scripts_pipeline_helper/p4/merge_split_salary.py`
+  - p4-specific: `scripts_pipeline_helper/p4/retry_logic.py`
   - p1_p2: `scripts_pipeline_helper/p1_p2/OUTPUT_tracker.py`
 - Utility scripts: `INPUT_*.py` (input utils), `OUTPUT_*.py` (output utils)
 - Schema files: `salary_schema.py`, `non_salary_schema.py`, `excel_output_schema.py`
@@ -102,7 +105,7 @@ p1_webscraping → p2_extract → p3_llmExtraction → p4_analysis → p5_excel_
 
 ### Error Handling Strategy
 **Why**: API failures, timeouts, JSON parsing errors are common at scale
-**Approach**: Intelligent error classification, synchronized retry logic with exponential backoff (2.1^attempt), adaptive retry (adjust temp/top_p/top_k on attempts 4-5), compact schema retries (p4 attempts 6-8), split extraction retries (p3 attempts 6-8, p4 attempts 9-10), super compact schema retries (p4 attempts 11-12), file locking, comprehensive logging
+**Approach**: Intelligent error classification, synchronized retry logic with exponential backoff (2.1^attempt), adaptive retry (adjust temp/top_p/top_k on attempts 4-5), compact schema retries (p4 attempts 5-6), super compact schema retries (p4 attempt 10), file locking, comprehensive logging
 **Error Classification**:
 - **Request problems** (truncated, incomplete JSON, empty response): Increment to next attempt, potentially changing parameters
 - **External errors** (503, 500, connection reset, per-minute quota 429): Retry with same attempt number, wait 15 minutes each time, unlimited retries until max_retries
@@ -130,43 +133,31 @@ p1_webscraping → p2_extract → p3_llmExtraction → p4_analysis → p5_excel_
 **Rationale**: Smaller schemas reduce output length, allowing extraction of large files that would otherwise fail. Caching prevents re-extracting successful parts.
 **Failed CAO Saving**: Files that fail all retry attempts are saved to `performance_logs/llm_extraction/failed_cao_numbers/[cao_number]/[filename]_failed.txt` and automatically skipped in future runs.
 
-### Salary Extraction Retry Strategy (p4, attempts 0, 2, 4, 5, 6, 8, 10)
-**Why**: Large CAO files with extensive salary tables can exceed max_output_tokens (65536), causing truncation even with compact schema and split extraction
-**Approach**:
-- **Attempts 0, 2, 4**: Regular extraction with SalaryExtractionSchema (full schema with table_label) - attempts 1, 3 removed as duplicates/user request
+### Salary Extraction Retry Strategy (p4, attempts 0, 2, 4, 5, 6, 10)
+**Why**: Large CAO files with extensive salary tables can exceed max_output_tokens (65536), causing truncation even with compact schema.
+**Approach** (no split extraction – compact → super compact directly):
+- **Attempts 0, 2, 4**: Regular extraction with SalaryExtractionSchema (full schema with table_label)
   - Attempt 0: Original parameters (temp=0.0, top_p=0.1, top_k=1)
   - Attempt 2: Adjusted parameters (temp=0.1, top_p=0.2, top_k=0.9)
   - Attempt 4: Adjusted parameters (temp=0.2, top_p=0.3, top_k=0.8)
   - If truncation occurs after attempt 4 → extends to attempts 5-6 (compact schema)
-- **Attempts 5-6**: Compact schema extraction (SalaryExtractionSchemaCompact) - attempt 7 removed as duplicate of 6
-  - Removes table_label, uses abbreviated unit field, uses 2-letter field names to minimize JSON output size
-  - Field names: sd (start_date), ed (end_date), am (amount), un (unit), ip (inc_pct), hp (holiday_incl in point), nt (note), jg (jobgroup), st (step), wr (worker), ie (is_entry), ag (age_group), eu (education), fh (ft_hours), pe (permanency), ht (hours_type), hi (holiday_incl in row), tl (timeline), rn (row_note), si (salary_information)
+- **Attempts 5-6**: Compact schema extraction (SalaryExtractionSchemaCompact)
+  - Removes table_label, uses abbreviated unit field, uses 2-letter field names
+  - Field names: sd, ed, am, un, ip, hp, nt, jg, st, wr, ie, ag, eu, fh, pe, ht, hi, tl, rn, si (salary_information)
   - **IMPORTANT**: In compact schema, holiday_incl moved from SalaryPoint (hp) to SalaryRow (hi) - affects Excel output format
-  - Uses SALARY_PROMPT_COMPACT (same as SALARY_PROMPT but with field abbreviation section and "si" instead of "salary_information" in JSON output)
-  - Attempt 5: Original parameters (temp=0.0, top_p=0.1, top_k=1)
-  - Attempt 6: Adjusted parameters (temp=0.3, top_p=0.4, top_k=0.7)
-  - If truncation occurs after attempt 6 → extends to attempt 8 (split extraction)
-  - Files in truncated folder → automatically start at attempt 5, extend to 8, 10 if needed
-- **Attempt 8**: Split extraction by jobgroup boundaries - attempt 9 removed as duplicate of 8
-  - First half: Extract approximately first 50% of salary rows, completing any jobgroup that is started (jobgroups not split)
-  - Second half: Extract remaining jobgroups with first half results as context, merge results
-  - Uses SalaryExtractionSchemaSplit (same as compact but optimized for split extraction)
-  - Prompt for second half includes anti-repetition rules: notes shared across jobgroups use reference format instead of repetition
-  - Files in truncated_2 folder → automatically start at attempt 8
-  - If truncation occurs after attempt 8 → extends to attempt 10 (super compact schema)
-- **Attempt 10**: Super compact schema extraction (SalaryExtractionSchemaSuperCompact) - attempt 11 removed as duplicate of 10
-  - Removes all optional metadata fields, keeping only essential salary data
-  - Field names: sd (start_date), am (amount), un (unit), ip (inc_pct), jg (jobgroup), st (step), wr (worker), ag (age_group), eu (education), pe (permanency), tl (timeline), si (salary_information)
-  - Removed fields: ed (end_date), nt (note), ie (is_entry), fh (ft_hours), ht (hours_type), hi (holiday_incl), rn (row_note)
-  - Uses SALARY_PROMPT_SUPER_COMPACT (adapted from SALARY_PROMPT_COMPACT with only essential fields)
+  - Attempt 5: Original parameters; Attempt 6: Adjusted (temp=0.3, top_p=0.4, top_k=0.7)
+  - If truncation occurs after attempt 6 → extends to attempt 10 (super compact schema)
+  - Files in truncated folder → automatically start at attempts 5-6, extend to 10 if needed
+- **Attempt 10**: Super compact schema extraction (SalaryExtractionSchemaSuperCompact)
+  - Minimal fields: sd, am, un, ip, jg, st, wr, ag, eu, pe, tl, si (no ed, nt, ie, fh, ht, hi, rn)
+  - Uses SALARY_PROMPT_SUPER_COMPACT
   - Adjusted parameters (temp=0.3, top_p=0.4, top_k=0.7)
-  - Files in truncated_3 folder → automatically start at attempt 10
+  - Files in truncated_2 or truncated_3 folder → automatically start at attempt 10
 - **File handling**:
-  - Files in truncated folder → retry with attempts 5-6 (compact), automatically extend to 8 (split), 10 (super compact) if needed
-  - Files in truncated_2 folder → retry with attempt 8 (split extraction) directly, may extend to 10
-  - Files in truncated_3 folder → retry with attempt 10 (super compact schema) directly
-  - Files in truncated_4 folder → skipped (all attempts exhausted including super compact schema)
-**Rationale**: Graduated approach - first try with full schema, then reduce schema size (compact), split extraction for extremely large files, finally super compact schema with minimal fields for the largest files. Jobgroup boundary preservation ensures data integrity when splitting. Duplicate attempts removed to optimize retry efficiency.
+  - Files in truncated folder → retry with attempts 5-6 (compact), extend to 10 (super compact) if needed
+  - Files in truncated_2/3 folder → retry with attempt 10 (super compact) directly
+  - Files in truncated_4 folder → skipped (all attempts exhausted including super compact)
+**Rationale**: Graduated approach – full schema → compact → super compact. No split extraction.
 
 ### Unicode/Encoding Handling (p2)
 **Why**: PDFs contain /uniXXXX and /GXXX patterns that break text extraction
@@ -183,10 +174,9 @@ p1_webscraping → p2_extract → p3_llmExtraction → p4_analysis → p5_excel_
 - **SalaryExtractionSchema**: Root schema containing list of SalaryRows
 
 **Schema Variants**:
-- **Regular schema** (`salary_schema.py`): Full schema with table_label, full field names, used for attempts 0, 2, 4. Uses SALARY_PROMPT.
-- **Compact schema** (`salary_schema_compact.py`): Reduced schema (no table_label, abbreviated units, 2-letter field names), used for attempts 5-6. **IMPORTANT**: holiday_incl moved from SalaryPoint to SalaryRow (hp in point, hi in row) - affects Excel format. Uses SALARY_PROMPT_COMPACT (identical to SALARY_PROMPT except: adds "FIELD NAME ABBREVIATIONS" section, uses "si" instead of "salary_information" in JSON output example).
-- **Split schema** (`salary_schema_split.py`): Same as compact, optimized for split extraction, used for attempt 8. Uses SALARY_PROMPT_SPLIT_ATTEMPT_9/10 (includes field abbreviations section, split extraction rules, anti-repetition rules for second half).
-- **Super compact schema** (`salary_schema_super_compact.py`): Minimal schema with only essential fields (no end_date, notes, is_entry, ft_hours, hours_type, holiday_incl, row_note), used for attempt 10. Uses SALARY_PROMPT_SUPER_COMPACT (adapted from SALARY_PROMPT_COMPACT with only essential fields).
+- **Regular schema** (`salary_schema.py`): Full schema, used for attempts 0, 2, 4. Uses SALARY_PROMPT.
+- **Compact schema** (`salary_schema_compact.py`): Reduced schema (no table_label, 2-letter field names), used for attempts 5-6. **IMPORTANT**: holiday_incl moved from SalaryPoint to SalaryRow - affects Excel format. Uses SALARY_PROMPT_COMPACT.
+- **Super compact schema** (`salary_schema_super_compact.py`): Minimal fields only, used for attempt 10. Uses SALARY_PROMPT_SUPER_COMPACT.
 
 ### Non-Salary Schema (`schema/non_salary_schema.py`)
 Split into 3 parts for performance:
@@ -268,6 +258,7 @@ Each info class contains structured fields (Amount, AmountRange, booleans, strin
 - **Super compact schema (attempt 10)**: Minimal fields only - attempt 11 removed as duplicate of 10
   - Files in truncated_3 folder automatically start here
 - File locking: Prevents duplicate processing across parallel processes
+- **PAID_MODE / PAID_MAX_SECONDS** (top of p4_analysis.py): When PAID_MODE is True, most retry/split/lock delays are capped at PAID_MAX_SECONDS (e.g. 5 s); full waits are kept for service_unavailable, quota, timeout (not truncation), and wait_until_reset. Delay between extended attempts (5 to 6, 6 to 8, 8 to 10) is 180 s when not paid, capped when paid. Default PAID_MODE = False (free-tier pacing).
 
 ### Cost Optimization
 - Performance monitoring tracks token usage and costs
@@ -347,6 +338,14 @@ with open(lock_file, 'w') as lock:
 3. Update Excel output schema if new fields should appear in Excel
 4. Test with sample files before full run
 
+### Extraction Validation (scripts/validation/)
+- **Purpose**: LLM-based validation of salary/non-salary extraction outputs against source markdown
+- **Inputs**: Extracted JSON + parsed markdown; schema definitions (field names + descriptions)
+- **Outputs**: Per-file validation report (hallucination, completeness, accuracy, temporal validity), summary CSV
+- **Sampling**: One file per CAO number, chosen at random (--seed for reproducibility)
+- **Model**: Gemini 2.5 Pro
+- **Usage**: `python scripts/validation/validate_extraction.py --type salary|non_salary|both --seed 42`
+
 ### Adding Utilities
 - Input utilities: `utils/input_utils/INPUT_*.py`
 - Output utilities: `utils/output_utils/OUTPUT_*.py`
@@ -372,7 +371,7 @@ with open(lock_file, 'w') as lock:
   - **Shared error classification**: Request problems vs external errors vs daily quota vs schema complexity
   - **Synchronized retry parameters**: Quota delay buffer (2-6 minutes), per-minute quota wait (150 seconds), empty response wait (+120 seconds), debug logging
   - **p3**: Unified extraction retries (attempts 0, 3, 4) with adaptive parameter adjustment, split extraction retries (attempts 5, 7) with partial success caching, exponential backoff (2.1^attempt), failed CAO number saving for skipped files
-  - **p4**: Regular extraction (attempts 0, 2, 4), compact schema retries (attempts 5-6), split extraction retry (attempt 8), super compact schema retry (attempt 10) by jobgroup boundaries with merge, exponential backoff (2.1^attempt)
+  - **p4**: Regular extraction (attempts 0, 2, 4), compact schema retries (attempts 5-6), super compact schema retry (attempt 10), exponential backoff (2.1^attempt); PAID_MODE caps most delays at PAID_MAX_SECONDS (full wait for service_unavailable, quota, timeout, wait_until_reset)
 - Unicode/encoding issue handling
 - Excel output generation with proper formatting
 - Intelligent file handling: truncated folder files retry with compact schema, truncated_2 folder files retry with split extraction, truncated_3 folder files retry with super compact schema, truncated_4 folder files skipped

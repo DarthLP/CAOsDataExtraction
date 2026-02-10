@@ -38,7 +38,7 @@ Web Scraping → PDF Extraction → LLM Extraction → Analysis → Excel Creati
 1. **p1_webscraping.py** - Downloads CAO PDFs from uitvoeringarbeidsvoorwaardenwetgeving.nl using Selenium; extracts every second PDF link (indices 0, 2, 4, 6...) and merges all PDFs from the same main link/page into a single file, saved with the name of the first PDF; uses `inputs/excel/CAO_Frequencies_2014.xlsx` to decide skips and defaults to writing into `inputs/pdfs/input_pdfs_extra/`.
 2. **p2_extract.py** - Multi-method PDF text extraction (PyPDF2 + pdfplumber + Tesseract OCR)
 3. **p3_llmExtraction.py** - Raw data extraction using Google Gemini API with context preservation
-4. **p4_analysis.py** - Schema-driven structured extraction (salary + non-salary) using Pydantic models; non-salary outputs go to `outputs/llm_analysis/non_salary/gen_bon_wag_pen_ter/`, `outputs/llm_analysis/non_salary/lea_ove_tra/`, and `outputs/llm_analysis/non_salary/hom_con_saf_chi_ai_fri/`
+4. **p4_analysis.py** - Schema-driven structured extraction (salary + non-salary) using Pydantic models; non-salary outputs go to `outputs/llm_analysis/non_salary/gen_bon_wag_pen_ter/`, `outputs/llm_analysis/non_salary/lea_ove_tra/`, and `outputs/llm_analysis/non_salary/hom_con_saf_chi_ai_fri/`. Supports a **PAID_MODE** flag at the top of the script: when `True`, most retry and pacing delays are capped at **PAID_MAX_SECONDS** (e.g. 5 s) for paid-tier API usage; full waits are kept for service-unavailable, per-minute quota, timeout, and quota reset. Default is `PAID_MODE = False` (free-tier pacing).
 5. **p5_excel_creation.py** - Merges results and creates final Excel outputs with proper formatting
 
 ## Folder Structure
@@ -59,15 +59,16 @@ CAOsDataExtraction/
 │       ├── llm_extraction/       # p3 performance logs
 │       │   └── failed_cao_numbers/ # Failed CAO numbers (skipped in future runs)
 │       └── llm_analysis/          # p4 performance logs
-│           ├── max_tokens_truncated/      # Files that failed with truncation
-│           ├── max_tokens_truncated_2/    # Files that failed after compact schema
-│           ├── max_tokens_truncated_3/    # Files that failed after split extraction
-│           └── max_tokens_truncated_4/    # Files that failed all attempts
+│           ├── max_tokens_truncated/      # First truncation (regular schema) → retry with compact
+│           ├── max_tokens_truncated_2/    # Compact failed → retry with super compact
+│           ├── max_tokens_truncated_3/    # (legacy) Compact/split failed → retry with super compact
+│           └── max_tokens_truncated_4/    # Super compact failed → skip (all exhausted)
 ├── outputs/
 │   ├── llm_extracted/           # LLM extracted JSON files
 │   ├── llm_analysis/            # Schema-validated extraction results
 │   ├── parsed_pdfs/             # Parsed PDF JSON/Markdown files
 │   ├── excel/                   # Final Excel output files
+│   ├── validation/              # Extraction validation reports (JSON + CSV)
 │   └── logs/                    # Processing logs and error reports
 ├── pipelines/
 │   ├── p1_webscraping.py        # Web scraping
@@ -83,17 +84,15 @@ CAOsDataExtraction/
 │   ├── p3/                       # Stage 3 specific helpers
 │   │   └── retry_logic.py       # p3 retry logic (error handling, quota delays, parameter adjustments)
 │   └── p4/                      # Stage 4 specific helpers
-│       ├── merge_split_salary.py # Merge split salary results
 │       └── retry_logic.py       # p4 retry logic (error handling, quota delays, parameter adjustments)
 ├── schema/
 │   ├── salary_schema.py         # Salary data schema (Pydantic models) - regular schema with full field names, for attempts 0, 2, 4
 │   ├── salary_schema_compact.py # Compact salary schema (no table_label, 2-letter field names) - for attempts 5-6. NOTE: holiday_incl moved from SalaryPoint to SalaryRow
-│   ├── salary_schema_split.py   # Split salary schema (same as compact) - for attempt 8
-│   ├── salary_prompt_split.py   # Split extraction prompts - for attempt 8
 │   ├── salary_schema_super_compact.py  # Super compact salary schema (minimal fields) - for attempt 10
 │   ├── non_salary_schema.py     # Non-salary data schema (Pydantic models)
 │   └── excel_output_schema.py   # Excel output column definitions
 ├── scripts/                     # Utility and analysis scripts
+│   └── validation/              # Extraction validation (validate_extraction.py)
 ├── utils/                       # Standalone utility scripts (not directly used by pipeline)
 │   ├── input_utils/             # Input utilities
 │   └── output_utils/            # Output utilities
@@ -107,7 +106,7 @@ CAOsDataExtraction/
 All paths and settings are centralized in `conf/config.yaml`. Key paths include:
 - Input PDFs: `inputs/pdfs/input_pdfs` and `inputs/pdfs/input_pdfs_extra`
 - Input Excel: `inputs/excel/inputExcel`
-- Output directories: `outputs/llm_extracted`, `outputs/llm_analysis`, `outputs/excel`
+- Output directories: `outputs/llm_extracted`, `outputs/llm_analysis`, `outputs/excel`, `outputs/validation`
 - Parsed PDFs: `outputs/parsed_pdfs/parsed_pdfs_json` and `outputs/parsed_pdfs/parsed_pdfs_markdown`
 
 ## Usage Examples
@@ -208,6 +207,14 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
     - Files in truncated_2 folder → retry with attempt 8 (split extraction), may extend to 10
     - Files in truncated_3 folder → retry with attempt 10 (super compact schema)
     - Files in truncated_4 folder → skipped (all attempts exhausted)
+
+### Extraction Validation (scripts/validation/validate_extraction.py)
+- Validates salary and/or non-salary extraction outputs against source parsed markdown
+- Scores: hallucination, completeness, accuracy, temporal validity (salary only)
+- Samples one file per CAO number (random, --seed for reproducibility)
+- Uses Gemini 2.5 Pro; outputs JSON reports and summary CSV
+- **Usage**: `python scripts/validation/validate_extraction.py --type salary --seed 42`
+- **Usage**: `python scripts/validation/validate_extraction.py --type both --max_files 10`
 
 ### Stage 5: Excel Creation (p5_excel_creation.py)
 - Merges salary and non-salary extraction results

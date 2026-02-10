@@ -4,7 +4,7 @@ Analyze LLM analysis quality and identify files with minimal output.
 
 This script analyzes JSON analysis files from p4_analysis.py to identify:
 - Files with empty sections in salary and non-salary analysis
-- Connection between salary and non-salary folders (missing files)
+- Connection between markdown folder (expected) and llm_analysis salary/non_salary (missing files)
 - Files with very small content
 - Files that might need re-analysis
 
@@ -19,7 +19,6 @@ import sys
 from collections import defaultdict
 import re
 import yaml
-import pandas as pd
 
 def analyze_salary_file(file_path: Path) -> dict:
     """
@@ -483,32 +482,37 @@ def check_extracted_file_has_salary_tables(extracted_file_path: Path) -> bool:
         # On any error, assume no tables (conservative approach)
         return False
 
-def load_expected_files(cao_info_path: str = "inputs/pdfs/extracted_cao_info.csv") -> set:
+def load_expected_files_from_markdown(markdown_base_path: str = None) -> set:
     """
-    Load expected files from CAO info CSV.
+    Load expected files from the parsed markdown folder (source of truth for which PDFs exist).
+    Structure: {markdown_base_path}/[CAO_NUMBER]/*.md
     
     Returns:
-        Set of (cao_number, base_filename) tuples
+        Set of (cao_number, base_filename) tuples where base_filename is the .md file stem.
     """
     expected_files = set()
+    if markdown_base_path is None:
+        try:
+            with open('conf/config.yaml', 'r') as f:
+                config = yaml.safe_load(f)
+            markdown_base_path = config.get('paths', {}).get('parsed_pdfs_markdown', 'outputs/parsed_pdfs/parsed_pdfs_markdown')
+        except Exception:
+            markdown_base_path = 'outputs/parsed_pdfs/parsed_pdfs_markdown'
     
-    if not os.path.exists(cao_info_path):
-        print(f"  Warning: CAO info file not found: {cao_info_path}")
+    base = Path(markdown_base_path)
+    if not base.exists():
+        print(f"  Warning: Markdown folder not found: {base}")
         return expected_files
     
-    try:
-        df = pd.read_csv(cao_info_path, sep=';', encoding='utf-8')
-        for _, row in df.iterrows():
-            cao_number = str(row.get('cao_number', ''))
-            pdf_name = str(row.get('pdf_name', ''))
-            if cao_number and pdf_name:
-                # Normalize filename (remove extensions)
-                base_filename = pdf_name.replace('_extract.json', '').replace('.json', '').replace('.pdf', '')
-                expected_files.add((cao_number, base_filename))
-        print(f"  Loaded {len(expected_files)} expected files from CAO info")
-    except Exception as e:
-        print(f"  Warning: Could not load CAO info: {e}")
+    for cao_dir in sorted(base.iterdir(), key=lambda p: (not p.name.isdigit(), int(p.name) if p.name.isdigit() else 0)):
+        if not cao_dir.is_dir() or not cao_dir.name.isdigit():
+            continue
+        cao_number = cao_dir.name
+        for md_file in cao_dir.glob('*.md'):
+            base_filename = md_file.stem
+            expected_files.add((cao_number, base_filename))
     
+    print(f"  Loaded {len(expected_files)} expected files from markdown folder: {base}")
     return expected_files
 
 
@@ -525,9 +529,9 @@ def analyze_llm_analysis_quality(base_dir: str = "outputs/llm_analysis"):
     print(f"🔍 Analyzing LLM analysis quality in: {base_dir}")
     print("=" * 80)
     
-    # Load expected files from CAO info
-    print("\n📋 Loading expected files from CAO info...")
-    expected_files = load_expected_files()
+    # Load expected files from markdown folder (source of truth for which documents exist)
+    print("\n📋 Loading expected files from markdown folder...")
+    expected_files = load_expected_files_from_markdown()
     
     salary_path = base_path / "salary"
     non_salary_path = base_path / "non_salary"
@@ -613,13 +617,16 @@ def analyze_llm_analysis_quality(base_dir: str = "outputs/llm_analysis"):
     # Get all file names (both end with _analysis.json, so remove _analysis suffix)
     # For non-salary, we need to group by base filename since each PDF has 3 non-salary files
     salary_files = {Path(f['file']).stem.replace('_analysis', '') for f in all_salary_analyses if 'error' not in f}
+    salary_files_with_cao = {(f['cao_number'], Path(f['file']).stem.replace('_analysis', '')) for f in all_salary_analyses if 'error' not in f}
     
     # Group non-salary files by base filename (each PDF has 3 non-salary files: one per category)
     non_salary_files_by_base = defaultdict(set)
+    non_salary_files_with_cao = set()
     for f in all_non_salary_analyses:
         if 'error' not in f:
             base_name = Path(f['file']).stem.replace('_analysis', '')
             non_salary_files_by_base[base_name].add(f.get('category', 'unknown'))
+            non_salary_files_with_cao.add((f['cao_number'], base_name))
     
     # A PDF has non-salary analysis if it has files in all 3 categories
     non_salary_files = {base_name for base_name, categories in non_salary_files_by_base.items() 
@@ -629,25 +636,25 @@ def analyze_llm_analysis_quality(base_dir: str = "outputs/llm_analysis"):
     files_only_salary = salary_files - non_salary_files
     files_only_non_salary = non_salary_files - salary_files
     
-    # Compare with expected files from CAO info
+    # Compare with expected files from markdown folder (expected_files and found must both be (cao_number, base_filename))
     all_found_files = salary_files | non_salary_files
-    missing_files = expected_files - all_found_files
+    found_files_with_cao = salary_files_with_cao | non_salary_files_with_cao
+    missing_files = expected_files - found_files_with_cao
     
-    # Total files found (union of salary and non-salary)
-    total_files_found = len(all_found_files)
+    # Total files found: by unique base name (for salary vs non_salary stats) and by (cao, base) for expected comparison
+    total_files_found = len(found_files_with_cao)
     
-    print(f"   Expected PDF files (from CAO info CSV): {len(expected_files)}")
+    print(f"   Expected PDF files (from markdown folder): {len(expected_files)}")
     print(f"   PDF files found in folders: {total_files_found}")
     print(f"   PDF files MISSING: {len(missing_files)} (expected - found)")
     print(f"   PDF files with both salary and non-salary analysis: {len(files_in_both)}")
     print(f"   PDF files with only salary analysis: {len(files_only_salary)}")
     print(f"   PDF files with only non-salary analysis: {len(files_only_non_salary)}")
     print()
-    print(f"   NOTE: 'Expected' comes from CAO info CSV ({len(expected_files)} files).")
-    print(f"   'Found' is what's actually in the output folders ({total_files_found} files).")
+    print(f"   NOTE: 'Expected' = markdown folder ({len(expected_files)} files). 'Found' = llm_analysis/salary + non_salary ({total_files_found} files).")
     
     if missing_files:
-        print(f"\n   ⚠️  MISSING FILES (expected but not found in non-salary folders):")
+        print(f"\n   ⚠️  MISSING FILES (in markdown folder but not found in llm_analysis/salary or llm_analysis/non_salary):")
         # Group by CAO number
         missing_by_cao = defaultdict(list)
         for cao_number, filename in sorted(missing_files):
@@ -676,7 +683,7 @@ def analyze_llm_analysis_quality(base_dir: str = "outputs/llm_analysis"):
     unique_non_salary_pdfs_all = len(all_non_salary_base_names)  # PDFs with ANY non-salary file
     
     print(f"📊 SUMMARY STATISTICS:")
-    print(f"   Expected PDF files (from CAO info CSV): {len(expected_files)}")
+    print(f"   Expected PDF files (from markdown folder): {len(expected_files)}")
     print(f"   PDF files found in folders: {total_files_found}")
     print(f"   PDF files missing: {len(missing_files)}")
     print()
@@ -690,7 +697,7 @@ def analyze_llm_analysis_quality(base_dir: str = "outputs/llm_analysis"):
     print(f"   - Total non-salary JSON files found: {total_non_salary_files}")
     print(f"   - Non-salary files / 3 = {total_non_salary_files // 3} (unique PDFs if all have 3 categories)")
     print()
-    print(f"   COMPARISON (Expected from CAO info vs Found in folders):")
+    print(f"   COMPARISON (Expected from markdown folder vs Found in llm_analysis):")
     print(f"   - Expected PDFs: {len(expected_files)}")
     print(f"   - Found PDFs: {total_files_found}")
     print(f"   - Missing: {len(missing_files)}")

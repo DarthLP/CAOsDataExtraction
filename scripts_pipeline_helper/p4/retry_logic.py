@@ -177,15 +177,16 @@ def handle_llm_errors(
     file_size_mb: float = 0,
     context: Optional[Any] = None,
     process_quota_flags: Optional[dict] = None
-) -> Tuple[bool, bool, int]:
+) -> Tuple[bool, bool, int, str]:
     """
     Handle different types of LLM errors with appropriate retry logic.
-    
+
     Returns a tuple indicating:
     - should_retry: Whether to retry the request
     - increment_attempt: Whether to increment the attempt counter (True for request problems, False for external errors)
     - wait_time_seconds: How long to wait before retrying
-    
+    - wait_reason: Reason for the wait ("service_unavailable", "quota", "timeout", "truncation", "incomplete_json", "empty", "generic", "none") for paid-mode capping
+
     Args:
         error: The exception that occurred
         attempt: Current attempt number (0-based)
@@ -193,18 +194,18 @@ def handle_llm_errors(
         file_size_mb: Size of file in MB (for quota calculations)
         context: Processing context object (for quota flags)
         process_quota_flags: Dictionary to set quota flags (for daily quota)
-        
+
     Returns:
-        tuple: (should_retry: bool, increment_attempt: bool, wait_time_seconds: int)
+        tuple: (should_retry: bool, increment_attempt: bool, wait_time_seconds: int, wait_reason: str)
     """
     error_str = str(error).lower()
-    
+
     # Check for schema complexity error (fatal error, don't retry - p4 only)
     if is_schema_complexity_error(error_str):
         print(f'  ⚠️ Schema complexity error: The schema is too complex for Google\'s structured output API.')
         print(f'  ⚠️ This error is not retryable - the schema needs to be simplified or split further.')
-        return (False, False, 0)  # Don't retry
-    
+        return (False, False, 0, "none")
+
     # Check for daily quota limit (fatal error, don't retry)
     if is_daily_quota(error_str):
         # Extract process_id from context if available
@@ -213,40 +214,44 @@ def handle_llm_errors(
             process_id = context.process_id
         elif context and isinstance(context, dict) and 'process_id' in context:
             process_id = context['process_id']
-        
+
         if process_quota_flags is not None:
             process_quota_flags[process_id] = True
             print(f'  🚨 DAILY QUOTA LIMIT REACHED (429) - Process will shutdown gracefully')
             print(f'  🛑 Daily quota flag set for process {process_id} only - will stop this process after current attempt')
             print(f'  💡 Other parallel processes will continue running')
-        return (False, False, 0)  # Don't retry
-    
+        return (False, False, 0, "none")
+
     # Check for request problems (increment attempt)
     if is_request_problem(error_str):
         if attempt < max_retries - 1:
-            # Timeout/Truncation errors
-            if any(keyword in error_str for keyword in ['deadlineexceeded', '504', 'timeout', 'truncated']):
+            # Truncation vs timeout: truncation gets short wait in paid mode; timeout keeps full wait
+            if any(keyword in error_str for keyword in ['truncated', 'max_tokens', 'truncation']):
                 wait_time = 120 * 2 ** min(attempt, 4)
-                print(f'  Attempt {attempt + 1} failed (timeout/truncation), retrying in {wait_time // 60} minutes...')
-                return (True, True, wait_time)  # Increment attempt
-            
+                print(f'  Attempt {attempt + 1} failed (truncation), retrying in {wait_time // 60} minutes...')
+                return (True, True, wait_time, "truncation")
+            if any(keyword in error_str for keyword in ['deadlineexceeded', '504', 'timeout']):
+                wait_time = 120 * 2 ** min(attempt, 4)
+                print(f'  Attempt {attempt + 1} failed (timeout), retrying in {wait_time // 60} minutes...')
+                return (True, True, wait_time, "timeout")
+
             # Incomplete JSON errors
             elif any(keyword in error_str for keyword in ['incomplete json', 'json validation failed']):
                 wait_time = 30 * 2 ** min(attempt, 4)
                 print(f'  Attempt {attempt + 1} failed (incomplete JSON), retrying in {wait_time} seconds...')
-                return (True, True, wait_time)  # Increment attempt
-            
+                return (True, True, wait_time, "incomplete_json")
+
             # Empty response errors
             elif any(keyword in error_str for keyword in ['no content parts found', 'no content', 'no text parts']):
                 wait_time = 60 * 2 ** min(attempt, 4)
                 # Add 120 seconds to empty response errors
                 wait_time += 120
                 print(f'  Attempt {attempt + 1} failed (empty response), retrying in {wait_time // 60} minutes...')
-                return (True, True, wait_time)  # Increment attempt
+                return (True, True, wait_time, "empty")
         else:
             print(f'  All {max_retries} attempts failed with request problem errors')
-            return (False, False, 0)
-    
+            return (False, False, 0, "none")
+
     # Check for external errors (retry same attempt, wait 15 minutes)
     if is_external_error(error_str):
         if attempt < max_retries - 1:
@@ -258,8 +263,8 @@ def handle_llm_errors(
                 wait_time = wait_time_minutes * 60  # convert to seconds
                 print(f'  Attempt {attempt + 1} failed (service unavailable/internal error), retrying in {wait_time_minutes} minutes...')
                 # For external errors, always wait 15 minutes and retry same attempt
-                return (True, False, 900)  # Don't increment attempt, wait 15 min
-            
+                return (True, False, 900, "service_unavailable")
+
             # Per-minute quota errors
             elif any(keyword in error_str for keyword in ['quota', '429', 'rate limit', 'too many requests']):
                 wait_time = calculate_quota_retry_delay(file_size_mb, attempt)
@@ -267,17 +272,17 @@ def handle_llm_errors(
                 wait_time += 150
                 print(f'  Attempt {attempt + 1} failed (per-minute rate limit), retrying in {wait_time // 60} minutes...')
                 # For external errors, always wait 15 minutes and retry same attempt
-                return (True, False, 900)  # Don't increment attempt, wait 15 min
+                return (True, False, 900, "quota")
         else:
             print(f'  All {max_retries} attempts failed with external errors')
-            return (False, False, 0)
-    
+            return (False, False, 0, "none")
+
     # Generic errors (increment attempt)
     if attempt < max_retries - 1:
         wait_time = 60 * 2 ** min(attempt, 4)
         print(f'  Attempt {attempt + 1} failed ({type(error).__name__}), retrying in {wait_time // 60} minutes...')
-        return (True, True, wait_time)  # Increment attempt
+        return (True, True, wait_time, "generic")
     else:
         print(f'  All {max_retries} attempts failed with {type(error).__name__}: {error}')
-        return (False, False, 0)
+        return (False, False, 0, "none")
 

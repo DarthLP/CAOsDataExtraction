@@ -4,7 +4,8 @@ Extraction Validation Script
 
 Validates salary and/or non-salary CAO extraction outputs against the source parsed markdown
 documents. Samples one file per CAO number (at random) and scores hallucination, completeness,
-accuracy, and temporal validity (salary only). Uses Gemini 2.5 Pro for LLM-based validation.
+accuracy, and temporal validity (salary only). Uses Gemini Flash (latest) for LLM-based
+validation. Results are cached per CAO/type under `outputs/validation/{type}/{cao}/`.
 
 USAGE:
     python scripts/validation/validate_extraction.py --type salary --seed 42
@@ -17,6 +18,7 @@ ARGUMENTS:
     --max_files: Max number of CAOs to validate (optional)
     --cao_numbers: Comma-separated CAO numbers to limit scope (optional)
     --key_number: API key number (default: 1)
+    --force: Re-run validation even when cached outputs exist
 """
 
 import argparse
@@ -92,6 +94,74 @@ def get_safety_settings():
             threshold=types.HarmBlockThreshold.BLOCK_NONE,
         ),
     ]
+
+
+def get_validation_output_path(
+    output_base: Path,
+    extraction_type: str,
+    cao_number: str,
+    base_filename: str,
+) -> Path:
+    """
+    Compute the output JSON path for a validation result.
+
+    Args:
+        output_base: Base output directory (e.g. outputs/validation)
+        extraction_type: 'salary' or 'non_salary'
+        cao_number: CAO identifier
+        base_filename: Base filename without suffixes
+
+    Returns:
+        Absolute path to the JSON file for the validation result
+    """
+    return (
+        output_base
+        / extraction_type
+        / cao_number
+        / f"validation_{base_filename}.json"
+    )
+
+
+def load_existing_results(
+    output_base: Path,
+    extraction_type: str,
+) -> Dict[Tuple[str, str], Dict[str, Any]]:
+    """
+    Load previously stored validation results for an extraction type.
+
+    Args:
+        output_base: Base output directory (e.g. outputs/validation)
+        extraction_type: 'salary' or 'non_salary'
+
+    Returns:
+        Mapping of (cao_number, base_filename) to validation payload
+    """
+    results: Dict[Tuple[str, str], Dict[str, Any]] = {}
+    type_dir = output_base / extraction_type
+    if not type_dir.exists():
+        return results
+
+    for cao_dir in type_dir.iterdir():
+        if not cao_dir.is_dir():
+            continue
+        cao_number = cao_dir.name
+        for json_path in cao_dir.glob("validation_*.json"):
+            try:
+                with open(json_path, "r", encoding="utf-8") as f:
+                    payload = json.load(f)
+            except (OSError, json.JSONDecodeError):
+                continue
+            filename = payload.get("filename")
+            result = payload.get("result")
+            if not filename or result is None:
+                continue
+            key = (cao_number, filename)
+            results[key] = {
+                "cao_number": cao_number,
+                "filename": filename,
+                "result": result,
+            }
+    return results
 
 
 def discover_cao_numbers(
@@ -241,10 +311,22 @@ def run_validation(
     client,
     prompt: str,
     uploaded_file: Any,
-    model: str = "gemini-2.5-pro",
+    model: str = "gemini-flash-latest",
     file_size_mb: float = 1.0,
 ) -> Dict[str, Any]:
-    """Call Gemini API for validation and return parsed JSON. Includes retry logic."""
+    """
+    Execute the Gemini validation call and return parsed JSON output.
+
+    Args:
+        client: Gemini API client instance
+        prompt: Full validation prompt (schema + instructions)
+        uploaded_file: Uploaded markdown handle
+        model: Gemini model identifier to invoke
+        file_size_mb: Size of uploaded markdown in megabytes
+
+    Returns:
+        Parsed JSON response produced by the model
+    """
     contents = [prompt, uploaded_file]
     max_attempts = 5
     last_error = None
@@ -272,12 +354,16 @@ def run_validation(
         except Exception as e:
             last_error = e
             if handle_llm_errors and attempt < max_attempts - 1:
-                should_retry, _, wait_time = handle_llm_errors(
+                should_retry, _, wait_time, wait_reason = handle_llm_errors(
                     e, attempt, max_attempts, file_size_mb, None, None
                 )
-                if should_retry and wait_time > 0:
-                    print(f"    Retry in {wait_time}s...")
-                    time.sleep(wait_time)
+                if should_retry:
+                    if wait_time > 0:
+                        if wait_reason and wait_reason != "none":
+                            print(f"    Retry ({wait_reason}) in {wait_time}s...")
+                        else:
+                            print(f"    Retry in {wait_time}s...")
+                        time.sleep(wait_time)
                     continue
             raise last_error
     raise last_error
@@ -373,7 +459,13 @@ def main():
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--max_files", type=int, default=None)
     parser.add_argument("--cao_numbers", type=str, default=None, help="Comma-separated CAO numbers")
+    parser.add_argument("--filename", type=str, default=None, help="Base filename (no .md) to validate; requires --cao_numbers")
     parser.add_argument("--key_number", type=int, default=1)
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Re-run validation even if cached output is present",
+    )
     args = parser.parse_args()
 
     project_root = Path(__file__).resolve().parents[2]
@@ -391,13 +483,21 @@ def main():
     # Resolve extraction types to run
     types_to_run = ["salary", "non_salary"] if args.type == "both" else [args.type]
 
+    # Prime existing results for summary + skip logic
+    all_results: Dict[str, Dict[Tuple[str, str], Dict[str, Any]]] = {}
+    for extraction_type in types_to_run:
+        all_results[extraction_type] = load_existing_results(output_validation, extraction_type)
+
     cao_filter = None
     if args.cao_numbers:
         cao_filter = set(s.strip() for s in args.cao_numbers.split(",") if s.strip())
 
+    if args.filename and not cao_filter:
+        print("ERROR: --filename requires --cao_numbers")
+        return
+
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    all_results = {}
-    csv_rows = []
+    skipped: List[Tuple[str, str, str]] = []
 
     cao_numbers = discover_cao_numbers(llm_analysis_base, args.type, config)
     if cao_filter:
@@ -414,10 +514,43 @@ def main():
         files = get_files_for_cao(cao_number, llm_analysis_base, args.type)
         if not files:
             continue
-        base_filename = random.choice(files)
+        if args.filename:
+            if args.filename not in files:
+                print(f"\n[{i+1}/{len(cao_numbers)}] CAO {cao_number}: {args.filename} not in available files, skipping")
+                continue
+            base_filename = args.filename
+        else:
+            base_filename = random.choice(files)
         print(f"\n[{i+1}/{len(cao_numbers)}] CAO {cao_number}: {base_filename}")
 
+        performed_any_validation = False
         for extraction_type in types_to_run:
+            ran_validation_for_type = False
+            result_map = all_results.setdefault(extraction_type, {})
+            output_path = get_validation_output_path(
+                output_validation,
+                extraction_type,
+                cao_number,
+                base_filename,
+            )
+
+            if output_path.exists() and not args.force:
+                if (cao_number, base_filename) not in result_map:
+                    try:
+                        with open(output_path, "r", encoding="utf-8") as f:
+                            payload = json.load(f)
+                        result_map[(cao_number, base_filename)] = {
+                            "cao_number": cao_number,
+                            "filename": payload.get("filename", base_filename),
+                            "result": payload.get("result", {}),
+                        }
+                    except (OSError, json.JSONDecodeError):
+                        print(f"  Cached {extraction_type} result unreadable, re-running validation.")
+                if (cao_number, base_filename) in result_map:
+                    print(f"  Skipping {extraction_type} (cached at {output_path})")
+                    skipped.append((extraction_type, cao_number, base_filename))
+                    continue
+
             print(f"  Validating {extraction_type}...")
             result, err = validate_single_file(
                 client,
@@ -430,54 +563,68 @@ def main():
             if err:
                 print(f"    ERROR: {err}")
                 continue
-            if extraction_type not in all_results:
-                all_results[extraction_type] = []
-            all_results[extraction_type].append(
-                {"cao_number": cao_number, "filename": base_filename, "result": result}
-            )
-            row = flatten_validation_for_csv(result, cao_number, base_filename)
-            row["extraction_type"] = extraction_type
-            csv_rows.append(row)
 
-            # 3 min delay between salary and non_salary for same CAO
-            if args.type == "both" and extraction_type == "salary":
+            performed_any_validation = True
+            ran_validation_for_type = True
+            entry = {
+                "cao_number": cao_number,
+                "filename": base_filename,
+                "result": result,
+            }
+            result_map[(cao_number, base_filename)] = entry
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(output_path, "w", encoding="utf-8") as f:
+                json.dump(entry, f, indent=2, ensure_ascii=False)
+            print(f"    Saved validation: {output_path}")
+
+            # 3 min delay between salary and non_salary for same CAO when salary ran now
+            if (
+                args.type == "both"
+                and extraction_type == "salary"
+                and ran_validation_for_type
+            ):
                 print("  Waiting 3 min before non_salary validation...")
                 time.sleep(180)
 
         # Delay between CAOs
-        if i < len(cao_numbers) - 1:
+        if i < len(cao_numbers) - 1 and performed_any_validation:
             time.sleep(45)
 
+    # Save combined CSV with all known results for requested types
+    csv_rows: List[Dict[str, Any]] = []
     for extraction_type in types_to_run:
-        results = all_results.get(extraction_type, [])
-        report_path = output_validation / f"{extraction_type}_validation_{timestamp}.json"
-        with open(report_path, "w", encoding="utf-8") as f:
-            json.dump(results, f, indent=2, ensure_ascii=False)
-        print(f"Saved {extraction_type} report: {report_path}")
+        result_map = all_results.get(extraction_type, {})
+        for key in sorted(result_map.keys()):
+            entry = result_map[key]
+            row = flatten_validation_for_csv(entry["result"], entry["cao_number"], entry["filename"])
+            row["extraction_type"] = extraction_type
+            csv_rows.append(row)
 
-    # Save combined CSV
     if csv_rows:
+        fieldnames = list(csv_rows[0].keys())
         csv_path = output_validation / f"validation_summary_{timestamp}.csv"
         with open(csv_path, "w", encoding="utf-8", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=csv_rows[0].keys())
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(csv_rows)
         print(f"Saved CSV: {csv_path}")
 
     # Console summary
-    total = sum(len(r) for r in all_results.values())
-    passed = sum(
-        1 for r in csv_rows if r.get("overall_pass") is True
-    )
-    failed_caos = [
+    total = len(csv_rows)
+    passed = sum(1 for r in csv_rows if r.get("overall_pass") is True)
+    failed_caos = sorted({
         r["cao_number"] for r in csv_rows
         if r.get("overall_pass") is False
-    ]
+    })
     print()
     print("=" * 60)
     print(f"Validation complete: {passed}/{total} passed")
     if failed_caos:
         print(f"Failed CAOs: {', '.join(failed_caos)}")
+    if skipped:
+        print(f"Skipped validations ({len(skipped)}):")
+        for extraction_type, cao_number, base_filename in skipped:
+            print(f"  - {extraction_type}: CAO {cao_number} :: {base_filename}")
     print("=" * 60)
 
 

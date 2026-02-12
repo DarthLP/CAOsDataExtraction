@@ -68,7 +68,7 @@ CAOsDataExtraction/
 │   ├── llm_analysis/            # Schema-validated extraction results
 │   ├── parsed_pdfs/             # Parsed PDF JSON/Markdown files
 │   ├── excel/                   # Final Excel output files
-│   ├── validation/              # Extraction validation reports (JSON + CSV)
+│   ├── validation/              # Extraction validation reports (per-type CAO folders + summary CSV)
 │   └── logs/                    # Processing logs and error reports
 ├── pipelines/
 │   ├── p1_webscraping.py        # Web scraping
@@ -211,8 +211,9 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
 ### Extraction Validation (scripts/validation/validate_extraction.py)
 - Validates salary and/or non-salary extraction outputs against source parsed markdown
 - Scores: hallucination, completeness, accuracy, temporal validity (salary only)
-- Samples one file per CAO number (random, --seed for reproducibility)
-- Uses Gemini 2.5 Pro; outputs JSON reports and summary CSV
+- Samples one file per CAO number (random, `--seed` for reproducibility)
+- Leverages `gemini-flash-latest`; cached results are stored per CAO/type under `outputs/validation/{salary|non_salary}/{cao_number}/validation_<filename>.json`
+- Pass `--force` to re-run validation even when cached files exist; the summary CSV merges cached and newly generated results
 - **Usage**: `python scripts/validation/validate_extraction.py --type salary --seed 42`
 - **Usage**: `python scripts/validation/validate_extraction.py --type both --max_files 10`
 

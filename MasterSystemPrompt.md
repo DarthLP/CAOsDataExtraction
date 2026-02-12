@@ -37,7 +37,7 @@ p1_webscraping → p2_extract → p3_llmExtraction → p4_analysis → p5_excel_
 - **Schemas**: Pydantic models in `schema/` for validation (salary_schema.py, non_salary_schema.py, excel_output_schema.py)
 - **Monitoring**: Performance tracking in `monitoring/monitoring_3_1.py`
 - **Utilities**: Input/output management in `utils/`, analysis scripts in `scripts/`
-- **Validation**: `scripts/validation/validate_extraction.py` — LLM-based validation of extraction outputs (hallucination, completeness, accuracy)
+- **Validation**: `scripts/validation/validate_extraction.py` — LLM-based validation of extraction outputs (hallucination, completeness, accuracy) using `gemini-flash-latest` with per-CAO cached reports
 
 ## Code Structure
 
@@ -214,6 +214,7 @@ Each info class contains structured fields (Amount, AmountRange, booleans, strin
 ### Google Gemini API Usage
 - **Library**: `google-genai` (newer library, not `google-generativeai`)
 - **Model**: `gemini-1.5-pro` or `gemini-1.5-flash` (configurable)
+- **Validation**: `scripts/validation/validate_extraction.py` invokes `gemini-flash-latest` for quality scoring
 - **Input**: Markdown files uploaded directly (not text strings)
 - **Output**: JSON responses validated against Pydantic schemas
 
@@ -343,7 +344,8 @@ with open(lock_file, 'w') as lock:
 - **Inputs**: Extracted JSON + parsed markdown; schema definitions (field names + descriptions)
 - **Outputs**: Per-file validation report (hallucination, completeness, accuracy, temporal validity), summary CSV
 - **Sampling**: One file per CAO number, chosen at random (--seed for reproducibility)
-- **Model**: Gemini 2.5 Pro
+- **Model**: `gemini-flash-latest` with cached results saved under `outputs/validation/{salary|non_salary}/{cao_number}/validation_<filename>.json`
+- **Cache control**: Cached validations are skipped automatically; pass `--force` to re-run and overwrite. Summary CSVs merge cached and newly generated results each execution.
 - **Usage**: `python scripts/validation/validate_extraction.py --type salary|non_salary|both --seed 42`
 
 ### Adding Utilities

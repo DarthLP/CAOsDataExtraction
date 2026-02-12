@@ -438,11 +438,11 @@ class LeaveInfo(BaseModel):
     # Parental leave eligibility
     parental_tenure_req_present: bool = Field(
         default=False,
-        description="Set true only if the CAO explicitly requires minimum tenure with the employer before eligibility for parental leave."
+        description="Set true if the CAO explicitly addresses tenure for parental leave eligibility (either a minimum requirement or explicitly stated no minimum / universal right)."
     )
     parental_tenure_req: Optional[Amount] = Field(
         default=None,
-        description="Minimum tenure required for parental leave eligibility (e.g., value=12, unit='months'). Omit if parental_tenure_req_present = false."
+        description="Minimum tenure required for parental leave eligibility (e.g., value=12, unit='months'). Use value=0 when there is no minimum (everybody eligible). Omit if parental_tenure_req_present = false."
     )
 
     # Abortion

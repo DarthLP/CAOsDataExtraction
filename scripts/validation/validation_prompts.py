@@ -373,6 +373,11 @@ def build_validation_prompt(
         "",
         "## Instructions",
         "",
+    ])
+    if extraction_type == "non_salary":
+        lines.append("- Give extra attention to childcare_information fields (especially min_tenure_months) when validating.")
+        lines.append("")
+    lines.extend([
         "Return a single JSON object with: hallucination (score, rationale, issues), completeness (score, rationale, issues), accuracy (score, rationale), "
     ])
     if include_temporal_validity:

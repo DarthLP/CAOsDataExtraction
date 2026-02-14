@@ -38,6 +38,7 @@ USAGE:
     monitor.analyze_performance()
 """
 
+import errno
 import json
 import time
 import fcntl
@@ -546,8 +547,13 @@ class PerformanceMonitor:
                         raise
             except FileNotFoundError:
                 pass  # File doesn't exist yet, no duplicates to check
+            except OSError as e:
+                # If deduplication fails (e.g. Errno 60 timeout on network/synced fs), log and continue with append
+                if getattr(e, "errno", None) == errno.ETIMEDOUT:
+                    print(f"Warning: Deduplication skipped for {filename}: log file I/O timed out (often caused by network/synced drive; entry will be appended).")
+                else:
+                    print(f"Warning: Deduplication failed for {filename}: {e}")
             except Exception as e:
-                # If deduplication fails, log warning but continue with append
                 print(f"Warning: Deduplication failed for {filename}: {e}")
         
         # Ensure log directory exists

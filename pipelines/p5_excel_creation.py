@@ -28,6 +28,7 @@ OUTPUT:
 import os
 import sys
 import json
+import time
 import argparse
 from pathlib import Path
 from typing import List, Dict, Any, Optional
@@ -166,15 +167,11 @@ def match_cao_info(cao_number: str, filename: str, cao_info_mapping: Dict[str, D
     cao_info_key = f"{cao_number}:{expected_pdf_name}"
     cao_info = cao_info_mapping.get(cao_info_key, {})
     
-    if cao_info:
-        print(f'    Found CAO info by direct match: {cao_info_key}')
-    
     # If no exact match, try to find by PDF name only (in case CAO number folder is wrong)
     if not cao_info:
         for key, info in cao_info_mapping.items():
             if info.get('pdf_name', '') == expected_pdf_name:
                 cao_info = info
-                print(f'    Found CAO info by PDF name match: {key}')
                 break
     
     # Create metadata dict
@@ -188,10 +185,8 @@ def match_cao_info(cao_number: str, filename: str, cao_info_mapping: Dict[str, D
         'file_name': filename
     }
     
-    if cao_info:
-        print(f'    Added CAO info: id={metadata["id"]}, TTW={metadata["TTW"]}')
-    else:
-        print(f'    No CAO info found for CAO {cao_number}, filename {filename} (expected PDF: {expected_pdf_name})')
+    if not cao_info:
+        print(f'    Warning: No CAO info for {cao_number}/{filename} (expected PDF: {expected_pdf_name})')
     
     return metadata
 
@@ -218,11 +213,8 @@ def load_non_salary_data(cao_number: str, filename: str, llm_analysis_folder: Pa
                 with open(non_salary_file, 'r', encoding='utf-8') as f:
                     folder_data = json.load(f)
                     merged_data.update(folder_data)
-                print(f'    Loaded non-salary data from {folder}')
             except Exception as e:
                 print(f'    Warning: Could not load {non_salary_file}: {e}')
-        else:
-            print(f'    Warning: Non-salary file not found: {non_salary_file}')
     
     return merged_data
 
@@ -282,14 +274,25 @@ def determine_max_timeline_length(files: List[tuple]) -> int:
     - Super compact schema: parallel 'sd' and 'am' arrays
     """
     max_timeline = 0
+    salary_count = sum(1 for _, _, sf in files if sf is not None)
     
-    print("Determining max timeline length...")
+    print(f"Determining max timeline length ({salary_count} salary files)...")
+    done = 0
     for cao_number, base_filename, salary_file in files:
         if salary_file is None:
             continue  # Skip files without salary data
+        done += 1
+        if done % 200 == 0 or done == salary_count:
+            print(f"  Timeline scan: {done}/{salary_count} files")
+        elif done > 1200 and done % 50 == 0:
+            print(f"  Timeline scan: {done}/{salary_count} files")
         try:
+            t0 = time.time()
             with open(salary_file, 'r', encoding='utf-8') as f:
                 salary_data = json.load(f)
+            elapsed = time.time() - t0
+            if elapsed > 5.0:
+                print(f"  Slow file ({elapsed:.0f}s): {salary_file.parent.name}/{salary_file.name}")
                 # Handle both 'salary_information' (regular) and 'si' (compact/split/super compact)
                 salary_rows = salary_data.get('salary_information') or salary_data.get('si', [])
                 for salary_row in salary_rows:
@@ -358,7 +361,6 @@ def process_salary_file(cao_number: str, base_filename: str, salary_file: Option
         row = flatten_salary_row(salary_row, cao_metadata, max_timeline_length)
         excel_rows.append(row)
     
-    print(f'  {cao_number}: Processed {len(excel_rows)} salary rows from {salary_file.name}')
     return excel_rows
 
 def process_non_salary_file(cao_number: str, base_filename: str, cao_info_mapping: Dict[str, Dict[str, str]], 
@@ -373,7 +375,6 @@ def process_non_salary_file(cao_number: str, base_filename: str, cao_info_mappin
     # Convert to Excel row
     excel_row = flatten_non_salary_data(non_salary_data, cao_metadata)
     
-    print(f'  {cao_number}: Processed non-salary data for {base_filename}')
     return excel_row
 
 # =============================================================================
@@ -416,7 +417,8 @@ def main():
         successful_files = 0
         failed_files = []
         
-        for cao_number, base_filename, salary_file in all_files:
+        total = len(all_files)
+        for idx, (cao_number, base_filename, salary_file) in enumerate(all_files, 1):
             try:
                 # Process salary data (may be None if file doesn't exist)
                 salary_rows = process_salary_file(cao_number, base_filename, salary_file, cao_info_mapping, config, max_timeline_length)
@@ -427,8 +429,8 @@ def main():
                 non_salary_results.append(non_salary_row)
                 
                 successful_files += 1
-                file_name = salary_file.name if salary_file else f"{base_filename}_analysis.json (no salary)"
-                print(f'  {cao_number}: Processed {file_name}')
+                if idx % 200 == 0 or idx == total:
+                    print(f'  Progress: {idx}/{total} files')
             except Exception as e:
                 file_name = salary_file.name if salary_file else f"{base_filename}_analysis.json (no salary)"
                 print(f'  {cao_number}: Error processing {file_name}: {e}')

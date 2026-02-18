@@ -422,6 +422,30 @@ class LeaveInfo(BaseModel):
     )
 
     # Parental
+    parental_statutory_ref: bool = Field(
+        default=False,
+        description="True if the CAO explicitly mentions/references the statutory law (Work and Care Act / Wet arbeid en zorg) for parental leave and the provision is largely in line with it."
+    )
+    parental_exceptions: bool = Field(
+        default=False,
+        description="True if the CAO states any exceptions to the statutory rule (e.g. more favourable eligibility, different tenure/contract rules, 'Notwithstanding Article 6.3 … also entitled'). If true, fill eligibility sub-fields below; if false and statutory_ref is true, omit those sub-fields."
+    )
+    parental_eligibility_present: bool = Field(
+        default=False,
+        description="True if the CAO explicitly addresses eligibility for parental leave (tenure and/or contract length). Only when true fill parental_min_tenure and parental_min_contract_length. Capture only who is eligible / from when; do not use for pension breaks or ZW/insurance consequences."
+    )
+    parental_min_tenure: Optional[Amount] = Field(
+        default=None,
+        description="How long the employee must already have worked for this employer before becoming eligible (employment tenure), NOT the contract length. E.g. value=0 + unit=months = from day one; value=12 + unit=months = after 12 months with this employer. Use parental_min_contract_length for contract duration. Omit if not stated or parental_eligibility_present = false."
+    )
+    parental_min_contract_length: Optional[Amount] = Field(
+        default=None,
+        description="Minimum length (or threshold) of the employment contract for parental leave eligibility (e.g. 'contract of one year or less excluded' → value=12, unit=months). This is contract duration, not time already worked. Omit if not stated or parental_eligibility_present = false."
+    )
+    parental_note: str = Field(
+        default="",
+        description="Other parental-leave-related provisions not captured in eligibility/top-up fields: e.g. pension breaks, consequences after resuming employment (e.g. minimum work period for pension rights), ZW/Sickness Benefits Act or insurance consequences of unpaid leave. Leave empty if none."
+    )
     parental_topup_present: bool = Field(
         default=False,
         description="Set true only if an employer top-up for parental leave is explicitly stated."
@@ -433,16 +457,6 @@ class LeaveInfo(BaseModel):
     parental_unpaid: Optional[Amount] = Field(
         default=None,
         description="Duration of unpaid parental leave (e.g., value=26, unit='weeks')."
-    )
-
-    # Parental leave eligibility
-    parental_tenure_req_present: bool = Field(
-        default=False,
-        description="Set true if the CAO explicitly addresses tenure for parental leave eligibility (either a minimum requirement or explicitly stated no minimum / universal right)."
-    )
-    parental_tenure_req: Optional[Amount] = Field(
-        default=None,
-        description="Minimum tenure required for parental leave eligibility (e.g., value=12, unit='months'). Use value=0 when there is no minimum (everybody eligible). Omit if parental_tenure_req_present = false."
     )
 
     # Abortion
@@ -470,6 +484,14 @@ class LeaveInfo(BaseModel):
     )
 
     # Care leave
+    care_statutory_ref: bool = Field(
+        default=False,
+        description="True if the CAO explicitly mentions the statutory law (Work and Care Act) for care leave and the provision is largely in line with it. If true and care_exceptions is false, omit care sub-fields below."
+    )
+    care_exceptions: bool = Field(
+        default=False,
+        description="True if the CAO states any exceptions or CAO-specific rules for care leave (e.g. top-ups, longer durations). If true, fill short_term_care, long_term_care, pay levels, etc. where stated."
+    )
     care_topup_present: bool = Field(
         default=False,
         description="Set true only if the CAO explicitly tops up short-/long-term care leave."

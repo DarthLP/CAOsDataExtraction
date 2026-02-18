@@ -186,6 +186,11 @@ Split into 3 parts for performance:
 
 Each info class contains structured fields (Amount, AmountRange, booleans, strings, lists) representing specific CAO provisions.
 
+**Parental and care leave (Work and Care Act)**:
+- **Two booleans**: `parental_statutory_ref` (CAO mentions statutory law and is largely in line), `parental_exceptions` (CAO states exceptions). Same pattern for care: `care_statutory_ref`, `care_exceptions`. If statutory_ref true and exceptions false, omit eligibility/detail sub-fields; when exceptions true, fill them.
+- **Eligibility**: `parental_eligibility_present`, `parental_min_tenure` (employment tenure with employer), `parental_min_contract_length` (contract-duration threshold, e.g. contracts ≤1 year). Do not conflate tenure with contract length.
+- **Note**: `parental_note` captures other parental-leave text (pension breaks, consequences after resuming, ZW/insurance consequences); eligibility fields capture only who is eligible / from when.
+
 ### Excel Output Schema (`schema/excel_output_schema.py`)
 - Flattens nested Pydantic models into Excel columns
 - Handles Amount/AmountRange flattening (value + unit columns)

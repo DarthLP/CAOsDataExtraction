@@ -1,0 +1,10 @@
+---
+description: Use project conda environment for running and testing code
+alwaysApply: true
+---
+
+# Project environment
+
+- Always run code in this project's conda environment.
+- For this repo, use: **`conda activate caos-extract`** (or `conda run -n caos-extract`).
+- Never use the global/base conda environment or a different project's env (e.g. newsai_env) when running or testing code in CAOsDataExtraction.

@@ -3274,6 +3274,8 @@ def main():
         parser.add_argument('--process_id', type=int, default=0, help='Process ID for work distribution')
         parser.add_argument('--total_processes', type=int, default=1, help='Total number of parallel processes')
         parser.add_argument('--max_files', type=int, help='Maximum number of files to process')
+        parser.add_argument('--only_file', type=str, nargs='*', metavar='CAO/FILE',
+                           help='Only process these files (e.g. 2018/cao__sept_extract.json 1574/Tekst_CAO_GGZ_extract.json)')
         parser.add_argument('--resume_on_quota', type=lambda x: (str(x).lower() == 'true'), default=None,
                            help='Enable/disable automatic resume after quota (overrides config)')
         
@@ -3320,6 +3322,15 @@ def main():
         
         # Discover files
         all_files = discover_json_files(config.input_folder)
+        
+        # Optional: restrict to specific CAO/filename pairs
+        if getattr(args, 'only_file', None):
+            only_set = set(args.only_file)
+            all_files = [(cao_folder, json_file) for cao_folder, json_file in all_files
+                         if f"{cao_folder.name}/{json_file.name}" in only_set]
+            if not all_files:
+                print("No files match --only_file; check CAO number and filename (e.g. 2018/cao__sept_nieuw_1_april_2010_extract.json)")
+                return
         
         # Filter files for this process
         process_files = [f for i, f in enumerate(all_files) if i % args.total_processes == args.process_id]

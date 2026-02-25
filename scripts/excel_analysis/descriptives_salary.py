@@ -27,6 +27,8 @@ from datetime import datetime
 # Add the parent directory to Python path so we can import utils
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
+from scripts.excel_analysis.analysis_utils import parse_cao_date_series
+
 # =============================================================================
 # PATH CONFIGURATION
 # =============================================================================
@@ -295,9 +297,11 @@ def create_variable_health_sheet(df: pd.DataFrame) -> pd.DataFrame:
                 })
         
         elif var_type == "date":
-            # Check if this is a CAO metadata date column (DD/MM/YYYY format)
-            dayfirst = series.name in ['ingangsdatum', 'expiratiedatum', 'datum_kennisgeving']
-            date_series = pd.to_datetime(series, errors='coerce', dayfirst=dayfirst)
+            # CAO metadata date columns: use robust parser (DD/MM/YYYY)
+            if series.name in ['ingangsdatum', 'expiratiedatum', 'datum_kennisgeving']:
+                date_series = parse_cao_date_series(series, dayfirst=True)
+            else:
+                date_series = pd.to_datetime(series, errors='coerce')
             non_null_dates = date_series.dropna()
             if len(non_null_dates) > 0:
                 row.update({
@@ -1081,11 +1085,11 @@ def main():
         print("  ERROR: Input file is empty")
         return
     
-    # Parse date columns (CAO metadata dates are in DD/MM/YYYY format)
+    # Parse date columns (CAO metadata dates are DD/MM/YYYY; use robust parser)
     date_cols = ["ingangsdatum", "expiratiedatum", "datum_kennisgeving"]
     for col in date_cols:
         if col in df.columns:
-            df[col] = pd.to_datetime(df[col], errors='coerce', dayfirst=True)
+            df[col] = parse_cao_date_series(df[col], dayfirst=True)
             print(f"  Parsed {col} as datetime")
         else:
             print(f"  Warning: {col} column not found")

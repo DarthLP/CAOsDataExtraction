@@ -24,7 +24,7 @@ import sys
 import json
 import re
 from pathlib import Path
-from typing import Dict, List, Optional, Set
+from typing import Dict, List, Optional, Set, Tuple
 from collections import defaultdict
 
 # Add the parent directory to Python path
@@ -43,6 +43,11 @@ TRUNCATED_FOLDER_3 = "performance_logs/llm_analysis/max_tokens_truncated_3"
 TRUNCATED_FOLDER_2 = "performance_logs/llm_analysis/max_tokens_truncated_2"
 TRUNCATED_FOLDER_1 = "performance_logs/llm_analysis/max_tokens_truncated"
 CAO_INFO_CSV = "inputs/pdfs/extracted_cao_info.csv"
+# Fallback paths used when CAO_INFO_CSV is missing (e.g. project uses input_pdfs subfolder)
+CAO_INFO_CSV_CANDIDATES = [
+    "inputs/pdfs/extracted_cao_info.csv",
+    "inputs/pdfs/input_pdfs/extracted_cao_info.csv",
+]
 SALARY_CSV = "outputs/excel/new_results/extracted_data_salary.csv"
 PERFORMANCE_LOG_JSONL = "performance_logs/llm_analysis/analysis_performance_salary.jsonl"
 LLM_ANALYSIS_FOLDER = "outputs/llm_analysis"
@@ -78,41 +83,104 @@ def extract_cao_number_and_filename(truncated_filename: str) -> tuple:
     return None, None
 
 
+def extract_clean_filename(filename: str) -> str:
+    """
+    Extract a clean filename from a log filename (mirrors p4 extract_clean_filename for lookup).
+    Removes _extract.json/.json, trailing .docx/.pdf/.doc, normalizes underscores, caps length.
+    
+    Args:
+        filename: Original filename (e.g. "CAO_GHZ_2019-2021_definitief.docx_extract.json")
+        
+    Returns:
+        Clean filename (e.g. "CAO_GHZ_2019-2021_definitief")
+    """
+    clean_name = filename
+    if clean_name.endswith('_extract.json'):
+        clean_name = clean_name[:-13]
+    elif clean_name.endswith('.json'):
+        clean_name = clean_name[:-5]
+    for ext in ['.docx', '.pdf', '.doc']:
+        if clean_name.endswith(ext):
+            clean_name = clean_name[:-len(ext)]
+            break
+    clean_name = re.sub(r'_+', '_', clean_name)
+    clean_name = clean_name.strip('_')
+    if len(clean_name) > 100:
+        clean_name = clean_name[:100].rstrip('_')
+    return clean_name
+
+
+def _first_column(df: pd.DataFrame, alternatives: List[str]) -> Optional[str]:
+    """Return the first column name that exists in df, or None."""
+    for name in alternatives:
+        if name in df.columns:
+            return name
+    return None
+
+
 def load_cao_info(cao_info_path: str) -> Dict[str, Dict]:
     """
     Load CAO information from CSV file.
+    Accepts alternate column names (e.g. cao_numb, kennisgeving) for compatibility.
     
     Args:
-        cao_info_path: Path to CAO info CSV
+        cao_info_path: Path to CAO info CSV (config-driven path may differ; see project config)
         
     Returns:
         dict: Mapping from (cao_number, pdf_name) to CAO metadata
     """
     cao_info = {}
     
-    if not os.path.exists(cao_info_path):
-        print(f"  Warning: CAO info file not found: {cao_info_path}")
+    # Use first existing path: requested path, then candidate fallbacks
+    effective_path = cao_info_path
+    if not os.path.exists(effective_path):
+        for candidate in CAO_INFO_CSV_CANDIDATES:
+            if os.path.exists(candidate):
+                effective_path = candidate
+                print(f"  Using CAO info from: {effective_path}")
+                break
+    if not os.path.exists(effective_path):
+        print(f"  Warning: CAO info file not found (tried: {cao_info_path} and {len(CAO_INFO_CSV_CANDIDATES)} candidates)")
         return cao_info
     
     try:
-        df = pd.read_csv(cao_info_path, sep=';', encoding='utf-8')
+        df = pd.read_csv(effective_path, sep=';', encoding='utf-8')
         print(f"  Loaded {len(df)} CAO info records")
         
+        col_cao = _first_column(df, ['cao_number', 'cao_numb'])
+        col_pdf = _first_column(df, ['pdf_name', 'original_filenam', 'original_filename'])
+        col_id = _first_column(df, ['id'])
+        col_ingang = _first_column(df, ['ingangsdatum'])
+        col_expir = _first_column(df, ['expiratiedatum'])
+        col_kennis = _first_column(df, ['datum_kennisgeving', 'kennisgeving'])
+        col_sbi = _first_column(df, ['sbi_code'])
+        col_sector = _first_column(df, ['sector'])
+        
+        if not col_cao or not col_pdf:
+            print(f"  Warning: CAO info CSV missing required columns (cao_number, pdf_name)")
+            return cao_info
+        
         for _, row in df.iterrows():
-            cao_number = str(row.get('cao_number', ''))
-            pdf_name = str(row.get('pdf_name', ''))
-            if cao_number and pdf_name:
-                key = (cao_number, pdf_name)
-                cao_info[key] = {
-                    'cao_number': cao_number,
-                    'pdf_name': pdf_name,
-                    'id': str(row.get('id', '')),
-                    'ingangsdatum': str(row.get('ingangsdatum', '')),
-                    'expiratiedatum': str(row.get('expiratiedatum', '')),
-                    'datum_kennisgeving': str(row.get('datum_kennisgeving', '')),
-                    'sbi_code': str(row.get('sbi_code', '')),
-                    'sector': str(row.get('sector', ''))
-                }
+            cao_number = str(row.get(col_cao, '')) if col_cao else ''
+            pdf_name = str(row.get(col_pdf, '')) if col_pdf else ''
+            if pd.isna(cao_number) or pd.isna(pdf_name):
+                continue
+            cao_number = cao_number.strip()
+            pdf_name = str(pdf_name).strip()
+            if not cao_number or not pdf_name:
+                continue
+            key = (cao_number, pdf_name)
+            def _val(col): return ('' if pd.isna(row.get(col)) else str(row.get(col))) if col else ''
+            cao_info[key] = {
+                'cao_number': cao_number,
+                'pdf_name': pdf_name,
+                'id': _val(col_id),
+                'ingangsdatum': _val(col_ingang),
+                'expiratiedatum': _val(col_expir),
+                'datum_kennisgeving': _val(col_kennis),
+                'sbi_code': _val(col_sbi),
+                'sector': _val(col_sector)
+            }
     except Exception as e:
         print(f"  Warning: Could not load CAO info: {e}")
     
@@ -122,22 +190,28 @@ def load_cao_info(cao_info_path: str) -> Dict[str, Dict]:
 def match_cao_info(cao_number: str, filename: str, cao_info_dict: Dict) -> Optional[Dict]:
     """
     Match filename to CAO info using fuzzy matching.
+    Tries exact key (cao_number, filename + '.pdf') first when CSV stores pdf_name with .pdf.
     
     Args:
         cao_number: CAO number
-        filename: Original filename
+        filename: Original filename (clean, without .pdf)
         cao_info_dict: CAO info dictionary
         
     Returns:
         CAO info dict if found, None otherwise
     """
+    # Try exact key as in p5: expected_pdf_name = filename + '.pdf'
+    expected_pdf_name = filename + '.pdf'
+    if (cao_number, expected_pdf_name) in cao_info_dict:
+        return cao_info_dict[(cao_number, expected_pdf_name)]
+    
     # Normalize filename for matching (remove extensions, spaces, etc.)
     def normalize(s: str) -> str:
         return s.replace(' ', '').replace('-', '').replace('_', '').lower()
     
     normalized_filename = normalize(filename)
     
-    # Try exact match first
+    # Try fuzzy match: normalized substring
     for (cao_num, pdf_name), info in cao_info_dict.items():
         if cao_num == cao_number:
             normalized_pdf = normalize(pdf_name)
@@ -152,7 +226,7 @@ def match_cao_info(cao_number: str, filename: str, cao_info_dict: Dict) -> Optio
     return None
 
 
-def load_performance_logs(jsonl_path: str) -> Dict[str, Dict]:
+def load_performance_logs(jsonl_path: str) -> Tuple[Dict[str, Dict], Dict[Tuple[str, str], Dict]]:
     """
     Load performance logs to get file size and other metadata.
     
@@ -160,13 +234,15 @@ def load_performance_logs(jsonl_path: str) -> Dict[str, Dict]:
         jsonl_path: Path to performance log JSONL file
         
     Returns:
-        dict: Mapping from filename to performance log entry
+        Tuple of (logs_by_filename, logs_by_cao_clean). logs_by_filename maps full filename to entry;
+        logs_by_cao_clean maps (cao_number, clean_filename) to entry for lookup from truncated file names.
     """
     logs = {}
+    logs_by_cao_clean = {}
     
     if not os.path.exists(jsonl_path):
         print(f"  Warning: Performance log file not found: {jsonl_path}")
-        return logs
+        return logs, logs_by_cao_clean
     
     try:
         with open(jsonl_path, 'r', encoding='utf-8') as f:
@@ -176,8 +252,11 @@ def load_performance_logs(jsonl_path: str) -> Dict[str, Dict]:
                         entry = json.loads(line)
                         filename = entry.get('filename', '')
                         if filename:
-                            # Use filename as key, store latest entry if duplicates
                             logs[filename] = entry
+                            cao_number = str(entry.get('cao_number', ''))
+                            clean = extract_clean_filename(filename)
+                            if cao_number and clean:
+                                logs_by_cao_clean[(cao_number, clean)] = entry
                     except json.JSONDecodeError:
                         continue
         
@@ -185,7 +264,31 @@ def load_performance_logs(jsonl_path: str) -> Dict[str, Dict]:
     except Exception as e:
         print(f"  Warning: Could not load performance logs: {e}")
     
-    return logs
+    return logs, logs_by_cao_clean
+
+
+def get_perf_log(original_filename: str, cao_number: str,
+                 performance_logs: Dict[str, Dict],
+                 performance_logs_by_cao_clean: Dict[Tuple[str, str], Dict]) -> Dict:
+    """
+    Resolve performance log entry for a truncated file by trying multiple keys.
+    
+    Args:
+        original_filename: Clean filename from truncated file name
+        cao_number: CAO number
+        performance_logs: Dict keyed by full log filename
+        performance_logs_by_cao_clean: Dict keyed by (cao_number, clean_filename)
+        
+    Returns:
+        Log entry dict or empty dict if not found
+    """
+    perf = performance_logs.get(original_filename, {})
+    if perf:
+        return perf
+    perf = performance_logs.get(original_filename + '_extract.json', {})
+    if perf:
+        return perf
+    return performance_logs_by_cao_clean.get((cao_number, original_filename), {})
 
 
 def get_file_size_mb(file_path: Path) -> float:
@@ -273,15 +376,17 @@ def load_successful_files(salary_csv_path: str) -> Set[tuple]:
 # SHEET GENERATION
 # =============================================================================
 
-def create_sheet_00_overview(truncated_files: List[Dict], cao_info_dict: Dict, 
-                            performance_logs: Dict) -> pd.DataFrame:
+def create_sheet_00_overview(truncated_files: List[Dict], cao_info_dict: Dict,
+                            performance_logs: Dict,
+                            performance_logs_by_cao_clean: Dict[Tuple[str, str], Dict]) -> pd.DataFrame:
     """
     Create overview sheet with all truncated files and their metadata.
     
     Args:
         truncated_files: List of truncated file info
         cao_info_dict: CAO info dictionary
-        performance_logs: Performance log entries
+        performance_logs: Performance log entries keyed by filename
+        performance_logs_by_cao_clean: Performance log entries keyed by (cao_number, clean_filename)
         
     Returns:
         DataFrame with overview
@@ -295,8 +400,8 @@ def create_sheet_00_overview(truncated_files: List[Dict], cao_info_dict: Dict,
         # Match CAO info
         cao_info = match_cao_info(cao_number, original_filename, cao_info_dict)
         
-        # Get performance log info
-        perf_log = performance_logs.get(original_filename.replace('_extract.json', ''), {})
+        # Get performance log info (try multiple keys to match log entries)
+        perf_log = get_perf_log(original_filename, cao_number, performance_logs, performance_logs_by_cao_clean)
         
         row = {
             'cao_number': cao_number,
@@ -412,13 +517,15 @@ def create_sheet_02_by_sector(truncated_files: List[Dict], cao_info_dict: Dict) 
     return df
 
 
-def create_sheet_03_statistics(truncated_files: List[Dict], performance_logs: Dict) -> pd.DataFrame:
+def create_sheet_03_statistics(truncated_files: List[Dict], performance_logs: Dict,
+                               performance_logs_by_cao_clean: Dict[Tuple[str, str], Dict]) -> pd.DataFrame:
     """
     Create overall statistics.
     
     Args:
         truncated_files: List of truncated file info
-        performance_logs: Performance log entries
+        performance_logs: Performance log entries keyed by filename
+        performance_logs_by_cao_clean: Performance log entries keyed by (cao_number, clean_filename)
         
     Returns:
         DataFrame with statistics
@@ -447,7 +554,8 @@ def create_sheet_03_statistics(truncated_files: List[Dict], performance_logs: Di
     
     for file_info in truncated_files:
         original_filename = file_info['original_filename']
-        perf_log = performance_logs.get(original_filename.replace('_extract.json', ''), {})
+        cao_number = file_info['cao_number']
+        perf_log = get_perf_log(original_filename, cao_number, performance_logs, performance_logs_by_cao_clean)
         
         if perf_log.get('file_size_mb'):
             log_sizes.append(perf_log['file_size_mb'])
@@ -772,7 +880,7 @@ def main():
     
     print("\nLoading CAO info and performance logs...")
     cao_info_dict = load_cao_info(CAO_INFO_CSV)
-    performance_logs = load_performance_logs(PERFORMANCE_LOG_JSONL)
+    performance_logs, performance_logs_by_cao_clean = load_performance_logs(PERFORMANCE_LOG_JSONL)
     
     print("\nLoading successful files from salary CSV...")
     successful_files = load_successful_files(SALARY_CSV)
@@ -782,8 +890,14 @@ def main():
     sheets = {}
     
     try:
-        sheets["00_overview"] = create_sheet_00_overview(truncated_files, cao_info_dict, performance_logs)
+        sheets["00_overview"] = create_sheet_00_overview(
+            truncated_files, cao_info_dict, performance_logs, performance_logs_by_cao_clean)
         print(f"  Created sheet '00_overview' with {len(sheets['00_overview'])} rows")
+        # Optional diagnostics: how many rows have CAO info vs performance log data
+        if len(sheets["00_overview"]) > 0:
+            n_cao_match = (sheets["00_overview"]["id"].astype(str).str.strip() != "").sum()
+            n_perf_match = pd.notna(sheets["00_overview"].get("log_file_size_mb", pd.Series())).sum()
+            print(f"  Overview: {n_cao_match} rows with CAO info match, {n_perf_match} rows with performance log match")
     except Exception as e:
         print(f"  Error creating overview sheet: {e}")
         import traceback
@@ -809,7 +923,8 @@ def main():
         sheets["02_by_sector"] = pd.DataFrame()
     
     try:
-        sheets["03_statistics"] = create_sheet_03_statistics(truncated_files, performance_logs)
+        sheets["03_statistics"] = create_sheet_03_statistics(
+            truncated_files, performance_logs, performance_logs_by_cao_clean)
         print(f"  Created sheet '03_statistics' with {len(sheets['03_statistics'])} rows")
     except Exception as e:
         print(f"  Error creating statistics sheet: {e}")

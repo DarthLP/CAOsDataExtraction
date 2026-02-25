@@ -62,11 +62,17 @@ USAGE:
     With file limit:
         python pipelines/p4_analysis.py --key_number 7 --process_id 0 --total_processes 1 --max_files 10
 
+    Restrict to specific files (e.g. for testing):
+        python pipelines/p4_analysis.py --key_number 1 --process_id 0 --total_processes 1 --only_file 2018/cao__sept_nieuw_1_april_2010_extract.json 1574/Tekst_CAO_GGZ_2011_2013_juli_2012_extract.json
+        python -u pipelines/p4_analysis.py --key_number 1 --process_id 0 --total_processes 1 --only_file 2018/cao__sept_nieuw_1_april_2010_extract.json 1574/Tekst_CAO_GGZ_2011_2013_juli_2012_extract.json 750/Contractcateringbranche__Arbeidsvoorw_cao_extract.json 1574/Werkversie_CAO_GGZ_2011_extract.json 2948/CAO_VVT_2010_2012_nieuwe_aanmelding_okt__extract.json 3356/Hellende_Daken_2012_2013_TTW_24_02_2012_2de_extract.json > logs/p4_log_only_files.txt 2>&1 &
+    (If you omit --key_number, GOOGLE_API_KEY7 is used by default.) > logs/p4_log_only_files.txt 2>&1 &
+
 ARGUMENTS:
     --key_number: Which API key to use (1-22) - defaults to 7
     --process_id: Process ID for work distribution (0-based) - defaults to 0
     --total_processes: Total number of parallel processes - defaults to 1
     --max_files: Maximum number of files to process (optional)
+    --only_file: Only process these files; pass as CAO/filename (e.g. 2018/cao__sept_nieuw_1_april_2010_extract.json). Can be repeated.
 
 CONFIGURATION (at top of script):
     PAID_MODE: When True, most retry/split/lock delays are capped at PAID_MAX_SECONDS for paid-tier pacing.
@@ -245,20 +251,21 @@ class AnalysisConfig:
 
 def load_configuration() -> AnalysisConfig:
     """Load and validate configuration from config.yaml."""
-    with open('conf/config.yaml', 'r') as f:
-        config_data = yaml.safe_load(f)
-    
     # Resolve project root (two levels up from this file: pipelines/ -> repo root)
     project_root = Path(__file__).resolve().parents[1]
+    config_path = project_root / 'conf' / 'config.yaml'
+    with open(config_path, 'r') as f:
+        config_data = yaml.safe_load(f)
+    
     output_base = project_root / 'outputs' / 'llm_analysis'
     
     # Get resume_on_quota setting (default to True if not specified)
     resume_on_quota = config_data.get('resume_on_quota', True)
     
     return AnalysisConfig(
-        input_folder=config_data['paths']['outputs_json'] + "/new_flow",
+        input_folder=str(project_root / config_data['paths']['outputs_json'] / "new_flow"),
         output_folder=output_base,
-        cao_info_path=f"{config_data['paths']['inputs_pdfs']}/extracted_cao_info.csv",
+        cao_info_path=str(project_root / config_data['paths']['inputs_pdfs'] / "extracted_cao_info.csv"),
         resume_on_quota=resume_on_quota
     )
 
@@ -1082,6 +1089,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
     # Skip initial attempt if using compact schema from start
     last_error = None
     last_error_message = None
+    last_response = None  # Capture last API response for usage_metadata on failure log
     truncation_error_after_attempt_4 = False
     
     if not use_compact_schema_from_start:
@@ -1230,6 +1238,10 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
         except Exception as e:
             last_error = e  # Capture the initial error
             last_error_message = str(e)  # Track error message for retry guidance
+            try:
+                last_response = response
+            except NameError:
+                pass
     
     # Retry logic: regular -> compact (5-6) -> super compact (10). No split.
     if use_super_compact_from_start:
@@ -1504,6 +1516,10 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
         except Exception as e:
             last_error = e  # Update last error for each attempt
             last_error_message = str(e)  # Capture error message for retry guidance
+            try:
+                last_response = response  # For usage_metadata when logging failure
+            except NameError:
+                pass
             error_str = str(e)
             
             print(f'  DEBUG: Attempt {attempt + 1} failed: {type(e).__name__}: {e}')
@@ -1704,7 +1720,7 @@ def extract_salary_from_json(json_obj: dict, filename: str, client, context: Dic
                 filename=filename,
                 file_size_mb=file_size_mb,
                 processing_time=0,  # No processing time available for failures
-                usage_metadata=None,
+                usage_metadata=getattr(last_response, 'usage_metadata', None) if last_response else None,
                 success=False,
                 analysis_type="salary",
                 error_message=f"All retry attempts failed: {type(last_error).__name__}: {last_error}",
@@ -1865,6 +1881,11 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
         print(f'  Part 1: API call failed with error: {type(e).__name__}: {e}')
         last_error = e
         last_error_message = None
+        last_response = None
+        try:
+            last_response = response
+        except NameError:
+            pass
         
         # Retry logic with proper attempt tracking
         attempt = 0  # Current attempt number (for parameters)
@@ -1987,6 +2008,10 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
             except Exception as e:
                 last_error = e
                 last_error_message = str(e)
+                try:
+                    last_response = response
+                except NameError:
+                    pass
                 print(f'  Part 1: Attempt {attempt + 1} failed: {type(e).__name__}: {e}')
                 
                 # Check if quota was exhausted during this attempt (before calling handle_llm_errors)
@@ -2047,7 +2072,7 @@ def extract_nonsalary_part1_from_json(json_obj: dict, filename: str, client, con
                 filename=filename,
                 file_size_mb=file_size_mb,
                 processing_time=0,
-                usage_metadata=None,
+                usage_metadata=getattr(last_response, 'usage_metadata', None) if last_response else None,
                 success=False,
                 analysis_type="non_salary_part1",
                 error_message=f"All retry attempts failed: {type(last_error).__name__}: {last_error}",
@@ -2202,6 +2227,11 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
         print(f'  DEBUG: Part 2 API call failed with error: {type(e).__name__}: {e}')
         last_error = e
         last_error_message = None
+        last_response = None
+        try:
+            last_response = response
+        except NameError:
+            pass
         
         # Retry logic with proper attempt tracking
         for attempt in range(model_params["max_retries"] + 1):
@@ -2322,6 +2352,10 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
             except Exception as e:
                 last_error = e
                 last_error_message = str(e)
+                try:
+                    last_response = response
+                except NameError:
+                    pass
                 print(f'  DEBUG: Part 2 attempt {attempt + 1} failed: {type(e).__name__}: {e}')
                 
                 # Check if quota was exhausted during this attempt (before calling handle_llm_errors)
@@ -2382,7 +2416,7 @@ def extract_nonsalary_part2_from_json(json_obj: dict, filename: str, client, con
                 filename=filename,
                 file_size_mb=file_size_mb,
                 processing_time=0,
-                usage_metadata=None,
+                usage_metadata=getattr(last_response, 'usage_metadata', None) if last_response else None,
                 success=False,
                 analysis_type="non_salary_part2",
                 error_message=f"All retry attempts failed: {type(last_error).__name__}: {last_error}",
@@ -2545,6 +2579,11 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
         print(f'  DEBUG: Part 3 API call failed with error: {type(e).__name__}: {e}')
         last_error = e
         last_error_message = None
+        last_response = None
+        try:
+            last_response = response
+        except NameError:
+            pass
         
         # Retry logic with proper attempt tracking
         for attempt in range(model_params["max_retries"] + 1):
@@ -2665,6 +2704,10 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
             except Exception as e:
                 last_error = e
                 last_error_message = str(e)
+                try:
+                    last_response = response
+                except NameError:
+                    pass
                 print(f'  DEBUG: Part 3 attempt {attempt + 1} failed: {type(e).__name__}: {e}')
                 
                 # Check if quota was exhausted during this attempt (before calling handle_llm_errors)
@@ -2725,7 +2768,7 @@ def extract_nonsalary_part3_from_json(json_obj: dict, filename: str, client, con
                 filename=filename,
                 file_size_mb=file_size_mb,
                 processing_time=0,
-                usage_metadata=None,
+                usage_metadata=getattr(last_response, 'usage_metadata', None) if last_response else None,
                 success=False,
                 analysis_type="non_salary_part3",
                 error_message=f"All retry attempts failed: {type(last_error).__name__}: {last_error}",
@@ -3329,8 +3372,11 @@ def main():
             all_files = [(cao_folder, json_file) for cao_folder, json_file in all_files
                          if f"{cao_folder.name}/{json_file.name}" in only_set]
             if not all_files:
-                print("No files match --only_file; check CAO number and filename (e.g. 2018/cao__sept_nieuw_1_april_2010_extract.json)")
+                print("No files match --only_file. Check CAO number and filename.")
+                print("  Example: 2018/cao__sept_nieuw_1_april_2010_extract.json")
+                print("  Requested:", only_set)
                 return
+            print(f"Restricting to {len(all_files)} file(s): {[f'{c.name}/{j.name}' for c, j in all_files]}")
         
         # Filter files for this process
         process_files = [f for i, f in enumerate(all_files) if i % args.total_processes == args.process_id]

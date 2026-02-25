@@ -215,9 +215,8 @@ def group_cao_timeline(df: pd.DataFrame, cao_number_col: str = 'cao_number',
     for cao_num, group in df.groupby(cao_number_col):
         # Convert date column to datetime for sorting (CAO metadata dates are in DD/MM/YYYY format)
         group_copy = group.copy()
-        # CAO metadata dates (ingangsdatum, expiratiedatum, datum_kennisgeving) are in DD/MM/YYYY format
         dayfirst = date_col in ['ingangsdatum', 'expiratiedatum', 'datum_kennisgeving']
-        group_copy[date_col] = pd.to_datetime(group_copy[date_col], errors='coerce', dayfirst=dayfirst)
+        group_copy[date_col] = parse_cao_date_series(group_copy[date_col], dayfirst=dayfirst)
         
         # Sort by date
         group_copy = group_copy.sort_values(date_col)
@@ -384,6 +383,53 @@ def create_crosstab_summary(df: pd.DataFrame, bool_col: str,
     }
 
 
+def parse_cao_date_series(date_series: pd.Series, dayfirst: bool = True) -> pd.Series:
+    """
+    Parse a series of date strings robustly for CAO metadata (ingangsdatum, etc.).
+    Tries DD/MM/YYYY first, then ISO YYYY-MM-DD, then dateutil for remaining.
+    
+    Args:
+        date_series: Series of date strings (or already datetime)
+        dayfirst: Prefer DD/MM/YYYY when True (default for CAO metadata)
+        
+    Returns:
+        Series of datetime64[ns], with NaT for unparseable/empty values
+    """
+    if date_series.empty:
+        return pd.Series(dtype='datetime64[ns]')
+    # Already datetime
+    if pd.api.types.is_datetime64_any_dtype(date_series):
+        return date_series
+    out = pd.to_datetime(date_series, errors='coerce', dayfirst=dayfirst)
+    # For values still NaT, try ISO format
+    still_nat = out.isna() & date_series.notna()
+    raw = date_series.astype(str).str.strip()
+    still_nat = still_nat & (raw != '') & (raw.str.lower() != 'nan')
+    if still_nat.any():
+        try:
+            iso_parsed = pd.to_datetime(date_series.loc[still_nat], format='%Y-%m-%d', errors='coerce')
+            out = out.fillna(iso_parsed)
+        except (ValueError, TypeError):
+            pass
+    # Last resort: dateutil for remaining non-empty strings
+    still_nat = out.isna() & date_series.notna()
+    raw = date_series.astype(str).str.strip()
+    still_nat = still_nat & (raw != '') & (raw.str.lower() != 'nan')
+    if still_nat.any():
+        try:
+            from dateutil import parser as dateutil_parser
+            def parse_one(v):
+                try:
+                    return dateutil_parser.parse(str(v), dayfirst=dayfirst)
+                except (ValueError, TypeError):
+                    return pd.NaT
+            filled = date_series.loc[still_nat].apply(parse_one)
+            out = out.fillna(filled)
+        except ImportError:
+            pass
+    return out
+
+
 def extract_year_from_date(date_series: pd.Series, dayfirst: bool = True) -> pd.Series:
     """
     Extract year from date series for temporal analysis.
@@ -395,7 +441,7 @@ def extract_year_from_date(date_series: pd.Series, dayfirst: bool = True) -> pd.
     Returns:
         Series with years
     """
-    return pd.to_datetime(date_series, errors='coerce', dayfirst=dayfirst).dt.year
+    return parse_cao_date_series(date_series, dayfirst=dayfirst).dt.year
 
 
 def analyze_amount_ranges(df: pd.DataFrame, min_col: str, max_col: str, 

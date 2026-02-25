@@ -47,6 +47,8 @@ import matplotlib.pyplot as plt
 # Add the parent directory to Python path so we can import utils
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
+from scripts.excel_analysis.analysis_utils import parse_cao_date_series
+
 # =============================================================================
 # PATH CONFIGURATION
 # =============================================================================
@@ -816,9 +818,8 @@ def build_latest_cao_forward_fill(df: pd.DataFrame, cao_col: str = "cao_number",
         if date_col not in df_copy.columns:
             print(f"  Warning: Neither 'start_year' nor '{date_col}' found")
             return pd.DataFrame()
-        # CAO metadata dates (ingangsdatum, expiratiedatum, datum_kennisgeving) are in DD/MM/YYYY format
         dayfirst = date_col in ['ingangsdatum', 'expiratiedatum', 'datum_kennisgeving']
-        df_copy[date_col] = pd.to_datetime(df_copy[date_col], errors='coerce', dayfirst=dayfirst)
+        df_copy[date_col] = parse_cao_date_series(df_copy[date_col], dayfirst=dayfirst)
         df_copy["start_year"] = df_copy[date_col].dt.year
     else:
         # Ensure start_year is numeric
@@ -883,10 +884,7 @@ def prepare_year_column(df: pd.DataFrame) -> pd.DataFrame:
         raise ValueError("Column 'ingangsdatum' not found in data")
     
     # Parse date column (CAO metadata dates are in DD/MM/YYYY format)
-    df["ingangsdatum"] = pd.to_datetime(
-        df["ingangsdatum"], errors='coerce', dayfirst=True
-    )
-    
+    df["ingangsdatum"] = parse_cao_date_series(df["ingangsdatum"], dayfirst=True)
     # Create start_year column
     df["start_year"] = df["ingangsdatum"].dt.year
     
@@ -1382,7 +1380,7 @@ def plot_contract_counts_comparison(df: pd.DataFrame, output_dir: Path) -> None:
         return
     
     # Parse both date columns (CAO metadata dates are in DD/MM/YYYY format)
-    df_copy["ingangsdatum"] = pd.to_datetime(df_copy["ingangsdatum"], errors='coerce', dayfirst=True)
+    df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
     df_copy[contract_date_col] = pd.to_datetime(df_copy[contract_date_col], errors='coerce')
     
     # Extract years from both columns

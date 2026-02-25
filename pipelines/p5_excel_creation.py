@@ -293,20 +293,20 @@ def determine_max_timeline_length(files: List[tuple]) -> int:
             elapsed = time.time() - t0
             if elapsed > 5.0:
                 print(f"  Slow file ({elapsed:.0f}s): {salary_file.parent.name}/{salary_file.name}")
-                # Handle both 'salary_information' (regular) and 'si' (compact/split/super compact)
-                salary_rows = salary_data.get('salary_information') or salary_data.get('si', [])
-                for salary_row in salary_rows:
-                    # Check for super compact schema with parallel arrays (sd/am)
-                    if 'sd' in salary_row and 'am' in salary_row:
-                        # Super compact schema: use length of sd or am array
-                        sd_array = salary_row.get('sd', [])
-                        am_array = salary_row.get('am', [])
-                        timeline_length = max(len(sd_array), len(am_array))
-                        max_timeline = max(max_timeline, timeline_length)
-                    else:
-                        # Regular/compact/split schema: nested timeline format
-                        timeline = salary_row.get('timeline') or salary_row.get('tl', [])
-                        max_timeline = max(max_timeline, len(timeline))
+            # Handle both 'salary_information' (regular) and 'si' (compact/split/super compact)
+            salary_rows = salary_data.get('salary_information') or salary_data.get('si', [])
+            for salary_row in salary_rows:
+                # Check for super compact schema with parallel arrays (sd/am)
+                if 'sd' in salary_row and 'am' in salary_row:
+                    # Super compact schema: use length of sd or am array
+                    sd_array = salary_row.get('sd', [])
+                    am_array = salary_row.get('am', [])
+                    timeline_length = max(len(sd_array), len(am_array))
+                    max_timeline = max(max_timeline, timeline_length)
+                else:
+                    # Regular/compact/split schema: nested timeline format
+                    timeline = salary_row.get('timeline') or salary_row.get('tl', [])
+                    max_timeline = max(max_timeline, len(timeline))
         except Exception as e:
             print(f"Warning: Could not read {salary_file} for timeline analysis: {e}")
     
@@ -315,12 +315,13 @@ def determine_max_timeline_length(files: List[tuple]) -> int:
 
 def process_salary_file(cao_number: str, base_filename: str, salary_file: Optional[Path], 
                        cao_info_mapping: Dict[str, Dict[str, str]], config: ExcelConfig, 
-                       max_timeline_length: int) -> List[dict]:
+                       max_timeline_length: int, empty_salary_count: Optional[List[int]] = None) -> List[dict]:
     """
     Process a single salary file and return Excel rows.
     
     Args:
         salary_file: Path to salary file, or None if file doesn't exist (has non-salary but no salary)
+        empty_salary_count: Optional list of one int to increment when a placeholder row is created (for summary logging)
     """
     excel_rows = []
     
@@ -337,6 +338,8 @@ def process_salary_file(cao_number: str, base_filename: str, salary_file: Option
     
     # If no salary rows found, create a placeholder row to track that this file was processed
     if not salary_rows or len(salary_rows) == 0:
+        if empty_salary_count is not None:
+            empty_salary_count[0] += 1
         # Get CAO metadata
         cao_metadata = match_cao_info(cao_number, base_filename, cao_info_mapping)
         # Create a minimal row with just metadata to track this file
@@ -350,7 +353,6 @@ def process_salary_file(cao_number: str, base_filename: str, salary_file: Option
             placeholder_row.update(cao_metadata)
         # Note: Empty salary fields will be filled by DataFrame creation to maintain schema
         excel_rows.append(placeholder_row)
-        print(f'  {cao_number}: No salary data found in {salary_file.name} (created placeholder row)')
         return excel_rows
     
     # Get CAO metadata
@@ -416,12 +418,13 @@ def main():
         non_salary_results = []
         successful_files = 0
         failed_files = []
+        empty_salary_count = [0]  # Count files with empty salary_information (placeholder rows)
         
         total = len(all_files)
         for idx, (cao_number, base_filename, salary_file) in enumerate(all_files, 1):
             try:
                 # Process salary data (may be None if file doesn't exist)
-                salary_rows = process_salary_file(cao_number, base_filename, salary_file, cao_info_mapping, config, max_timeline_length)
+                salary_rows = process_salary_file(cao_number, base_filename, salary_file, cao_info_mapping, config, max_timeline_length, empty_salary_count)
                 salary_results.extend(salary_rows)
                 
                 # Process non-salary data
@@ -436,30 +439,33 @@ def main():
                 print(f'  {cao_number}: Error processing {file_name}: {e}')
                 failed_files.append(file_name)
         
+        if empty_salary_count[0] > 0:
+            print(f'  {empty_salary_count[0]} files had empty salary_information (placeholder rows created)')
+        
         # Create DataFrames and save Excel files
         if salary_results:
             try:
                 # Get column definitions with dynamic max timeline length
                 salary_columns = get_salary_columns(max_timeline_length)
                 
-                # Create DataFrame
+                print(f'  Building salary DataFrame ({len(salary_results):,} rows)...')
+                t0 = time.time()
                 df_salary = pd.DataFrame(salary_results)
-                
                 # Ensure all columns exist (fill missing with empty values)
                 missing_cols = [col for col in salary_columns if col not in df_salary.columns]
                 if missing_cols:
                     df_salary = pd.concat([df_salary, pd.DataFrame(columns=missing_cols)], axis=1)
-                
                 # Reorder columns
                 df_salary = df_salary[salary_columns]
-                
-                print(f'  Created salary DataFrame with {len(df_salary)} rows and {len(df_salary.columns)} columns')
+                print(f'  Created salary DataFrame with {len(df_salary):,} rows and {len(df_salary.columns)} columns ({time.time() - t0:.1f}s)')
                 print(f'  Max timeline length used: {max_timeline_length}')
                 
                 # Save salary CSV
                 salary_output_path = config.output_folder / "extracted_data_salary.csv"
+                print(f'  Writing salary CSV to {salary_output_path}...')
+                t0 = time.time()
                 df_salary.to_csv(salary_output_path, index=False, encoding='utf-8', sep=';')
-                print(f'  Saved salary CSV file: {salary_output_path}')
+                print(f'  Saved salary CSV file ({time.time() - t0:.1f}s)')
                 
             except Exception as e:
                 print(f'  ERROR creating salary CSV file: {e}')
@@ -469,29 +475,28 @@ def main():
                 # Get column definitions
                 non_salary_columns = get_non_salary_columns()
                 
-                # Create DataFrame
+                print(f'  Building non-salary DataFrame ({len(non_salary_results):,} rows)...')
+                t0 = time.time()
                 df_non_salary = pd.DataFrame(non_salary_results)
-                
                 # Ensure all columns exist (fill missing with empty values)
                 missing_cols = [col for col in non_salary_columns if col not in df_non_salary.columns]
                 if missing_cols:
                     df_non_salary = pd.concat([df_non_salary, pd.DataFrame(columns=missing_cols)], axis=1)
-                
                 # Add any additional columns that were created by flattening but not in the schema
                 additional_cols = [col for col in df_non_salary.columns if col not in non_salary_columns]
                 if additional_cols:
                     print(f'  Adding {len(additional_cols)} additional columns from flattening (Amount/AmountRange)')
                     non_salary_columns.extend(additional_cols)
-                
                 # Reorder columns
                 df_non_salary = df_non_salary[non_salary_columns]
-            
-                print(f'  Created non-salary DataFrame with {len(df_non_salary)} rows and {len(df_non_salary.columns)} columns')
+                print(f'  Created non-salary DataFrame with {len(df_non_salary):,} rows and {len(df_non_salary.columns)} columns ({time.time() - t0:.1f}s)')
                 
                 # Save non-salary CSV
                 non_salary_output_path = config.output_folder / "extracted_data_non_salary.csv"
+                print(f'  Writing non-salary CSV...')
+                t0 = time.time()
                 df_non_salary.to_csv(non_salary_output_path, index=False, encoding='utf-8', sep=';')
-                print(f'  Saved non-salary CSV file: {non_salary_output_path}')
+                print(f'  Saved non-salary CSV file ({time.time() - t0:.1f}s)')
                 
             except Exception as e:
                 print(f'  ERROR creating non-salary CSV file: {e}')

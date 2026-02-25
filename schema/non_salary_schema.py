@@ -434,14 +434,20 @@ class LeaveInfo(BaseModel):
         default=False,
         description="True if the CAO explicitly addresses eligibility for parental leave (tenure and/or contract length). Only when true fill parental_min_tenure and parental_min_contract_length. Capture only who is eligible / from when; do not use for pension breaks or ZW/insurance consequences."
     )
-    parental_min_tenure: Optional[Amount] = Field(
-        default=None,
-        description="How long the employee must already have worked for this employer before becoming eligible (employment tenure), NOT the contract length. E.g. value=0 + unit=months = from day one; value=12 + unit=months = after 12 months with this employer. Use parental_min_contract_length for contract duration. Omit if not stated or parental_eligibility_present = false."
-    )
     parental_min_contract_length: Optional[Amount] = Field(
         default=None,
-        description="Minimum length (or threshold) of the employment contract for parental leave eligibility (e.g. 'contract of one year or less excluded' → value=12, unit=months). This is contract duration, not time already worked. Omit if not stated or parental_eligibility_present = false."
+        description="Minimum length (or threshold) of the employment contract for parental leave eligibility (e.g. 'contract of one year or less excluded' → value=12, unit=months). This is contract duration, NOT time already worked (tenure). Do NOT use for pension breaks, ZW/insurance consequences or other special cases. Omit if not stated or parental_eligibility_present = false."
     )
+    parental_min_tenure: Optional[Amount] = Field(
+        default=None,
+        description="""Minimum employment TENURE (time with this employer) required before eligible. no minimum = value=0 + unit=months. 
+        If the CAO says e.g. 'less than one year are also entitled' and states no other lower limit, record 0. Only record a positive value when the CAO explicitly requires at least that much tenure. 
+        Use parental_min_contract_length for contract duration. 
+        IMPORTANT:Do NOT use for pension breaks, ZW/insurance consequences or other special cases. 
+        Omit if not stated or parental_eligibility_present = false.
+        """
+    
+    )   
     parental_note: str = Field(
         default="",
         description="Other parental-leave-related provisions not captured in eligibility/top-up fields: e.g. pension breaks, consequences after resuming employment (e.g. minimum work period for pension rights), ZW/Sickness Benefits Act or insurance consequences of unpaid leave. Leave empty if none."
@@ -1227,23 +1233,23 @@ class NonSalaryPart1(BaseModel):
     """
     general_information: GeneralInfo = Field(
         default_factory=GeneralInfo,
-        description="General CAO contract information including dates, scope, retroactivity, and classification."
+        description=""
     )
     bonuses_info: BonusesInfo = Field(
         default_factory=BonusesInfo,
-        description="Bonus and incentive schemes beyond base salary (sign-on, 13th month, profit sharing, etc.)."
+        description=""
     )
     wage_scales_info: WageScalesInfo = Field(
         default_factory=WageScalesInfo,
-        description="Wage scale progression rules including entry steps, personal allowances, and performance variations."
+        description=""
     )
     pension_information: PensionInfo = Field(
         default_factory=PensionInfo,
-        description="Pension scheme details including contributions, accrual rates, retirement ages, and heterogeneity."
+        description=""
     )
     termination_information: TerminationInfo = Field(
         default_factory=TerminationInfo,
-        description="Termination and notice period rules including severance, dismissal protection, and probation periods."
+        description=""
     )
 
 # Folder: non_salary/lea_ove_tra
@@ -1258,15 +1264,26 @@ class NonSalaryPart2(BaseModel):
     """
     leave_information: LeaveInfo = Field(
         default_factory=LeaveInfo,
-        description="Leave entitlements including maternity, paternity, parental, sick, care, and vacation leave."
+        description="""
+        Parental:
+            - parental_min_tenure = employment tenure (time with this employer); parental_min_contract_length = contract duration threshold.
+            - Do NOT use pension breaks, post-resume conditions, or ZW/insurance for eligibility fields like parental_min_tenure or parental_min_contract_length; put them in parental_note.
+            - "Less than X entitled" with no other minimum stated → parental_min_tenure = 0.
+            - When parental_statutory_ref true and parental_exceptions false, omit eligibility sub-fields.
+
+        Care:
+            - When care_statutory_ref true and care_exceptions false, omit care detail sub-fields.
+        """
     )
     overtime_information: OvertimeInfo = Field(
         default_factory=OvertimeInfo,
-        description="Overtime rules including triggers, compensation, allowances, and working time limits."
+        description="""
+        """
     )
     training_information: TrainingInfo = Field(
         default_factory=TrainingInfo,
-        description="Training and education provisions including time allowances, budgets, and cost reimbursement."
+        description="""
+        """
     )
 
 # Folder: non_salary/hom_con_saf_chi_ai_fri
@@ -1284,27 +1301,27 @@ class NonSalaryPart3(BaseModel):
     """
     homeoffice_information: HomeofficeInfo = Field(
         default_factory=HomeofficeInfo,
-        description="Home office/telework provisions including entitlements, stipends, and cost reimbursement."
+        description=""
     )
     contract_type_information: ContractTypeInfo = Field(
         default_factory=ContractTypeInfo,
-        description="Contract type rules including full-time hours, part-time, min-max contracts, and conversion rights."
+        description=""
     )
     safety_information: SafetyInfo = Field(
         default_factory=SafetyInfo,
-        description="Safety and integrity provisions including protocols, counsellors, reporting channels, and wellbeing programs."
+        description=""
     )
     childcare_information: ChildcareInfo = Field(
         default_factory=ChildcareInfo,
-        description="Childcare support including monetary support, in-house facilities, discounts, and eligibility requirements."
+        description=""
     )
     ai_information: AIInfo = Field(
         default_factory=AIInfo,
-        description="AI/algorithmic management policies including automated decisions, governance, and training rights."
+        description=""
     )
     fringe_benefits_information: FringeBenefitsInfo = Field(
         default_factory=FringeBenefitsInfo,
-        description="Fringe benefits including commuting, meal benefits, health insurance, and other non-salary benefits."
+        description=""
     )
 
 
@@ -1331,6 +1348,7 @@ NON_SALARY_PROMPT = """Extract structured information from a JSON object derived
 
     EXTRACTION GUIDELINES
         - Extract factual information for each field based on the schema descriptions.
+        - Important rules for specific fields can appear in the description of each topic (e.g. leave_information); follow those when filling that topic.
         - Include relevant conditions, exceptions, and legal references in note fields.
         - Missing values: Omit optional fields entirely. Only include optional fields with actual values.
         - Do NOT compare to statutory law or mark "above statutory" unless the CAO explicitly says so.

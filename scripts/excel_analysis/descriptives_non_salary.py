@@ -28,7 +28,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 
 # Import analysis utilities
 from scripts.excel_analysis.analysis_utils import (
-    calculate_descriptive_stats, create_boolean_summary
+    calculate_descriptive_stats, create_boolean_summary, parse_cao_date_series
 )
 
 # =============================================================================
@@ -478,9 +478,8 @@ def build_latest_cao_view(df: pd.DataFrame, cao_col: str = "cao_number",
     
     # Parse date column (CAO metadata dates are in DD/MM/YYYY format)
     df_copy = df.copy()
-    # CAO metadata dates (ingangsdatum, expiratiedatum, datum_kennisgeving) are in DD/MM/YYYY format
     dayfirst = date_col in ['ingangsdatum', 'expiratiedatum', 'datum_kennisgeving']
-    df_copy[date_col] = pd.to_datetime(df_copy[date_col], errors='coerce', dayfirst=dayfirst)
+    df_copy[date_col] = parse_cao_date_series(df_copy[date_col], dayfirst=dayfirst)
     
     # Check if we have valid dates
     valid_dates = df_copy[date_col].notna()
@@ -644,9 +643,8 @@ def create_variable_health_sheet(df: pd.DataFrame) -> pd.DataFrame:
                 })
         
         elif var_type == "date":
-            # Check if this is a CAO metadata date column (DD/MM/YYYY format)
             dayfirst = series.name in ['ingangsdatum', 'expiratiedatum', 'datum_kennisgeving']
-            date_series = pd.to_datetime(series, errors='coerce', dayfirst=dayfirst)
+            date_series = parse_cao_date_series(series, dayfirst=dayfirst)
             non_null_dates = date_series.dropna()
             if len(non_null_dates) > 0:
                 row.update({
@@ -739,9 +737,7 @@ def create_sample_overview_sheet(df: pd.DataFrame, df_latest: pd.DataFrame) -> p
     # a) Panel by start year
     if "ingangsdatum" in df.columns:
         df_copy = df.copy()
-        df_copy["ingangsdatum"] = pd.to_datetime(
-            df_copy["ingangsdatum"], errors='coerce', dayfirst=True
-        )
+        df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
         df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
         
         for year, year_group in df_copy.groupby("start_year"):
@@ -859,7 +855,7 @@ def create_sample_overview_sheet(df: pd.DataFrame, df_latest: pd.DataFrame) -> p
     # d) Date comparison: ingangsdatum (website) vs general_start_date (PDF)
     if "ingangsdatum" in df.columns and "general_start_date" in df.columns:
         df_dates = df.copy()
-        df_dates["ingangsdatum"] = pd.to_datetime(df_dates["ingangsdatum"], errors='coerce', dayfirst=True)
+        df_dates["ingangsdatum"] = parse_cao_date_series(df_dates["ingangsdatum"], dayfirst=True)
         df_dates["general_start_date"] = pd.to_datetime(
             df_dates["general_start_date"], errors='coerce'
         )
@@ -963,9 +959,7 @@ def create_domain_coverage_by_year_sheet(df: pd.DataFrame) -> pd.DataFrame:
         return pd.DataFrame(columns=['start_year', 'domain', 'share_with_domain', 'n_rows_year'])
     
     df_copy = df.copy()
-    df_copy["ingangsdatum"] = pd.to_datetime(
-        df_copy["ingangsdatum"], errors='coerce', dayfirst=True
-    )
+    df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
     df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
     
     results = []
@@ -1083,9 +1077,7 @@ def create_headline_features_by_year_sheet(df: pd.DataFrame) -> pd.DataFrame:
         return pd.DataFrame(columns=['start_year', 'domain', 'feature', 'share_true', 'n_rows_year'])
     
     df_copy = df.copy()
-    df_copy["ingangsdatum"] = pd.to_datetime(
-        df_copy["ingangsdatum"], errors='coerce', dayfirst=True
-    )
+    df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
     df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
     
     results = []
@@ -1168,9 +1160,7 @@ def create_numeric_by_period_sheet(df: pd.DataFrame) -> pd.DataFrame:
         return pd.DataFrame(columns=['variable', 'period', 'n_nonmissing', 'mean', 'median'])
     
     df_copy = df.copy()
-    df_copy["ingangsdatum"] = pd.to_datetime(
-        df_copy["ingangsdatum"], errors='coerce', dayfirst=True
-    )
+    df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
     df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
     
     # Define periods
@@ -1233,9 +1223,7 @@ def create_modern_before_after_sheet(df: pd.DataFrame) -> pd.DataFrame:
                                      'share_true_late_period_year_ge_2020', 'diff_late_minus_early'])
     
     df_copy = df.copy()
-    df_copy["ingangsdatum"] = pd.to_datetime(
-        df_copy["ingangsdatum"], errors='coerce', dayfirst=True
-    )
+    df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
     df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
     
     # Define periods
@@ -1291,7 +1279,7 @@ def create_missing_dates_overview_sheet(df: pd.DataFrame) -> pd.DataFrame:
     
     # Parse date columns
     df_copy = df.copy()
-    df_copy["ingangsdatum"] = pd.to_datetime(df_copy["ingangsdatum"], errors='coerce', dayfirst=True)
+    df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
     
     # Try to find contract start date column
     contract_date_col = None
@@ -1351,7 +1339,7 @@ def create_missing_dates_details_sheet(df: pd.DataFrame, missing_type: str) -> p
         DataFrame with details of missing date rows
     """
     df_copy = df.copy()
-    df_copy["ingangsdatum"] = pd.to_datetime(df_copy["ingangsdatum"], errors='coerce', dayfirst=True)
+    df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
     
     # Try to find contract start date column
     contract_date_col = None
@@ -1384,18 +1372,16 @@ def create_missing_dates_details_sheet(df: pd.DataFrame, missing_type: str) -> p
     if "id" in missing_df.columns:
         key_cols.append("id")
     
-    # Add other date information
+    # Add other date information (format dates as DD/MM/YYYY for Excel)
     if missing_type == 'ingangsdatum':
         missing_df['has_other_date'] = missing_df[contract_date_col].notna()
-        # Handle NaT values properly
         missing_df['other_date_value'] = missing_df[contract_date_col].apply(
-            lambda x: x.strftime('%Y-%m-%d') if pd.notna(x) else ''
+            lambda x: x.strftime('%d/%m/%Y') if pd.notna(x) else ''
         )
     else:
         missing_df['has_other_date'] = missing_df["ingangsdatum"].notna()
-        # Handle NaT values properly
         missing_df['other_date_value'] = missing_df["ingangsdatum"].apply(
-            lambda x: x.strftime('%Y-%m-%d') if pd.notna(x) else ''
+            lambda x: x.strftime('%d/%m/%Y') if pd.notna(x) else ''
         )
     
     # Add other date columns
@@ -1408,6 +1394,13 @@ def create_missing_dates_details_sheet(df: pd.DataFrame, missing_type: str) -> p
     result_cols = [col for col in result_cols if col in missing_df.columns]
     
     result_df = missing_df[result_cols].copy()
+    
+    # Format datetime columns as DD/MM/YYYY strings so Excel shows date without time
+    for col in result_df.columns:
+        if pd.api.types.is_datetime64_any_dtype(result_df[col]):
+            result_df[col] = result_df[col].apply(
+                lambda x: x.strftime('%d/%m/%Y') if pd.notna(x) else ''
+            )
     
     # Replace NaN with None for Excel compatibility
     result_df = result_df.where(pd.notna(result_df), None)
@@ -1427,7 +1420,7 @@ def create_missing_dates_variable_fill_sheet(df: pd.DataFrame, missing_type: str
         DataFrame with variable fill statistics
     """
     df_copy = df.copy()
-    df_copy["ingangsdatum"] = pd.to_datetime(df_copy["ingangsdatum"], errors='coerce', dayfirst=True)
+    df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
     
     # Try to find contract start date column
     contract_date_col = None
@@ -1565,31 +1558,33 @@ def create_cao_dates_timeline_sheet(df: pd.DataFrame) -> pd.DataFrame:
     df_copy = df.copy()
     
     # Parse date column (CAO metadata dates are in DD/MM/YYYY format)
-    df_copy["ingangsdatum"] = pd.to_datetime(
-        df_copy["ingangsdatum"], errors='coerce', dayfirst=True
-    )
+    df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
     
-    # Filter to rows with valid CAO number and date
+    # All unique CAOs from full df (include CAOs with no valid ingangsdatum)
+    all_cao_numbers = df_copy["cao_number"].dropna().astype(str).unique()
+    # Rows with valid CAO number and date (for timeline content)
     valid_mask = df_copy["cao_number"].notna() & df_copy["ingangsdatum"].notna()
     df_valid = df_copy[valid_mask].copy()
     
-    if len(df_valid) == 0:
-        print(f"  Warning: No valid rows with both cao_number and ingangsdatum")
-        return pd.DataFrame(columns=['cao_number', 'n_files'])
-    
-    # Group by CAO number and collect dates
-    results = []
-    max_files = 0
-    
     # Convert cao_number to string for consistent grouping
     df_valid["cao_number"] = df_valid["cao_number"].astype(str)
+    # File count per CAO from full df (for CAOs with no dates)
+    file_count_per_cao = df_copy[df_copy["cao_number"].notna()].groupby(
+        df_copy["cao_number"].astype(str)
+    ).size()
+    
+    # Group by CAO number and collect dates (only from df_valid)
+    results = []
+    max_files = 0
+    caos_with_dates = set()
     
     for cao_number, group in df_valid.groupby("cao_number"):
         # Count occurrences of each unique date
         dates = group["ingangsdatum"].dropna()
         if len(dates) == 0:
-            continue  # Skip if no valid dates
+            continue
         
+        caos_with_dates.add(str(cao_number))
         # Count files per unique date
         date_counts = dates.value_counts().sort_index()  # Sort by date
         
@@ -1602,26 +1597,33 @@ def create_cao_dates_timeline_sheet(df: pd.DataFrame) -> pd.DataFrame:
                 date_count_pairs.append((date_str, int(count)))
                 total_files += count
             except (AttributeError, ValueError):
-                # Skip invalid dates
                 continue
         
         if len(date_count_pairs) == 0:
-            continue  # Skip if no valid formatted dates
+            continue
         
         max_files = max(max_files, len(date_count_pairs))
         
-        # Create row with CAO number and date-count pairs
         row = {
             'cao_number': str(cao_number),
-            'n_files': total_files  # Sum of all counts
+            'n_files': total_files
         }
-        
-        # Add date and count columns in pairs
         for i, (date_str, count) in enumerate(date_count_pairs, start=1):
             row[f'file_{i}_date'] = date_str
             row[f'file_{i}_count'] = count
-        
         results.append(row)
+    
+    # Include CAOs with no valid ingangsdatum (one row each: cao_number, n_files, no dates)
+    for cao_number in all_cao_numbers:
+        if cao_number in caos_with_dates:
+            continue
+        n_files = int(file_count_per_cao.get(cao_number, 0))
+        if n_files == 0:
+            continue
+        results.append({
+            'cao_number': str(cao_number),
+            'n_files': n_files
+        })
     
     if len(results) == 0:
         print(f"  Warning: No results generated")
@@ -1638,6 +1640,8 @@ def create_cao_dates_timeline_sheet(df: pd.DataFrame) -> pd.DataFrame:
             result_df[date_col] = ''
         if count_col not in result_df.columns:
             result_df[count_col] = 0
+        result_df[date_col] = result_df[date_col].fillna('')
+        result_df[count_col] = result_df[count_col].fillna(0)
     
     # Reorder columns: cao_number, n_files, then file_1_date, file_1_count, file_2_date, file_2_count, etc.
     if max_files > 0:
@@ -1691,9 +1695,7 @@ def main():
     
     # Parse date column (CAO metadata dates are in DD/MM/YYYY format)
     if "ingangsdatum" in df.columns:
-        df["ingangsdatum"] = pd.to_datetime(
-            df["ingangsdatum"], errors='coerce', dayfirst=True
-        )
+        df["ingangsdatum"] = parse_cao_date_series(df["ingangsdatum"], dayfirst=True)
         print(f"  Parsed ingangsdatum as datetime")
     else:
         print(f"  Warning: ingangsdatum column not found")
@@ -2012,43 +2014,22 @@ def main():
             "09_missing_dates_overview": [
                 "NOTES:",
                 "Overview of missing date analysis for ingangsdatum and general_start_date.",
-                "",
-                "Key findings:",
-                "  - Total rows: 1580",
-                "  - Rows missing ingangsdatum: 46 (2.9%)",
-                "  - Rows missing general_start_date: 5 (0.3%)",
-                "  - Rows missing both: 1 (0.06%)",
-                "",
-                "The sets are NOT disjoint - there is 1 overlapping row (CAO 1393).",
-                "Most rows missing ingangsdatum still have general_start_date (45/46).",
-                "Most rows missing general_start_date still have ingangsdatum (4/5)."
+                "See the metric/value columns above for current counts.",
+                "  - Rows missing ingangsdatum: rows where website date is missing",
+                "  - Rows missing general_start_date: rows where PDF date is missing",
+                "  - Sets disjoint? Yes if no row is missing both dates."
             ],
             "10_missing_ingangsdatum_details": [
                 "NOTES:",
                 "Detailed list of rows missing ingangsdatum (website date).",
-                "",
-                "Observations:",
-                "  - 46 rows across 12 unique CAOs",
-                "  - Most (45/46) have general_start_date",
-                "  - All have expiratiedatum and datum_kennisgeving",
-                "  - Mostly ABU CAO files",
-                "  - High domain coverage (bonus, pension, leave, termination, etc.)",
-                "",
                 "has_other_date: Whether the row has general_start_date",
-                "other_date_value: The value of general_start_date if available"
+                "other_date_value: The value of general_start_date if available (DD/MM/YYYY)."
             ],
             "11_missing_contract_start_det": [
                 "NOTES:",
                 "Detailed list of rows missing general_start_date (PDF date).",
-                "",
-                "Observations:",
-                "  - 5 rows across 5 unique CAOs",
-                "  - Most (4/5) have ingangsdatum",
-                "  - Lower domain coverage compared to rows missing ingangsdatum",
-                "  - Includes special files like 'Reglement_Garantiefonds' and 'Tussentijdse_wijziging'",
-                "",
                 "has_other_date: Whether the row has ingangsdatum",
-                "other_date_value: The value of ingangsdatum if available"
+                "other_date_value: The value of ingangsdatum if available (DD/MM/YYYY)."
             ],
             "12_missing_ingangs_var_fill": [
                 "NOTES:",

@@ -47,7 +47,14 @@ import matplotlib.pyplot as plt
 # Add the parent directory to Python path so we can import utils
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from scripts.excel_analysis.analysis_utils import parse_cao_date_series
+from scripts.excel_analysis.analysis_utils import (
+    build_latest_cao_forward_fill_by_file,
+    parse_cao_date_series,
+    filter_non_salary_for_plot,
+    get_plot_color_cycle,
+    enforce_integer_year_axis,
+    parse_updated_topics_cell,
+)
 
 # =============================================================================
 # PATH CONFIGURATION
@@ -55,6 +62,13 @@ from scripts.excel_analysis.analysis_utils import parse_cao_date_series
 INPUT_EXCEL_PATH = "outputs/excel/new_results/extracted_data_non_salary.csv"
 OUTPUT_DIR = "outputs/analysis/figures/"
 MIN_OBS_PER_YEAR = 3  # Minimum observations per year to include in plot
+
+# Columns that mix numeric and text in CSV exports; force str so read_csv does not
+# chunk-infer mixed dtypes ( DtypeWarning ) without using low_memory=False.
+_MIXED_TYPE_STRING_COLS: Tuple[str, ...] = (
+    "childcare_support_cap_unit",
+    "childcare_min_fte_unit",
+)
 
 # =============================================================================
 # VARIABLE DEFINITIONS
@@ -259,6 +273,37 @@ BOOLEAN_DOMAIN_GROUPS = {
         ]
     },
 }
+
+def plot_document_type_and_topics(df: pd.DataFrame, output_dir: Path) -> None:
+    """
+    Plot general_document_type distribution and top updated topics.
+    """
+    if "general_document_type" in df.columns:
+        counts = df["general_document_type"].fillna("unknown").astype(str).str.lower().value_counts()
+        fig, ax = plt.subplots(figsize=(10, 5))
+        ax.bar(counts.index.tolist(), counts.values.tolist(), color=get_plot_color_cycle(len(counts)))
+        ax.set_title("Non-salary document type distribution", fontsize=14)
+        ax.set_xlabel("general_document_type")
+        ax.set_ylabel("Count")
+        plt.xticks(rotation=35, ha="right")
+        plt.tight_layout()
+        plt.savefig(output_dir / "non_salary_document_type_distribution.png", dpi=300, bbox_inches="tight")
+        plt.close()
+
+    if "general_updated_topics" in df.columns:
+        parsed = df["general_updated_topics"].apply(lambda v: parse_updated_topics_cell(v)[0] if pd.notna(v) else [])
+        flat = [item for sublist in parsed for item in sublist]
+        if flat:
+            vc = pd.Series(flat).value_counts().head(10)
+            fig, ax = plt.subplots(figsize=(10, 5))
+            ax.bar(vc.index.tolist(), vc.values.tolist(), color=get_plot_color_cycle(len(vc)))
+            ax.set_title("Top 10 general_updated_topics mentions", fontsize=14)
+            ax.set_xlabel("updated topic")
+            ax.set_ylabel("Count")
+            plt.xticks(rotation=35, ha="right")
+            plt.tight_layout()
+            plt.savefig(output_dir / "non_salary_updated_topics_top10.png", dpi=300, bbox_inches="tight")
+            plt.close()
 
 # Clear labels for boolean variables (with explanations where needed)
 BOOLEAN_LABELS = {
@@ -739,8 +784,6 @@ def normalize_boolean(series: pd.Series) -> pd.Series:
     Returns:
         Series with normalized boolean values (True/False/NaN)
     """
-    result = series.copy()
-    
     # Map common boolean representations
     bool_map = {
         1: True, 0: False,
@@ -753,10 +796,11 @@ def normalize_boolean(series: pd.Series) -> pd.Series:
         "TRUE": True, "FALSE": False,
     }
     
-    # Apply mapping where applicable
+    # Apply mapping without Series.replace (avoids deprecated downcasting warnings).
+    result = series.astype(object).copy()
     for val, bool_val in bool_map.items():
-        result = result.replace(val, bool_val)
-    
+        result = result.mask(result == val, bool_val)
+
     # Convert to boolean, keeping NaN
     result = result.astype(object)
     result = result.where(result.isin([True, False, np.nan]), np.nan)
@@ -764,13 +808,35 @@ def normalize_boolean(series: pd.Series) -> pd.Series:
     return result
 
 
+def log_memory(label: str, frame: pd.DataFrame) -> None:
+    """
+    Log approximate DataFrame memory in MB for run diagnostics.
+
+    Args:
+        label: Checkpoint label
+        frame: DataFrame to inspect
+
+    Returns:
+        None
+    """
+    try:
+        mem_mb = frame.memory_usage(deep=True).sum() / (1024 * 1024)
+        print(f"  [MEM] {label}: {mem_mb:,.2f} MB")
+    except Exception:
+        pass
+
+
 def load_data(input_path: str) -> pd.DataFrame:
     """
     Load data from Excel or CSV file.
-    
+
+    For semicolon CSVs, reads the header once then loads with str dtypes only for
+    columns listed in _MIXED_TYPE_STRING_COLS (avoids mixed-type DtypeWarning
+    without low_memory=False).
+
     Args:
         input_path: Path to input file (Excel or CSV)
-        
+
     Returns:
         DataFrame with loaded data
     """
@@ -783,8 +849,18 @@ def load_data(input_path: str) -> pd.DataFrame:
     if input_file.suffix.lower() in ['.xlsx', '.xls']:
         df = pd.read_excel(input_path)
     else:
-        # Try CSV with semicolon separator (as used in descriptives script)
-        df = pd.read_csv(input_path, sep=';', encoding='utf-8')
+        # Header-only read to build targeted dtypes (minimal RAM); avoids DtypeWarning
+        # on columns that mix types without setting low_memory=False.
+        header = pd.read_csv(input_path, sep=";", encoding="utf-8", nrows=0)
+        dtype_spec = {
+            name: str
+            for name in _MIXED_TYPE_STRING_COLS
+            if name in header.columns
+        }
+        read_kw: dict = {"sep": ";", "encoding": "utf-8"}
+        if dtype_spec:
+            read_kw["dtype"] = dtype_spec
+        df = pd.read_csv(input_path, **read_kw)
     
     return df
 
@@ -807,13 +883,7 @@ def build_latest_cao_forward_fill(df: pd.DataFrame, cao_col: str = "cao_number",
     Returns:
         DataFrame with forward-filled contract data (one row per CAO-year combination)
     """
-    if cao_col not in df.columns:
-        print(f"  Warning: Column '{cao_col}' not found for latest CAO forward-fill")
-        return pd.DataFrame()
-    
     df_copy = df.copy()
-    
-    # Create start_year if it doesn't exist
     if "start_year" not in df_copy.columns:
         if date_col not in df_copy.columns:
             print(f"  Warning: Neither 'start_year' nor '{date_col}' found")
@@ -821,51 +891,13 @@ def build_latest_cao_forward_fill(df: pd.DataFrame, cao_col: str = "cao_number",
         dayfirst = date_col in ['ingangsdatum', 'expiratiedatum', 'datum_kennisgeving']
         df_copy[date_col] = parse_cao_date_series(df_copy[date_col], dayfirst=dayfirst)
         df_copy["start_year"] = df_copy[date_col].dt.year
-    else:
-        # Ensure start_year is numeric
-        df_copy["start_year"] = pd.to_numeric(df_copy["start_year"], errors='coerce')
-    
-    # Filter to valid rows
-    valid_mask = df_copy[cao_col].notna() & df_copy["start_year"].notna()
-    df_copy = df_copy[valid_mask].copy()
-    
-    if len(df_copy) == 0:
-        return pd.DataFrame()
-    
-    # Get year range from actual contract start years
-    min_year = int(df_copy["start_year"].min())
-    max_year = int(df_copy["start_year"].max())
-    all_years = range(min_year, max_year + 1)
-    
-    # Sort by CAO and start_year
-    df_copy = df_copy.sort_values([cao_col, "start_year"])
-    
-    # For each CAO, forward-fill contract data
-    result_rows = []
-    
-    for cao_num in df_copy[cao_col].unique():
-        cao_data = df_copy[df_copy[cao_col] == cao_num].copy()
-        
-        # Get contract years for this CAO (actual contract start years)
-        contract_years = sorted([int(y) for y in cao_data["start_year"].unique()])
-        
-        # For each year in the range, determine which contract applies
-        for year in all_years:
-            # Find the most recent contract that started on or before this year
-            applicable_contracts = [cy for cy in contract_years if cy <= year]
-            
-            if applicable_contracts:
-                # Use the latest contract that started before or in this year
-                applicable_year = max(applicable_contracts)
-                contract_row = cao_data[cao_data["start_year"] == applicable_year].iloc[0].copy()
-                contract_row["start_year"] = year  # Set to current year for aggregation
-                result_rows.append(contract_row)
-    
-    if len(result_rows) == 0:
-        return pd.DataFrame()
-    
-    result_df = pd.DataFrame(result_rows)
-    return result_df
+    return build_latest_cao_forward_fill_by_file(
+        df_copy,
+        cao_col=cao_col,
+        year_col="start_year",
+        file_col="file_name",
+        order_date_col=date_col if date_col in df_copy.columns else None,
+    )
 
 
 def prepare_year_column(df: pd.DataFrame) -> pd.DataFrame:
@@ -1038,7 +1070,8 @@ def compute_boolean_trends(df: pd.DataFrame, var_name: str, start_year_col: str,
 
 
 def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path, 
-                       min_obs: int = 3, use_latest_cao_view: bool = False) -> None:
+                       min_obs: int = 3, use_latest_cao_view: bool = False,
+                       df_latest_view: Optional[pd.DataFrame] = None) -> None:
     """
     Plot numeric variable trends grouped by figure.
     
@@ -1051,11 +1084,9 @@ def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
     """
     # Use latest CAO view if requested
     if use_latest_cao_view:
-        if "cao_number" not in df.columns:
-            print(f"  [WARN] Column 'cao_number' not found; cannot create latest CAO view.")
-            return
-        df_plot = build_latest_cao_forward_fill(df, cao_col="cao_number", 
-                                                date_col="ingangsdatum")
+        df_plot = df_latest_view if df_latest_view is not None else build_latest_cao_forward_fill(
+            df, cao_col="cao_number", date_col="ingangsdatum"
+        )
         if len(df_plot) == 0:
             print(f"  [WARN] Latest CAO view is empty; skipping.")
             return
@@ -1065,6 +1096,7 @@ def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
         df_plot = df
         suffix = ""
     
+    df_plot_local = filter_non_salary_for_plot(df_plot)
     for fig_filename, var_list in NUMERIC_FIGURE_GROUPS.items():
         # Add suffix to filename if using latest CAO view
         base_filename = fig_filename.replace('.png', '')
@@ -1075,7 +1107,7 @@ def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
         sample_sizes = {}
         
         for var_name in var_list:
-            if var_name not in df_plot.columns:
+            if var_name not in df_plot_local.columns:
                 print(f"  [WARN] Column '{var_name}' not found; skipping numeric trend.")
                 continue
             
@@ -1089,7 +1121,7 @@ def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
                                           "training_time_yearly_value"]
             # Note: pension_retire_age_normal_value is in years (age), no normalization needed
             
-            means, counts = compute_numeric_trends(df_plot, var_name, start_year_col, min_obs, 
+            means, counts = compute_numeric_trends(df_plot_local, var_name, start_year_col, min_obs,
                                                    normalize_hours=normalize_hours,
                                                    default_ft_hours=38.0)
             
@@ -1127,9 +1159,9 @@ def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
             all_years.update(means.index)
         
         # Fill in CAO counts for all years in plot
-        if "cao_number" in df_plot.columns:
+        if "cao_number" in df_plot_local.columns:
             for year in all_years:
-                year_data = df_plot[df_plot[start_year_col] == year]
+                year_data = df_plot_local[df_plot_local[start_year_col] == year]
                 if len(year_data) > 0:
                     cao_counts[year] = year_data["cao_number"].nunique()
                 else:
@@ -1138,13 +1170,13 @@ def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
         # Create plot with secondary axis for CAO counts
         fig, ax1 = plt.subplots(figsize=(10, 6))
         
-        for var_name, means in plot_data:
-            ax1.plot(means.index, means.values, marker='o', label=var_name, linewidth=2)
+        colors = get_plot_color_cycle(len(plot_data))
+        for i, (var_name, means) in enumerate(plot_data):
+            ax1.plot(means.index.astype(int), means.values, marker='o', label=var_name, linewidth=2, color=colors[i])
         
         ax1.set_xlabel("Contract start year", fontsize=12)
         # Set x-axis limits and ticks (2007-2027, every 2 years)
-        ax1.set_xlim(2007, 2027)
-        ax1.set_xticks(range(2007, 2028, 2))
+        enforce_integer_year_axis(ax1, [int(y) for y in all_years])
         # Determine y-axis label based on variables in the plot
         has_hours_vars = any("hours" in v for v, _ in plot_data)
         has_leave_vars = any("leave" in v for v, _ in plot_data)
@@ -1194,7 +1226,8 @@ def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
 
 
 def plot_boolean_trends_by_domain(df: pd.DataFrame, start_year_col: str, output_dir: Path,
-                                  min_obs: int = 3, use_latest_cao_view: bool = False) -> None:
+                                  min_obs: int = 3, use_latest_cao_view: bool = False,
+                                  df_latest_view: Optional[pd.DataFrame] = None) -> None:
     """
     Plot boolean variable trends grouped by domain (share of TRUE over time).
     
@@ -1211,11 +1244,9 @@ def plot_boolean_trends_by_domain(df: pd.DataFrame, start_year_col: str, output_
     
     # Use latest CAO view if requested
     if use_latest_cao_view:
-        if "cao_number" not in df.columns:
-            print(f"  [WARN] Column 'cao_number' not found; cannot create latest CAO view.")
-            return
-        df_plot = build_latest_cao_forward_fill(df, cao_col="cao_number", 
-                                                date_col="ingangsdatum")
+        df_plot = df_latest_view if df_latest_view is not None else build_latest_cao_forward_fill(
+            df, cao_col="cao_number", date_col="ingangsdatum"
+        )
         if len(df_plot) == 0:
             print(f"  [WARN] Latest CAO view is empty; skipping.")
             return
@@ -1223,6 +1254,7 @@ def plot_boolean_trends_by_domain(df: pd.DataFrame, start_year_col: str, output_
     else:
         df_plot = df
     
+    df_plot_local = filter_non_salary_for_plot(df_plot)
     # Plot each domain group
     for domain_key, domain_info in sorted(BOOLEAN_DOMAIN_GROUPS.items()):
         base_filename = domain_info["filename"].replace('.png', '')
@@ -1237,11 +1269,11 @@ def plot_boolean_trends_by_domain(df: pd.DataFrame, start_year_col: str, output_
         
         # Collect data for this domain
         for var_name in var_list:
-            if var_name not in df_plot.columns:
+            if var_name not in df_plot_local.columns:
                 print(f"  [WARN] Column '{var_name}' not found; skipping boolean trend.")
                 continue
             
-            shares, counts = compute_boolean_trends(df_plot, var_name, start_year_col, min_obs)
+            shares, counts = compute_boolean_trends(df_plot_local, var_name, start_year_col, min_obs)
             
             if shares is None or len(shares) == 0:
                 print(f"  [WARN] Column '{var_name}' has insufficient data; skipping.")
@@ -1269,14 +1301,12 @@ def plot_boolean_trends_by_domain(df: pd.DataFrame, start_year_col: str, output_
         
         # Compute CAO counts per year
         cao_counts = {}
-        if "cao_number" in df_plot.columns:
-            # Collect all years from plot data
-            all_years = set()
-            for _, shares in plot_data:
-                all_years.update(shares.index)
-            
+        all_years = set()
+        for _, shares in plot_data:
+            all_years.update(shares.index)
+        if "cao_number" in df_plot_local.columns:
             for year in all_years:
-                year_data = df_plot[df_plot[start_year_col] == year]
+                year_data = df_plot_local[df_plot_local[start_year_col] == year]
                 if len(year_data) > 0:
                     cao_counts[year] = year_data["cao_number"].nunique()
                 else:
@@ -1286,17 +1316,17 @@ def plot_boolean_trends_by_domain(df: pd.DataFrame, start_year_col: str, output_
         fig, ax1 = plt.subplots(figsize=(12, 7))
         
         # Plot shares on primary axis
-        for var_name, shares in plot_data:
+        colors = get_plot_color_cycle(len(plot_data))
+        for i, (var_name, shares) in enumerate(plot_data):
             # Use clear label with explanation if available
             label = BOOLEAN_LABELS.get(var_name, var_name.replace('_', ' ').title())
-            ax1.plot(shares.index, shares.values * 100, marker='o', label=label, 
-                    linewidth=2, markersize=6)
+            ax1.plot(shares.index.astype(int), shares.values * 100, marker='o', label=label,
+                    linewidth=2, markersize=6, color=colors[i])
         
         ax1.set_xlabel("Contract start year", fontsize=12)
         ax1.set_ylabel("Share of contracts with feature (%)", fontsize=12)
         # Set x-axis limits and ticks (2007-2027, every 2 years)
-        ax1.set_xlim(2007, 2027)
-        ax1.set_xticks(range(2007, 2028, 2))
+        enforce_integer_year_axis(ax1, [int(y) for y in all_years])
         title_suffix = " (Latest CAO View)" if use_latest_cao_view else ""
         ax1.set_title(f"{title}{title_suffix}", fontsize=14)
         ax1.grid(True, alpha=0.3)
@@ -1509,6 +1539,7 @@ def main():
     try:
         df = load_data(INPUT_EXCEL_PATH)
         print(f"  Loaded {len(df)} rows and {len(df.columns)} columns")
+        log_memory("raw_non_salary", df)
     except Exception as e:
         print(f"  ERROR: Could not load input file: {e}")
         return
@@ -1532,6 +1563,13 @@ def main():
         print(f"  ERROR in contract counts comparison: {e}")
         import traceback
         traceback.print_exc()
+
+    try:
+        plot_document_type_and_topics(df, output_dir)
+    except Exception as e:
+        print(f"  ERROR in document type/topics plots: {e}")
+        import traceback
+        traceback.print_exc()
     
     # Prepare year column
     print("\nPreparing year column...")
@@ -1539,14 +1577,26 @@ def main():
         df = prepare_year_column(df)
         print(f"  Data after year extraction: {len(df)} rows")
         print(f"  Year range: {int(df['start_year'].min())} - {int(df['start_year'].max())}")
+        log_memory("prepared_non_salary", df)
     except Exception as e:
         print(f"  ERROR: Could not prepare year column: {e}")
         return
+
+    print("\nBuilding latest CAO view once...")
+    try:
+        df_latest_view = build_latest_cao_forward_fill(df, cao_col="cao_number", date_col="ingangsdatum")
+        print(f"  Latest CAO view rows: {len(df_latest_view)}")
+        if len(df_latest_view) > 0:
+            log_memory("latest_non_salary", df_latest_view)
+    except Exception as e:
+        print(f"  Warning: Could not build latest CAO view: {e}")
+        df_latest_view = pd.DataFrame()
     
     # Generate plots
     print("\n" + "="*80)
     print("Generating plots...")
     print("="*80)
+    print("Recommendation: run heavy scripts sequentially in a single process.")
     
     # Generate standard numeric plots
     try:
@@ -1558,7 +1608,9 @@ def main():
     
     # Generate Latest CAO View numeric plots
     try:
-        plot_numeric_trends(df, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=True)
+        plot_numeric_trends(
+            df, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=True, df_latest_view=df_latest_view
+        )
     except Exception as e:
         print(f"  ERROR in numeric trends (latest CAO view): {e}")
         import traceback
@@ -1574,7 +1626,9 @@ def main():
     
     # Generate Latest CAO View boolean plots by domain
     try:
-        plot_boolean_trends_by_domain(df, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=True)
+        plot_boolean_trends_by_domain(
+            df, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=True, df_latest_view=df_latest_view
+        )
     except Exception as e:
         print(f"  ERROR in boolean trends (latest CAO view): {e}")
         import traceback

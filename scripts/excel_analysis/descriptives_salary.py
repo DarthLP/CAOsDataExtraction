@@ -14,10 +14,15 @@ INPUT:
 
 OUTPUT:
     - outputs/analysis/salary_descriptives.xlsx (multi-sheet Excel workbook)
+    - outputs/analysis/salary_increase_events_derived.csv (always written; sep ';')
+    - outputs/analysis/salary_increase_conversion_diagnostics.csv (always written; sep ';')
+    - outputs/analysis/salary_increase_csv_vs_diff_comparison.csv (sep ';')
+    - outputs/analysis/salary_monthly_band_summary.csv (single-row band exclusion summary; sep ';')
 """
 
 import os
 import sys
+import warnings
 from pathlib import Path
 from typing import Dict, List, Any, Optional, Union
 import pandas as pd
@@ -27,7 +32,16 @@ from datetime import datetime
 # Add the parent directory to Python path so we can import utils
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from scripts.excel_analysis.analysis_utils import parse_cao_date_series
+from scripts.excel_analysis.analysis_utils import (
+    build_long_salary_from_wide,
+    coerce_salary_amount_scalar,
+    detect_salary_slot_indices,
+    parse_cao_date_series,
+)
+from scripts.excel_analysis.salary_increase_derivation import (
+    compute_band_summary_stats,
+    derive_salary_increase_series,
+)
 
 # =============================================================================
 # PATH CONFIGURATION
@@ -49,9 +63,6 @@ def normalize_boolean(series: pd.Series) -> pd.Series:
     Returns:
         Series with normalized boolean values
     """
-    result = series.copy()
-    
-    # Map common boolean representations
     bool_map = {
         1: True, 0: False,
         "1": True, "0": False,
@@ -62,16 +73,47 @@ def normalize_boolean(series: pd.Series) -> pd.Series:
         "True": True, "False": False,
         "TRUE": True, "FALSE": False,
     }
-    
-    # Apply mapping where applicable
-    for val, bool_val in bool_map.items():
-        result = result.replace(val, bool_val)
+
+    # Scalar map avoids Series.replace downcasting FutureWarning in modern pandas.
+    def _cell(x: Any) -> Any:
+        if x is None:
+            return np.nan
+        try:
+            if pd.isna(x):
+                return np.nan
+        except (ValueError, TypeError):
+            pass
+        if isinstance(x, (bool, np.bool_)):
+            return bool(x)
+        if x in bool_map:
+            return bool_map[x]
+        return x
+
+    result = series.map(_cell)
     
     # Convert to boolean, keeping NaN
     result = result.astype(object)
     result = result.where(result.isin([True, False, np.nan]), np.nan)
     
     return result
+
+
+def log_memory(label: str, frame: pd.DataFrame) -> None:
+    """
+    Log approximate DataFrame memory in MB for run diagnostics.
+
+    Args:
+        label: Human-readable checkpoint label
+        frame: DataFrame to inspect
+
+    Returns:
+        None
+    """
+    try:
+        mem_mb = frame.memory_usage(deep=True).sum() / (1024 * 1024)
+        print(f"  [MEM] {label}: {mem_mb:,.2f} MB")
+    except Exception:
+        pass
 
 
 def infer_var_type(series: pd.Series, name: str) -> str:
@@ -142,74 +184,14 @@ def build_long_salary_df(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         Long format DataFrame with one row per salary point
     """
-    SLOT_RANGE = range(1, 12)
-    long_rows = []
-    
-    for k in SLOT_RANGE:
-        amount_col = f"salary_{k}_amount"
-        start_date_col = f"salary_{k}_start_date"
-        
-        # Check if at least one core column exists
-        if amount_col not in df.columns and start_date_col not in df.columns:
-            continue
-        
-        # Create temp DataFrame for this slot
-        temp_df = df.copy()
-        temp_df["salary_index"] = k
-        
-        # Map salary point fields
-        if start_date_col in df.columns:
-            temp_df["salary_start_date"] = temp_df[start_date_col]
-        else:
-            temp_df["salary_start_date"] = np.nan
-        
-        if f"salary_{k}_end_date" in df.columns:
-            temp_df["salary_end_date"] = temp_df[f"salary_{k}_end_date"]
-        else:
-            temp_df["salary_end_date"] = np.nan
-        
-        if amount_col in df.columns:
-            temp_df["salary_amount"] = temp_df[amount_col]
-        else:
-            temp_df["salary_amount"] = np.nan
-        
-        for field in ["unit", "table_label", "increase_percent", "holiday_in_amount", 
-                     "hours_basis_ft_week", "note"]:
-            col_name = f"salary_{k}_{field}"
-            if col_name in df.columns:
-                temp_df[f"salary_{field}"] = temp_df[col_name]
-            else:
-                temp_df[f"salary_{field}"] = np.nan
-        
-        # Select columns for long format
-        keep_cols = [
-            "cao_number", "id", "TTW", "ingangsdatum", "expiratiedatum", 
-            "datum_kennisgeving", "file_name",
-            "jobgroup", "step_label", "worker_type", "is_entry", "age_group",
-            "education", "ft_hours", "ft_hours_weekly", "permanency", "hours_type",
-            "row_note",
-            "salary_index", "salary_start_date", "salary_end_date", "salary_amount",
-            "salary_unit", "salary_table_label", "salary_increase_percent",
-            "salary_holiday_in_amount", "salary_hours_basis_ft_week", "salary_note"
-        ]
-        
-        # Only keep columns that exist
-        available_cols = [col for col in keep_cols if col in temp_df.columns]
-        temp_df = temp_df[available_cols].copy()
-        
-        long_rows.append(temp_df)
-    
-    if len(long_rows) == 0:
-        return pd.DataFrame()
-    
-    df_long = pd.concat(long_rows, ignore_index=True)
-    
-    # Parse salary_start_date
-    if "salary_start_date" in df_long.columns:
-        df_long["salary_start_date"] = pd.to_datetime(df_long["salary_start_date"], errors='coerce')
-        df_long["salary_start_year"] = df_long["salary_start_date"].dt.year
-    
-    return df_long
+    identity_cols = [
+        "cao_number", "id", "TTW", "ingangsdatum", "expiratiedatum",
+        "datum_kennisgeving", "file_name",
+        "jobgroup", "step_label", "worker_type", "is_entry", "age_group",
+        "education", "ft_hours", "ft_hours_weekly", "permanency", "hours_type",
+        "row_note",
+    ]
+    return build_long_salary_from_wide(df, identity_cols=identity_cols)
 
 
 # =============================================================================
@@ -330,13 +312,18 @@ def create_variable_health_sheet(df: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(results)
 
 
-def create_sample_overview_sheet(df: pd.DataFrame, df_long: pd.DataFrame) -> pd.DataFrame:
+def create_sample_overview_sheet(
+    df: pd.DataFrame,
+    df_long: pd.DataFrame,
+    band_summary: Optional[Dict[str, Any]] = None,
+) -> pd.DataFrame:
     """
     Create sample overview sheet with multiple blocks.
     
     Args:
         df: Wide format DataFrame
         df_long: Long format DataFrame
+        band_summary: Optional dict from salary increase derivation (monthly band exclusions).
         
     Returns:
         DataFrame with sample overview statistics
@@ -387,6 +374,24 @@ def create_sample_overview_sheet(df: pd.DataFrame, df_long: pd.DataFrame) -> pd.
             block_a[f'ft_hours_weekly_{stat}'] = np.nan
     
     results.append(block_a)
+    
+    # Block A2 - Normalized monthly band (statutory floor + analysis cap) for increase events
+    if band_summary is not None and len(band_summary) > 0:
+        block_band = {"section": "salary_monthly_band"}
+        for key in (
+            "n_increase_events",
+            "n_conversion_ok",
+            "n_band_eligible",
+            "n_dropped_missing_salary_date",
+            "n_dropped_below_floor",
+            "n_dropped_above_cap",
+            "share_missing_date_of_conversion_ok",
+            "share_below_floor_of_conversion_ok",
+            "share_above_cap_of_conversion_ok",
+            "share_band_eligible_of_conversion_ok",
+        ):
+            block_band[key] = band_summary.get(key, np.nan)
+        results.append(block_band)
     
     # Block B - Contracts by contract_start_year
     if "contract_start_year" in df.columns:
@@ -506,7 +511,7 @@ def create_salary_slots_coverage_sheet(df: pd.DataFrame) -> pd.DataFrame:
         DataFrame with slot coverage statistics
     """
     results = []
-    SLOT_RANGE = range(1, 12)
+    SLOT_RANGE = detect_salary_slot_indices(df.columns.tolist())
     total_rows = len(df)
     
     for k in SLOT_RANGE:
@@ -514,7 +519,8 @@ def create_salary_slots_coverage_sheet(df: pd.DataFrame) -> pd.DataFrame:
         if amount_col not in df.columns:
             continue
         
-        n_rows_with_amount = df[amount_col].notna().sum()
+        _coerced = df[amount_col].map(coerce_salary_amount_scalar)
+        n_rows_with_amount = int((_coerced.notna() & (_coerced > 0)).sum())
         share_rows_with_amount = n_rows_with_amount / total_rows if total_rows > 0 else 0
         
         start_date_col = f"salary_{k}_start_date"
@@ -785,6 +791,99 @@ def create_increase_percent_sheet(df_long: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(results)
 
 
+def create_diff_only_increase_sheet(events_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Create yearly summary for increase_diff_only.
+
+    Args:
+        events_df: Event-level salary DataFrame from derivation module
+
+    Returns:
+        DataFrame with summary rows and yearly aggregates
+    """
+    if len(events_df) == 0 or "increase_diff_only" not in events_df.columns:
+        return pd.DataFrame()
+    out: List[Dict[str, Any]] = []
+    valid = events_df[events_df["increase_diff_only"].notna()].copy()
+    out.append(
+        {
+            "section": "summary",
+            "metric": "n_events_total",
+            "value": len(events_df),
+        }
+    )
+    out.append({"section": "summary", "metric": "n_events_diff_only", "value": len(valid)})
+    out.append({"section": "summary", "metric": "share_with_diff_only", "value": len(valid) / len(events_df) if len(events_df) else np.nan})
+    if len(valid) > 0:
+        out.append({"section": "summary", "metric": "year_min", "value": int(valid["salary_start_year"].min())})
+        out.append({"section": "summary", "metric": "year_max", "value": int(valid["salary_start_year"].max())})
+        yearly = valid.groupby("salary_start_year")["increase_diff_only"].agg(["count", "mean", "median"]).reset_index()
+        for _, row in yearly.iterrows():
+            out.append(
+                {
+                    "section": "yearly_diff_only",
+                    "salary_start_year": int(row["salary_start_year"]),
+                    "n": int(row["count"]),
+                    "mean_increase_percent": row["mean"],
+                    "median_increase_percent": row["median"],
+                    "note": "Amounts normalized to monthly before differencing.",
+                }
+            )
+    return pd.DataFrame(out)
+
+
+def create_merge_vs_csv_sheet(comparison_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Create comparison sheet for CSV vs derived diff increases.
+
+    Args:
+        comparison_df: Rows where both CSV and diff increases exist
+
+    Returns:
+        DataFrame with global metrics, per-year appendix and top differences
+    """
+    if len(comparison_df) == 0:
+        return pd.DataFrame()
+    rows: List[Dict[str, Any]] = []
+    rows.append({"section": "summary", "metric": "n_comparable_rows", "value": len(comparison_df)})
+    rows.append({"section": "summary", "metric": "agreement_share_abs_diff_le_0_1pp", "value": comparison_df["within_0_1pp"].mean()})
+    rows.append({"section": "summary", "metric": "sign_disagreement_share", "value": comparison_df["sign_disagreement"].mean()})
+
+    by_year = comparison_df.groupby("salary_start_year").agg(
+        n=("within_0_1pp", "count"),
+        agreement_share=("within_0_1pp", "mean"),
+        mean_abs_diff=("abs_diff", "mean"),
+    ).reset_index()
+    for _, row in by_year.iterrows():
+        rows.append(
+            {
+                "section": "per_year_agreement",
+                "salary_start_year": int(row["salary_start_year"]),
+                "n": int(row["n"]),
+                "agreement_share_abs_diff_le_0_1pp": row["agreement_share"],
+                "mean_abs_diff": row["mean_abs_diff"],
+            }
+        )
+
+    top25 = comparison_df.sort_values("abs_diff", ascending=False).head(25)
+    for _, row in top25.iterrows():
+        rows.append(
+            {
+                "section": "top_25_abs_diff",
+                "cao_number": row.get("cao_number"),
+                "file_name": row.get("file_name"),
+                "row_id": row.get("row_id"),
+                "salary_index": row.get("salary_index"),
+                "salary_start_date": row.get("salary_start_date"),
+                "increase_csv_only": row.get("increase_csv_only"),
+                "increase_diff_only": row.get("increase_diff_only"),
+                "abs_diff": row.get("abs_diff"),
+                "sign_disagreement": row.get("sign_disagreement"),
+            }
+        )
+    return pd.DataFrame(rows)
+
+
 def create_level_trends_by_year_sheet(df_long: pd.DataFrame) -> pd.DataFrame:
     """
     Create level trends by year sheet.
@@ -886,16 +985,24 @@ def create_row_slot_counts_sheet(df: pd.DataFrame) -> pd.DataFrame:
     
     total_rows = len(df)
     
-    # Block A - Overall distribution
-    for n in range(0, 12):
+    # Block A - Overall distribution: counts 0..10 plus 11+ (>=11 salary points)
+    for n in range(0, 11):
         n_rows_n = (df["n_salary_points_per_row"] == n).sum()
         share_rows_n = n_rows_n / total_rows if total_rows > 0 else 0
         results.append({
             'block': 'overall',
             'n_salary_points_per_row': n,
-            'n_rows': n_rows_n,
+            'n_rows': int(n_rows_n),
             'share_rows': share_rows_n
         })
+    n_rows_ge_11 = (df["n_salary_points_per_row"] >= 11).sum()
+    share_ge_11 = n_rows_ge_11 / total_rows if total_rows > 0 else 0
+    results.append({
+        'block': 'overall',
+        'n_salary_points_per_row': '11+',
+        'n_rows': int(n_rows_ge_11),
+        'share_rows': share_ge_11
+    })
     
     # Block B - By contract_start_year
     if "contract_start_year" in df.columns:
@@ -904,16 +1011,25 @@ def create_row_slot_counts_sheet(df: pd.DataFrame) -> pd.DataFrame:
                 continue
             
             year_total = len(year_group)
-            for n in range(0, 12):
+            for n in range(0, 11):
                 n_rows_year_n = ((year_group["n_salary_points_per_row"] == n).sum())
                 share_rows_year_n = n_rows_year_n / year_total if year_total > 0 else 0
                 results.append({
                     'block': 'by_year',
                     'contract_start_year': int(year),
                     'n_salary_points_per_row': n,
-                    'n_rows': n_rows_year_n,
+                    'n_rows': int(n_rows_year_n),
                     'share_rows': share_rows_year_n
                 })
+            n_y_ge_11 = (year_group["n_salary_points_per_row"] >= 11).sum()
+            share_y_ge_11 = n_y_ge_11 / year_total if year_total > 0 else 0
+            results.append({
+                'block': 'by_year',
+                'contract_start_year': int(year),
+                'n_salary_points_per_row': '11+',
+                'n_rows': int(n_y_ge_11),
+                'share_rows': share_y_ge_11
+            })
     
     return pd.DataFrame(results)
 
@@ -935,12 +1051,15 @@ def create_no_salary_analysis_sheet(df: pd.DataFrame) -> pd.DataFrame:
     if "n_salary_points_per_row" not in df.columns:
         return pd.DataFrame()
     
-    # Identify files with no salary data
-    df['has_no_salary'] = df['n_salary_points_per_row'] == 0
+    # Local mask only — do not mutate the wide frame (avoids further fragmentation).
+    has_no_salary = df["n_salary_points_per_row"] == 0
     
     # Block A - Overall summary
     total_files = df[['cao_number', 'file_name']].drop_duplicates().shape[0] if 'cao_number' in df.columns and 'file_name' in df.columns else len(df)
-    files_with_no_salary = df[df['has_no_salary']][['cao_number', 'file_name']].drop_duplicates().shape[0] if 'cao_number' in df.columns and 'file_name' in df.columns else (df['has_no_salary']).sum()
+    if 'cao_number' in df.columns and 'file_name' in df.columns:
+        files_with_no_salary = df.loc[has_no_salary, ['cao_number', 'file_name']].drop_duplicates().shape[0]
+    else:
+        files_with_no_salary = int(has_no_salary.sum())
     files_with_salary = total_files - files_with_no_salary
     
     results.append({
@@ -964,10 +1083,14 @@ def create_no_salary_analysis_sheet(df: pd.DataFrame) -> pd.DataFrame:
     
     # Block B - By CAO number
     if 'cao_number' in df.columns and 'file_name' in df.columns:
-        # Count files with/without salary per CAO
-        cao_file_summary = df.groupby(['cao_number', 'file_name']).agg({
-            'has_no_salary': 'any'  # True if this file has no salary
-        }).reset_index()
+        # Count files with/without salary per CAO (narrow frame; avoid adding column to wide df)
+        cao_file_summary = (
+            df[['cao_number', 'file_name']]
+            .assign(has_no_salary=has_no_salary)
+            .groupby(['cao_number', 'file_name'], sort=False)
+            .agg({'has_no_salary': 'any'})
+            .reset_index()
+        )
         
         # Count files per CAO
         cao_summary = cao_file_summary.groupby('cao_number').agg({
@@ -1012,10 +1135,13 @@ def create_no_salary_analysis_sheet(df: pd.DataFrame) -> pd.DataFrame:
     
     # Block C - By contract_start_year
     if 'contract_start_year' in df.columns:
-        year_summary = df.groupby('contract_start_year').agg({
-            'has_no_salary': 'sum',  # Count rows with no salary
-            'cao_number': 'nunique',  # Count unique CAOs
-            'file_name': 'nunique'  # Count unique files
+        year_helper = df[['contract_start_year', 'cao_number', 'file_name']].assign(
+            has_no_salary=has_no_salary
+        )
+        year_summary = year_helper.groupby('contract_start_year', sort=False).agg({
+            'has_no_salary': 'sum',
+            'cao_number': 'nunique',
+            'file_name': 'nunique',
         }).reset_index()
         year_summary.columns = ['contract_start_year', 'n_rows_no_salary', 'n_cao', 'n_files']
         # Get total rows per year
@@ -1037,13 +1163,13 @@ def create_no_salary_analysis_sheet(df: pd.DataFrame) -> pd.DataFrame:
     
     # Block D - List of CAOs with no salary files (if any)
     if 'cao_number' in df.columns and 'file_name' in df.columns:
-        no_salary_files = df[df['has_no_salary']][['cao_number', 'file_name']].drop_duplicates()
+        no_salary_files = df.loc[has_no_salary, ['cao_number', 'file_name']].drop_duplicates()
         if len(no_salary_files) > 0:
             # Add metadata if available
             for col in ['id', 'TTW', 'ingangsdatum', 'expiratiedatum', 'sector', 'sbi_code']:
                 if col in df.columns:
                     # Get first value for each (cao_number, file_name) combination
-                    metadata = df[df['has_no_salary']].groupby(['cao_number', 'file_name'])[col].first().reset_index()
+                    metadata = df.loc[has_no_salary].groupby(['cao_number', 'file_name'])[col].first().reset_index()
                     no_salary_files = no_salary_files.merge(metadata, on=['cao_number', 'file_name'], how='left')
             
             # Add to results as a separate block
@@ -1068,6 +1194,13 @@ def create_no_salary_analysis_sheet(df: pd.DataFrame) -> pd.DataFrame:
 
 def main():
     """Main entry point for descriptives script."""
+    # Wide read_csv frames stay multi-block; we batch new column writes, but pandas may still warn.
+    # Avoid a full-frame copy (RAM); suppress only this specific fragmentation PerformanceWarning.
+    warnings.filterwarnings(
+        "ignore",
+        message="DataFrame is highly fragmented",
+        category=pd.errors.PerformanceWarning,
+    )
     print("="*80)
     print("CAO Salary Descriptives Script")
     print("="*80)
@@ -1075,8 +1208,9 @@ def main():
     # Load data
     print(f"\nLoading data from: {INPUT_CSV}")
     try:
-        df = pd.read_csv(INPUT_CSV, sep=';', encoding='utf-8')
+        df = pd.read_csv(INPUT_CSV, sep=';', encoding='utf-8', low_memory=False)
         print(f"  Loaded {len(df)} rows and {len(df.columns)} columns")
+        log_memory("raw_wide", df)
     except Exception as e:
         print(f"  ERROR: Could not load input file: {e}")
         return
@@ -1087,59 +1221,125 @@ def main():
     
     # Parse date columns (CAO metadata dates are DD/MM/YYYY; use robust parser)
     date_cols = ["ingangsdatum", "expiratiedatum", "datum_kennisgeving"]
+    date_cols_present = [c for c in date_cols if c in df.columns]
     for col in date_cols:
-        if col in df.columns:
-            df[col] = parse_cao_date_series(df[col], dayfirst=True)
-            print(f"  Parsed {col} as datetime")
-        else:
+        if col not in df.columns:
             print(f"  Warning: {col} column not found")
+    if date_cols_present:
+        df[date_cols_present] = df[date_cols_present].apply(
+            lambda s: parse_cao_date_series(s, dayfirst=True)
+        )
+        for col in date_cols_present:
+            print(f"  Parsed {col} as datetime")
     
     # Parse salary date columns
-    SLOT_RANGE = range(1, 12)
-    for k in SLOT_RANGE:
-        for date_type in ["start_date", "end_date"]:
-            col = f"salary_{k}_{date_type}"
-            if col in df.columns:
-                df[col] = pd.to_datetime(df[col], errors='coerce')
+    SLOT_RANGE = detect_salary_slot_indices(df.columns.tolist())
+    if SLOT_RANGE:
+        print(
+            f"  Detected salary slots: count={len(SLOT_RANGE)}, "
+            f"index_min={SLOT_RANGE[0]}, index_max={SLOT_RANGE[-1]}"
+        )
+    else:
+        print("  Detected salary slots: none (no salary_<k>_amount columns matched)")
+    slot_date_cols = [
+        c
+        for k in SLOT_RANGE
+        for c in (f"salary_{k}_start_date", f"salary_{k}_end_date")
+        if c in df.columns
+    ]
+    if slot_date_cols:
+        df[slot_date_cols] = df[slot_date_cols].apply(
+            lambda s: pd.to_datetime(s, errors="coerce")
+        )
     
-    # Create contract_start_year
+    # Create contract_start_year and ft_hours_weekly in one block assignment (less fragmentation)
+    derived_cols: Dict[str, Any] = {}
     if "ingangsdatum" in df.columns:
-        df["contract_start_year"] = df["ingangsdatum"].dt.year
+        derived_cols["contract_start_year"] = df["ingangsdatum"].dt.year
     else:
         print("  Warning: ingangsdatum not found, cannot create contract_start_year")
-        df["contract_start_year"] = np.nan
-    
-    # Create ft_hours_weekly
+        derived_cols["contract_start_year"] = np.nan
     if "ft_hours" in df.columns:
-        ft_hours_numeric = pd.to_numeric(df["ft_hours"], errors='coerce')
-        df["ft_hours_weekly"] = ft_hours_numeric.apply(
-            lambda x: x if pd.isna(x) or x <= 200 else x / 52.0
-        )
-        print(f"  Created ft_hours_weekly from ft_hours")
+        ft_hours_numeric = pd.to_numeric(df["ft_hours"], errors="coerce")
+        v = ft_hours_numeric.to_numpy(dtype=float, copy=False)
+        with np.errstate(invalid="ignore"):
+            derived_cols["ft_hours_weekly"] = np.where(
+                np.isnan(v), np.nan, np.where(v <= 200, v, v / 52.0)
+            )
+        print("  Created ft_hours_weekly from ft_hours")
     else:
         print("  Warning: ft_hours column not found")
-        df["ft_hours_weekly"] = np.nan
+        derived_cols["ft_hours_weekly"] = np.nan
+    df["contract_start_year"] = derived_cols["contract_start_year"]
+    df["ft_hours_weekly"] = derived_cols["ft_hours_weekly"]
     
     # Build long format DataFrame
     print("\nBuilding long format DataFrame...")
     try:
         df_long = build_long_salary_df(df)
         print(f"  Long format: {len(df_long)} rows")
+        log_memory("long_salary", df_long)
     except Exception as e:
         print(f"  Warning: Error building long format: {e}")
         df_long = pd.DataFrame()
+
+    print("\nDeriving salary increase series (diff/csv/merged)...")
+    try:
+        increase_payload = derive_salary_increase_series(df)
+        increase_events = increase_payload["events"]
+        comparison_df = increase_payload["comparison"]
+        conversion_diag = increase_payload["conversion_diagnostics"]
+        band_summary = increase_payload.get("band_summary")
+        if band_summary is None:
+            band_summary = compute_band_summary_stats(increase_events)
+        print(f"  Derived events: {len(increase_events)} | comparable rows: {len(comparison_df)}")
+        if band_summary:
+            print(
+                f"  Monthly band: eligible={band_summary.get('n_band_eligible', 0)} "
+                f"| below_floor={band_summary.get('n_dropped_below_floor', 0)} "
+                f"| above_cap={band_summary.get('n_dropped_above_cap', 0)} "
+                f"| missing_date={band_summary.get('n_dropped_missing_salary_date', 0)} "
+                f"(conversion_ok={band_summary.get('n_conversion_ok', 0)})"
+            )
+        if len(increase_events) > 0:
+            log_memory("increase_events", increase_events)
+    except Exception as e:
+        print(f"  Warning: Error deriving salary increase series: {e}")
+        increase_events = pd.DataFrame()
+        comparison_df = pd.DataFrame()
+        conversion_diag = pd.DataFrame()
+        band_summary = compute_band_summary_stats(pd.DataFrame())
     
-    # Create n_salary_points_per_row
+    # Create n_salary_points_per_row (strictly positive coerced amounts only)
     print("\nComputing n_salary_points_per_row...")
-    df["n_salary_points_per_row"] = 0
+    n_rows = len(df)
+    n_points = np.zeros(n_rows, dtype=np.int32)
     for k in SLOT_RANGE:
         amount_col = f"salary_{k}_amount"
         if amount_col in df.columns:
-            df["n_salary_points_per_row"] += df[amount_col].notna().astype(int)
+            _am = df[amount_col].map(coerce_salary_amount_scalar)
+            n_points += (_am.notna() & (_am > 0)).astype(np.int32).to_numpy(copy=False)
+    df["n_salary_points_per_row"] = n_points
     
     # Create output directory
     output_path = Path(OUTPUT_EXCEL)
     output_path.parent.mkdir(parents=True, exist_ok=True)
+    diagnostics_dir = Path("outputs/analysis")
+    diagnostics_dir.mkdir(parents=True, exist_ok=True)
+    comparison_csv_path = diagnostics_dir / "salary_increase_csv_vs_diff_comparison.csv"
+    comparison_df.to_csv(comparison_csv_path, index=False, sep=";", decimal=",")
+    print(f"\nWrote {comparison_csv_path} ({len(comparison_df)} rows)")
+    band_summary_path = diagnostics_dir / "salary_monthly_band_summary.csv"
+    pd.DataFrame([band_summary]).to_csv(band_summary_path, index=False, sep=";", decimal=",")
+    print(f"Wrote {band_summary_path}")
+    conversion_diag.to_csv(
+        diagnostics_dir / "salary_increase_conversion_diagnostics.csv", index=False, sep=";", decimal=","
+    )
+    print(f"Wrote {diagnostics_dir / 'salary_increase_conversion_diagnostics.csv'} ({len(conversion_diag)} rows)")
+    increase_events.to_csv(
+        diagnostics_dir / "salary_increase_events_derived.csv", index=False, sep=";", decimal=","
+    )
+    print(f"Wrote {diagnostics_dir / 'salary_increase_events_derived.csv'} ({len(increase_events)} rows)")
     
     # Generate all sheets
     print("\nGenerating descriptive statistics sheets...")
@@ -1155,7 +1355,7 @@ def main():
     
     try:
         print("  Creating sheet: 01_sample_overview")
-        sheets["01_sample_overview"] = create_sample_overview_sheet(df, df_long)
+        sheets["01_sample_overview"] = create_sample_overview_sheet(df, df_long, band_summary=band_summary)
     except Exception as e:
         print(f"  Warning: Error creating sample_overview sheet: {e}")
         sheets["01_sample_overview"] = pd.DataFrame()
@@ -1208,6 +1408,20 @@ def main():
     except Exception as e:
         print(f"  Warning: Error creating no_salary_analysis sheet: {e}")
         sheets["08_no_salary_analysis"] = pd.DataFrame()
+
+    try:
+        print("  Creating sheet: 09_increase_diff_only")
+        sheets["09_increase_diff_only"] = create_diff_only_increase_sheet(increase_events)
+    except Exception as e:
+        print(f"  Warning: Error creating increase_diff_only sheet: {e}")
+        sheets["09_increase_diff_only"] = pd.DataFrame()
+
+    try:
+        print("  Creating sheet: 10_increase_merge_vs_csv")
+        sheets["10_increase_merge_vs_csv"] = create_merge_vs_csv_sheet(comparison_df)
+    except Exception as e:
+        print(f"  Warning: Error creating increase_merge_vs_csv sheet: {e}")
+        sheets["10_increase_merge_vs_csv"] = pd.DataFrame()
     
     # Write to Excel with explanatory notes
     print(f"\nWriting to Excel: {OUTPUT_EXCEL}")
@@ -1256,7 +1470,7 @@ def main():
             ],
             "01_sample_overview": [
                 "NOTES:",
-                "This sheet contains five sections:",
+                "This sheet contains multiple sections:",
                 "",
                 "1. Overall dataset structure (section='overall_structure'):",
                 "   - n_rows: Total number of salary data rows in the dataset (one row per jobgroup/step/worker combination)",
@@ -1281,21 +1495,27 @@ def main():
                 "",
                 "5. FT hours development (section='ft_hours_by_year'):",
                 "   - Statistics for full-time weekly hours by contract start year",
-                "   - Shows how full-time hours evolve over time"
+                "   - Shows how full-time hours evolve over time",
+                "",
+                "6. Salary monthly band (section='salary_monthly_band'):",
+                "   - Event-level counts for normalized monthly amounts vs NL statutory min (Jan 1 schedule) and cap",
+                "   - n_increase_events, n_conversion_ok, n_band_eligible, n_dropped_* , share_* (denom: conversion_ok)",
+                "   - See outputs/analysis/salary_monthly_band_summary.csv for the same row"
             ],
             "02_salary_slots_coverage": [
                 "NOTES:",
                 "This sheet summarizes the use of salary slots (timeline points) across the dataset.",
                 "",
-                "salary_index: Slot number (1-11), where each slot represents one timeline point",
-                "n_rows_with_amount: Number of rows that have a salary amount in this slot",
-                "share_rows_with_amount: Proportion of all rows with an amount in this slot",
+                "salary_index: Slot index k from columns salary_k_* (detected dynamically from the CSV header)",
+                "n_rows_with_amount: Rows with a strictly positive, parseable salary amount in this slot",
+                "  (amount <= 0, missing, or non-numeric counts as no amount)",
+                "share_rows_with_amount: Proportion of all rows with a positive amount in this slot",
                 "n_rows_with_start_date: Number of rows with a start date in this slot",
                 "most_common_unit: Most frequently used pay unit for this slot (e.g., 'monthly', '4-week')",
                 "share_most_common_unit: Proportion of rows using the most common unit",
                 "",
-                "Note: Each salary row can have up to 11 timeline points (salary slots), representing",
-                "different salary values over time as published in successive CAO wage tables."
+                "Note: Wide rows can carry many timeline slots (salary_1_*, salary_2_*, ...); the count",
+                "depends on extraction output, not a fixed cap."
             ],
             "03_worker_profile": [
                 "NOTES:",
@@ -1316,8 +1536,8 @@ def main():
                 "",
                 "block: 'by_unit_and_index' (by unit and slot) or 'by_unit' (aggregated across all slots)",
                 "salary_unit: Pay period unit (e.g., 'monthly', '4-week', 'weekly', 'hourly', 'annual')",
-                "salary_index: Timeline slot number (1-11), or NaN for aggregated statistics",
-                "n: Number of salary episodes with this unit (and slot, if applicable)",
+                "salary_index: Timeline slot index k, or NaN for aggregated statistics",
+                "n: Number of salary episodes with this unit (and slot, if applicable); long table excludes amount <= 0",
                 "mean, median, p25, p75, min, max: Descriptive statistics for salary amounts",
                 "",
                 "This helps understand what typical salary levels are for different units and",
@@ -1358,23 +1578,44 @@ def main():
                 "  - n_entry_episodes: Number of entry scale episodes in primary_unit",
                 "  - mean_entry_amount, median_entry_amount: Average and median entry scale amounts",
                 "",
-                "Note: Only includes episodes with the primary_unit to ensure comparability."
+                "Note: Only includes episodes with the primary_unit to ensure comparability.",
+                "Long-format input excludes non-positive salary amounts (same rule as n_salary_points_per_row)."
             ],
             "07_row_slot_counts": [
                 "NOTES:",
                 "This sheet describes how many salary points (slots) each row carries.",
                 "",
                 "block: 'overall' (all rows) or 'by_year' (grouped by contract start year)",
-                "n_salary_points_per_row: Number of salary slots (1-11) with non-missing amounts",
-                "n_rows: Number of rows with this many salary points",
-                "share_rows: Proportion of rows with this many salary points",
+                "n_salary_points_per_row: Bucket — integers 0..10 count exact tallies; '11+' is rows with >= 11",
+                "  positive salary amounts (coerced numerically; <= 0 does not count)",
+                "n_rows: Number of rows in that bucket",
+                "share_rows: Proportion of rows in that bucket",
                 "",
                 "For by_year block:",
                 "  - contract_start_year: Year when the contract starts",
-                "  - Shows how the distribution of salary points per row changes over time",
+                "  - Same bucketing within each year",
                 "",
-                "Note: Each salary row can have up to 11 timeline points, representing",
-                "different salary values over time as published in successive CAO wage tables."
+                "Note: Maximum slot index in the file is determined by salary_k_* columns, not fixed."
+            ],
+            "09_increase_diff_only": [
+                "NOTES:",
+                "Event-level derived increases: consecutive within-row percentage changes of normalized monthly amounts.",
+                "",
+                "Rows with failed unit conversion or non-positive amounts are excluded from diff chains;",
+                "conversion issues appear in salary_increase_conversion_diagnostics.csv.",
+                "analysis_monthly_band_ok: amounts must lie between NL statutory monthly min (salary_start_date)",
+                "and SALARY_ANALYSIS_MONTHLY_CAP_EUR; otherwise increase_diff_only is NaN and merged pref is masked.",
+                "Band exclusions are counted in 01_sample_overview (section salary_monthly_band) and salary_monthly_band_summary.csv.",
+                "is_first_salary_in_file: 1 for every event on the earliest salary_start_date in that file (cao+file)."
+            ],
+            "10_increase_merge_vs_csv": [
+                "NOTES:",
+                "Comparison where both increase_csv_only and increase_diff_only are present.",
+                "",
+                "abs_diff: absolute difference (percentage points); within_0_1pp if abs_diff <= 0.1;",
+                "abs_diff_gt_0_1 flags larger disagreements; sign_disagreement compares signs.",
+                "",
+                "Full comparable rows are also exported to outputs/analysis/salary_increase_csv_vs_diff_comparison.csv (sep=;)."
             ],
             "08_no_salary_analysis": [
                 "NOTES:",

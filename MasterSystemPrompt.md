@@ -32,6 +32,23 @@ p1_webscraping → p2_extract → p3_llmExtraction → p4_analysis → p5_excel_
 
 **Important**: Files are organized by CAO number folders. Multiple files can have the same filename but exist in different CAO folders (e.g., `10/file.pdf` and `1536/file.pdf`). File matching always requires both filename AND CAO number to uniquely identify a file.
 
+### Excel Analysis Extensions
+- Salary descriptives/plots now use dynamic slot detection from `salary_<k>_*` columns instead of a fixed slot cap.
+- Salary long-table construction uses subset-first slot extraction and single concat to reduce peak RAM.
+- Latest CAO forward-fill logic for analysis plots is file/version based (per-CAO active range) and avoids arbitrary one-row-per-CAO-year selection.
+- Forward-fill is limited to state/context selection; event variables are not forward-filled.
+- `convert_salary_to_monthly` (analysis_utils) normalizes **daily** pay, compact **`d`**, and **offshore day** phrasing (`offshore day`, trailing `offshore da`, `per offshore`…) via the same `amount × 5 workdays × 4.33` rule. **Hourly** detection excludes **`N-hour` duration** units (e.g. `3-hour activity`) so they are not treated as €/h. All normalized monthly values are **rounded to 2 decimals**; amounts pass through `coerce_salary_amount_scalar` (EU `2.230,91` vs US `2,230.91`). Salary diagnostics/regression CSVs under `outputs/analysis/` use `sep=';'` and **`decimal=','`** to reduce Excel locale misreads of long float strings.
+- Salary increase analytics are standardized with three event-level series:
+  - `increase_diff_only` (derived from consecutive normalized monthly amounts within a single original row; **both** consecutive events must satisfy `analysis_monthly_band_ok`),
+  - `increase_csv_only` (reported in CSV),
+  - `increase_merged_pref_csv` (CSV preferred, derived fallback, then NaN if `analysis_monthly_band_ok` is False).
+- **Monthly band**: normalized `amount_monthly` must lie between the NL statutory gross monthly minimum for `salary_start_date` (`conf/nl_statutory_minimum_monthly_gross_eur.csv`, 1 Jan schedule; `scripts/excel_analysis/nl_minimum_wage_monthly.py`) and `SALARY_ANALYSIS_MONTHLY_CAP_EUR` in `analysis_utils.py`. Shared vectorized check: `compute_analysis_monthly_floor_and_band_ok` in `salary_increase_derivation.py` (also used for band-aligned salary **level** plots). Diagnostics append band failures; `derive_salary_increase_series` returns `band_summary`. `descriptives_salary.py` logs counts, writes `outputs/analysis/salary_monthly_band_summary.csv`, and adds section `salary_monthly_band` to `01_sample_overview`. **`descriptives_salary_plots.py`** refreshes the same `salary_monthly_band_summary.csv` and prints the band line when plots are run without the full descriptives workbook. Band summary shares use **`n_conversion_ok`** as denominator. Salary **level** trend PNG `salary_amount_monthly_eur_band_eligible_by_salary_year.png` uses the same normalization + band as increases; `salary_amount_primary_unit_by_salary_year.png` remains raw modal-unit QA. Spaghetti plot black line = mean over **all** dedup-valid band-eligible CAOs per year, not only highlighted trajectories.
+- Increase trend/regression aggregation uses observed event rows only (event-time semantics).
+- Derived increase QA artifacts are persisted in `outputs/analysis/` as semicolon-separated CSVs: `salary_increase_events_derived.csv`, `salary_increase_conversion_diagnostics.csv` (always emitted by salary descriptives), and `salary_increase_csv_vs_diff_comparison.csv` (CSV vs diff comparison with `abs_diff_gt_0_1` among other columns).
+- Non-salary analysis and plots use document-type filtering only: exclude `protocol`; keep `full_cao_original` and `full_cao_update`. Topic lists remain available on raw-metadata tabs (e.g. document type / updated topics) but do not gate the analysis sample.
+- Regression outputs: `scripts/excel_analysis/salary_increase_regression.py` writes `outputs/analysis/salary_regression_event_level.csv`, `salary_regression_transition_level.csv`, and **`salary_regression_fit_metrics.csv`** (per-model **`r2`**, **`r2_within`**, **`adj_r2`**, **`adj_r2_within`**, **`rmse`**, formula, ref year, n_obs, clusters). Plotting lives in **`scripts/excel_analysis/salary_regression_plotting.py`**; figures go to **`outputs/analysis/figures/salary_regression/`** (event: two-panel coef plot + interactions-only companion per outcome; transition: year coefficients for `delta_file_mean_increase`). **Shaded bands** = approximate **95% CI** (±1.96×SE) from **CRV1** vcov; panel B event plot uses SE for **Var(β_NF + β_NF×y)**. Coefficient tables use **`Coefficient`**, **`formula`**, **`ref_year`**, **`se_invalid`**, standard inference columns, **`outcome`** (event only), sample/cluster counts; sep `;`, `decimal=','`. Reference year is the minimum factor level kept after sparse-year drops. Wide salary CSV load uses header-derived **`usecols`**; scoped **`DtypeWarning`** suppression on the subset read when needed.
+- A lightweight output validation script is available at `scripts/excel_analysis/validate_analysis_outputs.py`.
+
 ### Key Components
 - **Configuration**: Centralized in `conf/config.yaml` - all paths and settings
 - **Schemas**: Pydantic models in `schema/` for validation (salary_schema.py, non_salary_schema.py, excel_output_schema.py)
@@ -384,6 +401,7 @@ with open(lock_file, 'w') as lock:
 - Intelligent file handling: truncated folder files retry with compact schema, truncated_2 folder files retry with split extraction, truncated_3 folder files retry with super compact schema, truncated_4 folder files skipped
 - Failed CAO number saving (p3): Files that fail all retry attempts are saved to `performance_logs/llm_extraction/failed_cao_numbers/[cao_number]/` and automatically skipped in future runs
 - **Date format handling**: Correct parsing of DD/MM/YYYY (CAO metadata dates) and YYYY-MM-DD (contract/salary timeline dates) in all descriptives and analysis scripts
+- **Memory diagnostics**: Analysis scripts print checkpoint memory usage (`[MEM] ... MB`) for wide/long/latest DataFrames
 
 ### Known Limitations
 - Non-salary schema split into 3 parts in p4 (by design for performance)

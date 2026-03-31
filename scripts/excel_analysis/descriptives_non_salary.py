@@ -28,7 +28,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 
 # Import analysis utilities
 from scripts.excel_analysis.analysis_utils import (
-    calculate_descriptive_stats, create_boolean_summary, parse_cao_date_series
+    calculate_descriptive_stats, create_boolean_summary, parse_cao_date_series,
+    parse_updated_topics_cell, filter_non_salary_for_plot
 )
 
 # =============================================================================
@@ -306,6 +307,24 @@ def normalize_boolean(series: pd.Series) -> pd.Series:
     result = result.where(result.isin([True, False, np.nan]), np.nan)
     
     return result
+
+
+def log_memory(label: str, frame: pd.DataFrame) -> None:
+    """
+    Log approximate DataFrame memory in MB for run diagnostics.
+
+    Args:
+        label: Checkpoint label
+        frame: DataFrame to inspect
+
+    Returns:
+        None
+    """
+    try:
+        mem_mb = frame.memory_usage(deep=True).sum() / (1024 * 1024)
+        print(f"  [MEM] {label}: {mem_mb:,.2f} MB")
+    except Exception:
+        pass
 
 
 def infer_var_type(series: pd.Series, name: str) -> str:
@@ -735,12 +754,17 @@ def create_sample_overview_sheet(df: pd.DataFrame, df_latest: pd.DataFrame) -> p
     results = []
     
     # a) Panel by start year
-    if "ingangsdatum" in df.columns:
-        df_copy = df.copy()
-        df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
-        df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
-        
-        for year, year_group in df_copy.groupby("start_year"):
+    if "start_year" in df.columns:
+        panel_df = df
+    elif "ingangsdatum" in df.columns:
+        panel_df = df.loc[:, [c for c in df.columns if c != "start_year"]].copy()
+        panel_df["ingangsdatum"] = parse_cao_date_series(panel_df["ingangsdatum"], dayfirst=True)
+        panel_df["start_year"] = panel_df["ingangsdatum"].dt.year
+    else:
+        panel_df = pd.DataFrame()
+
+    if len(panel_df) > 0 and "start_year" in panel_df.columns:
+        for year, year_group in panel_df.groupby("start_year"):
             if pd.isna(year):
                 continue
             
@@ -955,12 +979,14 @@ def create_domain_coverage_by_year_sheet(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame with domain coverage by year
     """
-    if "ingangsdatum" not in df.columns:
+    if "start_year" not in df.columns and "ingangsdatum" not in df.columns:
         return pd.DataFrame(columns=['start_year', 'domain', 'share_with_domain', 'n_rows_year'])
-    
-    df_copy = df.copy()
-    df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
-    df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
+    if "start_year" in df.columns:
+        df_copy = df
+    else:
+        df_copy = df.loc[:, [c for c in df.columns if c != "start_year"]].copy()
+        df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
+        df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
     
     results = []
     
@@ -1073,12 +1099,14 @@ def create_headline_features_by_year_sheet(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame with headline features by year
     """
-    if "ingangsdatum" not in df.columns:
+    if "start_year" not in df.columns and "ingangsdatum" not in df.columns:
         return pd.DataFrame(columns=['start_year', 'domain', 'feature', 'share_true', 'n_rows_year'])
-    
-    df_copy = df.copy()
-    df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
-    df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
+    if "start_year" in df.columns:
+        df_copy = df
+    else:
+        df_copy = df.loc[:, [c for c in df.columns if c != "start_year"]].copy()
+        df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
+        df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
     
     results = []
     
@@ -1156,12 +1184,14 @@ def create_numeric_by_period_sheet(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame with numeric statistics by period
     """
-    if "ingangsdatum" not in df.columns:
+    if "start_year" not in df.columns and "ingangsdatum" not in df.columns:
         return pd.DataFrame(columns=['variable', 'period', 'n_nonmissing', 'mean', 'median'])
-    
-    df_copy = df.copy()
-    df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
-    df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
+    if "start_year" in df.columns:
+        df_copy = df.copy()
+    else:
+        df_copy = df.loc[:, [c for c in df.columns if c != "start_year"]].copy()
+        df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
+        df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
     
     # Define periods
     def get_period(year):
@@ -1218,13 +1248,15 @@ def create_modern_before_after_sheet(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame with early vs late period comparisons
     """
-    if "ingangsdatum" not in df.columns:
+    if "start_year" not in df.columns and "ingangsdatum" not in df.columns:
         return pd.DataFrame(columns=['feature', 'share_true_early_period_year_lt_2010', 
                                      'share_true_late_period_year_ge_2020', 'diff_late_minus_early'])
-    
-    df_copy = df.copy()
-    df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
-    df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
+    if "start_year" in df.columns:
+        df_copy = df
+    else:
+        df_copy = df.loc[:, [c for c in df.columns if c != "start_year"]].copy()
+        df_copy["ingangsdatum"] = parse_cao_date_series(df_copy["ingangsdatum"], dayfirst=True)
+        df_copy["start_year"] = df_copy["ingangsdatum"].dt.year
     
     # Define periods
     early_mask = df_copy["start_year"] < 2010
@@ -1670,6 +1702,88 @@ def create_cao_dates_timeline_sheet(df: pd.DataFrame) -> pd.DataFrame:
     return result_df
 
 
+def create_document_type_sheet(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Create frequency sheet for general_document_type.
+
+    Args:
+        df: Input non-salary DataFrame
+
+    Returns:
+        DataFrame with counts and shares
+    """
+    if "general_document_type" not in df.columns:
+        return pd.DataFrame()
+    counts = df["general_document_type"].fillna("unknown").astype(str).str.lower().value_counts(dropna=False)
+    return pd.DataFrame(
+        {
+            "general_document_type": counts.index.tolist(),
+            "count": counts.values.tolist(),
+            "share": (counts / len(df)).values.tolist(),
+        }
+    )
+
+
+def create_updated_topics_top_sheet(df: pd.DataFrame, top_n: int = 10) -> pd.DataFrame:
+    """
+    Create top updated-topics sheet from parsed general_updated_topics.
+
+    Args:
+        df: Input non-salary DataFrame
+        top_n: Maximum number of topics to show
+
+    Returns:
+        DataFrame with top topic counts
+    """
+    if "general_updated_topics" not in df.columns:
+        return pd.DataFrame()
+    parsed = df["general_updated_topics"].apply(lambda v: parse_updated_topics_cell(v)[0] if pd.notna(v) else [])
+    flat = [item for sublist in parsed for item in sublist]
+    if not flat:
+        return pd.DataFrame()
+    vc = pd.Series(flat).value_counts()
+    top = vc.head(top_n)
+    remainder = int(vc.iloc[top_n:].sum()) if len(vc) > top_n else 0
+    rows = [{"topic": k, "count": int(v)} for k, v in top.items()]
+    if remainder > 0:
+        rows.append({"topic": "other", "count": remainder})
+    out = pd.DataFrame(rows)
+    out["share"] = out["count"] / max(1, int(out["count"].sum()))
+    return out
+
+
+def create_filter_diagnostics_sheet(df_raw: pd.DataFrame, df_filtered: pd.DataFrame) -> pd.DataFrame:
+    """
+    Create diagnostic counts table for raw vs filtered non-salary sample.
+
+    Args:
+        df_raw: Raw DataFrame
+        df_filtered: Filtered DataFrame
+
+    Returns:
+        DataFrame with counts by stage and document type
+    """
+    rows: List[Dict[str, Any]] = [
+        {
+            "section": "filter_rule",
+            "stage": "analysis_sample",
+            "n_rows": np.nan,
+            "detail": "Exclude protocol; keep only general_document_type in {full_cao_original, full_cao_update}.",
+        },
+        {"section": "totals", "stage": "raw", "n_rows": len(df_raw)},
+        {"section": "totals", "stage": "filtered", "n_rows": len(df_filtered)},
+    ]
+    if "general_document_type" in df_raw.columns:
+        raw_counts = df_raw["general_document_type"].fillna("unknown").astype(str).str.lower().value_counts()
+        for k, v in raw_counts.items():
+            rows.append({"section": "by_doc_type_raw", "general_document_type": k, "n_rows": int(v)})
+    if "general_document_type" in df_filtered.columns:
+        filt_counts = df_filtered["general_document_type"].fillna("unknown").astype(str).str.lower().value_counts()
+        for k, v in filt_counts.items():
+            rows.append({"section": "by_doc_type_filtered", "general_document_type": k, "n_rows": int(v)})
+    return pd.DataFrame(rows)
+
+
 # =============================================================================
 # MAIN EXECUTION
 # =============================================================================
@@ -1685,6 +1799,7 @@ def main():
     try:
         df = pd.read_csv(INPUT_CSV_PATH, sep=';', encoding='utf-8')
         print(f"  Loaded {len(df)} rows and {len(df.columns)} columns")
+        log_memory("raw_non_salary", df)
     except Exception as e:
         print(f"  ERROR: Could not load input file: {e}")
         return
@@ -1696,18 +1811,28 @@ def main():
     # Parse date column (CAO metadata dates are in DD/MM/YYYY format)
     if "ingangsdatum" in df.columns:
         df["ingangsdatum"] = parse_cao_date_series(df["ingangsdatum"], dayfirst=True)
+        df["start_year"] = df["ingangsdatum"].dt.year
         print(f"  Parsed ingangsdatum as datetime")
     else:
         print(f"  Warning: ingangsdatum column not found")
     
+    # Analysis sample: exclude protocol; keep only full_cao_original / full_cao_update
+    df_filtered = filter_non_salary_for_plot(df)
+    if "ingangsdatum" in df_filtered.columns and "start_year" not in df_filtered.columns:
+        df_filtered["start_year"] = parse_cao_date_series(df_filtered["ingangsdatum"], dayfirst=True).dt.year
+    print(f"  Filtered analysis sample: {len(df_filtered)} / {len(df)} rows")
+    log_memory("filtered_non_salary", df_filtered)
+
     # Build latest CAO view
     print("\nBuilding latest CAO view...")
     try:
         df_latest = build_latest_cao_view(df)
+        df_latest_filtered = build_latest_cao_view(df_filtered)
         print(f"  Latest CAO view: {len(df_latest)} unique CAOs")
     except Exception as e:
         print(f"  Warning: Error building latest CAO view: {e}")
         df_latest = pd.DataFrame()
+        df_latest_filtered = pd.DataFrame()
     
     # Create output directory
     output_path = Path(OUTPUT_EXCEL_PATH)
@@ -1734,7 +1859,7 @@ def main():
     
     try:
         print("  Creating sheet: 01_sample_overview")
-        sheets["01_sample_overview"] = create_sample_overview_sheet(df, df_latest)
+        sheets["01_sample_overview"] = create_sample_overview_sheet(df_filtered, df_latest_filtered)
     except Exception as e:
         print(f"  Warning: Error creating sample_overview sheet: {e}")
         sheets["01_sample_overview"] = pd.DataFrame()
@@ -1745,52 +1870,73 @@ def main():
     except Exception as e:
         print(f"  Warning: Error creating cao_dates_timeline sheet: {e}")
         sheets["01a_cao_dates_timeline"] = pd.DataFrame()
+
+    try:
+        print("  Creating sheet: 01b_document_type")
+        sheets["01b_document_type"] = create_document_type_sheet(df)
+    except Exception as e:
+        print(f"  Warning: Error creating document_type sheet: {e}")
+        sheets["01b_document_type"] = pd.DataFrame()
+
+    try:
+        print("  Creating sheet: 01c_updated_topics_top")
+        sheets["01c_updated_topics_top"] = create_updated_topics_top_sheet(df)
+    except Exception as e:
+        print(f"  Warning: Error creating updated_topics_top sheet: {e}")
+        sheets["01c_updated_topics_top"] = pd.DataFrame()
+
+    try:
+        print("  Creating sheet: 01d_filter_diagnostics")
+        sheets["01d_filter_diagnostics"] = create_filter_diagnostics_sheet(df, df_filtered)
+    except Exception as e:
+        print(f"  Warning: Error creating filter_diagnostics sheet: {e}")
+        sheets["01d_filter_diagnostics"] = pd.DataFrame()
     
     try:
         print("  Creating sheet: 02_domain_coverage_latest")
-        sheets["02_domain_coverage_latest"] = create_domain_coverage_latest_sheet(df_latest)
+        sheets["02_domain_coverage_latest"] = create_domain_coverage_latest_sheet(df_latest_filtered)
     except Exception as e:
         print(f"  Warning: Error creating domain_coverage_latest sheet: {e}")
         sheets["02_domain_coverage_latest"] = pd.DataFrame()
     
     try:
         print("  Creating sheet: 03_domain_coverage_by_year")
-        sheets["03_domain_coverage_by_year"] = create_domain_coverage_by_year_sheet(df)
+        sheets["03_domain_coverage_by_year"] = create_domain_coverage_by_year_sheet(df_filtered)
     except Exception as e:
         print(f"  Warning: Error creating domain_coverage_by_year sheet: {e}")
         sheets["03_domain_coverage_by_year"] = pd.DataFrame()
     
     try:
         print("  Creating sheet: 04_headline_features_latest")
-        sheets["04_headline_features_latest"] = create_headline_features_latest_sheet(df_latest)
+        sheets["04_headline_features_latest"] = create_headline_features_latest_sheet(df_latest_filtered)
     except Exception as e:
         print(f"  Warning: Error creating headline_features_latest sheet: {e}")
         sheets["04_headline_features_latest"] = pd.DataFrame()
     
     try:
         print("  Creating sheet: 05_headline_features_by_year")
-        sheets["05_headline_features_by_year"] = create_headline_features_by_year_sheet(df)
+        sheets["05_headline_features_by_year"] = create_headline_features_by_year_sheet(df_filtered)
     except Exception as e:
         print(f"  Warning: Error creating headline_features_by_year sheet: {e}")
         sheets["05_headline_features_by_year"] = pd.DataFrame()
     
     try:
         print("  Creating sheet: 06_numeric_overall")
-        sheets["06_numeric_overall"] = create_numeric_overall_sheet(df)
+        sheets["06_numeric_overall"] = create_numeric_overall_sheet(df_filtered)
     except Exception as e:
         print(f"  Warning: Error creating numeric_overall sheet: {e}")
         sheets["06_numeric_overall"] = pd.DataFrame()
     
     try:
         print("  Creating sheet: 07_numeric_by_period")
-        sheets["07_numeric_by_period"] = create_numeric_by_period_sheet(df)
+        sheets["07_numeric_by_period"] = create_numeric_by_period_sheet(df_filtered)
     except Exception as e:
         print(f"  Warning: Error creating numeric_by_period sheet: {e}")
         sheets["07_numeric_by_period"] = pd.DataFrame()
     
     try:
         print("  Creating sheet: 08_modern_before_after")
-        sheets["08_modern_before_after"] = create_modern_before_after_sheet(df)
+        sheets["08_modern_before_after"] = create_modern_before_after_sheet(df_filtered)
     except Exception as e:
         print(f"  Warning: Error creating modern_before_after sheet: {e}")
         sheets["08_modern_before_after"] = pd.DataFrame()
@@ -1914,6 +2060,22 @@ def main():
                 "   - n_pdf_later_than_website: PDF date is after website date",
                 "   - n_pdf_earlier_than_website: PDF date is before website date",
                 "   - Large discrepancy: Absolute difference > 30 days"
+            ],
+            "01b_document_type": [
+                "NOTES:",
+                "Distribution of general_document_type on the full raw CSV (not restricted to the analysis sample).",
+                "Use this tab to see protocols, partial updates, and full CAO shares in the extract as a whole.",
+            ],
+            "01c_updated_topics_top": [
+                "NOTES:",
+                "Top tokens from general_updated_topics on the full raw CSV (parsed list cells).",
+                "The analysis sample for other tabs does not use topic-keyword gating; this tab is descriptive only.",
+            ],
+            "01d_filter_diagnostics": [
+                "NOTES:",
+                "Row counts for raw vs analysis-filtered data.",
+                "filter_rule / analysis_sample: protocol excluded; only full_cao_original and full_cao_update kept.",
+                "by_doc_type_*: counts by normalized general_document_type.",
             ],
             "01a_cao_dates_timeline": [
                 "NOTES:",

@@ -28,6 +28,64 @@ An AI-powered pipeline for extracting structured data from Dutch Collective Labo
    ```
    Note: `run_pipeline.py` currently imports a non-existent `pipelines.p5_run`; until that orchestrator exists, run stages individually as shown below.
 
+## Excel Analysis Additions (Salary + Non-Salary)
+
+- **Salary dynamic slots**: `scripts/excel_analysis/descriptives_salary.py` and `scripts/excel_analysis/descriptives_salary_plots.py` now detect salary slots dynamically from `salary_<k>_*` columns (no fixed 1-11 range).
+- **Salary increase definitions** (event-level):
+  - `increase_diff_only`: computed from consecutive normalized monthly salary points within one original wide row (both endpoints must pass the **monthly band** below).
+  - `increase_csv_only`: direct `salary_k_increase_percent` from CSV.
+  - `increase_merged_pref_csv`: CSV if present, else diff-based value; then masked to NaN when `analysis_monthly_band_ok` is False.
+- **Monthly analysis band** (statutory floor + cap on normalized EUR/month):
+  - Floor: `conf/nl_statutory_minimum_monthly_gross_eur.csv` — Dutch gross monthly minima on **1 January** per year (1990–2025; dates before 1990 clamp to 1990; after last row use 2025). Lookup uses `salary_start_date`.
+  - Cap: `SALARY_ANALYSIS_MONTHLY_CAP_EUR` in `scripts/excel_analysis/analysis_utils.py` (default 50,000).
+  - Event columns: `analysis_monthly_floor_eur`, `analysis_monthly_band_ok`, `analysis_drop_reason_band`. Youth / sub-minimum steps below the statutory monthly floor are excluded from the band.
+- **Normalization rule**: diff derivation uses canonical `convert_salary_to_monthly` in `scripts/excel_analysis/analysis_utils.py` (monthly, 4-weekly, hourly, weekly, **daily** / compact **`d`** / **offshore day** variants, annual); daily-type rates use `amount × 5 × 4.33`. **Not** treated as hourly: **`N-hour` activity** slices (e.g. `3-hour activity`). Amount cells are parsed with EU/US decimal rules via `coerce_salary_amount_scalar`; monthly equivalents are **rounded to 2 decimals**; diagnostics CSVs use **`decimal=','`**. Events with invalid conversion inputs are excluded from diff derivation.
+- **Salary diagnostics outputs** (semicolon-separated):
+  - `outputs/analysis/salary_monthly_band_summary.csv` — single-row summary. **`n_dropped_above_cap`**: normalized monthly amount **>** `SALARY_ANALYSIS_MONTHLY_CAP_EUR` (50k). **`n_dropped_below_floor`**: below NL statutory gross monthly minimum for `salary_start_date`. **`share_*` columns**: numerator over **`n_conversion_ok`** (successful unit→monthly conversion), not over all wide rows. Written by **`descriptives_salary.py`** and refreshed by **`descriptives_salary_plots.py`** when you run plots alone.
+  - Other CSVs (conversion diagnostics, derived events, CSV vs diff) are emitted by **`descriptives_salary.py`** (including header-only files when empty):
+  - `outputs/analysis/salary_increase_conversion_diagnostics.csv` (includes conversion failures, invalid diff pairs, and band exclusions)
+  - `outputs/analysis/salary_increase_events_derived.csv`
+  - `outputs/analysis/salary_increase_csv_vs_diff_comparison.csv` (CSV vs derived diff increases where both exist; includes `abs_diff_gt_0_1`)
+- **Salary FE regression** (`scripts/excel_analysis/salary_increase_regression.py`, helpers in `scripts/excel_analysis/salary_regression_plotting.py`): writes coefficient tables `outputs/analysis/salary_regression_event_level.csv` and `outputs/analysis/salary_regression_transition_level.csv`, fit summary `outputs/analysis/salary_regression_fit_metrics.csv` (**`r2`**, **`r2_within`**, adjusted R² variants, **`rmse`**, one row per model), and PNGs under **`outputs/analysis/figures/salary_regression/`** — for each event outcome a **two-panel** coefficient plot (year path for `new_file_effect=0`; implied `new_file_effect` by year) plus a separate **`_nf_year_interactions_only`** figure; for transitions, **`salary_regression_transition_delta_file_mean_increase.png`**. **Shaded regions** on those plots are **approximate 95% confidence bands** (estimate ± 1.96×SE) from the **CRV1 cluster-robust** variance matrix (`cao_number`); legends and figure text state this explicitly. All use sep `;` and `decimal=','` for CSVs. Coefficient rows include **`Coefficient`**, **`formula`**, **`ref_year`**, **`se_invalid`**, inference columns, **`n_obs`**, **`n_clusters_cao`**, and **`outcome`** (event-level only). Wide salary load uses header-based **`usecols`** to limit RAM; remaining mixed-type reads on selected columns are silenced with a scoped **`DtypeWarning`** filter.
+- **Salary descriptives workbook tabs added**:
+  - `01_sample_overview` includes section `salary_monthly_band` (eligible / dropped below floor / above cap / missing date).
+  - `09_increase_diff_only`
+  - `10_increase_merge_vs_csv`
+- **Salary figures** (under `outputs/analysis/figures/salary/`):
+  - `salary_amount_primary_unit_by_salary_year.png` — **raw** amounts for the **modal** unit only (QA / not cross-unit comparable).
+  - `salary_amount_monthly_eur_band_eligible_by_salary_year.png` — **EUR/month** after `convert_salary_to_monthly` (same rules as increase derivation), **band-eligible** rows only (statutory floor + analysis cap).
+  - `salary_increase_*_by_salary_year.png` (diff / merged / CSV): y-axis uses robust % scaling (hidden boxplot fliers, trimmed range) so typical increases are visible.
+  - `salary_increase_series_comparison_by_year.png` — yearly means with a trimmed y-axis for display.
+  - `salary_increase_shift_by_new_file_year.png`
+  - `salary_increase_spaghetti_selected_caos.png` — thin lines: highlighted top/bottom CAOs; **black line**: mean **`increase_merged_pref_csv`** over **all** dedup-valid (band-eligible) CAOs per salary year, not only the highlighted set.
+- **Non-salary filter semantics for analysis/plots**:
+  - Exclude `protocol` always.
+  - Always include `full_cao_original`, `full_cao_update`.
+  - Other document types are included only when `general_updated_topics` intersects relevant topic keywords.
+- **Non-salary metadata outputs**:
+  - Descriptives sheets `01b_document_type`, `01c_updated_topics_top`, `01d_filter_diagnostics`
+  - Plots `non_salary_document_type_distribution.png`, `non_salary_updated_topics_top10.png`
+
+### Run analysis scripts
+
+```bash
+conda run -n caos-extract python scripts/excel_analysis/descriptives_salary.py
+conda run -n caos-extract python scripts/excel_analysis/descriptives_salary_plots.py
+conda run -n caos-extract python scripts/excel_analysis/descriptives_non_salary.py
+conda run -n caos-extract python scripts/excel_analysis/descriptives_non_salary_plots.py
+conda run -n caos-extract python scripts/excel_analysis/salary_increase_regression.py
+conda run -n caos-extract python scripts/excel_analysis/validate_analysis_outputs.py
+```
+
+### Memory-safe execution
+
+- Run heavy analysis scripts sequentially in a single process (do not start salary and non-salary analysis in parallel).
+- Latest-view forward-fill is used only for selecting active CAO/file context by year; event variables are not forward-filled.
+- Increase event metrics (`salary_increase_percent`, `increase_diff_only`, `increase_csv_only`) are aggregated from observed event rows only.
+- Salary long construction now uses subset-first slot extraction and a single concat to avoid per-slot full-frame copies.
+- Non-salary plotting applies one document-type filter per plot function pass (no per-domain topic cache).
+- Use runtime diagnostics in script logs (`[MEM] ... MB`) to spot memory spikes.
+
 ## Pipeline Overview
 
 ```

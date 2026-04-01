@@ -13,10 +13,11 @@ INPUT:
 OUTPUT:
     - outputs/analysis/figures/ (directory with PNG plots)
       
-      Numeric trend plots (with normalized values and CAO counts):
+      Numeric trend plots: one combined chart per figure with line legends, optional right y-axis for mixed scales, and CAO counts as light background bars:
       - non_salary_numeric_hours_trends.png (+ _latest_cao_view version)
       - non_salary_numeric_leave_trends.png (+ _latest_cao_view version)
       - non_salary_numeric_pension_training_trends.png (+ _latest_cao_view version)
+      Unit conversion rules: scripts/excel_analysis/non_salary_unit_normalization.py
       
       Boolean trend plots by domain (with CAO counts in background):
       - non_salary_boolean_overview.png (+ _latest_cao_view version)
@@ -37,7 +38,6 @@ OUTPUT:
 
 import os
 import sys
-import re
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional
 import pandas as pd
@@ -54,6 +54,11 @@ from scripts.excel_analysis.analysis_utils import (
     get_plot_color_cycle,
     enforce_integer_year_axis,
     parse_updated_topics_cell,
+)
+from scripts.excel_analysis.non_salary_unit_normalization import (
+    normalize_for_plot,
+    NUMERIC_VAR_LEGEND_LABELS,
+    NUMERIC_VAR_YLABELS,
 )
 
 # =============================================================================
@@ -449,331 +454,6 @@ NUMERIC_FIGURE_GROUPS = {
 # HELPER FUNCTIONS
 # =============================================================================
 
-def normalize_hours_to_weekly(value: float, unit: str, default_ft_hours: float = 38.0, 
-                               assume_percentage_if_unknown: bool = False,
-                               var_name: str = "") -> Optional[float]:
-    """
-    Normalize time values to hours per week, or percentages to percentage scale.
-    
-    Handles comprehensive unit formats including:
-    - Hours: per week, per year, per month, per X weeks
-    - Days: days, days per year, days per calendar year, etc.
-    - Percentages: % of hours worked, % of agreed working hours, etc.
-    - Multipliers: times agreed working hours per week, times average weekly hours, etc.
-    - Weeks, months, years
-    - Pension: fractions, shares, percentages of premium
-    - Training: hours, days, weeks, percentages
-    
-    For percentages and multipliers, uses default_ft_hours (default 38) as base.
-    For pension contributions, normalizes fractions/shares to percentage scale.
-    
-    Args:
-        value: Numeric value
-        unit: Unit string (case-insensitive)
-        default_ft_hours: Default full-time hours per week for percentage/multiplier conversions (default 38)
-        assume_percentage_if_unknown: If True, assume percentage when no known unit matches (for leave continuation)
-        var_name: Variable name to determine normalization strategy (e.g., pension_employee_contrib_value)
-        
-    Returns:
-        Normalized value in hours per week (for time) or percentage (for pension), or None if conversion not possible
-    """
-    if pd.isna(value) or value is None:
-        return None
-    
-    if pd.isna(unit) or unit is None or unit == "":
-        return None
-    
-    unit_lower = str(unit).lower().strip()
-    val = float(value)
-    
-    # ========================================================================
-    # HOURS-BASED UNITS
-    # ========================================================================
-    
-    # Hours per week (already in correct unit)
-    if any(x in unit_lower for x in ['hours per week', 'hours/week', 'hours_per_week', 
-                                      'hours per workweek', 'hours per payroll period',
-                                      'hours per wage period', 'hours per pay period',
-                                      'hours per work week', 'hours per working week',
-                                      'average weekly hours', 'wage hours']):
-        return val
-    
-    # Hours per year -> divide by 52
-    if any(x in unit_lower for x in ['hours per year', 'hours/year', 'hours_per_year', 
-                                      'hours annually', 'hours (average over one year)',
-                                      'hours per calendar year', 'hours per full vacation year',
-                                      'hours per vacation year', 'hours per year for 36-hour week',
-                                      'hours per year for 36-hour work week',
-                                      'hours per year for 36-hour workweek',
-                                      'hours per year for 38-hour week',
-                                      'hours per year for 40-hour workweek support staff',
-                                      'hours per year for full-time',
-                                      'hours per year for full-time employment',
-                                      'hours annually for 36-hour work week',
-                                      'hours annually for full-time employment',
-                                      'hours per academic year', 'hours per course year',
-                                      'hours per school year', 'clock hours per school year',
-                                      'to 30.4 hours per year']):
-        return val / 52.0
-    
-    # Hours per month -> multiply by 12/52
-    if any(x in unit_lower for x in ['hours per month', 'hours/month',
-                                      'hours per full working month',
-                                      'hours per fully worked month']):
-        return val * 12.0 / 52.0
-    
-    # Hours per 4 weeks -> divide by 4
-    if any(x in unit_lower for x in ['hours per 4 weeks', 'hours per 4-week', 
-                                      'hours per four weeks', 'hours per 4-week pay period',
-                                      'hours per 4-week period', 'hours per week (average over 4 weeks)',
-                                      'hours per week (averaged over 4 weeks)', 
-                                      'hours per week (averaged over four weeks)',
-                                      'hours per week (over 4-week period)',
-                                      'hours per week average over 4-week period',
-                                      'hours (average over 4 weeks)']):
-        return val / 4.0
-    
-    # Hours per 13 weeks -> divide by 13
-    if any(x in unit_lower for x in ['hours per 13 weeks', 'hours per 13-week', 
-                                      'hours per week (average over 13 weeks)',
-                                      'hours per week (average over 13-week period)',
-                                      'hours per week average over 13-week period',
-                                      'hours per week over 13 weeks',
-                                      'hours average in 13 weeks']):
-        return val / 13.0
-    
-    # Hours per 16 weeks -> divide by 16
-    if 'hours per 16 weeks' in unit_lower or 'hours per week (average over 16 weeks)' in unit_lower:
-        return val / 16.0
-    
-    # Hours per 26 weeks -> divide by 26
-    if any(x in unit_lower for x in ['hours per 26 weeks', 'hours per week (average over 26 weeks)',
-                                      'hours per 26-week period']):
-        return val / 26.0
-    
-    # Just "hours" - assume per week if reasonable, otherwise ambiguous
-    if unit_lower in ['hours', 'clock hours', 'paid hours']:
-        # If value is reasonable for weekly hours (e.g., 20-60), assume weekly
-        if 20 <= val <= 60:
-            return val
-        # Otherwise ambiguous, return None
-        return None
-    
-    # ========================================================================
-    # DAYS-BASED UNITS
-    # ========================================================================
-    # Convert days to hours per week: assume 7.6 hours per working day (38 hours / 5 days)
-    # Then convert to weekly: days_per_year / 52 * 7.6, or days_per_week * 7.6
-    
-    if 'days' in unit_lower:
-        hours_per_day = default_ft_hours / 5.0  # Assume 5-day work week
-        
-        # Days per year -> convert to hours per week
-        if any(x in unit_lower for x in ['days per year', 'days/year', 'days annually',
-                                          'days per calendar year', 'days per full calendar year',
-                                          'days per full vacation year', 'days per vacation year',
-                                          'workdays per year', 'working days per year',
-                                          'working days per calendar year',
-                                          'day per year', 'day per calendar year',
-                                          'days per 12 months', 'days/shifts per year',
-                                          'training days per 12 months', 'school days per year',
-                                          'school days per school year', 'paid study days per year',
-                                          'paid day per year', 'paid training days']):
-            return (val / 52.0) * hours_per_day
-        
-        # Days per week (implicit or explicit)
-        if any(x in unit_lower for x in ['per week', 'weekly', 'day per week']):
-            return val * hours_per_day
-        
-        # Training/school/paid days
-        if any(x in unit_lower for x in ['training days', 'school days', 'paid day',
-                                          'paid day of leave', 'paid day off', 'paid development day',
-                                          'paid study days', 'development days', 'half-days',
-                                          'half-days per year', 'days/shifts']):
-            # Assume these are per year
-            return (val / 52.0) * hours_per_day
-        
-        # Just "days" - assume per year if value is reasonable (e.g., 20-30), otherwise per week
-        if 20 <= val <= 30:
-            # Likely days per year (vacation days)
-            return (val / 52.0) * hours_per_day
-        else:
-            # Likely days per week
-            return val * hours_per_day
-    
-    # Workdays (same as days)
-    if 'workdays' in unit_lower or 'working days' in unit_lower:
-        hours_per_day = default_ft_hours / 5.0
-        if 'per year' in unit_lower:
-            return (val / 52.0) * hours_per_day
-        return val * hours_per_day
-    
-    # ========================================================================
-    # PENSION CONTRIBUTION UNITS (fractions, shares, percentages)
-    # ========================================================================
-    # For pension_employee_contrib_value, normalize fractions/shares to percentage scale
-    
-    if 'pension_employee_contrib' in var_name.lower():
-        # Fraction-based units -> convert to percentage
-        if any(x in unit_lower for x in ['fraction of premium', 'fraction of total premium',
-                                          'share of premium', 'third of premium',
-                                          'up to 50% of premium', 'of employer premium',
-                                          'of total premium', 'of non-vpl premium']):
-            # Fractions are typically 0-1, convert to percentage (0-100)
-            if val <= 1.0:
-                return val * 100.0  # Fraction to percentage
-            else:
-                return val  # Already in percentage
-        
-        # Percentage units for pension
-        if '%' in unit_lower or 'percent' in unit_lower:
-            return val  # Already in percentage scale
-        
-        # EUR or monetary - cannot normalize, return None
-        if 'eur' in unit_lower or 'euro' in unit_lower or unit_lower == 'eur':
-            return None  # Monetary values cannot be normalized to percentage
-        
-        # If unit is blank or unknown for pension, assume it's already a percentage
-        if assume_percentage_if_unknown or unit_lower == '' or unit_lower == '(blanks)':
-            # If value is in reasonable percentage range (0-100), return as-is
-            if 0 <= val <= 100:
-                return val
-            # If value is in fraction range (0-1), convert to percentage
-            if 0 <= val <= 1:
-                return val * 100.0
-    
-    # ========================================================================
-    # PERCENTAGE-BASED UNITS (for time-related variables)
-    # ========================================================================
-    # Convert percentage to absolute hours using default_ft_hours as base
-    
-    if '%' in unit_lower or 'percent' in unit_lower:
-        # Percentage of hours worked, agreed hours, etc.
-        if any(x in unit_lower for x in ['% of hours worked', 'percent of hours worked',
-                                          '% of agreed working hours', 'percent of agreed working hours',
-                                          '% of agreed annual working hours', 'percent of agreed annual working hours',
-                                          '% of agreed working hours per calendar year',
-                                          'percent of agreed working hours per calendar year',
-                                          '% of annual working hours', 'percent of annual working hours',
-                                          '% of contractual working hours', 'percent of contractual working hours',
-                                          '% of paid hour', '% of paid hours',
-                                          'percent of paid hour', 'percent of paid hours',
-                                          '% of working hours', 'percent of working hours',
-                                          'percent of study time within working hours']):
-            # Value is percentage (e.g., 50 means 50%)
-            return (val / 100.0) * default_ft_hours
-        # Generic percentage - assume of full-time hours
-        return (val / 100.0) * default_ft_hours
-    
-    # ========================================================================
-    # MULTIPLIER-BASED UNITS
-    # ========================================================================
-    # "times" or "x" means multiply by base hours
-    
-    if 'times' in unit_lower or (unit_lower.startswith('x ') and 'hours' in unit_lower):
-        if any(x in unit_lower for x in ['times agreed working hours per week',
-                                          'times average weekly hours',
-                                          'times average weekly hours annually',
-                                          'times the average number of hours per week',
-                                          'times weekly working hours',
-                                          'x average weekly hours',
-                                          'x average weekly working hours annually']):
-            # Value is multiplier (e.g., 1.5 means 1.5x weekly hours)
-            return val * default_ft_hours
-        # Generic multiplier
-        return val * default_ft_hours
-    
-    # ========================================================================
-    # TIME PERIOD UNITS (weeks, months, years)
-    # ========================================================================
-    
-    # Weeks -> assume hours per week (value is already in hours)
-    if unit_lower in ['weeks', 'week']:
-        # If value is reasonable for weekly hours, return as-is
-        if 20 <= val <= 60:
-            return val
-        # Otherwise ambiguous
-        return None
-    
-    # Weeks at X% salary -> assume this is weeks of leave at percentage salary, convert to hours
-    # Pattern: "weeks at 100% salary", "weeks at 70% or 85% salary", etc.
-    if 'weeks at' in unit_lower and ('%' in unit_lower or 'percent' in unit_lower or 'salary' in unit_lower):
-        # Extract percentage if possible (e.g., "70%" or "85%")
-        # Handle multiple percentages by taking the first one found
-        percent_matches = re.findall(r'(\d+)%', unit_lower)
-        if percent_matches:
-            # Use the first percentage found (or average if multiple, but first is simpler)
-            percent_val = float(percent_matches[0])
-            # Convert: weeks duration * hours per week * percentage / 52 weeks per year
-            # This gives equivalent hours per week
-            return (val * default_ft_hours * (percent_val / 100.0)) / 52.0
-        else:
-            # Default to 100% if no percentage found
-            return (val * default_ft_hours) / 52.0
-    
-    # Monthly supplement -> convert monthly amount to weekly
-    if 'monthly supplement' in unit_lower or unit_lower == 'monthly supplement':
-        # Assume value is monthly amount, convert to weekly
-        return val * 12.0 / 52.0
-    
-    # Months -> convert to hours per week
-    if unit_lower in ['months', 'month']:
-        # If value seems like hours per month (e.g., 150-200), convert
-        if 100 <= val <= 200:
-            return val * 12.0 / 52.0
-        # If value seems like months duration (e.g., 1-12), convert to hours
-        # Assume 1 month = 4.33 weeks, so multiply by weekly hours
-        if 1 <= val <= 24:
-            return val * 4.33 * default_ft_hours / 52.0  # Convert months to hours per week
-        # Otherwise ambiguous
-        return None
-    
-    # Year/years -> convert to hours per week
-    if unit_lower in ['year', 'years']:
-        # If value seems like hours per year (e.g., 1800-2100), convert
-        if 1500 <= val <= 2500:
-            return val / 52.0
-        # If value seems like years duration (e.g., 0.5-5), convert to hours
-        # Assume 1 year = 52 weeks, so multiply by weekly hours
-        if 0.1 <= val <= 10:
-            return val * 52.0 * default_ft_hours / 52.0  # Convert years to hours per week
-        # Otherwise ambiguous
-        return None
-    
-    # Weeks -> handle as duration (weeks of leave/time off) or as hours per week
-    if unit_lower in ['weeks', 'week']:
-        # If value seems like weeks duration (e.g., 1-52), convert to equivalent hours per week
-        # Example: 5 weeks of leave = (5 weeks * 38 hours/week) / 52 weeks = equivalent hours per week
-        if 1 <= val <= 104:  # Up to 2 years - likely duration
-            return val * default_ft_hours / 52.0  # Convert weeks duration to equivalent hours per week
-        # If value is reasonable for weekly hours (e.g., 20-60), assume it's already hours per week
-        if 20 <= val <= 60:
-            return val
-        # Otherwise ambiguous
-        return None
-    
-    # ========================================================================
-    # FALLBACK: If unit contains "per week" or "weekly", assume already weekly
-    # ========================================================================
-    if 'per week' in unit_lower or 'weekly' in unit_lower:
-        return val
-    
-    # ========================================================================
-    # DEFAULT FOR LEAVE/SICKPAY CONTINUATION: Assume percentage if no match
-    # ========================================================================
-    # For leave continuation values, if we haven't matched any known time unit,
-    # assume it's a percentage (common case)
-    if assume_percentage_if_unknown:
-        # Only assume percentage if value is in reasonable range (0-200%)
-        if 0 <= val <= 200:
-            return (val / 100.0) * default_ft_hours
-        # If value is out of percentage range, return None
-        return None
-    
-    # If no match and not assuming percentage, return None (unknown unit)
-    return None
-
-
 def normalize_boolean(series: pd.Series) -> pd.Series:
     """
     Normalize boolean values to True/False.
@@ -931,9 +611,10 @@ def prepare_year_column(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def compute_numeric_trends(df: pd.DataFrame, var_name: str, start_year_col: str, 
+def compute_numeric_trends(df: pd.DataFrame, var_name: str, start_year_col: str,
                           min_obs: int = 3, normalize_hours: bool = False,
-                          default_ft_hours: float = 38.0) -> Tuple[Optional[pd.Series], Optional[pd.Series]]:
+                          default_ft_hours: float = 38.0,
+                          agg_kind: str = "mean") -> Tuple[Optional[pd.Series], Optional[pd.Series]]:
     """
     Compute yearly averages for a numeric variable.
     
@@ -950,45 +631,23 @@ def compute_numeric_trends(df: pd.DataFrame, var_name: str, start_year_col: str,
     if var_name not in df.columns:
         return None, None
     
-    # Check if we need to normalize hours
+    # Unit-based normalization (canonical scale per variable; see non_salary_unit_normalization)
     if normalize_hours:
-        unit_col = var_name.replace('_value', '_unit')
+        unit_col = var_name.replace("_value", "_unit")
         if unit_col in df.columns:
-            # Normalize values based on units
             normalized_values = []
-            for idx, row in df.iterrows():
-                value = row[var_name]
-                unit = row[unit_col] if unit_col in row else None
-                # Try to get contract_full_time_hours for this row if available (for better % conversion)
-                ft_hours = default_ft_hours
-                if "contract_full_time_hours_value" in df.columns:
-                    row_ft_hours = row.get("contract_full_time_hours_value")
-                    if pd.notna(row_ft_hours):
-                        # Check if it's already normalized or needs normalization
-                        ft_unit_col = "contract_full_time_hours_unit"
-                        if ft_unit_col in df.columns:
-                            ft_unit = row.get(ft_unit_col)
-                            normalized_ft = normalize_hours_to_weekly(row_ft_hours, ft_unit, default_ft_hours)
-                            if normalized_ft is not None:
-                                ft_hours = normalized_ft
-                        else:
-                            # Assume already in hours per week if reasonable
-                            if 20 <= row_ft_hours <= 60:
-                                ft_hours = row_ft_hours
-                
-                # For leave_sickpay_continuation_value, assume percentage if unit doesn't match known time units
-                assume_pct = var_name == "leave_sickpay_continuation_value"
-                # For pension_employee_contrib_value, also assume percentage if unknown
-                if var_name == "pension_employee_contrib_value":
-                    assume_pct = True
-                normalized = normalize_hours_to_weekly(value, unit, ft_hours, 
-                                                       assume_percentage_if_unknown=assume_pct,
-                                                       var_name=var_name)
+            for _, row in df.iterrows():
+                normalized = normalize_for_plot(
+                    var_name,
+                    row[var_name],
+                    row.get(unit_col),
+                    default_ft_hours=default_ft_hours,
+                    row=row,
+                )
                 normalized_values.append(normalized)
             numeric_series = pd.Series(normalized_values, index=df.index)
         else:
-            # No unit column, use raw values
-            numeric_series = pd.to_numeric(df[var_name], errors='coerce')
+            numeric_series = pd.to_numeric(df[var_name], errors="coerce")
     else:
         # Coerce to numeric
         numeric_series = pd.to_numeric(df[var_name], errors='coerce')
@@ -999,9 +658,12 @@ def compute_numeric_trends(df: pd.DataFrame, var_name: str, start_year_col: str,
         var_name: numeric_series
     })
     
-    # Group by year and compute mean and count (only on non-NaN values)
+    agg_kind = agg_kind.lower().strip()
+    if agg_kind not in {"mean", "median"}:
+        agg_kind = "mean"
+    agg_fn = np.mean if agg_kind == "mean" else np.median
     grouped = temp_df.groupby(start_year_col)[var_name].agg([
-        ('mean', lambda x: x.dropna().mean() if x.notna().sum() > 0 else np.nan),
+        ('value', lambda x: agg_fn(x.dropna()) if x.notna().sum() > 0 else np.nan),
         ('count', lambda x: x.notna().sum())
     ])
     
@@ -1012,7 +674,7 @@ def compute_numeric_trends(df: pd.DataFrame, var_name: str, start_year_col: str,
         return None, None
     
     years = grouped.index
-    means = grouped['mean']
+    means = grouped['value']
     counts = grouped['count']
     
     return pd.Series(means.values, index=years), pd.Series(counts.values, index=years)
@@ -1069,8 +731,9 @@ def compute_boolean_trends(df: pd.DataFrame, var_name: str, start_year_col: str,
     return pd.Series(shares.values, index=years), pd.Series(counts.values, index=years)
 
 
-def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path, 
+def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
                        min_obs: int = 3, use_latest_cao_view: bool = False,
+                       agg_kind: str = "mean",
                        df_latest_view: Optional[pd.DataFrame] = None) -> None:
     """
     Plot numeric variable trends grouped by figure.
@@ -1083,6 +746,9 @@ def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
         use_latest_cao_view: If True, use forward-filled latest CAO view
     """
     # Use latest CAO view if requested
+    agg_kind = agg_kind.lower().strip()
+    if agg_kind not in {"mean", "median"}:
+        agg_kind = "mean"
     if use_latest_cao_view:
         df_plot = df_latest_view if df_latest_view is not None else build_latest_cao_forward_fill(
             df, cao_col="cao_number", date_col="ingangsdatum"
@@ -1095,6 +761,8 @@ def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
     else:
         df_plot = df
         suffix = ""
+    if agg_kind == "median":
+        suffix = f"{suffix}_median" if suffix else "_median"
     
     df_plot_local = filter_non_salary_for_plot(df_plot)
     for fig_filename, var_list in NUMERIC_FIGURE_GROUPS.items():
@@ -1111,19 +779,26 @@ def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
                 print(f"  [WARN] Column '{var_name}' not found; skipping numeric trend.")
                 continue
             
-            # Check if this is a variable that needs normalization
-            normalize_hours = var_name in ["contract_full_time_hours_value", 
-                                          "overtime_max_hours_per_week_value",
-                                          "leave_vacation_time_value",
-                                          "leave_sickpay_duration_value",
-                                          "leave_sickpay_continuation_value",
-                                          "pension_employee_contrib_value",
-                                          "training_time_yearly_value"]
-            # Note: pension_retire_age_normal_value is in years (age), no normalization needed
+            normalize_hours = var_name in [
+                "contract_full_time_hours_value",
+                "overtime_max_hours_per_week_value",
+                "leave_vacation_time_value",
+                "leave_sickpay_duration_value",
+                "leave_sickpay_continuation_value",
+                "pension_employee_contrib_value",
+                "pension_retire_age_normal_value",
+                "training_time_yearly_value",
+            ]
             
-            means, counts = compute_numeric_trends(df_plot_local, var_name, start_year_col, min_obs,
-                                                   normalize_hours=normalize_hours,
-                                                   default_ft_hours=38.0)
+            means, counts = compute_numeric_trends(
+                df_plot_local,
+                var_name,
+                start_year_col,
+                min_obs,
+                normalize_hours=normalize_hours,
+                default_ft_hours=38.0,
+                agg_kind=agg_kind,
+            )
             
             if means is None or len(means) == 0:
                 print(f"  [WARN] Column '{var_name}' has insufficient data; skipping.")
@@ -1145,7 +820,7 @@ def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
                 is_outlier = abs(mean_val - median_val) > 2 * std_val if not np.isnan(std_val) and std_val > 0 else False
                 outlier_flag = " [OUTLIER?]" if is_outlier else ""
                 small_sample_flag = " [SMALL SAMPLE]" if n < 5 else ""
-                print(f"    Year {int(year)}: n={int(n)}, mean={mean_val:.2f}{outlier_flag}{small_sample_flag}")
+                print(f"    Year {int(year)}: n={int(n)}, {agg_kind}={mean_val:.2f}{outlier_flag}{small_sample_flag}")
         
         if len(plot_data) == 0:
             print(f"  [INFO] No data available for figure {fig_filename}; skipping.")
@@ -1167,53 +842,146 @@ def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
                 else:
                     cao_counts[year] = 0
         
-        # Create plot with secondary axis for CAO counts
-        fig, ax1 = plt.subplots(figsize=(10, 6))
-        
-        colors = get_plot_color_cycle(len(plot_data))
-        for i, (var_name, means) in enumerate(plot_data):
-            ax1.plot(means.index.astype(int), means.values, marker='o', label=var_name, linewidth=2, color=colors[i])
-        
-        ax1.set_xlabel("Contract start year", fontsize=12)
-        # Set x-axis limits and ticks (2007-2027, every 2 years)
-        enforce_integer_year_axis(ax1, [int(y) for y in all_years])
-        # Determine y-axis label based on variables in the plot
-        has_hours_vars = any("hours" in v for v, _ in plot_data)
-        has_leave_vars = any("leave" in v for v, _ in plot_data)
-        has_training_vars = any("training" in v for v, _ in plot_data)
-        has_pension_contrib = any("pension_employee_contrib" in v for v, _ in plot_data)
-        has_pension_age = any("pension_retirement_age" in v for v, _ in plot_data)
-        
-        if has_pension_contrib:
-            ylabel = "Average value (percentage, normalized)"
-        elif has_pension_age:
-            ylabel = "Average value (age in years)"
-        elif has_hours_vars or has_leave_vars or has_training_vars:
-            ylabel = "Average value (hours per week, normalized)"
+        # Single combined chart per figure with optional dual y-axis for mixed scales/units.
+        fig, ax_left = plt.subplots(figsize=(12, 7))
+        colors = get_plot_color_cycle(max(len(plot_data), 1))
+        title_base = base_filename.replace("_", " ").title()
+        if use_latest_cao_view:
+            title_suffix = " (Latest CAO View)"
         else:
-            ylabel = "Average value"
-        ax1.set_ylabel(ylabel, fontsize=12)
-        title_base = base_filename.replace('_', ' ').title()
-        title_suffix = " (Latest CAO View)" if use_latest_cao_view else ""
-        ax1.set_title(f"{title_base}{title_suffix}", fontsize=14)
-        ax1.grid(True, alpha=0.3)
-        ax1.legend(fontsize=10)
-        
-        # Add secondary axis for CAO counts
+            title_suffix = ""
+        if agg_kind == "median":
+            title_suffix = f"{title_suffix} (Median)"
+        ax_left.set_title(f"{title_base}{title_suffix}", fontsize=14)
+
+        series_meta = []
+        for var_name, means in plot_data:
+            y_label = NUMERIC_VAR_YLABELS.get(var_name, "Mean")
+            valid = means.dropna()
+            median_value = float(np.median(valid.values)) if len(valid) > 0 else 1.0
+            series_meta.append({
+                "var_name": var_name,
+                "means": means,
+                "legend_label": NUMERIC_VAR_LEGEND_LABELS.get(var_name, var_name),
+                "y_label": y_label,
+                "median": abs(median_value) if median_value != 0 else 1.0,
+            })
+
+        y_labels = sorted({item["y_label"] for item in series_meta})
+        medians = [max(item["median"], 1e-6) for item in series_meta]
+        scale_ratio = (max(medians) / min(medians)) if medians else 1.0
+        use_right_axis = len(series_meta) > 1 and (len(y_labels) > 1 or scale_ratio >= 3.0)
+        ax_right = ax_left.twinx() if use_right_axis else None
+
+        if use_right_axis:
+            split_threshold = np.sqrt(max(medians) * min(medians))
+            left_series = [item for item in series_meta if item["median"] <= split_threshold]
+            right_series = [item for item in series_meta if item["median"] > split_threshold]
+            if len(left_series) == 0:
+                left_series = [min(series_meta, key=lambda x: x["median"])]
+                right_series = [item for item in series_meta if item["var_name"] != left_series[0]["var_name"]]
+            if len(right_series) == 0:
+                right_series = [max(series_meta, key=lambda x: x["median"])]
+                left_series = [item for item in series_meta if item["var_name"] != right_series[0]["var_name"]]
+        else:
+            left_series = series_meta
+            right_series = []
+
+        def _axis_ylabel(items: List[Dict[str, object]], fallback: str = "Value") -> str:
+            labels = sorted({str(item["y_label"]) for item in items})
+            if len(labels) == 1:
+                return labels[0]
+            if len(labels) > 1:
+                return " / ".join(labels)
+            return fallback
+
+        line_handles = []
+        for i, item in enumerate(left_series):
+            line, = ax_left.plot(
+                item["means"].index.astype(int),
+                item["means"].values,
+                marker="o",
+                label=item["legend_label"],
+                linewidth=2,
+                color=colors[i % len(colors)],
+            )
+            line_handles.append(line)
+
+        if use_right_axis and ax_right is not None:
+            for j, item in enumerate(right_series):
+                idx = len(left_series) + j
+                line, = ax_right.plot(
+                    item["means"].index.astype(int),
+                    item["means"].values,
+                    marker="o",
+                    label=item["legend_label"],
+                    linewidth=2,
+                    linestyle="--",
+                    color=colors[idx % len(colors)],
+                )
+                line_handles.append(line)
+            ax_right.set_ylabel(_axis_ylabel(right_series, "Multiple metrics (see legend)"), fontsize=11)
+            ax_right.tick_params(axis="y")
+
+        # Label first and last points for retirement age in latest-view pension/training plot.
+        if use_latest_cao_view and "pension_training" in base_filename:
+            def _annotate_retirement_endpoints(series_items: List[Dict[str, object]], target_ax: plt.Axes) -> None:
+                for item in series_items:
+                    if item["var_name"] != "pension_retire_age_normal_value":
+                        continue
+                    s = item["means"].dropna()
+                    if len(s) == 0:
+                        return
+                    first_x = int(s.index.min())
+                    last_x = int(s.index.max())
+                    first_y = float(s.loc[first_x])
+                    last_y = float(s.loc[last_x])
+                    target_ax.text(first_x, first_y, f"{first_y:.1f}", fontsize=8, ha="right", va="bottom")
+                    if last_x != first_x:
+                        target_ax.text(last_x, last_y, f"{last_y:.1f}", fontsize=8, ha="left", va="bottom")
+                    return
+            _annotate_retirement_endpoints(left_series, ax_left)
+            if use_right_axis and ax_right is not None:
+                _annotate_retirement_endpoints(right_series, ax_right)
+
+        ax_left.set_xlabel("Contract start year", fontsize=12)
+        ax_left.set_ylabel(_axis_ylabel(left_series, "Value"), fontsize=11)
+        enforce_integer_year_axis(ax_left, [int(y) for y in all_years])
+        ax_left.grid(True, alpha=0.3)
+
+        # CAO counts on dedicated count axis to preserve line readability.
         if cao_counts:
             years = sorted(cao_counts.keys())
             counts_list = [cao_counts[y] for y in years]
-            ax2 = ax1.twinx()
-            ax2.bar(years, counts_list, alpha=0.2, color='gray', label='Number of CAOs')
-            ax2.set_ylabel("Number of CAOs", fontsize=12, color='gray')
-            ax2.tick_params(axis='y', labelcolor='gray')
-            # Add count annotations on bars
+            ax_counts = ax_left.twinx()
+            if use_right_axis:
+                ax_counts.spines["right"].set_position(("axes", 1.10))
+            ax_counts.bar(years, counts_list, alpha=0.08, color="gray", label="Number of CAOs", zorder=0)
+            ax_counts.set_ylabel("Number of CAOs", fontsize=10, color="gray")
+            ax_counts.tick_params(axis="y", labelcolor="gray")
             for year, count in zip(years, counts_list):
-                if count > 0:  # Only annotate if count > 0
-                    ax2.text(year, count, f'{int(count)}', ha='center', va='bottom', 
-                            fontsize=8, color='gray')
-        
-        plt.tight_layout()
+                if count > 0:
+                    ax_counts.text(year, count, f"{int(count)}", ha="center", va="bottom", fontsize=7, color="gray", alpha=0.7)
+            ax_counts.set_zorder(0)
+            ax_left.set_zorder(2)
+            ax_left.patch.set_alpha(0)
+            if use_right_axis and ax_right is not None:
+                ax_right.set_zorder(3)
+                ax_right.patch.set_alpha(0)
+
+        # Combined legend for all numeric lines.
+        legend_cols = 1 if len(line_handles) <= 4 else 2
+        ax_left.legend(
+            handles=line_handles,
+            labels=[h.get_label() for h in line_handles],
+            fontsize=9,
+            loc="upper center",
+            bbox_to_anchor=(0.5, -0.12),
+            ncol=legend_cols,
+            framealpha=0.9,
+        )
+
+        plt.tight_layout(rect=[0, 0.06, 1, 1])
         
         # Save plot to numeric subfolder
         numeric_dir = output_dir / "numeric"
@@ -1598,21 +1366,39 @@ def main():
     print("="*80)
     print("Recommendation: run heavy scripts sequentially in a single process.")
     
-    # Generate standard numeric plots
+    # Generate standard numeric plots (means)
     try:
-        plot_numeric_trends(df, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=False)
+        plot_numeric_trends(df, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=False, agg_kind="mean")
     except Exception as e:
         print(f"  ERROR in numeric trends: {e}")
         import traceback
         traceback.print_exc()
     
-    # Generate Latest CAO View numeric plots
+    # Generate Latest CAO View numeric plots (means)
     try:
         plot_numeric_trends(
-            df, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=True, df_latest_view=df_latest_view
+            df, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=True, agg_kind="mean", df_latest_view=df_latest_view
         )
     except Exception as e:
         print(f"  ERROR in numeric trends (latest CAO view): {e}")
+        import traceback
+        traceback.print_exc()
+
+    # Generate standard numeric plots (medians)
+    try:
+        plot_numeric_trends(df, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=False, agg_kind="median")
+    except Exception as e:
+        print(f"  ERROR in numeric trends (median): {e}")
+        import traceback
+        traceback.print_exc()
+
+    # Generate Latest CAO View numeric plots (medians)
+    try:
+        plot_numeric_trends(
+            df, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=True, agg_kind="median", df_latest_view=df_latest_view
+        )
+    except Exception as e:
+        print(f"  ERROR in numeric trends (latest CAO view, median): {e}")
         import traceback
         traceback.print_exc()
     

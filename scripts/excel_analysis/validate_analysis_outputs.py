@@ -10,6 +10,7 @@ USAGE:
 
 OUTPUT:
     Prints a pass/fail report and exits with code 0 on success, 1 on missing outputs.
+    Expects ``outputs/analysis/salary_plot_years_dropped.csv`` (from salary plots; may be header-only).
 
     Salary-side CSVs in outputs/analysis/ use semicolon (;) as the separator.
 """
@@ -25,8 +26,8 @@ REQUIRED_FILES: List[str] = [
     "outputs/analysis/salary_increase_conversion_diagnostics.csv",
     "outputs/analysis/salary_increase_csv_vs_diff_comparison.csv",
     "outputs/analysis/salary_monthly_band_summary.csv",
+    "outputs/analysis/salary_plot_years_dropped.csv",
     "outputs/analysis/figures/salary/salary_ft_hours_by_contract_year.png",
-    "outputs/analysis/figures/salary/salary_amount_primary_unit_by_salary_year.png",
     "outputs/analysis/figures/salary/salary_increase_percent_by_salary_year.png",
     "outputs/analysis/figures/salary/salary_points_per_row_by_year.png",
 ]

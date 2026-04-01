@@ -18,12 +18,8 @@ Used by ``salary_increase_regression.py`` after each ``feols`` fit.
 
 from __future__ import annotations
 
-# Legend / caption text for the semi-transparent fill between coefficient CIs.
-CI_BAND_LABEL = "95% CI (estimate ± 1.96×SE, CRV1 cluster-robust)"
-CI_BAND_CAPTION = (
-    "Shaded regions: 95% confidence bands (estimate ± 1.96×SE) from the "
-    "cluster-robust (CRV1, cao_number) variance matrix."
-)
+# Legend label for the semi-transparent fill (bands = estimate ± 1.96×SE; CRV1 on cao_number).
+CI_BAND_LABEL = "95% CI"
 
 
 def _fig_caption_bottom(
@@ -55,7 +51,8 @@ def _fig_caption_bottom(
         )
     full_text = "\n\n".join(wrapped_blocks)
     n_lines = full_text.count("\n") + 1
-    bottom_frac = min(0.10 + 0.024 * max(n_lines, 4), 0.48)
+    # Extra bottom margin so x-axis labels sit above the caption block (avoids overlap with tight layouts).
+    bottom_frac = min(0.30 + 0.026 * max(n_lines, 5), 0.58)
     adj: Dict[str, float] = {"bottom": bottom_frac}
     if top is not None:
         adj["top"] = top
@@ -68,7 +65,7 @@ def _fig_caption_bottom(
     fig.subplots_adjust(**adj)
     fig.text(
         0.5,
-        0.012,
+        0.008,
         full_text,
         transform=fig.transFigure,
         ha="center",
@@ -381,7 +378,7 @@ def plot_event_regression(
     ax1.plot(y1, e1, marker="o", markersize=4, color=c1, label="β_new_file + β_{new×year}", zorder=3)
     _plot_ci_band(ax1, y1, e1, s1, c1, label=CI_BAND_LABEL)
     ax1.set_ylabel(f"Implied new_file_effect\n({outcome} units, non-first vs first in file)")
-    ax1.set_xlabel("Salary start year")
+    ax1.set_xlabel("Salary start year", labelpad=10)
     ax1.axhline(0.0, color="gray", linewidth=0.8, linestyle="--")
     ax1.legend(loc="best", fontsize=8)
     ax1.set_title(
@@ -404,15 +401,15 @@ def plot_event_regression(
                 f"{ref_year}. n_obs={n_obs}, n_clusters (CAO)={n_clusters_cao}."
             ),
             (
-                f"{CI_BAND_CAPTION} Panel B: interval uses Var(β_NF + β_NF×y) from the vcov "
-                f"(covariance between main and interaction terms included)."
+                "Panel B: interval uses Var(β_NF + β_NF×y) from the vcov "
+                "(covariance between main and interaction terms included)."
             ),
         ],
         top=0.96,
-        hspace=0.35,
+        hspace=0.40,
     )
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(out_path, dpi=150, bbox_inches="tight", pad_inches=0.35)
+    fig.savefig(out_path, dpi=150, bbox_inches="tight", pad_inches=0.45)
     plt.close(fig)
 
     # Optional third series: interaction-only deviation (small inset or second file — plan: optional on bottom)
@@ -423,7 +420,7 @@ def plot_event_regression(
     ax.plot(y2, e2, marker="o", markersize=4, color=c2, label="new_file_effect × year (increment vs ref)", zorder=3)
     _plot_ci_band(ax, y2, e2, s2, c2, label=CI_BAND_LABEL)
     ax.axhline(0.0, color="gray", linewidth=0.8, linestyle="--")
-    ax.set_xlabel("Salary start year")
+    ax.set_xlabel("Salary start year", labelpad=10)
     ax.set_ylabel(f"Increment to NF contrast vs {ref_year}\n(same outcome units)")
     ax.set_title(
         f"NF × salary_start_year interactions only (0 at ref {ref_year}) — {outcome}",
@@ -438,12 +435,11 @@ def plot_event_regression(
                 f"Same model as the main event figure for outcome '{outcome}'; n_obs={n_obs}. "
                 f"Deviation of the non-first-vs-first-in-file contrast from its value in ref year {ref_year}."
             ),
-            CI_BAND_CAPTION,
         ],
         top=0.90,
     )
     p2 = out_path.with_name(out_path.stem + "_nf_year_interactions_only" + out_path.suffix)
-    fig2.savefig(p2, dpi=150, bbox_inches="tight", pad_inches=0.35)
+    fig2.savefig(p2, dpi=150, bbox_inches="tight", pad_inches=0.45)
     plt.close(fig2)
 
 
@@ -490,7 +486,10 @@ def plot_transition_regression(
     ax.plot(y_arr, est, marker="o", markersize=4, color=c0, label="transition_year coefficient", zorder=3)
     _plot_ci_band(ax, y_arr, est, se, c0, label=CI_BAND_LABEL)
     ax.axhline(0.0, color="gray", linewidth=0.8, linestyle="--")
-    ax.set_xlabel("Transition year (calendar year of ingangsdatum for the new file)")
+    ax.set_xlabel(
+        "Transition year (calendar year of ingangsdatum for the new file)",
+        labelpad=10,
+    )
     ax.set_ylabel("Coefficient (delta_file_mean_increase)\nvs omitted reference year")
     ax.set_title("Transition-level FE: delta_file_mean_increase by transition year", fontsize=11)
     ax.legend(loc="best", fontsize=8)
@@ -503,10 +502,9 @@ def plot_transition_regression(
                 f"CRV1 cluster: cao_number. Omitted reference year baseline = 0. "
                 f"n_obs={n_obs}, n_clusters (CAO)={n_clusters_cao}."
             ),
-            CI_BAND_CAPTION,
         ],
         top=0.90,
     )
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(out_path, dpi=150, bbox_inches="tight", pad_inches=0.35)
+    fig.savefig(out_path, dpi=150, bbox_inches="tight", pad_inches=0.45)
     plt.close(fig)

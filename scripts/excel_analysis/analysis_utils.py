@@ -932,8 +932,14 @@ def build_latest_cao_forward_fill_by_file(
         versions = versions.sort_values([cao_col, year_col, file_col])
     versions = versions.groupby([cao_col, year_col], as_index=False).tail(1)
 
-    years = versions.groupby(cao_col)[year_col].agg(["min", "max"]).reset_index()
-    years["year_range"] = years.apply(lambda r: np.arange(int(r["min"]), int(r["max"]) + 1), axis=1)
+    # Build a global-horizon active panel:
+    # each CAO starts at its own first observed year, then forward-fills through
+    # the dataset-wide max year so late-year snapshots retain previously active CAOs.
+    global_max_year = int(versions[year_col].max())
+    years = versions.groupby(cao_col)[year_col].agg(["min"]).reset_index()
+    years["year_range"] = years["min"].apply(
+        lambda min_y: np.arange(int(min_y), global_max_year + 1)
+    )
     expanded = years[[cao_col, "year_range"]].explode("year_range").rename(columns={"year_range": year_col})
 
     version_lookup = versions[[cao_col, year_col, file_col]].copy()

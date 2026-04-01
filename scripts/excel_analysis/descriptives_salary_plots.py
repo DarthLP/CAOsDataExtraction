@@ -20,8 +20,8 @@ OUTPUT:
 
       Time trend plots:
       - salary_ft_hours_by_contract_year.png
-      - salary_amount_primary_unit_by_salary_year.png (raw amounts, modal unit only — QA)
       - salary_amount_monthly_eur_band_eligible_by_salary_year.png (normalized EUR/month, band-eligible)
+      - outputs/analysis/salary_plot_years_dropped.csv (years excluded from plots due to n < MIN_OBS_PER_YEAR)
       - salary_increase_percent_by_salary_year.png
       - salary_boolean_shares_by_contract_year.png
       - Derived increase plots (diff / merged / CSV, comparison, shift, spaghetti)
@@ -59,7 +59,151 @@ from scripts.excel_analysis.salary_increase_derivation import (
 # =============================================================================
 INPUT_CSV = "outputs/excel/new_results/extracted_data_salary.csv"
 OUTPUT_FIG_DIR = "outputs/analysis/figures/salary/"
-MIN_OBS_PER_YEAR = 3  # Minimum observations per year to include in plot
+SALARY_PLOT_DROPPED_YEARS_CSV = "outputs/analysis/salary_plot_years_dropped.csv"
+MIN_OBS_PER_YEAR = 10  # Minimum observations per year to include in plot
+LOW_N_NOTE_UPPER = 20  # Included years with MIN_OBS_PER_YEAR <= n < this may look unstable visually
+
+# Accumulates rows for SALARY_PLOT_DROPPED_YEARS_CSV; reset at start of main().
+_salary_plot_dropped_rows: List[Dict[str, Any]] = []
+
+
+def reset_salary_plot_dropped_year_log() -> None:
+    """Clear the in-memory log of years dropped from plots before a script run."""
+
+    global _salary_plot_dropped_rows
+    _salary_plot_dropped_rows = []
+
+
+def append_salary_plot_dropped_years(
+    figure_key: str,
+    view: str,
+    grouped_with_count: pd.DataFrame,
+) -> List[int]:
+    """
+    Record years with 0 < count < MIN_OBS_PER_YEAR for transparency CSV; return sorted year list for fig notes.
+
+    Args:
+        figure_key: Stable identifier for the figure (e.g. ``ft_hours_by_contract_year``).
+        view: ``regular`` or ``latest_cao_view``.
+        grouped_with_count: Groupby result with a ``count`` column before applying MIN_OBS filter.
+
+    Returns:
+        Sorted list of excluded integer years (for compact figure footnotes).
+    """
+    dropped_years: List[int] = []
+    if grouped_with_count is None or len(grouped_with_count) == 0 or "count" not in grouped_with_count.columns:
+        return dropped_years
+    for year, row in grouped_with_count.iterrows():
+        n = int(row["count"]) if pd.notna(row["count"]) else 0
+        if 0 < n < MIN_OBS_PER_YEAR:
+            try:
+                y_int = int(year)
+            except (TypeError, ValueError):
+                continue
+            _salary_plot_dropped_rows.append(
+                {
+                    "figure_key": figure_key,
+                    "view": view,
+                    "year": y_int,
+                    "n_obs": n,
+                    "drop_reason": "below_min_obs_per_year",
+                    "min_obs_threshold": MIN_OBS_PER_YEAR,
+                }
+            )
+            dropped_years.append(y_int)
+    return sorted(dropped_years)
+
+
+def write_salary_plot_dropped_years_csv(path: Optional[Path] = None) -> None:
+    """
+    Write accumulated dropped-year rows to CSV (semicolon, European decimal for consistency).
+
+    Args:
+        path: Output path; defaults to SALARY_PLOT_DROPPED_YEARS_CSV under project-relative ``outputs/analysis``.
+    """
+    out = path or Path(SALARY_PLOT_DROPPED_YEARS_CSV)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    if not _salary_plot_dropped_rows:
+        pd.DataFrame(
+            columns=[
+                "figure_key",
+                "view",
+                "year",
+                "n_obs",
+                "drop_reason",
+                "min_obs_threshold",
+            ]
+        ).to_csv(out, index=False, sep=";", decimal=",")
+        return
+    pd.DataFrame(_salary_plot_dropped_rows).to_csv(out, index=False, sep=";", decimal=",")
+
+
+def add_figure_excluded_years_footnote(fig: plt.Figure, excluded_years: List[int], max_show: int = 25) -> None:
+    """
+    Add a one-line footnote listing years excluded for low n; use after axes are populated.
+
+    Args:
+        fig: Figure containing the plot.
+        excluded_years: Sorted years with 0 < n_obs < MIN_OBS_PER_YEAR for this figure.
+        max_show: Truncate list with "+N more" when longer than this.
+    """
+    if not excluded_years:
+        msg = f"Years with n < {MIN_OBS_PER_YEAR} (excluded from plot): none"
+    else:
+        ys = sorted(excluded_years)
+        if len(ys) > max_show:
+            tail = ", ".join(str(y) for y in ys[:max_show])
+            msg = f"Years with n < {MIN_OBS_PER_YEAR} (excluded from plot): {tail} … +{len(ys) - max_show} more"
+        else:
+            msg = f"Years with n < {MIN_OBS_PER_YEAR} (excluded from plot): {', '.join(str(y) for y in ys)}"
+    fig.text(0.5, 0.02, msg, ha="center", fontsize=8, style="italic", wrap=True)
+
+
+def add_figure_low_n_included_years_note(
+    fig: plt.Figure,
+    grouped_with_count: pd.DataFrame,
+    *,
+    year_col_label: str = "year",
+    upper: int = LOW_N_NOTE_UPPER,
+    max_show: int = 25,
+) -> None:
+    """
+    Add a one-line note listing included years with relatively low n.
+
+    This is useful when box/whiskers may look visually minimal or unstable despite meeting the inclusion threshold.
+
+    Args:
+        fig: Figure containing the plot.
+        grouped_with_count: Groupby result with a ``count`` column (pre-filter).
+        year_col_label: Label used in the message.
+        upper: Upper bound for inclusion in this note (years with MIN_OBS_PER_YEAR <= n < upper).
+        max_show: Truncate list with "+N more" when longer than this.
+    """
+    if grouped_with_count is None or len(grouped_with_count) == 0 or "count" not in grouped_with_count.columns:
+        return
+    years_low: List[int] = []
+    for year, row in grouped_with_count.iterrows():
+        n = int(row["count"]) if pd.notna(row["count"]) else 0
+        if MIN_OBS_PER_YEAR <= n < int(upper):
+            try:
+                years_low.append(int(year))
+            except (TypeError, ValueError):
+                continue
+    years_low = sorted(set(years_low))
+    if not years_low:
+        return
+    if len(years_low) > max_show:
+        shown = ", ".join(str(y) for y in years_low[:max_show])
+        msg = (
+            f"Included {year_col_label}s with {MIN_OBS_PER_YEAR} ≤ n < {int(upper)} "
+            f"(variance may be unstable): {shown} … +{len(years_low) - max_show} more"
+        )
+    else:
+        msg = (
+            f"Included {year_col_label}s with {MIN_OBS_PER_YEAR} ≤ n < {int(upper)} "
+            f"(variance may be unstable): {', '.join(str(y) for y in years_low)}"
+        )
+    fig.text(0.5, 0.045, msg, ha="center", fontsize=8, style="italic", wrap=True)
 
 # Columns copied onto each long salary row (subset must exist on the wide frame).
 SALARY_LONG_IDENTITY_COLS: List[str] = [
@@ -252,9 +396,10 @@ def add_yearly_variance_layer(
     color: Any,
     *,
     percent_increase_scale: bool = False,
+    hide_boxplot_fliers: bool = False,
 ) -> None:
     """
-    Add whisker/box variance layer by year and overlay yearly means.
+    Add whisker/box variance layer by year and overlay yearly means (mean = colored line; box midline = median).
 
     Args:
         ax: Matplotlib axis
@@ -262,8 +407,11 @@ def add_yearly_variance_layer(
         year_col: Year column name
         value_col: Numeric value column name
         color: Main color for mean line
-        percent_increase_scale: If True, hide boxplot fliers and tighten y-axis to a robust % range
-            (5–95% capped to [-50, 100]) so typical wage increases are visible.
+        percent_increase_scale: If True, hide fliers and set y-limits to include full whiskers and yearly means
+            together with global 5th–95th percentiles, bounded below at −50; top may extend past 100% when needed
+            so whiskers are not clipped.
+        hide_boxplot_fliers: If True, omit boxplot fliers (e.g. band-eligible EUR/month) without percent-style
+            y-limits; orthogonal to ``percent_increase_scale``.
     """
     if year_col not in df.columns or value_col not in df.columns:
         return
@@ -277,7 +425,8 @@ def add_yearly_variance_layer(
         return
     years = sorted(int(y) for y in d[year_col].unique())
     box_data = [d.loc[d[year_col] == y, value_col].values for y in years]
-    ax.boxplot(
+    show_fliers = not (percent_increase_scale or hide_boxplot_fliers)
+    bp = ax.boxplot(
         box_data,
         positions=years,
         widths=0.6,
@@ -287,21 +436,33 @@ def add_yearly_variance_layer(
         whiskerprops=dict(color="gray", alpha=0.6),
         capprops=dict(color="gray", alpha=0.6),
         flierprops=dict(marker=".", markersize=2, alpha=0.2),
-        showfliers=not percent_increase_scale,
+        showfliers=show_fliers,
     )
     mean_by_year = d.groupby(year_col)[value_col].mean()
-    ax.plot(mean_by_year.index.astype(int), mean_by_year.values, color=color, marker="o", linewidth=2.2, label="Mean")
+    mean_vals = mean_by_year.values.astype(float)
+    ax.plot(mean_by_year.index.astype(int), mean_vals, color=color, marker="o", linewidth=2.2, label="Mean")
     enforce_integer_year_axis(ax, years)
     if percent_increase_scale:
         vals = d[value_col].to_numpy(dtype=float)
         vals = vals[np.isfinite(vals)]
-        if len(vals) > 0:
-            lo, hi = np.nanpercentile(vals, [5.0, 95.0])
-            y0 = float(max(lo, -50.0))
-            y1 = float(min(hi, 100.0))
-            if y1 <= y0:
-                y0, y1 = -5.0, 25.0
-            ax.set_ylim(y0, y1)
+        if len(vals) > 0 and bp is not None and "whiskers" in bp and len(bp["whiskers"]) > 0:
+            p5, p95 = np.nanpercentile(vals, [5.0, 95.0])
+            whisk_y = np.concatenate([np.asarray(seg.get_ydata(), dtype=float) for seg in bp["whiskers"]])
+            whisk_y = whisk_y[np.isfinite(whisk_y)]
+            y_lo_w = float(np.min(whisk_y)) if len(whisk_y) else float(np.min(vals))
+            y_hi_w = float(np.max(whisk_y)) if len(whisk_y) else float(np.max(vals))
+            mmin = float(np.nanmin(mean_vals))
+            mmax = float(np.nanmax(mean_vals))
+            span = float(p95 - p5) if p95 > p5 else 1.0
+            pad = max(0.05 * span, 0.12)
+            bot_raw = min(p5, y_lo_w, mmin) - pad
+            top_raw = max(p95, y_hi_w, mmax) + pad
+            bot = max(bot_raw, -50.0)
+            top_capped = min(top_raw, 100.0)
+            top = max(top_capped, y_hi_w, mmax)
+            if top <= bot:
+                bot, top = -5.0, 25.0
+            ax.set_ylim(bot, top)
 
 
 # =============================================================================
@@ -344,13 +505,13 @@ def plot_ft_hours_by_contract_year(df: pd.DataFrame, output_dir: Path, use_lates
         print("  [INFO] No data available; skipping figure")
         return
     
-    grouped = df_plot.groupby("contract_start_year")["ft_hours_weekly"].agg([
+    view = "latest_cao_view" if use_latest_cao_view else "regular"
+    grouped_all = df_plot.groupby("contract_start_year")["ft_hours_weekly"].agg([
         ('avg_ft_hours_weekly', 'mean'),
         ('count', 'count')
     ])
-    
-    # Filter years with ≥3 observations
-    grouped = grouped[grouped['count'] >= MIN_OBS_PER_YEAR]
+    excluded_years = append_salary_plot_dropped_years("ft_hours_by_contract_year", view, grouped_all)
+    grouped = grouped_all[grouped_all['count'] >= MIN_OBS_PER_YEAR]
     
     if len(grouped) == 0:
         print("  [INFO] No years with sufficient data; skipping figure")
@@ -400,10 +561,19 @@ def plot_ft_hours_by_contract_year(df: pd.DataFrame, output_dir: Path, use_lates
                 else:
                     cao_counts[year] = 0
     
-    # Create plot
+    # Create plot (boxplots only for years meeting MIN_OBS_PER_YEAR)
     fig, ax1 = plt.subplots(figsize=(10, 6))
     main_color = get_plot_color_cycle(1)[0]
-    add_yearly_variance_layer(ax1, df_plot, "contract_start_year", "ft_hours_weekly", main_color)
+    years_ok = grouped.index
+    df_box = df_plot[df_plot["contract_start_year"].isin(years_ok)]
+    add_yearly_variance_layer(
+        ax1,
+        df_box,
+        "contract_start_year",
+        "ft_hours_weekly",
+        main_color,
+        hide_boxplot_fliers=True,
+    )
     ax1.set_xlabel("Contract start year", fontsize=12)
     ax1.set_ylabel("Average full-time hours per week", fontsize=12)
     title_suffix = " (Latest CAO View)" if use_latest_cao_view else ""
@@ -447,8 +617,10 @@ def plot_ft_hours_by_contract_year(df: pd.DataFrame, output_dir: Path, use_lates
         
         ax2.set_ylabel("Number of CAOs / Rows", fontsize=12, color='gray')
         ax2.tick_params(axis='y', labelcolor='gray')
-    
-    plt.tight_layout()
+
+    add_figure_excluded_years_footnote(fig, excluded_years)
+    add_figure_low_n_included_years_note(fig, grouped_all, year_col_label="year")
+    plt.tight_layout(rect=[0, 0.10, 1, 1])
     
     # Save plot
     output_path = output_dir / filename
@@ -456,196 +628,6 @@ def plot_ft_hours_by_contract_year(df: pd.DataFrame, output_dir: Path, use_lates
     plt.close()
     
     print(f"  ✓ Saved: {output_path}")
-
-
-def plot_salary_amount_primary_unit_by_salary_year(df: pd.DataFrame, df_long: pd.DataFrame, 
-                                                   output_dir: Path,
-                                                   use_latest_cao_view: bool = False,
-                                                   df_latest_wide: Optional[pd.DataFrame] = None) -> None:
-    """
-    Plot average salary amount (primary unit) by salary start year.
-    
-    Args:
-        df: Wide format DataFrame (needed for latest CAO view)
-        df_long: Long format DataFrame (observed rows; used when use_latest_cao_view is False)
-        output_dir: Directory to save plot
-        use_latest_cao_view: If True, build minimal long salary from latest forward-filled wide state panel
-        df_latest_wide: Prebuilt latest CAO wide panel (optional; avoids rebuild)
-    """
-    suffix = "_latest_cao_view" if use_latest_cao_view else ""
-    filename = f"salary_amount_primary_unit_by_salary_year{suffix}.png"
-    print(f"\nCreating figure: {filename}")
-    
-    df_long_plot = df_long
-    if use_latest_cao_view:
-        df_wide_latest = df_latest_wide if df_latest_wide is not None else build_latest_cao_forward_fill(
-            df, cao_col="cao_number", date_col="contract_start_year",
-            value_cols_to_keep=columns_for_latest_cao_salary_wide(df),
-        )
-        if len(df_wide_latest) == 0:
-            print("  [WARN] Latest CAO view is empty; skipping.")
-            return
-        print(f"  [INFO] Latest-view: salary amount from state panel ({len(df_wide_latest)} wide rows); minimal long build.")
-        id_cols = [c for c in SALARY_LONG_IDENTITY_COLS if c in df_wide_latest.columns]
-        df_long_plot = build_long_salary_from_wide(
-            df_wide_latest,
-            identity_cols=id_cols,
-            salary_fields=["start_date", "amount", "unit", "hours_basis_ft_week"],
-        )
-    
-    if len(df_long_plot) == 0:
-        print("  [INFO] Long format DataFrame is empty; skipping figure")
-        return
-    
-    if "salary_unit" not in df_long_plot.columns or "salary_amount" not in df_long_plot.columns:
-        print("  [INFO] Missing required columns; skipping figure")
-        return
-    
-    # Identify primary_unit
-    unit_series = df_long_plot["salary_unit"].dropna()
-    if len(unit_series) == 0:
-        print("  [INFO] No salary_unit data; skipping figure")
-        return
-    
-    primary_unit = unit_series.mode()[0] if len(unit_series.mode()) > 0 else None
-    if primary_unit is None:
-        print("  [INFO] Could not determine primary_unit; skipping figure")
-        return
-    
-    # Filter to primary_unit rows with non-NaN salary_amount and salary_start_year
-    df_filtered = df_long_plot[
-        (df_long_plot["salary_unit"] == primary_unit) &
-        df_long_plot["salary_amount"].notna() &
-        df_long_plot["salary_start_year"].notna()
-    ].copy()
-    
-    if len(df_filtered) == 0:
-        print("  [INFO] No data after filtering; skipping figure")
-        return
-    
-    # Coerce salary_amount to numeric; exclude non-positive (structural zeros)
-    df_filtered["salary_amount"] = pd.to_numeric(df_filtered["salary_amount"], errors='coerce')
-    df_filtered = df_filtered[df_filtered["salary_amount"].notna() & (df_filtered["salary_amount"] > 0)]
-    
-    if len(df_filtered) == 0:
-        print("  [INFO] No numeric salary_amount data; skipping figure")
-        return
-    
-    # Group by salary_start_year
-    grouped = df_filtered.groupby("salary_start_year")["salary_amount"].agg([
-        ('avg_amount_year', 'mean'),
-        ('count', 'count')
-    ])
-    
-    # Filter years with ≥3 observations
-    grouped = grouped[grouped['count'] >= MIN_OBS_PER_YEAR]
-    
-    if len(grouped) == 0:
-        print("  [INFO] No years with sufficient data; skipping figure")
-        return
-    
-    # Compute CAO counts per year (cumulative for latest CAO view)
-    # For latest CAO view, use the wide format to get all CAOs with contracts, not just those with salary data
-    cao_counts = {}
-    if use_latest_cao_view:
-        # Use the original wide format DataFrame to compute cumulative CAOs by contract_start_year
-        # This ensures consistency across all plots (should match salary points per row plot)
-        if "cao_number" in df.columns and "contract_start_year" in df.columns:
-            # Get all years from the wide format
-            df_wide_years = df[df["contract_start_year"].notna()].copy()
-            if len(df_wide_years) > 0:
-                years_sorted = sorted(grouped.index)
-                
-                # Cumulative: count unique CAOs up to and including each year from wide format
-                seen_caos = set()
-                for year in years_sorted:
-                    # Find all CAOs with contracts up to this year in the wide format
-                    year_data_wide = df_wide_years[df_wide_years["contract_start_year"] <= year]
-                    if len(year_data_wide) > 0:
-                        seen_caos.update(year_data_wide["cao_number"].dropna().unique())
-                    cao_counts[year] = len(seen_caos)
-        else:
-            # Fallback to filtered long format if wide format not available
-            if "cao_number" in df_filtered.columns:
-                years_sorted = sorted(grouped.index)
-                seen_caos = set()
-                for year in years_sorted:
-                    year_data = df_filtered[df_filtered["salary_start_year"] == year]
-                    if len(year_data) > 0:
-                        seen_caos.update(year_data["cao_number"].dropna().unique())
-                    cao_counts[year] = len(seen_caos)
-    else:
-        # Regular view: count unique CAOs per year from filtered data
-        if "cao_number" in df_filtered.columns:
-            for year in grouped.index:
-                year_data = df_filtered[df_filtered["salary_start_year"] == year]
-                if len(year_data) > 0:
-                    cao_counts[year] = year_data["cao_number"].nunique()
-                else:
-                    cao_counts[year] = 0
-    
-    # Create plot
-    fig, ax1 = plt.subplots(figsize=(10, 6))
-    main_color = get_plot_color_cycle(1)[0]
-    add_yearly_variance_layer(ax1, df_filtered, "salary_start_year", "salary_amount", main_color)
-    ax1.set_xlabel("Salary start year", fontsize=12)
-    ax1.set_ylabel(f"Average salary ({primary_unit})", fontsize=12)
-    title_suffix = " (Latest CAO View)" if use_latest_cao_view else ""
-    ax1.set_title(
-        f"Average salary over time — raw amount, modal unit only ({primary_unit}){title_suffix}",
-        fontsize=14,
-    )
-    ax1.grid(True, alpha=0.3)
-    
-    # Add secondary axis for background counts
-    if cao_counts or len(grouped) > 0:
-        ax2 = ax1.twinx()
-        years = sorted(grouped.index)
-        
-        # For latest CAO view, show cumulative CAO counts only
-        if use_latest_cao_view:
-            if cao_counts:
-                cao_list = [cao_counts.get(y, 0) for y in years]
-                # Single bar showing cumulative CAO count
-                ax2.bar(years, cao_list, alpha=0.1, color='gray', label='Cumulative CAOs')
-                # Annotations
-                for year, cao_count in zip(years, cao_list):
-                    if cao_count > 0:
-                        ax2.text(year, cao_count, f'{int(cao_count)}', ha='center', va='bottom', 
-                                fontsize=7, color='gray', alpha=0.6)
-        else:
-            # For regular view, show both CAO and row counts
-            if cao_counts:
-                cao_list = [cao_counts.get(y, 0) for y in years]
-                ax2.bar([y - 0.2 for y in years], cao_list, width=0.4, alpha=0.1, 
-                       color='blue', label='Number of CAOs')
-                for year, count in zip(years, cao_list):
-                    if count > 0:
-                        ax2.text(year - 0.2, count, f'{int(count)}', ha='center', va='bottom', 
-                                fontsize=7, color='blue', alpha=0.5)
-            
-            row_counts = [grouped.loc[y, 'count'] for y in years]
-            ax2.bar([y + 0.2 for y in years], row_counts, width=0.4, alpha=0.1, 
-                   color='green', label='Number of rows')
-            for year, count in zip(years, row_counts):
-                if count > 0:
-                    ax2.text(year + 0.2, count, f'{int(count)}', ha='center', va='bottom', 
-                            fontsize=7, color='green', alpha=0.5)
-        
-        ax2.set_ylabel("Number of CAOs / Rows", fontsize=12, color='gray')
-        ax2.tick_params(axis='y', labelcolor='gray')
-    
-    plt.tight_layout()
-    
-    # Save plot
-    output_path = output_dir / filename
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
-    plt.close()
-    
-    print(f"  ✓ Saved: {output_path}")
-    if use_latest_cao_view:
-        del df_long_plot
-        gc.collect()
 
 
 def plot_salary_amount_monthly_band_eligible_by_salary_year(
@@ -659,6 +641,8 @@ def plot_salary_amount_monthly_band_eligible_by_salary_year(
     Plot mean normalized gross monthly EUR by salary start year, restricted to band-eligible rows.
 
     Uses the same conversion and floor/cap rules as ``derive_salary_increase_series``.
+    Boxplot fliers are hidden so the y-axis follows box/whisker extent; the overlaid line is the yearly mean;
+    the horizontal midline in each box is the median.
 
     Args:
         df: Wide format DataFrame (for latest-view CAO counts)
@@ -714,8 +698,12 @@ def plot_salary_amount_monthly_band_eligible_by_salary_year(
         print("  [INFO] No numeric amount_monthly; skipping figure")
         return
 
+    view = "latest_cao_view" if use_latest_cao_view else "regular"
     grouped = df_filtered.groupby("salary_start_year")["amount_monthly"].agg(
         [("avg_amount_year", "mean"), ("count", "count")]
+    )
+    excluded_years = append_salary_plot_dropped_years(
+        "salary_amount_monthly_eur_band_eligible", view, grouped
     )
     grouped = grouped[grouped["count"] >= MIN_OBS_PER_YEAR]
     if len(grouped) == 0:
@@ -750,7 +738,16 @@ def plot_salary_amount_monthly_band_eligible_by_salary_year(
 
     fig, ax1 = plt.subplots(figsize=(10, 6))
     main_color = get_plot_color_cycle(1)[0]
-    add_yearly_variance_layer(ax1, df_filtered, "salary_start_year", "amount_monthly", main_color)
+    years_ok = grouped.index
+    df_box = df_filtered[df_filtered["salary_start_year"].isin(years_ok)]
+    add_yearly_variance_layer(
+        ax1,
+        df_box,
+        "salary_start_year",
+        "amount_monthly",
+        main_color,
+        hide_boxplot_fliers=True,
+    )
     ax1.set_xlabel("Salary start year", fontsize=12)
     ax1.set_ylabel("Gross monthly EUR (normalized, band-eligible)", fontsize=12)
     title_suffix = " (Latest CAO View)" if use_latest_cao_view else ""
@@ -826,7 +823,8 @@ def plot_salary_amount_monthly_band_eligible_by_salary_year(
         ax2.set_ylabel("Number of CAOs / Rows", fontsize=12, color="gray")
         ax2.tick_params(axis="y", labelcolor="gray")
 
-    plt.tight_layout()
+    add_figure_excluded_years_footnote(fig, excluded_years)
+    plt.tight_layout(rect=[0, 0.08, 1, 1])
     output_path = output_dir / filename
     plt.savefig(output_path, dpi=300, bbox_inches="tight")
     plt.close()
@@ -835,56 +833,111 @@ def plot_salary_amount_monthly_band_eligible_by_salary_year(
         gc.collect()
 
 
-def plot_increase_percent_by_salary_year(df: pd.DataFrame, df_long: pd.DataFrame, 
-                                        output_dir: Path,
-                                        use_latest_cao_view: bool = False) -> None:
+def plot_increase_percent_by_salary_year(
+    df: pd.DataFrame,
+    df_long: pd.DataFrame,
+    output_dir: Path,
+    use_latest_cao_view: bool = False,
+    increase_events: Optional[pd.DataFrame] = None,
+) -> None:
     """
-    Plot average increase percent by salary start year.
+    Plot average merged increase by contract-start cohort year (mean-of-means).
     
     Args:
         df: Wide format DataFrame (needed for latest CAO view)
-        df_long: Long format DataFrame (always observed events; never forward-filled increases)
+        df_long: Long format DataFrame (kept for API compatibility)
         output_dir: Directory to save plot
-        use_latest_cao_view: If True, title/secondary axis reflect latest-view run (data still event-time)
+        use_latest_cao_view: If True, title/secondary axis reflect latest-view run
+        increase_events: Optional derived events table from derive_salary_increase_series(df)
     """
     suffix = "_latest_cao_view" if use_latest_cao_view else ""
     filename = f"salary_increase_percent_by_salary_year{suffix}.png"
     print(f"\nCreating figure: {filename}")
+
+    events = increase_events
+    if events is None or len(events) == 0:
+        try:
+            events = derive_salary_increase_series(df).get("events", pd.DataFrame())
+        except Exception:
+            events = pd.DataFrame()
+    if len(events) == 0:
+        print("  [INFO] No derived increase events available; skipping figure")
+        return
+
+    required_cols = {"cao_number", "file_name", "ingangsdatum", "increase_merged_pref_csv"}
+    if not required_cols.issubset(set(events.columns)):
+        print("  [INFO] Missing required merged-increase columns; skipping figure")
+        return
+
+    df_plot = events.copy()
+    df_plot["increase_merged_pref_csv"] = pd.to_numeric(df_plot["increase_merged_pref_csv"], errors="coerce")
+    df_plot["ingangsdatum"] = parse_cao_date_series(df_plot["ingangsdatum"], dayfirst=True)
+    df_plot["contract_start_year"] = pd.to_datetime(df_plot["ingangsdatum"], errors="coerce").dt.year
+
+    # Contract-level mean (contract = CAO + file), then cohort mean by contract start year
+    contract_means = (
+        df_plot[
+            df_plot["increase_merged_pref_csv"].notna()
+            & df_plot["contract_start_year"].notna()
+            & df_plot["cao_number"].notna()
+            & df_plot["file_name"].notna()
+        ]
+        .groupby(["cao_number", "file_name", "contract_start_year"], dropna=False)["increase_merged_pref_csv"]
+        .mean()
+        .reset_index(name="contract_mean_increase")
+    )
+
+    if len(contract_means) == 0:
+        print("  [INFO] No contract-level merged increases available after filtering; skipping figure")
+        return
     
+    # Latest-only: forward-fill each CAO's file-mean state between file years.
+    # Regular view remains the contract-cohort mean-of-means by observed contract_start_year.
+    df_plot_for_year = contract_means
     if use_latest_cao_view:
-        print("  [INFO] Increase % uses observed event rows only (no forward-fill on increase variables).")
-    
-    if len(df_long) == 0:
-        print("  [INFO] Long format DataFrame is empty; skipping figure")
-        return
-    
-    if "salary_increase_percent" not in df_long.columns:
-        print("  [INFO] salary_increase_percent column not found; skipping figure")
-        return
-    
-    # Coerce to numeric
-    s_inc = pd.to_numeric(df_long["salary_increase_percent"], errors='coerce')
-    df_plot = df_long.copy()
-    df_plot["salary_increase_percent_numeric"] = s_inc
-    
-    # Filter to rows with non-NaN increase_percent and salary_start_year
-    df_filtered = df_plot[
-        df_plot["salary_increase_percent_numeric"].notna() &
-        df_plot["salary_start_year"].notna()
-    ].copy()
-    
-    if len(df_filtered) == 0:
-        print("  [INFO] No data after filtering; skipping figure")
-        return
-    
-    # Group by salary_start_year
-    grouped = df_filtered.groupby("salary_start_year")["salary_increase_percent_numeric"].agg([
+        cao_year_means = (
+            contract_means
+            .groupby(["cao_number", "contract_start_year"], dropna=False)["contract_mean_increase"]
+            .mean()
+            .reset_index(name="contract_mean_increase")
+            .sort_values(["cao_number", "contract_start_year"])
+        )
+        if len(cao_year_means) == 0:
+            print("  [INFO] No CAO-year means for latest forward-fill; skipping figure")
+            return
+        if "contract_start_year" in df.columns:
+            global_max_year = int(pd.to_numeric(df["contract_start_year"], errors="coerce").dropna().max())
+        else:
+            global_max_year = int(cao_year_means["contract_start_year"].max())
+        ff_rows: List[Dict[str, Any]] = []
+        for cao, grp in cao_year_means.groupby("cao_number"):
+            g = grp.sort_values("contract_start_year").reset_index(drop=True)
+            years = g["contract_start_year"].astype(int).tolist()
+            vals = g["contract_mean_increase"].astype(float).tolist()
+            for i, y0 in enumerate(years):
+                y1 = years[i + 1] - 1 if i + 1 < len(years) else global_max_year
+                if y1 < y0:
+                    continue
+                for y in range(int(y0), int(y1) + 1):
+                    ff_rows.append(
+                        {
+                            "cao_number": cao,
+                            "contract_start_year": y,
+                            "contract_mean_increase": vals[i],
+                        }
+                    )
+        df_plot_for_year = pd.DataFrame(ff_rows)
+        if len(df_plot_for_year) == 0:
+            print("  [INFO] Latest forward-filled panel is empty; skipping figure")
+            return
+
+    view_ip = "latest_cao_view" if use_latest_cao_view else "regular"
+    grouped_all = df_plot_for_year.groupby("contract_start_year")["contract_mean_increase"].agg([
         ('avg_inc_year', 'mean'),
         ('count', 'count')
     ])
-    
-    # Filter years with ≥3 observations
-    grouped = grouped[grouped['count'] >= MIN_OBS_PER_YEAR]
+    excluded_ip = append_salary_plot_dropped_years("salary_increase_merged_contract_cohort_by_year", view_ip, grouped_all)
+    grouped = grouped_all[grouped_all['count'] >= MIN_OBS_PER_YEAR]
     
     if len(grouped) == 0:
         print("  [INFO] No years with sufficient data; skipping figure")
@@ -911,20 +964,20 @@ def plot_increase_percent_by_salary_year(df: pd.DataFrame, df_long: pd.DataFrame
                         seen_caos.update(year_data_wide["cao_number"].dropna().unique())
                     cao_counts[year] = len(seen_caos)
         else:
-            # Fallback to filtered long format if wide format not available
-            if "cao_number" in df_filtered.columns:
+            # Fallback to plotted data if wide format not available
+            if "cao_number" in df_plot_for_year.columns:
                 years_sorted = sorted(grouped.index)
                 seen_caos = set()
                 for year in years_sorted:
-                    year_data = df_filtered[df_filtered["salary_start_year"] == year]
+                    year_data = df_plot_for_year[df_plot_for_year["contract_start_year"] == year]
                     if len(year_data) > 0:
                         seen_caos.update(year_data["cao_number"].dropna().unique())
                     cao_counts[year] = len(seen_caos)
     else:
         # Regular view: count unique CAOs per year from filtered data
-        if "cao_number" in df_filtered.columns:
+        if "cao_number" in df_plot_for_year.columns:
             for year in grouped.index:
-                year_data = df_filtered[df_filtered["salary_start_year"] == year]
+                year_data = df_plot_for_year[df_plot_for_year["contract_start_year"] == year]
                 if len(year_data) > 0:
                     cao_counts[year] = year_data["cao_number"].nunique()
                 else:
@@ -933,11 +986,21 @@ def plot_increase_percent_by_salary_year(df: pd.DataFrame, df_long: pd.DataFrame
     # Create plot
     fig, ax1 = plt.subplots(figsize=(10, 6))
     main_color = get_plot_color_cycle(1)[0]
-    add_yearly_variance_layer(ax1, df_filtered, "salary_start_year", "salary_increase_percent_numeric", main_color)
-    ax1.set_xlabel("Salary start year", fontsize=12)
-    ax1.set_ylabel("Average general wage increase (%)", fontsize=12)
+    years_ip = grouped.index
+    df_box_ip = df_plot_for_year[df_plot_for_year["contract_start_year"].isin(years_ip)]
+    add_yearly_variance_layer(
+        ax1,
+        df_box_ip,
+        "contract_start_year",
+        "contract_mean_increase",
+        main_color,
+        hide_boxplot_fliers=True,
+    )
+    ax1.set_xlabel("Contract start year", fontsize=12)
+    ax1.set_ylabel("Average increase (%)", fontsize=12)
     title_suffix = " (Latest CAO View)" if use_latest_cao_view else ""
-    ax1.set_title(f"Average general wage increase by salary start year{title_suffix}", fontsize=14)
+    ax1.set_title(f"Average increase (merged - prefer CSV) by contract start year{title_suffix}", fontsize=14)
+    ax1.set_ylim(-2, 10)
     ax1.grid(True, alpha=0.3)
     
     # Add secondary axis for background counts
@@ -978,7 +1041,9 @@ def plot_increase_percent_by_salary_year(df: pd.DataFrame, df_long: pd.DataFrame
         ax2.set_ylabel("Number of CAOs / Rows", fontsize=12, color='gray')
         ax2.tick_params(axis='y', labelcolor='gray')
     
-    plt.tight_layout()
+    add_figure_excluded_years_footnote(fig, excluded_ip)
+    add_figure_low_n_included_years_note(fig, grouped_all, year_col_label="year")
+    plt.tight_layout(rect=[0, 0.10, 1, 1])
     
     # Save plot
     output_path = output_dir / filename
@@ -1031,6 +1096,8 @@ def plot_boolean_shares_by_contract_year(df: pd.DataFrame, output_dir: Path,
     
     # Collect plot data
     plot_data = {}
+    view_bool = "latest_cao_view" if use_latest_cao_view else "regular"
+    excluded_bool_union: set = set()
     for var in bool_vars:
         bool_series = coerce_bool(df_plot[var])
         df_plot_var = df_plot[df_plot["contract_start_year"].notna()].copy()
@@ -1051,8 +1118,9 @@ def plot_boolean_shares_by_contract_year(df: pd.DataFrame, output_dir: Path,
             ('n_true', lambda x: (x == True).sum()),
             ('n_nonmissing', lambda x: x.notna().sum())
         ])
-        
-        # Filter years with ≥3 total observations (not just non-missing)
+        excluded_bool_union.update(
+            append_salary_plot_dropped_years(f"boolean_shares_{var}", view_bool, grouped)
+        )
         grouped = grouped[grouped['count'] >= MIN_OBS_PER_YEAR]
         
         if len(grouped) > 0:
@@ -1097,7 +1165,10 @@ def plot_boolean_shares_by_contract_year(df: pd.DataFrame, output_dir: Path,
     fig, ax1 = plt.subplots(figsize=(10, 6))
     
     for var, shares in plot_data.items():
-        label = var.replace('_', ' ').title()
+        if var == "TTW":
+            label = "TTW - temporary CAO update"
+        else:
+            label = var.replace('_', ' ').title()
         ax1.plot(shares.index, shares.values * 100, marker='o', label=label, 
                 linewidth=2, markersize=6)
     
@@ -1149,7 +1220,8 @@ def plot_boolean_shares_by_contract_year(df: pd.DataFrame, output_dir: Path,
         ax2.set_ylabel("Number of CAOs / Rows", fontsize=12, color='gray')
         ax2.tick_params(axis='y', labelcolor='gray')
     
-    plt.tight_layout()
+    add_figure_excluded_years_footnote(fig, sorted(excluded_bool_union))
+    plt.tight_layout(rect=[0, 0.08, 1, 1])
     
     # Save plot
     output_path = output_dir / filename
@@ -1211,14 +1283,13 @@ def plot_salary_points_per_row_by_year(df: pd.DataFrame, output_dir: Path,
         print("  [INFO] No data after filtering; skipping figure")
         return
     
-    # Group by contract_start_year
+    view_pts = "latest_cao_view" if use_latest_cao_view else "regular"
     grouped = df_filtered.groupby("contract_start_year")["n_salary_points_per_row"].agg([
         ('avg_points_per_row', 'mean'),
         ('median_points_per_row', 'median'),
         ('count', 'count')
     ])
-    
-    # Filter years with ≥3 observations
+    excluded_pts = append_salary_plot_dropped_years("salary_points_per_row_by_year", view_pts, grouped)
     grouped = grouped[grouped['count'] >= MIN_OBS_PER_YEAR]
     
     if len(grouped) == 0:
@@ -1299,7 +1370,8 @@ def plot_salary_points_per_row_by_year(df: pd.DataFrame, output_dir: Path,
         ax2.set_ylabel("Number of CAOs / Rows", fontsize=12, color='gray')
         ax2.tick_params(axis='y', labelcolor='gray')
     
-    plt.tight_layout()
+    add_figure_excluded_years_footnote(fig, excluded_pts)
+    plt.tight_layout(rect=[0, 0.08, 1, 1])
     
     # Save plot
     output_path = output_dir / filename
@@ -1320,8 +1392,7 @@ def _plot_single_increase_series(events: pd.DataFrame, output_dir: Path, column:
     """
     Plot one increase series with variance layer and yearly mean line.
 
-    Uses a trimmed y-axis and hidden boxplot fliers so typical % increases are visible
-    despite occasional extreme CSV-reported values.
+    Uses hidden boxplot fliers and a fixed y-axis range for comparability across single-series increase charts.
     """
     d = events[events[column].notna() & events["salary_start_year"].notna()].copy()
     if len(d) == 0:
@@ -1334,15 +1405,12 @@ def _plot_single_increase_series(events: pd.DataFrame, output_dir: Path, column:
     fig, ax = plt.subplots(figsize=(11, 6))
     color = get_plot_color_cycle(1)[0]
     add_yearly_variance_layer(
-        ax, d, "salary_start_year", column, color, percent_increase_scale=True
+        ax, d, "salary_start_year", column, color, hide_boxplot_fliers=True
     )
-    ax.set_title(
-        f"{label} by salary start year\n"
-        "(y-axis: 5–95% of points, capped to [−50%, 100%]; box fliers hidden)",
-        fontsize=12,
-    )
+    ax.set_title(f"{label} by salary start year", fontsize=12)
     ax.set_xlabel("Salary start year", fontsize=12)
     ax.set_ylabel("Average increase (%)", fontsize=12)
+    ax.set_ylim(-2, 10)
     ax.grid(True, alpha=0.3)
     plt.tight_layout()
     plt.savefig(output_dir / filename, dpi=300, bbox_inches="tight")
@@ -1374,28 +1442,12 @@ def plot_increase_series_comparison(events: pd.DataFrame, output_dir: Path) -> N
         plt.close()
         return
     enforce_integer_year_axis(ax, years_union)
-    ax.set_title(
-        "Average general wage increase comparison by salary start year\n"
-        "(y-axis trimmed to [−50%, 100%] around observed yearly means for display)",
-        fontsize=12,
-    )
+    ax.set_title("Average general wage increase comparison by salary start year", fontsize=12)
     ax.set_xlabel("Salary start year", fontsize=12)
     ax.set_ylabel("Average increase (%)", fontsize=12)
+    ax.set_ylim(0, 4)
     ax.grid(True, alpha=0.3)
     ax.legend(fontsize=10, loc="best")
-    all_means: List[float] = []
-    for line in ax.get_lines():
-        yd = line.get_ydata()
-        yd = np.asarray(yd, dtype=float)
-        all_means.extend(yd[np.isfinite(yd)].tolist())
-    if len(all_means) > 0:
-        arr = np.array(all_means, dtype=float)
-        lo, hi = np.nanpercentile(arr, [5.0, 95.0]) if len(arr) >= 2 else (arr.min(), arr.max())
-        y0 = float(max(lo, -50.0))
-        y1 = float(min(max(hi, y0 + 1e-6), 100.0))
-        if y1 <= y0:
-            y0, y1 = -5.0, 25.0
-        ax.set_ylim(y0, y1)
     plt.tight_layout()
     plt.savefig(output_dir / "salary_increase_series_comparison_by_year.png", dpi=300, bbox_inches="tight")
     plt.close()
@@ -1657,7 +1709,8 @@ def main():
     output_dir = Path(OUTPUT_FIG_DIR)
     output_dir.mkdir(parents=True, exist_ok=True)
     print(f"\nOutput directory: {output_dir}")
-    
+    reset_salary_plot_dropped_year_log()
+
     # Generate plots
     print("\n" + "="*80)
     print("Generating plots...")
@@ -1673,13 +1726,6 @@ def main():
         traceback.print_exc()
     
     try:
-        plot_salary_amount_primary_unit_by_salary_year(df, df_long, output_dir, use_latest_cao_view=False)
-    except Exception as e:
-        print(f"  ERROR in salary amount plot: {e}")
-        import traceback
-        traceback.print_exc()
-
-    try:
         plot_salary_amount_monthly_band_eligible_by_salary_year(
             df, df_long, output_dir, use_latest_cao_view=False
         )
@@ -1689,7 +1735,9 @@ def main():
         traceback.print_exc()
     
     try:
-        plot_increase_percent_by_salary_year(df, df_long, output_dir, use_latest_cao_view=False)
+        plot_increase_percent_by_salary_year(
+            df, df_long, output_dir, use_latest_cao_view=False, increase_events=increase_events
+        )
     except Exception as e:
         print(f"  ERROR in increase percent plot: {e}")
         import traceback
@@ -1745,17 +1793,6 @@ def main():
         gc.collect()
     
     try:
-        plot_salary_amount_primary_unit_by_salary_year(
-            df, df_long, output_dir, use_latest_cao_view=True, df_latest_wide=df_latest_wide,
-        )
-    except Exception as e:
-        print(f"  ERROR in salary amount plot (latest CAO view): {e}")
-        import traceback
-        traceback.print_exc()
-    finally:
-        gc.collect()
-
-    try:
         plot_salary_amount_monthly_band_eligible_by_salary_year(
             df, df_long, output_dir, use_latest_cao_view=True, df_latest_wide=df_latest_wide,
         )
@@ -1767,7 +1804,9 @@ def main():
         gc.collect()
     
     try:
-        plot_increase_percent_by_salary_year(df, df_long, output_dir, use_latest_cao_view=True)
+        plot_increase_percent_by_salary_year(
+            df, df_long, output_dir, use_latest_cao_view=True, increase_events=increase_events
+        )
     except Exception as e:
         print(f"  ERROR in increase percent plot (latest CAO view): {e}")
         import traceback
@@ -1784,6 +1823,9 @@ def main():
     finally:
         gc.collect()
     
+    write_salary_plot_dropped_years_csv()
+    print(f"  Wrote dropped-years log: {SALARY_PLOT_DROPPED_YEARS_CSV}")
+
     print("\n" + "="*80)
     print("Script completed successfully!")
     print("="*80)

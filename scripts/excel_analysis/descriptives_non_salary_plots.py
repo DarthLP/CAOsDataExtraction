@@ -1350,12 +1350,26 @@ def main():
         print(f"  ERROR: Could not prepare year column: {e}")
         return
 
+    print("\nBuilding filtered analysis sample...")
+    try:
+        df_analysis = filter_non_salary_for_plot(df)
+        print(f"  Analysis sample rows: {len(df_analysis)}")
+        if "cao_number" in df_analysis.columns:
+            print(f"  Analysis sample unique CAOs: {df_analysis['cao_number'].nunique()}")
+    except Exception as e:
+        print(f"  Warning: Could not build filtered analysis sample: {e}")
+        df_analysis = df
+
     print("\nBuilding latest CAO view once...")
     try:
-        df_latest_view = build_latest_cao_forward_fill(df, cao_col="cao_number", date_col="ingangsdatum")
+        # Build latest-view from filtered full-CAO analysis sample so active versions
+        # cannot resolve to annex/partial-only rows that are later filtered out.
+        df_latest_view = build_latest_cao_forward_fill(df_analysis, cao_col="cao_number", date_col="ingangsdatum")
         print(f"  Latest CAO view rows: {len(df_latest_view)}")
         if len(df_latest_view) > 0:
             log_memory("latest_non_salary", df_latest_view)
+            if "cao_number" in df_latest_view.columns:
+                print(f"  Latest CAO view unique CAOs: {df_latest_view['cao_number'].nunique()}")
     except Exception as e:
         print(f"  Warning: Could not build latest CAO view: {e}")
         df_latest_view = pd.DataFrame()
@@ -1368,7 +1382,9 @@ def main():
     
     # Generate standard numeric plots (means)
     try:
-        plot_numeric_trends(df, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=False, agg_kind="mean")
+        plot_numeric_trends(
+            df_analysis, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=False, agg_kind="mean"
+        )
     except Exception as e:
         print(f"  ERROR in numeric trends: {e}")
         import traceback
@@ -1377,7 +1393,13 @@ def main():
     # Generate Latest CAO View numeric plots (means)
     try:
         plot_numeric_trends(
-            df, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=True, agg_kind="mean", df_latest_view=df_latest_view
+            df_analysis,
+            "start_year",
+            output_dir,
+            MIN_OBS_PER_YEAR,
+            use_latest_cao_view=True,
+            agg_kind="mean",
+            df_latest_view=df_latest_view,
         )
     except Exception as e:
         print(f"  ERROR in numeric trends (latest CAO view): {e}")
@@ -1386,7 +1408,9 @@ def main():
 
     # Generate standard numeric plots (medians)
     try:
-        plot_numeric_trends(df, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=False, agg_kind="median")
+        plot_numeric_trends(
+            df_analysis, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=False, agg_kind="median"
+        )
     except Exception as e:
         print(f"  ERROR in numeric trends (median): {e}")
         import traceback
@@ -1395,7 +1419,13 @@ def main():
     # Generate Latest CAO View numeric plots (medians)
     try:
         plot_numeric_trends(
-            df, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=True, agg_kind="median", df_latest_view=df_latest_view
+            df_analysis,
+            "start_year",
+            output_dir,
+            MIN_OBS_PER_YEAR,
+            use_latest_cao_view=True,
+            agg_kind="median",
+            df_latest_view=df_latest_view,
         )
     except Exception as e:
         print(f"  ERROR in numeric trends (latest CAO view, median): {e}")
@@ -1404,7 +1434,9 @@ def main():
     
     # Generate standard boolean plots by domain
     try:
-        plot_boolean_trends_by_domain(df, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=False)
+        plot_boolean_trends_by_domain(
+            df_analysis, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=False
+        )
     except Exception as e:
         print(f"  ERROR in boolean trends: {e}")
         import traceback
@@ -1413,7 +1445,12 @@ def main():
     # Generate Latest CAO View boolean plots by domain
     try:
         plot_boolean_trends_by_domain(
-            df, "start_year", output_dir, MIN_OBS_PER_YEAR, use_latest_cao_view=True, df_latest_view=df_latest_view
+            df_analysis,
+            "start_year",
+            output_dir,
+            MIN_OBS_PER_YEAR,
+            use_latest_cao_view=True,
+            df_latest_view=df_latest_view,
         )
     except Exception as e:
         print(f"  ERROR in boolean trends (latest CAO view): {e}")

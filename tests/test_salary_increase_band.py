@@ -68,6 +68,7 @@ class TestSalaryIncreaseBandDerivation(unittest.TestCase):
                 "salary_2_start_date": ["2020-06-01"],
                 "salary_2_amount": [500.0],
                 "salary_2_unit": ["monthly"],
+                "salary_2_increase_percent": [2.5],
             }
         )
         payload = derive_salary_increase_series(df)
@@ -78,7 +79,7 @@ class TestSalaryIncreaseBandDerivation(unittest.TestCase):
         self.assertTrue(ev.iloc[0]["analysis_monthly_band_ok"])
         self.assertFalse(ev.iloc[1]["analysis_monthly_band_ok"])
         self.assertTrue(np.isnan(ev.iloc[1]["increase_diff_only"]))
-        self.assertTrue(np.isnan(ev.iloc[1]["increase_merged_pref_csv"]))
+        self.assertAlmostEqual(float(ev.iloc[1]["increase_merged_pref_csv"]), 2.5, places=5)
         bs = payload["band_summary"]
         self.assertGreaterEqual(bs["n_dropped_below_floor"], 1)
         self.assertEqual(bs["n_dropped_above_cap"], 0)
@@ -93,12 +94,13 @@ class TestSalaryIncreaseBandDerivation(unittest.TestCase):
                 "salary_1_start_date": ["2020-01-01"],
                 "salary_1_amount": [hi],
                 "salary_1_unit": ["monthly"],
+                "salary_1_increase_percent": [1.25],
             }
         )
         payload = derive_salary_increase_series(df)
         ev = payload["events"]
         self.assertFalse(ev.iloc[0]["analysis_monthly_band_ok"])
-        self.assertTrue(np.isnan(ev.iloc[0]["increase_merged_pref_csv"]))
+        self.assertAlmostEqual(float(ev.iloc[0]["increase_merged_pref_csv"]), 1.25, places=5)
         self.assertGreaterEqual(payload["band_summary"]["n_dropped_above_cap"], 1)
 
     def test_compute_analysis_monthly_floor_and_band_ok_matches_derive(self):

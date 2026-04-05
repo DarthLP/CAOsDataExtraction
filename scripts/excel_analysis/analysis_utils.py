@@ -6,7 +6,7 @@ including unit conversions (e.g. monthly, hourly, weekly, daily/`d`, annual), st
 
 USAGE:
     from scripts.excel_analysis.analysis_utils import (
-        convert_salary_to_monthly, calculate_descriptive_stats, 
+        convert_salary_to_monthly, calculate_descriptive_stats,
         create_boolean_summary, group_cao_timeline
     )
 """
@@ -867,6 +867,8 @@ def build_long_salary_from_wide(
         rename_map = {f"salary_{k}_{field}": f"salary_{field}" for field in salary_fields if f"salary_{k}_{field}" in tmp.columns}
         tmp = tmp.rename(columns=rename_map)
         tmp["salary_index"] = k
+        # Positional wide row id (0..n-1), aligned with ``iloc`` / ``derive_salary_increase_series`` row_id.
+        tmp["row_id"] = np.arange(len(df), dtype=np.int64)
         slices.append(tmp)
 
     if not slices:

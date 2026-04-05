@@ -4,7 +4,9 @@ Salary Increase Regression Script
 This script estimates fixed-effects regressions for salary increase series and
 writes regression tables to CSV files. It runs event-level regressions for
 increase_merged_pref_csv, increase_diff_only, and increase_csv_only, plus a
-transition-level regression on file-to-file mean increase shifts.
+transition-level regression on file-to-file mean increase shifts. The merged
+outcome is restricted to analysis_monthly_band_ok rows so estimates match the
+band-eligible plotting sample after increase_merged_pref_csv was unmasked in events.
 
 How to run:
     conda run -n caos-extract python scripts/excel_analysis/salary_increase_regression.py
@@ -208,7 +210,10 @@ def run_event_level_regression(df_events: pd.DataFrame, outcome: str) -> Regress
         outcome=outcome,
         error=None,
     )
-    data = df_events[df_events[outcome].notna() & df_events["salary_start_year"].notna()].copy()
+    sel = df_events[outcome].notna() & df_events["salary_start_year"].notna()
+    if outcome == "increase_merged_pref_csv" and "analysis_monthly_band_ok" in df_events.columns:
+        sel = sel & df_events["analysis_monthly_band_ok"].fillna(False)
+    data = df_events[sel].copy()
     if len(data) == 0:
         return empty
     data["salary_start_year"] = data["salary_start_year"].astype(int)
@@ -299,9 +304,9 @@ def run_transition_regression(df_events: pd.DataFrame) -> RegressionRunResult:
         ``RegressionRunResult`` with ``outcome`` set to ``delta_file_mean_increase``
         for fit-metrics labeling.
     """
-    cols = ["increase_merged_pref_csv", "cao_number", "file_name", "ingangsdatum"]
+    cols = ["increase_merged_pref_csv", "cao_number", "file_name", "ingangsdatum", "analysis_monthly_band_ok"]
     d = df_events[cols].copy()
-    d = d[d["increase_merged_pref_csv"].notna()]
+    d = d[d["increase_merged_pref_csv"].notna() & d["analysis_monthly_band_ok"].fillna(False)]
     d["ingangsdatum"] = parse_cao_date_series(d["ingangsdatum"], dayfirst=True)
     file_means = (
         d.groupby(["cao_number", "file_name", "ingangsdatum"], dropna=False)["increase_merged_pref_csv"]

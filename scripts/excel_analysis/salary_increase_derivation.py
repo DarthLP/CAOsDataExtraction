@@ -20,6 +20,8 @@ Outputs:
       earliest salary_start_date within the same (cao_number, file_name).
       analysis_monthly_floor_eur / analysis_monthly_band_ok / analysis_drop_reason_band
       implement statutory monthly floor (NL 1-Jan schedule) plus SALARY_ANALYSIS_MONTHLY_CAP_EUR.
+      increase_merged_pref_csv is CSV if present else diff-based, without masking on
+      analysis_monthly_band_ok (plots and regressions that must stay band-only filter explicitly).
     - conversion_diagnostics: dropped conversion cases, invalid diff pairs, and
       conversion_ok rows outside the monthly band (below floor / above cap / missing date).
     - comparison: rows with both CSV and diff increases; includes abs_diff,
@@ -395,7 +397,7 @@ def derive_salary_increase_series(df: pd.DataFrame) -> Dict[str, Any]:
         events_df["increase_csv_only"].notna(),
         events_df["increase_diff_only"],
     )
-    events_df["increase_merged_pref_csv"] = merged.where(events_df["analysis_monthly_band_ok"], np.nan)
+    events_df["increase_merged_pref_csv"] = merged
     events_df["is_first_salary_in_file"] = 0
     file_first = events_df.groupby(["cao_number", "file_name"], dropna=False)["salary_start_date"].transform("min")
     same_day = events_df["salary_start_date"].notna() & (events_df["salary_start_date"] == file_first)

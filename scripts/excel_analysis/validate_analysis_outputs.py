@@ -10,7 +10,11 @@ USAGE:
 
 OUTPUT:
     Prints a pass/fail report and exits with code 0 on success, 1 on missing outputs.
-    Expects ``outputs/analysis/salary_plot_years_dropped.csv`` (from salary plots; may be header-only).
+    Expects ``outputs/analysis/salary_plot_years_dropped.csv`` (from salary plots; header-only is valid).
+    ``REQUIRED_FILES`` includes the salary descriptive PNG inventory, band/conversion diagnostics CSV, and related
+    analysis CSVs (contract-year increase files must use ``salary_increase_percent_by_contract_year*.png``, not the
+    obsolete ``salary_increase_percent_by_salary_year*.png`` names). Latest-view FT hours and points-per-row PNGs are
+    not required (removed from the salary plots script).
 
     Salary-side CSVs in outputs/analysis/ use semicolon (;) as the separator.
 """
@@ -26,10 +30,28 @@ REQUIRED_FILES: List[str] = [
     "outputs/analysis/salary_increase_conversion_diagnostics.csv",
     "outputs/analysis/salary_increase_csv_vs_diff_comparison.csv",
     "outputs/analysis/salary_monthly_band_summary.csv",
+    "outputs/analysis/salary_band_and_conversion_diagnostics.csv",
     "outputs/analysis/salary_plot_years_dropped.csv",
+    # Salary descriptive PNGs (CAO-equal weighting plan; no MIN_OBS year drops)
     "outputs/analysis/figures/salary/salary_ft_hours_by_contract_year.png",
-    "outputs/analysis/figures/salary/salary_increase_percent_by_salary_year.png",
+    "outputs/analysis/figures/salary/salary_amount_monthly_eur_band_eligible_by_salary_year.png",
+    "outputs/analysis/figures/salary/salary_amount_monthly_eur_band_eligible_by_salary_year_latest_cao_view.png",
+    "outputs/analysis/figures/salary/salary_amount_monthly_eur_band_eligible_by_contract_year.png",
+    "outputs/analysis/figures/salary/salary_amount_monthly_eur_band_eligible_by_contract_year_latest_cao_view.png",
+    "outputs/analysis/figures/salary/salary_increase_percent_by_contract_year.png",
+    "outputs/analysis/figures/salary/salary_increase_percent_by_contract_year_latest_cao_view.png",
+    "outputs/analysis/figures/salary/salary_boolean_shares_by_contract_year.png",
+    "outputs/analysis/figures/salary/salary_boolean_shares_by_contract_year_latest_cao_view.png",
     "outputs/analysis/figures/salary/salary_points_per_row_by_year.png",
+    "outputs/analysis/figures/salary/salary_increase_diff_only_by_salary_year.png",
+    "outputs/analysis/figures/salary/salary_increase_merged_pref_csv_by_salary_year.png",
+    "outputs/analysis/figures/salary/salary_increase_csv_only_by_salary_year.png",
+    "outputs/analysis/figures/salary/salary_increase_merged_pref_csv_by_salary_year_latest_cao_view.png",
+    "outputs/analysis/figures/salary/salary_increase_diff_only_by_salary_year_latest_cao_view.png",
+    "outputs/analysis/figures/salary/salary_increase_csv_only_by_salary_year_latest_cao_view.png",
+    "outputs/analysis/figures/salary/salary_increase_series_comparison_by_year.png",
+    "outputs/analysis/figures/salary/salary_increase_shift_by_new_file_year.png",
+    "outputs/analysis/figures/salary/salary_increase_spaghetti_selected_caos.png",
 ]
 
 

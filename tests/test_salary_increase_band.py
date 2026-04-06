@@ -13,7 +13,10 @@ import pandas as pd
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from scripts.excel_analysis.analysis_utils import SALARY_ANALYSIS_MONTHLY_CAP_EUR
+from scripts.excel_analysis.analysis_utils import (
+    SALARY_ANALYSIS_MONTHLY_CAP_EUR,
+    SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN,
+)
 from scripts.excel_analysis.nl_minimum_wage_monthly import (
     minimum_monthly_gross_eur,
     minimum_monthly_gross_eur_series,
@@ -83,6 +86,28 @@ class TestSalaryIncreaseBandDerivation(unittest.TestCase):
         bs = payload["band_summary"]
         self.assertGreaterEqual(bs["n_dropped_below_floor"], 1)
         self.assertEqual(bs["n_dropped_above_cap"], 0)
+
+    def test_within_ten_percent_below_floor_is_band_eligible(self):
+        """Monthly amount strictly between 0.9×statutory floor and full floor is band-eligible."""
+        floor_2020 = minimum_monthly_gross_eur(pd.Timestamp("2020-01-01"))
+        low = floor_2020 * float(SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN)
+        amt = low + (floor_2020 - low) / 2.0
+        self.assertGreater(amt, low)
+        self.assertLess(amt, floor_2020)
+        df = pd.DataFrame(
+            {
+                "cao_number": [1],
+                "file_name": ["f.pdf"],
+                "salary_1_start_date": ["2020-01-01"],
+                "salary_1_amount": [amt],
+                "salary_1_unit": ["monthly"],
+            }
+        )
+        payload = derive_salary_increase_series(df)
+        ev = payload["events"]
+        self.assertEqual(len(ev), 1)
+        self.assertTrue(ev.iloc[0]["analysis_monthly_band_ok"])
+        self.assertEqual(payload["band_summary"]["n_dropped_below_floor"], 0)
 
     def test_above_cap_nans_band(self):
         """Monthly amount above cap is excluded from band and merged series."""

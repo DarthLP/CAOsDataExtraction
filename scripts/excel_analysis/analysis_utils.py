@@ -27,6 +27,9 @@ PLAUSIBLE_MONTHLY_MAX = 100_000.0
 # Upper cap (EUR monthly, after normalization) for salary-increase analysis band; excludes extreme OCR/extraction errors.
 SALARY_ANALYSIS_MONTHLY_CAP_EUR = 50_000.0
 
+# Band lower bound = this fraction × NL statutory gross monthly minimum (full floor still stored in analysis_monthly_floor_eur).
+SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN = 0.9
+
 _FT_WEEKLY_MAX_REASONABLE = 72.0
 _ANNUAL_HOURS_THRESHOLD = 200.0
 
@@ -223,6 +226,7 @@ def convert_salary_to_monthly(amount: Any, unit: Any, ft_hours: Optional[float] 
     Convert salary amounts to monthly equivalent using monthly as standard.
     Supports full words (monthly, hourly, daily, …) and compact schema codes (m, h, 4-w, w, d, a).
     Four-weekly is detected before generic weekly to avoid mis-classification.
+    Four-weekly gross is annualized as 13 pay periods per calendar year (52÷4), then divided by 12 for a calendar month equivalent: monthly = amount × (13/12).
     Daily rates (including offshore day / per offshore) assume a standard 5-day week: monthly = amount × 4.33 × 5.
     Units like ``3-hour activity`` are excluded from hourly conversion (not €/hour).
     ft_hours is coerced via coerce_ft_hours_per_week_for_conversion (annual hours ÷ 52 when > 200).
@@ -258,7 +262,7 @@ def convert_salary_to_monthly(amount: Any, unit: Any, ft_hours: Optional[float] 
     if _is_monthly_unit(unit_lower):
         monthly = amt
     elif _is_four_weekly_unit(unit_lower):
-        monthly = amt * (12.0 / 13.0)
+        monthly = amt * (13.0 / 12.0)
     elif _is_hourly_unit(unit_lower):
         monthly = amt * h_week * weeks_per_month
     elif _is_daily_unit(unit_lower):
@@ -819,6 +823,36 @@ def detect_salary_slot_indices(columns: List[str]) -> List[int]:
         if match:
             slot_indices.add(int(match.group(1)))
     return sorted(slot_indices)
+
+
+def wide_row_has_any_positive_salary_amount(df: pd.DataFrame) -> pd.Series:
+    """
+    Return a boolean Series (aligned to df.index) that is True when the row has at least
+    one salary timeline slot whose amount coerces to a finite value strictly greater than zero.
+
+    This matches the rule used when building long salary rows from wide data and when
+    computing n_salary_points_per_row in descriptives_salary (positive coerced amounts only).
+
+    Args:
+        df: Wide-format salary DataFrame with optional salary_<k>_amount columns.
+
+    Returns:
+        Boolean pandas Series with the same index as df. Empty frames yield an empty Series.
+        If no salary amount columns exist, returns all False.
+    """
+    if len(df) == 0:
+        return pd.Series(dtype=bool, index=df.index)
+    slot_indices = detect_salary_slot_indices(df.columns.tolist())
+    if not slot_indices:
+        return pd.Series(False, index=df.index, dtype=bool)
+    combined = pd.Series(False, index=df.index, dtype=bool)
+    for k in slot_indices:
+        amount_col = f"salary_{k}_amount"
+        if amount_col not in df.columns:
+            continue
+        v = df[amount_col].map(coerce_salary_amount_scalar)
+        combined = combined | (v.notna() & (v > 0))
+    return combined
 
 
 def build_long_salary_from_wide(

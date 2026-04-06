@@ -6,7 +6,8 @@ showing trends over contract start years and salary start years for key salary v
 
 Normalization for level trends: ``normalize_salary_slot_to_monthly`` and
 ``compute_analysis_monthly_floor_and_band_ok`` match ``derive_salary_increase_series``
-(NL statutory monthly floor + ``SALARY_ANALYSIS_MONTHLY_CAP_EUR`` on gross monthly EUR).
+(NL statutory monthly floor at ``SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN`` × floor for eligibility,
+full floor stored in outputs, plus ``SALARY_ANALYSIS_MONTHLY_CAP_EUR`` on gross monthly EUR).
 
 USAGE:
     python scripts/excel_analysis/descriptives_salary_plots.py
@@ -50,7 +51,8 @@ OUTPUT:
     Other (weights + twin where applicable):
 
     - salary_ft_hours_by_contract_year.png
-    - salary_boolean_shares_by_contract_year.png (+ _latest_cao_view)
+    - salary_boolean_shares_by_contract_year.png (+ _latest_cao_view) — wide rows with ≥1
+      positive coerced salary_k_amount only (excludes placeholder / no-table rows)
     - salary_points_per_row_by_year.png (band-eligible slot counts per wide row)
 """
 
@@ -67,11 +69,13 @@ import matplotlib.pyplot as plt
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from scripts.excel_analysis.analysis_utils import (
     SALARY_ANALYSIS_MONTHLY_CAP_EUR,
+    SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN,
     build_latest_cao_forward_fill_by_file,
     build_long_salary_from_wide,
     coerce_salary_amount_scalar,
     detect_salary_slot_indices,
     enforce_integer_year_axis,
+    wide_row_has_any_positive_salary_amount,
     get_plot_color_cycle,
     parse_cao_date_series,
 )
@@ -315,7 +319,8 @@ def build_long_salary_df(df: pd.DataFrame) -> pd.DataFrame:
 
 def enrich_long_salary_with_monthly_and_band(df_long: pd.DataFrame) -> pd.DataFrame:
     """
-    Per long row: normalize amount to monthly EUR, then apply statutory floor + analysis cap band.
+    Per long row: normalize amount to monthly EUR, then apply NL statutory floor (stored in full) at
+    ``SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN`` × floor for eligibility, plus analysis cap.
 
     Args:
         df_long: Output of ``build_long_salary_from_wide`` / ``build_long_salary_df`` with
@@ -356,12 +361,13 @@ def enrich_long_salary_with_monthly_and_band(df_long: pd.DataFrame) -> pd.DataFr
     sd_series = pd.to_datetime(out["salary_start_date"], errors="coerce")
     nat_sd = sd_series.isna().to_numpy()
     cap = float(SALARY_ANALYSIS_MONTHLY_CAP_EUR)
+    floor_min = float(SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN)
     floor_fin = np.isfinite(floor_arr)
     amt_fin = np.isfinite(amt_f)
     drop_r = np.full(len(out), "", dtype=object)
     drop_r[conv_ok & nat_sd] = "missing_salary_date_for_floor"
     drop_r[conv_ok & ~nat_sd & amt_fin & (amt_f > cap)] = "above_analysis_cap"
-    drop_r[conv_ok & ~nat_sd & amt_fin & floor_fin & (amt_f <= cap) & (amt_f < floor_arr)] = (
+    drop_r[conv_ok & ~nat_sd & amt_fin & floor_fin & (amt_f <= cap) & (amt_f < floor_arr * floor_min)] = (
         "below_statutory_monthly_floor"
     )
     out["amount_monthly"] = amounts_m
@@ -950,11 +956,16 @@ def plot_boolean_shares_by_contract_year(df: pd.DataFrame, output_dir: Path,
     """
     Plot share of rows with boolean features by contract start year.
 
+    Only includes wide rows that have at least one salary slot with a strictly positive
+    coerced amount (same rule as long-format salary build / n_salary_points_per_row).
+
     Cohort-local CAO count on twin axis only (no row counts).
 
     Args:
         df: Wide format DataFrame
         output_dir: Directory to save plot
+        use_latest_cao_view: If True, use forward-filled latest-file panel
+        df_latest_wide: Pre-built latest CAO view; optional when use_latest_cao_view is True
     """
     suffix = "_latest_cao_view" if use_latest_cao_view else ""
     filename = f"salary_boolean_shares_by_contract_year{suffix}.png"
@@ -975,7 +986,20 @@ def plot_boolean_shares_by_contract_year(df: pd.DataFrame, output_dir: Path,
     if "contract_start_year" not in df_plot.columns:
         print("  [INFO] contract_start_year column not found; skipping figure")
         return
-    
+
+    n_before = len(df_plot)
+    _sal_mask = wide_row_has_any_positive_salary_amount(df_plot)
+    df_plot = df_plot.loc[_sal_mask].copy()
+    n_after = len(df_plot)
+    if n_after == 0:
+        print("  [INFO] No rows with ≥1 positive coerced salary amount; skipping boolean shares figure")
+        return
+    if n_after < n_before:
+        print(
+            f"  [INFO] Boolean shares: excluded {n_before - n_after} wide rows without salary amounts; "
+            f"plotting {n_after} rows"
+        )
+
     # Variables to plot (use plotted frame so latest forward-fill columns match)
     bool_vars = []
     if "TTW" in df_plot.columns:

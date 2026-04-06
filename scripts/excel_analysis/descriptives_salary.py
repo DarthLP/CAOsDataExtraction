@@ -375,7 +375,7 @@ def create_sample_overview_sheet(
     
     results.append(block_a)
     
-    # Block A2 - Normalized monthly band (statutory floor + analysis cap) for increase events
+    # Block A2 - Normalized monthly band (relaxed statutory floor + analysis cap) for increase events
     if band_summary is not None and len(band_summary) > 0:
         block_band = {"section": "salary_monthly_band"}
         for key in (
@@ -1498,7 +1498,7 @@ def main():
                 "   - Shows how full-time hours evolve over time",
                 "",
                 "6. Salary monthly band (section='salary_monthly_band'):",
-                "   - Event-level counts for normalized monthly amounts vs NL statutory min (Jan 1 schedule) and cap",
+                "   - Event-level counts for normalized monthly amounts vs NL statutory min (Jan 1; band uses SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN × floor) and cap",
                 "   - n_increase_events, n_conversion_ok, n_band_eligible, n_dropped_* , share_* (denom: conversion_ok)",
                 "   - See outputs/analysis/salary_monthly_band_summary.csv for the same row"
             ],
@@ -1603,7 +1603,7 @@ def main():
                 "",
                 "Rows with failed unit conversion or non-positive amounts are excluded from diff chains;",
                 "conversion issues appear in salary_increase_conversion_diagnostics.csv.",
-                "analysis_monthly_band_ok: amounts must lie between NL statutory monthly min (salary_start_date)",
+                "analysis_monthly_band_ok: amounts must lie between SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN × NL statutory monthly min (salary_start_date)",
                 "and SALARY_ANALYSIS_MONTHLY_CAP_EUR; otherwise increase_diff_only is NaN and merged pref is masked.",
                 "Band exclusions are counted in 01_sample_overview (section salary_monthly_band) and salary_monthly_band_summary.csv.",
                 "is_first_salary_in_file: 1 for every event on the earliest salary_start_date in that file (cao+file)."

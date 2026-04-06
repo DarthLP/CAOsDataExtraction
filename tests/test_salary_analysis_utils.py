@@ -11,6 +11,8 @@ import os
 import sys
 import unittest
 
+import pandas as pd
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from scripts.excel_analysis.analysis_utils import (
@@ -18,6 +20,7 @@ from scripts.excel_analysis.analysis_utils import (
     coerce_salary_amount_scalar,
     convert_salary_to_monthly,
     is_plausible_monthly_equivalent,
+    wide_row_has_any_positive_salary_amount,
 )
 
 
@@ -55,7 +58,7 @@ class TestSalaryAnalysisUtils(unittest.TestCase):
 
         fourw = convert_salary_to_monthly(400.0, "4-w", None)
         self.assertIsNotNone(fourw)
-        self.assertAlmostEqual(fourw, round(400.0 * (12.0 / 13.0), 2), places=5)
+        self.assertAlmostEqual(fourw, round(400.0 * (13.0 / 12.0), 2), places=5)
 
         week = convert_salary_to_monthly(500.0, "w", None)
         self.assertIsNotNone(week)
@@ -72,7 +75,7 @@ class TestSalaryAnalysisUtils(unittest.TestCase):
 
         self.assertEqual(
             convert_salary_to_monthly("2.230,91", "4-week", None),
-            round(2230.91 * (12.0 / 13.0), 2),
+            round(2230.91 * (13.0 / 12.0), 2),
         )
 
         annual = convert_salary_to_monthly(60000.0, "a", None)
@@ -104,6 +107,44 @@ class TestSalaryAnalysisUtils(unittest.TestCase):
         self.assertTrue(is_plausible_monthly_equivalent(5000.0))
         self.assertFalse(is_plausible_monthly_equivalent(0.0))
         self.assertFalse(is_plausible_monthly_equivalent(200_000.0))
+
+    def test_wide_row_has_any_positive_salary_amount_true_when_slot_positive(self):
+        """At least one coerced positive salary_k_amount marks the wide row True."""
+        df = pd.DataFrame(
+            {
+                "salary_1_amount": [None, "", 2500.0],
+                "salary_2_amount": [None, 100.0, None],
+            }
+        )
+        m = wide_row_has_any_positive_salary_amount(df)
+        self.assertFalse(bool(m.iloc[0]))
+        self.assertTrue(bool(m.iloc[1]))
+        self.assertTrue(bool(m.iloc[2]))
+
+    def test_wide_row_has_any_positive_salary_amount_all_false_placeholder(self):
+        """Placeholder rows with no valid amounts are False."""
+        df = pd.DataFrame(
+            {
+                "cao_number": ["1", "2"],
+                "salary_1_amount": [None, ""],
+                "salary_2_amount": [0, None],
+            }
+        )
+        m = wide_row_has_any_positive_salary_amount(df)
+        self.assertFalse(m.any())
+
+    def test_wide_row_has_any_positive_salary_amount_no_amount_columns(self):
+        """Frames without salary_*_amount pattern columns yield all False."""
+        df = pd.DataFrame({"cao_number": [1, 2], "x": [1, 2]})
+        m = wide_row_has_any_positive_salary_amount(df)
+        self.assertEqual(len(m), 2)
+        self.assertFalse(m.any())
+
+    def test_wide_row_has_any_positive_salary_amount_empty_frame(self):
+        """Empty wide frame yields empty boolean Series."""
+        df = pd.DataFrame()
+        m = wide_row_has_any_positive_salary_amount(df)
+        self.assertEqual(len(m), 0)
 
 
 if __name__ == "__main__":

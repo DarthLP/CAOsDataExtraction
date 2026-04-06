@@ -28,6 +28,7 @@ import pandas as pd
 
 from scripts.excel_analysis.analysis_utils import (
     SALARY_ANALYSIS_MONTHLY_CAP_EUR,
+    SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN,
     coerce_salary_amount_scalar,
     detect_salary_slot_indices,
 )
@@ -82,12 +83,13 @@ def _enrich_long_with_band_reasons(df_long: pd.DataFrame) -> pd.DataFrame:
     sd_series = pd.to_datetime(out["salary_start_date"], errors="coerce")
     nat_sd = sd_series.isna().to_numpy()
     cap = float(SALARY_ANALYSIS_MONTHLY_CAP_EUR)
+    floor_min = float(SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN)
     floor_fin = np.isfinite(floor_arr)
     amt_fin = np.isfinite(amt_f)
     drop_r = np.full(len(out), "", dtype=object)
     drop_r[conv_ok & nat_sd] = "missing_salary_date_for_floor"
     drop_r[conv_ok & ~nat_sd & amt_fin & (amt_f > cap)] = "above_analysis_cap"
-    drop_r[conv_ok & ~nat_sd & amt_fin & floor_fin & (amt_f <= cap) & (amt_f < floor_arr)] = (
+    drop_r[conv_ok & ~nat_sd & amt_fin & floor_fin & (amt_f <= cap) & (amt_f < floor_arr * floor_min)] = (
         "below_statutory_monthly_floor"
     )
     out["amount_monthly"] = amounts_m

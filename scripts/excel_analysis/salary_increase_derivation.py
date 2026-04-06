@@ -19,7 +19,8 @@ Outputs:
       conversion_ok False. is_first_salary_in_file is 1 for every event on the
       earliest salary_start_date within the same (cao_number, file_name).
       analysis_monthly_floor_eur / analysis_monthly_band_ok / analysis_drop_reason_band
-      implement statutory monthly floor (NL 1-Jan schedule) plus SALARY_ANALYSIS_MONTHLY_CAP_EUR.
+      implement NL statutory monthly floor (NL 1-Jan schedule; full value in analysis_monthly_floor_eur),
+      band eligibility at SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN × that floor, plus SALARY_ANALYSIS_MONTHLY_CAP_EUR.
       increase_merged_pref_csv is CSV if present else diff-based, without masking on
       analysis_monthly_band_ok (plots and regressions that must stay band-only filter explicitly).
     - conversion_diagnostics: dropped conversion cases, invalid diff pairs, and
@@ -42,6 +43,7 @@ import pandas as pd
 
 from scripts.excel_analysis.analysis_utils import (
     SALARY_ANALYSIS_MONTHLY_CAP_EUR,
+    SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN,
     coerce_salary_amount_scalar,
     convert_salary_to_monthly,
     detect_salary_slot_indices,
@@ -122,6 +124,9 @@ def compute_analysis_monthly_floor_and_band_ok(
     """
     Vectorized NL statutory monthly floor plus analysis cap (same rules as derive_salary_increase_series).
 
+    Band eligibility uses amount_monthly >= SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN × statutory floor
+    (floor_arr still holds the full statutory minimum).
+
     Args:
         conversion_ok: Boolean array, length n — unit conversion succeeded.
         salary_start_date: Series of datetimes (salary table effective dates).
@@ -136,9 +141,10 @@ def compute_analysis_monthly_floor_and_band_ok(
     conv_ok = np.asarray(conversion_ok, dtype=bool)
     nat_sd = sd_series.isna().to_numpy()
     cap = float(SALARY_ANALYSIS_MONTHLY_CAP_EUR)
+    floor_min = float(SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN)
     floor_fin = np.isfinite(floor_arr)
     amt_fin = np.isfinite(amt_f)
-    band_ok = conv_ok & ~nat_sd & amt_fin & floor_fin & (amt_f >= floor_arr) & (amt_f <= cap)
+    band_ok = conv_ok & ~nat_sd & amt_fin & floor_fin & (amt_f >= floor_arr * floor_min) & (amt_f <= cap)
     return floor_arr, band_ok
 
 
@@ -164,11 +170,12 @@ def compute_band_summary_stats(events_df: pd.DataFrame) -> Dict[str, Any]:
     amt = pd.to_numeric(events_df["amount_monthly"], errors="coerce").to_numpy(dtype=float)
     floor = pd.to_numeric(events_df["analysis_monthly_floor_eur"], errors="coerce").to_numpy(dtype=float)
     cap = float(SALARY_ANALYSIS_MONTHLY_CAP_EUR)
+    floor_min = float(SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN)
     n_conv = int(conv.sum())
     n_missing = int((conv & nat).sum())
     n_above = int((conv & ~nat & np.isfinite(amt) & (amt > cap)).sum())
     n_below = int(
-        (conv & ~nat & np.isfinite(amt) & np.isfinite(floor) & (amt <= cap) & (amt < floor)).sum()
+        (conv & ~nat & np.isfinite(amt) & np.isfinite(floor) & (amt <= cap) & (amt < floor * floor_min)).sum()
     )
     n_eligible = int(band_ok.sum())
     denom = float(n_conv) if n_conv else float("nan")
@@ -314,7 +321,7 @@ def derive_salary_increase_series(df: pd.DataFrame) -> Dict[str, Any]:
     events_df["increase_diff_only"] = np.nan
     events_df = events_df.sort_values(["row_id", "salary_start_date", "salary_index"]).reset_index(drop=True)
 
-    # Monthly band: NL statutory floor (Jan 1 schedule) + analysis cap on normalized amounts.
+    # Monthly band: NL statutory floor (Jan 1 schedule) at relaxed lower bound + analysis cap on normalized amounts.
     sd_series = events_df["salary_start_date"]
     floor_arr, analysis_monthly_band_ok = compute_analysis_monthly_floor_and_band_ok(
         events_df["conversion_ok"].to_numpy(),
@@ -325,6 +332,7 @@ def derive_salary_increase_series(df: pd.DataFrame) -> Dict[str, Any]:
     conv_ok = events_df["conversion_ok"].to_numpy()
     nat_sd = sd_series.isna().to_numpy()
     cap = float(SALARY_ANALYSIS_MONTHLY_CAP_EUR)
+    floor_min = float(SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN)
     floor_fin = np.isfinite(floor_arr)
     amt_fin = np.isfinite(amt_f)
     events_df["analysis_monthly_floor_eur"] = floor_arr
@@ -333,7 +341,7 @@ def derive_salary_increase_series(df: pd.DataFrame) -> Dict[str, Any]:
     m_conv = conv_ok
     reasons[m_conv & nat_sd] = "missing_salary_date_for_floor"
     reasons[m_conv & ~nat_sd & amt_fin & (amt_f > cap)] = "above_analysis_cap"
-    reasons[m_conv & ~nat_sd & amt_fin & floor_fin & (amt_f <= cap) & (amt_f < floor_arr)] = (
+    reasons[m_conv & ~nat_sd & amt_fin & floor_fin & (amt_f <= cap) & (amt_f < floor_arr * floor_min)] = (
         "below_statutory_monthly_floor"
     )
     events_df["analysis_drop_reason_band"] = reasons

@@ -855,6 +855,27 @@ def wide_row_has_any_positive_salary_amount(df: pd.DataFrame) -> pd.Series:
     return combined
 
 
+def wide_analysis_row_ids(df: pd.DataFrame) -> np.ndarray:
+    """
+    Return integer row identifiers for wide salary frames used in long-build and increase derivation.
+
+    When ``_wide_source_row_id`` is present (subset of the extract aligned to original CSV row order),
+    returns those values so ``row_id`` in long/events matches ``iloc`` in ``extracted_data_salary.csv``.
+    Otherwise returns ``0 .. len(df)-1``.
+
+    Args:
+        df: Wide-format salary DataFrame.
+
+    Returns:
+        int64 ndarray of length ``len(df)``.
+    """
+    if len(df) == 0:
+        return np.array([], dtype=np.int64)
+    if "_wide_source_row_id" in df.columns:
+        return np.asarray(df["_wide_source_row_id"].to_numpy(), dtype=np.int64)
+    return np.arange(len(df), dtype=np.int64)
+
+
 def build_long_salary_from_wide(
     df: pd.DataFrame,
     identity_cols: List[str],
@@ -869,7 +890,9 @@ def build_long_salary_from_wide(
         salary_fields: Slot fields to map from salary_k_<field> to salary_<field>
 
     Returns:
-        Long-format salary DataFrame with one row per detected slot observation
+        Long-format salary DataFrame with one row per detected slot observation. Each row's ``row_id``
+        comes from ``wide_analysis_row_ids`` (``_wide_source_row_id`` column when the wide frame is a
+        subset of the extract, else ``0 .. len(df)-1``).
     """
     if len(df) == 0:
         return pd.DataFrame()
@@ -901,8 +924,7 @@ def build_long_salary_from_wide(
         rename_map = {f"salary_{k}_{field}": f"salary_{field}" for field in salary_fields if f"salary_{k}_{field}" in tmp.columns}
         tmp = tmp.rename(columns=rename_map)
         tmp["salary_index"] = k
-        # Positional wide row id (0..n-1), aligned with ``iloc`` / ``derive_salary_increase_series`` row_id.
-        tmp["row_id"] = np.arange(len(df), dtype=np.int64)
+        tmp["row_id"] = wide_analysis_row_ids(df)
         slices.append(tmp)
 
     if not slices:

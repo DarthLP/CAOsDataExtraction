@@ -14,10 +14,15 @@ INPUT:
 
 OUTPUT:
     - outputs/analysis/salary_descriptives.xlsx (multi-sheet Excel workbook)
+    - outputs/analysis/salary_descriptives_excluded_no_salary.csv (summary + fully no-salary files; sep ';')
     - outputs/analysis/salary_increase_events_derived.csv (always written; sep ';')
     - outputs/analysis/salary_increase_conversion_diagnostics.csv (always written; sep ';')
     - outputs/analysis/salary_increase_csv_vs_diff_comparison.csv (sep ';')
     - outputs/analysis/salary_monthly_band_summary.csv (single-row band exclusion summary; sep ';')
+
+Wide descriptives sheets 00–07 use the analytic sample: wide rows with at least one strictly positive
+coerced salary_k_amount. Sheet 08 and the exclusion CSV still describe the full extract (including
+cancelled / no-salary rows and files). Derived increase CSV row_id values reference iloc in the input CSV.
 """
 
 import os
@@ -48,6 +53,7 @@ from scripts.excel_analysis.salary_increase_derivation import (
 # =============================================================================
 INPUT_CSV = "outputs/excel/new_results/extracted_data_salary.csv"
 OUTPUT_EXCEL = "outputs/analysis/salary_descriptives.xlsx"
+OUTPUT_EXCLUSION_CSV = "outputs/analysis/salary_descriptives_excluded_no_salary.csv"
 
 # =============================================================================
 # HELPER FUNCTIONS
@@ -333,7 +339,7 @@ def create_sample_overview_sheet(
     # Block A - Overall dataset structure
     block_a = {}
     block_a['section'] = 'overall_structure'
-    block_a['n_rows'] = len(df)  # Number of salary data rows (one per jobgroup/step/worker combination)
+    block_a['n_rows'] = len(df)  # Analytic wide rows (typically ≥1 positive salary_k_amount per row)
     
     # Count unique files (cao_number + file_name combinations)
     if "cao_number" in df.columns and "file_name" in df.columns:
@@ -1188,6 +1194,91 @@ def create_no_salary_analysis_sheet(df: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(results)
 
 
+def build_salary_descriptives_exclusion_report(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Build a combined summary and file list for wide rows and files excluded from the salary analytic sample.
+
+    The analytic sample keeps rows with n_salary_points_per_row > 0. Detail rows list (cao_number, file_name)
+    pairs where every wide row in that file has zero salary points (fully no-salary contract files).
+
+    Args:
+        df: Full wide frame after n_salary_points_per_row was attached.
+
+    Returns:
+        DataFrame with record_type 'summary' (one row) and 'excluded_file' (one row per fully no-salary file).
+    """
+    rows: List[Dict[str, Any]] = []
+    if "n_salary_points_per_row" not in df.columns:
+        return pd.DataFrame(rows)
+
+    n_total = len(df)
+    has_salary = df["n_salary_points_per_row"].to_numpy() > 0
+    n_analytic = int(has_salary.sum())
+    n_excluded = n_total - n_analytic
+
+    n_unique_files_total = np.nan
+    n_unique_files_fully_no_salary = np.nan
+    n_cao_total = np.nan
+    n_cao_with_at_least_one_fully_no_salary_file = np.nan
+    n_cao_all_files_fully_no_salary = np.nan
+    fully_no_salary_keys: List[Any] = []
+
+    if "cao_number" in df.columns and "file_name" in df.columns:
+        n_unique_files_total = int(df[["cao_number", "file_name"]].drop_duplicates().shape[0])
+        n_cao_total = int(df["cao_number"].nunique())
+        file_max = df.groupby(["cao_number", "file_name"], sort=False)["n_salary_points_per_row"].max()
+        mask_fully = file_max == 0
+        fully_no_salary_keys = list(file_max.loc[mask_fully].index)
+        n_unique_files_fully_no_salary = len(fully_no_salary_keys)
+        if fully_no_salary_keys:
+            cao_vals = [t[0] for t in fully_no_salary_keys]
+            n_cao_with_at_least_one_fully_no_salary_file = len(set(cao_vals))
+        else:
+            n_cao_with_at_least_one_fully_no_salary_file = 0
+
+        cf = (
+            df.groupby(["cao_number", "file_name"], sort=False)["n_salary_points_per_row"]
+            .max()
+            .reset_index()
+        )
+        cf["fully_no_salary_file"] = cf["n_salary_points_per_row"] == 0
+        g = cf.groupby("cao_number", sort=False).agg(
+            n_files=("file_name", "count"), n_fully_no_salary=("fully_no_salary_file", "sum")
+        )
+        n_cao_all_files_fully_no_salary = int((g["n_fully_no_salary"] == g["n_files"]).sum())
+
+    rows.append(
+        {
+            "record_type": "summary",
+            "n_wide_rows_total": n_total,
+            "n_wide_rows_analytic": n_analytic,
+            "n_wide_rows_excluded": n_excluded,
+            "n_unique_files_total": n_unique_files_total,
+            "n_unique_files_fully_no_salary": n_unique_files_fully_no_salary,
+            "n_cao_total": n_cao_total,
+            "n_cao_with_at_least_one_fully_no_salary_file": n_cao_with_at_least_one_fully_no_salary_file,
+            "n_cao_all_files_fully_no_salary": n_cao_all_files_fully_no_salary,
+        }
+    )
+
+    meta_cols = [c for c in ("id", "TTW", "ingangsdatum", "expiratiedatum", "sector", "sbi_code") if c in df.columns]
+    for key in fully_no_salary_keys:
+        cao, fn = key[0], key[1]
+        drow: Dict[str, Any] = {
+            "record_type": "excluded_file",
+            "cao_number": cao,
+            "file_name": fn,
+        }
+        sub = df.loc[(df["cao_number"] == cao) & (df["file_name"] == fn)]
+        if len(sub) > 0 and meta_cols:
+            first = sub.iloc[0]
+            for c in meta_cols:
+                drow[c] = first.get(c, np.nan)
+        rows.append(drow)
+
+    return pd.DataFrame(rows)
+
+
 # =============================================================================
 # MAIN EXECUTION
 # =============================================================================
@@ -1272,11 +1363,42 @@ def main():
         derived_cols["ft_hours_weekly"] = np.nan
     df["contract_start_year"] = derived_cols["contract_start_year"]
     df["ft_hours_weekly"] = derived_cols["ft_hours_weekly"]
-    
+
+    # n_salary_points_per_row before long/increase (strictly positive coerced amounts only)
+    print("\nComputing n_salary_points_per_row...")
+    n_rows = len(df)
+    n_points = np.zeros(n_rows, dtype=np.int32)
+    for k in SLOT_RANGE:
+        amount_col = f"salary_{k}_amount"
+        if amount_col in df.columns:
+            _am = df[amount_col].map(coerce_salary_amount_scalar)
+            n_points += (_am.notna() & (_am > 0)).astype(np.int32).to_numpy(copy=False)
+    df["n_salary_points_per_row"] = n_points
+
+    output_path = Path(OUTPUT_EXCEL)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    diagnostics_dir = Path("outputs/analysis")
+    diagnostics_dir.mkdir(parents=True, exist_ok=True)
+
+    exclusion_report_df = build_salary_descriptives_exclusion_report(df)
+    exclusion_csv_path = diagnostics_dir / Path(OUTPUT_EXCLUSION_CSV).name
+    exclusion_report_df.to_csv(exclusion_csv_path, index=False, sep=";", decimal=",")
+    print(f"\nWrote {exclusion_csv_path} ({len(exclusion_report_df)} rows)")
+
+    has_salary_mask = df["n_salary_points_per_row"].to_numpy() > 0
+    source_row_ids = np.flatnonzero(has_salary_mask)
+    df_analytic = df.loc[has_salary_mask].reset_index(drop=True)
+    if len(df_analytic) > 0:
+        df_analytic["_wide_source_row_id"] = source_row_ids
+    print(
+        f"  Analytic wide sample: {len(df_analytic)} rows "
+        f"(excluded {int(n_rows - len(df_analytic))} wide rows with no positive salary amount)"
+    )
+
     # Build long format DataFrame
     print("\nBuilding long format DataFrame...")
     try:
-        df_long = build_long_salary_df(df)
+        df_long = build_long_salary_df(df_analytic)
         print(f"  Long format: {len(df_long)} rows")
         log_memory("long_salary", df_long)
     except Exception as e:
@@ -1285,7 +1407,7 @@ def main():
 
     print("\nDeriving salary increase series (diff/csv/merged)...")
     try:
-        increase_payload = derive_salary_increase_series(df)
+        increase_payload = derive_salary_increase_series(df_analytic)
         increase_events = increase_payload["events"]
         comparison_df = increase_payload["comparison"]
         conversion_diag = increase_payload["conversion_diagnostics"]
@@ -1309,23 +1431,8 @@ def main():
         comparison_df = pd.DataFrame()
         conversion_diag = pd.DataFrame()
         band_summary = compute_band_summary_stats(pd.DataFrame())
-    
-    # Create n_salary_points_per_row (strictly positive coerced amounts only)
-    print("\nComputing n_salary_points_per_row...")
-    n_rows = len(df)
-    n_points = np.zeros(n_rows, dtype=np.int32)
-    for k in SLOT_RANGE:
-        amount_col = f"salary_{k}_amount"
-        if amount_col in df.columns:
-            _am = df[amount_col].map(coerce_salary_amount_scalar)
-            n_points += (_am.notna() & (_am > 0)).astype(np.int32).to_numpy(copy=False)
-    df["n_salary_points_per_row"] = n_points
-    
-    # Create output directory
-    output_path = Path(OUTPUT_EXCEL)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    diagnostics_dir = Path("outputs/analysis")
-    diagnostics_dir.mkdir(parents=True, exist_ok=True)
+
+    df_descriptives_wide = df_analytic.drop(columns=["_wide_source_row_id"], errors="ignore")
     comparison_csv_path = diagnostics_dir / "salary_increase_csv_vs_diff_comparison.csv"
     comparison_df.to_csv(comparison_csv_path, index=False, sep=";", decimal=",")
     print(f"\nWrote {comparison_csv_path} ({len(comparison_df)} rows)")
@@ -1341,87 +1448,96 @@ def main():
     )
     print(f"Wrote {diagnostics_dir / 'salary_increase_events_derived.csv'} ({len(increase_events)} rows)")
     
-    # Generate all sheets
+    # Generate all sheets (00–07: analytic wide sample only; 08: full extract)
     print("\nGenerating descriptive statistics sheets...")
     
     sheets = {}
     
     try:
-        print("  Creating sheet: 00_variable_health")
-        sheets["00_variable_health"] = create_variable_health_sheet(df)
+        print("  Creating sheet: 00_excluded_no_salary_summary")
+        sheets["00_excluded_no_salary_summary"] = exclusion_report_df
+    except Exception as e:
+        print(f"  Warning: Error creating excluded_no_salary_summary sheet: {e}")
+        sheets["00_excluded_no_salary_summary"] = pd.DataFrame()
+    
+    try:
+        print("  Creating sheet: 01_variable_health")
+        sheets["01_variable_health"] = create_variable_health_sheet(df_descriptives_wide)
     except Exception as e:
         print(f"  Warning: Error creating variable_health sheet: {e}")
-        sheets["00_variable_health"] = pd.DataFrame()
+        sheets["01_variable_health"] = pd.DataFrame()
     
     try:
-        print("  Creating sheet: 01_sample_overview")
-        sheets["01_sample_overview"] = create_sample_overview_sheet(df, df_long, band_summary=band_summary)
+        print("  Creating sheet: 02_sample_overview")
+        sheets["02_sample_overview"] = create_sample_overview_sheet(
+            df_descriptives_wide, df_long, band_summary=band_summary
+        )
     except Exception as e:
         print(f"  Warning: Error creating sample_overview sheet: {e}")
-        sheets["01_sample_overview"] = pd.DataFrame()
+        sheets["02_sample_overview"] = pd.DataFrame()
     
     try:
-        print("  Creating sheet: 02_salary_slots_coverage")
-        sheets["02_salary_slots_coverage"] = create_salary_slots_coverage_sheet(df)
+        print("  Creating sheet: 03_salary_slots_coverage")
+        sheets["03_salary_slots_coverage"] = create_salary_slots_coverage_sheet(df_descriptives_wide)
     except Exception as e:
         print(f"  Warning: Error creating salary_slots_coverage sheet: {e}")
-        sheets["02_salary_slots_coverage"] = pd.DataFrame()
+        sheets["03_salary_slots_coverage"] = pd.DataFrame()
     
     try:
-        print("  Creating sheet: 03_worker_profile")
-        sheets["03_worker_profile"] = create_worker_profile_sheet(df)
+        print("  Creating sheet: 04_worker_profile")
+        sheets["04_worker_profile"] = create_worker_profile_sheet(df_descriptives_wide)
     except Exception as e:
         print(f"  Warning: Error creating worker_profile sheet: {e}")
-        sheets["03_worker_profile"] = pd.DataFrame()
+        sheets["04_worker_profile"] = pd.DataFrame()
     
     try:
-        print("  Creating sheet: 04_amounts_by_unit")
-        sheets["04_amounts_by_unit"] = create_amounts_by_unit_sheet(df_long)
+        print("  Creating sheet: 05_amounts_by_unit")
+        sheets["05_amounts_by_unit"] = create_amounts_by_unit_sheet(df_long)
     except Exception as e:
         print(f"  Warning: Error creating amounts_by_unit sheet: {e}")
-        sheets["04_amounts_by_unit"] = pd.DataFrame()
+        sheets["05_amounts_by_unit"] = pd.DataFrame()
     
     try:
-        print("  Creating sheet: 05_increase_percent")
-        sheets["05_increase_percent"] = create_increase_percent_sheet(df_long)
+        print("  Creating sheet: 06_increase_percent")
+        sheets["06_increase_percent"] = create_increase_percent_sheet(df_long)
     except Exception as e:
         print(f"  Warning: Error creating increase_percent sheet: {e}")
-        sheets["05_increase_percent"] = pd.DataFrame()
+        sheets["06_increase_percent"] = pd.DataFrame()
     
     try:
-        print("  Creating sheet: 06_level_trends_by_year")
-        sheets["06_level_trends_by_year"] = create_level_trends_by_year_sheet(df_long)
+        print("  Creating sheet: 07_level_trends_by_year")
+        sheets["07_level_trends_by_year"] = create_level_trends_by_year_sheet(df_long)
     except Exception as e:
         print(f"  Warning: Error creating level_trends_by_year sheet: {e}")
-        sheets["06_level_trends_by_year"] = pd.DataFrame()
+        sheets["07_level_trends_by_year"] = pd.DataFrame()
     
     try:
-        print("  Creating sheet: 07_row_slot_counts")
-        sheets["07_row_slot_counts"] = create_row_slot_counts_sheet(df)
+        print("  Creating sheet: 08_row_slot_counts")
+        sheets["08_row_slot_counts"] = create_row_slot_counts_sheet(df_descriptives_wide)
     except Exception as e:
         print(f"  Warning: Error creating row_slot_counts sheet: {e}")
-        sheets["07_row_slot_counts"] = pd.DataFrame()
+        sheets["08_row_slot_counts"] = pd.DataFrame()
     
     try:
-        print("  Creating sheet: 08_no_salary_analysis")
-        sheets["08_no_salary_analysis"] = create_no_salary_analysis_sheet(df)
+        print("  Creating sheet: 09_no_salary_analysis")
+        sheets["09_no_salary_analysis"] = create_no_salary_analysis_sheet(df)
     except Exception as e:
         print(f"  Warning: Error creating no_salary_analysis sheet: {e}")
-        sheets["08_no_salary_analysis"] = pd.DataFrame()
+        sheets["09_no_salary_analysis"] = pd.DataFrame()
 
     try:
-        print("  Creating sheet: 09_increase_diff_only")
-        sheets["09_increase_diff_only"] = create_diff_only_increase_sheet(increase_events)
+        print("  Creating sheet: 10_increase_diff_only")
+        sheets["10_increase_diff_only"] = create_diff_only_increase_sheet(increase_events)
     except Exception as e:
         print(f"  Warning: Error creating increase_diff_only sheet: {e}")
-        sheets["09_increase_diff_only"] = pd.DataFrame()
+        sheets["10_increase_diff_only"] = pd.DataFrame()
 
     try:
-        print("  Creating sheet: 10_increase_merge_vs_csv")
-        sheets["10_increase_merge_vs_csv"] = create_merge_vs_csv_sheet(comparison_df)
+        print("  Creating sheet: 11_increase_merge_vs_csv")
+        sheets["11_increase_merge_vs_csv"] = create_merge_vs_csv_sheet(comparison_df)
     except Exception as e:
         print(f"  Warning: Error creating increase_merge_vs_csv sheet: {e}")
-        sheets["10_increase_merge_vs_csv"] = pd.DataFrame()
+        sheets["11_increase_merge_vs_csv"] = pd.DataFrame()
     
     # Write to Excel with explanatory notes
     print(f"\nWriting to Excel: {OUTPUT_EXCEL}")
@@ -1452,9 +1568,17 @@ def main():
         
         # Add notes to specific sheets
         notes = {
-            "00_variable_health": [
+            "00_excluded_no_salary_summary": [
                 "NOTES:",
-                "This sheet provides a comprehensive overview of all variables in the salary dataset.",
+                "record_type=summary: one row with counts for the full extract vs the analytic wide sample.",
+                "record_type=excluded_file: one row per (cao_number, file_name) where every wide row in that file has",
+                "  n_salary_points_per_row == 0 (no positive coerced salary_k_amount on any job row).",
+                "Mirrors outputs/analysis/salary_descriptives_excluded_no_salary.csv (semicolon-separated).",
+                "Sheets 01–08 use only wide rows with at least one positive salary amount; sheet 09 uses the full extract.",
+            ],
+            "01_variable_health": [
+                "NOTES:",
+                "This sheet provides a comprehensive overview of variables on the analytic wide sample (salary-bearing rows only).",
                 "",
                 "inferred_type: Automatically detected type (boolean, numeric, date, categorical, text, id/other)",
                 "n_nonmissing: Number of non-missing values",
@@ -1468,13 +1592,13 @@ def main():
                 "  - Date: min_date, max_date",
                 "  - Text: avg_char_length"
             ],
-            "01_sample_overview": [
+            "02_sample_overview": [
                 "NOTES:",
-                "This sheet contains multiple sections:",
+                "This sheet contains multiple sections (analytic wide sample only — rows with ≥1 positive salary amount):",
                 "",
                 "1. Overall dataset structure (section='overall_structure'):",
-                "   - n_rows: Total number of salary data rows in the dataset (one row per jobgroup/step/worker combination)",
-                "   - n_unique_files: Number of unique files (cao_number + file_name combinations) in the dataset",
+                "   - n_rows: Wide rows in the analytic sample (one row per jobgroup/step/worker combination with salary)",
+                "   - n_unique_files: Unique (cao_number + file_name) among analytic rows (files can appear without all job rows)",
                 "   - n_cao: Number of unique CAOs",
                 "   - n_jobgroups, n_steps, n_worker_types, n_age_groups, n_education_categories: Counts of distinct values",
                 "   - ft_hours_weekly: Statistics for full-time weekly hours (converted from annual if >200)",
@@ -1502,9 +1626,9 @@ def main():
                 "   - n_increase_events, n_conversion_ok, n_band_eligible, n_dropped_* , share_* (denom: conversion_ok)",
                 "   - See outputs/analysis/salary_monthly_band_summary.csv for the same row"
             ],
-            "02_salary_slots_coverage": [
+            "03_salary_slots_coverage": [
                 "NOTES:",
-                "This sheet summarizes the use of salary slots (timeline points) across the dataset.",
+                "This sheet summarizes the use of salary slots (timeline points) on the analytic wide sample.",
                 "",
                 "salary_index: Slot index k from columns salary_k_* (detected dynamically from the CSV header)",
                 "n_rows_with_amount: Rows with a strictly positive, parseable salary amount in this slot",
@@ -1517,9 +1641,9 @@ def main():
                 "Note: Wide rows can carry many timeline slots (salary_1_*, salary_2_*, ...); the count",
                 "depends on extraction output, not a fixed cap."
             ],
-            "03_worker_profile": [
+            "04_worker_profile": [
                 "NOTES:",
-                "This sheet provides frequency distributions for worker-related dimensions.",
+                "This sheet provides frequency distributions for worker-related dimensions (analytic wide sample).",
                 "",
                 "variable: The dimension being analyzed (worker_type, permanency, is_entry, age_group, education)",
                 "category: The category value",
@@ -1530,7 +1654,7 @@ def main():
                 "  - True: Entry/aanloop scales (starting scales for new workers)",
                 "  - False: Standard scales (not explicitly entry scales)"
             ],
-            "04_amounts_by_unit": [
+            "05_amounts_by_unit": [
                 "NOTES:",
                 "This sheet analyzes salary amounts by pay unit to understand typical magnitudes.",
                 "",
@@ -1543,7 +1667,7 @@ def main():
                 "This helps understand what typical salary levels are for different units and",
                 "to infer what ambiguous units like 'period' or 'unit' likely represent."
             ],
-            "05_increase_percent": [
+            "06_increase_percent": [
                 "NOTES:",
                 "This sheet analyzes general wage increase percentages specified in CAOs.",
                 "",
@@ -1561,7 +1685,7 @@ def main():
                 "Note: increase_percent represents general percentage increases for wage tables",
                 "as explicitly stated in the CAO (e.g., 3.00 for a +3% wage rise)."
             ],
-            "06_level_trends_by_year": [
+            "07_level_trends_by_year": [
                 "NOTES:",
                 "This sheet shows salary level development over time for the dominant pay unit.",
                 "",
@@ -1581,9 +1705,9 @@ def main():
                 "Note: Only includes episodes with the primary_unit to ensure comparability.",
                 "Long-format input excludes non-positive salary amounts (same rule as n_salary_points_per_row)."
             ],
-            "07_row_slot_counts": [
+            "08_row_slot_counts": [
                 "NOTES:",
-                "This sheet describes how many salary points (slots) each row carries.",
+                "This sheet describes how many salary points (slots) each row carries (analytic sample; buckets with n=0 may be omitted or rare).",
                 "",
                 "block: 'overall' (all rows) or 'by_year' (grouped by contract start year)",
                 "n_salary_points_per_row: Bucket — integers 0..10 count exact tallies; '11+' is rows with >= 11",
@@ -1597,7 +1721,7 @@ def main():
                 "",
                 "Note: Maximum slot index in the file is determined by salary_k_* columns, not fixed."
             ],
-            "09_increase_diff_only": [
+            "10_increase_diff_only": [
                 "NOTES:",
                 "Event-level derived increases: consecutive within-row percentage changes of normalized monthly amounts.",
                 "",
@@ -1605,10 +1729,10 @@ def main():
                 "conversion issues appear in salary_increase_conversion_diagnostics.csv.",
                 "analysis_monthly_band_ok: amounts must lie between SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN × NL statutory monthly min (salary_start_date)",
                 "and SALARY_ANALYSIS_MONTHLY_CAP_EUR; otherwise increase_diff_only is NaN and merged pref is masked.",
-                "Band exclusions are counted in 01_sample_overview (section salary_monthly_band) and salary_monthly_band_summary.csv.",
+                "Band exclusions are counted in 02_sample_overview (section salary_monthly_band) and salary_monthly_band_summary.csv.",
                 "is_first_salary_in_file: 1 for every event on the earliest salary_start_date in that file (cao+file)."
             ],
-            "10_increase_merge_vs_csv": [
+            "11_increase_merge_vs_csv": [
                 "NOTES:",
                 "Comparison where both increase_csv_only and increase_diff_only are present.",
                 "",
@@ -1617,9 +1741,9 @@ def main():
                 "",
                 "Full comparable rows are also exported to outputs/analysis/salary_increase_csv_vs_diff_comparison.csv (sep=;)."
             ],
-            "08_no_salary_analysis": [
+            "09_no_salary_analysis": [
                 "NOTES:",
-                "This sheet analyzes files that have no salary data (n_salary_points_per_row == 0).",
+                "This sheet analyzes the full extract (not restricted to the analytic sample), including rows with n_salary_points_per_row == 0.",
                 "",
                 "Sections:",
                 "",

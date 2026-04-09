@@ -53,7 +53,8 @@ OUTPUT:
     - salary_ft_hours_by_contract_year.png
     - salary_boolean_shares_by_contract_year.png (+ _latest_cao_view) — wide rows with ≥1
       positive coerced salary_k_amount only (excludes placeholder / no-table rows)
-    - salary_points_per_row_by_year.png (band-eligible slot counts per wide row)
+    - salary_points_per_row_by_year.png — band-eligible slot counts per wide row; **analytic wide sample
+      only** (≥1 strictly positive coerced ``salary_k_amount``, same as ``descriptives_salary.py`` / ``wide_row_has_any_positive_salary_amount``).
 """
 
 import gc
@@ -1105,10 +1106,12 @@ def plot_salary_points_per_row_by_year(
     """
     Plot average number of **band-eligible** salary slots per wide row by contract start year.
 
-    Counts match ``enrich_long_salary_with_monthly_and_band`` (NL floor + analysis cap), not raw positive amounts.
+    Uses the same **analytic wide sample** as ``descriptives_salary.py``: rows with at least one strictly
+    positive coerced ``salary_k_amount`` (``wide_row_has_any_positive_salary_amount``). Band-eligible counts
+    match ``enrich_long_salary_with_monthly_and_band`` (NL floor + analysis cap), not raw positive amounts.
 
     Args:
-        df: Wide format DataFrame (same row order as long build; ``row_id`` = ``iloc`` position).
+        df: Full wide extract (``row_id`` in long = ``iloc`` into this frame).
         df_long: Long salary rows from ``build_long_salary_df`` (includes ``row_id``).
         output_dir: Directory to save plot
         enriched_long: Pre-enriched long frame (same as ``enrich_long_salary_with_monthly_and_band``); if None, enriched once here.
@@ -1116,9 +1119,7 @@ def plot_salary_points_per_row_by_year(
     filename = "salary_points_per_row_by_year.png"
     print(f"\nCreating figure: {filename}")
 
-    df_plot = df.copy()
-
-    if "contract_start_year" not in df_plot.columns:
+    if "contract_start_year" not in df.columns:
         print("  [INFO] contract_start_year column not found; skipping figure")
         return
 
@@ -1128,12 +1129,17 @@ def plot_salary_points_per_row_by_year(
     else:
         enriched = enrich_long_salary_with_monthly_and_band(df_long) if len(df_long) else df_long
     counts = count_band_eligible_slots_per_wide_row(enriched)
-    n_band = np.zeros(len(df_plot), dtype=np.float64)
+    n_band = np.zeros(len(df), dtype=np.float64)
     for rid, c in counts.items():
         ri = int(rid)
         if 0 <= ri < len(n_band):
             n_band[ri] = float(c)
-    df_plot["n_salary_points_per_row"] = n_band
+    idx = np.flatnonzero(wide_row_has_any_positive_salary_amount(df).to_numpy())
+    if len(idx) == 0:
+        print("  [INFO] No wide rows with positive salary amounts; skipping figure")
+        return
+    df_plot = df.iloc[idx].copy().reset_index(drop=True)
+    df_plot["n_salary_points_per_row"] = n_band[idx]
     
     # Filter to rows with valid contract_start_year and n_salary_points_per_row
     df_filtered = df_plot[

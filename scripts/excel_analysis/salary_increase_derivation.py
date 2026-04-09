@@ -48,6 +48,7 @@ from scripts.excel_analysis.analysis_utils import (
     convert_salary_to_monthly,
     detect_salary_slot_indices,
     parse_cao_date_series,
+    wide_analysis_row_ids,
 )
 from scripts.excel_analysis.nl_minimum_wage_monthly import minimum_monthly_gross_eur_series
 
@@ -202,7 +203,8 @@ def derive_salary_increase_series(df: pd.DataFrame) -> Dict[str, Any]:
     Build event-level salary increase series with strict within-row derivation.
 
     Args:
-        df: Wide salary DataFrame.
+        df: Wide salary DataFrame. If it includes ``_wide_source_row_id`` (subset of the extract),
+            event ``row_id`` values match that column; otherwise they are ``0 .. len(df)-1``.
 
     Returns:
         Dictionary containing:
@@ -220,9 +222,7 @@ def derive_salary_increase_series(df: pd.DataFrame) -> Dict[str, Any]:
             "band_summary": _empty_band_summary(),
         }
 
-    # Use positional row ids (0..n-1) and avoid df.copy() — saves a full wide-frame RAM duplicate.
-    n = len(df)
-    row_pos = np.arange(n, dtype=np.int64)
+    row_pos = wide_analysis_row_ids(df)
 
     if "ingangsdatum" in df.columns:
         ingangsdatum_series = parse_cao_date_series(df["ingangsdatum"], dayfirst=True)

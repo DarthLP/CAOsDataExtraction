@@ -5,27 +5,19 @@ An AI-powered pipeline for extracting structured data from Dutch Collective Labo
 ## Quick Start
 
 1. **Activate environment:**
-   ```bash
+  ```bash
    conda activate caos-extract
-   ```
-
+  ```
 2. **Install dependencies:**
-   ```bash
+  ```bash
    pip install -r requirements.txt
-   ```
-
+  ```
 3. **Configure API keys:**
-   Create a `.env` file with your Google Gemini API keys:
-   ```
-   GOOGLE_API_KEY1=your_key_here
-   GOOGLE_API_KEY2=your_key_here
-   # ... additional keys for parallel processing
-   ```
-
+  Create a `.env` file with your Google Gemini API keys:
 4. **Run the complete pipeline (if orchestrator is present):**
-   ```bash
+  ```bash
    python run_pipeline.py
-   ```
+  ```
    Note: `run_pipeline.py` currently imports a non-existent `pipelines.p5_run`; until that orchestrator exists, run stages individually as shown below.
 
 ## Excel Analysis Additions (Salary + Non-Salary)
@@ -39,17 +31,17 @@ An AI-powered pipeline for extracting structured data from Dutch Collective Labo
   - Floor reference: `conf/nl_statutory_minimum_monthly_gross_eur.csv` — Dutch gross monthly minima on **1 January** per year (1990–2025; dates before 1990 clamp to 1990; after last row use 2025). Lookup uses `salary_start_date`. The full statutory value is stored in `analysis_monthly_floor_eur`; band eligibility requires normalized monthly ≥ `SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN` × that floor (default **0.9**, i.e. up to 10% below the statutory minimum is allowed).
   - Cap: `SALARY_ANALYSIS_MONTHLY_CAP_EUR` in `scripts/excel_analysis/analysis_utils.py` (default 50,000).
   - Event columns: `analysis_monthly_floor_eur`, `analysis_monthly_band_ok`, `analysis_drop_reason_band`. Youth / sub-minimum steps more than the allowed margin below the statutory monthly minimum are excluded from the band.
-- **Normalization rule**: diff derivation uses canonical `convert_salary_to_monthly` in `scripts/excel_analysis/analysis_utils.py` (monthly, 4-weekly, hourly, weekly, **daily** / compact **`d`** / **offshore day** variants, annual); **4-weekly** amounts use **× 13/12** (13 four-week pay periods per year ÷ 12 calendar months); daily-type rates use `amount × 5 × 4.33`. **Not** treated as hourly: **`N-hour` activity** slices (e.g. `3-hour activity`). Amount cells are parsed with EU/US decimal rules via `coerce_salary_amount_scalar`; monthly equivalents are **rounded to 2 decimals**; diagnostics CSVs use **`decimal=','`**. Events with invalid conversion inputs are excluded from diff derivation.
+- **Normalization rule**: diff derivation uses canonical `convert_salary_to_monthly` in `scripts/excel_analysis/analysis_utils.py` (monthly, 4-weekly, hourly, weekly, **daily** / compact `**d`** / **offshore day** variants, annual); **4-weekly** amounts use **× 13/12** (13 four-week pay periods per year ÷ 12 calendar months); daily-type rates use `amount × 5 × 4.33`. **Not** treated as hourly: `**N-hour` activity** slices (e.g. `3-hour activity`). Amount cells are parsed with EU/US decimal rules via `coerce_salary_amount_scalar`; monthly equivalents are **rounded to 2 decimals**; diagnostics CSVs use `**decimal=','`**. Events with invalid conversion inputs are excluded from diff derivation.
 - **Salary diagnostics outputs** (semicolon-separated):
-  - `outputs/analysis/salary_monthly_band_summary.csv` — single-row summary. **`n_dropped_above_cap`**: normalized monthly amount **>** `SALARY_ANALYSIS_MONTHLY_CAP_EUR` (50k). **`n_dropped_below_floor`**: below `SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN` × NL statutory gross monthly minimum for `salary_start_date`. **`share_*` columns**: numerator over **`n_conversion_ok`** (successful unit→monthly conversion), not over all wide rows. Written by **`descriptives_salary.py`** and refreshed by **`descriptives_salary_plots.py`** when you run plots alone.
-  - `outputs/analysis/salary_band_and_conversion_diagnostics.csv` — combined QA file from **`descriptives_salary_plots.py`**: `record_type` = `row_exclusion` (wide slots that never enter long + long rows failing conversion/band), `cao_summary` (CAOs with no band-eligible slot anywhere), `reason_aggregate` (global counts).
-  - Other CSVs (conversion diagnostics, derived events, CSV vs diff) are emitted by **`descriptives_salary.py`** (including header-only files when empty):
+  - `outputs/analysis/salary_monthly_band_summary.csv` — single-row summary. `**n_dropped_above_cap`**: normalized monthly amount **>** `SALARY_ANALYSIS_MONTHLY_CAP_EUR` (50k). `**n_dropped_below_floor`**: below `SALARY_ANALYSIS_MONTHLY_FLOOR_RELATIVE_MIN` × NL statutory gross monthly minimum for `salary_start_date`. `**share_*` columns**: numerator over `**n_conversion_ok`** (successful unit→monthly conversion), not over all wide rows. Written by `**descriptives_salary.py**` and refreshed by `**descriptives_salary_plots.py**` when you run plots alone.
+  - `outputs/analysis/salary_band_and_conversion_diagnostics.csv` — combined QA file from `**descriptives_salary_plots.py**`: `record_type` = `row_exclusion` (wide slots that never enter long + long rows failing conversion/band), `cao_summary` (CAOs with no band-eligible slot anywhere), `reason_aggregate` (global counts).
+  - Other CSVs (conversion diagnostics, derived events, CSV vs diff) are emitted by `**descriptives_salary.py**` (including header-only files when empty):
   - `outputs/analysis/salary_increase_conversion_diagnostics.csv` (includes conversion failures, invalid diff pairs, and band exclusions)
   - `outputs/analysis/salary_increase_events_derived.csv`
   - `outputs/analysis/salary_increase_csv_vs_diff_comparison.csv` (CSV vs derived diff increases where both exist; includes `abs_diff_gt_0_1`)
   - `outputs/analysis/salary_descriptives_excluded_no_salary.csv` — `record_type=summary` (full vs analytic wide row counts; fully no-salary files / CAOs) and `record_type=excluded_file` rows for `(cao_number, file_name)` where every job row lacks a positive salary amount; matches workbook sheet `00_excluded_no_salary_summary`.
-- **Salary descriptives workbook** (`salary_descriptives.xlsx`): sheets **01–08** use the **analytic wide sample** (rows with ≥1 strictly positive coerced `salary_k_amount`). Sheet **09** (`09_no_salary_analysis`) uses the **full** extract. Event `row_id` in derived CSVs stays aligned with **`extracted_data_salary.csv`** rows via `wide_analysis_row_ids` when the wide frame is filtered.
-- **Salary FE regression** (`scripts/excel_analysis/salary_increase_regression.py`, helpers in `scripts/excel_analysis/salary_regression_plotting.py`): writes coefficient tables `outputs/analysis/salary_regression_event_level.csv` and `outputs/analysis/salary_regression_transition_level.csv`, fit summary `outputs/analysis/salary_regression_fit_metrics.csv` (**`r2`**, **`r2_within`**, adjusted R² variants, **`rmse`**, one row per model), and PNGs under **`outputs/analysis/figures/salary_regression/`** — for each event outcome a **two-panel** coefficient plot (year path for `new_file_effect=0`; implied `new_file_effect` by year) plus a separate **`_nf_year_interactions_only`** figure; for transitions, **`salary_regression_transition_delta_file_mean_increase.png`**. **Shaded regions** are **approximate 95% CIs** (estimate ± 1.96×SE) from the **CRV1 cluster-robust** variance matrix (`cao_number`); legends use the short label **`95% CI`** (module docstring in `salary_regression_plotting.py` spells out the construction). Captions under figures reserve extra bottom margin so x-axis labels do not overlap notes. All use sep `;` and `decimal=','` for CSVs. Coefficient rows include **`Coefficient`**, **`formula`**, **`ref_year`**, **`se_invalid`**, inference columns, **`n_obs`**, **`n_clusters_cao`**, and **`outcome`** (event-level only). **`increase_merged_pref_csv`** event and transition models restrict to **`analysis_monthly_band_ok`** so estimates stay on the band-eligible sample. Wide salary load uses header-based **`usecols`** to limit RAM; remaining mixed-type reads on selected columns are silenced with a scoped **`DtypeWarning`** filter.
+- **Salary descriptives workbook** (`salary_descriptives.xlsx`): sheets **01–08** use the **analytic wide sample** (rows with ≥1 strictly positive coerced `salary_k_amount`). Sheet **09** (`09_no_salary_analysis`) uses the **full** extract. Event `row_id` in derived CSVs stays aligned with `**extracted_data_salary.csv`** rows via `wide_analysis_row_ids` when the wide frame is filtered.
+- **Salary FE regression** (`scripts/excel_analysis/salary_increase_regression.py`, helpers in `scripts/excel_analysis/salary_regression_plotting.py`): writes coefficient tables `outputs/analysis/salary_regression_event_level.csv` and `outputs/analysis/salary_regression_transition_level.csv`, fit summary `outputs/analysis/salary_regression_fit_metrics.csv` (`**r2`**, `**r2_within**`, adjusted R² variants, `**rmse**`, one row per model), and PNGs under `**outputs/analysis/figures/salary_regression/**` — for each event outcome a **two-panel** coefficient plot (year path for `new_file_effect=0`; implied `new_file_effect` by year) plus a separate `**_nf_year_interactions_only`** figure; for transitions, `**salary_regression_transition_delta_file_mean_increase.png**`. **Shaded regions** are **approximate 95% CIs** (estimate ± 1.96×SE) from the **CRV1 cluster-robust** variance matrix (`cao_number`); legends use the short label `**95% CI`** (module docstring in `salary_regression_plotting.py` spells out the construction). Captions under figures reserve extra bottom margin so x-axis labels do not overlap notes. All use sep `;` and `decimal=','` for CSVs. Coefficient rows include `**Coefficient**`, `**formula**`, `**ref_year**`, `**se_invalid**`, inference columns, `**n_obs**`, `**n_clusters_cao**`, and `**outcome**` (event-level only). `**increase_merged_pref_csv**` event and transition models restrict to `**analysis_monthly_band_ok**` so estimates stay on the band-eligible sample. Wide salary load uses header-based `**usecols**` to limit RAM; remaining mixed-type reads on selected columns are silenced with a scoped `**DtypeWarning**` filter.
 - **Salary descriptives workbook tabs** (sheet names):
   - `00_excluded_no_salary_summary` — exclusion summary + fully no-salary files list (see CSV above).
   - `02_sample_overview` includes section `salary_monthly_band` (eligible / dropped below floor / above cap / missing date).
@@ -69,11 +61,11 @@ An AI-powered pipeline for extracting structured data from Dutch Collective Labo
   - `salary_increase_series_comparison_by_year.png` — three series of yearly **CAO-equal weighted** means; twin axis shows CAO counts for the merged series; fixed y-axis **[0, 6]**.
   - `salary_increase_shift_by_new_file_year.png` — **weighted** mean shifts between consecutive files (deduped at most one shift per `(CAO, new-file year)`); x-axis label **Contract start year** (same numeric values as before).
   - `salary_points_per_row_by_year.png` — mean/median **band-eligible** slot counts per wide row **on the analytic sample** (≥1 positive coerced `salary_k_amount`, same as `descriptives_salary.py`); not raw positive amount counts; no latest-view variant.
-  - `salary_increase_spaghetti_selected_caos.png` — thin lines: highlighted top/bottom CAOs; **black line**: **CAO-equal weighted** mean of **`increase_merged_pref_csv`** on the overlap-resolved panel; **twin axis** = CAO count for the same grand-line sample per year.
+  - `salary_increase_spaghetti_selected_caos.png` — thin lines: highlighted top/bottom CAOs; **black line**: **CAO-equal weighted** mean of `**increase_merged_pref_csv`** on the overlap-resolved panel; **twin axis** = CAO count for the same grand-line sample per year.
 - **Salary descriptive methodology (CAO-equal, paper-ready summary)**  
-  Cohort construction and weights follow `scripts/excel_analysis/salary_plot_cohort_utils.py` and `descriptives_salary_plots.py`. In words:
+Cohort construction and weights follow `scripts/excel_analysis/salary_plot_cohort_utils.py` and `descriptives_salary_plots.py`. In words:
   - **Four objects:** (1) **Nominal** active CAO **file** in calendar year `T` (forward-fill panel); for **latest salary level** (contract-calendar + salary-year) and **latest increase-by–Salary-year**, **(1b)** `snap_active_table_to_band_eligible_salary_files` replaces the nominal file with the last file that has ≥1 governed band-eligible long row for that CAO until the new contract file qualifies; (2) **Latest salary-by–Salary-year** effective slots: per `(row_id, salary_index)` on that **snapped** active file, the band-eligible observation with latest `salary_start_date` ≤ end(`T`); if that set is empty for `(CAO, T)` on a new file, **carry** the previous calendar year’s full effective slot set for that CAO until new steps start (**file-transition gap**); (3) **retained salary slots** for normal salary-start-year (newest-file overlap), normal contract cohort (governing file, all slots on that file), and **Latest contract-year salary** (calendar year on the x-axis, **all** band-eligible slots on the **snapped** active file in `T`); (4) **retained increase events** with the same overlap / governing-file rules; Latest increase-by–Salary-year uses the **snapped** file and adds **one synthetic 0%** when there is **no** band-eligible non-null event on that file in `T` (no carry-forward of past **increase** values—distinct from salary **level** gap carry).
-  - **Weights:** For each figure and cohort year `y`, on the **final** row-level sample `S_y` for that figure, `n_{c,y}` = number of rows with CAO `c`, and `w_i = 1/n_{c,y}`. Then the plotted yearly mean equals the mean of per-CAO means on `S_y`. Box medians/quartiles/whiskers use **weighted quantiles** and precomputed stats passed to Matplotlib **`bxp`** (not library `boxplot(..., weights=...)`).
+  - **Weights:** For each figure and cohort year `y`, on the **final** row-level sample `S_y` for that figure, `n_{c,y}` = number of rows with CAO `c`, and `w_i = 1/n_{c,y}`. Then the plotted yearly mean equals the mean of per-CAO means on `S_y`. Box medians/quartiles/whiskers use **weighted quantiles** and precomputed stats passed to Matplotlib `**bxp`** (not library `boxplot(..., weights=...)`).
   - **Twin axis:** One secondary series only: count of **distinct CAOs** with ≥1 row in `S_y` at each x tick (not row counts, not cumulative unless a figure is explicitly documented that way). Latest increase plots **include** CAOs that appear only via imputed 0%.
   - **Minimum-n:** `MIN_OBS_PER_YEAR` does **not** gate salary descriptive plots; `salary_plot_years_dropped.csv` is header-only. (Non-salary plots and salary **regression** may still use their own sparsity rules.)
   - **Sanity checks:** (1) weighted mean ≡ mean of per-CAO means on `S_y`; (2) one frame + one weight column per cohort layer; (3) no duplicate active-slot keys per `(CAO, T)` for Latest salary; (4) Latest increase twin counts match CAOs in panel including 0% rows; (5) contract salary/increase use governing file only; (6) shift plot yearly value ≡ weighted mean of per-CAO shifts in that year’s `S_y`.
@@ -100,7 +92,7 @@ conda run -n caos-extract python scripts/excel_analysis/validate_analysis_output
 ### Memory-safe execution
 
 - Run heavy analysis scripts sequentially in a single process (do not start salary and non-salary analysis in parallel).
-- Latest-view forward-fill selects the **nominal** active file in calendar year *T*. **Latest contract-year salary** and **latest salary-by–salary-year** apply **`snap_active_table_to_band_eligible_salary_files`** so the effective file always has ≥1 governed band-eligible long row (otherwise the prior qualifying file is carried). **Latest increase by salary year** uses the **same snapped** file. **Boolean shares** (`salary_boolean_shares_by_contract_year*.png`) use nominal forward-fill only (no snap) and **exclude wide rows with no positive coerced `salary_k_amount`** (same rule as long-build / `n_salary_points_per_row`). **`salary_points_per_row_by_year.png`** uses that same exclusion. **`salary_ft_hours_by_contract_year.png`** uses the full extract (no salary-amount gate). Both are **regular (contract-cohort) view only** in the salary plots script.
+- Latest-view forward-fill selects the **nominal** active file in calendar year *T*. **Latest contract-year salary** and **latest salary-by–salary-year** apply `**snap_active_table_to_band_eligible_salary_files`** so the effective file always has ≥1 governed band-eligible long row (otherwise the prior qualifying file is carried). **Latest increase by salary year** uses the **same snapped** file. **Boolean shares** (`salary_boolean_shares_by_contract_year*.png`) use nominal forward-fill only (no snap) and **exclude wide rows with no positive coerced `salary_k_amount`** (same rule as long-build / `n_salary_points_per_row`). `**salary_points_per_row_by_year.png**` uses that same exclusion. `**salary_ft_hours_by_contract_year.png**` uses the full extract (no salary-amount gate). Both are **regular (contract-cohort) view only** in the salary plots script.
 - Increase regression and most aggregations use observed event rows; descriptive plots use the weighted / cohort rules in `scripts/excel_analysis/salary_plot_cohort_utils.py` and the module docstring of `descriptives_salary_plots.py`.
 - Salary long construction now uses subset-first slot extraction and a single concat to avoid per-slot full-frame copies.
 - Non-salary plotting applies one document-type filter per plot function pass (no per-domain topic cache).
@@ -182,14 +174,66 @@ CAOsDataExtraction/
 ## Configuration
 
 All paths and settings are centralized in `conf/config.yaml`. Key paths include:
+
 - Input PDFs: `inputs/pdfs/input_pdfs` and `inputs/pdfs/input_pdfs_extra`
 - Input Excel: `inputs/excel/inputExcel`
 - Output directories: `outputs/llm_extracted`, `outputs/llm_analysis`, `outputs/excel`, `outputs/validation`
 - Parsed PDFs: `outputs/parsed_pdfs/parsed_pdfs_json` and `outputs/parsed_pdfs/parsed_pdfs_markdown`
+- Leave timeline export script (`scripts/export_top100_leave_timeline.py`) defaults to Excel discovery in `inputs/excel/` and writes exports to `outputs/llm_extracted/excel_test/`
+- All-sections markdown export script (`scripts/export_p3_all_sections_markdown.py`) writes topic and aggregate markdown bundles to `outputs/llm_extracted/excel_test/all_sections/`
+- Prompt/schema markdown export script (`scripts/export_prompt_schema_markdown.py`) writes `NON_SALARY_PROMPTS_AND_SCHEMA.md` and `SALARY_PROMPTS_AND_SCHEMA.md` to `outputs/llm_extracted/excel_test/`; non-salary now shows one general prompt plus topic descriptions (p4 part summary + schema description) and per-topic field/type blocks.
 
 ## Usage Examples
 
+### Export top-CAO leave timelines (p3-based)
+
+Use `scripts/export_top100_leave_timeline.py` to create merged and per-CAO leave timeline files from:
+
+- p3 extraction output: `outputs/llm_extracted/new_flow/[CAO_NUMBER]/*_extract.json`
+- metadata CSVs: `inputs/pdfs/input_pdfs/extracted_cao_info.csv` and optional `inputs/pdfs/input_pdfs_extra/extracted_cao_info_extra.csv`
+- Excel CAO list: workbook under `inputs/excel/` (or pass `--excel`)
+
+```bash
+conda run -n caos-extract python scripts/export_top100_leave_timeline.py
+```
+
+Key behavior:
+
+- Output root: `outputs/llm_extracted/excel_test/`
+- Combined files:
+  - `top100_leave_all.csv` and `top100_leave_all.jsonl`
+  - `top100_leave_pre2015.csv` and `top100_leave_pre2015.jsonl` (`ingangsdatum < 2015-01-01`)
+- Per-CAO files:
+  - `per_cao/{cao}_Leave_Timeline.jsonl` (one file per CAO, sorted by timeline, `cao_number` omitted per line)
+- CSV format:
+  - UTF-8, delimiter `;`, `leave_information` serialized as JSON string
+- Sorting:
+  - Combined outputs sorted by `cao_number`, then `ingangsdatum`, then `source_file_name`
+  - Per-CAO outputs sorted by `ingangsdatum`, then `source_file_name`
+
+Optional flags:
+
+- `--excel <path.xlsx>`: choose exact workbook (recommended if multiple files exist under `inputs/excel/`)
+- `--out-dir <path>`: override output root
+- `--limit <N>`: top N unique CAOs in sheet order (default `100`; use `0` for all)
+
+### Export p3 all-sections markdown bundle
+
+Use `scripts/export_p3_all_sections_markdown.py` to export all p3 extraction topics as markdown (no JSONL/CSV), with timeline ordering based on metadata join.
+
+```bash
+conda run -n caos-extract python scripts/export_p3_all_sections_markdown.py
+```
+
+Outputs are written to `outputs/llm_extracted/excel_test/all_sections/`:
+
+- `by_topic/<section_key>.md` for each p3 section key
+- `ALL.md` with all section blocks
+- `ALL_EXCEPT_SALARY.md` with all section blocks except `wage_information`
+- `export_report.txt` with missing-folder/join/date diagnostics
+
 ### Run Individual Stages
+
 ```bash
 python -m pipelines.p1_webscraping    # Web scraping
 python -m pipelines.p2_extract        # PDF extraction
@@ -211,6 +255,7 @@ python pipelines/p2_extract.py --process_id 3 --total_processes 4
 ```
 
 ### With Logging and Power Management (macOS)
+
 ```bash
 unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 1 --process_id 0 --total_processes 6 2>&1 | tee p3_log1.txt &
 unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --process_id 1 --total_processes 6 2>&1 | tee p3_log2.txt &
@@ -231,6 +276,7 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
 ## Pipeline Stage Details
 
 ### Stage 1: Web Scraping (p1_webscraping.py)
+
 - Downloads CAO PDFs from uitvoeringarbeidsvoorwaardenwetgeving.nl
 - Uses Selenium with Chrome for robust scrolling and link discovery
 - **PDF Link Filtering**: Extracts every second PDF link (indices 0, 2, 4, 6...) since there are always 2 links per PDF file
@@ -240,6 +286,7 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
 - Generates metadata CSV files for tracking
 
 ### Stage 2: PDF Extraction (p2_extract.py)
+
 - **Multi-method extraction**: PyPDF2 + pdfplumber + Tesseract OCR
 - **Intelligent OCR triggering** based on image detection, vector graphics detection, and minimal text detection
 - **Smart comparison**: Always chooses extraction method with more characters
@@ -247,6 +294,7 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
 - **Parallel processing**: Multi-process support for large batches
 
 ### Stage 3: LLM Extraction (p3_llmExtraction.py)
+
 - Uses Google Gemini API for raw data extraction
 - Direct markdown upload for optimal accuracy
 - Context-preserving extraction (keeps related information together)
@@ -264,6 +312,7 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
 - **Split extraction strategy**: For files with very large outputs, splits extraction into salary-only and non-salary-only schemas, then merges results. Successful partial extractions are cached to avoid re-extraction on retries.
 
 ### Stage 4: Analysis (p4_analysis.py)
+
 - Schema-driven structured extraction using Pydantic models
 - Separates salary and non-salary information
 - Non-salary schema split into 3 parts for better performance
@@ -287,6 +336,7 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
     - Files in truncated_4 folder → skipped (all attempts exhausted)
 
 ### Extraction Validation (scripts/validation/validate_extraction.py)
+
 - Validates salary and/or non-salary extraction outputs against source parsed markdown
 - Scores: hallucination, completeness, accuracy, temporal validity (salary only)
 - Samples one file per CAO number (random, `--seed` for reproducibility)
@@ -296,6 +346,7 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
 - **Usage**: `python scripts/validation/validate_extraction.py --type both --max_files 10`
 
 ### Stage 5: Excel Creation (p5_excel_creation.py)
+
 - Merges salary and non-salary extraction results
 - Adds CAO metadata and dates from `extracted_cao_info.csv`
 - Creates final Excel files with proper formatting
@@ -310,12 +361,10 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
   - Format: `'01/01/2014'`, `'31/12/2014'`
   - Source: Website metadata CSV
   - Parsing: Requires `dayfirst=True` in `pd.to_datetime()`
-
 - **Contract dates (YYYY-MM-DD)**: `general_start_date`, `general_expiry_date`, etc.
   - Format: `'2014-01-01'`, `'2014-12-31'` (ISO format)
   - Source: Extracted from PDFs by LLM
   - Parsing: Default `pd.to_datetime()` (no `dayfirst` needed)
-
 - **Salary timeline dates (YYYY-MM-DD)**: `salary_1_start_date`, `salary_1_end_date`, etc.
   - Format: `'2014-01-01'`, `'2014-12-31'` (ISO format)
   - Source: Extracted from PDFs by LLM
@@ -349,3 +398,4 @@ All descriptives and analysis scripts correctly handle these format differences.
 - **CAO Source**: [uitvoeringarbeidsvoorwaardenwetgeving.nl](https://www.uitvoeringarbeidsvoorwaardenwetgeving.nl/mozard/!suite16.scherm1168?mGmr=66)
 - **Google Gemini API**: See `docs/gemini_info.txt` for API documentation
 - **Prompt Templates**: See `docs/fields_prompt*.md` for LLM prompt definitions
+

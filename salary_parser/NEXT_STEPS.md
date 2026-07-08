@@ -62,6 +62,18 @@ repeatable mechanisms (cheap relabel for labels; chunked guarded re-extraction f
 8. **Confirm-to-promote verifier** (an agent confirms a file's FULL extraction is complete + correct,
    then promote its C/D→B): build it, or leave C/D as honest low-confidence tags? (Not built — cost.)
 
+### Closed: the "21 CAOs with nothing parsed" (2026-07-08)
+Of the 21 zero-row CAOs, 2 were fixable and are FIXED (2468 → 93 rows, 3221 → 120 rows, agent-
+extracted). The other 19 are CORRECTLY empty — verified at BOTH levels: their extract-JSON
+wage_information is 100% prose (definitions/rules; the only grid-shaped blocks are a %-increase
+matrix (2527) and job-group descriptions (4171), not wage scales), AND their upstream parsed
+PDFs contain no money-dense table lines (0-2 per CAO) — so nothing was dropped; the source CAO
+texts publish no wage scales (630 footballers = individual salaries; 2857 Doorwerk = comparable-
+employee rule; 3324 = statutory-minimum clause; 1294 Waterschappen = scales in a separate annex
+not in our corpus). Do NOT re-investigate; extracting anything here would invent values.
+19 = 630, 636, 1106, 1291, 1294, 1429, 2527, 2742, 2857, 3109, 3313, 3324, 3557, 3690, 3993,
+4000, 4062, 4171, 4274.
+
 ### D. Downstream / consistency
 9. Re-run the full topic-index battery + composite only if other-topic inputs changed (they didn't
    this session — only wage). Confirm all_indices.xlsx consumers are happy with the new units

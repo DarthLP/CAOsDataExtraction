@@ -7,8 +7,9 @@
 - **Rebuild = one command: `python3 salary_parser/deliver.py`** (stage 5.5 auto-re-applies every
   relabel + agent-extract merge; the parser fixes + note-scans re-run on all files; HARD GUARD aborts
   if amount provenance < 100%). Every rebuild KEEPS the LLM fixes.
-- Wage index: `indices/mw_indices.py` → 214 CAOs, median monthly-mean ~€2,530. Feeds composite +
-  all_indices.xlsx. Per-file workweek maps: `file_workweek.csv` (preferred) + `cao_workweek.csv`.
+- Wage index: `indices/mw_indices.py` → 215 CAOs (version-aware two-stage dedup), median
+  monthly-mean ~€2,530. Feeds composite + all_indices.xlsx. Per-file workweek maps:
+  `file_workweek.csv` (preferred) + `cao_workweek.csv`.
 
 ## Session arc: A+B 83.2 → 91.9 → 93.4 → 94.5 → 95.2 → 95.4%. All C/D reachable by two proven,
 repeatable mechanisms (cheap relabel for labels; chunked guarded re-extraction for structure).
@@ -16,15 +17,21 @@ repeatable mechanisms (cheap relabel for labels; chunked guarded re-extraction f
 ## Next steps — prioritized
 
 ### A. Highest-value
-1. **Version selection — DONE (2026-07-08).** TAG-don't-MERGE per CAO_VERSION_SELECTION_PLAN.md.
-   `salary_parser/version_tag.py` appends `term_group` (cao+ingangsdatum), `kennisgeving_rank`
-   (1=earliest edition … N=latest), `base_id`, `n_editions`, `document_type` to every v2 row
-   (wired into flatten_csv.py → carried by every deliver.py rebuild). The wage index
-   (`indices/mw_indices.py`) now de-dups VERSION-aware: keep the full timeline but collapse each
-   (cao, effective-date, job-cell) to the latest edition's value; drop pure deltas. Before/after:
-   coverage unchanged (214 CAOs), median wage ±0.43%, observations −16% (removed cross-edition
-   double-counts). Analyst recipe: term snapshot = kennisgeving_rank==1 (or ==n_editions);
-   full wage timeline = all editions of a term_group; drop deltas = document_type LIKE 'full_cao_%'.
+1. **Version selection — DONE + verified (2026-07-08).** TAG-don't-MERGE per
+   CAO_VERSION_SELECTION_PLAN.md. `salary_parser/version_tag.py` appends `term_group`
+   (cao+ingangsdatum, date-normalized), `kennisgeving_rank` (1=earliest edition … N=latest),
+   `base_id`, `n_editions`, `document_type` to every v2 row (wired into flatten_csv.py → carried
+   by every deliver.py rebuild). 1,378 term_groups, 566 multi-edition (72% of rows). ALL joins
+   keyed (cao_number, file_name) — filename-only collides (same name under several CAOs); doc
+   metadata falls back to the NON-salary CSV for files the old salary CSV lacks (0 untagged rows).
+   The wage index (`indices/mw_indices.py`) de-dups version-aware TWO-STAGE: per (cao, eff-date,
+   jobgroup, step, age, worker, unit) key keep ALL rows of the winning file (max
+   kennisgeving_rank) — never collapses within an edition — then drop exact-value repeats.
+   Verified vs pre-version baseline: 215 CAOs (+563, mislabel fixed), median wage ±0.28%,
+   observations +2.5% (collapses editions, preserves real splits). Analyst recipe: term snapshot
+   = kennisgeving_rank==1 (base) or the MAX rank present in the salary CSV (ranks count all known
+   editions incl. row-less ones, so ==n_editions may not exist here); full wage timeline = all
+   editions of a term_group; drop deltas = document_type LIKE 'full_cao_%'.
 2. **Commit + status docs.** The DBA repo (indices/, docs/, qa/) is on branch qa/setup; the parser
    repo has uncommitted salary_parser/ changes. Snapshot this session's work + refresh the status
    board so it's reproducible and reviewable. (NB: DBA .gitignore does NOT exclude raw inputs/ or
@@ -34,9 +41,11 @@ repeatable mechanisms (cheap relabel for labels; chunked guarded re-extraction f
 3. **Residual C/D ≈ 16.4k**: label tail beyond the ~140 files relabeled → more relabel batches;
    structural (magnitude/ragged) tail → more chunked re-extraction. Amounts are already ~99.7%
    correct (youth-aware audit), so this is label/unit/structure polish, not wrong-money fixing.
-4. **563→157 cao_number mislabel**: flatten's `doc_meta_by_file` join (from the OLD excel CSV)
-   attributes 563's Zuivel file to cao 157. Fix the join so 563's 137 rows carry cao_number 563
-   (and it enters the index as its own CAO). Small but real; also the lone "off-source" false hit.
+4. **563→157 cao_number mislabel — FIXED (2026-07-08)**: root cause was the filename-only
+   metadata join (same file_name under several CAOs → first row's metadata won; hit 19 files:
+   Zuivel 157/563, 'HB 5e editie 2024' under 822/824/826/827/2297, etc.). `doc_meta_by_file`
+   now keys (cao_number, file_name); 563's 137 rows carry cao 563 + id 563010 and it enters
+   the wage index as its own CAO (215 total).
 5. **~697 hourly rows still without ft_hours**: piece-rate (544/3866 — correct) + ~6 source-silent
    CAOs (634/2451/4236/3221/2674/3041). An agent read of their full text MIGHT find a stray
    workweek; low odds (an earlier pass came back empty) — only if completeness is a hard requirement.

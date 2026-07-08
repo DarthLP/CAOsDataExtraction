@@ -48,16 +48,28 @@ CONF_COLS = ['confidence_tier', 'role_verdict', 'flag_reasons', 'label_source',
              'worker_source', 'source_file', 'coverage_missing_tables']
 
 
+NS_CSV = ('/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/'
+          'outputs/excel/new_results/extracted_data_non_salary.csv')
+_META_KEYS = ('cao_number', 'id', 'TTW', 'ingangsdatum', 'expiratiedatum', 'datum_kennisgeving')
+
+
 def doc_meta_by_file():
-    """borrow document-level metadata (id/TTW/dates) from the existing CSV, keyed by file_name."""
+    """Document-level metadata (id/TTW/dates), keyed by (cao_number, file_name).
+
+    Key MUST include the cao: the same file_name exists under several CAOs ('HB 5e editie
+    2024' under 822/824/826/827/2297; 'Zuivel I' under 157 AND 563) — a filename-only join
+    hands them all the first row's metadata (this was the 563->157 cao mislabel).
+    Fallback source: files the old SALARY csv never produced rows for (never-parsed /
+    agent-extracted CAOs, 51 files) exist in the NON-salary csv with the same doc metadata."""
     meta = {}
-    if not os.path.exists(OLD_CSV):
-        return meta
-    for r in csv.DictReader(open(OLD_CSV), delimiter=';'):
-        fn = r.get('file_name')
-        if fn and fn not in meta:
-            meta[fn] = {k: r.get(k, '') for k in
-                        ('cao_number', 'id', 'TTW', 'ingangsdatum', 'expiratiedatum', 'datum_kennisgeving')}
+    for path in (OLD_CSV, NS_CSV):          # OLD first = primary; NS fills only missing keys
+        if not os.path.exists(path):
+            continue
+        for r in csv.DictReader(open(path), delimiter=';'):
+            fn = r.get('file_name')
+            key = (r.get('cao_number', ''), fn)
+            if fn and key not in meta:
+                meta[key] = {k: r.get(k, '') for k in _META_KEYS}
     return meta
 
 
@@ -165,7 +177,7 @@ def main():
             continue
         cov_missing = d.get('coverage', {}).get('missing_tables', False)
         tiers = tiers_for_file(rows)
-        dm = meta.get(d['file'], {})
+        dm = meta.get((d['cao'], d['file']), {})
         for (t, reasons), r in zip(tiers, rows):
             tier_tot[t] += 1; n_rows += 1
             cao_number = dm.get('cao_number', d['cao'])
@@ -175,10 +187,14 @@ def main():
             eff_ft = r.get('ft_hours')
             if not eff_ft and any((p.get('unit') or '').lower() == 'hourly'
                                   for p in r.get('timeline', ())):
-                ww = file_ww.get((str(cao_number), d['file'])) or cao_ww.get(str(cao_number))
+                ww = file_ww.get((str(cao_number), d['file']))
+                src = 'ft_workweek_file'          # this edition's own document-level workweek
+                if not ww:
+                    ww = cao_ww.get(str(cao_number))
+                    src = 'ft_workweek_cao'       # CAO-level fallback (no per-file signal)
                 if ww:
                     eff_ft = ww
-                    reasons = reasons + ['ft_workweek_cao']
+                    reasons = reasons + [src]
             rec = {
                 'cao_number': cao_number, 'id': dm.get('id', ''),
                 'TTW': dm.get('TTW', ''), 'ingangsdatum': dm.get('ingangsdatum', ''),
@@ -205,7 +221,7 @@ def main():
             row += [''] * (9 * (MAX_PTS - len(tl)))
             row += [t, r.get('role_verdict'), '|'.join(reasons), r.get('label_source', 'parser'),
                     r.get('worker_source', ''), d['file'], int(bool(cov_missing))]
-            v = vmap.get(d['file'], {})
+            v = vmap.get((d['cao'], d['file']), {})
             row += [v.get(c, '') for c in VERSION_COLS]
             w.writerow(row)
     out.close()

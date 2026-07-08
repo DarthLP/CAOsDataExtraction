@@ -54,7 +54,9 @@ Existing pipeline outputs are never modified.
 **359,474 rows, A+B = 95.4%** (A 254,334 · B 88,777 · C 13,693 · D 2,670), 100% amount+date
 provenance. Built by: deterministic parser → guarded haiku_relabel (9.3k rows) → guarded
 agent-extraction incl. per-table chunking (23k rows). Rebuild: `python3 salary_parser/deliver.py`
-(re-applies all LLM merges). Wage index: `indices/mw_indices.py`, 214 CAOs. See `DELIVERY.md`
+(re-applies all LLM merges). Every row carries version tags (term_group / kennisgeving_rank /
+base_id / n_editions / document_type — version_tag.py; all metadata joins keyed (cao, file)).
+Wage index: `indices/mw_indices.py`, 215 CAOs, version-aware dedup. See `DELIVERY.md`
 for the pipeline and `NEXT_STEPS.md` for open items. The snapshot below is the historical
 graduation baseline (pre-agent-extraction), kept for provenance.
 

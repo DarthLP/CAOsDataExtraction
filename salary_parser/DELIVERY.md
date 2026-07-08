@@ -8,8 +8,9 @@ labels (never amounts). Output: **`outputs/parser_salary/extracted_data_salary_v
 (semicolon-delimited, same wide schema as `extracted_data_salary.csv` + confidence columns).
 
 **Current dataset (2026-07-08): 359,474 rows, A+B = 95.4%** (A 254,334 · B 88,777 ·
-C 13,693 · D 2,670), 100% amount+date provenance. Wage index (`indices/mw_indices.py`) covers
-214 CAOs; per-file workweek maps back-fill hourly ft_hours. **Rebuild = one command:
+C 13,693 · D 2,670), 100% amount+date provenance. Every row carries version tags (term_group /
+kennisgeving_rank / base_id / n_editions / document_type). Wage index (`indices/mw_indices.py`)
+covers 215 CAOs (version-aware two-stage dedup); per-file workweek maps back-fill hourly ft_hours. **Rebuild = one command:
 `python3 salary_parser/deliver.py`** — stage 5.5 auto-re-applies every relabel + agent-extract
 merge onto the freshly-parsed rolecheck_all (youth-strip + coverage gate) before flatten, so no
 manual re-application is needed; the HARD GUARD aborts if amount provenance drops below 100%.

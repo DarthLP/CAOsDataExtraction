@@ -335,6 +335,24 @@ unbuffer caffeinate python pipelines/p3_llmExtraction.py --key_number 2 --proces
     - Files in truncated_3 folder → retry with attempt 10 (super compact schema)
     - Files in truncated_4 folder → skipped (all attempts exhausted)
 
+### Lifecycle QA (scripts/qa/lifecycle/)
+
+Deterministic per-file lifecycle labels (`lifecycle_stage`, signing/SZW/AVV flags) from parsed markdown filenames and optional head/tail text. No LLM. Outputs under `outputs/qa/lifecycle/`; original extracts in `outputs/excel/new_results/` are not modified.
+
+**Two modes** (see `outputs/qa/lifecycle/NOTES.md`):
+
+```bash
+conda activate caos-extract
+
+# Full run (canonical): reads first/last pages of each .md — ensure files are downloaded locally
+python scripts/qa/lifecycle/run_lifecycle_pipeline.py full
+
+# Fast run: filename regex only when tokens match; skips opening those files (useful on iCloud)
+python scripts/qa/lifecycle/run_lifecycle_pipeline.py filename_only
+```
+
+Or step by step: `derive_lifecycle.py` (`--content-mode full|filename_only`), `join_lifecycle.py` (`--lifecycle-csv`) → slim `lifecycle_summary.csv` only (no full extract copies), `report_mismatches.py`, `spot_check.py`.
+
 ### Extraction Validation (scripts/validation/validate_extraction.py)
 
 - Validates salary and/or non-salary extraction outputs against source parsed markdown

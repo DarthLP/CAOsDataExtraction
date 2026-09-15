@@ -175,7 +175,7 @@ class BonusesInfo(BaseModel):
 
     thirteenth_month: bool = Field(
         default=False,
-        description="Set true only if the CAO grants a 13th month of salary (or equivalent)."
+        description="Set true only if the CAO grants a 13th month of salary (or equivalent). Eindejaarsuitkering counts; vakantietoeslag does not."
     )
     thirteenth_month_amt: Optional[Amount] = Field(
         default=None,
@@ -366,7 +366,7 @@ class LeaveInfo(BaseModel):
     # Maternity
     has_above_statutory_maternity: bool = Field(
         default=False,
-        description="Set true only if the CAO explicitly states an enhancement above statutory for maternity."
+        description="Set true only if the CAO explicitly states an enhancement above statutory for maternity. Restating the statutory 16 weeks/100% (UWV) is NOT an enhancement."
     )
     paid_maternity: Optional[Amount] = Field(
         default=None,
@@ -392,7 +392,7 @@ class LeaveInfo(BaseModel):
     # Paternity / partner
     paternity_explicitly_above_statutory: bool = Field(
         default=False,
-        description="Set true only if the CAO explicitly states any improvement for paternity/partner leave."
+        description="Set true only if the CAO explicitly states any improvement for paternity/partner leave. Restating the statutory WIEG scheme (1 week 100% + 5 weeks at 70%) is NOT an improvement."
     )
     paid_paternity: Optional[Amount] = Field(
         default=None,
@@ -474,7 +474,7 @@ class LeaveInfo(BaseModel):
     # Sickness
     sick_topup_present: bool = Field(
         default=False,
-        description="Set true only if an employer sick-pay top-up is explicitly stated."
+        description="Set true only if an employer sick-pay top-up is explicitly stated. Restating the statutory 70% floor is NOT a top-up."
     )
     sickpay_duration: Optional[Amount] = Field(
         default=None,
@@ -500,7 +500,7 @@ class LeaveInfo(BaseModel):
     )
     care_topup_present: bool = Field(
         default=False,
-        description="Set true only if the CAO explicitly tops up short-/long-term care leave."
+        description="Set true only if the CAO explicitly tops up short-/long-term care leave. Restating the statutory WAZO terms (70% short-term, unpaid long-term) is NOT a top-up."
     )
     short_term_care: Optional[Amount] = Field(
         default=None,
@@ -877,7 +877,7 @@ class ContractTypeInfo(BaseModel):
 
     part_time_allowed: bool = Field(
         default=False,
-        description="Set true only if part-time contracts are explicitly permitted for standard workers."
+        description="Set true only if part-time contracts are explicitly permitted for standard workers. Pro-rata/part-time provisions anywhere in the CAO count; the bare statutory right to request hours adjustment (WAA/Wet flexibel werken) does not."
     )
     part_time_range: Optional[AmountRange] = Field(
         default=None,
@@ -900,7 +900,7 @@ class ContractTypeInfo(BaseModel):
 
     ketenregeling_deviation_present: bool = Field(
         default=False,
-        description="Set true only if the CAO deviates from the statutory 'ketenregeling' (fixed-term chain rule)."
+        description="Set true only if the CAO deviates from the statutory 'ketenregeling' (fixed-term chain rule). Restating the statutory rule itself (3 contracts/36 months; 3/24 between mid-2015 and 2020) is NOT a deviation; deviations scoped only to AOW-age workers do not count."
     )
     ketenregeling_max_contracts: Optional[Amount] = Field(
         default=None,
@@ -913,7 +913,7 @@ class ContractTypeInfo(BaseModel):
 
     conversion_rights_temp_to_perm_present: bool = Field(
         default=False,
-        description="Set true if the CAO grants extra rights to convert fixed-term to indefinite contracts beyond the law."
+        description="Set true if the CAO grants extra rights to convert fixed-term to indefinite contracts beyond the law. A restatement of the statutory ketenregeling conversion or an anti-avoidance replacement-hire clause is NOT such a right."
     )
     conversion_rights_rule_text: str = Field(
         default="",
@@ -1052,12 +1052,12 @@ class SafetyInfo(BaseModel):
 
     safety_committee_present: bool = Field(
         default=False,
-        description="Set true if a joint safety/health committee is provided."
+        description="Set true if a joint safety/health committee is provided. A complaints committee or ordinary works-council consultation is NOT a safety committee."
     )
 
     rie_psa_required: bool = Field(
         default=False,
-        description="True if the CAO requires a Risk Inventory & Evaluation (RI&E) to cover psychosocial risks such as stress or burnout."
+        description="True if the CAO requires a Risk Inventory & Evaluation (RI&E) to cover psychosocial risks such as stress or burnout. A generic RI&E/Arbocatalogus mention without explicit psychosocial coverage does NOT count."
     )
 
     psa_prevention_measures_present: bool = Field(
@@ -1345,6 +1345,14 @@ NON_SALARY_PROMPT = """Extract structured information from a JSON object derived
         - Dates MUST be formatted as YYYY-MM-DD (omit or "" if missing).
         - Be precise: no paraphrasing of quantitative terms; no decorative characters or separator lines.
         - Output ONLY valid JSON format matching the provided schema structure.
+
+    COMMON FALSE-POSITIVE TRAPS (from QA of prior runs; apply to ALL fields — field-specific traps are in the field descriptions; when in doubt leave the field empty/false)
+        - Recommendations, intentions, or options ("parties recommend / commit to working towards / employer MAY agree") are NOT provisions.
+        - A benefit named only inside an exclusion list ("X ... excluded from holiday pay") is NOT granted.
+        - Headings/question labels are NOT evidence; only body text counts.
+        - A body article overrides a model/template contract appendix; an unfilled template is NOT a value.
+        - Never sum or derive numbers from separately stated components (1 year + 2-year extension ≠ "3 years").
+        - A clause scoped to a niche group (AOW-age workers, works-council members, apprentices) does NOT populate a typical-worker field.
 
     EXTRACTION GUIDELINES
         - Extract factual information for each field based on the schema descriptions.

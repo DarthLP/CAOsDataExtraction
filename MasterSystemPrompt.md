@@ -68,6 +68,7 @@ p1_webscraping → p2_extract → p3_llmExtraction → p4_analysis → p5_excel_
 - **Leave timeline exporter**: `scripts/export_top100_leave_timeline.py` (p3-based leave-information export with timeline sorting and pre-2015 subset)
 - **All-sections markdown exporter**: `scripts/export_p3_all_sections_markdown.py` (p3-based topic markdown bundle including all and all-except-salary variants)
 - **Validation**: `scripts/validation/validate_extraction.py` — LLM-based validation of extraction outputs (hallucination, completeness, accuracy) using `gemini-flash-latest` with per-CAO cached reports
+- **Lifecycle QA**: `scripts/qa/lifecycle/` — deterministic `lifecycle_stage` + flags from parsed markdown (`--content-mode full` canonical; `filename_only` fast pass when iCloud has not downloaded files). Outputs: `outputs/qa/lifecycle/` (`lifecycle_results.csv`, slim `lifecycle_summary.csv` with id/cao_number/file_name/lifecycle fields/general_document_type only — wide extracts are not copied). Wrapper: `run_lifecycle_pipeline.py full|filename_only`.
 
 ## Code Structure
 

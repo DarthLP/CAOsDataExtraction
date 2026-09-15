@@ -1,0 +1,58 @@
+\section{Part I: Extraction Pipeline (Stages p1--p5)}
+\label{sec:extraction}
+
+The upstream extraction pipeline converts unstructured CAO PDF documents into structured JSON and tabular extracts. It operates across five sequential stages.
+
+\subsection{Stage 1: Web Scraping (\texttt{p1\_webscraping.py})}
+\label{subsec:p1}
+
+CAO agreements are downloaded from the official Dutch labour conditions portal using Selenium automation. In earlier drafts of this documentation, this script was mistakenly referred to as \texttt{p0\_webscraping.py}; the active script is \texttt{pipelines/p1\_webscraping.py}.
+
+The scraping logic implements three specific selection criteria:
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Link Parity Filter}: The portal presents document links in duplicate pairs; the scraper selects every second link (indices 0, 2, 4, \dots) to eliminate redundant downloads.
+  \item \textbf{Multi-Part Concatenation}: If a single agreement filing consists of multiple PDF components (e.g.\ main text and annexes), the scraper combines them into a unified PDF file saved under the primary document title.
+  \item \textbf{Directory Partitioning}: Documents are saved into CAO number folders (\texttt{inputs/pdfs/input\_pdfs/[CAO\_NUMBER]/}). The pair \texttt{(cao\_number, filename)} serves as the immutable primary key for every document.
+\end{itemize}
+
+\subsection{Stage 2: PDF Parsing and OCR (\texttt{p2\_extract.py})}
+\label{subsec:p2}
+
+PDF parsing uses a fallback hierarchy:
+\begin{enumerate}[leftmargin=1.5em]
+  \item Direct digital text extraction via \texttt{pdfplumber} and \texttt{PyPDF2};
+  \item Optical Character Recognition (OCR) via Tesseract for scanned image pages;
+  \item Emits cleaned Markdown and structural JSON representations to \texttt{outputs/parsed\_pdfs/[CAO\_NUMBER]/}.
+\end{enumerate}
+
+\subsection{Stage 3: First-Pass LLM Extraction (\texttt{p3\_llmExtraction.py})}
+\label{subsec:p3}
+
+Stage 3 invokes Google Gemini 2.5 Flash (\texttt{gemini-2.5-flash}) to extract text passages across 13 distinct thematic topics:
+\begin{itemize}[leftmargin=1.5em]
+  \item General metadata, Wage scales, Pensions, Bonuses, Termination;
+  \item Leave, Overtime, Training;
+  \item Home office, Contract types, Workplace safety, Childcare, AI regulations.
+\end{itemize}
+The output is saved as a per-document JSON file under \texttt{outputs/llm\_extracted/new\_flow/[CAO\_NUMBER]/[FILE]\_extract.json}. Crucially, upstream prompts translate the original Dutch legal text into English during this pass, establishing the English-language baseline used in subsequent QA stages.
+
+\paragraph{Deterministic Hyperparameters}
+To maximize stability and reproducibility across repeated calls, all LLM invocations enforce strict sampling parameters:
+\begin{verbatim}
+temperature = 0.0,  top_p = 0.1,  top_k = 1,  seed = 42,  max_tokens = 65536
+\end{verbatim}
+
+\subsection{Stage 4: Schema-Enforced Analysis (\texttt{p4\_analysis.py})}
+\label{subsec:p4}
+
+Stage 4 validates and transforms the raw p3 topic passages into Pydantic models defined in \texttt{schema/non\_salary\_schema.py}:
+\begin{itemize}[leftmargin=1.5em]
+  \item Non-salary fields are processed in three logical batches to manage context limits: (1) \texttt{gen\_bon\_wag\_pen\_ter}, (2) \texttt{lea\_ove\_tra}, and (3) \texttt{hom\_con\_saf\_chi\_ai\_fri}.
+  \item A lock-file mechanism prevents race conditions during multi-process execution.
+  \item An exponential backoff retry ladder with error classification categorizes schema validation failures, token truncation errors, and API rate limits.
+\end{itemize}
+
+\subsection{Stage 5: Excel and CSV Creation (\texttt{p5\_excel\_creation.py})}
+\label{subsec:p5}
+
+Stage 5 merges the validated JSON blocks with document metadata and dates from \texttt{extracted\_cao\_info.csv}, writing the initial flat tabular extracts to \texttt{outputs/excel/new\_results/extracted\_data\_non\_salary.csv}.

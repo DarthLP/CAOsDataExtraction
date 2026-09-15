@@ -1,0 +1,57 @@
+\section{Part II: Deterministic Salary Parser}
+\label{sec:salary-parser}
+
+\subsection{Motivation: Replacing the Stochastic LLM Ladder}
+
+In the initial pipeline design, salary scales and progression tables were extracted using a four-tier LLM retry ladder within \texttt{p4\_analysis.py}. However, empirical verification in \texttt{salary/wage\_check\_full/} revealed that the second-pass LLM suffered from an unacceptable $\approx 20\%$ major-issue rate. Typical failures included:
+\begin{enumerate}[leftmargin=1.5em]
+  \item Hallucinated salary figures and interpolated progression steps not present in the text;
+  \item Inconsistent decimal parsing (e.g.\ European period vs comma confusion);
+  \item Column misalignment across job groups and salary scales;
+  \item Token exhaustion truncation in large salary grids (\texttt{max\_tokens\_truncated\_1..4}).
+\end{enumerate}
+
+To eliminate these vulnerabilities, the LLM salary ladder was replaced entirely by a dedicated, deterministic parsing engine located in \texttt{salary\_parser/}.
+
+\subsection{Input Inversion and Provenance Guarantee}
+
+The parser operates via \emph{input inversion}: rather than asking an LLM to generate salary tables, the parser directly ingests the raw Markdown and HTML table grids extracted during Stage~3 (\texttt{p3\_llmExtraction.py}). The LLM's role is demoted to a constrained vocabulary oracle used strictly for resolving ambiguous job-group headers or period units.
+
+\paragraph{100\% Amount Provenance Guarantee}
+The fundamental invariant of the salary parser is that \textbf{every single extracted monetary amount must exist verbatim as a substring within the source text or table cell}. Any candidate extraction that fails this exact-match check is immediately rejected. In the entire dataset of 359,474 parsed salary rows, only one authorized exception exists: exactly 2 cells in CAO 592 where a missing decimal point resulting from an OCR artifact was rescued via a documented deterministic rule.
+
+\paragraph{Date Grounding}
+Effective dates (\texttt{salary\_start\_date}) are parsed strictly from table headers or preceding section titles; they are never inferred from publication or signing dates. Rows where the header provides no date are explicitly flagged as undated ($\approx 5.9\%$ of entries).
+
+\subsection{Guarded Agent Loops}
+
+Where heuristic parsing requires agent review, two strictly guarded loops are deployed:
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Label-Only Relabelling (Gates G1--G4)}: The agent may only assign standardised scale labels (e.g.\ job grade, step) to existing parsed rows without altering numbers.
+  \item \textbf{Source-Number Universe Guard}: If an agent proposes a tabular re-extraction for complex layouts, every extracted figure is checked against the multiset of all numbers appearing in the source passage. In Wave 1 of testing, this guard rejected 2,007 candidate values that were hallucinated or calculated by the agent, ensuring zero false numbers entered the dataset.
+\end{itemize}
+
+\subsection{Confidence Tiers and Live Dataset Distribution}
+\label{subsec:salary-tiers}
+
+Every parsed salary row is tagged with a confidence tier (A--D) reflecting structural completeness and validation checks. Table~\ref{tab:salary-tiers} reports the live counts and shares from \texttt{outputs/parser\_salary/extracted\_data\_salary\_v2.csv}.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{crrp{7cm}}
+\toprule
+\textbf{Tier} & \textbf{Count} & \textbf{Share (\%)} & \textbf{Definition and Use in Empirical Analysis} \\
+\midrule
+\textbf{A} & 254,334 & 70.75 & Perfect provenance, unambiguous unit, valid scale and step, complete header date. Primary canonical sample. \\
+\textbf{B} & 88,777 & 24.70 & Minor header ambiguity or inferred periodic unit; passed all numeric validity bounds. Included in primary sample. \\
+\textbf{C} & 13,693 & 3.81 & Flagged for review; missing full-time hours basis or ambiguous progression structure. Excluded from wage indices. \\
+\textbf{D} & 2,670 & 0.74 & Severe layout collision, unresolvable units, or rejected by source guards. Excluded. \\
+\midrule
+\textbf{Total} & \textbf{359,474} & \textbf{100.00} & \textbf{Tiers A + B Analytic Coverage: 95.45\% (343,111 rows)} \\
+\bottomrule
+\end{tabular}
+\caption{Salary parser confidence tier distribution in the canonical dataset.}
+\label{tab:salary-tiers}
+\end{table}
+
+The primary wage indices and descriptive analyses restrict the sample strictly to Tiers A and B, delivering an analytic dataset of 343,111 rows with 100\% amount provenance.

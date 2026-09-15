@@ -1,0 +1,57 @@
+\section{Part V: End-to-End Replication and Verification}
+\label{sec:replication}
+
+This section provides the operational protocol for replicating all outputs in the unified repository from a clean clone.
+
+\subsection{Environment Setup}
+
+The pipeline executes on Python 3.13.0 with standard data science packages and Google GenAI SDK:
+\begin{verbatim}
+# Install core Python requirements
+pip install -r requirements.txt
+pip install git-filter-repo google-genai
+\end{verbatim}
+
+\subsection{Sequential Execution Order}
+
+From the repository root (\texttt{CAOsDataExtraction/}), execute the stages in the following sequence:
+
+\begin{enumerate}[leftmargin=2.0em]
+  \item \textbf{Stage 1: Upstream Text Extraction (Optional if Cached)}
+    \begin{verbatim}
+    python pipelines/p1_webscraping.py
+    python pipelines/p2_extract.py
+    python pipelines/p3_llmExtraction.py
+    python pipelines/p4_analysis.py
+    python pipelines/p5_excel_creation.py
+    \end{verbatim}
+  
+  \item \textbf{Stage 1b: Deterministic Salary Parsing}
+    \begin{verbatim}
+    python salary_parser/deliver.py
+    \end{verbatim}
+    Parses the p3 wage grids into \texttt{outputs/parser\_salary/extracted\_data\_salary\_v2.csv}, tagging Tiers A--D.
+
+  \item \textbf{Stage 2: QA \& Correction Battery Test}
+    \begin{verbatim}
+    cd verification_pipeline
+    python3 -m pytest qa -q
+    \end{verbatim}
+    Asserts that all 152 automated regression and schema integrity tests pass.
+
+  \item \textbf{Stage 3: Indices Rebuild and Verification Battery}
+    \begin{verbatim}
+    cd verification_pipeline/indices
+    ./rebuild.sh
+    python3 check_battery.py
+    \end{verbatim}
+    Rebuilds \texttt{composite\_index.csv}, \texttt{mw\_indices.csv}, and \texttt{scoring\_params.csv}. \texttt{check\_battery.py} verifies unit converters, sanity bounds, semantic rules, and dataset hashes.
+\end{enumerate}
+
+\subsection{Determinism vs Stochastic Verification}
+
+The pipeline distinguishes two distinct layers of determinism:
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Stage 1 \& 2 Agent Verification (Stochastic with Guardrails)}: Subagent reasoning exhibits run-to-run variation. This stochasticity is constrained by deterministic regex pre-filters, Pydantic schema validation, and complete changelog persistence. Every accepted edit is frozen in \texttt{apply\_changelog.csv}.
+  \item \textbf{Stage 1b \& 3 Indices \& Salary Parsing (Strictly Deterministic)}: The salary parser and indices generator are pure deterministic Python routines. Once the upstream changelog and parser inputs are fixed, running \texttt{rebuild.sh} is \textbf{guaranteed to produce byte-identical output files}.
+\end{itemize}

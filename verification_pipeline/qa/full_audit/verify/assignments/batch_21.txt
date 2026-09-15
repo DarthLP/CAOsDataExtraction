@@ -1,0 +1,27 @@
+You are verifying extracted Dutch CAO field values against their source text (holistic per-record verification). This is surface-only QA: you JUDGE values and write verdict files; you NEVER edit any dataset, worksheet, or source file.
+
+STEP 1 — Read the instructions file ONCE and follow it verbatim for every verdict:
+/Users/lorenzpiazolo/Documents/Claude/Projects/Dutch Bargaining Agreements/qa/full_audit/verify/SUBAGENT_INSTRUCTIONS.md
+
+STEP 2 — Process the worksheets listed below ONE AT A TIME, in order. For EACH worksheet:
+  - If its OUT file already exists and is non-empty, SKIP it (already done) and move to the next.
+  - Read the worksheet JSON. Each item is one record's fields for one topic, with its own `full_source_text`. Judge each item ONLY against its own source. NEVER mix sources across items or chunks.
+  - Emit a JSONL line for every flagged field (any verdict) and for any NON-flagged field whose verdict is NEEDS_CHANGE or UNSUPPORTED. Keys per line: topic, record_id, field, verdict (CONFIRM|NEEDS_CHANGE|UNSUPPORTED), suggested_value, quote (verbatim from source, <=240 chars), confidence (high|medium|low), was_flagged, note.
+  - Write the JSONL to EXACTLY the OUT path shown (create parent dirs if needed). One output file per worksheet; write it before moving on.
+
+HARD RULES: Do NOT spawn subagents. Do NOT write anything outside the OUT paths below. Do NOT modify any worksheet, dataset, or source file. When done, reply with a one-line tally per chunk (CONFIRM/NEEDS_CHANGE/UNSUPPORTED counts).
+
+WORKSHEETS TO PROCESS (in order):
+
+  1. WORKSHEET /Users/lorenzpiazolo/Documents/Claude/Projects/Dutch Bargaining Agreements/qa/full_audit/verify/chunks/overtime/chunk_055.json
+     OUT       /Users/lorenzpiazolo/Documents/Claude/Projects/Dutch Bargaining Agreements/qa/full_audit/verify/outputs/overtime/chunk_055_verified.jsonl
+  2. WORKSHEET /Users/lorenzpiazolo/Documents/Claude/Projects/Dutch Bargaining Agreements/qa/full_audit/verify/chunks/overtime/chunk_056.json
+     OUT       /Users/lorenzpiazolo/Documents/Claude/Projects/Dutch Bargaining Agreements/qa/full_audit/verify/outputs/overtime/chunk_056_verified.jsonl
+  3. WORKSHEET /Users/lorenzpiazolo/Documents/Claude/Projects/Dutch Bargaining Agreements/qa/full_audit/verify/chunks/overtime/chunk_057.json
+     OUT       /Users/lorenzpiazolo/Documents/Claude/Projects/Dutch Bargaining Agreements/qa/full_audit/verify/outputs/overtime/chunk_057_verified.jsonl
+  4. WORKSHEET /Users/lorenzpiazolo/Documents/Claude/Projects/Dutch Bargaining Agreements/qa/full_audit/verify/chunks/overtime/chunk_058.json
+     OUT       /Users/lorenzpiazolo/Documents/Claude/Projects/Dutch Bargaining Agreements/qa/full_audit/verify/outputs/overtime/chunk_058_verified.jsonl
+  5. WORKSHEET /Users/lorenzpiazolo/Documents/Claude/Projects/Dutch Bargaining Agreements/qa/full_audit/verify/chunks/overtime/chunk_059.json
+     OUT       /Users/lorenzpiazolo/Documents/Claude/Projects/Dutch Bargaining Agreements/qa/full_audit/verify/outputs/overtime/chunk_059_verified.jsonl
+  6. WORKSHEET /Users/lorenzpiazolo/Documents/Claude/Projects/Dutch Bargaining Agreements/qa/full_audit/verify/chunks/overtime/chunk_060.json
+     OUT       /Users/lorenzpiazolo/Documents/Claude/Projects/Dutch Bargaining Agreements/qa/full_audit/verify/outputs/overtime/chunk_060_verified.jsonl

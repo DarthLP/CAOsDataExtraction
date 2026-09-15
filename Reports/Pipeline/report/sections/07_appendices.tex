@@ -1,0 +1,44 @@
+\appendix
+\section{Prompts and Extraction Schemas}
+\label{app:schemas}
+
+Prompt templates and Pydantic schemas are version-controlled in the repository:
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Non-Salary Prompt \& Schema}: \texttt{schema/non\_salary\_schema.py}. A compact markdown export is available at \texttt{outputs/llm\_extracted/excel\_test/all\_sections/NON\_SALARY\_PROMPTS\_AND\_SCHEMA.md}.
+  \item \textbf{Salary Schema}: \texttt{schema/salary\_schema.py} and \texttt{salary\_parser/PARSER\_RULES.md}.
+  \item \textbf{Correction Schema}: \texttt{verification\_pipeline/qa/CORRECTIONS\_SCHEMA.md}.
+\end{itemize}
+
+\section{LLM Model Tiering and Calibration}
+\label{app:models}
+
+Model selection follows a validated capability-cost hierarchy:
+\begin{enumerate}[leftmargin=1.5em]
+  \item \textbf{Gemini 2.5 Flash (\texttt{gemini-2.5-flash})}: Ingest extraction (p3) and initial schema analysis (p4). High context capacity (1M tokens) enables ingesting full multi-page CAO chapters.
+  \item \textbf{Claude 3.5 Haiku}: Default model for routine subagent review worksheets and boolean presence checks. Fast, low cost.
+  \item \textbf{Claude 3.5 Sonnet}: Calibrated for complex multi-condition verification. In testing, Haiku was equally safe but 54\% over-cautious when judging snippet absences; Sonnet was selected for all snippet-to-full-text arbitration.
+  \item \textbf{Claude 3 Opus}: Standing arbiter for pension clause interpretations, statutory chain-rule (\emph{ketenregeling}) deviations, and termination legal disputes.
+\end{enumerate}
+
+\section{Correction Ledger and Generation Lineage}
+\label{app:ledger}
+
+The 34 correction layers ($L_1 \rightarrow L_{34}$, generations G0$\rightarrow$G33) are documented in \texttt{verification\_pipeline/docs/DATA\_LINEAGE.md}. The four waves comprise:
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Wave 1 (L1--L10)}: Single-topic deterministic rule corrections (decimal shifts, unit normalizations, clear article/date extractions).
+  \item \textbf{Wave 2 (L11--L17)}: Cross-topic collision resolutions and pension premium reconciliations.
+  \item \textbf{Wave 3 (L18--L26)}: Agent-assisted subagent review worksheets across 12 non-leave topics.
+  \item \textbf{Wave 4 (L27--L34)}: Dataset-wide full audit, jump campaign verifications, and longitudinal stability sweeps.
+\end{itemize}
+
+\section{Worked Example: End-to-End CAO Tracking}
+\label{app:worked-example}
+
+To illustrate the transformations applied by the pipeline, consider CAO 1022 (MBO, Secondary Vocational Education):
+\begin{enumerate}[leftmargin=1.5em]
+  \item \textbf{Raw PDF}: Scraped as \texttt{inputs/pdfs/input\_pdfs/1022/CAO MBO 2020-2021.pdf}.
+  \item \textbf{p3 Extraction}: Extracted salary table grids and text sections in \texttt{outputs/llm\_extracted/new\_flow/1022/}.
+  \item \textbf{Salary Parser}: Parsed 48 distinct scale steps across 14 salary scales; assigned 100\% Tier A confidence.
+  \item \textbf{QA Layer 22}: Upstream extractor miscoded childcare support as \texttt{True} based on an employer intention clause; skeptical review corrected to \texttt{False} under the explicit provision doctrine.
+  \item \textbf{Indices}: Normalized vacation days (200 hours $\rightarrow$ 26.3 days), applied winsorised standardisation ($z = +0.82$), rolled into the balanced monthly panel.
+\end{enumerate}

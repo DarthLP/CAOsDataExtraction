@@ -1,0 +1,52 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 *)",
+      "Bash(python3 -m pip install *)",
+      "Bash(python3 -m pytest *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc *)",
+      "Bash(grep *)",
+      "Bash(rg *)",
+      "Bash(find *)",
+      "Bash(ls *)",
+      "Bash(mkdir -p *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(ln -s *)",
+      "Bash(diff *)",
+      "Bash(awk *)",
+      "Bash(sort *)",
+      "Bash(uniq *)"
+    ],
+    "deny": [
+      "Bash(rm *)",
+      "Bash(rm -rf *)",
+      "Bash(rm -f *)",
+      "Edit(inputs/**)",
+      "Write(inputs/**)",
+      "Edit(verification_pipeline/inputs/**)",
+      "Write(verification_pipeline/inputs/**)",
+      "Edit(verification_pipeline/reference/qa_leave/**)",
+      "Write(verification_pipeline/reference/qa_leave/**)",
+      "Edit(**/corrections.csv)",
+      "Write(**/corrections.csv)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/protect-paths.sh\"",
+            "statusMessage": "Checking protected paths"
+          }
+        ]
+      }
+    ]
+  }
+}

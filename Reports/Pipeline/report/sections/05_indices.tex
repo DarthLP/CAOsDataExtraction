@@ -1,0 +1,65 @@
+\section{Part IV: Derived Generosity and Wage Indices}
+\label{sec:indices}
+
+Stage~3 converts the verified non-salary dataset (\texttt{corrected\_dataset.csv}) and deterministic salary dataset (\texttt{extracted\_data\_salary\_v2.csv}) into standardised generosity indices, statutory-adjusted scores, and a balanced monthly panel.
+
+\subsection{The Two Clocks and In-Force Panel Rule}
+
+CAOs operate on two distinct timelines:
+\begin{enumerate}[leftmargin=1.5em]
+  \item \textbf{Edition Time}: The signing date and formal term (\texttt{ingangsdatum} to \texttt{einddatum}) of individual agreement PDFs.
+  \item \textbf{Calendar Time}: The continuous monthly state of active employment terms. Under Dutch labour law (\emph{nawerking}), when a CAO expires without an immediate successor, its terms continue in force until a new agreement is registered. The monthly panel implements this forward-fill rule across calendar months.
+\end{enumerate}
+
+\subsection{The Pooled-Z Generosity Formula}
+
+Numeric fields are scored along a uniform five-step standardisation sequence:
+\begin{equation}
+\label{eq:pooled-z}
+\text{Raw Value } x_{it} 
+\xrightarrow{\text{1. Canonicalise}} x'_{it}
+\xrightarrow{\text{2. Winsorise (1/99)}} x''_{it}
+\xrightarrow{\text{3. Standardise}} z^*_{it} = \frac{x''_{it} - \mu_{\text{term}}}{\sigma_{\text{term}}}
+\xrightarrow{\text{4. Clip}} z_{it} = \max(-3, \min(3, z^*_{it}))
+\xrightarrow{\text{5. Sign}} S_j \cdot z_{it}
+\end{equation}
+where:
+\begin{itemize}[leftmargin=1.5em]
+  \item $\mu_{\text{term}}$ and $\sigma_{\text{term}}$ are computed on a \textbf{term-deduplicated sample} (excluding repetitive monthly repeats of the same agreement);
+  \item $S_j \in \{+1, -1\}$ is the domain sign indicating whether higher values represent greater generosity from the worker's perspective (e.g.\ $+1$ for vacation days; $-1$ for probation duration or employee pension contributions).
+\end{itemize}
+
+\subsection{The Two Tracks: Magnitude and Coverage}
+
+To avoid treating qualitative presence indicators as arbitrary quantitative scores, the indices separate:
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Magnitude Track ($z$ and $gen01$)}: Standardised continuous variables (days, hours, euros, percentages). A parallel percentile scale ($gen01 \in [0, 1]$) resolves skewness and eliminates outlier sensitivity.
+  \item \textbf{Coverage Track}: Binary indicators of provision presence, rolled up into domain coverage shares.
+\end{itemize}
+
+\subsection{Statutory Floors and The Pension Rule}
+
+\paragraph{Statutory Minimum Adjustments}
+Dutch labour law establishes statutory baselines for leave (WAZO, holiday entitlements), notice periods (BW), and severance (transitievergoeding). CAOs may legally improve upon statutory terms, but cannot fall below them. When an agreement is silent on a mandatory statutory term, the index fills the cell with the prevailing statutory floor for that calendar month.
+
+\paragraph{The Pension Hard Rule (Strictly Available-Case)}
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{\textbf{Mandatory Rule:} The pension topic is \textbf{strictly available-case only}. Blank pension entries are NEVER imputed with zero or statutory baselines.}}
+\end{center}
+Imputing blanks in pension data would manufacture synthetic generosity differences based purely on document reporting completeness rather than negotiated benefit levels.
+
+\subsection{The Nominal Wage Index}
+
+Wage indices are computed directly from the deterministic salary dataset (\texttt{extracted\_data\_salary\_v2.csv}, Tiers A+B):
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Nominal Scale}: All periodic amounts are normalised to monthly full-time gross euros using standard workweek conversions ($4\text{-week} \times 13/12$, $\text{weekly} \times 52/12$, $\text{hourly} \times \text{workweek} \times 52/12$).
+  \item \textbf{Why Nominal (Not WML-Normalised)}: Real purchasing power and inflation adjustments vary across research questions. Normalising directly against statutory minimum wage (WML) at index time would conflate statutory policy shifts with negotiated bargaining outcomes.
+\end{itemize}
+
+\subsection{Empirical Properties and Multi-Domain Findings}
+
+The multi-domain scoring produces several notable empirical conclusions:
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{No Single Generosity Factor}: Principal component analysis reveals a Kaiser-Meyer-Olkin (KMO) measure of 0.64; bargaining generosity is multidimensional rather than reducible to a single scalar.
+  \item \textbf{Topic-Wage Orthogonality}: The cross-sectional correlation between non-salary generosity indices and wage levels is surprisingly weak, demonstrating that generous non-wage terms do not merely substitute for lower salaries.
+\end{itemize}

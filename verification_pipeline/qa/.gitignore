@@ -1,0 +1,26 @@
+# Intent document. Not currently active (project does not use git).
+# Records which artifacts are tracked-as-decision vs regenerable.
+
+# Regenerable — large or intermediate, can be rebuilt from sources
+qa_*/worksheets/chunks/*.jsonl
+qa_*/outputs/subagent_worksheets/**/*.csv
+qa_*/outputs/corrections_deterministic.csv
+qa_*/inputs/scoped_records.csv
+
+# Pre-merge convention proposals (Stage 5a) — manually merged, not auto-applied
+*.candidate
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Tracked-as-decision (NOT ignored — listed for reference):
+# - qa/shared/**/*.py                          (code)
+# - qa/conventions/**/*.md                     (decisions)
+# - qa/qa_<topic>/scripts/**/*.py              (code)
+# - qa/qa_<topic>/outputs/corrections.csv      (primary output)
+# - qa/qa_<topic>/outputs/corrections_audit.csv
+# - qa/qa_<topic>/outputs/needs_human_review.csv
+# - qa/qa_<topic>/outputs/<topic>_summary_memo.md
+# - qa/qa_<topic>/run.log

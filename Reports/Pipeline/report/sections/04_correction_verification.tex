@@ -1,0 +1,49 @@
+\section{Part III: Non-Salary Correction and Verification}
+\label{sec:correction}
+
+\subsection{Stage-0 Ingest and Architecture}
+
+Stage~2 of the pipeline corrects and audits the upstream non-salary extractions across 34 structured layers ($L_1 \rightarrow L_{34}$, corresponding to generations G0$\rightarrow$G33 in \texttt{docs/DATA\_LINEAGE.md}). The canonical dataset is \texttt{verification\_pipeline/qa/corrected\_dataset.csv}, covering 2,739 records and 318 columns across 242 unique CAO agreements.
+
+The correction architecture enforces strict immutability through a four-stage state-transition protocol:
+\begin{center}
+\textbf{apply $\longrightarrow$ copy $\longrightarrow$ verify $\longrightarrow$ promote}
+\end{center}
+No correction is ever applied directly in place. All changes are generated as changelogs, verified against automated integrity gates, and promoted only after passing regression suites.
+
+\subsection{Worksheet Modes and Context Budgets}
+
+Verification tasks are partitioned into subagent worksheets managed by \texttt{worksheet\_builder.py}. Each item is presented in one of three modes:
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Extract}: Field is currently empty; subagent searches source text for explicit numbers.
+  \item \textbf{Blind}: A deterministic rule flagged the cell, but the proposed value is hidden; the subagent inspects source text independently.
+  \item \textbf{Informed}: The subagent is presented with the existing value and the proposed change as a hypothesis to test skeptically.
+\end{itemize}
+
+Worksheet chunking enforces hard token caps: $\le 3{,}500$ static system prompt tokens, 2,000--4,000 tokens per item context, and $\le 50{,}000$ total chunk context (15--20 items per chunk).
+
+\subsection{Multi-Agent Verification Protocol}
+
+To eliminate single-agent hallucination and bias, corrections follow a three-tier arbitration chain:
+\begin{enumerate}[leftmargin=1.5em]
+  \item \textbf{Proposer}: Generates candidate corrections backed by verbatim quotes from the English source text.
+  \item \textbf{Skeptical Second Reader}: An independent subagent tasked specifically with attempting to falsify the proposed correction.
+  \item \textbf{Opus Arbiter}: High-capacity model (\texttt{claude-opus}) acting as final judge on disputed cases or complex legal clauses (especially in pensions and termination).
+\end{enumerate}
+
+\subsection{Methodological Lessons and Transferred Insights}
+\label{subsec:methodology-lessons}
+
+The multi-month auditing campaign uncovered several critical failure modes in AI-assisted legal data extraction:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Snippet vs Full-Source Verification}: Providing subagents with isolated extracted snippets resulted in a \textbf{$\approx 97\%$ false absence rate} (the agent concluded a provision was absent simply because it was not in the snippet). All verification must provide the full document section.
+  \item \textbf{Definition-Less Drift}: Subagents asked to judge extracted values without being provided the exact Pydantic schema definition suffered a \textbf{$\approx 22\%$ error rate} in their proposed corrections (e.g.\ placing payment percentages into duration fields, or misinterpreting statutory references). Always passing the original field description eliminated this drift.
+  \item \textbf{Asymmetric Blind Spots}: Dual independent checkers shared common blind spots on omissions (restoring erroneously omitted provisions: 5/11; detecting unneeded provisions: 0/14).
+  \item \textbf{Preservation-Aware Verification}: Unconstrained correction passes tend to over-edit; introducing a preservation bias raised the verification precision to 87\% \texttt{KEEP}.
+  \item \textbf{Template Shadowing}: Model employment contract appendices in CAO texts often contain blank boilerplate (e.g.\ ``probation: [~] months'') which upstream extractors mistook for agreed provisions. Subagents must treat unfilled templates as null values.
+\end{itemize}
+
+\subsection{Residual Risk and Standing Fingerprint Queue}
+
+Diff-based QA cannot detect errors that are identical across every edition of an agreement (longitudinal blindness). A standing queue of $\approx 1{,}150$ suspects flagged by cross-sectional distribution fingerprints is maintained in \texttt{statutory\_fingerprint\_suspects.csv} for ongoing spot audits.

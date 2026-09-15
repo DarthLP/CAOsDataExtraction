@@ -1,0 +1,156 @@
+\section*{2. Non-Salary}
+\label{sec:non_salary}
+
+\subsection*{Domain coverage}
+
+Non-salary provisions are very broadly covered in the CAOs. Table~\ref{tab:domain_coverage} summarises domain coverage in the latest-CAO view (one observation per CAO, using the contract with the latest start date). Virtually all CAOs contain information on pensions (\NonSalPensionShare), fringe benefits (\NonSalFringeShare), overtime (\NonSalOvertimeShare), bonuses (\NonSalBonusShare), leave (\NonSalLeaveShare), termination rules (\NonSalTerminationShare), contract types (\NonSalContractShare), and training (\NonSalTrainingShare). Homeoffice (\NonSalHomeofficeShare) and childcare provisions (\NonSalChildcareShare) are far less pervasive, while AI-related clauses remain almost absent (\NonSalAiShare).\footnote{For safety and childcare, domains are considered present if any of their multiple source columns indicate presence (OR logic); for the remaining domains presence is determined by a single boolean indicator.}
+
+\begin{table}[H]
+    \centering
+    \caption{Domain coverage in latest CAO view}
+    \label{tab:domain_coverage}
+    \input{tables/tab_domain_coverage}
+\end{table}
+
+\subsection*{Bonuses and wage-related provisions}
+
+Figure~\ref{fig:bonuses} documents the incidence of different wage add-ons and bonus schemes in the latest-CAO view. Almost all CAOs include some sort of bonus scheme, and job-specific allowances are present in \NonSalJobAllowShare\ of agreements. Entry steps determined by experience are also common, in \NonSalEntryStepShare\ of CAOs. Seniority/loyalty bonuses show a mild upward trend over time (\NonSalSeniorityBonusEarly\ of contracts starting 2011--2013 vs.\ \NonSalSeniorityBonusLate\ starting 2021--2023), while personal allowances at max scale decline over the same window (\NonSalPersAllowMaxEarly\ vs.\ \NonSalPersAllowMaxLate). All remaining variables remain mostly constant minority provisions with less than 50\% prevalence.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_bonuses_wages.png}
+    \caption{Bonuses and wage-related provisions (latest CAO view)}
+    \label{fig:bonuses}
+\end{figure}
+
+\subsection*{Fringe benefits}
+
+Fringe benefits are nearly universal: almost every CAO contains at least one such provision (\NonSalFringeShare, Figure~\ref{fig:fringe}). Commuting allowances are the dominant component, present in \NonSalCommutingShare\ of CAOs in the latest view. Meal benefits (\NonSalMealShare), insurance or savings schemes (\NonSalInsuranceShare), and relocation allowances (\NonSalRelocationShare) each appear in substantial minorities of agreements. Bike schemes (\NonSalBikeShare) and reimbursement for internet or phone costs (\NonSalInternetPhoneShare) are less widespread.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_fringe.png}
+    \caption{Fringe benefits (latest CAO view)}
+    \label{fig:fringe}
+\end{figure}
+
+\subsection*{Pension provisions}
+
+Pension coverage is effectively complete in the latest-CAO view (Figure~\ref{fig:pension}). Mandatory participation in the pension scheme is standard for a clear majority of workers. Explicit rules on equal sharing of contributions remain a minority feature throughout.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_pension.png}
+    \caption{Pension provisions (latest CAO view)}
+    \label{fig:pension}
+\end{figure}
+
+\subsection*{Leave enhancements}
+
+Leave enhancements and sick leave top-ups are close to universal (Figure~\ref{fig:leave}). Almost all CAOs provide or allow some form of above-statutory leave. Extra leave by seniority is extremely common, although decreasing slightly over time. Above-statutory paternity leave exhibits a steady increase following legislative reforms, while parental leave eligibility restrictions become less frequent.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_leave.png}
+    \caption{Leave enhancements (latest CAO view)}
+    \label{fig:leave}
+\end{figure}
+
+\subsection*{Overtime rules}
+
+Both overtime rules and shift allowances are common in a majority of CAOs (Figure~\ref{fig:overtime}). Premium pay rates for irregular and weekend hours are standard across most sectoral agreements.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_overtime.png}
+    \caption{Overtime rules and shift allowances (latest CAO view)}
+    \label{fig:overtime}
+\end{figure}
+
+\subsection*{Contract-type rules}
+
+Contract-type regulation is extensive (Figure~\ref{fig:contract_type}) and almost all CAOs explicitly accommodate part-time contracts. Deviation from the statutory \emph{ketenregeling} (limits on successive fixed-term contracts) is widespread, as are rights to request adjustments in working hours. Min--max hours contracts remain the least common and decline over the sample period.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_contract_type.png}
+    \caption{Contract-type rules (latest CAO view)}
+    \label{fig:contract_type}
+\end{figure}
+
+\subsection*{Training rights}
+
+While training rights are nearly universal in the latest-CAO view (\NonSalTrainingShare, Figure~\ref{fig:training}), collective training funds (O\&O fondsen) show a mild downward drift, from \NonSalTrainingFundEarly\ of contracts starting 2011--2013 to \NonSalTrainingFundLate\ starting 2021--2023.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_training.png}
+    \caption{Training rights (latest CAO view)}
+    \label{fig:training}
+\end{figure}
+
+\subsection*{Homeoffice provisions}
+
+Homeoffice provisions are much less pervasive historically but expanded dramatically over time (Figure~\ref{fig:homeoffice}). Around \NonSalHomeofficeShare\ of CAOs in the latest view contain any homeoffice-related clause. Between 2020 and 2023, there is a sharp acceleration in explicit home office rights, ergonomics equipment allowances, and internet/phone compensation, primarily driven by post-pandemic remote work practices.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_homeoffice.png}
+    \caption{Homeoffice provisions (latest CAO view)}
+    \label{fig:homeoffice}
+\end{figure}
+
+\subsection*{Childcare support}
+
+Childcare-related provisions (excluding leave enhancements) remain rare. Figure~\ref{fig:childcare} shows that general childcare support clauses appear in fewer than 10\% of agreements (\NonSalChildcareShare\ in latest view). Explicit childcare discounts and sector-funded childcare subsidies appear only sporadically.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_childcare.png}
+    \caption{Childcare support provisions (latest CAO view)}
+    \label{fig:childcare}
+\end{figure}
+
+\subsection*{Safety and wellbeing}
+
+Safety and wellbeing provisions appear in \NonSalSafetyShare\ of agreements (Figure~\ref{fig:safety}). PSA prevention, confidential counselors, and external reporting channels demonstrate moderate upward trajectories, while preventive medical examinations (PMO/PAGO) remain stable.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_safety.png}
+    \caption{Safety and wellbeing provisions (latest CAO view)}
+    \label{fig:safety}
+\end{figure}
+
+\subsection*{AI-related provisions}
+
+AI-related policies are still nascent. Only \NonSalAiCount\ CAOs in the latest view (\NonSalAiShare) contain an explicit clause regulating algorithmic management or artificial intelligence (Figure~\ref{fig:ai}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/new_cao_yearly/non_salary_boolean_ai.png}
+    \caption{AI-related provisions}
+    \label{fig:ai}
+\end{figure}
+
+\subsection*{Numeric trends: hours and pension/training}
+
+The non-salary data also contain numeric parameters that can be tracked over time. Figure~\ref{fig:numeric_hours} plots average full-time weekly hours and maximum allowed weekly hours including overtime. Contracted full-time hours cluster tightly around \NonSalFTHoursWeeklyMedian\ hours per week, while maximum weekly hours including overtime fluctuate between \NonSalOvertimeMaxWeeklyLow\ and \NonSalOvertimeMaxWeeklyHigh\ hours across cohort years.
+
+Figure~\ref{fig:numeric_pension_training} combines numeric pension and training measures. The normal retirement age increases across start years from \NonSalRetireAgeEarly\ (2009--2011 cohorts) to \NonSalRetireAgeLate\ (2023--2025 cohorts), mirroring statutory AOW pension reforms. Among contracts stating employee pension contributions as a percentage, the yearly median ranges from \NonSalPensionContribLow\ to \NonSalPensionContribHigh. Annual training time entitlements have a median of \NonSalTrainingHoursMedian\ hours per year among the \NonSalTrainingHoursN\ contract-episodes that state training time in hours (most CAOs instead state training time in days).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/numeric/non_salary_numeric_hours_trends_latest_cao_view.png}
+    \caption{Non-salary numeric hours trends (latest CAO view)}
+    \label{fig:numeric_hours}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/numeric/non_salary_numeric_pension_training_trends_latest_cao_view.png}
+    \caption{Non-salary numeric pension and training trends (latest CAO view)}
+    \label{fig:numeric_pension_training}
+\end{figure}
+
+These numeric and coverage dimensions are systematically synthesized into standardized generosity indicators in \hyperref[sec:indices]{Section~4 (Indices)}.

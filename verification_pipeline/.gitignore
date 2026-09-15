@@ -1,0 +1,76 @@
+# macOS
+.DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Frozen leave reference implementation — stale .bak files
+# (moved from top-level qa_leave/ to reference/qa_leave/ on 2026-07-01)
+reference/qa_leave/scripts/*.py.bak
+reference/qa_leave/scripts/__pycache__/
+# Datasets and large tables (keep code & docs only)
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*.pdf
+*.zip
+*.gz
+*.tar.gz
+
+# Old dataset snapshots are KEPT on disk (qa/_old/) but are large regenerable CSVs;
+# see qa/DATASETS.md + docs/DATA_LINEAGE.md for what each one is.
+# Chunks, raw data dumps, and caches
+*.jsonl
+*.json
+!.claude/settings.json
+inputs/
+
+# Large regenerable index outputs (rebuild from indices/*.py + the parser salary CSV)
+indices/all_indices.xlsx
+indices/all_indices_combined.csv
+indices/*_panel_*.csv
+# Historical / recovered index snapshots (regenerable; kept on disk only)
+# Backups and recovery directories
+*.bak*
+*.fixed
+indices/_old_v1/
+indices/_recovered/
+# Raw source data is READ-ONLY and lives on disk only (not versioned)
+inputs/*.csv
+# Stray parser-CSV backups
+*.csv.bak
+indices/.bak_rename/
+indices/corrections/
+indices/out/
+qa/backups/
+qa/_old/
+qa/jump_campaign_artifacts/
+qa/second_pass_nhr/
+qa/reextraction/
+qa/verify_changes/
+salary/wage_check_full/chunks/
+salary/phase3_chunks/
+salary/phase3b_chunks/
+salary/out/
+
+# Logs & scratch
+*.log
+*.aux
+*.out
+*.png

@@ -11,6 +11,7 @@ DIFFERENT cao numbers never collide (Hanna's requirement). READ-ONLY — never w
 import os, glob, re, json
 from pathlib import Path
 
+SRC = "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/outputs/llm_extracted/new_flow"
 try:
     from repo_paths import LLM_EXTRACTED_DIR
 except ImportError:

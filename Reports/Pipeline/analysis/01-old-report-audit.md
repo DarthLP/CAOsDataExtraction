@@ -33,3 +33,4 @@ The following major pipeline components built since November 2025 were entirely 
 3. **P3/P4 Resume System**: State caching and lock-file recovery.
 4. **Correction & Verification Pipeline (`verification_pipeline/qa/`)**: 34 audited layers (G0→G33), ~12,000 corrected cells, multi-agent arbitration protocol.
 5. **Derived Generosity & Wage Indices (`verification_pipeline/indices/`)**: Pooled-z scoring, statutory floors, monthly panel, 26-tab workbook.
+

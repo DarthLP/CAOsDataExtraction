@@ -65,6 +65,9 @@ CHUNKS = PHASE3 / "chunks"
 CHUNKS.mkdir(parents=True, exist_ok=True)
 
 ANOMALIES = ROOT / "outputs" / "salary_anomalies.csv"
+PY_PROJECT = Path("/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction")
+SAL_CSV = PY_PROJECT / "outputs" / "excel" / "new_results" / "extracted_data_salary.csv"
+SAL_SRC = PY_PROJECT / "outputs" / "llm_analysis" / "salary"
 try:
     from repo_paths import EXTRACTION_ROOT, EXCEL_RESULTS_DIR, LLM_ANALYSIS_SALARY_DIR
     PY_PROJECT = EXTRACTION_ROOT

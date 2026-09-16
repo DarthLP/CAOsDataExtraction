@@ -47,6 +47,8 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import index_lib as il
 
+SALARY_CSV = Path(os.path.expanduser(
+    "~/Documents/Python/CAOsDataExtraction/outputs/parser_salary/extracted_data_salary_v2.csv"))
 try:
     from repo_paths import SALARY_PARSER_CSV
 except ImportError:

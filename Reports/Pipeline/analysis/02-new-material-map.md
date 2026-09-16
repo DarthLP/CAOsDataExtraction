@@ -23,3 +23,4 @@ Mapping between repository documentation, source files, and the sections of the 
 - **Definition-less drift**: Judging values without providing the original Pydantic field definition produced ~22% error rate in proposed corrections.
 - **Asymmetry in checker blind spots**: Dual checkers shared blind spots on missing provisions (restore direction 5/11 vs remove 0/14).
 - **Pension available-case rule**: Mandate that pension blanks are strictly excluded from imputation to prevent synthetic generosity inflation.
+

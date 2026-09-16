@@ -26,6 +26,10 @@ from pathlib import Path
 from qa.full_audit import common
 from qa.shared import source_text_loader
 
+EXTRACT_ROOT = Path(
+    "/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction"
+    "/outputs/llm_extracted/new_flow"
+)
 try:
     from repo_paths import LLM_EXTRACTED_DIR
     EXTRACT_ROOT = LLM_EXTRACTED_DIR

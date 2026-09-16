@@ -64,3 +64,4 @@ if printf '%s' "$cmd" | grep -Eq "\b(mv|cp|rsync|install)\b"; then
 fi
 
 exit 0
+

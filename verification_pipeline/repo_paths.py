@@ -17,3 +17,4 @@ LLM_ANALYSIS_SALARY_DIR = EXTRACTION_ROOT / "outputs" / "llm_analysis" / "salary
 
 # Verification pipeline root
 VERIFICATION_ROOT = Path(__file__).resolve().parent
+

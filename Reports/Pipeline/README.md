@@ -23,3 +23,4 @@ To clean temporary compilation artifacts:
 ```bash
 latexmk -c
 ```
+

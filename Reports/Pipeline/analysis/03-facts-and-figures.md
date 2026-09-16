@@ -46,3 +46,4 @@ All figures verified directly against the disk artifacts on 2026-09-15.
   - Field sanity bounds: 39/39 fields OK (0 checks flagged).
   - Semantic role consistency: 39/39 fields verified.
   - Generosity direction sign tests: 39/39 fields verified.
+

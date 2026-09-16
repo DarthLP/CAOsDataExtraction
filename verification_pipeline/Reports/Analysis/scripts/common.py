@@ -15,6 +15,13 @@ import matplotlib.pyplot as plt
 ANALYSIS_DIR = Path(__file__).resolve().parent.parent
 REPO_ROOT = ANALYSIS_DIR.parent.parent
 CAOS_REPO_ROOT = Path("/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction")
+try:
+    from repo_paths import EXTRACTION_ROOT
+    CAOS_REPO_ROOT = EXTRACTION_ROOT
+except ImportError:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
+    from repo_paths import EXTRACTION_ROOT
+    CAOS_REPO_ROOT = EXTRACTION_ROOT
 
 # Output directories
 FIGURES_DIR = ANALYSIS_DIR / "figures"

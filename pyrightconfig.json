@@ -1,0 +1,26 @@
+{
+  "include": [
+    "pipelines",
+    "schema",
+    "utils",
+    "salary_parser",
+    "scripts",
+    "verification_pipeline"
+  ],
+  "exclude": [
+    "**/__pycache__",
+    "**/.pytest_cache",
+    ".conda",
+    "outputs",
+    "inputs/pdfs",
+    "verification_pipeline/inputs",
+    "verification_pipeline/reference/qa_leave/outputs"
+  ],
+  "extraPaths": [
+    "verification_pipeline",
+    "verification_pipeline/indices"
+  ],
+  "typeCheckingMode": "off",
+  "reportMissingImports": "warning",
+  "pythonVersion": "3.13"
+}

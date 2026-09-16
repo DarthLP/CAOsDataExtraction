@@ -37,6 +37,9 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
+PY_PROJECT = Path("/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction")
+SAL_CSV = PY_PROJECT / "outputs" / "excel" / "new_results" / "extracted_data_salary.csv"
+SAL_SRC = PY_PROJECT / "outputs" / "llm_analysis" / "salary"
 try:
     from repo_paths import EXTRACTION_ROOT, EXCEL_RESULTS_DIR, LLM_ANALYSIS_SALARY_DIR
     PY_PROJECT = EXTRACTION_ROOT

@@ -32,6 +32,8 @@ from scan_anomalies import _norm, _to_float, _year_of, AMOUNT_BOUNDS            
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "outputs"
+PY_PROJECT = Path("/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction")
+SAL_CSV = PY_PROJECT / "outputs" / "excel" / "new_results" / "extracted_data_salary.csv"
 try:
     from repo_paths import EXTRACTION_ROOT, EXCEL_RESULTS_DIR
     PY_PROJECT = EXTRACTION_ROOT

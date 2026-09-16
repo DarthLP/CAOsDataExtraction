@@ -2,10 +2,12 @@
 import pandas as pd
 import sys
 import os
+from pathlib import Path
 
-# Setup paths
-sys.path.insert(0, '/Users/lorenzpiazolo/Documents/Claude/Projects/Dutch Bargaining Agreements/indices')
-sys.path.insert(0, '/Users/lorenzpiazolo/Documents/Claude/Projects/Dutch Bargaining Agreements')
+# Setup paths (repo-relative, portable — was hard-coded pre-merge absolute paths)
+VERIFICATION_ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(VERIFICATION_ROOT / "indices"))
+sys.path.insert(0, str(VERIFICATION_ROOT))
 
 import index_lib as il
 

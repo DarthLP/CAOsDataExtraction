@@ -219,6 +219,8 @@ for col, why in sign_fail:
     print(f"    SIGN FAIL: {col}: {why}")
 
 # ---- 3. salary unit-class check ---------------------------------------------
+SAL = os.path.expanduser("~/Documents/Python/CAOsDataExtraction/outputs/parser_salary/"
+                         "extracted_data_salary_v2.csv")
 try:
     from repo_paths import SALARY_PARSER_CSV
 except ImportError:

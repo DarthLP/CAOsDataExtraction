@@ -85,3 +85,4 @@ To reproduce the pipeline outputs from a clean clone:
 - `Reports/Pipeline/` — Unified replication report and LaTeX documentation.
 - `docs/EXTRACTION_GUIDE.md` — Detailed extraction pipeline manual (former root README).
 - `CLAUDE.md` — Unified developer instructions and hard rules.
+

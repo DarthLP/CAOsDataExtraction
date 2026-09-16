@@ -65,3 +65,4 @@ Unified data extraction, deterministic salary parsing, correction/QA, and derive
   - System prompt: $\le 3,500$ tokens.
   - Per-item context: soft target 2,000 tokens, hard cap 4,000 tokens (up to 6,000 for wage/bonus).
   - Total chunk context: $\le 50,000$ tokens (15–20 items per chunk).
+

@@ -50,7 +50,6 @@ from scripts.excel_analysis.descriptives_non_salary import (
 import scripts.excel_analysis.descriptives_non_salary_plots as dnsp
 
 EARLY_WINDOW = (2011, 2013)
-LATE_WINDOW = (2021, 2023)
 
 DOMAIN_DISPLAY_NAMES = {
     "bonus": "Bonuses and wage add-ons",
@@ -66,40 +65,6 @@ DOMAIN_DISPLAY_NAMES = {
     "childcare": "Childcare",
     "ai": "AI-related policies",
 }
-
-def _bool_share(df: pd.DataFrame, col: str) -> float:
-    b = normalize_boolean(df[col])
-    return (b == True).mean() if len(df) else 0.0
-
-
-def _bool_share_window(df_view: pd.DataFrame, col: str, window: tuple[int, int]) -> float:
-    sub = df_view[df_view["start_year"].between(*window)]
-    return _bool_share(sub, col)
-
-
-def compute_incidence_narrative_stats(df_latest: pd.DataFrame, df_latest_view: pd.DataFrame) -> dict:
-    """Point shares (latest-CAO cross-section) and early/late trend shares (panel) for the
-    booleans read off the incidence figures in the Bonuses/Fringe/Training prose."""
-    stats = {
-        "job_allowances_share": _bool_share(df_latest, "bonus_job_allowances_present"),
-        "entry_step_share": _bool_share(df_latest, "wage_entry_step_exp_present"),
-        "commuting_share": _bool_share(df_latest, "fringe_commuting_allowance_present"),
-        "meal_share": _bool_share(df_latest, "fringe_meal_benefit_present"),
-        "insurance_share": _bool_share(df_latest, "fringe_insurance_or_savings_benefit_present"),
-        "relocation_share": _bool_share(df_latest, "fringe_relocation_allowance_present"),
-        "bike_share": _bool_share(df_latest, "fringe_bike_scheme_present"),
-        "internet_phone_share": _bool_share(df_latest, "fringe_internet_or_phone_reimbursement_present"),
-        "training_fund_share": _bool_share(df_latest, "training_fund_present"),
-    }
-    for key, col in [
-        ("seniority_bonus", "bonus_seniority_loyalty_bonus"),
-        ("pers_allow_max_scale", "wage_pers_allow_max_scale"),
-        ("training_fund", "training_fund_present"),
-    ]:
-        stats[f"{key}_early"] = _bool_share_window(df_latest_view, col, EARLY_WINDOW)
-        stats[f"{key}_late"] = _bool_share_window(df_latest_view, col, LATE_WINDOW)
-    return stats
-
 
 def compute_numeric_narrative_stats(df_latest_view: pd.DataFrame) -> dict:
     """Unit-aware numeric anchors for the hours/pension/training trends paragraph.
@@ -248,29 +213,18 @@ def main():
         use_latest_cao_view=True,
         agg_kind="mean",
         df_latest_view=df_latest_view,
+        # Pension contribution % pools two incompatible bases (share of pensionable
+        # salary vs. share of the pension premium); the mean is pulled around by
+        # premium-basis outliers (e.g. "40% of total premium"). Plot the median here
+        # to match the prose, which already reports "the yearly median contribution
+        # rate" (NonSalPensionContribLow/High, computed via median in
+        # compute_numeric_narrative_stats above).
+        agg_kind_overrides={"non_salary_numeric_pension_training_trends.png": "median"},
     )
 
-    # 3. Incidence and numeric narrative macros (Bonuses/Fringe/Training prose + numeric trends)
-    print("Computing incidence and numeric narrative stats...")
-    inc_stats = compute_incidence_narrative_stats(df_latest_filtered, df_latest_view)
+    # 3. Numeric narrative macros (numeric trends prose)
+    print("Computing numeric narrative stats...")
     num_stats = compute_numeric_narrative_stats(df_latest_view)
-
-    set_macro("NonSalJobAllowShare", f"{inc_stats['job_allowances_share'] * 100:.0f}%")
-    set_macro("NonSalEntryStepShare", f"{inc_stats['entry_step_share'] * 100:.0f}%")
-    set_macro("NonSalSeniorityBonusEarly", f"{inc_stats['seniority_bonus_early'] * 100:.0f}%")
-    set_macro("NonSalSeniorityBonusLate", f"{inc_stats['seniority_bonus_late'] * 100:.0f}%")
-    set_macro("NonSalPersAllowMaxEarly", f"{inc_stats['pers_allow_max_scale_early'] * 100:.0f}%")
-    set_macro("NonSalPersAllowMaxLate", f"{inc_stats['pers_allow_max_scale_late'] * 100:.0f}%")
-
-    set_macro("NonSalCommutingShare", f"{inc_stats['commuting_share'] * 100:.0f}%")
-    set_macro("NonSalMealShare", f"{inc_stats['meal_share'] * 100:.0f}%")
-    set_macro("NonSalInsuranceShare", f"{inc_stats['insurance_share'] * 100:.0f}%")
-    set_macro("NonSalRelocationShare", f"{inc_stats['relocation_share'] * 100:.0f}%")
-    set_macro("NonSalBikeShare", f"{inc_stats['bike_share'] * 100:.0f}%")
-    set_macro("NonSalInternetPhoneShare", f"{inc_stats['internet_phone_share'] * 100:.0f}%")
-
-    set_macro("NonSalTrainingFundEarly", f"{inc_stats['training_fund_early'] * 100:.0f}%")
-    set_macro("NonSalTrainingFundLate", f"{inc_stats['training_fund_late'] * 100:.0f}%")
 
     set_macro("NonSalFTHoursWeeklyMedian", f"{num_stats['ft_weekly_median']:.0f}")
     set_macro("NonSalOvertimeMaxWeeklyLow", f"{num_stats['ot_weekly_low']:.0f}")

@@ -2,7 +2,7 @@
 
 Applies the 27 CONFIRMED (high+medium) picked-record corrections from the collision-diff
 two-pass campaign onto a COPY of the current canonical corrected_dataset.csv (G9/L1..L10),
-with the same safety gates as apply_corrections.py:
+with the same safety gates as _archive/apply_corrections.py:
   1. match ONLY on the unique row `id`; require EXACTLY ONE matching row.
   2. verify the base cell currently equals expected_current (lenient blank/numeric); else skip.
      (for an ADD — expected blank — the target cell must be unset.)

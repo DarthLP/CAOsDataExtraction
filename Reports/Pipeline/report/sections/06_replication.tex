@@ -1,57 +1,108 @@
-\section{Part V: End-to-End Replication and Verification}
+\section{End-to-End Replication and Verification}
 \label{sec:replication}
 
-This section provides the operational protocol for replicating all outputs in the unified repository from a clean clone.
+This section provides the complete operational protocol for replicating all pipeline outputs, data artifacts, and analytical reports from a clean repository clone.
 
-\subsection{Environment Setup}
+\subsection{Environment Setup and Prerequisites}
+\label{sec:replication_env}
 
-The pipeline executes on Python 3.13.0 with standard data science packages and Google GenAI SDK:
+The pipeline executes on POSIX-compliant environments (macOS or Linux) running Python 3.13.0+. Core Python packages and LLM dependencies are installed via:
 \begin{verbatim}
-# Install core Python requirements
+# Install core Python requirements and Google GenAI SDK
 pip install -r requirements.txt
 pip install git-filter-repo google-genai
 \end{verbatim}
 
-\subsection{Sequential Execution Order}
+\noindent Every script on the replication path below resolves its paths dynamically, relative to the repository root or its own enclosing directory (e.g.\ \texttt{cd "\$(dirname "\$0")"} in \nolinkurl{rebuild.sh}), so none of them hardcodes a workstation-specific path.
 
-From the repository root (\texttt{CAOsDataExtraction/}), execute the stages in the following sequence:
+\subsection{Downstream Reports Architecture}
+\label{sec:reports_architecture}
+
+Downstream dissemination is partitioned into two specialized report suites within the \nolinkurl{Reports/} directory:
+
+\begin{enumerate}[leftmargin=1.8em]
+  \item \textbf{Technical Replication Manual} (\nolinkurl{Reports/Pipeline/}):
+    \begin{itemize}[leftmargin=1.2em]
+      \item \textbf{Master Document}: \nolinkurl{Reports/Pipeline/report/CAOPipeline.tex}, compiled to \nolinkurl{CAOPipeline.pdf} via \texttt{latexmk -pdf}.
+      \item \textbf{Scope}: Documents the end-to-end extraction methodology, the deterministic salary parser architecture, the 34-layer non-salary correction framework (G0$\rightarrow$G33), the pooled-z scoring formulas, the monthly panel in-force rules, and automated verification batteries.
+      \item \textbf{Structure}: Modular LaTeX fragments organized under \nolinkurl{sections/01_intro.tex} through \nolinkurl{sections/07_appendices.tex}.
+    \end{itemize}
+
+  \item \textbf{Descriptive Summary Report} (\nolinkurl{Reports/Analysis/}):
+    \begin{itemize}[leftmargin=1.2em]
+      \item \textbf{Master Orchestrator}: \nolinkurl{Reports/Analysis/scripts/run_all.sh}.
+      \item \textbf{Master Document}: \nolinkurl{Reports/Analysis/main.tex}, compiled via \texttt{xelatex} (two passes) to generate \nolinkurl{main.pdf}.
+      \item \textbf{Sub-Analysis Pipeline}:
+        \begin{enumerate}[leftmargin=1.0em]
+          \item \nolinkurl{01_general.py}: Extracts CAO contract counts, date timelines, and sectoral coverage distributions.
+          \item \nolinkurl{02_non_salary.py}: Summarises non-salary provisions and quantifies the empirical impact of the 34 QA layers.
+          \item \nolinkurl{03_salary.py}: Ingests the deterministic salary parser dataset (\nolinkurl{extracted_data_salary_v2.csv}, Tiers~A+B) to regenerate all wage percentiles, dispersion curves, and wage growth series.
+          \item \nolinkurl{04_indices.py}: Computes composite generosity ranking tables, factor loading summaries, and cross-topic correlations.
+          \item \texttt{xelatex}: Typesets the final publication document.
+        \end{enumerate}
+      \item \textbf{Macro Traceability Guarantee}: Every inline numerical claim in the text is bound to an auto-generated macro in \nolinkurl{tables/macros.tex}, and all summary tables are directly input from \nolinkurl{tables/tab_*.tex}. The descriptive report contains strictly zero hand-typed figures.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Sequential End-to-End Replication Protocol}
+\label{sec:replication_steps}
+
+From the repository root (\nolinkurl{CAOsDataExtraction/}), execute the stages in the following sequential order:
 
 \begin{enumerate}[leftmargin=2.0em]
   \item \textbf{Stage 1: Upstream Text Extraction (Optional if Cached)}
-    \begin{verbatim}
-    python pipelines/p1_webscraping.py
-    python pipelines/p2_extract.py
-    python pipelines/p3_llmExtraction.py
-    python pipelines/p4_analysis.py
-    python pipelines/p5_excel_creation.py
-    \end{verbatim}
-  
+    Raw extraction outputs from Dutch government PDFs are version-controlled and archived. If executing from raw PDF files, run the active five-stage pipeline:
+\begin{verbatim}
+python pipelines/p1_webscraping.py
+python pipelines/p2_extract.py
+python pipelines/p3_llmExtraction.py
+python pipelines/p4_analysis.py
+python pipelines/p5_excel_creation.py
+\end{verbatim}
+    Stage~3 utilizes Gemini 2.5 Flash under frozen hyperparameters (\texttt{temperature=0.0}, \texttt{top\_p=0.1}, \texttt{top\_k=1}, \texttt{seed=42}, \texttt{max\_tokens=65536}).
+
   \item \textbf{Stage 1b: Deterministic Salary Parsing}
-    \begin{verbatim}
-    python salary_parser/deliver.py
-    \end{verbatim}
-    Parses the p3 wage grids into \texttt{outputs/parser\_salary/extracted\_data\_salary\_v2.csv}, tagging Tiers A--D.
+    Execute the deterministic salary parsing engine:
+\begin{verbatim}
+python salary_parser/deliver.py
+\end{verbatim}
+    Transforms the unstructured LLM wage tables into \nolinkurl{outputs/parser_salary/extracted_data_salary_v2.csv} (359,474 rows across 749 columns), enforcing 100\% amount provenance and assigning confidence Tiers A--D.
 
-  \item \textbf{Stage 2: QA \& Correction Battery Test}
-    \begin{verbatim}
-    cd verification_pipeline
-    python3 -m pytest qa -q
-    \end{verbatim}
-    Asserts that all 152 automated regression and schema integrity tests pass.
+  \item \textbf{Stage 2: Verification and QA Regression Suite}
+    Execute the automated test suite across the 34-layer correction framework:
+\begin{verbatim}
+cd verification_pipeline
+python3 -m pytest qa -q
+cd ..
+\end{verbatim}
+    Verifies that all 152 automated regression tests pass with zero failures, confirming the structural integrity and historical consistency of the canonical dataset \nolinkurl{verification_pipeline/qa/corrected_dataset.csv}.
 
-  \item \textbf{Stage 3: Indices Rebuild and Verification Battery}
-    \begin{verbatim}
-    cd verification_pipeline/indices
-    ./rebuild.sh
-    python3 check_battery.py
-    \end{verbatim}
-    Rebuilds \texttt{composite\_index.csv}, \texttt{mw\_indices.csv}, and \texttt{scoring\_params.csv}. \texttt{check\_battery.py} verifies unit converters, sanity bounds, semantic rules, and dataset hashes.
+  \item \textbf{Stage 3: Derived Indices Rebuild and Validation Battery}
+    Execute the master indices rebuild script, which concludes by running the validation battery:
+\begin{verbatim}
+cd verification_pipeline/indices
+./rebuild.sh
+cd ../..
+\end{verbatim}
+    This sequentially regenerates:
+    \begin{itemize}[leftmargin=1.2em]
+      \item All 13 topic generosity indices (\nolinkurl{out/<topic>_index.csv});
+      \item The nominal wage index and WML ratio metrics (\nolinkurl{out/mw_indices.csv});
+      \item The autonomous monthly statutory floor pseudo-CAO (\nolinkurl{out/statutory_index.csv});
+      \item The cross-topic composite dataset (\nolinkurl{out/composite_index.csv});
+      \item The balanced monthly in-force panel (\nolinkurl{out/all_indices_panel_monthly.csv});
+      \item Multivariate factor analysis models and diagnostics (\nolinkurl{ADVANCED_ANALYSIS.md});
+      \item Agreement-level term export (\nolinkurl{out/cao_agreement_level.csv});
+      \item Consolidated multi-tab workbook (\nolinkurl{all_indices.xlsx}).
+    \end{itemize}
+    The script concludes by running \nolinkurl{check_battery.py}, confirming 100\% passage across all 6 validation stages (converter self-test, field sanity, salary unit class, percentile monotonicity, statutory fingerprints, and same-term sibling coverage).
 \end{enumerate}
 
-\subsection{Determinism vs Stochastic Verification}
+\subsection{Determinism vs.\ Stochasticity Guarantees}
+\label{sec:determinism}
 
-The pipeline distinguishes two distinct layers of determinism:
+The pipeline establishes a rigorous boundary between stochastic extraction and deterministic downstream synthesis:
 \begin{itemize}[leftmargin=1.5em]
-  \item \textbf{Stage 1 \& 2 Agent Verification (Stochastic with Guardrails)}: Subagent reasoning exhibits run-to-run variation. This stochasticity is constrained by deterministic regex pre-filters, Pydantic schema validation, and complete changelog persistence. Every accepted edit is frozen in \texttt{apply\_changelog.csv}.
-  \item \textbf{Stage 1b \& 3 Indices \& Salary Parsing (Strictly Deterministic)}: The salary parser and indices generator are pure deterministic Python routines. Once the upstream changelog and parser inputs are fixed, running \texttt{rebuild.sh} is \textbf{guaranteed to produce byte-identical output files}.
+  \item \textbf{Stochastic Extraction with Deterministic Preservation (Stages 1 and 2)}: Upstream LLM reasoning and agent adjudications naturally exhibit run-to-run variation. This is controlled by deterministic regex pre-filtering, Pydantic schema validation, and complete changelog recording. Once verified, edits are preserved in \nolinkurl{verification_pipeline/qa/corrected_dataset.csv} and never regenerated in place.
+  \item \textbf{Strict Mathematical Determinism (Stage 1b, Stage 3, and downstream report scripts)}: The salary parser, topic index engines, statutory scoring, monthly panel generator, and downstream LaTeX summary scripts are pure, deterministic Python algorithms. Holding the upstream canonical datasets constant, executing \nolinkurl{salary_parser/deliver.py}, \nolinkurl{rebuild.sh}, and \nolinkurl{run_all.sh} is \textbf{guaranteed to produce byte-identical numerical outputs, CSV tables, and macro definitions}.
 \end{itemize}

@@ -1,59 +1,65 @@
-\section{Part I: Extraction Pipeline (Stages p1--p5)}
+\section{Stage 1: Extraction Pipeline (Substages p1--p5)}
 \label{sec:extraction}
 
-The upstream extraction pipeline converts unstructured CAO PDF documents into structured JSON and tabular extracts. It operates across five sequential stages.
+The upstream extraction pipeline converts unstructured CAO PDF documents into structured JSON and tabular extracts. It operates across five sequential active substages in \nolinkurl{pipelines/}: \texttt{p1\_webscraping.py} $\rightarrow$ \texttt{p2\_extract.py} $\rightarrow$ \texttt{p3\_llmExtraction.py} $\rightarrow$ \texttt{p4\_analysis.py} $\rightarrow$ \texttt{p5\_excel\_creation.py}.
 
-\subsection{Stage 1: Web Scraping (\texttt{p1\_webscraping.py})}
+\subsection{Substage 1: Web Scraping (\texttt{p1\_webscraping.py})}
 \label{subsec:p1}
 
-CAO agreements are downloaded from the official Dutch labour conditions portal using Selenium automation. In earlier drafts of this documentation, this script was mistakenly referred to as \texttt{p0\_webscraping.py}; the active script is \texttt{pipelines/p1\_webscraping.py}.
+CAO agreements are downloaded from the official Dutch labour conditions portal (\nolinkurl{uitvoeringarbeidsvoorwaardenwetgeving.nl}) using Selenium automation, guided by the agreement frequency register \nolinkurl{inputs/excel/inputExcel/CAO_Frequencies_2014.xlsx}.
 
 The scraping logic implements three specific selection criteria:
 \begin{itemize}[leftmargin=1.5em]
   \item \textbf{Link Parity Filter}: The portal presents document links in duplicate pairs; the scraper selects every second link (indices 0, 2, 4, \dots) to eliminate redundant downloads.
   \item \textbf{Multi-Part Concatenation}: If a single agreement filing consists of multiple PDF components (e.g.\ main text and annexes), the scraper combines them into a unified PDF file saved under the primary document title.
-  \item \textbf{Directory Partitioning}: Documents are saved into CAO number folders (\texttt{inputs/pdfs/input\_pdfs/[CAO\_NUMBER]/}). The pair \texttt{(cao\_number, filename)} serves as the immutable primary key for every document.
+  \item \textbf{Directory Partitioning}: Documents are saved into CAO number folders (\nolinkurl{inputs/pdfs/input_pdfs/[CAO_NUMBER]/}). The pair \texttt{(cao\_number, filename)} serves as the immutable primary key for every document, with scraping logs preserved in \nolinkurl{extracted_cao_info.csv}.
 \end{itemize}
 
-\subsection{Stage 2: PDF Parsing and OCR (\texttt{p2\_extract.py})}
+\subsection{Substage 2: PDF Parsing and OCR (\texttt{p2\_extract.py})}
 \label{subsec:p2}
 
-PDF parsing uses a fallback hierarchy:
+PDF parsing in \nolinkurl{pipelines/p2_extract.py} uses a multi-method fallback hierarchy:
 \begin{enumerate}[leftmargin=1.5em]
   \item Direct digital text extraction via \texttt{pdfplumber} and \texttt{PyPDF2};
   \item Optical Character Recognition (OCR) via Tesseract for scanned image pages;
-  \item Emits cleaned Markdown and structural JSON representations to \texttt{outputs/parsed\_pdfs/[CAO\_NUMBER]/}.
+  \item Automated glyph and font repair, systematically resolving \texttt{/uniXXXX} and \texttt{/GXXX} font corruptions;
+  \item Emits cleaned Markdown and structural JSON representations to \nolinkurl{outputs/parsed_pdfs/[CAO_NUMBER]/}.
 \end{enumerate}
 
-\subsection{Stage 3: First-Pass LLM Extraction (\texttt{p3\_llmExtraction.py})}
+\subsection{Substage 3: First-Pass LLM Extraction (\texttt{p3\_llmExtraction.py})}
 \label{subsec:p3}
 
-Stage 3 invokes Google Gemini 2.5 Flash (\texttt{gemini-2.5-flash}) to extract text passages across 13 distinct thematic topics:
+Substage 3 invokes Google Gemini 2.5 Flash (\texttt{gemini-2.5-flash}) via \nolinkurl{pipelines/p3_llmExtraction.py} to extract text passages across 13 distinct thematic topics:
 \begin{itemize}[leftmargin=1.5em]
   \item General metadata, Wage scales, Pensions, Bonuses, Termination;
   \item Leave, Overtime, Training;
   \item Home office, Contract types, Workplace safety, Childcare, AI regulations.
 \end{itemize}
-The output is saved as a per-document JSON file under \texttt{outputs/llm\_extracted/new\_flow/[CAO\_NUMBER]/[FILE]\_extract.json}. Crucially, upstream prompts translate the original Dutch legal text into English during this pass, establishing the English-language baseline used in subsequent QA stages.
+The output is saved as a per-document JSON file under \nolinkurl{outputs/llm_extracted/new_flow/[CAO_NUMBER]/[FILE]_extract.json}. Crucially, upstream prompts translate the original Dutch legal text into English during this pass, establishing the English-language baseline used in subsequent QA stages.
 
-\paragraph{Deterministic Hyperparameters}
-To maximize stability and reproducibility across repeated calls, all LLM invocations enforce strict sampling parameters:
+\paragraph{Sampling Hyperparameters and the Retry Escalation Ladder}
+To maximize stability and reproducibility, the first attempt of every LLM invocation in \nolinkurl{pipelines/p3_llmExtraction.py} enforces strict sampling parameters via \texttt{ExtractionConfig}:
 \begin{verbatim}
-temperature = 0.0,  top_p = 0.1,  top_k = 1,  seed = 42,  max_tokens = 65536
+model = 'gemini-2.5-flash',  temperature = 0.0,  top_p = 0.1,  top_k = 1,
+seed = 42,  max_tokens = 65536,  candidate_count = 1
 \end{verbatim}
+With \texttt{presence\_penalty = 0}, \texttt{frequency\_penalty = 0}, and \texttt{thinking\_budget = -1}, these settings lock the model into a deterministic decoding regime on the first attempt. However, these parameters are not held fixed across retries.\footnote{\texttt{ExtractionConfig} allows up to \texttt{max\_retries = 8}, and \texttt{get\_adjusted\_parameters()} raises temperature and \texttt{top\_p} on later tries: the 4th try runs at \texttt{temperature = 0.1, top\_p = 0.2}, the 5th at \texttt{temperature = 0.2, top\_p = 0.3}, and the 6th and 8th tries switch to split salary/non-salary extraction (at the base and \texttt{+0.1} settings respectively) with per-half caching and a merge step. From the 3rd try onward, failure-aware guidance text is also appended to the prompt when the prior attempt was truncated or empty, so the prompt itself varies across retries. Transient API errors (503s, per-minute 429s) retry the same attempt index and so do not perturb parameters. Escalation only fires after a failed attempt, so the large majority of documents are extracted at \texttt{temperature = 0.0}; the attempt index and adjusted parameters used for each file are recorded in its log, keeping the escalated minority auditable.}
 
-\subsection{Stage 4: Schema-Enforced Analysis (\texttt{p4\_analysis.py})}
+\subsection{Substage 4: Schema-Enforced Analysis (\texttt{p4\_analysis.py})}
 \label{subsec:p4}
 
-Stage 4 validates and transforms the raw p3 topic passages into Pydantic models defined in \texttt{schema/non\_salary\_schema.py}:
+Substage 4 (\nolinkurl{pipelines/p4_analysis.py}) validates and transforms the raw p3 topic passages into Pydantic models defined in \nolinkurl{schema/non_salary_schema.py}:
 \begin{itemize}[leftmargin=1.5em]
   \item Non-salary fields are processed in three logical batches to manage context limits: (1) \texttt{gen\_bon\_wag\_pen\_ter}, (2) \texttt{lea\_ove\_tra}, and (3) \texttt{hom\_con\_saf\_chi\_ai\_fri}.
   \item A lock-file mechanism prevents race conditions during multi-process execution.
-  \item An exponential backoff retry ladder with error classification categorizes schema validation failures, token truncation errors, and API rate limits.
+  \item An exponential backoff retry ladder with error classification categorizes schema validation failures, token truncation errors, and API rate limits. As in Substage~3, this ladder escalates temperature and \texttt{top\_p} on later tries (+0.1/+0.2/+0.3 by the 3rd/4th/5th+ try, up to \texttt{max\_retries = 5}), so the deterministic settings above hold only for the first attempt.
 \end{itemize}
 
-\subsection{Stage 5: Excel and CSV Creation (\texttt{p5\_excel\_creation.py})}
+\paragraph{Architectural Pivot: Retirement of the Stochastic Salary Ladder}
+In the initial pipeline design, \nolinkurl{pipelines/p4_analysis.py} attempted to extract multi-tier salary grids using an LLM retry ladder spanning four schemas (\texttt{Salary\-Extraction\-Schema}, \texttt{Salary\-Extraction\-Schema\-Compact}, \texttt{Salary\-Extraction\-Schema\-Super\-Compact}, and \texttt{salary\_schema\_split.py}). Comprehensive auditing revealed a high ($\approx 20\%$) major-issue error rate. So, this salary extraction was entirely excised from \texttt{p4\_analysis.py} and migrated to the deterministic, rule-based parser in Substage~1b (\nolinkurl{salary_parser/deliver.py}). Substage~4 was retained strictly for non-salary domain schemas.
+
+\subsection{Substage 5: Excel and CSV Creation (\texttt{p5\_excel\_creation.py})}
 \label{subsec:p5}
 
-Stage 5 merges the validated JSON blocks with document metadata and dates from \texttt{extracted\_cao\_info.csv}, writing the initial flat tabular extracts to \texttt{outputs/excel/new\_results/extracted\_data\_non\_salary.csv}.
+Substage 5 (\nolinkurl{pipelines/p5_excel_creation.py}) merges the validated non-salary JSON blocks with document metadata and dates from \nolinkurl{extracted_cao_info.csv}, writing the flat tabular extracts to \nolinkurl{outputs/excel/new_results/extracted_data_non_salary.csv}.
 

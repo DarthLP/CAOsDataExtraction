@@ -1,0 +1,24 @@
+\section{Measurement Robustness: Contract Inception vs.\ Administrative Filing Dates}
+\label{app:date_quality}
+
+In our dataset, each contract episode records two distinct temporal markers:
+\begin{enumerate}
+    \item The substantive contract inception date (\texttt{general\_start\_date}), extracted directly from the legal preamble and effective-date clauses of the PDF text.
+    \item The administrative repository filing date (\texttt{ingangsdatum}), scraped from the Ministry of Social Affairs and Employment (SZW) collective agreement registration portal.
+\end{enumerate}
+
+Figure~\ref{fig:app_date_counts} plots the annual distribution of new contract episodes across both date conventions for all 22 calendar years in the corpus (2004--2026).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/non_salary_contract_counts_comparison.png}
+    \caption{Contract counts by start year: administrative repository filing date (\texttt{ingangsdatum}) vs.\ text-extracted start date (\texttt{general\_start\_date}).}
+    \label{fig:app_date_counts}
+\end{figure}
+
+The two series demonstrate near-perfect concordance across the entire history of the pipeline. As documented in Table~\ref{tab:general_summary} in the main text:
+\begin{itemize}
+    \item All \GenTotalContracts\ ingested documents observe \texttt{ingangsdatum}, and \GenBothDatesCount\ observe both dates (only 8 contracts lack an explicit text-grounded start date).
+    \item Exactly \GenExactDateMatch\ of contracts exhibit an exact zero-day difference between portal registration and substantive PDF inception.
+    \item Only \GenDateDiffGtThirty\ of contracts (50 documents out of 2,731) exhibit a discrepancy exceeding 30 days.
+\end{itemize}

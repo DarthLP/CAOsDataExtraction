@@ -1,0 +1,74 @@
+\section{Wage Measurement Robustness: Parallel Increase Series and Aggregation Schemes}
+\label{app:salary_robustness}
+
+To verify that findings regarding wage levels and wage inflation are not driven by idiosyncratic aggregation or measurement conventions, our deterministic salary parser evaluates wage dynamics across multiple parallel methodologies.
+
+\subsection*{Alternative wage level perspectives: Contract cohort vs.\ prevailing stock}
+
+In the main text, Figure~\ref{fig:avg_salary_level} documents normalized monthly salary levels by effective salary start year. Figure~\ref{fig:app_avg_salary_level_contract_year} evaluates the same CAO-equal-weighted sample organized by \textbf{contract start year} (the year the agreement was formally signed), while Figure~\ref{fig:app_avg_salary_level_latest} displays the \textbf{active in-force stock} across calendar time.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/salary/salary_amount_monthly_eur_band_eligible_by_contract_year.png}
+    \caption{Whisker plot of the average monthly salary by contract start year (CAO-equal-weighted blue line).}
+    \label{fig:app_avg_salary_level_contract_year}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/salary/salary_amount_monthly_eur_band_eligible_by_contract_year_latest_cao_view.png}
+    \caption{Whisker plot of average monthly salary by calendar year in the active in-force stock (CAO-equal-weighted blue line).}
+    \label{fig:app_avg_salary_level_latest}
+\end{figure}
+
+The contract-year perspective in Figure~\ref{fig:app_avg_salary_level_contract_year} demonstrates that median salary levels closely track mean levels throughout the 2010s, while the interquartile spread widens substantially following 2022. The active in-force stock in Figure~\ref{fig:app_avg_salary_level_latest} provides a smoother progression, mitigating end-of-sample boundary noise by carrying forward prevailing wage grids until formally replaced.
+
+\subsection*{Comparison of wage increase methodologies: Diff only vs.\ CSV only vs.\ Merged}
+
+The pipeline computes general wage increases using three distinct parallel series:
+\begin{enumerate}
+    \item \textbf{Textual Clauses (CSV Only)}: Headline percentage adjustments explicitly stated in the collective agreement text or salary table headers.
+    \item \textbf{Mechanical Step Differences (Diff Only)}: Percentage adjustments calculated directly between consecutive temporal grid steps within the same jobgroup-step trajectory.
+    \item \textbf{Merged Series (Prefers CSV)}: Prioritizes textual contractual mentions when available, falling back to mechanical grid differences otherwise.
+\end{enumerate}
+
+Figure~\ref{fig:app_salary_increase_comparison} charts the three parallel series side-by-side across salary start years from 2008 to 2026.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/salary/salary_increase_series_comparison_by_year.png}
+    \caption{Comparison of wage increase series by salary start year across Diff only, CSV only, and Merged.}
+    \label{fig:app_salary_increase_comparison}
+\end{figure}
+
+Table~\ref{tab:diff_vs_csv_audit} summarizes the formal audit across 192,976 comparison pairs in \nolinkurl{outputs/analysis/salary_increase_csv_vs_diff_comparison.csv}.
+
+\begin{table}[H]
+    \centering
+    \caption{Formal concordance audit between CSV-textual and Diff-calculated wage increases}
+    \label{tab:diff_vs_csv_audit}
+    \begin{tabular}{lc}
+        \hline\hline
+        Metric & Value \\
+        \hline
+        Total Comparison Pairs ($N$) & 192,976 \\
+        Mean Wage Increase (CSV Only) & 1.827\% \\
+        Mean Wage Increase (Diff Only) & 1.823\% \\
+        Mean Wage Increase (Merged Series) & 1.827\% \\
+        Decade Average, 2010--2019 (All Series) & 1.50\% \\
+        Peak Average Wage Increase, 2024 (All Series) & 4.30\% \\
+        Median Absolute Difference & 0.0041 percentage points \\
+        Concordance within $\le 0.10$ percentage points & 93.47\% \\
+        Concordance within $\le 0.50$ percentage points & 94.45\% \\
+        \hline\hline
+    \end{tabular}
+    \vspace{1ex}
+    \parbox{\linewidth}{\footnotesize \textit{Note:} Evaluated on all valid pairwise step observations where both textual and calculated adjustments are observed. Differences stem primarily from progressive \emph{cent-en-procenten} formulas and table euro-cent rounding.}
+\end{table}
+
+The small fraction of observations ($\approx$6.5\%) where Diff and CSV diverge by more than 0.10 percentage points are driven by three distinct institutional and mathematical factors:
+\begin{itemize}
+    \item When social partners agree to e.g.\ ``EUR~100 per month plus 2\%'', the CSV series records the uniform headline percentage (2.0\%), whereas the Diff series calculates the realized percentage adjustment for each pay grade. Because a flat EUR~100 boost represents a larger percentage increase for entry grades than for senior managerial scales, Diff accurately registers scale-dependent variance that textual headlines mask.
+    \item Physical wage grids frequently round monthly pay to nearest whole euros or 50-cent increments, creating minor mechanical rounding discrepancies in computed percentage ratios.
+    \item Bigger increases are often wage specific and not uniformly applied across all jobgroups, so the Diff series captures the realized average increase across the entire grid, while the CSV series records only the headline percentage for the most common jobgroup.
+\end{itemize}

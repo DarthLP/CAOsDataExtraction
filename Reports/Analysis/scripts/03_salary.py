@@ -196,28 +196,70 @@ def compute_coverage_and_flag_stats(csv_path: Path) -> dict:
 
 
 def compute_points_per_row_stats(csv_path: Path) -> dict:
-    """Range of the (contract-start-year) median count of populated salary slots per row."""
+    """Range of the CAO-equal-weighted median count of band-eligible salary points per row,
+    by contract start year, restricted to mature years (>=10 distinct CAOs, same convention
+    as compute_coverage_and_flag_stats).
+
+    Mirrors plot_salary_points_per_row_by_year's weighted-median line exactly (band-eligible
+    slots via enrich_long_salary_with_monthly_and_band + count_band_eligible_slots_per_wide_row,
+    CAO-equal weights) -- unlike the earlier version, which counted raw positive amounts,
+    unweighted, gated by a mislabeled row-count threshold.
+    """
     amount_cols = [f"salary_{k}_amount" for k in range(1, N_SALARY_SLOTS + 1)]
-    cols = ["confidence_tier", "ingangsdatum"] + amount_cols
+    unit_cols = [f"salary_{k}_unit" for k in range(1, N_SALARY_SLOTS + 1)]
+    start_cols = [f"salary_{k}_start_date" for k in range(1, N_SALARY_SLOTS + 1)]
+    hb_cols = [f"salary_{k}_hours_basis_ft_week" for k in range(1, N_SALARY_SLOTS + 1)]
+    cols = (
+        ["confidence_tier", "cao_number", "ingangsdatum", "ft_hours"]
+        + amount_cols + unit_cols + start_cols + hb_cols
+    )
     df = pd.read_csv(csv_path, sep=";", usecols=cols, low_memory=False)
     df = df[df["confidence_tier"].isin(["A", "B"])].reset_index(drop=True)
     df["contract_start_year"] = parse_cao_date_series(df["ingangsdatum"], dayfirst=True).dt.year
 
-    amounts_numeric = df[amount_cols].apply(lambda s: s.map(coerce_salary_amount_scalar))
-    df["n_points"] = (amounts_numeric > 0).sum(axis=1)
+    # Mature-year gate -- identical convention to compute_coverage_and_flag_stats, computed
+    # on the full tier A/B population (not the band-eligible subset below).
+    by_year = df.dropna(subset=["contract_start_year"])
+    caos_per_year = by_year.groupby("contract_start_year")["cao_number"].nunique()
+    mature_years = set(caos_per_year[caos_per_year >= 10].index)
 
-    df_valid = df.dropna(subset=["contract_start_year"])
-    df_valid = df_valid[df_valid["n_points"] > 0]
-    n_caos_col = df_valid.groupby("contract_start_year")["n_points"].count()
-    mature_years = n_caos_col[n_caos_col >= 30].index
-    median_by_year = df_valid[df_valid["contract_start_year"].isin(mature_years)].groupby(
-        "contract_start_year"
-    )["n_points"].median()
+    import scripts.excel_analysis.descriptives_salary_plots as dsp
+    from scripts.excel_analysis.salary_eligibility_diagnostics import count_band_eligible_slots_per_wide_row
+    from scripts.excel_analysis.salary_plot_cohort_utils import attach_cao_equal_weights, weighted_quantile
+    from scripts.excel_analysis.analysis_utils import wide_row_has_any_positive_salary_amount
+
+    df_long = dsp.build_long_salary_df(df)
+    enriched = dsp.enrich_long_salary_with_monthly_and_band(df_long) if len(df_long) else df_long
+    counts = count_band_eligible_slots_per_wide_row(enriched)
+    n_band = np.zeros(len(df), dtype=np.float64)
+    for rid, c in counts.items():
+        ri = int(rid)
+        if 0 <= ri < len(n_band):
+            n_band[ri] = float(c)
+
+    idx = np.flatnonzero(wide_row_has_any_positive_salary_amount(df).to_numpy())
+    df_plot = df.iloc[idx].copy().reset_index(drop=True)
+    df_plot["n_salary_points_per_row"] = n_band[idx]
+    df_filtered = df_plot[
+        df_plot["contract_start_year"].notna()
+        & df_plot["n_salary_points_per_row"].notna()
+        & df_plot["contract_start_year"].isin(mature_years)
+    ].copy()
+
+    if len(df_filtered) == 0:
+        return {"points_median_min": 0.0, "points_median_max": 0.0}
+
+    df_w = attach_cao_equal_weights(df_filtered, "cao_number", "contract_start_year")
+    med_by_year = {}
+    for y, sub in df_w.groupby("contract_start_year"):
+        xv = sub["n_salary_points_per_row"].to_numpy(dtype=float)
+        wv = sub["cao_weight"].to_numpy(dtype=float)
+        med_by_year[int(y)] = weighted_quantile(xv, wv, 0.5)
+    med_series = pd.Series(med_by_year)
 
     return {
-        "points_median_min": median_by_year.min() if len(median_by_year) else 0.0,
-        "points_median_max": median_by_year.max() if len(median_by_year) else 0.0,
-        "points_mean": df_valid["n_points"].mean() if len(df_valid) else 0.0,
+        "points_median_min": med_series.min() if len(med_series) else 0.0,
+        "points_median_max": med_series.max() if len(med_series) else 0.0,
     }
 
 
@@ -257,23 +299,31 @@ def _monthly_eur_for_slot(df: pd.DataFrame, k: int) -> pd.DataFrame:
 def compute_salary_level_and_increase_stats(csv_path: Path) -> dict:
     """Salary-year and contract-year level anchors, and wage-increase-by-decade anchors.
 
-    Independent unweighted reconstruction of the conversion rule already documented in
-    Salary.tex (monthly-EUR normalization + EUR 50,000 cap). This is a flat average over
-    every tier A+B wage-scale row -- NOT the CAO-equal-weighted, band-eligible series the
-    figures plot (descriptives_salary_plots.py's attach_cao_equal_weights). Verified the two
-    are materially different for salary LEVELS (this flat mean runs ~50% above the figure's
-    CAO-balanced line, since a CAO's senior wage steps outnumber its entry steps in the raw
-    row count) -- Salary.tex explicitly labels these as a separate unweighted statistic, not
-    a description of the plotted line. For wage INCREASE percentages the two track much more
-    closely (a % raise is roughly step-invariant), so no such caveat was needed there.
+    Salary LEVELS: independent unweighted reconstruction of the conversion rule already
+    documented in Salary.tex (monthly-EUR normalization + EUR 50,000 cap). This is a flat
+    average over every tier A+B wage-scale row -- NOT the CAO-equal-weighted, band-eligible
+    series the figures plot (descriptives_salary_plots.py's attach_cao_equal_weights).
+    Verified the two are materially different for salary LEVELS (this flat mean runs a few
+    points to ~20% above the figure's CAO-balanced line depending on year, widening to
+    ~7-12% in and after 2022-2023, since a CAO's senior wage steps outnumber its entry steps
+    in the raw row count) -- Salary.tex explicitly labels these as a separate unweighted
+    statistic, not a description of the plotted line.
+
+    Wage INCREASE percent: unlike the level stats above, this DOES reproduce Figure 19
+    exactly -- derive_salary_increase_series's merged+diff-fallback series, deduped to the
+    newest file per (CAO, salary_start_year), band-eligible only, CAO-equal-weighted. An
+    earlier version used a flat unweighted reconstruction from the raw textual-percent
+    column only (no diff fallback, no dedup, no band filter); that was a real bug, not an
+    accepted approximation like the level stats above.
     """
     amount_cols = [f"salary_{k}_amount" for k in range(1, N_SALARY_SLOTS + 1)]
     unit_cols = [f"salary_{k}_unit" for k in range(1, N_SALARY_SLOTS + 1)]
     start_cols = [f"salary_{k}_start_date" for k in range(1, N_SALARY_SLOTS + 1)]
     incr_cols = [f"salary_{k}_increase_percent" for k in range(1, N_SALARY_SLOTS + 1)]
+    hb_cols = [f"salary_{k}_hours_basis_ft_week" for k in range(1, N_SALARY_SLOTS + 1)]
     cols = (
-        ["cao_number", "confidence_tier", "ingangsdatum", "ft_hours"]
-        + amount_cols + unit_cols + start_cols + incr_cols
+        ["cao_number", "confidence_tier", "ingangsdatum", "ft_hours", "file_name"]
+        + amount_cols + unit_cols + start_cols + incr_cols + hb_cols
     )
     df = pd.read_csv(csv_path, sep=";", usecols=cols, low_memory=False)
     df = df[df["confidence_tier"].isin(["A", "B"])].reset_index(drop=True)
@@ -283,14 +333,10 @@ def compute_salary_level_and_increase_stats(csv_path: Path) -> dict:
     for k in range(1, N_SALARY_SLOTS + 1):
         monthly = _monthly_eur_for_slot(df, k)
         salary_year = parse_cao_date_series(df[f"salary_{k}_start_date"], dayfirst=True).dt.year
-        incr = pd.to_numeric(
-            df[f"salary_{k}_increase_percent"].astype(str).str.replace(",", "."), errors="coerce"
-        )
         long_frames.append(pd.DataFrame({
             "contract_start_year": df["contract_start_year"],
             "salary_start_year": salary_year,
             "monthly_eur": monthly,
-            "increase_pct": incr,
         }))
     df_long = pd.concat(long_frames, ignore_index=True)
 
@@ -302,12 +348,52 @@ def compute_salary_level_and_increase_stats(csv_path: Path) -> dict:
     by_contract_year["contract_start_year"] = by_contract_year["contract_start_year"].astype(int)
     level_by_contract_year = by_contract_year.groupby("contract_start_year")["monthly_eur"].mean()
 
-    incr_by_year = df_long.dropna(subset=["salary_start_year", "increase_pct"]).copy()
-    incr_by_year["salary_start_year"] = incr_by_year["salary_start_year"].astype(int)
-    incr_yearly_mean = incr_by_year.groupby("salary_start_year")["increase_pct"].mean()
+    # Wage-increase percent: reuse the real merged+diff-fallback series and the same
+    # CAO-equal-weighted / deduped / band-eligible population Figure 19 plots, instead of an
+    # unweighted reconstruction from the raw textual-percent column only.
+    from scripts.excel_analysis.salary_increase_derivation import derive_salary_increase_series
+    from scripts.excel_analysis.salary_plot_cohort_utils import (
+        attach_cao_equal_weights,
+        filter_newest_file_overlap_salary_start_year,
+    )
+
+    increase_events = derive_salary_increase_series(df)["events"]
+    INCR_COL = "increase_merged_pref_csv"
+    req_cols = {"analysis_monthly_band_ok", "cao_number", "salary_start_year", "ingangsdatum", "file_name"}
+    incr_yearly_mean = pd.Series(dtype=float)
+    n_caos_by_incr_year: dict = {}
+    if len(increase_events) and req_cols.issubset(increase_events.columns) and INCR_COL in increase_events.columns:
+        d = increase_events[
+            increase_events[INCR_COL].notna()
+            & increase_events["salary_start_year"].notna()
+            & increase_events["analysis_monthly_band_ok"].fillna(False)
+        ].copy()
+        d["salary_start_year"] = pd.to_numeric(d["salary_start_year"], errors="coerce")
+        d[INCR_COL] = pd.to_numeric(d[INCR_COL], errors="coerce")
+        d = d[d["salary_start_year"].notna() & d[INCR_COL].notna()]
+        d = filter_newest_file_overlap_salary_start_year(d)
+        d = attach_cao_equal_weights(d, "cao_number", "salary_start_year")
+        d["salary_start_year"] = d["salary_start_year"].astype(int)
+
+        yearly = {}
+        for y, sub in d.groupby("salary_start_year"):
+            xv = sub[INCR_COL].to_numpy(dtype=float)
+            wv = sub["cao_weight"].to_numpy(dtype=float)
+            okm = np.isfinite(xv) & np.isfinite(wv) & (wv > 0)
+            if okm.any():
+                yearly[y] = float(np.average(xv[okm], weights=wv[okm]))
+        incr_yearly_mean = pd.Series(yearly).sort_index()
+        n_caos_by_incr_year = d.groupby("salary_start_year")["cao_number"].nunique().to_dict()
 
     decade_years = [y for y in incr_yearly_mean.index if 2010 <= y <= 2019]
-    recent_years = [y for y in incr_yearly_mean.index if y >= 2020]
+    # Mature-year gate on the peak search (>=10 distinct CAOs, same convention as
+    # compute_coverage_and_flag_stats) -- guards against a spurious peak from a thin or
+    # right-censored recent year (Salary.tex already documents 2025-2026 right-censoring
+    # for the level series).
+    recent_years = [
+        y for y in incr_yearly_mean.index
+        if y >= 2020 and n_caos_by_incr_year.get(y, 0) >= 10
+    ]
     decade_avg = incr_yearly_mean.loc[decade_years].mean() if decade_years else np.nan
     peak_year = int(incr_yearly_mean.loc[recent_years].idxmax()) if recent_years else None
     peak_val = incr_yearly_mean.loc[recent_years].max() if recent_years else np.nan
@@ -413,19 +499,6 @@ def main():
 
     set_macro("SalPointsPerRowLow", f"{points_stats['points_median_min']:.1f}")
     set_macro("SalPointsPerRowHigh", f"{points_stats['points_median_max']:.1f}")
-
-    def fmt_eur(x):
-        return f"EUR~{int(round(x)):,}" if pd.notna(x) else "n/a"
-
-    set_macro("SalLevelSalaryYearEarly", fmt_eur(level_stats["salary_level_early_eur"]))
-    set_macro("SalLevelSalaryYearLate", fmt_eur(level_stats["salary_level_late_eur"]))
-    set_macro("SalLevelSalaryYearRecent", fmt_eur(level_stats["salary_level_recent_eur"]))
-    set_macro("SalLevelContractYearEarly", fmt_eur(level_stats["contract_level_early_eur"]))
-    set_macro("SalLevelContractYearEarlyYear", str(level_stats["contract_level_early_year"]))
-    set_macro("SalLevelContractYearLate", fmt_eur(level_stats["contract_level_late_eur"]))
-    set_macro("SalLevelContractYearLateYear", str(level_stats["contract_level_late_year"]))
-    set_macro("SalLevelContractYearLatest", fmt_eur(level_stats["contract_level_latest_eur"]))
-    set_macro("SalLevelContractYearLatestYear", str(level_stats["contract_level_latest_year"]))
 
     if pd.notna(level_stats["increase_decade_avg_pct"]):
         set_macro("SalIncreaseDecadeAvg", f"{level_stats['increase_decade_avg_pct']:.1f}\\%")

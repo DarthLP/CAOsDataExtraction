@@ -1,0 +1,41 @@
+\section*{1. General}
+\label{sec:general}
+
+\subsection*{Sample coverage, observation units, and temporal evolution}
+
+Our primary dataset comprises \GenTotalContracts\ collective agreement documents (PDFs), representing \GenUniqueCAOs\ distinct collective bargaining agreements (CAOs). In terms of institutional scope, \GenShareSectoral\ of contract episodes are industry-wide sectoral agreements (\emph{bedrijfstak-cao's}), while the remainder represent single-employer enterprise agreements (\emph{ondernemings-cao's}).
+
+We distinguish between two distinct temporal units of observation: the \textbf{contract episode flow} (newly negotiated agreements enacted in a given start year) and the \textbf{active in-force stock} (the number of legally binding agreements prevailing in a given month or year: each CAO's most recently filed edition governs until a newer one replaces it).
+
+To verify date integrity, contract commencement dates extracted from PDF text were audited against the administrative filing dates on the repository portal (\texttt{ingangsdatum}). As reported in Table~\ref{tab:general_summary}, all \GenTotalContracts\ contracts record an administrative \texttt{ingangsdatum}, and \GenBothDatesCount\ observe both dates. Exactly \GenExactDateMatch\ of contracts exhibit an exact zero-day match, and only \GenDateDiffGtThirty\ differ by more than 30 days, confirming that administrative filing lags do not distort cohort assignment. (A full dual-series comparison of annual contract counts by date source is detailed in Appendix~\ref{app:date_quality}, Figure~\ref{fig:app_date_counts}.) 
+
+Lastly, to establish the core analytical sample, raw PDF files are screened by document type. Excluding non-full agreements (partial wage amendments, annexes, procedural supplements, and protocols) leaves \GenFullCAOCount\ full CAO documents. This filtered corpus forms the canonical basis for the Generosity Indices ($N = 2,698$).
+
+\begin{table}[H]
+    \centering
+    \caption{Key descriptive statistics for the general CAO dataset}
+    \label{tab:general_summary}
+    \input{tables/tab_general_summary}
+\end{table}
+
+\subsection*{Institutional governance: Extension, flexibility, and retroactivity}
+
+Dutch collective bargaining agreements operate within a distinct statutory architecture established under Book~7, Title~10 of the Dutch Civil Code (\emph{Burgerlijk Wetboek}, BW). While statutory employment law establishes protective baselines, key articles operate as semi-mandatory law (\emph{driekwartdwingend recht}): individual employment contracts cannot undercut statutory standards, but representative social partners are legally empowered to negotiate deviations via collective agreements.
+
+Figure~\ref{fig:provisions_panel} charts the evolution of key institutional features across contract-episode cohorts:
+
+\begin{enumerate}
+    \item \textbf{Sectoral Extension (AVV)}: Approximately \GenShareAvv\ of all contract episodes are declared universally binding (\emph{algemeen verbindend verklaard}, AVV) by the Minister of Social Affairs and Employment under the Act on Universally Binding Declarations (\emph{Wet AVV 1937}). Universally binding declarations extend agreed wage floors and working conditions to all unorganized employers and non-union workers within that designated sector.
+    \item \textbf{Company-Level Deviation}: Dutch sectoral CAOs often operate partly as framework agreements, allowing companies to elaborate certain arrangements at the firm level. Some also provide procedures through which employers can request dispensation from specific provisions, subject to applicable conditions and safeguards.
+    \item \textbf{Retroactivity and Backpay}: Collective bargaining rounds in the Netherlands frequently extend beyond the legal expiration of the predecessor agreement, creating an uncontracted interim period (\emph{cao-loze periode}). Although expired terms exert statutory after-effects (\emph{nawerking}), approximately \GenShareRetro\ of contracts apply retroactively to bridge negotiation delays. Among retroactive agreements, \GenShareBackpayCond\ explicitly mandate some kind of retroactive backpay (\emph{nabetaling}) to compensate workers for delayed wage increases, with a median retroactivity window of \GenMedianRetroDays\ days.
+    \item \textbf{Interim Amendments (TTW)}: Interim amendments (\emph{tussentijdse wijzigingen}, TTW) permit social partners to update specific clauses—most commonly salary tables, inflation adjustments, or statutory compliance updates—mid-contract without terminating or renegotiating the underlying multi-year agreement.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/new_cao_yearly/non_salary_boolean_general.png}
+    \caption{General CAO provisions by start year — Contract-episode panel}
+    \label{fig:provisions_panel}
+\end{figure}
+
+While Figure~\ref{fig:provisions_panel} tracks the dynamic bargaining decisions of each annual contracting cohort, an alternative cumulative perspective (evaluating the latest observed contract for each active CAO) is provided in Appendix~\ref{app:latest_cao_view} (Figure~\ref{fig:app_provisions_latest}).

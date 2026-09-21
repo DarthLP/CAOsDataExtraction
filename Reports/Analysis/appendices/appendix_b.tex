@@ -1,0 +1,78 @@
+\section[Agreement Dynamics: Prevailing In-Force Stock and Non-Salary Trajectories]{Agreement Dynamics: Prevailing In-Force Stock and\\ Non-Salary Trajectories}
+\label{app:latest_cao_view}
+\label{app:non_salary_robustness}
+
+We differ between \textbf{contract flows} (the terms negotiated by annual signing cohorts) and \textbf{prevailing in-force stock} (the active legal terms governing employment across sectors in a given calendar year). 
+
+\subsection*{Cross-chapter sample reconciliation: why chapter sample sizes differ}
+
+Different chapters' can reflect a different \textbf{unit of observation}---a newly signed contract, a CAO legally in force, a document admitted to the scoring pipeline, or a wage table successfully parsed---and these mechanically diverge because Dutch CAOs run multiple months or years. So, a single multi-year contract sits in the ``in-force stock'' for several calendar years while generating a ``flow'' event in only one of them.
+
+Table~\ref{tab:app_reconciliation_2018} makes this concrete for a single arbitrarily chosen calendar year, \textbf{2018}.
+
+\begin{table}[H]
+    \centering
+    \caption{Cross-chapter sample reconciliation for calendar year 2018}
+    \label{tab:app_reconciliation_2018}
+    \footnotesize
+    \begin{tabular}{p{2.5cm}p{2.3cm}cp{1.8cm}p{5.5cm}}
+        \hline\hline
+        Domain / Chapter & Metric Description & 2018 Count & Unit of Obs. & Construction Filter \& Reconciliation Rationale \\
+        \hline
+        \textbf{General: Contract Inceptions} & New Contract Starts (PDF Date) & 167 & Contract PDF & Filter: \nolinkurl{general_start_date} year == 2018. Measures bargaining flow of newly enacted agreements. \\
+        \textbf{General: Scraped Filings} & Portal Registration Starts (Web Date) & 163 & Contract PDF & Filter: \nolinkurl{ingangsdatum} year == 2018. Differs by 4 contracts with portal filing lags $>30$ days relative to text start. \\
+        \textbf{General: Signing Entities} & Active Bargaining CAOs & 82 & Distinct CAO & Filter: Distinct CAOs with $\ge 1$ contract starting in 2018. Measures flow of distinct signing parties (multiple PDFs per CAO). \\
+        \textbf{General: Scraped Entities} & Distinct Filing CAOs & 83 & Distinct CAO & Filter: Distinct CAOs with portal filing in 2018; 1 CAO filed in 2018 had a late-2017 text inception date. \\
+        \textbf{General: Cumulative Stock} & Cumulative Observed CAOs & 224 & Cumulative CAOs & Filter: Cumulative unique CAOs entering corpus between 2008 and 2018. Captures database coverage expansion over time. \\
+        \textbf{Indices: Active Legal Stock} & In-Force Stock (Dec 2018) & 217 & Active CAO Entity & Filter: Full-CAO agreements legally in force in 2018-12 (\nolinkurl{n_caos_in_month} in monthly panel; 205 in Dec 31 snapshot). Multi-year contracts remain active; stock $\gg$ flow. \\
+        \textbf{Indices: Scored Filings} & Publication Year Intake & 190 & Scored Document & Filter: Documents published or notified in 2018 (\nolinkurl{file_date} in \nolinkurl{composite_index.csv}, 112 unique CAOs); includes interim accords. \\
+        \textbf{Salary: Deterministic Parser} & Parsed Starting Contracts & 74 & Distinct CAO & Filter: High-confidence Tiers~A+B starting in 2018 (136 files, 20,664 rows). Sectoral CAOs without tables or delegating pay are excluded. \\
+        \textbf{Wage Indices Panel} & Prevailing Wage Ladders & 134 & CAO $\times$ Year & Filter: Active wage ladders governing employment in 2018 in \nolinkurl{mw_indices.csv} (including multi-year grids from prior years). \\
+        \hline\hline
+    \end{tabular}
+    \vspace{1ex}
+    \parbox{\linewidth}{\footnotesize \textit{Note:} 2018 is illustrative only, not a distinguished year. Flow-based rows count discrete bargaining/filing events occurring in 2018 (contract starts, portal filings, distinct signing/filing CAOs). Stock-based rows count agreements applicable, or CAOs observed, as of a point in 2018, including multi-year contracts signed earlier (in-force stock, cumulative corpus coverage). Pipeline-specific rows additionally apply each chapter's own inclusion filter (e.g., requiring a machine-parsed wage table). There is no single ``correct'' 2018 sample size---the right denominator depends on the question being asked.}
+\end{table}
+
+
+\subsection*{Active in-force stock vs.\ contracting flow}
+
+Figure~\ref{fig:app_provisions_latest} presents the active in-force stock perspective for general institutional provisions: for each calendar year, every CAO's most recently filed edition as of that year governs, so the number of CAOs represented grows from the database's earliest coverage up to all \GenUniqueCAOs\ CAOs by the end of the panel. This growth reflects the corpus's own coverage expansion (Table~\ref{tab:app_reconciliation_2018}, ``Cumulative Stock'' row) rather than growth in the underlying Dutch CAO population.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_general.png}
+    \caption{General CAO provisions across calendar years: active in-force stock (up to $N = \GenUniqueCAOs$ CAOs by the end of the panel).}
+    \label{fig:app_provisions_latest}
+\end{figure}
+
+Comparing Figure~\ref{fig:app_provisions_latest} with the contract-episode panel in the main text (Figure~\ref{fig:provisions_panel}) highlights two key institutional findings:
+\begin{enumerate}
+    \item \textbf{Decentralization Flexibility as a Structural Invariant}: In the contract-episode flow, company-level deviation clauses fluctuate between \GenDevShareMin\ and \GenDevShareMax\ across cohorts. In the stock view, the prevalence of deviation clauses stabilizes smoothly above 90\%.
+    \item \textbf{Persistent Public Extension (AVV)}: Universally binding extension covers approximately 25\% to 30\% of active CAO entities throughout the 2010s and 2020s, ensuring that agreed sectoral wage floors and working standards legally bind non-signatory employers across major industries.
+\end{enumerate}
+
+Figure~\ref{fig:app_non_salary_overview} traces multi-domain coverage trajectories across all 12 non-salary domains in the active in-force stock from 2011 to 2024.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_overview.png}
+    \caption{Multi-domain coverage trajectories across all 12 non-salary domains (active in-force stock).}
+    \label{fig:app_non_salary_overview}
+\end{figure}
+
+To complement the discrete coverage indicators, Figure~\ref{fig:app_leave_numeric} documents longitudinal trajectories for continuous leave and sick-pay parameters.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/numeric/non_salary_numeric_leave_trends_latest_cao_view.png}
+    \caption{Non-salary numeric leave trends: vacation days, sick pay duration, and wage continuation percentage (active in-force stock).}
+    \label{fig:app_leave_numeric}
+\end{figure}
+
+The numeric parameters exhibit remarkable institutional stability:
+\begin{itemize}
+    \item \textbf{Annual Vacation Entitlements}: Contractual paid vacation days cluster tightly around 25 working days per year (5 full workweeks), providing an extra full week of paid leisure beyond the statutory minimum of 20 days (4 weeks) mandated under Article~7:634 BW.
+    \item \textbf{Sick Pay Duration}: Contractual sick pay duration aligns universally with the statutory 104-week (two-year) wage continuation ceiling established under Article~7:629 BW.
+    \item \textbf{Wage Continuation Rates}: In the first 52 weeks of illness, collective agreements overwhelmingly top up statutory sick pay from the legal minimum of 70\% to 100\% of earnings across all mature cohorts.
+\end{itemize}

@@ -3,13 +3,10 @@
 
 Inputs:
     - qa/corrected_dataset.csv (canonical corrected data)
-    - CAOsDataExtraction/performance_logs/llm_analysis/max_tokens_truncated_4/
-      (the current truncated-extraction folder; folders _1/_2/_3 are superseded funnel stages)
 
 Outputs:
     - Reports/Analysis/figures/non_salary_contract_counts_comparison.png
     - Reports/Analysis/tables/tab_general_summary.tex
-    - Reports/Analysis/tables/tab_truncation_concentration.tex
     - Emits macros into Reports/Analysis/tables/macros.tex
 """
 
@@ -19,7 +16,6 @@ import os
 import re
 import sys
 from pathlib import Path
-from collections import Counter
 import pandas as pd
 import numpy as np
 
@@ -49,7 +45,6 @@ from scripts.excel_analysis.descriptives_non_salary_plots import (
     plot_contract_counts_comparison,
 )
 
-TRUNCATED_FILES_DIR = CAOS_REPO_ROOT / "performance_logs" / "llm_analysis" / "max_tokens_truncated_4"
 STABLE_WINDOW_START = 2011  # after the 2008-2010 ramp-up
 STABLE_WINDOW_END = 2023    # before the 2024 peak and 2025-2026 right-censoring
 
@@ -123,14 +118,9 @@ def compute_general_stats(df: pd.DataFrame) -> dict:
         raise KeyError("general_dev_company_level column missing from corrected dataset")
     dev_bool = normalize_boolean(df["general_dev_company_level"])
 
-    if "TTW" not in df.columns:
-        raise KeyError("TTW column missing from corrected dataset")
-    ttw_bool = normalize_boolean(df["TTW"])
-
     year = d_web.dt.year
     window_mask = year.between(STABLE_WINDOW_START, STABLE_WINDOW_END)
     dev_by_year = (dev_bool[window_mask] == True).groupby(year[window_mask]).mean()
-    ttw_by_year = (ttw_bool[window_mask] == True).groupby(year[window_mask]).mean()
 
     return {
         "n_total": n_total,
@@ -148,51 +138,7 @@ def compute_general_stats(df: pd.DataFrame) -> dict:
         "share_avv": share_avv,
         "dev_share_min": dev_by_year.min() if len(dev_by_year) else 0.0,
         "dev_share_max": dev_by_year.max() if len(dev_by_year) else 0.0,
-        "ttw_share_max": ttw_by_year.max() if len(ttw_by_year) else 0.0,
     }
-
-
-def compute_peak_and_stable_range(df: pd.DataFrame) -> dict:
-    """Peak contract-count year (PDF start date) and the stable-window count range."""
-    d_pdf = pd.to_datetime(df["general_start_date"], errors='coerce')
-    year = d_pdf.dt.year.dropna().astype(int)
-    counts_by_year = year.value_counts().sort_index()
-
-    peak_year = int(counts_by_year.idxmax())
-    peak_count = int(counts_by_year.max())
-
-    window = counts_by_year[(counts_by_year.index >= STABLE_WINDOW_START) & (counts_by_year.index <= STABLE_WINDOW_END)]
-    return {
-        "peak_year": peak_year,
-        "peak_count": peak_count,
-        "stable_low": int(window.min()) if len(window) else 0,
-        "stable_high": int(window.max()) if len(window) else 0,
-    }
-
-
-def compute_truncation_stats() -> tuple[dict, pd.DataFrame]:
-    """Count truncated-extraction files and per-CAO concentration from the current
-    (folder-4) truncated-files set. Folders _1/_2/_3 are earlier, superseded funnel stages.
-    """
-    if not TRUNCATED_FILES_DIR.exists():
-        raise FileNotFoundError(f"Truncated-files folder not found: {TRUNCATED_FILES_DIR}")
-
-    filenames = [f.name for f in TRUNCATED_FILES_DIR.iterdir() if f.is_file()]
-    cao_numbers = []
-    for fn in filenames:
-        m = re.match(r"^(\d+)_", fn)
-        if m:
-            cao_numbers.append(m.group(1))
-
-    n_files = len(filenames)
-    n_caos = len(set(cao_numbers))
-    counts = Counter(cao_numbers)
-    top5 = counts.most_common(5)
-
-    df_top5 = pd.DataFrame(
-        [{"CAO Number": cao, "Truncated Files": n} for cao, n in top5]
-    )
-    return {"n_files": n_files, "n_caos": n_caos, "top5": top5}, df_top5
 
 
 def main():
@@ -210,15 +156,7 @@ def main():
     print("Computing general stats...")
     gen_stats = compute_general_stats(df_corr)
 
-    # 2. Peak / stable-range contract counts
-    print("Computing peak and stable contract-count range...")
-    peak_stats = compute_peak_and_stable_range(df_corr)
-
-    # 3. Truncation stats
-    print("Computing truncation stats...")
-    trunc_stats, df_trunc_top5 = compute_truncation_stats()
-
-    # 4. Generate contract counts comparison figure
+    # 2. Generate contract counts comparison figure
     print("Generating contract counts figure...")
     plot_contract_counts_comparison(df_corr, FIGURES_DIR)
 
@@ -242,15 +180,6 @@ def main():
     df_tab_gen = pd.DataFrame(tab_gen_rows)
     emit_table(df_tab_gen, TABLES_DIR / "tab_general_summary.tex", col_align="lr", headers=["Metric", "Value"], escape=False)
 
-    # Table: Truncation concentration (top 5 CAOs by truncated-file count)
-    emit_table(
-        df_trunc_top5,
-        TABLES_DIR / "tab_truncation_concentration.tex",
-        col_align="lr",
-        headers=["CAO Number", "Truncated Files"],
-        escape=False,
-    )
-
     # 6. Emit macros
     print("Emitting macros to tables/macros.tex...")
     set_macro("GenTotalContracts", f"{gen_stats['n_total']:,}")
@@ -259,7 +188,6 @@ def main():
     set_macro("GenShareRetro", f"{gen_stats['share_retro']*100:.1f}%")
     set_macro("GenShareBackpayCond", f"{gen_stats['share_backpay_cond']*100:.1f}%")
     set_macro("GenMedianRetroDays", f"{gen_stats['median_retro_days']}")
-    set_macro("GenShareSurcharge", f"{gen_stats['share_surch']*100:.1f}%")
     set_macro("GenBothDatesCount", f"{gen_stats['n_both_dates']:,}")
     set_macro("GenExactDateMatch", f"{gen_stats['share_exact_date']*100:.1f}%")
     set_macro("GenDateDiffGtThirty", f"{gen_stats['share_large_diff']*100:.2f}%")
@@ -267,17 +195,6 @@ def main():
     set_macro("GenShareAvv", f"{gen_stats['share_avv']*100:.0f}%")
     set_macro("GenDevShareMin", f"{gen_stats['dev_share_min']*100:.0f}%")
     set_macro("GenDevShareMax", f"{gen_stats['dev_share_max']*100:.0f}%")
-    set_macro("GenTTWShareMax", f"{gen_stats['ttw_share_max']*100:.0f}%")
-
-    set_macro("GenPeakYear", str(peak_stats["peak_year"]))
-    set_macro("GenPeakCount", f"{peak_stats['peak_count']:,}")
-    set_macro("GenStableLow", f"{peak_stats['stable_low']:,}")
-    set_macro("GenStableHigh", f"{peak_stats['stable_high']:,}")
-    set_macro("GenStableStartYear", str(STABLE_WINDOW_START))
-    set_macro("GenStableEndYear", str(STABLE_WINDOW_END))
-
-    set_macro("GenTruncatedFiles", f"{trunc_stats['n_files']:,}")
-    set_macro("GenTruncatedCaos", f"{trunc_stats['n_caos']:,}")
 
     save_macros()
     print("✓ 01_general.py completed successfully!")

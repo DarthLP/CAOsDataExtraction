@@ -73,7 +73,7 @@ Backups are kept in **`qa/_old/`**. Build artifacts (`corrected_dataset.perfile_
 
 ## The applied layers
 
-1. **Layer 1 — per-topic clean-wins + master review** (`qa/apply_corrections.py` ← `qa/apply_list.csv`):
+1. **Layer 1 — per-topic clean-wins + master review** (`qa/_archive/apply_corrections.py` ← `qa/apply_list.csv`; ARCHIVED, do not run):
    514 cells / 111 records. The deterministic+subagent corrections accepted across the 13 topics,
    plus the 126 human-reviewed `MASTER_REVIEW_FOR_HANNA` edits.
 2. **Layer 2 — full-audit promotion** (`qa/full_audit/promote.py`, 2026-06-04): 781 cells / 522 records.
@@ -203,10 +203,12 @@ needed to catch them. Master to-do: `../docs/ROADMAP.md`.
 
 ## Regeneration & caveats
 
-- To rebuild from scratch: `apply_corrections.py` (→ G1 as `corrected_dataset.csv`) →
-  `apply_perfile_fixes.py` (→ `perfile_applied.csv`, G2) → promote (copy G2 over `corrected_dataset.csv`).
-  **Caveat:** re-running `apply_corrections.py` alone regresses the canonical file to G1 — re-apply
-  Layer 3 and re-promote afterward, then rebuild indices.
+- **The canonical dataset is never rebuilt from G0.** It is advanced one layer at a time by
+  apply → copy → verify → promote (`qa/DATASETS.md`), each step leaving a dated `.bak`. The early
+  generations record how they were built — Layer 1 by `qa/_archive/apply_corrections.py`, Layer 3 by
+  `qa/full_audit/apply_perfile_fixes.py` — but those are history, not a replay recipe: the L1 script
+  starts from the raw extract and knows nothing of Layers 2–34, so it is archived and refuses to run.
+  To reverse a change, use that layer's changelog and its `.bak`, then rebuild indices.
 - Indices live at top-level `indices/` (moved from `qa/indices/` on 2026-07-01); they read `qa/corrected_dataset.csv`.
   **Indices v2 (2026-07-05):** pooled z per file, `datum_kennisgeving` time axis, cao×month in-force panel,
   statutory pseudo-file, factor analysis — see `indices/INDICES_V2_PLAN.md`; v1 archived in `indices/_old_v1/`.

@@ -19,8 +19,10 @@ Stage 1b: Deterministic Salary Parsing (salary_parser/)
                                   (100% amount provenance, confidence tiers A–D)
 
 Stage 2: Correction & Verification (verification_pipeline/qa/)
-  └── apply_corrections.py     -> 34 audited layers (G0→G33), ~12,000 corrections,
-                                  grounded against English-translated source text
+  └── corrected_dataset.csv    -> Canonical frozen dataset: 34 audited layers
+                                  (G0→G33), ~12,000 corrected cells, grounded
+                                  against English-translated source text.
+                                  Verified by 152 regression tests (pytest qa -q)
 
 Stage 3: Derived Indices (verification_pipeline/indices/)
   └── rebuild.sh               -> Pooled-z generosity scores, statutory floor,
@@ -83,6 +85,9 @@ To reproduce the pipeline outputs from a clean clone:
   - `verification_pipeline/indices/` — Generosity scoring and panel construction.
   - `verification_pipeline/salary/` — Salary QA and validation checks.
 - `Reports/Pipeline/` — Unified replication report and LaTeX documentation.
+- `Reports/Analysis/` — CAO Descriptive Summary report (general/non-salary/salary/indices
+  figures and tables, built from `verification_pipeline/qa` + `verification_pipeline/indices`
+  + the salary parser output). See [`Reports/Analysis/README.md`](file:///Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/Reports/Analysis/README.md).
 - `docs/EXTRACTION_GUIDE.md` — Detailed extraction pipeline manual (former root README).
 - `CLAUDE.md` — Unified developer instructions and hard rules.
 

@@ -12,10 +12,16 @@ Unified data extraction, deterministic salary parsing, correction/QA, and derive
 - `schema/` — Pydantic schemas for structured extraction (`non_salary_schema.py`, `salary_schema.py`).
 - `verification_pipeline/` — QA correction layers, audit suites, and indices engine:
   - `verification_pipeline/qa/` — 34 audited correction layers (G0→G33).
+    `qa/_archive/` holds retired scripts (never run them; see its README).
   - `verification_pipeline/indices/` — Derived indices, pooled-z scores, statutory floors, monthly panel.
   - `verification_pipeline/salary/` — Wage-scale anomaly checks and verification.
   - `verification_pipeline/repo_paths.py` — Centralized relative path definitions.
 - `Reports/Pipeline/` — Comprehensive LaTeX replication guide and audit memos.
+- `Reports/Analysis/` — CAO Descriptive Summary report (`scripts/run_all.sh` regenerates
+  figures/tables from `verification_pipeline/qa` + `indices` + the salary parser output, then
+  builds `main.pdf`). Moved here from `verification_pipeline/Reports/Analysis/` on 2026-09-16;
+  its `scripts/common.py` roots at `verification_pipeline/` via `repo_paths.VERIFICATION_ROOT`,
+  not by relative `parent.parent` math.
 - `docs/EXTRACTION_GUIDE.md` — In-depth guide to extraction stages p1–p5.
 
 ---
@@ -50,6 +56,8 @@ Unified data extraction, deterministic salary parsing, correction/QA, and derive
 
 - **Python**: 3.13.0
 - **Testing**: `pytest` for unit tests; `pytest qa -q` in `verification_pipeline/` (152 passing baseline).
+  A separate 4-tier E2E acceptance suite audits `Reports/Pipeline/report/` against the canonical
+  artifacts: `pytest tests_e2e -q` in `verification_pipeline/` (23 passing).
 - **Core Libraries**: pandas, pydantic (v2), google-genai, pyyaml, openpyxl.
 - **Paths**: Always use `repo_paths.py` in `verification_pipeline` to resolve cross-repository locations relative to the workspace root.
 - **LaTeX**: `latexmk -pdf` via TeX Live for compiling replication documentation.

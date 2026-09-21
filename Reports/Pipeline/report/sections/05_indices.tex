@@ -1,66 +1,246 @@
-\section{Part IV: Derived Generosity and Wage Indices}
+\section{Stage 3: Derived Generosity and Wage Indices}
 \label{sec:indices}
 
-Stage~3 converts the verified non-salary dataset (\texttt{corrected\_dataset.csv}) and deterministic salary dataset (\texttt{extracted\_data\_salary\_v2.csv}) into standardised generosity indices, statutory-adjusted scores, and a balanced monthly panel.
+Stage~3 of the pipeline converts the verified non-salary dataset (\nolinkurl{corrected_dataset.csv}) and the deterministic salary dataset (\nolinkurl{extracted_data_salary_v2.csv}) into standardised generosity indices, statutory-adjusted scores, multivariate factor structures, and a continuous monthly panel. This section details the rebuild orchestration, the architectural evolution, parameter registry mechanics, statutory adjustments, wage indexation, monthly panel integration rules, and empirical multivariate properties.
 
-\subsection{The Two Clocks and In-Force Panel Rule}
+\subsection{Architecture of the Active Rebuild Pipeline}
+\label{sec:indices_rebuild}
 
-CAOs operate on two distinct timelines:
-\begin{enumerate}[leftmargin=1.5em]
-  \item \textbf{Edition Time}: The signing date and formal term (\texttt{ingangsdatum} to \texttt{einddatum}) of individual agreement PDFs.
-  \item \textbf{Calendar Time}: The continuous monthly state of active employment terms. Under Dutch labour law (\emph{nawerking}), when a CAO expires without an immediate successor, its terms continue in force until a new agreement is registered. The monthly panel implements this forward-fill rule across calendar months.
+The derived indices and monthly panel generation are orchestrated end-to-end by the shell script \nolinkurl{verification_pipeline/indices/rebuild.sh}. Executed under strict error trapping (\texttt{set -e} and \texttt{set -o pipefail}), the script enforces the sequential execution of 21 core Python scripts and validation routines:
+
+\begin{enumerate}[leftmargin=1.8em]
+  \item \textbf{Thirteen Topic Index Drivers}:
+    Thirteen dedicated topic scripts independently compute unit-normalised values, apply statutory boundaries, forward-fill intra-term values, and standardise scores against persisted parameters:
+    \begin{itemize}[leftmargin=1.2em]
+      \item \nolinkurl{bonus_index.py}: Scores 2 numeric fields (13th-month bonus, fixed lump-sum payment) and 8 presence booleans.
+      \item \nolinkurl{pension_index.py}: Scores 4 numeric fields (employee contribution rate, accrual rate, franchise amount, early retirement age) and 5 presence booleans under strictly available-case rules.
+      \item \nolinkurl{term_index.py}: Scores 6 numeric fields (employer notice, notice maximum, probation in fixed-term contracts, probation in indefinite contracts, notice floor, severance pay) and 3 booleans.
+      \item \nolinkurl{overtime_index.py}: Scores 9 numeric fields (standard premium, maximum premium, shift allowance minimum, unfavourable hours premium, daily trigger, weekly trigger, minimum rest between shifts, maximum weekly hours, maximum daily hours) and 0 booleans.
+      \item \nolinkurl{training_index.py}: Scores 2 cardinal fields (yearly training time, cost reimbursement) alongside stratified training budgets (\nolinkurl{eur}, \nolinkurl{pct_salary}, \nolinkurl{pct_wagesum}) and 3 booleans.
+      \item \nolinkurl{homeoffice_index.py}: Scores 1 numeric field (monthly stipend value) and 3 presence booleans.
+      \item \nolinkurl{contract_index.py}: Scores 4 numeric fields (ketenregeling maximum successive contracts, maximum chain duration, full-time weekly hours, tenure requirement for working hours adjustment) and 3 booleans.
+      \item \nolinkurl{safety_index.py}: Coverage-only module evaluating 12 occupational safety and health (PSA, PMO/PAGO, confidential counsellor) booleans.
+      \item \nolinkurl{childcare_index.py}: Coverage-only module evaluating 4 employer-provided childcare and allowance booleans.
+      \item \nolinkurl{ai_index.py}: Coverage-only module tracking 3 artificial intelligence and algorithmic management governance booleans.
+      \item \nolinkurl{fringe_index.py}: Scores 3 numeric fields (commuting allowance per km, meal stipend, relocation reimbursement) and 8 presence booleans.
+      \item \nolinkurl{absence_index.py}: Scores 8 numeric fields (statutory and extra vacation days, holiday allowance bonus, sick pay continuation percentage, sick pay duration, short-term care days and pay, long-term care weeks and pay) and 3 booleans.
+      \item \nolinkurl{parental_leave_index.py}: Computes full-rate equivalent (FRE) weeks across maternity, paternity, adoption, and parental leave (\nolinkurl{fre_total_extracted}, \nolinkurl{fre_total_with_statutory}) alongside 12 family leave generosity booleans.
+    \end{itemize}
+
+  \item \textbf{Wage Track Engine} (\nolinkurl{mw_indices.py}):
+    Ingests the deterministic salary dataset (\nolinkurl{extracted_data_salary_v2.csv}, Tiers~A and B), aggregates by \nolinkurl{(cao_number, calendar_year)}, derives scale percentiles (p10 to p90), merges the statutory minimum wage series (\nolinkurl{wml_timeline.csv}), and writes \nolinkurl{out/mw_indices.csv} (1,970 rows $\times$ 22 columns).
+
+  \item \textbf{Statutory Legal Floor Index} (\nolinkurl{statutory_index.py}):
+    Constructs monthly pseudo-records (1999 to present) from \nolinkurl{out/statutory_all.csv} and \nolinkurl{out/wml_timeline.csv}, scoring prevailing statutory floors on the identical pooled parameters to create the benchmark pseudo-agreement \texttt{STATUTORY}.
+
+  \item \textbf{Cross-Topic Composite Builder} (\nolinkurl{composite_index.py}):
+    Consolidates topic z-scores and wage dimensions into document-level composite metrics (\nolinkurl{overall_numeric_z}, \nolinkurl{overall_z_var}, \nolinkurl{coverage_overall}), auditing thin documents against \nolinkurl{review/thin_docs_reviewed.csv} and emitting \nolinkurl{out/composite_index.csv} (2,698 rows $\times$ 112 columns).
+
+  \item \textbf{Monthly Panel Generator} (\nolinkurl{build_panel_monthly.py}):
+    Constructs the balanced calendar-month panel, executing the in-force ``round-up'' allocation, dynamic law-month re-scoring, and annual wage broadcasting, outputting \nolinkurl{out/all_indices_panel_monthly.csv}, \nolinkurl{out/all_indices_panel_yearly.csv}, and \nolinkurl{out/panel_aggregates_monthly.csv}.
+
+  \item \textbf{Multivariate Factor Analysis} (\nolinkurl{advanced_analysis.py}):
+    Executes Kaiser-Meyer-Olkin (KMO) tests, Bartlett tests of sphericity, within-topic factor analyses, PCA decompositions, and factor score extractions, outputting detailed diagnostics to \nolinkurl{ADVANCED_ANALYSIS.md} and associated CSVs (see \S\ref{sec:factor_findings}).
+
+  \item \textbf{Agreement-Level Export Engine} (\nolinkurl{build_cao_level_export.py}):
+    Structures document records into bargaining agreement terms (\nolinkurl{term_group} = \nolinkurl{cao_number} $\times$ \nolinkurl{ingangsdatum}) with edition ordering (\nolinkurl{term_edition_seq}, \nolinkurl{n_editions_in_term}, \nolinkurl{is_last_filed_in_term}) and two ready-made start-date axes: \nolinkurl{Date_first_is_Ingangsdatum}, where a term's first file starts at its \nolinkurl{ingangsdatum} and later files at their own \nolinkurl{file_date}; and \nolinkurl{Date_retro_datum}, the same axis overridden by \nolinkurl{retro_start_date} wherever the text states an explicit retroactivity clause. The export carries \textbf{no wage columns}, and its roll-ups correspondingly exclude wage and are suffixed \nolinkurl{_without_wage}: a wage ladder is a CAO $\times$ calendar-year fact whose year may pool scales from several files, so attaching it to a single document row would import partly later-filed information into that row. The wage-inclusive \nolinkurl{overall_z} lives in the monthly panel instead; the two roll-ups measure different things and are not comparable (\nolinkurl{out/cao_agreement_level.csv}).
+
+  \item \textbf{Consolidated Multi-Tab Workbook Engine} (\nolinkurl{build_combined.py}):
+    Merges all topic columns, composite indices, panel tables, and codebook legends into a styled multi-tab openpyxl workbook (\nolinkurl{all_indices.xlsx}) and combined flat CSV (\nolinkurl{out/all_indices_combined.csv}).
+
+  \item \textbf{Automated Verification Battery} (\nolinkurl{check_battery.py}):
+    Executes a 6-stage validation suite auditing unit conversion math, Dutch institutional sanity bounds, salary unit-class plausibility, percentile monotonicity, statutory fingerprints, and sibling same-term difference coverage.
 \end{enumerate}
 
-\subsection{The Pooled-Z Generosity Formula}
+\begin{table}[H]
+\centering
+\small
+\caption{Stage~3 Rebuild Pipeline Orchestration (\nolinkurl{rebuild.sh})}
+\label{tab:rebuild_pipeline}
+\begin{tabularx}{\textwidth}{l >{\raggedright\arraybackslash}p{4.0cm} >{\raggedright\arraybackslash}p{4.0cm} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Step} & \textbf{Script} & \textbf{Primary Inputs} & \textbf{Key Generated Outputs} \\
+\midrule
+1--13 & 13 Topic Drivers (\nolinkurl{*_index.py}) & \nolinkurl{corrected_dataset.csv}, \nolinkurl{statutory_all.csv} & \nolinkurl{out/<topic>_index.csv}, diagnostic CSVs \\
+14 & \nolinkurl{mw_indices.py} & \nolinkurl{extracted_data_salary_v2.csv}, \nolinkurl{wml_timeline.csv} & \nolinkurl{out/mw_indices.csv}, \nolinkurl{out/mw_by_worker_type.csv} \\
+15 & \nolinkurl{statutory_index.py} & \nolinkurl{statutory_all.csv}, \nolinkurl{scoring_params.csv} & \nolinkurl{out/statutory_index.csv} \\
+16 & \nolinkurl{composite_index.py} & Topic CSVs, \nolinkurl{mw_indices.csv}, \nolinkurl{thin_docs_reviewed.csv} & \nolinkurl{out/composite_index.csv} \\
+17 & \nolinkurl{build_panel_monthly.py} & \nolinkurl{composite_index.csv}, \nolinkurl{mw_indices.csv}, \nolinkurl{statutory_all.csv} & \nolinkurl{all_indices_panel_monthly.csv}, \nolinkurl{panel_aggregates_monthly.csv} \\
+18 & \nolinkurl{advanced_analysis.py} & \nolinkurl{composite_index.csv} & \nolinkurl{ADVANCED_ANALYSIS.md}, \nolinkurl{out/factor_*.csv} \\
+19 & \nolinkurl{build_cao_level_export.py} & \nolinkurl{composite_index.csv}, \nolinkurl{corrected_dataset.csv} & \nolinkurl{out/cao_agreement_level.csv} \\
+20 & \nolinkurl{build_combined.py} & All topic outputs, panel files & \nolinkurl{all_indices.xlsx}, \nolinkurl{all_indices_combined.csv} \\
+21 & \nolinkurl{check_battery.py} & Canonical CSVs, normaliser library & 6-stage validation report \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
-Numeric fields are scored along a uniform five-step standardisation sequence:
-\begin{equation}
-\label{eq:pooled-z}
-\text{Raw Value } x_{it} 
-\xrightarrow{\text{1. Canonicalise}} x'_{it}
-\xrightarrow{\text{2. Winsorise (1/99)}} x''_{it}
-\xrightarrow{\text{3. Standardise}} z^*_{it} = \frac{x''_{it} - \mu_{\text{term}}}{\sigma_{\text{term}}}
-\xrightarrow{\text{4. Clip}} z_{it} = \max(-3, \min(3, z^*_{it}))
-\xrightarrow{\text{5. Sign}} S_j \cdot z_{it}
-\end{equation}
+\subsection{Core Design Choices of the Active (v2) Architecture}
+\label{sec:v1_v2_transition}
+
+Four decisions, specified in \nolinkurl{INDICES_V2_PLAN.md}, govern how scores are constructed. (Lessons learned from an experimental v1 prototype which is fully superseded.)
+
+\paragraph{1. Pooled-Z Standardisation}
+Every continuous indicator receives a single \textbf{pooled-z score} per field, standardised against the grand pool of all full-CAO documents across all years. A 2005 agreement and a 2025 agreement are thus measured on the identical yardstick, preserving secular bargaining trends and macroeconomic level shifts.
+
+\paragraph{2. Term-Group Deduplicated Yardstick}
+Dutch CAOs are frequently amended and republished (median 11 full-text editions per agreement), so counting every edition equally would let reprint-heavy sectors dominate the scale. Winsorisation thresholds (1st and 99th percentiles), $\mu$, and $\sigma$ are therefore computed on exactly one winning edition per \nolinkurl{(cao_number, ingangsdatum)} term group---the edition with the latest publication date (\nolinkurl{datum_kennisgeving}). These parameters are then frozen, persisted to \nolinkurl{scoring_params.csv}, and used to score \emph{all} documents, so that mid-term amendments and the autonomous \texttt{STATUTORY} pseudo-record share one unbiased yardstick.
+
+\paragraph{3. The Publication Date Clock (\nolinkurl{datum_kennisgeving})}
+The chronological axis is \nolinkurl{file_date = datum_kennisgeving}, the official government notification date (populated in 99.96\% of documents; falling back to \nolinkurl{ingangsdatum} on exactly one record, ID 1564 / CAO 1017). Because \nolinkurl{ingangsdatum} is identical across all republications within a bargaining cycle, indexing on it would collapse mid-term wage rounds onto the original start date; the notification clock instead enters each amended text in the calendar month it became legally binding.
+
+\paragraph{4. Law-Month Re-Scoring}
+Statutory-anchored provisions in the monthly panel are re-evaluated against the legal era prevailing in each panel month. When national legislation moves a statutory minimum (the WWZ in July 2015, the WAB in January 2020, the WIEG paternity leave expansions in 2019--2020), every active in-force agreement immediately reflects the new floor, so the measured quantity remains the negotiated premium over the law as the law shifts.
+
+\subsection{The Pooled-Z Generosity Formula and Parameter Registry}
+\label{sec:pooled_z_params}
+
+Numeric cardinal indicators are transformed through a strict five-step standardisation sequence:
+\begin{align}
+\label{eq:pooled-z-full}
+\text{Raw Cardinal } x_{it} 
+&\xrightarrow{\text{1. Canonicalise}} x'_{it} \nonumber \\
+&\xrightarrow{\text{2. Winsorise (1/99)}} x''_{it} = \max(W_{j,0.01}, \min(W_{j,0.99}, x'_{it})) \nonumber \\
+&\xrightarrow{\text{3. Standardise}} z^*_{it} = \frac{x''_{it} - \mu_{j,\text{pool}}}{\sigma_{j,\text{pool}}} \nonumber \\
+&\xrightarrow{\text{4. Clip}} z_{it} = \max(-3, \min(3, z^*_{it})) \nonumber \\
+&\xrightarrow{\text{5. Worker Direction}} \tilde{z}_{ijt} = S_j \cdot z_{it}
+\end{align}
 where:
 \begin{itemize}[leftmargin=1.5em]
-  \item $\mu_{\text{term}}$ and $\sigma_{\text{term}}$ are computed on a \textbf{term-deduplicated sample} (excluding repetitive monthly repeats of the same agreement);
-  \item $S_j \in \{+1, -1\}$ is the domain sign indicating whether higher values represent greater generosity from the worker's perspective (e.g.\ $+1$ for vacation days; $-1$ for probation duration or employee pension contributions).
+  \item $x'_{it}$ represents the value converted into the topic's canonical unit (e.g., standard workweek hours, gross monthly euros, or annual vacation days) via \nolinkurl{index_lib.normalize()};
+  \item $W_{j,0.01}$ and $W_{j,0.99}$ are the 1st and 99th empirical percentiles of field $j$, computed exclusively on the term-group deduplicated sample;
+  \item $\mu_{j,\text{pool}}$ and $\sigma_{j,\text{pool}}$ are the empirical mean and standard deviation of field $j$ computed on the winsorised deduplicated sample;
+  \item $S_j \in \{+1, -1\}$ is the domain sign indicating whether higher values represent greater generosity from the worker's perspective (e.g., $+1$ for vacation days, commuting allowances, and severance pay; $-1$ for probation duration, weekly working hours, employee pension contributions, and ketenregeling limits).
 \end{itemize}
+
+\paragraph{Why Winsorise and Clip}
+Both steps cap, not discard, extreme values, and guard against different failure modes. Per-field yardstick samples are small (as few as $n=10$) and extraction-derived, so a single unit-conversion error or genuinely unusual clause can dominate an otherwise thin sample: winsorising (step 2) bounds each value's contribution \emph{before} it enters $\mu_{j,\text{pool}}$ and $\sigma_{j,\text{pool}}$, preventing one outlier from inflating $\sigma$ and compressing every other document's score toward zero. Clipping (step 4) then bounds the resulting z-score itself, since a value just inside the winsor bounds can still standardise past $\pm3$ when $\sigma$ is small.
+
+\paragraph{The Persisted Parameter Registry (\nolinkurl{scoring_params.csv})}
+To guarantee reproducibility and allow external datasets (including statutory baselines) to be evaluated on the identical yardstick, all standardisation parameters are persisted in \nolinkurl{verification_pipeline/indices/out/scoring_params.csv}. The registry contains \textbf{exactly 89 parameter rows} across 10 structured columns (\nolinkurl{topic;field;variant;canonical;sign;winsor_lo;winsor_hi;mu;sd;n}):
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{78 rows for 39 Scored Fields $\times$ 2 Variants}: Each of the 39 scored cardinal fields is registered in both its \nolinkurl{full} (statutory-adjusted and forward-filled) and \nolinkurl{raw} (unimputed baseline) variants:
+    \begin{itemize}[leftmargin=1.0em]
+      \item Absence: 8 fields (16 parameter rows);
+      \item Bonus: 2 fields (4 parameter rows);
+      \item Contract: 4 fields (8 parameter rows);
+      \item Fringe: 3 fields (6 parameter rows);
+      \item Homeoffice: 1 field (2 parameter rows);
+      \item Overtime: 9 fields (18 parameter rows);
+      \item Pension: 4 fields (8 parameter rows);
+      \item Term: 6 fields (12 parameter rows);
+      \item Training: 2 fields (4 parameter rows).
+    \end{itemize}
+  \item \textbf{3 Stratified Training Budget Rows} (\nolinkurl{strat} variant): Covers units in euros (\nolinkurl{training_budget_value[eur]}), percentage of individual salary (\nolinkurl{training_budget_value[pct_salary]}), and percentage of total wage sum (\nolinkurl{training_budget_value[pct_wagesum]}).
+  \item \textbf{5 Leave Full-Rate Equivalent (FRE) Rows}: 4 in the \nolinkurl{full} variant (\nolinkurl{fre_total_with_statutory}, \nolinkurl{paternity_fre_stat}, \nolinkurl{parental_fre_stat}, \nolinkurl{adoption_fre_stat}) and 1 in the \nolinkurl{raw} variant (\nolinkurl{fre_total_extracted}).
+  \item \textbf{3 Wage Scale Dimensions} (\nolinkurl{full} variant): Covers \nolinkurl{mw_mean}, \nolinkurl{mw_median}, and the wage compression metric \nolinkurl{mw_span_pct}.
+\end{itemize}
+The sum yields exactly $78 + 3 + 5 + 3 = 89$ registered parameter rows.
 
 \subsection{The Two Tracks: Magnitude and Coverage}
+\label{sec:magnitude_coverage}
 
-To avoid treating qualitative presence indicators as arbitrary quantitative scores, the indices separate:
+To prevent conflating qualitative institutional mentions with quantitative generosity levels, Stage~3 maintains two parallel measurement tracks:
 \begin{itemize}[leftmargin=1.5em]
-  \item \textbf{Magnitude Track ($z$ and $gen01$)}: Standardised continuous variables (days, hours, euros, percentages). A parallel percentile scale ($gen01 \in [0, 1]$) resolves skewness and eliminates outlier sensitivity.
-  \item \textbf{Coverage Track}: Binary indicators of provision presence, rolled up into domain coverage shares.
+  \item \textbf{Magnitude Track ($z$ and $gen01$)}: Measures the quantitative generosity of continuous provisions (days, hours, euros, percentages). In addition to the unbounded z-score, each topic driver generates an empirical percentile rank ($gen01 \in [0, 1]$). Ranks need neither winsorisation nor clipping, so an outlier simply takes rank $\approx 1$ and cannot dominate a mean.
+  \item \textbf{Coverage Track}: Aggregates binary presence indicators within each topic into a bounded coverage proportion ($coverage \in [0, 1]$), accompanied by its standardised score ($coverage\_z$). Topics lacking cardinal fields (such as \nolinkurl{safety}, \nolinkurl{childcare}, and \nolinkurl{ai}) operate exclusively on the coverage track.
 \end{itemize}
 
-\subsection{Statutory Floors and The Pension Rule}
+\paragraph{Aggregation Across Fields and Topics}
+Both tracks aggregate available-case: a field the document does not populate is skipped, never read as zero, so a document is not penalised for a benefit it simply did not quantify. Writing $F_t$ for the populated field set of topic $t$ and $\tilde{z}_{ijt}$ for the oriented field score of Eq.~\eqref{eq:pooled-z-full},
+\begin{align}
+\label{eq:aggregation}
+M_t &= \frac{1}{|F_t|}\sum_{j \in F_t} \tilde{z}_{ijt},
+\qquad
+Z_t = \tfrac{1}{2}\left( M^{z}_{t} + C^{z}_{t} \right),
+\nonumber \\[2pt]
+\text{overall} &= \frac{1}{|T|}\sum_{t \in T} Z_t,
+\qquad
+\text{overall variance} = \operatorname{Var}_{t \in T}\left( Z_t \right),
+\end{align}
+where $M^{z}_{t}$ is the standardised magnitude track (\nolinkurl{<topic>_numeric_z}), $C^{z}_{t}$ the standardised coverage track (\nolinkurl{<topic>_coverage_z}), and $Z_t$ the combined per-topic headline (\nolinkurl{<topic>_z}). A topic scores as missing only where the document populates none of its fields, and the variance is defined only where at least two topics score. The overall roll-ups carry the \nolinkurl{_without_wage} suffix at document grain (\S\ref{sec:indices_rebuild}); the numeric-only companion is the same mean taken over $M^{z}_{t}$ alone.
+
+\paragraph{Choosing a Scale}
+The two scales order agreements almost identically --- the correlation between \nolinkurl{overall_numeric_z} and \nolinkurl{overall_numeric_pctile} is 0.810 (Pearson) and 0.801 (Spearman) --- but not exactly, and the gap is precisely the asymmetric-range fields. Use $z$ for factor analysis and $\sigma$-distance statements; use the percentile track for bounded, symmetric, equal-influence rankings.
+
+\subsection{Statutory Floors, Autonomous Pseudo-CAO, and the Pension Rule}
+\label{sec:statutory_floors}
 
 \paragraph{Statutory Minimum Adjustments}
-Dutch labour law establishes statutory baselines for leave (WAZO, holiday entitlements), notice periods (BW), and severance (transitievergoeding). CAOs may legally improve upon statutory terms, but cannot fall below them. When an agreement is silent on a mandatory statutory term, the index fills the cell with the prevailing statutory floor for that calendar month.
+Under Dutch labour law, collective agreements may improve upon statutory employment conditions, but cannot derogate below mandatory legal protections. Each statutory-linked field carries a role in \nolinkurl{out/statutory_all.csv} fixing how the legal value interacts with the extracted cell (\nolinkurl{index_lib.py}):
+\begin{itemize}[leftmargin=1.5em]
+  \item \nolinkurl{floor} / \nolinkurl{default}: a blank cell is filled with the statutory value prevailing in that legal era (e.g., 20 days of statutory annual leave; 70\% statutory sick pay; statutory ketenregeling limits); a stated value is kept as extracted.
+  \item \nolinkurl{floor_lift}: as above, \emph{and} a stated value below the statutory minimum is lifted to it --- the one-sided mandatory right overrides the text.
+  \item \nolinkurl{cap}: blanks stay blank; a stated value above the legal maximum is masked to missing rather than scored.
+  \item \nolinkurl{informational}: held for reference and never used to fill or bound a cell.
+\end{itemize}
+Roles are assigned per field and per validity window, so every document is adjusted against the law of its own date.
 
-\paragraph{The Pension Hard Rule (Strictly Available-Case)}
+\paragraph{Zero-Fill of Optional Extras}
+Statutory floors do not reach genuinely optional benefits (13th-month bonus; meal, relocation and commuting allowances; the home-office stipend; training time and budget), where a blank may mean either ``not granted'' or ``granted but unquantified''. \nolinkurl{apply_zerofill()} in \nolinkurl{index_lib.py} converts such a blank into a rankable $0$ only under a double gate: the benefit's presence boolean is \texttt{False} in \emph{every} edition of that CAO, \emph{and} the raw cell was never stated in any unit in any edition of that CAO. If either condition fails the cell stays missing and available-case --- in particular, a benefit stated in a unit the normaliser cannot convert is present-but-unmeasurable, not absent. The pre-zero-fill score is retained alongside as \nolinkurl{<topic>_numeric_z_availcase}, so the rule's effect on any topic is always recoverable.
+
+\paragraph{The Autonomous Statutory Pseudo-CAO (\texttt{STATUTORY})}
+Rather than treating statutory law merely as an internal imputation constant, \nolinkurl{statutory_index.py} scores the statutory legal floor as an autonomous pseudo-agreement with \nolinkurl{cao_number = 'STATUTORY'}. Evaluated across all continuous calendar months from January 1999 to the present using the identical pooled parameters from \nolinkurl{scoring_params.csv}, the statutory pseudo-agreement provides a living baseline directly on the common yardstick. For perks where the law provides zero entitlement (e.g., 13th-month bonuses, meal allowances, travel reimbursements), the statutory score is zero. Consequently, comparing an in-force CAO against the statutory line immediately isolates the negotiated bargaining premium over statutory law.
+
+\paragraph{The Pension Hard Rule (Strictly Available-Case Only)}
 \begin{center}
-\fbox{\parbox{0.9\textwidth}{\textbf{Mandatory Rule:} The pension topic is \textbf{strictly available-case only}. Blank pension entries are NEVER imputed with zero or statutory baselines.}}
+\fbox{\parbox{0.92\textwidth}{\textbf{Mandatory Invariant:} The pension topic is \textbf{strictly available-case only}. Blank pension entries are NEVER imputed with zero, statutory baselines, or cross-sectional averages.}}
 \end{center}
-Imputing blanks in pension data would manufacture synthetic generosity differences based purely on document reporting completeness rather than negotiated benefit levels.
+In the Netherlands, collective pension schemes are typically administered by mandatory industry-wide pension funds (\emph{bedrijfstakpensioenfondsen}, BPFs) rather than negotiated inside individual CAO texts. An agreement lacking explicit pension text almost invariably participates in a sector fund rather than providing zero retirement coverage. Zero-filling or statutory imputing blank pension entries would manufacture severe synthetic variation based entirely on document reporting scope rather than true employee benefits.
 
-\subsection{The Nominal Wage Index}
+\subsection{The Wage Track Engine}
+\label{sec:wage_engine}
 
-Wage indices are computed directly from the deterministic salary dataset (\texttt{extracted\_data\_salary\_v2.csv}, Tiers A+B):
+Wage indexation is executed by \nolinkurl{verification_pipeline/indices/mw_indices.py}, built directly on the deterministic salary parser output (\nolinkurl{extracted_data_salary_v2.csv}):
 \begin{itemize}[leftmargin=1.5em]
-  \item \textbf{Nominal Scale}: All periodic amounts are normalised to monthly full-time gross euros using standard workweek conversions ($4\text{-week} \times 13/12$, $\text{weekly} \times 52/12$, $\text{hourly} \times \text{workweek} \times 52/12$).
-  \item \textbf{Why Nominal (Not WML-Normalised)}: Real purchasing power and inflation adjustments vary across research questions. Normalising directly against statutory minimum wage (WML) at index time would conflate statutory policy shifts with negotiated bargaining outcomes.
+  \item \textbf{Analytical Sample Filter}: Incorporates only high-confidence Tier~A and Tier~B records (343,111 rows, representing 95.45\% of the parser dataset). Lower-confidence Tiers~C and D are excluded.
+  \item \textbf{Adult Full-Time Normalisation}: Filters out youth scales and unresolvable hourly rates lacking an explicit workweek basis. Periodic amounts are normalised to monthly gross full-time equivalent euros using standard full-time hours conversions ($4\text{-week} \times 13/12$, $\text{weekly} \times 52/12$, $\text{hourly} \times \text{workweek} \times 52/12$).
+  \item \textbf{Year Grain and Edition Precedence}: A wage row is keyed to the calendar year of the wage table's \emph{own} effective date as printed in the CAO (\nolinkurl{salary_N_start_date}), not to \nolinkurl{file_date} and not to \nolinkurl{ingangsdatum}, so the series already sits on its natural retroactive axis and a single document typically contributes tables to several years. Overlaps resolve in two stages: within a key of (CAO, effective date, job cell, unit) the latest-filed edition's rows win; and under \textbf{term precedence} a wage point whose effective date falls after a \emph{successor} term has taken effect is dropped as a stale pre-announced table (logged to \nolinkurl{out/mw_stale_forward_dropped.csv}), while retroactive points dated before their own term's \nolinkurl{ingangsdatum} are never stale. A year therefore appears in \nolinkurl{mw_indices.csv} only where a text states a scale for it; the carry across gap years happens at the panel join (\S\ref{sec:panel_integration}).
+  \item \textbf{Scale Percentiles and WML Ratios}: For each \nolinkurl{(cao_number, calendar_year)}, the engine calculates scale percentiles representing the wage ladder distribution: \nolinkurl{mw_low} (p10), \nolinkurl{mw_q25}, \nolinkurl{mw_median}, \nolinkurl{mw_mean}, \nolinkurl{mw_q75}, \nolinkurl{mw_high} (p90), and wage dispersion \nolinkurl{mw_span_pct} = $(\text{p90} - \text{p10})/\text{p10}$. Linking the adult statutory minimum wage timeline (\nolinkurl{wml_timeline.csv}, 1999--2026), the engine derives real policy ratios: \nolinkurl{ratio_low_wml}, \nolinkurl{ratio_median_wml}, and \nolinkurl{ratio_mean_wml}.
+  \item \textbf{Nominal Scale Justification}: Wage z-scores (\nolinkurl{wage_median_z}, \nolinkurl{wage_mean_z}) are standardised on nominal gross monthly euros rather than WML-deflated ratios. Normalising against WML at index time would conflate statutory government policy interventions with negotiated collective bargaining gains.
 \end{itemize}
 
-\subsection{Empirical Properties and Multi-Domain Findings}
+\subsection{Monthly Panel Integration Rules}
+\label{sec:panel_integration}
 
-The multi-domain scoring produces several notable empirical conclusions:
+The balanced panel generation script \nolinkurl{build_panel_monthly.py} explodes the document-level composite index across continuous calendar months under strict institutional rules:
+
+\begin{enumerate}[leftmargin=1.8em]
+  \item \textbf{Panel Grain and Time Scope}:
+    The panel constructs a continuous monthly series at the \nolinkurl{cao_number} $\times$ \nolinkurl{month} (YYYY-MM) grain, initiating at the calendar month of each CAO's earliest observed publication date and extending through the active build month. The autonomous \texttt{STATUTORY} pseudo-CAO is joined across all months.
+
+  \item \textbf{The In-Force ``Round-Up'' Allocation Rule}:
+    For any calendar month $m$, the agreement in force is defined as the document possessing the latest \nolinkurl{file_date} (\nolinkurl{datum_kennisgeving}) $\le$ the final calendar day of month $m$. Under this rule, if a new agreement is published on any day within month $m$ (even the 28th or 30th), the entirety of month $m$ is attributed to the newly published agreement. Same-month document collisions are resolved in favour of the later publication date; same-day ties are resolved by extraction completeness (count of populated non-null fields), followed by higher numeric document ID.
+
+  \item \textbf{Forward-Fill and Legal Nawerking}:
+    When a Dutch collective labour agreement (cao) expires, provisions that have become part of an individual employment contract may continue to govern that contract through nawerking, until they are replaced or amended by a valid individual or collective agreement. The monthly panel operationalises this principle by forward-filling the scores of the last in-force agreement across subsequent months until a newer edition is registered. To safeguard empirical analyses, agreements that remain without a successor for more than 48 months are tagged with the indicator \nolinkurl{is_stale = True}.
+
+  \item \textbf{Dynamic Law-Month Re-Scoring}:
+    While unanchored bargained provisions remain constant throughout a document's tenure, statutory-anchored components (family leave, statutory vacation and sick pay floors, ketenregeling limits, and ATW working hours constraints) are dynamically re-scored against the legal era of each specific panel month. When national statutory reforms take effect, every active in-force CAO immediately reflects the updated statutory baseline. Family leave is scored per type (paternity, adoption, parental; maternity excluded as statutorily constant), matching the cross-sectional composite; the legacy summed-FRE total is retained only as an unscored reference column (\nolinkurl{leave_fre_total_monthly}).
+
+  \item \textbf{Thin-Document Score Carryover}:
+    Certain published editions represent procedural annexes, wage protocol updates, or appendix adjustments misclassified as \nolinkurl{full_cao} documents while containing $<80\%$ field coverage. When human or agent audit confirms a thin document (\nolinkurl{review/thin_docs_reviewed.csv}), the monthly panel carries forward the non-salary scores from the preceding substantive agreement edition via the tracking column \nolinkurl{score_src_id}. The carry is visible per row --- \nolinkurl{thin_doc} marks the edition and \nolinkurl{scores_carried_from} names the document whose scores it wears --- so any analysis can exclude carried rows outright. No candidate is ever carried automatically: the registry holds 12 confirmed thin editions alongside 3 that a reader source-verified as genuine scope or content differences and which are explicitly protected from carrying, and an unreviewed candidate is scored at face value until confirmed against the full text.
+
+  \item \textbf{Annual Wage Broadcasting}:
+    Because wage scales are agreed on multi-year or annual cycles rather than monthly increments, the annual wage metrics from \nolinkurl{mw_indices.csv} are broadcast across the calendar months of each year using backward as-of merges. Internal gap years between wage rounds are forward-filled under the doctrine of wage maintenance.
+\end{enumerate}
+
+The monthly panel engine emits three core datasets: \nolinkurl{out/all_indices_panel_monthly.csv} (the primary micro-panel), \nolinkurl{out/all_indices_panel_yearly.csv} (a convenient December year-end snapshot), and \nolinkurl{out/panel_aggregates_monthly.csv} (cross-CAO monthly landscape averages, standard deviations, and percentiles).
+
+\subsection{Multivariate Statistical Findings and Dimensionality}
+\label{sec:factor_findings}
+
+The multivariate structure of the derived indices is systematically evaluated in \nolinkurl{verification_pipeline/indices/advanced_analysis.py}, which outputs its formal findings to \nolinkurl{ADVANCED_ANALYSIS.md} (referenced historically as \nolinkurl{out/factor_summary.txt}):
+
+\paragraph{Sampling Adequacy and Bartlett's Test}
+Factorability diagnostics evaluated on the matrix of documents scoring at least 8 topics ($N = 2,444$ documents) reveal:
 \begin{itemize}[leftmargin=1.5em]
-  \item \textbf{No Single Generosity Factor}: Principal component analysis reveals a Kaiser-Meyer-Olkin (KMO) measure of 0.64; bargaining generosity is multidimensional rather than reducible to a single scalar.
-  \item \textbf{Topic-Wage Orthogonality}: The cross-sectional correlation between non-salary generosity indices and wage levels is surprisingly weak, demonstrating that generous non-wage terms do not merely substitute for lower salaries.
+  \item \textbf{Kaiser-Meyer-Olkin (KMO) Measure}: \textbf{0.64} (specifically 0.6396). In psychometric and econometric factor analysis, a KMO in the 0.60--0.70 range is classified as mediocre common variance.
+  \item \textbf{Bartlett's Test of Sphericity}: $\chi^2 \approx 2201.35$, $\text{df} = 55$, $p \approx 0.0$ ($p < 10^{-10}$).
 \end{itemize}
 
+\paragraph{Substantive Economic Interpretation}
+While Bartlett's test strongly rejects the null hypothesis that topic correlation matrices are identity matrices ($p \approx 0$), the modest KMO measure of 0.64 delivers a crucial empirical finding: \textbf{collective bargaining generosity cannot be collapsed into a single unidimensional construct}. Bargaining provisions share limited common variance across distinct domains; an agreement offering exceptionally generous parental leave or training budgets does not systematically offer high early retirement provisions, expansive severance floors, or shorter working weeks. Generosity is multi-faceted and domain-specific.
+This empirical finding rigorously validates the pipeline's core architectural decision: rather than substituting an artificial, single latent factor score from principal component analysis, the pipeline publishes both the domain-specific topic z-scores and an \textbf{equal-weight available-case composite index} (\nolinkurl{overall_numeric_z} and \nolinkurl{overall_z}) alongside its cross-topic variance (\nolinkurl{overall_z_var}).
+
+\paragraph{Topic-Wage Orthogonality}
+Correlating each topic's generosity score with scale wage levels (\nolinkurl{wage_median_z}) across the $N = 2,444$ document sample demonstrates weak linear and rank associations (Pearson correlations ranging from $-0.07$ to $+0.36$). Non-salary generosity does not serve as a direct substitute for lower wages (the compensating differentials hypothesis does not dominate collective bargaining in the aggregate), nor do high-paying CAOs uniformly dominate all non-wage benefits. Wage levels therefore carry distinct economic information.

@@ -1,4 +1,11 @@
-"""apply_corrections.py — write the accepted corrections into a COPY of the dataset.
+"""apply_corrections.py — ARCHIVED (Layer 1 only, 2026-05). DO NOT RUN.
+
+This built Layer 1 and nothing else. It reads the RAW G0 extract and writes
+qa/corrected_dataset.csv, which is now G33 (34 layers, ~12,000 corrected cells).
+Running it would discard Layers 2-34. The `__main__` guard at the bottom aborts.
+Kept as a readable reference for the safety-gate pattern below, which the live
+apply scripts (qa/apply_collision_l11.py, qa/apply_pension_premium_l13.py,
+salary/scripts/apply_salary_corrections.py) mirror. See _archive/README.md.
 
 Reads qa/apply_list.csv (produced by consolidate_review.py) and applies each
 (record_id, field) -> new_value into a copy of inputs/extracted_data_non_salary.csv.
@@ -106,4 +113,15 @@ def main():
 
 
 if __name__ == "__main__":
+    import sys
+    if os.environ.get("CAO_ALLOW_L1_REPLAY") != "1":
+        sys.exit(
+            "ARCHIVED — Layer 1 only (2026-05). Refusing to run.\n"
+            "This writes qa/corrected_dataset.csv from the raw G0 extract.\n"
+            "The canonical file is G33: 34 layers, ~12,000 corrected cells\n"
+            "(~21,000 change events). Running this would discard Layers 2-34.\n"
+            "Corrections are applied via apply -> copy -> verify -> promote;\n"
+            "the canonical dataset is never rebuilt from G0.\n"
+            "Override with CAO_ALLOW_L1_REPLAY=1 only if you know why."
+        )
     main()

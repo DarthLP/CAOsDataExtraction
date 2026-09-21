@@ -709,7 +709,7 @@ def plot_salary_amount_monthly_band_eligible_by_salary_year(
     )
     ax1.set_xlabel(x_label, fontsize=12)
     ax1.set_ylabel("Gross monthly EUR (normalized, band-eligible)", fontsize=12)
-    title_suffix = " (Latest CAO View)" if use_latest_cao_view else ""
+    title_suffix = " (Active In-Force Stock)" if use_latest_cao_view else ""
     ax1.set_title(
         f"Average salary (EUR/month, band-eligible: NL statutory min + analysis cap){title_suffix}",
         fontsize=13,
@@ -803,7 +803,7 @@ def plot_salary_amount_monthly_band_eligible_by_contract_year(
     )
     ax1.set_xlabel(x_label, fontsize=12)
     ax1.set_ylabel("Gross monthly EUR (normalized, band-eligible)", fontsize=12)
-    title_suffix = " (Latest CAO View)" if use_latest_cao_view else ""
+    title_suffix = " (Active In-Force Stock)" if use_latest_cao_view else ""
     ax1.set_title(
         f"Average salary (EUR/month, band-eligible: NL statutory min + analysis cap){title_suffix}",
         fontsize=13,
@@ -937,10 +937,11 @@ def plot_increase_percent_by_contract_year(
         weight_col="cao_weight",
         hide_boxplot_fliers=True,
     )
-    ax1.set_xlabel("Contract start year", fontsize=12)
+    x_label = "Calendar year" if use_latest_cao_view else "Contract start year"
+    ax1.set_xlabel(x_label, fontsize=12)
     ax1.set_ylabel("Average increase (%)", fontsize=12)
-    title_suffix = " (Latest CAO View)" if use_latest_cao_view else ""
-    ax1.set_title(f"Average increase (merged - prefer CSV) by contract start year{title_suffix}", fontsize=14)
+    title_suffix = " (Active In-Force Stock)" if use_latest_cao_view else ""
+    ax1.set_title(f"Average increase (merged - prefer CSV) by {x_label.lower()}{title_suffix}", fontsize=14)
     ax1.set_ylim(-4, 12)
     ax1.grid(True, alpha=0.3)
     _twin_axis_only_cao_counts(ax1, df_w, "contract_start_year", years_ip)
@@ -1011,8 +1012,22 @@ def plot_boolean_shares_by_contract_year(df: pd.DataFrame, output_dir: Path,
     if len(bool_vars) == 0:
         print("  [INFO] No boolean variables available; skipping figure")
         return
-    
-    # Collect plot data (all contract years with ≥1 row; no MIN_OBS_PER_YEAR filter)
+
+    # CAO counts per year, computed up front so shares can be restricted to years with
+    # enough distinct CAOs (bars below still show every year for context).
+    cao_counts: Dict[Any, int] = {}
+    if "cao_number" in df_plot.columns:
+        csy = pd.to_numeric(df_plot["contract_start_year"], errors="coerce")
+        for year in csy.dropna().unique():
+            yv = int(year)
+            cao_counts[yv] = df_plot.loc[csy == yv, "cao_number"].dropna().nunique()
+
+    # Matches the >=10-CAO "mature year" threshold used for the SalTTWShare*/SalEntryShare*
+    # macros in 03_salary.py (compute_coverage_and_flag_stats) -- keeps prose and figure in
+    # sync; thin years otherwise swing wildly on 1-2 CAOs.
+    MIN_MATURE_CAOS = 10
+
+    # Collect plot data (mature contract years only, >=MIN_MATURE_CAOS distinct CAOs)
     plot_data = {}
     for var in bool_vars:
         bool_series = coerce_bool(df_plot[var])
@@ -1036,46 +1051,45 @@ def plot_boolean_shares_by_contract_year(df: pd.DataFrame, output_dir: Path,
         ])
         
         if len(grouped) > 0:
-            plot_data[var] = grouped['share_true_year']
+            mature_idx = [y for y in grouped.index if cao_counts.get(int(y), 0) >= MIN_MATURE_CAOS]
+            shares = grouped.loc[mature_idx, 'share_true_year'] if mature_idx else grouped['share_true_year'].iloc[0:0]
+            if len(shares) > 0:
+                plot_data[var] = shares
             # Print diagnostic info
             print(f"  {var}:")
             for year in grouped.index[:5]:  # Print first 5 years
                 row = grouped.loc[year]
-                print(f"    Year {int(year)}: {row['n_true']:.0f} True / {row['count']:.0f} total = {row['share_true_year']*100:.1f}% (non-missing: {row['n_nonmissing']:.0f})")
-    
+                mature = "mature" if cao_counts.get(int(year), 0) >= MIN_MATURE_CAOS else "excluded (<10 CAOs)"
+                print(f"    Year {int(year)}: {row['n_true']:.0f} True / {row['count']:.0f} total = {row['share_true_year']*100:.1f}% (non-missing: {row['n_nonmissing']:.0f}) [{mature}]")
+
     if len(plot_data) == 0:
         print("  [INFO] No data available for any variables; skipping figure")
         return
-    
-    cao_counts: Dict[Any, int] = {}
-    if "cao_number" in df_plot.columns:
-        all_years = set()
-        for shares in plot_data.values():
-            all_years.update(shares.index)
-        csy = pd.to_numeric(df_plot["contract_start_year"], errors="coerce")
-        for year in all_years:
-            yv = int(year) if pd.notna(year) else year
-            year_data = df_plot.loc[csy == yv]
-            cao_counts[year] = year_data["cao_number"].dropna().nunique() if len(year_data) > 0 else 0
-    
+
+    # Full year range (for axis + CAO-count bars) vs. mature-only years actually plotted as lines.
+    all_years = set(cao_counts.keys()) if cao_counts else set()
+    for shares in plot_data.values():
+        all_years.update(shares.index)
+
     # Create plot
     fig, ax1 = plt.subplots(figsize=(10, 6))
-    
+
     for var, shares in plot_data.items():
         if var == "TTW":
             label = "TTW - temporary CAO update"
         else:
             label = var.replace('_', ' ').title()
-        ax1.plot(shares.index, shares.values * 100, marker='o', label=label, 
+        ax1.plot(shares.index, shares.values * 100, marker='o', label=label,
                 linewidth=2, markersize=6)
-    
-    ax1.set_xlabel("Contract start year", fontsize=12)
+
+    ax1.set_xlabel("Calendar year" if use_latest_cao_view else "Contract start year", fontsize=12)
     ax1.set_ylabel("Share of rows with feature (%)", fontsize=12)
-    title_suffix = " (Latest CAO View)" if use_latest_cao_view else ""
-    ax1.set_title(f"Share of rows with selected features over time{title_suffix}", fontsize=14)
+    title_suffix = " (Active In-Force Stock)" if use_latest_cao_view else ""
+    ax1.set_title(f"Share of rows with selected features over time{title_suffix}\n(lines: years with ≥10 contributing CAOs)", fontsize=13)
+    enforce_integer_year_axis(ax1, [int(y) for y in all_years])
     ax1.legend(fontsize=10)
     ax1.grid(True, alpha=0.3)
-    
+
     if cao_counts:
         ax2 = ax1.twinx()
         years = sorted(all_years)
@@ -1155,10 +1169,25 @@ def plot_salary_points_per_row_by_year(
         print("  [INFO] Missing cao_number; skipping points-per-row plot")
         return
     df_w = attach_cao_equal_weights(df_filtered, "cao_number", "contract_start_year")
-    years = sorted(df_w["contract_start_year"].dropna().unique().astype(int).tolist())
-    if not years:
+    all_years = sorted(df_w["contract_start_year"].dropna().unique().astype(int).tolist())
+    if not all_years:
         print("  [INFO] No years for points-per-row plot")
         return
+
+    # Matches the >=10-CAO "mature year" threshold used for the SalPointsPerRowLow/High
+    # macros in 03_salary.py (compute_points_per_row_stats) -- keeps prose and figure in
+    # sync; thin years (e.g. 2004: 1 CAO) otherwise swing the line to values the mature
+    # sample never shows. Bars below still show every year for context.
+    MIN_MATURE_CAOS = 10
+    cao_counts_all = {
+        y: int(df_w.loc[df_w["contract_start_year"] == y, "cao_number"].dropna().nunique())
+        for y in all_years
+    }
+    years = [y for y in all_years if cao_counts_all.get(y, 0) >= MIN_MATURE_CAOS]
+    if not years:
+        print("  [INFO] No mature years for points-per-row plot")
+        return
+
     mean_pts: List[float] = []
     med_pts: List[float] = []
     for y in years:
@@ -1172,13 +1201,13 @@ def plot_salary_points_per_row_by_year(
     colors = get_plot_color_cycle(2)
     ax1.plot(years, mean_pts, marker="o", label="Mean (CAO-equal)", linewidth=2, markersize=6, color=colors[0])
     ax1.plot(years, med_pts, marker="s", label="Median (weighted)", linewidth=2, markersize=6, linestyle="--", color=colors[1])
-    enforce_integer_year_axis(ax1, years)
+    enforce_integer_year_axis(ax1, all_years)
     ax1.set_xlabel("Contract start year", fontsize=12)
     ax1.set_ylabel("Band-eligible salary points per row", fontsize=12)
-    ax1.set_title("Average number of band-eligible salary points per row over time", fontsize=14)
+    ax1.set_title("Average number of band-eligible salary points per row over time\n(lines: years with ≥10 contributing CAOs)", fontsize=13)
     ax1.legend(fontsize=10, loc="best")
     ax1.grid(True, alpha=0.3)
-    _twin_axis_only_cao_counts(ax1, df_w, "contract_start_year", years)
+    _twin_axis_only_cao_counts(ax1, df_w, "contract_start_year", all_years)
     plt.tight_layout(rect=[0, 0.08, 1, 1])
     output_path = output_dir / filename
     plt.savefig(output_path, dpi=300, bbox_inches="tight")
@@ -1273,7 +1302,7 @@ def _plot_single_increase_series_salary_year_latest(
     fig, ax = plt.subplots(figsize=(11, 6))
     color = get_plot_color_cycle(1)[0]
     add_yearly_variance_layer(ax, d, "salary_year", column, color, weight_col="cao_weight", hide_boxplot_fliers=True)
-    ax.set_title(f"{label} by salary year (Latest CAO View)", fontsize=12)
+    ax.set_title(f"{label} by salary year (Active In-Force Stock)", fontsize=12)
     ax.set_xlabel("Salary year", fontsize=12)
     ax.set_ylabel("Average increase (%)", fontsize=12)
     ax.set_ylim(-4, 12)
@@ -1298,6 +1327,7 @@ def plot_increase_series_comparison(events: pd.DataFrame, output_dir: Path) -> N
     fig, ax = plt.subplots(figsize=(12, 6))
     years_union: List[int] = []
     merged_for_twin: Optional[pd.DataFrame] = None
+    all_vs: List[float] = []
     for col, lab, color in zip(cols, labels, colors):
         d = events[
             events[col].notna()
@@ -1326,6 +1356,7 @@ def plot_increase_series_comparison(events: pd.DataFrame, output_dir: Path) -> N
         ys, vs = zip(*wmean_by_y)
         ax.plot(list(ys), list(vs), marker="o", linewidth=2.2, color=color, label=lab)
         years_union.extend(int(y) for y in ys)
+        all_vs.extend(vs)
         if col == "increase_merged_pref_csv":
             merged_for_twin = d.copy()
     if not years_union:
@@ -1338,7 +1369,11 @@ def plot_increase_series_comparison(events: pd.DataFrame, output_dir: Path) -> N
     ax.set_title("Average general wage increase comparison by salary start year", fontsize=12)
     ax.set_xlabel("Salary start year", fontsize=12)
     ax.set_ylabel("Average increase (%)", fontsize=12)
-    ax.set_ylim(0, 6)
+    max_val = max(all_vs) if all_vs else 6.0
+    y_top = max(6.0, float(np.ceil(max_val / 2.0) * 2.0))
+    if y_top - max_val < 1.0:
+        y_top += 2.0
+    ax.set_ylim(0, y_top)
     ax.grid(True, alpha=0.3)
     ax.legend(fontsize=10, loc="best")
     plt.tight_layout()

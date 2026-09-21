@@ -50,6 +50,8 @@ from common import (
     set_macro,
     setup_matplotlib,
 )
+# common.py inserts CAOS_REPO_ROOT onto sys.path as an import-time side effect.
+from scripts.excel_analysis.analysis_utils import enforce_integer_year_axis
 
 INDICES_OUT = REPO_ROOT / "indices" / "out"
 INDICES_FIG_DIR = FIGURES_DIR / "indices"
@@ -70,6 +72,29 @@ TOPICS = [
     ("safety", "Safety & Wellbeing"),
     ("childcare", "Childcare"),
 ]
+
+def _topic_column_candidates(t_key: str) -> list[str]:
+    return [
+        f"{t_key}_z",               # Dual-track combined headline (leave, absence, term, etc.)
+        f"{t_key}_median_z",        # Wage headline
+        f"{t_key}_coverage_z",      # Single-track coverage headline (safety, childcare)
+        f"{t_key}_numeric_z",       # Fallback magnitude track
+    ]
+
+def resolve_topic_column(t_key: str, df: pd.DataFrame) -> str | None:
+    """Resolve the published headline z-column for a topic in composite_index.csv."""
+    for c in _topic_column_candidates(t_key):
+        if c in df.columns:
+            return c
+    return None
+
+def resolve_topic_index(t_key: str, index) -> str | None:
+    """Same resolution as resolve_topic_column, but against a row index (e.g. factor
+    loadings keyed by z-column name) instead of DataFrame columns."""
+    for c in _topic_column_candidates(t_key):
+        if c in index:
+            return c
+    return None
 
 def main():
     print("=== Running 04_indices.py ===")
@@ -214,6 +239,7 @@ def main():
     ax.set_xlabel("Calendar Year", fontsize=12)
     ax.set_ylabel("Gross Monthly Wage (EUR)", fontsize=12)
     ax.set_title(f"CAO Wage Scale Ladder vs. Statutory Minimum Wage ({wage_year_min}–{wage_year_max})", fontsize=14)
+    enforce_integer_year_axis(ax, [int(y) for y in years])
     ax.grid(True, alpha=0.3)
     ax.legend(loc="upper left", framealpha=0.9, fontsize=10)
     
@@ -230,8 +256,8 @@ def main():
     topic_data = []
     topic_labels = []
     for t_key, t_disp in reversed(TOPICS):
-        z_col = f"{t_key}_z" if f"{t_key}_z" in df_comp.columns else f"{t_key}_numeric_z"
-        if z_col in df_comp.columns:
+        z_col = resolve_topic_column(t_key, df_comp)
+        if z_col and z_col in df_comp.columns:
             s = df_comp[z_col].dropna()
             if len(s) > 0:
                 topic_data.append(s)
@@ -271,14 +297,16 @@ def main():
     })
     
     # Per-topic rows
-    topic_std = {}
     for t_key, t_disp in TOPICS:
-        z_col = f"{t_key}_z" if f"{t_key}_z" in df_comp.columns else f"{t_key}_numeric_z"
-        if z_col in df_comp.columns:
+        z_col = resolve_topic_column(t_key, df_comp)
+        if z_col and z_col in df_comp.columns:
             s = df_comp[z_col].dropna()
-            topic_std[t_key] = s.std()
+            # Coverage-only tracks (no magnitude track, e.g. safety/childcare) are marked
+            # with a footnote reference -- their distribution reflects a coarse boolean-
+            # style coverage indicator rather than a graded generosity magnitude.
+            dim_label = f"{t_disp}$^{{c}}$" if z_col.endswith("_coverage_z") else t_disp
             topline_rows.append({
-                "Dimension": t_disp,
+                "Dimension": dim_label,
                 "Mean": f"{s.mean():.2f}",
                 "Std": f"{s.std():.2f}",
                 "P10": f"{s.quantile(0.10):.2f}",
@@ -295,92 +323,6 @@ def main():
         escape=False,
     )
     
-    # Table 4.2: Top and Bottom CAOs by Composite Generosity
-    print("Emitting Table: tab_indices_top_bottom_caos.tex...")
-    # Coverage-quality gate: exclude carried/thin documents and documents scoring on too few
-    # topics to give a reliable overall_z (indices/ADVANCED_ANALYSIS.md's own convention is
-    # n_topics_scored >= 8; composite_index.csv's n_topics_scored ranges 6-11). Without this,
-    # the ranking is exactly the artifact the indices docs warn about: a document observed on
-    # very few topics gets a noisy extreme overall_z that looks like genuine (un)generosity.
-    MIN_TOPICS_SCORED = 8
-    n_all_caos = df_comp["cao_number"].nunique()
-    df_gated = df_comp[
-        (df_comp["thin_doc"] != True) & (df_comp["n_topics_scored"] >= MIN_TOPICS_SCORED)
-    ].copy()
-    n_excluded_docs = len(df_comp) - len(df_gated)
-
-    # Get latest (by file_date) qualifying document per CAO
-    df_latest_cao = df_gated.sort_values("file_date").groupby("cao_number", as_index=False).last()
-    df_sorted = df_latest_cao.dropna(subset=["overall_z"]).sort_values("overall_z", ascending=False)
-    n_rankable_caos = len(df_sorted)
-
-    def clean_agreement_name(raw: str, max_len: int = 55) -> str:
-        """Turn a raw file_name into a readable label without truncating mid-word."""
-        name = re.sub(r"\.(pdf|json|docx?)$", "", str(raw), flags=re.IGNORECASE)
-        name = name.replace("_", " ")
-        name = re.sub(r"\s+", " ", name).strip(" -")
-        if len(name) <= max_len:
-            return name
-        cut = name[:max_len]
-        last_space = cut.rfind(" ")
-        if last_space > 20:
-            cut = cut[:last_space]
-        return cut.rstrip(" -") + "…"
-
-    top_5 = df_sorted.head(5)
-    bottom_5 = df_sorted.tail(5).iloc[::-1] # lowest at the bottom
-
-    ranking_rows = []
-    for _, r in top_5.iterrows():
-        ranking_rows.append({
-            "Rank": f"Top {len(ranking_rows)+1}",
-            "CAO Number": str(r["cao_number"]),
-            "Agreement Title": clean_agreement_name(r["file_name"]),
-            "Overall z": f"{r['overall_z']:.2f}",
-            "Percentile": f"{r.get('overall_pctile', 0)*100:.1f}\\%",
-        })
-    for i, (_, r) in enumerate(bottom_5.iterrows()):
-        ranking_rows.append({
-            "Rank": f"Bottom {5-i}",
-            "CAO Number": str(r["cao_number"]),
-            "Agreement Title": clean_agreement_name(r["file_name"]),
-            "Overall z": f"{r['overall_z']:.2f}",
-            "Percentile": f"{r.get('overall_pctile', 0)*100:.1f}\\%",
-        })
-
-    df_ranking = pd.DataFrame(ranking_rows)
-    emit_table(
-        df_ranking,
-        TABLES_DIR / "tab_indices_top_bottom_caos.tex",
-        col_align="llp{6.5cm}rr",
-        headers=["Rank", "CAO", "Document Name", "Overall z", "Percentile"],
-        escape=False,
-    )
-
-    # Table 4.3: Statutory-response elasticities
-    print("Emitting Table: tab_indices_statutory_response.tex...")
-    stat_resp_path = INDICES_OUT / "statutory_response_results.csv"
-    df_stat_resp = pd.read_csv(stat_resp_path, sep=";", low_memory=False)
-    df_beta = df_stat_resp[df_stat_resp["coef"] == "d_stat_t"].copy()
-    TOPIC_DISPLAY = dict(TOPICS)
-    resp_rows = []
-    for _, r in df_beta.iterrows():
-        resp_rows.append({
-            "Domain": TOPIC_DISPLAY.get(r["topic"], str(r["topic"]).capitalize()),
-            "Beta": f"{r['beta']:.2f}",
-            "Clustered SE": f"{r['se_cluster_year']:.2f}" if pd.notna(r["se_cluster_year"]) else "",
-            "t": f"{r['t']:.2f}" if pd.notna(r["t"]) else "",
-            "N": f"{int(r['n_obs']):,}",
-        })
-    df_stat_resp_tab = pd.DataFrame(resp_rows)
-    emit_table(
-        df_stat_resp_tab,
-        TABLES_DIR / "tab_indices_statutory_response.tex",
-        col_align="lrrrr",
-        headers=["Domain", "$\\beta$ (d\\_stat\\_t)", "Clustered SE", "$t$", "N"],
-        escape=False,
-    )
-
     # Table 4.4: Generosity vs. pay-level correlations
     print("Emitting Table: tab_indices_pay_correlations.tex...")
     pay_corr_path = INDICES_OUT / "coverage_vs_z_correlations.csv"
@@ -418,8 +360,8 @@ def main():
 
     fl_rows = []
     for t_key, t_disp in TOPICS:
-        z_col = "wage_median_z" if t_key == "wage" else f"{t_key}_z"
-        if z_col not in df_fl_combined.index:
+        z_col = resolve_topic_index(t_key, df_fl_combined.index)
+        if z_col is None:
             continue
         row = df_fl_combined.loc[z_col]
         fl_rows.append({
@@ -438,36 +380,13 @@ def main():
         escape=False,
     )
 
-    # Open-judgment and statutory-fingerprint counts (registry files, not hand-typed)
-    open_ct_path = REPO_ROOT / "indices" / "review" / "all_open_cant_tells.csv"
-    df_open_ct = pd.read_csv(open_ct_path, sep=";", low_memory=False)
-    n_open_ct = len(df_open_ct)
-
-    fp_path = INDICES_OUT / "statutory_fingerprint_suspects.csv"
-    df_fp = pd.read_csv(fp_path, sep=";", low_memory=False)
-    n_fp_never_checked = (df_fp["adjudication"] == "NEVER_CHECKED").sum()
-
     # Emit macros
     print("Emitting Indices macros...")
-    set_macro("IndPanelTotalMonths", f"{len(df_panel_mature):,}")
     set_macro("IndPanelStartMonth", str(df_panel_mature["month"].min()))
     set_macro("IndPanelEndMonth", str(df_panel_mature["month"].max()))
-    set_macro("IndOverallZMean", f"{ov_s.mean():.2f}")
-    set_macro("IndOverallZMedian", f"{ov_s.median():.2f}")
-    set_macro("IndOverallZStd", f"{ov_s.std():.2f}")
     set_macro("IndKmoStat", "0.64")
     set_macro("IndMatureMinCaos", str(MATURE_MIN_CAOS))
-    set_macro("IndMinTopicsScored", str(MIN_TOPICS_SCORED))
-    set_macro("IndRankingExcludedDocs", f"{n_excluded_docs:,}")
-    set_macro("IndRankingRankableCaos", f"{n_rankable_caos:,}")
-    set_macro("IndRankingTotalCaos", f"{n_all_caos:,}")
     set_macro("IndCompositeTotalDocs", f"{len(df_comp):,}")
-    set_macro("IndSDHomeoffice", f"{topic_std.get('homeoffice', float('nan')):.2f}")
-    set_macro("IndSDFringe", f"{topic_std.get('fringe', float('nan')):.2f}")
-    set_macro("IndSDTermination", f"{topic_std.get('term', float('nan')):.2f}")
-    set_macro("IndSDOvertime", f"{topic_std.get('overtime', float('nan')):.2f}")
-    set_macro("IndOpenJudgmentCells", f"{n_open_ct:,}")
-    set_macro("IndFingerprintSuspects", f"{n_fp_never_checked:,}")
 
     latest_mw_year = mw_year.iloc[-1] if len(mw_year) > 0 else None
     if latest_mw_year is not None:

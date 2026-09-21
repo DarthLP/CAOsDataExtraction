@@ -23,6 +23,7 @@ If you have not read these, stop and read them before doing data work.
   - `reference/qa_leave/inputs` is a symlink to `../../inputs` for backward-compat
     with leftover scripts that hard-code the old path.
 - `qa/`                  — QA pipeline engine (active work).
+- `qa/_archive/`         — retired scripts. Never run them; see `qa/_archive/README.md`.
 - `qa/corrected_dataset.csv` — CANONICAL corrected dataset. Never edit in place;
   apply→copy→verify→promote. See `docs/DATA_LINEAGE.md` + `qa/DATASETS.md`.
 - `qa/shared/`           — topic-agnostic reusable code.

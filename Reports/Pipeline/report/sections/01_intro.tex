@@ -13,41 +13,37 @@ In the Netherlands, collective labour agreements (\emph{Collectieve Arbeidsovere
 The objective of this project is to construct an auditable, deterministic, and empirically rigorous pipeline that:
 \begin{enumerate}[leftmargin=1.8em]
   \item Scrapes and parses more than 1,500 historical and active CAO PDF documents;
-  \item Extracts structured clauses across 13 distinct thematic domains (wages, pensions, leave, working hours, contract types, training, severance, etc.);
-  \item Parses multi-tier salary grids deterministically without hallucination risk;
-  \item Audits and corrects upstream extraction errors through an audited 34-layer verification protocol;
+  \item Extracts structured clauses across 13 distinct thematic domains (wages, pensions, leave, working hours, contract types, training, etc.);
+  \item Parses multi-tier salary grids minimizing hallucination risk;
+  \item Audits and corrects extraction errors through a multi-layer verification protocol;
   \item Derives standardised generosity indices (pooled-z and percentile tracks) and nominal wage ladders anchored to statutory minimum wage schedules;
   \item Produces a balanced monthly in-force panel workbook for empirical econometric research.
 \end{enumerate}
 
 \subsection{The Unified Pipeline Layout}
 
-The project integrates five sequential stages under a unified layout, resolving legacy separations between extraction, salary parsing, and dataset verification:
+The project integrates three sequential stages under a unified layout (deterministic salary parsing as Stage~1b):
 
-\begin{figure}[h!]
+\begin{figure}[!htbp]
 \centering
+\small
 \begin{verbatim}
 Stage 1: Extraction (pipelines/)
-  |-- p1_webscraping.py        -> Download PDFs from official SZW portal
-  |-- p2_extract.py            -> Multi-method text extraction (PyPDF2 + OCR)
-  |-- p3_llmExtraction.py      -> First-pass Gemini extraction into 13 topics
-  |-- p4_analysis.py           -> Schema-enforced Pydantic structured output
-  \-- p5_excel_creation.py     -> Merged tabular outputs (extracted_data_non_salary.csv)
+  |-- p1_webscraping.py    -> Download PDFs from official SZW portal
+  |-- p2_extract.py        -> Text extraction (PyPDF2 + Tesseract OCR)
+  |-- p3_llmExtraction.py  -> First-pass Gemini extraction (13 topics)
+  |-- p4_analysis.py       -> Schema-enforced Pydantic structured output
+  \-- p5_excel_creation.py -> Flat tabular output (extracted_data_non_salary.csv)
 
 Stage 1b: Deterministic Salary Parsing (salary_parser/)
-  \-- deliver.py               -> Parses p3 wage tables deterministically
-                                  (100% amount provenance, confidence tiers A-D)
+  \-- deliver.py           -> Deterministic wage parsing (100% amount provenance)
 
 Stage 2: Non-Salary Correction & Verification (verification_pipeline/qa/)
-  \-- apply_corrections.py     -> 34 audited layers (G0->G33), ~12,000 corrections,
-                                  grounded against English-translated source text
+  \-- corrected_dataset.csv -> Final corrected dataset (152 regression tests in qa/)
 
 Stage 3: Derived Indices & Panel Generation (verification_pipeline/indices/)
-  \-- rebuild.sh               -> Pooled-z generosity scores, statutory floor,
-                                  wage index, monthly in-force panel, 26-tab workbook
+  \-- rebuild.sh           -> Pooled-z scores, wage index, monthly in-force panel
 
-Stage 4: Documentation & Verification Reports (Reports/Pipeline/)
-  \-- report/CAOPipeline.tex   -> Modular replication guide and technical documentation
 \end{verbatim}
 \caption{End-to-end architecture of the unified CAO extraction and verification pipeline.}
 \label{fig:pipeline-arch}
@@ -58,23 +54,23 @@ Stage 4: Documentation & Verification Reports (Reports/Pipeline/)
 
 To prevent ambiguity regarding data lineage, Table~\ref{tab:canonical-artifacts} records the single canonical artifact for each stage of the pipeline.
 
-\begin{table}[h!]
+\begin{table}[!htbp]
 \centering
 \small
-\begin{tabular}{lllp{5.8cm}}
+\begin{tabularx}{\textwidth}{l >{\raggedright\arraybackslash}p{5.4cm} c X}
 \toprule
 \textbf{Stage} & \textbf{Artifact Path} & \textbf{Format} & \textbf{Integrity / Verification Standard} \\
 \midrule
-Raw Input & \texttt{inputs/pdfs/input\_pdfs/} & PDF & SZW government portal downloads. \\
-Stage 1 (p3) & \texttt{outputs/llm\_extracted/new\_flow/} & JSON & English-translated topic text passages. \\
-Stage 1 (p5) & \texttt{outputs/excel/new\_results/} & CSV/XLSX & Upstream raw LLM structured tables. \\
-Stage 1b & \texttt{outputs/parser\_salary/extracted\_data\_salary\_v2.csv} & CSV & 359,474 rows, 100\% amount provenance, Tiers A+B (95.45\%). \\
-Stage 2 & \texttt{verification\_pipeline/qa/corrected\_dataset.csv} & CSV & Canonical corrected dataset: 2,739 rows $\times$ 318 cols, 34 audited layers. \\
-Stage 3 & \texttt{verification\_pipeline/indices/out/composite\_index.csv} & CSV & Generosity indices (z-scores and percentile ranks) across 10 domains. \\
-Stage 3 & \texttt{verification\_pipeline/indices/out/mw\_indices.csv} & CSV & Wage ladder and monthly wage index series. \\
-Stage 3 & \texttt{verification\_pipeline/indices/out/scoring\_params.csv} & CSV & Parameter registry for all 39 scored fields. \\
+Raw Input & \nolinkurl{inputs/pdfs/input_pdfs/} & PDF & SZW government portal downloads. \\
+Stage 1 (p3) & \nolinkurl{outputs/llm_extracted/new_flow/} & JSON & English-translated topic text passages. \\
+Stage 1 (p5) & \nolinkurl{outputs/excel/new_results/extracted_data_non_salary.csv} & CSV & Flat tabular non-salary extracts from p4 Pydantic models. \\
+Stage 1b & \nolinkurl{outputs/parser_salary/extracted_data_salary_v2.csv} & CSV & 359,474 rows $\times$ 749 cols (delimiter ``;''), 100\% amount provenance, Tiers A+B (343,111 rows, 95.45\%). \\
+Stage 2 & \nolinkurl{verification_pipeline/qa/corrected_dataset.csv} & CSV & Canonical corrected dataset: 2,739 rows $\times$ 318 cols, 242 unique CAOs (delimiter ``;''), 34 audited layers (152 regression tests in \nolinkurl{qa/}). \\
+Stage 3 & \nolinkurl{verification_pipeline/indices/out/composite_index.csv} & CSV & 2,698 rows $\times$ 112 cols (delimiter ``;''), pooled-z and percentile ranks across 10 domains. \\
+Stage 3 & \nolinkurl{verification_pipeline/indices/out/mw_indices.csv} & CSV & 1,970 rows $\times$ 22 cols (delimiter ``;''), statutory wage index series and nominal wage ladders. \\
+Stage 3 & \nolinkurl{verification_pipeline/indices/out/scoring_params.csv} & CSV & 89 parameter rows $\times$ 10 cols (delimiter ``;'') covering 50 scored field variants. \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \caption{Canonical artifacts across all pipeline stages.}
 \label{tab:canonical-artifacts}
 \end{table}

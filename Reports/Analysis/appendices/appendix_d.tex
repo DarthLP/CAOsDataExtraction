@@ -1,0 +1,27 @@
+\section{Generosity Index Robustness and Multidimensional Structure}
+\label{app:indices_robustness}
+
+This appendix presents sensitivity checks and methodological extensions for the Stage~2 Generosity Indices, evaluating standardization scales, date-convention sensitivity, within-topic weighting alternatives, and co-adoption clusters.
+
+\subsection*{Equal-range percentile scale vs.\ pooled-z scores}
+
+In the main text, composite generosity is evaluated via continuous pooled-z scores (\texttt{overall\_z}). While z-scores provide unit variance and metric distances suitable for factor analysis, they exhibit an inherent mathematical limitation: \textbf{z-range asymmetry}.
+
+Because certain labor provisions are strongly left-skewed (e.g., Year~1 sick pay continuation rates clustering tightly at 100\%, or mandatory pension participation), their empirical distribution allows agreements at the statutory floor to sit only a fraction of a standard deviation below the mean ($z \in [-3.0, +0.33]$). Conversely, right-skewed provisions (such as extensive training allowances or generous relocation budgets) can span up to $z = +3.0$.
+
+To test whether this skewness asymmetry distorts overall conclusions, the pipeline computes an alternative \textbf{equal-range percentile rank} (\texttt{overall\_pctile}):
+\begin{itemize}
+    \item Every raw provision is mapped to its percentile rank in the de-duplicated yardstick distribution, bounded strictly within $[0, 1]$.
+    \item Agreement-level composite percentiles represent the unweighted mean across available domain percentiles.
+    \item Across all 2,698 full-CAO documents, the correlation between \texttt{overall\_z} and the percentile rank \nolinkurl{overall_pctile} is $r = 0.81$ (Pearson) and $\rho = 0.80$ (Spearman).
+    \item Factor analysis on the percentile scale yields a Kaiser-Meyer-Olkin (KMO) sampling adequacy of $0.55$ and reproduces identical factor clusters, confirming that descriptive findings are robust to the chosen distributional metric.
+\end{itemize}
+
+\subsection*{Within-topic weighting: Equal weights vs.\ Principal Component Analysis (PCA)}
+
+A core methodological choice in index construction is the scheme used to aggregate individual provisions into topic scores:
+\begin{itemize}
+    \item \textbf{Equal-Weighted Signed z-Scores (Active Pipeline)}: Assigns equal weight to each signed standardized provision within a domain.
+    \item \textbf{First Principal Component (PCA)}: Assigns empirical weights based on the primary eigenvector of the within-topic correlation matrix.
+\end{itemize}
+In \texttt{indices/ADVANCED\_ANALYSIS.md}, correlations between equal-weighted domain scores and first-principal-component scores exceed $r > 0.90$ across 10 of the 12 domains. However, equal weighting is strictly preferred on normative and scientific grounds: PCA maximizes statistical variance rather than the institutional direction of worker protection. In domains where a statutory compliance floor exhibits high variance, PCA can overweight legal minimums while downweighting genuine above-statutory enhancements.

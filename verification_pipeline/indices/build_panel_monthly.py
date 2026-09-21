@@ -178,12 +178,23 @@ def main(axis="file", suffix=""):
         for zc in other_z:
             parts.append(pd.to_numeric(P["score_src_id"].map(d[zc]), errors="coerce"))
         P[f"{topic}_numeric_z"] = pd.concat(parts, axis=1).mean(axis=1).round(4)
-    # leave: worker package this month = max(CAO-extracted FRE, statutory FRE this month)
+    # leave: per-type z (paternity/adoption/parental), each re-scored against this
+    # month's statutory floor for that type — matches the composite's per-type method
+    # (parental_leave_index.py, 2026-07-07). Maternity excluded (no params: ~zero variance).
     lv = il.read_csv_safe(il.locate("parental_leave_index.csv")).set_index("id")
-    fre_extr = pd.to_numeric(P["score_src_id"].map(lv["fre_total_extracted"]), errors="coerce")
-    stat_fre = {m: sum(fre_from_segments(s) for s in statutory_floor(mid[m]).values()) for m in months}
-    fre_m = pd.concat([fre_extr, P["_ym"].map(stat_fre)], axis=1).max(axis=1)
-    P["leave_numeric_z"] = il.pooled_z(fre_m, params.get(("fre_total_with_statutory", "full"))).round(4)
+    LEAVE_TYPES = ("paternity", "adoption", "parental")
+    type_z = []
+    for t in LEAVE_TYPES:
+        extr_t = pd.to_numeric(P["score_src_id"].map(lv[f"{t}_fre_extr"]), errors="coerce")
+        stat_t = {m: fre_from_segments(statutory_floor(mid[m])[t]) for m in months}
+        x_t = pd.concat([extr_t, P["_ym"].map(stat_t)], axis=1).max(axis=1)
+        type_z.append(il.pooled_z(x_t, params.get((f"{t}_fre_stat", "full"))))
+    P["leave_numeric_z"] = pd.concat(type_z, axis=1).mean(axis=1).round(4)
+
+    # raw reference only — NOT fed into any z-score/composite computation
+    fre_extr_total = pd.to_numeric(P["score_src_id"].map(lv["fre_total_extracted"]), errors="coerce")
+    stat_fre_total = {m: sum(fre_from_segments(s) for s in statutory_floor(mid[m]).values()) for m in months}
+    P["leave_fre_total_monthly"] = pd.concat([fre_extr_total, P["_ym"].map(stat_fre_total)], axis=1).max(axis=1).round(3)
 
     # ---- COMBINED roll-ups (2026-07-08) -----------------------------------------------------
     # PRIMARY overall_z / overall_z_var are the COMBINED (numeric+coverage) roll-ups, matching
@@ -240,7 +251,7 @@ def main(axis="file", suffix=""):
             + [f"{t}_z" for t in MAG]                          # combined headline per dual topic
             + ZCOLS + ["wage_mean_z"] + COVZ + COVC +          # numeric z, coverage z, coverage shares
             ["mw_low", "mw_median", "mw_mean", "mw_high", "ratio_low_wml", "ratio_median_wml",
-             "ratio_mean_wml", "ratio_high_wml", "wml_month"])
+             "ratio_mean_wml", "ratio_high_wml", "wml_month", "leave_fre_total_monthly"])
     out = pd.concat([P, S], ignore_index=True)
     out = out[["_ym"] + [c for c in keep if c in out.columns]]
     out = out.sort_values(["cao_number", "_ym"]).drop(columns=["_ym"])

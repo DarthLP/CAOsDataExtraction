@@ -13,15 +13,20 @@ import matplotlib.pyplot as plt
 
 # Pinned repository roots
 ANALYSIS_DIR = Path(__file__).resolve().parent.parent
-REPO_ROOT = ANALYSIS_DIR.parent.parent
 CAOS_REPO_ROOT = Path("/Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction")
 try:
-    from repo_paths import EXTRACTION_ROOT
+    from repo_paths import EXTRACTION_ROOT, VERIFICATION_ROOT
     CAOS_REPO_ROOT = EXTRACTION_ROOT
 except ImportError:
-    sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
-    from repo_paths import EXTRACTION_ROOT
+    sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "verification_pipeline"))
+    from repo_paths import EXTRACTION_ROOT, VERIFICATION_ROOT
     CAOS_REPO_ROOT = EXTRACTION_ROOT
+
+# REPO_ROOT = the verification_pipeline root (where qa/ and indices/ live), NOT the
+# CAOsDataExtraction repo root. Reports/Analysis was moved to CAOsDataExtraction/Reports/
+# on 2026-09-16, so this can no longer be derived as ANALYSIS_DIR.parent.parent (which
+# now lands on CAOsDataExtraction/ instead) — pinned via repo_paths.py instead.
+REPO_ROOT = VERIFICATION_ROOT
 
 # Output directories
 FIGURES_DIR = ANALYSIS_DIR / "figures"

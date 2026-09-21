@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage[hidelinks]{hyperref}
+
+% Input auto-generated macros
+\input{tables/macros}
+
+
+\title{\textbf{CAO Descriptive Summary}\\\Large Built on non-salary dataset (\texttt{corrected\_dataset.csv}), salary parser output (\texttt{extracted\_data\_salary\_v2.csv}), and generosity indices (\texttt{indices/out/})}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+\vspace{1em}
+
+\input{General}
+\input{Non-Salary}
+\input{Salary}
+\input{Indices}
+
+\clearpage
+\appendix
+
+\input{appendices/appendix_a}
+\input{appendices/appendix_b}
+\input{appendices/appendix_c}
+\input{appendices/appendix_d}
+\input{appendices/appendix_e}
+
+\end{document}

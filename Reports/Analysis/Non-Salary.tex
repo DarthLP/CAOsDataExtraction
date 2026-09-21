@@ -1,0 +1,181 @@
+\section*{2. Non-Salary}
+\label{sec:non_salary}
+
+\subsection*{Domain coverage and economic rationale}
+
+Non-salary provisions are extensively codified across Dutch CAOs. Table~\ref{tab:domain_coverage} summarizes domain coverage in the latest-CAO cross-section ($N = \GenUniqueCAOs$ unique collective agreements, evaluating the single latest substantive agreement per CAO). Virtually all CAOs contain explicit clauses on termination rules, contract-type regulation, training rights, fringe benefits, pensions, overtime, bonuses and allowances, leave enhancements, and safety and wellbeing. In contrast, homeoffice rights and childcare provisions are far less pervasive, while clauses regulating artificial intelligence remain nascent.\footnote{For safety and childcare, domains are coded as present if any of their constituent indicators indicate presence (logical OR across columns); for remaining domains, presence is determined by a dedicated headline indicator. Missing values in indicator columns are treated as absence; shares are calculated over the complete universe of $N = \GenUniqueCAOs$ agreements.}
+
+\begin{table}[H]
+    \centering
+    \caption{Domain coverage in latest-CAO cross-section ($N = \GenUniqueCAOs$)}
+    \label{tab:domain_coverage}
+    \input{tables/tab_domain_coverage}
+    \vspace{1ex}
+    \parbox{\linewidth}{\footnotesize \textit{Note:} Universe consists of the latest substantive collective agreement for each of the $N = \GenUniqueCAOs$ unique CAOs in the database (excluding thin administrative amendments and protocols). Shares reflect the proportion of agreements containing at least one explicit contractual clause in the indicated domain.}
+\end{table}
+
+\subsection*{Bonuses and wage-related provisions}
+
+Figure~\ref{fig:bonuses} documents the incidence of wage add-ons and bonus schemes in the active in-force stock. Almost all CAOs include at least one bonus scheme, and a clear majority codify job-specific allowances. Entry wage steps conditioned on prior work experience are common, establishing wage progression above the Statutory Minimum Wage (WML). Seniority and loyalty bonuses show a mild upward trend over the panel, whereas personal allowances at the maximum scale step decline over the same period. The remaining variable compensation components (e.g., profit sharing, sign-on bonuses, retirement gratuities) remain minority provisions appearing in fewer than 50\% of agreements.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_bonuses_wages.png}
+    \caption{Bonuses and wage-related provisions (active in-force stock)}
+    \label{fig:bonuses}
+\end{figure}
+
+\subsection*{Fringe benefits}
+
+Fringe benefits are nearly universal: almost every collective agreement contains at least one such provision (\NonSalFringeShare, Figure~\ref{fig:fringe}). Commuting allowances are the dominant component, reflecting the dense spatial geography and high commuting share of the Dutch labor force. Meal benefits, collective insurance or savings schemes, and relocation allowances each appear in substantial minorities of agreements. Company bike schemes and reimbursement for internet or phone costs remain less widespread.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_fringe.png}
+    \caption{Fringe benefits (active in-force stock)}
+    \label{fig:fringe}
+\end{figure}
+
+\subsection*{Pension provisions}
+
+Pension coverage is effectively complete in the active in-force stock (Figure~\ref{fig:pension}). Mandatory sectoral pension fund participation, governed by the Mandatory Industry Pension Funds Act (\emph{Wet Bpf 2000}), is standard across virtually all sectoral agreements. In contrast, contractual rules prescribing equal sharing of pension contributions between employer and employee remain a minority feature throughout the sample period.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_pension.png}
+    \caption{Pension provisions (active in-force stock)}
+    \label{fig:pension}
+\end{figure}
+
+\subsection*{Leave enhancements}
+
+Leave enhancements and sick pay supplements are nearly universal across Dutch collective agreements (Figure~\ref{fig:leave}). Dutch labor law establishes statutory floors via the Work and Care Act (\emph{Wet arbeid en zorg}, WAZO) for family and parental leaves, and Article~7:629 of the Dutch Civil Code (\emph{Burgerlijk Wetboek}, BW) for sick leave (mandating a statutory wage continuation floor of 70\% of wages for 104 weeks). Collective agreements can substantially enhance these legal baselines. 
+
+While the WAZO provides 16 weeks of fully paid maternity leave, recent statutory reforms expanded partner leave under the WIEG (\emph{Wet invoering extra geboorteverlof}, 2019/2020, granting 1 week fully paid plus 5 weeks at 70\% of daily wages) and introduced 9 weeks of paid parental leave at 70\% under the WBU (\emph{Wet betaald ouderschapsverlof}, effective August 2022). Additional vacation days linked to employee seniority also remain widespread.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_leave.png}
+    \caption{Leave enhancements (active in-force stock)}
+    \label{fig:leave}
+\end{figure}
+
+\subsection*{Overtime rules}
+
+Both overtime rules and shift allowances are codified in a large majority of CAOs (Figure~\ref{fig:overtime}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_overtime.png}
+    \caption{Overtime rules and shift allowances (active in-force stock)}
+    \label{fig:overtime}
+\end{figure}
+
+\subsection*{Contract-type rules}
+
+Contract-type regulation is extensive across sectoral agreements (Figure~\ref{fig:contract_type}). Almost all agreements explicitly accommodate part-time employment and guarantee the right to request adjustments in contractual working hours.
+
+A pivotal focus of collective bargaining is the statutory \emph{ketenregeling} (Article~7:668a BW, see Appendix~\ref{app:glossary}), which limits consecutive fixed-term contracts before conversion to permanent status. Article~7:668a(5) BW allows social partners to deviate from the statutory chain, and such deviation clauses are widely utilized across Dutch CAOs. In contrast, min--max hours contracts remain the least prevalent form of flexible contract and display a secular downward trend.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_contract_type.png}
+    \caption{Contract-type rules (active in-force stock)}
+    \label{fig:contract_type}
+\end{figure}
+
+\subsection*{Training rights and collective training funds}
+
+Training rights are nearly universal in the latest-CAO cross-section (\NonSalTrainingShare, Figure~\ref{fig:training}). Dutch collective bargaining channels investment in workforce development through bipartite, sectoral Training and Development Funds (Opleidings- en Ontwikkelingsfondsen, or O\&O-fondsen). Established through many sectoral collective labour agreements and generally financed by employer contributions, these funds support employee training and retraining, sector-specific vocational education and work-based learning, and—in some sectors—career mobility and sustainable-employability programmes.
+
+In the active in-force stock, explicit contractual references to O\&O fondsen exhibit a slight downward drift over the panel, reflecting a transition toward individualized training budgets and modular personal development accounts.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_training.png}
+    \caption{Training rights (active in-force stock)}
+    \label{fig:training}
+\end{figure}
+
+\subsection*{Homeoffice provisions}
+
+Homeoffice provisions were historically rare but expanded rapidly following the COVID-19 pandemic (Figure~\ref{fig:homeoffice}). Around \NonSalHomeofficeShare\ of CAOs in the latest cross-section contain an explicit homeoffice clause. Between 2020 and 2023, agreements experienced a sharp acceleration in codified remote work rights, ergonomic home-workstation equipment allowances, and internet or utility cost reimbursements.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_homeoffice.png}
+    \caption{Homeoffice provisions (active in-force stock)}
+    \label{fig:homeoffice}
+\end{figure}
+
+\subsection*{Childcare support}
+
+Childcare-related provisions remain rare in collective agreements. Figure~\ref{fig:childcare} shows that general childcare support clauses appear in fewer than 10\% of agreements (\NonSalChildcareShare\ in the cross-section), while explicit childcare discounts and sector-funded childcare subsidies appear only sporadically. This low prevalence could reflect the state‑centred, income‑tested childcare financing model. Formal childcare is subsidised primarily through the national, means‑tested childcare allowance (kinderopvangtoeslag), which is funded by general taxation and a mandatory 0.5\% payroll levy on employers. Because the main subsidy channel is individual and national rather than firm- or sector-based, enterprise-level childcare schemes are largely supplementary rather than central to the system.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_childcare.png}
+    \caption{Childcare support provisions (active in-force stock)}
+    \label{fig:childcare}
+\end{figure}
+
+\subsection*{Safety and wellbeing}
+
+Provisions governing occupational safety and employee wellbeing are codified in most agreements. Integrity protocols, certified confidential counsellors, and independent reporting procedures have expanded steadily across the panel.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_safety.png}
+    \caption{Safety and wellbeing provisions (active in-force stock)}
+    \label{fig:safety}
+\end{figure}
+
+\subsection*{Termination rules}
+
+Termination rules constitute the single most widely covered non-salary domain, present in \NonSalTerminationShare\ of CAOs in the latest cross-section ($N = \NonSalTerminationCount$, Figure~\ref{fig:termination}). Contractual dismissal clauses establish procedural safeguards that complement Dutch statutory dismissal law under Book~7, Title~10 BW and the UWV dismissal permit system. 
+
+The majority of agreements codify notice periods that scale progressively with employee tenure, and establish automatic employment termination upon reaching the statutory state pension age (\emph{Algemene Ouderdomswet}, AOW). In addition, a growing number of agreements establish supplementary severance schemes or above-statutory unemployment supplements (\emph{bovenwettelijke WW-uitkering}) that cushion worker earnings following structural reorganizations.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_termination.png}
+    \caption{Termination rules (active in-force stock)}
+    \label{fig:termination}
+\end{figure}
+
+\subsection*{AI-related provisions}
+
+Provisions governing algorithmic management, automated decision-making, and artificial intelligence remain nascent in Dutch collective bargaining. In the latest-CAO cross-section, only \NonSalAiCount\ agreements contain an explicit clause regulating AI systems or algorithmic workplace monitoring (Figure~\ref{fig:ai}). These nascent clauses primarily establish employee information rights, require consultation with works councils prior to deploying algorithmic management tools, or guarantee worker retraining in response to automated technological displacement.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/boolean/latest_cao_view/non_salary_boolean_ai.png}
+    \caption{AI-related provisions (active in-force stock)}
+    \label{fig:ai}
+\end{figure}
+
+\subsection*{Numeric trends: working hours, pensions, and training}
+
+In addition to discrete policy indicators, the non-salary database tracks continuous quantitative parameters over time. Figure~\ref{fig:numeric_hours} plots average contracted full-time weekly hours alongside maximum allowable weekly hours including overtime. Contracted full-time hours cluster tightly around a median of \NonSalFTHoursWeeklyMedian\ hours per week across the entire panel window (mirroring standard Dutch 36-, 38-, or 40-hour full-time norms). 
+
+Consistent with the tighter contractual overtime controls noted above, the median contractual ceiling on weekly hours including overtime fluctuates between \NonSalOvertimeMaxWeeklyLow\ and \NonSalOvertimeMaxWeeklyHigh\ hours across cohort years, below the statutory ATW ceiling (Appendix~\ref{app:glossary}).
+
+Figure~\ref{fig:numeric_pension_training} synthesizes numeric pension and training parameters. The normal retirement age specified in pension clauses increases steadily from \NonSalRetireAgeEarly\ years in early cohorts (2011--2013) to \NonSalRetireAgeLate\ years in recent cohorts (2023--2025), directly tracking the statutory escalation of the AOW pension age. Among agreements specifying employee pension contributions as a percentage of pensionable earnings, the yearly median contribution rate ranges between \NonSalPensionContribLow\ and \NonSalPensionContribHigh. 
+
+Annual training entitlements have a median of \NonSalTrainingHoursMedian\ hours per year (equivalent to exactly one standard full-time work week of training) among the \NonSalTrainingHoursN\ active CAO-year observations that specify training in hours. Longitudinal trajectories for numeric leave parameters (vacation days, sick pay duration, and continuation percentages) and multi-domain coverage trajectories across all 12 domains are detailed in Appendix~\ref{app:non_salary_robustness}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/numeric/non_salary_numeric_hours_trends_latest_cao_view.png}
+    \caption{Non-salary numeric hours trends (active in-force stock)}
+    \label{fig:numeric_hours}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/numeric/non_salary_numeric_pension_training_trends_latest_cao_view.png}
+    \caption{Non-salary numeric pension and training trends (active in-force stock)}
+    \label{fig:numeric_pension_training}
+\end{figure}
+
+These numeric and coverage dimensions are systematically synthesized into standardized generosity indicators in \hyperref[sec:indices]{Section~4 (Indices)}.

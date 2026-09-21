@@ -429,7 +429,8 @@ print(f"  TOTAL clean wins to apply: {tot}   (re-check rejected {len(dont_apply_
       f"{len(surfaced_keys)} value-halves surfaced into the review for pairing)")
 
 # ── apply_list.csv: every concrete cell-change to apply (review + clean wins) ──
-# Consumed by apply_corrections.py. Each row = ONE cell (record_id, field) -> new_value,
+# Consumed by _archive/apply_corrections.py (L1 era, archived). Each row = ONE cell
+# (record_id, field) -> new_value,
 # with expected_current so the apply step can verify it's editing the right cell.
 apply_rows = []
 for _, r in df.iterrows():                       # (A) the 124 reviewed edits

@@ -16,7 +16,7 @@ One row per dataset file in this folder. Full lineage + ledger: [../docs/DATA_LI
 | `_old/corrected_dataset.bak.2026-07-03_pre-wave2.csv` | G3 snapshot (pre-adjudication) | backup before L5 promotion | L1+L2+L3+L4 | ~6,917 |
 | `_old/corrected_dataset.bak.2026-07-03.csv` | G2 snapshot (pre-removals) | backup before L4 promotion | L1+L2+L3 | 4,585 |
 | `_old/corrected_dataset.bak.2026-07-01.csv` | G1 snapshot (pre-per-file) | backup before L3 promotion | L1+L2 | 1,295 |
-| `_old/corrected_dataset.bak.2026-06-04.csv` | early snapshot (pre-full-audit) | `apply_corrections.py` | L1 | 514 |
+| `_old/corrected_dataset.bak.2026-06-04.csv` | early snapshot (pre-full-audit) | `_archive/apply_corrections.py` (archived) | L1 | 514 |
 
 > Build artifacts (`corrected_dataset.perfile_applied.csv`, `corrected_dataset.removals_applied.csv`) are **deleted after promotion** once verified byte-identical; regenerate via `full_audit/apply_perfile_fixes.py` / `full_audit/apply_removals.py`. Backups live in **`qa/_old/`**.
 

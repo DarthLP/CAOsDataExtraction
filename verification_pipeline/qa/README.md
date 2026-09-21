@@ -87,8 +87,8 @@ Maintained by Claude Code. Updated after each stage completes.
 - **3× `overtime_allowance_unit`** (826016, 26017, 748016) — unit held a copy of the value; corrected to the proper percent string (value confirmed in source, e.g. "25% of the hourly wage").
 - **`overtime_compulsory_annual_value` 557002** (rule sentence in a numeric field), **`term_employer_notice` 433027** and **`fringe_relocation_allowance` 1612020** (value+unit unsupported by source) — bad clean-win ADDs, reverted to blank.
 - **`overtime_unfavourable_hours_allowance_unit` 683012** → `percent` (value 100 left as-is, unverified).
-- Per-cell record in [nonleave_source_corrections.csv](nonleave_source_corrections.csv); applied via `apply_list.csv` + `apply_corrections.py` (in `apply_changelog.csv`). **Verified NOT an error:** `overtime_max_hours_per_week=72` (26 rows, 6 CAOs) — all performing-arts CAOs under the Arbeidstijdenbesluit (cao 2143 source: "max 72 hours per week").
-- ⚠️ These edits live in `apply_list.csv`; if `consolidate_review.py` regenerates it, re-apply from `nonleave_source_corrections.csv`.
+- Per-cell record in [nonleave_source_corrections.csv](nonleave_source_corrections.csv); applied in the L1 era via `apply_list.csv` + `_archive/apply_corrections.py` (in `apply_changelog.csv`). **Verified NOT an error:** `overtime_max_hours_per_week=72` (26 rows, 6 CAOs) — all performing-arts CAOs under the Arbeidstijdenbesluit (cao 2143 source: "max 72 hours per week").
+- These edits are baked into the canonical dataset at L1 and carried forward by every later layer. `apply_list.csv` is now a historical manifest only — regenerating it via `consolidate_review.py` changes nothing downstream, and the L1 script is archived and refuses to run.
 
 ## Full-audit (dataset-internal, ALL 2,739 records × 317 fields) — 2026-05-31
 

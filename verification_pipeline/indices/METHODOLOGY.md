@@ -494,6 +494,50 @@ Three properties of the pipeline that surprise readers but are intentional:
 
 ## 12. Decision Log (append newest at top; edit the relevant section above too)
 
+- **2026-09-22 (REVERTED: the `n_topics_scored >= 8` ranking-exclusion gate — Hanna).**
+  An automated report-refinement pass had added a coverage-quality gate to
+  `Reports/Analysis/scripts/04_indices.py` that dropped any document scoring on fewer than
+  8 of the 13 domains from the top/bottom generosity ranking. It excluded 38 documents and,
+  at CAO level, exactly one agreement (CAO 3690, Stichting BibliotheekWerk — all 12 editions
+  at exactly 7 topics), taking the rankable set from 242 to 241. REVERTED because the
+  threshold was never independently justified *for ranking*: it was borrowed from
+  `ADVANCED_ANALYSIS.md`, where `>=8` exists for a different reason (correlation-matrix
+  completeness for the factorability/KMO tests). The gate was also never logged here, unlike
+  every comparable modelling call. It affected no z-score, percentile, factor loading or
+  correlation — `04_indices.py` only reads `composite_index.csv`. The whole ranking block was
+  removed rather than just the gate, because the top/bottom table it fed is no longer
+  included in the report (its `\ref` in `Indices.tex` had become a dangling "Table ??").
+  The `thin_doc` exclusion is unaffected and still applies elsewhere. §11.
+
+- **2026-09-21 (panel `leave_numeric_z`: per-type, closing the 2026-07-07 TODO).**
+  `build_panel_monthly.py` still scored the panel's `leave_numeric_z` from the summed-FRE
+  method (`fre_total_with_statutory` params) after `parental_leave_index.py` moved the
+  composite to per-type (paternity/adoption/parental, equal-weight, 2026-07-07) — the same
+  column name meant two different constructions depending on which output file you read.
+  FIXED: panel `leave_numeric_z` now averages three per-type z's, each `max(CAO-extracted,
+  statutory floor for that type) `re-scored monthly per the law-month rule, using the
+  already-persisted `{type}_fre_stat` params — identical formula to the composite, just
+  evaluated every panel month instead of once per document. The old summed-FRE quantity is
+  kept, not deleted, as an unscored reference column `leave_fre_total_monthly`. §5, §10.
+
+- **2026-09-17 (Reports/Analysis: "latest-CAO cross-section" vs. "active in-force stock" —
+  Hanna caught the misnomer).** `Non-Salary.tex` introduced "latest-CAO cross-section" as the
+  242-row, one-row-per-CAO object ($N=242$, `build_latest_cao_view`), then labelled every
+  subsequent `_latest_cao_view` figure the same way — but those figures are the CAO×year
+  forward-filled panel (`build_latest_cao_forward_fill_by_file`; 3,621 rows, active-CAO count
+  rising 1→242 over 2004–2026), a different object. DECISION: reserve "latest-CAO cross-section"
+  for the true $N=242$ objects (Table 1 / point-share macros); rename every panel figure's
+  title/caption to "active in-force stock" (matching `General.tex`'s pre-existing term for the
+  same construction). Also fixed: panel figures' x-axis label was hardcoded "Contract start
+  year" even though the axis is calendar year of active in-force status — now conditional on
+  `use_latest_cao_view`; two figures (`indices_wage_ladder_vs_wml.png`,
+  `salary_boolean_shares_by_contract_year*.png`) were missing `enforce_integer_year_axis` and
+  could render fractional-year ticks (confirmed on the wage-ladder figure: `2010.0, 2012.5, …`)
+  — both now call it. Verified presentation-only: pixel-diffed all 54 report figures before/after
+  in `Reports/Analysis/.bak_figures_2026-09-17/`; the 26 changed figures differ only in isolated
+  title/x-label pixel bands (or, for the two tick fixes, gridline positions) — no data-line pixel
+  changed. `General.tex` itself was not edited (already used the correct term).
+
 - **2026-07-15 (AgreementLevel export: overall scores WITHOUT wage; wage block removed —
   Hanna).** At document grain the wage columns were a borrowed CAO-year fact: the cao×year
   ladder pools scales from several files (a March-filed doc's year row can contain a raise
@@ -1144,7 +1188,11 @@ Three properties of the pipeline that surprise readers but are intentional:
   from the numeric value to the gate boolean. Battery green. §8.
 - **2026-07-08 — 6 confirmed extraction errors staged for QA** (`qa/regression_corrections_staged.csv`,
   apply_list format: record_id/field/expected_current/new_value/action). PROPOSALS only — surfaced
-  for Hanna to run through `apply_corrections.py`; NOT auto-applied (project rule). Covers the
+  for Hanna, NOT auto-applied (project rule). [Path updated: these go through a layer apply script
+  following the `qa/apply_collision_l11.py` / `qa/apply_pension_premium_l13.py` pattern, which starts
+  from the current canonical dataset. The L1 script named here originally is archived at
+  `qa/_archive/apply_corrections.py` — it starts from the raw G0 extract and must not be used.]
+  Covers the
   direct raw-field errors (pension early-retire ×2 high; contract full-time-hours ×7, short-care ×1
   med); FRE-derived (paternity/adoption) + the 54 maternity-16→0 need raw-weeks-field mapping first.
 - **2026-07-07 — boolean same-term consistency check** (`review/boolean_flips.csv` detail +

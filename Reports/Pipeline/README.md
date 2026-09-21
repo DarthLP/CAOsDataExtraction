@@ -11,7 +11,7 @@ This directory contains the unified replication guide for the entire CAOs data e
 - `report/`: Modular LaTeX source and compiled documentation.
   - `CAOPipeline.tex`: Master LaTeX document.
   - `sections/*.tex`: Individual chapters covering introduction, extraction, salary parsing, correction, indices, replication, and appendices.
-  - `CAO_Pipeline_Explanation.pdf`: Final compiled replication manual.
+  - `CAOPipeline.pdf`: Final compiled replication manual.
 
 ## How to Rebuild the PDF
 

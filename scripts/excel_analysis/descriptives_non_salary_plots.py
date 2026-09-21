@@ -734,16 +734,22 @@ def compute_boolean_trends(df: pd.DataFrame, var_name: str, start_year_col: str,
 def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
                        min_obs: int = 3, use_latest_cao_view: bool = False,
                        agg_kind: str = "mean",
-                       df_latest_view: Optional[pd.DataFrame] = None) -> None:
+                       df_latest_view: Optional[pd.DataFrame] = None,
+                       agg_kind_overrides: Optional[Dict[str, str]] = None) -> None:
     """
     Plot numeric variable trends grouped by figure.
-    
+
     Args:
         df: DataFrame with data
         start_year_col: Name of start year column
         output_dir: Directory to save plots
         min_obs: Minimum observations per year
         use_latest_cao_view: If True, use forward-filled latest CAO view
+        agg_kind_overrides: Optional per-figure override of agg_kind, keyed by the
+            un-suffixed fig_filename (e.g. "non_salary_numeric_pension_training_trends.png").
+            Lets one figure use median while the rest of the call uses mean (or vice
+            versa) without a separate top-level call, and without changing the
+            filename suffix of the other figures produced by this call.
     """
     # Use latest CAO view if requested
     agg_kind = agg_kind.lower().strip()
@@ -763,9 +769,15 @@ def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
         suffix = ""
     if agg_kind == "median":
         suffix = f"{suffix}_median" if suffix else "_median"
-    
+    # NOTE: filename suffix tracks the top-level agg_kind only, not any
+    # per-figure override below -- an override replaces that one figure's
+    # computation/labels in place rather than forking off a second filename.
+
     df_plot_local = filter_non_salary_for_plot(df_plot)
     for fig_filename, var_list in NUMERIC_FIGURE_GROUPS.items():
+        effective_agg_kind = (agg_kind_overrides or {}).get(fig_filename, agg_kind)
+        if effective_agg_kind not in {"mean", "median"}:
+            effective_agg_kind = "mean"
         # Add suffix to filename if using latest CAO view
         base_filename = fig_filename.replace('.png', '')
         fig_filename_with_suffix = f"{base_filename}{suffix}.png" if suffix else fig_filename
@@ -797,7 +809,7 @@ def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
                 min_obs,
                 normalize_hours=normalize_hours,
                 default_ft_hours=38.0,
-                agg_kind=agg_kind,
+                agg_kind=effective_agg_kind,
             )
             
             if means is None or len(means) == 0:
@@ -820,7 +832,7 @@ def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
                 is_outlier = abs(mean_val - median_val) > 2 * std_val if not np.isnan(std_val) and std_val > 0 else False
                 outlier_flag = " [OUTLIER?]" if is_outlier else ""
                 small_sample_flag = " [SMALL SAMPLE]" if n < 5 else ""
-                print(f"    Year {int(year)}: n={int(n)}, {agg_kind}={mean_val:.2f}{outlier_flag}{small_sample_flag}")
+                print(f"    Year {int(year)}: n={int(n)}, {effective_agg_kind}={mean_val:.2f}{outlier_flag}{small_sample_flag}")
         
         if len(plot_data) == 0:
             print(f"  [INFO] No data available for figure {fig_filename}; skipping.")
@@ -847,16 +859,18 @@ def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
         colors = get_plot_color_cycle(max(len(plot_data), 1))
         title_base = base_filename.replace("_", " ").title()
         if use_latest_cao_view:
-            title_suffix = " (Latest CAO View)"
+            title_suffix = " (Active In-Force Stock)"
         else:
             title_suffix = ""
-        if agg_kind == "median":
+        if effective_agg_kind == "median":
             title_suffix = f"{title_suffix} (Median)"
         ax_left.set_title(f"{title_base}{title_suffix}", fontsize=14)
 
         series_meta = []
         for var_name, means in plot_data:
             y_label = NUMERIC_VAR_YLABELS.get(var_name, "Mean")
+            if effective_agg_kind == "median":
+                y_label = y_label.replace("Mean", "Median")
             valid = means.dropna()
             median_value = float(np.median(valid.values)) if len(valid) > 0 else 1.0
             series_meta.append({
@@ -944,7 +958,7 @@ def plot_numeric_trends(df: pd.DataFrame, start_year_col: str, output_dir: Path,
             if use_right_axis and ax_right is not None:
                 _annotate_retirement_endpoints(right_series, ax_right)
 
-        ax_left.set_xlabel("Contract start year", fontsize=12)
+        ax_left.set_xlabel("Calendar year" if use_latest_cao_view else "Contract start year", fontsize=12)
         ax_left.set_ylabel(_axis_ylabel(left_series, "Value"), fontsize=11)
         enforce_integer_year_axis(ax_left, [int(y) for y in all_years])
         ax_left.grid(True, alpha=0.3)
@@ -1091,11 +1105,11 @@ def plot_boolean_trends_by_domain(df: pd.DataFrame, start_year_col: str, output_
             ax1.plot(shares.index.astype(int), shares.values * 100, marker='o', label=label,
                     linewidth=2, markersize=6, color=colors[i])
         
-        ax1.set_xlabel("Contract start year", fontsize=12)
+        ax1.set_xlabel("Calendar year" if use_latest_cao_view else "Contract start year", fontsize=12)
         ax1.set_ylabel("Share of contracts with feature (%)", fontsize=12)
         # Set x-axis limits and ticks (2007-2027, every 2 years)
         enforce_integer_year_axis(ax1, [int(y) for y in all_years])
-        title_suffix = " (Latest CAO View)" if use_latest_cao_view else ""
+        title_suffix = " (Active In-Force Stock)" if use_latest_cao_view else ""
         ax1.set_title(f"{title}{title_suffix}", fontsize=14)
         ax1.grid(True, alpha=0.3)
         

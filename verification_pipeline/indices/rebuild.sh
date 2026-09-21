@@ -1,7 +1,7 @@
 #!/bin/zsh
 set -e
 set -o pipefail
-cd "/Users/lorenzpiazolo/Documents/Claude/Projects/Dutch Bargaining Agreements/indices"
+cd "$(dirname "$0")"
 echo "===== topic drivers ====="
 for d in bonus pension term overtime training homeoffice contract safety childcare ai fringe absence parental_leave; do
   echo "--- $d ---"

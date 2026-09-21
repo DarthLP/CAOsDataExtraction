@@ -43,6 +43,14 @@ one-line trace back to the script and CSV that produced it.
 
 ## Known caveats carried into the report
 
+- **Terminology: "latest-CAO cross-section" vs. "active in-force stock" are different objects, not synonyms.**
+  "Latest-CAO cross-section" ($N=242$) means one row per CAO (`build_latest_cao_view`) — used only for
+  Table 1 (`tab_domain_coverage`) and the point-share macros in `02_non_salary.py`'s
+  `compute_incidence_narrative_stats`. "Active in-force stock" means the CAO×year forward-filled panel
+  (`build_latest_cao_forward_fill_by_file` / `build_latest_cao_forward_fill`) — used for every `_latest_cao_view`
+  figure (boolean, numeric, and salary). The panel's active-CAO count rises from 1 to 242 across
+  2004–2026 as the database's own coverage expands; it is not a claim about the size of the Dutch CAO
+  population growing. Fixed 2026-09-17 (see `indices/METHODOLOGY.md` §12 Decision Log).
 - Pension generosity is available-case only (blanks = fund-level deferral, never zero-filled).
 - The Top/Bottom CAO ranking (Table 6) excludes documents scoring on fewer than 8 of the available
   topics or flagged `thin_doc` — see the note above that table for the exact exclusion count.

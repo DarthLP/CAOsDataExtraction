@@ -1,4 +1,6 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{hyperref}
@@ -9,10 +11,15 @@
 \usepackage{setspace}
 \usepackage{booktabs}
 \usepackage{longtable}
+\usepackage{tabularx}
 \usepackage{array}
 \usepackage{graphicx}
 \usepackage{microtype}
 \usepackage{xcolor}
+\usepackage{float}
+
+\emergencystretch=2em
+\def\UrlBreaks{\do\/\do\-\do\_\do\.\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\0\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9}
 
 \onehalfspacing
 
@@ -23,32 +30,21 @@
     urlcolor=blue!70!black
 }
 
-\title{\textbf{Dutch Collective Labour Agreements (CAOs)}\\\Large End-to-End Extraction, Deterministic Salary Parsing, Multi-Layer Verification, and Derived Indices Pipeline}
+\title{\textbf{CAO Pipeline Summary}\\\Large End-to-End Extraction, Deterministic Salary Parsing, Multi-Layer Verification, and Derived Indices Pipeline}
 \author{Replication Manual and Technical Documentation}
 \date{September 2026}
 
 \begin{document}
 \maketitle
-
-\begin{abstract}
-This report provides the comprehensive replication guide and technical documentation for the complete Dutch Collective Labour Agreements (Collectieve Arbeidsovereenkomsten, CAOs) pipeline. The system encompasses five integrated stages: (1) PDF scraping and multi-method extraction (p1--p5); (2) deterministic salary parsing replacing earlier stochastic LLM ladders with a 100\% amount provenance guarantee across 359,474 salary rows; (3) an audited 34-layer non-salary correction and verification framework (G0$\rightarrow$G33) resolving extraction errors against English-translated source text; (4) a derived generosity scoring and wage indexing engine producing pooled-z indices, statutory floor adjustments, and a monthly CAO panel; and (5) a fully automated verification test battery ensuring exact numerical reproducibility.
-\end{abstract}
-
-\tableofcontents
-\newpage
+\vspace{1em}
 
 \input{sections/01_intro.tex}
-\newpage
 \input{sections/02_extraction.tex}
-\newpage
 \input{sections/03_salary_parser.tex}
-\newpage
 \input{sections/04_correction_verification.tex}
-\newpage
 \input{sections/05_indices.tex}
-\newpage
 \input{sections/06_replication.tex}
-\newpage
+\clearpage
 \input{sections/07_appendices.tex}
 
 \end{document}

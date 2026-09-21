@@ -1,0 +1,84 @@
+\section*{3. Salary}
+\label{sec:salary}
+
+\subsection*{Dataset structure, provenance, and confidence tiers}
+
+The salary dataset is derived from the deterministic table parser dataset (\texttt{extracted\_data\_salary\_v2.csv}), which extracts 359,474 raw wage-scale rows across 2,365 collective agreement documents. Rows are categorized into four confidence tiers:
+\begin{itemize}
+    \item \textbf{Tier~A (High Confidence)}: 254,334 rows (70.75\%), where the parser's detected table layout and cell values fully align with LLM-extracted vocabulary.
+    \item \textbf{Tier~B (Medium Confidence)}: 88,777 rows (24.70\%), comprising verified grid layouts that were re-roled, relabeled via targeted secondary passes, rescaled, or lacked direct LLM comparison cells.
+    \item \textbf{Tier~C (Soft Parser Flags)}: 13,693 rows (3.81\%), flagged for ragged coordinate alignment, potential duplicate dates, or soft scale inversions.
+    \item \textbf{Tier~D (Hard Outlier Flags)}: 2,670 rows (0.74\%), containing extreme magnitude anomalies, non-wage index integers, or inverted minimum-maximum bounds.
+\end{itemize}
+
+The core analytical sample is strictly restricted to high-confidence Tiers~A and~B (\SalTierABShare\ of all parsed rows, comprising \SalTotalRows\ rows across \SalUniqueFiles\ files and \SalUniqueCAOs\ distinct CAOs). The reduction from \GenUniqueCAOs\ total CAOs in the general corpus to \SalUniqueCAOs\ in the salary database is explained by 19 framework CAOs that deliberately omit standardized wage grids (delegating pay determination entirely to decentralized enterprise negotiations, single-purpose procedural accords, or unformatted narrative text).
+
+Every salary amount in Tiers~A and~B satisfies a strict 100\% deterministic amount-provenance invariant: values are extracted directly from physical PDF table coordinates without heuristic interpolation or manual overrides.\footnote{Corpus-wide, exactly one authorized exception exists: a mangled-decimal rescue applied to two cells in CAO~592, where upstream OCR dropped thousands-separator commas (restoring extracted values like \texttt{2.18454} to EUR~2,184.54 under strict table-median guardrails, capped at Tier~B).}
+
+Table~\ref{tab:salary_structure} summarizes the structural dimensions of this system: \SalDistinctJobGroups\ distinct job groups, \SalDistinctSteps\ salary steps (\emph{periodieken}), \SalDistinctWorkerTypes\ worker types, \SalDistinctAgeGroups\ age brackets (incorporating youth scales, \emph{jeugdschalen}), and \SalDistinctEducationCategories\ education categories. The mean normative workweek is \SalMeanFTWeeklyHours\ hours (median \SalMedianFTWeeklyHours).
+
+\begin{table}[H]
+    \centering
+    \caption{Basic structure of the salary dataset (Parser v2, Confidence Tiers A+B)}
+    \label{tab:salary_structure}
+    \input{tables/tab_salary_structure}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/salary/salary_boolean_shares_by_contract_year.png}
+    \caption{Share of rows with TTW and entry flags, and number of salary rows by contract start year}
+    \label{fig:salary_rows_by_year}
+\end{figure}
+
+Figure~\ref{fig:salary_rows_by_year} illustrates sample expansion over contract start years alongside key row-level flags. Contributing CAOs increase rapidly from 2008, peaking at \SalPeakCaoCount\ CAOs in \SalPeakCaoYear\ before experiencing right-censoring in 2025. Interim amendment flags (\texttt{ttw}) account for between \SalTTWShareLow\ and \SalTTWShareHigh\ of rows per year, fluctuating; entry wage flags (\texttt{is\_entry}, denoting introductory steps or \emph{aanloopschalen}) appear in a steady \SalEntryShareLow--\SalEntryShareHigh\ of rows per year. Both ranges are restricted to years with at least 10 contributing CAOs (the bars show every year for context; thin early/late years swing far more on 1--2 CAOs).
+
+\subsection*{Timeline structure and salary points}
+
+Each salary row records multiple timeline points tracking how the negotiated wage for a specific jobgroup-step evolves over the lifespan of the agreement. Figure~\ref{fig:salary_points_per_row} displays the longitudinal depth per row: the CAO-equal-weighted mean and median count of band-eligible salary points, restricted to years with at least 10 contributing CAOs. The weighted median fluctuates between \SalPointsPerRowLow\ and \SalPointsPerRowHigh\ across these mature cohorts, reflecting the widespread Dutch bargaining practice of staggering multi-step wage increases across multi-year contract horizons.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/salary/salary_points_per_row_by_year.png}
+    \caption{Average number of salary timeline points per row by contract start year}
+    \label{fig:salary_points_per_row}
+\end{figure}
+
+\subsection*{Normalization rules and salary levels}
+
+To enable cross-sector comparisons, all wage amounts are normalized to gross monthly EUR. Normalization standardizes pay frequencies: monthly wages remain unchanged; four-weekly wages are annualized and scaled by \(13/12\); weekly wages are multiplied by \(52/12\); daily wages by \(5 \times 4.33\); and annual salaries are divided by 12. Hourly wages are converted using the CAO's documented weekly full-time hours norm (\(\text{hourly} \times \text{hours} \times 52/12\)). Because normative hours are observed in \SalShareFTHoursObserved\ of rows, hourly wage scales without documented hours cannot be reliably converted and are excluded from monthly level statistics. To eliminate optical artifacts and youth apprentice outliers, observations falling below 90\% of the contemporaneous Statutory Minimum Wage (\emph{Wet minimumloon en minimumvakantiebijslag}, WML) floor or exceeding EUR~50{,}000 per month are excluded from monthly analysis bands.
+
+Throughout this section, observations in graphical figures are weighted so that each CAO contributes equally within each cohort year ($w_i = 1/N_{\text{CAO}}$). Equal weighting prevents large omnibus sectoral agreements (which contain thousands of granular job-step combinations) from mechanically overwhelming smaller agreements.
+
+Figure~\ref{fig:avg_salary_level} plots the CAO-equal-weighted, band-eligible average monthly salary level by salary start year (blue line). The CAO-balanced average rises steadily over the 2010s, accelerates a little in the 2020s, and exhibits right-censoring in 2025--2026.\footnote{By contrast, an unweighted flat average calculated directly across all raw wage-scale rows diverges from the CAO-equal-weighted series by a few percentage points in most years, widening to roughly 7--12\% above it during and after 2022. Alternative level aggregations (evaluating salary levels by contract start year and within the active in-force stock) are presented in Appendix~\ref{app:salary_robustness} (Figures~\ref{fig:app_avg_salary_level_contract_year} and~\ref{fig:app_avg_salary_level_latest}).}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/salary/salary_amount_monthly_eur_band_eligible_by_salary_year.png}
+    \caption{Whisker plot of the average monthly salary by salary start year (blue line).}
+    \label{fig:avg_salary_level}
+\end{figure}
+
+\subsection*{Contractual wage increases and the 2024 hourly minimum wage reform}
+
+Contractual wage growth in the Netherlands reflects initial across-the-board indexation (\emph{initiële loonsverhoging}), negotiated between unions and employers to adjust entire wage grids. Figure~\ref{fig:salary_increase_merged_salary_year} plots the primary merged wage increase series by effective salary year (CAO-equal-weighted, band-eligible, deduped to the newest file per CAO-year), which prioritizes explicit textual percentage clauses and falls back to calculated grid differences between consecutive temporal steps. Negotiated increases averaged \SalIncreaseDecadeAvg\ over the 2010s, with an isolated spike around 2011, and peaked at \SalIncreasePeakPct\ in \SalIncreasePeakYear\ before easing in 2022 and rising again in 2023--2024.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/salary/salary_increase_merged_pref_csv_by_salary_year.png}
+    \caption{Whisker plot of merged average wage increase by salary year (blue line).}
+    \label{fig:salary_increase_merged_salary_year}
+\end{figure}
+
+This acceleration was accompanied by the \textbf{1 January 2024} statutory reform from a monthly to an hourly minimum wage (WML, see Appendix~\ref{app:glossary}). For workers in 38- and 40-hour sectors, the old monthly floor was in effect being stretched over more hours (a lower implied hourly rate); the new uniform hourly floor raised their pay to match the 36-hour-sector equivalent, producing 5.5--11.1\% step increases.
+
+Figure~\ref{fig:salary_increase_contract_year} evaluates wage growth from the perspective of contract signing cohorts (contract start year). Because Dutch collective agreements are multi-year and staggered, contract-cohort adjustments lead effective salary implementation dates, capturing the forward-looking bargaining expectations of social partners.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/salary/salary_increase_percent_by_contract_year.png}
+    \caption{Whisker plot of merged wage increase by contract start year (blue line).}
+    \label{fig:salary_increase_contract_year}
+\end{figure}
+
+To verify the empirical robustness of wage measurements, our pipeline calculates parallel series: textual mentions (CSV only) vs.\ mechanical grid changes (Diff only). The two agree closely (audit in Appendix~\ref{app:salary_robustness}, Table~\ref{tab:diff_vs_csv_audit}).

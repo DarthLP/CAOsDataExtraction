@@ -704,7 +704,12 @@ def normalize_for_plot(
         return normalize_sickpay_duration(val, unit_lower)
 
     if var_name == "leave_sickpay_continuation_value":
-        return normalize_sickpay_continuation(val, unit_lower, assume_if_unknown=True)
+        # assume_if_unknown=False: unlike most numeric fields here, this one's
+        # only observed non-percent unit labels are "weeks"/"months" -- genuine
+        # durations, not percentages that merely lack an explicit "%" tag. An
+        # unknown-unit fallback that accepts any 0-100 value as a percentage
+        # would silently relabel e.g. "52 weeks" as "52% continuation".
+        return normalize_sickpay_continuation(val, unit_lower, assume_if_unknown=False)
 
     if var_name == "pension_employee_contrib_value":
         return normalize_pension_contrib(val, unit_lower, assume_if_unknown=True)

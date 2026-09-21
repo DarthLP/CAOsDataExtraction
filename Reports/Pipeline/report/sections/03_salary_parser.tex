@@ -1,44 +1,80 @@
-\section{Part II: Deterministic Salary Parser}
+\section{Stage 1b: Deterministic Salary Parser}
 \label{sec:salary-parser}
 
 \subsection{Motivation: Replacing the Stochastic LLM Ladder}
 
-In the initial pipeline design, salary scales and progression tables were extracted using a four-tier LLM retry ladder within \texttt{p4\_analysis.py}. However, empirical verification in \texttt{salary/wage\_check\_full/} revealed that the second-pass LLM suffered from an unacceptable $\approx 20\%$ major-issue rate. Typical failures included:
+Extraction originally ran as two LLM passes. The first (\nolinkurl{pipelines/p3_llmExtraction.py}) lifts \emph{verbatim} text snippets and table grids out of each document; the second (\nolinkurl{pipelines/p4_analysis.py}) forces those snippets into the Pydantic salary schema via a four-tier retry ladder. Empirical verification in \nolinkurl{verification_pipeline/salary/wage_check_full/} localised the damage to the \emph{second} pass: the first pass copies tables most of the time faithfully, whereas the schema-filling pass suffered an unacceptable $\approx 20\%$ major-issue rate. Typical failures included:
 \begin{enumerate}[leftmargin=1.5em]
-  \item Hallucinated salary figures and interpolated progression steps not present in the text;
-  \item Inconsistent decimal parsing (e.g.\ European period vs comma confusion);
-  \item Column misalignment across job groups and salary scales;
-  \item Token exhaustion truncation in large salary grids (\texttt{max\_tokens\_truncated\_1..4}).
+  \item \textbf{Token Exhaustion Truncation}: Large multi-grade salary matrices routinely exceeded model output limits (\texttt{max\_tokens\_truncated\_1..4}), truncating tables mid-grid;
+  \item \textbf{Hallucinations and Interpolations}: The LLM invented missing scale steps, annualized monthly wages without textual warrant, or interpolated missing increments;
+  \item \textbf{European Decimal Confusion}: Inconsistent parsing of European period-thousands and comma-decimals (e.g.\ 2.185,50 vs 2,185.50) generated factor-of-1,000 magnitude errors;
+  \item \textbf{Column Drift and Misalignment}: Attention drift across complex grids (e.g.\ youth steps on the left, tenure steps on the right, and scale grades in columns) misassigned amounts across job classifications.
+\end{enumerate}
+To eliminate these vulnerabilities, only the second pass was replaced, by a dedicated, deterministic parsing engine located in \nolinkurl{salary_parser/}. The parser re-extracts from the \emph{first}-pass output (\nolinkurl{outputs/llm_extracted/new_flow/}), not from the PDF-derived markdown: the faithfully copied table grids are kept, and only the stochastic schema-filling step is discarded.\footnote{ Although unreliable on the numbers themselves, this exploratory LLM pass was not wasted: it surfaced the structural vocabulary of the source tables --- how job-group and worker/function labels are named, how age-cohort and tenure steps are laid out, and how scale headers vary across CAOs --- which directly informed the column- and key-classification rules later hand-coded in \nolinkurl{salary_parser/PARSER_RULES.md}.}
+
+\subsection{Single-Entrypoint Pipeline: \texttt{deliver.py}}
+\label{subsec:salary-deliver}
+
+The entire Stage~1b salary parsing and delivery workflow is executed via a single reproducible command:
+\begin{verbatim}
+python3 salary_parser/deliver.py
+\end{verbatim}
+An optional \texttt{--quick} flag restricts execution to the first file of each CAO for rapid regression and metric verification. The pipeline executes six deterministic stages (with zero runtime LLM calls) plus stage 5.5 to re-apply audited merges:
+\begin{enumerate}[leftmargin=1.8em]
+  \item \textbf{Parse \& Audit} (\texttt{run\_all.py}): Parses the first file of each CAO from \nolinkurl{outputs/llm_extracted/new_flow/[CAO_NUMBER]/[FILE]_extract.json} (\texttt{wage\_information} table grids) and runs \nolinkurl{source_audit.py}. An automated \textbf{Hard Abort Guard} immediately raises \texttt{SystemExit} if source amount provenance is below 100.00\%.
+  \item \textbf{Count Comparison Gate} (\texttt{count\_gate.py}): Compares parser-extracted amounts against historical LLM counts per file as a soft anomaly flag.
+  \item \textbf{Role Cross-Validation} (\texttt{role\_check.py}): Validates job-group, step, and worker-type tokens against historical LLM extracted vocabulary, enriching worker classifications and increase percentages.
+  \item \textbf{Confidence Roll-Up} (\texttt{confidence.py}): Evaluates structural integrity, assigns row-level confidence tiers (A, B, C, D), and groups CAOs into acceptance buckets (\texttt{auto\_accept}, \texttt{needs\_review}, \texttt{llm\_fallback}).
+  \item \textbf{Corpus-Wide Version File Parsing} (\texttt{all\_files.py}): Extends parsing and role-checking across all $\approx 2,700$ CAO edition files in the repository, outputting \nolinkurl{duplicate_files.csv} to diagnose identical filings.
+  \item \textbf{Guarded Merge Re-Application} (\texttt{reapply\_merges}): The guarded agent loops of \S\ref{subsec:salary-agent-loops} were run once, offline, and their audited results were stored as standalone patch sets rather than written back into the parser. Because Stage~5 rebuilds \nolinkurl{rolecheck_all} from scratch and would otherwise discard them, Stage~5.5 replays those patches: label fixes first (\nolinkurl{outputs/parser_salary/relabel_merged/} via \nolinkurl{relabel_merge.py}), then whole-file agent extractions (\nolinkurl{outputs/parser_salary/agent_extracted/} via \nolinkurl{agent_extract.py}).
+  \item \textbf{Wide CSV Export and Version Tagging} (\texttt{flatten\_csv.py}): Flattens parsed JSON structures into the canonical wide dataset \nolinkurl{outputs/parser_salary/extracted_data_salary_v2.csv} (359,474 rows $\times$ 749 columns, delimiter ``;''). Joins document metadata, appends 7 confidence columns, appends 5 version-tag columns from \nolinkurl{version_tag.py}, and writes run logs and JSON manifests to \nolinkurl{outputs/parser_salary/runs/}.
 \end{enumerate}
 
-To eliminate these vulnerabilities, the LLM salary ladder was replaced entirely by a dedicated, deterministic parsing engine located in \texttt{salary\_parser/}.
+\subsection{Core Invariants and Parsing Rules}
+\label{subsec:salary-invariants}
 
-\subsection{Input Inversion and Provenance Guarantee}
+The parser operates via \emph{input inversion}: rather than asking an LLM to generate salary tables, the parser directly ingests the raw Markdown and HTML table grids extracted during Stage~3 (\nolinkurl{pipelines/p3_llmExtraction.py}). The LLM's role is demoted to a closed-choice classifier: it may only pick a label from a fixed, pre-enumerated vocabulary when a job-group header or period unit is ambiguous. It never sees or emits monetary values.
 
-The parser operates via \emph{input inversion}: rather than asking an LLM to generate salary tables, the parser directly ingests the raw Markdown and HTML table grids extracted during Stage~3 (\texttt{p3\_llmExtraction.py}). The LLM's role is demoted to a constrained vocabulary oracle used strictly for resolving ambiguous job-group headers or period units.
-
-\paragraph{100\% Amount Provenance Guarantee}
-The fundamental invariant of the salary parser is that \textbf{every single extracted monetary amount must exist verbatim as a substring within the source text or table cell}. Any candidate extraction that fails this exact-match check is immediately rejected. In the entire dataset of 359,474 parsed salary rows, only one authorized exception exists: exactly 2 cells in CAO 592 where a missing decimal point resulting from an OCR artifact was rescued via a documented deterministic rule.
-
-\paragraph{Date Grounding}
-Effective dates (\texttt{salary\_start\_date}) are parsed strictly from table headers or preceding section titles; they are never inferred from publication or signing dates. Rows where the header provides no date are explicitly flagged as undated ($\approx 5.9\%$ of entries).
+The parser enforces strict deterministic invariants documented in \nolinkurl{salary_parser/PARSER_RULES.md}:
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Amount Provenance Guarantee with Hard Abort Guard}: Every single emitted monetary amount must exist verbatim as a substring within the source text or table cell. The parser never converts, annualizes, multiplies, or infers numbers.\footnote{\textbf{The CAO 592 2-Cell Exception (Mangled-Decimal Rescue)}: In the entire corpus of 359,474 parsed salary rows, exactly one documented numerical derivation exists. Upstream OCR occasionally dropped a comma in Dutch four-decimal amounts (e.g.\ \texttt{2.184,54} became \texttt{2.18454}). Regex \texttt{MANGLED\_DEC} detects single-dot numbers with 4--6 decimal places; a decimal shift is permitted only if the raw value sits $\ge 50\times$ below the table's clean median and the rescaled value falls within $[0.25, 4.0] \times \text{median}$. This fires on \textbf{exactly 2 cells in CAO 592}. Rescued cells are tagged \texttt{value\_source=rescaled} and capped at Tier~B.}
+  \item \textbf{Header Date Grounding}: Effective wage dates (\texttt{salary\_start\_date}) are parsed strictly from table column headers, row-date keys, or table description titles. The parser strictly refuses to backfill missing table dates using document-level signing or publication dates (\texttt{ingangsdatum} or \texttt{datum\_kennisgeving}). Rows where the header provides no date remain honestly null ($\approx 5.9\%$ of entries, by design).
+  \item \textbf{Zero-Drop Invariant}: Table cells containing \texttt{0} or \texttt{0.00} indicate empty scale steps or structural placeholders.
+  \item \textbf{Footnote Stripping}: Footnote markers attached to amounts (e.g.\ \texttt{2185.13*}, \texttt{1840,11\dag}) are stripped, preserving the underlying numeric value verbatim.
+  \item \textbf{Youth and Apprentice Table Exclusions}: Youth (\emph{jeugdloon}), apprentice (\emph{leerling}), and BBL tables are deliberately excluded via teen filters. Their omission is by design.
+  \item \textbf{Small Ordinal Integers ($< 13$) and Junk Label Demotions}: Whole numbers $< 13$ in non-hourly tables represent ORBA points or scale indices, not wages; these are tagged \texttt{nonwage\_smallint} and demoted to Tier~D. Money-sized tokens ($\ge 800$) or clock artifacts (e.g.\ \texttt{3:00 AM}) appearing in jobgroup or step labels indicate cell fusion; these are tagged \texttt{junk\_label}.
+\end{itemize}
 
 \subsection{Guarded Agent Loops}
+\label{subsec:salary-agent-loops}
 
-Where heuristic parsing requires agent review, two strictly guarded loops are deployed:
+Where heuristic parsing requires agent review for complex layouts (e.g.\ tagged rows or tables, diagonal matrices or multi-section tables), two strictly guarded loops are deployed:
 \begin{itemize}[leftmargin=1.5em]
   \item \textbf{Label-Only Relabelling (Gates G1--G4)}: The agent may only assign standardised scale labels (e.g.\ job grade, step) to existing parsed rows without altering numbers.
   \item \textbf{Source-Number Universe Guard}: If an agent proposes a tabular re-extraction for complex layouts, every extracted figure is checked against the multiset of all numbers appearing in the source passage. In Wave 1 of testing, this guard rejected 2,007 candidate values that were hallucinated or calculated by the agent, ensuring zero false numbers entered the dataset.
 \end{itemize}
 
+\subsection{Version-Selection Tagging Engine (\texttt{version\_tag.py})}
+\label{subsec:salary-version-tag}
+
+A few CAOs have multiple source files for the same collective agreement (the original filing plus mid-term integral text republications). To prevent double-counting across editions while retaining complete wage timelines, \nolinkurl{salary_parser/version_tag.py} appends five version-selection columns to every row:
+\begin{enumerate}[leftmargin=1.8em]
+  \item \texttt{term\_group}: Primary key composite \texttt{cao\_number|ingangsdatum}, constant across all editions of an agreement term.
+  \item \texttt{kennisgeving\_rank}: Chronological edition rank ($1 = \text{earliest/base}, \dots, N = \text{latest}$) sorted by official notification date (\texttt{datum\_kennisgeving}).
+  \item \texttt{base\_id}: Unique record identifier of the rank-1 base filing.
+  \item \texttt{n\_editions}: Total count of source files in the \texttt{term\_group}.
+  \item \texttt{document\_type}: Joined document classification (e.g.\ \texttt{full\_cao\_...}), enabling downstream filtering of partial amendment deltas.
+\end{enumerate}
+
 \subsection{Confidence Tiers and Live Dataset Distribution}
 \label{subsec:salary-tiers}
 
-Every parsed salary row is tagged with a confidence tier (A--D) reflecting structural completeness and validation checks. Table~\ref{tab:salary-tiers} reports the live counts and shares from \texttt{outputs/parser\_salary/extracted\_data\_salary\_v2.csv}.
+Every parsed salary row is tagged with a confidence tier (A--D) reflecting structural completeness and validation checks. Table~\ref{tab:salary-tiers} reports the live counts and shares from \nolinkurl{outputs/parser_salary/extracted_data_salary_v2.csv}.
 
-\begin{table}[h!]
+\begin{table}[!htbp]
 \centering
-\begin{tabular}{crrp{7cm}}
+\small
+\begin{tabularx}{\textwidth}{c r r X}
 \toprule
 \textbf{Tier} & \textbf{Count} & \textbf{Share (\%)} & \textbf{Definition and Use in Empirical Analysis} \\
 \midrule
@@ -49,7 +85,7 @@ Every parsed salary row is tagged with a confidence tier (A--D) reflecting struc
 \midrule
 \textbf{Total} & \textbf{359,474} & \textbf{100.00} & \textbf{Tiers A + B Analytic Coverage: 95.45\% (343,111 rows)} \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \caption{Salary parser confidence tier distribution in the canonical dataset.}
 \label{tab:salary-tiers}
 \end{table}

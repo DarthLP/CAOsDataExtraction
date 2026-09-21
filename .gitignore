@@ -222,6 +222,7 @@ verification_pipeline/**/*.json
 !verification_pipeline/.claude/settings.json
 verification_pipeline/**/*.bak*
 verification_pipeline/**/*.png
+Reports/Analysis/figures/
 verification_pipeline/**/__pycache__/
 verification_pipeline/**/*.py[cod]
 verification_pipeline/**/.pytest_cache/
@@ -254,3 +255,9 @@ verification_pipeline/**/*.out
 *.pdf
 
 
+
+# Agent working directories (transcripts, page renders) — local only
+.agents/
+
+# Figure backups (regenerable, ~20MB of PNGs)
+Reports/Analysis/.bak_figures_*/

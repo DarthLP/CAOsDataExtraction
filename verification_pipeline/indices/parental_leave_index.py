@@ -437,7 +437,7 @@ def apply_source_corrections(df: pd.DataFrame) -> pd.DataFrame:
 
     Each row names (id, field, expected_current, new_value). The edit is applied
     ONLY when the current cell equals expected_current (a safety gate matching
-    apply_corrections.py); otherwise it is skipped and reported, so the overlay
+    qa/_archive/apply_corrections.py); otherwise it is skipped and reported, so the overlay
     can never silently overwrite an unexpected value.
     """
     if not LEAVE_CORRECTIONS_CSV.exists():

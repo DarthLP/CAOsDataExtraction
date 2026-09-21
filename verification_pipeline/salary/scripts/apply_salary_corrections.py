@@ -5,7 +5,7 @@ Phase 3 subagent verification produced 16 high-confidence CORRECT_TO verdicts,
 all for the same pattern: `salary_N_unit = 'd'` (a stray compact-schema short
 code) → `'daily'` (the canonical form already present in the source JSON).
 
-Safety gates (mirroring qa/apply_corrections.py for the non-salary side):
+Safety gates (mirroring qa/_archive/apply_corrections.py for the non-salary side):
   1. Match ONLY on the unique per-file (entry_idx, file_name, cao_number) — the
      salary CSV's `id` column is the file id, NOT a row id, so it cannot be
      used alone (the same id repeats up to 66 times within one file).

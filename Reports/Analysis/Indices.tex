@@ -1,0 +1,98 @@
+\section*{4. Generosity Indices}
+\label{sec:indices}
+
+\subsection*{Index construction methodology and standardization}
+
+We now construct standardized generosity indices across 13 core domains (12 non-salary amenities plus wages), following the empirical framework in \texttt{indices/METHODOLOGY.md}. To ensure comparability across diverse contract durations and calendar years, the pipeline applies \textbf{pooled-z} standardization:
+\begin{equation}
+    z_{it} = \frac{x_{it} - \mu_{\text{yardstick}}}{\sigma_{\text{yardstick}}}
+\end{equation}
+
+To prevent frequently renegotiated or voluminous agreements from distorting the baseline, yardstick parameters $(\mu, \sigma)$ are estimated on a de-duplicated subsample containing exactly one representative contract per term-group (\texttt{cao\_number} + \texttt{ingangsdatum}, selecting the latest publication). Raw numeric provisions are winsorized to the 1st and 99th percentiles ($[P_1, P_{99}]$) of the yardstick distribution to insulate against optical scan errors, and standardized scores are subsequently hard-clipped to $[-3.0, +3.0]$ to cap extreme tail leverage during composite aggregation.
+
+For each topic, two distinct operational tracks are scored:
+\begin{enumerate}
+    \item \textbf{Magnitude track}: standardized intensity of provisions where present (e.g., wage levels, vacation days, overtime surcharge percentages, sick leave wage continuation rates).
+    \item \textbf{Coverage track}: the breadth of codified worker protections (e.g., the proportion of potential fringe benefits, psychosocial health protocols, or flexible contract protections provided).
+\end{enumerate}
+The topic-level combined score represents the unweighted mean of its standardized magnitude and coverage tracks. The overall agreement-level generosity index (\texttt{overall\_z}) is computed as an equal-weighted composite across all eligible domains. 
+
+In parallel, an institutional statutory benchmark (``pseudo-CAO'') is continuously tracked across time, scoring mandatory legal statutory baselines under Dutch labor law (including WML, statutory vacation entitlements under Art.~7:634 BW, WAZO parental leaves, and statutory transition severance under Art.~7:673 BW).
+
+\subsection*{Sample filtering and cross-chapter reconciliation}
+
+Sample counts across the report vary systematically according to the underlying unit of observation and analytical filter:
+\begin{itemize}
+    \item \textbf{2,739 Raw Records vs.\ 2,698 Full-CAO Documents}: The core generosity pipeline filters strictly on complete collective agreements (\texttt{full\_cao\_original}, $N = 2,079$, and \texttt{full\_cao\_update}, $N = 619$), yielding \IndCompositeTotalDocs\ documents. It deliberately excludes 41 partial amendments, annexes, and procedural protocols. In collective bargaining law, an interim amendment only recites modified terms; treating unmentioned clauses in an amendment as absent would artificially collapse that document's generosity score.
+    \item \textbf{2,444 Wage-Matched Documents}: Exactly 2,444 full-CAO documents match to an observable wage scale in \texttt{mw\_indices.csv} (Table~\ref{tab:indices_pay_correlations}); the remaining 254 documents lack parsed salary tables.
+\end{itemize}
+
+\subsection*{Overall generosity trend and statutory baseline}
+
+Figure~\ref{fig:indices_overall_trend} plots the evolution of the overall combined generosity score (\texttt{overall\_z}) across the monthly agreement panel from \IndPanelStartMonth\ to \IndPanelEndMonth\. ``Mature'' months are defined as those with at least \IndMatureMinCaos\ active CAOs, excluding early ramp-up years.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/indices/indices_overall_z_trend.png}
+    \caption{Overall CAO generosity trend and statutory benchmark over time (monthly panel).}
+    \label{fig:indices_overall_trend}
+\end{figure}
+
+The mean overall generosity score tracks steadily above the statutory floor throughout the sample period. While the statutory benchmark (red dashed line) shifts upwards with statutory reforms (such as minimum wage indexation, statutory vacation leave expansions, and the introduction of paid parental leave schemes), CAO provisions consistently maintain a positive generosity margin over the legal minimum. The 10th--90th percentile band highlights sustained heterogeneity across agreements throughout the sample period.
+
+\subsection*{Domain generosity distributions}
+
+Figure~\ref{fig:indices_topic_distributions} displays boxplots for the cross-sectional distribution of standardized generosity scores across all 13 individual domains. Table~\ref{tab:indices_topline} provides corresponding summary statistics.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/indices/indices_topic_distributions.png}
+    \caption{Distribution of domain generosity scores across collective agreements.}
+    \label{fig:indices_topic_distributions}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \caption{Topline summary statistics for overall and domain generosity indices}
+    \label{tab:indices_topline}
+    \input{tables/tab_indices_topline}
+    \vspace{1ex}
+    \parbox{\linewidth}{\footnotesize $^{c}$ Coverage-track only (no magnitude track). Childcare takes only 2 distinct values across the corpus (raw coverage 0 or 0.25), so its P10, Median, and P90 all sit at the same standardized value.}
+\end{table}
+
+Among the non-wage domains, cross-agreement dispersion is widest in Safety \& Wellbeing, Bonuses, Home Office, and Fringe Benefits (Table~\ref{tab:indices_topline}), reflecting sectors that diverge between rich bespoke packages and baseline compliance.
+
+\subsection*{The wage ladder vs. statutory minimum wage}
+
+Figure~\ref{fig:indices_wage_ladder} documents the evolution of the contractual wage ladder relative to the statutory minimum wage (WML). For each CAO and calendar year, the 10th percentile (\texttt{mw\_low}), median (\texttt{mw\_median}), and 90th percentile (\texttt{mw\_high}) of the full-time wage scale are evaluated against the statutory monthly minimum wage. Years with fewer than \IndWageYearMinRows\ wage-scale observations are excluded to avoid noisy medians from a thin tail.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/indices/indices_wage_ladder_vs_wml.png}
+    \caption{CAO wage scale ladder vs.\ statutory minimum wage (WML), \IndWageYearMin--\IndWageYearMax.}
+    \label{fig:indices_wage_ladder}
+\end{figure}
+
+In recent cohorts, the median CAO scale wage reached \IndWageMedianLatest, corresponding to approximately \IndWageToWmlRatio\ times the statutory floor (\IndWmlMonthLatest). The scale floor (\texttt{mw\_low}) tracks closely above the WML line, demonstrating immediate pass-through of statutory minimum wage updates into lower-tier collective bargaining scales.
+
+\subsection*{Generosity vs.\ pay level}
+
+Table~\ref{tab:indices_pay_correlations} reports, per domain, the correlation between a CAO's combined generosity score and its wage level. Correlations are positive but modest for most domains, and slightly negative on the Pearson measure for a couple (overtime, training) -- evidence that generosity and pay are largely independent margins rather than a single underlying quality hierarchy. Wage Scale itself and the two coverage-only tracks (Safety \& Wellbeing, Childcare) are not part of the upstream correlation input and are therefore omitted from Table~\ref{tab:indices_pay_correlations}, which covers 10 of the 13 domains.
+
+\begin{table}[H]
+    \centering
+    \caption{Correlation between domain generosity and wage level}
+    \label{tab:indices_pay_correlations}
+    \input{tables/tab_indices_pay_correlations}
+\end{table}
+
+\subsection*{Multivariate structure: The bargaining mosaic}
+
+To test whether collective bargaining generosity is unidimensional or multidimensional, Table~\ref{tab:indices_factor_loadings} reports 3-factor loadings on the 11 combined domain scores from \texttt{indices/ADVANCED\_ANALYSIS.md} -- the two coverage-only tracks (Safety \& Wellbeing, Childcare) are not part of this upstream factor model and are therefore omitted from Table~\ref{tab:indices_factor_loadings}.
+\begin{table}[H]
+    \centering
+    \caption{Three-factor loadings on combined domain generosity scores}
+    \label{tab:indices_factor_loadings}
+    \input{tables/tab_indices_factor_loadings}
+\end{table}
+The overall Kaiser-Meyer-Olkin (KMO) measure of sampling adequacy---which evaluates the proportion of common variance among variables that can be attributed to underlying latent factors---is \IndKmoStat, indicating moderate common variance across domains. Factor communalities are predominantly low (mostly $<0.40$). Factor~1 loads primarily on social protections (sickness, pensions, termination, contract types); Factor~2 loads on direct compensation amenities (wages, bonuses, fringe benefits); and Factor~3 isolates leave and working time.\footnote{Pension treatment: pension generosity is scored on an \emph{available-case only} basis. Blank entries reflect fund-level administration and sectoral deferrals rather than contractual absence, and are never zero-filled.}

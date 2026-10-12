@@ -1,0 +1,119 @@
+{
+ "pairs": {
+  "20,21": 21,
+  "316,533": 316,
+  "182,1291": 182,
+  "633,1060": 633,
+  "727,833,838": 838,
+  "727,838": 838,
+  "727,884": 884,
+  "609,727": 609,
+  "727,1639": 1639,
+  "243,725": 243,
+  "245,1944": 245
+ },
+ "by_date": {
+  "49,2948": {
+   "before": "2008-08-01",
+   "early": 49,
+   "late": 2948
+  },
+  "1045,2948": {
+   "before": "2008-08-01",
+   "early": 1045,
+   "late": 2948
+  }
+ },
+ "postfilter": {
+  "727": "mode|textiel|sport"
+ },
+ "remove": {
+  "10": [
+   "^uitvoerend technisch en administratief",
+   "scholing werkgelegenheid en arbeidsmarkt voor het uitvo"
+  ],
+  "20": [
+   "beroepsgoederenvervoer"
+  ],
+  "26": [
+   "vleeswarenindustrie"
+  ],
+  "359": [
+   "^suikerwerk en chocoladeverwerkende"
+  ],
+  "487": [
+   "hoger personeel"
+  ],
+  "637": [
+   "buitendienst"
+  ],
+  "884": [
+   "^kantoorvakhandel"
+  ],
+  "1287": [
+   "reprografisch"
+  ],
+  "1291": [
+   "horeca en aanverwante"
+  ],
+  "721": [
+   "huisarts in dienst bij een huisarts"
+  ],
+  "727": [
+   "dierenspeciaal"
+  ],
+  "1165": [
+   "^zweminrichtingen"
+  ],
+  "*": [
+   "scholing werkgelegenheid en arbeids",
+   "^(landbouw|tuinbouw)( |$)"
+  ]
+ },
+ "remove_after": {
+  "49": "2008-08-01"
+ },
+ "move": {
+  "533->316": "levensmiddelenbe?derijf inzake kinderopvang"
+ },
+ "remove_ids": {
+  "stcrt-1995-74-CAO419": "verification 2026-10-12: Subject is voluntary early retirement (vervroegde uittreding)",
+  "stcrt-1998-82-CAO1183": "verification 2026-10-12: Vrijwillig Vervroegde Uittreding scheme, early retirement",
+  "stcrt-2000-183-CAO1775": "verification 2026-10-12: Opleidings- en ontwikkelingsfonds, a training fund",
+  "stcrt-1995-158-CAO466": "verification 2026-10-12: Vrijwillig Vervroegd Uittreden, early retirement scheme",
+  "stcrt-2011-14695": "verification 2026-10-12: AVV request notice (verzoek) with objection invitation, not a decision",
+  "stcrt-2002-69-CAO2154": "verification 2026-10-12: Early retirement (vervroegd uittreden) scheme AVV, not core CAO",
+  "stcrt-2010-2552": "verification 2026-10-12: AVV request notice (verzoek) with objections window, not a decision",
+  "stcrt-1995-111-CAO432": "verification 2026-10-12: AVV concerns Garantiefonds, a fund scheme",
+  "stcrt-1996-189-CAO763": "verification 2026-10-12: AVV concerns Vakantiefonds, a fund scheme",
+  "stcrt-1997-89-CAO952": "verification 2026-10-12: AVV concerns SWEF/SWEV fund scheme",
+  "stcrt-2003-9977-CAO2397": "verification 2026-10-12: Vrijwillig vervroegd uittreden (early retirement) scheme",
+  "stcrt-1997-85-CAO944": "verification 2026-10-12: Fonds Werktijdvermindering Oudere Werknemers, a fund scheme",
+  "stcrt-2003-202-CAO2357": "verification 2026-10-12: Vrijwillig vervroegd uittreden (early retirement)",
+  "stcrt-2010-9676": "verification 2026-10-12: Notice of AVV request (verzoek), not a decision",
+  "stcrt-2003-51-CAO2318": "verification 2026-10-12: pension toeslagregeling",
+  "stcrt-2004-35-CAO2548": "verification 2026-10-12: pension toeslagregeling",
+  "stcrt-2006-39-CAO2903": "verification 2026-10-12: pension toeslagregeling",
+  "stcrt-1997-162-CAO1002": "verification stage 2: only fund article + Werkgelegenheidsfonds statutes"
+ },
+ "add_ids": {
+  "26": [
+   "stcrt-1994-235-CAO281",
+   "stcrt-1996-249-CAO867",
+   "stcrt-1996-61-CAO670",
+   "stcrt-1997-247-CAO1161"
+  ],
+  "182": [
+   "stcrt-2010-16796-v1"
+  ],
+  "218": [
+   "stcrt-2009-15995-v1"
+  ],
+  "1574": [
+   "stcrt-2010-9755-n1"
+  ],
+  "822": [
+   "stcrt-2006-217-CAO3026"
+  ]
+ }
+}

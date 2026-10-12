@@ -7,7 +7,8 @@ Unified data extraction, deterministic salary parsing, correction/QA, and derive
 ## 1. Directory Structure & Documentation Map
 
 - `conf/config.yaml` — Upstream extraction pipeline configuration and credentials.
-- `pipelines/` — Extraction pipeline stages (p1–p5). Pointers: [`pipelines/README.md`](file:///Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/README.md).
+- `inputs/pdfs/` — CAO PDFs; processed set is `input_pdfs_non_extra/`, `input_pdfs_new/` (earlier AVVs, 2026-10-12) is not processed yet. See [`inputs/pdfs/README.md`](file:///Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/inputs/pdfs/README.md).
+- `pipelines/` — Extraction pipeline stages (p1–p5) plus `p0_fetch_avv_pdfs.py` (earlier AVV PDFs; artifacts in `p0_avv_selection/`). Pointers: [`pipelines/README.md`](file:///Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/pipelines/README.md).
 - `salary_parser/` — Deterministic salary parser replacing LLM salary extraction. See [`salary_parser/README.md`](file:///Users/lorenzpiazolo/Documents/Python/CAOsDataExtraction/salary_parser/README.md).
 - `schema/` — Pydantic schemas for structured extraction (`non_salary_schema.py`, `salary_schema.py`).
 - `verification_pipeline/` — QA correction layers, audit suites, and indices engine:
@@ -64,7 +65,14 @@ Unified data extraction, deterministic salary parsing, correction/QA, and derive
 
 ---
 
-## 4. Subagent Policies & Context Budgets
+## 4. Open Work
+
+- TODO: add `inputs/pdfs/input_pdfs_new/` to the process (p2 → p5, salary parser, verification pipeline); details in `inputs/pdfs/README.md`.
+- TODO: `conf/config.yaml` `paths.inputs_pdfs` points to `input_pdfs/`, but the processed set is `input_pdfs_non_extra/`; align it.
+
+---
+
+## 5. Subagent Policies & Context Budgets
 
 - Subagents must be self-contained and run with clear, specific scopes (maximum parallel cap: 12).
 - When assessing fields, subagents must ALWAYS receive the original field description and extraction definition from `schema/non_salary_schema.py` to prevent definition-less drift.

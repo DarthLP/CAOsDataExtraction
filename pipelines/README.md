@@ -31,3 +31,10 @@ p1_webscraping.py -> p2_extract.py -> p3_llmExtraction.py -> p4_analysis.py -> p
 - Merges topic-level extraction outputs and metadata from `extracted_cao_info.csv`.
 - Generates final flat tabular CSVs and Excel files under `outputs/excel/new_results/` (`extracted_data_non_salary.csv`).
 
+
+### 0. `p0_fetch_avv_pdfs.py` (side task, not part of the p1–p5 chain)
+- Fetches **earlier** CAO PDFs (AVV decisions, Staatscourant) from `zoek.officielebekendmakingen.nl` for the
+  CAO codes in `inputs/pdfs/input_pdfs_new/SectoralCAOs_Update.xlsx`, published before Overview col I.
+- Subcommands `catalog` -> `candidates` -> (LLM classify) -> `select` -> `download` -> `verify-batches`
+  (LLM verify) -> `write-excel`. Artifacts, prompts and the step table: `p0_avv_selection/README.md`.
+- Rules and trade-offs: root `DECISIONS.md` (2026-10-12). Never overwrites or deletes files.
